@@ -51,7 +51,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
-	 * the building won't spawn beside the button
+	 * the building won't spawn bellow the button
 	 */
 	private static var firstClickSuck:Bool;
 	
@@ -140,6 +140,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		currentSelectedBuilding.recycle();
 		currentSelectedBuilding = null;
 	}
+	
 	
 	public function new(?pAssetName:String) {
 		super(pAssetName);

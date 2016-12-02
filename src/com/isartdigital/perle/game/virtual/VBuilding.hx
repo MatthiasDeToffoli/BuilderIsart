@@ -9,7 +9,7 @@ import com.isartdigital.perle.game.sprites.Building;
  * Will be used for Clipping
  * @author ambroise
  */
-class VBuilding extends VCell{
+class VBuilding extends VTile{
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);

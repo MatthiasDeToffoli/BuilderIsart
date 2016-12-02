@@ -1,7 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.virtual.VCell;
+import com.isartdigital.perle.game.virtual.VTile;
 import haxe.Json;
 import js.Browser;
 
@@ -17,6 +17,7 @@ typedef Save = {
 	var ROW_Y_LENGTH:Int;
 	var ground:Array<TileDescription>;
 	var building:Array<TileDescription>;
+	// add what you want to save.
 }
 
 /**
@@ -24,7 +25,7 @@ typedef Save = {
  * @author ambroise
  */
 class SaveManager {
-	private static inline var SAVE_NAME:String = "com_isartdigital_myBuilderName";
+	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
 	public static var currentSave(default, null):Save;
 	
 	/**
@@ -37,13 +38,13 @@ class SaveManager {
 		var buildingLength:UInt = Building.list.length;
 		
 		// DeepCopy for tileDesc ?
-		for (lClassName in VCell.list.keys()) {
-			for (x in VCell.list[lClassName].keys()) {
-				for (y in VCell.list[lClassName][x].keys()) {
+		for (lClassName in VTile.list.keys()) {
+			for (x in VTile.list[lClassName].keys()) {
+				for (y in VTile.list[lClassName][x].keys()) {
 					if (lClassName == "Building")
-						buildingSave.push(VCell.list[lClassName][x][y].tileDesc);
+						buildingSave.push(VTile.list[lClassName][x][y].tileDesc);
 					if (lClassName == "Ground")
-						groundSave.push(VCell.list[lClassName][x][y].tileDesc);
+						groundSave.push(VTile.list[lClassName][x][y].tileDesc);
 				}
 			}
 		}
@@ -85,7 +86,7 @@ class SaveManager {
 			if (currentSave != null) {
 				if (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
 					currentSave.ROW_Y_LENGTH != Ground.ROW_Y_LENGTH)
-					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy())");
+					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy() in this function)");
 			}
 		}
 		return currentSave;

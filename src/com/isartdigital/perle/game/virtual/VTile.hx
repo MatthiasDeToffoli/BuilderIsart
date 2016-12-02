@@ -1,11 +1,9 @@
 package com.isartdigital.perle.game.virtual;
+import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
-import com.isartdigital.perle.game.managers.SaveManager;
-import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.iso.IsoManager;
 import pixi.core.math.Point;
 
 /**
@@ -16,7 +14,7 @@ import pixi.core.math.Point;
  * Créer une ClippingCell en plus de VCell ?)
  * @author ambroise
  */
-class VCell {
+class VTile extends Virtual{
 	/**
 	 * temporary ! the best way to add road in my mind would be the same way as for buildings...
 	 * todo déplacer ds VGround, supprimer plutôt et ajouter cela ds l'éditeur hud ou cheat
@@ -36,25 +34,15 @@ class VCell {
 		["","","","","","","",""]
 	];
 	
-	public static var list:Map<String, Map<Int, Map<Int, VCell>>> = new Map<String, Map<Int, Map<Int, VCell>>>();
-	
-	public var tileDesc:TileDescription;
-	/**
-	 * active is true if the instance represented by VCell should be visible on screen
-	 */
-	public var active(default, null):Bool = false;
+	public static var list:Map<String, Map<Int, Map<Int, VTile>>> = new Map<String, Map<Int, Map<Int, VTile>>>();
 	
 	/**
 	 * position x,y in Ground.container;
 	 */
 	private var position:Point;
-	/**
-	 * instance linked to VCell when active
-	 */
-	private var myInstance:Dynamic;
-	
-	
+
 	// ! todo : faire une save qui sert d'initial, et un code pour éditer le monde inGame ?
+	// todo : mettre ailleurs ?
 	/**
 	 * todo :
 	 * Temp : build the game whitout Save, a default Save will be used as initial later.
@@ -86,46 +74,13 @@ class VCell {
 		for (i in 0...lLength)
 			new VBuilding(pSave.building[i]);
 	}
-	
-	
+		
 	public function new(pDescription:TileDescription) {
-		tileDesc = pDescription;
+		super(pDescription);
 		position = IsoManager.modelToIsoView(new Point(tileDesc.mapX, tileDesc.mapY));
 		addToList();
 	}
-	
-	/**
-	 * Should not be used, because the only one creating and destroying Buildings
-	 * should be VCell (but just in case someone destroy() a Building while forgetting
-	 * the VCell)
-	 */
-	public function removeLink():Void {
-		myInstance = null;
-	}
-	
-	/**
-	 * Cell is visible and content will be displayed !
-	 */
-	public function activate():Void {
-		if (active)
-			throw("VCell is already active !");
-		active = true;
 		
-		// look override in VClass !	
-	}
-	
-	/**
-	 * Cell is not visible, content will be wiped out !
-	 */
-	public function desactivate():Void {
-		if (!active)
-			throw("VCell is already unactive !");
-			
-		active = false;
-		myInstance.recycle();
-		myInstance = null;
-	}
-	
 	/**
 	 * Determine the position of the Cell in the Array and add it.
 	 * The 2d array itself is paralell to the camera (not isoView)
@@ -137,14 +92,11 @@ class VCell {
 		var yCol:Int = cast(clippingMapPos.y, Int);
 		
 		if (list[tileDesc.className] == null)
-			list[tileDesc.className] = new Map<Int, Map<Int, VCell>>();
+			list[tileDesc.className] = new Map<Int, Map<Int, VTile>>();
 		if (list[tileDesc.className][xRow] == null)
-			list[tileDesc.className][xRow] = new Map<Int, VCell>();
+			list[tileDesc.className][xRow] = new Map<Int, VTile>();
 			
 		list[tileDesc.className][xRow][yCol] = this;
 	}
 	
-	private function linkVirtual():Void {
-		myInstance.linkVirtualCell(this);
-	}
 }

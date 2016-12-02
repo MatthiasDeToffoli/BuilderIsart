@@ -1,7 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tile;
-import com.isartdigital.perle.game.virtual.VCell;
+import com.isartdigital.perle.game.virtual.VTile;
 import pixi.core.math.Point;
 
 /**
@@ -94,7 +94,7 @@ class ClippingManager
 	 */
 	private static function activateCells(pClippingRect:MapClippingRect):Void {
 		//trace(pClippingRect); usefull to see the optimized clipping
-		for (lClassArray in VCell.list) {
+		for (lClassArray in VTile.list) {
 			for (x in pClippingRect.left...pClippingRect.right) {
 				for (y in pClippingRect.top...pClippingRect.bottom) {
 					if (lClassArray[x] != null &&
@@ -104,6 +104,11 @@ class ClippingManager
 				}
 			}
 		}
+		
+		// faire une autre boucle si objet s baladant hors du repère isométrique (un humain, un oiseau, etc)
+		// Si collision avec pClippingRect, alors activate()
+		// sachant que si l'objet est mobile et se déplace rapidement, il pourrait dépasser la zone de pClippingREct
+		// additionnellement alros l'objet devrait vérifier lui-même s'il se déplce sur une certaine distance s'il est dans la zone de clipping ou pas.
 	}
 	
 	/**
@@ -111,7 +116,7 @@ class ClippingManager
 	 * @param	pClippingRect
 	 */
 	private static function desactivateCells(pClippingRect:MapClippingRect):Void {
-		for (lClassArray in VCell.list) {
+		for (lClassArray in VTile.list) {
 			for (x in pClippingRect.left...pClippingRect.right) {
 				for (y in pClippingRect.top...pClippingRect.bottom) {
 					if (lClassArray[x] != null &&

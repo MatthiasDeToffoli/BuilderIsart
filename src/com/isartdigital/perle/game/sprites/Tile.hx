@@ -1,7 +1,7 @@
 package com.isartdigital.perle.game.sprites;
 
 import com.isartdigital.perle.game.managers.PoolingManager;
-import com.isartdigital.perle.game.virtual.VCell;
+import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.factory.MovieClipAnimFactory;
 import com.isartdigital.perle.game.iso.IsoManager;
@@ -12,7 +12,7 @@ import pixi.core.math.Point;
  * ...
  * @author ambroise
  */
-class Tile extends StateGraphic
+class Tile extends FlumpStateGraphic
 { 
 	public static inline var TILE_WIDTH:Float = 200;
 	public static inline var TILE_HEIGHT:Float = 100;
@@ -22,7 +22,7 @@ class Tile extends StateGraphic
 	 * Still, the best choice would be to destroy VCell first and then just update Clipping
 	 * Unused for now (you can't destroy buidings for now, the only way is to destroy Save !)
 	 */
-	private var linkedVirtualCell:VCell;
+	private var linkedVirtualCell:VTile;
 	
 	public static function initClass():Void {
 		IsoManager.init(TILE_WIDTH, TILE_HEIGHT);
@@ -34,21 +34,13 @@ class Tile extends StateGraphic
 		position = IsoManager.modelToIsoView(new Point(pGridX, pGridY));
 	}
 	
+	
 	public function new(?pAssetName:String) {
-		super();
-		if (pAssetName != null)
-			assetName = pAssetName;
+		super(pAssetName);
 	}
 	
-	public function linkVirtualCell(lVCell:VCell):Void {
+	public function linkVirtualCell(lVCell:VTile):Void {
 		linkedVirtualCell = lVCell;
-	}
-	
-	public function init():Void {
-		if (factory == null)
-			factory = new MovieClipAnimFactory();
-		boxType = BoxType.SELF;
-		setState(DEFAULT_STATE);
 	}
 	
 	public function getAssetName():String {

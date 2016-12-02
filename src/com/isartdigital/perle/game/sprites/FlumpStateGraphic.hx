@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.sprites;
 
+import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.StateGraphic;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 
@@ -11,16 +12,17 @@ import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 class FlumpStateGraphic extends StateGraphic
 {
 
-	public function new(pAsset:String=null) 
-	{
+	public function new(?pAssetName:String) {
 		super();
-		if (pAsset != null) assetName = pAsset;
+		if (pAssetName != null)
+			assetName = pAssetName;
 	}
 	
-	override public function start():Void 
-	{
-		factory = new FlumpMovieAnimFactory();
-		super.start();
+	// dans init plutôt que start, intervient plus tôt (code de Tile.hx auparavant)
+	public function init():Void {
+		if (factory == null)
+			factory = new FlumpMovieAnimFactory();
+		boxType = BoxType.SELF;
 		setState(DEFAULT_STATE);
 	}
 	

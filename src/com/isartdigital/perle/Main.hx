@@ -72,6 +72,7 @@ class Main extends EventEmitter
 		//lOptions.transparent = false;
 		//lOptions.preserveDrawingBuffer (pour dataToURL)
 		
+		DeviceCapabilities.init(); // choose Texture quality
 		DeviceCapabilities.scaleViewport();
 		
 		renderer = Detector.autoDetectRenderer(DeviceCapabilities.width, DeviceCapabilities.height,lOptions);
@@ -146,8 +147,8 @@ class Main extends EventEmitter
 		lLoader.addTxtFile("boxes.json");
 		lLoader.addSoundFile("sounds.json");
 		
-		lLoader.addAssetFile("assets.json");
-		//lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder/library.json");
+		//lLoader.addAssetFile("assets.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		

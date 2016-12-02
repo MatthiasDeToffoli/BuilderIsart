@@ -44,7 +44,7 @@ class Hud extends Screen
 	{
 		super();
 		modal = false;
-		
+		/* TODO todo : A REMETTRE QUAND ASSETS HUD EN FLUMP
 		hudBottom = new Container();
 		buildingBackground = new UIElement("Hud");
 		hudBottom.addChild(buildingBackground);
@@ -58,7 +58,7 @@ class Hud extends Screen
 			align:UIPosition.BOTTOM_CENTER,
 			offsetX:0,
 			offsetY:50
-		});
+		});*/
 	}
 	
 	/**

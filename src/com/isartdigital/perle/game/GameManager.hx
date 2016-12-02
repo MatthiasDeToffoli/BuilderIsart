@@ -9,7 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tile;
-import com.isartdigital.perle.game.virtual.VCell;
+import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.events.EventType;
@@ -65,9 +65,9 @@ class GameManager {
 	private function loadSave():Void {
 		var lSave:Save = SaveManager.load();
 		if (lSave != null)
-			VCell.buildFromSave(lSave);
+			VTile.buildFromSave(lSave);
 		else {
-			VCell.buildInitial();
+			VTile.buildInitial();
 			SaveManager.save();
 		}
 	}

@@ -9,7 +9,7 @@ import com.isartdigital.perle.game.sprites.Ground;
  * Will be used for Clipping
  * @author ambroise
  */
-class VGround extends VCell {
+class VGround extends VTile {
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
