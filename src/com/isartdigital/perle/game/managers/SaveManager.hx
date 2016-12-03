@@ -12,6 +12,7 @@ typedef TileDescription = {
 	var mapY:Int;
 }
 
+// On save des TileDescription, pas des Virtual !
 typedef Save = {
 	var COL_X_LENGTH:Int;
 	var ROW_Y_LENGTH:Int;
@@ -35,17 +36,29 @@ class SaveManager {
 	public static function save():Void {
 		var buildingSave:Array<TileDescription> = [];
 		var groundSave:Array<TileDescription> = [];
-		var buildingLength:UInt = Building.list.length;
 		
-		// DeepCopy for tileDesc ?
-		for (lClassName in VTile.list.keys()) {
-			for (x in VTile.list[lClassName].keys()) {
-				for (y in VTile.list[lClassName][x].keys()) {
+		
+		
+		/*for (lClassName in VTile.currentRegion.keys()) {
+			for (x in VTile.currentRegion[lClassName].keys()) {
+				for (y in VTile.currentRegion[lClassName][x].keys()) {
 					if (lClassName == "Building")
-						buildingSave.push(VTile.list[lClassName][x][y].tileDesc);
+						buildingSave.push(VTile.currentRegion[lClassName][x][y].tileDesc);
 					if (lClassName == "Ground")
-						groundSave.push(VTile.list[lClassName][x][y].tileDesc);
+						groundSave.push(VTile.currentRegion[lClassName][x][y].tileDesc);
 				}
+			}
+		}*/
+		
+		for (x in VTile.currentRegion.building.keys()) {
+			for (y in VTile.currentRegion.building[x].keys()) {
+				buildingSave.push(VTile.currentRegion.building[x][y].tileDesc);
+			}
+		}
+			
+		for (x in VTile.currentRegion.ground.keys()) {
+			for (y in VTile.currentRegion.ground[x].keys()) {
+				groundSave.push(VTile.currentRegion.ground[x][y].tileDesc);
 			}
 		}
 		

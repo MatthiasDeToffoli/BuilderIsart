@@ -94,16 +94,8 @@ class ClippingManager
 	 */
 	private static function activateCells(pClippingRect:MapClippingRect):Void {
 		//trace(pClippingRect); usefull to see the optimized clipping
-		for (lClassArray in VTile.list) {
-			for (x in pClippingRect.left...pClippingRect.right) {
-				for (y in pClippingRect.top...pClippingRect.bottom) {
-					if (lClassArray[x] != null &&
-						lClassArray[x][y] != null &&
-						!lClassArray[x][y].active)
-						lClassArray[x][y].activate();
-				}
-			}
-		}
+		loopCells(pClippingRect, VTile.currentRegion.building, true);
+		loopCells(pClippingRect, VTile.currentRegion.ground, true);
 		
 		// faire une autre boucle si objet s baladant hors du repère isométrique (un humain, un oiseau, etc)
 		// Si collision avec pClippingRect, alors activate()
@@ -116,7 +108,10 @@ class ClippingManager
 	 * @param	pClippingRect
 	 */
 	private static function desactivateCells(pClippingRect:MapClippingRect):Void {
-		for (lClassArray in VTile.list) {
+		loopCells(pClippingRect, VTile.currentRegion.building, false);
+		loopCells(pClippingRect, VTile.currentRegion.ground, false);
+		
+		/*for (lClassArray in VTile.currentRegion) {
 			for (x in pClippingRect.left...pClippingRect.right) {
 				for (y in pClippingRect.top...pClippingRect.bottom) {
 					if (lClassArray[x] != null &&
@@ -124,6 +119,17 @@ class ClippingManager
 						lClassArray[x][y].active)
 						lClassArray[x][y].desactivate();
 				}
+			}
+		}*/
+	}
+	
+	private static function loopCells(pClippingRect:MapClippingRect, pMap:Map<Int, Map<Int, Dynamic>>, pActivate:Bool):Void {
+		for (x in pClippingRect.left...pClippingRect.right) {
+			for (y in pClippingRect.top...pClippingRect.bottom) {
+				if (pMap[x] != null &&
+					pMap[x][y] != null &&
+					pMap[x][y].active != pActivate)
+					pActivate ? pMap[x][y].activate() : pMap[x][y].desactivate();
 			}
 		}
 	}

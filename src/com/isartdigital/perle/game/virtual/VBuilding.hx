@@ -13,6 +13,12 @@ class VBuilding extends VTile{
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
+		if (VTile.currentRegion.building == null)
+			VTile.currentRegion.building = new Map<Int, Map<Int, VBuilding>>();
+		if (VTile.currentRegion.building[positionClippingMap.x] == null)
+			VTile.currentRegion.building[positionClippingMap.x] = new Map<Int, VBuilding>();
+		
+		VTile.currentRegion.building[positionClippingMap.x][positionClippingMap.y] = this;
 	}
 	
 	override public function activate():Void {

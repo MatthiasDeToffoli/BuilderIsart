@@ -6,8 +6,27 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import pixi.core.math.Point;
 
+// todod a utilé
+typedef Region = {
+	// (var "bâtiment déplacé")
+	// idem hud contextuel
+	// bizarre de le mettre ici à mon avis
+	/*var floor3;
+	var floor2;
+	var floor1;*/
+	var building:Map<Int, Map<Int, VBuilding>>;
+	var ground:Map<Int, Map<Int, VGround>>;
+	/*var background;*/
+}
+
+typedef Index = {
+	var x:Int;
+	var y:Int;
+}
+
+
 /**
- * This is a VirtualCell
+ * This is a VirtualTile
  * correspond to a tile ingame, and is stored in a clippingArray
  * (Should be abstract ?
  * Mélange du virtuel avec les cases du clipping dangereux ?
@@ -34,13 +53,20 @@ class VTile extends Virtual{
 		["","","","","","","",""]
 	];
 	
-	public static var list:Map<String, Map<Int, Map<Int, VTile>>> = new Map<String, Map<Int, Map<Int, VTile>>>();
+	//public static var currentRegion:Map<String, Map<Int, Map<Int, VTile>>> = new Map<String, Map<Int, Map<Int, VTile>>>();
+	public static var currentRegion:Region; // todo: permettre plusieurs région
 	
 	/**
-	 * position x,y in Ground.container;
+	 * SURE ? position x,y in Ground.container;
+	 * todo : remove ?
 	 */
 	private var position:Point;
-
+	
+	/**
+	 * position x,y in currentRegion.building or ground (!= isoMap)
+	 */
+	private var positionClippingMap:Index;
+	
 	// ! todo : faire une save qui sert d'initial, et un code pour éditer le monde inGame ?
 	// todo : mettre ailleurs ?
 	/**
@@ -48,6 +74,7 @@ class VTile extends Virtual{
 	 * Temp : build the game whitout Save, a default Save will be used as initial later.
 	 */
 	public static function buildInitial():Void {
+		init();
 		for (x in 0...Ground.COL_X_LENGTH) {	
 			for (y in 0...Ground.ROW_Y_LENGTH) {
 				// todo : supprimer les road d'ici ...
@@ -65,6 +92,7 @@ class VTile extends Virtual{
 	}
 	
 	public static function buildFromSave(pSave:Save):Void {
+		init();
 		var lLength:UInt = pSave.ground.length;
 		
 		for (i in 0...lLength)
@@ -74,11 +102,22 @@ class VTile extends Virtual{
 		for (i in 0...lLength)
 			new VBuilding(pSave.building[i]);
 	}
+	
+	private static function init ():Void {
+		currentRegion = { 
+			building:new Map<Int, Map<Int, VBuilding>>(),
+			ground:new Map<Int, Map<Int, VGround>>()
+		};
+	}
 		
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		position = IsoManager.modelToIsoView(new Point(tileDesc.mapX, tileDesc.mapY));
-		addToList();
+		positionClippingMap = {
+			x:cast(ClippingManager.posToClippingMap(position).x, Int),
+			y:cast(ClippingManager.posToClippingMap(position).y, Int)
+		}
+		//addToList();
 	}
 		
 	/**
@@ -86,10 +125,12 @@ class VTile extends Virtual{
 	 * The 2d array itself is paralell to the camera (not isoView)
 	 * @param	isBuilding
 	 */
-	private function addToList():Void {
+	/*private function addToList():Void {
 		var clippingMapPos:Point = ClippingManager.posToClippingMap(position);
 		var xRow:Int = cast(clippingMapPos.x, Int);
 		var yCol:Int = cast(clippingMapPos.y, Int);
+		
+		
 		
 		if (list[tileDesc.className] == null)
 			list[tileDesc.className] = new Map<Int, Map<Int, VTile>>();
@@ -97,6 +138,6 @@ class VTile extends Virtual{
 			list[tileDesc.className][xRow] = new Map<Int, VTile>();
 			
 		list[tileDesc.className][xRow][yCol] = this;
-	}
+	}*/
 	
 }

@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -239,9 +240,16 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * @return
 	 */
 	private function buildingCollideOther():Bool {
-		for (i in 0... SaveManager.currentSave.building.length) {
+		/*for (i in 0... SaveManager.currentSave.building.length) {
 			if (collisionRectDesc(SaveManager.currentSave.building[i]))
 				return false;
+		}*/
+		
+		for (x in VTile.currentRegion.building.keys()) {
+			for (y in VTile.currentRegion.building[x].keys()) {
+				if (collisionRectDesc(VTile.currentRegion.building[x][y].tileDesc))
+					return false;
+			}
 		}
 		
 		return true;
@@ -264,11 +272,11 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * Test collision between instance and a TileDescription from Save
 	 * Permit that uninstanciated (unshow) building still make collision !
 	 */
-	private function collisionRectDesc(pDesc:TileDescription):Bool {
-		return (colMin < pDesc.mapX + ASSETNAME_TO_MAPSIZE[pDesc.assetName].width &&
-				colMax+1 > pDesc.mapX &&
-				rowMin < pDesc.mapY + ASSETNAME_TO_MAPSIZE[pDesc.assetName].height &&
-				rowMax+1 > pDesc.mapY);
+	private function collisionRectDesc(pVirtual:TileDescription):Bool {
+		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width &&
+				colMax+1 > pVirtual.mapX &&
+				rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height &&
+				rowMax+1 > pVirtual.mapY);
 	}
 	
 	/**
