@@ -16,10 +16,10 @@ class Hud extends Screen
 	private static inline var MARGIN_RIGHT:Int = 10;
 	// todo ? display:flex ?
 	private var BUTTONS_NAMES(default, null):Array<String> = [
-		"FactoryButton",
-		"HouseButton",
-		"TreesButton",
-		"VillaButton"
+		"Factory",
+		"House",
+		"Trees",
+		"Villa"
 	];
 	private var BUTTON_START_POINT(default, null):Point = new Point(-340, -80);
 	
@@ -45,9 +45,9 @@ class Hud extends Screen
 		super();
 		modal = false;
 		// TODO todo : A REMETTRE QUAND ASSETS HUD EN FLUMP
-		/*hudBottom = new Container();
-		buildingBackground = new UIElement("Hud");
-		hudBottom.addChild(buildingBackground);
+		hudBottom = new Container();
+		//buildingBackground = new UIElement("Hud"); // ajout 05/12 cheat HUD
+		//hudBottom.addChild(buildingBackground); // ajout 05/12 cheat HUD
 		
 		createButtons(hudBottom, BUTTONS_NAMES, BUTTON_START_POINT, MARGIN_RIGHT);
 		
@@ -58,7 +58,7 @@ class Hud extends Screen
 			align:UIPosition.BOTTOM_CENTER,
 			offsetX:0,
 			offsetY:50
-		});*/
+		});
 	}
 	
 	/**
@@ -67,6 +67,8 @@ class Hud extends Screen
 	private function createButtons(pContainer:Container, pNames:Array<String>, pStartPos:Point, pMargin:Int):Void {
 		for (i in 0...pNames.length) {
 			buttonMap[pNames[i]] = new ButtonBuild(pNames[i]);
+			buttonMap[pNames[i]].width = 200; // ajout 05/12 cheat HUD
+			buttonMap[pNames[i]].height = 200; // ajout 05/12 cheat HUD
 			if (pNames[i] == pNames[0]) {
 				buttonMap[pNames[i]].y += pStartPos.y;
 				buttonMap[pNames[i]].x += pStartPos.x;
