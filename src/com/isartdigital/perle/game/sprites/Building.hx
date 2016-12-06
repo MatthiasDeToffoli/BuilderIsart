@@ -21,6 +21,7 @@ import pixi.filters.color.ColorMatrixFilter;
 typedef SizeOnMap = {
 	var width:Int;
 	var height:Int;
+	var footprint:Float;
 }
 
 /**
@@ -30,10 +31,10 @@ typedef SizeOnMap = {
 class Building extends Tile implements IZSortable implements PoolingObject
 {
 	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [
-		"Factory" => {width:5, height:3},
-		"House" => {width:2, height:2},
-		"Trees" => {width:1, height:1},
-		"Villa" => {width:3, height:3},
+		"Factory" => {width:5, height:3, footprint : 0.5},
+		"House" => {width:2, height:2, footprint : 0.5},
+		"Trees" => {width:1, height:1, footprint : -0.5},
+		"Villa" => {width:3, height:3, footprint : 0.5},
 	];
 	private static inline var FILTER_OPACITY:Float = 0.5;
 	
@@ -339,10 +340,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * Permit that uninstanciated (unshow) building still make collision !
 	 */
 	private function collisionRectDesc(pVirtual:TileDescription):Bool {
-		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width &&
-				colMax+1 > pVirtual.mapX &&
-				rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height &&
-				rowMax+1 > pVirtual.mapY);
+		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint + ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
+				colMax+1 > pVirtual.mapX - ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint - ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
+				rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint + ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
+				rowMax+1 > pVirtual.mapY - ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint - ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint );
 	}
 	
 	/**
