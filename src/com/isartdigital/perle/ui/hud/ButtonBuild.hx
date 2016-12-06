@@ -13,6 +13,7 @@ class ButtonBuild extends Button{
 	
 	
 	public function new(?pAssetName:String) {
+
 		factory = new FlumpMovieAnimFactory();
 		// assetName before because the super() does start.
 		if (pAssetName != null)

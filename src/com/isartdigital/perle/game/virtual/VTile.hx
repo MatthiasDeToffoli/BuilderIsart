@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.ui.hud.ButtonRegion;
+import com.isartdigital.utils.game.GameStage;
 import pixi.core.math.Point;
 
 // todod a utilé
@@ -86,9 +88,12 @@ class VTile extends Virtual{
 					mapX:x,
 					mapY:y
 				};
+				
 				new VGround(tileDesc);
+				
 			}
 		}
+				
 	}
 	
 	public static function buildFromSave(pSave:Save):Void {

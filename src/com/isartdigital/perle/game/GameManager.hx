@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 
 
@@ -70,6 +71,8 @@ class GameManager {
 			VTile.buildInitial();
 			SaveManager.save();
 		}
+		RegionManager.getInstance();
+		RegionManager.initWorldMap();
 	}
 	
 	/**
