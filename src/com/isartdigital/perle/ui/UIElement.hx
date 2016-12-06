@@ -1,6 +1,6 @@
 package com.isartdigital.perle.ui;
 
-import com.isartdigital.utils.game.factory.MovieClipAnimFactory;
+import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.game.StateGraphic;
 
 /**
@@ -11,7 +11,7 @@ class UIElement extends StateGraphic{
 
 	public function new(pAssetName:String) {
 		super();
-		factory = new MovieClipAnimFactory();
+		factory = new FlumpMovieAnimFactory();
 		assetName = pAssetName;
 		setState(DEFAULT_STATE);
 	}
