@@ -108,6 +108,67 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		return lBuilding;
 	}
 	
+	public static function gameLoop():Void {
+		if (currentSelectedBuilding != null)
+			currentSelectedBuilding.doAction();
+	}
+	
+	
+	public function new(?pAssetName:String) {
+		super(pAssetName);
+	}
+	
+	private function setMapColRow(pMapPos:Point, pMapSize:SizeOnMap):Void {
+		colMax = cast(pMapPos.x + pMapSize.width-1, UInt); // (0 en haut, 10 à droite)
+		colMin = cast(pMapPos.x, UInt);
+		rowMax = cast(pMapPos.y + pMapSize.height-1, UInt); // (0 en haut, 10 à gauche)
+		rowMin = cast(pMapPos.y, UInt);
+	} 
+	
+	/**
+	 * Get the rounded position in map view
+	 * Prefer using floor position when you can.
+	 * @param	pPos
+	 * @return
+	 */
+	private function getRoundMapPos(pPos:Point):Point {
+		var lPoint:Point = IsoManager.isoViewToModel(pPos);
+		lPoint.x = Math.round(lPoint.x);
+		lPoint.y = Math.round(lPoint.y);
+		return lPoint;
+	}
+	
+	override public function recycle():Void {
+		if (list.indexOf(this) != -1)
+			list.splice(list.indexOf(this), 1);
+		
+		removePhantomFilter();
+		removeDesaturateFilter();
+		removeBuildListeners();
+		super.recycle();
+	}
+	
+	override public function destroy():Void {
+		// todo : verify all destroy methods
+		if (list.indexOf(this) != -1)
+			list.splice(list.indexOf(this), 1);
+		removeBuildListeners();
+		super.destroy();
+	}
+	
+	public static function destroyStatic():Void {
+		container.parent.removeChild(container);
+		currentSelectedBuilding.destroy();
+		currentSelectedBuilding = null;
+		container = null;
+		for (i in 0...list.length)
+			list[i].destroy();
+		list = null;
+	}
+	
+	
+	//{ ################# State_Phantom #################
+	
 	/**
 	 * Create a Phantom Building
 	 * @param	pAssetName
@@ -121,11 +182,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		}
 		else if (currentSelectedBuilding.assetName == pAssetName)
 			removePhantom();
-	}
-	
-	public static function gameLoop():Void {
-		if (currentSelectedBuilding != null)
-			currentSelectedBuilding.doAction();
 	}
 	
 	private static function createPhantom(pAssetName:String):Void {
@@ -142,9 +198,19 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		currentSelectedBuilding = null;
 	}
 	
+	/**
+	 * Listen to click or touch_end to build the building
+	 */
+	private function addBuildListeners():Void {
+		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)
+			Browser.window.addEventListener(MouseEventType.CLICK, onMouseTouchClick);
+		else
+			Browser.window.addEventListener(TouchEventType.TOUCH_END, onMouseTouchClick);
+	}
 	
-	public function new(?pAssetName:String) {
-		super(pAssetName);
+	private function removeBuildListeners():Void {
+		Browser.window.removeEventListener(MouseEventType.CLICK, onMouseTouchClick);
+		Browser.window.removeEventListener(TouchEventType.TOUCH_END, onMouseTouchClick);
 	}
 	
 	// todo : renommer je crois qu'il les nomment différemment
@@ -302,26 +368,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		SaveManager.save();
 	}
 	
-	private function setMapColRow(pMapPos:Point, pMapSize:SizeOnMap):Void {
-		colMax = cast(pMapPos.x + pMapSize.width-1, UInt); // (0 en haut, 10 à droite)
-		colMin = cast(pMapPos.x, UInt);
-		rowMax = cast(pMapPos.y + pMapSize.height-1, UInt); // (0 en haut, 10 à gauche)
-		rowMin = cast(pMapPos.y, UInt);
-	} 
-	
-	/**
-	 * Get the rounded position in map view
-	 * Prefer using floor position when you can.
-	 * @param	pPos
-	 * @return
-	 */
-	private function getRoundMapPos(pPos:Point):Point {
-		var lPoint:Point = IsoManager.isoViewToModel(pPos);
-		lPoint.x = Math.round(lPoint.x);
-		lPoint.y = Math.round(lPoint.y);
-		return lPoint;
-	}
-	
 	/**
 	 * todo : HUD method
 	 */
@@ -351,47 +397,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private function removeDesaturateFilter():Void {
 		filters = null;
 	}
-	
-	/**
-	 * Listen to click or touch_end to build the building
-	 */
-	private function addBuildListeners():Void {
-		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)
-			Browser.window.addEventListener(MouseEventType.CLICK, onMouseTouchClick);
-		else
-			Browser.window.addEventListener(TouchEventType.TOUCH_END, onMouseTouchClick);
-	}
-	
-	private function removeBuildListeners():Void {
-		Browser.window.removeEventListener(MouseEventType.CLICK, onMouseTouchClick);
-		Browser.window.removeEventListener(TouchEventType.TOUCH_END, onMouseTouchClick);
-	}
-	
-	override public function recycle():Void {
-		if (list.indexOf(this) != -1)
-			list.splice(list.indexOf(this), 1);
-		
-		removePhantomFilter();
-		removeDesaturateFilter();
-		removeBuildListeners();
-		super.recycle();
-	}
-	
-	override public function destroy():Void {
-		// todo : verify all destroy methods
-		if (list.indexOf(this) != -1)
-			list.splice(list.indexOf(this), 1);
-		removeBuildListeners();
-		super.destroy();
-	}
-	
-	public static function destroyStatic():Void {
-		container.parent.removeChild(container);
-		currentSelectedBuilding.destroy();
-		currentSelectedBuilding = null;
-		container = null;
-		for (i in 0...list.length)
-			list[i].destroy();
-		list = null;
-	}
+
+	//} endregion 
 }
