@@ -22,12 +22,12 @@ class Ground extends Tile implements PoolingObject
 	/**
 	 * Ground Map in X length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
-	public static inline var COL_X_LENGTH:Int = 15;
+	public static inline var COL_X_LENGTH:Int = 14;
 	
 	/**
 	 * Ground Map in Y length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
-	public static inline var ROW_Y_LENGTH:Int = 15;
+	public static inline var ROW_Y_LENGTH:Int = 14;
 	
 	/**
 	 * Used onMouseOver
@@ -125,6 +125,10 @@ class Ground extends Tile implements PoolingObject
 		super.positionTile(pGridX, pGridY);
 		mapX = pGridX;
 		mapY = pGridY;
+	}
+	
+	public function givePositionIso(pX:Float, pY:Float ){
+		positionTile(Std.int(pX), Std.int(pY));
 	}
 	
 	override public function recycle():Void {
