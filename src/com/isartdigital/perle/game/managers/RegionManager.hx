@@ -52,7 +52,10 @@ class RegionManager
 	public static function initWorldMap(){
 		//@TODO gérer le cas si dans localstorage !!!
 		worldMap = new Map<Int,Map<Int,Region>>();
-		//worldMap[Math.round(Ground.COL_X_LENGTH / 2 * Tile.TILE_WIDTH)][Math.round(Ground.ROW_Y_LENGTH / 2 * Tile.TILE_HEIGHT)] = test;
+		var pMap:Map<Int,Region> = new Map<Int,Region>();
+		
+		pMap[Math.round(Ground.ROW_Y_LENGTH / 2 * Tile.TILE_HEIGHT)] = VTile.currentRegion;
+		worldMap[Math.round(Ground.COL_X_LENGTH / 2 * Tile.TILE_WIDTH)] = pMap;
 	}
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
