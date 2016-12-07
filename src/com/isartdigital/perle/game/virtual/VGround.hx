@@ -23,6 +23,7 @@ class VGround extends VTile {
 	}
 	
 	override public function activate():Void {
+
 		super.activate();
 		myInstance = Ground.createGround(tileDesc);
 		linkVirtual();

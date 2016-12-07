@@ -1,7 +1,9 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.ui.Button;
+import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
 /**
@@ -11,19 +13,22 @@ import pixi.interaction.EventTarget;
 class ButtonRegion extends Button
 {
 
-	public function new() 
+	private var firstCasePos:Point;
+	public function new(pPos:Point) 
 	{
 
+		
 		factory = new FlumpMovieAnimFactory();
 		//@TODO change this for add a asset name for a simple button. This is for test !
 		assetName = "Villa";
 		super();
-		
+		firstCasePos = pPos;
 	}
 	
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);
-		trace("Create a region");
+		trace(firstCasePos);
+		RegionManager.createRegion(firstCasePos);
 	}
 	
 }
