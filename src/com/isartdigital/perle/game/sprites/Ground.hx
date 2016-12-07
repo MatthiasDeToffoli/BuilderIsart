@@ -51,7 +51,7 @@ class Ground extends Tile implements PoolingObject
 		GameStage.getInstance().getGameContainer().addChild(container);
 		
 		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)
-			Browser.window.addEventListener(MouseEventType.MOUSE_MOVE, Ground.hoverGround);
+			Browser.window.addEventListener(MouseEventType.MOUSE_MOVE, hoverGround);
 	}
 	
 	public static function hoverGround(pEvent:MouseEvent) {
@@ -81,31 +81,27 @@ class Ground extends Tile implements PoolingObject
 	 * @param	pPoint
 	 */
 	private static function lightCell(pPoint:Point):Void {
-		var lGround:Ground;
+		var lGround:Ground = null;
 		
-		if (mapArray[Math.floor(pPoint.x)] == null) {
-			if (previousCell != null)
-				previousCell.removeFilterCell();
-			return;
-		}
-		lGround = mapArray[Math.floor(pPoint.x)][Math.floor(pPoint.y)];
+		if (mapArray[Math.floor(pPoint.x)] != null &&
+			mapArray[Math.floor(pPoint.x)][Math.floor(pPoint.y)] != null)
+			lGround = mapArray[Math.floor(pPoint.x)][Math.floor(pPoint.y)];
 		
-		// lCell exist
 		if (lGround != null) {
-			
-			// previousCell exist and is the same as lCell --> return
-			if (previousCell != null &&
-				(lGround.x == previousCell.x && lGround.y == previousCell.y))
-				return;
+			if (previousCell == null ||
+				(lGround.x != previousCell.x || lGround.y != previousCell.y)) {
+				lGround.addFilterCell();
 				
-			// different lCell, but previousCell exist --> removeFilter()
+				if (previousCell != null)
+					previousCell.removeFilterCell();
+					
+				previousCell = lGround;	
+			}
+		} else {
 			if (previousCell != null)
 				previousCell.removeFilterCell();
 				
-			lGround.addFilterCell();
-			previousCell = lGround;
-		} else if (lGround == null && previousCell != null){
-			previousCell.removeFilterCell();
+			previousCell = null;
 		}
 	} 
 	

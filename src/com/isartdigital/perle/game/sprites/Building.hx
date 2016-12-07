@@ -367,6 +367,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		
 		removePhantom();
 		SaveManager.save();
+		sortBuildings();
 	}
 	
 	/**
