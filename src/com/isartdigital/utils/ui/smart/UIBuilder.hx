@@ -3,12 +3,6 @@ package com.isartdigital.utils.ui.smart;
 import com.isartdigital.utils.loader.GameLoader;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.UIPosition;
-import com.isartdigital.utils.ui.smart.SmartButton;
-import com.isartdigital.utils.ui.smart.SmartButton;
-import com.isartdigital.utils.ui.smart.SmartComponent;
-import com.isartdigital.utils.ui.smart.TextSprite;
-import com.isartdigital.utils.ui.smart.UIMovie;
-import com.isartdigital.utils.ui.smart.UISprite;
 import flump.filters.AnimateTintFilter;
 import flump.json.FlumpJSON;
 import flump.library.Keyframe;
@@ -53,7 +47,7 @@ class UIBuilder
 			if (lKeyFrame == null) continue;		
 			
 			if (lKeyFrame.symbol.data != null && lKeyFrame.symbol.data.className != null) lObj=Type.createInstance(Type.resolveClass(lKeyFrame.symbol.data.className), []);
-			else if (lKeyFrame.symbol.baseClass == "Flipbook") lObj = new Movie(lKeyFrame.symbolId);
+			else if (lKeyFrame.symbol.baseClass == "Flipbook") lObj = new UIMovie(lKeyFrame.symbolId);
 			else if (lKeyFrame.symbol.baseClass == "TextSprite") lObj = new TextSprite(lKeyFrame.symbol.data);
 			else if (Std.is (lKeyFrame.symbol, SpriteSymbol)) lObj = new UISprite(lKeyFrame.symbolId);
 			else if (lKeyFrame.symbol.baseClass == "flash.display.SimpleButton") lObj = new SmartButton(lKeyFrame.symbolId);

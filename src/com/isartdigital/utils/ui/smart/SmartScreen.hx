@@ -11,8 +11,8 @@ class SmartScreen extends Screen
 
 	public function new(pID:String=null) 
 	{
-		super();
-		build(pID);
+		super(pID);
+		build();
 		
 	}
 	
