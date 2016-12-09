@@ -14,7 +14,9 @@ class ButtonRegion extends Button
 {
 
 	private var firstCasePos:Point;
-	public function new(pPos:Point) 
+	private var worldMapPos:Point;
+	
+	public function new(pPos:Point,pWorldPos:Point) 
 	{
 
 		
@@ -23,12 +25,13 @@ class ButtonRegion extends Button
 		assetName = "Villa";
 		super();
 		firstCasePos = pPos;
+		worldMapPos = pWorldPos;
 	}
 	
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);
 		
-		RegionManager.createRegion(firstCasePos);
+		RegionManager.createRegion(firstCasePos,worldMapPos);
 		
 	}
 	
