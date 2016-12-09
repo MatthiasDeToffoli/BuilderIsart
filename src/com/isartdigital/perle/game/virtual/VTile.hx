@@ -16,6 +16,7 @@ typedef Region = {
 	/*var floor3;
 	var floor2;
 	var floor1;*/
+	var added:Bool;
 	var building:Map<Int, Map<Int, VBuilding>>;
 	var ground:Map<Int, Map<Int, VGround>>;
 	/*var background;*/
@@ -110,6 +111,7 @@ class VTile extends Virtual{
 	
 	private static function init ():Void {
 		currentRegion = { 
+			added:true,
 			building:new Map<Int, Map<Int, VBuilding>>(),
 			ground:new Map<Int, Map<Int, VGround>>()
 		};
