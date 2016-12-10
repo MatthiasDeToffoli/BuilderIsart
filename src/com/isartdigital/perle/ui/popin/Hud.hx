@@ -30,7 +30,7 @@ class Hud extends SmartPopin
 	private function new(pID:String=null) 
 	{
 		super(pID);
-		
+		modal = null;
 	}
 	
 	/**

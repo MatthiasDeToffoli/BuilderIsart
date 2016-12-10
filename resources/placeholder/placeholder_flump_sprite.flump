@@ -1,22 +1,54 @@
 {
   "importDir": "",
-  "fileVersion": 0,
+  "fileVersion": 1,
   "exports": [
     {
-      "prettyPrint": true,
+      "maxAtlasSize": 2048,
+      "optimize": "Speed",
       "format": "JSON",
-      "textureBorder": 1,
+      "prettyPrint": false,
+      "quality": "best",
+      "name": "hd",
       "scaleFactors": [
         1
       ],
+      "textureBorder": 1,
       "combine": false,
-      "optimize": "Speed",
-      "quality": "best",
       "scale": 1,
-      "name": "default",
-      "maxAtlasSize": 2048,
-      "description": "'default' (JSON, 100%, @1x)",
-      "scaleFactorsString": "1"
+      "scaleFactorsString": "1",
+      "description": "'hd' (JSON, 100%, @1x)"
+    },
+    {
+      "maxAtlasSize": 1536,
+      "optimize": "Speed",
+      "format": "JSON",
+      "prettyPrint": false,
+      "quality": "best",
+      "name": "md",
+      "scaleFactors": [
+        1
+      ],
+      "textureBorder": 1,
+      "combine": false,
+      "scale": 0.75,
+      "scaleFactorsString": "1",
+      "description": "'md' (JSON, 75%, @1x)"
+    },
+    {
+      "maxAtlasSize": 1024,
+      "optimize": "Speed",
+      "format": "JSON",
+      "prettyPrint": false,
+      "quality": "best",
+      "name": "ld",
+      "scaleFactors": [
+        1
+      ],
+      "textureBorder": 1,
+      "combine": false,
+      "scale": 0.5,
+      "scaleFactorsString": "1",
+      "description": "'ld' (JSON, 50%, @1x)"
     }
   ],
   "exportDir": ""

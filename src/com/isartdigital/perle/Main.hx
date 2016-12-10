@@ -151,7 +151,7 @@ class Main extends EventEmitter
 		
 		//lLoader.addAssetFile("assets.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		
