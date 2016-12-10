@@ -3,6 +3,7 @@ package com.isartdigital.perle;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.ui.popin.Hud;
 import com.isartdigital.perle.ui.GraphicLoader;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.Config;
@@ -150,6 +151,7 @@ class Main extends EventEmitter
 		
 		//lLoader.addAssetFile("assets.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		
@@ -185,6 +187,7 @@ class Main extends EventEmitter
 		// transmet au StateGraphic la description des boxes de collision utilisées par les instances de StateGraphic
 		//StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
 		
+		UIManager.getInstance().openPopin(Hud.getInstance());
 		
 		// Ouvre la TitleClard
 		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
