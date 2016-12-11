@@ -31,7 +31,16 @@ class ButtonRegion extends Button
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);
 		
-		RegionManager.createRegion(firstCasePos,worldMapPos);
+		// todo destroy()
+		
+		RegionManager.activeRegion(
+			firstCasePos,
+			{
+				x: cast(worldMapPos.x, Int),
+				y: cast(worldMapPos.y, Int)
+			}
+		);
+		
 		
 	}
 	

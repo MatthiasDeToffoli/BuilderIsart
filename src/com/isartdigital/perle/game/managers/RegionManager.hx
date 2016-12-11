@@ -1,8 +1,9 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
-import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.RegionManager.Region;
+import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
+import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VGround;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -11,18 +12,27 @@ import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 
-	
+
+typedef Region = {
+	var desc:RegionDescription;
+	// (var "bâtiment déplacé")
+	// idem hud contextuel
+	// bizarre de le mettre ici à mon avis
+	/*var floor3;
+	var floor2;
+	var floor1;*/
+	var added:Bool;
+	var building:Map<Int, Map<Int, VBuilding>>;
+	var ground:Map<Int, Map<Int, VGround>>;
+	/*var background;*/
+}
+
 /**
  * ...
  * @author de Toffoli Matthias
  */
 class RegionManager 
 {
-	
-	/**
-	 * instance unique de la classe RegionManager
-	 */
-	private static var instance: RegionManager;
 	public static var worldMap: Map<Int,Map<Int,Region>>;
 	private static var buttonRegionContainer:Container;
 	private static var factors:Array<Point> =
@@ -32,23 +42,13 @@ class RegionManager
 							new Point(0,-1),
 							new Point(0,1)
 						];
-
-	/**
-	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
-	 * @return instance unique
-	 */
-	public static function getInstance (): RegionManager {
-		if (instance == null) instance = new RegionManager();
-		return instance;
-	}
 	
-	/**
-	 * constructeur privé pour éviter qu'une instance soit créée directement
-	 */
-	private function new() 
-	{
+	
+	public static function init():Void {
 		buttonRegionContainer = new Container();
+		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getGameContainer().addChild(buttonRegionContainer);
+		worldMap = new Map<Int,Map<Int,Region>>();
 	}
 	
 	//add buttons according to regions
@@ -58,8 +58,9 @@ class RegionManager
 		
 		var factor:Point = factors[indice];
 		var worldPositionX:Int = Std.int(pWorldPos.x + factor.x);
-		var worldPositionY:Int = Std.int(pWorldPos.y + factor.y);
-	
+		var worldPositionY:Int = Std.int(pWorldPos.y - factor.y);
+		
+		
 		if (worldMap.exists(worldPositionX)){
 			if (worldMap[worldPositionX].exists(worldPositionY)){
 				addButton(pPos, pWorldPos, indice+ 1);
@@ -67,18 +68,13 @@ class RegionManager
 			}
 		} 
 		
-		var newRegion:Region = {
-			added:false,
-			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>()
-		}
 		var lCentre:Point = new Point(pPos.x + Ground.COL_X_LENGTH / 2, pPos.y + Ground.ROW_Y_LENGTH / 2);
 		var myBtn:ButtonRegion = new ButtonRegion(
 			new Point(
 				lCentre.x - Ground.COL_X_LENGTH / 2 + Ground.ROW_Y_LENGTH * factor.x,
 				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y
 			),
-			new Point(worldPositionX,worldPositionY)
+			new Point(worldPositionX, worldPositionY)
 		);
 		var lPos:Point = IsoManager.modelToIsoView(
 							new Point(
@@ -86,65 +82,170 @@ class RegionManager
 								lCentre.y - Ground.ROW_Y_LENGTH * factor.y
 								)
 							);
-
-							
 		
-		var lMap:Map<Int,Region> = worldMap.exists(worldPositionX) ? worldMap[worldPositionX]:new Map<Int,Region>();
-		lMap[worldPositionY] = newRegion;
-		worldMap[worldPositionX]  = lMap;
 		myBtn.position = lPos;
+		
+		// addToWorldMap(newRegion); plus de ajout de région dans addButton !
 		
 		buttonRegionContainer.addChild(myBtn);
 		
 		addButton(pPos, pWorldPos, indice+ 1);
 	}
 	
-	//create a new world map if server don't have data, else load world map
-	public static function initWorldMap(){
-		//@TODO gérer le cas si dans localstorage !!!
-		worldMap = new Map<Int,Map<Int,Region>>();
-		var pMap:Map<Int,Region> = new Map<Int,Region>();
-		
-		pMap[0] = VTile.currentRegion;
-		worldMap[0] = pMap;
-
-		addButton(new Point(0,0), new Point(0,0),0);
+	private static function addToWorldMap (pNewRegion:Region):Void {
+		if (worldMap[pNewRegion.desc.x] == null)
+			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
+		if (worldMap[pNewRegion.desc.x][pNewRegion.desc.y] != null)
+			throw("region allready exist in worldMap !");
+			
+		worldMap[pNewRegion.desc.x][pNewRegion.desc.y] = pNewRegion;
 	}
 	
-	public static function createRegion(pPos:Point,pWorldPos:Point): Void{
-
-
+	public static function buildWhitoutSave ():Void {
+		worldMap[0] = new Map<Int,Region>();
 		
-		for (i in 0...Ground.COL_X_LENGTH) {	
-			for (j in 0...Ground.ROW_Y_LENGTH) {
-				
-				/*var tileDesc:TileDescription = {
-					className:"Ground",
-					assetName: "Ground",
-					mapX:Std.int(i + pPos.x),
-					mapY:Std.int(j + pPos.y)
-				};*/ 
-				
-		var lGround:Ground = PoolingManager.getFromPool("Ground");
-		lGround.givePositionIso(
-			(i + pPos.x), 
-			(j + pPos.y)
-		);
-		lGround.init();
-		GameStage.getInstance().getGameContainer().addChild(lGround);
-		lGround.start();
-
-			}
+		worldMap[0][0] = createRegionFromDesc({
+			added:true,
+			x:0,
+			y:0
+		});
+		
+		addButton(new Point(0, 0), new Point(0, 0), 0);
+	}
+	
+	public static function buildFromSave(pSave:Save):Void {
+		var lLength:UInt = pSave.region.length;
+		
+		for (i in 0...lLength) {
+			
+			if (!pSave.region[i].added)
+				continue; 
+				// todo : plus de propriété added, une région ds le tableau == une région affiché.
+			
+			addToWorldMap(createRegionFromDesc(pSave.region[i]));
+			
+			var tempFirstTilePos:Index = regionPosToFirstTile( {
+				x:pSave.region[i].x,
+				y:pSave.region[i].y
+			});
+			
+			addButton(
+				new Point(
+					tempFirstTilePos.x,
+					tempFirstTilePos.y
+				),
+				new Point(
+					pSave.region[i].x,
+					pSave.region[i].y
+				),
+				0
+			);
 		}
+	}
+	
+	
+	// todo : renommé CreateNewRegion ?
+	public static function activeRegion (pFirstTilePos:Point, pWorldPos:Index):Void {
+		addToWorldMap({
+			added:true,
+			desc: {
+				added:true,
+				x:pWorldPos.x,
+				y:pWorldPos.y
+			},
+			building:new Map<Int, Map<Int, VBuilding>>(),
+			ground:new Map<Int, Map<Int, VGround>>()
+		});
 		
-		worldMap[Std.int(pWorldPos.x)][Std.int(pWorldPos.y)].added = true;
-		addButton(pPos,pWorldPos, 0);
+		VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
+		
+		//trace ("added region x:" + pWorldPos.x + " y:" + pWorldPos.y);
+		
+		SaveManager.save();
+		
+		addButton(
+			pFirstTilePos,
+			new Point(
+				pWorldPos.x,
+				pWorldPos.y
+			),
+			0
+		);
 	}
+	
 	/**
-	 * détruit l'instance unique et met sa référence interne à null
+	 * 
+	 * @param	pRegionPos 
+	 * @return  pFirstTilePos (TilePosition like if they were only one big region)
 	 */
-	public function destroy (): Void {
-		instance = null;
+	public static function regionPosToFirstTile (pRegionPos:Index):Index {
+		// todo vérifier qu'il prends bien en compte correctement le décalage !
+		return {
+			x: pRegionPos.x * Ground.COL_X_LENGTH + pRegionPos.x * Ground.OFFSET_REGION,
+			y: pRegionPos.y * Ground.ROW_Y_LENGTH + pRegionPos.y * Ground.OFFSET_REGION
+		};
 	}
-
+	
+	/**
+	 * Do a Math floor custom and return the region of the Tile
+	 * @param	pTilePos (TilePosition like if they were only one big region)
+	 * @return  pRegionPos
+	 */ 
+	public static function tilePosToRegion (pTilePos:Index):Index { 
+		var firstTilePos:Index = getRegionFirstTile(pTilePos);
+		// TODO : prendre en compte décalage
+		return {
+			x: cast(firstTilePos.x / Ground.COL_X_LENGTH, Int),
+			y: cast(firstTilePos.y / Ground.ROW_Y_LENGTH, Int)
+		};
+	}
+	
+	/**
+	 * 
+	 * @param	pTilePos (TilePosition like if they were only one big region)
+	 * @return first Tile of the Region
+	 */
+	public static function getRegionFirstTile (pTilePos:Index):Index {
+		// TODO : prendre en compte décalage
+		return {
+			x: ClippingManager.customFloor(pTilePos.x, Ground.COL_X_LENGTH),
+			y: ClippingManager.customFloor(pTilePos.y, Ground.ROW_Y_LENGTH)
+		};
+	}
+	
+	/**
+	 * Create region from regionDescription
+	 * @param	pRegionDesc
+	 * @return
+	 */
+	public static function createRegionFromDesc(pRegionDesc:RegionDescription):Region {		
+		return { 
+			added:pRegionDesc.added,
+			desc: pRegionDesc,
+			building:new Map<Int, Map<Int, VBuilding>>(),
+			ground:new Map<Int, Map<Int, VGround>>()
+		};	
+	}
+	
+	public static function addToRegionGround (pElement:VGround):Void {
+		// todo : gérer le cas ou region n'existe pas ds le tableau ? erreur 
+		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground == null)
+			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground = new Map<Int, Map<Int, VGround>>();
+		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX] == null)
+			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX] = new Map<Int, VGround>();
+		
+		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX][pElement.tileDesc.mapY] = pElement;
+	}
+	
+	public static function addToRegionBuilding (pElement:VBuilding):Void {
+		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building == null)
+			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building = new Map<Int, Map<Int, VBuilding>>();
+		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX] == null)
+			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX] = new Map<Int, VBuilding>();
+		
+		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX][pElement.tileDesc.mapY] != null)
+			throw("there is already a building on this tile !");
+		
+		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX][pElement.tileDesc.mapY] = pElement;
+	}
 }

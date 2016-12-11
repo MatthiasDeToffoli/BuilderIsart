@@ -1,17 +1,18 @@
 package com.isartdigital.perle.game.sprites;
 
+import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.iso.IZSortable;
 import com.isartdigital.perle.game.managers.MouseManager;
-import com.isartdigital.perle.game.managers.PoolingObject;
-import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
+import com.isartdigital.perle.game.managers.PoolingObject;
+import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
-import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
-import com.isartdigital.perle.game.iso.IsoManager;
-import com.isartdigital.perle.game.iso.IZSortable;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
 import pixi.core.display.Container;
@@ -93,13 +94,20 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	public static function createBuilding(pTileDesc:TileDescription):Building {
 		var lBuilding:Building = PoolingManager.getFromPool(pTileDesc.assetName);
+		var regionFirstTilePos:Index = RegionManager.regionPosToFirstTile({ // todo: factoriser
+			x:pTileDesc.regionX,
+			y:pTileDesc.regionY
+		});
 		
-		lBuilding.positionTile(
-			pTileDesc.mapX, 
-			pTileDesc.mapY
+		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
+			pTileDesc.mapX + regionFirstTilePos.x, 
+			pTileDesc.mapY + regionFirstTilePos.y
 		);
 		lBuilding.setMapColRow(
-			new Point(pTileDesc.mapX, pTileDesc.mapY),
+			{
+				x:pTileDesc.mapX + regionFirstTilePos.x, 
+				y:pTileDesc.mapY + regionFirstTilePos.y
+			},
 			ASSETNAME_TO_MAPSIZE[pTileDesc.assetName]
 		);
 		list.push(lBuilding);
@@ -119,12 +127,17 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		super(pAssetName);
 	}
 	
-	private function setMapColRow(pMapPos:Point, pMapSize:SizeOnMap):Void {
-		colMax = cast(pMapPos.x + pMapSize.width-1, UInt); // (0 en haut, 10 à droite)
-		colMin = cast(pMapPos.x, UInt);
-		rowMax = cast(pMapPos.y + pMapSize.height-1, UInt); // (0 en haut, 10 à gauche)
-		rowMin = cast(pMapPos.y, UInt);
-	} 
+	/**
+	 * 
+	 * @param	pTilePos (TilePosition like if they were only one big region)
+	 * @param	pMapSize (width and height)
+	 */
+	private function setMapColRow(pTilePos:Index, pMapSize:SizeOnMap):Void {
+		colMax = pTilePos.x + pMapSize.width-1; // (0 en haut, 10 à droite)
+		colMin = pTilePos.x;
+		rowMax = pTilePos.y + pMapSize.height-1; // (0 en haut, 10 à gauche)
+		rowMin = pTilePos.y;
+	}
 	
 	/**
 	 * Get the rounded position in map view
@@ -132,11 +145,12 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * @param	pPos
 	 * @return
 	 */
-	private function getRoundMapPos(pPos:Point):Point {
+	private function getRoundMapPos(pPos:Point):Index {
 		var lPoint:Point = IsoManager.isoViewToModel(pPos);
-		lPoint.x = Math.round(lPoint.x);
-		lPoint.y = Math.round(lPoint.y);
-		return lPoint;
+		return {
+			x: cast(Math.round(lPoint.x), Int),
+			y: cast(Math.round(lPoint.y), Int)
+		};
 	}
 	
 	override public function recycle():Void {
@@ -231,9 +245,12 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			MouseManager.getInstance().positionInGame.x + x - buildingGroundCenter.x,
 			MouseManager.getInstance().positionInGame.y + y - buildingGroundCenter.y
 		);
-		var bestMapPos:Point = getRoundMapPos(perfectMouseFollow);
+		var bestMapPos:Index = getRoundMapPos(perfectMouseFollow);
 		
-		position = IsoManager.modelToIsoView(bestMapPos);
+		position = IsoManager.modelToIsoView(new Point(
+			bestMapPos.x,
+			bestMapPos.y
+		));
 		
 		// optimization to make less call to canBuilHere();
 		if (precedentBesMapPos.x != bestMapPos.x ||
@@ -245,7 +262,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 				addDesaturateFilter();
 		}
 		
-		precedentBesMapPos.copy(bestMapPos);
+		precedentBesMapPos.copy(new Point(
+			bestMapPos.x,
+			bestMapPos.y
+		));
 	}
 	
 	/**
@@ -253,7 +273,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * @return
 	 */
 	private function getBuildingGroundCenter():Point {
-		var mapPos:Point = getRoundMapPos(position);
+		var mapPos:Index = getRoundMapPos(position);
 		
 		return IsoManager.modelToIsoView(new Point(
 			mapPos.x + ASSETNAME_TO_MAPSIZE[assetName].width / 2,
@@ -267,7 +287,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			return;
 		}
 		
-		// todo : confirm build ?
+		// todo : confirm build ? (êtes vous sûr de vouloir placer le bâtiment ici ? genre hud contextuel)
 		if (canBuildHere())
 			newBuild();
 		else
@@ -293,10 +313,27 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		// thx Haxe !
 		// (UInt suck)
 		
+		// todo : répétitif avec newBuild() => regionPos et regionFirstTile
+		var regionPos:Index = RegionManager.tilePosToRegion({
+			x:colMin,
+			y:rowMin
+		});
+		
+		var regionFirstTile:Index = RegionManager.getRegionFirstTile({
+			x:colMin,
+			y:rowMin
+		});
+		
+		// region exist and is added.
+		if (RegionManager.worldMap[regionPos.x] == null ||
+			RegionManager.worldMap[regionPos.x][regionPos.y] == null ||
+			!RegionManager.worldMap[regionPos.x][regionPos.y].added)
+			return false;
+		
 		// todo : factoriser
-		if (colMin < 0 || rowMin < 0 ||
-			colMax >= Ground.COL_X_LENGTH ||
-			rowMax >= Ground.ROW_Y_LENGTH)
+		if (colMin < regionFirstTile.x || rowMin < regionFirstTile.y ||
+			colMax >= regionFirstTile.x + Ground.COL_X_LENGTH ||
+			rowMax >= regionFirstTile.y + Ground.ROW_Y_LENGTH)
 			return false;
 		return true;
 	}
@@ -307,14 +344,15 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * @return
 	 */
 	private function buildingCollideOther():Bool {
-		/*for (i in 0... SaveManager.currentSave.building.length) {
-			if (collisionRectDesc(SaveManager.currentSave.building[i]))
-				return false;
-		}*/
 		
-		for (x in VTile.currentRegion.building.keys()) {
-			for (y in VTile.currentRegion.building[x].keys()) {
-				if (collisionRectDesc(VTile.currentRegion.building[x][y].tileDesc))
+		var regionPos:Index = RegionManager.tilePosToRegion({
+			x:colMin,
+			y:rowMin
+		});
+
+		for (x in RegionManager.worldMap[regionPos.x][regionPos.y].building.keys()) {
+			for (y in RegionManager.worldMap[regionPos.x][regionPos.y].building[x].keys()) {
+				if (collisionRectDesc(RegionManager.worldMap[regionPos.x][regionPos.y].building[x][y].tileDesc))
 					return false;
 			}
 		}
@@ -355,15 +393,30 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		// todo :
 		// Type.getClassName ? but path whit it ?
 		// what do you do if the path change between version and not in save ?
+		
+		
+		// todo : répétitif avec buildingOnGround() => regionPos et regionFirstTile
+		var regionPos:Index = RegionManager.tilePosToRegion({
+			x:colMin,
+			y:rowMin
+		});
+		
+		var regionFirstTile:Index = RegionManager.getRegionFirstTile({
+			x:colMin,
+			y:rowMin
+		});
+		
 		var tileDesc:TileDescription = {
-			className:"Building",
+			className:"Building", // todo : à revoir
 			assetName:assetName,
-			mapX:colMin,
-			mapY:rowMin
+			regionX:regionPos.x,
+			regionY:regionPos.y,
+			mapX:colMin - regionFirstTile.x,
+			mapY:rowMin - regionFirstTile.y
 		};
 		var vBuilding:VBuilding = new VBuilding(tileDesc);
 		vBuilding.activate(); // or won't show until clipping ! "ClippingManager.update();" useless here
-		vBuilding = null;
+		vBuilding = null; // todo : inutile ? :o
 		
 		removePhantom();
 		SaveManager.save();

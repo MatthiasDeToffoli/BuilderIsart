@@ -1,26 +1,12 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.ui.hud.ButtonRegion;
-import com.isartdigital.utils.game.GameStage;
 import pixi.core.math.Point;
 
-// todod a utilé
-typedef Region = {
-	// (var "bâtiment déplacé")
-	// idem hud contextuel
-	// bizarre de le mettre ici à mon avis
-	/*var floor3;
-	var floor2;
-	var floor1;*/
-	var added:Bool;
-	var building:Map<Int, Map<Int, VBuilding>>;
-	var ground:Map<Int, Map<Int, VGround>>;
-	/*var background;*/
-}
 
 typedef Index = {
 	var x:Int;
@@ -56,8 +42,8 @@ class VTile extends Virtual{
 		["","","","","","","",""]
 	];
 	
-	//public static var currentRegion:Map<String, Map<Int, Map<Int, VTile>>> = new Map<String, Map<Int, Map<Int, VTile>>>();
-	public static var currentRegion:Region; // todo: permettre plusieurs région
+	
+	public static var clippingMap:Map<Int, Map<Int, Array<VTile>>>;
 	
 	/**
 	 * SURE ? position x,y in Ground.container;
@@ -66,18 +52,21 @@ class VTile extends Virtual{
 	private var position:Point;
 	
 	/**
-	 * position x,y in currentRegion.building or ground (!= isoMap)
+	 * position x,y in clippingMap (!= isoMap) (!= modelMap)
 	 */
 	private var positionClippingMap:Index;
 	
-	// ! todo : faire une save qui sert d'initial, et un code pour éditer le monde inGame ?
-	// todo : mettre ailleurs ?
-	/**
-	 * todo :
-	 * Temp : build the game whitout Save, a default Save will be used as initial later.
-	 */
-	public static function buildInitial():Void {
-		init();
+	public static function initClass ():Void {
+		clippingMap = new Map<Int, Map<Int, Array<VTile>>>(); 
+	}
+	
+	// todo : tjrs immediate visible ? car sert pas pr le load save
+	public static function buildInsideRegion (pRegion:Region, pImmediateVisible:Bool = false):Void {
+		
+		// todo : add background ! :p
+		// et enlever tile ? ou tile transparente ? plutôt enlever, huuum
+		// et grille blanche par-dessus ?
+		
 		for (x in 0...Ground.COL_X_LENGTH) {	
 			for (y in 0...Ground.ROW_Y_LENGTH) {
 				// todo : supprimer les road d'ici ...
@@ -86,19 +75,28 @@ class VTile extends Virtual{
 				var tileDesc:TileDescription = {
 					className:"Ground",
 					assetName: tempRoadAssetName,
+					regionX:pRegion.desc.x,
+					regionY:pRegion.desc.y,
 					mapX:x,
 					mapY:y
 				};
 				
-				new VGround(tileDesc);
+				var lGround:VGround = new VGround(tileDesc);
+				if (pImmediateVisible)
+					lGround.activate();
 				
 			}
 		}
-				
 	}
 	
-	public static function buildFromSave(pSave:Save):Void {
-		init();
+	public static function buildWhitoutSave ():Void {
+		if (RegionManager.worldMap[0][0] == null)
+			throw("first Region not created");
+			
+		buildInsideRegion(RegionManager.worldMap[0][0]);
+	}
+	
+	public static function buildFromSave (pSave:Save):Void {
 		var lLength:UInt = pSave.ground.length;
 		
 		for (i in 0...lLength)
@@ -108,23 +106,26 @@ class VTile extends Virtual{
 		for (i in 0...lLength)
 			new VBuilding(pSave.building[i]);
 	}
-	
-	private static function init ():Void {
-		currentRegion = { 
-			added:true,
-			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>()
-		};
-	}
 		
-	public function new(pDescription:TileDescription) {
+	public function new (pDescription:TileDescription) {
 		super(pDescription);
-		position = IsoManager.modelToIsoView(new Point(tileDesc.mapX, tileDesc.mapY));
+		
+		var regionPos:Index = RegionManager.regionPosToFirstTile( {
+			x: pDescription.regionX, 
+			y: pDescription.regionY
+		});
+		
+		position = IsoManager.modelToIsoView(new Point(
+			tileDesc.mapX + regionPos.x, 
+			tileDesc.mapY + regionPos.y
+		));
+		
 		positionClippingMap = {
 			x:cast(ClippingManager.posToClippingMap(position).x, Int),
 			y:cast(ClippingManager.posToClippingMap(position).y, Int)
 		}
-		//addToList();
+		
+		addToClippingList();
 	}
 		
 	/**
@@ -132,19 +133,18 @@ class VTile extends Virtual{
 	 * The 2d array itself is paralell to the camera (not isoView)
 	 * @param	isBuilding
 	 */
-	/*private function addToList():Void {
+	private function addToClippingList():Void {
 		var clippingMapPos:Point = ClippingManager.posToClippingMap(position);
 		var xRow:Int = cast(clippingMapPos.x, Int);
 		var yCol:Int = cast(clippingMapPos.y, Int);
 		
+		if (clippingMap[xRow] == null) // Map<Int, Map<Int, Array<VTile>>>;
+			clippingMap[xRow] = new Map<Int, Array<VTile>>();
+		if (clippingMap[xRow][yCol] == null)
+			clippingMap[xRow][yCol] = new Array<VTile>();
 		
-		
-		if (list[tileDesc.className] == null)
-			list[tileDesc.className] = new Map<Int, Map<Int, VTile>>();
-		if (list[tileDesc.className][xRow] == null)
-			list[tileDesc.className][xRow] = new Map<Int, VTile>();
-			
-		list[tileDesc.className][xRow][yCol] = this;
-	}*/
+		// array length should be max 2 if only ground and building can be on each other !
+		clippingMap[xRow][yCol].push(this);
+	}
 	
 }

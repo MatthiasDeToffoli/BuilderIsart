@@ -12,12 +12,14 @@ class Virtual {
 	 */
 	public var active(default, null):Bool = false;
 	
-	public var tileDesc(get, null) :TileDescription;
+	public var tileDesc:TileDescription; // todo : mettre ds Vtile...
+	/*public var tileDesc(get, null) :TileDescription;
 	public function get_tileDesc ():TileDescription {
 		// todo : met à jour TileDesc si besoin.
+		// todo : devrait tjrs être à jour de toute façon!
 		// utiliser que pour Save en principe.
 		return tileDesc;
-	}
+	}*/ // bug avec la save... problème du à Haxe ?
 	
 	/**
 	 * instance linked to VCell when active

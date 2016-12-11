@@ -1,9 +1,10 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.managers.MouseManager;
-import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.PoolingObject;
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
@@ -20,14 +21,19 @@ import pixi.filters.color.ColorMatrixFilter;
 class Ground extends Tile implements PoolingObject 
 {
 	/**
+	 * Offset separating each region.
+	 */
+	public static inline var OFFSET_REGION:Int = 0;
+	
+	/**
 	 * Ground Map in X length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
-	public static inline var COL_X_LENGTH:Int = 14;
+	public static inline var COL_X_LENGTH:Int = 12;
 	
 	/**
 	 * Ground Map in Y length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
-	public static inline var ROW_Y_LENGTH:Int = 14;
+	public static inline var ROW_Y_LENGTH:Int = 12;
 	
 	/**
 	 * Used onMouseOver
@@ -35,16 +41,18 @@ class Ground extends Tile implements PoolingObject
 	private static inline var FILTER_BRIGHTNESS:Float = 1.3;
 	
 	public static var container(default, null):Container;
-	public static var mapArray:Array<Array<Ground>> = [for (x in 0...COL_X_LENGTH) []];
+	
 	
 	public var mapX:Int;
 	public var mapY:Int;
 	
 	private static var previousCell:Ground;
 	private static var colorMatrix:ColorMatrixFilter;
+	private static var mapArray:Map<Int,Map<Int, Ground>>;
 	
 	
 	public static function initClass():Void {
+		mapArray = new Map<Int,Map<Int, Ground>>();
 		container = new Container();
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.brightness(FILTER_BRIGHTNESS, false);
@@ -65,15 +73,31 @@ class Ground extends Tile implements PoolingObject
 	 */
 	public static function createGround(pTileDesc:TileDescription):Ground {
 		var lGround:Ground = PoolingManager.getFromPool(pTileDesc.assetName);
-		mapArray[pTileDesc.mapX][pTileDesc.mapY] = lGround;
+		var regionFirstTilePos:Index = RegionManager.regionPosToFirstTile({
+			x:pTileDesc.regionX,
+			y:pTileDesc.regionY
+		});
+		
+		addToGroundMap( // todo : factoriser fc..
+			pTileDesc.mapX + regionFirstTilePos.x, 
+			pTileDesc.mapY + regionFirstTilePos.y,
+			lGround
+		);
 		lGround.positionTile(
-			pTileDesc.mapX, 
-			pTileDesc.mapY
+			pTileDesc.mapX + regionFirstTilePos.x, 
+			pTileDesc.mapY + regionFirstTilePos.y
 		);
 		lGround.init();
 		container.addChild(lGround);
 		lGround.start();
 		return lGround;
+	}
+	
+	private static function addToGroundMap (pX:Int, pY:Int, pGround:Ground):Void {
+		if (mapArray[pX] == null)
+			mapArray[pX] = new Map<Int, Ground>();
+			
+		mapArray[pX][pY] = pGround;
 	}
 	
 	/**
@@ -132,6 +156,10 @@ class Ground extends Tile implements PoolingObject
 	}
 	
 	override public function recycle():Void {
+		/*if (mapArray[mapX] == null ||
+			mapArray[mapX] == null)
+			throw("");*/ //todo
+			
 		mapArray[mapX][mapY] = null;
 		super.recycle();
 	}

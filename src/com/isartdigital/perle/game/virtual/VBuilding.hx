@@ -1,5 +1,5 @@
 package com.isartdigital.perle.game.virtual;
-import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Building;
 
@@ -13,12 +13,8 @@ class VBuilding extends VTile{
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
-		if (VTile.currentRegion.building == null)
-			VTile.currentRegion.building = new Map<Int, Map<Int, VBuilding>>();
-		if (VTile.currentRegion.building[positionClippingMap.x] == null)
-			VTile.currentRegion.building[positionClippingMap.x] = new Map<Int, VBuilding>();
 		
-		VTile.currentRegion.building[positionClippingMap.x][positionClippingMap.y] = this;
+		RegionManager.addToRegionBuilding(this);
 	}
 	
 	override public function activate():Void {

@@ -44,7 +44,6 @@ class Hud extends Screen
 	{
 		super();
 		modal = false;
-		// TODO todo : A REMETTRE QUAND ASSETS HUD EN FLUMP
 		hudBottom = new Container();
 		//buildingBackground = new UIElement("Hud"); // ajout 05/12 cheat HUD
 		//hudBottom.addChild(buildingBackground); // ajout 05/12 cheat HUD

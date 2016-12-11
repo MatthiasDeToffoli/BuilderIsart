@@ -1,11 +1,8 @@
 package com.isartdigital.perle.game.sprites;
 
+import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.virtual.VTile;
-import com.isartdigital.utils.game.BoxType;
-import com.isartdigital.utils.game.factory.MovieClipAnimFactory;
-import com.isartdigital.perle.game.iso.IsoManager;
-import com.isartdigital.utils.game.StateGraphic;
 import pixi.core.math.Point;
 
 
@@ -31,8 +28,11 @@ class Tile extends FlumpStateGraphic
 		Building.initClass();
 	}
 	
-	private function positionTile(pGridX:Int, pGridY:Int):Void {
-		position = IsoManager.modelToIsoView(new Point(pGridX, pGridY));
+	private function positionTile(pTileX:Int, pTileY:Int):Void { // todo :opti
+		position = IsoManager.modelToIsoView(new Point(
+			pTileX,
+			pTileY
+		));
 	}
 	
 	

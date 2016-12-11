@@ -59,8 +59,11 @@ class ClippingManager
 		
 	}
 	
-	// avoir colonne entrée sortie et agir que sur celle-ci, que qd mvt camera !
-	public static function update():Void {
+	/**
+	 * Update clipping
+	 * @param	pFullScreen (perform update on fullScreen, not optimized !) (try not to use it)
+	 */
+	public static function update(pFullScreen:Bool = false):Void {
 		setCameraMapClipRect();
 		
 		currentCameraClipRect = {
@@ -78,8 +81,14 @@ class ClippingManager
 				precedentCameraClipRect
 			);
 			if (!cheat_do_clipping_start_only) {
-				optimizedClipping(desactivateCells, precedentCameraClipRect, commonCameraClipRect);
-				optimizedClipping(activateCells, currentCameraClipRect, commonCameraClipRect);
+				if (!pFullScreen) {
+					optimizedClipping(desactivateCells, precedentCameraClipRect, commonCameraClipRect);
+					optimizedClipping(activateCells, currentCameraClipRect, commonCameraClipRect);
+				} else {
+					desactivateCells(currentCameraClipRect);
+					activateCells(currentCameraClipRect);
+				}
+				
 			}
 		}
 		
@@ -94,8 +103,7 @@ class ClippingManager
 	 */
 	private static function activateCells(pClippingRect:MapClippingRect):Void {
 		//trace(pClippingRect); usefull to see the optimized clipping
-		loopCells(pClippingRect, VTile.currentRegion.building, true);
-		loopCells(pClippingRect, VTile.currentRegion.ground, true);
+		loopCells(pClippingRect, VTile.clippingMap, true);
 		
 		// faire une autre boucle si objet s baladant hors du repère isométrique (un humain, un oiseau, etc)
 		// Si collision avec pClippingRect, alors activate()
@@ -108,28 +116,21 @@ class ClippingManager
 	 * @param	pClippingRect
 	 */
 	private static function desactivateCells(pClippingRect:MapClippingRect):Void {
-		loopCells(pClippingRect, VTile.currentRegion.building, false);
-		loopCells(pClippingRect, VTile.currentRegion.ground, false);
-		
-		/*for (lClassArray in VTile.currentRegion) {
-			for (x in pClippingRect.left...pClippingRect.right) {
-				for (y in pClippingRect.top...pClippingRect.bottom) {
-					if (lClassArray[x] != null &&
-						lClassArray[x][y] != null &&
-						lClassArray[x][y].active)
-						lClassArray[x][y].desactivate();
-				}
-			}
-		}*/
+		loopCells(pClippingRect, VTile.clippingMap, false);
 	}
 	
-	private static function loopCells(pClippingRect:MapClippingRect, pMap:Map<Int, Map<Int, Dynamic>>, pActivate:Bool):Void {
+	private static function loopCells(pClippingRect:MapClippingRect, pClippingMap:Map<Int, Map<Int, Array<VTile>>>, pActivate:Bool):Void {
 		for (x in pClippingRect.left...pClippingRect.right) {
 			for (y in pClippingRect.top...pClippingRect.bottom) {
-				if (pMap[x] != null &&
-					pMap[x][y] != null &&
-					pMap[x][y].active != pActivate)
-					pActivate ? pMap[x][y].activate() : pMap[x][y].desactivate();
+				
+				if (pClippingMap[x] != null && pClippingMap[x][y] != null) {
+					var lLength:Int = pClippingMap[x][y].length;
+					
+					for (i in 0...lLength) {
+						if (pClippingMap[x][y][i].active != pActivate)
+							pActivate ? pClippingMap[x][y][i].activate() : pClippingMap[x][y][i].desactivate();
+					}
+				}		
 			}
 		}
 	}
@@ -242,7 +243,7 @@ class ClippingManager
 		};
 	}
 	
-	private static function customFloor(pNumber:Float, pFloorFactor:Int = 1):Int {
+	public static function customFloor(pNumber:Float, pFloorFactor:Int = 1):Int {
 		return pFloorFactor * Math.floor(pNumber / pFloorFactor);
 	}
 	

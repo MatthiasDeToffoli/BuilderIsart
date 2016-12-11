@@ -38,8 +38,10 @@ class GameManager {
 		PoolingManager.init();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		//GameStage.getInstance().getGameContainer().addChild(Template.getInstance());
+		VTile.initClass();
 		Tile.initClass();
-		loadSave();
+		RegionManager.init();
+		SaveManager.createFromSave();
 		CameraManager.centerCamera();
 		ClippingManager.update();
 		
@@ -61,18 +63,6 @@ class GameManager {
 		
 		MouseManager.getInstance().gameLoop();
 		Building.gameLoop();
-	}
-	
-	private function loadSave():Void {
-		var lSave:Save = SaveManager.load();
-		if (lSave != null)
-			VTile.buildFromSave(lSave);
-		else {
-			VTile.buildInitial();
-			SaveManager.save();
-		}
-		RegionManager.getInstance();
-		RegionManager.initWorldMap();
 	}
 	
 	/**

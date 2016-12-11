@@ -71,6 +71,7 @@ class Main extends EventEmitter
 		//lOptions.resolution = 1;
 		//lOptions.transparent = false;
 		//lOptions.preserveDrawingBuffer (pour dataToURL)
+		//cahceAsbitmap ? pour teinte par exemple
 		
 		DeviceCapabilities.init(); // choose Texture quality
 		DeviceCapabilities.scaleViewport();
@@ -180,7 +181,7 @@ class Main extends EventEmitter
 	private function onLoadComplete (pLoader:GameLoader): Void {
 		pLoader.off(LoadEventType.PROGRESS, onLoadProgress);
 		// transmet à MovieClipAnimFactory la description des planches de Sprites utilisées par les anim MovieClip des instances de StateGraphic
-		MovieClipAnimFactory.addTextures(GameLoader.getContent("assets.json")); // todo : passer en flump
+		//MovieClipAnimFactory.addTextures(GameLoader.getContent("assets.json")); // on utilise flump maintenant.
 		// transmet au StateGraphic la description des boxes de collision utilisées par les instances de StateGraphic
 		//StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
 		
