@@ -126,7 +126,7 @@ class RegionManager
 		
 		addButton(new Point(0, 0), new Point(0, 0), 0);
 	}
-	
+
 	public static function buildFromSave(pSave:Save):Void {
 		var lLength:UInt = pSave.region.length;
 		
@@ -158,9 +158,7 @@ class RegionManager
 				),
 				0
 			);
-			
-		}
-		
+		}		
 		
 	}
 	
