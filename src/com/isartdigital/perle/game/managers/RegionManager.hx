@@ -11,6 +11,7 @@ import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.flump.Movie;
 
 
 typedef Region = {
@@ -24,7 +25,7 @@ typedef Region = {
 	var added:Bool;
 	var building:Map<Int, Map<Int, VBuilding>>;
 	var ground:Map<Int, Map<Int, VGround>>;
-	/*var background;*/
+	var background: String;
 }
 
 /**
@@ -33,6 +34,7 @@ typedef Region = {
  */
 class RegionManager 
 {
+	private static var background:Movie;
 	public static var worldMap: Map<Int,Map<Int,Region>>;
 	public static var buttonMap: Map<Int,Map<Int,ButtonRegion>>;
 	private static var buttonRegionContainer:Container;
@@ -118,6 +120,10 @@ class RegionManager
 			throw("region allready exist in worldMap !");
 			
 		worldMap[pNewRegion.desc.x][pNewRegion.desc.y] = pNewRegion;
+		
+		background = new Movie(pNewRegion.background);
+		background.scale.set(1.7);
+		GameStage.getInstance().getGameContainer().addChildAt(background, 0);
 	}
 	
 	public static function getButtonContainer():Container{
@@ -133,6 +139,10 @@ class RegionManager
 			y:0
 		});
 		
+		background = new Movie(worldMap[0][0].background);
+		background.scale.set(1.7);
+		GameStage.getInstance().getGameContainer().addChildAt(background, 0);
+		
 		addButton(new Point(0, 0), new Point(0, 0), 0);
 	}
 
@@ -146,7 +156,6 @@ class RegionManager
 				// todo : plus de propriété added, une région ds le tableau == une région affiché.
 			
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
-			
 		}
 		
 		for (i in 0...lLength) {
@@ -182,9 +191,11 @@ class RegionManager
 				y:pWorldPos.y
 			},
 			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>()
+			ground:new Map<Int, Map<Int, VGround>>(),
+			background: "BgHell"
 		});
 		
+		background.position = IsoManager.modelToIsoView(pFirstTilePos);
 		VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
 		
 		//trace ("added region x:" + pWorldPos.x + " y:" + pWorldPos.y);
@@ -251,7 +262,8 @@ class RegionManager
 			added:pRegionDesc.added,
 			desc: pRegionDesc,
 			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>()
+			ground:new Map<Int, Map<Int, VGround>>(),
+			background: "BgHell"
 		};	
 	}
 	
