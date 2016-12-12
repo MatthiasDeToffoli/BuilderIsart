@@ -10,6 +10,7 @@ import flump.library.Layer;
 import flump.library.MovieSymbol;
 import flump.library.SpriteSymbol;
 import haxe.Json;
+import js.Lib;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.flump.Movie;
@@ -44,7 +45,7 @@ class UIBuilder
 			
 			lKeyFrame = lLayer.getKeyframeForFrame(pFrame);
 			
-			if (lKeyFrame == null) continue;		
+			if (lKeyFrame == null || lKeyFrame.symbol==null) continue;		
 			
 			if (lKeyFrame.symbol.data != null && lKeyFrame.symbol.data.className != null) lObj=Type.createInstance(Type.resolveClass(lKeyFrame.symbol.data.className), []);
 			else if (lKeyFrame.symbol.baseClass == "Flipbook") lObj = new UIMovie(lKeyFrame.symbolId);
