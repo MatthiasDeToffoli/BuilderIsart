@@ -150,8 +150,9 @@ class Main extends EventEmitter
 		lLoader.addSoundFile("sounds.json");
 		
 		//lLoader.addAssetFile("assets.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBg/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");		
 		
 		lLoader.addFontFile("fonts.css");
 		

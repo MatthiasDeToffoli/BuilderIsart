@@ -70,6 +70,15 @@ class RegionManager
 			}
 		} 
 		
+	/*
+		var newRegion:Region = {
+			added:false,
+			building:new Map<Int, Map<Int, VBuilding>>(),
+			ground:new Map<Int, Map<Int, VGround>>(),
+			background: "BgHell1"
+		}
+		*/
+
 		var lCentre:Point = new Point(pPos.x + Ground.COL_X_LENGTH / 2, pPos.y + Ground.ROW_Y_LENGTH / 2);
 		var myBtn:ButtonRegion = new ButtonRegion(
 			new Point(

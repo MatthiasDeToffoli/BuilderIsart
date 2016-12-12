@@ -22,7 +22,7 @@ class ButtonRegion extends Button
 		
 		factory = new FlumpMovieAnimFactory();
 		//@TODO change this for add a asset name for a simple button. This is for test !
-		assetName = "Villa";
+		assetName = "RegionButton";
 		super();
 		firstCasePos = pPos;
 		worldMapPos = pWorldPos;

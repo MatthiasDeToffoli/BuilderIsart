@@ -90,6 +90,8 @@ class Ground extends Tile implements PoolingObject
 		lGround.init();
 		container.addChild(lGround);
 		lGround.start();
+		// to see bg integration
+		lGround.alpha = 0;
 		return lGround;
 	}
 	

@@ -7,7 +7,22 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import pixi.core.math.Point;
+import pixi.flump.Movie;
 
+
+ // todod a utilé
+//typedef Region = {
+	// (var "bâtiment déplacé")
+	// idem hud contextuel
+	// bizarre de le mettre ici à mon avis
+	/*var floor3;
+	var floor2;
+	var floor1;*/
+	/*var added:Bool;
+	var building:Map<Int, Map<Int, VBuilding>>;
+	var ground:Map<Int, Map<Int, VGround>>;
+	var background: String;
+}*/
 
 typedef Index = {
 	var x:Int;
@@ -96,6 +111,11 @@ class VTile extends Virtual{
 				
 			}
 		}
+/*
+				new VGround(tileDesc);				
+			}
+		}
+*/
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -115,6 +135,22 @@ class VTile extends Virtual{
 		for (i in 0...lLength)
 			new VBuilding(pSave.building[i]);
 	}
+
+	/*
+	private static function init ():Void {
+		currentRegion = { 
+			added:true,
+			building:new Map<Int, Map<Int, VBuilding>>(),
+			ground:new Map<Int, Map<Int, VGround>>(),
+			background: "BgHell1"
+		};
+		
+		// no final place, here just to see integration
+		var tmpBg:Movie = new Movie(currentRegion.background.substring(0, currentRegion.background.length - 1));
+		tmpBg.scale.set(2);
+		GameStage.getInstance().getGameContainer().addChildAt(tmpBg, 0);
+	}*/
+
 		
 	public function new (pDescription:TileDescription) {
 		super();

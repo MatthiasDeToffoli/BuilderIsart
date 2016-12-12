@@ -14,7 +14,16 @@ class VGround extends VTile {
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		
+
 		RegionManager.addToRegionGround(this);
+	
+		/*
+		if (VTile.currentRegion.ground == null)
+			VTile.currentRegion.ground = new Map<Int, Map<Int, VGround>>();
+		if (VTile.currentRegion.ground[positionClippingMap.x] == null)
+			VTile.currentRegion.ground[positionClippingMap.x] = new Map<Int, VGround>();
+
+		VTile.currentRegion.ground[positionClippingMap.x][positionClippingMap.y] = this;**/
 	}
 	
 	override public function activate():Void {
