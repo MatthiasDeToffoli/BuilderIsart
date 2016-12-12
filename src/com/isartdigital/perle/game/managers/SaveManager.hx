@@ -8,6 +8,9 @@ import js.Browser;
 typedef TileDescription = {
 	var className:String;
 	var assetName:String;
+	var id:Int;
+	var refTimer:Int;
+	var refResource:Int;
 	var regionX:Int;
 	var regionY:Int;
 	var mapX:Int;
@@ -25,6 +28,7 @@ typedef RegionDescription = {
 typedef Save = {
 	var COL_X_LENGTH:Int;
 	var ROW_Y_LENGTH:Int;
+	var idHightest:Int;
 	var region:Array<RegionDescription>;
 	var ground:Array<TileDescription>;
 	var building:Array<TileDescription>;
@@ -72,9 +76,10 @@ class SaveManager {
 		}
 		
 		currentSave = {
-			region:regionSave,
-			ground:groundSave,
-			building:buildingSave,
+			idHightest: IdManager.idHightest,
+			region: regionSave,
+			ground: groundSave,
+			building: buildingSave,
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
 		};
@@ -119,6 +124,7 @@ class SaveManager {
 	public static function createFromSave():Void {
 		load();
 		if (currentSave != null) {
+			IdManager.buildFromSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 		}
@@ -127,6 +133,7 @@ class SaveManager {
 	}
 	
 	private static function createWhitoutSave():Void {
+		IdManager.buildWhitoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
 		SaveManager.save();

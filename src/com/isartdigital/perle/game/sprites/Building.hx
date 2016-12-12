@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.sprites;
 
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.iso.IZSortable;
+import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.PoolingObject;
@@ -409,6 +410,9 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		var tileDesc:TileDescription = {
 			className:"Building", // todo : à revoir
 			assetName:assetName,
+			id:IdManager.newId(),
+			refTimer:null,
+			refResource:null,
 			regionX:regionPos.x,
 			regionY:regionPos.y,
 			mapX:colMin - regionFirstTile.x,

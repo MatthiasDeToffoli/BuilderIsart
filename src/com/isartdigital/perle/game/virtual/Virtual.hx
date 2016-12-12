@@ -12,25 +12,13 @@ class Virtual {
 	 */
 	public var active(default, null):Bool = false;
 	
-	public var tileDesc:TileDescription; // todo : mettre ds Vtile...
-	/*public var tileDesc(get, null) :TileDescription;
-	public function get_tileDesc ():TileDescription {
-		// todo : met à jour TileDesc si besoin.
-		// todo : devrait tjrs être à jour de toute façon!
-		// utiliser que pour Save en principe.
-		return tileDesc;
-	}*/ // bug avec la save... problème du à Haxe ?
-	
 	/**
 	 * instance linked to VCell when active
 	 */
 	private var myInstance:Dynamic;
 
-	public function new (pDescription:TileDescription) {
-		tileDesc = pDescription;
-	}
+	public function new () {}
 	
-
 	
 	/**
 	 * Should not be used, because the only one creating and destroying Buildings

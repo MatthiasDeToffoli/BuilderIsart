@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -46,6 +47,11 @@ class VTile extends Virtual{
 	public static var clippingMap:Map<Int, Map<Int, Array<VTile>>>;
 	
 	/**
+	 * This is the only part that will be saved from VTile.
+	 */
+	public var tileDesc:TileDescription;
+	
+	/**
 	 * SURE ? position x,y in Ground.container;
 	 * todo : remove ?
 	 */
@@ -75,6 +81,9 @@ class VTile extends Virtual{
 				var tileDesc:TileDescription = {
 					className:"Ground",
 					assetName: tempRoadAssetName,
+					id:IdManager.newId(),
+					refTimer:null,
+					refResource:null,
 					regionX:pRegion.desc.x,
 					regionY:pRegion.desc.y,
 					mapX:x,
@@ -108,7 +117,8 @@ class VTile extends Virtual{
 	}
 		
 	public function new (pDescription:TileDescription) {
-		super(pDescription);
+		super();
+		tileDesc = pDescription;
 		
 		var regionPos:Index = RegionManager.regionPosToFirstTile( {
 			x: pDescription.regionX, 
