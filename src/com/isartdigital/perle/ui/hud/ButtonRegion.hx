@@ -41,7 +41,14 @@ class ButtonRegion extends Button
 			}
 		);
 		
+		destroy();
 		
+	}
+	
+	override public function destroy():Void 
+	{
+		RegionManager.getButtonContainer().removeChild(this);
+		super.destroy();
 	}
 	
 }

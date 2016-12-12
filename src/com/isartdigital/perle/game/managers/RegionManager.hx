@@ -29,11 +29,12 @@ typedef Region = {
 
 /**
  * ...
- * @author de Toffoli Matthias
+ * @author de Toffoli Matthias & Rabier Ambroise
  */
 class RegionManager 
 {
 	public static var worldMap: Map<Int,Map<Int,Region>>;
+	public static var buttonMap: Map<Int,Map<Int,ButtonRegion>>;
 	private static var buttonRegionContainer:Container;
 	private static var factors:Array<Point> =
 						[
@@ -49,6 +50,7 @@ class RegionManager
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getGameContainer().addChild(buttonRegionContainer);
 		worldMap = new Map<Int,Map<Int,Region>>();
+		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
 	}
 	
 	//add buttons according to regions
@@ -87,7 +89,15 @@ class RegionManager
 		
 		// addToWorldMap(newRegion); plus de ajout de région dans addButton !
 		
-		buttonRegionContainer.addChild(myBtn);
+		if (buttonMap[worldPositionX] == null)
+			buttonMap[worldPositionX] = new Map<Int,ButtonRegion>();
+		if (buttonMap[worldPositionX][worldPositionY] == null){
+			
+			buttonMap[worldPositionX][worldPositionY] = myBtn;
+			buttonRegionContainer.addChild(myBtn);
+		}
+			
+		
 		
 		addButton(pPos, pWorldPos, indice+ 1);
 	}
@@ -99,6 +109,10 @@ class RegionManager
 			throw("region allready exist in worldMap !");
 			
 		worldMap[pNewRegion.desc.x][pNewRegion.desc.y] = pNewRegion;
+	}
+	
+	public static function getButtonContainer():Container{
+		return buttonRegionContainer;
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -124,6 +138,10 @@ class RegionManager
 			
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 			
+		}
+		
+		for (i in 0...lLength) {
+			
 			var tempFirstTilePos:Index = regionPosToFirstTile( {
 				x:pSave.region[i].x,
 				y:pSave.region[i].y
@@ -140,7 +158,10 @@ class RegionManager
 				),
 				0
 			);
+			
 		}
+		
+		
 	}
 	
 	
@@ -228,24 +249,61 @@ class RegionManager
 	}
 	
 	public static function addToRegionGround (pElement:VGround):Void {
-		// todo : gérer le cas ou region n'existe pas ds le tableau ? erreur 
-		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground == null)
-			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground = new Map<Int, Map<Int, VGround>>();
-		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX] == null)
-			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX] = new Map<Int, VGround>();
+
+		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY]  = 
+			addToRegionTile(
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY], 
+							pElement, 
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground
+							);
 		
-		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].ground[pElement.tileDesc.mapX][pElement.tileDesc.mapY] = pElement;
 	}
 	
 	public static function addToRegionBuilding (pElement:VBuilding):Void {
-		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building == null)
-			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building = new Map<Int, Map<Int, VBuilding>>();
-		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX] == null)
-			worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX] = new Map<Int, VBuilding>();
 		
-		if (worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX][pElement.tileDesc.mapY] != null)
+		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY]  = 
+			addToRegionTile(
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY], 
+							pElement,
+							null,
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building
+							);
+	}
+	
+	//add a tile to a region (building or ground)
+	private static function addToRegionTile(pRegion:Region, pElement:VTile, arrayGround:Map<Int, Map<Int, VGround>>, ?arrayBuilding:Map<Int, Map<Int, VBuilding>>):Region{
+		
+		// todo : gérer le cas ou region n'existe pas ds le tableau ? erreur 
+		
+		var isGround:Bool = Std.is(pElement, VGround);
+
+		if (isGround){
+
+			if (arrayGround == null)
+				arrayGround = new Map<Int, Map<Int, VGround>>();
+			if (arrayGround[pElement.tileDesc.mapX] == null)
+				arrayGround[pElement.tileDesc.mapX] = new Map<Int, VGround>();
+		
+		arrayGround[pElement.tileDesc.mapX][pElement.tileDesc.mapY] =  cast(pElement,VGround);
+		pRegion.ground = arrayGround;
+		
+		} else {
+			
+			if (arrayBuilding == null)
+				arrayBuilding = new Map<Int, Map<Int, VBuilding>>();
+			if (arrayBuilding[pElement.tileDesc.mapX] == null)
+				arrayBuilding[pElement.tileDesc.mapX] = new Map<Int, VBuilding>();
+				
+			if (arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] != null)
 			throw("there is already a building on this tile !");
 		
-		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building[pElement.tileDesc.mapX][pElement.tileDesc.mapY] = pElement;
+		arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] =  cast(pElement,VBuilding);
+		pRegion.building = arrayBuilding;
+		}
+		
+		
+		return pRegion;
+		
+		
 	}
 }
