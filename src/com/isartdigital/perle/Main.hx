@@ -2,6 +2,7 @@ package com.isartdigital.perle;
 
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.popin.Hud;
 import com.isartdigital.perle.ui.GraphicLoader;
@@ -235,7 +236,8 @@ class Main extends EventEmitter
 	private function forceImport() {
 		var arrayClass:Array<Class<Dynamic>> = [
 			Ground,
-			Building
+			Building,
+			FootPrint
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

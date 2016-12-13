@@ -34,10 +34,10 @@ typedef SizeOnMap = {
 class Building extends Tile implements IZSortable implements PoolingObject
 {
 	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [
-		"Factory" => {width:5, height:3, footprint : 0.5},
-		"House" => {width:2, height:2, footprint : 0.5},
-		"Trees" => {width:1, height:1, footprint : -0.5},
-		"Villa" => {width:3, height:3, footprint : 0.5},
+		"Factory" => {width:5, height:3, footprint : 1},
+		"House" => {width:2, height:2, footprint : 1},
+		"Trees" => {width:1, height:1, footprint : 0},
+		"Villa" => {width:3, height:3, footprint : 1},
 	];
 	private static inline var FILTER_OPACITY:Float = 0.5;
 	
@@ -53,6 +53,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var currentSelectedBuilding:Building;
 	private static var container:Container;
 	private static var colorMatrix:ColorMatrixFilter;
+	
+	private static var footPrint:Dynamic;
+	private static var footPrintAsset:String = "FootPrint";
+	private static var footPrintPoint:Point;
 	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
@@ -210,13 +214,44 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			removePhantom();
 	}
 	
-	private static function createPhantom(pAssetName:String):Void {
+	private static function createPhantom(pAssetName:String):Void
+	{
 		firstClickSuck = true;
 		currentSelectedBuilding = PoolingManager.getFromPool(pAssetName);
 		currentSelectedBuilding.position = MouseManager.getInstance().positionInGame;
 		container.addChild(currentSelectedBuilding);
 		currentSelectedBuilding.init();
 		currentSelectedBuilding.setModePhantom();
+		
+		
+		//Ici on creer le visuel
+		footPrint = new FlumpStateGraphic(footPrintAsset);
+        footPrint.init();
+        FootPrint.container.addChild(footPrint);
+        footPrint.start();
+		
+		//positionement : a changer mettre a 1 xet y en moins
+		if (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)//check si c'est une décoration
+			footPrintPoint = new Point(0,0); 
+		else
+			footPrintPoint = new Point(-footPrint.width/2,-footPrint.height/2); 
+		//positionement
+		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
+		
+		//le deplacement est dans le doActionPhantom
+		
+		
+		/*footPrint.width = footPrint.width * ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].width;
+		footPrint.height = footPrint.height * ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].height;*/
+		//footPrint.setModFollow(currentSelectedBuilding);
+			
+			
+		/* var footPrint:FootPrint;
+		 var footPrintAsset:String = "FootPrint";
+		footPrint = PoolingManager.getFromPool(footPrintAsset);
+		GameStage.getInstance().getGameContainer().addChild(footPrint);
+		footPrint.init();*/
+		
 	}
 	
 	private static function removePhantom():Void {
@@ -251,6 +286,9 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * Move the ground center of the building on the mouse pointer.
 	 */
 	private function doActionPhantom():Void {
+		//deplacement en fonction de la position
+		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
+		
 		var buildingGroundCenter:Point = getBuildingGroundCenter();
 		var perfectMouseFollow:Point = new Point(
 			MouseManager.getInstance().positionInGame.x + x - buildingGroundCenter.x,
@@ -388,11 +426,18 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * Test collision between instance and a TileDescription from Save
 	 * Permit that uninstanciated (unshow) building still make collision !
 	 */
-	private function collisionRectDesc(pVirtual:TileDescription):Bool {
-		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint + ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
-				colMax+1 > pVirtual.mapX - ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint - ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
-				rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint + ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint &&
-				rowMax+1 > pVirtual.mapY - ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint - ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint );
+	private function collisionRectDesc(pVirtual:TileDescription):Bool
+	{
+		var lPoint:Float;
+		if (ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint == 0 || ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
+			lPoint = 0;
+		else
+			lPoint = ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint;
+
+		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + lPoint &&
+		colMax+1 > pVirtual.mapX -lPoint &&
+		rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height +lPoint &&
+		rowMax+1 > pVirtual.mapY -lPoint );
 	}
 	
 	/**
