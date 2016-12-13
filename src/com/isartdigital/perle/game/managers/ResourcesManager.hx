@@ -13,72 +13,107 @@ import haxe.rtti.CType.Typedef;
  
  
  //{ ################# typedef #################
- //number = number actual of the instance, max = max which can have
- typedef Soft = {
-	var number:Int;
-	var max:Int;
+ 
+ //typedef for save contain all data resources
+ typedef ResourcesData = {
+	 //Array that represents the on going ressources of each buildings
+	var  generatorSoftArray:Array<GeneratorSoft>;
+	var  generatorHardArray:Array<GeneratorHard>;
+	var  generatorSoulArray:Array<GeneratorSoul>;
+	var  internArray:Array<Intern>;
+	var  generatorGoodXpArray:Array<GeneratorGoodXp>;
+	var  generatorBadXpArray:Array<GeneratorBadXp>;
+	
+	//Total value of some resources
+	var totalSoft:Int;
+	var totalHard:Int;
+	var totalGoodXp:Int;
+	var totalBadXp:Int;
+	
  }
- //number = number actual of the instance, max = max which can have
- typedef Hard = {
-	var number:Int;
+ //quantity = quantity actual of the instance, max = max which can have
+ typedef GeneratorSoft = {
+	var quantity:Int;
 	var max:Int;
+	var id:Int;
  }
- //number = number actual of the instance, max = max which can have
- typedef GoodXp = {
-	var number:Int;
+ //quantity = quantity actual of the instance, max = max which can have
+ typedef GeneratorHard = {
+	var quantity:Int;
 	var max:Int;
+	var id:Int;
  }
- //number = number actual of the instance, max = max which can have
- typedef BadXp = {
-	var number:Int;
+ //quantity = quantity actual of the instance, max = max which can have
+ typedef GeneratorGoodXp = {
+	var quantity:Int;
 	var max:Int;
+	var id:Int;
  }
- //number = number actual of the instance, max = max which can have
- typedef Soul = {
-	 var number:Int;
+ //quantity = quantity actual of the instance, max = max which can have
+ typedef GeneratorBadXp = {
+	var quantity:Int;
+	var max:Int;
+	var id:Int;
+ }
+ //quantity = quantity actual of the instance, max = max which can have
+ typedef GeneratorSoul = {
+	 var quantity:Int;
 	 var max:Int;
 	 var alignment:String;
+	 var id:Int;
  }
- //number = number actual of the instance's stress, max = max which can have
+ //quantity = quantity actual of the instance's stress, max = max which can have
  typedef Intern = {
-	 var number:Int;
+	 var quantity:Int;
 	 var max:Int;
 	 var alignment:String;
+	 var id:Int;
  }
  //} endregion
  
 class ResourcesManager
 {
+	/*
+	 ####################
+	 ####################
+	 ####################
+	 */
  
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//Array that represents the on going ressources of each buildings
-	//{ ################# addCurrency #################
-	private static var  softArray:Array<Soft> = new Array<Soft>();
-	private static var  hardArray:Array<Hard> = new Array<Hard>();
-	private static var  soulArray:Array<Soul> = new Array<Soul>();
-	private static var  internArray:Array<Intern> = new Array<Intern>();
-	private static var  goodXpArray:Array<GoodXp> = new Array<GoodXp>();
-	private static var  badXpArray:Array<BadXp> = new Array<BadXp>();
-	//} endregion
+	//initialisation of data + get
+	 //{ ################# data #################
+	private static var myResourcesData:ResourcesData;
 	
-	/*
-	 ####################
-	 ####################
-	 #################### 
-	 */
+	public static function initWithoutSave():Void{
+
+	myResourcesData = {
+
+			generatorSoftArray:new Array<GeneratorSoft>(),
+			generatorHardArray:new Array<GeneratorHard>(),
+			generatorSoulArray:new Array<GeneratorSoul>(),
+			internArray:new Array<Intern>(),
+			generatorGoodXpArray:new Array<GeneratorGoodXp>(),
+			generatorBadXpArray:new Array<GeneratorBadXp>(),
+
+			totalSoft:0,
+			totalHard:0,
+			totalGoodXp:0,
+			totalBadXp:0
+
+		}
+	}
+	
+	public static function initWithLoad(resourcesDataLoad:ResourcesData):Void{
+		myResourcesData = resourcesDataLoad;
+	}
+	
+	public static function getResourcesData():ResourcesData{
+		return myResourcesData;
 	 
-	 //Total value of some resources
-	 //{ ################# total #################
-	public static var totalSoft:Int = 0;
-	public static var totalHard:Int = 0;
-	public static var totalGoodXp:Int = 0;
-	public static var totalBadXp:Int = 0;
-	 //} endregion
+	}
+	//}endregion
+	
+	
+
 	
 	/*
 	 ####################
@@ -89,31 +124,33 @@ class ResourcesManager
 	//functions for add soft, hard currency, or xp in there own array
 	//{ ################# addCurrency #################
 	
-	public static function addSoftCurrency(pMax:Int):Void{
-		addCurrency(softArray, pMax);
+	public static function addSoftGenerator(pId:Int,pMax:Int):Void{
+		addCurrencyGenerator(pId,myResourcesData.generatorSoftArray, pMax);
 	}
 	
-	public static function addHardCurrency( pMax:Int):Void {
-		addCurrency(hardArray, pMax);
+	public static function addHardGenerator(pId:Int, pMax:Int):Void {
+		addCurrencyGenerator(pId,myResourcesData.generatorHardArray, pMax);
 	}
 	
-	public static function addGoodXp(pMax:Int):Void {
-		addCurrency(goodXpArray, pMax);
+	public static function addGoodXpGenerator(pId:Int,pMax:Int):Void {
+		addCurrencyGenerator(pId,myResourcesData.generatorGoodXpArray, pMax);
 	}
 	
-	public static function addBadXp(pMax:Int):Void {
-		addCurrency(badXpArray, pMax);
+	public static function addBadXpGenerator(pId:Int,pMax:Int):Void {
+		addCurrencyGenerator(pId,myResourcesData.generatorBadXpArray, pMax);
 	}
 	//current array = array of resources we want, pMax = max value to the resources which we want
-	private static function addCurrency(currencyArray:Array<Dynamic>, pMax:Int):Void{
+	private static function addCurrencyGenerator(pId:Int, currencyArray:Array<Dynamic>, pMax:Int):Void{
 		
 		currencyArray.push(
 			{
-				number: 0,
-				max: pMax
+				quantity: 0,
+				max: pMax,
+				id: pId
 			}
 		);
 		
+		SaveManager.save();
 	}
 	//} endregion
 	
@@ -127,22 +164,26 @@ class ResourcesManager
 	//{ ################# addPeople #################
 	
 	
-	public static function addSoul(pMax:Int, pAlignment:String):Void{
-		addPeople(soulArray, pMax, pAlignment);
+	public static function addSoulGenerator(pId:Int,pMax:Int, pAlignment:String):Void{
+		addPeopleGenerator(pId, myResourcesData.generatorSoulArray, pMax, pAlignment);
 	}
 	
-	public static function addIntern(pMax:Int, pAlignment:String):Void{
-		addPeople(internArray,  pMax, pAlignment);
+	public static function addIntern(pId:Int,pMax:Int, pAlignment:String):Void{
+		addPeopleGenerator(pId,myResourcesData.internArray,  pMax, pAlignment);
 	}
 	
-	private static function addPeople(peopleArray:Array<Dynamic>, pMax:Int, pAlignment:String):Void{
+	//poeple repesent soul and intern
+	private static function addPeopleGenerator(pId:Int, peopleArray:Array<Dynamic>, pMax:Int, pAlignment:String):Void{
 		peopleArray.push(
 			{
-				number:0,
+				quantity:0,
 				max:pMax,
-				alignment:pAlignment
+				alignment:pAlignment,
+				id:pId
 			}
 		);
+	
+		SaveManager.save();
 	}
 	//} endregion
 	
@@ -157,16 +198,18 @@ class ResourcesManager
 	//{ ################# changeAlignment #################
 	
 	
-	public static function changeSoulAlignment(pSoul:Soul, pAlignment:String):Void{
-		changeAlignment(soulArray, soulArray.indexOf(pSoul), pAlignment);
+	public static function changeSoulAlignment(pSoul:GeneratorSoul, pAlignment:String):Void {
+		changeAlignment(myResourcesData.generatorSoulArray, myResourcesData.generatorSoulArray.indexOf(pSoul), pAlignment);
 	}
 	
-	public static function changeInternAlignment(pIntern:Intern, pAlignment:String):Void{
-		changeAlignment(internArray, internArray.indexOf(pIntern), pAlignment);
+	public static function changeInternAlignment(pIntern:Intern, pAlignment:String):Void {
+		changeAlignment(myResourcesData.internArray, myResourcesData.internArray.indexOf(pIntern), pAlignment);
 	}
 	
-	private static function changeAlignment(peopleArray:Array<Dynamic>, indice:Int, pAlignment:String):Void{
+	private static function changeAlignment(peopleArray:Array<Dynamic>, indice:Int, pAlignment:String):Void {
 		peopleArray[indice].alignment = pAlignment;
+	
+		SaveManager.save();
 	}
 	//} endregion
 	
@@ -178,34 +221,34 @@ class ResourcesManager
 	 
 	//functions for count a resource if her value is lower her max
 	//{ ################# countResources #################
-	public static function countSoftCurrency(pSoft:Soft):Void{
-		countResources(softArray, softArray.indexOf(pSoft));
+	public static function increaseSoftCurrency(pSoftGenerator:GeneratorSoft):Void{
+		increaseResources(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoftGenerator));
 	}
 	
-	public static function countHardCurrency(pHard:Hard):Void{
-		countResources(hardArray, hardArray.indexOf(pHard));
+	public static function increaseHardCurrency(pHardGenerator:GeneratorHard):Void{
+		increaseResources(myResourcesData.generatorHardArray, myResourcesData.generatorHardArray.indexOf(pHardGenerator));
 	}
 	
-	public static function countSoul(pSoul:Soul):Void{
-		countResources(soulArray, soulArray.indexOf(pSoul));
+	public static function increaseSoul(pSoulGenerator:GeneratorSoul):Void{
+		increaseResources(myResourcesData.generatorSoulArray, myResourcesData.generatorSoulArray.indexOf(pSoulGenerator));
 	}
 	
-	public static function countIntern(pIntern:Intern):Void{
-		countResources(internArray, internArray.indexOf(pIntern));
+	public static function increaseInternStress(pIntern:Intern):Void{
+		increaseResources(myResourcesData.internArray, myResourcesData.internArray.indexOf(pIntern));
 	}
 	
-	public static function countGoodXp(pIntern:Intern):Void{
-		countResources(goodXpArray, internArray.indexOf(pIntern));
+	public static function increaseGoodXp(pGoodXpGenerator:GeneratorGoodXp):Void{
+		increaseResources(myResourcesData.generatorGoodXpArray, myResourcesData.generatorGoodXpArray.indexOf(pGoodXpGenerator));
 	}
 	
-	public static function countBadXp(pIntern:Intern):Void{
-		countResources(badXpArray, internArray.indexOf(pIntern));
+	public static function increaseBadXp(pBadXpGenerator:GeneratorBadXp):Void{
+		increaseResources(myResourcesData.generatorBadXpArray, myResourcesData.generatorBadXpArray.indexOf(pBadXpGenerator));
 	}
 	
-	private static function countResources(resourcesArray:Array<Dynamic>, indice:Int):Void{
+	private static function increaseResources(resourcesArray:Array<Dynamic>, indice:Int):Void{
 		
-		if (resourcesArray[indice].number < resourcesArray[indice].max) resourcesArray[indice].number++;
-		
+		resourcesArray[indice].quantity = Math.min(resourcesArray[indice].quantity + 1,resourcesArray[indice].max);
+		SaveManager.save();
 	}
 	//} endregion
 	
@@ -216,35 +259,35 @@ class ResourcesManager
 	 */
 	 
 	//functions for remove a resource in is own array
-	//{ ################# removeResources #################
-	public static function removeSoftCurrency(pSoft:Soft):Void{
-		removeResources(softArray, softArray.indexOf(pSoft));
+	//{ ################# removeGenerator #################
+	public static function removeSoftGenerator(pSoftGenerator:GeneratorSoft):Void{
+		removeGenerator(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoftGenerator));
 	}
 	
-	public static function removeHardCurrency(pHard:Hard):Void{
-		removeResources(hardArray, hardArray.indexOf(pHard));
+	public static function removeHardGenerator(pHardGenerator:GeneratorHard):Void{
+		removeGenerator(myResourcesData.generatorHardArray, myResourcesData.generatorHardArray.indexOf(pHardGenerator));
 	}
 	
-	public static function removeSoul(pSoul:Soul):Void{
-		removeResources(soulArray, soulArray.indexOf(pSoul));
+	public static function removeSoulGenerator(pSoulGenerator:GeneratorSoul):Void{
+		removeGenerator(myResourcesData.generatorSoulArray, myResourcesData.generatorSoulArray.indexOf(pSoulGenerator));
 	}
 	
 	public static function removeIntern(pIntern:Intern):Void{
-		removeResources(internArray, internArray.indexOf(pIntern));
+		removeGenerator(myResourcesData.internArray, myResourcesData.internArray.indexOf(pIntern));
 	}
 	
-	public static function removeGoodXp(pIntern:Intern):Void{
-		removeResources(goodXpArray, internArray.indexOf(pIntern));
+	public static function removeGoodXp(pGoodXpGenerator:GeneratorGoodXp):Void{
+		removeGenerator(myResourcesData.generatorGoodXpArray, myResourcesData.generatorGoodXpArray.indexOf(pGoodXpGenerator));
 	}
 	
-	public static function removeBadXp(pIntern:Intern):Void{
-		removeResources(badXpArray, internArray.indexOf(pIntern));
+	public static function removeBadXp(pBadXpGenerator:GeneratorBadXp):Void{
+		removeGenerator(myResourcesData.generatorBadXpArray, myResourcesData.generatorBadXpArray.indexOf(pBadXpGenerator));
 	}
 	
-	private static function removeResources(resourcesArray:Array<Dynamic>, indice:Int):Void{
+	private static function removeGenerator(resourcesArray:Array<Dynamic>, indice:Int):Void{
 		
 		resourcesArray.splice(indice, 1);
-		
+		SaveManager.save();
 	}
 	//} endregion
 	
@@ -259,38 +302,45 @@ class ResourcesManager
 	//{ ################# totals function #################
 	
 	//{ ################# sum #################
-	public static function takeBadXp(pBadXp:BadXp){
-		takeResources(badXpArray, badXpArray.indexOf(pBadXp), totalBadXp);
+	public static function takeBadXp(pBadXp:GeneratorBadXp){
+		takeResources(myResourcesData.generatorBadXpArray, myResourcesData.generatorBadXpArray.indexOf(pBadXp), myResourcesData.totalBadXp);
 	}
 	
-	public static function takeGoodXp(pGoodXp:GoodXp){
-		takeResources(goodXpArray, goodXpArray.indexOf(pGoodXp), totalGoodXp);
+	public static function takeGoodXp(pGoodXp:GeneratorGoodXp){
+		takeResources(myResourcesData.generatorGoodXpArray, myResourcesData.generatorGoodXpArray.indexOf(pGoodXp), myResourcesData.totalGoodXp);
 	}
 	
-	public static function takeHard(pHard:Hard){
-		takeResources(hardArray, hardArray.indexOf(pHard), totalHard);
+	public static function takeHard(pHard:GeneratorHard){
+		takeResources(myResourcesData.generatorHardArray, myResourcesData.generatorHardArray.indexOf(pHard), myResourcesData.totalHard);
 	}
 	
-	public static function takeSoft(pSoft:Soft){
-		takeResources(softArray, softArray.indexOf(pSoft), totalSoft);
+	public static function takeSoft(pSoft:GeneratorSoft){
+		takeResources(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoft), myResourcesData.totalSoft);
 	}
 	
 	private static function takeResources(resourcesArray:Array<Dynamic>, indice:Int, total:Int):Void{
-		sumTotal(resourcesArray[indice].number, total);
+		sumTotal(resourcesArray[indice].quantity, total);
+		reset(resourcesArray, indice);
+		SaveManager.save();
 	}
 	public static function sumTotal(sumValue:Int, total:Int):Void{
 		total += sumValue;
+		
 	}
 	//} endregion
 	
 	//{ ################# spend and reinit#################
 	public static function spendTotal(spendValue:Int, total:Int):Void{
 		total -= spendValue;
+		SaveManager.save();
 	}
 	
+	public static function reset(resourcesArray:Array<Dynamic>, indice:Int){
+		resourcesArray[indice].quantity = 0;
+	}
 	public static function reinit():Void{
-		totalBadXp = 0;
-		totalGoodXp = 0;
+		myResourcesData.totalBadXp = 0;
+		myResourcesData.totalGoodXp = 0;
 	}
 	//}endregion
 	

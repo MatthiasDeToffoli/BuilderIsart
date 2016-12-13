@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 
+import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -53,6 +54,7 @@ typedef Save = {
 	var building:Array<TileDescription>;
 	var times:Array<TimeDescription>;
 	var lastKnowTime:Float;
+	var resourcesData:ResourcesData;
 	// add what you want to save.
 }
 
@@ -105,6 +107,7 @@ class SaveManager {
 			region: regionSave,
 			ground: groundSave,
 			building: buildingSave,
+			resourcesData: ResourcesManager.getResourcesData(),
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
 		};
@@ -182,6 +185,7 @@ class SaveManager {
 			IdManager.buildFromSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
+			ResourcesManager.initWithLoad(currentSave.resourcesData);
 		}
 		else
 			createWhitoutSave();
@@ -192,6 +196,7 @@ class SaveManager {
 		IdManager.buildWhitoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
+		ResourcesManager.initWithoutSave();
 		SaveManager.save();
 	}
 }
