@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.TimeManager;
 
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -38,6 +39,7 @@ class GameManager {
 		PoolingManager.init();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		//GameStage.getInstance().getGameContainer().addChild(Template.getInstance());
+		TimeManager.initClass();
 		VTile.initClass();
 		Tile.initClass();
 		RegionManager.init();

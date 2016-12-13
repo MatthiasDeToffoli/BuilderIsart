@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -24,14 +25,34 @@ typedef RegionDescription = {
 	/*var backgroundAssetName;*/
 }
 
+typedef TimeDescription = {
+	var refTile:Int;
+	var progress:Float;
+	var end:Float;
+}
+
+typedef ResourceDescription = {
+	var refTile:Int;
+}
+
+/**
+ * Usefull for everything that is used for statistics only.
+ */
+typedef Stats = {
+	var gameStartTime:Float;
+}
+
 // On save des TileDescription, pas des Virtual !
 typedef Save = {
 	var COL_X_LENGTH:Int;
 	var ROW_Y_LENGTH:Int;
+	var stats:Stats;
 	var idHightest:Int;
 	var region:Array<RegionDescription>;
 	var ground:Array<TileDescription>;
 	var building:Array<TileDescription>;
+	var times:Array<TimeDescription>;
+	var lastKnowTime:Float;
 	// add what you want to save.
 }
 
@@ -75,7 +96,11 @@ class SaveManager {
 			}
 		}
 		
+		// todo : dans le même ordre que les variables !
 		currentSave = {
+			times: getTimes(),
+			lastKnowTime:TimeManager.lastKnowTime,
+			stats: getStats(),
 			idHightest: IdManager.idHightest,
 			region: regionSave,
 			ground: groundSave,
@@ -84,10 +109,39 @@ class SaveManager {
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
 		};
 		
+		setLocalStorage(currentSave);
+	}
+	
+	// todo : réfléchir au perte de perf à utilsier le localstorage si souvent, négligeable ?
+	public static function saveLastKnowTime(pTime:Float):Void {
+		currentSave.lastKnowTime = pTime;
+		setLocalStorage(currentSave);
+	}
+	
+	private static function setLocalStorage(pCurrentSave:Save):Void {
 		Browser.getLocalStorage().setItem(
 			SAVE_NAME,
 			Json.stringify(currentSave)
 		);
+	}
+	
+	private static function getTimes ():Array<TimeDescription> {
+		return TimeManager.list.map(function (pElement){
+			return pElement.desc;
+		});
+	}
+	
+	private static function getStats ():Stats {
+		if (currentSave == null || currentSave.stats == null)
+			return {
+				gameStartTime:TimeManager.gameStartTime
+			};
+		else
+			return {
+				gameStartTime: currentSave.stats.gameStartTime
+			};
+			
+		return null;
 	}
 	
 	/**
@@ -124,6 +178,7 @@ class SaveManager {
 	public static function createFromSave():Void {
 		load();
 		if (currentSave != null) {
+			TimeManager.buildFromSave(currentSave);
 			IdManager.buildFromSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
@@ -133,6 +188,7 @@ class SaveManager {
 	}
 	
 	private static function createWhitoutSave():Void {
+		TimeManager.buildWhitoutSave();
 		IdManager.buildWhitoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
