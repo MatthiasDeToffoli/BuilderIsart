@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 
 /**
  * ...
@@ -15,7 +16,7 @@ class Virtual {
 	/**
 	 * instance linked to VCell when active
 	 */
-	private var myInstance:Dynamic;
+	public var graphic(default, null):FlumpStateGraphic;
 
 	public function new () {}
 	
@@ -27,11 +28,11 @@ class Virtual {
 	 */
 	public function removeLink ():Void {
 		trace("function that should not be used is used !");
-		myInstance = null;
+		graphic = null;
 	}
 	
 	private function linkVirtual ():Void {
-		myInstance.linkVirtualCell(this);
+		untyped graphic.linkVirtualCell(this); // todo, créer héritage ?
 	}
 	
 	/**
@@ -53,8 +54,11 @@ class Virtual {
 			throw("VCell is already unactive !");
 			
 		active = false;
-		myInstance.recycle();
-		myInstance = null;
+		if (graphic != null)
+			untyped graphic.recycle(); // todo : dépend si est dans pooling...
+		graphic = null;
 	}
+	
+	// destroy : ATTENTION au lien vers une VTile dans Menu_BatimentConstruit...
 	
 }

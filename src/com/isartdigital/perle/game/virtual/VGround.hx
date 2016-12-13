@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
 
 
@@ -29,7 +30,7 @@ class VGround extends VTile {
 	override public function activate():Void {
 
 		super.activate();
-		myInstance = Ground.createGround(tileDesc);
+		graphic = cast(Ground.createGround(tileDesc), FlumpStateGraphic);
 		linkVirtual();
 	}
 }

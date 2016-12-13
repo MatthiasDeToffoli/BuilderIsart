@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.ui.hud.HudContextual;
 
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -46,8 +47,8 @@ class GameManager {
 		SaveManager.createFromSave();
 		CameraManager.centerCamera();
 		ClippingManager.update();
+		HudContextual.initClass();
 		
-		//Template.getInstance().start();	
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 	}

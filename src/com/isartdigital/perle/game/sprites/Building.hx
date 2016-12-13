@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.ui.hud.HudContextual;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -128,6 +129,14 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		super(pAssetName);
 	}
 	
+	override public function start():Void {
+		super.start();
+		
+		// in the start or event click will appear when you put a building !
+		interactive = true;
+		addListenerOnClick();
+	}
+	
 	/**
 	 * 
 	 * @param	pTilePos (TilePosition like if they were only one big region)
@@ -185,10 +194,11 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	//{ ################# State_Phantom #################
 	
+	
 	/**
 	 * Create a Phantom Building
 	 * @param	pAssetName
-	 */
+	*/ // todo : le onClick doit se trouve ds l'hud et la function createPhantombuilding ici
 	public static function onClickHudBuilding(pAssetName:String):Void {
 		if (currentSelectedBuilding == null)
 			createPhantom(pAssetName);
@@ -419,7 +429,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			mapY:rowMin - regionFirstTile.y
 		};
 		var vBuilding:VBuilding = new VBuilding(tileDesc);
-		vBuilding.activate(); // or won't show until clipping ! "ClippingManager.update();" useless here
+		vBuilding.activate(); // todo : petite opti en mettant le building en param de activate
 		vBuilding = null; // todo : inutile ? :o
 		
 		removePhantom();
@@ -457,5 +467,20 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		filters = null;
 	}
 
-	//} endregion 
+	//} endRegion
+	
+	
+	//{ ################# HudContextual #################
+	
+	private function addListenerOnClick ():Void {
+		on(MouseEventType.CLICK, onClick);
+	}
+	
+	private function onClick ():Void {
+		trace ("click sur batiment functionnel");
+		// note à Emeline : todo décommente la ligne ci-dessous et continue le travail
+		// HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
+	}
+	
+	//} endRegion
 }

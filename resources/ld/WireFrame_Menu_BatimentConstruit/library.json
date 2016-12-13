@@ -1,0 +1,369 @@
+{
+ "md5": "b3993dd131c68c4ee836b127f77a8cc5",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "origin": [
+        124,
+        45
+       ],
+       "symbol": "_buttonEnterBuilding_down",
+       "rect": [
+        1,
+        1,
+        252,
+        90
+       ]
+      },
+      {
+       "origin": [
+        124,
+        45
+       ],
+       "symbol": "_buttonEnterBuilding_over",
+       "rect": [
+        255,
+        1,
+        252,
+        90
+       ]
+      },
+      {
+       "origin": [
+        122.75,
+        43.75
+       ],
+       "symbol": "_buttonEnterBuilding_up",
+       "rect": [
+        1,
+        93,
+        249,
+        88
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "symbol": "_buttonMoveBuilding_down",
+       "rect": [
+        252,
+        93,
+        95,
+        95
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "symbol": "_buttonCancelSelection_over",
+       "rect": [
+        349,
+        93,
+        95,
+        95
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "symbol": "_buttonCancelSelection_down",
+       "rect": [
+        1,
+        183,
+        95,
+        95
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "symbol": "_buttonMoveBuilding_over",
+       "rect": [
+        98,
+        183,
+        95,
+        95
+       ]
+      },
+      {
+       "origin": [
+        43.8,
+        43.8
+       ],
+       "symbol": "_buttonMoveBuilding_up",
+       "rect": [
+        195,
+        190,
+        88,
+        88
+       ]
+      },
+      {
+       "origin": [
+        43.75,
+        43.75
+       ],
+       "symbol": "_buttonCancelSelection_up",
+       "rect": [
+        285,
+        190,
+        88,
+        88
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -69.05,
+        "text": "Enter",
+        "x": -209.15,
+        "width": 418.3,
+        "font": "120px _sans",
+        "align": "center",
+        "height": 138.1,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_Text_EnterBuilding",
+       "rect": [
+        195,
+        183,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "~ButtonEnterBuilding",
+       "index": 0,
+       "duration": 1,
+       "loc": [
+        73.625,
+        265.3
+       ]
+      }
+     ],
+     "name": "Button_EnterBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "~ButtonMoveBuilding",
+       "index": 0,
+       "duration": 1,
+       "loc": [
+        -125.025,
+        265.3
+       ]
+      }
+     ],
+     "name": "Button_MoveBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "~ButtonCancelSelection",
+       "index": 0,
+       "duration": 1,
+       "loc": [
+        274.975,
+        265.3
+       ]
+      }
+     ],
+     "name": "Button_CancelSelection"
+    }
+   ],
+   "id": "Menu_BatimentConstruit"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        43.75,
+        43.75
+       ],
+       "ref": "_buttonCancelSelection_up",
+       "tweened": false,
+       "index": 0,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        47.5,
+        47.5
+       ],
+       "ref": "_buttonCancelSelection_over",
+       "tweened": false,
+       "index": 1,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        47.525,
+        47.525
+       ],
+       "ref": "_buttonCancelSelection_down",
+       "tweened": false,
+       "index": 2,
+       "duration": 2
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonCancelSelection"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "_buttonEnterBuilding_up",
+       "loc": [
+        0,
+        -0.25
+       ],
+       "duration": 1,
+       "pivot": [
+        122.75,
+        43.75
+       ],
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "ref": "_buttonEnterBuilding_over",
+       "loc": [
+        0,
+        -0.25
+       ],
+       "duration": 1,
+       "pivot": [
+        124,
+        45
+       ],
+       "index": 1
+      },
+      {
+       "tweened": false,
+       "ref": "_buttonEnterBuilding_down",
+       "loc": [
+        -0.1,
+        0.025
+       ],
+       "duration": 2,
+       "pivot": [
+        124,
+        45
+       ],
+       "index": 2
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "_Text_EnterBuilding",
+       "loc": [
+        -1.5273,
+        -2.9673
+       ],
+       "duration": 4,
+       "pivot": [
+        -1.35,
+        -3.075
+       ],
+       "scale": [
+        1.0758,
+        1.0138
+       ],
+       "index": 0
+      }
+     ],
+     "name": "Text_EnterBuilding"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonEnterBuilding"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        43.775,
+        43.775
+       ],
+       "ref": "_buttonMoveBuilding_up",
+       "tweened": false,
+       "index": 0,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        47.5,
+        47.5
+       ],
+       "ref": "_buttonMoveBuilding_over",
+       "tweened": false,
+       "index": 1,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        47.5,
+        47.5
+       ],
+       "ref": "_buttonMoveBuilding_down",
+       "tweened": false,
+       "index": 2,
+       "duration": 2
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonMoveBuilding"
+  }
+ ]
+}
