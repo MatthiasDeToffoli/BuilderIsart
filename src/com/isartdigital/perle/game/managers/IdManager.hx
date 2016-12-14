@@ -1,7 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.TimeManager.TimeElement;
+import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 
 /**
  * Imitate a DataBase
@@ -32,7 +32,7 @@ class IdManager{
 	 * @param	pSave
 	 * @return  An array of TileDescription
 	 */
-	public static function searchByRef (pRef:Int, pSave:Save):Array<TileDescription> {
+	/*public static function searchByRef (pRef:Int, pSave:Save):Array<TileDescription> {
 		var result:Array<TileDescription> = new Array<TileDescription>();
 		var lLength:Int = pSave.building.length;
 		
@@ -46,7 +46,7 @@ class IdManager{
 				result.push(pSave.ground[i]);
 				
 		return result;
-	}
+	}*/
 	
 	/**
 	 * Not used yet. (more for debug purpose)
@@ -74,22 +74,6 @@ class IdManager{
 				throw("duplicated id : " + pId);
 				
 		return result;
-	}
-	
-	/**
-	 * Find the corresponding TimeElement whit an BuildingId
-	 * @param	pBuildingId
-	 * @return
-	 */
-	public static function getBuildingTimeElement (pBuildingId:Int):TimeElement {
-		var lLength:Int = TimeManager.list.length;
-		
-		for (i in 0...lLength) {
-			if (pBuildingId == TimeManager.list[i].desc.refTile)
-				return TimeManager.list[i];
-		}
-		
-		return null;
 	}
 	
 	public function new() {

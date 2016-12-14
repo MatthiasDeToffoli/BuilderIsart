@@ -466,8 +466,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			className:"Building", // todo : à revoir
 			assetName:assetName,
 			id:IdManager.newId(),
-			refTimer:null,
-			refResource:null,
 			regionX:regionPos.x,
 			regionY:regionPos.y,
 			mapX:colMin - regionFirstTile.x,

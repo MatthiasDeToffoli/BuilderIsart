@@ -24,7 +24,7 @@ class Virtual {
 	/**
 	 * Should not be used, because the only one creating and destroying Buildings
 	 * should be VCell (but just in case someone destroy() a Building while forgetting
-	 * the VCell)
+	 * the VCell) (graphic is read only)
 	 */
 	public function removeLink ():Void {
 		trace("function that should not be used is used !");

@@ -97,8 +97,6 @@ class VTile extends Virtual{
 					className:"Ground",
 					assetName: tempRoadAssetName,
 					id:IdManager.newId(),
-					refTimer:null,
-					refResource:null,
 					regionX:pRegion.desc.x,
 					regionY:pRegion.desc.y,
 					mapX:x,
@@ -111,11 +109,6 @@ class VTile extends Virtual{
 				
 			}
 		}
-/*
-				new VGround(tileDesc);				
-			}
-		}
-*/
 	}
 	
 	public static function buildWhitoutSave ():Void {

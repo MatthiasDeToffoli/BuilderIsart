@@ -7,12 +7,11 @@ import com.isartdigital.perle.game.virtual.VTile;
 import haxe.Json;
 import js.Browser;
 
+//@:optional vous connaisiez ?
 typedef TileDescription = {
 	var className:String;
 	var assetName:String;
 	var id:Int;
-	var refTimer:Int;
-	var refResource:Int;
 	var regionX:Int;
 	var regionY:Int;
 	var mapX:Int;
@@ -29,6 +28,14 @@ typedef RegionDescription = {
 typedef TimeDescription = {
 	var refTile:Int;
 	var progress:Float;
+	var end:Float;
+}
+
+typedef TimeQuestDescription = {
+	var refIntern:Int;
+	var progress:Float;
+	var steps:Array<Float>;
+	var stepIndex:Int;
 	var end:Float;
 }
 
@@ -52,7 +59,8 @@ typedef Save = {
 	var region:Array<RegionDescription>;
 	var ground:Array<TileDescription>;
 	var building:Array<TileDescription>;
-	var times:Array<TimeDescription>;
+	var timesResource:Array<TimeDescription>;
+	var timesQuest:Array<TimeQuestDescription>;
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesData;
 	// add what you want to save.
@@ -100,7 +108,8 @@ class SaveManager {
 		
 		// todo : dans le même ordre que les variables !
 		currentSave = {
-			times: getTimes(),
+			timesResource: getTimesResource(),
+			timesQuest: getTimesQuest(),
 			lastKnowTime:TimeManager.lastKnowTime,
 			stats: getStats(),
 			idHightest: IdManager.idHightest,
@@ -121,6 +130,8 @@ class SaveManager {
 		setLocalStorage(currentSave);
 	}
 	
+	// todo : permettre de sauvegarder plusieurs fois dans le localStorage différente élément
+	// en plusieur fichiers quoi.
 	private static function setLocalStorage(pCurrentSave:Save):Void {
 		Browser.getLocalStorage().setItem(
 			SAVE_NAME,
@@ -128,8 +139,14 @@ class SaveManager {
 		);
 	}
 	
-	private static function getTimes ():Array<TimeDescription> {
-		return TimeManager.list.map(function (pElement){
+	private static function getTimesResource ():Array<TimeDescription> { // todo : facotriser avec en bas
+		return TimeManager.listResource.map(function (pElement){
+			return pElement.desc;
+		});
+	}
+	
+	private static function getTimesQuest ():Array<TimeQuestDescription> {
+		return TimeManager.listQuest.map(function (pElement){
 			return pElement.desc;
 		});
 	}
@@ -186,6 +203,7 @@ class SaveManager {
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
+			TimeManager.startTimeLoop();
 		}
 		else
 			createWhitoutSave();
@@ -197,6 +215,7 @@ class SaveManager {
 		ResourcesManager.initWithoutSave(); 
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
+		TimeManager.startTimeLoop();
 		SaveManager.save();
 	}
 }
