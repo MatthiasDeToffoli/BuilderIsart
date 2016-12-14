@@ -9,8 +9,9 @@ import haxe.rtti.CType.Typedef;
  */
 
  /*
-  * @TODO gérer le local storage
   * @TODO voir si on gére le level up ici ou ailleur
+  * @TODO rajouter des @optional sur les param pour mieux factoriser le code
+  * @TODO rajouter des enum pour les alignements
   * */
  
  

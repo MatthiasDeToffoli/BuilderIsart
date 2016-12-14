@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -13,7 +14,6 @@ import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.flump.Movie;
 
-
 typedef Region = {
 	var desc:RegionDescription;
 	// (var "bâtiment déplacé")
@@ -22,7 +22,6 @@ typedef Region = {
 	/*var floor3;
 	var floor2;
 	var floor1;*/
-	var added:Bool;
 	var building:Map<Int, Map<Int, VBuilding>>;
 	var ground:Map<Int, Map<Int, VGround>>;
 	var background: String;
@@ -71,15 +70,6 @@ class RegionManager
 				return;
 			}
 		} 
-		
-	/*
-		var newRegion:Region = {
-			added:false,
-			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>(),
-			background: "BgHell1"
-		}
-		*/
 
 		var lCentre:Point = new Point(pPos.x + Ground.COL_X_LENGTH / 2, pPos.y + Ground.ROW_Y_LENGTH / 2);
 		var myBtn:ButtonRegion = new ButtonRegion(
@@ -98,7 +88,6 @@ class RegionManager
 		
 		myBtn.position = lPos;
 		
-		// addToWorldMap(newRegion); plus de ajout de région dans addButton !
 		
 		if (buttonMap[worldPositionX] == null)
 			buttonMap[worldPositionX] = new Map<Int,ButtonRegion>();
@@ -134,26 +123,26 @@ class RegionManager
 		worldMap[0] = new Map<Int,Region>();
 		
 		worldMap[0][0] = createRegionFromDesc({
-			added:true,
 			x:0,
-			y:0
+			y:0,
+			type:RegionType.styx,
+			firstTilePos:{x:0,y:0}
 		});
 		
-		background = new Movie(worldMap[0][0].background);
+		createRegion(RegionType.eden, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
+		createRegion(RegionType.eden, new Point(-Ground.COL_X_LENGTH, 0), {x:-1, y:0});
+		
+		/*background = new Movie(worldMap[0][0].background);
 		background.scale.set(1.7);
 		GameStage.getInstance().getGameContainer().addChildAt(background, 0);
 		
-		addButton(new Point(0, 0), new Point(0, 0), 0);
+		addButton(new Point(0, 0), new Point(0, 0), 0);*/
 	}
 
 	public static function buildFromSave(pSave:Save):Void {
 		var lLength:UInt = pSave.region.length;
 		
 		for (i in 0...lLength) {
-			
-			if (!pSave.region[i].added)
-				continue; 
-				// todo : plus de propriété added, une région ds le tableau == une région affiché.
 			
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 		}
@@ -181,24 +170,22 @@ class RegionManager
 	}
 	
 	
-	// todo : renommé CreateNewRegion ?
-	public static function activeRegion (pFirstTilePos:Point, pWorldPos:Index):Void {
+	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
 		addToWorldMap({
-			added:true,
 			desc: {
-				added:true,
 				x:pWorldPos.x,
-				y:pWorldPos.y
+				y:pWorldPos.y,
+				type:pType,
+				firstTilePos: {x:Std.int(pFirstTilePos.x),y:Std.int(pFirstTilePos.y)}
 			},
 			building:new Map<Int, Map<Int, VBuilding>>(),
 			ground:new Map<Int, Map<Int, VGround>>(),
-			background: "BgHell"
+			background: "BgHell",
+			
 		});
 		
 		background.position = IsoManager.modelToIsoView(pFirstTilePos);
 		VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
-		
-		//trace ("added region x:" + pWorldPos.x + " y:" + pWorldPos.y);
 		
 		SaveManager.save();
 		
@@ -259,7 +246,6 @@ class RegionManager
 	 */
 	public static function createRegionFromDesc(pRegionDesc:RegionDescription):Region {		
 		return { 
-			added:pRegionDesc.added,
 			desc: pRegionDesc,
 			building:new Map<Int, Map<Int, VBuilding>>(),
 			ground:new Map<Int, Map<Int, VGround>>(),

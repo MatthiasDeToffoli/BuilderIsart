@@ -29,6 +29,7 @@ class Ground extends Tile implements PoolingObject
 	 * Ground Map in X length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
 	public static inline var COL_X_LENGTH:Int = 12;
+	public static inline var COL_X_STYX_LENGTH:Int = 3;
 	
 	/**
 	 * Ground Map in Y length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
@@ -73,10 +74,10 @@ class Ground extends Tile implements PoolingObject
 	 */
 	public static function createGround(pTileDesc:TileDescription):Ground {
 		var lGround:Ground = PoolingManager.getFromPool(pTileDesc.assetName);
-		var regionFirstTilePos:Index = RegionManager.regionPosToFirstTile({
-			x:pTileDesc.regionX,
-			y:pTileDesc.regionY
-		});
+		
+		
+		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
+		
 		
 		addToGroundMap( // todo : factoriser fc..
 			pTileDesc.mapX + regionFirstTilePos.x, 
@@ -91,7 +92,7 @@ class Ground extends Tile implements PoolingObject
 		container.addChild(lGround);
 		lGround.start();
 		// to see bg integration
-		lGround.alpha = 0;
+		lGround.alpha = 0.2;
 		return lGround;
 	}
 	

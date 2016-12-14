@@ -370,10 +370,9 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			y:rowMin
 		});
 		
-		// region exist and is added.
+		// region exist
 		if (RegionManager.worldMap[regionPos.x] == null ||
-			RegionManager.worldMap[regionPos.x][regionPos.y] == null ||
-			!RegionManager.worldMap[regionPos.x][regionPos.y].added)
+			RegionManager.worldMap[regionPos.x][regionPos.y] == null)
 			return false;
 		
 		// todo : factoriser

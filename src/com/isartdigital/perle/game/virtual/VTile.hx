@@ -3,26 +3,13 @@ import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import pixi.core.math.Point;
 import pixi.flump.Movie;
 
-
- // todod a utilé
-//typedef Region = {
-	// (var "bâtiment déplacé")
-	// idem hud contextuel
-	// bizarre de le mettre ici à mon avis
-	/*var floor3;
-	var floor2;
-	var floor1;*/
-	/*var added:Bool;
-	var building:Map<Int, Map<Int, VBuilding>>;
-	var ground:Map<Int, Map<Int, VGround>>;
-	var background: String;
-}*/
 
 typedef Index = {
 	var x:Int;
@@ -88,7 +75,9 @@ class VTile extends Virtual{
 		// et enlever tile ? ou tile transparente ? plutôt enlever, huuum
 		// et grille blanche par-dessus ?
 		
-		for (x in 0...Ground.COL_X_LENGTH) {	
+		var col:Int = pRegion.desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH:Ground.COL_X_LENGTH;
+		
+		for (x in 0...col) {	
 			for (y in 0...Ground.ROW_Y_LENGTH) {
 				// todo : supprimer les road d'ici ...
 				var tempRoadAssetName:String = (ROAD_MAP[x] != null && ROAD_MAP[x][y] != null && ROAD_MAP[x][y] != "") ? ROAD_MAP[x][y] :"Ground";
@@ -129,30 +118,17 @@ class VTile extends Virtual{
 			new VBuilding(pSave.building[i]);
 	}
 
-	/*
-	private static function init ():Void {
-		currentRegion = { 
-			added:true,
-			building:new Map<Int, Map<Int, VBuilding>>(),
-			ground:new Map<Int, Map<Int, VGround>>(),
-			background: "BgHell1"
-		};
-		
-		// no final place, here just to see integration
-		var tmpBg:Movie = new Movie(currentRegion.background.substring(0, currentRegion.background.length - 1));
-		tmpBg.scale.set(2);
-		GameStage.getInstance().getGameContainer().addChildAt(tmpBg, 0);
-	}*/
-
 		
 	public function new (pDescription:TileDescription) {
 		super();
 		tileDesc = pDescription;
 		
-		var regionPos:Index = RegionManager.regionPosToFirstTile( {
+		/*var regionPos:Index = RegionManager.regionPosToFirstTile( {
 			x: pDescription.regionX, 
 			y: pDescription.regionY
-		});
+		});*/
+		
+		var regionPos:Index = RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].desc.firstTilePos;
 		
 		position = IsoManager.modelToIsoView(new Point(
 			tileDesc.mapX + regionPos.x, 

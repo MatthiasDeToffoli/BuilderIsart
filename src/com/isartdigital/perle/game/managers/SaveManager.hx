@@ -7,7 +7,12 @@ import com.isartdigital.perle.game.virtual.VTile;
 import haxe.Json;
 import js.Browser;
 
+
 //@:optional vous connaisiez ?
+
+enum RegionType {hell; eden; styx; }
+
+
 typedef TileDescription = {
 	var className:String;
 	var assetName:String;
@@ -19,9 +24,10 @@ typedef TileDescription = {
 }
 
 typedef RegionDescription = {
-	var added:Bool; // todo: ce serais top de ne pas avoir à regarder si added ou pas !
 	var x:Int;
 	var y:Int;
+	var type:RegionType;
+	var firstTilePos:Index;
 	/*var backgroundAssetName;*/
 }
 
@@ -86,8 +92,6 @@ class SaveManager {
 		// factoriser
 		for (regionX in RegionManager.worldMap.keys()) {
 			for (regionY in RegionManager.worldMap[regionX].keys()) {
-				if (!RegionManager.worldMap[regionX][regionY].desc.added) // todo : à enlever
-					continue;
 					
 				regionSave.push(RegionManager.worldMap[regionX][regionY].desc);
 				
