@@ -25,8 +25,8 @@ class Tile extends FlumpStateGraphic
 	public static function initClass():Void {
 		IsoManager.init(TILE_WIDTH, TILE_HEIGHT);
 		Ground.initClass();
-		Building.initClass();
 		FootPrint.initClass();
+		Building.initClass();
 	}
 	
 	private function positionTile(pTileX:Int, pTileY:Int):Void { // todo :opti

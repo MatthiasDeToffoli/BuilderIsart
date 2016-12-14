@@ -9,6 +9,7 @@ import pixi.core.display.Container;
  */
 class FootPrint extends Tile implements PoolingObject
 {
+
 	public static var container(default, null):Container;
 	
 	public function new(?pAssetName:String) 
@@ -18,7 +19,7 @@ class FootPrint extends Tile implements PoolingObject
 	}
 	
 	override public function init():Void {
-		//setState(DEFAULT_STATE);
+		super.init();
 	}
 	
 	public static function initClass():Void {
@@ -34,4 +35,9 @@ class FootPrint extends Tile implements PoolingObject
 	public function doActionFollow() {
 		this.position = lBuilding.position;
 	}*/
+	
+	override public function recycle():Void {
+		super.recycle();
+	}
+	
 }

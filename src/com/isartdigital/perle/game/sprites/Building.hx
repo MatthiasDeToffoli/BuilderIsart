@@ -54,9 +54,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var container:Container;
 	private static var colorMatrix:ColorMatrixFilter;
 	
-	private static var footPrint:Dynamic;
+	private static var footPrint:FootPrint;
 	private static var footPrintAsset:String = "FootPrint";
 	private static var footPrintPoint:Point;
+	private static inline var ROTATION_IN_RAD = 0.785398;
 	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
@@ -222,39 +223,35 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		container.addChild(currentSelectedBuilding);
 		currentSelectedBuilding.init();
 		currentSelectedBuilding.setModePhantom();
-		
-		
-		//Ici on creer le visuel
-		footPrint = new FlumpStateGraphic(footPrintAsset);
+		createShadow();
+	}
+	
+	//Function to create the shadow of the footprint
+	private static function createShadow():Void {
+		footPrint = PoolingManager.getFromPool(footPrintAsset);
         footPrint.init();
         FootPrint.container.addChild(footPrint);
         footPrint.start();
+		footPrint.rotation = ROTATION_IN_RAD;
+		FootPrint.container.scale.y = 0.5;
 		
-		//positionement : a changer mettre a 1 xet y en moins
-		if (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)//check si c'est une décoration
+		//point of footprint
+		if (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
 			footPrintPoint = new Point(0,0); 
 		else
-			footPrintPoint = new Point(-footPrint.width/2,-footPrint.height/2); 
-		//positionement
+			footPrintPoint = new Point( -footPrint.width / 8, -footPrint.height / 2 - 50); //a revenir dessus si je trouves une meileur façon
+			
+		//position
 		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
-		
-		//le deplacement est dans le doActionPhantom
-		
-		
-		/*footPrint.width = footPrint.width * ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].width;
-		footPrint.height = footPrint.height * ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].height;*/
-		//footPrint.setModFollow(currentSelectedBuilding);
-			
-			
-		/* var footPrint:FootPrint;
-		 var footPrintAsset:String = "FootPrint";
-		footPrint = PoolingManager.getFromPool(footPrintAsset);
-		GameStage.getInstance().getGameContainer().addChild(footPrint);
-		footPrint.init();*/
-		
+		//Give width and height
+		footPrint.width = footPrint.width * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].width +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
+		footPrint.height = footPrint.height * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].height +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
+	
 	}
 	
 	private static function removePhantom():Void {
+		footPrint.recycle();
+		footPrint.scale = new Point(1, 1);
 		currentSelectedBuilding.recycle();
 		currentSelectedBuilding = null;
 	}
@@ -287,7 +284,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	private function doActionPhantom():Void {
 		//deplacement en fonction de la position
-		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
+		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, (currentSelectedBuilding.y + footPrintPoint.y)*2);
 		
 		var buildingGroundCenter:Point = getBuildingGroundCenter();
 		var perfectMouseFollow:Point = new Point(
