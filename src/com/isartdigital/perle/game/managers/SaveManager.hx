@@ -183,9 +183,9 @@ class SaveManager {
 		if (currentSave != null) {
 			TimeManager.buildFromSave(currentSave);
 			IdManager.buildFromSave(currentSave);
+			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
-			ResourcesManager.initWithLoad(currentSave.resourcesData);
 		}
 		else
 			createWhitoutSave();
@@ -194,9 +194,9 @@ class SaveManager {
 	private static function createWhitoutSave():Void {
 		TimeManager.buildWhitoutSave();
 		IdManager.buildWhitoutSave();
+		ResourcesManager.initWithoutSave(); 
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
-		ResourcesManager.initWithoutSave();
 		SaveManager.save();
 	}
 }

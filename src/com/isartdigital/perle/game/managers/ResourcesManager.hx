@@ -1,4 +1,6 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorGoodXp;
+import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorSoft;
 import haxe.rtti.CType.Typedef;
 
 /**
@@ -124,26 +126,48 @@ class ResourcesManager
 	//functions for add soft, hard currency, or xp in there own array
 	//{ ################# addCurrency #################
 	
-	public static function addSoftGenerator(pId:Int,pMax:Int):Void{
-		addCurrencyGenerator(pId,myResourcesData.generatorSoftArray, pMax);
+	public static function addSoftGenerator(pId:Int, pMax:Int):GeneratorSoft{
+		var myGenerator:GeneratorSoft = testHaveThisGenerator(pId, myResourcesData.generatorSoftArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addCurrencyGenerator(pId, myResourcesData.generatorSoftArray, pMax);
+		return myResourcesData.generatorSoftArray[myResourcesData.generatorSoftArray.length - 1];
 	}
 	
-	public static function addHardGenerator(pId:Int, pMax:Int):Void {
-		addCurrencyGenerator(pId,myResourcesData.generatorHardArray, pMax);
+	public static function addHardGenerator(pId:Int, pMax:Int):GeneratorHard {
+		
+		var myGenerator:GeneratorHard = testHaveThisGenerator(pId, myResourcesData.generatorHardArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addCurrencyGenerator(pId, myResourcesData.generatorHardArray, pMax);
+		return myResourcesData.generatorHardArray[myResourcesData.generatorHardArray.length - 1];
 	}
 	
-	public static function addGoodXpGenerator(pId:Int,pMax:Int):Void {
-		addCurrencyGenerator(pId,myResourcesData.generatorGoodXpArray, pMax);
+	public static function addGoodXpGenerator(pId:Int, pMax:Int):GeneratorGoodXp {
+		
+		var myGenerator:GeneratorGoodXp = testHaveThisGenerator(pId, myResourcesData.generatorGoodXpArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addCurrencyGenerator(pId, myResourcesData.generatorGoodXpArray, pMax);
+		return myResourcesData.generatorGoodXpArray[myResourcesData.generatorGoodXpArray.length - 1];
 	}
 	
-	public static function addBadXpGenerator(pId:Int,pMax:Int):Void {
-		addCurrencyGenerator(pId,myResourcesData.generatorBadXpArray, pMax);
+	public static function addBadXpGenerator(pId:Int, pMax:Int):GeneratorBadXp {
+		
+		var myGenerator:GeneratorBadXp = testHaveThisGenerator(pId, myResourcesData.generatorBadXpArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addCurrencyGenerator(pId, myResourcesData.generatorBadXpArray, pMax);
+		return myResourcesData.generatorBadXpArray[myResourcesData.generatorBadXpArray.length - 1];
 	}
 	//current array = array of resources we want, pMax = max value to the resources which we want
 	private static function addCurrencyGenerator(pId:Int, currencyArray:Array<Dynamic>, pMax:Int):Void{
 		
-		currencyArray.push(
-			{
+		currencyArray.push({
 				quantity: 0,
 				max: pMax,
 				id: pId
@@ -151,7 +175,10 @@ class ResourcesManager
 		);
 		
 		SaveManager.save();
+		
 	}
+	
+	
 	//} endregion
 	
 	/*
@@ -164,12 +191,26 @@ class ResourcesManager
 	//{ ################# addPeople #################
 	
 	
-	public static function addSoulGenerator(pId:Int,pMax:Int, pAlignment:String):Void{
+	public static function addSoulGenerator(pId:Int, pMax:Int, pAlignment:String):GeneratorSoul{
+		
+		var myGenerator:GeneratorSoul = testHaveThisGenerator(pId, myResourcesData.generatorSoulArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
 		addPeopleGenerator(pId, myResourcesData.generatorSoulArray, pMax, pAlignment);
+		
+		return myResourcesData.generatorSoulArray[myResourcesData.generatorSoulArray.length - 1];
 	}
 	
-	public static function addIntern(pId:Int,pMax:Int, pAlignment:String):Void{
-		addPeopleGenerator(pId,myResourcesData.internArray,  pMax, pAlignment);
+	public static function addIntern(pId:Int, pMax:Int, pAlignment:String):Intern{
+		
+		var myGenerator:Intern = testHaveThisGenerator(pId, myResourcesData.internArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addPeopleGenerator(pId, myResourcesData.internArray,  pMax, pAlignment);
+		
+		return myResourcesData.internArray[myResourcesData.internArray.length - 1];
 	}
 	
 	//poeple repesent soul and intern
@@ -187,6 +228,14 @@ class ResourcesManager
 	}
 	//} endregion
 	
+	//test if a generator with this id exist and return the generator
+	private static function testHaveThisGenerator(pId:Int, resourcesArray:Array<Dynamic>):Dynamic{
+		var lLength:Int = resourcesArray.length - 1, i;
+		
+		for (i in 0...lLength) if (resourcesArray[i].id == pId) return resourcesArray[i];
+		
+		return null;
+	}
 	
 	/*
 	 ####################
