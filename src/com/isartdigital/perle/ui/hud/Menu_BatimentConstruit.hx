@@ -6,10 +6,11 @@ import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.HudContextual;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import pixi.core.display.Container;
 
 /**
  * todo : leur faire une nomenclature >.<, pr le nom de la classe...
- * @author ambroise
+ * @author Emeline Berenguier
  */
 class Menu_BatimentConstruit extends HudContextual{
 
@@ -18,6 +19,7 @@ class Menu_BatimentConstruit extends HudContextual{
 	private var btnCenter:SmartButton;
 	private var btnRight:SmartButton;
 	
+	private var VBuildingRef:VBuilding;
 	
 	public function new(pID:String=null) {
 		super(pID);
@@ -28,17 +30,18 @@ class Menu_BatimentConstruit extends HudContextual{
 	 */
 	public function init (pVBuilding:VBuilding):Void {
 		modal = null; // todo : quel utilité ?
-		
 		x = pVBuilding.graphic.x; // if origin is top middle
-		y = pVBuilding.graphic.y + pVBuilding.graphic.height/2;
+		y = pVBuilding.graphic.y;
+		
+		VBuildingRef = pVBuilding;
 		
 		addListeners();
 	}
 	
 	private function addListeners ():Void {
-		btnLeft = cast(getChildByName("ButtonMovedBuilding"), SmartButton);
-		btnCenter = cast(getChildByName("ButtonEnterBuilding"), SmartButton);
-		btnRight = cast(getChildByName("ButtonCancelSelection"), SmartButton);
+		btnLeft = cast(getChildByName("Button_MoveBuilding"), SmartButton);
+		btnCenter = cast(getChildByName("Button_EnterBuilding"), SmartButton);
+		btnRight = cast(getChildByName("Button_CancelSelection"), SmartButton);
 		btnLeft.on(MouseEventType.CLICK, onClickLeft);
 		btnCenter.on(MouseEventType.CLICK, onClickCenter);
 		btnRight.on(MouseEventType.CLICK, onClickRight);
@@ -46,6 +49,7 @@ class Menu_BatimentConstruit extends HudContextual{
 	
 	private function onClickLeft(): Void {
 		trace("onClickLeft");
+		Building.onClickRemoveBuilding("Villa");
 	}
 	
 	private function onClickCenter(): Void {
@@ -54,6 +58,8 @@ class Menu_BatimentConstruit extends HudContextual{
 	
 	private function onClickRight(): Void {
 		trace("onClickRight");
+		//VBuildingRef.desactivate();
+		VBuildingRef.
 	}
 	
 	

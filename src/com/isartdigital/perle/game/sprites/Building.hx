@@ -198,6 +198,20 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	
 	//{ ################# State_Phantom #################
+	/**
+	 * Create a Phantom Building to remove
+	 * @param	pAssetName
+	*/ // todo : le onClick doit se trouve ds l'hud et la function createPhantombuilding ici
+	public static function onClickRemoveBuilding(pAssetName:String):Void {
+		//if (currentSelectedBuilding == null)
+			createPhantom(pAssetName);
+		//else if (currentSelectedBuilding.assetName != pAssetName) {
+			//removePhantom();
+			//createPhantom(pAssetName);
+		//}
+		//else if (currentSelectedBuilding.assetName == pAssetName)
+			//removePhantom();
+	}
 	
 	
 	/**
@@ -298,7 +312,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 			bestMapPos.y
 		));
 		
-		// optimization to make less call to canBuilHere();
+		// optimization to make less call to canBuiltHere();
 		if (precedentBesMapPos.x != bestMapPos.x ||
 			precedentBesMapPos.y != bestMapPos.y) {
 			
@@ -518,7 +532,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private function onClick ():Void {
 		trace ("click sur batiment functionnel");
 		// note à Emeline : todo décommente la ligne ci-dessous et continue le travail
-		// HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
+		HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
 	}
 	
 	//} endRegion

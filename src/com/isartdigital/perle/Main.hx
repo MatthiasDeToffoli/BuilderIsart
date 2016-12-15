@@ -154,7 +154,8 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBg/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/EdenBg/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");		
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Menu_BatimentConstruit/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		
