@@ -28,7 +28,7 @@ class ButtonRegion extends Button
 		super();
 		firstCasePos = pPos;
 		worldMapPos = pWorldPos;
-		regionType = RegionType.hell;
+		regionType = (pPos.x < 0) ? RegionType.eden: RegionType.hell;
 	}
 	
 	override function _mouseDown(pEvent:EventTarget):Void {

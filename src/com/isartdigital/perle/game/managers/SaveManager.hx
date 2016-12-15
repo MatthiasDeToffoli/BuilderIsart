@@ -28,7 +28,6 @@ typedef RegionDescription = {
 	var y:Int;
 	var type:RegionType;
 	var firstTilePos:Index;
-	/*var backgroundAssetName;*/
 }
 
 typedef TimeDescription = {

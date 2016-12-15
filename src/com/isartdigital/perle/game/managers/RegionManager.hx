@@ -86,8 +86,7 @@ class RegionManager
 								)
 							);
 		
-		myBtn.position = lPos;
-		
+		myBtn.position = lPos;	
 		
 		if (buttonMap[worldPositionX] == null)
 			buttonMap[worldPositionX] = new Map<Int,ButtonRegion>();
@@ -95,9 +94,7 @@ class RegionManager
 			
 			buttonMap[worldPositionX][worldPositionY] = myBtn;
 			buttonRegionContainer.addChild(myBtn);
-		}
-			
-		
+		}		
 		
 		addButton(pPos, pWorldPos, indice+ 1);
 	}
@@ -110,9 +107,9 @@ class RegionManager
 			
 		worldMap[pNewRegion.desc.x][pNewRegion.desc.y] = pNewRegion;
 		
-		background = new Movie(pNewRegion.background);
-		background.scale.set(1.7);
-		GameStage.getInstance().getGameContainer().addChildAt(background, 0);
+		if (background != null)	{
+			Ground.bgContainer.addChild(background);			
+		}
 	}
 	
 	public static function getButtonContainer():Container{
@@ -129,21 +126,14 @@ class RegionManager
 			firstTilePos:{x:0,y:0}
 		});
 		
-		createRegion(RegionType.eden, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
+		createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(RegionType.eden, new Point(-Ground.COL_X_LENGTH, 0), {x:-1, y:0});
-		
-		/*background = new Movie(worldMap[0][0].background);
-		background.scale.set(1.7);
-		GameStage.getInstance().getGameContainer().addChildAt(background, 0);
-		
-		addButton(new Point(0, 0), new Point(0, 0), 0);*/
 	}
 
 	public static function buildFromSave(pSave:Save):Void {
-		var lLength:UInt = pSave.region.length;
+		var lLength:UInt = pSave.region.length;		
 		
 		for (i in 0...lLength) {
-			
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 		}
 		
@@ -171,6 +161,14 @@ class RegionManager
 	
 	
 	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
+		
+		createNextBg({
+			x:pWorldPos.x,
+			y:pWorldPos.y,
+			type:pType,
+			firstTilePos: {x:Std.int(pFirstTilePos.x),y:Std.int(pFirstTilePos.y)}
+		});
+			
 		addToWorldMap({
 			desc: {
 				x:pWorldPos.x,
@@ -180,11 +178,9 @@ class RegionManager
 			},
 			building:new Map<Int, Map<Int, VBuilding>>(),
 			ground:new Map<Int, Map<Int, VGround>>(),
-			background: "BgHell",
-			
+			background: getBgAssetname(pType)		
 		});
 		
-		background.position = IsoManager.modelToIsoView(pFirstTilePos);
 		VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
 		
 		SaveManager.save();
@@ -197,6 +193,32 @@ class RegionManager
 			),
 			0
 		);
+	}
+	
+	
+	/**
+	 * Return the background asset of the region type parameter
+	 * @param regionType
+	 * @return background asset name
+	 */
+	private static function getBgAssetname(pRegionType:RegionType): String {
+		switch (pRegionType) 
+		{
+			case RegionType.hell: return "HBg";
+			case RegionType.eden: return "PBg";
+			case RegionType.styx: return "SBg";
+			default: trace(pRegionType + " - No background for this"); return null;
+		}
+	}
+	
+	/**
+	 * Change background to addchild
+	 * @param regionDescription
+	 */
+	private static function createNextBg(pDesc:RegionDescription): Void {
+		background = new Movie(getBgAssetname(pDesc.type));
+		background.scale.set(1.7);
+		background.position = IsoManager.modelToIsoView(new Point(pDesc.firstTilePos.x, pDesc.firstTilePos.y));
 	}
 	
 	/**
@@ -245,12 +267,16 @@ class RegionManager
 	 * @return
 	 */
 	public static function createRegionFromDesc(pRegionDesc:RegionDescription):Region {		
-		return { 
+		var newRegion:Region = { 
 			desc: pRegionDesc,
 			building:new Map<Int, Map<Int, VBuilding>>(),
 			ground:new Map<Int, Map<Int, VGround>>(),
-			background: "BgHell"
-		};	
+			background: getBgAssetname(pRegionDesc.type)
+		};
+		
+		if (newRegion.background != "SBg") createNextBg(newRegion.desc);
+		
+		return newRegion;
 	}
 	
 	public static function addToRegionGround (pElement:VGround):Void {
