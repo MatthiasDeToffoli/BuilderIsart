@@ -46,6 +46,13 @@ class VTile extends Virtual{
 	];
 	
 	
+	public static function indexToPoint(pIndex:Index):Point{
+			return new Point(pIndex.x, pIndex.y);
+	}
+	
+	public static function pointToIndex(pPoint:Point):Index{
+		return {x:Std.int(pPoint.x), y:Std.int(pPoint.y)};
+	}
 	public static var clippingMap:Map<Int, Map<Int, Array<VTile>>>;
 	
 	/**
@@ -76,9 +83,10 @@ class VTile extends Virtual{
 		// et grille blanche par-dessus ?
 		
 		var col:Int = pRegion.desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH:Ground.COL_X_LENGTH;
+		var row:Int = pRegion.desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH:Ground.ROW_Y_LENGTH;
 		
 		for (x in 0...col) {	
-			for (y in 0...Ground.ROW_Y_LENGTH) {
+			for (y in 0...row) {
 				// todo : supprimer les road d'ici ...
 				var tempRoadAssetName:String = (ROAD_MAP[x] != null && ROAD_MAP[x][y] != null && ROAD_MAP[x][y] != "") ? ROAD_MAP[x][y] :"Ground";
 				

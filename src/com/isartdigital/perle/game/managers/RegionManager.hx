@@ -59,9 +59,25 @@ class RegionManager
 		
 		if (indice >= factors.length) return;
 		
+		
 		var factor:Point = factors[indice];
+		
+		if ((pWorldPos.x < 0 && factor.x == 1) || (pWorldPos.x > 0 && factor.x == -1)){
+			addButton(pPos, pWorldPos, indice+ 1);
+			return;
+		}
+		
 		var worldPositionX:Int = Std.int(pWorldPos.x + factor.x);
 		var worldPositionY:Int = Std.int(pWorldPos.y - factor.y);
+		
+		if (
+			(pWorldPos.x < 0 && factor.x == 1) || 
+			(pWorldPos.x > 0 && factor.x == -1) || 
+			(Math.abs(worldPositionX) > 2)
+			){
+			addButton(pPos, pWorldPos, indice+ 1);
+			return;
+		}
 		
 		
 		if (worldMap.exists(worldPositionX)){
@@ -74,8 +90,8 @@ class RegionManager
 		var lCentre:Point = new Point(pPos.x + Ground.COL_X_LENGTH / 2, pPos.y + Ground.ROW_Y_LENGTH / 2);
 		var myBtn:ButtonRegion = new ButtonRegion(
 			new Point(
-				lCentre.x - Ground.COL_X_LENGTH / 2 + Ground.ROW_Y_LENGTH * factor.x,
-				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y
+				lCentre.x  + factor.x - Ground.COL_X_LENGTH / 2 + Ground.COL_X_LENGTH * factor.x,
+				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y - factor.y
 			),
 			new Point(worldPositionX, worldPositionY)
 		);
@@ -162,7 +178,8 @@ class RegionManager
 	
 	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
-		createNextBg({
+		//@TODO: delete when we will have the stick bg
+		if(pType != RegionType.styx) createNextBg({
 			x:pWorldPos.x,
 			y:pWorldPos.y,
 			type:pType,
@@ -185,7 +202,9 @@ class RegionManager
 		
 		SaveManager.save();
 		
-		addButton(
+		if (Math.abs(pWorldPos.x) == 1) createStyxRegionIfDontExist(pWorldPos, Std.int(pFirstTilePos.y));
+		
+		if(pType != RegionType.styx) addButton(
 			pFirstTilePos,
 			new Point(
 				pWorldPos.x,
@@ -195,6 +214,44 @@ class RegionManager
 		);
 	}
 	
+	private static function createStyxRegionIfDontExist(pWorldPos:Index, pPosY:Int){
+		if (worldMap[0][pWorldPos.y] != null) return;
+			
+		var posWorld:Index = {x:0, y:pWorldPos.y};
+		createRegion(RegionType.styx, new Point(0, pPosY), posWorld);
+		
+		addRegionButtonByStyx(posWorld, pPosY);
+		
+	}
+	
+	private static function addRegionButtonByStyx(pWorldPos:Index, pPosY:Int){
+		
+		var myBtn:ButtonRegion, btnWorldPos:Index;
+		
+		if (!worldMap[-1].exists(pWorldPos.y))
+			if (!buttonMap[-1].exists(pWorldPos.y)){
+				btnWorldPos = { x:-1, y:pWorldPos.y};
+				myBtn = createButtonRegion(btnWorldPos, pPosY, -Ground.COL_X_LENGTH,0);
+				buttonRegionContainer.addChild(myBtn);
+			}
+			
+		if (!worldMap[1].exists(pWorldPos.y))
+			if (!buttonMap[1].exists(pWorldPos.y)){
+				btnWorldPos = { x:1, y:pWorldPos.y};
+				myBtn = createButtonRegion(btnWorldPos, pPosY, Ground.COL_X_STYX_LENGTH, (Ground.COL_X_STYX_LENGTH + Ground.COL_X_LENGTH)/2.0);
+				buttonRegionContainer.addChild(myBtn);
+			}
+	}
+	
+	private static function createButtonRegion(pWorldPos:Index,pPosY:Int,pPosX:Float, buttonDecal:Float):ButtonRegion{
+		var myBtn = new ButtonRegion(new Point( pPosX, pPosY), VTile.indexToPoint(pWorldPos));
+		myBtn.position = IsoManager.modelToIsoView(new Point( pPosX / 2.0 + buttonDecal, pPosY + Ground.ROW_Y_LENGTH/2.0));
+		buttonMap[pWorldPos.x][pWorldPos.y] = myBtn;
+		return myBtn;
+	}
+		
+		/*createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
+		createRegion(RegionType.eden, new Point(-Ground.COL_X_LENGTH, 0), {x:-1, y:0});*/
 	
 	/**
 	 * Return the background asset of the region type parameter

@@ -14,7 +14,7 @@ import haxe.rtti.CType.Typedef;
   * @TODO rajouter des enum pour les alignements
   * */
  
- 
+ enum Alignment{neutral; hell; paradise; }
  //{ ################# typedef #################
  
  //typedef for save contain all data resources
@@ -62,14 +62,14 @@ import haxe.rtti.CType.Typedef;
  typedef GeneratorSoul = {
 	 var quantity:Int;
 	 var max:Int;
-	 var alignment:String;
+	@:optional var alignment:Alignment;
 	 var id:Int;
  }
  //quantity = quantity actual of the instance's stress, max = max which can have
  typedef Intern = {
 	 var quantity:Int;
 	 var max:Int;
-	 var alignment:String;
+	@:optional var alignment:Alignment;
 	 var id:Int;
  }
  //} endregion
@@ -132,7 +132,7 @@ class ResourcesManager
 		
 		if (myGenerator != null) return myGenerator;
 		
-		addCurrencyGenerator(pId, myResourcesData.generatorSoftArray, pMax);
+		addResourcesGenerator(pId, myResourcesData.generatorSoftArray, pMax);
 		return myResourcesData.generatorSoftArray[myResourcesData.generatorSoftArray.length - 1];
 	}
 	
@@ -142,7 +142,7 @@ class ResourcesManager
 		
 		if (myGenerator != null) return myGenerator;
 		
-		addCurrencyGenerator(pId, myResourcesData.generatorHardArray, pMax);
+		addResourcesGenerator(pId, myResourcesData.generatorHardArray, pMax);
 		return myResourcesData.generatorHardArray[myResourcesData.generatorHardArray.length - 1];
 	}
 	
@@ -152,7 +152,7 @@ class ResourcesManager
 		
 		if (myGenerator != null) return myGenerator;
 		
-		addCurrencyGenerator(pId, myResourcesData.generatorGoodXpArray, pMax);
+		addResourcesGenerator(pId, myResourcesData.generatorGoodXpArray, pMax);
 		return myResourcesData.generatorGoodXpArray[myResourcesData.generatorGoodXpArray.length - 1];
 	}
 	
@@ -162,11 +162,36 @@ class ResourcesManager
 		
 		if (myGenerator != null) return myGenerator;
 		
-		addCurrencyGenerator(pId, myResourcesData.generatorBadXpArray, pMax);
+		addResourcesGenerator(pId, myResourcesData.generatorBadXpArray, pMax);
 		return myResourcesData.generatorBadXpArray[myResourcesData.generatorBadXpArray.length - 1];
 	}
+	
+	public static function addSoulGenerator(pId:Int, pMax:Int, pAlignment:Alignment):GeneratorSoul{
+		
+		var myGenerator:GeneratorSoul = testHaveThisGenerator(pId, myResourcesData.generatorSoulArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addResourcesGenerator(pId, myResourcesData.generatorSoulArray, pMax);
+		myResourcesData.generatorSoulArray[myResourcesData.generatorSoulArray.length - 1].alignment = pAlignment;
+		SaveManager.save();
+		return myResourcesData.generatorSoulArray[myResourcesData.generatorSoulArray.length - 1];
+	}
+	
+	public static function addIntern(pId:Int, pMax:Int, pAlignment:Alignment):Intern{
+		
+		var myGenerator:Intern = testHaveThisGenerator(pId, myResourcesData.internArray);
+		
+		if (myGenerator != null) return myGenerator;
+		
+		addResourcesGenerator(pId, myResourcesData.internArray,  pMax);
+		myResourcesData.internArray[myResourcesData.internArray.length - 1].alignment = pAlignment;
+		SaveManager.save();
+		return myResourcesData.internArray[myResourcesData.internArray.length - 1];
+	}
+	
 	//current array = array of resources we want, pMax = max value to the resources which we want
-	private static function addCurrencyGenerator(pId:Int, currencyArray:Array<Dynamic>, pMax:Int):Void{
+	private static function addResourcesGenerator(pId:Int, currencyArray:Array<Dynamic>, pMax:Int):Void{
 		
 		currencyArray.push({
 				quantity: 0,
@@ -182,53 +207,7 @@ class ResourcesManager
 	
 	//} endregion
 	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for add soul or intern in there own array
-	//{ ################# addPeople #################
-	
-	
-	public static function addSoulGenerator(pId:Int, pMax:Int, pAlignment:String):GeneratorSoul{
-		
-		var myGenerator:GeneratorSoul = testHaveThisGenerator(pId, myResourcesData.generatorSoulArray);
-		
-		if (myGenerator != null) return myGenerator;
-		
-		addPeopleGenerator(pId, myResourcesData.generatorSoulArray, pMax, pAlignment);
-		
-		return myResourcesData.generatorSoulArray[myResourcesData.generatorSoulArray.length - 1];
-	}
-	
-	public static function addIntern(pId:Int, pMax:Int, pAlignment:String):Intern{
-		
-		var myGenerator:Intern = testHaveThisGenerator(pId, myResourcesData.internArray);
-		
-		if (myGenerator != null) return myGenerator;
-		
-		addPeopleGenerator(pId, myResourcesData.internArray,  pMax, pAlignment);
-		
-		return myResourcesData.internArray[myResourcesData.internArray.length - 1];
-	}
-	
-	//poeple repesent soul and intern
-	private static function addPeopleGenerator(pId:Int, peopleArray:Array<Dynamic>, pMax:Int, pAlignment:String):Void{
-		peopleArray.push(
-			{
-				quantity:0,
-				max:pMax,
-				alignment:pAlignment,
-				id:pId
-			}
-		);
-	
-		SaveManager.save();
-	}
-	//} endregion
-	
+
 	//test if a generator with this id exist and return the generator
 	private static function testHaveThisGenerator(pId:Int, resourcesArray:Array<Dynamic>):Dynamic{
 		var lLength:Int = resourcesArray.length - 1, i;
@@ -248,15 +227,15 @@ class ResourcesManager
 	//{ ################# changeAlignment #################
 	
 	
-	public static function changeSoulAlignment(pSoul:GeneratorSoul, pAlignment:String):Void {
+	public static function changeSoulAlignment(pSoul:GeneratorSoul, pAlignment:Alignment):Void {
 		changeAlignment(myResourcesData.generatorSoulArray, myResourcesData.generatorSoulArray.indexOf(pSoul), pAlignment);
 	}
 	
-	public static function changeInternAlignment(pIntern:Intern, pAlignment:String):Void {
+	public static function changeInternAlignment(pIntern:Intern, pAlignment:Alignment):Void {
 		changeAlignment(myResourcesData.internArray, myResourcesData.internArray.indexOf(pIntern), pAlignment);
 	}
 	
-	private static function changeAlignment(peopleArray:Array<Dynamic>, indice:Int, pAlignment:String):Void {
+	private static function changeAlignment(peopleArray:Array<Dynamic>, indice:Int, pAlignment:Alignment):Void {
 		peopleArray[indice].alignment = pAlignment;
 	
 		SaveManager.save();

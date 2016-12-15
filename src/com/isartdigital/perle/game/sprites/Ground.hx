@@ -35,6 +35,7 @@ class Ground extends Tile implements PoolingObject
 	 * Ground Map in Y length (DONT LOAD SAVE WHIT DIFFERENT VALUE)
 	 */
 	public static inline var ROW_Y_LENGTH:Int = 12;
+	public static inline var ROW_Y_STYX_LENGTH:Int = 13;
 	
 	/**
 	 * Used onMouseOver
