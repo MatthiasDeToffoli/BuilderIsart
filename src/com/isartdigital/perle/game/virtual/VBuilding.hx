@@ -21,19 +21,22 @@ class VBuilding extends VTile {
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
-		
 		RegionManager.addToRegionBuilding(this);
 		
 		//for the test (let this for kiki)
 		myGenerator = ResourcesManager.addSoftGenerator(tileDesc.id, 10);
+		
 		checkHasTimeElement();
 		addTimeElement();
 	}
 	
 	override public function activate():Void {
 		super.activate();
-		graphic = cast(Building.createBuilding(tileDesc), FlumpStateGraphic);
+		var myBuilding:Building = Building.createBuilding(tileDesc);
+		graphic = cast(myBuilding, FlumpStateGraphic);
 		linkVirtual();
+		
+		myBuilding.goldBtn.setMyGenerator();
 	}
 	
 	// todo : temporaire, tous ne nécéssite pas un timeElement
@@ -48,6 +51,10 @@ class VBuilding extends VTile {
 			myTimeElement = TimeManager.createResource(tileDesc.id, lTestResourceTimeTick);
 		
 		listenToTimeElement();
+	}
+	
+	public function getGenerator():Dynamic {
+		return myGenerator;
 	}
 	
 	private function checkHasTimeElement ():Void {

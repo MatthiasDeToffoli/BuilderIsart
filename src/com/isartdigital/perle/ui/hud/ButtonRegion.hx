@@ -20,7 +20,6 @@ class ButtonRegion extends Button
 	
 	public function new(pPos:Point,pWorldPos:Point) 
 	{
-
 		
 		factory = new FlumpMovieAnimFactory();
 		assetName = "RegionButton";

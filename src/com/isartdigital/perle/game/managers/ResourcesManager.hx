@@ -217,6 +217,24 @@ class ResourcesManager
 		return null;
 	}
 	
+	public static function getGenerator(pTypeName:String, pId:Int):Dynamic {
+		
+		var resourcesArray:Array<Dynamic>;
+		
+		//@TODO mettre les bon nom (soft etc)
+		switch pTypeName {
+			case "Gold" :
+				resourcesArray = myResourcesData.generatorSoftArray;
+				
+			default: resourcesArray = myResourcesData.generatorSoftArray;
+		}
+		var lLength:Int = resourcesArray.length - 1, i;
+		
+		for (i in 0...lLength) if (resourcesArray[i].id == pId) return resourcesArray[i];
+		
+		return null;
+	}
+	
 	/*
 	 ####################
 	 ####################
@@ -249,7 +267,9 @@ class ResourcesManager
 	 */
 	 
 	//functions for count a resource if her value is lower her max
-	//{ ################# countResources #################
+	//{ ################# increaseResources #################
+
+	
 	public static function increaseSoftCurrency(pSoftGenerator:GeneratorSoft):Void{
 		increaseResources(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoftGenerator));
 	}
@@ -331,6 +351,20 @@ class ResourcesManager
 	//{ ################# totals function #################
 	
 	//{ ################# sum #################
+	
+	public static function choosResourcesToTake(pTypeName:String, pGenerator:Dynamic):Void{
+		switch pTypeName {
+			case "Gold" :
+				takeSoft(pGenerator);
+				return;
+			case "Hard" :
+				takeHard(pGenerator);
+				return;
+				
+			default: takeSoft(pGenerator);
+		}
+	}
+	
 	public static function takeBadXp(pBadXp:GeneratorBadXp){
 		takeResources(myResourcesData.generatorBadXpArray, myResourcesData.generatorBadXpArray.indexOf(pBadXp), myResourcesData.totalBadXp);
 	}
@@ -347,13 +381,15 @@ class ResourcesManager
 		takeResources(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoft), myResourcesData.totalSoft);
 	}
 	
-	private static function takeResources(resourcesArray:Array<Dynamic>, indice:Int, total:Int):Void{
+	private static function takeResources(resourcesArray:Array<Dynamic>, indice:Int, total:Int):Void {
+		
 		sumTotal(resourcesArray[indice].quantity, total);
 		reset(resourcesArray, indice);
 		SaveManager.save();
 	}
 	public static function sumTotal(sumValue:Int, total:Int):Void{
 		total += sumValue;
+		trace(total);
 		
 	}
 	//} endregion
