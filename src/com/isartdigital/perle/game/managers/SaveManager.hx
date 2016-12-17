@@ -201,7 +201,7 @@ class SaveManager {
 	public static function createFromSave():Void {
 		load();
 		if (currentSave != null) {
-			TimeManager.buildFromSave(currentSave);
+			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			IdManager.buildFromSave(currentSave);
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			RegionManager.buildFromSave(currentSave);
@@ -213,7 +213,7 @@ class SaveManager {
 	}
 	
 	private static function createWhitoutSave():Void {
-		TimeManager.buildWhitoutSave();
+		TimeManager.buildWhitoutSave(); // always begore ResourcesManager
 		IdManager.buildWhitoutSave();
 		ResourcesManager.initWithoutSave(); 
 		RegionManager.buildWhitoutSave();

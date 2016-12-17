@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorGoodXp;
 import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorSoft;
+import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import haxe.rtti.CType.Typedef;
 
 /**
@@ -10,8 +11,7 @@ import haxe.rtti.CType.Typedef;
 
  /*
   * @TODO voir si on gére le level up ici ou ailleur
-  * @TODO rajouter des @optional sur les param pour mieux factoriser le code
-  * @TODO rajouter des enum pour les alignements
+  * @TODO passer la classer en singleton et virer les static
   * */
  
  enum Alignment{neutral; hell; paradise; }
@@ -76,6 +76,22 @@ import haxe.rtti.CType.Typedef;
  
 class ResourcesManager
 {
+	
+	/*
+	 ####################
+	 ####################
+	 ####################
+	 */
+	 
+	 //array of timeElement for identify timeElement to generator
+	 
+	 //{################# timeElement #################
+	private static var  timeElementSoftArray:Array<TimeElementResource> = new Array<TimeElementResource>();
+	private static var  timeElementHardArray:Array<TimeElementResource> = new Array<TimeElementResource>();
+	private static var  timeElementGoodXpArray:Array<TimeElementResource> = new Array<TimeElementResource>();
+	private static var  timeElementBadXptArray:Array<TimeElementResource> = new Array<TimeElementResource>();
+
+	//} endRegion
 	/*
 	 ####################
 	 ####################
@@ -115,7 +131,11 @@ class ResourcesManager
 	}
 	//}endregion
 	
-	
+	private static function addToTimeElementArray(timeArray:Array<TimeElementResource>, pId:Int){
+		var myTimeElement:TimeElementResource = TimeManager.createResource(pId, 2000);
+		timeArray.push(TimeManager.createResource(pId, 2000));
+		//faire le addListener
+	}
 
 	
 	/*
@@ -130,10 +150,16 @@ class ResourcesManager
 	public static function addSoftGenerator(pId:Int, pMax:Int):GeneratorSoft{
 		var myGenerator:GeneratorSoft = testHaveThisGenerator(pId, myResourcesData.generatorSoftArray);
 		
-		if (myGenerator != null) return myGenerator;
+		if (myGenerator != null){
+			addToTimeElementArray(timeElementSoftArray, myGenerator.id);
+			return myGenerator;
+		}
 		
 		addResourcesGenerator(pId, myResourcesData.generatorSoftArray, pMax);
-		return myResourcesData.generatorSoftArray[myResourcesData.generatorSoftArray.length - 1];
+		
+		var mySoft:GeneratorSoft = myResourcesData.generatorSoftArray[myResourcesData.generatorSoftArray.length - 1];
+		addToTimeElementArray(timeElementSoftArray, mySoft.id);
+		return mySoft;
 	}
 	
 	public static function addHardGenerator(pId:Int, pMax:Int):GeneratorHard {
@@ -210,7 +236,7 @@ class ResourcesManager
 
 	//test if a generator with this id exist and return the generator
 	private static function testHaveThisGenerator(pId:Int, resourcesArray:Array<Dynamic>):Dynamic{
-		var lLength:Int = resourcesArray.length - 1, i;
+		var lLength:Int = resourcesArray.length, i;
 		
 		for (i in 0...lLength) if (resourcesArray[i].id == pId) return resourcesArray[i];
 		
@@ -220,7 +246,7 @@ class ResourcesManager
 	public static function getGenerator(pTypeName:String, pId:Int):Dynamic {
 		
 		var resourcesArray:Array<Dynamic>;
-		
+
 		//@TODO mettre les bon nom (soft etc)
 		switch pTypeName {
 			case "Gold" :
@@ -228,9 +254,11 @@ class ResourcesManager
 				
 			default: resourcesArray = myResourcesData.generatorSoftArray;
 		}
-		var lLength:Int = resourcesArray.length - 1, i;
+		var lLength:Int = resourcesArray.length, i;
 		
-		for (i in 0...lLength) if (resourcesArray[i].id == pId) return resourcesArray[i];
+		for (i in 0...lLength)
+			if (resourcesArray[i].id == pId) return resourcesArray[i];
+		
 		
 		return null;
 	}
@@ -269,6 +297,13 @@ class ResourcesManager
 	//functions for count a resource if her value is lower her max
 	//{ ################# increaseResources #################
 
+	private function onEndReached (pEvent:Dynamic):Void {
+		trace("hello endReached in Vbuilding !");
+		trace("numberReached : " +  pEvent);
+		// pas besoin à mon avis de passer par Vbuilding pour impacter la currencie
+		// met direct un listener dans ton resourcemanager je pense.
+		// après faut qu'on ce concerte pr que tout fonctionne bien
+	}
 	
 	public static function increaseSoftCurrency(pSoftGenerator:GeneratorSoft):Void{
 		increaseResources(myResourcesData.generatorSoftArray, myResourcesData.generatorSoftArray.indexOf(pSoftGenerator));

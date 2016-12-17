@@ -25,7 +25,6 @@ class VBuilding extends VTile {
 		
 		//for the test (let this for kiki)
 		myGenerator = ResourcesManager.addSoftGenerator(tileDesc.id, 10);
-		
 		checkHasTimeElement();
 		addTimeElement();
 	}
