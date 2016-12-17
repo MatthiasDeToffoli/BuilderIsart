@@ -385,7 +385,8 @@ class RegionManager
 			if (arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] != null)
 			throw("there is already a building on this tile !");
 		
-		arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] =  cast(pElement,VBuilding);
+		arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] =  cast(pElement, VBuilding);
+		
 		pRegion.building = arrayBuilding;
 		}
 		
@@ -394,4 +395,30 @@ class RegionManager
 		
 		
 	}
+	
+	//Todo: not used but working
+	//For remove a specific VBuilding from the region manager
+	public static function removeToRegionBuilding (pElement:VBuilding):Void {
+		
+		worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY]  = 
+			removeToRegionTile(
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY], 
+							pElement,
+							null,
+							worldMap[pElement.tileDesc.regionX][pElement.tileDesc.regionY].building
+							);
+	}
+	
+	//Todo: idem 
+	private static function removeToRegionTile(pRegion:Region, pElement:VTile,arrayGround:Map<Int, Map<Int, VGround>>, ?arrayBuilding:Map<Int, Map<Int, VBuilding>>):Region{
+		arrayBuilding[pElement.tileDesc.mapX].remove(pElement.tileDesc.mapY);
+		pRegion.building = arrayBuilding;
+		
+		
+		return pRegion;
+		
+		
+	}
+	
+	
 }

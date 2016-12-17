@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -15,11 +16,12 @@ import pixi.core.display.Container;
 class Menu_BatimentConstruit extends HudContextual{
 
 	
-	private var btnLeft:SmartButton;
+	private var btnRemove:SmartButton;
 	private var btnCenter:SmartButton;
-	private var btnRight:SmartButton;
+	private var btnHide:SmartButton;
 	
-	private var VBuildingRef:VBuilding;
+	private var buildingRef:Building;
+	public static var vBuildingRef:VBuilding;
 	
 	public function new(pID:String=null) {
 		super(pID);
@@ -28,40 +30,52 @@ class Menu_BatimentConstruit extends HudContextual{
 	/**
 	 * @param	pVBuilding
 	 */
-	public function init (pVBuilding:VBuilding):Void {
-		modal = null; // todo : quel utilité ?
-		x = pVBuilding.graphic.x; // if origin is top middle
-		y = pVBuilding.graphic.y;
+	public function init (pBuilding:Building, pVBuilding:VBuilding):Void {
+		//modal = null; // todo : quel utilité ?
 		
-		VBuildingRef = pVBuilding;
+		x = pVBuilding.graphic.x / 2;
+		y = pVBuilding.graphic.y / 2;
+		
+		buildingRef = pBuilding;
+		vBuildingRef = pVBuilding;
 		
 		addListeners();
 	}
 	
 	private function addListeners ():Void {
-		btnLeft = cast(getChildByName("Button_MoveBuilding"), SmartButton);
+		btnRemove = cast(getChildByName("Button_MoveBuilding"), SmartButton);
 		btnCenter = cast(getChildByName("Button_EnterBuilding"), SmartButton);
-		btnRight = cast(getChildByName("Button_CancelSelection"), SmartButton);
-		btnLeft.on(MouseEventType.CLICK, onClickLeft);
+		btnHide = cast(getChildByName("Button_CancelSelection"), SmartButton);
+		btnRemove.on(MouseEventType.CLICK, onClickRemove);
 		btnCenter.on(MouseEventType.CLICK, onClickCenter);
-		btnRight.on(MouseEventType.CLICK, onClickRight);
+		btnHide.on(MouseEventType.CLICK, onClickHide);
 	}
 	
-	private function onClickLeft(): Void {
+	/*
+	 * Fonction pour déplacer le batiment
+	 */
+	private function onClickRemove(): Void {
 		trace("onClickLeft");
-		Building.onClickRemoveBuilding("Villa");
+		buildingRef.setModeMove(vBuildingRef);
+		destroy();
+		//RegionManager.removeToRegionBuilding(vBuildingRef); //Todo: not working here
 	}
 	
 	private function onClickCenter(): Void {
 		trace("onClickCenter");
 	}
 	
-	private function onClickRight(): Void {
+	/*
+	 * Fonction pour cacher le menu
+	 */
+	private function onClickHide(): Void {
 		trace("onClickRight");
-		//VBuildingRef.desactivate();
-		VBuildingRef.
+		destroy();
 	}
 	
+	public static function removeToRegionBuilding():Void{
+		RegionManager.removeToRegionBuilding(vBuildingRef);
+	}
 	
 	override public function destroy():Void {
 		super.destroy();

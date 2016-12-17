@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.HudContextual;
+import com.isartdigital.perle.ui.hud.Menu_BatimentConstruit;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -58,6 +59,9 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var footPrintAsset:String = "FootPrint";
 	private static var footPrintPoint:Point;
 	private static inline var ROTATION_IN_RAD = 0.785398;
+	
+	private var isMove:Bool = false;
+	private var vBuildingRef:VBuilding;
 	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
@@ -121,6 +125,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		lBuilding.init();
 		container.addChild(lBuilding);
 		lBuilding.start();
+		
 		return lBuilding;
 	}
 	
@@ -198,22 +203,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	
 	//{ ################# State_Phantom #################
-	/**
-	 * Create a Phantom Building to remove
-	 * @param	pAssetName
-	*/ // todo : le onClick doit se trouve ds l'hud et la function createPhantombuilding ici
-	public static function onClickRemoveBuilding(pAssetName:String):Void {
-		//if (currentSelectedBuilding == null)
-			createPhantom(pAssetName);
-		//else if (currentSelectedBuilding.assetName != pAssetName) {
-			//removePhantom();
-			//createPhantom(pAssetName);
-		//}
-		//else if (currentSelectedBuilding.assetName == pAssetName)
-			//removePhantom();
-	}
-	
-	
+		
 	/**
 	 * Create a Phantom Building
 	 * @param	pAssetName
@@ -293,6 +283,21 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		setState(DEFAULT_STATE); // <-- pas intuitif ! todo sûr que nécessaire ?
 	}
 	
+	/**
+	 * Remove the building to change it position
+	 * @param	pVBuilding the reference virtual initial tile, to destroy it from the region and save managers 
+	 */
+	public function setModeMove(pVBuilding:VBuilding):Void{
+		isMove = true;
+		addPhantomFilter();
+		vBuildingRef = pVBuilding;
+		if (currentSelectedBuilding != null) currentSelectedBuilding = null;
+		currentSelectedBuilding = this;
+		trace(currentSelectedBuilding);
+		doAction = doActionPhantom;
+		addBuildListeners();
+		setState(DEFAULT_STATE); //Todo: à enlever?
+	}
 	/**
 	 * Move the ground center of the building on the mouse pointer.
 	 */
@@ -456,6 +461,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * // pas de court-circuitage de VCell, pas non plus de création inversé (Building puis VCell)
 	 */
 	private function newBuild():Void {
+		trace("build");
 		// todo :
 		// Type.getClassName ? but path whit it ?
 		// what do you do if the path change between version and not in save ?
@@ -486,8 +492,17 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		vBuilding = null; // todo : inutile ? :o
 		
 		removePhantom();
+		
+		//Note: tentative de supression de la vbuilding de la mémoire, pas fonctionnel mais ne fait rien buguer
+		if (isMove) {
+			if (vBuildingRef != null) RegionManager.removeToRegionBuilding(vBuildingRef);
+			isMove = false;
+		}
+		
 		SaveManager.save();
 		sortBuildings();
+		
+		isMove = false;
 	}
 	
 	/**
@@ -532,7 +547,8 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private function onClick ():Void {
 		trace ("click sur batiment functionnel");
 		// note à Emeline : todo décommente la ligne ci-dessous et continue le travail
-		HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
+		//HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
+		HudContextual.createOnBuilding(this, cast(linkedVirtualCell, VBuilding));
 	}
 	
 	//} endRegion

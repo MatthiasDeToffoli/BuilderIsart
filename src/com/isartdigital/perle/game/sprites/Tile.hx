@@ -53,7 +53,9 @@ class Tile extends FlumpStateGraphic
 	public function recycle():Void {
 		linkedVirtualCell = null;
 		setModeVoid();
-		parent.removeChild(this);
+		
+		if (parent != null) parent.removeChild(this);
+		//parent.removeChild(this);
 		// => Type.getClassName(Type.getClass(this)) ? (if you want className)
 		PoolingManager.addToPool(this, assetName);
 	}

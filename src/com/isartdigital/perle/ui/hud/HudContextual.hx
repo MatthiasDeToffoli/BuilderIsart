@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -21,13 +22,13 @@ class HudContextual extends SmartComponent {
 		GameStage.getInstance().getGameContainer().addChild(container);
 	}
 	
-	public static function createOnBuilding (pVBuilding:VBuilding):Void {
+	public static function createOnBuilding (pBuilding:Building, pVBuilding:VBuilding):Void {
 		// créer l'hud par dessus le building
 		// pas besoin d'informer Vtile
 		if (currentBuildingHudC != null)
 			currentBuildingHudC.destroy();
 		currentBuildingHudC = new Menu_BatimentConstruit();
-		currentBuildingHudC.init(pVBuilding);
+		currentBuildingHudC.init(pBuilding, pVBuilding);
 		container.addChild(currentBuildingHudC);
 	}
 	
