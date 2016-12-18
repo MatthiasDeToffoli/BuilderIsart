@@ -17,7 +17,7 @@ class Menu_BatimentConstruit extends HudContextual{
 
 	
 	private var btnRemove:SmartButton;
-	private var btnCenter:SmartButton;
+	private var btnDescription:SmartButton;
 	private var btnHide:SmartButton;
 	
 	private var buildingRef:Building;
@@ -31,7 +31,6 @@ class Menu_BatimentConstruit extends HudContextual{
 	 * @param	pVBuilding
 	 */
 	public function init (pBuilding:Building, pVBuilding:VBuilding):Void {
-		//modal = null; // todo : quel utilité ?
 		
 		x = pVBuilding.graphic.x / 2;
 		y = pVBuilding.graphic.y / 2;
@@ -44,24 +43,25 @@ class Menu_BatimentConstruit extends HudContextual{
 	
 	private function addListeners ():Void {
 		btnRemove = cast(getChildByName("Button_MoveBuilding"), SmartButton);
-		btnCenter = cast(getChildByName("Button_EnterBuilding"), SmartButton);
+		btnDescription = cast(getChildByName("Button_EnterBuilding"), SmartButton);
 		btnHide = cast(getChildByName("Button_CancelSelection"), SmartButton);
 		btnRemove.on(MouseEventType.CLICK, onClickRemove);
-		btnCenter.on(MouseEventType.CLICK, onClickCenter);
+		btnDescription.on(MouseEventType.CLICK, onClickDescription);
 		btnHide.on(MouseEventType.CLICK, onClickHide);
 	}
 	
 	/*
-	 * Fonction pour déplacer le batiment
+	 * Function to remove the building
 	 */
 	private function onClickRemove(): Void {
-		trace("onClickLeft");
 		buildingRef.setModeMove(vBuildingRef);
 		destroy();
-		//RegionManager.removeToRegionBuilding(vBuildingRef); //Todo: not working here
+		//RegionManager.removeToRegionBuilding(vBuildingRef); 
+		//Todo: not working here, I wanted to remove the building's presence temporarily
+		//From the region manager to avoid the collision between the moving building and it ex-position
 	}
 	
-	private function onClickCenter(): Void {
+	private function onClickDescription(): Void {
 		trace("onClickCenter");
 	}
 	
@@ -69,7 +69,6 @@ class Menu_BatimentConstruit extends HudContextual{
 	 * Fonction pour cacher le menu
 	 */
 	private function onClickHide(): Void {
-		trace("onClickRight");
 		destroy();
 	}
 	

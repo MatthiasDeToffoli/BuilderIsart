@@ -62,6 +62,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static inline var ROTATION_IN_RAD = 0.785398;
 	
 	private var isMove:Bool = false;
+	private var isFirstClickAfterMoved = false; //Flag to avoid the apparence of the building's hud when it's put after been removed
 	private var vBuildingRef:VBuilding;
 	
 	public var goldBtn:ButtonProduction;
@@ -318,11 +319,16 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	public function setModeMove(pVBuilding:VBuilding):Void{
 		isMove = true;
+		isFirstClickAfterMoved = true;
+		
 		addPhantomFilter();
 		vBuildingRef = pVBuilding;
+		
 		if (currentSelectedBuilding != null) currentSelectedBuilding = null;
 		currentSelectedBuilding = this;
-		trace(currentSelectedBuilding);
+		
+		createShadow();
+		
 		doAction = doActionPhantom;
 		addBuildListeners();
 		setState(DEFAULT_STATE); //Todo: à enlever?
@@ -490,7 +496,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * // pas de court-circuitage de VCell, pas non plus de création inversé (Building puis VCell)
 	 */
 	private function newBuild():Void {
-		trace("build");
 		// todo :
 		// Type.getClassName ? but path whit it ?
 		// what do you do if the path change between version and not in save ?
@@ -574,10 +579,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	}
 	
 	private function onClick ():Void {
-		trace ("click sur batiment functionnel");
 		// note à Emeline : todo décommente la ligne ci-dessous et continue le travail
 		//HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
-		HudContextual.createOnBuilding(this, cast(linkedVirtualCell, VBuilding));
+		if (isFirstClickAfterMoved) isFirstClickAfterMoved = false; //Avoid the poping of the building's hud when it's clicked for the first time
+		else HudContextual.createOnBuilding(this, cast(linkedVirtualCell, VBuilding));
 	}
 	
 	//} endRegion
