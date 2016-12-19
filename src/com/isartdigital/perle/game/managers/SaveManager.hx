@@ -11,6 +11,8 @@ import js.Browser;
 //@:optional vous connaisiez ?
 
 enum RegionType {hell; eden; styx; }
+enum GeneratorType{soft; hard; goodXp; badXp; soul; intern; }
+enum Alignment{neutral; hell; paradise; }
 
 
 typedef TileDescription = {
@@ -44,6 +46,20 @@ typedef TimeQuestDescription = {
 	var end:Float;
 }
 
+typedef GeneratorDescription = {
+	var type:GeneratorType;
+	var quantity:Float;
+	var max:Int;
+	var id:Int;
+	@:optional var alignment:Alignment;
+	
+}
+
+typedef ResourcesGeneratorDescription = {
+	var arrayGenerator:Array<GeneratorDescription>;
+	var totals:Array<Float>;
+	var level:Int;
+}
 typedef ResourceDescription = {
 	var refTile:Int;
 }
@@ -67,7 +83,7 @@ typedef Save = {
 	var timesResource:Array<TimeDescription>;
 	var timesQuest:Array<TimeQuestDescription>;
 	var lastKnowTime:Float;
-	var resourcesData:ResourcesData;
+	var resourcesData:ResourcesGeneratorDescription;
 	// add what you want to save.
 }
 
@@ -119,12 +135,49 @@ class SaveManager {
 			region: regionSave,
 			ground: groundSave,
 			building: buildingSave,
-			resourcesData: ResourcesManager.getResourcesData(),
+			resourcesData: saveResources(),
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
 		};
 		
 		setLocalStorage(currentSave);
+	}
+	
+	private static function saveResources(): ResourcesGeneratorDescription{
+		var data:ResourcesData = ResourcesManager.getResourcesData();
+		var desc:ResourcesGeneratorDescription = {
+			arrayGenerator:new Array<GeneratorDescription>(),
+			totals:new Array<Float>(),
+			level:data.level
+		};
+		
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.soft);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.hard);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.goodXp);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.badXp);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.soul);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.intern);
+		
+		//this order is verry importer if you find more clean tell me please ^^'
+		desc.totals.push(data.totalsMap[GeneratorType.soft]);
+		desc.totals.push(data.totalsMap[GeneratorType.hard]);
+		desc.totals.push(data.totalsMap[GeneratorType.goodXp]);
+		desc.totals.push(data.totalsMap[GeneratorType.badXp]);
+		desc.totals.push(data.totalsMap[GeneratorType.soul]);
+		desc.totals.push(data.totalsMap[GeneratorType.intern]);
+		
+		return desc;
+		
+		
+		
+	}
+	
+	private static function addGenerator(pArray:Array<GeneratorDescription>, pData:ResourcesData, pType:GeneratorType):Array<GeneratorDescription>{
+		var i:Int;
+		
+		for (i in 0...pData.generatorsMap[pType].length) pArray.push(pData.generatorsMap[pType][i].desc);
+		
+		return pArray;
 	}
 	
 	// todo : réfléchir au perte de perf à utilsier le localstorage si souvent, négligeable ?

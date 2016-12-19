@@ -1,9 +1,9 @@
 package com.isartdigital.perle.game.managers;
 
-import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorBadXp;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import haxe.Timer;
 import eventemitter3.EventEmitter;
 
@@ -18,7 +18,7 @@ import eventemitter3.EventEmitter;
  */
 typedef TimeElementResource = {
 	var desc:TimeDescription;
-	var generator:Generator;
+	@:optional var generator:Generator;
 	// lien direct vers élément, variable en référence, ou Event ?
 }
 
@@ -73,8 +73,7 @@ class TimeManager {
 		var lLength:Int = pSave.timesResource.length;
 		for (i in 0...lLength) {
 			listResource.push({
-				desc: pSave.timesResource[i],
-				generator: ResourcesManager.getGenerator(pSave.timesResource[i].refTile)
+				desc: pSave.timesResource[i]
 			});
 			
 		}
@@ -96,10 +95,11 @@ class TimeManager {
 	 * @param	pEnd
 	 * @return A new TimeElement
 	 */
-	public static function createTimeResource (pId:Int, pEnd:Float, pGenerator:Generator):TimeElementResource {
+	public static function createTimeResource (pEnd:Float, pGenerator:Generator):TimeElementResource {
+
 		var lTimeElement:TimeElementResource = {
 			desc: {
-				refTile:pId,
+				refTile:pGenerator.desc.id,
 				progress:0,
 				end:pEnd
 			},
@@ -107,6 +107,32 @@ class TimeManager {
 		};
 		listResource.push(lTimeElement);
 		return lTimeElement;
+	}
+	
+	/*
+	 * get the generator when we load 
+	 */
+	
+	public static function addGenerator(pGenerator:Generator):Void{
+		var lTimeElement:TimeElementResource;
+		
+		for (lTimeElement in listResource)
+			if (lTimeElement.desc.refTile == pGenerator.desc.id){
+				
+				lTimeElement.generator = pGenerator;
+				return;
+			}
+	}
+	
+	public static function removeTimeResource(pId:Int):Void{
+		var lTimeElement:TimeElementResource;
+		
+		for (lTimeElement in listResource)
+			if (lTimeElement.desc.refTile == pId){
+				
+				listResource.splice(listResource.indexOf(lTimeElement), 1);
+				return;
+			}
 	}
 	
 	// todo : type quest instead of dynamic
@@ -185,7 +211,7 @@ class TimeManager {
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
-		
+
 		for (i in 0...lLength) {
 			updateResource(listResource[i], lElapsedTime);
 		}
@@ -211,8 +237,7 @@ class TimeManager {
 		lNumberTick = cast((lFullTime - (lFullTime % pElement.desc.end)) / pElement.desc.end, Int);
 		// update the progress bar.
 		pElement.desc.progress = lFullTime % pElement.desc.end;
-		
-		
+
 		// update resources !
 		if (lNumberTick > 0)
 			eTimeGenerator.emit(

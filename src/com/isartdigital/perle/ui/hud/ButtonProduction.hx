@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.ui.Button;
 import pixi.interaction.EventTarget;
@@ -15,9 +17,9 @@ import pixi.interaction.EventTarget;
   */
 class ButtonProduction extends Button
 {
-	private var myGenerator:Dynamic;
-	private var resourcesName:String;
+	private var myGeneratorDesc:GeneratorDescription;
 	private var id:Int;
+	private var resourceType:GeneratorType;
 
 	public function new(pAssetName:String) 
 	{
@@ -27,7 +29,6 @@ class ButtonProduction extends Button
 		if (pAssetName != null)
 			assetName = pAssetName;	
 		super();
-		resourcesName = assetName.split("Button")[1];
 		
 		
 	}
@@ -35,13 +36,13 @@ class ButtonProduction extends Button
 	public function setId(pId:Int) {
 		id = pId;	
 	}
-	public function setMyGenerator():Void {
-		myGenerator = ResourcesManager.getGenerator(resourcesName, id);
+	public function setMyGenerator(pType:GeneratorType):Void {
+		myGeneratorDesc = ResourcesManager.getGenerator(id,pType);
 	}
 	
 	override function _click(pEvent:EventTarget):Void 
 	{
-		ResourcesManager.choosResourcesToTake(resourcesName, myGenerator);
+		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
 		super._click(pEvent);
 
 	}
