@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 
+import com.isartdigital.perle.game.managers.ResourcesManager.GeneratorBadXp;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
@@ -17,7 +18,7 @@ import eventemitter3.EventEmitter;
  */
 typedef TimeElementResource = {
 	var desc:TimeDescription;
-	var eEndReached:EventEmitter;
+	var generator:Generator;
 	// lien direct vers élément, variable en référence, ou Event ?
 }
 
@@ -27,19 +28,19 @@ typedef TimeElementResource = {
  */
 typedef TimeElementQuest = {
 	var desc:TimeQuestDescription;
-	var event:EventEmitter;
+	var quest:Dynamic; // todo type Quest ?
 }
 
 
 /**
  * Control every TimeBased Mechanic (working constantly like a server)
- * @author ambroise
+ * @author ambroise rabier
  */
 class TimeManager {
 	
-	public static inline var EVENT_RESOURCE_END_REACHED:String = "TimeManager_Resource_End_Reached";
-	public static inline var EVENT_QUEST_STEP_REACHED:String = "TimeManager_Quest_Step_Reached";
-	public static inline var EVENT_QUEST_END_REACHED:String = "TimeManager_Resource_End_Reached";
+	public static inline var EVENT_RESOURCE_TICK:String = "TimeManager_Resource_Tick";
+	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
+	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
@@ -47,6 +48,8 @@ class TimeManager {
 	private static inline var TIME_LOOP_DELAY:Int = 10000;
 	
 	
+	public static var eTimeGenerator:EventEmitter;
+	public static var eTimeQuest:EventEmitter;
 	
 	public static var gameStartTime(default, null):Float;
 	public static var lastKnowTime(default, null):Float;
@@ -55,6 +58,8 @@ class TimeManager {
 	public static var listQuest(default, null):Array<TimeElementQuest>;
 	
 	public static function initClass ():Void {
+		eTimeGenerator = new EventEmitter();
+		eTimeQuest = new EventEmitter();
 		listResource = new Array<TimeElementResource>();
 		listQuest = new Array<TimeElementQuest>();
 	}
@@ -69,7 +74,7 @@ class TimeManager {
 		for (i in 0...lLength) {
 			listResource.push({
 				desc: pSave.timesResource[i],
-				eEndReached: new EventEmitter()
+				generator: ResourcesManager.getGenerator(pSave.timesResource[i].refTile)
 			});
 			
 		}
@@ -78,7 +83,7 @@ class TimeManager {
 		for (i in 0...lLength) {
 			listQuest.push({
 				desc: pSave.timesQuest[i],
-				event: new EventEmitter()
+				quest:  {lol:5} // todo : ResourceManager.getQuest ? ou QuestManager.getQuest ? considéré comme ressource ou ?
 			});
 		}
 		
@@ -91,20 +96,21 @@ class TimeManager {
 	 * @param	pEnd
 	 * @return A new TimeElement
 	 */
-	public static function createResource (pId:Int, pEnd:Float):TimeElementResource {
+	public static function createTimeResource (pId:Int, pEnd:Float, pGenerator:Generator):TimeElementResource {
 		var lTimeElement:TimeElementResource = {
 			desc: {
 				refTile:pId,
 				progress:0,
 				end:pEnd
 			},
-			eEndReached: new EventEmitter(),
+			generator:pGenerator
 		};
 		listResource.push(lTimeElement);
 		return lTimeElement;
 	}
 	
-	public static function createQuest (pId:Int, pSteps:Array<Float>, pEnd:Float):TimeElementQuest {
+	// todo : type quest instead of dynamic
+	public static function createTimeQuest (pId:Int, pSteps:Array<Float>, pEnd:Float, pQuest:Dynamic):TimeElementQuest {
 		var lTimeElement:TimeElementQuest = {
 			desc: {
 				refIntern:pId,
@@ -113,7 +119,7 @@ class TimeManager {
 				stepIndex:0,
 				end:pEnd
 			},
-			event: new EventEmitter()
+			quest: pQuest
 		};
 		listQuest.push(lTimeElement);
 		return lTimeElement;
@@ -149,12 +155,12 @@ class TimeManager {
 		// specially if you think about connexion problem.
 		// todo, i think that's important !
 		//timeLoop();  // non car il veut save du coup, mais save pas encore créer si whitoutSave
-		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY);
+		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY); // todo : variable locale ? sûr ?
 		lTime.run = timeLoop;
 	}
 	
 	/**
-	 * When Quest is completed, go to nextStep on the TimeElement
+	 * When Quest is completed, go to nextStep on the TimeElement, called from outside
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeElementQuest):Void {
@@ -162,7 +168,7 @@ class TimeManager {
 			pElement.desc.stepIndex++;
 			
 			if (pElement.desc.stepIndex == pElement.desc.steps.length - 1)
-				pElement.event.emit(EVENT_QUEST_END_REACHED);
+				eTimeQuest.emit(EVENT_QUEST_END);
 		}
 		else
 			trace("nextStepQuest not ready yet !");
@@ -198,18 +204,22 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 */
 	private static function updateResource (pElement:TimeElementResource, pElapsedTime:Float):Void {
-		var lNumberReached:Int = 0;
+		var lNumberTick:Int = 0;
 		var lFullTime:Float = pElapsedTime + pElement.desc.progress;
 		
 		// get the number of time you find endTime inside
-		lNumberReached = cast((lFullTime - (lFullTime % pElement.desc.end)) / pElement.desc.end, Int);
+		lNumberTick = cast((lFullTime - (lFullTime % pElement.desc.end)) / pElement.desc.end, Int);
 		// update the progress bar.
 		pElement.desc.progress = lFullTime % pElement.desc.end;
 		
 		
 		// update resources !
-		if (lNumberReached > 0)
-			pElement.eEndReached.emit(EVENT_RESOURCE_END_REACHED, lNumberReached);
+		if (lNumberTick > 0)
+			eTimeGenerator.emit(
+				EVENT_RESOURCE_TICK,
+				pElement.generator,
+				lNumberTick
+			);
 	}
 	
 	/**
@@ -230,7 +240,7 @@ class TimeManager {
 			pElement.desc.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
-			pElement.event.emit(EVENT_QUEST_STEP_REACHED); 
+			eTimeQuest.emit(EVENT_QUEST_STEP, pElement.quest); 
 		}
 	}
 	
