@@ -1,9 +1,11 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
+import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VGround;
@@ -12,6 +14,7 @@ import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 import pixi.flump.Movie;
 
 typedef Region = {
@@ -155,15 +158,15 @@ class RegionManager
 		
 		for (i in 0...lLength) {
 			
-			var tempFirstTilePos:Index = regionPosToFirstTile( {
+			/*var tempFirstTilePos:Index = regionPosToFirstTile( {
 				x:pSave.region[i].x,
 				y:pSave.region[i].y
-			});
+			});*/ // todo @Matthias: oublie ?
 			
 			addButton(
 				new Point(
-					tempFirstTilePos.x,
-					tempFirstTilePos.y
+					pSave.region[i].firstTilePos.x,
+					pSave.region[i].firstTilePos.y
 				),
 				new Point(
 					pSave.region[i].x,
@@ -283,39 +286,73 @@ class RegionManager
 	 * @param	pRegionPos 
 	 * @return  pFirstTilePos (TilePosition like if they were only one big region)
 	 */
-	public static function regionPosToFirstTile (pRegionPos:Index):Index {
-		// todo vérifier qu'il prends bien en compte correctement le décalage !
+	/*public static function regionPosToFirstTile (pRegionPos:Index):Index {
+		// Ground.COL_X_STYX_LENGTH - Ground.OFFSET_REGION because region is glued to the styx.
+		var heavenOffSet:Int = pRegionPos.x < 0 ? Ground.COL_X_STYX_LENGTH - Ground.OFFSET_REGION : 0;
+		
 		return {
-			x: pRegionPos.x * Ground.COL_X_LENGTH + pRegionPos.x * Ground.OFFSET_REGION,
+			x: pRegionPos.x * Ground.COL_X_LENGTH + pRegionPos.x * Ground.OFFSET_REGION - heavenOffSet,
 			y: pRegionPos.y * Ground.ROW_Y_LENGTH + pRegionPos.y * Ground.OFFSET_REGION
 		};
-	}
+		
+		//return worldMap[pRegionPos.x][pRegionPos.y].desc.firstTilePos; x: -12 pour heaven wtf ?
+	}*/
 	
-	/**
-	 * Do a Math floor custom and return the region of the Tile
-	 * @param	pTilePos (TilePosition like if they were only one big region)
-	 * @return  pRegionPos
-	 */ 
-	public static function tilePosToRegion (pTilePos:Index):Index { 
-		var firstTilePos:Index = getRegionFirstTile(pTilePos);
-		// TODO : prendre en compte décalage
-		return {
-			x: cast(firstTilePos.x / Ground.COL_X_LENGTH, Int),
-			y: cast(firstTilePos.y / Ground.ROW_Y_LENGTH, Int)
-		};
-	}
 	
 	/**
 	 * 
 	 * @param	pTilePos (TilePosition like if they were only one big region)
-	 * @return first Tile of the Region
-	 */
-	public static function getRegionFirstTile (pTilePos:Index):Index {
+	 * @return  pRegionPos
+	 */ 
+	public static function tilePosToRegion (pTilePos:Index):Index { 
+		/*var firstTilePos:Index = getRegionFirstTile(pTilePos);
 		// TODO : prendre en compte décalage
 		return {
-			x: ClippingManager.customFloor(pTilePos.x, Ground.COL_X_LENGTH),
-			y: ClippingManager.customFloor(pTilePos.y, Ground.ROW_Y_LENGTH)
-		};
+			x: cast(firstTilePos.x / Ground.COL_X_LENGTH, Int),
+			y: cast(firstTilePos.y / Ground.ROW_Y_LENGTH, Int)
+		};*/
+		// todo: autre typedef ss footprint
+		// todo : factoriser avec une map Region.REGION_TYPE_TO_SIZE
+		var lRegionSize:SizeOnMap = { width:0, height:0, footprint:0 }; 
+		var lRegionRect:Rectangle;
+		
+		
+		// fait une collision point - rectangle, todo séparer la méthode de collision
+		for (x in worldMap.keys()) {
+			for (y in worldMap[x].keys()) {
+				
+				// pourrait être facotriser par une map si plus de taille de région différente. (comme size de building)
+				lRegionSize.width = worldMap[x][y].desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
+				lRegionSize.height = worldMap[x][y].desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
+				
+				trace(lRegionSize);
+				
+				lRegionRect = new Rectangle(
+					worldMap[x][y].desc.firstTilePos.x,
+					worldMap[x][y].desc.firstTilePos.y,
+					lRegionSize.width,
+					lRegionSize.height
+				);
+				
+				if (isInsideRegion(lRegionRect, pTilePos)) {
+					return {
+						x:x,
+						y:y
+					}
+				}
+				
+			}
+		}
+		
+		return null;
+	}
+	
+	// todo : description de méthode
+	private static function isInsideRegion (pRegionRect:Rectangle, pIndex:Index):Bool {
+		return (pIndex.x >= pRegionRect.x &&
+				pIndex.x  < pRegionRect.x + pRegionRect.width &&
+				pIndex.y >= pRegionRect.y &&
+				pIndex.y  < pRegionRect.y + pRegionRect.height);
 	}
 	
 	/**

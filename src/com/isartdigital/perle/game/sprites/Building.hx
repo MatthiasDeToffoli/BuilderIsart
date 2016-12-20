@@ -21,12 +21,19 @@ import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
 
 typedef SizeOnMap = {
 	var width:Int;
 	var height:Int;
 	var footprint:Float;
+}
+
+typedef RegionMap = {
+	var regionFirstTile:Index;
+	var region:Index;
+	var map:Index;
 }
 
 /**
@@ -41,17 +48,12 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		"Trees" => {width:1, height:1, footprint : 0},
 		"Villa" => {width:3, height:3, footprint : 1},
 	];
+	
 	private static inline var FILTER_OPACITY:Float = 0.5;
+	private static inline var ROTATION_IN_RAD = 0.785398;
 	
 	public static var list:Array<Building>;
 	
-	public var colMin:Int;
-	public var colMax:Int;
-	public var rowMin:Int;
-	public var rowMax:Int;
-	public var behind:Array<IZSortable>;
-	public var inFront:Array<IZSortable>;
-
 	private static var currentSelectedBuilding:Building;
 	private static var container:Container;
 	private static var colorMatrix:ColorMatrixFilter;
@@ -59,7 +61,16 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var footPrint:FootPrint;
 	private static var footPrintAsset:String = "FootPrint";
 	private static var footPrintPoint:Point;
-	private static inline var ROTATION_IN_RAD = 0.785398;
+	
+	
+	public var colMin:Int;
+	public var colMax:Int;
+	public var rowMin:Int;
+	public var rowMax:Int;
+	public var behind:Array<IZSortable>;
+	public var inFront:Array<IZSortable>;
+	
+	private var regionMap:RegionMap;
 	
 	private var isMove:Bool = false;
 	private var isFirstClickAfterMoved = false; //Flag to avoid the apparence of the building's hud when it's put after been removed
@@ -110,10 +121,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	public static function createBuilding(pTileDesc:TileDescription):Building {
 		var lBuilding:Building = PoolingManager.getFromPool(pTileDesc.assetName);
-		var regionFirstTilePos:Index = RegionManager.regionPosToFirstTile({ // todo: factoriser
-			x:pTileDesc.regionX,
-			y:pTileDesc.regionY
-		});
+		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
 			pTileDesc.mapX + regionFirstTilePos.x, 
@@ -129,12 +137,8 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		list.push(lBuilding);
 		lBuilding.init();
 		container.addChild(lBuilding);
-		lBuilding.start();
-
-		/*var lGoldBtn:ButtonProduction = new ButtonProduction("ButtonGold");
-		lGoldBtn.x = lBuilding.x-1;
-		lGoldBtn.y = lBuilding.y-1;
-		GameStage.getInstance().getGameContainer().addChild(lGoldBtn);*/
+		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
+		
 		lBuilding.createGoldBtn(lBuilding, pTileDesc, regionFirstTilePos);
 		
 		return lBuilding;
@@ -400,41 +404,59 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	private function canBuildHere():Bool {
 		setMapColRow(getRoundMapPos(position), ASSETNAME_TO_MAPSIZE[assetName]);
+		regionMap = getRegionMap();
+		trace(regionMap);
+		// between region or region don't exist
+		if (regionMap == null)
+			return false;
+		
 		return buildingOnGround() && buildingCollideOther();
 	}
 	
+	
+	private function getRegionMap ():RegionMap {
+		var lRegion:Index = RegionManager.tilePosToRegion({
+			x:colMin,
+			y:rowMin
+		});
+		var lRegionFirstTile:Index;
+		
+		// between region or region don't exist
+		if (lRegion == null)
+			return null;
+		
+		lRegionFirstTile = RegionManager.worldMap[lRegion.x][lRegion.y].desc.firstTilePos;
+		
+		return {
+			regionFirstTile: lRegionFirstTile,
+			region : lRegion,
+			map : {
+				x: colMin - lRegionFirstTile.x,
+				y: rowMin - lRegionFirstTile.y
+			}
+		}
+	}
+	
 	/**
-	 * Verify that the building in fully on Ground before building it.
+	 * Verify that the building in fully in the region before building it. Check only 2/4 sides.
 	 * @return
 	 */
 	private function buildingOnGround():Bool {
-		//trace(untyped rowMin); // -1
-		//trace(rowMin < 0); // false
-		// thx Haxe !
-		// (UInt suck)
 		
-		// todo : répétitif avec newBuild() => regionPos et regionFirstTile
-		var regionPos:Index = RegionManager.tilePosToRegion({
-			x:colMin,
-			y:rowMin
-		});
+		var lRegionSize:SizeOnMap = { width:0, height:0, footprint:0 }; // todo: autre typedef ss footprint
+		// todo : factoriser avec une map Region.REGION_TYPE_TO_SIZE
+		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
+		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 		
-		var regionFirstTile:Index = RegionManager.getRegionFirstTile({
-			x:colMin,
-			y:rowMin
-		});
+		return (regionMap.map.x + ASSETNAME_TO_MAPSIZE[assetName].width <= lRegionSize.width &&
+				regionMap.map.y + ASSETNAME_TO_MAPSIZE[assetName].height <= lRegionSize.height);
 		
-		// region exist
-		if (RegionManager.worldMap[regionPos.x] == null ||
-			RegionManager.worldMap[regionPos.x][regionPos.y] == null)
-			return false;
-		
-		// todo : factoriser
-		if (colMin < regionFirstTile.x || rowMin < regionFirstTile.y ||
+		// todo : factoriser (return le if inversé)
+		/*if (colMin < regionFirstTile.x || rowMin < regionFirstTile.y ||
 			colMax >= regionFirstTile.x + Ground.COL_X_LENGTH ||
 			rowMax >= regionFirstTile.y + Ground.ROW_Y_LENGTH)
 			return false;
-		return true;
+		return true;*/
 	}
 	
 	/**
@@ -443,15 +465,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * @return
 	 */
 	private function buildingCollideOther():Bool {
-		
-		var regionPos:Index = RegionManager.tilePosToRegion({
-			x:colMin,
-			y:rowMin
-		});
 
-		for (x in RegionManager.worldMap[regionPos.x][regionPos.y].building.keys()) {
-			for (y in RegionManager.worldMap[regionPos.x][regionPos.y].building[x].keys()) {
-				if (collisionRectDesc(RegionManager.worldMap[regionPos.x][regionPos.y].building[x][y].tileDesc))
+		for (x in RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building.keys()) {
+			for (y in RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building[x].keys()) {
+				if (collisionRectDesc(RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building[x][y].tileDesc))
 					return false;
 			}
 		}
@@ -460,35 +477,25 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	}
 	
 	/**
-	 * UNUSED
-	 * return true if collision between instanciated buildings.
-	 * use colMin, colMax, rowMin, rowMax
-	 * @param	rect2:Building
-	 */
-	private function collisionRect(rect2:Building):Bool {
-		return (colMin < rect2.colMax+1 &&
-				colMax+1 > rect2.colMin &&
-				rowMin < rect2.rowMax+1 &&
-				rowMax+1 > rect2.rowMin);
-	};
-	
-	/**
 	 * Test collision between instance and a TileDescription from Save
 	 * Permit that uninstanciated (unshow) building still make collision !
 	 */
-	private function collisionRectDesc(pVirtual:TileDescription):Bool
-	{
-		var lPoint:Float;
-		if (ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint == 0 || ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
+	private function collisionRectDesc(pVirtual:TileDescription):Bool {
+		var lPoint:Float; // todo @Alexis: lPoint correpond à quoi ?
+		
+		if (ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint == 0 ||
+			ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
 			lPoint = 0;
 		else
 			lPoint = ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint;
 
-		return (colMin < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + lPoint &&
-		colMax+1 > pVirtual.mapX -lPoint &&
-		rowMin < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height +lPoint &&
-		rowMax+1 > pVirtual.mapY -lPoint );
+		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
+		return (regionMap.map.x < pVirtual.mapX + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + lPoint &&
+				regionMap.map.x + ASSETNAME_TO_MAPSIZE[assetName].width > pVirtual.mapX - lPoint &&
+				regionMap.map.y < pVirtual.mapY + ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height + lPoint &&
+				regionMap.map.y + ASSETNAME_TO_MAPSIZE[assetName].height > pVirtual.mapY - lPoint );
 	}
+	
 	
 	/**
 	 * User has added a new Building,
@@ -501,25 +508,14 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		// what do you do if the path change between version and not in save ?
 		
 		
-		// todo : répétitif avec buildingOnGround() => regionPos et regionFirstTile
-		var regionPos:Index = RegionManager.tilePosToRegion({
-			x:colMin,
-			y:rowMin
-		});
-		
-		var regionFirstTile:Index = RegionManager.getRegionFirstTile({
-			x:colMin,
-			y:rowMin
-		});
-		
 		var tileDesc:TileDescription = {
 			className:"Building", // todo : à revoir
 			assetName:assetName,
 			id:IdManager.newId(),
-			regionX:regionPos.x,
-			regionY:regionPos.y,
-			mapX:colMin - regionFirstTile.x,
-			mapY:rowMin - regionFirstTile.y
+			regionX:regionMap.region.x,
+			regionY:regionMap.region.y,
+			mapX:regionMap.map.x,
+			mapY:regionMap.map.y
 		};
 		var vBuilding:VBuilding = new VBuilding(tileDesc);
 		vBuilding.activate(); // todo : petite opti en mettant le building en param de activate

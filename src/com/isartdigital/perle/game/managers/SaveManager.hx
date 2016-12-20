@@ -236,7 +236,7 @@ class SaveManager {
 	 * @return
 	 */
 	private static function load():Save {
-		//destroy(); // here if save reset needed
+		destroy(); // here if save reset needed
 		if (currentSave == null) {
 			currentSave = Json.parse(
 				Browser.getLocalStorage().getItem(SAVE_NAME)
