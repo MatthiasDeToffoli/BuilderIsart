@@ -72,6 +72,12 @@ class ResourcesManager
 		
 		pMapG[GeneratorType.intern] = new Array<Generator>();
 		pMapT[GeneratorType.intern] = 0;
+		
+		pMapG[GeneratorType.buildResourceFromHell] = new Array<Generator>();
+		pMapT[GeneratorType.buildResourceFromHell] = 0;
+		
+		pMapG[GeneratorType.buildResourceFromParadise] = new Array<Generator>();
+		pMapT[GeneratorType.buildResourceFromParadise] = 0;
 
 		myResourcesData = {
 			generatorsMap: pMapG,
@@ -104,6 +110,8 @@ class ResourcesManager
 		myResourcesData.totalsMap[GeneratorType.badXp] = resourcesDescriptionLoad.totals[3];
 		myResourcesData.totalsMap[GeneratorType.soul] = resourcesDescriptionLoad.totals[4];
 		myResourcesData.totalsMap[GeneratorType.intern] = resourcesDescriptionLoad.totals[5];
+		myResourcesData.totalsMap[GeneratorType.buildResourceFromHell] = resourcesDescriptionLoad.totals[6];
+		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = resourcesDescriptionLoad.totals[7];
 		
 
 	}
@@ -128,6 +136,12 @@ class ResourcesManager
 				
 			case "intern":
 				return GeneratorType.intern;
+				
+			case "buildResourceFromHell":
+			return GeneratorType.buildResourceFromHell;
+			
+			case "buildResourceFromParadise":
+			return GeneratorType.buildResourceFromParadise;
 				
 			default:
 				return null;

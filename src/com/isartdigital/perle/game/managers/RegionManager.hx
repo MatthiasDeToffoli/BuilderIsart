@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VGround;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.game.virtual.VTribunal;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
@@ -146,7 +147,9 @@ class RegionManager
 		});
 		
 		createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
-		createRegion(RegionType.eden, new Point(-Ground.COL_X_LENGTH, 0), {x:-1, y:0});
+		createRegion(RegionType.eden, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
+		
+		VTribunal.getInstance();
 	}
 
 	public static function buildFromSave(pSave:Save):Void {
@@ -325,7 +328,7 @@ class RegionManager
 				lRegionSize.width = worldMap[x][y].desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
 				lRegionSize.height = worldMap[x][y].desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 				
-				trace(lRegionSize);
+				//trace(lRegionSize);
 				
 				lRegionRect = new Rectangle(
 					worldMap[x][y].desc.firstTilePos.x,

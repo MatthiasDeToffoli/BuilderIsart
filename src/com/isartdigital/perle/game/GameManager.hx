@@ -45,7 +45,6 @@ class GameManager {
 		Tile.initClass();
 		RegionManager.init();
 		SaveManager.createFromSave();
-		CameraManager.centerCamera();
 		ClippingManager.update();
 		HudContextual.initClass();
 		

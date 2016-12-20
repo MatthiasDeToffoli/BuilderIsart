@@ -123,7 +123,8 @@ class VTile extends Virtual{
 			
 		lLength = pSave.building.length;
 		for (i in 0...lLength)
-			new VBuilding(pSave.building[i]);
+			if (pSave.building[i].isTribunal) VTribunal.getInstance(pSave.building[i]);
+			else new VBuilding(pSave.building[i]);
 	}
 
 		

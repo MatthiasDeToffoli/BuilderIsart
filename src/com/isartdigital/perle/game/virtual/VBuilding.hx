@@ -17,13 +17,12 @@ class VBuilding extends VTile {
 	
 	//if we do a legacy of VBuilding, we have to give the right type
 	private var myGenerator:Generator;
+	private var myGeneratorType:GeneratorType = GeneratorType.soft;
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		RegionManager.addToRegionBuilding(this);
 		
-		//for the test (let this for kiki)
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id,GeneratorType.soft, 10);
 	}
 	
 	override public function activate():Void {
@@ -32,7 +31,7 @@ class VBuilding extends VTile {
 		graphic = cast(myBuilding, FlumpStateGraphic);
 		linkVirtual();
 		
-		myBuilding.goldBtn.setMyGenerator(GeneratorType.soft);
+		if(myGenerator != null) myBuilding.goldBtn.setMyGenerator(myGeneratorType);
 	}
 	
 	public function getGenerator():Generator {

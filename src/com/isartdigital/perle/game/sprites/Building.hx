@@ -405,7 +405,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private function canBuildHere():Bool {
 		setMapColRow(getRoundMapPos(position), ASSETNAME_TO_MAPSIZE[assetName]);
 		regionMap = getRegionMap();
-		trace(regionMap);
+		//trace(regionMap);
 		// between region or region don't exist
 		if (regionMap == null)
 			return false;

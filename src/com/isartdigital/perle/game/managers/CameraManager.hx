@@ -37,14 +37,12 @@ class CameraManager
 	 * (a better method than 
 	 * GameStage.getInstance().getGameContainer().y -= Ground.container.height / 2)
 	 */
-	public static function centerCamera():Void {
-		var groundCenter:Point = IsoManager.modelToIsoView(new Point(
-			Ground.COL_X_LENGTH,
-			Ground.ROW_Y_LENGTH
-		));
+	
+	public static function placeCamera(pPos:Point):Void{
 		
-		target.y -= groundCenter.y /2;
-		target.x -= groundCenter.x /2;
+		target.x -= IsoManager.modelToIsoView(pPos).x;
+		target.y -= IsoManager.modelToIsoView(pPos).y;
+
 	}
 	
 	/**

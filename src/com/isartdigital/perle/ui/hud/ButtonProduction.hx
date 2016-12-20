@@ -42,7 +42,7 @@ class ButtonProduction extends Button
 	
 	override function _click(pEvent:EventTarget):Void 
 	{
-		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
+		if(myGeneratorDesc != null) myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
 		super._click(pEvent);
 
 	}

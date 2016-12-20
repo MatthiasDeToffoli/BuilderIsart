@@ -11,7 +11,7 @@ import js.Browser;
 //@:optional vous connaisiez ?
 
 enum RegionType {hell; eden; styx; }
-enum GeneratorType{soft; hard; goodXp; badXp; soul; intern; }
+enum GeneratorType{soft; hard; goodXp; badXp; soul; intern; buildResourceFromHell; buildResourceFromParadise; }
 enum Alignment{neutral; hell; paradise; }
 
 
@@ -23,6 +23,7 @@ typedef TileDescription = {
 	var regionY:Int;
 	var mapX:Int;
 	var mapY:Int;
+	@:optional var isTribunal:Bool;
 }
 
 typedef RegionDescription = {
@@ -157,6 +158,8 @@ class SaveManager {
 		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.badXp);
 		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.soul);
 		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.intern);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.buildResourceFromHell);
+		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.buildResourceFromParadise);
 		
 		//this order is verry importer if you find more clean tell me please ^^'
 		desc.totals.push(data.totalsMap[GeneratorType.soft]);
@@ -165,6 +168,8 @@ class SaveManager {
 		desc.totals.push(data.totalsMap[GeneratorType.badXp]);
 		desc.totals.push(data.totalsMap[GeneratorType.soul]);
 		desc.totals.push(data.totalsMap[GeneratorType.intern]);
+		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromHell]);
+		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromParadise]);
 		
 		return desc;
 		
@@ -236,7 +241,7 @@ class SaveManager {
 	 * @return
 	 */
 	private static function load():Save {
-		destroy(); // here if save reset needed
+		//destroy(); // here if save reset needed
 		if (currentSave == null) {
 			currentSave = Json.parse(
 				Browser.getLocalStorage().getItem(SAVE_NAME)
