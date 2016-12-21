@@ -1,6 +1,11 @@
 package com.isartdigital.perle.game.virtual;
+import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+
+interface HasVirtual {
+	public function linkVirtual(pVirtual:Virtual):Void;
+}
 
 /**
  * ...
@@ -27,12 +32,12 @@ class Virtual {
 	 * the VCell) (graphic is read only)
 	 */
 	public function removeLink ():Void {
-		trace("function that should not be used is used !");
+		trace("function that should not be used !");
 		graphic = null;
 	}
 	
 	private function linkVirtual ():Void {
-		untyped graphic.linkVirtualCell(this); // todo, créer héritage ?
+		cast(graphic, HasVirtual).linkVirtual(this);
 	}
 	
 	/**
@@ -40,7 +45,7 @@ class Virtual {
 	 */
 	public function activate ():Void {
 		if (active)
-			throw("VCell is already active !");
+			throw("Virtual is already active !");
 		active = true;
 		
 		// look override in Childrens !	
@@ -51,14 +56,19 @@ class Virtual {
 	 */
 	public function desactivate ():Void {
 		if (!active)
-			throw("VCell is already unactive !");
-			
+			throw("Virtual is already desactived !");
+		
 		active = false;
 		if (graphic != null)
-			untyped graphic.recycle(); // todo : dépend si est dans pooling...
+			cast(graphic, PoolingObject).recycle(); // todo : dépend si est dans pooling...
 		graphic = null;
 	}
 	
 	// destroy : ATTENTION au lien vers une VTile dans Menu_BatimentConstruit...
+	
+	public function destroy ():Void {
+		//todo
+		desactivate();
+	}
 	
 }

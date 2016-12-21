@@ -4,14 +4,10 @@ import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.ui.popin.Hud;
-import com.isartdigital.perle.ui.GraphicLoader;
-import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.LoadEventType;
-import com.isartdigital.utils.game.factory.MovieClipAnimFactory;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.game.GameStageScale;
 import com.isartdigital.utils.game.StateGraphic;
@@ -122,7 +118,7 @@ class Main extends EventEmitter
 		}*/
 		
 		// initialise le GameStage et défini la taille de la safeZone
-		GameStage.getInstance().init(render,2048, 1366, true); // false => éviter le 0,0 au centre.
+		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true); // premier false => éviter le 0,0 au centre.
 		
 		// affiche le bouton FullScreen quand c'est nécessaire
 		DeviceCapabilities.displayFullScreenButton();
@@ -154,8 +150,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBg/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/EdenBg/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/flWireframe/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Menu_BatimentConstruit/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		
@@ -190,8 +185,6 @@ class Main extends EventEmitter
 		//MovieClipAnimFactory.addTextures(GameLoader.getContent("assets.json")); // on utilise flump maintenant.
 		// transmet au StateGraphic la description des boxes de collision utilisées par les instances de StateGraphic
 		//StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
-		
-		UIManager.getInstance().openPopin(Hud.getInstance());
 		
 		// Ouvre la TitleClard
 		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen

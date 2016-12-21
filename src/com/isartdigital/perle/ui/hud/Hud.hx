@@ -1,35 +1,34 @@
 package com.isartdigital.perle.ui.hud;
 
-import com.isartdigital.perle.ui.UIElement;
-import com.isartdigital.perle.ui.hud.ButtonBuild;
-import com.isartdigital.utils.ui.Screen;
-import com.isartdigital.utils.ui.UIPosition;
+import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.ui.hud.building.BHMoving;
+import com.isartdigital.perle.ui.hud.building.BHHarvest;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
+import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartScreen;
 import pixi.core.display.Container;
-import pixi.core.math.Point;
+
+enum BuildingHudType { RECOLTE; TIMEBASED; MOVINGBUILDING; }
 
 /**
  * Classe en charge de gérer les informations du Hud
- * @author Ambroise RABIER
+ * @author Ambroise RABIER et Vicktor Grenu
  */
-class Hud extends Screen 
+class Hud extends SmartScreen 
 {
-	private static inline var MARGIN_RIGHT:Int = 10;
-	// todo ? display:flex ?
-	private var BUTTONS_NAMES(default, null):Array<String> = [
-		"Factory",
-		"House",
-		"Trees",
-		"Villa"
-	];
-	private var BUTTON_START_POINT(default, null):Point = new Point(-340, -80);
 	
 	private static var instance: Hud;
+
+	private var currentBuildingHud:BuildingHudType;
 	
-	/*private var hudTopLeft:Sprite;
-	private var hudBottomLeft:Container;*/
-	private var hudBottom:Container;
-	private var buildingBackground:UIElement;
-	private var buttonMap:Map<String, ButtonBuild> = new Map<String, ButtonBuild>();
+	private var buildingRecolte:BHHarvest;
+	private var buildingTimeBased:BHConstruction;
+	private var buildingMovingBuilding:BHMoving;
+	
+	private var containerBuildingHud:Container;
 
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -42,42 +41,62 @@ class Hud extends Screen
 	
 	public function new() 
 	{
-		super();
-		modal = false;
-		hudBottom = new Container();
-		//buildingBackground = new UIElement("Hud"); // ajout 05/12 cheat HUD
-		//hudBottom.addChild(buildingBackground); // ajout 05/12 cheat HUD
+		super("HUD");
+		modal = null;
 		
-		createButtons(hudBottom, BUTTONS_NAMES, BUTTON_START_POINT, MARGIN_RIGHT);
+		containerBuildingHud = new Container();
+		buildingRecolte = new BHHarvest();
+		buildingTimeBased = new BHConstruction();
+		buildingMovingBuilding = new BHMoving();
 		
-		addChild(hudBottom);
-		positionables.push({
-			item:hudBottom,
-			// added UIPosition.BOTTOM_CENTER
-			align:UIPosition.BOTTOM_CENTER,
-			offsetX:0,
-			offsetY:50
-		});
+		buildingRecolte.init();
+		addChild(containerBuildingHud);
+		
+		addListeners();
 	}
 	
-	/**
-	 * Create and set position of the buttons inside hudBottom
-	 */
-	private function createButtons(pContainer:Container, pNames:Array<String>, pStartPos:Point, pMargin:Int):Void {
-		for (i in 0...pNames.length) {
-			buttonMap[pNames[i]] = new ButtonBuild(pNames[i]);
-			buttonMap[pNames[i]].width = 200; // ajout 05/12 cheat HUD
-			buttonMap[pNames[i]].height = 200; // ajout 05/12 cheat HUD
-			if (pNames[i] == pNames[0]) {
-				buttonMap[pNames[i]].y += pStartPos.y;
-				buttonMap[pNames[i]].x += pStartPos.x;
-			} else {
-				buttonMap[pNames[i]].y = buttonMap[pNames[0]].y;
-				buttonMap[pNames[i]].x = buttonMap[pNames[i-1]].x + buttonMap[pNames[i-1]].width + pMargin;
+	// todo : called from building on click
+	public function showBuildingHud (pNewBuildingHud:BuildingHudType, pVBuilding:VBuilding):Void {
+		
+		BuildingHud.linkVirtualBuilding(pVBuilding);
+		
+		if (currentBuildingHud != pNewBuildingHud) {
+			currentBuildingHud = pNewBuildingHud;
+			hideBuildingHud();
+			
+			switch (pNewBuildingHud) 
+			{
+				case BuildingHudType.RECOLTE: 
+					containerBuildingHud.addChild(buildingRecolte);
+				case BuildingHudType.TIMEBASED: 
+					containerBuildingHud.addChild(buildingTimeBased);
+				case BuildingHudType.MOVINGBUILDING: 
+					containerBuildingHud.addChild(buildingMovingBuilding);
+				default: throw("No BuildingHud found !");
 			}
-			pContainer.addChild(buttonMap[pNames[i]]);
 		}
 	}
+	
+	// todo : called from any clic outside a building
+	public function hideBuildingHud ():Void {
+		containerBuildingHud.removeChildren();
+	}
+	
+	private function addListeners ():Void {
+		for (i in 0...children.length) 
+			trace (children[i].name);
+		
+		cast(getChildByName("Shop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+	}
+	
+	private function onClickShop ():Void {
+		Building.onClickHudBuilding("House"); // todo temporaire
+	}
+	
+	
+	/*
+		 * btnTest = cast(getChildByName("ButtonItem"), SmartButton);
+		btnTest.on(MouseEventType.CLICK, onClick);*/
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null

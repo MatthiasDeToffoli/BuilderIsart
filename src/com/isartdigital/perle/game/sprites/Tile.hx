@@ -2,6 +2,8 @@ package com.isartdigital.perle.game.sprites;
 
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
+import com.isartdigital.perle.game.virtual.Virtual;
+import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.game.virtual.VTile;
 import pixi.core.math.Point;
 
@@ -10,7 +12,7 @@ import pixi.core.math.Point;
  * ...
  * @author ambroise
  */
-class Tile extends FlumpStateGraphic
+class Tile extends FlumpStateGraphic implements HasVirtual
 { 
 	public static inline var TILE_WIDTH:Float = 200;
 	public static inline var TILE_HEIGHT:Float = 100;
@@ -41,8 +43,8 @@ class Tile extends FlumpStateGraphic
 		super(pAssetName);
 	}
 	
-	public function linkVirtualCell(lVCell:VTile):Void {
-		linkedVirtualCell = lVCell;
+	public function linkVirtual(pVirtual:Virtual):Void {
+		linkedVirtualCell = cast(pVirtual, VTile);
 	}
 	
 	public function getAssetName():String {

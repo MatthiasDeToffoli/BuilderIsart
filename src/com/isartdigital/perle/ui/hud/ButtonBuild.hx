@@ -5,7 +5,7 @@ import com.isartdigital.utils.ui.Button;
 import pixi.interaction.EventTarget;
 
 /**
- * ...
+ * todo : supprime
  * @author ambroise
  */
 class ButtonBuild extends Button{

@@ -255,9 +255,6 @@ class RegionManager
 		buttonMap[pWorldPos.x][pWorldPos.y] = myBtn;
 		return myBtn;
 	}
-		
-		/*createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
-		createRegion(RegionType.eden, new Point(-Ground.COL_X_LENGTH, 0), {x:-1, y:0});*/
 	
 	/**
 	 * Return the background asset of the region type parameter
@@ -284,23 +281,6 @@ class RegionManager
 		background.position = IsoManager.modelToIsoView(new Point(pDesc.firstTilePos.x, pDesc.firstTilePos.y));
 	}
 	
-	/**
-	 * 
-	 * @param	pRegionPos 
-	 * @return  pFirstTilePos (TilePosition like if they were only one big region)
-	 */
-	/*public static function regionPosToFirstTile (pRegionPos:Index):Index {
-		// Ground.COL_X_STYX_LENGTH - Ground.OFFSET_REGION because region is glued to the styx.
-		var heavenOffSet:Int = pRegionPos.x < 0 ? Ground.COL_X_STYX_LENGTH - Ground.OFFSET_REGION : 0;
-		
-		return {
-			x: pRegionPos.x * Ground.COL_X_LENGTH + pRegionPos.x * Ground.OFFSET_REGION - heavenOffSet,
-			y: pRegionPos.y * Ground.ROW_Y_LENGTH + pRegionPos.y * Ground.OFFSET_REGION
-		};
-		
-		//return worldMap[pRegionPos.x][pRegionPos.y].desc.firstTilePos; x: -12 pour heaven wtf ?
-	}*/
-	
 	
 	/**
 	 * 
@@ -308,12 +288,7 @@ class RegionManager
 	 * @return  pRegionPos
 	 */ 
 	public static function tilePosToRegion (pTilePos:Index):Index { 
-		/*var firstTilePos:Index = getRegionFirstTile(pTilePos);
-		// TODO : prendre en compte décalage
-		return {
-			x: cast(firstTilePos.x / Ground.COL_X_LENGTH, Int),
-			y: cast(firstTilePos.y / Ground.ROW_Y_LENGTH, Int)
-		};*/
+		
 		// todo: autre typedef ss footprint
 		// todo : factoriser avec une map Region.REGION_TYPE_TO_SIZE
 		var lRegionSize:SizeOnMap = { width:0, height:0, footprint:0 }; 

@@ -12,8 +12,6 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonProduction;
-import com.isartdigital.perle.ui.hud.HudContextual;
-import com.isartdigital.perle.ui.hud.Menu_BatimentConstruit;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -21,7 +19,6 @@ import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
-import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
 
 typedef SizeOnMap = {
@@ -578,7 +575,10 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		// note à Emeline : todo décommente la ligne ci-dessous et continue le travail
 		//HudContextual.createOnBuilding(cast(linkedVirtualCell, VBuilding));
 		if (isFirstClickAfterMoved) isFirstClickAfterMoved = false; //Avoid the poping of the building's hud when it's clicked for the first time
-		else HudContextual.createOnBuilding(this, cast(linkedVirtualCell, VBuilding));
+		else {
+			// todo : s'arranger pr ne pas avoir à cast ?
+			cast(linkedVirtualCell, VBuilding).onClick();
+		}
 	}
 	
 	//} endRegion

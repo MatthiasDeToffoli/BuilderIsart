@@ -171,4 +171,15 @@ class VTile extends Virtual{
 		clippingMap[xRow][yCol].push(this);
 	}
 	
+	override public function destroy():Void {
+		super.destroy();
+		// save
+		// resource
+		// timer
+		// contextuel
+		// hud -> fait pr building
+		// region -> fait pour building
+		// todo ci-dessus
+	}
+	
 }
