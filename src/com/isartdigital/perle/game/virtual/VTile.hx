@@ -46,10 +46,21 @@ class VTile extends Virtual{
 	];
 	
 	
+	/**
+	 * translate an Index to a Point
+	 * @param Index
+	 * @return Point
+	 */
+	//this function is necessary beceause save translate enum to array.....
 	public static function indexToPoint(pIndex:Index):Point{
 			return new Point(pIndex.x, pIndex.y);
 	}
 	
+	/**
+	 * translate a Point to an Index
+	 * @param Point
+	 * @return Index
+	 */
 	public static function pointToIndex(pPoint:Point):Index{
 		return {x:Std.int(pPoint.x), y:Std.int(pPoint.y)};
 	}

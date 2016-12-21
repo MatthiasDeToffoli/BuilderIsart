@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.ui.hud.ButtonProduction;
 import pixi.core.math.Point;
 
 	
@@ -14,6 +15,10 @@ import pixi.core.math.Point;
  * ...
  * @author de Toffoli Matthias
  */
+
+ /**
+  * a sigleton represanting the tribunal (non graphic)
+  */
 class VTribunal extends VBuilding 
 {
 	
@@ -58,12 +63,22 @@ class VTribunal extends VBuilding
 		super(lDesc);
 		myGeneratorType = GeneratorType.soul;
 		myGenerator = ResourcesManager.addResourcesGenerator(lDesc.id, myGeneratorType, 10, Alignment.neutral);
+		prodBtn = new ButtonProduction("ButtonGold");
 		setCameraPos();
 	}
 	
+	/**
+	 * when the boat drive souls
+	 * @param quantity quantity of souls drive by the boat
+	 */
+	public function getByBoat(quantity:Int):Void{
+		ResourcesManager.increaseResources(myGenerator, quantity);
+	}
 	
-	
-	public function setCameraPos(){
+	/**
+	 * set the position to the camera
+	 */
+	public function setCameraPos():Void{
 		
 		CameraManager.placeCamera(new Point(1, tileDesc.mapY + 1));
 	}
@@ -71,7 +86,7 @@ class VTribunal extends VBuilding
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
-	public function destroy (): Void {
+	override public function destroy (): Void {
 		instance = null;
 	}
 

@@ -11,11 +11,26 @@ import pixi.interaction.EventTarget;
  * ...
  * @author de Toffoli Matthias
  */
+
+ /**
+  * button which add new region
+  */
 class ButtonRegion extends Button
 {
 
+	/**
+	 * the first case of the region to add
+	 */
 	private var firstCasePos:Point;
+	
+	/**
+	 * position of the region in world map
+	 */
 	private var worldMapPos:Point;
+	
+	/**
+	 * the type of the region to add
+	 */
 	private var regionType:RegionType;
 	
 	public function new(pPos:Point,pWorldPos:Point) 
@@ -31,8 +46,6 @@ class ButtonRegion extends Button
 	
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);
-		
-		// todo destroy()
 		
 		RegionManager.createRegion(
 			regionType,

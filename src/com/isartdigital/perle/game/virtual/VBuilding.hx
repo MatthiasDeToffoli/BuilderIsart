@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.HudContextual;
+import com.isartdigital.perle.ui.hud.ButtonProduction;
 
 /**
  * Used for clipping.
@@ -18,9 +19,9 @@ import com.isartdigital.perle.ui.hud.HudContextual;
  */
 class VBuilding extends VTile {
 	
-	//if we do a legacy of VBuilding, we have to give the right type
 	private var myGenerator:Generator;
 	private var myGeneratorType:GeneratorType = GeneratorType.soft;
+	private var prodBtn:ButtonProduction;
 	
 	private var myContextualHud:HudContextual;
 	
@@ -38,15 +39,21 @@ class VBuilding extends VTile {
 		graphic = cast(myBuilding, FlumpStateGraphic);
 		linkVirtual();
 		
-		if(myGenerator != null) myBuilding.goldBtn.setMyGenerator(myGeneratorType);
-		
 		myContextualHud = new HudContextual(); // todo : pooling
 		myContextualHud.init(this);
+
+		if (prodBtn != null){
+			prodBtn.activeWithBuilding(tileDesc, myGeneratorType);
+		}
 	}
 	
 	override public function desactivate ():Void {
 		super.desactivate();
 		myContextualHud.destroy(); // todo : pooling
+		
+		if (prodBtn != null){
+			prodBtn.desactiveWithBuilding();
+		}
 	}
 	
 	public function unlinkContextualHud ():Void {

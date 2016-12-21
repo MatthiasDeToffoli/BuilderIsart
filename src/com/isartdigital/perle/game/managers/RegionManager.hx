@@ -35,12 +35,32 @@ typedef Region = {
  * ...
  * @author de Toffoli Matthias & Rabier Ambroise
  */
+
+ /**
+  * manage all region
+  */
 class RegionManager 
 {
 	private static var background:Movie;
+	
+	/**
+	 * the model map who contain all region
+	 */
 	public static var worldMap: Map<Int,Map<Int,Region>>;
+	
+	/**
+	 * the same model than map but for buttonRegion
+	 */
 	public static var buttonMap: Map<Int,Map<Int,ButtonRegion>>;
+	
+	/**
+	 * typedef which contain all data resources
+	 */
 	private static var buttonRegionContainer:Container;
+	
+	/**
+	 * factors for place button arrond a region
+	 */
 	private static var factors:Array<Point> =
 						[
 							new Point(-1,0),
@@ -50,6 +70,9 @@ class RegionManager
 						];
 	
 	
+	/**
+	 * init all element of this class
+	 */
 	public static function init():Void {
 		buttonRegionContainer = new Container();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
@@ -58,8 +81,14 @@ class RegionManager
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
 	}
 	
-	//add buttons according to regions
-	private static function addButton(pPos:Point, pWorldPos:Point, indice:Int){
+
+	/**
+	 * add buttons according to regions
+	 * @param pPos position of the first tile of the region
+	 * @param pWorldPos the position in the world map
+	 * @param indice help to choos the factor we want
+	 */
+	private static function addButton(pPos:Point, pWorldPos:Point, indice:Int):Void{
 		
 		if (indice >= factors.length) return;
 		
@@ -119,6 +148,10 @@ class RegionManager
 		addButton(pPos, pWorldPos, indice+ 1);
 	}
 	
+	/**
+	 * add a new region to the worldMap
+	 * @param pNewRegion region to add
+	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
 		if (worldMap[pNewRegion.desc.x] == null)
 			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
@@ -132,10 +165,17 @@ class RegionManager
 		}
 	}
 	
+	/**
+	 * get the button container
+	 * @return Container
+	 */
 	public static function getButtonContainer():Container{
 		return buttonRegionContainer;
 	}
 	
+	/**
+	 * create a new data
+	 */
 	public static function buildWhitoutSave ():Void {
 		worldMap[0] = new Map<Int,Region>();
 		
@@ -151,37 +191,46 @@ class RegionManager
 		
 		VTribunal.getInstance();
 	}
-
+	
+	
+	/**
+	 * load the data
+	 * @param pSave
+	 */
 	public static function buildFromSave(pSave:Save):Void {
 		var lLength:UInt = pSave.region.length;		
 		
 		for (i in 0...lLength) {
+			pSave.region[i].type = SaveManager.translateArrayToEnum(pSave.region[i].type);
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 		}
 		
 		for (i in 0...lLength) {
 			
-			/*var tempFirstTilePos:Index = regionPosToFirstTile( {
-				x:pSave.region[i].x,
-				y:pSave.region[i].y
-			});*/ // todo @Matthias: oublie ?
 			
-			addButton(
-				new Point(
-					pSave.region[i].firstTilePos.x,
-					pSave.region[i].firstTilePos.y
-				),
-				new Point(
-					pSave.region[i].x,
-					pSave.region[i].y
-				),
-				0
-			);
+			if (pSave.region[i].type != RegionType.styx)
+				addButton(
+					new Point(
+						pSave.region[i].firstTilePos.x,
+						pSave.region[i].firstTilePos.y
+					),
+					new Point(
+						pSave.region[i].x,
+						pSave.region[i].y
+					),
+					0
+				);
+			
 		}		
 		
 	}
 	
-	
+	/**
+	 * Create a new region
+	 * @param	pType the type of the region which will creat
+	 * @param	pFirstTilePos the position of the first tile 
+	 * @param	pWorldPos the position in the worldMap
+	 */
 	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
 		//@TODO: delete when we will have the stick bg
@@ -220,7 +269,12 @@ class RegionManager
 		);
 	}
 	
-	private static function createStyxRegionIfDontExist(pWorldPos:Index, pPosY:Int){
+	/**
+	 * Create a styx region near another region
+	 * @param	pWorldPos the position in the worldMap
+	 * @param	pPosY position in y axes of the styx region
+	 */
+	private static function createStyxRegionIfDontExist(pWorldPos:Index, pPosY:Int):Void{
 		if (worldMap[0][pWorldPos.y] != null) return;
 			
 		var posWorld:Index = {x:0, y:pWorldPos.y};
@@ -230,7 +284,12 @@ class RegionManager
 		
 	}
 	
-	private static function addRegionButtonByStyx(pWorldPos:Index, pPosY:Int){
+	/**
+	 * add a new button near a styx
+	 * @param	pWorldPos the position in the worldMap
+	 * @param	pPosY position in y axes of the styx region
+	 */
+	private static function addRegionButtonByStyx(pWorldPos:Index, pPosY:Int):Void{
 		
 		var myBtn:ButtonRegion, btnWorldPos:Index;
 		
@@ -255,6 +314,7 @@ class RegionManager
 		buttonMap[pWorldPos.x][pWorldPos.y] = myBtn;
 		return myBtn;
 	}
+		
 	
 	/**
 	 * Return the background asset of the region type parameter

@@ -33,11 +33,9 @@ class CameraManager
 	private static var yDistMoved:Float;
 	
 	/**
-	 * Center the Camera on the center of the Ground tiles.
-	 * (a better method than 
-	 * GameStage.getInstance().getGameContainer().y -= Ground.container.height / 2)
+	 * place the camera
+	 * @param pPos position to subastract at the camera
 	 */
-	
 	public static function placeCamera(pPos:Point):Void{
 		
 		target.x -= IsoManager.modelToIsoView(pPos).x;

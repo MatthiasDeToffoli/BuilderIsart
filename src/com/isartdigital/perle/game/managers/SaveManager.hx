@@ -12,7 +12,7 @@ import js.Browser;
 
 enum RegionType {hell; eden; styx; }
 enum GeneratorType{soft; hard; goodXp; badXp; soul; intern; buildResourceFromHell; buildResourceFromParadise; }
-enum Alignment{neutral; hell; paradise; }
+enum Alignment{neutral; demon; angel; }
 
 
 typedef TileDescription = {
@@ -278,5 +278,62 @@ class SaveManager {
 		VTile.buildWhitoutSave();
 		TimeManager.startTimeLoop();
 		SaveManager.save();
+	}
+	
+	/**
+	 * this function is necessary beceause save translate enum to array
+	 * @param pArray:Dynamic
+	 * @return Dynamic (the good enum)
+	 */
+	 //When you save a enum please refresh this function
+	public static function translateArrayToEnum(pArray:Dynamic):Dynamic{
+		
+		if (pArray == null) return null;
+		switch pArray[0] {
+			case "soft":
+				return GeneratorType.soft;
+				
+			case "hard":
+				return GeneratorType.hard;
+				
+			case "badXp":
+				return GeneratorType.badXp;
+			
+			case "goodXp":
+				return GeneratorType.goodXp;
+				
+			case "soul":
+				return GeneratorType.soul;
+				
+			case "intern":
+				return GeneratorType.intern;
+				
+			case "buildResourceFromHell":
+			return GeneratorType.buildResourceFromHell;
+			
+			case "buildResourceFromParadise":
+			return GeneratorType.buildResourceFromParadise;
+			
+			case "hell":
+			return RegionType.hell;
+			
+			case "eden":
+			return RegionType.eden;
+			
+			case "styx":
+			return RegionType.styx;
+			
+			case "neutral":
+			return Alignment.neutral;
+			
+			case "demon":
+			return Alignment.demon;
+			
+			case "angel":
+			return Alignment.angel;
+				
+			default:
+				return null;
+		}
 	}
 }

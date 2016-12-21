@@ -73,7 +73,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private var isFirstClickAfterMoved = false; //Flag to avoid the apparence of the building's hud when it's put after been removed
 	private var vBuildingRef:VBuilding;
 	
-	public var goldBtn:ButtonProduction;
 	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
@@ -136,27 +135,8 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		container.addChild(lBuilding);
 		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
 		
-		lBuilding.createGoldBtn(lBuilding, pTileDesc, regionFirstTilePos);
 		
 		return lBuilding;
-	}
-	
-	private function createGoldBtn(pBuilding:Building, pTileDesc:TileDescription, regionPos:Index):Void {
-		/*goldBtn.x = pBuilding.x;
-		goldBtn.y = pBuilding.y - pBuilding.height / 2;*/
-
-		var posIso:Point = IsoManager.modelToIsoView(new Point(pTileDesc.mapX + regionPos.x - ASSETNAME_TO_MAPSIZE[pBuilding.assetName].width/2, pTileDesc.mapY + regionPos.y - ASSETNAME_TO_MAPSIZE[pBuilding.assetName].height / 2));
-		posIso.y -= goldBtn.width;
-		goldBtn.position = posIso;
-		goldBtn.setId(pTileDesc.id);
-		GameStage.getInstance().getGameContainer().addChild(goldBtn);
-		
-	}
-	
-	//@TODO Gérer le pooling
-	public function removeGoldBtn():Void {
-		GameStage.getInstance().getGameContainer().removeChild(goldBtn);
-		//goldBtn.destroy();
 	}
 	
 	public static function gameLoop():Void {
@@ -167,7 +147,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	public function new(?pAssetName:String) {
 		super(pAssetName);
-		goldBtn = new ButtonProduction("ButtonGold");
+		
 	}
 	
 	override public function start():Void {
@@ -207,7 +187,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	override public function recycle():Void {
 		if (list.indexOf(this) != -1)
 			list.splice(list.indexOf(this), 1);
-		removeGoldBtn();
 		removePhantomFilter();
 		removeDesaturateFilter();
 		removeBuildListeners();
