@@ -7,7 +7,6 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.ui.hud.ButtonProduction;
 import pixi.core.math.Point;
 
 	
@@ -51,7 +50,8 @@ class VTribunal extends VBuilding
 				regionX:0,
 				regionY:0,
 				mapX:0,
-				//center to the styx - the size of tribunal
+				//center to the styx - the size of tribunal // hey Styx_Y length == 13 donc
+				// 6.5 - 3 == 3.5 ; tu voulais pas plutôt faire 6.5 - 3/2 == 5 ?
 				mapY: Math.floor((Ground.ROW_Y_STYX_LENGTH / 2) - 3),
 				isTribunal: true
 			};
@@ -61,10 +61,17 @@ class VTribunal extends VBuilding
 		
 		
 		super(lDesc);
+		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
+	}
+	
+	// @Matthias : sinon tu créais deux fois un générator puisque qu'il y avait
+	// un addREsourceGenerator dans le new() du VBuilding également
+	// ce message s'auto-détruit après votre lecture
+	override function addGenerator():Void {
 		myGeneratorType = GeneratorType.soul;
-		myGenerator = ResourcesManager.addResourcesGenerator(lDesc.id, myGeneratorType, 10, Alignment.neutral);
-		prodBtn = new ButtonProduction("ButtonGold");
-		setCameraPos();
+		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10, Alignment.neutral);
+		//prodBtn = new ButtonProduction("ButtonGold"); c'est gérer autrement maintenant
+		//setCameraPos(); idem qui plu haut
 	}
 	
 	/**
@@ -88,6 +95,7 @@ class VTribunal extends VBuilding
 	 */
 	override public function destroy (): Void {
 		instance = null;
+		super.destroy();
 	}
 
 }

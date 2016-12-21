@@ -11,7 +11,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import pixi.core.display.Container;
 
-enum BuildingHudType { RECOLTE; TIMEBASED; MOVINGBUILDING; }
+enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; }
 
 /**
  * Classe en charge de gérer les informations du Hud
@@ -66,11 +66,11 @@ class Hud extends SmartScreen
 			
 			switch (pNewBuildingHud) 
 			{
-				case BuildingHudType.RECOLTE: 
+				case BuildingHudType.HARVEST: 
 					containerBuildingHud.addChild(buildingRecolte);
-				case BuildingHudType.TIMEBASED: 
+				case BuildingHudType.CONSTRUCTION: 
 					containerBuildingHud.addChild(buildingTimeBased);
-				case BuildingHudType.MOVINGBUILDING: 
+				case BuildingHudType.MOVING: 
 					containerBuildingHud.addChild(buildingMovingBuilding);
 				default: throw("No BuildingHud found !");
 			}

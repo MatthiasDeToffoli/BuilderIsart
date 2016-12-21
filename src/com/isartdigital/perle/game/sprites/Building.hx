@@ -11,7 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
-import com.isartdigital.perle.ui.hud.ButtonProduction;
+import com.isartdigital.perle.ui.contextual.ButtonProduction;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -56,7 +56,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var colorMatrix:ColorMatrixFilter;
 	
 	private static var footPrint:FootPrint;
-	private static var footPrintAsset:String = "FootPrint";
+	private static var footPrintAsset:String = "FootPrint"; // todo @Alexis: contante
 	private static var footPrintPoint:Point;
 	
 	
@@ -73,7 +73,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private var isFirstClickAfterMoved = false; //Flag to avoid the apparence of the building's hud when it's put after been removed
 	private var vBuildingRef:VBuilding;
 	
-	
 	/**
 	 * Hack, ignore first unwanted click on building HUD button
 	 * the building won't spawn bellow the button
@@ -81,7 +80,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	private static var firstClickSuck:Bool;
 	
 	private var precedentBesMapPos:Point = new Point(0, 0);
-	//public var goldBtn:ButtonProduction = new ButtonProduction();
 	
 	/**
 	 * Initialisation of Building class, should be called after Ground class initialisation.
@@ -135,7 +133,6 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		container.addChild(lBuilding);
 		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
 		
-		
 		return lBuilding;
 	}
 	
@@ -146,8 +143,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	
 	
 	public function new(?pAssetName:String) {
-		super(pAssetName);
-		
+		super(pAssetName);	
 	}
 	
 	override public function start():Void {

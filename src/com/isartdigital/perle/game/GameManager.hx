@@ -6,7 +6,7 @@ import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.TimeManager;
-import com.isartdigital.perle.ui.hud.HudContextual;
+import com.isartdigital.perle.ui.contextual.HudContextual;
 
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -38,15 +38,16 @@ class GameManager {
 	public function start (): Void {
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();
+		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		//GameStage.getInstance().getGameContainer().addChild(Template.getInstance());
 		TimeManager.initClass();
 		VTile.initClass();
 		Tile.initClass();
+		HudContextual.addContainer();
 		RegionManager.init();
 		SaveManager.createFromSave();
 		ClippingManager.update();
-		HudContextual.initClass();
 		
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
