@@ -10,7 +10,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VGround;
 import com.isartdigital.perle.game.virtual.VTile;
-import com.isartdigital.perle.game.virtual.VTribunal;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;

@@ -632,7 +632,7 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 			com_isartdigital_utils_game_StateGraphic.animAlpha = com_isartdigital_utils_Config.get_data().animAlpha;
 		}
 		com_isartdigital_utils_game_GameStage.getInstance().set_scaleMode(com_isartdigital_utils_game_GameStageScale.SHOW_ALL);
-		com_isartdigital_utils_game_GameStage.getInstance().init($bind(this,this.render),2048,1366,true);
+		com_isartdigital_utils_game_GameStage.getInstance().init($bind(this,this.render),2048,1366,true,true,true,true);
 		com_isartdigital_utils_system_DeviceCapabilities.displayFullScreenButton();
 		this.stage.addChild(com_isartdigital_utils_game_GameStage.getInstance());
 		window.addEventListener("resize",$bind(this,this.resize));
@@ -646,8 +646,7 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/HellBg/library.json");
 		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/EdenBg/library.json");
 		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/placeholder_flump_sprite/library.json");
-		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/flWireframe/library.json");
-		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Menu_BatimentConstruit/library.json");
+		lLoader.addAssetFile(com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Compilation/library.json");
 		lLoader.addFontFile("fonts.css");
 		lLoader.on("progress",$bind(this,this.onLoadProgress));
 		lLoader.once("complete",$bind(this,this.onLoadComplete));
@@ -658,7 +657,6 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 	}
 	,onLoadComplete: function(pLoader) {
 		pLoader.off("progress",$bind(this,this.onLoadProgress));
-		com_isartdigital_perle_ui_UIManager.getInstance().openPopin(com_isartdigital_perle_ui_popin_Hud.getInstance());
 		com_isartdigital_perle_game_GameManager.getInstance().start();
 	}
 	,gameLoop: function() {
@@ -728,14 +726,15 @@ com_isartdigital_perle_game_GameManager.prototype = {
 	start: function() {
 		com_isartdigital_perle_ui_UIManager.getInstance().startGame();
 		com_isartdigital_perle_game_managers_PoolingManager.init();
+		com_isartdigital_perle_ui_contextual_HudContextual.initClass();
 		com_isartdigital_perle_game_managers_CameraManager.setTarget(com_isartdigital_utils_game_GameStage.getInstance().getGameContainer());
 		com_isartdigital_perle_game_managers_TimeManager.initClass();
 		com_isartdigital_perle_game_virtual_VTile.initClass();
 		com_isartdigital_perle_game_sprites_Tile.initClass();
+		com_isartdigital_perle_ui_contextual_HudContextual.addContainer();
 		com_isartdigital_perle_game_managers_RegionManager.init();
 		com_isartdigital_perle_game_managers_SaveManager.createFromSave();
 		com_isartdigital_perle_game_managers_ClippingManager.update();
-		com_isartdigital_perle_ui_hud_HudContextual.initClass();
 		com_isartdigital_perle_ui_CheatPanel.getInstance().ingame();
 		com_isartdigital_perle_Main.getInstance().on("gameLoop",$bind(this,this.gameLoop));
 	}
@@ -1301,7 +1300,7 @@ com_isartdigital_perle_game_managers_RegionManager.buildWhitoutSave = function()
 	com_isartdigital_perle_game_managers_RegionManager.worldMap.h[0].set(0,com_isartdigital_perle_game_managers_RegionManager.createRegionFromDesc({ x : 0, y : 0, type : com_isartdigital_perle_game_managers_RegionType.styx, firstTilePos : { x : 0, y : 0}}));
 	com_isartdigital_perle_game_managers_RegionManager.createRegion(com_isartdigital_perle_game_managers_RegionType.hell,new PIXI.Point(3,0),{ x : 1, y : 0});
 	com_isartdigital_perle_game_managers_RegionManager.createRegion(com_isartdigital_perle_game_managers_RegionType.eden,new PIXI.Point(-12,0),{ x : -1, y : 0});
-	com_isartdigital_perle_game_virtual_VTribunal.getInstance();
+	com_isartdigital_perle_game_virtual_vBuilding_VTribunal.getInstance();
 };
 com_isartdigital_perle_game_managers_RegionManager.buildFromSave = function(pSave) {
 	var lLength = pSave.region.length;
@@ -1476,7 +1475,8 @@ com_isartdigital_perle_game_managers_ResourcesManager.initWithoutSave = function
 	var pMapG = new haxe_ds_EnumValueMap();
 	var pMapT = new haxe_ds_EnumValueMap();
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.soul,[]);
-	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.soul,0);
+	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.soulGood,0);
+	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.soulBad,0);
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.soft,[]);
 	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.soft,0);
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.hard,[]);
@@ -1491,7 +1491,14 @@ com_isartdigital_perle_game_managers_ResourcesManager.initWithoutSave = function
 	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell,0);
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise,[]);
 	pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise,0);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData = { generatorsMap : pMapG, totalsMap : pMapT, level : 0};
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData = { generatorsMap : pMapG, totalsMap : pMapT, level : 1};
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(1,true);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.soft);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.hard);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.goodXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.badXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.soulBad);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.soulGood);
 	com_isartdigital_perle_game_managers_TimeManager.eTimeGenerator.on("TimeManager_Resource_Tick",com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesByOne);
 };
 com_isartdigital_perle_game_managers_ResourcesManager.initWithLoad = function(resourcesDescriptionLoad) {
@@ -1508,14 +1515,23 @@ com_isartdigital_perle_game_managers_ResourcesManager.initWithLoad = function(re
 		com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.generatorsMap.get(myDesc.type).push(myGenerator);
 		com_isartdigital_perle_game_managers_TimeManager.addGenerator(myGenerator);
 	}
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.soft,resourcesDescriptionLoad.totals[0]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.hard,resourcesDescriptionLoad.totals[1]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.goodXp,resourcesDescriptionLoad.totals[2]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.badXp,resourcesDescriptionLoad.totals[3]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.soul,resourcesDescriptionLoad.totals[4]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.intern,resourcesDescriptionLoad.totals[5]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell,resourcesDescriptionLoad.totals[6]);
-	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise,resourcesDescriptionLoad.totals[7]);
+	var totals = resourcesDescriptionLoad.totals;
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.soft,totals[0]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.hard,totals[1]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.goodXp,totals[2]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.badXp,totals[3]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.soulGood,totals[4]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.soulBad,totals[5]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.intern,totals[6]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell,totals[7]);
+	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise,totals[8]);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(resourcesDescriptionLoad.level,true);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[0],false,com_isartdigital_perle_game_managers_GeneratorType.soft);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[1],false,com_isartdigital_perle_game_managers_GeneratorType.hard);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[2],false,com_isartdigital_perle_game_managers_GeneratorType.goodXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[3],false,com_isartdigital_perle_game_managers_GeneratorType.badXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[4],false,com_isartdigital_perle_game_managers_GeneratorType.soulGood);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(totals[5],false,com_isartdigital_perle_game_managers_GeneratorType.soulBad);
 };
 com_isartdigital_perle_game_managers_ResourcesManager.GeneratorIsNotEmpty = function(pDesc) {
 	return pDesc.quantity > 0;
@@ -1562,7 +1578,9 @@ com_isartdigital_perle_game_managers_ResourcesManager.changeAlignment = function
 	com_isartdigital_perle_game_managers_ResourcesManager.save(pGenerator);
 };
 com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesByOne = function(pGenerator) {
-	com_isartdigital_perle_game_managers_ResourcesManager.increaseResources(pGenerator,1);
+	if(pGenerator != null) {
+		com_isartdigital_perle_game_managers_ResourcesManager.increaseResources(pGenerator,1);
+	}
 };
 com_isartdigital_perle_game_managers_ResourcesManager.increaseResources = function(pGenerator,quantity) {
 	pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity,pGenerator.desc.max);
@@ -1580,19 +1598,23 @@ com_isartdigital_perle_game_managers_ResourcesManager.takeResources = function(p
 	var _g = pDesc.type;
 	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(_g,com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(_g) + pDesc.quantity);
 	pDesc.quantity = 0;
-	console.log(com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(pDesc.type));
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(pDesc.type),false,pDesc.type);
 	com_isartdigital_perle_game_managers_SaveManager.save();
 	com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.emit("GENERATOR",{ id : pDesc.id, active : false});
 	return pDesc;
 };
 com_isartdigital_perle_game_managers_ResourcesManager.spendTotal = function(pType,spendValue) {
 	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(pType,com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(pType) - spendValue);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(pType),false,pType);
 	com_isartdigital_perle_game_managers_SaveManager.save();
 };
 com_isartdigital_perle_game_managers_ResourcesManager.levelUp = function() {
 	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.badXp,0);
 	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.set(com_isartdigital_perle_game_managers_GeneratorType.goodXp,0);
 	com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.level++;
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.badXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(0,false,com_isartdigital_perle_game_managers_GeneratorType.goodXp);
+	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.level,true);
 	com_isartdigital_perle_game_managers_SaveManager.save();
 };
 var com_isartdigital_perle_game_managers_RegionType = { __ename__ : true, __constructs__ : ["hell","eden","styx"] };
@@ -1602,7 +1624,7 @@ com_isartdigital_perle_game_managers_RegionType.eden = ["eden",1];
 com_isartdigital_perle_game_managers_RegionType.eden.__enum__ = com_isartdigital_perle_game_managers_RegionType;
 com_isartdigital_perle_game_managers_RegionType.styx = ["styx",2];
 com_isartdigital_perle_game_managers_RegionType.styx.__enum__ = com_isartdigital_perle_game_managers_RegionType;
-var com_isartdigital_perle_game_managers_GeneratorType = { __ename__ : true, __constructs__ : ["soft","hard","goodXp","badXp","soul","intern","buildResourceFromHell","buildResourceFromParadise"] };
+var com_isartdigital_perle_game_managers_GeneratorType = { __ename__ : true, __constructs__ : ["soft","hard","goodXp","badXp","soul","soulGood","soulBad","intern","buildResourceFromHell","buildResourceFromParadise"] };
 com_isartdigital_perle_game_managers_GeneratorType.soft = ["soft",0];
 com_isartdigital_perle_game_managers_GeneratorType.soft.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
 com_isartdigital_perle_game_managers_GeneratorType.hard = ["hard",1];
@@ -1613,11 +1635,15 @@ com_isartdigital_perle_game_managers_GeneratorType.badXp = ["badXp",3];
 com_isartdigital_perle_game_managers_GeneratorType.badXp.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
 com_isartdigital_perle_game_managers_GeneratorType.soul = ["soul",4];
 com_isartdigital_perle_game_managers_GeneratorType.soul.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
-com_isartdigital_perle_game_managers_GeneratorType.intern = ["intern",5];
+com_isartdigital_perle_game_managers_GeneratorType.soulGood = ["soulGood",5];
+com_isartdigital_perle_game_managers_GeneratorType.soulGood.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
+com_isartdigital_perle_game_managers_GeneratorType.soulBad = ["soulBad",6];
+com_isartdigital_perle_game_managers_GeneratorType.soulBad.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
+com_isartdigital_perle_game_managers_GeneratorType.intern = ["intern",7];
 com_isartdigital_perle_game_managers_GeneratorType.intern.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
-com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell = ["buildResourceFromHell",6];
+com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell = ["buildResourceFromHell",8];
 com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
-com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise = ["buildResourceFromParadise",7];
+com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise = ["buildResourceFromParadise",9];
 com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise.__enum__ = com_isartdigital_perle_game_managers_GeneratorType;
 var com_isartdigital_perle_game_managers_Alignment = { __ename__ : true, __constructs__ : ["neutral","demon","angel"] };
 com_isartdigital_perle_game_managers_Alignment.neutral = ["neutral",0];
@@ -1678,7 +1704,8 @@ com_isartdigital_perle_game_managers_SaveManager.saveResources = function() {
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.hard));
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.goodXp));
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.badXp));
-	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.soul));
+	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.soulGood));
+	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.soulBad));
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.intern));
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell));
 	desc.totals.push(data.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise));
@@ -1754,6 +1781,9 @@ com_isartdigital_perle_game_managers_SaveManager.createWhitoutSave = function() 
 	com_isartdigital_perle_game_managers_SaveManager.save();
 };
 com_isartdigital_perle_game_managers_SaveManager.translateArrayToEnum = function(pArray) {
+	if(pArray == null) {
+		return null;
+	}
 	switch(pArray[0]) {
 	case "angel":
 		return com_isartdigital_perle_game_managers_Alignment.angel;
@@ -1781,6 +1811,10 @@ com_isartdigital_perle_game_managers_SaveManager.translateArrayToEnum = function
 		return com_isartdigital_perle_game_managers_GeneratorType.soft;
 	case "soul":
 		return com_isartdigital_perle_game_managers_GeneratorType.soul;
+	case "soulBad":
+		return com_isartdigital_perle_game_managers_GeneratorType.soulBad;
+	case "soulGodd":
+		return com_isartdigital_perle_game_managers_GeneratorType.soulGood;
 	case "styx":
 		return com_isartdigital_perle_game_managers_RegionType.styx;
 	default:
@@ -2185,11 +2219,18 @@ com_isartdigital_perle_game_sprites_FlumpStateGraphic.prototype = $extend(com_is
 	}
 	,__class__: com_isartdigital_perle_game_sprites_FlumpStateGraphic
 });
+var com_isartdigital_perle_game_virtual_HasVirtual = function() { };
+$hxClasses["com.isartdigital.perle.game.virtual.HasVirtual"] = com_isartdigital_perle_game_virtual_HasVirtual;
+com_isartdigital_perle_game_virtual_HasVirtual.__name__ = ["com","isartdigital","perle","game","virtual","HasVirtual"];
+com_isartdigital_perle_game_virtual_HasVirtual.prototype = {
+	__class__: com_isartdigital_perle_game_virtual_HasVirtual
+};
 var com_isartdigital_perle_game_sprites_Tile = function(pAssetName) {
 	com_isartdigital_perle_game_sprites_FlumpStateGraphic.call(this,pAssetName);
 };
 $hxClasses["com.isartdigital.perle.game.sprites.Tile"] = com_isartdigital_perle_game_sprites_Tile;
 com_isartdigital_perle_game_sprites_Tile.__name__ = ["com","isartdigital","perle","game","sprites","Tile"];
+com_isartdigital_perle_game_sprites_Tile.__interfaces__ = [com_isartdigital_perle_game_virtual_HasVirtual];
 com_isartdigital_perle_game_sprites_Tile.initClass = function() {
 	com_isartdigital_perle_game_iso_IsoManager.init(200,100);
 	com_isartdigital_perle_game_sprites_Ground.initClass();
@@ -2201,8 +2242,8 @@ com_isartdigital_perle_game_sprites_Tile.prototype = $extend(com_isartdigital_pe
 	positionTile: function(pTileX,pTileY) {
 		this.position = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(new PIXI.Point(pTileX,pTileY));
 	}
-	,linkVirtualCell: function(lVCell) {
-		this.linkedVirtualCell = lVCell;
+	,linkVirtual: function(pVirtual) {
+		this.linkedVirtualCell = js_Boot.__cast(pVirtual , com_isartdigital_perle_game_virtual_VTile);
 	}
 	,getAssetName: function() {
 		return this.assetName;
@@ -2586,7 +2627,7 @@ com_isartdigital_perle_game_sprites_Building.prototype = $extend(com_isartdigita
 		if(this.isFirstClickAfterMoved) {
 			this.isFirstClickAfterMoved = false;
 		} else {
-			com_isartdigital_perle_ui_hud_HudContextual.createOnBuilding(this,js_Boot.__cast(this.linkedVirtualCell , com_isartdigital_perle_game_virtual_VBuilding));
+			(js_Boot.__cast(this.linkedVirtualCell , com_isartdigital_perle_game_virtual_VBuilding)).onClick();
 		}
 	}
 	,__class__: com_isartdigital_perle_game_sprites_Building
@@ -2713,6 +2754,13 @@ com_isartdigital_perle_game_sprites_Ground.prototype = $extend(com_isartdigital_
 	}
 	,__class__: com_isartdigital_perle_game_sprites_Ground
 });
+var com_isartdigital_perle_game_virtual_VBuildingState = { __ename__ : true, __constructs__ : ["isBuilt","isBuilding","isMoving"] };
+com_isartdigital_perle_game_virtual_VBuildingState.isBuilt = ["isBuilt",0];
+com_isartdigital_perle_game_virtual_VBuildingState.isBuilt.__enum__ = com_isartdigital_perle_game_virtual_VBuildingState;
+com_isartdigital_perle_game_virtual_VBuildingState.isBuilding = ["isBuilding",1];
+com_isartdigital_perle_game_virtual_VBuildingState.isBuilding.__enum__ = com_isartdigital_perle_game_virtual_VBuildingState;
+com_isartdigital_perle_game_virtual_VBuildingState.isMoving = ["isMoving",2];
+com_isartdigital_perle_game_virtual_VBuildingState.isMoving.__enum__ = com_isartdigital_perle_game_virtual_VBuildingState;
 var com_isartdigital_perle_game_virtual_Virtual = function() {
 	this.active = false;
 };
@@ -2720,27 +2768,30 @@ $hxClasses["com.isartdigital.perle.game.virtual.Virtual"] = com_isartdigital_per
 com_isartdigital_perle_game_virtual_Virtual.__name__ = ["com","isartdigital","perle","game","virtual","Virtual"];
 com_isartdigital_perle_game_virtual_Virtual.prototype = {
 	removeLink: function() {
-		console.log("function that should not be used is used !");
+		console.log("function that should not be used !");
 		this.graphic = null;
 	}
 	,linkVirtual: function() {
-		this.graphic.linkVirtualCell(this);
+		(js_Boot.__cast(this.graphic , com_isartdigital_perle_game_virtual_HasVirtual)).linkVirtual(this);
 	}
 	,activate: function() {
 		if(this.active) {
-			throw new js__$Boot_HaxeError("VCell is already active !");
+			throw new js__$Boot_HaxeError("Virtual is already active !");
 		}
 		this.active = true;
 	}
 	,desactivate: function() {
 		if(!this.active) {
-			throw new js__$Boot_HaxeError("VCell is already unactive !");
+			throw new js__$Boot_HaxeError("Virtual is already desactived !");
 		}
 		this.active = false;
 		if(this.graphic != null) {
-			this.graphic.recycle();
+			(js_Boot.__cast(this.graphic , com_isartdigital_perle_game_managers_PoolingObject)).recycle();
 		}
 		this.graphic = null;
+	}
+	,destroy: function() {
+		this.desactivate();
 	}
 	,__class__: com_isartdigital_perle_game_virtual_Virtual
 };
@@ -2802,7 +2853,7 @@ com_isartdigital_perle_game_virtual_VTile.buildFromSave = function(pSave) {
 	while(_g11 < _g2) {
 		var i = _g11++;
 		if(pSave.building[i].isTribunal) {
-			com_isartdigital_perle_game_virtual_VTribunal.getInstance(pSave.building[i]);
+			com_isartdigital_perle_game_virtual_vBuilding_VTribunal.getInstance(pSave.building[i]);
 		} else {
 			new com_isartdigital_perle_game_virtual_VBuilding(pSave.building[i]);
 		}
@@ -2823,12 +2874,18 @@ com_isartdigital_perle_game_virtual_VTile.prototype = $extend(com_isartdigital_p
 		}
 		com_isartdigital_perle_game_virtual_VTile.clippingMap.h[xRow].get(yCol).push(this);
 	}
+	,destroy: function() {
+		com_isartdigital_perle_game_virtual_Virtual.prototype.destroy.call(this);
+	}
 	,__class__: com_isartdigital_perle_game_virtual_VTile
 });
 var com_isartdigital_perle_game_virtual_VBuilding = function(pDescription) {
+	this.currentState = com_isartdigital_perle_game_virtual_VBuildingState.isBuilt;
 	this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.soft;
 	com_isartdigital_perle_game_virtual_VTile.call(this,pDescription);
 	com_isartdigital_perle_game_managers_RegionManager.addToRegionBuilding(this);
+	this.addGenerator();
+	this.addHudContextual();
 };
 $hxClasses["com.isartdigital.perle.game.virtual.VBuilding"] = com_isartdigital_perle_game_virtual_VBuilding;
 com_isartdigital_perle_game_virtual_VBuilding.__name__ = ["com","isartdigital","perle","game","virtual","VBuilding"];
@@ -2838,18 +2895,41 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_virtual_VTile.prototype.activate.call(this);
 		this.graphic = js_Boot.__cast(com_isartdigital_perle_game_sprites_Building.createBuilding(this.tileDesc) , com_isartdigital_perle_game_sprites_FlumpStateGraphic);
 		this.linkVirtual();
-		if(this.prodBtn != null) {
-			this.prodBtn.activeWithBuilding(this.tileDesc,this.myGeneratorType);
-		}
+		this.myContextualHud.activate();
+		this.myContextualHud.goldBtn.setMyGenerator(this.myGeneratorType);
 	}
 	,desactivate: function() {
 		com_isartdigital_perle_game_virtual_VTile.prototype.desactivate.call(this);
-		if(this.prodBtn != null) {
-			this.prodBtn.desactiveWithBuilding();
-		}
+		this.myContextualHud.desactivate();
+	}
+	,unlinkContextualHud: function() {
+		this.myContextualHud = null;
 	}
 	,getGenerator: function() {
 		return this.myGenerator;
+	}
+	,onClick: function() {
+		if(this.currentState == com_isartdigital_perle_game_virtual_VBuildingState.isBuilt) {
+			com_isartdigital_perle_ui_hud_Hud.getInstance().showBuildingHud(com_isartdigital_perle_ui_hud_BuildingHudType.HARVEST,this);
+		} else if(this.currentState == com_isartdigital_perle_game_virtual_VBuildingState.isBuilding) {
+			com_isartdigital_perle_ui_hud_Hud.getInstance().showBuildingHud(com_isartdigital_perle_ui_hud_BuildingHudType.CONSTRUCTION,this);
+		} else if(this.currentState == com_isartdigital_perle_game_virtual_VBuildingState.isMoving) {
+			com_isartdigital_perle_ui_hud_Hud.getInstance().showBuildingHud(com_isartdigital_perle_ui_hud_BuildingHudType.MOVING,this);
+		}
+	}
+	,addGenerator: function() {
+		this.myGenerator = com_isartdigital_perle_game_managers_ResourcesManager.addResourcesGenerator(this.tileDesc.id,com_isartdigital_perle_game_managers_GeneratorType.soft,10);
+	}
+	,addHudContextual: function() {
+		this.myContextualHud = new com_isartdigital_perle_ui_contextual_HudContextual();
+		this.myContextualHud.init(this);
+	}
+	,destroy: function() {
+		this.myContextualHud.destroy();
+		this.myContextualHud = null;
+		com_isartdigital_perle_ui_hud_building_BuildingHud.unlinkVirtualBuilding(this);
+		com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.tileDesc.regionX].get(this.tileDesc.regionY).building.get(this.tileDesc.mapX).remove(this.tileDesc.mapY);
+		com_isartdigital_perle_game_virtual_VTile.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_game_virtual_VBuilding
 });
@@ -2868,34 +2948,35 @@ com_isartdigital_perle_game_virtual_VGround.prototype = $extend(com_isartdigital
 	}
 	,__class__: com_isartdigital_perle_game_virtual_VGround
 });
-var com_isartdigital_perle_game_virtual_VTribunal = function(pDesc) {
-	var lDesc = pDesc == null?{ className : "Villa", assetName : "Villa", id : com_isartdigital_perle_game_managers_IdManager.newId(), regionX : 0, regionY : 0, mapX : 0, mapY : 3, isTribunal : true}:pDesc;
-	com_isartdigital_perle_game_virtual_VBuilding.call(this,lDesc);
-	this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.soul;
-	this.myGenerator = com_isartdigital_perle_game_managers_ResourcesManager.addResourcesGenerator(lDesc.id,this.myGeneratorType,10,com_isartdigital_perle_game_managers_Alignment.neutral);
-	this.prodBtn = new com_isartdigital_perle_ui_hud_ButtonProduction("ButtonGold");
+var com_isartdigital_perle_game_virtual_vBuilding_VTribunal = function(pDesc) {
+	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDesc == null?{ className : "Villa", assetName : "Villa", id : com_isartdigital_perle_game_managers_IdManager.newId(), regionX : 0, regionY : 0, mapX : 0, mapY : 3, isTribunal : true}:pDesc);
 	this.setCameraPos();
 };
-$hxClasses["com.isartdigital.perle.game.virtual.VTribunal"] = com_isartdigital_perle_game_virtual_VTribunal;
-com_isartdigital_perle_game_virtual_VTribunal.__name__ = ["com","isartdigital","perle","game","virtual","VTribunal"];
-com_isartdigital_perle_game_virtual_VTribunal.getInstance = function(pDesc) {
-	if(com_isartdigital_perle_game_virtual_VTribunal.instance == null) {
-		com_isartdigital_perle_game_virtual_VTribunal.instance = new com_isartdigital_perle_game_virtual_VTribunal(pDesc);
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VTribunal"] = com_isartdigital_perle_game_virtual_vBuilding_VTribunal;
+com_isartdigital_perle_game_virtual_vBuilding_VTribunal.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VTribunal"];
+com_isartdigital_perle_game_virtual_vBuilding_VTribunal.getInstance = function(pDesc) {
+	if(com_isartdigital_perle_game_virtual_vBuilding_VTribunal.instance == null) {
+		com_isartdigital_perle_game_virtual_vBuilding_VTribunal.instance = new com_isartdigital_perle_game_virtual_vBuilding_VTribunal(pDesc);
 	}
-	return com_isartdigital_perle_game_virtual_VTribunal.instance;
+	return com_isartdigital_perle_game_virtual_vBuilding_VTribunal.instance;
 };
-com_isartdigital_perle_game_virtual_VTribunal.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
-com_isartdigital_perle_game_virtual_VTribunal.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
-	getByBoat: function(quantity) {
+com_isartdigital_perle_game_virtual_vBuilding_VTribunal.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
+com_isartdigital_perle_game_virtual_vBuilding_VTribunal.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+	addGenerator: function() {
+		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.soul;
+		this.myGenerator = com_isartdigital_perle_game_managers_ResourcesManager.addResourcesGenerator(this.tileDesc.id,this.myGeneratorType,10,com_isartdigital_perle_game_managers_Alignment.neutral);
+	}
+	,getByBoat: function(quantity) {
 		com_isartdigital_perle_game_managers_ResourcesManager.increaseResources(this.myGenerator,quantity);
 	}
 	,setCameraPos: function() {
 		com_isartdigital_perle_game_managers_CameraManager.placeCamera(new PIXI.Point(1,this.tileDesc.mapY + 1));
 	}
 	,destroy: function() {
-		com_isartdigital_perle_game_virtual_VTribunal.instance = null;
+		com_isartdigital_perle_game_virtual_vBuilding_VTribunal.instance = null;
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
 	}
-	,__class__: com_isartdigital_perle_game_virtual_VTribunal
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VTribunal
 });
 var com_isartdigital_perle_ui_CheatPanel = function() {
 	this.init();
@@ -2930,6 +3011,63 @@ com_isartdigital_perle_ui_CheatPanel.prototype = {
 		com_isartdigital_perle_ui_CheatPanel.instance = null;
 	}
 	,__class__: com_isartdigital_perle_ui_CheatPanel
+};
+var com_isartdigital_perle_ui_UIManager = function() {
+	this.popins = [];
+};
+$hxClasses["com.isartdigital.perle.ui.UIManager"] = com_isartdigital_perle_ui_UIManager;
+com_isartdigital_perle_ui_UIManager.__name__ = ["com","isartdigital","perle","ui","UIManager"];
+com_isartdigital_perle_ui_UIManager.getInstance = function() {
+	if(com_isartdigital_perle_ui_UIManager.instance == null) {
+		com_isartdigital_perle_ui_UIManager.instance = new com_isartdigital_perle_ui_UIManager();
+	}
+	return com_isartdigital_perle_ui_UIManager.instance;
+};
+com_isartdigital_perle_ui_UIManager.prototype = {
+	openScreen: function(pScreen) {
+		this.closeScreens();
+		com_isartdigital_utils_game_GameStage.getInstance().getScreensContainer().addChild(pScreen);
+		pScreen.open();
+	}
+	,closeScreens: function() {
+		var lContainer = com_isartdigital_utils_game_GameStage.getInstance().getScreensContainer();
+		while(lContainer.children.length > 0) {
+			var lCurrent = js_Boot.__cast(lContainer.getChildAt(lContainer.children.length - 1) , com_isartdigital_utils_ui_Screen);
+			lCurrent.interactive = false;
+			lContainer.removeChild(lCurrent);
+			lCurrent.close();
+		}
+	}
+	,openPopin: function(pPopin) {
+		this.popins.push(pPopin);
+		com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().addChild(pPopin);
+		pPopin.open();
+	}
+	,closeCurrentPopin: function() {
+		if(this.popins.length == 0) {
+			return;
+		}
+		var lCurrent = this.popins.pop();
+		lCurrent.interactive = false;
+		com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().removeChild(lCurrent);
+		lCurrent.close();
+	}
+	,openHud: function() {
+		com_isartdigital_utils_game_GameStage.getInstance().getHudContainer().addChild(com_isartdigital_perle_ui_hud_Hud.getInstance());
+		com_isartdigital_perle_ui_hud_Hud.getInstance().open();
+	}
+	,closeHud: function() {
+		com_isartdigital_utils_game_GameStage.getInstance().getHudContainer().removeChild(com_isartdigital_perle_ui_hud_Hud.getInstance());
+		com_isartdigital_perle_ui_hud_Hud.getInstance().close();
+	}
+	,startGame: function() {
+		this.closeScreens();
+		this.openHud();
+	}
+	,destroy: function() {
+		com_isartdigital_perle_ui_UIManager.instance = null;
+	}
+	,__class__: com_isartdigital_perle_ui_UIManager
 };
 var com_isartdigital_utils_ui_UIComponent = function(pID) {
 	this.modal = true;
@@ -3043,115 +3181,145 @@ com_isartdigital_utils_ui_UIComponent.prototype = $extend(com_isartdigital_utils
 	}
 	,__class__: com_isartdigital_utils_ui_UIComponent
 });
-var com_isartdigital_utils_ui_Screen = function(pID) {
+var com_isartdigital_utils_ui_smart_SmartComponent = function(pID) {
 	com_isartdigital_utils_ui_UIComponent.call(this,pID);
-	this.set_modalImage("assets/black_bg.png");
+	this.build();
 };
-$hxClasses["com.isartdigital.utils.ui.Screen"] = com_isartdigital_utils_ui_Screen;
-com_isartdigital_utils_ui_Screen.__name__ = ["com","isartdigital","utils","ui","Screen"];
-com_isartdigital_utils_ui_Screen.__super__ = com_isartdigital_utils_ui_UIComponent;
-com_isartdigital_utils_ui_Screen.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
-	__class__: com_isartdigital_utils_ui_Screen
+$hxClasses["com.isartdigital.utils.ui.smart.SmartComponent"] = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_utils_ui_smart_SmartComponent.__name__ = ["com","isartdigital","utils","ui","smart","SmartComponent"];
+com_isartdigital_utils_ui_smart_SmartComponent.__super__ = com_isartdigital_utils_ui_UIComponent;
+com_isartdigital_utils_ui_smart_SmartComponent.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
+	__class__: com_isartdigital_utils_ui_smart_SmartComponent
 });
-var com_isartdigital_perle_ui_GraphicLoader = function() {
-	com_isartdigital_utils_ui_Screen.call(this);
-	var lBg = new PIXI.Sprite(PIXI.Texture.fromImage(com_isartdigital_utils_Config.url(com_isartdigital_utils_Config.get_assetsPath() + "preload_bg.png")));
-	lBg.anchor.set(0.5,0.5);
-	this.addChild(lBg);
-	this.loaderBar = new PIXI.Sprite(PIXI.Texture.fromImage(com_isartdigital_utils_Config.url(com_isartdigital_utils_Config.get_assetsPath() + "preload.png")));
-	this.loaderBar.anchor.y = 0.5;
-	this.loaderBar.x = -this.loaderBar.width / 2;
-	this.addChild(this.loaderBar);
-	this.loaderBar.scale.x = 0;
+var com_isartdigital_utils_ui_smart_SmartButton = function(pID) {
+	com_isartdigital_utils_ui_smart_SmartComponent.call(this,pID);
+	this.set_modal(false);
+	this.interactive = true;
+	this.buttonMode = true;
+	this.on("mouseover",$bind(this,this._mouseOver));
+	this.on("mousedown",$bind(this,this._mouseDown));
+	this.on("click",$bind(this,this._click));
+	this.on("mouseout",$bind(this,this._mouseOut));
+	this.on("mouseupoutside",$bind(this,this._mouseOut));
+	this.on("touchstart",$bind(this,this._mouseDown));
+	this.on("tap",$bind(this,this._click));
+	this.on("touchend",$bind(this,this._mouseOut));
+	this.on("touchendoutside",$bind(this,this._mouseOut));
 };
-$hxClasses["com.isartdigital.perle.ui.GraphicLoader"] = com_isartdigital_perle_ui_GraphicLoader;
-com_isartdigital_perle_ui_GraphicLoader.__name__ = ["com","isartdigital","perle","ui","GraphicLoader"];
-com_isartdigital_perle_ui_GraphicLoader.getInstance = function() {
-	if(com_isartdigital_perle_ui_GraphicLoader.instance == null) {
-		com_isartdigital_perle_ui_GraphicLoader.instance = new com_isartdigital_perle_ui_GraphicLoader();
+$hxClasses["com.isartdigital.utils.ui.smart.SmartButton"] = com_isartdigital_utils_ui_smart_SmartButton;
+com_isartdigital_utils_ui_smart_SmartButton.__name__ = ["com","isartdigital","utils","ui","smart","SmartButton"];
+com_isartdigital_utils_ui_smart_SmartButton.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_utils_ui_smart_SmartButton.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	build: function(pFrame) {
+		if(pFrame == null) {
+			pFrame = 0;
+		}
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,3);
+		this.hitArea = this.getBounds().clone();
+		this._mouseOut();
 	}
-	return com_isartdigital_perle_ui_GraphicLoader.instance;
-};
-com_isartdigital_perle_ui_GraphicLoader.__super__ = com_isartdigital_utils_ui_Screen;
-com_isartdigital_perle_ui_GraphicLoader.prototype = $extend(com_isartdigital_utils_ui_Screen.prototype,{
-	update: function(pProgress) {
-		this.loaderBar.scale.x = pProgress;
+	,clear: function() {
+		while(this.children.length > 0) this.removeChildAt(0);
+	}
+	,_click: function(pEvent) {
+		this._mouseOut();
+	}
+	,_mouseDown: function(pEvent) {
+		this.clear();
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,2);
+	}
+	,_mouseOver: function(pEvent) {
+		this.clear();
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,1);
+	}
+	,_mouseOut: function(pEvent) {
+		this.clear();
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this);
 	}
 	,destroy: function() {
-		com_isartdigital_perle_ui_GraphicLoader.instance = null;
-		com_isartdigital_utils_ui_Screen.prototype.destroy.call(this);
+		this.off("mouseover",$bind(this,this._mouseOver));
+		this.off("mousedown",$bind(this,this._mouseDown));
+		this.off("click",$bind(this,this._click));
+		this.off("mouseout",$bind(this,this._mouseOut));
+		this.off("mouseupoutside",$bind(this,this._mouseOut));
+		this.off("touchstart",$bind(this,this._mouseDown));
+		this.off("tap",$bind(this,this._click));
+		this.off("touchend",$bind(this,this._mouseOut));
+		this.off("touchendoutside",$bind(this,this._mouseOut));
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.destroy.call(this);
 	}
-	,__class__: com_isartdigital_perle_ui_GraphicLoader
+	,__class__: com_isartdigital_utils_ui_smart_SmartButton
 });
-var com_isartdigital_perle_ui_UIElement = function(pAssetName) {
-	com_isartdigital_utils_game_StateGraphic.call(this);
-	this.factory = new com_isartdigital_utils_game_factory_FlumpMovieAnimFactory();
-	this.assetName = pAssetName;
-	this.setState(this.DEFAULT_STATE);
+var com_isartdigital_perle_ui_contextual_ButtonProduction = function() {
+	com_isartdigital_utils_ui_smart_SmartButton.call(this,"GoldProduction");
 };
-$hxClasses["com.isartdigital.perle.ui.UIElement"] = com_isartdigital_perle_ui_UIElement;
-com_isartdigital_perle_ui_UIElement.__name__ = ["com","isartdigital","perle","ui","UIElement"];
-com_isartdigital_perle_ui_UIElement.__super__ = com_isartdigital_utils_game_StateGraphic;
-com_isartdigital_perle_ui_UIElement.prototype = $extend(com_isartdigital_utils_game_StateGraphic.prototype,{
-	__class__: com_isartdigital_perle_ui_UIElement
-});
-var com_isartdigital_perle_ui_UIManager = function() {
-	this.popins = [];
-};
-$hxClasses["com.isartdigital.perle.ui.UIManager"] = com_isartdigital_perle_ui_UIManager;
-com_isartdigital_perle_ui_UIManager.__name__ = ["com","isartdigital","perle","ui","UIManager"];
-com_isartdigital_perle_ui_UIManager.getInstance = function() {
-	if(com_isartdigital_perle_ui_UIManager.instance == null) {
-		com_isartdigital_perle_ui_UIManager.instance = new com_isartdigital_perle_ui_UIManager();
+$hxClasses["com.isartdigital.perle.ui.contextual.ButtonProduction"] = com_isartdigital_perle_ui_contextual_ButtonProduction;
+com_isartdigital_perle_ui_contextual_ButtonProduction.__name__ = ["com","isartdigital","perle","ui","contextual","ButtonProduction"];
+com_isartdigital_perle_ui_contextual_ButtonProduction.__super__ = com_isartdigital_utils_ui_smart_SmartButton;
+com_isartdigital_perle_ui_contextual_ButtonProduction.prototype = $extend(com_isartdigital_utils_ui_smart_SmartButton.prototype,{
+	init: function(pPosition,pRefBuilding) {
+		this.position = pPosition;
+		this.refBuilding = pRefBuilding;
 	}
-	return com_isartdigital_perle_ui_UIManager.instance;
-};
-com_isartdigital_perle_ui_UIManager.prototype = {
-	openScreen: function(pScreen) {
-		this.closeScreens();
-		com_isartdigital_utils_game_GameStage.getInstance().getScreensContainer().addChild(pScreen);
-		pScreen.open();
+	,setMyGenerator: function(pType) {
+		this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.getGenerator(this.refBuilding,pType);
 	}
-	,closeScreens: function() {
-		var lContainer = com_isartdigital_utils_game_GameStage.getInstance().getScreensContainer();
-		while(lContainer.children.length > 0) {
-			var lCurrent = js_Boot.__cast(lContainer.getChildAt(lContainer.children.length - 1) , com_isartdigital_utils_ui_Screen);
-			lCurrent.interactive = false;
-			lContainer.removeChild(lCurrent);
-			lCurrent.close();
+	,_click: function(pEvent) {
+		if(this.myGeneratorDesc != null) {
+			this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.takeResources(this.myGeneratorDesc);
 		}
-	}
-	,openPopin: function(pPopin) {
-		this.popins.push(pPopin);
-		com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().addChild(pPopin);
-		pPopin.open();
-	}
-	,closeCurrentPopin: function() {
-		if(this.popins.length == 0) {
-			return;
-		}
-		var lCurrent = this.popins.pop();
-		lCurrent.interactive = false;
-		com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().removeChild(lCurrent);
-		lCurrent.close();
-	}
-	,openHud: function() {
-		com_isartdigital_utils_game_GameStage.getInstance().getHudContainer().addChild(com_isartdigital_perle_ui_hud_Hud.getInstance());
-		com_isartdigital_perle_ui_hud_Hud.getInstance().open();
-	}
-	,closeHud: function() {
-		com_isartdigital_utils_game_GameStage.getInstance().getHudContainer().removeChild(com_isartdigital_perle_ui_hud_Hud.getInstance());
-		com_isartdigital_perle_ui_hud_Hud.getInstance().close();
-	}
-	,startGame: function() {
-		this.closeScreens();
-		this.openHud();
+		com_isartdigital_utils_ui_smart_SmartButton.prototype._click.call(this,pEvent);
 	}
 	,destroy: function() {
-		com_isartdigital_perle_ui_UIManager.instance = null;
+		this.parent.removeChild(this);
+		com_isartdigital_utils_ui_smart_SmartButton.prototype.destroy.call(this);
 	}
-	,__class__: com_isartdigital_perle_ui_UIManager
+	,__class__: com_isartdigital_perle_ui_contextual_ButtonProduction
+});
+var com_isartdigital_perle_ui_contextual_HudContextual = function() {
+	PIXI.Container.call(this);
 };
+$hxClasses["com.isartdigital.perle.ui.contextual.HudContextual"] = com_isartdigital_perle_ui_contextual_HudContextual;
+com_isartdigital_perle_ui_contextual_HudContextual.__name__ = ["com","isartdigital","perle","ui","contextual","HudContextual"];
+com_isartdigital_perle_ui_contextual_HudContextual.initClass = function() {
+	com_isartdigital_perle_ui_contextual_HudContextual.container = new PIXI.Container();
+};
+com_isartdigital_perle_ui_contextual_HudContextual.addContainer = function() {
+	com_isartdigital_utils_game_GameStage.getInstance().getGameContainer().addChild(com_isartdigital_perle_ui_contextual_HudContextual.container);
+};
+com_isartdigital_perle_ui_contextual_HudContextual.__super__ = PIXI.Container;
+com_isartdigital_perle_ui_contextual_HudContextual.prototype = $extend(PIXI.Container.prototype,{
+	init: function(pVBuilding) {
+		this.myVBuilding = pVBuilding;
+		if(this.myVBuilding.graphic != null) {
+			this.alignCenter();
+		}
+		com_isartdigital_perle_ui_contextual_HudContextual.container.addChild(this);
+	}
+	,activate: function() {
+		if(this.position.x == 0 && this.position.y == 0) {
+			this.alignCenter();
+		}
+		this.goldBtn = new com_isartdigital_perle_ui_contextual_ButtonProduction();
+		this.goldBtn.init(new PIXI.Point(0,0),this.myVBuilding.tileDesc.id);
+		this.addChild(this.goldBtn);
+	}
+	,desactivate: function() {
+		this.goldBtn.destroy();
+		this.goldBtn = null;
+	}
+	,alignCenter: function() {
+		this.x = this.myVBuilding.graphic.x / 2;
+		this.y = this.myVBuilding.graphic.y / 2;
+	}
+	,destroy: function() {
+		this.desactivate();
+		this.myVBuilding.unlinkContextualHud();
+		com_isartdigital_perle_ui_contextual_HudContextual.container.removeChild(this);
+		PIXI.Container.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_ui_contextual_HudContextual
+});
 var com_isartdigital_utils_ui_Button = function() {
 	com_isartdigital_utils_game_StateGraphic.call(this);
 	this.boxType = com_isartdigital_utils_game_BoxType.SELF;
@@ -3221,104 +3389,6 @@ com_isartdigital_utils_ui_Button.prototype = $extend(com_isartdigital_utils_game
 	}
 	,__class__: com_isartdigital_utils_ui_Button
 });
-var com_isartdigital_perle_ui_hud_ButtonBuild = function(pAssetName) {
-	this.factory = new com_isartdigital_utils_game_factory_FlumpMovieAnimFactory();
-	if(pAssetName != null) {
-		this.assetName = pAssetName;
-	}
-	com_isartdigital_utils_ui_Button.call(this);
-};
-$hxClasses["com.isartdigital.perle.ui.hud.ButtonBuild"] = com_isartdigital_perle_ui_hud_ButtonBuild;
-com_isartdigital_perle_ui_hud_ButtonBuild.__name__ = ["com","isartdigital","perle","ui","hud","ButtonBuild"];
-com_isartdigital_perle_ui_hud_ButtonBuild.__super__ = com_isartdigital_utils_ui_Button;
-com_isartdigital_perle_ui_hud_ButtonBuild.prototype = $extend(com_isartdigital_utils_ui_Button.prototype,{
-	_mouseDown: function(pEvent) {
-		com_isartdigital_utils_ui_Button.prototype._mouseDown.call(this,pEvent);
-		com_isartdigital_perle_game_sprites_Building.onClickHudBuilding(this.assetName);
-	}
-	,__class__: com_isartdigital_perle_ui_hud_ButtonBuild
-});
-var com_isartdigital_perle_ui_hud_ButtonProduction = function(pAssetName) {
-	this.generatorIsNotEmpty = false;
-	this.buildingIsInView = false;
-	this.factory = new com_isartdigital_utils_game_factory_FlumpMovieAnimFactory();
-	if(pAssetName != null) {
-		this.assetName = pAssetName;
-	}
-	com_isartdigital_utils_ui_Button.call(this);
-	com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.on("GENERATOR",$bind(this,this.setActive));
-};
-$hxClasses["com.isartdigital.perle.ui.hud.ButtonProduction"] = com_isartdigital_perle_ui_hud_ButtonProduction;
-com_isartdigital_perle_ui_hud_ButtonProduction.__name__ = ["com","isartdigital","perle","ui","hud","ButtonProduction"];
-com_isartdigital_perle_ui_hud_ButtonProduction.__super__ = com_isartdigital_utils_ui_Button;
-com_isartdigital_perle_ui_hud_ButtonProduction.prototype = $extend(com_isartdigital_utils_ui_Button.prototype,{
-	setMyGenerator: function(pType) {
-		this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.getGenerator(this.id,pType);
-	}
-	,_click: function(pEvent) {
-		if(this.myGeneratorDesc != null) {
-			this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.takeResources(this.myGeneratorDesc);
-		}
-		com_isartdigital_utils_ui_Button.prototype._click.call(this,pEvent);
-	}
-	,activeWithBuilding: function(pDesc,pType) {
-		this.buildingIsInView = true;
-		var tmp = pDesc.mapX + pDesc.regionX;
-		var _this = com_isartdigital_perle_game_sprites_Building.ASSETNAME_TO_MAPSIZE;
-		var key = pDesc.assetName;
-		var tmp1 = tmp - (__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).width / 2;
-		var tmp2 = pDesc.mapY + pDesc.regionY;
-		var _this1 = com_isartdigital_perle_game_sprites_Building.ASSETNAME_TO_MAPSIZE;
-		var key1 = pDesc.assetName;
-		var posIso = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(new PIXI.Point(tmp1,tmp2 - (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).height / 2));
-		posIso.y -= this.height;
-		this.position = posIso;
-		this.id = pDesc.id;
-		this.setMyGenerator(pType);
-		this.generatorIsNotEmpty = com_isartdigital_perle_game_managers_ResourcesManager.GeneratorIsNotEmpty(this.myGeneratorDesc);
-		if(this.generatorIsNotEmpty) {
-			this.activate();
-		}
-	}
-	,setActive: function(data) {
-		if(data.id == this.id) {
-			if(data.active) {
-				this.activateWithGenerator();
-			} else {
-				this.desactiveWithGenerator();
-			}
-		}
-	}
-	,activateWithGenerator: function() {
-		this.generatorIsNotEmpty = true;
-		if(this.buildingIsInView) {
-			this.activate();
-		}
-	}
-	,activate: function() {
-		com_isartdigital_utils_game_GameStage.getInstance().getGameContainer().addChild(this);
-	}
-	,desactiveWithBuilding: function() {
-		this.buildingIsInView = false;
-		if(this.generatorIsNotEmpty) {
-			this.desactivate();
-		}
-	}
-	,desactiveWithGenerator: function() {
-		this.generatorIsNotEmpty = false;
-		if(this.buildingIsInView) {
-			this.desactivate();
-		}
-	}
-	,desactivate: function() {
-		this.parent.removeChild(this);
-	}
-	,destroy: function() {
-		com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.off("GENERATOR",$bind(this,this.setActive));
-		com_isartdigital_utils_ui_Button.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_perle_ui_hud_ButtonProduction
-});
 var com_isartdigital_perle_ui_hud_ButtonRegion = function(pPos,pWorldPos) {
 	this.factory = new com_isartdigital_utils_game_factory_FlumpMovieAnimFactory();
 	this.assetName = "RegionButton";
@@ -3342,16 +3412,43 @@ com_isartdigital_perle_ui_hud_ButtonRegion.prototype = $extend(com_isartdigital_
 	}
 	,__class__: com_isartdigital_perle_ui_hud_ButtonRegion
 });
+var com_isartdigital_perle_ui_hud_BuildingHudType = { __ename__ : true, __constructs__ : ["CONSTRUCTION","HARVEST","MOVING"] };
+com_isartdigital_perle_ui_hud_BuildingHudType.CONSTRUCTION = ["CONSTRUCTION",0];
+com_isartdigital_perle_ui_hud_BuildingHudType.CONSTRUCTION.__enum__ = com_isartdigital_perle_ui_hud_BuildingHudType;
+com_isartdigital_perle_ui_hud_BuildingHudType.HARVEST = ["HARVEST",1];
+com_isartdigital_perle_ui_hud_BuildingHudType.HARVEST.__enum__ = com_isartdigital_perle_ui_hud_BuildingHudType;
+com_isartdigital_perle_ui_hud_BuildingHudType.MOVING = ["MOVING",2];
+com_isartdigital_perle_ui_hud_BuildingHudType.MOVING.__enum__ = com_isartdigital_perle_ui_hud_BuildingHudType;
+var com_isartdigital_utils_ui_Screen = function(pID) {
+	com_isartdigital_utils_ui_UIComponent.call(this,pID);
+	this.set_modalImage("assets/black_bg.png");
+};
+$hxClasses["com.isartdigital.utils.ui.Screen"] = com_isartdigital_utils_ui_Screen;
+com_isartdigital_utils_ui_Screen.__name__ = ["com","isartdigital","utils","ui","Screen"];
+com_isartdigital_utils_ui_Screen.__super__ = com_isartdigital_utils_ui_UIComponent;
+com_isartdigital_utils_ui_Screen.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
+	__class__: com_isartdigital_utils_ui_Screen
+});
+var com_isartdigital_utils_ui_smart_SmartScreen = function(pID) {
+	com_isartdigital_utils_ui_Screen.call(this,pID);
+	this.build();
+};
+$hxClasses["com.isartdigital.utils.ui.smart.SmartScreen"] = com_isartdigital_utils_ui_smart_SmartScreen;
+com_isartdigital_utils_ui_smart_SmartScreen.__name__ = ["com","isartdigital","utils","ui","smart","SmartScreen"];
+com_isartdigital_utils_ui_smart_SmartScreen.__super__ = com_isartdigital_utils_ui_Screen;
+com_isartdigital_utils_ui_smart_SmartScreen.prototype = $extend(com_isartdigital_utils_ui_Screen.prototype,{
+	__class__: com_isartdigital_utils_ui_smart_SmartScreen
+});
 var com_isartdigital_perle_ui_hud_Hud = function() {
-	this.buttonMap = new haxe_ds_StringMap();
-	this.BUTTON_START_POINT = new PIXI.Point(-340,-80);
-	this.BUTTONS_NAMES = ["Factory","House","Trees","Villa"];
-	com_isartdigital_utils_ui_Screen.call(this);
-	this.set_modal(false);
-	this.hudBottom = new PIXI.Container();
-	this.createButtons(this.hudBottom,this.BUTTONS_NAMES,this.BUTTON_START_POINT,10);
-	this.addChild(this.hudBottom);
-	this.positionables.push({ item : this.hudBottom, align : "bottomCenter", offsetX : 0, offsetY : 50});
+	com_isartdigital_utils_ui_smart_SmartScreen.call(this,"HUD");
+	this.set_modal(null);
+	this.containerBuildingHud = new PIXI.Container();
+	this.buildingRecolte = new com_isartdigital_perle_ui_hud_building_BHHarvest();
+	this.buildingTimeBased = new com_isartdigital_perle_ui_hud_building_BHConstruction();
+	this.buildingMovingBuilding = new com_isartdigital_perle_ui_hud_building_BHMoving();
+	this.buildingRecolte.init();
+	this.addChild(this.containerBuildingHud);
+	this.addListeners();
 };
 $hxClasses["com.isartdigital.perle.ui.hud.Hud"] = com_isartdigital_perle_ui_hud_Hud;
 com_isartdigital_perle_ui_hud_Hud.__name__ = ["com","isartdigital","perle","ui","hud","Hud"];
@@ -3361,116 +3458,99 @@ com_isartdigital_perle_ui_hud_Hud.getInstance = function() {
 	}
 	return com_isartdigital_perle_ui_hud_Hud.instance;
 };
-com_isartdigital_perle_ui_hud_Hud.__super__ = com_isartdigital_utils_ui_Screen;
-com_isartdigital_perle_ui_hud_Hud.prototype = $extend(com_isartdigital_utils_ui_Screen.prototype,{
-	createButtons: function(pContainer,pNames,pStartPos,pMargin) {
-		var _g1 = 0;
-		var _g = pNames.length;
-		while(_g1 < _g) {
-			var i = _g1++;
-			var v = new com_isartdigital_perle_ui_hud_ButtonBuild(pNames[i]);
-			var _this = this.buttonMap;
-			var key = pNames[i];
-			if(__map_reserved[key] != null) {
-				_this.setReserved(key,v);
-			} else {
-				_this.h[key] = v;
+com_isartdigital_perle_ui_hud_Hud.__super__ = com_isartdigital_utils_ui_smart_SmartScreen;
+com_isartdigital_perle_ui_hud_Hud.prototype = $extend(com_isartdigital_utils_ui_smart_SmartScreen.prototype,{
+	showBuildingHud: function(pNewBuildingHud,pVBuilding) {
+		com_isartdigital_perle_ui_hud_building_BuildingHud.linkVirtualBuilding(pVBuilding);
+		if(this.currentBuildingHud != pNewBuildingHud) {
+			this.currentBuildingHud = pNewBuildingHud;
+			this.hideBuildingHud();
+			switch(pNewBuildingHud[1]) {
+			case 0:
+				this.containerBuildingHud.addChild(this.buildingTimeBased);
+				break;
+			case 1:
+				this.containerBuildingHud.addChild(this.buildingRecolte);
+				break;
+			case 2:
+				this.containerBuildingHud.addChild(this.buildingMovingBuilding);
+				break;
 			}
-			var _this1 = this.buttonMap;
-			var key1 = pNames[i];
-			(__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width = 200;
-			var _this2 = this.buttonMap;
-			var key2 = pNames[i];
-			(__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).height = 200;
-			if(pNames[i] == pNames[0]) {
-				var _this3 = this.buttonMap;
-				var key3 = pNames[i];
-				var tmp = __map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3];
-				tmp.y += pStartPos.y;
-				var _this4 = this.buttonMap;
-				var key4 = pNames[i];
-				var tmp1 = __map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4];
-				tmp1.x += pStartPos.x;
-			} else {
-				var _this5 = this.buttonMap;
-				var key5 = pNames[i];
-				var tmp2 = __map_reserved[key5] != null?_this5.getReserved(key5):_this5.h[key5];
-				var _this6 = this.buttonMap;
-				var key6 = pNames[0];
-				tmp2.y = (__map_reserved[key6] != null?_this6.getReserved(key6):_this6.h[key6]).y;
-				var _this7 = this.buttonMap;
-				var key7 = pNames[i];
-				var tmp3 = __map_reserved[key7] != null?_this7.getReserved(key7):_this7.h[key7];
-				var _this8 = this.buttonMap;
-				var key8 = pNames[i - 1];
-				var tmp4 = (__map_reserved[key8] != null?_this8.getReserved(key8):_this8.h[key8]).x;
-				var _this9 = this.buttonMap;
-				var key9 = pNames[i - 1];
-				tmp3.x = tmp4 + (__map_reserved[key9] != null?_this9.getReserved(key9):_this9.h[key9]).width + pMargin;
-			}
-			var _this10 = this.buttonMap;
-			var key10 = pNames[i];
-			pContainer.addChild(__map_reserved[key10] != null?_this10.getReserved(key10):_this10.h[key10]);
 		}
+	}
+	,hideBuildingHud: function() {
+		this.containerBuildingHud.removeChildren();
+	}
+	,addListeners: function() {
+		var _g1 = 0;
+		var _g = this.children.length;
+		while(_g1 < _g) console.log(this.children[_g1++].name);
+		(js_Boot.__cast(this.getChildByName("Shop") , com_isartdigital_utils_ui_smart_SmartButton)).on("click",$bind(this,this.onClickShop));
+	}
+	,onClickShop: function() {
+		com_isartdigital_perle_game_sprites_Building.onClickHudBuilding("House");
+	}
+	,setAllTextValues: function(value,isLevel,type) {
+		if(isLevel) {
+			this.setTextValues("Level","_level_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.soulGood) {
+			this.setTextValues("Souls_Heaven","bar_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.soulBad) {
+			this.setTextValues("Souls_Hell","bar_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.badXp) {
+			this.setTextValues("Xp_bar_Hell","Hud_xp_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.goodXp) {
+			this.setTextValues("Xp_bar_Heaven","Hud_xp_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.soft) {
+			this.setTextValues("SoftCurrency","bar_txt",value);
+		} else if(type == com_isartdigital_perle_game_managers_GeneratorType.hard) {
+			this.setTextValues("HardCurrency","bar_txt",value);
+		}
+	}
+	,setTextValues: function(pContainerName,pTextName,pValue) {
+		var textContainer = this.getChildByName(pContainerName);
+		textContainer.getChildByName(pTextName,com_isartdigital_utils_ui_smart_TextSprite).set_text(pValue + "");
 	}
 	,destroy: function() {
 		com_isartdigital_perle_ui_hud_Hud.instance = null;
-		com_isartdigital_utils_ui_Screen.prototype.destroy.call(this);
+		com_isartdigital_utils_ui_smart_SmartScreen.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_ui_hud_Hud
 });
-var com_isartdigital_utils_ui_smart_SmartComponent = function(pID) {
-	com_isartdigital_utils_ui_UIComponent.call(this,pID);
-	this.build();
-};
-$hxClasses["com.isartdigital.utils.ui.smart.SmartComponent"] = com_isartdigital_utils_ui_smart_SmartComponent;
-com_isartdigital_utils_ui_smart_SmartComponent.__name__ = ["com","isartdigital","utils","ui","smart","SmartComponent"];
-com_isartdigital_utils_ui_smart_SmartComponent.__super__ = com_isartdigital_utils_ui_UIComponent;
-com_isartdigital_utils_ui_smart_SmartComponent.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
-	__class__: com_isartdigital_utils_ui_smart_SmartComponent
-});
-var com_isartdigital_perle_ui_hud_HudContextual = function(pID) {
+var com_isartdigital_perle_ui_hud_building_BuildingHud = function(pID) {
 	com_isartdigital_utils_ui_smart_SmartComponent.call(this,pID);
 };
-$hxClasses["com.isartdigital.perle.ui.hud.HudContextual"] = com_isartdigital_perle_ui_hud_HudContextual;
-com_isartdigital_perle_ui_hud_HudContextual.__name__ = ["com","isartdigital","perle","ui","hud","HudContextual"];
-com_isartdigital_perle_ui_hud_HudContextual.initClass = function() {
-	com_isartdigital_perle_ui_hud_HudContextual.container = new PIXI.Container();
-	com_isartdigital_utils_game_GameStage.getInstance().getGameContainer().addChild(com_isartdigital_perle_ui_hud_HudContextual.container);
+$hxClasses["com.isartdigital.perle.ui.hud.building.BuildingHud"] = com_isartdigital_perle_ui_hud_building_BuildingHud;
+com_isartdigital_perle_ui_hud_building_BuildingHud.__name__ = ["com","isartdigital","perle","ui","hud","building","BuildingHud"];
+com_isartdigital_perle_ui_hud_building_BuildingHud.linkVirtualBuilding = function(pVBuilding) {
+	com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding = pVBuilding;
 };
-com_isartdigital_perle_ui_hud_HudContextual.createOnBuilding = function(pBuilding,pVBuilding) {
-	if(com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC != null) {
-		com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC.destroy();
+com_isartdigital_perle_ui_hud_building_BuildingHud.unlinkVirtualBuilding = function(pVBuilding) {
+	if(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding.tileDesc.id == pVBuilding.tileDesc.id) {
+		com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding = null;
 	}
-	com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC = new com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit();
-	com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC.init(pBuilding,pVBuilding);
-	com_isartdigital_perle_ui_hud_HudContextual.container.addChild(com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC);
 };
-com_isartdigital_perle_ui_hud_HudContextual.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
-com_isartdigital_perle_ui_hud_HudContextual.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
-	destroy: function() {
-		com_isartdigital_perle_ui_hud_HudContextual.currentBuildingHudC = null;
-		com_isartdigital_perle_ui_hud_HudContextual.container.removeChild(this);
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_perle_ui_hud_HudContextual
+com_isartdigital_perle_ui_hud_building_BuildingHud.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_perle_ui_hud_building_BuildingHud.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	__class__: com_isartdigital_perle_ui_hud_building_BuildingHud
 });
-var com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit = function(pID) {
-	com_isartdigital_perle_ui_hud_HudContextual.call(this,pID);
+var com_isartdigital_perle_ui_hud_building_BHConstruction = function() {
+	com_isartdigital_perle_ui_hud_building_BuildingHud.call(this,"BuildingContext");
 };
-$hxClasses["com.isartdigital.perle.ui.hud.Menu_BatimentConstruit"] = com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit;
-com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.__name__ = ["com","isartdigital","perle","ui","hud","Menu_BatimentConstruit"];
-com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.removeToRegionBuilding = function() {
-	com_isartdigital_perle_game_managers_RegionManager.removeToRegionBuilding(com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.vBuildingRef);
+$hxClasses["com.isartdigital.perle.ui.hud.building.BHConstruction"] = com_isartdigital_perle_ui_hud_building_BHConstruction;
+com_isartdigital_perle_ui_hud_building_BHConstruction.__name__ = ["com","isartdigital","perle","ui","hud","building","BHConstruction"];
+com_isartdigital_perle_ui_hud_building_BHConstruction.__super__ = com_isartdigital_perle_ui_hud_building_BuildingHud;
+com_isartdigital_perle_ui_hud_building_BHConstruction.prototype = $extend(com_isartdigital_perle_ui_hud_building_BuildingHud.prototype,{
+	__class__: com_isartdigital_perle_ui_hud_building_BHConstruction
+});
+var com_isartdigital_perle_ui_hud_building_BHHarvest = function() {
+	com_isartdigital_perle_ui_hud_building_BuildingHud.call(this,"BuiltContext");
 };
-com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.__super__ = com_isartdigital_perle_ui_hud_HudContextual;
-com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.prototype = $extend(com_isartdigital_perle_ui_hud_HudContextual.prototype,{
-	init: function(pBuilding,pVBuilding) {
-		this.x = pVBuilding.graphic.x / 2;
-		this.y = pVBuilding.graphic.y / 2;
-		this.buildingRef = pBuilding;
-		com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.vBuildingRef = pVBuilding;
-		this.addListeners();
+$hxClasses["com.isartdigital.perle.ui.hud.building.BHHarvest"] = com_isartdigital_perle_ui_hud_building_BHHarvest;
+com_isartdigital_perle_ui_hud_building_BHHarvest.__name__ = ["com","isartdigital","perle","ui","hud","building","BHHarvest"];
+com_isartdigital_perle_ui_hud_building_BHHarvest.__super__ = com_isartdigital_perle_ui_hud_building_BuildingHud;
+com_isartdigital_perle_ui_hud_building_BHHarvest.prototype = $extend(com_isartdigital_perle_ui_hud_building_BuildingHud.prototype,{
+	init: function() {
 	}
 	,addListeners: function() {
 		this.btnRemove = js_Boot.__cast(this.getChildByName("Button_MoveBuilding") , com_isartdigital_utils_ui_smart_SmartButton);
@@ -3481,8 +3561,6 @@ com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.prototype = $extend(com_is
 		this.btnHide.on("click",$bind(this,this.onClickHide));
 	}
 	,onClickRemove: function() {
-		this.buildingRef.setModeMove(com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.vBuildingRef);
-		this.destroy();
 	}
 	,onClickDescription: function() {
 		console.log("onClickCenter");
@@ -3490,53 +3568,16 @@ com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit.prototype = $extend(com_is
 	,onClickHide: function() {
 		this.destroy();
 	}
-	,destroy: function() {
-		com_isartdigital_perle_ui_hud_HudContextual.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_perle_ui_hud_Menu_$BatimentConstruit
+	,__class__: com_isartdigital_perle_ui_hud_building_BHHarvest
 });
-var com_isartdigital_utils_ui_Popin = function(pID) {
-	com_isartdigital_utils_ui_UIComponent.call(this,pID);
+var com_isartdigital_perle_ui_hud_building_BHMoving = function() {
+	com_isartdigital_perle_ui_hud_building_BuildingHud.call(this,"MovingBuilding");
 };
-$hxClasses["com.isartdigital.utils.ui.Popin"] = com_isartdigital_utils_ui_Popin;
-com_isartdigital_utils_ui_Popin.__name__ = ["com","isartdigital","utils","ui","Popin"];
-com_isartdigital_utils_ui_Popin.__super__ = com_isartdigital_utils_ui_UIComponent;
-com_isartdigital_utils_ui_Popin.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
-	__class__: com_isartdigital_utils_ui_Popin
-});
-var com_isartdigital_utils_ui_smart_SmartPopin = function(pID) {
-	com_isartdigital_utils_ui_Popin.call(this,pID);
-	this.build();
-};
-$hxClasses["com.isartdigital.utils.ui.smart.SmartPopin"] = com_isartdigital_utils_ui_smart_SmartPopin;
-com_isartdigital_utils_ui_smart_SmartPopin.__name__ = ["com","isartdigital","utils","ui","smart","SmartPopin"];
-com_isartdigital_utils_ui_smart_SmartPopin.__super__ = com_isartdigital_utils_ui_Popin;
-com_isartdigital_utils_ui_smart_SmartPopin.prototype = $extend(com_isartdigital_utils_ui_Popin.prototype,{
-	__class__: com_isartdigital_utils_ui_smart_SmartPopin
-});
-var com_isartdigital_perle_ui_popin_Hud = function(pID) {
-	com_isartdigital_utils_ui_smart_SmartPopin.call(this,pID);
-	this.set_modal(null);
-	this.btnTest = js_Boot.__cast(this.getChildByName("ButtonItem") , com_isartdigital_utils_ui_smart_SmartButton);
-	this.btnTest.on("click",$bind(this,this.onClick));
-};
-$hxClasses["com.isartdigital.perle.ui.popin.Hud"] = com_isartdigital_perle_ui_popin_Hud;
-com_isartdigital_perle_ui_popin_Hud.__name__ = ["com","isartdigital","perle","ui","popin","Hud"];
-com_isartdigital_perle_ui_popin_Hud.getInstance = function() {
-	if(com_isartdigital_perle_ui_popin_Hud.instance == null) {
-		com_isartdigital_perle_ui_popin_Hud.instance = new com_isartdigital_perle_ui_popin_Hud();
-	}
-	return com_isartdigital_perle_ui_popin_Hud.instance;
-};
-com_isartdigital_perle_ui_popin_Hud.__super__ = com_isartdigital_utils_ui_smart_SmartPopin;
-com_isartdigital_perle_ui_popin_Hud.prototype = $extend(com_isartdigital_utils_ui_smart_SmartPopin.prototype,{
-	onClick: function() {
-		console.log("click");
-	}
-	,destroy: function() {
-		com_isartdigital_perle_ui_popin_Hud.instance = null;
-	}
-	,__class__: com_isartdigital_perle_ui_popin_Hud
+$hxClasses["com.isartdigital.perle.ui.hud.building.BHMoving"] = com_isartdigital_perle_ui_hud_building_BHMoving;
+com_isartdigital_perle_ui_hud_building_BHMoving.__name__ = ["com","isartdigital","perle","ui","hud","building","BHMoving"];
+com_isartdigital_perle_ui_hud_building_BHMoving.__super__ = com_isartdigital_perle_ui_hud_building_BuildingHud;
+com_isartdigital_perle_ui_hud_building_BHMoving.prototype = $extend(com_isartdigital_perle_ui_hud_building_BuildingHud.prototype,{
+	__class__: com_isartdigital_perle_ui_hud_building_BHMoving
 });
 var com_isartdigital_utils_Config = function() { };
 $hxClasses["com.isartdigital.utils.Config"] = com_isartdigital_utils_Config;
@@ -4038,177 +4079,6 @@ com_isartdigital_utils_game_factory_FlumpSpriteAnimFactory.prototype = $extend(c
 	}
 	,__class__: com_isartdigital_utils_game_factory_FlumpSpriteAnimFactory
 });
-var com_isartdigital_utils_game_factory_MovieClipAnimFactory = function() {
-	com_isartdigital_utils_game_factory_AnimFactory.call(this);
-};
-$hxClasses["com.isartdigital.utils.game.factory.MovieClipAnimFactory"] = com_isartdigital_utils_game_factory_MovieClipAnimFactory;
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.__name__ = ["com","isartdigital","utils","game","factory","MovieClipAnimFactory"];
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.set_textureDigits = function(pDigits) {
-	com_isartdigital_utils_game_factory_MovieClipAnimFactory.digits = "";
-	var _g1 = 0;
-	var _g = pDigits;
-	while(_g1 < _g) {
-		++_g1;
-		com_isartdigital_utils_game_factory_MovieClipAnimFactory.digits += "0";
-	}
-	return com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits = pDigits;
-};
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.addTextures = function(pJson) {
-	var lFrames = Reflect.field(pJson,"frames");
-	if(com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition == null) {
-		com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition = new haxe_ds_StringMap();
-	}
-	if(com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor == null) {
-		com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor = new haxe_ds_StringMap();
-	}
-	if(com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache == null) {
-		com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache = new haxe_ds_StringMap();
-	}
-	if(com_isartdigital_utils_game_factory_MovieClipAnimFactory.digits == null) {
-		com_isartdigital_utils_game_factory_MovieClipAnimFactory.set_textureDigits(com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits);
-	}
-	var lID;
-	var lNum;
-	var _g = 0;
-	var _g1 = Reflect.fields(lFrames);
-	while(_g < _g1.length) {
-		var lName = _g1[_g];
-		++_g;
-		lID = lName.split(".")[0];
-		lNum = Std.parseInt(HxOverrides.substr(lID,-1 * com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits,null));
-		if(lNum != null) {
-			lID = HxOverrides.substr(lID,0,lID.length - com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits);
-		}
-		var _this = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-		if((__map_reserved[lID] != null?_this.getReserved(lID):_this.h[lID]) == null) {
-			var v = lNum == null?1:lNum;
-			var _this1 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-			if(__map_reserved[lID] != null) {
-				_this1.setReserved(lID,v);
-			} else {
-				_this1.h[lID] = v;
-			}
-		} else {
-			var _this2 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-			if(lNum > (__map_reserved[lID] != null?_this2.getReserved(lID):_this2.h[lID])) {
-				var _this3 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-				if(__map_reserved[lID] != null) {
-					_this3.setReserved(lID,lNum);
-				} else {
-					_this3.h[lID] = lNum;
-				}
-			}
-		}
-		var _this4 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor;
-		if((__map_reserved[lID] != null?_this4.getReserved(lID):_this4.h[lID]) == null) {
-			var v1 = Reflect.field(lFrames,lName).pivot;
-			var _this5 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor;
-			if(__map_reserved[lID] != null) {
-				_this5.setReserved(lID,v1);
-			} else {
-				_this5.h[lID] = v1;
-			}
-		}
-	}
-};
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.clearTextures = function(pJson) {
-	var lFrames = Reflect.field(pJson,"frames");
-	if(com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition == null) {
-		return;
-	}
-	var lNum;
-	var _g = 0;
-	var _g1 = Reflect.fields(lFrames);
-	while(_g < _g1.length) {
-		var lID = _g1[_g];
-		++_g;
-		lID = lID.split(".")[0];
-		lNum = Std.parseInt(HxOverrides.substr(lID,-1 * com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits,null));
-		if(lNum != null) {
-			lID = HxOverrides.substr(lID,0,lID.length - com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits);
-		}
-		var _this = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-		if(__map_reserved[lID] != null) {
-			_this.setReserved(lID,null);
-		} else {
-			_this.h[lID] = null;
-		}
-		var _this1 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor;
-		if(__map_reserved[lID] != null) {
-			_this1.setReserved(lID,null);
-		} else {
-			_this1.h[lID] = null;
-		}
-		var _this2 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-		if(__map_reserved[lID] != null) {
-			_this2.setReserved(lID,null);
-		} else {
-			_this2.h[lID] = null;
-		}
-	}
-};
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.__super__ = com_isartdigital_utils_game_factory_AnimFactory;
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.prototype = $extend(com_isartdigital_utils_game_factory_AnimFactory.prototype,{
-	create: function(pID) {
-		this.anim = new PIXI.extras.MovieClip(this.getTextures(pID));
-		var _this = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor;
-		(js_Boot.__cast(this.anim , PIXI.extras.MovieClip)).anchor = __map_reserved[pID] != null?_this.getReserved(pID):_this.h[pID];
-		return this.anim;
-	}
-	,update: function(pID) {
-		var lAnim = js_Boot.__cast(this.anim , PIXI.extras.MovieClip);
-		lAnim.textures = this.getTextures(pID);
-		var _this = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesAnchor;
-		lAnim.anchor = __map_reserved[pID] != null?_this.getReserved(pID):_this.h[pID];
-	}
-	,setFrame: function(pAutoPlay,pStart) {
-		if(pStart == null) {
-			pStart = 0;
-		}
-		if(pAutoPlay == null) {
-			pAutoPlay = true;
-		}
-		var lAnim = js_Boot.__cast(this.anim , PIXI.extras.MovieClip);
-		lAnim.gotoAndStop(pStart);
-		if(pAutoPlay) {
-			lAnim.play();
-		}
-	}
-	,getTextures: function(pID) {
-		var _this = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-		if((__map_reserved[pID] != null?_this.getReserved(pID):_this.h[pID]) == null) {
-			var _this1 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesDefinition;
-			var lFrames = __map_reserved[pID] != null?_this1.getReserved(pID):_this1.h[pID];
-			if(lFrames == 1) {
-				var v = [PIXI.Texture.fromFrame(pID + ".png")];
-				var _this2 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-				if(__map_reserved[pID] != null) {
-					_this2.setReserved(pID,v);
-				} else {
-					_this2.h[pID] = v;
-				}
-			} else {
-				var v1 = [];
-				var _this3 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-				if(__map_reserved[pID] != null) {
-					_this3.setReserved(pID,v1);
-				} else {
-					_this3.h[pID] = v1;
-				}
-				var _g1 = 1;
-				var _g = lFrames + 1;
-				while(_g1 < _g) {
-					var i = _g1++;
-					var _this4 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-					(__map_reserved[pID] != null?_this4.getReserved(pID):_this4.h[pID]).push(PIXI.Texture.fromFrame(pID + HxOverrides.substr(com_isartdigital_utils_game_factory_MovieClipAnimFactory.digits + i,-1 * com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits,null) + ".png"));
-				}
-			}
-		}
-		var _this5 = com_isartdigital_utils_game_factory_MovieClipAnimFactory.texturesCache;
-		return __map_reserved[pID] != null?_this5.getReserved(pID):_this5.h[pID];
-	}
-	,__class__: com_isartdigital_utils_game_factory_MovieClipAnimFactory
-});
 var com_isartdigital_utils_loader_GameLoader = function() {
 	this.soundsList = [];
 	this.soundsSpecs = new haxe_ds_StringMap();
@@ -4520,6 +4390,15 @@ com_isartdigital_utils_system_DeviceCapabilities.init = function(pHd,pMd,pLd) {
 	var key = com_isartdigital_utils_system_DeviceCapabilities.textureType;
 	com_isartdigital_utils_system_DeviceCapabilities.textureRatio = __map_reserved[key] != null?_this3.getReserved(key):_this3.h[key];
 };
+var com_isartdigital_utils_ui_Popin = function(pID) {
+	com_isartdigital_utils_ui_UIComponent.call(this,pID);
+};
+$hxClasses["com.isartdigital.utils.ui.Popin"] = com_isartdigital_utils_ui_Popin;
+com_isartdigital_utils_ui_Popin.__name__ = ["com","isartdigital","utils","ui","Popin"];
+com_isartdigital_utils_ui_Popin.__super__ = com_isartdigital_utils_ui_UIComponent;
+com_isartdigital_utils_ui_Popin.prototype = $extend(com_isartdigital_utils_ui_UIComponent.prototype,{
+	__class__: com_isartdigital_utils_ui_Popin
+});
 var com_isartdigital_utils_ui_UIPosition = function() {
 };
 $hxClasses["com.isartdigital.utils.ui.UIPosition"] = com_isartdigital_utils_ui_UIPosition;
@@ -4561,65 +4440,6 @@ com_isartdigital_utils_ui_UIPosition.setPosition = function(pTarget,pPosition,pO
 com_isartdigital_utils_ui_UIPosition.prototype = {
 	__class__: com_isartdigital_utils_ui_UIPosition
 };
-var com_isartdigital_utils_ui_smart_SmartButton = function(pID) {
-	com_isartdigital_utils_ui_smart_SmartComponent.call(this,pID);
-	this.set_modal(false);
-	this.interactive = true;
-	this.buttonMode = true;
-	this.on("mouseover",$bind(this,this._mouseOver));
-	this.on("mousedown",$bind(this,this._mouseDown));
-	this.on("click",$bind(this,this._click));
-	this.on("mouseout",$bind(this,this._mouseOut));
-	this.on("mouseupoutside",$bind(this,this._mouseOut));
-	this.on("touchstart",$bind(this,this._mouseDown));
-	this.on("tap",$bind(this,this._click));
-	this.on("touchend",$bind(this,this._mouseOut));
-	this.on("touchendoutside",$bind(this,this._mouseOut));
-};
-$hxClasses["com.isartdigital.utils.ui.smart.SmartButton"] = com_isartdigital_utils_ui_smart_SmartButton;
-com_isartdigital_utils_ui_smart_SmartButton.__name__ = ["com","isartdigital","utils","ui","smart","SmartButton"];
-com_isartdigital_utils_ui_smart_SmartButton.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
-com_isartdigital_utils_ui_smart_SmartButton.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
-	build: function(pFrame) {
-		if(pFrame == null) {
-			pFrame = 0;
-		}
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,3);
-		this.hitArea = this.getBounds().clone();
-		this._mouseOut();
-	}
-	,clear: function() {
-		while(this.children.length > 0) this.removeChildAt(0);
-	}
-	,_click: function(pEvent) {
-		this._mouseOut();
-	}
-	,_mouseDown: function(pEvent) {
-		this.clear();
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,2);
-	}
-	,_mouseOver: function(pEvent) {
-		this.clear();
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this,1);
-	}
-	,_mouseOut: function(pEvent) {
-		this.clear();
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.build.call(this);
-	}
-	,destroy: function() {
-		this.off("mouseover",$bind(this,this._mouseOver));
-		this.off("mousedown",$bind(this,this._mouseDown));
-		this.off("click",$bind(this,this._click));
-		this.off("mouseout",$bind(this,this._mouseOut));
-		this.off("mouseupoutside",$bind(this,this._mouseOut));
-		this.off("touchstart",$bind(this,this._mouseDown));
-		this.off("tap",$bind(this,this._click));
-		this.off("touchend",$bind(this,this._mouseOut));
-		this.off("touchendoutside",$bind(this,this._mouseOut));
-		com_isartdigital_utils_ui_smart_SmartComponent.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_utils_ui_smart_SmartButton
-});
 var com_isartdigital_utils_ui_smart_TextSprite = function(pData) {
 	PIXI.Container.call(this);
 	var lStyle = { font : StringTools.replace(pData.font,"*",""), fill : pData.color, align : pData.align, wordWrap : pData.wordWrap == 1, wordWrapWidth : pData.width};
@@ -7623,7 +7443,6 @@ com_isartdigital_perle_game_virtual_VTile.ROAD_MAP = [["","","","","Road_br","Ro
 com_isartdigital_utils_ui_Button.UP = 0;
 com_isartdigital_utils_ui_Button.OVER = 1;
 com_isartdigital_utils_ui_Button.DOWN = 2;
-com_isartdigital_perle_ui_hud_Hud.MARGIN_RIGHT = 10;
 com_isartdigital_utils_Config.cache = true;
 com_isartdigital_utils_Config._data = { };
 com_isartdigital_utils_Debug.QR_SIZE = 0.35;
@@ -7653,7 +7472,6 @@ com_isartdigital_utils_events_TouchEventType.TOUCH_END_OUTSIDE = "touchendoutsid
 com_isartdigital_utils_events_TouchEventType.TAP = "tap";
 com_isartdigital_utils_game_GameStage.SAFE_ZONE_WIDTH = 2048;
 com_isartdigital_utils_game_GameStage.SAFE_ZONE_HEIGHT = 1366;
-com_isartdigital_utils_game_factory_MovieClipAnimFactory.textureDigits = 4;
 com_isartdigital_utils_loader_GameLoader.txtLoaded = new haxe_ds_StringMap();
 com_isartdigital_utils_system_DeviceCapabilities.SYSTEM_ANDROID = "Android";
 com_isartdigital_utils_system_DeviceCapabilities.SYSTEM_IOS = "iOS";

@@ -1,4 +1,4 @@
-package com.isartdigital.perle.game.virtual;
+package com.isartdigital.perle.game.virtual.vBuilding;
 
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.IdManager;

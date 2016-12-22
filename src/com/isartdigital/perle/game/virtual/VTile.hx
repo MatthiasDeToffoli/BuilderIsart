@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import pixi.core.math.Point;
 import pixi.flump.Movie;
 

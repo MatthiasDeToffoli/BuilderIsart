@@ -11,7 +11,7 @@ import js.Browser;
 //@:optional vous connaisiez ?
 
 enum RegionType {hell; eden; styx; }
-enum GeneratorType{soft; hard; goodXp; badXp; soul; intern; buildResourceFromHell; buildResourceFromParadise; }
+enum GeneratorType{soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; }
 enum Alignment{neutral; demon; angel; }
 
 
@@ -166,7 +166,8 @@ class SaveManager {
 		desc.totals.push(data.totalsMap[GeneratorType.hard]);
 		desc.totals.push(data.totalsMap[GeneratorType.goodXp]);
 		desc.totals.push(data.totalsMap[GeneratorType.badXp]);
-		desc.totals.push(data.totalsMap[GeneratorType.soul]);
+		desc.totals.push(data.totalsMap[GeneratorType.soulGood]);
+		desc.totals.push(data.totalsMap[GeneratorType.soulBad]);
 		desc.totals.push(data.totalsMap[GeneratorType.intern]);
 		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromHell]);
 		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromParadise]);
@@ -304,6 +305,12 @@ class SaveManager {
 				
 			case "soul":
 				return GeneratorType.soul;
+				
+			case "soulGodd":
+				return GeneratorType.soulGood;
+				
+			case "soulBad":
+				return GeneratorType.soulBad;
 				
 			case "intern":
 				return GeneratorType.intern;

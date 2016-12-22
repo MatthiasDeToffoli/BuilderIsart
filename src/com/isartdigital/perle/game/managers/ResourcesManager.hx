@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.ResourcesGeneratorDescription;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
+import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import haxe.rtti.CType.Typedef;
 
@@ -75,7 +76,8 @@ class ResourcesManager
 		var i:Int;
 		
 		pMapG[GeneratorType.soul] = new Array<Generator>();
-		pMapT[GeneratorType.soul] = 0;
+		pMapT[GeneratorType.soulGood] = 0;
+		pMapT[GeneratorType.soulBad] = 0;
 		
 		pMapG[GeneratorType.soft] = new Array<Generator>();
 		pMapT[GeneratorType.soft] = 0;
@@ -101,8 +103,16 @@ class ResourcesManager
 		myResourcesData = {
 			generatorsMap: pMapG,
 			totalsMap: pMapT,
-			level: 0
+			level: 1
 		}
+		
+		Hud.getInstance().setAllTextValues(1,true);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soft);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.hard);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulBad);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulGood);
 		
 		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesByOne);
 	}
@@ -126,16 +136,25 @@ class ResourcesManager
 			TimeManager.addGenerator(myGenerator);
 		}
 		
-		myResourcesData.totalsMap[GeneratorType.soft] = resourcesDescriptionLoad.totals[0];
-		myResourcesData.totalsMap[GeneratorType.hard] = resourcesDescriptionLoad.totals[1];
-		myResourcesData.totalsMap[GeneratorType.goodXp] = resourcesDescriptionLoad.totals[2];
-		myResourcesData.totalsMap[GeneratorType.badXp] = resourcesDescriptionLoad.totals[3];
-		myResourcesData.totalsMap[GeneratorType.soul] = resourcesDescriptionLoad.totals[4];
-		myResourcesData.totalsMap[GeneratorType.intern] = resourcesDescriptionLoad.totals[5];
-		myResourcesData.totalsMap[GeneratorType.buildResourceFromHell] = resourcesDescriptionLoad.totals[6];
-		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = resourcesDescriptionLoad.totals[7];
+		var totals:Array<Float> = resourcesDescriptionLoad.totals;
 		
-
+		myResourcesData.totalsMap[GeneratorType.soft] = totals[0];
+		myResourcesData.totalsMap[GeneratorType.hard] = totals[1];
+		myResourcesData.totalsMap[GeneratorType.goodXp] = totals[2];
+		myResourcesData.totalsMap[GeneratorType.badXp] = totals[3];
+		myResourcesData.totalsMap[GeneratorType.soulGood] = totals[4];
+		myResourcesData.totalsMap[GeneratorType.soulBad] = totals[5];
+		myResourcesData.totalsMap[GeneratorType.intern] = totals[6];
+		myResourcesData.totalsMap[GeneratorType.buildResourceFromHell] = totals[7];
+		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = totals[8];
+		
+		Hud.getInstance().setAllTextValues(resourcesDescriptionLoad.level,true);
+		Hud.getInstance().setAllTextValues(totals[0],false,GeneratorType.soft);
+		Hud.getInstance().setAllTextValues(totals[1],false,GeneratorType.hard);
+		Hud.getInstance().setAllTextValues(totals[2],false,GeneratorType.goodXp);
+		Hud.getInstance().setAllTextValues(totals[3],false,GeneratorType.badXp);
+		Hud.getInstance().setAllTextValues(totals[4],false,GeneratorType.soulGood);
+		Hud.getInstance().setAllTextValues(totals[5],false,GeneratorType.soulBad);
 	}
 	
 	/**
@@ -333,7 +352,8 @@ class ResourcesManager
 		
 		myResourcesData.totalsMap[pDesc.type] += pDesc.quantity;
 		pDesc.quantity = 0;
-		trace(myResourcesData.totalsMap[pDesc.type]);
+		
+		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pDesc.type], false, pDesc.type);
 
 		SaveManager.save();
 		generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pDesc.id, active:false});
@@ -348,6 +368,9 @@ class ResourcesManager
 	 */
 	public static function spendTotal(pType:GeneratorType, spendValue:Int):Void{
 		myResourcesData.totalsMap[pType] -= spendValue;
+		
+		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType);
+		
 		SaveManager.save();
 	}
 	
@@ -359,6 +382,11 @@ class ResourcesManager
 		myResourcesData.totalsMap[GeneratorType.goodXp]= 0;
 		
 		myResourcesData.level++;
+		
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp);
+		Hud.getInstance().setAllTextValues(myResourcesData.level, true);
+		
 		SaveManager.save();
 	}
 

@@ -1,6 +1,9 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
@@ -9,6 +12,7 @@ import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartScreen;
+import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.display.Container;
 
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; }
@@ -91,6 +95,35 @@ class Hud extends SmartScreen
 	
 	private function onClickShop ():Void {
 		Building.onClickHudBuilding("House"); // todo temporaire
+	}
+	
+	/**
+	 * set the good value of a resource on the Hud
+	 * @param	value the value to set
+	 * @param	isLevel if we have to set on the level or not
+	 * @param	type the type of resource we want to set
+	 */
+	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType):Void{
+		if(isLevel) setTextValues("Level", "_level_txt", value);
+		else if (type == GeneratorType.soulGood) setTextValues("Souls_Heaven", "bar_txt", value);
+		else if (type == GeneratorType.soulBad) setTextValues("Souls_Hell", "bar_txt", value);
+		else if (type == GeneratorType.badXp) setTextValues("Xp_bar_Hell", "Hud_xp_txt", value);
+		else if (type == GeneratorType.goodXp) setTextValues("Xp_bar_Heaven", "Hud_xp_txt", value);
+		else if (type == GeneratorType.soft) setTextValues("SoftCurrency", "bar_txt", value);
+		else if (type == GeneratorType.hard) setTextValues("HardCurrency", "bar_txt", value);
+	}
+	
+	/**
+	 * find the text on the Hud et change is value
+	 * @param	pContainerName the name of the object which contain the text
+	 * @param	pTextName the name of the text
+	 * @param	pValue the value we want
+	 */
+	private function setTextValues(pContainerName:String, pTextName:String, pValue:Float):Void{
+		var textContainer:Dynamic = getChildByName(pContainerName);
+		
+		var text:TextSprite = cast(textContainer.getChildByName(pTextName, TextSprite));
+		text.text = pValue + "";
 	}
 	
 	
