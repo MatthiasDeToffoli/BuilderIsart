@@ -31,6 +31,6 @@ class VGround extends VTile {
 
 		super.activate();
 		graphic = cast(Ground.createGround(tileDesc), FlumpStateGraphic);
-		linkVirtual();
+		cast(graphic, Ground).linkedVirtualCell = this;
 	}
 }

@@ -37,7 +37,7 @@ class VBuilding extends VTile {
 		super.activate();
 		var myBuilding:Building = Building.createBuilding(tileDesc);
 		graphic = cast(myBuilding, FlumpStateGraphic);
-		linkVirtual();
+		cast(graphic, Building).linkedVirtualCell = this;
 
 		myContextualHud.activate();
 		
@@ -77,6 +77,23 @@ class VBuilding extends VTile {
 			Hud.getInstance().showBuildingHud(BuildingHudType.CONSTRUCTION, this);
 		else if (currentState == VBuildingState.isMoving)
 			Hud.getInstance().showBuildingHud(BuildingHudType.MOVING, this);
+	}
+	
+	public function moveBuilding (pRegionMap:RegionMap):Void {
+		updateWorldMapPosition(pRegionMap);
+		desactivate();
+		activate();
+	}
+	
+	private function updateWorldMapPosition (pRegionMap:RegionMap):Void {
+		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
+		
+		tileDesc.regionX = pRegionMap.region.x;
+		tileDesc.regionY = pRegionMap.region.y;
+		tileDesc.mapX = pRegionMap.map.x;
+		tileDesc.mapY = pRegionMap.map.y;
+		
+		RegionManager.addToRegionBuilding(this);
 	}
 	
 	private function addGenerator ():Void {

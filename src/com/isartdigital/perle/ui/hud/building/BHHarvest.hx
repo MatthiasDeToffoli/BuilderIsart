@@ -13,7 +13,9 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 class BHHarvest extends BuildingHud{
 	
 	
-	private var btnRemove:SmartButton;
+	// todo : faire singleton pour les trois buildinghud
+	
+	private var btnMove:SmartButton;
 	private var btnDescription:SmartButton;
 	private var btnHide:SmartButton;
 	
@@ -28,14 +30,14 @@ class BHHarvest extends BuildingHud{
 	 * @param	pVBuilding
 	 */
 	public function init ():Void {
-		//addListeners(); todo : créer une erreur
+		addListeners();
 	}
 	
 	private function addListeners ():Void {
-		btnRemove = cast(getChildByName("Button_MoveBuilding"), SmartButton);
-		btnDescription = cast(getChildByName("Button_EnterBuilding"), SmartButton);
-		btnHide = cast(getChildByName("Button_CancelSelection"), SmartButton);
-		btnRemove.on(MouseEventType.CLICK, onClickRemove);
+		btnMove = cast(getChildByName("MoveButton"), SmartButton);
+		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
+		btnHide = cast(getChildByName("CloseButton"), SmartButton);
+		btnMove.on(MouseEventType.CLICK, onClickMove);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
 		btnHide.on(MouseEventType.CLICK, onClickHide);
 	}
@@ -43,20 +45,19 @@ class BHHarvest extends BuildingHud{
 	/*
 	 * Function to remove the building
 	 */
-	private function onClickRemove(): Void {
-		//BuildingHud.virtualBuilding.graphic.setModeMove(BuildingHud.virtualBuilding);
-	
+	private function onClickMove(): Void {
+		cast(BuildingHud.virtualBuilding.graphic, Building).setModeMove();
 	}
 	
 	private function onClickDescription(): Void {
-		trace("onClickCenter");
+		trace("info maison");
 	}
 	
 	/*
 	 * Fonction pour cacher le menu
 	 */
 	private function onClickHide(): Void {
-		destroy();
+		Hud.getInstance().hideBuildingHud();
 	}
 	
 	/* useless todo : enlever

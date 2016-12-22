@@ -47,12 +47,18 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	];
 	
 	private static inline var FILTER_OPACITY:Float = 0.5;
+	private static inline var ROTATION_IN_RAD = 0.785398;
 	
 	public static var list:Array<Building>;
 	
-	public static var currentSelectedBuilding:Building;
+	private static var currentSelectedBuilding:Building;
 	private static var container:Container;
 	private static var colorMatrix:ColorMatrixFilter;
+	
+	private static var footPrint:FootPrint;
+	private static var footPrintAsset:String = "FootPrint"; // todo @Alexis: contante
+	private static var footPrintPoint:Point;
+	
 	
 	public var colMin:Int;
 	public var colMax:Int;
@@ -227,12 +233,38 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		container.addChild(currentSelectedBuilding);
 		currentSelectedBuilding.init();
 		currentSelectedBuilding.setModePhantom();
-		FootPrint.createShadow();
+		createShadow();
+	}
+	
+	//Function to create the shadow of the footprint
+	private static function createShadow():Void {
+		footPrint = PoolingManager.getFromPool(footPrintAsset);
+        footPrint.init();
+        FootPrint.container.addChild(footPrint);
+        footPrint.start();
+		footPrint.rotation = ROTATION_IN_RAD;
+		FootPrint.container.scale.y = 0.5;
+		
+		//point of footprint
+		if (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
+			footPrintPoint = new Point(0,0); 
+		else
+			footPrintPoint = new Point( -footPrint.width / 8, -footPrint.height / 2 - 50); //a revenir dessus si je trouves une meileur façon
+			
+		//position
+		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
+		//Give width and height
+		footPrint.width = footPrint.width * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].width +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
+		footPrint.height = footPrint.height * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].height +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
+	
 	}
 	
 	private static function removePhantom():Void {
-		FootPrint.removeShadow();
-		currentSelectedBuilding.recycle();
+		footPrint.recycle();
+		footPrint.scale = new Point(1, 1);
+		
+		if (currentSelectedBuilding != null)
+			currentSelectedBuilding.recycle();
 		currentSelectedBuilding = null;
 	}
 	
@@ -263,28 +295,30 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 * Remove the building to change it position
 	 * @param	pVBuilding the reference virtual initial tile, to destroy it from the region and save managers 
 	 */
-	public function setModeMove(pVBuilding:VBuilding):Void{
+	public function setModeMove ():Void {
 		isMove = true;
-		isFirstClickAfterMoved = true;
+		/*isFirstClickAfterMoved = true;*/
 		
-		addPhantomFilter();
-		vBuildingRef = pVBuilding;
 		
-		if (currentSelectedBuilding != null) currentSelectedBuilding = null;
+		/*vBuildingRef = pVBuilding;*/
+		
+		// todo : que faire si click sur
+		// le btn pr move un building sur l'hud
+		// alors qu'on déplace
+		/*if (currentSelectedBuilding != null) 
+			currentSelectedBuilding = null;*/
 		currentSelectedBuilding = this;
-		
-		FootPrint.createShadow();
-		
-		doAction = doActionPhantom;
-		addBuildListeners();
-		setState(DEFAULT_STATE); //Todo: à enlever?
+		firstClickSuck = true;
+		setModePhantom();
+		createShadow();
 	}
+	
 	/**
 	 * Move the ground center of the building on the mouse pointer.
 	 */
 	private function doActionPhantom():Void {
 		//deplacement en fonction de la position
-		FootPrint.footPrint.position = new Point(currentSelectedBuilding.x + FootPrint.footPrintPoint.x, (currentSelectedBuilding.y + FootPrint.footPrintPoint.y)*2);
+		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, (currentSelectedBuilding.y + footPrintPoint.y)*2);
 		
 		var buildingGroundCenter:Point = getBuildingGroundCenter();
 		var perfectMouseFollow:Point = new Point(
@@ -334,8 +368,15 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		}
 		
 		// todo : confirm build ? (êtes vous sûr de vouloir placer le bâtiment ici ? genre hud contextuel)
-		if (canBuildHere())
+		if (canBuildHere() && !isMove)
 			newBuild();
+		else if (canBuildHere() && isMove) {
+			cast(linkedVirtualCell, VBuilding).moveBuilding(regionMap);
+			SaveManager.save();
+			currentSelectedBuilding = null;
+			removePhantom(); // todo : ne pas détruire le batiment, juste enlever le filtre
+			sortBuildings();
+		}
 		else
 			displayCantBuild(); // todo hud method ?
 	}
@@ -466,15 +507,13 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		removePhantom();
 		
 		//Note: tentative de supression de la vbuilding de la mémoire, pas fonctionnel mais ne fait rien buguer
-		if (isMove) {
+		/*if (isMove) {
 			if (vBuildingRef != null) RegionManager.removeToRegionBuilding(vBuildingRef);
 			isMove = false;
-		}
+		}*/
 		
 		SaveManager.save();
 		sortBuildings();
-		
-		isMove = false;
 	}
 	
 	/**

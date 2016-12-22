@@ -36,9 +36,9 @@ class Virtual {
 		graphic = null;
 	}
 	
-	private function linkVirtual ():Void {
+	/*private function linkVirtual ():Void {
 		cast(graphic, HasVirtual).linkVirtual(this);
-	}
+	}*/
 	
 	/**
 	 * Cell is visible and content will be displayed !

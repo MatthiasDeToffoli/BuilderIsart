@@ -6,7 +6,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
  * ...
  * @author ambroise
  */
-class BuildingHud extends SmartComponent{
+class BuildingHud extends SmartComponent {
 
 	public static var virtualBuilding:VBuilding;
 
@@ -22,7 +22,5 @@ class BuildingHud extends SmartComponent{
 	public function new(pID:String=null) {
 		super(pID);
 	}
-	
-	
 	
 }

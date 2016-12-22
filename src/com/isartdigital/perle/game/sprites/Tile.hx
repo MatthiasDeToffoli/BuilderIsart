@@ -22,7 +22,7 @@ class Tile extends FlumpStateGraphic implements HasVirtual
 	 * Still, the best choice would be to destroy VCell first and then just update Clipping
 	 * Unused for now (you can't destroy buidings for now, the only way is to destroy Save !)
 	 */
-	private var linkedVirtualCell:VTile;
+	public var linkedVirtualCell:VTile;
 	
 	public static function initClass():Void {
 		IsoManager.init(TILE_WIDTH, TILE_HEIGHT);
