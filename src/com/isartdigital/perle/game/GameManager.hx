@@ -62,7 +62,6 @@ class GameManager {
 		UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		
-		
 		FtueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
