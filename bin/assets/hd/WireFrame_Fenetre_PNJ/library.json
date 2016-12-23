@@ -1,0 +1,299 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "Window_NPC_BG",
+       "origin": [
+        602,
+        233.75
+       ],
+       "rect": [
+        1,
+        1,
+        1204,
+        468
+       ]
+      },
+      {
+       "symbol": "Window_NPC_Heaven",
+       "origin": [
+        162.85,
+        257.35
+       ],
+       "rect": [
+        1207,
+        1,
+        326,
+        515
+       ]
+      },
+      {
+       "symbol": "Window_NPC_Hell",
+       "origin": [
+        162.85,
+        257.35
+       ],
+       "rect": [
+        1535,
+        1,
+        326,
+        515
+       ]
+      },
+      {
+       "symbol": "_buttonNext_over",
+       "origin": [
+        182.85,
+        65.8
+       ],
+       "rect": [
+        1,
+        471,
+        366,
+        132
+       ]
+      },
+      {
+       "symbol": "_buttonNext_down",
+       "origin": [
+        182.85,
+        65.8
+       ],
+       "rect": [
+        369,
+        471,
+        366,
+        132
+       ]
+      },
+      {
+       "symbol": "_buttonNext_up",
+       "origin": [
+        180.35,
+        63.3
+       ],
+       "rect": [
+        737,
+        471,
+        361,
+        127
+       ]
+      },
+      {
+       "symbol": "Window_NPC_Name_TXT",
+       "data": {
+        "y": -48.5,
+        "text": "Name_XXXXX",
+        "x": -262.05,
+        "width": 524.05,
+        "font": "76px Times New Roman",
+        "align": "center",
+        "height": 97,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1100,
+        471,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "Window_NPC_Speech_TXT",
+       "data": {
+        "y": -147.25,
+        "text": "Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "x": -579.75,
+        "width": 1159.5,
+        "font": "48px Times New Roman",
+        "align": "left",
+        "height": 277.75,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1103,
+        471,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "Window_BG",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "loc": [
+        -0.6,
+        -2.9
+       ],
+       "index": 0,
+       "ref": "Window_NPC_BG",
+       "pivot": [
+        602,
+        233.75
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Window_NPC_Hell",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "loc": [
+        -786.15,
+        -27
+       ],
+       "index": 0,
+       "ref": "Window_NPC_Hell",
+       "pivot": [
+        162.85,
+        257.35
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Window_NPC_Heaven",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "loc": [
+        785.8,
+        -26.1
+       ],
+       "index": 0,
+       "ref": "Window_NPC_Heaven",
+       "pivot": [
+        162.85,
+        257.35
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Window_NPC_Name_TXT",
+     "keyframes": [
+      {
+       "duration": 1,
+       "loc": [
+        -333.45,
+        -166.95
+       ],
+       "index": 0,
+       "ref": "Window_NPC_Name_TXT",
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Window_NPC_Speech_TXT",
+     "keyframes": [
+      {
+       "duration": 1,
+       "loc": [
+        -3.7,
+        37.15
+       ],
+       "index": 0,
+       "ref": "Window_NPC_Speech_TXT",
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Window_NPC_ButtonNext",
+     "keyframes": [
+      {
+       "duration": 1,
+       "loc": [
+        404.45,
+        232.75
+       ],
+       "index": 0,
+       "ref": "~ButtonNext",
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Window_NPC"
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "ref": "_buttonNext_up",
+       "pivot": [
+        180.35,
+        63.3
+       ]
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "ref": "_buttonNext_over",
+       "pivot": [
+        182.85,
+        65.8
+       ]
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "ref": "_buttonNext_down",
+       "pivot": [
+        182.85,
+        65.8
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "~ButtonNext"
+  }
+ ],
+ "md5": "21cf7da9ee26bbfddc771aee61345317",
+ "frameRate": 24
+}

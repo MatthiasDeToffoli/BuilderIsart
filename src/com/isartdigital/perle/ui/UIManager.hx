@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui;
 
+import com.isartdigital.perle.game.managers.FtueManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.Popin;
@@ -89,6 +90,7 @@ class UIManager
 	public function openHud (): Void {
 		GameStage.getInstance().getHudContainer().addChild(Hud.getInstance());
 		Hud.getInstance().open();
+		FtueManager.createFtue();
 	}
 	
 	/**

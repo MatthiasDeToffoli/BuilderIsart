@@ -47,18 +47,12 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	];
 	
 	private static inline var FILTER_OPACITY:Float = 0.5;
-	private static inline var ROTATION_IN_RAD = 0.785398;
 	
 	public static var list:Array<Building>;
 	
-	private static var currentSelectedBuilding:Building;
+	public static var currentSelectedBuilding:Building;
 	private static var container:Container;
 	private static var colorMatrix:ColorMatrixFilter;
-	
-	private static var footPrint:FootPrint;
-	private static var footPrintAsset:String = "FootPrint"; // todo @Alexis: contante
-	private static var footPrintPoint:Point;
-	
 	
 	public var colMin:Int;
 	public var colMax:Int;
@@ -233,35 +227,11 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		container.addChild(currentSelectedBuilding);
 		currentSelectedBuilding.init();
 		currentSelectedBuilding.setModePhantom();
-		createShadow();
-	}
-	
-	//Function to create the shadow of the footprint
-	private static function createShadow():Void {
-		footPrint = PoolingManager.getFromPool(footPrintAsset);
-        footPrint.init();
-        FootPrint.container.addChild(footPrint);
-        footPrint.start();
-		footPrint.rotation = ROTATION_IN_RAD;
-		FootPrint.container.scale.y = 0.5;
-		
-		//point of footprint
-		if (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint == 0)
-			footPrintPoint = new Point(0,0); 
-		else
-			footPrintPoint = new Point( -footPrint.width / 8, -footPrint.height / 2 - 50); //a revenir dessus si je trouves une meileur façon
-			
-		//position
-		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, currentSelectedBuilding.y + footPrintPoint.y);
-		//Give width and height
-		footPrint.width = footPrint.width * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].width +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
-		footPrint.height = footPrint.height * (ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].height +ASSETNAME_TO_MAPSIZE[currentSelectedBuilding.assetName].footprint*2);
-	
+		FootPrint.createShadow();
 	}
 	
 	private static function removePhantom():Void {
-		footPrint.recycle();
-		footPrint.scale = new Point(1, 1);
+		FootPrint.removeShadow();
 		currentSelectedBuilding.recycle();
 		currentSelectedBuilding = null;
 	}
@@ -303,7 +273,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 		if (currentSelectedBuilding != null) currentSelectedBuilding = null;
 		currentSelectedBuilding = this;
 		
-		createShadow();
+		FootPrint.createShadow();
 		
 		doAction = doActionPhantom;
 		addBuildListeners();
@@ -314,7 +284,7 @@ class Building extends Tile implements IZSortable implements PoolingObject
 	 */
 	private function doActionPhantom():Void {
 		//deplacement en fonction de la position
-		footPrint.position = new Point(currentSelectedBuilding.x + footPrintPoint.x, (currentSelectedBuilding.y + footPrintPoint.y)*2);
+		FootPrint.footPrint.position = new Point(currentSelectedBuilding.x + FootPrint.footPrintPoint.x, (currentSelectedBuilding.y + FootPrint.footPrintPoint.y)*2);
 		
 		var buildingGroundCenter:Point = getBuildingGroundCenter();
 		var perfectMouseFollow:Point = new Point(

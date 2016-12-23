@@ -154,6 +154,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
 		
 		lLoader.addFontFile("fonts.css");
 		

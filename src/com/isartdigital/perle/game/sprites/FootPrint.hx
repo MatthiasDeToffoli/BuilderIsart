@@ -1,7 +1,9 @@
 package com.isartdigital.perle.game.sprites;
+import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
+import pixi.core.math.Point;
 
 /**
  * ...
@@ -11,6 +13,12 @@ class FootPrint extends Tile implements PoolingObject
 {
 
 	public static var container(default, null):Container;
+	
+	private static inline var ROTATION_IN_RAD = 0.785398;
+	private static inline var FOOTPRINT_ASSET:String = "FootPrint"; 
+	
+	public static var footPrint:FootPrint;
+	public static var footPrintPoint:Point;
 	
 	public function new(?pAssetName:String) 
 	{
@@ -27,16 +35,36 @@ class FootPrint extends Tile implements PoolingObject
 		GameStage.getInstance().getGameContainer().addChild(container);
 	}
 	
-	/*public function setModFollow(pBuilding:Building) {
-		lBuilding = pBuilding;
-		doAction = doActionFollow;
+	//Function to create the shadow of the footprint
+	public static function createShadow():Void {
+		footPrint = PoolingManager.getFromPool(FOOTPRINT_ASSET);
+        footPrint.init();
+        container.addChild(footPrint);
+        footPrint.start();
+		footPrint.rotation = ROTATION_IN_RAD;
+		container.scale.y = 0.5;
+		
+		//point of footprint
+		if (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint == 0)
+			footPrintPoint = new Point(0,0); 
+		else
+			footPrintPoint = new Point( -footPrint.width / 8, -footPrint.height / 2 - 50); //a revenir dessus si je trouves une meileur façon
+			
+		//position
+		footPrint.position = new Point(Building.currentSelectedBuilding.x + footPrintPoint.x, Building.currentSelectedBuilding.y + footPrintPoint.y);
+		//Give width and height
+		footPrint.width = footPrint.width * (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].width + Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint*2);
+		footPrint.height = footPrint.height * (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].height + Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint*2);
+	
 	}
 	
-	public function doActionFollow() {
-		this.position = lBuilding.position;
-	}*/
+	public static function removeShadow() {
+		footPrint.scale = new Point(1, 1);
+		footPrint.recycle();
+	}
 	
 	override public function recycle():Void {
+		
 		super.recycle();
 	}
 	
