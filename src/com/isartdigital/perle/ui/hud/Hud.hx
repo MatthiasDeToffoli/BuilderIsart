@@ -9,7 +9,11 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
+import com.isartdigital.perle.ui.popin.InternPopin;
+import com.isartdigital.perle.ui.popin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -87,14 +91,30 @@ class Hud extends SmartScreen
 	}
 	
 	private function addListeners ():Void {
-		for (i in 0...children.length) 
-			trace (children[i].name);
+		
+		//encore nécéssaire ?
+		/*for (i in 0...children.length) 
+			trace (children[i].name);*/
 		
 		cast(getChildByName("Shop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		cast(getChildByName("Tribunal"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
+		
+		var interMc:Dynamic = getChildByName("Quests"); 
+		cast(interMc.getChildByName("Button"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 	}
 	
 	private function onClickShop ():Void {
 		Building.onClickHudBuilding("House"); // todo temporaire
+	}
+	
+	private function onClickTribunal():Void {
+		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
+		removeToContainer();
+	}
+	
+	private function onClickListIntern(){
+		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+		removeToContainer();
 	}
 	
 	/**
@@ -124,6 +144,15 @@ class Hud extends SmartScreen
 		
 		var text:TextSprite = cast(textContainer.getChildByName(pTextName, TextSprite));
 		text.text = pValue + "";
+	}
+	
+	//hud génant quand ouvre autre screen est ce que on garde ou on fait autrement ?
+	public function removeToContainer():Void{
+		GameStage.getInstance().getHudContainer().removeChild(this);
+	}
+	
+	public function addToContainer():Void{
+		GameStage.getInstance().getHudContainer().addChild(this);
 	}
 	
 	
