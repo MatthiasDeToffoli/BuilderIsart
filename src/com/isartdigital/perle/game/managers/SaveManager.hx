@@ -74,6 +74,7 @@ typedef Stats = {
 
 // On save des TileDescription, pas des Virtual !
 typedef Save = {
+	var version:String;
 	var COL_X_LENGTH:Int;
 	var ROW_Y_LENGTH:Int;
 	var stats:Stats;
@@ -94,6 +95,7 @@ typedef Save = {
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
+	private static inline var SAVE_VERSION:String = "1.0.0";
 	public static var currentSave(default, null):Save;
 	
 	/**
@@ -138,7 +140,8 @@ class SaveManager {
 			building: buildingSave,
 			resourcesData: saveResources(),
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
-			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
+			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
+			version: SAVE_VERSION
 		};
 		
 		setLocalStorage(currentSave);
@@ -242,14 +245,19 @@ class SaveManager {
 	 * @return
 	 */
 	private static function load():Save {
-		//destroy(); // here if save reset needed
+		//destroy(); // here if save reset needed (constantly)
 		if (currentSave == null) {
 			currentSave = Json.parse(
 				Browser.getLocalStorage().getItem(SAVE_NAME)
 			);
 			
 			if (currentSave != null) {
-				if (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
+				
+				if (currentSave.version != SAVE_VERSION) {
+					destroy();
+					currentSave = null;
+				}
+				else if  (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
 					currentSave.ROW_Y_LENGTH != Ground.ROW_Y_LENGTH)
 					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy() in this function)");
 			}
