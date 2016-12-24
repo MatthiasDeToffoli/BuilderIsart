@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -96,7 +97,7 @@ class MouseManager {
 		
 		positionInGame = getLocalPos(GameStage.getInstance().getGameContainer());
 
-		if (mouseTouchDown && !Building.hasCurrentBuilding())
+		if (mouseTouchDown /*&& !Building.hasCurrentBuilding()*/)
 			moveGameContainer(positionInGame);
 	}
 	
@@ -119,9 +120,11 @@ class MouseManager {
 	// todo : n'agit pas si sur HUD
 	/*if (!Std.is(pEvent.target, Hud))
 	return; ?*/
-	private function onMouseDown():Void {
-		mouseTouchDown = true;
-		precedentMousePos.copy(positionInGame);
+	private function onMouseDown(pEvent:Dynamic):Void {
+		if (!Phantom.isMoving()) {
+			mouseTouchDown = true;
+			precedentMousePos.copy(positionInGame);
+		}
 	}
 	
 	private function onTouchDown(pEvent:TouchEvent):Void {

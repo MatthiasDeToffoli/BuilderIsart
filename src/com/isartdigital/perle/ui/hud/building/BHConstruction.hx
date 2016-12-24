@@ -7,8 +7,20 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
  */
 class BHConstruction extends BuildingHud{
 
+	private static var instance:BHConstruction;
+	
+	public static function getInstance (): BHConstruction {
+		if (instance == null) instance = new BHConstruction();
+		return instance;
+	}	
+	
 	public function new() {
 		super("BuildingContext");
+	}
+	
+	override public function destroy():Void {
+		instance = null;
+		super.destroy();
 	}
 	
 }

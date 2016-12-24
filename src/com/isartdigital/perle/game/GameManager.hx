@@ -6,6 +6,8 @@ import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.sprites.Phantom;
+import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 
 
@@ -36,15 +38,20 @@ class GameManager {
 	}
 	
 	public function start (): Void {
+		// todo : deplacer les init class faisant rien de 
+		// plus que des new() ds le main
+		
+		
+		
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
-		//GameStage.getInstance().getGameContainer().addChild(Template.getInstance());
 		TimeManager.initClass();
 		VTile.initClass();
 		Tile.initClass();
 		HudContextual.addContainer();
+		Phantom.initClass();
 		RegionManager.init();
 		SaveManager.createFromSave();
 		ClippingManager.update();
@@ -65,7 +72,7 @@ class GameManager {
 		// todo : doublon mousePos X,y
 		
 		MouseManager.getInstance().gameLoop();
-		Building.gameLoop();
+		Phantom.gameLoop();
 	}
 	
 	/**

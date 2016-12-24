@@ -127,7 +127,7 @@ class ClippingManager
 					var lLength:Int = pClippingMap[x][y].length;
 					
 					for (i in 0...lLength) {
-						if (pClippingMap[x][y][i].active != pActivate)
+						if (pClippingMap[x][y][i].active != pActivate && !pClippingMap[x][y][i].ignore)
 							pActivate ? pClippingMap[x][y][i].activate() : pClippingMap[x][y][i].desactivate();
 					}
 				}		

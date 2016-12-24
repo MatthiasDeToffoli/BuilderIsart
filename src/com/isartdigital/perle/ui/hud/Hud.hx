@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
@@ -17,24 +18,20 @@ import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import eventemitter3.EventEmitter;
 import pixi.core.display.Container;
 
-enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; }
+enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
 /**
  * Classe en charge de gérer les informations du Hud
  * @author Ambroise RABIER et Vicktor Grenu
  */
 class Hud extends SmartScreen 
-{
-	
+{	
 	private static var instance: Hud;
-
-	private var currentBuildingHud:BuildingHudType;
 	
-	private var buildingRecolte:BHHarvest;
-	private var buildingTimeBased:BHConstruction;
-	private var buildingMovingBuilding:BHMoving;
+	private var currentBuildingHud:BuildingHudType;
 	
 	private var containerBuildingHud:Container;
 
@@ -53,33 +50,46 @@ class Hud extends SmartScreen
 		modal = null;
 		
 		containerBuildingHud = new Container();
-		buildingRecolte = new BHHarvest();
-		buildingTimeBased = new BHConstruction();
-		buildingMovingBuilding = new BHMoving();
 		
-		buildingRecolte.init();
+		BHHarvest.getInstance().init();
+		BHConstruction.getInstance().init();
+		BHMoving.getInstance().init();
+		
 		addChild(containerBuildingHud);
 		
 		addListeners();
+		
+		/*for (i in 0...children.length) // cheat pratique
+			trace (children[i].name);*/
 	}
 	
-	// todo : called from building on click
-	public function showBuildingHud (pNewBuildingHud:BuildingHudType, pVBuilding:VBuilding):Void {
-		
+	/**
+	 * todo: move it to BuildingHud.hx ?
+	 * Show corresponding BuildingHud when player click on a building.
+	 * @param	pNewBuildingHud
+	 * @param	pVBuilding
+	 */
+	public function changeBuildingHud (pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
+
 		BuildingHud.linkVirtualBuilding(pVBuilding);
+		// todo : mettre en évidence quel building on sélectionne actuellement...
+		if (pVBuilding != null)
+			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
 		
 		if (currentBuildingHud != pNewBuildingHud) {
 			currentBuildingHud = pNewBuildingHud;
-			hideBuildingHud();
+			containerBuildingHud.removeChildren();
 			
 			switch (pNewBuildingHud) 
 			{
 				case BuildingHudType.HARVEST: 
-					containerBuildingHud.addChild(buildingRecolte);
+					containerBuildingHud.addChild(BHHarvest.getInstance());
 				case BuildingHudType.CONSTRUCTION: 
-					containerBuildingHud.addChild(buildingTimeBased);
+					containerBuildingHud.addChild(BHConstruction.getInstance());
 				case BuildingHudType.MOVING: 
-					containerBuildingHud.addChild(buildingMovingBuilding);
+					containerBuildingHud.addChild(BHMoving.getInstance());
+				case BuildingHudType.NONE: 
+					
 				default: throw("No BuildingHud found !");
 			}
 		}
@@ -87,24 +97,42 @@ class Hud extends SmartScreen
 	
 	// todo : called from any clic outside a building
 	public function hideBuildingHud ():Void {
-		containerBuildingHud.removeChildren();
+		changeBuildingHud(BuildingHudType.NONE);
 	}
 	
+
 	private function addListeners ():Void {
 		
-		//encore nécéssaire ?
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
+		//encore nécéssaire ? je le garde pour rappel, ha et tout de suite 16:14 24/12 il m'a été utile ^_^
+		// plus rapide que check le .Fla quoi :/
+		for (i in 0...children.length) 
+			trace (children[i].name);
 		
-		cast(getChildByName("Shop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
-		cast(getChildByName("Tribunal"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
+		cast(getChildByName("ButtonShop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		cast(getChildByName("ButtonPurgatory"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		
-		var interMc:Dynamic = getChildByName("Quests"); 
-		cast(interMc.getChildByName("Button"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		
+		/*var interMc:Dynamic = getChildByName("Quests"); // todo @Matthias !
+		cast(interMc.getChildByName("Button"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);*/
 	}
 	
-	private function onClickShop ():Void {
-		Building.onClickHudBuilding("House"); // todo temporaire
+	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {
+		var lBuidldingHudType:BuildingHudType = null;
+		
+		if (pCurrentState == VBuildingState.isBuilt)
+			lBuidldingHudType = BuildingHudType.HARVEST;
+		else if (pCurrentState == VBuildingState.isBuilding)
+			lBuidldingHudType = BuildingHudType.CONSTRUCTION;
+		
+		changeBuildingHud(
+			lBuidldingHudType,
+			pVBuilding
+		);
+	}
+	
+	private function onClickShop ():Void { // todo : temporaire
+		Phantom.onClickShop('House');
+		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
 	}
 	
 	private function onClickTribunal():Void {
@@ -154,6 +182,7 @@ class Hud extends SmartScreen
 	public function addToContainer():Void{
 		GameStage.getInstance().getHudContainer().addChild(this);
 	}
+	
 	
 	
 	/*

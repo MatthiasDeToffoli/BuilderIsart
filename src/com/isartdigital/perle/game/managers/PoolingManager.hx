@@ -21,8 +21,7 @@ class PoolingManager {
 		"Road_c" => 1,
 		"Road_br" => 1,
 		"Road_tl" => 1,
-		"Road_v" => 1,
-		"FootPrint"=>1,
+		"Road_v" => 1
 	];
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
@@ -35,8 +34,7 @@ class PoolingManager {
 		"Road_c" => "Ground",
 		"Road_br" => "Ground",
 		"Road_tl" => "Ground",
-		"Road_v" => "Ground",
-		"FootPrint" => "FootPrint"
+		"Road_v" => "Ground"
 	];
 	private static var poolList:Map<String, Array<PoolingObject>> = new Map<String, Array<PoolingObject>>();
 
@@ -66,7 +64,7 @@ class PoolingManager {
 		
 		return poolList[lAssetName].length == 0 ? 
 			   createInstance(lAssetName) :
-			   poolList[lAssetName].shift() ;
+			   poolList[lAssetName].shift();
 	}
 	
 	/**
@@ -104,7 +102,8 @@ class PoolingManager {
 		var lClassName:String = ASSETNAME_TO_CLASS[lAssetName];
 		if (lClassName == null)
 			throw ("Class for assetName : -- "+lClassName+" -- wasn't found ! Check ASSETNAME_TO_CLASS");
-		
+			
+			
 		return Type.createInstance(Type.resolveClass(
 			Main.getInstance().getPath(lClassName)
 		), [lAssetName]);

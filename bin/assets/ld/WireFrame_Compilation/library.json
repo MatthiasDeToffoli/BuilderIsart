@@ -1,12 +1,9 @@
 {
- "md5": "d3daed1f1e2cec187e377bb98090f59d",
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_buttonPlus_hit",
@@ -35,29 +32,81 @@
        ]
       },
       {
-       "symbol": "_buttonConfirmMovement_over",
+       "symbol": "_buttonInterns_down",
        "origin": [
-        124,
-        45
+        85,
+        85
        ],
        "rect": [
         614,
         1,
-        252,
-        90
+        170,
+        170
        ]
       },
       {
-       "symbol": "_buttonEnterBuilding_over",
+       "symbol": "_buttonInterns_over",
        "origin": [
-        124,
-        45
+        85,
+        85
        ],
        "rect": [
-        614,
-        93,
-        252,
-        90
+        347,
+        116,
+        170,
+        170
+       ]
+      },
+      {
+       "symbol": "_buttonShop_over",
+       "origin": [
+        85,
+        85
+       ],
+       "rect": [
+        786,
+        1,
+        170,
+        170
+       ]
+      },
+      {
+       "symbol": "_buttonShop_down",
+       "origin": [
+        85,
+        85
+       ],
+       "rect": [
+        1,
+        138,
+        170,
+        170
+       ]
+      },
+      {
+       "symbol": "_buttonInterns_up",
+       "origin": [
+        81.25,
+        81.25
+       ],
+       "rect": [
+        173,
+        138,
+        163,
+        163
+       ]
+      },
+      {
+       "symbol": "_buttonShop_up",
+       "origin": [
+        81.25,
+        81.25
+       ],
+       "rect": [
+        519,
+        173,
+        163,
+        163
        ]
       },
       {
@@ -67,8 +116,21 @@
         45
        ],
        "rect": [
-        347,
-        116,
+        173,
+        303,
+        252,
+        90
+       ]
+      },
+      {
+       "symbol": "_buttonConfirmMovement_over",
+       "origin": [
+        124,
+        45
+       ],
+       "rect": [
+        684,
+        173,
         252,
         90
        ]
@@ -80,8 +142,8 @@
         45
        ],
        "rect": [
-        1,
-        138,
+        684,
+        265,
         252,
         90
        ]
@@ -93,8 +155,21 @@
         45
        ],
        "rect": [
-        601,
-        185,
+        427,
+        338,
+        252,
+        90
+       ]
+      },
+      {
+       "symbol": "_buttonEnterBuilding_over",
+       "origin": [
+        124,
+        45
+       ],
+       "rect": [
+        681,
+        357,
         252,
         90
        ]
@@ -106,8 +181,8 @@
         45
        ],
        "rect": [
-        255,
-        208,
+        1,
+        395,
         252,
         90
        ]
@@ -119,21 +194,8 @@
         43.75
        ],
        "rect": [
-        1,
-        230,
-        249,
-        88
-       ]
-      },
-      {
-       "symbol": "_buttonConfirmMovement_up",
-       "origin": [
-        122.75,
-        43.75
-       ],
-       "rect": [
-        509,
-        277,
+        255,
+        430,
         249,
         88
        ]
@@ -145,23 +207,23 @@
         43.75
        ],
        "rect": [
-        252,
-        300,
+        1,
+        487,
         249,
         88
        ]
       },
       {
-       "symbol": "_buttonItem_down",
+       "symbol": "_buttonConfirmMovement_up",
        "origin": [
-        72.5,
-        72.5
+        122.75,
+        43.75
        ],
        "rect": [
-        855,
-        185,
-        145,
-        145
+        506,
+        449,
+        249,
+        88
        ]
       },
       {
@@ -171,8 +233,21 @@
         72.5
        ],
        "rect": [
-        868,
+        252,
+        520,
+        145,
+        145
+       ]
+      },
+      {
+       "symbol": "_buttonItem_down",
+       "origin": [
+        72.5,
+        72.5
+       ],
+       "rect": [
         1,
+        577,
         145,
         145
        ]
@@ -184,8 +259,8 @@
         68.75
        ],
        "rect": [
-        1,
-        320,
+        757,
+        449,
         138,
         138
        ]
@@ -197,49 +272,10 @@
         50.25
        ],
        "rect": [
-        141,
-        320,
+        148,
+        577,
         101,
         101
-       ]
-      },
-      {
-       "symbol": "_buttonCancelMovement_over",
-       "origin": [
-        47.5,
-        47.5
-       ],
-       "rect": [
-        760,
-        332,
-        95,
-        95
-       ]
-      },
-      {
-       "symbol": "_buttonCancelSelection_over",
-       "origin": [
-        47.7,
-        47.5
-       ],
-       "rect": [
-        857,
-        332,
-        95,
-        95
-       ]
-      },
-      {
-       "symbol": "_buttonCancelSelection_down",
-       "origin": [
-        47.5,
-        47.5
-       ],
-       "rect": [
-        503,
-        367,
-        95,
-        95
        ]
       },
       {
@@ -249,8 +285,8 @@
         47.5
        ],
        "rect": [
-        600,
-        367,
+        399,
+        520,
         95,
         95
        ]
@@ -262,34 +298,8 @@
         47.5
        ],
        "rect": [
-        244,
-        390,
-        95,
-        95
-       ]
-      },
-      {
-       "symbol": "_buttonCancelMovement_down",
-       "origin": [
-        47.5,
-        47.5
-       ],
-       "rect": [
-        141,
-        423,
-        95,
-        95
-       ]
-      },
-      {
-       "symbol": "_buttonCancelConstruction_down",
-       "origin": [
-        47.5,
-        47.5
-       ],
-       "rect": [
-        1,
-        460,
+        897,
+        449,
         95,
         95
        ]
@@ -301,34 +311,75 @@
         47.5
        ],
        "rect": [
-        341,
-        390,
+        897,
+        546,
         95,
         95
        ]
       },
       {
-       "data": {
-        "y": -48.35,
-        "text": "+999",
-        "x": -95.85,
-        "width": 191.75,
-        "font": "83px _sans",
-        "align": "left",
-        "height": 96.75,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_value",
+       "symbol": "_buttonCancelConstruction_down",
        "origin": [
-        -15,
-        34
+        47.5,
+        47.5
        ],
        "rect": [
-        697,
-        429,
-        122,
-        66
+        496,
+        539,
+        95,
+        95
+       ]
+      },
+      {
+       "symbol": "_buttonCancelSelection_down",
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "rect": [
+        399,
+        617,
+        95,
+        95
+       ]
+      },
+      {
+       "symbol": "_buttonCancelSelection_over",
+       "origin": [
+        47.7,
+        47.5
+       ],
+       "rect": [
+        251,
+        667,
+        95,
+        95
+       ]
+      },
+      {
+       "symbol": "_buttonCancelMovement_over",
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "rect": [
+        148,
+        680,
+        95,
+        95
+       ]
+      },
+      {
+       "symbol": "_buttonCancelMovement_down",
+       "origin": [
+        47.5,
+        47.5
+       ],
+       "rect": [
+        1,
+        724,
+        95,
+        95
        ]
       },
       {
@@ -338,34 +389,21 @@
         42.75
        ],
        "rect": [
-        821,
-        429,
+        593,
+        539,
         91,
         86
        ]
       },
       {
-       "symbol": "_buttonMoveBuilding_up",
+       "symbol": "_buttonCancelConstruction_up",
        "origin": [
         43.8,
         43.8
        ],
        "rect": [
-        914,
-        429,
-        88,
-        88
-       ]
-      },
-      {
-       "symbol": "_buttonCancelMovement_up",
-       "origin": [
-        43.75,
-        43.75
-       ],
-       "rect": [
-        438,
-        464,
+        935,
+        357,
         88,
         88
        ]
@@ -377,21 +415,34 @@
         43.75
        ],
        "rect": [
-        528,
-        464,
+        686,
+        589,
         88,
         88
        ]
       },
       {
-       "symbol": "_buttonCancelConstruction_up",
+       "symbol": "_buttonCancelMovement_up",
+       "origin": [
+        43.75,
+        43.75
+       ],
+       "rect": [
+        593,
+        627,
+        88,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonMoveBuilding_up",
        "origin": [
         43.8,
         43.8
        ],
        "rect": [
-        618,
-        497,
+        496,
+        636,
         88,
         88
        ]
@@ -403,8 +454,8 @@
         16.25
        ],
        "rect": [
-        708,
-        517,
+        776,
+        643,
         179,
         33
        ]
@@ -416,8 +467,8 @@
         16.25
        ],
        "rect": [
-        238,
-        487,
+        776,
+        678,
         179,
         31
        ]
@@ -429,8 +480,8 @@
         31.6
        ],
        "rect": [
-        509,
-        208,
+        1,
+        310,
         73,
         64
        ]
@@ -442,23 +493,10 @@
         31.6
        ],
        "rect": [
-        255,
-        138,
+        76,
+        310,
         73,
         64
-       ]
-      },
-      {
-       "symbol": "_xp_icon_hell",
-       "origin": [
-        121.45,
-        70.65
-       ],
-       "rect": [
-        954,
-        332,
-        68,
-        68
        ]
       },
       {
@@ -468,8 +506,8 @@
         70.65
        ],
        "rect": [
-        889,
-        519,
+        938,
+        173,
         68,
         68
        ]
@@ -481,8 +519,21 @@
         70.65
        ],
        "rect": [
-        708,
-        552,
+        938,
+        243,
+        68,
+        68
+       ]
+      },
+      {
+       "symbol": "_xp_icon_hell",
+       "origin": [
+        121.45,
+        70.65
+       ],
+       "rect": [
+        683,
+        679,
         68,
         68
        ]
@@ -494,8 +545,8 @@
         22.35
        ],
        "rect": [
-        778,
-        552,
+        586,
+        717,
         68,
         68
        ]
@@ -507,23 +558,10 @@
         11.4
        ],
        "rect": [
-        868,
-        148,
+        255,
+        395,
         135,
         33
-       ]
-      },
-      {
-       "symbol": "_icon_currency_loot",
-       "origin": [
-        38.6,
-        34
-       ],
-       "rect": [
-        848,
-        589,
-        66,
-        66
        ]
       },
       {
@@ -533,21 +571,34 @@
         13.6
        ],
        "rect": [
-        916,
+        776,
         589,
         105,
         41
        ]
       },
       {
-       "symbol": "_timebased_icon",
+       "symbol": "_icon_loot",
+       "origin": [
+        32,
+        32
+       ],
+       "rect": [
+        958,
+        1,
+        64,
+        64
+       ]
+      },
+      {
+       "symbol": "_isBuilding_icon",
        "origin": [
         33,
         29.45
        ],
        "rect": [
-        916,
-        632,
+        957,
+        643,
         66,
         59
        ]
@@ -559,8 +610,8 @@
         15.5
        ],
        "rect": [
-        98,
-        520,
+        348,
+        714,
         106,
         31
        ]
@@ -572,23 +623,10 @@
         -35.25
        ],
        "rect": [
-        206,
-        520,
+        456,
+        726,
         121,
         26
-       ]
-      },
-      {
-       "symbol": "_icon_hardcurrency",
-       "origin": [
-        22.75,
-        22.75
-       ],
-       "rect": [
-        697,
-        367,
-        46,
-        46
        ]
       },
       {
@@ -598,8 +636,21 @@
         22.75
        ],
        "rect": [
-        959,
-        519,
+        686,
+        539,
+        46,
+        46
+       ]
+      },
+      {
+       "symbol": "_icon_hardcurrency",
+       "origin": [
+        22.75,
+        22.75
+       ],
+       "rect": [
+        427,
+        288,
         46,
         46
        ]
@@ -611,8 +662,8 @@
         11.6
        ],
        "rect": [
-        760,
-        277,
+        519,
+        116,
         86,
         24
        ]
@@ -624,36 +675,10 @@
         20.25
        ],
        "rect": [
-        98,
-        460,
+        475,
+        288,
         41,
         41
-       ]
-      },
-      {
-       "symbol": "_quests_interns03",
-       "origin": [
-        20,
-        20
-       ],
-       "rect": [
-        438,
-        390,
-        40,
-        40
-       ]
-      },
-      {
-       "symbol": "_quests_interns",
-       "origin": [
-        20,
-        20
-       ],
-       "rect": [
-        329,
-        520,
-        40,
-        40
        ]
       },
       {
@@ -663,8 +688,8 @@
         20
        ],
        "rect": [
-        371,
-        520,
+        348,
+        667,
         40,
         40
        ]
@@ -676,8 +701,8 @@
         20
        ],
        "rect": [
-        206,
-        548,
+        938,
+        313,
         40,
         40
        ]
@@ -689,8 +714,34 @@
         20
        ],
        "rect": [
-        248,
-        548,
+        980,
+        313,
+        40,
+        40
+       ]
+      },
+      {
+       "symbol": "_quests_interns03",
+       "origin": [
+        20,
+        20
+       ],
+       "rect": [
+        958,
+        67,
+        40,
+        40
+       ]
+      },
+      {
+       "symbol": "_quests_interns",
+       "origin": [
+        20,
+        20
+       ],
+       "rect": [
+        958,
+        109,
         40,
         40
        ]
@@ -703,7 +754,7 @@
        ],
        "rect": [
         98,
-        553,
+        724,
         40,
         40
        ]
@@ -715,8 +766,8 @@
         18.75
        ],
        "rect": [
-        984,
-        632,
+        98,
+        766,
         38,
         38
        ]
@@ -728,13 +779,14 @@
         12.5
        ],
        "rect": [
-        848,
-        552,
+        392,
+        395,
         25,
         25
        ]
       },
       {
+       "symbol": "_quests_txt",
        "data": {
         "y": -22.65,
         "text": "Interns",
@@ -746,170 +798,20 @@
         "wordWrap": 1,
         "color": "#000000"
        },
-       "symbol": "_quests_txt",
        "origin": [
         0,
         0
        ],
        "baseClass": "TextSprite",
        "rect": [
-        252,
-        230,
+        681,
+        338,
         1,
         1
        ]
       },
       {
-       "data": {
-        "y": -31.55,
-        "text": "20/20",
-        "x": -108,
-        "width": 216,
-        "font": "50px Arial",
-        "align": "center",
-        "height": 63.1,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_infos_house_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        233,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -39.05,
-        "text": "999/999",
-        "x": -152.8,
-        "width": 282.55,
-        "font": "62px _sans",
-        "align": "center",
-        "height": 78.05,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_souls_txt_heaven",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        236,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -47.95,
-        "text": "9999",
-        "x": -59.1,
-        "width": 143.65,
-        "font": "68px Times New Roman",
-        "align": "center",
-        "height": 95.9,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_timebased_skip_value",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        239,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -55.9,
-        "text": "99",
-        "x": -83.45,
-        "width": 166.95,
-        "font": "94px _sans",
-        "align": "center",
-        "height": 111.8,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_level_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        242,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -69.05,
-        "text": "Enter",
-        "x": -209.15,
-        "width": 418.3,
-        "font": "120px _sans",
-        "align": "center",
-        "height": 138.1,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_Text_EnterBuilding",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        245,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -52.25,
-        "text": "Skip",
-        "x": -219.1,
-        "width": 264.7,
-        "font": "90px _sans",
-        "align": "center",
-        "height": 104.5,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_Text_SkipConstruction",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        252,
-        248,
-        1,
-        1
-       ]
-      },
-      {
+       "symbol": "_Text_ConfirmMovement",
        "data": {
         "y": -57.85,
         "text": "Confirm",
@@ -921,7 +823,131 @@
         "wordWrap": 0,
         "color": "#000000"
        },
-       "symbol": "_Text_ConfirmMovement",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        681,
+        341,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_souls_txt_heaven",
+       "data": {
+        "y": -39.05,
+        "text": "999/999",
+        "x": -152.8,
+        "width": 282.55,
+        "font": "62px _sans",
+        "align": "center",
+        "height": 78.05,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        681,
+        344,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_timebased_skip_value",
+       "data": {
+        "y": -47.95,
+        "text": "9999",
+        "x": -59.1,
+        "width": 143.65,
+        "font": "68px Times New Roman",
+        "align": "center",
+        "height": 95.9,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        681,
+        347,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_value_loot",
+       "data": {
+        "y": -47.95,
+        "text": "+9999",
+        "x": 0,
+        "width": 240.9,
+        "font": "83px Times New Roman",
+        "align": "left",
+        "height": 95.9,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        681,
+        350,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_Text_EnterBuilding",
+       "data": {
+        "y": -69.05,
+        "text": "Enter",
+        "x": -209.15,
+        "width": 418.3,
+        "font": "120px _sans",
+        "align": "center",
+        "height": 138.1,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        681,
+        353,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_level_txt",
+       "data": {
+        "y": -55.9,
+        "text": "99",
+        "x": -83.45,
+        "width": 166.95,
+        "font": "94px _sans",
+        "align": "center",
+        "height": 111.8,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
        "origin": [
         0,
         0
@@ -929,24 +955,24 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        251,
+        487,
         1,
         1
        ]
       },
       {
+       "symbol": "_infos_house_txt",
        "data": {
-        "y": -24.9,
-        "text": "99:99:99",
-        "x": -120.1,
-        "width": 240.2,
-        "font": "40px Arial",
+        "y": -31.55,
+        "text": "20/20",
+        "x": -108,
+        "width": 216,
+        "font": "50px Arial",
         "align": "center",
-        "height": 49.85,
+        "height": 63.1,
         "wordWrap": 1,
         "color": "#000000"
        },
-       "symbol": "_time",
        "origin": [
         0,
         0
@@ -954,12 +980,38 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        254,
+        490,
         1,
         1
        ]
       },
       {
+       "symbol": "_Text_SkipConstruction",
+       "data": {
+        "y": -52.25,
+        "text": "Skip",
+        "x": -219.1,
+        "width": 264.7,
+        "font": "90px _sans",
+        "align": "center",
+        "height": 104.5,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        252,
+        493,
+        1,
+        1
+       ]
+      },
+      {
+       "symbol": "_xp_txt_heaven",
        "data": {
         "y": -21.55,
         "text": "9999/9999",
@@ -971,7 +1023,6 @@
         "wordWrap": 0,
         "color": "#000000"
        },
-       "symbol": "_xp_txt_heaven",
        "origin": [
         0,
         0
@@ -979,12 +1030,13 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        257,
+        496,
         1,
         1
        ]
       },
       {
+       "symbol": "_xp_txt_hell",
        "data": {
         "y": -21.55,
         "text": "9999/9999",
@@ -996,7 +1048,6 @@
         "wordWrap": 0,
         "color": "#000000"
        },
-       "symbol": "_xp_txt_hell",
        "origin": [
         0,
         0
@@ -1004,24 +1055,24 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        260,
+        499,
         1,
         1
        ]
       },
       {
+       "symbol": "_time",
        "data": {
-        "y": -47.95,
-        "text": "+9999",
-        "x": -124.85,
-        "width": 249.7,
-        "font": "83px Times New Roman",
+        "y": -24.9,
+        "text": "99:99:99",
+        "x": -120.1,
+        "width": 240.2,
+        "font": "40px Arial",
         "align": "center",
-        "height": 95.9,
-        "wordWrap": 0,
+        "height": 49.85,
+        "wordWrap": 1,
         "color": "#000000"
        },
-       "symbol": "_currency_loot_value",
        "origin": [
         0,
         0
@@ -1029,12 +1080,13 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        263,
+        502,
         1,
         1
        ]
       },
       {
+       "symbol": "bar_txt",
        "data": {
         "y": -208.75,
         "text": "xxxx",
@@ -1046,7 +1098,6 @@
         "wordWrap": 1,
         "color": "#000000"
        },
-       "symbol": "bar_txt",
        "origin": [
         0,
         0
@@ -1054,63 +1105,65 @@
        "baseClass": "TextSprite",
        "rect": [
         252,
-        266,
+        505,
         1,
         1
        ]
       }
-     ]
+     ],
+     "file": "atlas0.png"
     }
-   ]
+   ],
+   "scaleFactor": 1
   }
  ],
  "movies": [
   {
    "layers": [
     {
+     "name": "ButtonSkipConstruction",
      "keyframes": [
       {
-       "ref": "~ButtonSkipConstruction",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -59.175,
         401.975
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonSkipConstruction",
+       "duration": 1
       }
-     ],
-     "name": "ButtonSkipConstruction"
+     ]
     },
     {
+     "name": "ButtonCancelConstruction",
      "keyframes": [
       {
-       "ref": "~ButtonCancelConstruction",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -257.825,
         401.725
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonCancelConstruction",
+       "duration": 1
       }
-     ],
-     "name": "ButtonCancelConstruction"
+     ]
     },
     {
+     "name": "ButtonCancelSelection",
      "keyframes": [
       {
-       "ref": "~ButtonCancelSelection",
+       "tweened": false,
+       "index": 0,
        "loc": [
         142.175,
         401.725
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonCancelSelection",
+       "duration": 1
       }
-     ],
-     "name": "ButtonCancelSelection"
+     ]
     }
    ],
    "id": "BuildingContext"
@@ -1118,38 +1171,38 @@
   {
    "layers": [
     {
+     "name": "Gauge",
      "keyframes": [
       {
-       "ref": "~BuildingContext_Jauge",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -1.525,
         2.475
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~isBuilding_gauge",
+       "duration": 1
       }
-     ],
-     "name": "Gauge"
+     ]
     },
     {
+     "name": "Icon",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         0,
         -50
        ],
-       "index": 0,
        "pivot": [
         33,
         29.45
        ],
-       "ref": "_timebased_icon",
-       "duration": 1,
-       "tweened": false
+       "index": 0,
+       "ref": "_isBuilding_icon",
+       "duration": 1
       }
-     ],
-     "name": "Icon"
+     ]
     }
    ],
    "id": "BuildingTimer"
@@ -1157,49 +1210,49 @@
   {
    "layers": [
     {
+     "name": "EnterButton",
      "keyframes": [
       {
-       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -5,
         0
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonEnterBuilding",
+       "duration": 1
       }
-     ],
-     "name": "EnterButton"
+     ]
     },
     {
+     "name": "MoveButton",
      "keyframes": [
       {
-       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -205.65,
         -0.225
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonMoveBuilding",
+       "duration": 1
       }
-     ],
-     "name": "MoveButton"
+     ]
     },
     {
+     "name": "CloseButton",
      "keyframes": [
       {
-       "ref": "~ButtonCancelSelection",
+       "tweened": false,
+       "index": 0,
        "loc": [
         193.55,
         -0.25
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonCancelSelection",
+       "duration": 1
       }
-     ],
-     "name": "CloseButton"
+     ]
     }
    ],
    "id": "BuiltContext"
@@ -1207,88 +1260,23 @@
   {
    "layers": [
     {
+     "name": "_currency",
      "keyframes": [
       {
-       "duration": 1,
-       "index": 0
-      }
-     ],
-     "name": "ButtonEnterBuilding"
-    },
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ],
-     "name": "ButtonMoveBuilding"
-    },
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ],
-     "name": "ButtonCancelSelection"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        125.875,
-        9.175
-       ],
-       "index": 0,
        "tweened": false,
-       "ref": "_value",
-       "scale": [
-        0.6907,
-        0.6907
-       ],
-       "duration": 1,
-       "pivot": [
-        -15,
-        33.975
-       ]
-      }
-     ],
-     "name": "_value"
-    },
-    {
-     "keyframes": [
-      {
        "loc": [
         40,
         -40.725
        ],
-       "index": 0,
        "pivot": [
         20.25,
         20.25
        ],
-       "ref": "_piece",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "_currency"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "~_infos_house",
-       "loc": [
-        37.5,
-        60
-       ],
-       "duration": 1,
        "index": 0,
-       "tweened": false
+       "ref": "_piece",
+       "duration": 1
       }
-     ],
-     "name": "Infos"
+     ]
     }
    ],
    "id": "GoldProduction"
@@ -1296,174 +1284,160 @@
   {
    "layers": [
     {
+     "name": "ButtonShop",
      "keyframes": [
       {
+       "data": {
+        "alignDesktop": "bottomLeft"
+       },
+       "loc": [
+        -512,
+        341.5
+       ],
+       "tweened": false,
+       "index": 0,
        "ref": "~ButtonShop",
-       "loc": [
-        -267.5,
-        265.55
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "Shop"
+     ]
     },
     {
+     "name": "ButtonPurgatory",
      "keyframes": [
       {
-       "loc": [
-        -419.225,
-        252.55
-       ],
+       "tweened": false,
        "index": 0,
-       "ref": "~Button_Tribunal",
-       "scale": [
-        1.1853,
-        1.1853
+       "loc": [
+        -263.5,
+        260
        ],
-       "duration": 1,
-       "tweened": false
+       "ref": "~ButtonPurgatory",
+       "duration": 1
       }
-     ],
-     "name": "Tribunal"
+     ]
     },
     {
+     "name": "ButtonInterns",
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        439.075,
+        247.5
+       ],
        "ref": "~HUD_Quests",
-       "loc": [
-        425,
-        262.225
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "Quests"
+     ]
     },
     {
+     "name": "SoftCurrency",
      "keyframes": [
       {
-       "loc": [
-        265.275,
-        -302.025
-       ],
+       "tweened": false,
        "index": 0,
+       "loc": [
+        266.475,
+        -301.925
+       ],
        "ref": "~SoftCurrency",
-       "scale": [
-        0.7,
-        0.7
-       ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "SoftCurrency"
+     ]
     },
     {
+     "name": "HardCurrency",
      "keyframes": [
       {
+       "data": {
+        "alignDesktop": "topRight"
+       },
        "loc": [
-        418.025,
-        -298.325
+        417.9,
+        -296.5
        ],
+       "tweened": false,
        "index": 0,
        "ref": "~HardCurrency",
-       "scale": [
-        0.7,
-        0.7
-       ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "HardCurrency"
+     ]
     },
     {
+     "name": "Xp_bar_Heaven",
      "keyframes": [
       {
-       "ref": "~HUD_Xp_Bar_Heaven",
+       "tweened": false,
+       "index": 0,
        "loc": [
         128.25,
         -304.5
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~HUD_Xp_Bar_Heaven",
+       "duration": 1
       }
-     ],
-     "name": "Xp_bar_Heaven"
+     ]
     },
     {
+     "name": "Xp_bar_Hell",
      "keyframes": [
       {
-       "ref": "~HUD_Xp_Bar_Hell",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -64.75,
         -302.375
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~HUD_Xp_Bar_Hell",
+       "duration": 1
       }
-     ],
-     "name": "Xp_bar_Hell"
+     ]
     },
     {
+     "name": "Level",
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         1.925,
         -300.5
        ],
-       "index": 0,
        "ref": "~HUD_Level",
-       "scale": [
-        0.61,
-        0.61
-       ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "Level"
+     ]
     },
     {
+     "name": "Souls_Hell",
      "keyframes": [
       {
-       "loc": [
-        -263.925,
-        -254.525
-       ],
+       "tweened": false,
        "index": 0,
-       "ref": "~HUD_Souls_hell",
-       "scale": [
-        0.6632,
-        0.6093
+       "loc": [
+        -248.725,
+        -223.7
        ],
-       "duration": 1,
-       "tweened": false
+       "ref": "~HUD_Souls_hell",
+       "duration": 1
       }
-     ],
-     "name": "Souls_Hell"
+     ]
     },
     {
+     "name": "Souls_Heaven",
      "keyframes": [
       {
-       "ref": "~HUD_Souls_Heaven",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -342.475,
         -217.675
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~HUD_Souls_Heaven",
+       "duration": 1
       }
-     ],
-     "name": "Souls_Heaven"
+     ]
     }
    ],
    "id": "HUD"
@@ -1471,57 +1445,57 @@
   {
    "layers": [
     {
+     "name": "Button_ConfirmMovement",
      "keyframes": [
       {
-       "ref": "~ButtonConfirmMovement",
+       "tweened": false,
+       "index": 0,
        "loc": [
         39.125,
         265.55
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonConfirmMovement",
+       "duration": 1
       }
-     ],
-     "name": "Button_ConfirmMovement"
+     ]
     },
     {
+     "name": "Button_CancelMovement",
      "keyframes": [
       {
-       "ref": "~ButtonCancelMovement",
+       "tweened": false,
+       "index": 0,
        "loc": [
         242.5,
         265.3
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "~ButtonCancelMovement",
+       "duration": 1
       }
-     ],
-     "name": "Button_CancelMovement"
+     ]
     },
     {
+     "name": "_moving_building_icon",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -135,
         -230
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_moving_building_icon",
+       "pivot": [
+        45.25,
+        42.75
+       ],
        "scale": [
         0.8235,
         0.8235
        ],
-       "duration": 1,
-       "pivot": [
-        45.25,
-        42.75
-       ]
+       "index": 0,
+       "ref": "_moving_building_icon",
+       "duration": 1
       }
-     ],
-     "name": "_moving_building_icon"
+     ]
     }
    ],
    "id": "MovingBuilding"
@@ -1529,779 +1503,850 @@
   {
    "layers": [
     {
+     "name": "Gauge",
      "keyframes": [
       {
-       "loc": [
-        -5.45,
-        -48.2
-       ],
+       "tweened": false,
        "index": 0,
-       "pivot": [
-        53.325,
-        -35.25
+       "loc": [
+        -1.525,
+        2.475
        ],
-       "ref": "_bg_gauge",
-       "duration": 1,
-       "tweened": false
+       "ref": "~isProducing_gauge",
+       "duration": 1
       }
-     ],
-     "name": "_bg_gauge"
+     ]
     },
     {
+     "name": "Icon",
      "keyframes": [
       {
-       "loc": [
-        -15,
-        -0.3
-       ],
        "index": 0,
-       "pivot": [
-        42.75,
-        11.6
-       ],
-       "ref": "_gauge",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "_gauge"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_time",
-       "loc": [
-        1.125,
-        0.55
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "_time"
+     ]
     }
    ],
-   "id": "~BuildingContext_Jauge"
+   "id": "ProducingTimer"
   },
   {
    "layers": [
     {
+     "name": "BG",
      "keyframes": [
       {
-       "ref": "_buttonCancelConstruction_up",
+       "pivot": [
+        53,
+        15.5
+       ],
        "tweened": false,
-       "duration": 1,
        "index": 0,
+       "ref": "_infohouse_bg",
+       "duration": 1
+      }
+     ]
+    },
+    {
+     "name": "_infos_house_txt",
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0.3,
+        0.5
+       ],
+       "ref": "_infos_house_txt",
+       "duration": 1
+      }
+     ]
+    },
+    {
+     "name": "_infos_house_icon",
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -52.5,
+        0
+       ],
+       "pivot": [
+        12.5,
+        12.5
+       ],
+       "index": 0,
+       "ref": "_infos_house_icon",
+       "duration": 1
+      }
+     ]
+    }
+   ],
+   "id": "SoulsCounter_house"
+  },
+  {
+   "data": {
+    "y": -48.35,
+    "text": "+999",
+    "color": "#000000",
+    "width": 191.75,
+    "font": "83px _sans",
+    "align": "left",
+    "height": 96.75,
+    "wordWrap": 0,
+    "x": -95.85
+   },
+   "layers": [
+    {
+     "name": "value",
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "ref": "_value_loot",
+       "duration": 1
+      }
+     ]
+    },
+    {
+     "name": "icon",
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        146.9,
+        -1.85
+       ],
+       "pivot": [
+        32,
+        32
+       ],
+       "index": 0,
+       "ref": "_icon_loot",
+       "duration": 1
+      }
+     ]
+    }
+   ],
+   "id": "pickUp_value"
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
        "pivot": [
         43.775,
         43.775
-       ]
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonCancelConstruction_up",
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         1.275,
         0
        ],
-       "index": 1,
        "pivot": [
         48.75,
         47.5
        ],
+       "index": 1,
        "ref": "_buttonCancelConstruction_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
-       "ref": "_buttonCancelConstruction_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         47.5,
         47.5
-       ]
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonCancelConstruction_down",
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonCancelConstruction"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "ref": "_buttonCancelMovement_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         43.75,
         43.75
-       ]
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonCancelMovement_up",
+       "duration": 1
       },
       {
-       "ref": "_buttonCancelMovement_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         47.5,
         47.5
-       ]
+       ],
+       "tweened": false,
+       "index": 1,
+       "ref": "_buttonCancelMovement_over",
+       "duration": 1
       },
       {
-       "ref": "_buttonCancelMovement_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         47.525,
         47.525
-       ]
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonCancelMovement_down",
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonCancelMovement"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "ref": "_buttonCancelSelection_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         43.75,
         43.75
-       ]
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonCancelSelection_up",
+       "duration": 1
       },
       {
-       "ref": "_buttonCancelSelection_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         47.675,
         47.5
-       ]
+       ],
+       "tweened": false,
+       "index": 1,
+       "ref": "_buttonCancelSelection_over",
+       "duration": 1
       },
       {
-       "ref": "_buttonCancelSelection_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         47.525,
         47.525
-       ]
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonCancelSelection_down",
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonCancelSelection"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 0,
        "pivot": [
         122.75,
         43.75
        ],
+       "index": 0,
        "ref": "_buttonConfirmMovement_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 1,
        "pivot": [
         124,
         45
        ],
+       "index": 1,
        "ref": "_buttonConfirmMovement_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -0.1,
         0.025
        ],
-       "index": 2,
        "pivot": [
         124,
         45
        ],
+       "index": 2,
        "ref": "_buttonConfirmMovement_down",
-       "duration": 2,
-       "tweened": false
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     },
     {
+     "name": "Text_EnterBuilding",
      "keyframes": [
       {
-       "ref": "_Text_ConfirmMovement",
+       "tweened": false,
+       "index": 0,
        "loc": [
         3.05,
         1.125
        ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false
+       "ref": "_Text_ConfirmMovement",
+       "duration": 4
       }
-     ],
-     "name": "Text_EnterBuilding"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonConfirmMovement"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 0,
        "pivot": [
         122.75,
         43.75
        ],
+       "index": 0,
        "ref": "_buttonEnterBuilding_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 1,
        "pivot": [
         124,
         45
        ],
+       "index": 1,
        "ref": "_buttonEnterBuilding_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -0.1,
         0.025
        ],
-       "index": 2,
        "pivot": [
         124,
         45
        ],
+       "index": 2,
        "ref": "_buttonEnterBuilding_down",
-       "duration": 2,
-       "tweened": false
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     },
     {
+     "name": "Text_EnterBuilding",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -1.5273,
         -2.9673
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_Text_EnterBuilding",
+       "pivot": [
+        -1.35,
+        -3.075
+       ],
        "scale": [
         1.0758,
         1.0138
        ],
-       "duration": 4,
-       "pivot": [
-        -1.35,
-        -3.075
-       ]
+       "index": 0,
+       "ref": "_Text_EnterBuilding",
+       "duration": 4
       }
-     ],
-     "name": "Text_EnterBuilding"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonEnterBuilding"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "ref": "_buttonMoveBuilding_up",
+       "pivot": [
+        81.25,
+        81.25
+       ],
        "tweened": false,
-       "duration": 1,
        "index": 0,
+       "ref": "_buttonInterns_up",
+       "duration": 1
+      },
+      {
+       "pivot": [
+        85,
+        85
+       ],
+       "tweened": false,
+       "index": 1,
+       "ref": "_buttonInterns_over",
+       "duration": 1
+      },
+      {
+       "pivot": [
+        85,
+        85
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonInterns_down",
+       "duration": 2
+      }
+     ]
+    }
+   ],
+   "id": "~ButtonInterns"
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
        "pivot": [
         43.775,
         43.775
-       ]
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonMoveBuilding_up",
+       "duration": 1
       },
       {
-       "ref": "_buttonMoveBuilding_over",
+       "pivot": [
+        47.5,
+        47.5
+       ],
        "tweened": false,
-       "duration": 1,
        "index": 1,
-       "pivot": [
-        47.5,
-        47.5
-       ]
+       "ref": "_buttonMoveBuilding_over",
+       "duration": 1
       },
       {
-       "ref": "_buttonMoveBuilding_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         47.5,
         47.5
-       ]
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonMoveBuilding_down",
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonMoveBuilding"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -25,
         -5
        ],
-       "index": 0,
        "pivot": [
         269.8,
         156.15
        ],
+       "index": 0,
        "ref": "_buttonPlus_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -70,
         -105
+       ],
+       "pivot": [
+        31.625,
+        31.625
        ],
        "index": 1,
-       "pivot": [
-        31.625,
-        31.625
-       ],
        "ref": "_buttonPlus_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -70,
         -105
        ],
-       "index": 2,
        "pivot": [
         31.625,
         31.625
        ],
+       "index": 2,
        "ref": "_buttonPlus_down",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -59.95,
         -89.875
        ],
-       "index": 3,
        "pivot": [
         276.225,
         67.5
        ],
+       "index": 3,
        "ref": "_buttonPlus_hit",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonPlusHC"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -46.45,
         10
        ],
-       "index": 0,
        "pivot": [
         269.8,
         156.15
        ],
+       "index": 0,
        "ref": "_buttonPlus_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -70,
         -105
+       ],
+       "pivot": [
+        31.625,
+        31.625
        ],
        "index": 1,
-       "pivot": [
-        31.625,
-        31.625
-       ],
        "ref": "_buttonPlus_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -70,
         -105
        ],
-       "index": 2,
        "pivot": [
         31.625,
         31.625
        ],
+       "index": 2,
        "ref": "_buttonPlus_down",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -59.95,
         -89.875
        ],
-       "index": 3,
        "pivot": [
         276.225,
         67.5
        ],
+       "index": 3,
        "ref": "_buttonPlus_hit",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonPlusSC"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "loc": [
-        12.675,
-        0
-       ],
-       "index": 0,
        "pivot": [
         68.75,
         68.75
        ],
+       "tweened": false,
+       "index": 0,
        "ref": "_buttonItem_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
-       "ref": "_buttonItem_over",
+       "pivot": [
+        72.5,
+        72.5
+       ],
        "tweened": false,
-       "duration": 1,
        "index": 1,
-       "pivot": [
-        72.5,
-        72.5
-       ]
+       "ref": "_buttonItem_over",
+       "duration": 1
       },
       {
-       "ref": "_buttonItem_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         72.5,
         72.5
-       ]
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonItem_down",
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
+   "id": "~ButtonPurgatory"
+  },
+  {
    "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        100,
+        -100
+       ],
+       "pivot": [
+        81.25,
+        81.25
+       ],
+       "index": 0,
+       "ref": "_buttonShop_up",
+       "duration": 1
+      },
+      {
+       "tweened": false,
+       "loc": [
+        100,
+        -100
+       ],
+       "pivot": [
+        85,
+        85
+       ],
+       "index": 1,
+       "ref": "_buttonShop_over",
+       "duration": 1
+      },
+      {
+       "tweened": false,
+       "loc": [
+        100,
+        -100
+       ],
+       "pivot": [
+        85,
+        85
+       ],
+       "index": 2,
+       "ref": "_buttonShop_down",
+       "duration": 2
+      }
+     ]
+    }
+   ],
    "id": "~ButtonShop"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 0,
        "pivot": [
         122.75,
         43.75
        ],
+       "index": 0,
        "ref": "_buttonSkipConstruction_up",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
-       "index": 1,
        "pivot": [
         124,
         45
        ],
+       "index": 1,
        "ref": "_buttonSkipConstruction_over",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       },
       {
+       "tweened": false,
        "loc": [
         -0.1,
         0.025
        ],
-       "index": 2,
        "pivot": [
         124,
         45
        ],
+       "index": 2,
        "ref": "_buttonSkipConstruction_down",
-       "duration": 2,
-       "tweened": false
+       "duration": 2
       }
-     ],
-     "name": "Layer 1"
+     ]
     },
     {
+     "name": "Icon_HardCurrency",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         120,
         0
        ],
-       "index": 0,
        "pivot": [
         41.25,
         18.75
        ],
+       "index": 0,
        "ref": "_timebased_icon_skip",
-       "duration": 4,
-       "tweened": false
+       "duration": 4
       }
-     ],
-     "name": "Icon_HardCurrency"
+     ]
     },
     {
+     "name": "Text_HardPrice",
      "keyframes": [
       {
-       "ref": "_timebased_skip_value",
+       "tweened": false,
+       "index": 0,
        "loc": [
         30.75,
         2.15
        ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false
+       "ref": "_timebased_skip_value",
+       "duration": 4
       }
-     ],
-     "name": "Text_HardPrice"
+     ]
     },
     {
+     "name": "Text_SkipConstruction",
      "keyframes": [
       {
        "loc": [
         -16.35,
         1
        ],
-       "index": 0,
-       "ref": "_Text_SkipConstruction",
+       "tweened": false,
        "scale": [
         1.0063,
         1.0138
        ],
-       "duration": 4,
-       "tweened": false
+       "index": 0,
+       "ref": "_Text_SkipConstruction",
+       "duration": 4
       }
-     ],
-     "name": "Text_SkipConstruction"
+     ]
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonSkipConstruction"
   },
   {
    "layers": [
     {
+     "name": "Sphere",
      "keyframes": [
       {
-       "loc": [
-        0,
-        3.15
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_buttonItem_up",
-       "scale": [
-        0.9523,
-        0.9523
-       ],
-       "duration": 1,
-       "pivot": [
-        68.75,
-        68.75
-       ]
-      },
-      {
-       "ref": "_buttonItem_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        72.5,
-        72.5
-       ]
-      },
-      {
-       "ref": "_buttonItem_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "pivot": [
-        72.5,
-        72.5
-       ]
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Quest"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "ref": "_buttonItem_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        68.75,
-        68.75
-       ]
-      },
-      {
-       "ref": "_buttonItem_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        72.5,
-        72.5
-       ]
-      },
-      {
-       "ref": "_buttonItem_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "pivot": [
-        72.5,
-        72.5
-       ]
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Tribunal"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "ref": "_level_sphere",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         50.25,
         50.25
-       ]
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_level_sphere",
+       "duration": 1
       }
-     ],
-     "name": "Sphere"
+     ]
     },
     {
+     "name": "_level_txt",
      "keyframes": [
       {
-       "ref": "_level_txt",
+       "tweened": false,
+       "index": 0,
        "loc": [
         0,
         -5
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "_level_txt",
+       "duration": 1
       }
-     ],
-     "name": "_level_txt"
+     ]
     }
    ],
    "id": "~HUD_Level"
@@ -2309,176 +2354,172 @@
   {
    "layers": [
     {
+     "name": "internsButton",
      "keyframes": [
       {
-       "loc": [
-        0.725,
-        0.4
-       ],
+       "tweened": false,
        "index": 0,
-       "ref": "~Button_Quest",
-       "scale": [
-        1.0478,
-        1.0432
+       "loc": [
+        2.5,
+        0
        ],
-       "duration": 1,
-       "tweened": false
+       "ref": "~ButtonInterns",
+       "duration": 1
       }
-     ],
-     "name": "Button"
+     ]
     },
     {
+     "name": "internsButton_Txt",
      "keyframes": [
       {
-       "ref": "_quests_txt",
+       "tweened": false,
+       "index": 0,
        "loc": [
         4.1,
         -48.2
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "_quests_txt",
+       "duration": 1
       }
-     ],
-     "name": "_quests_txt"
+     ]
     },
     {
+     "name": "questTimer01",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -38,
-        -16.05
+        0
+       ],
+       "pivot": [
+        20,
+        20
+       ],
+       "scale": [
+        0.9087,
+        0.9087
        ],
        "index": 0,
-       "tweened": false,
        "ref": "_quests_interns",
-       "scale": [
-        0.9087,
-        0.9087
-       ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns"
+     ]
     },
     {
+     "name": "questTimer02",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         2.5,
-        -16.05
+        0
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_quests_interns02",
+       "pivot": [
+        20,
+        20
+       ],
        "scale": [
         0.9087,
         0.9087
        ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "index": 0,
+       "ref": "_quests_interns02",
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns02"
+     ]
     },
     {
+     "name": "questTimer03",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         42.65,
-        -16.05
+        0
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_quests_interns03",
+       "pivot": [
+        20,
+        20
+       ],
        "scale": [
         0.9087,
         0.9087
        ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "index": 0,
+       "ref": "_quests_interns03",
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns03"
+     ]
     },
     {
+     "name": "questTimer04",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -38,
-        23.05
+        39.1
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_quests_interns04",
+       "pivot": [
+        20,
+        20
+       ],
        "scale": [
         0.9087,
         0.9087
        ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "index": 0,
+       "ref": "_quests_interns04",
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns04"
+     ]
     },
     {
+     "name": "questTimer05",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         2.5,
-        23.05
+        39.1
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_quests_interns05",
+       "pivot": [
+        20,
+        20
+       ],
        "scale": [
         0.9087,
         0.9087
        ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "index": 0,
+       "ref": "_quests_interns05",
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns05"
+     ]
     },
     {
+     "name": "questTimer06",
      "keyframes": [
       {
-       "loc": [
-        42.65,
-        23.05
-       ],
-       "index": 0,
        "tweened": false,
-       "ref": "_quests_interns06",
+       "loc": [
+        43.875,
+        39.1
+       ],
+       "pivot": [
+        20,
+        20
+       ],
        "scale": [
         0.9087,
         0.9087
        ],
-       "duration": 1,
-       "pivot": [
-        20,
-        20
-       ]
+       "index": 0,
+       "ref": "_quests_interns06",
+       "duration": 1
       }
-     ],
-     "name": "_quests_interns06"
+     ]
     }
    ],
    "id": "~HUD_Quests"
@@ -2486,69 +2527,69 @@
   {
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -102.5,
         -84
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_souls_bg",
+       "pivot": [
+        89.15,
+        16.25
+       ],
        "scale": [
         0.5888,
         1.0278
        ],
-       "duration": 1,
-       "pivot": [
-        89.15,
-        16.25
-       ]
+       "index": 0,
+       "ref": "_souls_bg",
+       "duration": 1
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
        "loc": [
         -88.925,
         -83.925
        ],
-       "index": 0,
-       "ref": "_souls_txt_heaven",
+       "tweened": false,
        "scale": [
         0.5426,
         0.6168
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 0,
+       "ref": "_souls_txt_heaven",
+       "duration": 1
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "_souls_icon_heaven",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -140.8,
         -88.825
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_souls_icon_heaven",
+       "pivot": [
+        31.35,
+        22.35
+       ],
        "scale": [
         0.3624,
         0.3624
        ],
-       "duration": 1,
-       "pivot": [
-        31.35,
-        22.35
-       ]
+       "index": 0,
+       "ref": "_souls_icon_heaven",
+       "duration": 1
       }
-     ],
-     "name": "_souls_icon_heaven"
+     ]
     }
    ],
    "id": "~HUD_Souls_Heaven"
@@ -2556,65 +2597,65 @@
   {
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -47.525,
         -77.525
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_souls_bg",
+       "pivot": [
+        89.15,
+        16.25
+       ],
        "scale": [
         0.9254,
         1.69
        ],
-       "duration": 1,
-       "pivot": [
-        89.15,
-        16.25
-       ]
+       "index": 0,
+       "ref": "_souls_bg",
+       "duration": 1
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
-       "ref": "_souls_txt_heaven",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -24.975,
         -79.45
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "_souls_txt_heaven",
+       "duration": 1
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "_souls_icon_hell",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -56.4,
         -58.25
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_souls_icon_hell",
+       "pivot": [
+        121.45,
+        70.65
+       ],
        "scale": [
         0.5529,
         0.6039
        ],
-       "duration": 1,
-       "pivot": [
-        121.45,
-        70.65
-       ]
+       "index": 0,
+       "ref": "_souls_icon_hell",
+       "duration": 1
       }
-     ],
-     "name": "_souls_icon_hell"
+     ]
     }
    ],
    "id": "~HUD_Souls_hell"
@@ -2622,65 +2663,65 @@
   {
    "layers": [
     {
+     "name": "barRight",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         6.7,
         -3.1
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_xp_bar_heaven",
+       "pivot": [
+        80.875,
+        13.625
+       ],
        "scale": [
         1.3354,
         0.8456
        ],
-       "duration": 1,
-       "pivot": [
-        80.875,
-        13.625
-       ]
+       "index": 0,
+       "ref": "_xp_bar_heaven",
+       "duration": 1
       }
-     ],
-     "name": "barRight"
+     ]
     },
     {
+     "name": "Icon",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         74.9,
         0.85
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_xp_icon_heaven",
+       "pivot": [
+        121.45,
+        70.65
+       ],
        "scale": [
         0.4,
         0.4
        ],
-       "duration": 1,
-       "pivot": [
-        121.45,
-        70.65
-       ]
+       "index": 0,
+       "ref": "_xp_icon_heaven",
+       "duration": 1
       }
-     ],
-     "name": "Icon"
+     ]
     },
     {
+     "name": "Hud_xp_txt",
      "keyframes": [
       {
-       "ref": "_xp_txt_heaven",
+       "tweened": false,
+       "index": 0,
        "loc": [
         -32.9,
         2.55
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "_xp_txt_heaven",
+       "duration": 1
       }
-     ],
-     "name": "Hud_xp_txt"
+     ]
     }
    ],
    "id": "~HUD_Xp_Bar_Heaven"
@@ -2688,69 +2729,69 @@
   {
    "layers": [
     {
+     "name": "barRight",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -17.225,
         -4.85
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_xp_bar_hell",
+       "pivot": [
+        80,
+        11.375
+       ],
        "scale": [
         1.0348,
         1
        ],
-       "duration": 1,
-       "pivot": [
-        80,
-        11.375
-       ]
+       "index": 0,
+       "ref": "_xp_bar_hell",
+       "duration": 1
       }
-     ],
-     "name": "barRight"
+     ]
     },
     {
+     "name": "Icon",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -59.825,
         -1.4
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_xp_icon_hell",
+       "pivot": [
+        121.45,
+        70.65
+       ],
        "scale": [
         0.4,
         0.4
        ],
-       "duration": 1,
-       "pivot": [
-        121.45,
-        70.65
-       ]
+       "index": 0,
+       "ref": "_xp_icon_hell",
+       "duration": 1
       }
-     ],
-     "name": "Icon"
+     ]
     },
     {
+     "name": "Hud_xp_txt",
      "keyframes": [
       {
        "loc": [
         -30.15,
         0
        ],
-       "index": 0,
-       "ref": "_xp_txt_hell",
+       "tweened": false,
        "scale": [
         1.0664,
         1
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 0,
+       "ref": "_xp_txt_hell",
+       "duration": 1
       }
-     ],
-     "name": "Hud_xp_txt"
+     ]
     }
    ],
    "id": "~HUD_Xp_Bar_Hell"
@@ -2758,80 +2799,80 @@
   {
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         8.95,
         -5.25
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "bar_bg",
+       "pivot": [
+        89.15,
+        16.25
+       ],
        "scale": [
         1.0625,
         1.7596
        ],
-       "duration": 1,
-       "pivot": [
-        89.15,
-        16.25
-       ]
+       "index": 0,
+       "ref": "bar_bg",
+       "duration": 1
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
-       "ref": "bar_txt",
+       "tweened": false,
+       "index": 0,
        "loc": [
         33.05,
         76.875
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "bar_txt",
+       "duration": 1
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "_icon_hardcurrency",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -80.375,
         -6.625
        ],
-       "index": 0,
        "pivot": [
         22.75,
         22.75
        ],
+       "index": 0,
        "ref": "_icon_hardcurrency",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "_icon_hardcurrency"
+     ]
     },
     {
+     "name": "ButtonPlusHC",
      "keyframes": [
       {
        "loc": [
         123.725,
         71.625
        ],
-       "index": 0,
-       "ref": "~ButtonPlusHC",
+       "tweened": false,
        "scale": [
         0.74,
         0.74
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 0,
+       "ref": "~ButtonPlusHC",
+       "duration": 1
       }
-     ],
-     "name": "ButtonPlusHC"
+     ]
     }
    ],
    "id": "~HardCurrency"
@@ -2839,80 +2880,80 @@
   {
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         5.9,
         -0.625
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "bar_bg",
+       "pivot": [
+        89.15,
+        16.25
+       ],
        "scale": [
         1.046,
         1.7495
        ],
-       "duration": 1,
-       "pivot": [
-        89.15,
-        16.25
-       ]
+       "index": 0,
+       "ref": "bar_bg",
+       "duration": 1
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "_icon_softcurrency",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -84.475,
         -0.7
        ],
-       "index": 0,
        "pivot": [
         22.75,
         22.75
        ],
+       "index": 0,
        "ref": "_icon_softcurrency",
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
-     ],
-     "name": "_icon_softcurrency"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
-       "ref": "bar_txt",
+       "tweened": false,
+       "index": 0,
        "loc": [
         30.525,
         81.175
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       "ref": "bar_txt",
+       "duration": 1
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "ButtonPlusSC",
      "keyframes": [
       {
        "loc": [
         136.575,
         67.275
        ],
-       "index": 0,
-       "ref": "~ButtonPlusSC",
+       "tweened": false,
        "scale": [
         0.7432,
         0.7521
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 0,
+       "ref": "~ButtonPlusSC",
+       "duration": 1
       }
-     ],
-     "name": "ButtonPlusSC"
+     ]
     }
    ],
    "id": "~SoftCurrency"
@@ -2920,57 +2961,120 @@
   {
    "layers": [
     {
+     "name": "_bg_gauge",
      "keyframes": [
       {
-       "ref": "_infohouse_bg",
        "tweened": false,
-       "duration": 1,
-       "index": 0,
+       "loc": [
+        -5.45,
+        -48.2
+       ],
        "pivot": [
-        53,
-        15.5
-       ]
+        53.325,
+        -35.25
+       ],
+       "index": 0,
+       "ref": "_bg_gauge",
+       "duration": 1
       }
-     ],
-     "name": "BG"
+     ]
     },
     {
+     "name": "_gauge",
      "keyframes": [
       {
-       "ref": "_infos_house_txt",
+       "tweened": false,
        "loc": [
-        0.3,
-        0.5
+        -15,
+        -0.3
        ],
-       "duration": 1,
+       "pivot": [
+        42.75,
+        11.6
+       ],
        "index": 0,
-       "tweened": false
+       "ref": "_gauge",
+       "duration": 1
       }
-     ],
-     "name": "_infos_house_txt"
+     ]
     },
     {
+     "name": "_time",
      "keyframes": [
       {
-       "loc": [
-        -52.5,
-        0
-       ],
+       "tweened": false,
        "index": 0,
-       "pivot": [
-        12.5,
-        12.5
+       "loc": [
+        1.125,
+        0.55
        ],
-       "ref": "_infos_house_icon",
-       "duration": 1,
-       "tweened": false
+       "ref": "_time",
+       "duration": 1
       }
-     ],
-     "name": "_infos_house_icon"
+     ]
     }
    ],
-   "id": "~_infos_house"
+   "id": "~isBuilding_gauge"
+  },
+  {
+   "layers": [
+    {
+     "name": "_bg_gauge",
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -5.45,
+        -48.2
+       ],
+       "pivot": [
+        53.325,
+        -35.25
+       ],
+       "index": 0,
+       "ref": "_bg_gauge",
+       "duration": 1
+      }
+     ]
+    },
+    {
+     "name": "_gauge",
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -15,
+        -0.3
+       ],
+       "pivot": [
+        42.75,
+        11.6
+       ],
+       "index": 0,
+       "ref": "_gauge",
+       "duration": 1
+      }
+     ]
+    },
+    {
+     "name": "_time",
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        1.125,
+        0.55
+       ],
+       "ref": "_time",
+       "duration": 1
+      }
+     ]
+    }
+   ],
+   "id": "~isProducing_gauge"
   }
  ],
+ "md5": "8608dd0c6e3c130b01d8e87249cb7fb4",
  "frameRate": 24
 }

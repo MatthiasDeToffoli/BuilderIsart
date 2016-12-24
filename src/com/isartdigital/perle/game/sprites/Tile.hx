@@ -27,7 +27,6 @@ class Tile extends FlumpStateGraphic implements HasVirtual
 	public static function initClass():Void {
 		IsoManager.init(TILE_WIDTH, TILE_HEIGHT);
 		Ground.initClass();
-		FootPrint.initClass();
 		Building.initClass();
 	}
 	
@@ -66,7 +65,8 @@ class Tile extends FlumpStateGraphic implements HasVirtual
 	 * If you want to remove the tile (from save) you need to destroy the VCell
 	 */
 	override public function destroy():Void {
-		linkedVirtualCell.removeLink();
+		if (linkedVirtualCell != null) // only happen for phantom !
+			linkedVirtualCell.removeLink();
 		linkedVirtualCell = null;
 		setModeVoid();
 		parent.removeChild(this);

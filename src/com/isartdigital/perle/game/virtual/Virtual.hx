@@ -19,6 +19,12 @@ class Virtual {
 	public var active(default, null):Bool = false;
 	
 	/**
+	 * If true graphic will never show up, no clipping. (used while moving a VBuilding)
+	 * It does not desactivate() the virtual !
+	 */
+	public var ignore(default, null):Bool = false;
+	
+	/**
 	 * instance linked to VCell when active
 	 */
 	public var graphic(default, null):FlumpStateGraphic;
