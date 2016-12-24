@@ -107,15 +107,15 @@ class Main extends EventEmitter
 		if (Config.debug && Config.data.animAlpha != null) StateGraphic.animAlpha = Config.data.animAlpha;
 		
 		// défini le mode de redimensionnement du Jeu
-		GameStage.getInstance().scaleMode = GameStageScale.SHOW_ALL; // todo : bug si je prends ple code de mathieu ci-dessous !
-		/*if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP) {
+		//GameStage.getInstance().scaleMode = GameStageScale.SHOW_ALL; // todo : bug si je prends ple code de mathieu ci-dessous !
+		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP) {
 			GameStage.getInstance().scaleMode = GameStageScale.NO_SCALE;
 			untyped DeviceCapabilities.textureRatio = 0.5;
 			untyped DeviceCapabilities.textureType = DeviceCapabilities.TEXTURE_LD;
 		} else {
 			GameStage.getInstance().scaleMode = GameStageScale.SHOW_ALL;
 			DeviceCapabilities.init(1, 0.75, 0.5);
-		}*/
+		}
 		
 		// initialise le GameStage et défini la taille de la safeZone
 		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true); // premier false => éviter le 0,0 au centre.
