@@ -27,7 +27,7 @@ class BHHarvest extends BuildingHud{
 		return instance;
 	}	
 	
-	public function new() {
+	private function new() {
 		super("BuiltContext");
 	}
 	

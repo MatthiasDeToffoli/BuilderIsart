@@ -1,0 +1,615 @@
+{
+ "md5": "386522affb327b4c319292a9a943f348",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1470,
+        847
+       ],
+       "symbol": "Window_BG",
+       "origin": [
+        697.4,
+        441.9
+       ]
+      },
+      {
+       "rect": [
+        1,
+        850,
+        541,
+        105
+       ],
+       "symbol": "Window_Infos_BG",
+       "origin": [
+        92.7,
+        97.3
+       ]
+      },
+      {
+       "rect": [
+        544,
+        850,
+        244,
+        157
+       ],
+       "symbol": "_buttonUpInfo_over",
+       "origin": [
+        99.4,
+        52.8
+       ]
+      },
+      {
+       "rect": [
+        790,
+        850,
+        244,
+        157
+       ],
+       "symbol": "_buttonUpInfo_down",
+       "origin": [
+        99.4,
+        52.8
+       ]
+      },
+      {
+       "rect": [
+        1036,
+        850,
+        83,
+        83
+       ],
+       "symbol": "_soul_icon",
+       "origin": [
+        41.25,
+        41.25
+       ]
+      },
+      {
+       "rect": [
+        1036,
+        935,
+        83,
+        83
+       ],
+       "symbol": "_info_gold_icon",
+       "origin": [
+        41.25,
+        41.25
+       ]
+      },
+      {
+       "data": {
+        "y": -55.65,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 317.55,
+        "color": "#000000",
+        "align": "left",
+        "height": 111.25,
+        "font": "96px customTypo*",
+        "x": -158.75
+       },
+       "rect": [
+        1,
+        1020,
+        1,
+        1
+       ],
+       "symbol": "_pack_content_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -18.3,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 437.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 76.6,
+        "font": "63px customTypo*",
+        "x": -138.9
+       },
+       "rect": [
+        4,
+        1020,
+        1,
+        1
+       ],
+       "symbol": "_buttonBuy_Cost_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -10,
+        "wordWrap": 1,
+        "text": "Name_XXX",
+        "width": 688.5,
+        "color": "#000000",
+        "align": "center",
+        "height": 166.7,
+        "font": "126px customTypo*",
+        "x": -405.95
+       },
+       "rect": [
+        7,
+        1020,
+        1,
+        1
+       ],
+       "symbol": "Pack_Name_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -73.25,
+        "wordWrap": 0,
+        "text": "Buy",
+        "width": 436.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 115.75,
+        "font": "100px customTypo*",
+        "x": -204.1
+       },
+       "rect": [
+        10,
+        1020,
+        1,
+        1
+       ],
+       "symbol": "_buttonBuy_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        541,
+        421
+       ],
+       "symbol": "Pack_Image",
+       "origin": [
+        317.2,
+        160.65
+       ]
+      },
+      {
+       "rect": [
+        544,
+        1,
+        315,
+        315
+       ],
+       "symbol": "_buttonItem_up",
+       "origin": [
+        157.45,
+        157.25
+       ]
+      },
+      {
+       "rect": [
+        544,
+        318,
+        218,
+        218
+       ],
+       "symbol": "_buttonItem_down",
+       "origin": [
+        108.75,
+        108.75
+       ]
+      },
+      {
+       "rect": [
+        764,
+        318,
+        218,
+        218
+       ],
+       "symbol": "_buttonItem_over",
+       "origin": [
+        108.75,
+        108.75
+       ]
+      },
+      {
+       "rect": [
+        1,
+        424,
+        241,
+        181
+       ],
+       "symbol": "_buttonUpInfo_up",
+       "origin": [
+        97.9,
+        60.4
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "Background",
+     "keyframes": [
+      {
+       "ref": "Window_BG",
+       "duration": 1,
+       "loc": [
+        1.0125,
+        -2.1375
+       ],
+       "tweened": false,
+       "scale": [
+        0.98,
+        0.9074
+       ],
+       "index": 0,
+       "pivot": [
+        697.425,
+        441.9
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Building_Name",
+     "keyframes": [
+      {
+       "ref": "Pack_Name_txt",
+       "duration": 1,
+       "loc": [
+        -326.5125,
+        150
+       ],
+       "scale": [
+        0.9415,
+        0.8585
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Building_Image",
+     "keyframes": [
+      {
+       "ref": "Pack_Image",
+       "duration": 1,
+       "loc": [
+        -323.2875,
+        -132.0375
+       ],
+       "pivot": [
+        317.175,
+        160.65
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Window_Infos_Content",
+     "keyframes": [
+      {
+       "ref": "Window_Infos_Population",
+       "duration": 1,
+       "loc": [
+        181.6125,
+        -112.5
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Window_Infos_BuyButton",
+     "keyframes": [
+      {
+       "ref": "Window_Infos_BuyButton",
+       "duration": 1,
+       "loc": [
+        366.1125,
+        248.5125
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Window_Infos_Close_Button",
+     "keyframes": [
+      {
+       "ref": "~ButtonItem",
+       "duration": 1,
+       "loc": [
+        727.8375,
+        -381.5625
+       ],
+       "scale": [
+        0.3705,
+        0.3705
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Popin_ConfirmationAchatEuros"
+  },
+  {
+   "layers": [
+    {
+     "name": "ButtonUpgrade",
+     "keyframes": [
+      {
+       "ref": "~ButtonBuyInfo",
+       "duration": 1,
+       "loc": [
+        -40.3875,
+        -134.9625
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "ButtonUpgrade_txt",
+     "keyframes": [
+      {
+       "ref": "_buttonBuy_TXT",
+       "duration": 1,
+       "loc": [
+        -17.025,
+        -84.375
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "ButtonUpgrade_Cost_txt",
+     "keyframes": [
+      {
+       "ref": "_buttonBuy_Cost_TXT",
+       "duration": 1,
+       "loc": [
+        -64.7625,
+        51.7875
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "GoldIcon",
+     "keyframes": [
+      {
+       "ref": "_info_gold_icon",
+       "duration": 1,
+       "loc": [
+        -127.6875,
+        67.2
+       ],
+       "pivot": [
+        41.25,
+        41.25
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Window_Infos_BuyButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Window_Infos_BG",
+     "keyframes": [
+      {
+       "ref": "Window_Infos_BG",
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "pivot": [
+        92.7,
+        97.3125
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Pack_Content_txt",
+     "keyframes": [
+      {
+       "ref": "_pack_content_txt",
+       "duration": 1,
+       "loc": [
+        245.5875,
+        -43.0125
+       ],
+       "pivot": [
+        0,
+        -0.0375
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Soul_Cion",
+     "keyframes": [
+      {
+       "ref": "_soul_icon",
+       "duration": 1,
+       "loc": [
+        -15.075,
+        -43.4625
+       ],
+       "pivot": [
+        41.25,
+        41.25
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Window_Infos_Population"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "_buttonUpInfo_up",
+       "duration": 1,
+       "pivot": [
+        97.875,
+        60.375
+       ],
+       "scale": [
+        1.5144,
+        1.3029
+       ],
+       "index": 0,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonUpInfo_over",
+       "duration": 1,
+       "pivot": [
+        99.375,
+        52.8
+       ],
+       "scale": [
+        1.5144,
+        1.5144
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonUpInfo_down",
+       "duration": 2,
+       "pivot": [
+        99.375,
+        52.8
+       ],
+       "scale": [
+        1.5144,
+        1.5144
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonBuyInfo"
+  },
+  {
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "ref": "_buttonItem_up",
+       "duration": 1,
+       "pivot": [
+        157.4625,
+        157.2375
+       ],
+       "scale": [
+        1.5009,
+        1.5009
+       ],
+       "index": 0,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonItem_over",
+       "duration": 1,
+       "pivot": [
+        108.75,
+        108.75
+       ],
+       "scale": [
+        1.5556,
+        1.5556
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonItem_down",
+       "duration": 2,
+       "pivot": [
+        108.75,
+        108.75
+       ],
+       "scale": [
+        1.5556,
+        1.5556
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonItem"
+  }
+ ]
+}

@@ -1,0 +1,2268 @@
+{
+ "md5": "def0da7b86a0d9569d468033efc86296",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1515,
+        975
+       ],
+       "symbol": "_shop_bg",
+       "origin": [
+        754.75,
+        488.4
+       ]
+      },
+      {
+       "rect": [
+        1,
+        978,
+        1368,
+        423
+       ],
+       "symbol": "_shop_item_list_bg",
+       "origin": [
+        683.95,
+        468.45
+       ]
+      },
+      {
+       "rect": [
+        1,
+        1403,
+        207,
+        132
+       ],
+       "symbol": "_buttonInterns_down",
+       "origin": [
+        103.3,
+        65.8
+       ]
+      },
+      {
+       "rect": [
+        210,
+        1403,
+        207,
+        132
+       ],
+       "symbol": "_buttonPurgatory_over",
+       "origin": [
+        103.5,
+        65.8
+       ]
+      },
+      {
+       "rect": [
+        419,
+        1403,
+        207,
+        132
+       ],
+       "symbol": "_buttonInterns_over",
+       "origin": [
+        103.3,
+        65.8
+       ]
+      },
+      {
+       "rect": [
+        628,
+        1403,
+        207,
+        132
+       ],
+       "symbol": "_buttonPurgatory_down",
+       "origin": [
+        103.5,
+        65.8
+       ]
+      },
+      {
+       "rect": [
+        837,
+        1403,
+        204,
+        129
+       ],
+       "symbol": "_buttonInterns_up",
+       "origin": [
+        101.8,
+        64.3
+       ]
+      },
+      {
+       "rect": [
+        1043,
+        1403,
+        204,
+        129
+       ],
+       "symbol": "_buttonPurgatory_up",
+       "origin": [
+        101.6,
+        64.3
+       ]
+      },
+      {
+       "rect": [
+        1371,
+        978,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowright_over",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        1371,
+        1177,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowleft_down",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        1371,
+        1376,
+        99,
+        154
+       ],
+       "symbol": "_item_lock",
+       "origin": [
+        49.2,
+        76.55
+       ]
+      },
+      {
+       "rect": [
+        1249,
+        1403,
+        120,
+        120
+       ],
+       "symbol": "_onglet_Icon",
+       "origin": [
+        59.9,
+        59.85
+       ]
+      },
+      {
+       "data": {
+        "y": -34.95,
+        "wordWrap": 0,
+        "text": "ITEM_PRICE",
+        "width": 366.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 69.9,
+        "font": "56px _sans",
+        "x": -183.35
+       },
+       "rect": [
+        1249,
+        1532,
+        1,
+        1
+       ],
+       "symbol": "_item_price_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -36.65,
+        "wordWrap": 0,
+        "text": "Interns",
+        "width": 240.15,
+        "color": "#000000",
+        "align": "center",
+        "height": 73.3,
+        "font": "62px _sans",
+        "x": -120.05
+       },
+       "rect": [
+        1249,
+        1525,
+        1,
+        1
+       ],
+       "symbol": "_onglet_interns_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -32.9,
+        "wordWrap": 0,
+        "text": "Resources",
+        "width": 241.6,
+        "color": "#000000",
+        "align": "center",
+        "height": 65.8,
+        "font": "48px _sans",
+        "x": -120.8
+       },
+       "rect": [
+        1249,
+        1528,
+        1,
+        1
+       ],
+       "symbol": "_onglet_resources_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -36.65,
+        "wordWrap": 0,
+        "text": "Building",
+        "width": 224.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 73.3,
+        "font": "62px _sans",
+        "x": -112.4
+       },
+       "rect": [
+        837,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_onglet_building_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -28.8,
+        "wordWrap": 0,
+        "text": "Decoration",
+        "width": 240.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 57.6,
+        "font": "48px _sans",
+        "x": -120.5
+       },
+       "rect": [
+        840,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_onget_decorations_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -33.3,
+        "wordWrap": 0,
+        "text": "Currencies",
+        "width": 240.3,
+        "color": "#000000",
+        "align": "center",
+        "height": 57.6,
+        "font": "48px _sans",
+        "x": -120.15
+       },
+       "rect": [
+        843,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_onglet_Currencies_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -39.05,
+        "wordWrap": 0,
+        "text": "9999/9999",
+        "width": 354.05,
+        "color": "#000000",
+        "align": "center",
+        "height": 78.05,
+        "font": "62px _sans",
+        "x": -157.35
+       },
+       "rect": [
+        846,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_resource_txt_heaven",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "ITEM_NAME",
+        "width": 365.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 43.1,
+        "font": "35px _sans",
+        "x": -182.8
+       },
+       "rect": [
+        849,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_item_name_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -48.5,
+        "wordWrap": 0,
+        "text": "Purgatory",
+        "width": 248,
+        "color": "#000000",
+        "align": "center",
+        "height": 97,
+        "font": "60px Times New Roman",
+        "x": -124
+       },
+       "rect": [
+        852,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_button_Purgatory_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -40.8,
+        "wordWrap": 0,
+        "text": "Interns",
+        "width": 256,
+        "color": "#000000",
+        "align": "center",
+        "height": 81.55,
+        "font": "70px Times New Roman",
+        "x": -128
+       },
+       "rect": [
+        855,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "_buttonInterns_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      },
+      {
+       "data": {
+        "y": -208.75,
+        "wordWrap": 1,
+        "text": "xxxx",
+        "width": 168.9,
+        "color": "#000000",
+        "align": "left",
+        "height": 90.05,
+        "font": "54px Arial Black",
+        "x": -140.55
+       },
+       "rect": [
+        858,
+        1534,
+        1,
+        1
+       ],
+       "symbol": "bar_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite"
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        516,
+        203
+       ],
+       "symbol": "_buttonPlus_hit",
+       "origin": [
+        414.35,
+        101.25
+       ]
+      },
+      {
+       "rect": [
+        519,
+        1,
+        276,
+        276
+       ],
+       "symbol": "_item_Unlocked_bg",
+       "origin": [
+        137.9,
+        137.9
+       ]
+      },
+      {
+       "rect": [
+        1,
+        206,
+        276,
+        276
+       ],
+       "symbol": "_item_locked_bg",
+       "origin": [
+        137.9,
+        137.9
+       ]
+      },
+      {
+       "rect": [
+        1,
+        484,
+        398,
+        169
+       ],
+       "symbol": "_buttonPlus_up",
+       "origin": [
+        334.95,
+        86.5
+       ]
+      },
+      {
+       "rect": [
+        279,
+        206,
+        189,
+        189
+       ],
+       "symbol": "_item_picture",
+       "origin": [
+        94.05,
+        94.05
+       ]
+      },
+      {
+       "rect": [
+        797,
+        1,
+        181,
+        181
+       ],
+       "symbol": "_onglet_Actif_BG",
+       "origin": [
+        90.35,
+        90.35
+       ]
+      },
+      {
+       "rect": [
+        797,
+        184,
+        181,
+        181
+       ],
+       "symbol": "_onglet_Inactif_bg",
+       "origin": [
+        90.35,
+        90.35
+       ]
+      },
+      {
+       "rect": [
+        470,
+        279,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowleft_over",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        573,
+        279,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowright_up",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        676,
+        279,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowright_down",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        779,
+        367,
+        101,
+        197
+       ],
+       "symbol": "_buttonarrowleft_up",
+       "origin": [
+        50.2,
+        98.4
+       ]
+      },
+      {
+       "rect": [
+        401,
+        478,
+        330,
+        47
+       ],
+       "symbol": "_resource_bg",
+       "origin": [
+        164.7,
+        24.4
+       ]
+      },
+      {
+       "rect": [
+        401,
+        527,
+        268,
+        49
+       ],
+       "symbol": "bar_bg",
+       "origin": [
+        133.7,
+        24.4
+       ]
+      },
+      {
+       "rect": [
+        882,
+        367,
+        109,
+        95
+       ],
+       "symbol": "_buttonPlus_down",
+       "origin": [
+        47.45,
+        47.45
+       ]
+      },
+      {
+       "rect": [
+        882,
+        464,
+        109,
+        95
+       ],
+       "symbol": "_buttonPlus_over",
+       "origin": [
+        47.45,
+        47.45
+       ]
+      },
+      {
+       "rect": [
+        671,
+        527,
+        101,
+        101
+       ],
+       "symbol": "_resource_icon_heaven",
+       "origin": [
+        47,
+        33.5
+       ]
+      },
+      {
+       "rect": [
+        882,
+        561,
+        101,
+        101
+       ],
+       "symbol": "_resource_icon_hell",
+       "origin": [
+        182.2,
+        106
+       ]
+      },
+      {
+       "rect": [
+        774,
+        566,
+        86,
+        86
+       ],
+       "symbol": "_buttonclose_down",
+       "origin": [
+        42.6,
+        42.45
+       ]
+      },
+      {
+       "rect": [
+        401,
+        578,
+        86,
+        86
+       ],
+       "symbol": "_buttonclose_over",
+       "origin": [
+        43,
+        42.8
+       ]
+      },
+      {
+       "rect": [
+        279,
+        397,
+        82,
+        82
+       ],
+       "symbol": "_buttonclose_up",
+       "origin": [
+        40.7,
+        40.6
+       ]
+      },
+      {
+       "rect": [
+        363,
+        397,
+        69,
+        69
+       ],
+       "symbol": "_icon_hardcurrency",
+       "origin": [
+        34.1,
+        34.1
+       ]
+      },
+      {
+       "rect": [
+        489,
+        578,
+        69,
+        69
+       ],
+       "symbol": "_icon_softcurrency",
+       "origin": [
+        34.1,
+        34.1
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "Button_Interns",
+     "keyframes": [
+      {
+       "ref": "~Button_Interns",
+       "duration": 1,
+       "tweened": false,
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Button_Interns_txt",
+     "keyframes": [
+      {
+       "ref": "_buttonInterns_txt",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.75,
+        -5.25
+       ],
+       "pivot": [
+        0,
+        -0.0375
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Bouton_Interns_Clip"
+  },
+  {
+   "layers": [
+    {
+     "name": "Button_Shop",
+     "keyframes": [
+      {
+       "ref": "~Button_Purgatory",
+       "duration": 1,
+       "tweened": false,
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Button_Shop_txt",
+     "keyframes": [
+      {
+       "ref": "_button_Purgatory_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0.375,
+        0.75
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Bouton_Purgatory_Clip"
+  },
+  {
+   "layers": [
+    {
+     "name": "Onglet_Actif_BG",
+     "keyframes": [
+      {
+       "ref": "_onglet_Actif_BG",
+       "duration": 1,
+       "pivot": [
+        90.3375,
+        90.3375
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Icon_Building",
+     "keyframes": [
+      {
+       "ref": "_onglet_Icon",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.5625,
+        -17.4375
+       ],
+       "pivot": [
+        59.85,
+        59.85
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_txt",
+     "keyframes": [
+      {
+       "ref": "_onglet_building_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0,
+        60.975
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Onglet_Actif"
+  },
+  {
+   "layers": [
+    {
+     "name": "Onglet_BG",
+     "keyframes": [
+      {
+       "ref": "_onglet_Inactif_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.15,
+        -57.0375
+       ],
+       "pivot": [
+        90.3375,
+        90.3375
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Inactif_Icon",
+     "keyframes": [
+      {
+       "ref": "_onglet_Icon",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.3375,
+        -79.3875
+       ],
+       "pivot": [
+        59.85,
+        59.85
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_currencies_txt",
+     "keyframes": [
+      {
+       "ref": "_onglet_Currencies_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0,
+        1.725
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Onglet_Inactif_Currencies"
+  },
+  {
+   "layers": [
+    {
+     "name": "Onglet_BG",
+     "keyframes": [
+      {
+       "ref": "_onglet_Inactif_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.0375,
+        -68.3625
+       ],
+       "pivot": [
+        90.3375,
+        90.3375
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_icon",
+     "keyframes": [
+      {
+       "ref": "_onglet_Icon",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        2.1375,
+        -83.2875
+       ],
+       "pivot": [
+        59.85,
+        59.85
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Deco_txt",
+     "keyframes": [
+      {
+       "ref": "_onget_decorations_txt",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.0375,
+        -5.55
+       ],
+       "pivot": [
+        -0.0375,
+        0
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Onglet_inactif_Decorations"
+  },
+  {
+   "layers": [
+    {
+     "name": "Onglet_Inactif_BG",
+     "keyframes": [
+      {
+       "ref": "_onglet_Inactif_bg",
+       "duration": 1,
+       "pivot": [
+        90.3375,
+        90.3375
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Icon",
+     "keyframes": [
+      {
+       "ref": "_onglet_Icon",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.4125,
+        -17.2125
+       ],
+       "pivot": [
+        59.85,
+        59.85
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Interns_txt",
+     "keyframes": [
+      {
+       "ref": "_onglet_interns_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0,
+        61.9875
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Onglet_inactif_Interns"
+  },
+  {
+   "layers": [
+    {
+     "name": "Onglet_Inactif_BG",
+     "keyframes": [
+      {
+       "ref": "_onglet_Inactif_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.4875,
+        -0.225
+       ],
+       "pivot": [
+        90.3375,
+        90.3375
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Icon",
+     "keyframes": [
+      {
+       "ref": "_onglet_Icon",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.1125,
+        -22.5
+       ],
+       "pivot": [
+        59.85,
+        59.85
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Resources_txt",
+     "keyframes": [
+      {
+       "ref": "_onglet_resources_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0.15,
+        58.875
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Onglet_inactif_ressources"
+  },
+  {
+   "layers": [
+    {
+     "name": "Shop_BG",
+     "keyframes": [
+      {
+       "ref": "_shop_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.7125,
+        1.6125
+       ],
+       "pivot": [
+        754.7625,
+        488.4
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Player_SC",
+     "keyframes": [
+      {
+       "ref": "~SoftCurrency",
+       "duration": 1,
+       "loc": [
+        100.425,
+        -430.1625
+       ],
+       "tweened": false,
+       "scale": [
+        0.7,
+        0.7
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Player_HC",
+     "keyframes": [
+      {
+       "ref": "~HardCurrency",
+       "duration": 1,
+       "loc": [
+        420.45,
+        -421.5
+       ],
+       "tweened": false,
+       "scale": [
+        0.7,
+        0.7
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Player_Marbre",
+     "keyframes": [
+      {
+       "ref": "~Shop_Bois",
+       "duration": 1,
+       "loc": [
+        -191.2125,
+        -358.3875
+       ],
+       "tweened": false,
+       "scale": [
+        0.6632,
+        0.6093
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Player_Bois",
+     "keyframes": [
+      {
+       "ref": "~Shop_Marbre",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -385.2375,
+        -303.3
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Building",
+     "keyframes": [
+      {
+       "ref": "Onglet_Actif",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -596.775,
+        -215.1375
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Interns",
+     "keyframes": [
+      {
+       "ref": "Onglet_inactif_Interns",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -1.875,
+        -215.1375
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Deco",
+     "keyframes": [
+      {
+       "ref": "Onglet_inactif_Decorations",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -306.9,
+        -146.775
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Ressources",
+     "keyframes": [
+      {
+       "ref": "Onglet_inactif_ressources",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        297.4125,
+        -214.9125
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Onglet_Currencies",
+     "keyframes": [
+      {
+       "ref": "Onglet_Inactif_Currencies",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        590.4,
+        -158.1
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_List",
+     "keyframes": [
+      {
+       "ref": "Shop_Item_List",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -3.1125,
+        125.25
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Shop_Close_Button",
+     "keyframes": [
+      {
+       "ref": "~ButtonClose",
+       "duration": 1,
+       "loc": [
+        766.9875,
+        -494.4375
+       ],
+       "tweened": false,
+       "scale": [
+        1.399,
+        1.399
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Purgatory_Button",
+     "keyframes": [
+      {
+       "ref": "Bouton_Purgatory_Clip",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        634.3125,
+        408.1875
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Interns_Button",
+     "keyframes": [
+      {
+       "ref": "Bouton_Interns_Clip",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -630.3375,
+        408.1875
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Shop_Building"
+  },
+  {
+   "layers": [
+    {
+     "name": "Shop_Item_List_BG",
+     "keyframes": [
+      {
+       "ref": "_shop_item_list_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0,
+        258.7875
+       ],
+       "pivot": [
+        683.9625,
+        468.45
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Unlocked",
+     "keyframes": [
+      {
+       "ref": "Shop_Item_Unlocked",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -485.2875,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Locked_1",
+     "keyframes": [
+      {
+       "ref": "Shop_Item_Locked",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -162.3375,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Locked_2",
+     "keyframes": [
+      {
+       "ref": "Shop_Item_Locked",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        160.6125,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Locked_3",
+     "keyframes": [
+      {
+       "ref": "Shop_Item_Locked",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        483.5625,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Button_ArrowRight",
+     "keyframes": [
+      {
+       "ref": "~Button_ArrowRight",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        685.8,
+        2.8125
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Button_ArrowLeft",
+     "keyframes": [
+      {
+       "ref": "~Button_LeftArrow",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -682.7625,
+        2.1375
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Shop_Item_List"
+  },
+  {
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "ref": "_item_locked_bg",
+       "duration": 1,
+       "pivot": [
+        137.925,
+        137.925
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Item_Picture",
+     "keyframes": [
+      {
+       "ref": "_item_picture",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.0375,
+        -36.4125
+       ],
+       "pivot": [
+        94.05,
+        94.05
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Item_Name",
+     "keyframes": [
+      {
+       "ref": "_item_name_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -0.45,
+        73.425
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Item_Price",
+     "keyframes": [
+      {
+       "ref": "_item_price_txt",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.075,
+        111.3375
+       ],
+       "pivot": [
+        -0.0375,
+        0
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Item_Lock",
+     "keyframes": [
+      {
+       "ref": "_item_lock",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -3.2625,
+        -34.5
+       ],
+       "pivot": [
+        49.2,
+        76.5375
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Shop_Item_Locked"
+  },
+  {
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "ref": "_item_Unlocked_bg",
+       "duration": 1,
+       "pivot": [
+        137.925,
+        137.925
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Item_Picture",
+     "keyframes": [
+      {
+       "ref": "_item_picture",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.075,
+        -35.925
+       ],
+       "pivot": [
+        94.05,
+        94.05
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "Item_Name",
+     "keyframes": [
+      {
+       "ref": "_item_name_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0.4125,
+        73.125
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Item_Price",
+     "keyframes": [
+      {
+       "ref": "_item_price_txt",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.5625,
+        114
+       ],
+       "pivot": [
+        -0.0375,
+        0
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Shop_Item_Unlocked"
+  },
+  {
+   "layers": [
+    {
+     "name": "Close_Button",
+     "keyframes": [
+      {
+       "ref": "_buttonclose_up",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -54.825,
+        54.825
+       ],
+       "pivot": [
+        40.725,
+        40.575
+       ],
+       "index": 0
+      },
+      {
+       "ref": "_buttonclose_over",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -54.825,
+        54.825
+       ],
+       "pivot": [
+        42.975,
+        42.825
+       ],
+       "index": 1
+      },
+      {
+       "ref": "_buttonclose_down",
+       "duration": 2,
+       "tweened": false,
+       "loc": [
+        -54.825,
+        54.825
+       ],
+       "pivot": [
+        42.6,
+        42.45
+       ],
+       "index": 2
+      }
+     ]
+    }
+   ],
+   "id": "~ButtonClose",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "ref": "_buttonPlus_up",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.1125,
+        -1.3875
+       ],
+       "pivot": [
+        334.95,
+        86.475
+       ],
+       "index": 0
+      },
+      {
+       "ref": "_buttonPlus_over",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.075,
+        -0.675
+       ],
+       "pivot": [
+        47.4375,
+        47.4375
+       ],
+       "index": 1
+      },
+      {
+       "ref": "_buttonPlus_down",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.075,
+        -0.675
+       ],
+       "pivot": [
+        47.4375,
+        47.4375
+       ],
+       "index": 2
+      },
+      {
+       "ref": "_buttonPlus_hit",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.675,
+        -0.5625
+       ],
+       "pivot": [
+        414.3375,
+        101.25
+       ],
+       "index": 3
+      }
+     ]
+    }
+   ],
+   "id": "~ButtonPlusHC",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "ref": "_buttonPlus_up",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.0375,
+        -0.1125
+       ],
+       "pivot": [
+        334.95,
+        86.475
+       ],
+       "index": 0
+      },
+      {
+       "ref": "_buttonPlus_over",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0.2625,
+        0.1125
+       ],
+       "pivot": [
+        47.4375,
+        47.4375
+       ],
+       "index": 1
+      },
+      {
+       "ref": "_buttonPlus_down",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.0375,
+        0.525
+       ],
+       "pivot": [
+        47.4375,
+        47.4375
+       ],
+       "index": 2
+      },
+      {
+       "ref": "_buttonPlus_hit",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.675,
+        -0.6
+       ],
+       "pivot": [
+        414.3375,
+        101.25
+       ],
+       "index": 3
+      }
+     ]
+    }
+   ],
+   "id": "~ButtonPlusSC",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "_buttonarrowright_up",
+       "duration": 1,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 0,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonarrowright_over",
+       "duration": 1,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonarrowright_down",
+       "duration": 2,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "~Button_ArrowRight",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "_buttonInterns_up",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -0.1875,
+        -0.1875
+       ],
+       "pivot": [
+        101.8125,
+        64.3125
+       ],
+       "index": 0
+      },
+      {
+       "ref": "_buttonInterns_over",
+       "duration": 1,
+       "pivot": [
+        103.5,
+        66
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonInterns_down",
+       "duration": 2,
+       "pivot": [
+        103.5,
+        66
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "~Button_Interns",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "_buttonarrowleft_up",
+       "duration": 1,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 0,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonarrowleft_over",
+       "duration": 1,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonarrowleft_down",
+       "duration": 2,
+       "pivot": [
+        50.175,
+        98.4
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "~Button_LeftArrow",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "_buttonPurgatory_up",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0,
+        -0.1875
+       ],
+       "pivot": [
+        101.625,
+        64.3125
+       ],
+       "index": 0
+      },
+      {
+       "ref": "_buttonPurgatory_over",
+       "duration": 1,
+       "pivot": [
+        103.5,
+        66
+       ],
+       "index": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonPurgatory_down",
+       "duration": 2,
+       "pivot": [
+        103.5,
+        66
+       ],
+       "index": 2,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "~Button_Purgatory",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "name": "bar_bg",
+     "keyframes": [
+      {
+       "ref": "bar_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        13.425,
+        -7.875
+       ],
+       "pivot": [
+        133.725,
+        24.375
+       ],
+       "scale": [
+        1.0625,
+        1.7596
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "bar_txt",
+     "keyframes": [
+      {
+       "ref": "bar_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        49.575,
+        115.3125
+       ]
+      }
+     ]
+    },
+    {
+     "name": "_icon_hardcurrency",
+     "keyframes": [
+      {
+       "ref": "_icon_hardcurrency",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -120.5625,
+        -9.9375
+       ],
+       "pivot": [
+        34.125,
+        34.125
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "ButtonPlusHC",
+     "keyframes": [
+      {
+       "ref": "~ButtonPlusHC",
+       "duration": 1,
+       "loc": [
+        110.625,
+        -6.1125
+       ],
+       "tweened": false,
+       "scale": [
+        0.74,
+        0.74
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "~HardCurrency"
+  },
+  {
+   "layers": [
+    {
+     "name": "bar_bg",
+     "keyframes": [
+      {
+       "ref": "_resource_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -71.2875,
+        -116.2875
+       ],
+       "pivot": [
+        164.7,
+        24.375
+       ],
+       "scale": [
+        0.9254,
+        1.69
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "bar_txt",
+     "keyframes": [
+      {
+       "ref": "_resource_txt_heaven",
+       "duration": 1,
+       "loc": [
+        -37.4625,
+        -119.175
+       ],
+       "tweened": false,
+       "scale": [
+        0.804,
+        1
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "_souls_icon_hell",
+     "keyframes": [
+      {
+       "ref": "_resource_icon_hell",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -110.25,
+        -85.6125
+       ],
+       "pivot": [
+        182.175,
+        105.975
+       ],
+       "scale": [
+        0.5529,
+        0.6039
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "~Shop_Bois"
+  },
+  {
+   "layers": [
+    {
+     "name": "bar_bg",
+     "keyframes": [
+      {
+       "ref": "_resource_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -149.625,
+        -126
+       ],
+       "pivot": [
+        164.7,
+        24.375
+       ],
+       "scale": [
+        0.6142,
+        1.0278
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "bar_txt",
+     "keyframes": [
+      {
+       "ref": "_resource_txt_heaven",
+       "duration": 1,
+       "loc": [
+        -134.9625,
+        -127.2375
+       ],
+       "tweened": false,
+       "scale": [
+        0.5426,
+        0.6168
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "_souls_icon_heaven",
+     "keyframes": [
+      {
+       "ref": "_resource_icon_heaven",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -227.475,
+        -132.8625
+       ],
+       "pivot": [
+        47.025,
+        33.525
+       ],
+       "scale": [
+        0.3624,
+        0.3624
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "~Shop_Marbre"
+  },
+  {
+   "layers": [
+    {
+     "name": "bar_bg",
+     "keyframes": [
+      {
+       "ref": "bar_bg",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        8.85,
+        -0.9375
+       ],
+       "pivot": [
+        133.725,
+        24.375
+       ],
+       "scale": [
+        1.046,
+        1.7495
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "_icon_softcurrency",
+     "keyframes": [
+      {
+       "ref": "_icon_softcurrency",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        -126.7125,
+        -1.05
+       ],
+       "pivot": [
+        34.125,
+        34.125
+       ],
+       "index": 0
+      }
+     ]
+    },
+    {
+     "name": "bar_txt",
+     "keyframes": [
+      {
+       "ref": "bar_txt",
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        45.7875,
+        121.7625
+       ]
+      }
+     ]
+    },
+    {
+     "name": "ButtonPlusSC",
+     "keyframes": [
+      {
+       "ref": "~ButtonPlusSC",
+       "duration": 1,
+       "loc": [
+        107.2125,
+        -1.35
+       ],
+       "tweened": false,
+       "scale": [
+        0.7432,
+        0.7521
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "~SoftCurrency"
+  }
+ ]
+}

@@ -13,6 +13,7 @@ import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.InternPopin;
 import com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -104,11 +105,6 @@ class Hud extends SmartScreen
 
 	private function addListeners ():Void {
 		
-		//encore nécéssaire ? je le garde pour rappel, ha et tout de suite 16:14 24/12 il m'a été utile ^_^
-		// plus rapide que check le .Fla quoi :/
-		for (i in 0...children.length) 
-			trace (children[i].name);
-		
 		cast(getChildByName("ButtonShop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		cast(getChildByName("ButtonPurgatory"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		
@@ -130,10 +126,9 @@ class Hud extends SmartScreen
 		);
 	}
 	
-	private function onClickShop ():Void { // todo : temporaire
+	private function onClickShop ():Void {
 		//ExperienceManager.addExp("All", 101);
-		Phantom.onClickShop('House');
-		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 	}
 	
 	private function onClickTribunal():Void {

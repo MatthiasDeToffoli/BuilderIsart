@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Phantom;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -97,7 +98,7 @@ class MouseManager {
 		
 		positionInGame = getLocalPos(GameStage.getInstance().getGameContainer());
 
-		if (mouseTouchDown /*&& !Building.hasCurrentBuilding()*/)
+		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
 	}
 	
@@ -118,7 +119,7 @@ class MouseManager {
 	}
 	
 	// todo : n'agit pas si sur HUD
-	/*if (!Std.is(pEvent.target, Hud))
+	/*if (!Std.is(pEvent.target, Hud))m inutile ce truc :|
 	return; ?*/
 	private function onMouseDown(pEvent:Dynamic):Void {
 		if (!Phantom.isMoving()) {
@@ -129,10 +130,12 @@ class MouseManager {
 	
 	private function onTouchDown(pEvent:TouchEvent):Void {
 		// don't rely only en TouchEvent.MOVE to get globalPos !
-		touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
-		mouseTouchDown = true;
-		precedentMousePos.copy(positionInGame);
-		oneFrameHack = true;
+		if (!Phantom.isMoving()) {
+			touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
+			mouseTouchDown = true;
+			precedentMousePos.copy(positionInGame);
+			oneFrameHack = true;
+		}
 	}
 	
 	private function onMouseTouchUp (): Void {
