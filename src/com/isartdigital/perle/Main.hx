@@ -2,6 +2,7 @@ package com.isartdigital.perle;
 
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
@@ -29,6 +30,7 @@ import pixi.loaders.Loader;
 class Main extends EventEmitter
 {
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
+	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = "dialogue_ftue";
 	
 	private static var configPath:String = "config.json";	
 	private static var instance: Main;
@@ -159,7 +161,9 @@ class Main extends EventEmitter
 		
 		lLoader.on(LoadEventType.PROGRESS, onLoadProgress);
 		lLoader.once(LoadEventType.COMPLETE, onLoadComplete);
-
+		//dialogue FTUE
+		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
+		
 		// affiche l'écran de préchargement
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen
 		
@@ -234,7 +238,8 @@ class Main extends EventEmitter
 	private function forceImport() {
 		var arrayClass:Array<Class<Dynamic>> = [
 			Ground,
-			Building
+			Building,
+			FootPrint
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

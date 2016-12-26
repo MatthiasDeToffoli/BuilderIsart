@@ -26,6 +26,7 @@ class Tile extends FlumpStateGraphic implements HasVirtual
 	
 	public static function initClass():Void {
 		IsoManager.init(TILE_WIDTH, TILE_HEIGHT);
+		FootPrint.initClass();
 		Ground.initClass();
 		Building.initClass();
 	}

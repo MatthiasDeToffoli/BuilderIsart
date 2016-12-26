@@ -21,7 +21,8 @@ class PoolingManager {
 		"Road_c" => 1,
 		"Road_br" => 1,
 		"Road_tl" => 1,
-		"Road_v" => 1
+		"Road_v" => 1,
+		"FootPrint" => 1
 	];
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
@@ -34,7 +35,8 @@ class PoolingManager {
 		"Road_c" => "Ground",
 		"Road_br" => "Ground",
 		"Road_tl" => "Ground",
-		"Road_v" => "Ground"
+		"Road_v" => "Ground",
+		"FootPrint" => "FootPrint"
 	];
 	private static var poolList:Map<String, Array<PoolingObject>> = new Map<String, Array<PoolingObject>>();
 

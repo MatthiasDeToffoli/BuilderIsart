@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.ui.hud.ftue.FtueUI;
 import haxe.Json;
 import js.Browser;
 
@@ -86,6 +87,7 @@ typedef Save = {
 	var timesQuest:Array<TimeQuestDescription>;
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
+	var ftueProgress:Int;
 	// add what you want to save.
 }
 
@@ -141,9 +143,9 @@ class SaveManager {
 			resourcesData: saveResources(),
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
-			version: SAVE_VERSION
+			version: SAVE_VERSION,
+			ftueProgress : FtueUI.actualDialogue
 		};
-		
 		setLocalStorage(currentSave);
 	}
 	
@@ -274,6 +276,7 @@ class SaveManager {
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();
+			FtueManager.dialogueSaved = currentSave.ftueProgress;
 		}
 		else
 			createWhitoutSave();

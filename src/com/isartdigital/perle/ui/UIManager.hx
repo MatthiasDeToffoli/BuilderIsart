@@ -90,7 +90,6 @@ class UIManager
 	public function openHud (): Void {
 		GameStage.getInstance().getHudContainer().addChild(Hud.getInstance());
 		Hud.getInstance().open();
-		FtueManager.createFtue();
 	}
 	
 	/**

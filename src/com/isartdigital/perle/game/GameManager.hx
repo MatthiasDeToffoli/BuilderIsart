@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.FtueManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
@@ -56,6 +57,8 @@ class GameManager {
 		SaveManager.createFromSave();
 		ClippingManager.update();
 		
+		
+		FtueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 	}

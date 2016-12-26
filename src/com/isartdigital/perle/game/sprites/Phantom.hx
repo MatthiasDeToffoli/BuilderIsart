@@ -91,6 +91,7 @@ class Phantom extends Building {
 		// todo : revoir Pooling ?s
 		instance.init();
 		container.addChild(instance);
+		FootPrint.createShadow(instance);
 		instance.start();
 	}
 	
@@ -159,7 +160,6 @@ class Phantom extends Building {
 	 * Move the ground center of the building on the mouse pointer.
 	 */
 	private function doActionPhantom():Void {
-		
 		// si click sur batiment et reste enfoncé, touch and hold
 		if (mouseDown)
 			movePhantomOnMouse();
@@ -167,6 +167,8 @@ class Phantom extends Building {
 	}
 	
 	private function movePhantomOnMouse ():Void {
+		FootPrint.doActionShadow();
+		
 		/*FootPrint.footPrint.position = new Point( // todo : une frame de retard ? mettre à la fin de cette fc ?
 			currentSelectedBuilding.x + footPrintPoint.x,
 			(currentSelectedBuilding.y + footPrintPoint.y) * 2
@@ -429,6 +431,7 @@ class Phantom extends Building {
 	}*/
 	
 	override public function destroy():Void {
+		FootPrint.removeShadow();
 		linkedVBuilding = null;
 		instance = null;
 		removePhantomFilter();

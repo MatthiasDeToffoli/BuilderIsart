@@ -19,6 +19,7 @@ class FootPrint extends Tile implements PoolingObject
 	
 	public static var footPrint:FootPrint;
 	public static var footPrintPoint:Point;
+	private static var lInstance:Phantom;
 	
 	public function new(?pAssetName:String) 
 	{
@@ -36,7 +37,8 @@ class FootPrint extends Tile implements PoolingObject
 	}
 	
 	//Function to create the shadow of the footprint
-	public static function createShadow():Void {
+	public static function createShadow(pInstance:Phantom):Void {
+		lInstance = pInstance;
 		footPrint = PoolingManager.getFromPool(FOOTPRINT_ASSET);
         footPrint.init();
         container.addChild(footPrint);
@@ -45,17 +47,22 @@ class FootPrint extends Tile implements PoolingObject
 		container.scale.y = 0.5;
 		
 		//point of footprint
-		if (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint == 0)
+		if (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint == 0)
 			footPrintPoint = new Point(0,0); 
 		else
 			footPrintPoint = new Point( -footPrint.width / 8, -footPrint.height / 2 - 50); //a revenir dessus si je trouves une meileur façon
 			
 		//position
-		footPrint.position = new Point(Building.currentSelectedBuilding.x + footPrintPoint.x, Building.currentSelectedBuilding.y + footPrintPoint.y);
+		footPrint.position = new Point(lInstance.x + footPrintPoint.x, (lInstance.y + footPrintPoint.y)*2);	
 		//Give width and height
-		footPrint.width = footPrint.width * (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].width + Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint*2);
-		footPrint.height = footPrint.height * (Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].height + Building.ASSETNAME_TO_MAPSIZE[Building.currentSelectedBuilding.assetName].footprint*2);
+		footPrint.width = footPrint.width * (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].width + Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint*2);
+		footPrint.height = footPrint.height * (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].height + Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint*2);
 	
+	}
+	
+	//deplacement en fonction de la position
+	public static function doActionShadow() {
+		footPrint.position = new Point(lInstance.x + footPrintPoint.x, (lInstance.y + footPrintPoint.y)*2);	
 	}
 	
 	public static function removeShadow() {
