@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
+import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 
@@ -46,7 +47,7 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	private function onClickDescription(): Void {
-		trace("info maison");
+		UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 	}
 	
 	private function onClickClose(): Void {
