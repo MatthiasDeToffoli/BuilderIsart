@@ -1,6 +1,7 @@
-package com.isartdigital.perle.ui.popin;
+package com.isartdigital.perle.ui.popin.listInternPopin;
 
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.listInternPopin.InternElement;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -49,7 +50,7 @@ class ListInternPopin extends SmartPopin
 			btnLeft = cast(getChildByName("_arrow_left"), UISprite);
 			btnRight = cast(getChildByName("_arrow_right"), UISprite);
 
-			
+			//var test:InternElement = cast(getChildByName("Intern01"), InternElement);
 			btnClose.on(MouseEventType.CLICK, onClose);
 	}
 	

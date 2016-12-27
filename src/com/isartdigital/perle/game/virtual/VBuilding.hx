@@ -48,13 +48,6 @@ class VBuilding extends VTile {
 		cast(graphic, Building).linkedVirtualCell = this;
 		
 		myContextualHud.activate();
-		
-		// todo : séparer logique du graphique pr le goldBtn
-		/*if (myContextualHud.goldBtn != null){
-			myContextualHud.goldBtn.activeWithBuilding(tileDesc, myGeneratorType);
-		}*/
-		
-		myContextualHud.goldBtn.setMyGenerator(myGeneratorType);
 	}
 	
 	override public function desactivate ():Void {

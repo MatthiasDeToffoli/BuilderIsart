@@ -1,5 +1,5 @@
 {
- "md5": "1ce08f56af3fcb17325c052ede6f2265",
+ "md5": "ddf4dee93fe10baaaca866af61730843",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -269,6 +269,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -37.75,
         "text": "99d99h99m99s",
@@ -285,7 +286,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1148,
         1418,
@@ -294,6 +294,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -55.15,
         "text": "XXXX",
@@ -310,7 +311,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1151,
         1418,
@@ -319,6 +319,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -56.35,
         "text": "Shop",
@@ -335,7 +336,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1154,
         1418,
@@ -344,6 +344,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -27.7,
         "text": "XXXXXXXXXXXX",
@@ -360,7 +361,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1157,
         1418,
@@ -369,6 +369,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -55.65,
         "text": "Purgatory",
@@ -385,7 +386,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1160,
         1418,
@@ -394,6 +394,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -56.35,
         "text": "Interns",
@@ -410,7 +411,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1163,
         1418,
@@ -419,6 +419,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -28,
         "text": "XXXXXXXXXXXX",
@@ -435,7 +436,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1166,
         1418,
@@ -444,6 +444,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -37.45,
         "text": "XXXX/XXXX",
@@ -460,7 +461,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1169,
         1418,
@@ -469,6 +469,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -39.05,
         "text": "999/999",
@@ -485,7 +486,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1172,
         1418,
@@ -494,6 +494,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -38.1,
         "text": "LEVEL XX",
@@ -510,7 +511,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1175,
         1418,
@@ -639,13 +639,13 @@
      "keyframes": [
       {
        "ref": "_popin_bg_purgatory",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         757.4625,
         487.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "Background"
@@ -653,22 +653,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        259.35,
+        201.7125
+       ],
+       "index": 0,
        "loc": [
         -505.0875,
         -212.5875
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "_purgatory_picture",
+       "tweened": false,
        "scale": [
         0.8198,
         0.8198
        ],
-       "duration": 1,
-       "pivot": [
-        259.35,
-        201.7125
-       ]
+       "duration": 1
       }
      ],
      "name": "PurgatoryPicture"
@@ -676,18 +676,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         -494.55,
         -25.425
        ],
-       "index": 0,
        "ref": "_purgatory_level",
        "scale": [
         0.6674,
         0.6674
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "BuildingLevel"
@@ -696,13 +696,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_name",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -505.1625,
         -422.4375
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "BuildingName"
@@ -710,18 +710,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -489.3,
-        141.075
+       "pivot": [
+        0.1125,
+        0
        ],
        "index": 0,
-       "ref": "_purgatory_upgrade_button",
-       "scale": [
-        0.8137,
-        0.8137
+       "loc": [
+        -645.9375,
+        162.075
        ],
-       "duration": 1,
-       "tweened": false
+       "ref": "~Button_Upgrade",
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "UpgradeButton"
@@ -729,18 +729,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         -501.3,
         52.575
        ],
-       "index": 0,
        "ref": "_purgatory_upgrade_timer",
        "scale": [
         0.7901,
         0.7901
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "UpgradeTimer"
@@ -757,22 +757,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        456,
+        757.5
+       ],
+       "index": 0,
        "loc": [
         477.45,
         348
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "_purgatory_fate_card",
+       "tweened": false,
        "scale": [
         1,
         0.9107
        ],
-       "duration": 1,
-       "pivot": [
-        456,
-        757.5
-       ]
+       "duration": 1
       }
      ],
      "name": "FateCard"
@@ -781,13 +781,13 @@
      "keyframes": [
       {
        "ref": "_fateTitle",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         240.7875,
         -407.6625
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "FateTitle"
@@ -795,18 +795,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         120.375,
         217.425
        ],
-       "index": 0,
        "ref": "~Souls_Heaven",
        "scale": [
         1.619,
         1.6548
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "HeavenINfo"
@@ -814,18 +814,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         697.35,
         125.85
        ],
-       "index": 0,
        "ref": "~Souls_Hell",
        "scale": [
         1.0004,
         1.0058
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "HellInfo"
@@ -842,18 +842,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         -129.3,
         142.575
        ],
-       "index": 0,
        "ref": "~Button_HeavenPlus",
        "scale": [
         0.6741,
         0.6741
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "HeavenButton"
@@ -861,18 +861,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         629.7375,
         142.575
        ],
-       "index": 0,
        "ref": "~Button_HellPlus",
        "scale": [
         0.6741,
         0.6741
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "HellButton"
@@ -881,13 +881,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_soulcounter",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         270.3375,
         435.675
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "SoulCounter"
@@ -896,13 +896,13 @@
      "keyframes": [
       {
        "ref": "~ShopButton",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -637.8,
         379.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ShopButton"
@@ -910,18 +910,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         674.7,
         -403.425
        ],
-       "index": 0,
        "ref": "~Button_Close",
        "scale": [
         0.6741,
         0.6741
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "CloseButton"
@@ -930,13 +930,13 @@
      "keyframes": [
       {
        "ref": "~InternsButton",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         642.45,
         379.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "InternsButton"
@@ -949,18 +949,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         0,
         -20.775
        ],
-       "index": 0,
        "ref": "_fateTitle_adjective",
        "scale": [
         0.9998,
         1.0108
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "Adjective"
@@ -969,13 +969,13 @@
      "keyframes": [
       {
        "ref": "_fateTitle_name",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -0.525,
         25.7625
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Name"
@@ -988,22 +988,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        133.725,
+        24.375
+       ],
+       "index": 0,
        "loc": [
         -15.6375,
         -12.8625
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "souls__bg",
+       "tweened": false,
        "scale": [
         1.5175,
         2.239
        ],
-       "duration": 1,
-       "pivot": [
-        133.725,
-        24.375
-       ]
+       "duration": 1
       }
      ],
      "name": "Background"
@@ -1011,18 +1011,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -165.225,
-        -18.675
-       ],
-       "index": 0,
        "pivot": [
         34.125,
         34.125
        ],
+       "index": 0,
+       "loc": [
+        -165.225,
+        -18.675
+       ],
        "ref": "_souls_neutral_icon",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Icon"
@@ -1031,13 +1031,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_soulCounter_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         28.9125,
         -16.8375
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Value"
@@ -1050,18 +1050,8 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -168.075,
-        0
-       ],
-       "index": 0,
-       "pivot": [
-        0.1125,
-        0
-       ],
-       "ref": "~Button_Upgrade",
        "duration": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Button"
@@ -1075,13 +1065,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_timer_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         221.25,
         30
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "TimerBG"
@@ -1089,18 +1079,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -93.7125,
-        0
-       ],
-       "index": 0,
        "pivot": [
         127.5,
         30
        ],
+       "index": 0,
+       "loc": [
+        -93.7125,
+        0
+       ],
        "ref": "_purgatory_timer_upBar",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "TimerBar"
@@ -1109,13 +1099,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_upgrade_timerText",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -6.7125,
         1.9875
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "TimeInfo"
@@ -1129,40 +1119,40 @@
      "keyframes": [
       {
        "ref": "_buttonClose_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         103.125,
         103.125
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_buttonClose_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_buttonClose_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Close"
+   "id": "~Button_Close",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1170,40 +1160,40 @@
      "keyframes": [
       {
        "ref": "_buttonHeavenPlus_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         103.125,
         103.125
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_buttonHeavenPlus_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_buttonHeavenPlus_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_HeavenPlus"
+   "id": "~Button_HeavenPlus",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1211,40 +1201,40 @@
      "keyframes": [
       {
        "ref": "_buttonHellPlus_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         103.125,
         103.125
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_buttonHellPlus_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_buttonHellPlus_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         108.75,
         108.75
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_HellPlus"
+   "id": "~Button_HellPlus",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1252,33 +1242,33 @@
      "keyframes": [
       {
        "ref": "_buttonUpgrade_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         49.875,
         49.875
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_buttonUpgrade_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         55.5,
         55.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_buttonUpgrade_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         55.5,
         55.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Button"
@@ -1287,13 +1277,13 @@
      "keyframes": [
       {
        "ref": "_purgatory_upgrade_cost",
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
        "loc": [
         142.35,
         0
-       ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Cost"
@@ -1301,25 +1291,25 @@
     {
      "keyframes": [
       {
-       "loc": [
-        277.5,
-        -0.75
-       ],
-       "index": 0,
        "pivot": [
         47.25,
         47.25
        ],
+       "index": 0,
+       "loc": [
+        277.5,
+        -0.75
+       ],
        "ref": "_soft_icon",
-       "duration": 4,
-       "tweened": false
+       "tweened": false,
+       "duration": 4
       }
      ],
      "name": "Icon"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Upgrade"
+   "id": "~Button_Upgrade",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1327,33 +1317,33 @@
      "keyframes": [
       {
        "ref": "_internsButton_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         97.875,
         97.875
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_internsButton_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         103.5,
         103.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_internsButton_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         103.5,
         103.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Button"
@@ -1362,16 +1352,16 @@
      "keyframes": [
       {
        "ref": "_internsButton_text",
+       "tweened": false,
        "duration": 4,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~InternsButton"
+   "id": "~InternsButton",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1379,33 +1369,33 @@
      "keyframes": [
       {
        "ref": "_shopButton_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         97.875,
         97.875
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
        "ref": "_shopButton_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         103.5,
         103.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_shopButton_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         103.5,
         103.5
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Button"
@@ -1414,38 +1404,38 @@
      "keyframes": [
       {
        "ref": "_shopButton_text",
+       "tweened": false,
        "duration": 4,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ShopButton"
+   "id": "~ShopButton",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
+       "pivot": [
+        133.725,
+        24.375
+       ],
+       "index": 0,
        "loc": [
         -153.75,
         -126
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "souls__bg",
+       "tweened": false,
        "scale": [
         0.5888,
         1.0278
        ],
-       "duration": 1,
-       "pivot": [
-        133.725,
-        24.375
-       ]
+       "duration": 1
       }
      ],
      "name": "bar_bg"
@@ -1453,18 +1443,18 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
        "loc": [
         -133.3875,
         -125.8875
        ],
-       "index": 0,
        "ref": "_souls_txt_heaven",
        "scale": [
         0.5426,
         0.6168
        ],
-       "duration": 1,
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "bar_txt"
@@ -1472,22 +1462,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        47.025,
+        33.525
+       ],
+       "index": 0,
        "loc": [
         -211.2,
         -133.2375
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "_souls_icon_heaven",
+       "tweened": false,
        "scale": [
         0.3624,
         0.3624
        ],
-       "duration": 1,
-       "pivot": [
-        47.025,
-        33.525
-       ]
+       "duration": 1
       }
      ],
      "name": "_souls_icon_heaven"
@@ -1500,22 +1490,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        133.725,
+        24.375
+       ],
+       "index": 0,
        "loc": [
         -71.2875,
         -116.2875
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "souls__bg",
+       "tweened": false,
        "scale": [
         0.9254,
         1.69
        ],
-       "duration": 1,
-       "pivot": [
-        133.725,
-        24.375
-       ]
+       "duration": 1
       }
      ],
      "name": "bar_bg"
@@ -1524,13 +1514,13 @@
      "keyframes": [
       {
        "ref": "_souls_txt_heaven",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -37.4625,
         -119.175
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "bar_txt"
@@ -1538,22 +1528,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        182.175,
+        105.975
+       ],
+       "index": 0,
        "loc": [
         -84.6,
         -87.375
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "_souls_icon_hell",
+       "tweened": false,
        "scale": [
         0.5529,
         0.6039
        ],
-       "duration": 1,
-       "pivot": [
-        182.175,
-        105.975
-       ]
+       "duration": 1
       }
      ],
      "name": "_souls_icon_hell"

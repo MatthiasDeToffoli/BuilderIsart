@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.contextual;
 
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.VButtonProduction;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -15,7 +17,7 @@ class HudContextual extends Container {
 	
 	private var myVBuilding:VBuilding;
 	
-	public var goldBtn:ButtonProduction;
+	public var virtualGoldBtn:VButtonProduction = new VButtonProduction();
 	
 	public static function initClass ():Void {
 		container = new Container();
@@ -38,22 +40,20 @@ class HudContextual extends Container {
 		
 		
 		container.addChild(this);
+		
+		virtualGoldBtn.init(new Point(0, 0), myVBuilding.tileDesc.id, GeneratorType.soul,this);
 	}
 	
 	public function activate ():Void {
 		if (position.x == 0 && position.y == 0) // todo : positionnement temporaire au centre du graphique
 			alignCenter();
 		
-		// todo : séparer logique du graphique pr le goldBtn	
-		goldBtn = new ButtonProduction();
-		goldBtn.init(new Point(0,0), myVBuilding.tileDesc.id);
-		
-		addChild(goldBtn);
+		// todo : séparer logique du graphique pr le goldBtn
+		virtualGoldBtn.activeWithBuilding();
 	}
 	
 	public function desactivate ():Void {
-		goldBtn.destroy();
-		goldBtn = null;
+		virtualGoldBtn.unActivateWithBuild();
 	}
 	
 	private function alignCenter ():Void {

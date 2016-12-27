@@ -1,7 +1,7 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.popin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -61,10 +61,8 @@ class TribunalPopin extends SmartPopin
 		btnIntern = cast(getChildByName("InternsButton"), SmartButton);
 		btnHeaven = cast(getChildByName("HeavenButton"), SmartButton);
 		btnHell = cast(getChildByName("HellButton"), SmartButton);
+		btnUpgrade = cast(getChildByName("UpgradeButton"), SmartButton);
 
-		//@TODO (by Matthias): changer pour le upgrade cost quand les gd auront changer
-		interMovieClip = getChildByName("UpgradeButton");
-		btnUpgrade = cast(interMovieClip.getChildByName("Button"), SmartButton);
 		upgradePrice = cast(btnUpgrade.getChildByName("Cost"), TextSprite);
 		upgradePrice.text = 2000 + "$";
 		
@@ -95,6 +93,7 @@ class TribunalPopin extends SmartPopin
 			
 		btnUpgrade.on(MouseEventType.MOUSE_OVER, rewriteUpgradeTxt);
 		btnUpgrade.on(MouseEventType.MOUSE_OUT, rewriteUpgradeTxt);
+		btnUpgrade.on(MouseEventType.MOUSE_DOWN, rewriteUpgradeTxt);
 		btnClose.on(MouseEventType.CLICK, onClose);
 		btnHeaven.on(MouseEventType.CLICK, onHeaven);
 		btnHell.on(MouseEventType.CLICK, onHell);
@@ -126,6 +125,7 @@ class TribunalPopin extends SmartPopin
 	}
 	
 	private function onUpgrade(){
+		rewriteUpgradeTxt();
 		trace("upgrade");
 	}
 	

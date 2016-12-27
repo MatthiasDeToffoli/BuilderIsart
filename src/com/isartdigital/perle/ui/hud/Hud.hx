@@ -11,7 +11,7 @@ import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.InternPopin;
-import com.isartdigital.perle.ui.popin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -111,9 +111,8 @@ class Hud extends SmartScreen
 		cast(getChildByName("ButtonShop"), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		cast(getChildByName("ButtonPurgatory"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		
-		
-		/*var interMc:Dynamic = getChildByName("Quests"); // todo @Matthias !
-		cast(interMc.getChildByName("Button"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);*/
+		var interMc:Dynamic = getChildByName("ButtonInterns");
+		cast(interMc.getChildByName("internsButton"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {

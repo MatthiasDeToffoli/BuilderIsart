@@ -1612,11 +1612,12 @@
 	</class>
 	<class path="com.isartdigital.perle.Main" params="" file="src/com/isartdigital/perle/Main.hx">
 		<extends path="eventemitter3.EventEmitter"/>
-		<FPS get="inline" set="null" line="32" static="1"><x path="UInt"/></FPS>
-		<configPath line="34" static="1"><c path="String"/></configPath>
+		<FPS get="inline" set="null" line="33" static="1"><x path="UInt"/></FPS>
+		<DIALOGUE_FTUE_JSON_NAME public="1" set="null" line="34" static="1"><c path="String"/></DIALOGUE_FTUE_JSON_NAME>
+		<configPath line="36" static="1"><c path="String"/></configPath>
 		<instance static="1"><c path="com.isartdigital.perle.Main"/></instance>
-		<main set="method" line="43" static="1"><f a=""><x path="Void"/></f></main>
-		<getInstance public="1" set="method" line="51" static="1">
+		<main set="method" line="45" static="1"><f a=""><x path="Void"/></f></main>
+		<getInstance public="1" set="method" line="53" static="1">
 			<f a=""><c path="com.isartdigital.perle.Main"/></f>
 			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique</haxe_doc>
@@ -1628,18 +1629,19 @@
 	<c path="String"/>
 	<c path="String"/>
 </x></pathClass>
-		<preloadAssets set="method" line="97">
+		<preloadAssets set="method" line="99">
 			<f a="pLoader">
 				<c path="pixi.loaders.Loader"/>
 				<x path="Void"/>
 			</f>
+			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>* charge les assets graphiques du preloader principal</haxe_doc>
 		</preloadAssets>
-		<loadAssets set="method" line="143">
+		<loadAssets set="method" line="145">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* lance le chargement principal</haxe_doc>
 		</loadAssets>
-		<onLoadProgress set="method" line="174">
+		<onLoadProgress set="method" line="182">
 			<f a="pLoader">
 				<c path="com.isartdigital.utils.loader.GameLoader"/>
 				<x path="Void"/>
@@ -1647,7 +1649,7 @@
 			<haxe_doc>* transmet les paramètres de chargement au préchargeur graphique
 	 * @param	pEvent evenement de chargement</haxe_doc>
 		</onLoadProgress>
-		<onLoadComplete set="method" line="182">
+		<onLoadComplete set="method" line="190">
 			<f a="pLoader">
 				<c path="com.isartdigital.utils.loader.GameLoader"/>
 				<x path="Void"/>
@@ -1655,11 +1657,11 @@
 			<haxe_doc>* initialisation du jeu
 	 * @param	pEvent evenement de chargement</haxe_doc>
 		</onLoadComplete>
-		<gameLoop set="method" line="198">
+		<gameLoop set="method" line="206">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* game loop</haxe_doc>
 		</gameLoop>
-		<resize public="1" set="method" line="211">
+		<resize public="1" set="method" line="219">
 			<f a="?pEvent">
 				<t path="pixi.interaction.EventTarget"/>
 				<x path="Void"/>
@@ -1667,28 +1669,28 @@
 			<haxe_doc>* Ecouteur du redimensionnement
 	 * @param	pEvent evenement de redimensionnement</haxe_doc>
 		</resize>
-		<getPath public="1" set="method" line="219">
+		<getPath public="1" set="method" line="227">
 			<f a="pClassName">
 				<c path="String"/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>* Return the full path for a given ClassName ("com.isart.bla.bla.Ground" for "Ground")</haxe_doc>
 		</getPath>
-		<forceImport set="method" line="231">
+		<forceImport set="method" line="239">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* ForceImport of Class, and make them usable for getPath method,
 	 * doesn't support two time the same ClassName whit different path !
 	 * (like flump.Point and pixi.Point)</haxe_doc>
 		</forceImport>
-		<render set="method" line="253">
+		<render set="method" line="262">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* fait le rendu de l'écran</haxe_doc>
 		</render>
-		<destroy public="1" set="method" line="265">
+		<destroy public="1" set="method" line="274">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
 		</destroy>
-		<new set="method" line="59">
+		<new set="method" line="61">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* création du jeu et lancement du chargement du fichier de configuration</haxe_doc>
 		</new>
@@ -1698,20 +1700,20 @@
 	</class>
 	<class path="com.isartdigital.perle.game.GameManager" params="" file="src/com/isartdigital/perle/game/GameManager.hx">
 		<instance static="1"><c path="com.isartdigital.perle.game.GameManager"/></instance>
-		<getInstance public="1" set="method" line="29" static="1"><f a=""><c path="com.isartdigital.perle.game.GameManager"/></f></getInstance>
-		<start public="1" set="method" line="38"><f a=""><x path="Void"/></f></start>
-		<gameLoop public="1" set="method" line="59">
+		<getInstance public="1" set="method" line="32" static="1"><f a=""><c path="com.isartdigital.perle.game.GameManager"/></f></getInstance>
+		<start public="1" set="method" line="41"><f a=""><x path="Void"/></f></start>
+		<gameLoop public="1" set="method" line="69">
 			<f a="pEvent">
 				<t path="pixi.interaction.EventTarget"/>
 				<x path="Void"/>
 			</f>
 			<haxe_doc>* boucle de jeu (répétée à la cadence du jeu en fps)</haxe_doc>
 		</gameLoop>
-		<destroy public="1" set="method" line="74">
+		<destroy public="1" set="method" line="84">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
 		</destroy>
-		<new set="method" line="34"><f a=""><x path="Void"/></f></new>
+		<new set="method" line="37"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* Manager (Singleton) en charge de gérer le déroulement d'une partie
  * @author Mathieu ANTHOINE</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -1990,6 +1992,19 @@
  * @author ambroise</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<class path="com.isartdigital.perle.game.managers.FtueManager" params="" file="src/com/isartdigital/perle/game/managers/FtueManager.hx">
+		<npc_dialogue_ftue public="1" static="1"><c path="Array"><c path="Array"><c path="Array"><c path="String"/></c></c></c></npc_dialogue_ftue>
+		<dialogueSaved public="1" static="1"><x path="Int"/></dialogueSaved>
+		<createFtue public="1" set="method" line="16" static="1"><f a=""><x path="Void"/></f></createFtue>
+		<parseJson set="method" line="36" static="1"><f a="pJsonName">
+	<c path="String"/>
+	<x path="Void"/>
+</f></parseJson>
+		<removeFtue public="1" set="method" line="49" static="1"><f a=""><x path="Void"/></f></removeFtue>
+		<haxe_doc>* ...
+ * @author Rafired</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
 	<class path="com.isartdigital.perle.game.managers.IdManager" params="" file="src/com/isartdigital/perle/game/managers/IdManager.hx">
 		<idHightest public="1" set="null" static="1"><x path="Int"/></idHightest>
 		<buildWhitoutSave public="1" set="method" line="17" static="1"><f a=""><x path="Void"/></f></buildWhitoutSave>
@@ -2018,7 +2033,7 @@
 	</class>
 	<class path="com.isartdigital.perle.game.managers.MouseManager" params="" file="src/com/isartdigital/perle/game/managers/MouseManager.hx">
 		<instance static="1"><c path="com.isartdigital.perle.game.managers.MouseManager"/></instance>
-		<getInstance public="1" set="method" line="53" static="1"><f a=""><c path="com.isartdigital.perle.game.managers.MouseManager"/></f></getInstance>
+		<getInstance public="1" set="method" line="54" static="1"><f a=""><c path="com.isartdigital.perle.game.managers.MouseManager"/></f></getInstance>
 		<position public="1" set="null">
 			<c path="pixi.core.math.Point"/>
 			<haxe_doc>* Return the global mouse position when gameLoop is running.</haxe_doc>
@@ -2040,8 +2055,8 @@
 			<haxe_doc>* Needed for Touch, or you will be teleported one the same point
 	 * on screen when you start touch.</haxe_doc>
 		</oneFrameHack>
-		<getLocalMouseMapPos public="1" set="method" line="62"><f a=""><c path="pixi.core.math.Point"/></f></getLocalMouseMapPos>
-		<getLocalPos set="method" line="73">
+		<getLocalMouseMapPos public="1" set="method" line="63"><f a=""><c path="pixi.core.math.Point"/></f></getLocalMouseMapPos>
+		<getLocalPos set="method" line="74">
 			<f a="pContainer">
 				<c path="pixi.core.display.Container"/>
 				<c path="pixi.core.math.Point"/>
@@ -2050,9 +2065,9 @@
 	 * @param	pContainer:whit a toLocal() method
 	 * @return local mouse position</haxe_doc>
 		</getLocalPos>
-		<init set="method" line="77"><f a=""><x path="Void"/></f></init>
-		<gameLoop public="1" set="method" line="91"><f a=""><x path="Void"/></f></gameLoop>
-		<moveGameContainer set="method" line="107">
+		<init set="method" line="78"><f a=""><x path="Void"/></f></init>
+		<gameLoop public="1" set="method" line="92"><f a=""><x path="Void"/></f></gameLoop>
+		<moveGameContainer set="method" line="108">
 			<f a="pMouseLocalPos">
 				<c path="pixi.core.math.Point"/>
 				<x path="Void"/>
@@ -2060,24 +2075,27 @@
 			<haxe_doc>* Permit to move the Map whit the Mouse or Touch, won't move is someone is building.
 	 * @param	pMouseLocalPos</haxe_doc>
 		</moveGameContainer>
-		<onMouseDown set="method" line="122"><f a=""><x path="Void"/></f></onMouseDown>
-		<onTouchDown set="method" line="127"><f a="pEvent">
+		<onMouseDown set="method" line="123"><f a="pEvent">
+	<d/>
+	<x path="Void"/>
+</f></onMouseDown>
+		<onTouchDown set="method" line="130"><f a="pEvent">
 	<c path="js.html.TouchEvent"/>
 	<x path="Void"/>
 </f></onTouchDown>
-		<onMouseTouchUp set="method" line="135"><f a=""><x path="Void"/></f></onMouseTouchUp>
-		<soustractPoint set="method" line="141"><f a="pPoint1:pPoint2">
+		<onMouseTouchUp set="method" line="138"><f a=""><x path="Void"/></f></onMouseTouchUp>
+		<soustractPoint set="method" line="144"><f a="pPoint1:pPoint2">
 	<c path="pixi.core.math.Point"/>
 	<c path="pixi.core.math.Point"/>
 	<c path="pixi.core.math.Point"/>
 </f></soustractPoint>
-		<getMouseGlobalPos set="method" line="145"><f a=""><c path="pixi.core.math.Point"/></f></getMouseGlobalPos>
-		<onTouchMove set="method" line="149"><f a="pEvent">
+		<getMouseGlobalPos set="method" line="148"><f a=""><c path="pixi.core.math.Point"/></f></getMouseGlobalPos>
+		<onTouchMove set="method" line="152"><f a="pEvent">
 	<c path="js.html.TouchEvent"/>
 	<x path="Void"/>
 </f></onTouchMove>
-		<destroy public="1" set="method" line="162"><f a=""><x path="Void"/></f></destroy>
-		<new set="method" line="58"><f a=""><x path="Void"/></f></new>
+		<destroy public="1" set="method" line="165"><f a=""><x path="Void"/></f></destroy>
+		<new set="method" line="59"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* Class used to get mouse or touch global position
  * and to move the camera.
  * @author ambroise</haxe_doc>
@@ -2139,7 +2157,7 @@
 	 * @param	lAssetName
 	 * @return</haxe_doc>
 		</createInstance>
-		<destroy public="1" set="method" line="113" static="1"><f a=""><x path="Void"/></f></destroy>
+		<destroy public="1" set="method" line="114" static="1"><f a=""><x path="Void"/></f></destroy>
 		<new public="1" set="method" line="43"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* ...
  * @author ambroise</haxe_doc>
@@ -2685,6 +2703,7 @@
 		<haxe_doc>* Usefull for everything that is used for statistics only.</haxe_doc>
 	</typedef>
 	<typedef path="com.isartdigital.perle.game.managers.Save" params="" file="src/com/isartdigital/perle/game/managers/SaveManager.hx" module="com.isartdigital.perle.game.managers.SaveManager"><a>
+	<version><c path="String"/></version>
 	<timesResource><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeDescription"/></c></timesResource>
 	<timesQuest><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeQuestDescription"/></c></timesQuest>
 	<stats><t path="com.isartdigital.perle.game.managers.Stats"/></stats>
@@ -2693,49 +2712,51 @@
 	<lastKnowTime><x path="Float"/></lastKnowTime>
 	<idHightest><x path="Int"/></idHightest>
 	<ground><c path="Array"><t path="com.isartdigital.perle.game.managers.TileDescription"/></c></ground>
+	<ftueProgress><x path="Int"/></ftueProgress>
 	<building><c path="Array"><t path="com.isartdigital.perle.game.managers.TileDescription"/></c></building>
 	<ROW_Y_LENGTH><x path="Int"/></ROW_Y_LENGTH>
 	<COL_X_LENGTH><x path="Int"/></COL_X_LENGTH>
 </a></typedef>
 	<class path="com.isartdigital.perle.game.managers.SaveManager" params="" file="src/com/isartdigital/perle/game/managers/SaveManager.hx">
-		<SAVE_NAME get="inline" set="null" line="96" static="1"><c path="String"/></SAVE_NAME>
+		<SAVE_NAME get="inline" set="null" line="99" static="1"><c path="String"/></SAVE_NAME>
+		<SAVE_VERSION get="inline" set="null" line="100" static="1"><c path="String"/></SAVE_VERSION>
 		<currentSave public="1" set="null" static="1"><t path="com.isartdigital.perle.game.managers.Save"/></currentSave>
-		<save public="1" set="method" line="103" static="1">
+		<save public="1" set="method" line="107" static="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Save the buildings and grounds in a Json in local storage.
 	 * Use virtualCell to make the save.</haxe_doc>
 		</save>
-		<saveResources set="method" line="147" static="1"><f a=""><t path="com.isartdigital.perle.game.managers.ResourcesGeneratorDescription"/></f></saveResources>
-		<addGenerator set="method" line="181" static="1"><f a="pArray:pData:pType">
+		<saveResources set="method" line="152" static="1"><f a=""><t path="com.isartdigital.perle.game.managers.ResourcesGeneratorDescription"/></f></saveResources>
+		<addGenerator set="method" line="186" static="1"><f a="pArray:pData:pType">
 	<c path="Array"><t path="com.isartdigital.perle.game.managers.GeneratorDescription"/></c>
 	<t path="com.isartdigital.perle.game.managers.ResourcesData"/>
 	<e path="com.isartdigital.perle.game.managers.GeneratorType"/>
 	<c path="Array"><t path="com.isartdigital.perle.game.managers.GeneratorDescription"/></c>
 </f></addGenerator>
-		<saveLastKnowTime public="1" set="method" line="190" static="1"><f a="pTime">
+		<saveLastKnowTime public="1" set="method" line="195" static="1"><f a="pTime">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></saveLastKnowTime>
-		<setLocalStorage set="method" line="197" static="1"><f a="pCurrentSave">
+		<setLocalStorage set="method" line="202" static="1"><f a="pCurrentSave">
 	<t path="com.isartdigital.perle.game.managers.Save"/>
 	<x path="Void"/>
 </f></setLocalStorage>
-		<getTimesResource set="method" line="204" static="1"><f a=""><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeDescription"/></c></f></getTimesResource>
-		<getTimesQuest set="method" line="210" static="1"><f a=""><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeQuestDescription"/></c></f></getTimesQuest>
-		<getStats set="method" line="216" static="1"><f a=""><t path="com.isartdigital.perle.game.managers.Stats"/></f></getStats>
-		<destroy public="1" set="method" line="233" static="1">
+		<getTimesResource set="method" line="209" static="1"><f a=""><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeDescription"/></c></f></getTimesResource>
+		<getTimesQuest set="method" line="215" static="1"><f a=""><c path="Array"><t path="com.isartdigital.perle.game.managers.TimeQuestDescription"/></c></f></getTimesQuest>
+		<getStats set="method" line="221" static="1"><f a=""><t path="com.isartdigital.perle.game.managers.Stats"/></f></getStats>
+		<destroy public="1" set="method" line="238" static="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* UNUSED !
 	 * Remove the Save from localStorage</haxe_doc>
 		</destroy>
-		<load set="method" line="244" static="1">
+		<load set="method" line="249" static="1">
 			<f a=""><t path="com.isartdigital.perle.game.managers.Save"/></f>
 			<haxe_doc>* Return currentSave, load if null.
 	 * @return</haxe_doc>
 		</load>
-		<createFromSave public="1" set="method" line="260" static="1"><f a=""><x path="Void"/></f></createFromSave>
-		<createWhitoutSave set="method" line="274" static="1"><f a=""><x path="Void"/></f></createWhitoutSave>
-		<translateArrayToEnum public="1" set="method" line="290" static="1">
+		<createFromSave public="1" set="method" line="270" static="1"><f a=""><x path="Void"/></f></createFromSave>
+		<createWhitoutSave set="method" line="285" static="1"><f a=""><x path="Void"/></f></createWhitoutSave>
+		<translateArrayToEnum public="1" set="method" line="301" static="1">
 			<f a="pArray">
 				<d/>
 				<d/>
@@ -4038,20 +4059,17 @@
  * @author COQUERELLE Killian</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
-	<class path="com.isartdigital.perle.game.virtual.HasVirtual" params="" file="src/com/isartdigital/perle/game/virtual/Virtual.hx" module="com.isartdigital.perle.game.virtual.Virtual" interface="1">
-		<linkVirtual public="1" set="method"><f a="pVirtual">
+	<class path="com.isartdigital.perle.game.virtual.HasVirtual" params="" file="src/com/isartdigital/perle/game/virtual/Virtual.hx" module="com.isartdigital.perle.game.virtual.Virtual" interface="1"><linkVirtual public="1" set="method"><f a="pVirtual">
 	<c path="com.isartdigital.perle.game.virtual.Virtual"/>
 	<x path="Void"/>
-</f></linkVirtual>
-		<meta><m n=":directlyUsed"/></meta>
-	</class>
+</f></linkVirtual></class>
 	<class path="com.isartdigital.perle.game.sprites.Tile" params="" file="src/com/isartdigital/perle/game/sprites/Tile.hx">
 		<extends path="com.isartdigital.perle.game.sprites.FlumpStateGraphic"/>
 		<implements path="com.isartdigital.perle.game.virtual.HasVirtual"/>
 		<TILE_WIDTH public="1" get="inline" set="null" line="17" static="1"><x path="Float"/></TILE_WIDTH>
 		<TILE_HEIGHT public="1" get="inline" set="null" line="18" static="1"><x path="Float"/></TILE_HEIGHT>
 		<initClass public="1" set="method" line="27" static="1"><f a=""><x path="Void"/></f></initClass>
-		<linkedVirtualCell>
+		<linkedVirtualCell public="1">
 			<c path="com.isartdigital.perle.game.virtual.VTile"/>
 			<haxe_doc>* Reference usable to destroy VCell an so by the same way from Save
 	 * Still, the best choice would be to destroy VCell first and then just update Clipping
@@ -4084,38 +4102,21 @@
 		<extends path="com.isartdigital.perle.game.sprites.Tile"/>
 		<implements path="com.isartdigital.perle.game.managers.PoolingObject"/>
 		<implements path="com.isartdigital.perle.game.iso.IZSortable"/>
-		<ASSETNAME_TO_MAPSIZE public="1" set="null" line="42" static="1"><x path="Map">
+		<ASSETNAME_TO_MAPSIZE public="1" set="null" line="34" static="1"><x path="Map">
 	<c path="String"/>
 	<t path="com.isartdigital.perle.game.sprites.SizeOnMap"/>
 </x></ASSETNAME_TO_MAPSIZE>
-		<FILTER_OPACITY get="inline" set="null" line="49" static="1"><x path="Float"/></FILTER_OPACITY>
-		<ROTATION_IN_RAD get="inline" set="null" line="50" static="1"><x path="Float"/></ROTATION_IN_RAD>
 		<list public="1" static="1"><c path="Array"><c path="com.isartdigital.perle.game.sprites.Building"/></c></list>
-		<currentSelectedBuilding static="1"><c path="com.isartdigital.perle.game.sprites.Building"/></currentSelectedBuilding>
 		<container static="1"><c path="pixi.core.display.Container"/></container>
-		<colorMatrix static="1"><c path="pixi.filters.color.ColorMatrixFilter"/></colorMatrix>
-		<footPrint static="1"><c path="com.isartdigital.perle.game.sprites.FootPrint"/></footPrint>
-		<footPrintAsset line="59" static="1"><c path="String"/></footPrintAsset>
-		<footPrintPoint static="1"><c path="pixi.core.math.Point"/></footPrintPoint>
-		<firstClickSuck static="1">
-			<x path="Bool"/>
-			<haxe_doc>* Hack, ignore first unwanted click on building HUD button
-	 * the building won't spawn bellow the button</haxe_doc>
-		</firstClickSuck>
-		<initClass public="1" set="method" line="87" static="1">
+		<initClass public="1" set="method" line="56" static="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Initialisation of Building class, should be called after Ground class initialisation.</haxe_doc>
 		</initClass>
-		<sortBuildings public="1" set="method" line="99" static="1">
+		<sortBuildings public="1" set="method" line="66" static="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Z-Sorting of Building container.</haxe_doc>
 		</sortBuildings>
-		<hasCurrentBuilding public="1" set="method" line="107" static="1">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>* Return true if user is making a new build.
-	 * @return</haxe_doc>
-		</hasCurrentBuilding>
-		<createBuilding public="1" set="method" line="116" static="1">
+		<createBuilding public="1" set="method" line="75" static="1">
 			<f a="pTileDesc">
 				<t path="com.isartdigital.perle.game.managers.TileDescription"/>
 				<c path="com.isartdigital.perle.game.sprites.Building"/>
@@ -4124,35 +4125,15 @@
 	 * @param	pTileDesc
 	 * @return</haxe_doc>
 		</createBuilding>
-		<gameLoop public="1" set="method" line="139" static="1"><f a=""><x path="Void"/></f></gameLoop>
-		<destroyStatic public="1" set="method" line="200" static="1"><f a=""><x path="Void"/></f></destroyStatic>
-		<onClickHudBuilding public="1" set="method" line="217" static="1">
-			<f a="pAssetName">
-				<c path="String"/>
-				<x path="Void"/>
-			</f>
-			<haxe_doc>* Create a Phantom Building
-	 * @param	pAssetName</haxe_doc>
-		</onClickHudBuilding>
-		<createPhantom set="method" line="228" static="1"><f a="pAssetName">
-	<c path="String"/>
-	<x path="Void"/>
-</f></createPhantom>
-		<createShadow set="method" line="240" static="1"><f a=""><x path="Void"/></f></createShadow>
-		<removePhantom set="method" line="262" static="1"><f a=""><x path="Void"/></f></removePhantom>
+		<destroyStatic public="1" set="method" line="139" static="1"><f a=""><x path="Void"/></f></destroyStatic>
 		<colMin public="1"><x path="Int"/></colMin>
 		<colMax public="1"><x path="Int"/></colMax>
 		<rowMin public="1"><x path="Int"/></rowMin>
 		<rowMax public="1"><x path="Int"/></rowMax>
 		<behind public="1"><c path="Array"><c path="com.isartdigital.perle.game.iso.IZSortable"/></c></behind>
 		<inFront public="1"><c path="Array"><c path="com.isartdigital.perle.game.iso.IZSortable"/></c></inFront>
-		<regionMap><t path="com.isartdigital.perle.game.sprites.RegionMap"/></regionMap>
-		<isMove><x path="Bool"/></isMove>
-		<isFirstClickAfterMoved><x path="Bool"/></isFirstClickAfterMoved>
-		<vBuildingRef><c path="com.isartdigital.perle.game.virtual.VBuilding"/></vBuildingRef>
-		<precedentBesMapPos><c path="pixi.core.math.Point"/></precedentBesMapPos>
-		<start public="1" set="method" line="149" override="1"><f a=""><x path="Void"/></f></start>
-		<setMapColRow set="method" line="162">
+		<start public="1" set="method" line="104" override="1"><f a=""><x path="Void"/></f></start>
+		<setMapColRow set="method" line="116">
 			<f a="pTilePos:pMapSize">
 				<t path="com.isartdigital.perle.game.virtual.Index"/>
 				<t path="com.isartdigital.perle.game.sprites.SizeOnMap"/>
@@ -4162,90 +4143,11 @@
 	 * @param	pTilePos (TilePosition like if they were only one big region)
 	 * @param	pMapSize (width and height)</haxe_doc>
 		</setMapColRow>
-		<getRoundMapPos set="method" line="175">
-			<f a="pPos">
-				<c path="pixi.core.math.Point"/>
-				<t path="com.isartdigital.perle.game.virtual.Index"/>
-			</f>
-			<haxe_doc>* Get the rounded position in map view
-	 * Prefer using floor position when you can.
-	 * @param	pPos
-	 * @return</haxe_doc>
-		</getRoundMapPos>
-		<recycle public="1" set="method" line="183" override="1"><f a=""><x path="Void"/></f></recycle>
-		<destroy public="1" set="method" line="192" override="1"><f a=""><x path="Void"/></f></destroy>
-		<addBuildListeners set="method" line="272">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* Listen to click or touch_end to build the building</haxe_doc>
-		</addBuildListeners>
-		<removeBuildListeners set="method" line="279"><f a=""><x path="Void"/></f></removeBuildListeners>
-		<setModePhantom public="1" set="method" line="285"><f a=""><x path="Void"/></f></setModePhantom>
-		<setModeMove public="1" set="method" line="296">
-			<f a="pVBuilding">
-				<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
-				<x path="Void"/>
-			</f>
-			<haxe_doc>* Remove the building to change it position
-	 * @param	pVBuilding the reference virtual initial tile, to destroy it from the region and save managers</haxe_doc>
-		</setModeMove>
-		<doActionPhantom set="method" line="315">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* Move the ground center of the building on the mouse pointer.</haxe_doc>
-		</doActionPhantom>
-		<getBuildingGroundCenter set="method" line="351">
-			<f a=""><c path="pixi.core.math.Point"/></f>
-			<haxe_doc>* Get the center of the building from the map view (center on Ground)
-	 * @return</haxe_doc>
-		</getBuildingGroundCenter>
-		<onMouseTouchClick set="method" line="360"><f a=""><x path="Void"/></f></onMouseTouchClick>
-		<canBuildHere set="method" line="377">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>* Verify that you can build on the specified space.
-	 * @param	pRect</haxe_doc>
-		</canBuildHere>
-		<getRegionMap set="method" line="389"><f a=""><t path="com.isartdigital.perle.game.sprites.RegionMap"/></f></getRegionMap>
-		<buildingOnGround set="method" line="416">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>* Verify that the building in fully in the region before building it. Check only 2/4 sides.
-	 * @return</haxe_doc>
-		</buildingOnGround>
-		<buildingCollideOther set="method" line="439">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>* verify that the building doesn't collapse another one.
-	 * Use the TileDescription in Save instead of only instantiated (visible) buildings.
-	 * @return</haxe_doc>
-		</buildingCollideOther>
-		<collisionRectDesc set="method" line="455">
-			<f a="pVirtual">
-				<t path="com.isartdigital.perle.game.managers.TileDescription"/>
-				<x path="Bool"/>
-			</f>
-			<haxe_doc>* Test collision between instance and a TileDescription from Save
-	 * Permit that uninstanciated (unshow) building still make collision !</haxe_doc>
-		</collisionRectDesc>
-		<newBuild set="method" line="477">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* User has added a new Building,
-	 * Add a new VBuilding, update clipping and save.
-	 * // pas de court-circuitage de VCell, pas non plus de création inversé (Building puis VCell)</haxe_doc>
-		</newBuild>
-		<displayCantBuild set="method" line="513">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* todo : HUD method</haxe_doc>
-		</displayCantBuild>
-		<addPhantomFilter set="method" line="520">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* Reduce alpha</haxe_doc>
-		</addPhantomFilter>
-		<removePhantomFilter set="method" line="524"><f a=""><x path="Void"/></f></removePhantomFilter>
-		<addDesaturateFilter set="method" line="531">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* Building become grey !</haxe_doc>
-		</addDesaturateFilter>
-		<removeDesaturateFilter set="method" line="536"><f a=""><x path="Void"/></f></removeDesaturateFilter>
-		<addListenerOnClick set="method" line="545"><f a=""><x path="Void"/></f></addListenerOnClick>
-		<onClick set="method" line="549"><f a=""><x path="Void"/></f></onClick>
-		<new public="1" set="method" line="145"><f a="?pAssetName">
+		<recycle public="1" set="method" line="123" override="1"><f a=""><x path="Void"/></f></recycle>
+		<destroy public="1" set="method" line="130" override="1"><f a=""><x path="Void"/></f></destroy>
+		<addListenerOnClick set="method" line="149"><f a=""><x path="Void"/></f></addListenerOnClick>
+		<onClick set="method" line="153"><f a=""><x path="Void"/></f></onClick>
+		<new public="1" set="method" line="99"><f a="?pAssetName">
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
@@ -4257,10 +4159,21 @@
 		<extends path="com.isartdigital.perle.game.sprites.Tile"/>
 		<implements path="com.isartdigital.perle.game.managers.PoolingObject"/>
 		<container public="1" set="null" static="1"><c path="pixi.core.display.Container"/></container>
-		<initClass public="1" set="method" line="25" static="1"><f a=""><x path="Void"/></f></initClass>
-		<init public="1" set="method" line="21" override="1"><f a=""><x path="Void"/></f></init>
-		<recycle public="1" set="method" line="39" override="1"><f a=""><x path="Void"/></f></recycle>
-		<new public="1" set="method" line="15"><f a="?pAssetName">
+		<ROTATION_IN_RAD get="inline" set="null" line="17" static="1"><x path="Float"/></ROTATION_IN_RAD>
+		<FOOTPRINT_ASSET get="inline" set="null" line="18" static="1"><c path="String"/></FOOTPRINT_ASSET>
+		<footPrint public="1" static="1"><c path="com.isartdigital.perle.game.sprites.FootPrint"/></footPrint>
+		<footPrintPoint public="1" static="1"><c path="pixi.core.math.Point"/></footPrintPoint>
+		<lInstance static="1"><c path="com.isartdigital.perle.game.sprites.Phantom"/></lInstance>
+		<initClass public="1" set="method" line="34" static="1"><f a=""><x path="Void"/></f></initClass>
+		<createShadow public="1" set="method" line="40" static="1"><f a="pInstance">
+	<c path="com.isartdigital.perle.game.sprites.Phantom"/>
+	<x path="Void"/>
+</f></createShadow>
+		<doActionShadow public="1" set="method" line="64" static="1"><f a=""><x path="Void"/></f></doActionShadow>
+		<removeShadow public="1" set="method" line="68" static="1"><f a=""><x path="Void"/></f></removeShadow>
+		<init public="1" set="method" line="30" override="1"><f a=""><x path="Void"/></f></init>
+		<recycle public="1" set="method" line="73" override="1"><f a=""><x path="Void"/></f></recycle>
+		<new public="1" set="method" line="24"><f a="?pAssetName">
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
@@ -4356,6 +4269,121 @@
  * @author ambroise</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<class path="com.isartdigital.perle.game.sprites.Phantom" params="" file="src/com/isartdigital/perle/game/sprites/Phantom.hx">
+		<extends path="com.isartdigital.perle.game.sprites.Building"/>
+		<FILTER_OPACITY get="inline" set="null" line="30" static="1"><x path="Float"/></FILTER_OPACITY>
+		<colorMatrix static="1"><c path="pixi.filters.color.ColorMatrixFilter"/></colorMatrix>
+		<instance static="1"><c path="com.isartdigital.perle.game.sprites.Phantom"/></instance>
+		<container static="1"><c path="pixi.core.display.Container"/></container>
+		<initClass public="1" set="method" line="41" static="1"><f a=""><x path="Void"/></f></initClass>
+		<gameLoop public="1" set="method" line="48" static="1"><f a=""><x path="Void"/></f></gameLoop>
+		<onClickShop public="1" set="method" line="53" static="1"><f a="pAssetName">
+	<c path="String"/>
+	<x path="Void"/>
+</f></onClickShop>
+		<onClickMove public="1" set="method" line="62" static="1">
+			<f a="pAssetName:pVBuilding">
+				<c path="String"/>
+				<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* When VBuilding want to move.
+	 * @param	pAssetName
+	 * @param	pVBuilding</haxe_doc>
+		</onClickMove>
+		<onClickCancelBuild public="1" set="method" line="68" static="1"><f a=""><x path="Void"/></f></onClickCancelBuild>
+		<onClickCancelMove public="1" set="method" line="72" static="1"><f a=""><x path="Void"/></f></onClickCancelMove>
+		<onClickConfirmBuild public="1" set="method" line="76" static="1"><f a=""><x path="Void"/></f></onClickConfirmBuild>
+		<onClickConfirmMove public="1" set="method" line="79" static="1"><f a=""><x path="Void"/></f></onClickConfirmMove>
+		<createPhantom set="method" line="83" static="1"><f a="pAssetName">
+	<c path="String"/>
+	<x path="Void"/>
+</f></createPhantom>
+		<isMoving public="1" set="method" line="384" static="1">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>* Return true if user is making a new build.
+	 * @return</haxe_doc>
+		</isMoving>
+		<linkedVBuilding><c path="com.isartdigital.perle.game.virtual.VBuilding"/></linkedVBuilding>
+		<mouseDown><x path="Bool"/></mouseDown>
+		<regionMap><t path="com.isartdigital.perle.game.sprites.RegionMap"/></regionMap>
+		<precedentBesMapPos><c path="pixi.core.math.Point"/></precedentBesMapPos>
+		<init public="1" set="method" line="115" override="1"><f a=""><x path="Void"/></f></init>
+		<start public="1" set="method" line="121" override="1"><f a=""><x path="Void"/></f></start>
+		<addBuildListeners set="method" line="131">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* Listen to click or touch_end to build the building</haxe_doc>
+		</addBuildListeners>
+		<removeBuildListeners set="method" line="142"><f a=""><x path="Void"/></f></removeBuildListeners>
+		<setModePhantom set="method" line="151"><f a=""><x path="Void"/></f></setModePhantom>
+		<doActionPhantom set="method" line="162">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* Move the ground center of the building on the mouse pointer.</haxe_doc>
+		</doActionPhantom>
+		<movePhantomOnMouse set="method" line="169"><f a=""><x path="Void"/></f></movePhantomOnMouse>
+		<getBuildingGroundCenter set="method" line="209">
+			<f a=""><c path="pixi.core.math.Point"/></f>
+			<haxe_doc>* Get the center of the building from the map view (center on Ground)
+	 * @return</haxe_doc>
+		</getBuildingGroundCenter>
+		<confirmBuild set="method" line="218"><f a=""><x path="Void"/></f></confirmBuild>
+		<confirmMove set="method" line="226"><f a=""><x path="Void"/></f></confirmMove>
+		<newBuild set="method" line="239"><f a=""><x path="Void"/></f></newBuild>
+		<applyChange set="method" line="262"><f a=""><x path="Void"/></f></applyChange>
+		<canBuildHere set="method" line="271">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>* Verify that you can build on the specified space.
+	 * @param	pRect</haxe_doc>
+		</canBuildHere>
+		<getRegionMap set="method" line="283"><f a=""><t path="com.isartdigital.perle.game.sprites.RegionMap"/></f></getRegionMap>
+		<buildingOnGround set="method" line="310">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>* Verify that the building in fully in the region before building it. Check only 2/4 sides.
+	 * @return</haxe_doc>
+		</buildingOnGround>
+		<buildingCollideOther set="method" line="326">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>* verify that the building doesn't collapse another one.
+	 * Use the TileDescription in Save instead of only instantiated (visible) buildings.
+	 * @return</haxe_doc>
+		</buildingCollideOther>
+		<collisionRectDesc set="method" line="350">
+			<f a="pVirtual">
+				<t path="com.isartdigital.perle.game.managers.TileDescription"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>* Test collision between instance and a TileDescription from Save
+	 * Permit that uninstanciated (unshow) building still make collision !</haxe_doc>
+		</collisionRectDesc>
+		<getRoundMapPos set="method" line="372">
+			<f a="pPos">
+				<c path="pixi.core.math.Point"/>
+				<t path="com.isartdigital.perle.game.virtual.Index"/>
+			</f>
+			<haxe_doc>* Get the rounded position in map view
+	 * Prefer using floor position when you can.
+	 * @param	pPos
+	 * @return</haxe_doc>
+		</getRoundMapPos>
+		<onMouseDown2 set="method" line="389"><f a=""><x path="Void"/></f></onMouseDown2>
+		<onMouseUp2 set="method" line="393"><f a=""><x path="Void"/></f></onMouseUp2>
+		<displayCantBuild set="method" line="398"><f a=""><x path="Void"/></f></displayCantBuild>
+		<addPhantomFilter set="method" line="402"><f a=""><x path="Void"/></f></addPhantomFilter>
+		<removePhantomFilter set="method" line="406"><f a=""><x path="Void"/></f></removePhantomFilter>
+		<addDesaturateFilter set="method" line="413">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* Building become grey !</haxe_doc>
+		</addDesaturateFilter>
+		<removeDesaturateFilter set="method" line="418"><f a=""><x path="Void"/></f></removeDesaturateFilter>
+		<destroy public="1" set="method" line="433" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="111"><f a="?pAssetName">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>* Only graphic class, doesn't have any logical part (no VPhantom)
+ * @author ambroise</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
 	<enum path="com.isartdigital.perle.game.virtual.VBuildingState" params="" file="src/com/isartdigital/perle/game/virtual/VBuilding.hx" module="com.isartdigital.perle.game.virtual.VBuilding">
 		<isBuilt/>
 		<isBuilding/>
@@ -4370,27 +4398,31 @@
 			<x path="Bool"/>
 			<haxe_doc>* active is true if the instance represented by Virtual should be visible on screen</haxe_doc>
 		</active>
+		<ignore public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>* If true graphic will never show up, no clipping. (used while moving a VBuilding)
+	 * It does not desactivate() the virtual !</haxe_doc>
+		</ignore>
 		<graphic public="1" set="null">
 			<c path="com.isartdigital.perle.game.sprites.FlumpStateGraphic"/>
 			<haxe_doc>* instance linked to VCell when active</haxe_doc>
 		</graphic>
-		<removeLink public="1" set="method" line="34">
+		<removeLink public="1" set="method" line="40">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Should not be used, because the only one creating and destroying Buildings
 	 * should be VCell (but just in case someone destroy() a Building while forgetting
 	 * the VCell) (graphic is read only)</haxe_doc>
 		</removeLink>
-		<linkVirtual set="method" line="39"><f a=""><x path="Void"/></f></linkVirtual>
-		<activate public="1" set="method" line="46">
+		<activate public="1" set="method" line="52">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Cell is visible and content will be displayed !</haxe_doc>
 		</activate>
-		<desactivate public="1" set="method" line="57">
+		<desactivate public="1" set="method" line="63">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Cell is not visible, content will be wiped out !</haxe_doc>
 		</desactivate>
-		<destroy public="1" set="method" line="69"><f a=""><x path="Void"/></f></destroy>
-		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
+		<destroy public="1" set="method" line="75"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="32"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* ...
  * @author ambroise</haxe_doc>
 	</class>
@@ -4474,25 +4506,114 @@
 		<myGenerator><t path="com.isartdigital.perle.game.managers.Generator"/></myGenerator>
 		<myGeneratorType><e path="com.isartdigital.perle.game.managers.GeneratorType"/></myGeneratorType>
 		<myContextualHud><c path="com.isartdigital.perle.ui.contextual.HudContextual"/></myContextualHud>
-		<currentState><e path="com.isartdigital.perle.game.virtual.VBuildingState"/></currentState>
-		<activate public="1" set="method" line="36" override="1"><f a=""><x path="Void"/></f></activate>
-		<desactivate public="1" set="method" line="52" override="1"><f a=""><x path="Void"/></f></desactivate>
-		<unlinkContextualHud public="1" set="method" line="58"><f a=""><x path="Void"/></f></unlinkContextualHud>
-		<getGenerator public="1" set="method" line="63"><f a=""><t path="com.isartdigital.perle.game.managers.Generator"/></f></getGenerator>
-		<onClick public="1" set="method" line="70">
+		<currentState public="1" set="null"><e path="com.isartdigital.perle.game.virtual.VBuildingState"/></currentState>
+		<activate public="1" set="method" line="43" override="1"><f a=""><x path="Void"/></f></activate>
+		<desactivate public="1" set="method" line="53" override="1"><f a=""><x path="Void"/></f></desactivate>
+		<unlinkContextualHud public="1" set="method" line="59"><f a=""><x path="Void"/></f></unlinkContextualHud>
+		<getGenerator public="1" set="method" line="64"><f a=""><t path="com.isartdigital.perle.game.managers.Generator"/></f></getGenerator>
+		<onClick public="1" set="method" line="71">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Called when user click on the graphic</haxe_doc>
 		</onClick>
-		<addGenerator set="method" line="82"><f a=""><x path="Void"/></f></addGenerator>
-		<addHudContextual set="method" line="86"><f a=""><x path="Void"/></f></addHudContextual>
-		<destroy public="1" set="method" line="91" override="1"><f a=""><x path="Void"/></f></destroy>
-		<new public="1" set="method" line="28"><f a="pDescription">
+		<onClickMove public="1" set="method" line="75"><f a=""><x path="Void"/></f></onClickMove>
+		<onClickCancel public="1" set="method" line="85"><f a=""><x path="Void"/></f></onClickCancel>
+		<onClickConfirm public="1" set="method" line="92"><f a=""><x path="Void"/></f></onClickConfirm>
+		<move public="1" set="method" line="96"><f a="pRegionMap">
+	<t path="com.isartdigital.perle.game.sprites.RegionMap"/>
+	<x path="Void"/>
+</f></move>
+		<setState set="method" line="103"><f a="pState">
+	<e path="com.isartdigital.perle.game.virtual.VBuildingState"/>
+	<x path="Void"/>
+</f></setState>
+		<setModeMove set="method" line="136">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* Will remove graphic until currentState != isMoving</haxe_doc>
+		</setModeMove>
+		<setModeBuilt set="method" line="140"><f a=""><x path="Void"/></f></setModeBuilt>
+		<updateWorldMapPosition set="method" line="144"><f a="pRegionMap">
+	<t path="com.isartdigital.perle.game.sprites.RegionMap"/>
+	<x path="Void"/>
+</f></updateWorldMapPosition>
+		<addGenerator set="method" line="155"><f a=""><x path="Void"/></f></addGenerator>
+		<addHudContextual set="method" line="159"><f a=""><x path="Void"/></f></addHudContextual>
+		<destroy public="1" set="method" line="164" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="35"><f a="pDescription">
 	<t path="com.isartdigital.perle.game.managers.TileDescription"/>
 	<x path="Void"/>
 </f></new>
 		<haxe_doc>* Used for clipping.
  * Contain everything that's not just graphic.
  * @author ambroise</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="com.isartdigital.perle.game.virtual.VButtonProduction" params="" file="src/com/isartdigital/perle/game/virtual/VButtonProduction.hx">
+		<myGeneratorDesc>
+			<t path="com.isartdigital.perle.game.managers.GeneratorDescription"/>
+			<haxe_doc>* description of the generator link te this button</haxe_doc>
+		</myGeneratorDesc>
+		<refBuilding>
+			<x path="Int"/>
+			<haxe_doc>* id of the building link to this button</haxe_doc>
+		</refBuilding>
+		<resourceType>
+			<e path="com.isartdigital.perle.game.managers.GeneratorType"/>
+			<haxe_doc>* type of generator which had by this button</haxe_doc>
+		</resourceType>
+		<buildingIsInView>
+			<x path="Bool"/>
+			<haxe_doc>* say if building is activate or not</haxe_doc>
+		</buildingIsInView>
+		<generatorIsNotEmpty>
+			<x path="Bool"/>
+			<haxe_doc>* say if generator is empty of not</haxe_doc>
+		</generatorIsNotEmpty>
+		<myHudContainer>
+			<c path="com.isartdigital.perle.ui.contextual.HudContextual"/>
+			<haxe_doc>* Hud contained the Graphic</haxe_doc>
+		</myHudContainer>
+		<graphicBtn>
+			<c path="com.isartdigital.perle.ui.contextual.ButtonProduction"/>
+			<haxe_doc>* graphics of the button</haxe_doc>
+		</graphicBtn>
+		<init public="1" set="method" line="65">
+			<f a="pPosition:pRefBuilding:pType:pHud">
+				<c path="pixi.core.math.Point"/>
+				<x path="Int"/>
+				<e path="com.isartdigital.perle.game.managers.GeneratorType"/>
+				<c path="com.isartdigital.perle.ui.contextual.HudContextual"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* initialiste the virtual button production and set the graphic position the building ref, the generator description and the hud container
+	 * @param	pPosition the position of the graphic
+	 * @param	pRefBuilding the building reference
+	 * @param	pType the type of generator
+	 * @param	pHud the hud which contained the graphic</haxe_doc>
+		</init>
+		<onGeneratorEvent set="method" line="77">
+			<f a="data">
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* when the générator have changement (if he increase is value or when he send his resources to his total)
+	 * @param	data object contain the id of the generator and a boolean said if the generator is empty or not</haxe_doc>
+		</onGeneratorEvent>
+		<activeWithBuilding public="1" set="method" line="96">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* call when a building is activate</haxe_doc>
+		</activeWithBuilding>
+		<activate set="method" line="104">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* addchild the goldbutton if the generator is not empty and the building is active</haxe_doc>
+		</activate>
+		<unActivateWithBuild public="1" set="method" line="114">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* destroy the goldbutton</haxe_doc>
+		</unActivateWithBuild>
+		<destroy public="1" set="method" line="126"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="53"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>* ...
+ * @author de Toffoli Matthias</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="com.isartdigital.perle.game.virtual.VGround" params="" file="src/com/isartdigital/perle/game/virtual/VGround.hx">
@@ -4592,7 +4713,7 @@
 			<c path="com.isartdigital.perle.ui.UIManager"/>
 			<haxe_doc>* instance unique de la classe UIManager</haxe_doc>
 		</instance>
-		<getInstance public="1" set="method" line="36" static="1">
+		<getInstance public="1" set="method" line="37" static="1">
 			<f a=""><c path="com.isartdigital.perle.ui.UIManager"/></f>
 			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique</haxe_doc>
@@ -4601,7 +4722,7 @@
 			<c path="Array"><c path="com.isartdigital.utils.ui.Popin"/></c>
 			<haxe_doc>* tableau des popins ouverts</haxe_doc>
 		</popins>
-		<openScreen public="1" set="method" line="45">
+		<openScreen public="1" set="method" line="46">
 			<f a="pScreen">
 				<c path="com.isartdigital.utils.ui.Screen"/>
 				<x path="Void"/>
@@ -4609,11 +4730,11 @@
 			<haxe_doc>* Ajoute un écran dans le conteneur de Screens en s'assurant qu'il n'y en a pas d'autres
 	 * @param	pScreen Screen à ouvrir</haxe_doc>
 		</openScreen>
-		<closeScreens public="1" set="method" line="54">
+		<closeScreens public="1" set="method" line="55">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Supprime les écrans dans le conteneur de Screens</haxe_doc>
 		</closeScreens>
-		<openPopin public="1" set="method" line="68">
+		<openPopin public="1" set="method" line="69">
 			<f a="pPopin">
 				<c path="com.isartdigital.utils.ui.Popin"/>
 				<x path="Void"/>
@@ -4621,27 +4742,27 @@
 			<haxe_doc>* Ajoute un popin dans le conteneur de Popin
 	 * @param	pPopin Popin à ouvrir</haxe_doc>
 		</openPopin>
-		<closeCurrentPopin public="1" set="method" line="77">
+		<closeCurrentPopin public="1" set="method" line="78">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Supprime le popin dans le conteneur de Screens</haxe_doc>
 		</closeCurrentPopin>
-		<openHud public="1" set="method" line="89">
+		<openHud public="1" set="method" line="90">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Ajoute le hud dans le conteneur de Hud</haxe_doc>
 		</openHud>
-		<closeHud public="1" set="method" line="97">
+		<closeHud public="1" set="method" line="98">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* Retire le hud du conteneur de Hud</haxe_doc>
 		</closeHud>
-		<startGame public="1" set="method" line="105">
+		<startGame public="1" set="method" line="106">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* met l'interface en mode jeu</haxe_doc>
 		</startGame>
-		<destroy public="1" set="method" line="113">
+		<destroy public="1" set="method" line="114">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
 		</destroy>
-		<new public="1" set="method" line="27"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="28"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* Manager (Singleton) en charge de gérer les écrans d'interface
  * @author Mathieu ANTHOINE</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -4743,33 +4864,20 @@
 			<t path="com.isartdigital.perle.game.managers.GeneratorDescription"/>
 			<haxe_doc>* description of the generator link te this button</haxe_doc>
 		</myGeneratorDesc>
-		<refBuilding><x path="Int"/></refBuilding>
-		<resourceType>
-			<e path="com.isartdigital.perle.game.managers.GeneratorType"/>
-			<haxe_doc>* type of generator which had by this button</haxe_doc>
-		</resourceType>
-		<init public="1" set="method" line="59"><f a="pPosition:pRefBuilding">
-	<c path="pixi.core.math.Point"/>
-	<x path="Int"/>
-	<x path="Void"/>
-</f></init>
-		<setMyGenerator public="1" set="method" line="64"><f a="pType">
-	<e path="com.isartdigital.perle.game.managers.GeneratorType"/>
-	<x path="Void"/>
-</f></setMyGenerator>
-		<_click set="method" line="112" override="1">
-			<f a="?pEvent">
-				<t path="pixi.interaction.EventTarget"/>
+		<setMyGeneratorDescription public="1" set="method" line="35">
+			<f a="pDesc">
+				<t path="com.isartdigital.perle.game.managers.GeneratorDescription"/>
 				<x path="Void"/>
 			</f>
-			<haxe_doc>* look if we had to active or desactive the button
-	 * @param data object contain the id and a boolean which said if we activate or desactivate the button</haxe_doc>
-		</_click>
-		<destroy public="1" set="method" line="117" override="1"><f a=""><x path="Void"/></f></destroy>
-		<new public="1" set="method" line="46">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* say if building is activate or not</haxe_doc>
-		</new>
+			<haxe_doc>* take the generator description
+	 * @param	pDesc the generator description</haxe_doc>
+		</setMyGeneratorDescription>
+		<_click set="method" line="39" override="1"><f a="?pEvent">
+	<t path="pixi.interaction.EventTarget"/>
+	<x path="Void"/>
+</f></_click>
+		<destroy public="1" set="method" line="45" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="27"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* ...
  * @author COQUERELLE Killian</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -4777,19 +4885,19 @@
 	<class path="com.isartdigital.perle.ui.contextual.HudContextual" params="" file="src/com/isartdigital/perle/ui/contextual/HudContextual.hx">
 		<extends path="pixi.core.display.Container"/>
 		<container static="1"><c path="pixi.core.display.Container"/></container>
-		<initClass public="1" set="method" line="20" static="1"><f a=""><x path="Void"/></f></initClass>
-		<addContainer public="1" set="method" line="25" static="1"><f a=""><x path="Void"/></f></addContainer>
+		<initClass public="1" set="method" line="22" static="1"><f a=""><x path="Void"/></f></initClass>
+		<addContainer public="1" set="method" line="27" static="1"><f a=""><x path="Void"/></f></addContainer>
 		<myVBuilding><c path="com.isartdigital.perle.game.virtual.VBuilding"/></myVBuilding>
-		<goldBtn public="1"><c path="com.isartdigital.perle.ui.contextual.ButtonProduction"/></goldBtn>
-		<init public="1" set="method" line="33"><f a="pVBuilding">
+		<virtualGoldBtn public="1"><c path="com.isartdigital.perle.game.virtual.VButtonProduction"/></virtualGoldBtn>
+		<init public="1" set="method" line="35"><f a="pVBuilding">
 	<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
 	<x path="Void"/>
 </f></init>
-		<activate public="1" set="method" line="43"><f a=""><x path="Void"/></f></activate>
-		<desactivate public="1" set="method" line="54"><f a=""><x path="Void"/></f></desactivate>
+		<activate public="1" set="method" line="47"><f a=""><x path="Void"/></f></activate>
+		<desactivate public="1" set="method" line="55"><f a=""><x path="Void"/></f></desactivate>
 		<alignCenter set="method" line="59"><f a=""><x path="Void"/></f></alignCenter>
 		<destroy public="1" set="method" line="64" override="1"><f a=""><x path="Void"/></f></destroy>
-		<new public="1" set="method" line="29"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* todo : finir
  * @author ambroise</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
@@ -4878,6 +4986,7 @@
 		<CONSTRUCTION/>
 		<HARVEST/>
 		<MOVING/>
+		<NONE/>
 		<meta>
 			<m n=":directlyUsed"/>
 			<m n=":flatEnum"/>
@@ -4906,25 +5015,35 @@
 	<class path="com.isartdigital.perle.ui.hud.Hud" params="" file="src/com/isartdigital/perle/ui/hud/Hud.hx">
 		<extends path="com.isartdigital.utils.ui.smart.SmartScreen"/>
 		<instance static="1"><c path="com.isartdigital.perle.ui.hud.Hud"/></instance>
-		<getInstance public="1" set="method" line="41" static="1">
+		<getInstance public="1" set="method" line="42" static="1">
 			<f a=""><c path="com.isartdigital.perle.ui.hud.Hud"/></f>
 			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique</haxe_doc>
 		</getInstance>
 		<currentBuildingHud><e path="com.isartdigital.perle.ui.hud.BuildingHudType"/></currentBuildingHud>
-		<buildingRecolte><c path="com.isartdigital.perle.ui.hud.building.BHHarvest"/></buildingRecolte>
-		<buildingTimeBased><c path="com.isartdigital.perle.ui.hud.building.BHConstruction"/></buildingTimeBased>
-		<buildingMovingBuilding><c path="com.isartdigital.perle.ui.hud.building.BHMoving"/></buildingMovingBuilding>
 		<containerBuildingHud><c path="pixi.core.display.Container"/></containerBuildingHud>
-		<showBuildingHud public="1" set="method" line="63"><f a="pNewBuildingHud:pVBuilding">
-	<e path="com.isartdigital.perle.ui.hud.BuildingHudType"/>
+		<changeBuildingHud public="1" set="method" line="72">
+			<f a="pNewBuildingHud:?pVBuilding">
+				<e path="com.isartdigital.perle.ui.hud.BuildingHudType"/>
+				<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* todo: move it to BuildingHud.hx ?
+	 * Show corresponding BuildingHud when player click on a building.
+	 * @param	pNewBuildingHud
+	 * @param	pVBuilding</haxe_doc>
+		</changeBuildingHud>
+		<hideBuildingHud public="1" set="method" line="99"><f a=""><x path="Void"/></f></hideBuildingHud>
+		<addListeners set="method" line="104"><f a=""><x path="Void"/></f></addListeners>
+		<onClickBuilding public="1" set="method" line="118"><f a="pCurrentState:pVBuilding">
+	<e path="com.isartdigital.perle.game.virtual.VBuildingState"/>
 	<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
 	<x path="Void"/>
-</f></showBuildingHud>
-		<hideBuildingHud public="1" set="method" line="85"><f a=""><x path="Void"/></f></hideBuildingHud>
-		<addListeners set="method" line="89"><f a=""><x path="Void"/></f></addListeners>
-		<onClickShop set="method" line="96"><f a=""><x path="Void"/></f></onClickShop>
-		<setAllTextValues public="1" set="method" line="106">
+</f></onClickBuilding>
+		<onClickShop set="method" line="132"><f a=""><x path="Void"/></f></onClickShop>
+		<onClickTribunal set="method" line="137"><f a=""><x path="Void"/></f></onClickTribunal>
+		<onClickListIntern set="method" line="142"><f a=""><x path="Void"/></f></onClickListIntern>
+		<setAllTextValues public="1" set="method" line="153">
 			<f a="value:isLevel:?type">
 				<x path="Float"/>
 				<x path="Bool"/>
@@ -4936,7 +5055,7 @@
 	 * @param	isLevel if we have to set on the level or not
 	 * @param	type the type of resource we want to set</haxe_doc>
 		</setAllTextValues>
-		<setTextValues set="method" line="122">
+		<setTextValues set="method" line="169">
 			<f a="pContainerName:pTextName:pValue">
 				<c path="String"/>
 				<c path="String"/>
@@ -4948,27 +5067,35 @@
 	 * @param	pTextName the name of the text
 	 * @param	pValue the value we want</haxe_doc>
 		</setTextValues>
-		<destroy public="1" set="method" line="137" override="1">
+		<removeToContainer public="1" set="method" line="177"><f a=""><x path="Void"/></f></removeToContainer>
+		<addToContainer public="1" set="method" line="181"><f a=""><x path="Void"/></f></addToContainer>
+		<destroy public="1" set="method" line="194" override="1">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
 		</destroy>
-		<new public="1" set="method" line="46"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="47"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* Classe en charge de gérer les informations du Hud
  * @author Ambroise RABIER et Vicktor Grenu</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="com.isartdigital.perle.ui.hud.building.BuildingHud" params="" file="src/com/isartdigital/perle/ui/hud/building/BuildingHud.hx">
 		<extends path="com.isartdigital.utils.ui.smart.SmartComponent"/>
+		<VBUILDING_STATE_TO_BH_TYPE public="1" set="null" line="14" static="1"><x path="Map">
+	<e path="com.isartdigital.perle.game.virtual.VBuildingState"/>
+	<e path="com.isartdigital.perle.ui.hud.BuildingHudType"/>
+</x></VBUILDING_STATE_TO_BH_TYPE>
 		<virtualBuilding public="1" static="1"><c path="com.isartdigital.perle.game.virtual.VBuilding"/></virtualBuilding>
-		<linkVirtualBuilding public="1" set="method" line="13" static="1"><f a="pVBuilding">
+		<linkVirtualBuilding public="1" set="method" line="22" static="1"><f a="pVBuilding">
 	<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
 	<x path="Void"/>
 </f></linkVirtualBuilding>
-		<unlinkVirtualBuilding public="1" set="method" line="17" static="1"><f a="pVBuilding">
+		<unlinkVirtualBuilding public="1" set="method" line="26" static="1"><f a="pVBuilding">
 	<c path="com.isartdigital.perle.game.virtual.VBuilding"/>
 	<x path="Void"/>
 </f></unlinkVirtualBuilding>
-		<new public="1" set="method" line="22"><f a="?pID">
+		<init public="1" set="method" line="35"><f a=""><x path="Void"/></f></init>
+		<addListeners set="method" line="39"><f a=""><x path="Void"/></f></addListeners>
+		<new public="1" set="method" line="31"><f a="?pID">
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
@@ -4978,36 +5105,216 @@
 	</class>
 	<class path="com.isartdigital.perle.ui.hud.building.BHConstruction" params="" file="src/com/isartdigital/perle/ui/hud/building/BHConstruction.hx">
 		<extends path="com.isartdigital.perle.ui.hud.building.BuildingHud"/>
-		<new public="1" set="method" line="10"><f a=""><x path="Void"/></f></new>
+		<instance static="1"><c path="com.isartdigital.perle.ui.hud.building.BHConstruction"/></instance>
+		<getInstance public="1" set="method" line="12" static="1"><f a=""><c path="com.isartdigital.perle.ui.hud.building.BHConstruction"/></f></getInstance>
+		<destroy public="1" set="method" line="21" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="17"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* ...
  * @author ambroise</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="com.isartdigital.perle.ui.hud.building.BHHarvest" params="" file="src/com/isartdigital/perle/ui/hud/building/BHHarvest.hx">
 		<extends path="com.isartdigital.perle.ui.hud.building.BuildingHud"/>
-		<vBuildingRef public="1" static="1"><c path="com.isartdigital.perle.game.virtual.VBuilding"/></vBuildingRef>
-		<btnRemove><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnRemove>
+		<instance static="1"><c path="com.isartdigital.perle.ui.hud.building.BHHarvest"/></instance>
+		<getInstance public="1" set="method" line="25" static="1"><f a=""><c path="com.isartdigital.perle.ui.hud.building.BHHarvest"/></f></getInstance>
+		<btnMove><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnMove>
 		<btnDescription><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnDescription>
-		<btnHide><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnHide>
-		<buildingRef><c path="com.isartdigital.perle.game.sprites.Building"/></buildingRef>
-		<init public="1" set="method" line="30">
-			<f a=""><x path="Void"/></f>
-			<haxe_doc>* @param	pVBuilding</haxe_doc>
-		</init>
-		<addListeners set="method" line="34"><f a=""><x path="Void"/></f></addListeners>
-		<onClickRemove set="method" line="46"><f a=""><x path="Void"/></f></onClickRemove>
-		<onClickDescription set="method" line="51"><f a=""><x path="Void"/></f></onClickDescription>
-		<onClickHide set="method" line="58"><f a=""><x path="Void"/></f></onClickHide>
-		<new public="1" set="method" line="23"><f a=""><x path="Void"/></f></new>
+		<btnClose><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnClose>
+		<addListeners set="method" line="34" override="1"><f a=""><x path="Void"/></f></addListeners>
+		<onClickMove set="method" line="43"><f a=""><x path="Void"/></f></onClickMove>
+		<onClickDescription set="method" line="48"><f a=""><x path="Void"/></f></onClickDescription>
+		<onClickClose set="method" line="52"><f a=""><x path="Void"/></f></onClickClose>
+		<destroy public="1" set="method" line="56" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* 
  * @author Emeline Berenguier</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="com.isartdigital.perle.ui.hud.building.BHMoving" params="" file="src/com/isartdigital/perle/ui/hud/building/BHMoving.hx">
 		<extends path="com.isartdigital.perle.ui.hud.building.BuildingHud"/>
-		<new public="1" set="method" line="10"><f a=""><x path="Void"/></f></new>
+		<instance static="1"><c path="com.isartdigital.perle.ui.hud.building.BHMoving"/></instance>
+		<getInstance public="1" set="method" line="21" static="1"><f a=""><c path="com.isartdigital.perle.ui.hud.building.BHMoving"/></f></getInstance>
+		<btnCancel><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnCancel>
+		<btnConfirm><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnConfirm>
+		<cantBuildHere public="1" set="method" line="30"><f a=""><x path="Void"/></f></cantBuildHere>
+		<addListeners set="method" line="34" override="1"><f a=""><x path="Void"/></f></addListeners>
+		<onClickCancel set="method" line="41"><f a=""><x path="Void"/></f></onClickCancel>
+		<onClickConfirm set="method" line="52"><f a=""><x path="Void"/></f></onClickConfirm>
+		<destroy public="1" set="method" line="59" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>* ...
  * @author ambroise</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<typedef path="com.isartdigital.perle.ui.hud.ftue.Dialogue" params="" file="src/com/isartdigital/perle/ui/hud/ftue/FtueUI.hx" module="com.isartdigital.perle.ui.hud.ftue.FtueUI"><a>
+	<npc_text><c path="String"/></npc_text>
+	<npc><c path="String"/></npc>
+</a></typedef>
+	<class path="com.isartdigital.perle.ui.hud.ftue.FtueUI" params="" file="src/com/isartdigital/perle/ui/hud/ftue/FtueUI.hx">
+		<extends path="com.isartdigital.utils.ui.smart.SmartScreen"/>
+		<WIREFRAME get="inline" set="null" line="24" static="1"><c path="String"/></WIREFRAME>
+		<WIREFRAME_BUTTON get="inline" set="null" line="25" static="1"><c path="String"/></WIREFRAME_BUTTON>
+		<WIREFRAME_HELL get="inline" set="null" line="26" static="1"><c path="String"/></WIREFRAME_HELL>
+		<WIREFRAME_HEAVEN get="inline" set="null" line="27" static="1"><c path="String"/></WIREFRAME_HEAVEN>
+		<WIREFRAME_NAME get="inline" set="null" line="28" static="1"><c path="String"/></WIREFRAME_NAME>
+		<WIREFRAME_SPEACH get="inline" set="null" line="29" static="1"><c path="String"/></WIREFRAME_SPEACH>
+		<actualDialogue public="1" static="1"><x path="Int"/></actualDialogue>
+		<numberOfDialogue public="1" static="1"><x path="Int"/></numberOfDialogue>
+		<firstToSpeak public="1" static="1"><c path="String"/></firstToSpeak>
+		<lNpc_dialogue_ftue public="1" static="1"><c path="Array"><c path="Array"><c path="Array"><c path="String"/></c></c></c></lNpc_dialogue_ftue>
+		<instance static="1">
+			<c path="com.isartdigital.perle.ui.hud.ftue.FtueUI"/>
+			<haxe_doc>* instance unique de la classe FtueUI</haxe_doc>
+		</instance>
+		<getInstance public="1" set="method" line="58" static="1">
+			<f a=""><c path="com.isartdigital.perle.ui.hud.ftue.FtueUI"/></f>
+			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
+	 * @return instance unique</haxe_doc>
+		</getInstance>
+		<btnNext><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnNext>
+		<npc_name><c path="com.isartdigital.utils.ui.smart.TextSprite"/></npc_name>
+		<npc_speach><c path="com.isartdigital.utils.ui.smart.TextSprite"/></npc_speach>
+		<closeFtue set="method" line="75"><f a=""><x path="Void"/></f></closeFtue>
+		<setWireframe set="method" line="81"><f a=""><x path="Void"/></f></setWireframe>
+		<onClickNext set="method" line="89"><f a=""><x path="Void"/></f></onClickNext>
+		<createText public="1" set="method" line="95"><f a=""><x path="Void"/></f></createText>
+		<changeAlpha set="method" line="111"><f a="pName">
+	<c path="String"/>
+	<x path="Void"/>
+</f></changeAlpha>
+		<destroy public="1" set="method" line="125" override="1">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
+		</destroy>
+		<new set="method" line="66">
+			<f a="?pID">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* constructeur privé pour éviter qu'une instance soit créée directement</haxe_doc>
+		</new>
+		<haxe_doc>* ...
+ * @author Rafired</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="com.isartdigital.utils.ui.Popin" params="" file="src/com/isartdigital/utils/ui/Popin.hx">
+		<extends path="com.isartdigital.utils.ui.UIComponent"/>
+		<new public="1" set="method" line="11"><f a="?pID">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>* Classe de base des PopIn
+ * Toutes les popin d'interface héritent de cette classe
+ * @author Mathieu ANTHOINE</haxe_doc>
+	</class>
+	<class path="com.isartdigital.utils.ui.smart.SmartPopin" params="" file="src/com/isartdigital/utils/ui/smart/SmartPopin.hx">
+		<extends path="com.isartdigital.utils.ui.Popin"/>
+		<new public="1" set="method" line="12"><f a="?pID">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>* ...
+ * @author Mathieu Anthoine</haxe_doc>
+	</class>
+	<class path="com.isartdigital.perle.ui.popin.InternPopin" params="" file="src/com/isartdigital/perle/ui/popin/InternPopin.hx">
+		<extends path="com.isartdigital.utils.ui.smart.SmartPopin"/>
+		<side><c path="com.isartdigital.utils.ui.smart.TextSprite"/></side>
+		<internName><c path="com.isartdigital.utils.ui.smart.TextSprite"/></internName>
+		<btnSend><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnSend>
+		<btnDismiss><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnDismiss>
+		<btnSeeAll><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnSeeAll>
+		<btnClose><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnClose>
+		<onClose set="method" line="50"><f a=""><x path="Void"/></f></onClose>
+		<onSeeAll set="method" line="55"><f a=""><x path="Void"/></f></onSeeAll>
+		<destroy public="1" set="method" line="60" override="1"><f a=""><x path="Void"/></f></destroy>
+		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
+		<haxe_doc>* ...
+ * @author de Toffoli Matthias</haxe_doc>
+	</class>
+	<class path="com.isartdigital.perle.ui.popin.TribunalPopin" params="" file="src/com/isartdigital/perle/ui/popin/TribunalPopin.hx">
+		<extends path="com.isartdigital.utils.ui.smart.SmartPopin"/>
+		<instance static="1">
+			<c path="com.isartdigital.perle.ui.popin.TribunalPopin"/>
+			<haxe_doc>* instance unique de la classe TribunalPopin</haxe_doc>
+		</instance>
+		<getInstance public="1" set="method" line="45" static="1">
+			<f a=""><c path="com.isartdigital.perle.ui.popin.TribunalPopin"/></f>
+			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
+	 * @return instance unique</haxe_doc>
+		</getInstance>
+		<btnClose><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnClose>
+		<btnShop><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnShop>
+		<btnIntern><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnIntern>
+		<btnHeaven><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnHeaven>
+		<btnHell><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnHell>
+		<btnUpgrade><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnUpgrade>
+		<tribunalLevel><c path="com.isartdigital.utils.ui.smart.TextSprite"/></tribunalLevel>
+		<timer><c path="com.isartdigital.utils.ui.smart.TextSprite"/></timer>
+		<fateName><c path="com.isartdigital.utils.ui.smart.TextSprite"/></fateName>
+		<fateAdjective><c path="com.isartdigital.utils.ui.smart.TextSprite"/></fateAdjective>
+		<upgradePrice><c path="com.isartdigital.utils.ui.smart.TextSprite"/></upgradePrice>
+		<infoHeaven><c path="com.isartdigital.utils.ui.smart.TextSprite"/></infoHeaven>
+		<infoHell><c path="com.isartdigital.utils.ui.smart.TextSprite"/></infoHell>
+		<infoSoul><c path="com.isartdigital.utils.ui.smart.TextSprite"/></infoSoul>
+		<onClose set="method" line="105"><f a=""><x path="Void"/></f></onClose>
+		<onShop set="method" line="110"><f a=""><x path="Void"/></f></onShop>
+		<onIntern set="method" line="114"><f a=""><x path="Void"/></f></onIntern>
+		<onHeaven set="method" line="119"><f a=""><x path="Void"/></f></onHeaven>
+		<onHell set="method" line="123"><f a=""><x path="Void"/></f></onHell>
+		<onUpgrade set="method" line="127"><f a=""><x path="Void"/></f></onUpgrade>
+		<rewriteUpgradeTxt set="method" line="132"><f a=""><x path="Void"/></f></rewriteUpgradeTxt>
+		<destroy public="1" set="method" line="140" override="1">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
+		</destroy>
+		<new set="method" line="53">
+			<f a="?pID">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>* constructeur privé pour éviter qu'une instance soit créée directement</haxe_doc>
+		</new>
+		<haxe_doc>* ...
+ * @author de Toffoli Matthias</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="com.isartdigital.perle.ui.popin.listInternPopin.InternElement" params="" file="src/com/isartdigital/perle/ui/popin/listInternPopin/InternElement.hx">
+		<extends path="com.isartdigital.utils.ui.smart.SmartComponent"/>
+		<new public="1" set="method" line="16"><f a="?pID">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>* ...
+ * @author de Toffoli Matthias</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin" params="" file="src/com/isartdigital/perle/ui/popin/listInternPopin/ListInternPopin.hx">
+		<extends path="com.isartdigital.utils.ui.smart.SmartPopin"/>
+		<instance static="1">
+			<c path="com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin"/>
+			<haxe_doc>* instance unique de la classe InternPopin</haxe_doc>
+		</instance>
+		<getInstance public="1" set="method" line="33" static="1">
+			<f a=""><c path="com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin"/></f>
+			<haxe_doc>* Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
+	 * @return instance unique</haxe_doc>
+		</getInstance>
+		<btnClose><c path="com.isartdigital.utils.ui.smart.SmartButton"/></btnClose>
+		<btnLeft><c path="com.isartdigital.utils.ui.smart.UISprite"/></btnLeft>
+		<btnRight><c path="com.isartdigital.utils.ui.smart.UISprite"/></btnRight>
+		<onLeft set="method" line="57"><f a=""><x path="Void"/></f></onLeft>
+		<onRight set="method" line="61"><f a=""><x path="Void"/></f></onRight>
+		<onClose set="method" line="65"><f a=""><x path="Void"/></f></onClose>
+		<destroy public="1" set="method" line="73" override="1">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* détruit l'instance unique et met sa référence interne à null</haxe_doc>
+		</destroy>
+		<new set="method" line="41">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>* constructeur privé pour éviter qu'une instance soit créée directement</haxe_doc>
+		</new>
+		<haxe_doc>* ...
+ * @author de Toffoli Matthias</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="com.isartdigital.utils.Config" params="" file="src/com/isartdigital/utils/Config.hx">
@@ -6120,16 +6427,6 @@
  * @version 0.4.0
  * @author Mathieu ANTHOINE</haxe_doc>
 		<meta><m n=":directlyUsed"/></meta>
-	</class>
-	<class path="com.isartdigital.utils.ui.Popin" params="" file="src/com/isartdigital/utils/ui/Popin.hx">
-		<extends path="com.isartdigital.utils.ui.UIComponent"/>
-		<new public="1" set="method" line="11"><f a="?pID">
-	<c path="String"/>
-	<x path="Void"/>
-</f></new>
-		<haxe_doc>* Classe de base des PopIn
- * Toutes les popin d'interface héritent de cette classe
- * @author Mathieu ANTHOINE</haxe_doc>
 	</class>
 	<class path="com.isartdigital.utils.ui.UIPosition" params="" file="src/com/isartdigital/utils/ui/UIPosition.hx">
 		<LEFT public="1" get="inline" set="null" line="14" static="1"><c path="String"/></LEFT>
