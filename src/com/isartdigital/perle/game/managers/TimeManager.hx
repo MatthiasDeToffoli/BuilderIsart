@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
+import com.isartdigital.perle.game.sprites.Quest;
+import com.isartdigital.perle.game.sprites.Quest.TimeLine;
 import haxe.Timer;
 import eventemitter3.EventEmitter;
 
@@ -28,7 +30,7 @@ typedef TimeElementResource = {
  */
 typedef TimeElementQuest = {
 	var desc:TimeQuestDescription;
-	var quest:Dynamic; // todo type Quest ?
+	//var quest:Quest;
 }
 
 
@@ -71,6 +73,11 @@ class TimeManager {
 	
 	public static function buildFromSave (pSave:Save):Void {
 		var lLength:Int = pSave.timesResource.length;
+		
+		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
+		var lLengthQuest:Int = pSave.timesQuest.length;
+		
+		trace(lLengthQuest);
 		for (i in 0...lLength) {
 			listResource.push({
 				desc: pSave.timesResource[i]
@@ -78,12 +85,22 @@ class TimeManager {
 			
 		}
 		
-		lLength = pSave.timesQuest.length;
-		for (i in 0...lLength) {
-			listQuest.push({
-				desc: pSave.timesQuest[i],
-				quest:  {lol:5} // todo : ResourceManager.getQuest ? ou QuestManager.getQuest ? considéré comme ressource ou ?
-			});
+		//Not working don't touch!
+		
+		for (i in 0...lLengthQuest){
+			var lQuestDatas:TimeElementQuest = {
+			desc: {
+				refIntern: lQuestArraySaved[i].refIntern,
+				progress: lQuestArraySaved[i].progress,
+				steps: lQuestArraySaved[i].steps,
+				stepIndex: lQuestArraySaved[i].stepIndex,
+				end: lQuestArraySaved[i].end
+			},
+			
+			//quest: lQuestArraySaved[i].quest
+			};
+			listQuest.push(lQuestDatas);
+			trace("Save Id" + lQuestDatas.desc.refIntern);
 		}
 		
 		lastKnowTime = pSave.lastKnowTime;
@@ -135,18 +152,41 @@ class TimeManager {
 			}
 	}
 	
-	// todo : type quest instead of dynamic
-	public static function createTimeQuest (pId:Int, pSteps:Array<Float>, pEnd:Float, pQuest:Dynamic):TimeElementQuest {
+	/**
+	 * Create a new quest time
+	 * @param	pId Id of the quest
+	 * @param	pTimeLine Steps and total length of the quest
+	 * @param	pQuest Reference to the quest
+	 * @return  The specific Time Element for the quest
+	 */
+	//public static function createTimeQuest (pId:Int, pTimeLine:TimeLine, pQuest:Quest):TimeElementQuest {
+		//var lTimeElement:TimeElementQuest = {
+			//desc: {
+				//refIntern:pId,
+				//progress:0,
+				//steps:pTimeLine.eventChoice,
+				//stepIndex:0,
+				//end:pTimeLine.max
+			//},
+			//quest: pQuest
+		//};
+		//
+		//listQuest.push(lTimeElement);
+		//return lTimeElement;
+	//}
+	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeElementQuest {
 		var lTimeElement:TimeElementQuest = {
 			desc: {
-				refIntern:pId,
-				progress:0,
-				steps:pSteps,
-				stepIndex:0,
-				end:pEnd
+				//ou pDatasQuest.desc
+				refIntern: pDatasQuest.refIntern,
+				progress: pDatasQuest.progress,
+				steps: pDatasQuest.steps,
+				stepIndex:pDatasQuest.stepIndex,
+				end:pDatasQuest.end
 			},
-			quest: pQuest
+			//quest: pQuest
 		};
+		
 		listQuest.push(lTimeElement);
 		return lTimeElement;
 	}
@@ -154,7 +194,7 @@ class TimeManager {
 	/**
 	 * Find the corresponding TimeElement whit an pId
 	 * @param	pId
-	 * @return
+	 * @return	the required TimeElement
 	 */
 	private static function getTimeElement (pId:Int):TimeElementResource {
 		var lLength:Int = listResource.length;
@@ -190,11 +230,17 @@ class TimeManager {
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeElementQuest):Void {
-		if (pElement.desc.progress == pElement.desc.end) {
+		//trace("progress" + pElement.desc.progress);
+		//trace("end" + pElement.desc.end);
+		//trace("update quest");
+		if (pElement.desc.progress == pElement.desc.steps[pElement.desc.stepIndex]) {
+			//trace("next step");
 			pElement.desc.stepIndex++;
 			
-			if (pElement.desc.stepIndex == pElement.desc.steps.length - 1)
-				eTimeQuest.emit(EVENT_QUEST_END);
+			if (pElement.desc.stepIndex == pElement.desc.steps.length - 1){
+				//trace("end step");
+				eTimeQuest.emit(EVENT_QUEST_END, pElement);
+			}
 		}
 		else
 			trace("nextStepQuest not ready yet !");
@@ -208,6 +254,7 @@ class TimeManager {
 		var lTimeNow:Float = Date.now().getTime();
 		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow); // todo: moche ?
 		var lLength:Int = listResource.length;
+		var lLengthQuest:Int = listQuest.length;
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
@@ -216,8 +263,8 @@ class TimeManager {
 			updateResource(listResource[i], lElapsedTime);
 		}
 		
-		lLength = listQuest.length;
-		for (i in 0...lLength) {
+		for (i in 0...lLengthQuest) {
+			//trace("length time loop " + lLengthQuest);
 			updateQuest(listQuest[i], lElapsedTime);
 		}
 	}
@@ -264,12 +311,14 @@ class TimeManager {
 			pElement.desc.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
-			eTimeQuest.emit(EVENT_QUEST_STEP, pElement.quest); 
+			//trace("event!");
+			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
 		}
 	}
 	
 	public static function destroyTimeElement (pId:Int):Void {
 		var lLength:Int = listResource.length;
+		var lLengthQuest:Int = listQuest.length;
 		
 		for (i in 0...lLength) {
 			if (pId == listResource[i].desc.refTile){
@@ -278,6 +327,12 @@ class TimeManager {
 			}
 		}
 		
+		for (j in 0...lLengthQuest) {
+			if (pId == listQuest[j].desc.refIntern){
+				listQuest.splice(j, 1);
+				break;
+			}
+		}
 		/*lLength = listConstruction; // va arriver
 		for (i in 0...lLength) {
 			if (pId == listConstruction[i].desc.refTile){

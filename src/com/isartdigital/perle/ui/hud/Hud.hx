@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud;
 
 
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.sprites.Quest;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
@@ -130,6 +131,9 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickListIntern(){
+		//Todo: Temporaire! En attendant d'avoir plus de précision sur le wireframe
+		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		var lQuest:Quest = new Quest(lRandomEvent);
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 		hide();
 	}

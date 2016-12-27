@@ -3,6 +3,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.Quest;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.ftue.FtueUI;
 import haxe.Json;
@@ -46,7 +47,12 @@ typedef TimeQuestDescription = {
 	var steps:Array<Float>;
 	var stepIndex:Int;
 	var end:Float;
+	//var quest:Quest;
 }
+
+//typedef AllTimeQuestDescription = {
+	//var arrayQuests:Array<TimeQuestDescription>;
+//}
 
 typedef GeneratorDescription = {
 	var type:GeneratorType;
@@ -285,6 +291,7 @@ class SaveManager {
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			IdManager.buildFromSave(currentSave);
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
+			QuestsManager.initWithSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();
@@ -298,11 +305,12 @@ class SaveManager {
 	private static function createWhitoutSave():Void {
 		TimeManager.buildWhitoutSave(); // always begore ResourcesManager
 		IdManager.buildWhitoutSave();
-		ResourcesManager.initWithoutSave(); 
+		ResourcesManager.initWithoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
 		TimeManager.startTimeLoop();
 		SaveManager.save();
+		QuestsManager.initWithoutSave();
 	}
 	
 	/**
