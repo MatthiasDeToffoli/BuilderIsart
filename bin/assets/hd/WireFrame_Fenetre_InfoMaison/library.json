@@ -1,5 +1,5 @@
 {
- "md5": "095f62475b18d8b61dc176be6404fd1f",
+ "md5": "fabfdcfe0cdfa8d93953e8bfb96045e6",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -61,7 +61,7 @@
        ]
       },
       {
-       "symbol": "_buttonUpInfo_down",
+       "symbol": "_buttonBack_down",
        "origin": [
         212.5,
         142.5
@@ -74,7 +74,7 @@
        ]
       },
       {
-       "symbol": "_buttonBack_down",
+       "symbol": "_buttonUpInfo_down",
        "origin": [
         212.5,
         142.5
@@ -87,7 +87,7 @@
        ]
       },
       {
-       "symbol": "_buttonUpInfo_up",
+       "symbol": "_buttonBack_up",
        "origin": [
         210.5,
         140.5
@@ -100,7 +100,7 @@
        ]
       },
       {
-       "symbol": "_buttonBack_up",
+       "symbol": "_buttonUpInfo_up",
        "origin": [
         210.5,
         140.5
@@ -232,6 +232,31 @@
       {
        "baseClass": "TextSprite",
        "data": {
+        "y": -42.2,
+        "text": "XXXX",
+        "x": -109.5,
+        "width": 219,
+        "font": "64px customTypo*",
+        "align": "left",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_buttonUpgrade_RessourceCost_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1071,
+        1426,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
         "y": -55.6,
         "text": "Level_XX",
         "x": -249.6,
@@ -248,7 +273,7 @@
         0
        ],
        "rect": [
-        1071,
+        1074,
         1426,
         1,
         1
@@ -273,107 +298,7 @@
         0
        ],
        "rect": [
-        1074,
-        1426,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.2,
-        "text": "XXXX",
-        "x": -109.5,
-        "width": 219,
-        "font": "64px customTypo*",
-        "align": "left",
-        "height": 84.45,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_buttonUpgrade_RessourceCost_TXT",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
         1077,
-        1426,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62.8,
-        "text": "Destroy",
-        "x": -218.25,
-        "width": 438.1,
-        "font": "100px customTypo*",
-        "align": "center",
-        "height": 115.75,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_buttonBack_TXT",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1080,
-        1426,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -73.25,
-        "text": "Upgrade",
-        "x": -204.1,
-        "width": 436.8,
-        "font": "100px customTypo*",
-        "align": "center",
-        "height": 115.75,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_buttonUpgrade_TXT",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1083,
-        1426,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -57.3,
-        "text": "BuildingNameXXXX",
-        "x": -344.6,
-        "width": 689.15,
-        "font": "76px customTypo*",
-        "align": "center",
-        "height": 114.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "Building_Name_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1086,
         1426,
         1,
         1
@@ -398,7 +323,107 @@
         0
        ],
        "rect": [
+        1080,
+        1426,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62.8,
+        "text": "Destroy",
+        "x": -218.25,
+        "width": 438.1,
+        "font": "100px customTypo*",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_buttonBack_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1083,
+        1426,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -57.9,
+        "text": "Upgrade",
+        "x": -218.4,
+        "width": 436.8,
+        "font": "96px customTypo*",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_buttonUpgrade_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1086,
+        1426,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -57.3,
+        "text": "BuildingNameXXXX",
+        "x": -344.6,
+        "width": 689.15,
+        "font": "76px customTypo*",
+        "align": "center",
+        "height": 114.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "Building_Name_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
         1089,
+        1426,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -56.55,
+        "text": "Destroy",
+        "x": -181.05,
+        "width": 362.1,
+        "font": "96px Times New Roman",
+        "align": "center",
+        "height": 113.15,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_buttonDestroy_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1092,
         1426,
         1,
         1
@@ -423,7 +448,7 @@
         0
        ],
        "rect": [
-        1092,
+        1095,
         1426,
         1,
         1
@@ -448,7 +473,7 @@
         0
        ],
        "rect": [
-        1095,
+        1098,
         1426,
         1,
         1
@@ -473,7 +498,7 @@
         0
        ],
        "rect": [
-        1098,
+        1101,
         1426,
         1,
         1
@@ -498,7 +523,7 @@
         0
        ],
        "rect": [
-        1101,
+        1104,
         1426,
         1,
         1
@@ -647,8 +672,23 @@
        "duration": 1,
        "index": 0,
        "loc": [
-        -510.85,
-        352.95
+        -531.85,
+        342
+       ]
+      }
+     ],
+     "name": "UpgradeInfo"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonUpgradeInfo",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -531.2,
+        347.65
        ]
       }
      ],
@@ -657,13 +697,13 @@
     {
      "keyframes": [
       {
-       "ref": "Window_Infos_BackButton",
+       "ref": "~ButtonDelete",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
         490,
-        350.35
+        347.65
        ]
       }
      ],
@@ -692,14 +732,8 @@
     {
      "keyframes": [
       {
-       "ref": "~ButtonDelete",
-       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "loc": [
-        0,
-        2.6
-       ]
+       "index": 0
       }
      ],
      "name": "ButtonBack"
@@ -920,8 +954,6 @@
     {
      "keyframes": [
       {
-       "ref": "~ButtonUpgradeInfo",
-       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -1098,6 +1130,21 @@
       }
      ],
      "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonDestroy_text",
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -10.95,
+        0.75
+       ]
+      }
+     ],
+     "name": "Text"
     }
    ],
    "id": "~ButtonDelete",
@@ -1138,7 +1185,22 @@
        "index": 2
       }
      ],
-     "name": "Calque 1"
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonUpgrade_TXT",
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -5.9,
+        0
+       ]
+      }
+     ],
+     "name": "Text"
     }
    ],
    "id": "~ButtonUpgradeInfo",

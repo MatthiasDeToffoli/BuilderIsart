@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -167,10 +168,14 @@ class VBuilding extends VTile {
 			// if yes => todo : Phantom.linkedVBuilding = null;
 		}
 		
+		desactivate();
 		myContextualHud.destroy();
 		myContextualHud = null;
 		BuildingHud.unlinkVirtualBuilding(this);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
+		TimeManager.destroyTimeElement(tileDesc.id);
+		//ResourcesManager.destroyGenerator(tileDesc.id); // todo : @Matthias
+		
 		super.destroy();
 	}
 	

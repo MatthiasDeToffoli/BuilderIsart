@@ -72,9 +72,6 @@ class Virtual {
 	
 	// destroy : ATTENTION au lien vers une VTile dans Menu_BatimentConstruit...
 	
-	public function destroy ():Void {
-		//todo
-		desactivate();
-	}
+	public function destroy ():Void {}
 	
 }

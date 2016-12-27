@@ -1,5 +1,8 @@
 package com.isartdigital.perle.ui.popin;
 
+import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -17,6 +20,7 @@ class InfoBuilding extends SmartPopin {
 	private static var instance: InfoBuilding;
 	
 	private var btnExit:SmartButton;
+	private var btnSell:SmartButton;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -37,12 +41,21 @@ class InfoBuilding extends SmartPopin {
 			trace (children[i].name);
 			
 		btnExit = cast(getChildByName('CloseButton'), SmartButton);
+		btnSell = cast(getChildByName('SellButton'), SmartButton);
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
+		btnSell.on(MouseEventType.CLICK, onClickSell);
 	}
 	
 	private function onClickExit ():Void {
 		UIManager.getInstance().closeCurrentPopin();
+	}
+	
+	private function onClickSell ():Void {
+		UIManager.getInstance().closeCurrentPopin();
+		BuildingHud.virtualBuilding.destroy();
+		Hud.getInstance().hideBuildingHud();
+		SaveManager.save();
 	}
 	
 	/**

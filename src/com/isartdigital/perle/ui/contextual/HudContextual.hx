@@ -64,6 +64,7 @@ class HudContextual extends Container {
 	override public function destroy():Void {
 		desactivate();
 		myVBuilding.unlinkContextualHud();
+		myVBuilding = null;
 		container.removeChild(this);
 		super.destroy();
 	}

@@ -33,4 +33,10 @@ class VGround extends VTile {
 		graphic = cast(Ground.createGround(tileDesc), FlumpStateGraphic);
 		cast(graphic, Ground).linkedVirtualCell = this;
 	}
+	
+	override public function destroy():Void {
+		desactivate();
+		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].ground[tileDesc.mapX].remove(tileDesc.mapY);
+		super.destroy();
+	}
 }

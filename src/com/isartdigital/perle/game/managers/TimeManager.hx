@@ -156,7 +156,7 @@ class TimeManager {
 	 * @param	pId
 	 * @return
 	 */
-	public static function getTimeElement (pId:Int):TimeElementResource {
+	private static function getTimeElement (pId:Int):TimeElementResource {
 		var lLength:Int = listResource.length;
 		
 		for (i in 0...lLength) {
@@ -269,6 +269,24 @@ class TimeManager {
 		}
 	}
 	
+	public static function destroyTimeElement (pId:Int):Void {
+		var lLength:Int = listResource.length;
+		
+		for (i in 0...lLength) {
+			if (pId == listResource[i].desc.refTile){
+				listResource.splice(i, 1);
+				break;
+			}
+		}
+		
+		/*lLength = listConstruction; // va arriver
+		for (i in 0...lLength) {
+			if (pId == listConstruction[i].desc.refTile){
+				listConstruction.splice(i, 1);
+				break;
+			}
+		}*/
+	}
 	
 	
 	// destroy TimeElement : à réfléchir. Que sur commande de Vtile ?
