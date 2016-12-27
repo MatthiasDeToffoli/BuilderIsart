@@ -12,11 +12,16 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
+import com.isartdigital.perle.ui.screens.interns.Choice;
+import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import eventemitter3.EventEmitter;
+import js.Browser;
+import js.html.KeyboardEvent;
 import pixi.core.display.Container;
 
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
@@ -91,6 +96,14 @@ class Hud extends SmartScreen
 		}
 	}
 	
+	public function showInternEvent (pEvent:KeyboardEvent):Void {
+		if (pEvent.key != "i") return;
+		var eIntern:Choice = new Choice();
+		UIManager.getInstance().closeHud();
+		UIManager.getInstance().openScreen(eIntern);
+		Browser.window.removeEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
+	}
+	
 	// todo : called from any clic outside a building
 	public function hideBuildingHud ():Void {
 		changeBuildingHud(BuildingHudType.NONE);
@@ -104,6 +117,8 @@ class Hud extends SmartScreen
 		
 		var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
 		cast(SmartCheck.getChildByName(interMc, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		
+		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {

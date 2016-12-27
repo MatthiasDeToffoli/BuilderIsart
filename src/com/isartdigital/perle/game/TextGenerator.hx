@@ -26,12 +26,21 @@ class TextGenerator
 	 */
 	private function new() 
 	{
+		
+	}
+	
+	public function TraceTest():Void {
+		// show test
 		var situation:Array<String> = GetNewSituation();
 		trace(situation[0]);
 		trace("bad -> " + situation[1]);
 		trace("good -> " + situation[2]);
 	}
 	
+	/**
+	 * Create new intern choice
+	 * @return array of 3 texts [situation, badAnswer, goodAnswer]
+	 */
 	public static function GetNewSituation():Array<String>
 	{
 		var sentence:String = "";
@@ -44,14 +53,14 @@ class TextGenerator
 		
 		var subject:String = QuestDictionnary.subjects[Std.random(QuestDictionnary.subjects.length - 1)];
 		var index:Int = 0;
-		for (letter in QuestDictionnary.voye) 
+		for (letter in QuestDictionnary.vowel) 
 		{
 			if (letter == subject.charAt(0)) {
 				sentence += QuestDictionnary.preSubject[LetterType.VOYELLE];
 				break;
 			}
 			else {
-				if (index >= QuestDictionnary.voye.length - 1) sentence += QuestDictionnary.preSubject[LetterType.CONSONNE];
+				if (index >= QuestDictionnary.vowel.length - 1) sentence += QuestDictionnary.preSubject[LetterType.CONSONNE];
 			}
 			
 			index++;
@@ -85,9 +94,12 @@ class TextGenerator
 enum LetterType { VOYELLE; CONSONNE; }
 enum ActionType { BAD; GOOD; }
 
+/**
+ * QuestDictionnary used for create choice dynamically 
+ */
 class QuestDictionnary
 {
-	public static var voye:Array<String> = ["a", "e", "i", "o", "u", "y"];
+	public static var vowel:Array<String> = ["a", "e", "i", "o", "u", "y"];
 	public static var preSubject:Map<LetterType, String> = [LetterType.CONSONNE => "de ", LetterType.VOYELLE => "d'"];
 	
 	public static var intern:String = "votre stagiaire ";
