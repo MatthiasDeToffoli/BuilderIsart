@@ -67,7 +67,8 @@ class VButtonProduction //@TODO : extends classes for clipping
 		refBuilding = pRefBuilding;
 		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pType);
 		myHudContainer = pHud;
-		generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
+		if (myGeneratorDesc != null) // todo : @Matthias : It seem that myGeneratorDesc == null on any newly created house...
+			generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
 	}
 	
 	/**
