@@ -1,5 +1,6 @@
 package com.isartdigital.utils.ui;
 
+import com.isartdigital.perle.Main;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -50,8 +51,12 @@ class UIComponent extends GameObject
 	/**
 	 * permet de construire l'UIComponent à partir de l'UIBuilder
 	 */
-	public function build (pFrame:Int=0) : Void {
-		var lItems:Array<UIPositionable> = UIBuilder.build(componentName,pFrame);
+	public function build (pFrame:Int = 0) : Void {
+		var lWireFrameName:String = Main.getInstance().getWireFrameName(componentName);
+		var lItems:Array<UIPositionable> = UIBuilder.build(
+			lWireFrameName != null ? lWireFrameName : componentName,
+			pFrame
+		);
 		
 		for (lItem in lItems) {
 			addChild(lItem.item);

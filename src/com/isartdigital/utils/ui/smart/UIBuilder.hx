@@ -1,5 +1,7 @@
 package com.isartdigital.utils.ui.smart;
 
+import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.Main;
 import com.isartdigital.utils.loader.GameLoader;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.UIPosition;
@@ -45,7 +47,12 @@ class UIBuilder
 			
 			lKeyFrame = lLayer.getKeyframeForFrame(pFrame);
 			
-			if (lKeyFrame == null || lKeyFrame.symbol==null) continue;		
+			if (lKeyFrame == null || lKeyFrame.symbol==null) continue;
+				
+			if ((lKeyFrame.symbol.data == null || lKeyFrame.symbol.data.className == null) &&
+				Main.getInstance().getClassName(lLayer.name) != null) {
+				lKeyFrame.symbol.data = { className:Main.getInstance().getClassName(lLayer.name) };
+			}
 			
 			if (lKeyFrame.symbol.data != null && lKeyFrame.symbol.data.className != null) lObj=Type.createInstance(Type.resolveClass(lKeyFrame.symbol.data.className), []);
 			else if (lKeyFrame.symbol.baseClass == "Flipbook") lObj = new UIMovie(lKeyFrame.symbolId);

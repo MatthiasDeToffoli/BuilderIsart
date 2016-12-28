@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.popin.listInternPopin.InternElement;
+import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
@@ -43,6 +44,8 @@ class Main extends EventEmitter
 	
 	private var frames (default, null):Int = 0;
 	private var pathClass(default, null):Map<String, String> = new Map<String, String>();
+	private var wireFrameMCToClassName (default, null):Map<String, String> = new Map<String, String>();
+	private var classNameNoPathToWireFramMC (default, null):Map<String, String> = new Map<String, String>();
 	
 	private static function main ():Void {
 		Main.getInstance();
@@ -65,6 +68,7 @@ class Main extends EventEmitter
 		super();
 		
 		forceImport();
+		doUIBuilderHack();
 		
 		var lOptions:RenderingOptions = {};
 		lOptions.antialias = true;
@@ -238,6 +242,14 @@ class Main extends EventEmitter
 			throw "NoPath Found for Class: " + pClassName;
 	}
 	
+	public function getClassName (pMovieClipName:String):String {
+		return wireFrameMCToClassName[pMovieClipName];
+	}
+	
+	public function getWireFrameName (pClassNameNoPath:String):String {
+		return classNameNoPathToWireFramMC[pClassNameNoPath];
+	}
+	
 	/**
 	 * ForceImport of Class, and make them usable for getPath method,
 	 * doesn't support two time the same ClassName whit different path !
@@ -260,6 +272,30 @@ class Main extends EventEmitter
 				throw ("Conflict in pathClass whit " + lClassName);
 			
 			pathClass[lClassNameNoPath] = lClassName;
+		}
+	}
+	
+	/**
+	 * Whit Mathieu UIBuilder.hx, we are supposed to give a persistent data 
+	 * whit key 'className' and whit value the in code className whit path.
+	 * Whit that function and a little change in UIBuilder line ~50 we can change that.
+	 * And a little change in UIComponent line ~54
+	 */
+	private function doUIBuilderHack ():Void {
+		var mapMovieClipToClass:Map<String, Class<Dynamic>> = [
+			"Shop_Item_List" => ShopCaroussel
+		];
+		var lClassName:String;
+		var lClassNameNoPath:String;
+		
+		for (lMovieClipName in mapMovieClipToClass.keys()) {
+			lClassName = Type.getClassName(mapMovieClipToClass[lMovieClipName]);
+			lClassNameNoPath = lClassName.substring(lClassName.lastIndexOf(".") + 1);
+			
+			// wireFrameMCToClassName["Shop_Item_List"] = "com.isartdigital.perle.ui.popin.shop.ShopCaroussel";
+			wireFrameMCToClassName[lMovieClipName] = lClassName;
+			// classNameNoPathToWireFramMC["ShopCaroussel"] = "Shop_Item_List";
+			classNameNoPathToWireFramMC[lClassNameNoPath] = lMovieClipName;
 		}
 	}
 	
