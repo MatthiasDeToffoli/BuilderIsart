@@ -88,6 +88,9 @@ typedef Save = {
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
+	var playerLevel:Int;
+	var playerExp:Array<Float>;
+	var itemUnlocked:Array<String>;
 	// add what you want to save.
 }
 
@@ -108,6 +111,11 @@ class SaveManager {
 		var buildingSave:Array<TileDescription> = [];
 		var groundSave:Array<TileDescription> = [];
 		var regionSave:Array<RegionDescription> = [];
+		var expSave:Array<Float> = [];
+		var itemUnlock:Array<String> = [];
+		
+		expSave = ExperienceManager.playerExperience;
+		itemUnlock = ExperienceManager.itemUnlocked;
 		
 		// factoriser
 		for (regionX in RegionManager.worldMap.keys()) {
@@ -144,7 +152,10 @@ class SaveManager {
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
-			ftueProgress : FtueUI.actualDialogue
+			ftueProgress : FtueUI.actualDialogue,
+			playerLevel : ExperienceManager.playerLevel,
+			playerExp : expSave,
+			itemUnlocked : itemUnlock
 		};
 		setLocalStorage(currentSave);
 	}

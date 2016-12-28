@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.FtueManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
@@ -56,6 +57,7 @@ class GameManager {
 		RegionManager.init();
 		SaveManager.createFromSave();
 		ClippingManager.update();
+		ExperienceManager.setExpToLevelUp();
 		
 		
 		FtueManager.createFtue();

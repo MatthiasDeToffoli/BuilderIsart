@@ -32,6 +32,8 @@ class Main extends EventEmitter
 {
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
 	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = "dialogue_ftue";
+	public static var EXPERIENCE_JSON_NAME(default, never):String = "experience";
+	public static var UNLOCK_ITEM_JSON_NAME(default, never):String = "item_to_unlock";
 	
 	private static var configPath:String = "config.json";	
 	private static var instance: Main;
@@ -164,6 +166,8 @@ class Main extends EventEmitter
 		lLoader.once(LoadEventType.COMPLETE, onLoadComplete);
 		//dialogue FTUE
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
+		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
+		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
 		
 		// affiche l'écran de préchargement
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen

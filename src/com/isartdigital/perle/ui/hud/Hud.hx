@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
@@ -130,11 +131,13 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void { // todo : temporaire
+		//ExperienceManager.addExp("All", 101);
 		Phantom.onClickShop('House');
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
 	}
 	
 	private function onClickTribunal():Void {
+		//trace(ExperienceManager.checkIfUnlocked("Alexis"));
 		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
 		removeToContainer();
 	}

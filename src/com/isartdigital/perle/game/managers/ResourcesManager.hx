@@ -106,7 +106,7 @@ class ResourcesManager
 			level: 1
 		}
 		
-		Hud.getInstance().setAllTextValues(1,true);
+		//Hud.getInstance().setAllTextValues(1,true);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soft);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.hard);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp);
