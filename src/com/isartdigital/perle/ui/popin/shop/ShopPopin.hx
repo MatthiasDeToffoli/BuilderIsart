@@ -20,7 +20,8 @@ class ShopPopin extends SmartPopin{
 	private var btnPurgatory:SmartButton;
 	private var btnInterns:SmartButton;
 	private var tabs:Map<ShopTab, SmartComponent>;
-	private var bars:Map<ShopBar, SmartButton>;
+	private var bars:Map<ShopBar, SmartComponent>;
+	private var caroussel:ShopCaroussel;
 	
 	public static function getInstance (): ShopPopin {
 		if (instance == null) instance = new ShopPopin();
@@ -34,11 +35,13 @@ class ShopPopin extends SmartPopin{
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
 		
-		for (i in 0...children.length) 
-			trace (children[i].name);
+		/*for (i in 0...children.length) 
+			trace (children[i].name);*/
 			
 		/*try {*/ // todo : pouah ya du boulot...
 			// huuum faire des classes et recréer des élements ? ou ?
+			caroussel = cast(getChildByName('Shop_Item_List'), ShopCaroussel);
+			//cast(test, ShopCaroussel);
 			btnExit = cast(getChildByName('Shop_Close_Button'), SmartButton);
 			//btnPurgatory = cast(getChildByName('Purgatory_Button'), SmartButton);
 			//btnInterns = cast(getChildByName('Interns_Button'), SmartButton);
