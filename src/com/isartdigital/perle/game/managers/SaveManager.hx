@@ -118,7 +118,7 @@ class SaveManager {
 		var regionSave:Array<RegionDescription> = [];
 		var itemUnlock:Array<String> = [];
 		
-		itemUnlock = ExperienceManager.itemUnlocked;
+		itemUnlock = UnlockManager.itemUnlocked;
 		
 		// factoriser
 		for (regionX in RegionManager.worldMap.keys()) {
@@ -289,6 +289,7 @@ class SaveManager {
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();
 			FtueManager.dialogueSaved = currentSave.ftueProgress;
+			UnlockManager.isAlreadySaved = true;
 		}
 		else
 			createWhitoutSave();

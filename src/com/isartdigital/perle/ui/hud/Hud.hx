@@ -1,8 +1,10 @@
 package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.managers.ExperienceManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -127,12 +129,12 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void {
-		//ExperienceManager.addExp("All", 101);
+		ResourcesManager.levelUp();
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 	}
 	
 	private function onClickTribunal():Void {
-		//trace(ExperienceManager.checkIfUnlocked("Alexis"));
+		trace(UnlockManager.checkIfUnlocked("Ambroise"));
 		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
 		removeToContainer();
 	}

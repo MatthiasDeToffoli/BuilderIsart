@@ -414,7 +414,7 @@ class ResourcesManager
 		
 		myResourcesData.level++;
 		maxExp = ExperienceManager.getMaxExp(myResourcesData.level);
-		
+		UnlockManager.unlockItem();
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp,maxExp);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp,maxExp);
 		Hud.getInstance().setAllTextValues(myResourcesData.level, true);

@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
@@ -43,7 +44,6 @@ class GameManager {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
 		
-		
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();
@@ -56,6 +56,7 @@ class GameManager {
 		Phantom.initClass();
 		RegionManager.init();
 		SaveManager.createFromSave();
+		UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		
 		
