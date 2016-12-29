@@ -44,7 +44,8 @@ class ButtonProduction extends SmartButton
 	
 	override public function destroy():Void { // todo : destroy fonctionnel ?
 		myGeneratorDesc = null;
-		parent.removeChild(this);
+		if (parent != null)
+			parent.removeChild(this);
 		super.destroy();
 	}
 }
