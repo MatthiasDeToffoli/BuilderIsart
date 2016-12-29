@@ -27,7 +27,7 @@ enum VBuildingState { isBuilt; isBuilding; isMoving; }
 class VBuilding extends VTile {
 	
 	private var myGenerator:Generator;
-	private var myGeneratorType:GeneratorType = GeneratorType.soft;
+	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	
 	private var myContextualHud:HudContextual;
 	
@@ -39,6 +39,7 @@ class VBuilding extends VTile {
 		
 		addGenerator();
 		addHudContextual();
+		
 	}
 	
 	override public function activate ():Void {
@@ -154,7 +155,7 @@ class VBuilding extends VTile {
 	}
 	
 	private function addGenerator ():Void {
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, GeneratorType.soft, 10);
+		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10);
 	}
 	
 	private function addHudContextual ():Void {
@@ -174,7 +175,7 @@ class VBuilding extends VTile {
 		BuildingHud.unlinkVirtualBuilding(this);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);
-		//ResourcesManager.destroyGenerator(tileDesc.id); // todo : @Matthias
+		ResourcesManager.removeGenerator(myGenerator); // todo : @Matthias
 		
 		super.destroy();
 	}

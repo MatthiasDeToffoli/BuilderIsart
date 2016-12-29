@@ -37,8 +37,8 @@ class InfoBuilding extends SmartPopin {
 	private function new() {
 		super("Fenetre_InfoMaison");
 		
-		for (i in 0...children.length) // cheat pratique
-			trace (children[i].name);
+		/*for (i in 0...children.length) // cheat pratique
+			trace (children[i].name);*/
 			
 		btnExit = cast(getChildByName('CloseButton'), SmartButton);
 		btnSell = cast(getChildByName('SellButton'), SmartButton);

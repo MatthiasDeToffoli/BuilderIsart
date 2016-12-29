@@ -12,7 +12,7 @@ import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.InternPopin;
-import com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
@@ -27,7 +27,7 @@ enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
 /**
  * Classe en charge de gérer les informations du Hud
- * @author Ambroise RABIER et Vicktor Grenu
+ * @author Ambroise RABIER et Victor Grenu
  */
 class Hud extends SmartScreen 
 {	
@@ -148,14 +148,14 @@ class Hud extends SmartScreen
 	 * @param	isLevel if we have to set on the level or not
 	 * @param	type the type of resource we want to set
 	 */
-	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType):Void{
+	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType, ?pMax:Float):Void{
 		if(isLevel) setTextValues("Level", "_level_txt", value);
-		else if (type == GeneratorType.soulGood) setTextValues("Souls_Heaven", "bar_txt", value);
-		else if (type == GeneratorType.soulBad) setTextValues("Souls_Hell", "bar_txt", value);
-		else if (type == GeneratorType.badXp) setTextValues("Xp_bar_Hell", "Hud_xp_txt", value);
-		else if (type == GeneratorType.goodXp) setTextValues("Xp_bar_Heaven", "Hud_xp_txt", value);
-		else if (type == GeneratorType.soft) setTextValues("SoftCurrency", "bar_txt", value);
-		else if (type == GeneratorType.hard) setTextValues("HardCurrency", "bar_txt", value);
+		else if (type == GeneratorType.soulGood) setTextValues("Souls_Heaven", "bar_txt", value, pMax);
+		else if (type == GeneratorType.soulBad) setTextValues("Souls_Hell", "bar_txt", value, pMax);
+		else if (type == GeneratorType.badXp) setTextValues("Xp_bar_Hell", "Hud_xp_txt", value, pMax);
+		else if (type == GeneratorType.goodXp) setTextValues("Xp_bar_Heaven", "Hud_xp_txt", value, pMax);
+		else if (type == GeneratorType.soft) setTextValues("SoftCurrency", "bar_txt", value, pMax);
+		else if (type == GeneratorType.hard) setTextValues("HardCurrency", "bar_txt", value, pMax);
 	}
 	
 	/**
@@ -164,11 +164,11 @@ class Hud extends SmartScreen
 	 * @param	pTextName the name of the text
 	 * @param	pValue the value we want
 	 */
-	private function setTextValues(pContainerName:String, pTextName:String, pValue:Float):Void{
+	private function setTextValues(pContainerName:String, pTextName:String, pValue:Float, ?pMax:Float):Void{
 		var textContainer:Dynamic = getChildByName(pContainerName);
 		
 		var text:TextSprite = cast(textContainer.getChildByName(pTextName, TextSprite));
-		text.text = pValue + "";
+		text.text = pMax != null ? pValue + " / " + pMax : pValue + "";
 	}
 	
 	//hud génant quand ouvre autre screen est ce que on garde ou on fait autrement ?

@@ -1,0 +1,431 @@
+{
+ "md5": "66308dace7f090e9bee4152522ac1b35",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_intern03_bg",
+       "origin": [
+        300,
+        62.5
+       ],
+       "rect": [
+        1,
+        1,
+        600,
+        125
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_down",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        603,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_up",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        739,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_over",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        875,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_intern03_image",
+       "origin": [
+        65,
+        62.5
+       ],
+       "rect": [
+        1,
+        128,
+        130,
+        125
+       ]
+      },
+      {
+       "symbol": "_buttonListSend_down",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        133,
+        128,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonListSend_over",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        273,
+        128,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonListSend_up",
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "rect": [
+        413,
+        128,
+        136,
+        86
+       ]
+      },
+      {
+       "symbol": "_listOutQuest_currencyIcon",
+       "origin": [
+        35,
+        35
+       ],
+       "rect": [
+        551,
+        132,
+        70,
+        70
+       ]
+      },
+      {
+       "data": {
+        "y": -43.55,
+        "text": "Send",
+        "x": -108.6,
+        "width": 217.25,
+        "font": "75px Times New Roman",
+        "align": "center",
+        "height": 87.05,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listOutQuest_ButtonText",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        551,
+        128,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -0.05,
+        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
+        "x": 0.35,
+        "width": 1503.3,
+        "font": "76px Times New Roman",
+        "align": "left",
+        "height": 88.15,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listOutQuest_name",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        554,
+        128,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -43.5,
+        "text": "9999",
+        "x": -95.4,
+        "width": 190.8,
+        "font": "75px Times New Roman",
+        "align": "center",
+        "height": 87.05,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listOutQuest_sendCost",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        557,
+        128,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_listOutQuest_name",
+       "loc": [
+        -0.5,
+        -0.2
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_intern03_name05"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        442.325,
+        112.8
+       ],
+       "index": 0,
+       "pivot": [
+        300,
+        62.5
+       ],
+       "ref": "_intern03_bg",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "_intern03_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Button_Send",
+       "loc": [
+        307.325,
+        111.2
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Bouton_SendIntern_List"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Button_Portrait_ListOutQuest",
+       "loc": [
+        0,
+        50.5
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "OutQuest_Portrait"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        547.65,
+        111.1
+       ],
+       "index": 0,
+       "pivot": [
+        35.025,
+        35.025
+       ],
+       "ref": "_listOutQuest_currencyIcon",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "_icon_hc"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listOutQuest_sendCost",
+       "loc": [
+        442.15,
+        112.6
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "sendCost"
+    }
+   ],
+   "id": "ListOutQuest"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 0,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListOutQuest_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 1,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListOutQuest_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 2,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListOutQuest_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_Portrait_ListOutQuest"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 0,
+       "pivot": [
+        67.75,
+        42.875
+       ],
+       "ref": "_buttonListSend_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 1,
+       "pivot": [
+        69,
+        43.875
+       ],
+       "ref": "_buttonListSend_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 2,
+       "pivot": [
+        69,
+        43.875
+       ],
+       "ref": "_buttonListSend_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listOutQuest_ButtonText",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "buttonSendText"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_Send"
+  }
+ ],
+ "frameRate": 24
+}

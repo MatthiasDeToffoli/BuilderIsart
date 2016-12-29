@@ -27,8 +27,8 @@ class ConfirmBuyBuilding extends SmartPopin{
 	private function new() {
 		super("Popin_ConfirmationBuyHouse");
 		
-		for (i in 0...children.length) 
-			trace (children[i].name);
+		/*for (i in 0...children.length) 
+			trace (children[i].name);*/
 			
 		btnExit = cast(getChildByName('Window_Infos_CloseButton'), SmartButton);
 		btnBuy = cast(getChildByName('Window_Infos_UpgradeButton'), SmartComponent); // todo : temp

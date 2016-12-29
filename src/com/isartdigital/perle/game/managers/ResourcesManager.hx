@@ -53,6 +53,8 @@ class ResourcesManager
 	 */
 	public static inline var GENERATOR_EVENT_NAME:String = "GENERATOR";
 	
+	private static var maxExp:Float;
+	
 	/*
 	 ####################
 	 ####################
@@ -106,11 +108,12 @@ class ResourcesManager
 			level: 1
 		}
 		
-		//Hud.getInstance().setAllTextValues(1,true);
+		maxExp = ExperienceManager.getMaxExp(1);
+		Hud.getInstance().setAllTextValues(1,true);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soft);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.hard);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp, maxExp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp, maxExp);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulBad);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulGood);
 		
@@ -148,11 +151,12 @@ class ResourcesManager
 		myResourcesData.totalsMap[GeneratorType.buildResourceFromHell] = totals[7];
 		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = totals[8];
 		
+		maxExp = ExperienceManager.getMaxExp(resourcesDescriptionLoad.level);
 		Hud.getInstance().setAllTextValues(resourcesDescriptionLoad.level,true);
 		Hud.getInstance().setAllTextValues(totals[0],false,GeneratorType.soft);
 		Hud.getInstance().setAllTextValues(totals[1],false,GeneratorType.hard);
-		Hud.getInstance().setAllTextValues(totals[2],false,GeneratorType.goodXp);
-		Hud.getInstance().setAllTextValues(totals[3],false,GeneratorType.badXp);
+		Hud.getInstance().setAllTextValues(totals[2],false,GeneratorType.goodXp, maxExp);
+		Hud.getInstance().setAllTextValues(totals[3],false,GeneratorType.badXp, maxExp);
 		Hud.getInstance().setAllTextValues(totals[4],false,GeneratorType.soulGood);
 		Hud.getInstance().setAllTextValues(totals[5],false,GeneratorType.soulBad);
 	}
@@ -173,6 +177,14 @@ class ResourcesManager
 	public static function getResourcesData():ResourcesData{
 		return myResourcesData;
 	 
+	}
+	
+	/**
+	 * get the current level
+	 * @return the level
+	 */
+	public static function getLevel():Float{
+		return myResourcesData.level;
 	}
 	
 	/**
@@ -210,7 +222,7 @@ class ResourcesManager
 	public static function addResourcesGenerator(pId:Int, pType:GeneratorType, pMax:Int, ?pAlignment:Alignment):Generator{
 		
 		var myDesc:GeneratorDescription = getGenerator(pId, pType), myGenerator:Generator;
-		
+
 		if (myDesc != null){
 			
 			return {desc:myDesc};
@@ -230,8 +242,6 @@ class ResourcesManager
 		myGenerator = {desc:myDesc};
 		myResourcesData.generatorsMap[pType].push(myGenerator);
 		
-		
-		
 		SaveManager.save();
 		
 		TimeManager.createTimeResource(1, myGenerator);
@@ -249,8 +259,10 @@ class ResourcesManager
 	public static function getGenerator(pId:Int, pType:GeneratorType):GeneratorDescription{
 		var resourcesArray:Array<Generator> = myResourcesData.generatorsMap[pType];
 		var lLength:Int = resourcesArray.length, i;
-		
-		for (i in 0...lLength) if (resourcesArray[i].desc.id == pId) return resourcesArray[i].desc;
+
+		for (i in 0...lLength){
+			if (resourcesArray[i].desc.id == pId) return resourcesArray[i].desc;
+		}
 		
 		return null;
 	}
@@ -348,16 +360,35 @@ class ResourcesManager
 	 * @param pDesc the description of the generator target
 	 * @return the description modified
 	 */
-	public static function takeResources(pDesc:GeneratorDescription):GeneratorDescription {
+	public static function takeResources(pDesc:GeneratorDescription, ?pMax:Float):GeneratorDescription {
 		
-		myResourcesData.totalsMap[pDesc.type] += pDesc.quantity;
+		if (pDesc.type == GeneratorType.goodXp || pDesc.type == GeneratorType.badXp) takeXp(pDesc.quantity, pDesc.type);
+		else{
+			myResourcesData.totalsMap[pDesc.type] = pMax != null ? 
+			Math.min(pMax, myResourcesData.totalsMap[pDesc.type] + pDesc.quantity) : 
+			myResourcesData.totalsMap[pDesc.type] + pDesc.quantity;
+			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pDesc.type], false, pDesc.type);
+		}
+			
 		pDesc.quantity = 0;
 		
-		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pDesc.type], false, pDesc.type);
 
 		SaveManager.save();
 		generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pDesc.id, active:false});
 		return pDesc;
+	}
+	
+	/**
+	 * add a generator's quantity to the total xp coresponding if quantity lower than maxExp (if two xp are full call levelUp)
+	 * @param	quantity the quantity to add
+	 * @param	pType the type of xp
+	 */
+	public static function takeXp(quantity:Float, pType:GeneratorType):Void{
+		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
+		
+		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+		if (myResourcesData.totalsMap[GeneratorType.badXp] == maxExp && myResourcesData.totalsMap[GeneratorType.goodXp] == maxExp)
+			levelUp();
 	}
 	
 	
@@ -382,9 +413,10 @@ class ResourcesManager
 		myResourcesData.totalsMap[GeneratorType.goodXp]= 0;
 		
 		myResourcesData.level++;
+		maxExp = ExperienceManager.getMaxExp(myResourcesData.level);
 		
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp,maxExp);
+		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp,maxExp);
 		Hud.getInstance().setAllTextValues(myResourcesData.level, true);
 		
 		SaveManager.save();

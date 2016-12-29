@@ -67,7 +67,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 		refBuilding = pRefBuilding;
 		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pType);
 		myHudContainer = pHud;
-		if (myGeneratorDesc != null) // todo : @Matthias : It seem that myGeneratorDesc == null on any newly created house...
+		//if (myGeneratorDesc != null) // todo : @Matthias : It seem that myGeneratorDesc == null on any newly created house...
 			generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
 	}
 	
@@ -113,6 +113,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 	 * destroy the goldbutton
 	 */
 	public function unActivateWithBuild():Void{
+
 		buildingIsInView = false;
 		
 		if (generatorIsNotEmpty){

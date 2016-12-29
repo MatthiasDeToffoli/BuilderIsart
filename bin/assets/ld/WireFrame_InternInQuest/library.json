@@ -1,0 +1,571 @@
+{
+ "md5": "f23a3dffdc1b19270c2c922f809b9002",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_intern01_bg",
+       "origin": [
+        300,
+        62.5
+       ],
+       "rect": [
+        1,
+        1,
+        600,
+        125
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListInQuest_up",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        603,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListInQuest_over",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        739,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListInQuest_down",
+       "origin": [
+        67,
+        64.5
+       ],
+       "rect": [
+        875,
+        1,
+        134,
+        129
+       ]
+      },
+      {
+       "symbol": "_listInQuest_image",
+       "origin": [
+        65,
+        62.5
+       ],
+       "rect": [
+        1,
+        128,
+        130,
+        125
+       ]
+      },
+      {
+       "symbol": "_listInQuest_ProgressionBar",
+       "origin": [
+        240,
+        16
+       ],
+       "rect": [
+        133,
+        128,
+        430,
+        32
+       ]
+      },
+      {
+       "symbol": "_buttonInternListAccelerate_over",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        565,
+        132,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonInternListAccelerate_down",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        705,
+        132,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonInternListAccelerate_up",
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "rect": [
+        845,
+        132,
+        136,
+        86
+       ]
+      },
+      {
+       "symbol": "_listInQuest_hero",
+       "origin": [
+        30.65,
+        26.6
+       ],
+       "rect": [
+        133,
+        162,
+        62,
+        54
+       ]
+      },
+      {
+       "symbol": "_listQuest_currencyIcon",
+       "origin": [
+        20,
+        20
+       ],
+       "rect": [
+        983,
+        132,
+        40,
+        40
+       ]
+      },
+      {
+       "symbol": "_listInQuest_nextEvent",
+       "origin": [
+        5,
+        13.75
+       ],
+       "rect": [
+        1011,
+        1,
+        10,
+        28
+       ]
+      },
+      {
+       "data": {
+        "y": -49.35,
+        "text": "99X",
+        "x": -74.9,
+        "width": 149.8,
+        "font": "76px Times New Roman",
+        "align": "right",
+        "height": 98.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listInQuest_eventTime",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        565,
+        128,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": 0,
+        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
+        "x": 0,
+        "width": 1515.9,
+        "font": "76px Times New Roman",
+        "align": "left",
+        "height": 88.15,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listInQuest_name",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        568,
+        128,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -33,
+        "text": "9999",
+        "x": -79.25,
+        "width": 158.5,
+        "font": "56px Times New Roman",
+        "align": "center",
+        "height": 66,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listAccCost",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        571,
+        128,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -33.2,
+        "text": "Accelerate",
+        "x": -120.3,
+        "width": 240.55,
+        "font": "54px Times New Roman",
+        "align": "center",
+        "height": 66.4,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listAccTxt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        574,
+        128,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        442.475,
+        106.45
+       ],
+       "index": 0,
+       "pivot": [
+        300,
+        62.5
+       ],
+       "ref": "_intern01_bg",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Button_InternListAccelerate",
+       "loc": [
+        664.975,
+        106.45
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Bouton_InternSend_Clip"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listInQuest_name",
+       "loc": [
+        -0.025,
+        -0.125
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_name"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listInQuest_eventTime",
+       "loc": [
+        398.95,
+        80.9
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_time"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Button_Portrait_ListInQuest",
+       "loc": [
+        2.95,
+        46.4
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_Portrait"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        394.975,
+        132.95
+       ],
+       "index": 0,
+       "pivot": [
+        240,
+        16
+       ],
+       "ref": "_listInQuest_ProgressionBar",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_ProgressionBar"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        401.075,
+        119.45
+       ],
+       "index": 0,
+       "pivot": [
+        5,
+        13.75
+       ],
+       "ref": "_listInQuest_nextEvent",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_nextEvent"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        215,
+        111.45
+       ],
+       "index": 0,
+       "pivot": [
+        30.65,
+        26.6
+       ],
+       "ref": "_listInQuest_hero",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "InQuest_hero"
+    }
+   ],
+   "id": "ListInQuest"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 0,
+       "pivot": [
+        67.75,
+        42.875
+       ],
+       "ref": "_buttonInternListAccelerate_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 1,
+       "pivot": [
+        69,
+        43.875
+       ],
+       "ref": "_buttonInternListAccelerate_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.125
+       ],
+       "index": 2,
+       "pivot": [
+        69,
+        43.875
+       ],
+       "ref": "_buttonInternListAccelerate_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        39.6,
+        19.975
+       ],
+       "index": 0,
+       "pivot": [
+        19.975,
+        19.975
+       ],
+       "ref": "_listQuest_currencyIcon",
+       "duration": 4,
+       "tweened": false
+      }
+     ],
+     "name": "_accelerate_value"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listAccCost",
+       "loc": [
+        -20.025,
+        21.45
+       ],
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_accelerate_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_listAccTxt",
+       "loc": [
+        -0.5,
+        -16.55
+       ],
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_accelerate"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_InternListAccelerate"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 0,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListInQuest_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 1,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListInQuest_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        65,
+        62.5
+       ],
+       "index": 2,
+       "pivot": [
+        67,
+        64.5
+       ],
+       "ref": "_buttonPortraitListInQuest_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_Portrait_ListInQuest"
+  }
+ ],
+ "frameRate": 24
+}

@@ -40,8 +40,7 @@ class HudContextual extends Container {
 		
 		
 		container.addChild(this);
-		
-		virtualGoldBtn.init(new Point(0, 0), myVBuilding.tileDesc.id, GeneratorType.soul,this);
+		virtualGoldBtn.init(new Point(0, 0), myVBuilding.tileDesc.id, pVBuilding.myGeneratorType,this);
 	}
 	
 	public function activate ():Void {

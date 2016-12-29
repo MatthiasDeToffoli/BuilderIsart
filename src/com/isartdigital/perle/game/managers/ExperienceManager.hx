@@ -12,44 +12,25 @@ class ExperienceManager
 	private static var experienceToLevelUpArray:Array<Int>;
 	private static var itemToUnlockArray:Array<Array<Array<String>>>;
 	public static var itemUnlocked:Array<String>;
-	public static var playerExperience:Array<Float>;
-	public static var playerLevel:Int;
 	
 	//check json at the begining
 	public static function setExpToLevelUp() {
 		experienceToLevelUpArray = [];
 		itemToUnlockArray = [];
 		itemUnlocked = [];
-		playerExperience = [];
 		parseJsonLevel(Main.EXPERIENCE_JSON_NAME);
 		parseJsonUnlock(Main.UNLOCK_ITEM_JSON_NAME);
 		checkIfFirstTime();
-		setOnHud();
 	}
 	
-	//add exp
-	//0 Heaven, 1 hell, 2 all
-	public static function addExp(pSide:String, pExp:Float):Void {
-		var lNum:Int = 0;
-		switch(pSide) {
-			case "Heaven" : lNum = 0; 
-			case "Hell" : lNum = 1; 
-			case "All" : lNum = 2; 
-		}
-		
-		if (lNum != 2) {
-			addExpInArray(pExp, lNum);
-		}
-		else
-			for (i in 0...2) {
-				addExpInArray(pExp, i);
-			}
-		
-		checkIfLevelUp();
-		SaveManager.save();
-		setOnHud();
+	/**
+	 * get the max xp can increase depending to level
+	 * @param	pLevel current player level
+	 * @return the max
+	 */
+	public static function getMaxExp(pLevel:Int):Float{
+		return experienceToLevelUpArray[pLevel - 1];
 	}
-	
 	//Check if this item is unlocked
 	public static function checkIfUnlocked(pName:String):Bool {
 		for (i in 0...itemUnlocked.length) {
@@ -59,54 +40,26 @@ class ExperienceManager
 		return false;
 	}
 	
-	private static function addExpInArray(pExp:Float, ?lNum:Int):Void {
-		if (playerExperience[lNum] < experienceToLevelUpArray[playerLevel - 1]) {
-				if (playerExperience[lNum] + pExp >= experienceToLevelUpArray[playerLevel - 1]) // check to not surpass the limit
-					playerExperience[lNum] = experienceToLevelUpArray[playerLevel - 1];
-				else
-					playerExperience[lNum] += pExp;
-		}
-	}
-	
-	
-	//check if the player lvl up
-	private static function checkIfLevelUp():Void{
-		if (playerExperience[0] == experienceToLevelUpArray[playerLevel - 1] && playerExperience[1] == experienceToLevelUpArray[playerLevel - 1]) {
-			playerLevel ++;
-			setUnlockItem();
-		}
-	}
-	
 	//check if it's then first time of the player
 	private static function checkIfFirstTime():Void{
-		if (SaveManager.currentSave.playerExp == null) {
-			playerLevel = 1;
-			playerExperience = [0, 0];
+		if (SaveManager.currentSave == null) return;
+		if (SaveManager.currentSave.itemUnlocked == null) {
 			itemUnlocked = [];
 			setUnlockItem();
 		}
 		else {
-			playerLevel = SaveManager.currentSave.playerLevel;
-			playerExperience = SaveManager.currentSave.playerExp;
 			itemUnlocked = SaveManager.currentSave.itemUnlocked;
 		}
-	}
-	
-	//add on HUD
-	private static function setOnHud() {
-		Hud.getInstance().setAllTextValues(playerLevel,true);
-		Hud.getInstance().setAllTextValues(playerExperience[0], false, GeneratorType.goodXp);
-		Hud.getInstance().setAllTextValues(playerExperience[1], false, GeneratorType.badXp);	
 	}
 	
 	
 	//Unlock item
 	private static function setUnlockItem() {
-		if (itemToUnlockArray[playerLevel - 1] == null)
+		if (itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1] == null)
 			return;
-		for (i in 0...itemToUnlockArray[playerLevel - 1][0].length) {
-			var lItem:String = itemToUnlockArray[playerLevel - 1][0][i];
-			trace(lItem);
+		for (i in 0...itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1][0].length) {
+			var lItem:String = itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1][0][i];
+			//trace(lItem);
 			if (lItem == null)
 				return;
 			itemUnlocked.push(lItem);

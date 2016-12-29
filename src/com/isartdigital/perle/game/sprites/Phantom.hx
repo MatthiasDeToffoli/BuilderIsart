@@ -251,6 +251,7 @@ class Phantom extends Building {
 			mapX:regionMap.map.x,
 			mapY:regionMap.map.y
 		};
+
 		var vBuilding:VBuilding = new VBuilding(tileDesc);
 		vBuilding.activate();
 		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction

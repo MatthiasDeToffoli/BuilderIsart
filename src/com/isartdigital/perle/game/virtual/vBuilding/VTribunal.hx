@@ -70,8 +70,6 @@ class VTribunal extends VBuilding
 	override function addGenerator():Void {
 		myGeneratorType = GeneratorType.soul;
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10, Alignment.neutral);
-		//prodBtn = new ButtonProduction("ButtonGold"); c'est gérer autrement maintenant
-		//setCameraPos(); idem qui plu haut
 	}
 	
 	/**

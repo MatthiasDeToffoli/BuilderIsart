@@ -44,7 +44,7 @@ class GameManager {
 		// plus que des new() ds le main
 		
 		
-		
+		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();
 		HudContextual.initClass();
@@ -57,7 +57,6 @@ class GameManager {
 		RegionManager.init();
 		SaveManager.createFromSave();
 		ClippingManager.update();
-		ExperienceManager.setExpToLevelUp();
 		
 		
 		FtueManager.createFtue();

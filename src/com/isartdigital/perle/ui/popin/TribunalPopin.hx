@@ -1,7 +1,7 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.popin.listInternPopin.ListInternPopin;
+import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;

@@ -57,6 +57,13 @@ typedef GeneratorDescription = {
 	
 }
 
+// typedef for intern i use this for prepare the ui
+typedef InternDescription = {
+	var id:Int; // for link with quest i think
+	var name:String;
+	var isInQuest:Bool; // @ TODO delete i think we can check this with the link at quest manager
+}
+
 typedef ResourcesGeneratorDescription = {
 	var arrayGenerator:Array<GeneratorDescription>;
 	var totals:Array<Float>;
@@ -88,8 +95,6 @@ typedef Save = {
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
-	var playerLevel:Int;
-	var playerExp:Array<Float>;
 	var itemUnlocked:Array<String>;
 	// add what you want to save.
 }
@@ -111,10 +116,8 @@ class SaveManager {
 		var buildingSave:Array<TileDescription> = [];
 		var groundSave:Array<TileDescription> = [];
 		var regionSave:Array<RegionDescription> = [];
-		var expSave:Array<Float> = [];
 		var itemUnlock:Array<String> = [];
 		
-		expSave = ExperienceManager.playerExperience;
 		itemUnlock = ExperienceManager.itemUnlocked;
 		
 		// factoriser
@@ -153,8 +156,6 @@ class SaveManager {
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
 			ftueProgress : FtueUI.actualDialogue,
-			playerLevel : ExperienceManager.playerLevel,
-			playerExp : expSave,
 			itemUnlocked : itemUnlock
 		};
 		setLocalStorage(currentSave);

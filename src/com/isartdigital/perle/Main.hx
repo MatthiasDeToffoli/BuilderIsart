@@ -4,7 +4,7 @@ import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.ui.popin.listInternPopin.InternElement;
+import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
@@ -161,6 +161,8 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_InternInQuest/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_InternOutQuest/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop/library.json");
