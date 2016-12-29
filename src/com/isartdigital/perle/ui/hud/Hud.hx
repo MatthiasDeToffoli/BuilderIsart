@@ -130,6 +130,7 @@ class Hud extends SmartScreen
 	
 	private function onClickShop ():Void {
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		removeToContainer();
 	}
 	
 	private function onClickTribunal():Void {
@@ -172,6 +173,8 @@ class Hud extends SmartScreen
 	}
 	
 	//hud génant quand ouvre autre screen est ce que on garde ou on fait autrement ?
+	// Ambroise : C'est une bonne méthode à mon avis, par contre le nom de la fonction est encore mal trouvé :/
+	// typiquement en jquery la function se nommerait hide(); et l'autre show();
 	public function removeToContainer():Void{
 		GameStage.getInstance().getHudContainer().removeChild(this);
 	}

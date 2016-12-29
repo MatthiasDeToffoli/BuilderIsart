@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -69,6 +70,7 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickExit ():Void {
+		Hud.getInstance().addToContainer();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
