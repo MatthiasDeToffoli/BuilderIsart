@@ -27,6 +27,29 @@ class UIPosition
 	
 	private function new() {}
 	
+
+	public static function checkAlignExist (pAlign:String):Void {
+		
+		switch (pAlign) {
+			case LEFT: return null;
+			case RIGHT: return null;
+			case TOP: return null;
+			case BOTTOM: return null;
+			case TOP_LEFT: return null;
+			case TOP_RIGHT: return null;
+			case BOTTOM_LEFT: return null;
+			case BOTTOM_RIGHT: return null;
+			case BOTTOM_CENTER: return null;
+			case FIT_WIDTH: return null;
+			case FIT_HEIGHT: return null;
+			case FIT_SCREEN: return null;
+			default:
+				Debug.error("UIPosition \"" + pAlign + "\" doesn't exist !");
+		}
+		
+		
+	}
+	
 	/**
 	* 
 	* @param	pTarget DisplayObject à positionner

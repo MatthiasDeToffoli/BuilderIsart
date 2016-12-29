@@ -86,8 +86,16 @@ class UIBuilder
 			
 			var lUIPosition:String = "";
 			if (lKeyFrame.data != null) {
+				
+				Reflect.fields(lKeyFrame.data).map(function (p) {
+					if (p != "UIPosition_Desktop" && p != "UIPosition")
+						Debug.error("Syntax error in persistent data ? => \"" + p + "\"");
+				});
+				
 				if (Reflect.hasField(lKeyFrame.data,"UIPosition_"+DeviceCapabilities.system)) lUIPosition = Reflect.field(lKeyFrame.data,"UIPosition_"+DeviceCapabilities.system);
 				else if (lKeyFrame.data.UIPosition != null) lUIPosition = lKeyFrame.data.UIPosition;
+				
+				UIPosition.checkAlignExist(lUIPosition);
 			}
 			
 			lUIPos.push(getUIPositionable(lObj,lUIPosition));

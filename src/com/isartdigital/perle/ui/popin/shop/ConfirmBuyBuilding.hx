@@ -30,8 +30,8 @@ class ConfirmBuyBuilding extends SmartPopin{
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
 			
-		btnExit = cast(getChildByName('Window_Infos_CloseButton'), SmartButton);
-		btnBuy = cast(getChildByName('Window_Infos_UpgradeButton'), SmartComponent); // todo : temp
+		btnExit = cast(SmartCheck.getChildByName(this, 'Window_Infos_CloseButton'), SmartButton);
+		btnBuy = cast(SmartCheck.getChildByName(this, 'Window_Infos_UpgradeButton'), SmartComponent); // todo : temp
 		btnBuy.interactive = true;
 		
 		btnBuy.on(MouseEventType.CLICK, onClickBuy);

@@ -32,8 +32,8 @@ class BHMoving extends BuildingHud{
 	}
 	
 	override private function addListeners ():Void {
-		btnCancel = cast(getChildByName("Button_CancelMovement"), SmartButton);
-		btnConfirm = cast(getChildByName("Button_ConfirmMovement"), SmartButton);
+		btnCancel = cast(SmartCheck.getChildByName(this, "Button_CancelMovement"), SmartButton);
+		btnConfirm = cast(SmartCheck.getChildByName(this, "Button_ConfirmMovement"), SmartButton);
 		btnCancel.on(MouseEventType.CLICK, onClickCancel);
 		btnConfirm.on(MouseEventType.CLICK, onClickConfirm);
 	}
