@@ -129,12 +129,10 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void {
-		ResourcesManager.levelUp();
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 	}
 	
 	private function onClickTribunal():Void {
-		trace(UnlockManager.checkIfUnlocked("Ambroise"));
 		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
 		removeToContainer();
 	}
