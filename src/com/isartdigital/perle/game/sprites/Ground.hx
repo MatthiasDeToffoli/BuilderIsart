@@ -18,7 +18,7 @@ import pixi.filters.color.ColorMatrixFilter;
  * 
  * @author ambroise
  */
-class Ground extends Tile implements PoolingObject 
+class Ground extends Tile 
 {
 	/**
 	 * Offset separating each region.

@@ -5,11 +5,13 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
-import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Phantom;
+import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.ui.contextual.HudContextual;
+import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
+import pixi.core.display.Container;
 
 enum VBuildingState { isBuilt; isBuilding; isMoving; }
 
@@ -29,7 +31,7 @@ class VBuilding extends VTile {
 	private var myGenerator:Generator;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	
-	private var myContextualHud:HudContextual;
+	private var myVContextualHud:VHudContextual;
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
 	
@@ -39,28 +41,26 @@ class VBuilding extends VTile {
 		
 		addGenerator();
 		addHudContextual();
-		
 	}
 	
 	override public function activate ():Void {
 		super.activate();
 		
-		var myBuilding:Building = Building.createBuilding(tileDesc);
-		graphic = cast(myBuilding, FlumpStateGraphic);
-		cast(graphic, Building).linkedVirtualCell = this;
+		graphic = cast(Building.createBuilding(tileDesc), Container);
+		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		
-		myContextualHud.activate();
+		myVContextualHud.activate();
 	}
 	
 	override public function desactivate ():Void {
 		super.desactivate();
 		
-		myContextualHud.desactivate();
+		myVContextualHud.desactivate();
 	}
 	
 	public function unlinkContextualHud ():Void {
 		// todo : je peux pas juste faire destroy() puis myContextualHud = null dans cette class ?
-		myContextualHud = null;
+		myVContextualHud = null;
 	}
 	
 	public function getGenerator():Generator {
@@ -159,8 +159,8 @@ class VBuilding extends VTile {
 	}
 	
 	private function addHudContextual ():Void {
-		myContextualHud = new HudContextual();
-		myContextualHud.init(this);
+		myVContextualHud = new VHudContextual();
+		myVContextualHud.init(this);
 	}
 	
 	override public function destroy():Void {
@@ -169,12 +169,14 @@ class VBuilding extends VTile {
 			// if yes => todo : Phantom.linkedVBuilding = null;
 		}
 		
-		desactivate();
-		myContextualHud.destroy();
-		myContextualHud = null;
+		myVContextualHud.destroy();
+		myVContextualHud = null;
 		BuildingHud.unlinkVirtualBuilding(this);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);
+		
+		ResourcesManager.removeGenerator(myGenerator);
+		myGenerator = null;
 		
 		super.destroy();
 	}

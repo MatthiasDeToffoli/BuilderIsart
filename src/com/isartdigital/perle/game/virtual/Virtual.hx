@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import pixi.core.display.Container;
 
 interface HasVirtual {
 	public function linkVirtual(pVirtual:Virtual):Void;
@@ -27,7 +28,7 @@ class Virtual {
 	/**
 	 * instance linked to VCell when active
 	 */
-	public var graphic(default, null):FlumpStateGraphic;
+	public var graphic(default, null):Container;
 
 	public function new () {}
 	
@@ -65,13 +66,28 @@ class Virtual {
 			throw("Virtual is already desactived !");
 		
 		active = false;
-		if (graphic != null)
-			cast(graphic, PoolingObject).recycle(); // todo : dépend si est dans pooling...
+		removeGraphic();
+	}
+	
+	/**
+	 * Recyle the graphic if it has recycle method or destroy it.
+	 */
+	private function removeGraphic ():Void {
+		if (graphic != null) {
+			trace ("doit trace true la plupart du temps : " + Std.is(graphic, PoolingObject)); // todo vérification, puis suppression
+			
+			if (Std.is(graphic, PoolingObject))
+				cast(graphic, PoolingObject).recycle();
+			else
+				graphic.destroy();
+		}
 		graphic = null;
 	}
 	
-	// destroy : ATTENTION au lien vers une VTile dans Menu_BatimentConstruit...
 	
-	public function destroy ():Void {}
+	public function destroy ():Void {
+		if (active)
+			desactivate();
+	}
 	
 }

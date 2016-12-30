@@ -3,7 +3,6 @@ package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.iso.IZSortable;
 import com.isartdigital.perle.game.managers.PoolingManager;
-import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -11,7 +10,6 @@ import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
-import pixi.core.math.Point;
 
 typedef SizeOnMap = {
 	var width:Int;
@@ -29,7 +27,7 @@ typedef RegionMap = {
  * ...
  * @author ambroise
  */
-class Building extends Tile implements IZSortable implements PoolingObject
+class Building extends Tile implements IZSortable
 {
 	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [
 		"Factory" => {width:5, height:3, footprint : 1},

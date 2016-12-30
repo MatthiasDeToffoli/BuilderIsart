@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.contextual;
+package com.isartdigital.perle.ui.contextual.sprites;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.utils.ui.smart.SmartButton;

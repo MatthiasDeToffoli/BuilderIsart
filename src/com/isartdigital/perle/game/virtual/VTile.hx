@@ -87,6 +87,7 @@ class VTile extends Virtual{
 	}
 	
 	// todo : tjrs immediate visible ? car sert pas pr le load save
+	// todo : déplacer ds regionManager ?
 	public static function buildInsideRegion (pRegion:Region, pImmediateVisible:Bool = false):Void {
 		
 		// todo : add background ! :p

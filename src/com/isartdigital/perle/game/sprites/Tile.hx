@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.sprites;
 
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
+import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -12,12 +13,13 @@ import pixi.core.math.Point;
  * ...
  * @author ambroise
  */
-class Tile extends FlumpStateGraphic implements HasVirtual
+class Tile extends FlumpStateGraphic implements HasVirtual implements PoolingObject
 { 
 	public static inline var TILE_WIDTH:Float = 200;
 	public static inline var TILE_HEIGHT:Float = 100;
 	
 	/**
+	 * todo : revoir ce commentaire, et mettre en private ??
 	 * Reference usable to destroy VCell an so by the same way from Save
 	 * Still, the best choice would be to destroy VCell first and then just update Clipping
 	 * Unused for now (you can't destroy buidings for now, the only way is to destroy Save !)

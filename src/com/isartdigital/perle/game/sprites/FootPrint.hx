@@ -9,7 +9,7 @@ import pixi.core.math.Point;
  * ...
  * @author Alexis
  */
-class FootPrint extends Tile implements PoolingObject
+class FootPrint extends Tile
 {
 
 	public static var container(default, null):Container;

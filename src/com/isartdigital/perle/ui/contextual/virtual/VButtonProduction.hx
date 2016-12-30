@@ -1,13 +1,12 @@
-package com.isartdigital.perle.game.virtual;
+package com.isartdigital.perle.ui.contextual.virtual;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.ui.contextual.ButtonProduction;
+import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import pixi.core.math.Point;
-//we have to change package when UI clipping is make
 
-//@Ambroise : you can move and modify this class for clipping :)
+
 /**
  * contain all information for the button production
  * @author de Toffoli Matthias
@@ -44,7 +43,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 	/**
 	 * Hud contained the Graphic
 	 */
-	private var myHudContainer:HudContextual;
+	private var myVHudContainer:VHudContextual;
 	/**
 	 * graphics of the button
 	 */	
@@ -62,11 +61,12 @@ class VButtonProduction //@TODO : extends classes for clipping
 	 * @param	pType the type of generator
 	 * @param	pHud the hud which contained the graphic
 	 */
-	public function init (pPosition:Point, pRefBuilding:Int, pType:GeneratorType, pHud:HudContextual):Void {
+	public function init (pPosition:Point, pRefBuilding:Int, pType:GeneratorType, pVHud:VHudContextual):Void {
 		graphicBtn.position = pPosition;
 		refBuilding = pRefBuilding;
 		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pType);
-		myHudContainer = pHud;
+		
+		myVHudContainer = pVHud;
 		generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
 	}
 	
@@ -104,7 +104,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 	private function activate():Void{
 		if (generatorIsNotEmpty && buildingIsInView) {
 			graphicBtn.setMyGeneratorDescription(myGeneratorDesc);
-			myHudContainer.addChild(graphicBtn);
+			myVHudContainer.graphic.addChild(graphicBtn);
 		}
 	}
 	
@@ -124,7 +124,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 		
 	}
 	
-	public function destroy(){
+	public function destroy() {	
 		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
 	}
 }
