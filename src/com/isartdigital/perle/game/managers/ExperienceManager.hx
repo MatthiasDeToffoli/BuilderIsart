@@ -5,13 +5,15 @@ import com.isartdigital.utils.loader.GameLoader;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class ExperienceManager
 {
 	private static var experienceToLevelUpArray:Array<Int>;
 	
-	//check json at the begining
+	/**
+	 * check json at the begining of the game
+	 */
 	public static function setExpToLevelUp() {
 		experienceToLevelUpArray = [];
 		parseJsonLevel(Main.EXPERIENCE_JSON_NAME);
@@ -26,7 +28,10 @@ class ExperienceManager
 		return experienceToLevelUpArray[pLevel - 1];
 	}
 	
-	//Parse of the json to set an array
+	/**
+	 * Parse of the json to set an array
+	 * @param	pJsonName
+	 */
 	private static function parseJsonLevel(pJsonName:String):Void{
 		var jsonExp:Dynamic = GameLoader.getContent(pJsonName + ".json");
 		for (level in Reflect.fields(jsonExp)) {

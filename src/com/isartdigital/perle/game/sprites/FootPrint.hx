@@ -7,7 +7,7 @@ import pixi.core.math.Point;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class FootPrint extends Tile implements PoolingObject
 {
@@ -36,7 +36,10 @@ class FootPrint extends Tile implements PoolingObject
 		GameStage.getInstance().getGameContainer().addChild(container);
 	}
 	
-	//Function to create the shadow of the footprint
+	/**
+	 * Function to create the shadow of the footprint
+	 * @param	pInstance of the Shadow
+	 */
 	public static function createShadow(pInstance:Phantom):Void {
 		lInstance = pInstance;
 		footPrint = PoolingManager.getFromPool(FOOTPRINT_ASSET);

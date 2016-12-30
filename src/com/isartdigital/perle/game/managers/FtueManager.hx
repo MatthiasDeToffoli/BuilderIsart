@@ -6,20 +6,22 @@ import com.isartdigital.utils.loader.GameLoader;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class FtueManager
 {
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
 	
-	//create FTUE
+	/**
+	 * Create Ftue
+	 */
 	public static function createFtue():Void {
 		npc_dialogue_ftue = [];
 		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json
 		FtueUI.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		
-		//check if frst time
+		//check if first time
 		if (SaveManager.currentSave.ftueProgress > npc_dialogue_ftue.length-1)
 			return;
 		
@@ -36,7 +38,10 @@ class FtueManager
 		FtueUI.getInstance().createText();	
 	}
 	
-	//Parse of the json to set an array
+	/**
+	 * Parse of the json to set an array
+	 * @param	pJsonName
+	 */
 	private static function parseJsonFtue(pJsonName:String):Void {
 		var jsonFtue:Dynamic = GameLoader.getContent(pJsonName + ".json");
 		var i:Int = 0;
@@ -49,7 +54,9 @@ class FtueManager
 		}
 	}
 	
-	
+	/**
+	 * Remove Ftue
+	 */
 	public static function removeFtue():Void {
 		GameStage.getInstance().getHudContainer().removeChild(FtueUI.getInstance());	
 	}
