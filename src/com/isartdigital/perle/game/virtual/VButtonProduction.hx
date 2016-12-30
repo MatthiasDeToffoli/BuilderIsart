@@ -9,7 +9,7 @@ import pixi.core.math.Point;
 
 //@Ambroise : you can move and modify this class for clipping :)
 /**
- * ...
+ * contain all information for the button production
  * @author de Toffoli Matthias
  */
 class VButtonProduction //@TODO : extends classes for clipping
@@ -67,8 +67,7 @@ class VButtonProduction //@TODO : extends classes for clipping
 		refBuilding = pRefBuilding;
 		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pType);
 		myHudContainer = pHud;
-		//if (myGeneratorDesc != null) // todo : @Matthias : It seem that myGeneratorDesc == null on any newly created house...
-			generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
+		generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
 	}
 	
 	/**

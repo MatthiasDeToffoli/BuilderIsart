@@ -32,13 +32,10 @@ typedef Region = {
 }
 
 /**
- * ...
- * @author de Toffoli Matthias & Rabier Ambroise
+ * manage all region
+ * @author de Toffoli Matthias
+ * @author Rabier Ambroise
  */
-
- /**
-  * manage all region
-  */
 class RegionManager 
 {
 	private static var background:Movie;

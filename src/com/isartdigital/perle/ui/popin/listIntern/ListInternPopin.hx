@@ -12,7 +12,7 @@ import pixi.core.display.DisplayObject;
 
 	
 /**
- * ...
+ * contain informations of all interns
  * @author de Toffoli Matthias
  */
 class ListInternPopin extends SmartPopin 
@@ -90,7 +90,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onClose(){
-		Hud.getInstance().addToContainer();
+		Hud.getInstance().show();
 		destroy();
 	}
 	

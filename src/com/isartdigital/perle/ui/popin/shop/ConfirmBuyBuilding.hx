@@ -42,7 +42,7 @@ class ConfirmBuyBuilding extends SmartPopin{
 		Phantom.onClickShop('House');
 		Hud.getInstance().hideBuildingHud();
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
-		Hud.getInstance().addToContainer();
+		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().closeCurrentPopin();
 	}

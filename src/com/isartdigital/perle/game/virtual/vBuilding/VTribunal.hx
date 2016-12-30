@@ -11,13 +11,9 @@ import pixi.core.math.Point;
 
 	
 /**
- * ...
+ * a sigleton represanting the tribunal (non graphic)
  * @author de Toffoli Matthias
  */
-
- /**
-  * a sigleton represanting the tribunal (non graphic)
-  */
 class VTribunal extends VBuilding 
 {
 	
@@ -50,8 +46,7 @@ class VTribunal extends VBuilding
 				regionX:0,
 				regionY:0,
 				mapX:0,
-				//center to the styx - the size of tribunal // hey Styx_Y length == 13 donc
-				// 6.5 - 3 == 3.5 ; tu voulais pas plutôt faire 6.5 - 3/2 == 5 ?
+				//center to the styx - the size of tribunal
 				mapY: Math.floor((Ground.ROW_Y_STYX_LENGTH / 2) - 3),
 				isTribunal: true
 			};
@@ -64,9 +59,7 @@ class VTribunal extends VBuilding
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
 	}
 	
-	// @Matthias : sinon tu créais deux fois un générator puisque qu'il y avait
-	// un addREsourceGenerator dans le new() du VBuilding également
-	// ce message s'auto-détruit après votre lecture
+
 	override function addGenerator():Void {
 		myGeneratorType = GeneratorType.soul;
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10, Alignment.neutral);

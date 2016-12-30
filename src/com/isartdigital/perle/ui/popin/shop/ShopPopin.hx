@@ -70,7 +70,7 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickExit ():Void {
-		Hud.getInstance().addToContainer();
+		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	

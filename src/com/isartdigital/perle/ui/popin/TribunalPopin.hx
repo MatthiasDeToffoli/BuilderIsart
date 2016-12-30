@@ -10,13 +10,9 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 
 	
 /**
- * ...
+ * tribunal description and all action we can do with this
  * @author de Toffoli Matthias
  */
-
- /**
-  * represent the tribunal screen
-  */
 class TribunalPopin extends SmartPopin 
 {
 	
@@ -103,7 +99,7 @@ class TribunalPopin extends SmartPopin
 	}
 	
 	private function onClose(){
-		Hud.getInstance().addToContainer();
+		Hud.getInstance().show();
 		destroy();
 	}
 	

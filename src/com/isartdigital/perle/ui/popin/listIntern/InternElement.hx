@@ -8,13 +8,9 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
 
 /**
- * ...
+ * bloc corresponding to the intern part in the listInternPopin
  * @author de Toffoli Matthias
  */
-
- /**
-  * bloc corresponding to the intern part in the listInternPopin
-  */
 class InternElement extends SmartComponent
 {
 

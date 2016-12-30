@@ -8,14 +8,6 @@ import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import haxe.rtti.CType.Typedef;
 
-/**
- * ...
- * @author de Toffoli Matthias
- */
-
- /**
-  * manage all resources, generator and levels
-  */
  
  //{ ################# typedef #################
  
@@ -42,6 +34,10 @@ import haxe.rtti.CType.Typedef;
  }
  //} endregion
  
+ /**
+ * manage all resources, generator and levels
+ * @author de Toffoli Matthias
+ */
 class ResourcesManager
 {
 	/**

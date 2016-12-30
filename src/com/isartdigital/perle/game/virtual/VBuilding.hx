@@ -175,7 +175,6 @@ class VBuilding extends VTile {
 		BuildingHud.unlinkVirtualBuilding(this);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);
-		ResourcesManager.removeGenerator(myGenerator); // todo : @Matthias
 		
 		super.destroy();
 	}

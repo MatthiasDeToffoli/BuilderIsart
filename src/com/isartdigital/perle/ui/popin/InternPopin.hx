@@ -10,7 +10,7 @@ import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
 /**
- * ...
+ * popin contained information of a intern (more detailled than ListInternPopin)
  * @author de Toffoli Matthias
  */
 class InternPopin extends SmartPopin
@@ -48,7 +48,7 @@ class InternPopin extends SmartPopin
 	}
 	
 	private function onClose(){
-		Hud.getInstance().addToContainer();
+		Hud.getInstance().show();
 		destroy();
 	}
 	

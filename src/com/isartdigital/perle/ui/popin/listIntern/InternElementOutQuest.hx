@@ -6,13 +6,9 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
 
 /**
- * ...
+ * the bloc when intern is not in quest
  * @author de Toffoli Matthias
  */
-
-  /**
-  * the bloc when intern is not in quest
-  */
 class InternElementOutQuest extends InternElement
 {
 	

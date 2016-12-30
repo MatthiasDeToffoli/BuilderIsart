@@ -20,8 +20,8 @@ import pixi.core.display.Container;
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
 /**
- * Classe en charge de gérer les informations du Hud
- * @author Ambroise RABIER et Vicktor Grenu et Matthias DeToffoli
+ * @author Ambroise RABIER
+ * @author Vicktor Grenu
 */
 class Hud extends SmartScreen 
 {	
@@ -121,17 +121,17 @@ class Hud extends SmartScreen
 	
 	private function onClickShop ():Void {
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
-		removeToContainer();
+		hide();
 	}
 	
 	private function onClickTribunal():Void {
 		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
-		removeToContainer();
+		hide();
 	}
 	
 	private function onClickListIntern(){
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		removeToContainer();
+		hide();
 	}
 	
 	/**
@@ -166,11 +166,19 @@ class Hud extends SmartScreen
 	//hud génant quand ouvre autre screen est ce que on garde ou on fait autrement ?
 	// Ambroise : C'est une bonne méthode à mon avis, par contre le nom de la fonction est encore mal trouvé :/
 	// typiquement en jquery la function se nommerait hide(); et l'autre show();
-	public function removeToContainer():Void{
+	//Matthias : ça va X)
+	
+	/**
+	 * hide the hud
+	 */
+	public function hide():Void{
 		GameStage.getInstance().getHudContainer().removeChild(this);
 	}
 	
-	public function addToContainer():Void{
+	/**
+	 * show the hud
+	 */
+	public function show():Void{
 		GameStage.getInstance().getHudContainer().addChild(this);
 	}
 	
