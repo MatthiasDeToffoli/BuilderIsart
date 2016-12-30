@@ -21,12 +21,12 @@ class VHudContextual extends Virtual{
 	public function new() {
 		super();
 		
-	}
+	} 
 	
 	public function init (pVBuilding:VBuilding):Void {
 		myVBuilding = pVBuilding;
 		virtualGoldBtn = new VButtonProduction();
-		virtualGoldBtn.init(new Point(0, 0), myVBuilding.tileDesc.id, pVBuilding.myGeneratorType, this);
+		virtualGoldBtn.init(this);
 		
 		// ajout cartouche d'âme 
 		// ajout progressbar
@@ -42,18 +42,19 @@ class VHudContextual extends Virtual{
 		
 		
 		
-		virtualGoldBtn.activeWithBuilding();
+		virtualGoldBtn.activate();
 	}
 	
 	override public function desactivate ():Void {
 		super.desactivate(); // s'occupe de supprimer de la variable graphic qui contient hudcontextuel
 		
-		virtualGoldBtn.unActivateWithBuild();
+		virtualGoldBtn.desactivate();
 	}
 	
 	override public function destroy():Void {
 		myVBuilding.unlinkContextualHud();
 		myVBuilding = null;
+		virtualGoldBtn.destroy();
 		super.destroy();
 	}
 	

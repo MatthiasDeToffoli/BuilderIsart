@@ -1,14 +1,10 @@
 package com.isartdigital.perle.ui.contextual;
 
-import com.isartdigital.perle.game.managers.PoolingObject;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
-import com.isartdigital.perle.ui.contextual.virtual.VButtonProduction;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import pixi.core.display.Container;
-import pixi.core.math.Point;
 
 /**
  * Only element that is clippable but not Poolable // todo or not ?
@@ -40,6 +36,10 @@ class HudContextual extends Container implements HasVirtual{
 	public function init ():Void {
 		alignCenter();
 		container.addChild(this); // ds start() ?
+	}
+	
+	public function addComponent (pComponent:SmartComponent):Void {
+		addChild(pComponent);
 	}
 	
 	

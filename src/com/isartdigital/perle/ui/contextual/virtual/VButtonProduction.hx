@@ -4,14 +4,17 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.contextual.HudContextual;
+import com.isartdigital.utils.ui.smart.SmartComponent;
+import pixi.core.display.Container;
 import pixi.core.math.Point;
 
 
 /**
  * contain all information for the button production
+ * Is not saved, is not in clipping List directly, is contained by VHudContextual
  * @author de Toffoli Matthias
  */
-class VButtonProduction //@TODO : extends classes for clipping
+class VButtonProduction extends VSmartComponent
 {
 	
 	/**
@@ -29,44 +32,29 @@ class VButtonProduction //@TODO : extends classes for clipping
 	 */
 	private var resourceType:GeneratorType;
 	
-	
-	/**
-	 * say if building is activate or not
-	 */
-	private var buildingIsInView:Bool = false;
-	
 	/**
 	 * say if generator is empty of not
 	 */
 	private var generatorIsNotEmpty = false;
 	
-	/**
-	 * Hud contained the Graphic
-	 */
-	private var myVHudContainer:VHudContextual;
-	/**
-	 * graphics of the button
-	 */	
-	private var graphicBtn:ButtonProduction = new ButtonProduction();
+	private var buildingIsInView:Bool;
 
 	public function new() 
 	{
+		super();
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
 	}
 	
 	/**
 	 * initialiste the virtual button production and set the graphic position the building ref, the generator description and the hud container
-	 * @param	pPosition the position of the graphic
 	 * @param	pRefBuilding the building reference
 	 * @param	pType the type of generator
 	 * @param	pHud the hud which contained the graphic
 	 */
-	public function init (pPosition:Point, pRefBuilding:Int, pType:GeneratorType, pVHud:VHudContextual):Void {
-		graphicBtn.position = pPosition;
-		refBuilding = pRefBuilding;
-		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pType);
-		
-		myVHudContainer = pVHud;
+	override public function init (pVHud:VHudContextual):Void {
+		super.init(pVHud);
+		refBuilding = pVHud.myVBuilding.tileDesc.id;
+		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pVHud.myVBuilding.myGeneratorType);
 		generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
 	}
 	
@@ -76,55 +64,50 @@ class VButtonProduction //@TODO : extends classes for clipping
 	 */
 	private function onGeneratorEvent(data:Dynamic):Void{
 		if (data.id == refBuilding)
-			if (data.active){
+			if (data.active) { 
+				// @TODO : plutôt que d'envoyer data.active il devrait envoyer data.empty
+				// empty faisant référence à ce que contient le générateur
+				// car là le generator se mèle des affaire qui le concerne pas en mettant
+				// .active (qui fait référence dans nos tête à this.active du clipping)
 				generatorIsNotEmpty = true;
-				activate();
+				if (!active && buildingIsInView)
+					activate();
 			}
 			else{
 				generatorIsNotEmpty = false;
-				if (buildingIsInView){
-					graphicBtn.destroy();
-					graphicBtn = new ButtonProduction();
-				}
-				
+				if (active)
+					desactivate();
 			}
-	}
-	
-	/**
-	 * call when a building is activate
-	 */
-	public function activeWithBuilding():Void{
-		buildingIsInView = true;
-		activate();
 	}
 	
 	/**
 	 * addchild the goldbutton if the generator is not empty and the building is active
 	 */
-	private function activate():Void{
-		if (generatorIsNotEmpty && buildingIsInView) {
-			graphicBtn.setMyGeneratorDescription(myGeneratorDesc);
-			myVHudContainer.graphic.addChild(graphicBtn);
-		}
+	override public function activate ():Void {
+		buildingIsInView = true;
+		
+		if (generatorIsNotEmpty) {	
+			super.activate(); // put active to true
+			
+			var lButton:ButtonProduction = new ButtonProduction();
+			graphic = cast(lButton, Container);
+			
+			lButton.setMyGeneratorDescription(myGeneratorDesc);
+			
+			cast(myVHudContextual.graphic, HudContextual).addComponent(
+				cast(lButton, SmartComponent)
+			);
+		} 
 	}
 	
-	/**
-	 * destroy the goldbutton
-	 */
-	public function unActivateWithBuild():Void{
-
+	override public function desactivate ():Void {
 		buildingIsInView = false;
 		
-		if (generatorIsNotEmpty){
-			//@TODO: voir si on le removechild juste du container ou si on le destroy bien celon le clipping :)
-			graphicBtn.destroy();
-			// si on remove childe juste @TODO: suprimer cette ligne
-			graphicBtn = new ButtonProduction();
-		}
-		
+		super.desactivate(); //@TODO: rendre le btn clippable en ajoutant l'implement
 	}
 	
-	public function destroy() {	
+	override public function destroy() {	
 		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
+		super.destroy();
 	}
 }
