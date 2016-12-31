@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.utils.Debug;
 import pixi.core.display.Container;
 
 interface HasVirtual {
@@ -52,7 +53,7 @@ class Virtual {
 	 */
 	public function activate ():Void {
 		if (active)
-			throw("Virtual is already active !");
+			Debug.error("Virtual is already active !");
 		active = true;
 		
 		// look override in Childrens !	
@@ -63,7 +64,7 @@ class Virtual {
 	 */
 	public function desactivate ():Void {
 		if (!active)
-			throw("Virtual is already desactived !");
+			Debug.error("Virtual is already desactived !");
 		
 		active = false;
 		removeGraphic();
@@ -74,11 +75,9 @@ class Virtual {
 	 */
 	private function removeGraphic ():Void {
 		if (graphic != null) {
-			trace ("doit trace true la plupart du temps : " + Std.is(graphic, PoolingObject)); // todo vérification, puis suppression
-			
 			if (Std.is(graphic, PoolingObject))
 				cast(graphic, PoolingObject).recycle();
-			else
+			else // todo : rendre l'hud contextual (son contenu) reclyclable
 				graphic.destroy();
 		}
 		graphic = null;

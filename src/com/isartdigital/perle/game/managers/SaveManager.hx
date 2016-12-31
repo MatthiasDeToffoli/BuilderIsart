@@ -12,8 +12,8 @@ import js.Browser;
 //@:optional vous connaisiez ?
 
 enum RegionType {hell; eden; styx; }
-enum GeneratorType{soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; }
-enum Alignment{neutral; demon; angel; }
+enum GeneratorType {soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; }
+enum Alignment {neutral; demon; angel; }
 
 
 typedef TileDescription = {
@@ -35,9 +35,9 @@ typedef RegionDescription = {
 }
 
 typedef TimeDescription = {
-	var refTile:Int;
-	var progress:Float;
-	var end:Float;
+	var refTile:Int; // l'id du bâtiment auquel il est associé
+	var progress:Float; // de 0 à end pour une barre de progression
+	var end:Float; // millisecondes
 }
 
 typedef TimeQuestDescription = {

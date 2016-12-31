@@ -79,7 +79,6 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickFakeBuySoft ():Void { // todo temporaire, confirmBuyCurrencie gère si soft ou hard
-		trace("lol");
 		UIManager.getInstance().openPopin(ConfirmBuyCurrencie.getInstance());
 	}
 	

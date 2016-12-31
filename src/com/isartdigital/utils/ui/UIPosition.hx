@@ -1,5 +1,7 @@
 package com.isartdigital.utils.ui;
+import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -20,6 +22,7 @@ class UIPosition
 	public static inline var BOTTOM_LEFT:String="bottomLeft";
 	public static inline var BOTTOM_RIGHT:String="bottomRight";
 	public static inline var BOTTOM_CENTER:String="bottomCenter";
+	public static inline var TOP_CENTER:String="topCenter";
 	
 	public static inline var FIT_WIDTH:String="fitWidth";
 	public static inline var FIT_HEIGHT:String="fitHeight";
@@ -40,6 +43,7 @@ class UIPosition
 			case BOTTOM_LEFT: return null;
 			case BOTTOM_RIGHT: return null;
 			case BOTTOM_CENTER: return null;
+			case TOP_CENTER: return null;
 			case FIT_WIDTH: return null;
 			case FIT_HEIGHT: return null;
 			case FIT_SCREEN: return null;
@@ -62,70 +66,63 @@ class UIPosition
 		var lScreen:Rectangle = DeviceCapabilities.getScreenRect(pTarget.parent);
 		
 		var lTopLeft:Point = new Point (lScreen.x, lScreen.y);
-		var lBottomRight:Point = new Point (lScreen.x+lScreen.width,lScreen.y+lScreen.height);
-		/*
-		switch pPosition {
-			case TOP    : case TOP_LEFT    : case TOP_RIGHT    : lTopLeft.y + pOffsetY;
-			case BOTTOM : case BOTTOM_LEFT : case BOTTOM_RIGHT : case BOTTOM_CENTER : pTarget.y = lBottomRight.y - pOffsetY;
-			case LEFT   : case TOP_LEFT    : case BOTTOM_LEFT  : pTarget.x = lTopLeft.x + pOffsetX;
-			case RIGHT  : case TOP_RIGHT   : case BOTTOM_RIGHT : pTarget.x = lBottomRight.x - pOffsetX;
-			case BOTTOM_CENTER :lBottomRight.x - lScreen.width / 2 - pOffsetX;
-		}
+		var lBottomRight:Point = new Point (lScreen.x + lScreen.width, lScreen.y + lScreen.height);
 		
+		moveTarget(
+			{
+				topLeft:lTopLeft,
+				bottomRight:lBottomRight
+			}, 
+			pTarget, pPosition, pOffsetX, pOffsetY
+		);
+	}
+	
+	/**
+	 * graphic.getBound().position must egal pTarget.parent.position
+	 * That's why I use alignTopLeft() on the HudContextual instance.
+	 * @param	pParentBounds
+	 * @param	pTarget
+	 * @param	pPosition
+	 * @param	pOffsetX
+	 * @param	pOffsetY
+	 */
+	public static function setPositionContextualUI (pParent:Container, pTarget:DisplayObject, pPosition:String, pOffsetX:Float = 0, pOffsetY:Float = 0):Void {
 		
-		switch pPosition {
-			case TOP    : case TOP_LEFT    : case TOP_RIGHT    :
-				lTopLeft.y + pOffsetY;
-			case BOTTOM : case BOTTOM_LEFT : case BOTTOM_RIGHT : case BOTTOM_CENTER : 
-				pTarget.y = lBottomRight.y - pOffsetY;
-			case LEFT   : case TOP_LEFT    : case BOTTOM_LEFT  :
-				pTarget.x = lTopLeft.x + pOffsetX;
-			case RIGHT  : case TOP_RIGHT   : case BOTTOM_RIGHT :
-				pTarget.x = lBottomRight.x - pOffsetX;
-			case BOTTOM_CENTER :
-				lBottomRight.x - lScreen.width / 2 - pOffsetX;
-		}
+		// todo : pourquoi getBound().width donne une width différentes sur le tribunal ??? (plus large)
+		moveTarget(
+			{
+				topLeft:new Point (0, 0),
+				bottomRight:new Point (0 + pParent.width, 0 + pParent.height)
+			},
+			pTarget, pPosition, pOffsetX, pOffsetY
+		);
+	}
+	
+	private static function moveTarget (pParentRect:EasyRectangle, pTarget:DisplayObject, pPosition:String, pOffsetX:Float = 0, pOffsetY:Float = 0):Void {
 		
+		var lWidth:Float = pParentRect.bottomRight.x - pParentRect.topLeft.x;
+		var lHeight:Float = pParentRect.bottomRight.y - pParentRect.topLeft.y;
 		
-		if (pPosition == TOP || pPosition == TOP_LEFT || pPosition == TOP_RIGHT) pTarget.y = lTopLeft.y + pOffsetY;
-		if (pPosition == BOTTOM || pPosition == BOTTOM_LEFT || pPosition == BOTTOM_RIGHT || pPosition == BOTTOM_CENTER) pTarget.y = lBottomRight.y - pOffsetY;
-		if (pPosition == LEFT || pPosition == TOP_LEFT || pPosition == BOTTOM_LEFT) pTarget.x = lTopLeft.x + pOffsetX;
-		if (pPosition == RIGHT || pPosition == TOP_RIGHT || pPosition == BOTTOM_RIGHT) pTarget.x = lBottomRight.x - pOffsetX;
-		if (pPosition == BOTTOM_CENTER) pTarget.x = lBottomRight.x - lScreen.width / 2 - pOffsetX;
-		
-		
-		
-		if ([TOP, TOP_LEFT, TOP_RIGHT].indexOf(pPosition) != -1) pTarget.y = lTopLeft.y + pOffsetY;
-		if ([BOTTOM, BOTTOM_LEFT, BOTTOM_RIGHT, BOTTOM_CENTER].indexOf(pPosition) != -1) pTarget.y = lBottomRight.y - pOffsetY;
-		if ([LEFT, TOP_LEFT, BOTTOM_LEFT].indexOf(pPosition) != -1) pTarget.x = lTopLeft.x + pOffsetX;
-		if ([RIGHT, TOP_RIGHT, BOTTOM_RIGHT].indexOf(pPosition) != -1) pTarget.x = lBottomRight.x - pOffsetX;
-		if (pPosition == BOTTOM_CENTER) pTarget.x = lBottomRight.x - lScreen.width / 2 - pOffsetX;
-		*/
-		
-		
-		
-		if ([TOP, TOP_LEFT, TOP_RIGHT].indexOf(pPosition) != -1) 
-			pTarget.y = lTopLeft.y + pOffsetY;
-		if ([BOTTOM, BOTTOM_LEFT, BOTTOM_RIGHT, BOTTOM_CENTER].indexOf(pPosition) != -1) 
-			pTarget.y = lBottomRight.y - pOffsetY;
-		if ([LEFT, TOP_LEFT, BOTTOM_LEFT].indexOf(pPosition) != -1) 
-			pTarget.x = lTopLeft.x + pOffsetX;
-		if ([RIGHT, TOP_RIGHT, BOTTOM_RIGHT].indexOf(pPosition) != -1) 
-			pTarget.x = lBottomRight.x - pOffsetX;
-		if (pPosition == BOTTOM_CENTER) 
-			pTarget.x = lBottomRight.x - lScreen.width / 2 - pOffsetX;
+		if ([TOP, TOP_LEFT, TOP_RIGHT, TOP_CENTER].indexOf(pPosition) != -1)
+			pTarget.y = pParentRect.topLeft.y + pOffsetY;
+		if ([BOTTOM, BOTTOM_LEFT, BOTTOM_RIGHT, BOTTOM_CENTER].indexOf(pPosition) != -1)
+			pTarget.y = pParentRect.bottomRight.y - pOffsetY;
+		if ([LEFT, TOP_LEFT, BOTTOM_LEFT].indexOf(pPosition) != -1)
+			pTarget.x = pParentRect.topLeft.x + pOffsetX;
+		if ([RIGHT, TOP_RIGHT, BOTTOM_RIGHT].indexOf(pPosition) != -1)
+			pTarget.x = pParentRect.bottomRight.x - pOffsetX;
+		if ([TOP_CENTER, BOTTOM_CENTER].indexOf(pPosition) != -1)
+			pTarget.x = pParentRect.bottomRight.x - lWidth / 2 - pOffsetX;
 		
 		
 		if (pPosition == FIT_WIDTH || pPosition == FIT_SCREEN) {
-			pTarget.x = lTopLeft.x;
-			untyped pTarget.width = lBottomRight.x - lTopLeft.x;
+			pTarget.x = pParentRect.topLeft.x;
+			untyped pTarget.width = lWidth;
 		}
 		if (pPosition == FIT_HEIGHT || pPosition == FIT_SCREEN) {
-			pTarget.y = lTopLeft.y;
-			untyped pTarget.height = lBottomRight.y - lTopLeft.y;
+			pTarget.y = pParentRect.topLeft.y;
+			untyped pTarget.height = lHeight;
 		}
-
-		
 	}
 	
 }

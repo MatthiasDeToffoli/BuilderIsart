@@ -45,7 +45,7 @@ class TimeManager {
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 10000;
+	private static inline var TIME_LOOP_DELAY:Int = 5000;
 	
 	
 	public static var eTimeGenerator:EventEmitter;
@@ -220,7 +220,6 @@ class TimeManager {
 		for (i in 0...lLength) {
 			updateQuest(listQuest[i], lElapsedTime);
 		}
-		
 	}
 	
 	/**

@@ -54,7 +54,8 @@ class VBuilding extends VTile {
 	override public function desactivate ():Void {
 		super.desactivate();
 		
-		myVContextualHud.desactivate();
+		if (myVContextualHud != null)
+			myVContextualHud.desactivate();
 	}
 	
 	public function unlinkContextualHud ():Void {
