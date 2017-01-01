@@ -35,8 +35,9 @@ class Main extends EventEmitter
 	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = "dialogue_ftue";
 	public static var EXPERIENCE_JSON_NAME(default, never):String = "experience";
 	public static var UNLOCK_ITEM_JSON_NAME(default, never):String = "item_to_unlock";
+	public static var PRICE_JSON_NAME(default, never):String = "buy_price";
 	
-	private static var configPath:String = "config.json";	
+	private static var configPath:String = "config.json";
 	private static var instance: Main;
 	
 	public var renderer:WebGLRenderer;
@@ -174,10 +175,14 @@ class Main extends EventEmitter
 		
 		lLoader.on(LoadEventType.PROGRESS, onLoadProgress);
 		lLoader.once(LoadEventType.COMPLETE, onLoadComplete);
+		
 		//dialogue FTUE
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
 		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
 		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
+		
+		// BuyManager price
+		lLoader.addTxtFile(PRICE_JSON_NAME + ".json");
 		
 		// affiche l'écran de préchargement
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen

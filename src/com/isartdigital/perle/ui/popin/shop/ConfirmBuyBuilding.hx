@@ -1,5 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop;
 
+import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
@@ -39,12 +41,21 @@ class ConfirmBuyBuilding extends SmartPopin{
 	}
 	
 	private function onClickBuy ():Void {
-		Phantom.onClickShop('House');
-		Hud.getInstance().hideBuildingHud();
-		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
-		Hud.getInstance().show();
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().closeCurrentPopin();
+		if (BuyManager.canBuy(AssetName.HOUSE_HELL)) {
+			Phantom.onClickShop(AssetName.HOUSE_HELL);
+			Hud.getInstance().hideBuildingHud();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+			Hud.getInstance().show();
+			UIManager.getInstance().closeCurrentPopin();
+			UIManager.getInstance().closeCurrentPopin();
+		} else {
+			displayCantBuy();
+		}
+		
+	}
+	
+	private function displayCantBuy ():Void {
+		trace("can't buy you need more money !!");
 	}
 	
 	private function onClickExit ():Void {

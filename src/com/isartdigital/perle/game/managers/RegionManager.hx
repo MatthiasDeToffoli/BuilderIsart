@@ -1,22 +1,21 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
-import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.VGround;
 import com.isartdigital.perle.game.virtual.VTile;
-import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
-import pixi.flump.Movie;
 
 typedef Region = {
 	var desc:RegionDescription;
@@ -38,7 +37,7 @@ typedef Region = {
  */
 class RegionManager 
 {
-	private static var background:Movie;
+	private static var background:FlumpStateGraphic;
 	
 	/**
 	 * the model map who contain all region
@@ -328,13 +327,16 @@ class RegionManager
 		}
 	}
 	
-	/**
+	/**s
 	 * Change background to addchild
 	 * @param regionDescription
 	 */
 	private static function createNextBg(pDesc:RegionDescription): Void {
-		background = new Movie(getBgAssetname(pDesc.type));
-		background.scale.set(1.7);
+		// note d'Ambroise : ok pr utiliser Movie() mais il donne pas le bon scale
+		// ET PAS QUESTION DE RESCALE A LA VUE
+		background = new FlumpStateGraphic(getBgAssetname(pDesc.type));
+		background.init();
+		background.start();
 		background.position = IsoManager.modelToIsoView(new Point(pDesc.firstTilePos.x, pDesc.firstTilePos.y));
 	}
 	

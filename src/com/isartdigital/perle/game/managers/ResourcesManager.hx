@@ -175,6 +175,10 @@ class ResourcesManager
 	 
 	}
 	
+	public static function getTotalForType (pType:GeneratorType):Float {
+		return myResourcesData.totalsMap[pType];
+	}
+	
 	/**
 	 * get the current level
 	 * @return the level

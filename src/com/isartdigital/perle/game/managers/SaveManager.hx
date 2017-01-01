@@ -17,8 +17,8 @@ enum Alignment {neutral; demon; angel; }
 
 
 typedef TileDescription = {
-	var className:String;
-	var assetName:String;
+	var className:String; // todo : enlever
+	var assetName:String; // sûr ? pose problème si on change l'assetName non ?
 	var id:Int;
 	var regionX:Int;
 	var regionY:Int;
@@ -314,7 +314,12 @@ class SaveManager {
 	public static function translateArrayToEnum(pArray:Dynamic):Dynamic{
 		
 		if (pArray == null) return null;
-		switch pArray[0] {
+		
+		return stringToEnum(cast(pArray[0], String));
+	}
+	
+	public static function stringToEnum (pString:String):Dynamic {
+		switch pString {
 			case "soft":
 				return GeneratorType.soft;
 				
@@ -340,28 +345,28 @@ class SaveManager {
 				return GeneratorType.intern;
 				
 			case "buildResourceFromHell":
-			return GeneratorType.buildResourceFromHell;
+				return GeneratorType.buildResourceFromHell;
 			
 			case "buildResourceFromParadise":
-			return GeneratorType.buildResourceFromParadise;
+				return GeneratorType.buildResourceFromParadise;
 			
 			case "hell":
-			return RegionType.hell;
+				return RegionType.hell;
 			
 			case "eden":
-			return RegionType.eden;
+				return RegionType.eden;
 			
 			case "styx":
-			return RegionType.styx;
+				return RegionType.styx;
 			
 			case "neutral":
-			return Alignment.neutral;
+				return Alignment.neutral;
 			
 			case "demon":
-			return Alignment.demon;
+				return Alignment.demon;
 			
 			case "angel":
-			return Alignment.angel;
+				return Alignment.angel;
 				
 			default:
 				return null;

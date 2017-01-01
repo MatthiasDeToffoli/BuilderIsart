@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin;
 
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
@@ -36,9 +38,6 @@ class InfoBuilding extends SmartPopin {
 	 */
 	private function new() {
 		super("Fenetre_InfoMaison");
-		
-		/*for (i in 0...children.length) // cheat pratique
-			trace (children[i].name);*/
 			
 		btnExit = cast(getChildByName('CloseButton'), SmartButton);
 		btnSell = cast(getChildByName('SellButton'), SmartButton);
@@ -52,6 +51,7 @@ class InfoBuilding extends SmartPopin {
 	}
 	
 	private function onClickSell ():Void {
+		BuyManager.sell(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 		UIManager.getInstance().closeCurrentPopin();
 		BuildingHud.virtualBuilding.destroy();
 		Hud.getInstance().hideBuildingHud();

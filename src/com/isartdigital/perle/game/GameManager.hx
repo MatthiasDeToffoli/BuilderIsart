@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
@@ -44,6 +45,7 @@ class GameManager {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
 		
+		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();

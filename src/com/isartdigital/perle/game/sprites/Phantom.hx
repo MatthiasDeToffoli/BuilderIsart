@@ -1,9 +1,9 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
-import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building.RegionMap;
@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -237,27 +238,28 @@ class Phantom extends Building {
 	
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
-		// todo :
-		// Type.getClassName ? but path whit it ?
-		// what do you do if the path change between version and not in save ?
 		
-		
-		var tileDesc:TileDescription = {
-			className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling)
-			assetName:assetName,
-			id:IdManager.newId(),
-			regionX:regionMap.region.x,
-			regionY:regionMap.region.y,
-			mapX:regionMap.map.x,
-			mapY:regionMap.map.y
-		};
+		if (BuyManager.buy(assetName)) {
+			var tileDesc:TileDescription = {
+				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
+				assetName:assetName,
+				id:IdManager.newId(),
+				regionX:regionMap.region.x,
+				regionY:regionMap.region.y,
+				mapX:regionMap.map.x,
+				mapY:regionMap.map.y
+			};
 
-		var vBuilding:VBuilding = new VBuilding(tileDesc);
-		vBuilding.activate();
-		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
-		destroy();
-		
-		applyChange();
+			var vBuilding:VBuilding = new VBuilding(tileDesc);
+			vBuilding.activate();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
+			destroy();
+			
+			
+			applyChange();
+		} else {
+			displayCantBuy();
+		}
 	}
 	
 	private function applyChange ():Void {
@@ -396,9 +398,16 @@ class Phantom extends Building {
 	}
 	
 	//todo : HUD method
-	private function displayCantBuild():Void {
+	private function displayCantBuild ():Void {
 		BHMoving.getInstance().cantBuildHere();
 	}
+	
+	private function displayCantBuy ():Void {
+		Debug.error("tentative de pose de bâtiment, mais currencie insuffisante");
+		trace("comment ce-ci peut-il arriver ?");
+	}
+	
+	
 	
 	private function addPhantomFilter():Void {
 		alpha = FILTER_OPACITY;
