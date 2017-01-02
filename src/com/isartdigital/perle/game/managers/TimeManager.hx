@@ -15,6 +15,11 @@ import eventemitter3.EventEmitter;
 	private function onTimeEnd ():Void;
 }*/
 
+typedef EventResoucreTick = {
+	var generator:Generator;
+	var tickNumber:Int;
+}
+
 /**
  * infinite repeat
  */
@@ -288,8 +293,10 @@ class TimeManager {
 		if (lNumberTick > 0)
 			eTimeGenerator.emit(
 				EVENT_RESOURCE_TICK,
-				pElement.generator,
-				lNumberTick
+				{
+					generator:pElement.generator,
+					tickNumber:lNumberTick
+				}
 			);
 	}
 	
