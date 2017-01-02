@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.ResourcesGeneratorDescription;
+import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
@@ -113,7 +114,7 @@ class ResourcesManager
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulBad);
 		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulGood);
 		
-		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesByOne);
+		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesWithTime);
 	}
 	
 	/**
@@ -301,11 +302,11 @@ class ResourcesManager
 	//{ ################# increaseResources #################
 	
 	/**
-	 * increase a generator's quantity by one
-	 * @param pGenerator the generator target
+	 * increase a generator's quantity link to the time
+	 * @param data the object contain the generator and the time link
 	 */
-	private static function increaseResourcesByOne(pGenerator:Generator):Void{
-		if(pGenerator != null) increaseResources(pGenerator, 1);
+	private static function increaseResourcesWithTime(data:EventResoucreTick):Void{
+		if(data != null) increaseResources(data.generator, data.tickNumber);
 	}
 	
 	/**
