@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.contextual.sprites;
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.utils.events.MouseEventType;
@@ -26,7 +27,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	// @TODO : séparer graphique du logique => VButtonProduction et ButtonProduction
 	// et voir pour pooling de la partie graphique
 	public function new() {
-		super("GoldProduction");
+		super(AssetName.BTN_PRODUCTION);
 		interactive = true;
 		on(MouseEventType.CLICK, onClick);
 	}

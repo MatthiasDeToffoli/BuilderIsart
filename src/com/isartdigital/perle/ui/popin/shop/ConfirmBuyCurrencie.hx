@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.popin.shop;
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 
 /**
@@ -15,7 +16,7 @@ class ConfirmBuyCurrencie extends SmartPopin{
 	}	
 	
 	private function new() {
-		super('Popin_ConfirmBuyEuro');
+		super(AssetName.POPIN_CONFIRM_BUY_CURRENCIE);
 	}
 	
 	override public function destroy():Void {

@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -31,7 +32,7 @@ class ShopPopin extends SmartPopin{
 	
 	private function new() {
 		modal = false;
-		super("Shop_Building");
+		super(AssetName.POPIN_SHOP);
 		
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
@@ -41,9 +42,9 @@ class ShopPopin extends SmartPopin{
 			
 		/*try {*/ // todo : pouah ya du boulot...
 			// huuum faire des classes et recréer des élements ? ou ?
-			caroussel = cast(getChildByName('Shop_Item_List'), ShopCaroussel);
+			caroussel = cast(getChildByName(AssetName.SHOP_CAROUSSEL), ShopCaroussel);
 			//cast(test, ShopCaroussel);
-			btnExit = cast(getChildByName('Shop_Close_Button'), SmartButton);
+			btnExit = cast(getChildByName(AssetName.SHOP_BTN_CLOSE), SmartButton);
 			//btnPurgatory = cast(getChildByName('Purgatory_Button'), SmartButton);
 			//btnInterns = cast(getChildByName('Interns_Button'), SmartButton);
 			//tabs[ShopTab.Building] = cast(getChildByName('Onglet_Building'), SmartButton);

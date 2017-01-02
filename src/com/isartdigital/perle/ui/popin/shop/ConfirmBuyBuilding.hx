@@ -27,7 +27,7 @@ class ConfirmBuyBuilding extends SmartPopin{
 	}	
 	
 	private function new() {
-		super("Popin_ConfirmationBuyHouse");
+		super(AssetName.POPIN_CONFIRM_BUY_BUILDING);
 		
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/

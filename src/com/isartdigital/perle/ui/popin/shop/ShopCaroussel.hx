@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 
@@ -19,14 +20,10 @@ class ShopCaroussel extends SmartComponent {
 		return instance;
 	}*/
 	
-	public function new(pID:String=null) {
+	public function new(pID:String=null) { // used in UIBuilder.hx
 		super(pID);
-		
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
 			
-			
-		var test = cast(getChildByName('Shop_Item_Unlocked'), SmartComponent);
+		var test = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_ITEM_UNLOCKED), SmartComponent);
 		test.interactive = true;
 		test.on(MouseEventType.CLICK, _click);
 	}

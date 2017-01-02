@@ -1,5 +1,6 @@
 package com.isartdigital.perle;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
@@ -291,7 +292,7 @@ class Main extends EventEmitter
 	 */
 	private function doUIBuilderHack ():Void {
 		var mapMovieClipToClass:Map<String, Class<Dynamic>> = [
-			"Shop_Item_List" => ShopCaroussel
+			AssetName.SHOP_CAROUSSEL => ShopCaroussel
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;
