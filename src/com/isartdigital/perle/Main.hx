@@ -33,11 +33,11 @@ import pixi.loaders.Loader;
 class Main extends EventEmitter
 {
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
-	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = "dialogue_ftue";
-	public static var EXPERIENCE_JSON_NAME(default, never):String = "experience";
-	public static var UNLOCK_ITEM_JSON_NAME(default, never):String = "item_to_unlock";
-	public static var PRICE_JSON_NAME(default, never):String = "buy_price";
-	
+	public static var JSON_FOLDER(default,never):String = "json/";
+	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = JSON_FOLDER + "dialogue_ftue";
+	public static var EXPERIENCE_JSON_NAME(default, never):String = JSON_FOLDER + "experience";
+	public static var UNLOCK_ITEM_JSON_NAME(default, never):String = JSON_FOLDER + "item_to_unlock";
+	public static var PRICE_JSON_NAME(default, never):String = JSON_FOLDER + "buy_price";
 	private static var configPath:String = "config.json";
 	private static var instance: Main;
 	
