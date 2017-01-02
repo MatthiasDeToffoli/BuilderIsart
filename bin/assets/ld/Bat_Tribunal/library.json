@@ -1,0 +1,85 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "Bat_Purgatory_colo",
+       "origin": [
+        120.5,
+        128.55
+       ],
+       "rect": [
+        1,
+        1,
+        242,
+        258
+       ]
+      },
+      {
+       "symbol": "BatAdmin",
+       "origin": [
+        115.8,
+        127.4
+       ],
+       "rect": [
+        245,
+        1,
+        232,
+        255
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        115.825,
+        127.375
+       ],
+       "index": 0,
+       "ref": "BatAdmin",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "BatAdmin_Principal"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        120.525,
+        128.55
+       ],
+       "index": 0,
+       "ref": "Bat_Purgatory_colo",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Bat_Purgatory_colo_Principal"
+  }
+ ],
+ "md5": "12ccff5b36d435a013faaa90ea535e0a",
+ "frameRate": 60
+}

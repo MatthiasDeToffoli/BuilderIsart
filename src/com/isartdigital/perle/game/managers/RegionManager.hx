@@ -230,7 +230,7 @@ class RegionManager
 	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
 		//@TODO: delete when we will have the stick bg
-		if(pType != RegionType.styx) createNextBg({
+		createNextBg({
 			x:pWorldPos.x,
 			y:pWorldPos.y,
 			type:pType,
@@ -322,7 +322,7 @@ class RegionManager
 		{
 			case RegionType.hell: return "HBg";
 			case RegionType.eden: return "PBg";
-			case RegionType.styx: return "SBg";
+			case RegionType.styx: return "Styx_01_Principal";
 			default: trace(pRegionType + " - No background for this"); return null;
 		}
 	}
@@ -405,7 +405,7 @@ class RegionManager
 			background: getBgAssetname(pRegionDesc.type)
 		};
 		
-		if (newRegion.background != "SBg") createNextBg(newRegion.desc);
+		 createNextBg(newRegion.desc);
 		
 		return newRegion;
 	}
