@@ -81,11 +81,18 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_UPGRADE:String = "UpgradeButton";
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE:String = "Cost";
 	
+	//Ftue
+	public static inline var FTUE:String = "Window_NPC";
+	public static inline var FTUE_BUTTON:String = FTUE+"_ButtonNext";
+	public static inline var FTUE_HELL:String = FTUE+"_Hell";
+	public static inline var FTUE_HEAVEN:String = FTUE+"_Heaven";
+	public static inline var FTUE_NAME:String = FTUE+"_Name_TXT";
+	public static inline var FTUE_SPEACH:String = FTUE+"_Speech_TXT";
 
 	// add background and any other assetName coming from DA
 	//bg
-	public static inline var BACKGROUND_HELL:String = "HBg";
-	public static inline var BACKGROUND_HEAVEN:String = "PBg";
+	public static inline var BACKGROUND_HELL:String = "Region_Enfer_Principal";
+	public static inline var BACKGROUND_HEAVEN:String = "Region_Paradis_Principal";
 	public static inline var BACKGROUND_STYX:String = "Styx_01_Principal";
 	
 	//building

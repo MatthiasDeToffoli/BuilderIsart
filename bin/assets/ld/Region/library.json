@@ -1,0 +1,93 @@
+{
+ "md5": "5cea28024c047a920e43257f4c4876f0",
+ "frameRate": 60,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        650,
+        325
+       ],
+       "symbol": "Region_Paradis",
+       "origin": [
+        325,
+        162.5
+       ]
+      },
+      {
+       "rect": [
+        1,
+        328,
+        650,
+        325
+       ],
+       "symbol": "Region_Enfer",
+       "origin": [
+        325,
+        162.5
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "Region_Enfer",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0,
+        162.5
+       ],
+       "pivot": [
+        325,
+        162.5
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Region_Enfer_Principal"
+  },
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "Region_Paradis",
+       "duration": 1,
+       "tweened": false,
+       "loc": [
+        0,
+        162.5
+       ],
+       "pivot": [
+        325,
+        162.5
+       ],
+       "index": 0
+      }
+     ]
+    }
+   ],
+   "id": "Region_Paradis_Principal"
+  }
+ ]
+}

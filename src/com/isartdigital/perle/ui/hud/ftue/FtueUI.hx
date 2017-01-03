@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.ftue;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.FtueManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.utils.events.MouseEventType;
@@ -21,12 +22,7 @@ typedef Dialogue = {
  */
 class FtueUI extends SmartScreen 
 {
-	private static inline var WIREFRAME:String = "Window_NPC";
-	private static inline var WIREFRAME_BUTTON:String = WIREFRAME+"_ButtonNext";
-	private static inline var WIREFRAME_HELL:String = WIREFRAME+"_Hell";
-	private static inline var WIREFRAME_HEAVEN:String = WIREFRAME+"_Heaven";
-	private static inline var WIREFRAME_NAME:String = WIREFRAME+"_Name_TXT";
-	private static inline var WIREFRAME_SPEACH:String = WIREFRAME+"_Speech_TXT";
+	
 	
 	private var btnNext:SmartButton;
 	private var npc_name:TextSprite;
@@ -57,7 +53,7 @@ class FtueUI extends SmartScreen
 	 */
 	private function new(pID:String=null) 
 	{
-		super(WIREFRAME);
+		super(AssetName.FTUE);
 		modal = null;
 		setWireframe();
 	}
@@ -74,9 +70,9 @@ class FtueUI extends SmartScreen
 	 * Set all the variables to the wireframe
 	 */
 	private function setWireframe():Void {
-		npc_name = cast(getChildByName(WIREFRAME_NAME), TextSprite);	
-		npc_speach = cast(getChildByName(WIREFRAME_SPEACH), TextSprite);	
-		btnNext = cast(getChildByName(WIREFRAME_BUTTON), SmartButton);
+		npc_name = cast(getChildByName(AssetName.FTUE_NAME), TextSprite);	
+		npc_speach = cast(getChildByName(AssetName.FTUE_SPEACH), TextSprite);	
+		btnNext = cast(getChildByName(AssetName.FTUE_BUTTON), SmartButton);
 		btnNext.on(MouseEventType.CLICK, onClickNext);
 	}
 	
@@ -84,7 +80,7 @@ class FtueUI extends SmartScreen
 	 * Button
 	 */
 	private function onClickNext():Void {
-		npc_speach.x = 0;
+		//npc_speach.x = 0;
 		createText();
 	}
 	
@@ -112,12 +108,12 @@ class FtueUI extends SmartScreen
 	 */
 	private function changeAlpha(pName:String) {
 		if (pName == firstToSpeak) {
-			getChildByName(WIREFRAME_HEAVEN).alpha = 0.5;
-			getChildByName(WIREFRAME_HELL).alpha = 1;
+			getChildByName(AssetName.FTUE_HEAVEN).alpha = 0.5;
+			getChildByName(AssetName.FTUE_HELL).alpha = 1;
 		}
 		else {
-			getChildByName(WIREFRAME_HEAVEN).alpha = 1;
-			getChildByName(WIREFRAME_HELL).alpha = 0.5;
+			getChildByName(AssetName.FTUE_HEAVEN).alpha = 1;
+			getChildByName(AssetName.FTUE_HELL).alpha = 0.5;
 		}
 	}
 
