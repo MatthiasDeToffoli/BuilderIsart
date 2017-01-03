@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.services.facebook.Facebook;
@@ -255,8 +256,11 @@ class Main extends EventEmitter
 	public function getPath(pClassName:String):String {
 		if (pathClass[pClassName] != null)
 			return pathClass[pClassName];
-		else
-			throw "NoPath Found for Class: " + pClassName;
+		else{
+			
+			Debug.error("NoPath Found for Class: " + pClassName);
+			return null;
+		}
 	}
 	
 	public function getClassName (pMovieClipName:String):String {
@@ -278,6 +282,7 @@ class Main extends EventEmitter
 			Building,
 			FootPrint,
 			InternElement,
+			Tribunal,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

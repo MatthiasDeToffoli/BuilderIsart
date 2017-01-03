@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
@@ -25,23 +26,23 @@ class InternPopin extends SmartPopin
 	
 	public function new() 
 	{
-		super("Interns");
+		super(AssetName.INTERN_POPIN);
 		
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
 			
-		side = cast(getChildByName("_intern_side"), TextSprite);
-		internName = cast(getChildByName("_intern_name"), TextSprite);
+		side = cast(getChildByName(AssetName.INTERN_POPIN_SIDE), TextSprite);
+		internName = cast(getChildByName(AssetName.INTERN_POPIN_NAME), TextSprite);
 		side.text = "GDP";
 		internName.text = "Alexis";
 		
 		//btnSend = cast(getChildByName("Bouton_InternSend_Clip"), SmartButton);
 		//btnDismiss = cast(getChildByName("Bouton_InternDismiss_Clip"), SmartButton);
 		//btnSeeAll = cast(getChildByName("Bouton_AllInterns_Clip"), SmartButton);
-		var interMc:SmartComponent = cast(getChildByName("Bouton_AllInterns_Clip"), SmartComponent);
-		btnSeeAll = cast(interMc.getChildByName("Button"), SmartButton);
+		var interMc:SmartComponent = cast(getChildByName(AssetName.INTERN_POPIN_SEE_ALL_CONTAINER), SmartComponent);
+		btnSeeAll = cast(interMc.getChildByName(AssetName.INTERN_POPIN_SEE_ALL), SmartButton);
 		
-		btnClose = cast(getChildByName("ButtonCancel"), SmartButton);
+		btnClose = cast(getChildByName(AssetName.INTERN_POPIN_CANCEL), SmartButton);
 		
 		btnClose.on(MouseEventType.CLICK, onClose);
 		btnSeeAll.on(MouseEventType.CLICK, onSeeAll);

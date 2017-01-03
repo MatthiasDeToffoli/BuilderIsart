@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.popin.listIntern;
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.popin.InternPopin;
 import com.isartdigital.utils.events.MouseEventType;
@@ -19,17 +20,17 @@ class InternElementInQuest extends InternElement
 	
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
-		super("ListInQuest",pPos);
+		super(AssetName.INTERN_INFO_IN_QUEST,pPos);
 			
-		btnAccelerate = cast(getChildByName("Bouton_InternSend_Clip"), SmartButton);
+		btnAccelerate = cast(getChildByName(AssetName.BUTTON_ACCELERATE_IN_QUEST), SmartButton);
 		
-		internName = cast(getChildByName("InQuest_name"), TextSprite);
+		internName = cast(getChildByName(AssetName.INTERN_NAME_IN_QUEST), TextSprite);
 		internName.text = pDesc.name;
 		
-		questTime = cast(getChildByName("InQuest_time"), TextSprite);
+		questTime = cast(getChildByName(AssetName.TIME_IN_QUEST), TextSprite);
 		questTime.text = 98 +  "h";
 		
-		picture = cast(getChildByName("InQuest_Portrait"), SmartButton);
+		picture = cast(getChildByName(AssetName.PORTRAIT_IN_QUEST), SmartButton);
 		
 		btnAccelerate.on(MouseEventType.CLICK, onAccelerate);
 		picture.on(MouseEventType.CLICK, onPicture);

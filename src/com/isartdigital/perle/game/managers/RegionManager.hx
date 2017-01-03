@@ -320,9 +320,9 @@ class RegionManager
 	private static function getBgAssetname(pRegionType:RegionType): String {
 		switch (pRegionType) 
 		{
-			case RegionType.hell: return "HBg";
-			case RegionType.eden: return "PBg";
-			case RegionType.styx: return "Styx_01_Principal";
+			case RegionType.hell: return AssetName.BACKGROUND_HELL;
+			case RegionType.eden: return AssetName.BACKGROUND_HEAVEN;
+			case RegionType.styx: return AssetName.BACKGROUND_STYX;
 			default: trace(pRegionType + " - No background for this"); return null;
 		}
 	}

@@ -30,6 +30,7 @@ class PoolingManager {
 		"Trees" => "Building",
 		"Factory" => "Building",
 		"Villa" => "Building",
+		"Bat_Purgatory_colo_Principal" => "Tribunal",
 		"Ground" => "Ground",
 		"Road_h" => "Ground",
 		"Road_c" => "Ground",

@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
@@ -48,43 +49,43 @@ class TribunalPopin extends SmartPopin
 	 */
 	private function new(pID:String=null) 
 	{
-		super("PurgatoryPop");
+		super(AssetName.PURGATORY_POPIN);
 		
 		var interMovieClip:Dynamic;
 		
-		btnClose = cast(getChildByName("CloseButton"), SmartButton);
-		btnShop = cast(getChildByName("ShopButton"), SmartButton);
-		btnIntern = cast(getChildByName("InternsButton"), SmartButton);
-		btnHeaven = cast(getChildByName("HeavenButton"), SmartButton);
-		btnHell = cast(getChildByName("HellButton"), SmartButton);
-		btnUpgrade = cast(getChildByName("UpgradeButton"), SmartButton);
+		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
+		btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
+		btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
+		btnHeaven = cast(getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_BUTTON), SmartButton);
+		btnHell = cast(getChildByName(AssetName.PURGATORY_POPIN_HELL_BUTTON), SmartButton);
+		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
 
-		upgradePrice = cast(btnUpgrade.getChildByName("Cost"), TextSprite);
+		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE), TextSprite);
 		upgradePrice.text = 2000 + "$";
 		
-		tribunalLevel = cast(getChildByName("BuildingLevel"), TextSprite);
+		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
 		tribunalLevel.text = "LEVEL " + 1;
 		
-		interMovieClip = getChildByName("UpgradeTimer");
-		timer = cast(interMovieClip.getChildByName("TimeInfo"), TextSprite);
+		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_TIMER_CONTAINER);
+		timer = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_TIMER), TextSprite);
 		timer.text = "0" + 0 + "h" + "0" + 0 + "m" + "0" + 0 + "s";
 		
-		interMovieClip = getChildByName("FateTitle");
-		fateName = cast(interMovieClip.getChildByName("Name"),TextSprite);
+		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO);
+		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
 		fateName.text = "Ambroise";
-		fateAdjective = cast(interMovieClip.getChildByName("Adjective"),TextSprite);
+		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
 		fateAdjective.text = "Boss";
 		
-		interMovieClip = getChildByName("HeavenINfo");
-		infoHeaven = cast(interMovieClip.getChildByName("bar_txt"), TextSprite);
+		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_INFO);
+		infoHeaven = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);
 		infoHeaven.text = "0";
 		
-		interMovieClip = getChildByName("HellInfo");
-		infoHell = cast(interMovieClip.getChildByName("bar_txt"), TextSprite);	
+		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HELL_INFO);
+		infoHell = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);	
 		infoHell.text = "0";
 		
-		interMovieClip = getChildByName("SoulCounter");
-		infoSoul = cast(interMovieClip.getChildByName("Value"), TextSprite);	
+		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_ALL_SOULS_INFO);
+		infoSoul = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_ALL_SOULS_NUMBER), TextSprite);	
 		infoSoul.text = "0";
 			
 		btnUpgrade.on(MouseEventType.MOUSE_OVER, rewriteUpgradeTxt);

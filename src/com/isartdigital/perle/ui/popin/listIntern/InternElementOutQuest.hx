@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.popin.listIntern;
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -16,12 +17,12 @@ class InternElementOutQuest extends InternElement
 
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
-		super("ListOutQuest", pPos);
+		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
 		
-		picture = cast(getChildByName("OutQuest_Portrait"), SmartButton);
-		btnSend= cast(getChildByName("Bouton_SendIntern_List"), SmartButton);
+		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
+		btnSend= cast(getChildByName(AssetName.BUTTON_SEND_OUT_QUEST), SmartButton);
 		
-		internName = cast(getChildByName("_intern03_name05"), TextSprite);
+		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
 		internName.text = pDesc.name;
 		
 		picture.on(MouseEventType.CLICK, onPicture);
