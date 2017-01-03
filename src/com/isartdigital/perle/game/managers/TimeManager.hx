@@ -31,11 +31,10 @@ typedef TimeElementResource = {
 
 
 /**
- * intermediate tick, doesn't repeat, call a method (todo)
+ * Description of the quest
  */
 typedef TimeElementQuest = {
 	var desc:TimeQuestDescription;
-	//var quest:Quest;
 }
 
 
@@ -101,9 +100,8 @@ class TimeManager {
 				stepIndex: lQuestArraySaved[i].stepIndex,
 				end: lQuestArraySaved[i].end
 			},
-			
-			//quest: lQuestArraySaved[i].quest
 			};
+			
 			listQuest.push(lQuestDatas);
 			trace("Save Id" + lQuestDatas.desc.refIntern);
 		}
@@ -164,32 +162,16 @@ class TimeManager {
 	 * @param	pQuest Reference to the quest
 	 * @return  The specific Time Element for the quest
 	 */
-	//public static function createTimeQuest (pId:Int, pTimeLine:TimeLine, pQuest:Quest):TimeElementQuest {
-		//var lTimeElement:TimeElementQuest = {
-			//desc: {
-				//refIntern:pId,
-				//progress:0,
-				//steps:pTimeLine.eventChoice,
-				//stepIndex:0,
-				//end:pTimeLine.max
-			//},
-			//quest: pQuest
-		//};
-		//
-		//listQuest.push(lTimeElement);
-		//return lTimeElement;
-	//}
 	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeElementQuest {
 		var lTimeElement:TimeElementQuest = {
 			desc: {
-				//ou pDatasQuest.desc
+				//todo: réfléchir à un desc
 				refIntern: pDatasQuest.refIntern,
 				progress: pDatasQuest.progress,
 				steps: pDatasQuest.steps,
 				stepIndex:pDatasQuest.stepIndex,
 				end:pDatasQuest.end
 			},
-			//quest: pQuest
 		};
 		
 		listQuest.push(lTimeElement);
@@ -237,13 +219,13 @@ class TimeManager {
 	public static function nextStepQuest (pElement:TimeElementQuest):Void {
 		//trace("progress" + pElement.desc.progress);
 		//trace("end" + pElement.desc.end);
-		//trace("update quest");
+		trace("update quest");
 		if (pElement.desc.progress == pElement.desc.steps[pElement.desc.stepIndex]) {
-			//trace("next step");
+			trace("next step");
 			pElement.desc.stepIndex++;
 			
 			if (pElement.desc.stepIndex == pElement.desc.steps.length - 1){
-				//trace("end step");
+				trace("end step");
 				eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
 		}
@@ -263,7 +245,7 @@ class TimeManager {
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
-
+		trace("length quest" + listQuest.length);
 		for (i in 0...lLength) {
 			updateResource(listResource[i], lElapsedTime);
 		}
@@ -318,7 +300,7 @@ class TimeManager {
 			pElement.desc.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
-			//trace("event!");
+			trace("event!");
 			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
 		}
 	}

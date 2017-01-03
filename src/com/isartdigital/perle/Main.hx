@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
+import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
@@ -98,9 +99,14 @@ class Main extends EventEmitter
 		lConfig.once(LoadEventType.COMPLETE, preloadAssets);
 		
 		lConfig.load();
-
+		Facebook.onLogin = onLogin;
+		Facebook.load("1764871347166484");
 	}
 	
+	private function onLogin():Void{
+		trace("connexion facebook OwO");
+	}
+ 
 	/**
 	 * charge les assets graphiques du preloader principal
 	 */

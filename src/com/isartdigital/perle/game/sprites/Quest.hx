@@ -15,7 +15,6 @@ typedef TimeLine = {
 	
 class Quest
 {
-
 	public var idTimer:Int;				//Id of the quest
 	private var time:TimeElementQuest;  //Time Element of the quest
 	private var end:Float = 0;			//Quest's total length

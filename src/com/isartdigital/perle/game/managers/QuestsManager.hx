@@ -10,8 +10,6 @@ import com.isartdigital.perle.game.sprites.Quest;
  */
 class QuestsManager
 {
-
-	//public static var questsList(default, null):Array<Quest>;
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
 	public function new() 
@@ -49,9 +47,11 @@ class QuestsManager
 	 * @param	pQuest
 	 */
 	private static function endQuest(pQuest:TimeElementQuest):Void{
-		//trace("end");
+		trace("end");
+		trace("pQuest before" + pQuest);
 		TimeManager.destroyTimeElement(pQuest.desc.refIntern);
 		destroyQuest(pQuest.desc.refIntern);
+		trace("pQuest after" + pQuest);
 	}
 	
 	/**
