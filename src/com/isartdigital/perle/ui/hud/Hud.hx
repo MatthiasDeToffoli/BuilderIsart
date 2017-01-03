@@ -12,7 +12,7 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
-import com.isartdigital.perle.ui.screens.interns.Choice;
+import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -96,12 +96,15 @@ class Hud extends SmartScreen
 		}
 	}
 	
+	/**
+	 * Temporarily function use to test choice popin
+	 * @param	pEvent
+	 */
 	public function showInternEvent (pEvent:KeyboardEvent):Void {
 		if (pEvent.key != "i") return;
 		var eIntern:Choice = new Choice();
-		UIManager.getInstance().closeHud();
-		UIManager.getInstance().openScreen(eIntern);
-		Browser.window.removeEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
+		hide();
+		GameStage.getInstance().getPopinsContainer().addChild(eIntern);
 	}
 	
 	// todo : called from any clic outside a building
