@@ -176,5 +176,11 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	// todo : destroy les cards
+	override public function destroy():Void {
+		destroyCards();
+		cards = null;
+		
+		super.destroy();
+	}
 
 }

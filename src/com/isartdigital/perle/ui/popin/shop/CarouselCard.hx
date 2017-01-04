@@ -15,7 +15,7 @@ class CarouselCard extends SmartComponent{
 	
 	public function new() {
 		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		SmartCheck.traceChildrens(this);
+		//SmartCheck.traceChildrens(this);
 		image = cast(SmartCheck.getChildByName(this, "Item_Picture")); // todo : finir
 	}
 	

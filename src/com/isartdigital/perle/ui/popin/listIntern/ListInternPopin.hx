@@ -92,7 +92,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onClose():Void {
-		if (!Choice.isVisible())
+		if (Choice.isVisible())
 			return;
 		
 		UIManager.getInstance().closeCurrentPopin();
