@@ -49,7 +49,8 @@ class CarouselCard extends SmartComponent{
 	
 	override public function destroy():Void {
 		removeListener(MouseEventType.CLICK, onClick);
-		parent.removeChild(this);
+		if (parent != null)
+			parent.removeChild(this);
 		super.destroy();
 	}
 	

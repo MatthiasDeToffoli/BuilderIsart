@@ -170,7 +170,13 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Styx02/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Bat_Tribunal/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Enfer_Decors/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Paradis_Decors/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenBuildingPlaceholders/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBuildingPlaceholders/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
@@ -183,7 +189,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Intern_Event/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenBuildingPlaceholders/library.json");
+		
 		
 		lLoader.addFontFile("fonts.css");
 		

@@ -15,24 +15,29 @@ import pixi.core.math.Point;
  */
 class ShopCaroussel extends SmartComponent {
 	
+	// no json because i'm using constants
 	private var buildingNameList(default, never):Array<String> = [ // todo : c'est bugué ...
-		AssetName.BUILDING_HOUSE_HEAVEN,
-		"Factory",
-		"Factory",
-		"Factory",
+		AssetName.BUILDING_HEAVEN_HOUSE,
+		AssetName.BUILDING_HELL_HOUSE,
+		AssetName.BUILDING_HELL_BUILD_1,
+		AssetName.BUILDING_HELL_BUILD_2,
 		
-		AssetName.BUILDING_HOUSE_HEAVEN,
-		AssetName.BUILDING_HOUSE_HEAVEN,
-		AssetName.BUILDING_HOUSE_HELL,
-		"Factory",
+		AssetName.BUILDING_HEAVEN_BRIDGE,
+		AssetName.BUILDING_HEAVEN_BUILD_1,
+		AssetName.BUILDING_HEAVEN_BUILD_2,
+		AssetName.DECO_HEAVEN_TREE_1,
 		
-		AssetName.BUILDING_HOUSE_HELL,
-		AssetName.BUILDING_HOUSE_HELL,
-		AssetName.BUILDING_HOUSE_HELL,
-		"Factory"/*,
+		AssetName.DECO_HEAVEN_TREE_2,
+		AssetName.DECO_HEAVEN_TREE_3,
+		AssetName.DECO_HEAVEN_FOUNTAIN,
+		AssetName.DECO_HEAVEN_ROCK,
 		
-		"Factory",
-		AssetName.BUILDING_HOUSE_HELL,*/
+		AssetName.DECO_HEAVEN_VERTUE,
+		AssetName.DECO_HELL_TREE_1,
+		AssetName.DECO_HELL_TREE_2,
+		AssetName.DECO_HELL_TREE_3,
+		
+		AssetName.DECO_HELL_ROCK
 	];
 
 	private var cards:Array<CarouselCard>;
@@ -64,7 +69,11 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function scrollNext ():Void {
-		if (buildingListIndex >= buildingNameList.length)
+		trace("buildingListIndex : " + buildingListIndex);
+		trace("buildingNameList.length : " + buildingNameList.length);
+		trace("maxCardsVisible : " + maxCardsVisible);
+		
+		if ((buildingListIndex + maxCardsVisible) >= buildingNameList.length)
 			buildingListIndex = 0;
 		else
 			buildingListIndex += maxCardsVisible;
@@ -169,10 +178,14 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	private function destroyCards ():Void {
-		for (i in cards.length-1...0) {
-			cards[i].destroy();
-			cards[i] = null;
-		}
+		
+		var lLength:UInt = cards.length;
+		var j:UInt;
+        for (i in 1...lLength +1) {
+			j = lLength - i;
+			cards[j].destroy();
+			cards.splice(j, 1);
+        }
 	}
 	
 	// todo : destroy les cards

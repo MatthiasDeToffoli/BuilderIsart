@@ -8,10 +8,33 @@ package com.isartdigital.perle.game;
  */
 class AssetName{
 
-	// Building
-	public static inline var BUILDING_HOUSE_HELL:String = "HeavenBuild2";
-	public static inline var BUILDING_HOUSE_HEAVEN:String = "House";
+	// Building Neutral
 	public static inline var BUILDING_PURGATORY:String = "Bat_Purgatory_colo_Principal";
+	
+	// Building Heaven
+	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuild2";
+	public static inline var BUILDING_HEAVEN_BRIDGE:String = "HeavenBuild3";
+	public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild0";
+	public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild1";
+	
+	// Building Hell
+	public static inline var BUILDING_HELL_HOUSE:String = "House";
+	public static inline var BUILDING_HELL_BUILD_1:String = "hellBuilding";
+	public static inline var BUILDING_HELL_BUILD_2:String = "hellBuilding2";
+	
+	// Décoration Heaven
+	public static inline var DECO_HEAVEN_TREE_1:String = "Paradis_Arbre01_P";
+	public static inline var DECO_HEAVEN_TREE_2:String = "Paradis_Arbre02_P";
+	public static inline var DECO_HEAVEN_TREE_3:String = "Paradis_Arbre03_P";
+	public static inline var DECO_HEAVEN_FOUNTAIN:String = "heavenBuild4";
+	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
+	public static inline var DECO_HEAVEN_VERTUE:String = "Paradis_Vertue_P";
+	
+	// Décoration Hell
+	public static inline var DECO_HELL_TREE_1:String = "Enfer_Arbre01_P";
+	public static inline var DECO_HELL_TREE_2:String = "Enfer_Arbre02_P";
+	public static inline var DECO_HELL_TREE_3:String = "Enfer_Arbre03_P";
+	public static inline var DECO_HELL_ROCK:String = "Enfer_Rocher_P";
 	
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";

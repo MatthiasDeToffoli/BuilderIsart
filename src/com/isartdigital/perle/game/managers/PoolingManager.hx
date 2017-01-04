@@ -38,7 +38,23 @@ class PoolingManager {
 		"Road_tl" => "Ground",
 		"Road_v" => "Ground",
 		"FootPrint" => "FootPrint",
-		"HeavenBuild2" => "Building"
+		"HeavenBuild2" => "Building",
+		AssetName.DECO_HEAVEN_TREE_1 => "Building", // todo : c'est bien des building ??
+		AssetName.DECO_HEAVEN_TREE_2 => "Building",
+		AssetName.DECO_HEAVEN_TREE_3 => "Building",
+		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
+		AssetName.DECO_HEAVEN_ROCK => "Building",
+		AssetName.DECO_HEAVEN_VERTUE => "Building",
+		AssetName.DECO_HELL_TREE_1 => "Building",
+		AssetName.DECO_HELL_TREE_2 => "Building",
+		AssetName.DECO_HELL_TREE_3 => "Building",
+		AssetName.DECO_HELL_ROCK => "Building",
+		
+		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
+		AssetName.BUILDING_HEAVEN_BUILD_1 => "Building",
+		AssetName.BUILDING_HEAVEN_BUILD_2 => "Building",
+		AssetName.BUILDING_HELL_BUILD_1 => "Building",
+		AssetName.BUILDING_HELL_BUILD_2 => "Building",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon

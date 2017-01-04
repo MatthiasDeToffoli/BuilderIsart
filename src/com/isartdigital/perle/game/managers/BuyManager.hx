@@ -31,6 +31,9 @@ class BuyManager {
 	}
 	
 	public static function buy (pAssetName:String):Bool {
+		if (!checkAssetName(pAssetName))
+			return true; // if nothing is json it is FREE \o/
+		
 		if (canBuy(pAssetName)) {
 			ResourcesManager.spendTotal(
 				buyPrice.assets[pAssetName].type,
@@ -52,15 +55,19 @@ class BuyManager {
 	}
 	
 	public static function canBuy (pAssetName:String):Bool {
-		checkAssetName(pAssetName);
+		if (!checkAssetName(pAssetName))
+			return true; // if nothing is json it is FREE \o/
 		
 		return ResourcesManager.getTotalForType(buyPrice.assets[pAssetName].type) >= 
 			   buyPrice.assets[pAssetName].price;
 	}
 	
-	private static function checkAssetName (pAssetName:String):Void {
-		if (buyPrice.assets[pAssetName] == null)
+	private static function checkAssetName (pAssetName:String):Bool {
+		if (buyPrice.assets[pAssetName] == null) {
 			Debug.error("Assetname : '" + pAssetName + "' doesn't exist in buyprice json !");
+			return false;
+		}
+		return true;
 	}
 	
 	private static function parseJson ():Void {
