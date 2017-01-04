@@ -53,12 +53,14 @@ class AssetName{
 	public static inline var PORTRAIT_OUT_QUEST:String = "OutQuest_Portrait";
 	
 	//inter event popin
-	public static inline var INTERN_EVENT:String = "Inter_Event";
+	public static inline var INTERN_EVENT:String = "Intern_Event";
 	public static inline var INTERN_EVENT_DESC:String = "_event_description";
 	public static inline var INTERN_EVENT_HEAVEN_CHOICE:String = "_heavenChoice_text";
 	public static inline var INTERN_EVENT_HELL_CHOICE:String = "_hellChoice_text";
-	public static inline var INTERN_EVENT_SEE_ALL:String = "Bouton_AllInterns_Clip";
-	public static inline var INTERN_EVENT_DISMISS:String = "Bouton_InternDismiss_Clip";
+	public static inline var INTERN_EVENT_SEE_ALL:String = "ButtonInterns";
+	public static inline var INTERN_EVENT_DISMISS:String = "BoutonDismissIntern";
+	public static inline var INTERN_EVENT_SHARE:String = "Button_Friends";
+	public static inline var INTERN_EVENT_CLOSE:String = "CloseButton";
 	public static inline var INTERN_EVENT_CARD:String = "_event_FateCard";
 	public static inline var INTERN_EVENT_NAME:String = "_event_internName";
 	public static inline var INTERN_EVENT_SIDE:String = "_event_internSide";

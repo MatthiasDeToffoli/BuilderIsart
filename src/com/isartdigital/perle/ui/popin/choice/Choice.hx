@@ -31,7 +31,9 @@ class Choice extends SmartPopin
 	
 	// elements
 	private var btnDismiss:SmartButton;
-	private var btnAll:SmartButton;
+	private var btnInterns:SmartButton;
+	private var btnClose:SmartButton;
+	private var btnShare:SmartButton;
 	private var presentationChoice:TextSprite;
 	private var heavenChoice:TextSprite;
 	private var evilChoice:TextSprite;
@@ -42,11 +44,18 @@ class Choice extends SmartPopin
 	private var textDescAnswer:Map<ChoiceGeneratedText, String>;
 	
 	private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
+	
+	//intern state properties
+	private var internStress:Int;
+	private var internSpeed:Int;
+	private var internEfficiency:Int;
 
 	// card slide position properties
 	private var mousePos:Point;
 	private var imgPos:Point;
 	private var choiceType:ChoiceType;
+	
+	private static var isOpen:Bool;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -62,12 +71,12 @@ class Choice extends SmartPopin
 		super(AssetName.INTERN_EVENT);
 		
 		getComponents();
-		
 		addInternInfo();
 		createChoiceText();
 		
 		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
+		isOpen = true;
 		
 		addListeners();
 	}
@@ -91,8 +100,10 @@ class Choice extends SmartPopin
 		evilChoice = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CHOICE), TextSprite);
 		internName = cast(getChildByName(AssetName.INTERN_EVENT_NAME), TextSprite);
 		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
-		btnAll = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
+		btnInterns = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
 		btnDismiss = cast(getChildByName(AssetName.INTERN_EVENT_DISMISS), SmartButton);
+		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
+		btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 	}
 	
@@ -110,16 +121,23 @@ class Choice extends SmartPopin
 	
 	private function addListeners ():Void {
 		btnDismiss.on(MouseEventType.CLICK, onDismiss);
-		btnAll.on(MouseEventType.CLICK, onSeeAll);
+		btnInterns.on(MouseEventType.CLICK, onSeeAll);
+		btnShare.on(MouseEventType.CLICK, shareEvent);
+		btnClose.on(MouseEventType.CLICK, onClose);
 		choiceCard.interactive = true;
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+	}
+	
+	private function shareEvent():Void
+	{
+		trace("share");
 	}
 	
 	/**
 	 * Close choice
 	 */
 	private function onDismiss ():Void {
-		onClose();
+		trace("dismiss");
 	}
 	
 	private function onSeeAll():Void
@@ -218,6 +236,14 @@ class Choice extends SmartPopin
 	 */
 	public function show():Void{
 		GameStage.getInstance().getHudContainer().addChild(this);
+	}
+	
+	/**
+	 * return if is open (visible in game)
+	 * @return true || false
+	 */
+	public static function isVisible():Bool {
+		return isOpen;
 	}
 	
 	/**
