@@ -182,6 +182,15 @@ class RegionManager
 			firstTilePos:{x:0,y:0}
 		});
 		
+		createNextBg({
+			x:0,
+			y:0,
+			type:RegionType.styx,
+			firstTilePos: {x:0, y:0}
+		});
+		
+		Ground.bgContainer.addChild(background);
+		
 		createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(RegionType.eden, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
@@ -201,9 +210,7 @@ class RegionManager
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 		}
 		
-		for (i in 0...lLength) {
-			
-			
+		for (i in 0...lLength) {		
 			if (pSave.region[i].type != RegionType.styx)
 				addButton(
 					new Point(
@@ -216,7 +223,6 @@ class RegionManager
 					),
 					0
 				);
-			
 		}		
 		
 	}
@@ -405,7 +411,7 @@ class RegionManager
 			background: getBgAssetname(pRegionDesc.type)
 		};
 		
-		 createNextBg(newRegion.desc);
+		createNextBg(newRegion.desc);
 		
 		return newRegion;
 	}

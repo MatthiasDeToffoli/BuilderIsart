@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.choice;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TextGenerator;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -12,14 +13,17 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import flump.library.Point;
 import pixi.interaction.EventTarget;
 
-enum ChoiceType { HEAVEN; EVIL; NONE; }
+enum ChoiceType { HEAVEN; HELL; NONE; }
+enum ChoiceGeneratedText {DESC; HELL; HEAVEN; }
 
 /**
- * ...
+ * Choice popin
  * @author grenu
  */
 class Choice extends SmartPopin
 {
+	private static var instance:Choice;
+	
 	// max distance for the card slide
 	private static inline var MOUSE_DIFF_MAX:Float = 200;
 	private static inline var DIFF_MAX:Float = 80;
@@ -32,36 +36,64 @@ class Choice extends SmartPopin
 	private var evilChoice:TextSprite;
 	private var choiceCard:UISprite;
 	
-	private var answer:Array<String>;
+	private var answer:Map<ChoiceGeneratedText, String>;
 
 	// card slide position properties
 	private var mousePos:Point;
 	private var imgPos:Point;
-	private var choiceType:ChoiceType = ChoiceType.NONE;
+	private var choiceType:ChoiceType;
+	
+	/**
+	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
+	 * @return instance unique
+	 */
+	public static function getInstance (): Choice{
+		if (instance == null) instance = new Choice();
+		return instance;
+	}
 	
 	public function new(pID:String=null) 
 	{
-		super("Inter_Event");
+		super(AssetName.INTERN_EVENT);
 		
-		presentationChoice = cast(getChildByName("_event_description"), TextSprite);
-		heavenChoice = cast(getChildByName("_heavenChoice_text"), TextSprite);
-		evilChoice = cast(getChildByName("_hellChoice_text"), TextSprite);
-		btnAll = cast(getChildByName("Bouton_AllInterns_Clip"), SmartButton);
-		btnDismiss = cast(getChildByName("Bouton_InternDismiss_Clip"), SmartButton);
-		choiceCard = cast(getChildByName("_event_FateCard"), UISprite);
+		getComponents();
+		
+		createChoiceText();
+		
+		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
-		
-		answer = TextGenerator.GetNewSituation();
-		presentationChoice.text = answer[0];
-		heavenChoice.text = answer[1];
-		evilChoice.text = answer[2];
 		
 		addListeners();
 	}
 	
+	/**
+	 * get all intern event popin elements
+	 */
+	private function getComponents():Void
+	{
+		presentationChoice = cast(getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite);
+		heavenChoice = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CHOICE), TextSprite);
+		evilChoice = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CHOICE), TextSprite);
+		btnAll = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
+		btnDismiss = cast(getChildByName(AssetName.INTERN_EVENT_DISMISS), SmartButton);
+		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
+	}
+	
+	/**
+	 * get new generated text
+	 */
+	public function createChoiceText():Void
+	{
+		var txtChoice:Array<String> = TextGenerator.GetNewSituation();
+		answer = [ ChoiceGeneratedText.DESC => txtChoice[0], ChoiceGeneratedText.HELL => txtChoice[2], ChoiceGeneratedText.HEAVEN => txtChoice[1] ];
+		presentationChoice.text = answer[ChoiceGeneratedText.DESC];
+		heavenChoice.text = answer[ChoiceGeneratedText.HEAVEN];
+		evilChoice.text = answer[ChoiceGeneratedText.HELL];
+	}
+	
 	private function addListeners ():Void {
-		btnDismiss.on(MouseEventType.CLICK, closeChoice);
-		btnAll.on(MouseEventType.CLICK, openAllInterns);
+		btnDismiss.on(MouseEventType.CLICK, onDismiss);
+		btnAll.on(MouseEventType.CLICK, onSeeAll);
 		choiceCard.interactive = true;
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 	}
@@ -69,15 +101,14 @@ class Choice extends SmartPopin
 	/**
 	 * Close choice
 	 */
-	private function closeChoice ():Void {
-		Hud.getInstance().show();
-		destroy();
+	private function onDismiss ():Void {
+		onClose();
 	}
 	
-	private function openAllInterns():Void
+	private function onSeeAll():Void
 	{
+		hide();
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		destroy();
 	}
 	
 	/**
@@ -86,23 +117,29 @@ class Choice extends SmartPopin
 	 */
 	private function startFollow(mEvent:EventTarget):Void
 	{
+		// update choiceType
 		choiceType = ChoiceType.NONE;
+		// click mouse pos
 		mousePos = new Point(mEvent.data.global.x, mEvent.data.global.y);
+		// add listener needed to follow mouse
 		choiceCard.on(MouseEventType.MOUSE_MOVE, followMouse);
 		choiceCard.on(MouseEventType.MOUSE_UP_OUTSIDE, replaceCard);
 		choiceCard.on(MouseEventType.MOUSE_UP, replaceCard);
 	}
 	
 	/**
-	 * Follow mouse direction
+	 * Make the fateCard follow mouse direction and get the selected answer
 	 * @param	mEvent
 	 */
 	private function followMouse(mEvent:EventTarget):Void
 	{
+		// get difference with previous mouse pos
 		var diff:Float = mEvent.data.global.x - mousePos.x;
+		
+		// move fateCard && get choiceType
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
 			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
-			if (Math.abs(diff) > DIFF_MAX) choiceType = ChoiceType.EVIL;
+			if (Math.abs(diff) > DIFF_MAX) choiceType = ChoiceType.HELL;
 			else choiceType = ChoiceType.NONE;
 		}
 		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
@@ -113,25 +150,65 @@ class Choice extends SmartPopin
 	}
 	
 	/**
-	 * Replace card at start pos
+	 * Replace fatecard at start pos && do answer choice if actual choice not NONE
 	 */
 	private function replaceCard():Void
-	{
+	{	
 		choiceCard.position.set(imgPos.x, imgPos.y);
 		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
+		
 		if (choiceType != ChoiceType.NONE) {
-			if (choiceType == ChoiceType.HEAVEN) trace(heavenChoice.text);
-			else trace(evilChoice.text);
-			closeChoice();
+			if (choiceType == ChoiceType.HEAVEN) chooseHeavenCHoice();
+			else chooseHellChoice();
+			onClose();
 		}
+	}
+	
+	/**
+	 * validate hell choice
+	 */
+	private function chooseHellChoice():Void
+	{
+		trace(answer[ChoiceGeneratedText.HELL]);
+	}
+	
+	/**
+	 * validate heaven choice
+	 */
+	private function chooseHeavenCHoice():Void
+	{
+		trace(answer[ChoiceGeneratedText.HEAVEN]);
+	}
+	
+	/**
+	 * onClose
+	 */
+	private function onClose():Void
+	{
+		Hud.getInstance().show();
+		destroy();
+	}
+	
+	/**
+	 * hide the popin
+	 */
+	public function hide():Void{
+		GameStage.getInstance().getHudContainer().removeChild(this);
+	}
+	
+	/**
+	 * hide the hud
+	 */
+	public function show():Void{
+		GameStage.getInstance().getHudContainer().addChild(this);
 	}
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
-	override public function destroy (): Void {		
+	override public function destroy (): Void {
 		parent.removeChild(this);
-		
+		instance = null;
 		super.destroy();
 	}
 

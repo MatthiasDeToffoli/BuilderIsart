@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -91,7 +92,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onClose(){
-		Hud.getInstance().show();
+		if (Choice.getInstance() == null) Hud.getInstance().show();
 		destroy();
 	}
 	

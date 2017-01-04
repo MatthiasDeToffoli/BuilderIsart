@@ -102,9 +102,8 @@ class Hud extends SmartScreen
 	 */
 	public function showInternEvent (pEvent:KeyboardEvent):Void {
 		if (pEvent.key != "i") return;
-		var eIntern:Choice = new Choice();
 		hide();
-		GameStage.getInstance().getPopinsContainer().addChild(eIntern);
+		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
 	}
 	
 	// todo : called from any clic outside a building
