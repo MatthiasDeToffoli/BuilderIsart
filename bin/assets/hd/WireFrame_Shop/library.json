@@ -23,96 +23,18 @@
        "rect": [
         1,
         1303,
-        1824,
-        563
+        1823,
+        640
        ],
        "origin": [
-        911.95,
-        624.6
+        911.5,
+        320
        ]
       },
       {
-       "symbol": "_buttonPlus_up",
+       "symbol": "_buttonarrowright_down",
        "rect": [
-        1,
-        1868,
-        418,
-        128
-       ],
-       "origin": [
-        333.7,
-        63.7
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_up",
-       "rect": [
-        421,
-        1868,
-        398,
-        128
-       ],
-       "origin": [
-        63.7,
-        63.7
-       ]
-      },
-      {
-       "symbol": "_buttonInternShop_down",
-       "rect": [
-        821,
-        1868,
-        276,
-        176
-       ],
-       "origin": [
-        137.75,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonInternShop_over",
-       "rect": [
-        1099,
-        1868,
-        276,
-        176
-       ],
-       "origin": [
-        137.75,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonPurgatory_over",
-       "rect": [
-        1377,
-        1868,
-        276,
-        176
-       ],
-       "origin": [
-        138,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonPurgatory_down",
-       "rect": [
-        1655,
-        1868,
-        276,
-        176
-       ],
-       "origin": [
-        138,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonarrowleft_down",
-       "rect": [
-        1827,
+        1826,
         1303,
         134,
         263
@@ -123,9 +45,9 @@
        ]
       },
       {
-       "symbol": "_buttonarrowright_down",
+       "symbol": "_buttonarrowright_up",
        "rect": [
-        1827,
+        1826,
         1568,
         134,
         263
@@ -136,23 +58,36 @@
        ]
       },
       {
-       "symbol": "_buttonclose_down",
+       "symbol": "_item_lock",
        "rect": [
-        1933,
+        1826,
         1833,
-        114,
-        114
+        132,
+        205
        ],
        "origin": [
-        56.8,
-        56.6
+        65.6,
+        102.05
        ]
       },
       {
-       "symbol": "_icon_wood",
+       "symbol": "_infoBar_bg",
        "rect": [
-        1933,
-        1949,
+        1,
+        1945,
+        256,
+        72
+       ],
+       "origin": [
+        128,
+        36
+       ]
+      },
+      {
+       "symbol": "_icon_softcurrency",
+       "rect": [
+        259,
+        1945,
         92,
         92
        ],
@@ -162,97 +97,61 @@
        ]
       },
       {
-       "data": {
-        "y": -28.8,
-        "wordWrap": 0,
-        "text": "Decoration",
-        "width": 240.95,
-        "color": "#000000",
-        "align": "center",
-        "height": 57.6,
-        "font": "48px _sans",
-        "x": -120.5
-       },
-       "symbol": "_onget_decorations_txt",
-       "baseClass": "TextSprite",
+       "symbol": "_icon_wood",
        "rect": [
-        1933,
-        2043,
-        1,
-        1
+        353,
+        1945,
+        92,
+        92
        ],
        "origin": [
-        0,
-        0
+        45.55,
+        45.55
+       ]
+      },
+      {
+       "symbol": "_icon_marble",
+       "rect": [
+        447,
+        1945,
+        92,
+        92
+       ],
+       "origin": [
+        45.55,
+        45.55
+       ]
+      },
+      {
+       "symbol": "_icon_hardcurrency",
+       "rect": [
+        541,
+        1945,
+        91,
+        91
+       ],
+       "origin": [
+        45.45,
+        45.5
        ]
       },
       {
        "data": {
-        "y": -36.65,
+        "y": -40.8,
         "wordWrap": 0,
-        "text": "Building",
-        "width": 224.8,
+        "text": "Interns",
+        "width": 256,
         "color": "#000000",
         "align": "center",
-        "height": 73.3,
-        "font": "62px _sans",
-        "x": -112.4
+        "height": 81.55,
+        "font": "70px Times New Roman",
+        "x": -128
        },
-       "symbol": "_onglet_building_txt",
+       "symbol": "_button_InternShop_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1936,
-        2043,
         1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -33.3,
-        "wordWrap": 0,
-        "text": "Currencies",
-        "width": 240.3,
-        "color": "#000000",
-        "align": "center",
-        "height": 57.6,
-        "font": "48px _sans",
-        "x": -120.15
-       },
-       "symbol": "_onglet_Currencies_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1939,
-        2043,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -21.55,
-        "wordWrap": 0,
-        "text": "ITEM_NAME",
-        "width": 365.65,
-        "color": "#000000",
-        "align": "center",
-        "height": 43.1,
-        "font": "35px _sans",
-        "x": -182.8
-       },
-       "symbol": "_item_name_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1942,
-        2043,
+        2019,
         1,
         1
        ],
@@ -276,8 +175,8 @@
        "symbol": "_item_price_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1945,
-        2043,
+        1,
+        2022,
         1,
         1
        ],
@@ -288,21 +187,21 @@
       },
       {
        "data": {
-        "y": -32.9,
+        "y": -28.8,
         "wordWrap": 0,
-        "text": "Resources",
-        "width": 241.6,
+        "text": "Decoration",
+        "width": 240.95,
         "color": "#000000",
         "align": "center",
-        "height": 65.8,
+        "height": 57.6,
         "font": "48px _sans",
-        "x": -120.8
+        "x": -120.5
        },
-       "symbol": "_onglet_resources_txt",
+       "symbol": "_onget_decorations_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1948,
-        2043,
+        1,
+        2025,
         1,
         1
        ],
@@ -313,21 +212,71 @@
       },
       {
        "data": {
-        "y": -41.65,
-        "wordWrap": 1,
-        "text": "XXXX",
-        "width": 174.35,
+        "y": -36.65,
+        "wordWrap": 0,
+        "text": "Building",
+        "width": 224.8,
         "color": "#000000",
         "align": "center",
-        "height": 83.3,
-        "font": "70px Arial Narrow",
-        "x": -87.15
+        "height": 73.3,
+        "font": "62px _sans",
+        "x": -112.4
        },
-       "symbol": "_infoBar_value",
+       "symbol": "_onglet_building_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1951,
-        2043,
+        1,
+        2028,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -33.3,
+        "wordWrap": 0,
+        "text": "Currencies",
+        "width": 240.3,
+        "color": "#000000",
+        "align": "center",
+        "height": 57.6,
+        "font": "48px _sans",
+        "x": -120.15
+       },
+       "symbol": "_onglet_Currencies_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        2031,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "ITEM_NAME",
+        "width": 365.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 43.1,
+        "font": "35px _sans",
+        "x": -182.8
+       },
+       "symbol": "_item_name_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        2034,
         1,
         1
        ],
@@ -351,8 +300,8 @@
        "symbol": "_onglet_interns_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1954,
-        2043,
+        1,
+        2037,
         1,
         1
        ],
@@ -363,21 +312,46 @@
       },
       {
        "data": {
-        "y": -40.8,
+        "y": -32.9,
         "wordWrap": 0,
-        "text": "Interns",
-        "width": 256,
+        "text": "Resources",
+        "width": 241.6,
         "color": "#000000",
         "align": "center",
-        "height": 81.55,
-        "font": "70px Times New Roman",
-        "x": -128
+        "height": 65.8,
+        "font": "48px _sans",
+        "x": -120.8
        },
-       "symbol": "button_InternShop_txt",
+       "symbol": "_onglet_resources_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1957,
-        2043,
+        4,
+        2019,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -41.65,
+        "wordWrap": 1,
+        "text": "XXXX",
+        "width": 174.35,
+        "color": "#000000",
+        "align": "center",
+        "height": 83.3,
+        "font": "70px Arial Narrow",
+        "x": -87.15
+       },
+       "symbol": "_infoBar_value",
+       "baseClass": "TextSprite",
+       "rect": [
+        4,
+        2022,
         1,
         1
        ],
@@ -401,8 +375,8 @@
        "symbol": "_button_Purgatory_txt",
        "baseClass": "TextSprite",
        "rect": [
-        1960,
-        2043,
+        4,
+        2025,
         1,
         1
        ],
@@ -469,7 +443,7 @@
        ]
       },
       {
-       "symbol": "_buttontab_hit",
+       "symbol": "_buttontab_over",
        "rect": [
         1,
         371,
@@ -482,7 +456,7 @@
        ]
       },
       {
-       "symbol": "_buttontab_over",
+       "symbol": "_buttontab_hit",
        "rect": [
         249,
         371,
@@ -508,23 +482,88 @@
        ]
       },
       {
-       "symbol": "_buttonPlusRevert_hit",
+       "symbol": "_buttonPlus_up",
        "rect": [
         497,
         614,
-        390,
-        120
+        418,
+        128
        ],
        "origin": [
-        60,
-        60.4
+        333.7,
+        63.7
+       ]
+      },
+      {
+       "symbol": "_buttonPlusRevert_up",
+       "rect": [
+        1,
+        619,
+        398,
+        128
+       ],
+       "origin": [
+        63.7,
+        63.7
+       ]
+      },
+      {
+       "symbol": "_buttonPurgatory_over",
+       "rect": [
+        401,
+        744,
+        276,
+        176
+       ],
+       "origin": [
+        138,
+        87.75
+       ]
+      },
+      {
+       "symbol": "_buttonInternShop_down",
+       "rect": [
+        679,
+        744,
+        276,
+        176
+       ],
+       "origin": [
+        137.75,
+        87.75
+       ]
+      },
+      {
+       "symbol": "_buttonInternShop_over",
+       "rect": [
+        1,
+        749,
+        276,
+        176
+       ],
+       "origin": [
+        137.75,
+        87.75
+       ]
+      },
+      {
+       "symbol": "_buttonPurgatory_down",
+       "rect": [
+        279,
+        922,
+        276,
+        176
+       ],
+       "origin": [
+        138,
+        87.75
        ]
       },
       {
        "symbol": "_buttonPlus_hit",
        "rect": [
-        1,
-        619,
+        557,
+        922,
         390,
         120
        ],
@@ -534,10 +573,23 @@
        ]
       },
       {
+       "symbol": "_buttonPlusRevert_hit",
+       "rect": [
+        557,
+        1044,
+        390,
+        120
+       ],
+       "origin": [
+        60,
+        60.4
+       ]
+      },
+      {
        "symbol": "_buttonInternShop_up",
        "rect": [
-        393,
-        736,
+        1,
+        927,
         272,
         172
        ],
@@ -549,8 +601,8 @@
       {
        "symbol": "_buttonPurgatory_up",
        "rect": [
-        667,
-        736,
+        275,
+        1100,
         271,
         172
        ],
@@ -560,10 +612,36 @@
        ]
       },
       {
-       "symbol": "_buttonarrowleft_up",
+       "symbol": "_buttonarrowleft_over",
        "rect": [
         1,
-        741,
+        1101,
+        134,
+        263
+       ],
+       "origin": [
+        66.9,
+        131.2
+       ]
+      },
+      {
+       "symbol": "_buttonarrowleft_up",
+       "rect": [
+        137,
+        1101,
+        134,
+        263
+       ],
+       "origin": [
+        66.9,
+        131.2
+       ]
+      },
+      {
+       "symbol": "_buttonarrowleft_down",
+       "rect": [
+        548,
+        1166,
         134,
         263
        ],
@@ -575,60 +653,21 @@
       {
        "symbol": "_buttonarrowright_over",
        "rect": [
-        137,
-        741,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowright_up",
-       "rect": [
         273,
-        910,
+        1274,
         134,
         263
        ],
        "origin": [
         66.9,
         131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowleft_over",
-       "rect": [
-        1,
-        1006,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_item_lock",
-       "rect": [
-        889,
-        502,
-        132,
-        205
-       ],
-       "origin": [
-        65.6,
-        102.05
        ]
       },
       {
        "symbol": "_onglet_Icon",
        "rect": [
-        409,
-        910,
+        1,
+        1366,
         160,
         160
        ],
@@ -638,23 +677,10 @@
        ]
       },
       {
-       "symbol": "infoBar_bg",
+       "symbol": "_buttonPlus_down",
        "rect": [
-        571,
-        910,
-        256,
-        72
-       ],
-       "origin": [
-        128,
-        36
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_down",
-       "rect": [
-        829,
-        910,
+        1,
+        1528,
         142,
         115
        ],
@@ -666,21 +692,8 @@
       {
        "symbol": "_buttonPlus_over",
        "rect": [
-        571,
-        984,
-        142,
-        115
-       ],
-       "origin": [
-        57.5,
-        57.5
-       ]
-      },
-      {
-       "symbol": "_buttonPlus_down",
-       "rect": [
-        409,
-        1072,
+        684,
+        1166,
         142,
         115
        ],
@@ -692,8 +705,8 @@
       {
        "symbol": "_buttonPlusRevert_over",
        "rect": [
-        137,
-        1175,
+        828,
+        1166,
         142,
         115
        ],
@@ -703,10 +716,36 @@
        ]
       },
       {
+       "symbol": "_buttonPlusRevert_down",
+       "rect": [
+        684,
+        1283,
+        142,
+        115
+       ],
+       "origin": [
+        57.5,
+        57.5
+       ]
+      },
+      {
+       "symbol": "_buttonclose_down",
+       "rect": [
+        279,
+        749,
+        114,
+        114
+       ],
+       "origin": [
+        56.8,
+        56.6
+       ]
+      },
+      {
        "symbol": "_buttonclose_over",
        "rect": [
-        273,
-        741,
+        145,
+        1528,
         114,
         114
        ],
@@ -727,45 +766,6 @@
         54.3,
         54.1
        ]
-      },
-      {
-       "symbol": "_icon_softcurrency",
-       "rect": [
-        393,
-        619,
-        92,
-        92
-       ],
-       "origin": [
-        45.55,
-        45.55
-       ]
-      },
-      {
-       "symbol": "_icon_marble",
-       "rect": [
-        137,
-        1006,
-        92,
-        92
-       ],
-       "origin": [
-        45.55,
-        45.55
-       ]
-      },
-      {
-       "symbol": "_icon_hardcurrency",
-       "rect": [
-        1,
-        1271,
-        91,
-        91
-       ],
-       "origin": [
-        45.45,
-        45.5
-       ]
       }
      ],
      "file": "atlas1.png"
@@ -780,13 +780,14 @@
    "id": "Shop_Building",
    "layers": [
     {
+     "name": "Shop_BG",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         0.95,
         2.15
        ],
+       "duration": 1,
        "pivot": [
         1006.35,
         651.2
@@ -795,207 +796,206 @@
        "tweened": false,
        "ref": "_shop_bg"
       }
-     ],
-     "name": "Shop_BG"
+     ]
     },
     {
+     "name": "Player_SC",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         173.5,
         -576.55
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~SoftCurrency"
       }
-     ],
-     "name": "Player_SC"
+     ]
     },
     {
+     "name": "Player_HC",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         634.5,
         -575.4
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~HardCurrency"
       }
-     ],
-     "name": "Player_HC"
+     ]
     },
     {
+     "name": "Player_Marbre",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -264.6,
         -576.55
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~MarbleCounter"
       }
-     ],
-     "name": "Player_Marbre"
+     ]
     },
     {
+     "name": "Player_Bois",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -722.25,
         -575.4
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~WoodCounter"
       }
-     ],
-     "name": "Player_Bois"
+     ]
     },
     {
+     "name": "Onglet_Building",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -795.7,
-        -286.85
+        -357.85
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Building_tab"
       }
-     ],
-     "name": "Onglet_Building"
+     ]
     },
     {
+     "name": "Onglet_Interns",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -2.5,
-        -286.85
+        -357.85
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Interns_tab"
       }
-     ],
-     "name": "Onglet_Interns"
+     ]
     },
     {
+     "name": "Onglet_Deco",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -411.1,
-        -288.05
+        -359.05
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Decoration_tab"
       }
-     ],
-     "name": "Onglet_Deco"
+     ]
     },
     {
+     "name": "Onglet_Ressources",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         395.8,
-        -286.85
+        -357.85
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Resources_tab"
       }
-     ],
-     "name": "Onglet_Ressources"
+     ]
     },
     {
+     "name": "Onglet_Currencies",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         786.8,
-        -288.05
+        -359.05
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Currencies_tab"
       }
-     ],
-     "name": "Onglet_Currencies"
+     ]
     },
     {
+     "name": "Shop_Item_List",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -4.15,
         167
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "Shop_Item_List"
       }
-     ],
-     "name": "Shop_Item_List"
+     ]
     },
     {
+     "name": "Shop_Close_Button",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         1033.85,
         -668.55
        ],
+       "duration": 1,
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": ""
+        "UIPosition": "",
+        "UIPosition_Desktop": "top"
        },
        "index": 0,
        "tweened": false,
        "ref": "~ButtonClose"
       }
-     ],
-     "name": "Shop_Close_Button"
+     ]
     },
     {
+     "name": "Purgatory_Button",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         771.95,
         551.6
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_Purgatory"
       }
-     ],
-     "name": "Purgatory_Button"
+     ]
     },
     {
+     "name": "Interns_Button",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -780.15,
         551.6
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_InternsShop"
       }
-     ],
-     "name": "Interns_Button"
+     ]
     }
    ]
   },
@@ -1003,113 +1003,113 @@
    "id": "Shop_Item_List",
    "layers": [
     {
+     "name": "Shop_Item_List_BG",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         0,
-        345.05
+        -54.15
        ],
+       "duration": 1,
        "pivot": [
-        911.95,
-        624.6
+        911.5,
+        320
        ],
        "index": 0,
        "tweened": false,
        "ref": "_shop_item_list_bg"
       }
-     ],
-     "name": "Shop_Item_List_BG"
+     ]
     },
     {
+     "name": "Shop_Item_Unlocked",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -647.05,
-        0
+        -58.5
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "Shop_Item_Unlocked"
       }
-     ],
-     "name": "Shop_Item_Unlocked"
+     ]
     },
     {
+     "name": "Shop_Item_Locked_1",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -216.45,
-        0
+        -58.5
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "Shop_Item_Locked"
       }
-     ],
-     "name": "Shop_Item_Locked_1"
+     ]
     },
     {
+     "name": "Shop_Item_Locked_2",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         214.15,
-        0
+        -58.5
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "Shop_Item_Locked"
       }
-     ],
-     "name": "Shop_Item_Locked_2"
+     ]
     },
     {
+     "name": "Shop_Item_Locked_3",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         644.75,
-        0
+        -58.5
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "Shop_Item_Locked"
       }
-     ],
-     "name": "Shop_Item_Locked_3"
+     ]
     },
     {
+     "name": "Button_ArrowRight",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         914.4,
-        3.75
+        -54.75
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_ArrowRight"
       }
-     ],
-     "name": "Button_ArrowRight"
+     ]
     },
     {
+     "name": "Button_ArrowLeft",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -910.35,
-        2.85
+        -55.65
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~Button_LeftArrow"
       }
-     ],
-     "name": "Button_ArrowLeft"
+     ]
     }
    ]
   },
@@ -1117,10 +1117,11 @@
    "id": "Shop_Item_Locked",
    "layers": [
     {
+     "name": "BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         183.9,
@@ -1128,17 +1129,17 @@
        ],
        "ref": "_item_locked_bg"
       }
-     ],
-     "name": "BG"
+     ]
     },
     {
+     "name": "Item_Picture",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         0.05,
         -48.55
        ],
+       "duration": 1,
        "pivot": [
         125.4,
         125.4
@@ -1147,51 +1148,47 @@
        "tweened": false,
        "ref": "_item_picture"
       }
-     ],
-     "name": "Item_Picture"
+     ]
     },
     {
+     "name": "Item_Name",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -0.6,
         97.9
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "_item_name_txt"
       }
-     ],
-     "name": "Item_Name"
+     ]
     },
     {
+     "name": "Item_Price",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
-        -0.1,
+        -0.05,
         148.45
        ],
-       "pivot": [
-        -0.05,
-        0
-       ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "_item_price_txt"
       }
-     ],
-     "name": "Item_Price"
+     ]
     },
     {
+     "name": "Item_Lock",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -4.35,
         -46
        ],
+       "duration": 1,
        "pivot": [
         65.6,
         102.05
@@ -1200,8 +1197,7 @@
        "tweened": false,
        "ref": "_item_lock"
       }
-     ],
-     "name": "Item_Lock"
+     ]
     }
    ]
   },
@@ -1209,10 +1205,11 @@
    "id": "Shop_Item_Unlocked",
    "layers": [
     {
+     "name": "BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         183.9,
@@ -1220,17 +1217,17 @@
        ],
        "ref": "_item_Unlocked_bg"
       }
-     ],
-     "name": "BG"
+     ]
     },
     {
+     "name": "Item_Picture",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -0.1,
         -47.9
        ],
+       "duration": 1,
        "pivot": [
         125.4,
         125.4
@@ -1239,42 +1236,37 @@
        "tweened": false,
        "ref": "_item_picture"
       }
-     ],
-     "name": "Item_Picture"
+     ]
     },
     {
+     "name": "Item_Name",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         0.55,
         97.5
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "_item_name_txt"
       }
-     ],
-     "name": "Item_Name"
+     ]
     },
     {
+     "name": "Item_Price",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
-        -0.75,
+        -0.7,
         152
        ],
-       "pivot": [
-        -0.05,
-        0
-       ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "_item_price_txt"
       }
-     ],
-     "name": "Item_Price"
+     ]
     }
    ]
   },
@@ -1283,13 +1275,14 @@
    "id": "~ButtonClose",
    "layers": [
     {
+     "name": "Close_Button",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -73.1,
         73.1
        ],
+       "duration": 1,
        "pivot": [
         54.3,
         54.1
@@ -1299,11 +1292,11 @@
        "ref": "_buttonclose_up"
       },
       {
-       "duration": 1,
        "loc": [
         -73.1,
         73.1
        ],
+       "duration": 1,
        "pivot": [
         57.3,
         57.1
@@ -1313,11 +1306,11 @@
        "ref": "_buttonclose_over"
       },
       {
-       "duration": 2,
        "loc": [
         -73.1,
         73.1
        ],
+       "duration": 2,
        "pivot": [
         56.8,
         56.6
@@ -1326,8 +1319,7 @@
        "tweened": false,
        "ref": "_buttonclose_down"
       }
-     ],
-     "name": "Close_Button"
+     ]
     }
    ]
   },
@@ -1336,10 +1328,11 @@
    "id": "~ButtonPlusHC",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         333.7,
@@ -1348,8 +1341,8 @@
        "ref": "_buttonPlus_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         57.5,
@@ -1358,8 +1351,8 @@
        "ref": "_buttonPlus_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         57.5,
@@ -1368,8 +1361,8 @@
        "ref": "_buttonPlus_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         330,
@@ -1377,8 +1370,7 @@
        ],
        "ref": "_buttonPlus_hit"
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -1387,10 +1379,11 @@
    "id": "~ButtonPlusMarble",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         63.7,
@@ -1399,8 +1392,8 @@
        "ref": "_buttonPlusRevert_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         57.5,
@@ -1409,8 +1402,8 @@
        "ref": "_buttonPlusRevert_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         57.5,
@@ -1419,8 +1412,8 @@
        "ref": "_buttonPlusRevert_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         60,
@@ -1428,8 +1421,7 @@
        ],
        "ref": "_buttonPlusRevert_hit"
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -1438,10 +1430,11 @@
    "id": "~ButtonPlusSC",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         333.7,
@@ -1450,8 +1443,8 @@
        "ref": "_buttonPlus_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         57.5,
@@ -1460,8 +1453,8 @@
        "ref": "_buttonPlus_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         57.5,
@@ -1470,8 +1463,8 @@
        "ref": "_buttonPlus_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         330,
@@ -1479,8 +1472,7 @@
        ],
        "ref": "_buttonPlus_hit"
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -1489,10 +1481,11 @@
    "id": "~ButtonPlusWood",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         63.7,
@@ -1501,8 +1494,8 @@
        "ref": "_buttonPlusRevert_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         57.5,
@@ -1511,8 +1504,8 @@
        "ref": "_buttonPlusRevert_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         57.5,
@@ -1521,8 +1514,8 @@
        "ref": "_buttonPlusRevert_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         60,
@@ -1530,8 +1523,7 @@
        ],
        "ref": "_buttonPlusRevert_hit"
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -1540,10 +1532,11 @@
    "id": "~Button_ArrowRight",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         66.9,
@@ -1552,8 +1545,8 @@
        "ref": "_buttonarrowright_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         66.9,
@@ -1562,8 +1555,8 @@
        "ref": "_buttonarrowright_over"
       },
       {
-       "duration": 2,
        "tweened": false,
+       "duration": 2,
        "index": 2,
        "pivot": [
         66.9,
@@ -1571,8 +1564,7 @@
        ],
        "ref": "_buttonarrowright_down"
       }
-     ],
-     "name": "Calque 1"
+     ]
     }
    ]
   },
@@ -1581,10 +1573,11 @@
    "id": "~Button_Building_tab",
    "layers": [
     {
+     "name": "Button_Tab_BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         120.45,
@@ -1593,8 +1586,8 @@
        "ref": "_buttontab_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         122.95,
@@ -1603,8 +1596,8 @@
        "ref": "_buttontab_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         122.95,
@@ -1613,8 +1606,8 @@
        "ref": "_buttontab_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         122.95,
@@ -1622,17 +1615,17 @@
        ],
        "ref": "_buttontab_hit"
       }
-     ],
-     "name": "Button_Tab_BG"
+     ]
     },
     {
+     "name": "Icon_Building",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0.8,
         -23.25
        ],
+       "duration": 4,
        "pivot": [
         79.85,
         79.8
@@ -1641,23 +1634,22 @@
        "tweened": false,
        "ref": "_onglet_Icon"
       }
-     ],
-     "name": "Icon_Building"
+     ]
     },
     {
+     "name": "Onglet_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0,
         81.3
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
        "ref": "_onglet_building_txt"
       }
-     ],
-     "name": "Onglet_txt"
+     ]
     }
    ]
   },
@@ -1666,10 +1658,11 @@
    "id": "~Button_Currencies_tab",
    "layers": [
     {
+     "name": "Button_Tab_BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         120.45,
@@ -1678,8 +1671,8 @@
        "ref": "_buttontab_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         122.95,
@@ -1688,8 +1681,8 @@
        "ref": "_buttontab_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         122.95,
@@ -1698,8 +1691,8 @@
        "ref": "_buttontab_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         122.95,
@@ -1707,17 +1700,17 @@
        ],
        "ref": "_buttontab_hit"
       }
-     ],
-     "name": "Button_Tab_BG"
+     ]
     },
     {
+     "name": "Onglet_Icon",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         -0.3,
         -24.05
        ],
+       "duration": 4,
        "pivot": [
         79.85,
         79.8
@@ -1726,23 +1719,22 @@
        "tweened": false,
        "ref": "_onglet_Icon"
       }
-     ],
-     "name": "Onglet_Icon"
+     ]
     },
     {
+     "name": "Onglet_currencies_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0,
         92.45
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
        "ref": "_onglet_Currencies_txt"
       }
-     ],
-     "name": "Onglet_currencies_txt"
+     ]
     }
    ]
   },
@@ -1751,10 +1743,11 @@
    "id": "~Button_Decoration_tab",
    "layers": [
     {
+     "name": "Button_Tab_BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         120.45,
@@ -1763,8 +1756,8 @@
        "ref": "_buttontab_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         122.95,
@@ -1773,8 +1766,8 @@
        "ref": "_buttontab_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         122.95,
@@ -1783,8 +1776,8 @@
        "ref": "_buttontab_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         122.95,
@@ -1792,17 +1785,17 @@
        ],
        "ref": "_buttontab_hit"
       }
-     ],
-     "name": "Button_Tab_BG"
+     ]
     },
     {
+     "name": "Onglet_icon",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0.5,
         -21.7
        ],
+       "duration": 4,
        "pivot": [
         79.85,
         79.8
@@ -1811,23 +1804,22 @@
        "tweened": false,
        "ref": "_onglet_Icon"
       }
-     ],
-     "name": "Onglet_icon"
+     ]
     },
     {
+     "name": "Onglet_Deco_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         -2.4,
         81.95
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
        "ref": "_onget_decorations_txt"
       }
-     ],
-     "name": "Onglet_Deco_txt"
+     ]
     }
    ]
   },
@@ -1836,13 +1828,14 @@
    "id": "~Button_InternsShop",
    "layers": [
     {
+     "name": "Interns_Button",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -0.25,
         -0.25
        ],
+       "duration": 1,
        "pivot": [
         135.75,
         85.75
@@ -1852,11 +1845,11 @@
        "ref": "_buttonInternShop_up"
       },
       {
-       "duration": 1,
        "loc": [
         -0.25,
         -0.25
        ],
+       "duration": 1,
        "pivot": [
         137.75,
         87.75
@@ -1866,11 +1859,11 @@
        "ref": "_buttonInternShop_over"
       },
       {
-       "duration": 2,
        "loc": [
         -0.25,
         -0.25
        ],
+       "duration": 2,
        "pivot": [
         137.75,
         87.75
@@ -1879,23 +1872,22 @@
        "tweened": false,
        "ref": "_buttonInternShop_down"
       }
-     ],
-     "name": "Interns_Button"
+     ]
     },
     {
+     "name": "Interns_Button_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         -0.05,
         0.05
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
-       "ref": "button_InternShop_txt"
+       "ref": "_button_InternShop_txt"
       }
-     ],
-     "name": "Interns_Button_txt"
+     ]
     }
    ]
   },
@@ -1904,10 +1896,11 @@
    "id": "~Button_Interns_tab",
    "layers": [
     {
+     "name": "Button_Tab_BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         120.45,
@@ -1916,8 +1909,8 @@
        "ref": "_buttontab_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         122.95,
@@ -1926,8 +1919,8 @@
        "ref": "_buttontab_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         122.95,
@@ -1936,8 +1929,8 @@
        "ref": "_buttontab_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         122.95,
@@ -1945,17 +1938,17 @@
        ],
        "ref": "_buttontab_hit"
       }
-     ],
-     "name": "Button_Tab_BG"
+     ]
     },
     {
+     "name": "Onglet_Icon",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         -0.5,
         -22.95
        ],
+       "duration": 4,
        "pivot": [
         79.85,
         79.8
@@ -1964,23 +1957,22 @@
        "tweened": false,
        "ref": "_onglet_Icon"
       }
-     ],
-     "name": "Onglet_Icon"
+     ]
     },
     {
+     "name": "Onglet_Interns_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0,
         82.65
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
        "ref": "_onglet_interns_txt"
       }
-     ],
-     "name": "Onglet_Interns_txt"
+     ]
     }
    ]
   },
@@ -1989,10 +1981,11 @@
    "id": "~Button_LeftArrow",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         66.9,
@@ -2001,8 +1994,8 @@
        "ref": "_buttonarrowleft_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         66.9,
@@ -2011,8 +2004,8 @@
        "ref": "_buttonarrowleft_over"
       },
       {
-       "duration": 2,
        "tweened": false,
+       "duration": 2,
        "index": 2,
        "pivot": [
         66.9,
@@ -2020,8 +2013,7 @@
        ],
        "ref": "_buttonarrowleft_down"
       }
-     ],
-     "name": "Calque 1"
+     ]
     }
    ]
   },
@@ -2030,13 +2022,14 @@
    "id": "~Button_Purgatory",
    "layers": [
     {
+     "name": "Button_Shop",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         0,
         -0.25
        ],
+       "duration": 1,
        "pivot": [
         135.5,
         85.75
@@ -2046,11 +2039,11 @@
        "ref": "_buttonPurgatory_up"
       },
       {
-       "duration": 1,
        "loc": [
         0,
         -0.25
        ],
+       "duration": 1,
        "pivot": [
         138,
         87.75
@@ -2060,11 +2053,11 @@
        "ref": "_buttonPurgatory_over"
       },
       {
-       "duration": 2,
        "loc": [
         0,
         -0.25
        ],
+       "duration": 2,
        "pivot": [
         138,
         87.75
@@ -2073,10 +2066,10 @@
        "tweened": false,
        "ref": "_buttonPurgatory_down"
       }
-     ],
-     "name": "Button_Shop"
+     ]
     },
     {
+     "name": "Shop_txt",
      "keyframes": [
       {
        "duration": 4,
@@ -2084,8 +2077,7 @@
        "tweened": false,
        "ref": "_button_Purgatory_txt"
       }
-     ],
-     "name": "Shop_txt"
+     ]
     }
    ]
   },
@@ -2094,10 +2086,11 @@
    "id": "~Button_Resources_tab",
    "layers": [
     {
+     "name": "Button_Tab_BG",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         120.45,
@@ -2106,8 +2099,8 @@
        "ref": "_buttontab_up"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 1,
        "pivot": [
         122.95,
@@ -2116,8 +2109,8 @@
        "ref": "_buttontab_over"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 2,
        "pivot": [
         122.95,
@@ -2126,8 +2119,8 @@
        "ref": "_buttontab_down"
       },
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 3,
        "pivot": [
         122.95,
@@ -2135,17 +2128,17 @@
        ],
        "ref": "_buttontab_hit"
       }
-     ],
-     "name": "Button_Tab_BG"
+     ]
     },
     {
+     "name": "Onglet_Icon",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         -0.15,
         -25.2
        ],
+       "duration": 4,
        "pivot": [
         79.85,
         79.8
@@ -2154,23 +2147,22 @@
        "tweened": false,
        "ref": "_onglet_Icon"
       }
-     ],
-     "name": "Onglet_Icon"
+     ]
     },
     {
+     "name": "Onglet_Resources_txt",
      "keyframes": [
       {
-       "duration": 4,
        "loc": [
         0.85,
         87.05
        ],
+       "duration": 4,
        "index": 0,
        "tweened": false,
        "ref": "_onglet_resources_txt"
       }
-     ],
-     "name": "Onglet_Resources_txt"
+     ]
     }
    ]
   },
@@ -2178,21 +2170,22 @@
    "id": "~HardCurrency",
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         128,
         36
        ],
-       "ref": "infoBar_bg"
+       "ref": "_infoBar_bg"
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
        "duration": 1,
@@ -2200,17 +2193,17 @@
        "tweened": false,
        "ref": "_infoBar_value"
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "_icon_hardcurrency",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -125,
         0
        ],
+       "duration": 1,
        "pivot": [
         45.45,
         45.5
@@ -2219,23 +2212,22 @@
        "tweened": false,
        "ref": "_icon_hardcurrency"
       }
-     ],
-     "name": "_icon_hardcurrency"
+     ]
     },
     {
+     "name": "ButtonPlusHC",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         140,
         0
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~ButtonPlusHC"
       }
-     ],
-     "name": "ButtonPlusHC"
+     ]
     }
    ]
   },
@@ -2243,28 +2235,29 @@
    "id": "~MarbleCounter",
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         128,
         36
        ],
-       "ref": "infoBar_bg"
+       "ref": "_infoBar_bg"
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "_icon_wood",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         125,
         0
        ],
+       "duration": 1,
        "pivot": [
         45.55,
         45.55
@@ -2273,10 +2266,10 @@
        "tweened": false,
        "ref": "_icon_marble"
       }
-     ],
-     "name": "_icon_wood"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
        "duration": 1,
@@ -2284,23 +2277,22 @@
        "tweened": false,
        "ref": "_infoBar_value"
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "ButtonPlusWood",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -140,
         0
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~ButtonPlusMarble"
       }
-     ],
-     "name": "ButtonPlusWood"
+     ]
     }
    ]
   },
@@ -2308,28 +2300,29 @@
    "id": "~SoftCurrency",
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         128,
         36
        ],
-       "ref": "infoBar_bg"
+       "ref": "_infoBar_bg"
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "_icon_softcurrency",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -125,
         0
        ],
+       "duration": 1,
        "pivot": [
         45.55,
         45.55
@@ -2338,10 +2331,10 @@
        "tweened": false,
        "ref": "_icon_softcurrency"
       }
-     ],
-     "name": "_icon_softcurrency"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
        "duration": 1,
@@ -2349,23 +2342,22 @@
        "tweened": false,
        "ref": "_infoBar_value"
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "ButtonPlusSC",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         140,
         0
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~ButtonPlusSC"
       }
-     ],
-     "name": "ButtonPlusSC"
+     ]
     }
    ]
   },
@@ -2373,28 +2365,29 @@
    "id": "~WoodCounter",
    "layers": [
     {
+     "name": "bar_bg",
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
         128,
         36
        ],
-       "ref": "infoBar_bg"
+       "ref": "_infoBar_bg"
       }
-     ],
-     "name": "bar_bg"
+     ]
     },
     {
+     "name": "_icon_wood",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         125,
         0
        ],
+       "duration": 1,
        "pivot": [
         45.55,
         45.55
@@ -2403,10 +2396,10 @@
        "tweened": false,
        "ref": "_icon_wood"
       }
-     ],
-     "name": "_icon_wood"
+     ]
     },
     {
+     "name": "bar_txt",
      "keyframes": [
       {
        "duration": 1,
@@ -2414,26 +2407,25 @@
        "tweened": false,
        "ref": "_infoBar_value"
       }
-     ],
-     "name": "bar_txt"
+     ]
     },
     {
+     "name": "ButtonPlusWood",
      "keyframes": [
       {
-       "duration": 1,
        "loc": [
         -140,
         0
        ],
+       "duration": 1,
        "index": 0,
        "tweened": false,
        "ref": "~ButtonPlusWood"
       }
-     ],
-     "name": "ButtonPlusWood"
+     ]
     }
    ]
   }
  ],
- "md5": "847b1c6a032e1308c6ca9c5a91f2b2e4"
+ "md5": "aef696c46f12510aa44048c55b82108e"
 }

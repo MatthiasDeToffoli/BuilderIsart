@@ -102,7 +102,11 @@ class AssetName{
 	public static inline var HUD_COUNTER_XP_HEAVEN:String = HUD_PREFIX + "HeavenXP";
 	public static inline var HUD_COUNTER_XP_HELL:String = HUD_PREFIX + "HellXP";
 	public static inline var HUD_COUNTER_LEVEL:String = HUD_PREFIX + "Level";
-	//public static inline var HUD_COUNTER_CHILDREN_BAR:String = HUD_PREFIX + "Level"; a voir, classe bar ?
+	
+	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";
+	public static inline var COUNTER_TXT_RESSOURCE:String = "bar_txt";
+	public static inline var COUNTER_TXT_LEVEL:String = "_level_txt";
+	
 	
 	// add background and any other assetName coming from DA
 	//bg
