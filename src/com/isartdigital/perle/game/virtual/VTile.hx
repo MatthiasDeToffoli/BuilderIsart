@@ -124,7 +124,7 @@ class VTile extends Virtual{
 		if (RegionManager.worldMap[0][0] == null)
 			throw("first Region not created");
 			
-		buildInsideRegion(RegionManager.worldMap[0][0]);
+		//buildInsideRegion(RegionManager.worldMap[0][0]);
 	}
 	
 	public static function buildFromSave (pSave:Save):Void {

@@ -137,9 +137,9 @@ class AssetName{
 	
 	// add background and any other assetName coming from DA
 	//bg
-	public static inline var BACKGROUND_HELL:String = "Region_Enfer_Principal";
-	public static inline var BACKGROUND_HEAVEN:String = "Region_Paradis_Principal";
-	public static inline var BACKGROUND_STYX:String = "Styx_01_Principal";
+	public static inline var BACKGROUND_HELL:String = "Hell_bg";
+	public static inline var BACKGROUND_HEAVEN:String = "Heaven_BG";
+	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
 	//building
 	public static inline var PURGATORY:String = "Bat_Purgatory_colo_Principal";

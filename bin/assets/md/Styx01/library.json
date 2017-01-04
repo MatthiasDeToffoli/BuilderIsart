@@ -1,0 +1,88 @@
+{
+ "md5": "308fc3163f78eb10bfa6779071195219",
+ "frameRate": 60,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        908,
+        588
+       ],
+       "symbol": "Styx01_Part01",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "rect": [
+        1,
+        591,
+        908,
+        588
+       ],
+       "symbol": "Styx01_Part02",
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "ref": "Styx01_Part02",
+       "duration": 1,
+       "loc": [
+        -802.05,
+        486.3
+       ],
+       "pivot": [
+        453.75,
+        293.625
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "ref": "Styx01_Part01",
+       "duration": 1,
+       "loc": [
+        -176.4375,
+        228.0375
+       ],
+       "pivot": [
+        453.75,
+        293.625
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Styx01"
+  }
+ ]
+}

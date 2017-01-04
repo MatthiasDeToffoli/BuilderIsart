@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
@@ -57,6 +58,7 @@ class GameManager {
 		Tile.initClass();
 		HudContextual.addContainer();
 		Phantom.initClass();
+		ResourcesManager.awake();
 		RegionManager.init();
 		SaveManager.createFromSave();
 		UnlockManager.setUnlockItem();

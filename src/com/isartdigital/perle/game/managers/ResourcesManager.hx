@@ -7,7 +7,6 @@ import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
-import haxe.rtti.CType.Typedef;
 
  
  //{ ################# typedef #################
@@ -27,6 +26,17 @@ import haxe.rtti.CType.Typedef;
 	
  }
  
+ 
+ /**
+  * Information send to actualise ui view
+  */
+ typedef TotalResourcesEventParam = {
+	 var value:Float;
+	 var isLevel:Bool;
+	 @:optional var max:Float;
+	 @:optional var type:GeneratorType;
+ }
+ 
  /**
   * typedef which contain Generator informations
   */
@@ -44,13 +54,20 @@ class ResourcesManager
 	/**
 	 * Event call when a quantity is increase or when we took element
 	 */
-	public static var generatorEvent:EventEmitter = new EventEmitter();
+	public static var generatorEvent:EventEmitter;
+	public static var totalResourcesEvent:EventEmitter;
 	/**
 	 * name of the event
 	 */
 	public static inline var GENERATOR_EVENT_NAME:String = "GENERATOR";
+	public static inline var TOTAL_RESOURCES_EVENT_NAME:String = "TOTAL RESOURCES";
 	
 	private static var maxExp:Float;
+	
+	/**
+	 * 
+	 */
+	private static var totalResourcesInfoArray:Array<TotalResourcesEventParam>;
 	
 	/*
 	 ####################
@@ -65,6 +82,17 @@ class ResourcesManager
 	  */
 	private static var myResourcesData:ResourcesData;
 	
+	
+	public static function awake(){
+		generatorEvent = new EventEmitter();
+		totalResourcesEvent = new EventEmitter();
+	/*	totalResourcesInfoArray = [
+		{value = 1; isLevel = true},
+		{value = 0; isLevel = false; type = GeneratorType.soft},
+		{value = 0; isLevel = false; type = GeneratorType.hard},
+		{value = 0; isLevel = false; type = GeneratorType.goodXp;  },
+		];*/
+	}
 	/**
 	 * init all element of the resources data
 	 */

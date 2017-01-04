@@ -1,0 +1,157 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "Heaven_Part04",
+       "rect": [
+        1,
+        1,
+        514,
+        276
+       ],
+       "origin": [
+        256.75,
+        137.75
+       ]
+      },
+      {
+       "symbol": "Hell_Part01",
+       "rect": [
+        1,
+        279,
+        511,
+        276
+       ],
+       "origin": [
+        255.25,
+        137.75
+       ]
+      },
+      {
+       "symbol": "Heaven_Part02",
+       "rect": [
+        1,
+        557,
+        512,
+        275
+       ],
+       "origin": [
+        256,
+        137.5
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "symbol": "Heaven_Part03",
+       "rect": [
+        1,
+        1,
+        512,
+        275
+       ],
+       "origin": [
+        256,
+        137.5
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Heaven_BG",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "loc": [
+        261.55,
+        137.75
+       ],
+       "duration": 1,
+       "pivot": [
+        255.25,
+        137.75
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "Hell_Part01"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "loc": [
+        -249.7,
+        413
+       ],
+       "duration": 1,
+       "pivot": [
+        256,
+        137.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "Heaven_Part03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "loc": [
+        262.3,
+        413
+       ],
+       "duration": 1,
+       "pivot": [
+        256,
+        137.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "Heaven_Part02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "loc": [
+        -250.45,
+        137.75
+       ],
+       "duration": 1,
+       "pivot": [
+        256.75,
+        137.75
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "Heaven_Part04"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "3902fed7f801a9c170eae6fc2c389ef7"
+}
