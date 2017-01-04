@@ -83,15 +83,23 @@ class ResourcesManager
 	private static var myResourcesData:ResourcesData;
 	
 	
-	public static function awake(){
+	/**
+	 * initialise variable
+	 */
+	public static function awake():Void{
 		generatorEvent = new EventEmitter();
 		totalResourcesEvent = new EventEmitter();
-	/*	totalResourcesInfoArray = [
-		{value = 1; isLevel = true},
-		{value = 0; isLevel = false; type = GeneratorType.soft},
-		{value = 0; isLevel = false; type = GeneratorType.hard},
-		{value = 0; isLevel = false; type = GeneratorType.goodXp;  },
-		];*/
+		totalResourcesInfoArray = [
+		{value: 1, isLevel: true},
+		{value: 0, isLevel: false, type: GeneratorType.soft },
+		{value: 0, isLevel: false, type: GeneratorType.hard},
+		{value: 0, isLevel: false, type: GeneratorType.goodXp},
+		{value: 0, isLevel: false, type: GeneratorType.badXp},
+		{value: 0, isLevel: false, type: GeneratorType.soulGood},
+		{value: 0, isLevel: false, type: GeneratorType.soulBad},
+		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromHell},
+		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromParadise},
+		];
 	}
 	/**
 	 * init all element of the resources data
@@ -134,14 +142,11 @@ class ResourcesManager
 		}
 		
 		maxExp = ExperienceManager.getMaxExp(1);
-		Hud.getInstance().setAllTextValues(1,true);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soft);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.hard);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.goodXp, maxExp);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.badXp, maxExp);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulBad);
-		Hud.getInstance().setAllTextValues(0, false, GeneratorType.soulGood);
 		
+		totalResourcesInfoArray[3].max = maxExp;
+		totalResourcesInfoArray[4].max = maxExp;
+		
+		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesWithTime);
 	}
 	
@@ -177,14 +182,20 @@ class ResourcesManager
 		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = totals[8];
 		
 		maxExp = ExperienceManager.getMaxExp(resourcesDescriptionLoad.level);
-		Hud.getInstance().setAllTextValues(resourcesDescriptionLoad.level,true);
-		Hud.getInstance().setAllTextValues(totals[0],false,GeneratorType.soft);
-		Hud.getInstance().setAllTextValues(totals[1],false,GeneratorType.hard);
-		Hud.getInstance().setAllTextValues(totals[2],false,GeneratorType.goodXp, maxExp);
-		Hud.getInstance().setAllTextValues(totals[3],false,GeneratorType.badXp, maxExp);
-		Hud.getInstance().setAllTextValues(totals[4],false,GeneratorType.soulGood);
-		Hud.getInstance().setAllTextValues(totals[5],false,GeneratorType.soulBad);
+		
+		var i:Int;
+		
+		for (i in 0...totalResourcesInfoArray.length){
+			if (i == 0) totalResourcesInfoArray[i].value = resourcesDescriptionLoad.level;
+			else if (i < 7) totalResourcesInfoArray[i].value = totals[i - 1];
+			else totalResourcesInfoArray[i].value = totals[i];
+			
+			if (i == 3 || i == 4) totalResourcesInfoArray[i].max = maxExp;
+		}
+		
+		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 	}
+	
 	
 	/**
 	 * say if the generator give is not empty

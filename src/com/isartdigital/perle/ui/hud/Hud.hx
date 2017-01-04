@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud;
 
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Quest;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -114,6 +115,8 @@ class Hud extends SmartScreen
 
 	private function addListeners ():Void {
 		
+		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
+		
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		
@@ -168,6 +171,15 @@ class Hud extends SmartScreen
 		var lQuest:Quest = new Quest(lRandomEvent);
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		hide();
+	}
+	
+	/**
+	 * refresh all text value
+	 * @param	pArray a array contain all value at set in text
+	 */
+	private function refreshTextValue(pArray:Array<TotalResourcesEventParam>):Void{
+		var param:TotalResourcesEventParam;
+		for (param in pArray) setAllTextValues(param.value, param.isLevel, param.type, param.max);
 	}
 	
 	/**
@@ -229,6 +241,7 @@ class Hud extends SmartScreen
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		ResourcesManager.totalResourcesEvent.off(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		instance = null;
 		super.destroy();
 	}
