@@ -21,16 +21,15 @@ class ConfirmBuyBuilding extends SmartPopin{
 	private var btnExit:SmartButton;
 	private var btnBuy:SmartComponent;
 	
+	private var buildingAssetName:String;
+	
 	public static function getInstance (): ConfirmBuyBuilding {
 		if (instance == null) instance = new ConfirmBuyBuilding();
 		return instance;
-	}	
+	}
 	
 	private function new() {
 		super(AssetName.POPIN_CONFIRM_BUY_BUILDING);
-		
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
 			
 		btnExit = cast(SmartCheck.getChildByName(this, 'Window_Infos_CloseButton'), SmartButton);
 		btnBuy = cast(SmartCheck.getChildByName(this, 'Window_Infos_UpgradeButton'), SmartComponent); // todo : temp
@@ -40,9 +39,14 @@ class ConfirmBuyBuilding extends SmartPopin{
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 	}
 	
+	public function setBuildingAssetName (pAssetName:String):Void {
+		buildingAssetName = pAssetName;
+		// todo : update les éléments de la card en conséquence ds une autre fonction
+	}
+	
 	private function onClickBuy ():Void {
-		if (BuyManager.canBuy(AssetName.HOUSE_HELL)) {
-			Phantom.onClickShop(AssetName.HOUSE_HELL);
+		if (BuyManager.canBuy(buildingAssetName)) {
+			Phantom.onClickShop(buildingAssetName);
 			Hud.getInstance().hideBuildingHud();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
 			Hud.getInstance().show();

@@ -22,7 +22,6 @@ class AssetName{
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
-	public static inline var SHOP_BTN_ITEM_UNLOCKED:String = SHOP_PREFIX + "Item_Unlocked";
 	public static inline var SHOP_BTN_CLOSE:String = SHOP_PREFIX +  "Close_Button";
 	public static inline var SHOP_BTN_PURGATORY:String = /*SHOP_PREFIX +*/ "Purgatory_Button";
 	public static inline var SHOP_BTN_INTERNS:String = /*SHOP_PREFIX +*/ "Interns_Button";
@@ -34,6 +33,8 @@ class AssetName{
 	
 	// Shop caroussel
 	public static inline var SHOP_CAROUSSEL:String = SHOP_PREFIX + "Item_List";
+	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = SHOP_PREFIX + "Item_Unlocked";
+	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "Item_Locked_1";
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";

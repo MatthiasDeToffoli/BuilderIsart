@@ -40,7 +40,7 @@ class ShopPopin extends SmartPopin{
 		
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
-			SmartCheck.traceChildrens(this);
+			
 		/*try {*/ // todo : pouah ya du boulot...
 			// huuum faire des classes et recréer des élements ? ou ?
 			caroussel = cast(SmartCheck.getChildByName(this, AssetName.SHOP_CAROUSSEL), ShopCaroussel);
@@ -65,6 +65,8 @@ class ShopPopin extends SmartPopin{
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
 		btnInterns.on(MouseEventType.CLICK, onClickInterns);
+		
+		caroussel.init();
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
 		

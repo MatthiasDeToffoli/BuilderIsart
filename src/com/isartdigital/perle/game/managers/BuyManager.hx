@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.loader.GameLoader;
 import haxe.Json;
 
@@ -51,11 +52,16 @@ class BuyManager {
 	}
 	
 	public static function canBuy (pAssetName:String):Bool {
+		checkAssetName(pAssetName);
+		
 		return ResourcesManager.getTotalForType(buyPrice.assets[pAssetName].type) >= 
 			   buyPrice.assets[pAssetName].price;
 	}
 	
-	
+	private static function checkAssetName (pAssetName:String):Void {
+		if (buyPrice.assets[pAssetName] == null)
+			Debug.error("Assetname : '" + pAssetName + "' doesn't exist in buyprice json !");
+	}
 	
 	private static function parseJson ():Void {
 		// ### Haxe et JSON cela fait 11. Cela devrait être aussi simple que ci-dessous. ###
