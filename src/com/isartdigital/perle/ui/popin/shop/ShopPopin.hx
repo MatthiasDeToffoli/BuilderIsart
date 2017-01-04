@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.shop;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -39,19 +40,19 @@ class ShopPopin extends SmartPopin{
 		
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
-			
+			SmartCheck.traceChildrens(this);
 		/*try {*/ // todo : pouah ya du boulot...
 			// huuum faire des classes et recréer des élements ? ou ?
-			caroussel = cast(getChildByName(AssetName.SHOP_CAROUSSEL), ShopCaroussel);
+			caroussel = cast(SmartCheck.getChildByName(this, AssetName.SHOP_CAROUSSEL), ShopCaroussel);
 			//cast(test, ShopCaroussel);
-			btnExit = cast(getChildByName(AssetName.SHOP_BTN_CLOSE), SmartButton);
-			//btnPurgatory = cast(getChildByName('Purgatory_Button'), SmartButton);
-			//btnInterns = cast(getChildByName('Interns_Button'), SmartButton);
-			//tabs[ShopTab.Building] = cast(getChildByName('Onglet_Building'), SmartButton);
-			//tabs[ShopTab.Interns] = cast(getChildByName('Onglet_Interns'), SmartButton);
-			//tabs[ShopTab.Deco] = cast(getChildByName('Onglet_Deco'), SmartButton);
-			//tabs[ShopTab.Resources] = cast(getChildByName('Onglet_Ressources'), SmartButton);
-			//tabs[ShopTab.Currencies] = cast(getChildByName('Onglet_Currencies'), SmartButton);
+			btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
+			btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
+			btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
+			tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
+			tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
+			tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
+			tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
+			tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
 			//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
 			//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
 			//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
@@ -62,6 +63,8 @@ class ShopPopin extends SmartPopin{
 			trace('assetName changed in WireFrame in ' + 'ShopPopin');
 		}*/
 		btnExit.on(MouseEventType.CLICK, onClickExit);
+		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
+		btnInterns.on(MouseEventType.CLICK, onClickInterns);
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
 		
@@ -73,6 +76,16 @@ class ShopPopin extends SmartPopin{
 	private function onClickExit ():Void {
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
+	}
+	
+	private function onClickPurgatory ():Void {
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(TribunalPopin.getInstance());
+	}
+	
+	private function onClickInterns ():Void {
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	private function onClickFakeBuyBuilding ():Void { // todo temporaire
@@ -88,6 +101,10 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	override public function destroy():Void {
+		btnExit.removeListener(MouseEventType.CLICK, onClickExit);
+		btnPurgatory.removeListener(MouseEventType.CLICK, onClickExit);
+		btnInterns.removeListener(MouseEventType.CLICK, onClickExit);
+		
 		instance = null;
 		super.destroy();
 	}

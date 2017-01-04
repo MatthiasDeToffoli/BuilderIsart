@@ -113,7 +113,7 @@ class PoolingManager {
 			
 		return Type.createInstance(Type.resolveClass(
 			Main.getInstance().getPath(lClassName)
-		), [lAssetName]);
+		), [lAssetName]); // todo : enlever paramètre, car on utilisera plus de Building.hx tout court
 	}
 	
 	public static function destroy():Void {

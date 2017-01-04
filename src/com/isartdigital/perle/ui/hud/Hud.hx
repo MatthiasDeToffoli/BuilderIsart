@@ -143,7 +143,7 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickTribunal():Void {
-		GameStage.getInstance().getPopinsContainer().addChild(TribunalPopin.getInstance());
+		UIManager.getInstance().openPopin(TribunalPopin.getInstance());
 		hide();
 	}
 	
@@ -151,7 +151,7 @@ class Hud extends SmartScreen
 		//Todo: Temporaire! En attendant d'avoir plus de précision sur le wireframe
 		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
 		var lQuest:Quest = new Quest(lRandomEvent);
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		hide();
 	}
 	

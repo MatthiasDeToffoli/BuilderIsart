@@ -91,9 +91,12 @@ class ListInternPopin extends SmartPopin
 		trace("right");
 	}
 	
-	private function onClose(){
-		if (!Choice.isVisible()) Hud.getInstance().show();
-		destroy();
+	private function onClose():Void {
+		if (!Choice.isVisible())
+			return;
+		
+		UIManager.getInstance().closeCurrentPopin();
+		Hud.getInstance().show();
 	}
 	
 	/**
@@ -104,7 +107,7 @@ class ListInternPopin extends SmartPopin
 		
 		for (myElement in internDescriptionArray) myElement.destroy();
 		instance = null;
-		parent.removeChild(this);
+		
 		super.destroy();
 	}
 

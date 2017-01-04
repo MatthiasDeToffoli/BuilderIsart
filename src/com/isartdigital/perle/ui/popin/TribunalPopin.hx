@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -99,18 +100,19 @@ class TribunalPopin extends SmartPopin
 		btnUpgrade.on(MouseEventType.CLICK, onUpgrade);
 	}
 	
-	private function onClose(){
+	private function onClose() {
+		UIManager.getInstance().closeCurrentPopin();	
 		Hud.getInstance().show();
-		destroy();
 	}
 	
 	private function onShop(){
-		trace("shop");
+		UIManager.getInstance().closeCurrentPopin();	
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 	}
 	
-	private function onIntern(){
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		destroy();
+	private function onIntern() {
+		UIManager.getInstance().closeCurrentPopin();	
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	private function onHeaven(){
@@ -143,7 +145,6 @@ class TribunalPopin extends SmartPopin
 		btnIntern.off(MouseEventType.CLICK, onIntern);
 		btnUpgrade.off(MouseEventType.CLICK, onUpgrade);
 		
-		parent.removeChild(this);
 		instance = null;
 		
 		super.destroy();

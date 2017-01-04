@@ -1,6 +1,6 @@
 package com.isartdigital.perle.game;
 
-//@TODO : revoir quand on aura le fla qui a tous les objets qui sont utilisé dans plusieur wireframe
+
 /**
  * Constant for assetName, assetName can be wrong named
  * but not our constant ! ;)
@@ -20,10 +20,20 @@ class AssetName{
 	public static inline var BTN_PRODUCTION:String = "GoldProduction";
 	
 	// Shop
-	public static inline var POPIN_SHOP:String = "Shop_Building";
-	public static inline var SHOP_CAROUSSEL:String = "Shop_Item_List";
-	public static inline var SHOP_BTN_ITEM_UNLOCKED:String = "Shop_Item_Unlocked";
-	public static inline var SHOP_BTN_CLOSE:String = "Shop_Close_Button";
+	public static inline var SHOP_PREFIX:String = "Shop_";
+	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
+	public static inline var SHOP_BTN_ITEM_UNLOCKED:String = SHOP_PREFIX + "Item_Unlocked";
+	public static inline var SHOP_BTN_CLOSE:String = SHOP_PREFIX +  "Close_Button";
+	public static inline var SHOP_BTN_PURGATORY:String = /*SHOP_PREFIX +*/ "Purgatory_Button";
+	public static inline var SHOP_BTN_INTERNS:String = /*SHOP_PREFIX +*/ "Interns_Button";
+	public static inline var SHOP_BTN_TAB_BUILDING:String = /*SHOP_PREFIX +*/ "Onglet_Building";
+	public static inline var SHOP_BTN_TAB_DECO:String = /*SHOP_PREFIX +*/ "Onglet_Deco";
+	public static inline var SHOP_BTN_TAB_INTERN:String = /*SHOP_PREFIX +*/ "Onglet_Interns";
+	public static inline var SHOP_BTN_TAB_RESOURCE:String = /*SHOP_PREFIX +*/ "Onglet_Ressources";
+	public static inline var SHOP_BTN_TAB_CURRENCIE:String = /*SHOP_PREFIX +*/ "Onglet_Currencies";
+	
+	// Shop caroussel
+	public static inline var SHOP_CAROUSSEL:String = SHOP_PREFIX + "Item_List";
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
