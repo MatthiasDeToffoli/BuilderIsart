@@ -3,11 +3,12 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.sprites.Quest;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.ftue.FtueUI;
 import haxe.Json;
 import js.Browser;
+import pixi.core.sprites.Sprite;
 
 
 //@:optional vous connaisiez ?
@@ -65,9 +66,19 @@ typedef GeneratorDescription = {
 
 // typedef for intern i use this for prepare the ui
 typedef InternDescription = {
-	var id:Int; // for link with quest i think
+	var id:Int; 		// for link with quest i think
 	var name:String;
-	var isInQuest:Bool; // @ TODO delete i think we can check this with the link at quest manager
+	var isInQuest:Bool;
+	//var avatar: Sprite; //Todo: type à revoir
+	var gender: String; //Angel/Demon
+	var aligment:Float; //Position on the UI?
+	var quest:TimeQuestDescription;	//Linked quest
+	var price:Int; //Price of the intern
+	//Stats of the intern
+	var stress:Float;
+	var stressLimit:Float;
+	var speed:Float;
+	var efficiency:Float;
 }
 
 typedef ResourcesGeneratorDescription = {
@@ -294,6 +305,7 @@ class SaveManager {
 			QuestsManager.initWithSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
+			Intern.init();
 			TimeManager.startTimeLoop();
 			FtueManager.dialogueSaved = currentSave.ftueProgress;
 			UnlockManager.isAlreadySaved = true;
@@ -308,6 +320,7 @@ class SaveManager {
 		ResourcesManager.initWithoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
+		Intern.init();
 		TimeManager.startTimeLoop();
 		SaveManager.save();
 		QuestsManager.initWithoutSave();

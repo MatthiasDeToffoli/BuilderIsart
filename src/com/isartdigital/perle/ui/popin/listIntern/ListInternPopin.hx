@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
@@ -52,10 +53,19 @@ class ListInternPopin extends SmartPopin
 			btnClose = cast(getChildByName(AssetName.INTERN_LIST_CANCEL), SmartButton);
 			btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
-			spawnInternDescription(AssetName.INTERN_LIST_SPAWNER0, {id:1, name:"Vic", isInQuest:true});
+			
+			for (i in 0...AssetName.internListSpawners.length){
+				if (i < Intern.internsList.length){
+					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsList[i]);
+				}
+				
+				else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));
+			}
+			
+			/*spawnInternDescription(AssetName.INTERN_LIST_SPAWNER0, {id:1, name:"Vic", isInQuest:true});
 			spawnInternDescription(AssetName.INTERN_LIST_SPAWNER1, {id:2, name:"Meli", isInQuest:true});
 			spawnInternDescription(AssetName.INTERN_LIST_SPAWNER2, {id:3, name:"Kiki", isInQuest:false});
-
+		*/
 			btnLeft.on(MouseEventType.CLICK, onLeft);
 			btnRight.on(MouseEventType.CLICK, onRight);
 			btnClose.on(MouseEventType.CLICK, onClose);

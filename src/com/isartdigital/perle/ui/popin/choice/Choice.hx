@@ -43,7 +43,7 @@ class Choice extends SmartPopin
 	
 	private var textDescAnswer:Map<ChoiceGeneratedText, String>;
 	
-	private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
+	//private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
 	
 	//intern state properties
 	private var internStress:Int;
@@ -71,7 +71,7 @@ class Choice extends SmartPopin
 		super(AssetName.INTERN_EVENT);
 		
 		getComponents();
-		addInternInfo();
+		//addInternInfo();
 		createChoiceText();
 		
 		choiceType = ChoiceType.NONE;
@@ -84,11 +84,11 @@ class Choice extends SmartPopin
 	/**
 	 * show intern name, side...
 	 */
-	private function addInternInfo():Void
-	{
-		internName.text = internTest.name;
-		internSide.text = "Ange";
-	}
+	//private function addInternInfo():Void
+	//{
+		//internName.text = internTest.name;
+		//internSide.text = "Ange";
+	//}
 	
 	/**
 	 * get all intern event popin elements

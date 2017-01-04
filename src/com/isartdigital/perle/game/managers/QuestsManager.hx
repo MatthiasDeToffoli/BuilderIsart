@@ -2,15 +2,19 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
-import com.isartdigital.perle.game.sprites.Quest;
 
 /**
  * Manager of the quests, listen emits and links actions with others managers
  * @author Emeline Berenguier
  */
+
 class QuestsManager
 {
 	public static var questsList(default, null):Array<TimeQuestDescription>;
+	
+	//The time's gap between two events will be vary between these constants
+	private static var MIN_TIMELINE(default, null):Int = 2000;
+	private static var MAX_TIMELINE(default, null):Int = 5000;
 	
 	public function new() 
 	{
@@ -34,6 +38,61 @@ class QuestsManager
 	}
 	
 	/**
+	 * Creation of the quest
+	 * @param	pNumberEvents Number of events contained in a quest
+	 * @return	The quest's datas
+	 */
+	public static function createQuest(pNumberEvents:Int):TimeQuestDescription{
+		var lIdTimer = IdManager.newId();
+		var lStepsArray:Array<Float> = createRandomEventArray(pNumberEvents);
+		
+		var lTimeQuestDescription:TimeQuestDescription = {
+			refIntern: lIdTimer,
+			progress: 0,
+			steps: lStepsArray,
+			stepIndex: 0,
+			end: createEnd(lStepsArray)
+		}
+		
+		QuestsManager.questsList.push(lTimeQuestDescription);
+		TimeManager.createTimeQuest(lTimeQuestDescription);
+	
+		SaveManager.save();
+		
+		return lTimeQuestDescription;
+	}
+	
+	/**
+	 * Create an array of random gap values between two events
+	 * @param	pLength
+	 * @return A new array
+	 */
+	private static function createRandomEventArray(pLength:Int):Array<Float>{
+		var lListEvents:Array<Float> = new Array<Float>();
+		for (i in 0...pLength){
+			lListEvents.push(Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE);
+		}
+		
+		return lListEvents;
+	}
+	
+	/**
+	 * Create the total length of the quest
+	 * @param	pListEvents
+	 * @return	the total value
+	 */
+	private static function createEnd(pListEvents:Array<Float>):Float{
+		var lEnd:Float = 0;
+		var lLength:Int = pListEvents.length;
+		
+		for (i in 0...lLength){
+			lEnd = lEnd + pListEvents[i];
+		}
+		
+		return lEnd;
+	}
+	
+	/**
 	 * Callback of the choice event
 	 * @param	pQuest
 	 */
@@ -46,6 +105,7 @@ class QuestsManager
 	 * Callback of the quest's end event. Destroy the quest and its time Element
 	 * @param	pQuest
 	 */
+	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeElementQuest):Void{
 		trace("end");
 		trace("pQuest before" + pQuest);
@@ -59,17 +119,17 @@ class QuestsManager
 	 * @param	pId Id of the required quest
 	 * @return	the required quest
 	 */
-	//public static function getQuest(pId:Int):Quest{
-		//var lQuest:Quest = null; //Todo: obligé d'instancier car sinon impossible de retourner la valeur
-		//
-		//for (i in 0...questsList.length){
-			//if (pId == questsList[i].idTimer){
-				//lQuest = questsList[i];
-			//}
-		//}
-		//
-		//return lQuest;
-	//}
+	public static function getQuest(pId:Int):TimeQuestDescription{
+		var lQuest:TimeQuestDescription = null; //Todo: obligé d'instancier car sinon impossible de retourner la valeur
+		
+		for (i in 0...questsList.length){
+			if (pId == questsList[i].refIntern){
+				lQuest = questsList[i];
+			}
+		}
+		
+		return lQuest;
+	}
 	
 	private static function destroyQuest(pQuestId:Int):Void{
 		for (i in 0...questsList.length){

@@ -4,8 +4,6 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
-import com.isartdigital.perle.game.sprites.Quest;
-import com.isartdigital.perle.game.sprites.Quest.TimeLine;
 import haxe.Timer;
 import eventemitter3.EventEmitter;
 

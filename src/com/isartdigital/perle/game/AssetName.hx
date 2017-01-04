@@ -60,6 +60,11 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = SHOP_PREFIX + "Item_Unlocked";
 	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "Item_Locked_1";
 	
+	//public static inline var POPIN_SHOP:String = "Shop_Building";
+	//public static inline var SHOP_CAROUSSEL:String = "Shop_Item_List";
+	public static inline var SHOP_BTN_ITEM_UNLOCKED:String = "Shop_Item_Unlocked";
+	//public static inline var SHOP_BTN_CLOSE:String = "Shop_Close_Button";
+
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
 	public static inline var INFO_BUILDING_BTN_CLOSE:String = "CloseButton";
@@ -70,9 +75,9 @@ class AssetName{
 	public static inline var INTERN_LIST_CANCEL:String = "ButtonCancel";
 	public static inline var INTERN_LIST_LEFT:String = "_arrow_left";
 	public static inline var INTERN_LIST_RIGHT:String = "_arrow_right";
-	public static inline var INTERN_LIST_SPAWNER0:String = "Intern01";
-	public static inline var INTERN_LIST_SPAWNER1:String = "Intern02";
-	public static inline var INTERN_LIST_SPAWNER2:String = "Intern03";
+	public static var internListSpawners:Array<String> = ["Intern01", "Intern02", "Intern03"];
+	//public static inline var INTERN_LIST_SPAWNER1:String = "Intern02";
+	//public static inline var INTERN_LIST_SPAWNER2:String = "Intern03";
 	
 	//in quest
 	public static inline var INTERN_INFO_IN_QUEST:String = "ListInQuest";

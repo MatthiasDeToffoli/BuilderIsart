@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -32,6 +33,10 @@ class InternElementOutQuest extends InternElement
 	
 	private function onSend(){
 		trace("send");
+		//Todo: Temporaire! En attendant d'avoir plus de précision sur le wireframe
+		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		//var lQuest:Quest = new Quest(lRandomEvent);
+		QuestsManager.createQuest(lRandomEvent);
 	}
 	
 	override public function destroy():Void 
