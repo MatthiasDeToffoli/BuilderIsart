@@ -37,7 +37,8 @@ class PoolingManager {
 		"Road_br" => "Ground",
 		"Road_tl" => "Ground",
 		"Road_v" => "Ground",
-		"FootPrint" => "FootPrint"
+		"FootPrint" => "FootPrint",
+		"HeavenBuild2" => "Building"
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon

@@ -30,11 +30,12 @@ typedef RegionMap = {
 class Building extends Tile implements IZSortable
 {
 	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO faire un json
-		"Factory" => {width:5, height:3, footprint : 1},
+		"Factory" => {width:3, height:3, footprint : 1},
 		"House" => {width:2, height:2, footprint : 1},
 		"Trees" => {width:1, height:1, footprint : 0},
 		"Villa" => {width:3, height:3, footprint : 1},
 		"Bat_Purgatory_colo_Principal" => {width:3, height:3, footprint : 1},
+		"HeavenBuild2" => {width:3, height:3, footprint : 1}
 	];
 	
 	public static var list:Array<Building>;

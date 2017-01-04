@@ -9,7 +9,7 @@ package com.isartdigital.perle.game;
 class AssetName{
 
 	// Building
-	public static inline var HOUSE_HELL:String = "House";
+	public static inline var HOUSE_HELL:String = "HeavenBuild2";
 	public static inline var HOUSE_HEAVEN:String = "House";
 	
 	// Confirm
