@@ -122,20 +122,20 @@ class Hud extends SmartScreen
 		
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
 		
-		var interMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "InternsButton");
-		cast(SmartCheck.getChildByName(interMc, "internsButton"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
+		cast(SmartCheck.getChildByName(interMc, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 		
-		var woodMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "WoodCounter");
-		cast(SmartCheck.getChildByName(woodMc, "ButtonPlusWood"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
+		cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_WOOD), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		
-		var marbleMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "MarbleCounter");
-		cast(SmartCheck.getChildByName(marbleMc, "ButtonPlusWood"), SmartButton).on(MouseEventType.CLICK, onClickShop);//OUI les gd se sont trompés sur le nom du boutton, à changer
+		var marbleMc:Dynamic = SmartCheck.getChildByName(this,AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
+		cast(SmartCheck.getChildByName(marbleMc, AssetName.HUD_BTN_WOOD), SmartButton).on(MouseEventType.CLICK, onClickShop);//OUI les gd se sont trompés sur le nom du boutton, à changer
 		
-		var softMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "SoftCurrency");
-		cast(SmartCheck.getChildByName(softMc, "ButtonPlusSC"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		var softMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
+		cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		
-		var hardMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "HardCurrency");
-		cast(SmartCheck.getChildByName(hardMc, "ButtonPlusHC"), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
+		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShop);
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {
