@@ -60,6 +60,8 @@ class AssetName{
 	public static inline var INTERN_EVENT_SEE_ALL:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_EVENT_DISMISS:String = "Bouton_InternDismiss_Clip";
 	public static inline var INTERN_EVENT_CARD:String = "_event_FateCard";
+	public static inline var INTERN_EVENT_NAME:String = "_event_internName";
+	public static inline var INTERN_EVENT_SIDE:String = "_event_internSide";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";

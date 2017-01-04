@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.choice;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TextGenerator;
+import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
@@ -34,9 +35,13 @@ class Choice extends SmartPopin
 	private var presentationChoice:TextSprite;
 	private var heavenChoice:TextSprite;
 	private var evilChoice:TextSprite;
+	private var internName:TextSprite;
+	private var internSide:TextSprite;
 	private var choiceCard:UISprite;
 	
-	private var answer:Map<ChoiceGeneratedText, String>;
+	private var textDescAnswer:Map<ChoiceGeneratedText, String>;
+	
+	private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -58,12 +63,22 @@ class Choice extends SmartPopin
 		
 		getComponents();
 		
+		addInternInfo();
 		createChoiceText();
 		
 		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
 		
 		addListeners();
+	}
+	
+	/**
+	 * show intern name, side...
+	 */
+	private function addInternInfo():Void
+	{
+		internName.text = internTest.name;
+		internSide.text = "Ange";
 	}
 	
 	/**
@@ -74,6 +89,8 @@ class Choice extends SmartPopin
 		presentationChoice = cast(getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite);
 		heavenChoice = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CHOICE), TextSprite);
 		evilChoice = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CHOICE), TextSprite);
+		internName = cast(getChildByName(AssetName.INTERN_EVENT_NAME), TextSprite);
+		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
 		btnAll = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
 		btnDismiss = cast(getChildByName(AssetName.INTERN_EVENT_DISMISS), SmartButton);
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
@@ -85,10 +102,10 @@ class Choice extends SmartPopin
 	public function createChoiceText():Void
 	{
 		var txtChoice:Array<String> = TextGenerator.GetNewSituation();
-		answer = [ ChoiceGeneratedText.DESC => txtChoice[0], ChoiceGeneratedText.HELL => txtChoice[2], ChoiceGeneratedText.HEAVEN => txtChoice[1] ];
-		presentationChoice.text = answer[ChoiceGeneratedText.DESC];
-		heavenChoice.text = answer[ChoiceGeneratedText.HEAVEN];
-		evilChoice.text = answer[ChoiceGeneratedText.HELL];
+		textDescAnswer = [ ChoiceGeneratedText.DESC => txtChoice[0], ChoiceGeneratedText.HELL => txtChoice[2], ChoiceGeneratedText.HEAVEN => txtChoice[1] ];
+		presentationChoice.text = textDescAnswer[ChoiceGeneratedText.DESC];
+		heavenChoice.text = textDescAnswer[ChoiceGeneratedText.HEAVEN];
+		evilChoice.text = textDescAnswer[ChoiceGeneratedText.HELL];
 	}
 	
 	private function addListeners ():Void {
@@ -169,7 +186,7 @@ class Choice extends SmartPopin
 	 */
 	private function chooseHellChoice():Void
 	{
-		trace(answer[ChoiceGeneratedText.HELL]);
+		trace(textDescAnswer[ChoiceGeneratedText.HELL]);
 	}
 	
 	/**
@@ -177,7 +194,7 @@ class Choice extends SmartPopin
 	 */
 	private function chooseHeavenCHoice():Void
 	{
-		trace(answer[ChoiceGeneratedText.HEAVEN]);
+		trace(textDescAnswer[ChoiceGeneratedText.HEAVEN]);
 	}
 	
 	/**

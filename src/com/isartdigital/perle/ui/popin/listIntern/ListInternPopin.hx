@@ -92,7 +92,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onClose(){
-		if (Choice.getInstance() == null) Hud.getInstance().show();
+		Hud.getInstance().show();
 		destroy();
 	}
 	
