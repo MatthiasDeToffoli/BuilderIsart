@@ -9,8 +9,9 @@ package com.isartdigital.perle.game;
 class AssetName{
 
 	// Building
-	public static inline var HOUSE_HELL:String = "HeavenBuild2";
-	public static inline var HOUSE_HEAVEN:String = "House";
+	public static inline var BUILDING_HOUSE_HELL:String = "HeavenBuild2";
+	public static inline var BUILDING_HOUSE_HEAVEN:String = "House";
+	public static inline var BUILDING_PURGATORY:String = "Bat_Purgatory_colo_Principal";
 	
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
@@ -141,10 +142,5 @@ class AssetName{
 	public static inline var BACKGROUND_HELL:String = "Hell_bg";
 	public static inline var BACKGROUND_HEAVEN:String = "Heaven_BG";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
-	
-	//building
-	public static inline var PURGATORY:String = "Bat_Purgatory_colo_Principal";
-	// i would add any wireframe assetName too here
-	// maybe we make another class named WireFrame later.
 	
 }

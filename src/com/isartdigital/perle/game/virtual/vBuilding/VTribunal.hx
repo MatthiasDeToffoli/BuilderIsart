@@ -40,8 +40,8 @@ class VTribunal extends VBuilding
 
 		if (pDesc == null){
 			lDesc = {
-				className:AssetName.PURGATORY,
-				assetName:AssetName.PURGATORY,
+				className:AssetName.BUILDING_PURGATORY,
+				assetName:AssetName.BUILDING_PURGATORY,
 				id:IdManager.newId(),
 				regionX:0,
 				regionY:0,
