@@ -88,7 +88,22 @@ class AssetName{
 	public static inline var FTUE_HEAVEN:String = FTUE+"_Heaven";
 	public static inline var FTUE_NAME:String = FTUE+"_Name_TXT";
 	public static inline var FTUE_SPEACH:String = FTUE+"_Speech_TXT";
-
+	
+	// HUD
+	public static inline var HUD_PREFIX:String = "HUD_";
+	public static inline var HUD_BTN_SHOP:String = HUD_PREFIX + "ShopButton";
+	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
+	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
+	public static inline var HUD_BTN_INTERNS:String = /*HUD_PREFIX + */"internsButton";
+	public static inline var HUD_COUNTER_SOFT:String = HUD_PREFIX + "SoftCurrency";
+	public static inline var HUD_COUNTER_HARD:String = HUD_PREFIX + "HardCurrency";
+	public static inline var HUD_COUNTER_MATERIAL_HEAVEN:String = HUD_PREFIX + "MarbleCounter";
+	public static inline var HUD_COUNTER_MATERIAL_HELL:String = HUD_PREFIX + "WoodCounter";
+	public static inline var HUD_COUNTER_XP_HEAVEN:String = HUD_PREFIX + "HeavenXP";
+	public static inline var HUD_COUNTER_XP_HELL:String = HUD_PREFIX + "HellXP";
+	public static inline var HUD_COUNTER_LEVEL:String = HUD_PREFIX + "Level";
+	//public static inline var HUD_COUNTER_CHILDREN_BAR:String = HUD_PREFIX + "Level"; a voir, classe bar ?
+	
 	// add background and any other assetName coming from DA
 	//bg
 	public static inline var BACKGROUND_HELL:String = "Region_Enfer_Principal";

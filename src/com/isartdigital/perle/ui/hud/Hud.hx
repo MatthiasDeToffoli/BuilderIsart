@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.hud;
 
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Quest;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -26,7 +27,6 @@ enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 */
 class Hud extends SmartScreen 
 {	
-	private static inline var PREFIX = "HUD_";
 	
 	private static var instance: Hud;
 	
@@ -99,11 +99,11 @@ class Hud extends SmartScreen
 
 	private function addListeners ():Void {
 		
-		cast(SmartCheck.getChildByName(this, PREFIX + "ShopButton"), SmartButton).on(MouseEventType.CLICK, onClickShop);
-		cast(SmartCheck.getChildByName(this, PREFIX + "PurgatoryButton"), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
+		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		
-		var interMc:Dynamic = SmartCheck.getChildByName(this, PREFIX + "InternsButton");
-		cast(SmartCheck.getChildByName(interMc, "internsButton"), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
+		cast(SmartCheck.getChildByName(interMc, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {
@@ -144,14 +144,15 @@ class Hud extends SmartScreen
 	 * @param	isLevel if we have to set on the level or not
 	 * @param	type the type of resource we want to set
 	 */
-	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType, ?pMax:Float):Void{
-		if(isLevel) setTextValues(PREFIX + "Level", "_level_txt", value);
-		//else if (type == GeneratorType.soulGood) setTextValues(PREFIX + "Souls_Heaven", "bar_txt", value); existe plus sur hud apparamment -> nicolas
-		//else if (type == GeneratorType.soulBad) setTextValues(PREFIX + "Souls_Hell", "bar_txt", value);
-		else if (type == GeneratorType.badXp) setTextValues(PREFIX + "HellXP", "Hud_xp_txt", value, pMax);
-		else if (type == GeneratorType.goodXp) setTextValues(PREFIX + "HeavenXP", "Hud_xp_txt", value, pMax);
-		else if (type == GeneratorType.soft) setTextValues(PREFIX + "SoftCurrency", "bar_txt", value, pMax);
-		else if (type == GeneratorType.hard) setTextValues(PREFIX + "HardCurrency", "bar_txt", value, pMax);
+	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType, ?pMax:Float):Void {
+		
+		if(isLevel) setTextValues(AssetName.HUD_COUNTER_LEVEL, AssetName.COUNTER_TXT_LEVEL, value);
+		else if (type == GeneratorType.buildResourceFromParadise) setTextValues(AssetName.HUD_COUNTER_MATERIAL_HEAVEN, AssetName.COUNTER_TXT_RESSOURCE, value);
+		else if (type == GeneratorType.buildResourceFromHell) setTextValues(AssetName.HUD_COUNTER_MATERIAL_HELL, AssetName.COUNTER_TXT_RESSOURCE, value);
+		else if (type == GeneratorType.badXp) setTextValues(AssetName.HUD_COUNTER_XP_HELL, AssetName.COUNTER_TXT_XP, value, pMax);
+		else if (type == GeneratorType.goodXp) setTextValues(AssetName.HUD_COUNTER_XP_HEAVEN, AssetName.COUNTER_TXT_XP, value, pMax);
+		else if (type == GeneratorType.soft) setTextValues(AssetName.HUD_COUNTER_SOFT, AssetName.COUNTER_TXT_RESSOURCE, value, pMax);
+		else if (type == GeneratorType.hard) setTextValues(AssetName.HUD_COUNTER_HARD, AssetName.COUNTER_TXT_RESSOURCE, value, pMax);
 	}
 	
 	/**
