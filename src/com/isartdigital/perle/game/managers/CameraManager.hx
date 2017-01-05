@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.ui.hud.Hud;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 
@@ -48,6 +49,8 @@ class CameraManager
 	 * @param	pSpeed
 	 */
 	public static function move(pSpeed:Point):Void {
+		if (Hud.isHide)
+			return;
 		target.x += pSpeed.x;
 		target.y += pSpeed.y;
 		checkClippingNeed(pSpeed);

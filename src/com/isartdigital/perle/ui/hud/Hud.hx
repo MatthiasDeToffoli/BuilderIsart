@@ -35,10 +35,12 @@ class Hud extends SmartScreen
 {	
 	
 	private static var instance: Hud;
+	public static var isHide:Bool = false;
 	
 	private var currentBuildingHud:BuildingHudType;
 	
 	private var containerBuildingHud:Container;
+	
 
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -222,6 +224,7 @@ class Hud extends SmartScreen
 	 */
 	public function hide():Void{
 		GameStage.getInstance().getHudContainer().removeChild(this);
+		isHide = true;
 	}
 	
 	/**
@@ -229,6 +232,7 @@ class Hud extends SmartScreen
 	 */
 	public function show():Void{
 		GameStage.getInstance().getHudContainer().addChild(this);
+		isHide = false;
 	}
 	
 	

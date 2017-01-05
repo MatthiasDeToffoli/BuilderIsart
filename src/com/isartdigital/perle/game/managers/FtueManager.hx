@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.ftue.FtueUI;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
@@ -33,6 +34,7 @@ class FtueManager
 		else
 			FtueUI.actualDialogue = 0;
 		
+		Hud.getInstance().hide();
 		FtueUI.firstToSpeak = npc_dialogue_ftue[0][0][0];
 		FtueUI.getInstance().open();	
 		FtueUI.getInstance().createText();	
@@ -58,6 +60,7 @@ class FtueManager
 	 * Remove Ftue
 	 */
 	public static function removeFtue():Void {
+		Hud.getInstance().show();
 		GameStage.getInstance().getHudContainer().removeChild(FtueUI.getInstance());	
 	}
 	
