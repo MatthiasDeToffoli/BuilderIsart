@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.choice;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TextGenerator;
+import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -12,6 +13,7 @@ import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import flump.library.Point;
+import pixi.interaction.EventEmitter;
 import pixi.interaction.EventTarget;
 
 enum ChoiceType { HEAVEN; HELL; NONE; }
@@ -25,6 +27,7 @@ class Choice extends SmartPopin
 {
 	private static var instance:Choice;
 	
+	public static inline var EVENT_CHOICE_DONE:String = "Choice_Done";
 	// max distance for the card slide
 	private static inline var MOUSE_DIFF_MAX:Float = 200;
 	private static inline var DIFF_MAX:Float = 80;
@@ -56,6 +59,7 @@ class Choice extends SmartPopin
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
+	public static var eChoiceDone:EventEmitter; //Todo: static ou propriété d'instance?
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -81,6 +85,10 @@ class Choice extends SmartPopin
 		addListeners();
 	}
 	
+	//Todo: en attendant mieux
+	//public static function init():Void{
+		//eChoiceDone = new EventEmitter();
+	//}
 	/**
 	 * show intern name, side...
 	 */
@@ -205,6 +213,9 @@ class Choice extends SmartPopin
 	private function chooseHellChoice():Void
 	{
 		trace(textDescAnswer[ChoiceGeneratedText.HELL]);
+		//emit
+		//eChoiceDone.emit(EVENT_CHOICE_DONE);
+		QuestsManager.goToNextStep();
 	}
 	
 	/**
@@ -213,6 +224,8 @@ class Choice extends SmartPopin
 	private function chooseHeavenCHoice():Void
 	{
 		trace(textDescAnswer[ChoiceGeneratedText.HEAVEN]);
+		//emit
+		QuestsManager.goToNextStep();
 	}
 	
 	/**

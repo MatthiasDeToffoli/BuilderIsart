@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.managers.IdManager;
+import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 
@@ -14,19 +15,20 @@ class Intern
 
 	public function new(pInternDatas:InternDescription) 
 	{
-		trace(pInternDatas.gender);
 		internsList.push(pInternDatas);
 	}
 	
 	public static function init(){
 		internsList = new Array<InternDescription>();
+		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		var lId:Int = IdManager.newId();
+		
 		var lTestInternDatas:InternDescription = {
-			id : IdManager.newId(),
+			id : lId,
 			name : "Angel A. Merkhell",
 			isInQuest: false,
-			gender :  "angel",
-			aligment : 1,
-			quest : {refIntern:5, progress:0, steps: [3, 5, 1], stepIndex: 0, end: 10},
+			aligment :  "angel",
+			quest : QuestsManager.createQuest(lRandomEvent, lId),
 			price : 2000,
 			stress: 0,
 			stressLimit: 10,
@@ -40,8 +42,7 @@ class Intern
 			id : IdManager.newId(),
 			name : "Archanglina Jolie",
 			isInQuest: false,
-			gender :  "demon",
-			aligment : 1,
+			aligment :  "demon",
 			quest : {refIntern:5, progress:0, steps: [3, 5, 1], stepIndex: 0, end: 10},
 			price : 2000,
 			stress: 0,
@@ -49,8 +50,8 @@ class Intern
 			speed: 5,
 			efficiency: 0.1
 		};
-		
-		var lTestNewIntern:Intern = new Intern(lTestInternDatas2);
+		//
+		var lTestNewIntern2:Intern = new Intern(lTestInternDatas2);
 		
 	}
 	

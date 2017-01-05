@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -15,6 +16,7 @@ class InternElementOutQuest extends InternElement
 {
 	
 	private var btnSend:SmartButton;
+	private var idIntern:Int;
 
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
@@ -26,6 +28,8 @@ class InternElementOutQuest extends InternElement
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
 		internName.text = pDesc.name;
 		
+		idIntern = pDesc.id;
+		
 		picture.on(MouseEventType.CLICK, onPicture);
 		btnSend.on(MouseEventType.CLICK, onSend);
 		
@@ -33,10 +37,17 @@ class InternElementOutQuest extends InternElement
 	
 	private function onSend(){
 		trace("send");
+		var lLength:Int = QuestsManager.questsList.length;
+		//Créer random quest ici
+		for (i in 0...lLength){
+			if (QuestsManager.questsList[i].refIntern == idIntern){
+				TimeManager.createTimeQuest(QuestsManager.questsList[i]);
+			}
+		}
 		//Todo: Temporaire! En attendant d'avoir plus de précision sur le wireframe
-		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		//var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
 		//var lQuest:Quest = new Quest(lRandomEvent);
-		QuestsManager.createQuest(lRandomEvent);
+		//QuestsManager.createQuest(lRandomEvent);
 	}
 	
 	override public function destroy():Void 

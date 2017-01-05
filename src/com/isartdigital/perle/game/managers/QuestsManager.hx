@@ -1,7 +1,12 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
+import com.isartdigital.perle.game.sprites.Intern;
+import com.isartdigital.perle.ui.UIManager;
+//import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
+import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.choice.Choice;
+import com.isartdigital.utils.game.GameStage;
 
 /**
  * Manager of the quests, listen emits and links actions with others managers
@@ -16,6 +21,9 @@ class QuestsManager
 	private static var MIN_TIMELINE(default, null):Int = 2000;
 	private static var MAX_TIMELINE(default, null):Int = 5000;
 	
+	//Reference of the quest in progress
+	private static var questInProgress:TimeQuestDescription;
+	
 	public function new() 
 	{
 		
@@ -27,6 +35,7 @@ class QuestsManager
 		questsList = new Array<TimeQuestDescription>();
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_STEP, choice);
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, endQuest);
+		//Choice.eChoiceDone.on(Choice.EVENT_CHOICE_DONE, goToNextStep);
 	}
 	
 	public static function initWithSave(pDatasSaved:Save):Void{
@@ -42,8 +51,8 @@ class QuestsManager
 	 * @param	pNumberEvents Number of events contained in a quest
 	 * @return	The quest's datas
 	 */
-	public static function createQuest(pNumberEvents:Int):TimeQuestDescription{
-		var lIdTimer = IdManager.newId();
+	public static function createQuest(pNumberEvents:Int, pIdIntern:Int):TimeQuestDescription{
+		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Float> = createRandomEventArray(pNumberEvents);
 		
 		var lTimeQuestDescription:TimeQuestDescription = {
@@ -55,7 +64,6 @@ class QuestsManager
 		}
 		
 		QuestsManager.questsList.push(lTimeQuestDescription);
-		TimeManager.createTimeQuest(lTimeQuestDescription);
 	
 		SaveManager.save();
 		
@@ -96,9 +104,17 @@ class QuestsManager
 	 * Callback of the choice event
 	 * @param	pQuest
 	 */
-	private static function choice(pQuest:TimeElementQuest):Void{
+	private static function choice(pQuest:TimeQuestDescription):Void{
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
-		TimeManager.nextStepQuest(pQuest);
+		questInProgress = pQuest;
+		Hud.getInstance().hide();
+		UIManager.getInstance().closeCurrentPopin;
+		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
+	}
+	
+	public static function goToNextStep():Void{
+		Choice.getInstance().hide();
+		TimeManager.nextStepQuest(questInProgress);
 	}
 	
 	/**
@@ -106,12 +122,22 @@ class QuestsManager
 	 * @param	pQuest
 	 */
 	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
-	private static function endQuest(pQuest:TimeElementQuest):Void{
+	private static function endQuest(pQuest:TimeQuestDescription):Void{
 		trace("end");
-		trace("pQuest before" + pQuest);
-		TimeManager.destroyTimeElement(pQuest.desc.refIntern);
-		destroyQuest(pQuest.desc.refIntern);
-		trace("pQuest after" + pQuest);
+		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		
+		TimeManager.destroyTimeElement(pQuest.refIntern);
+		destroyQuest(pQuest.refIntern);
+		//Si stagiaire pas stressé max
+		for (i in 0...Intern.internsList.length){
+			if (pQuest.refIntern == Intern.internsList[i].id){
+				if (Intern.internsList[i].stress < Intern.internsList[i].stressLimit){
+					Intern.internsList[i].quest = createQuest(lRandomEvent, Intern.internsList[i].id);
+				}
+				
+				else trace("dismiss");
+			}
+		}
 	}
 	
 	/**

@@ -31,9 +31,9 @@ typedef TimeElementResource = {
 /**
  * Description of the quest
  */
-typedef TimeElementQuest = {
-	var desc:TimeQuestDescription;
-}
+//typedef TimeElementQuest = {
+	//var desc:TimeQuestDescription;
+//}
 
 
 /**
@@ -59,13 +59,13 @@ class TimeManager {
 	public static var lastKnowTime(default, null):Float;
 	
 	public static var listResource(default, null):Array<TimeElementResource>;
-	public static var listQuest(default, null):Array<TimeElementQuest>;
+	public static var listQuest(default, null):Array<TimeQuestDescription>;
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
 		eTimeQuest = new EventEmitter();
 		listResource = new Array<TimeElementResource>();
-		listQuest = new Array<TimeElementQuest>();
+		listQuest = new Array<TimeQuestDescription>();
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -90,18 +90,18 @@ class TimeManager {
 		//Not working don't touch!
 		
 		for (i in 0...lLengthQuest){
-			var lQuestDatas:TimeElementQuest = {
-			desc: {
+			var lQuestDatas:TimeQuestDescription = {
+			//desc: {
 				refIntern: lQuestArraySaved[i].refIntern,
 				progress: lQuestArraySaved[i].progress,
 				steps: lQuestArraySaved[i].steps,
 				stepIndex: lQuestArraySaved[i].stepIndex,
 				end: lQuestArraySaved[i].end
-			},
+			//},
 			};
 			
 			listQuest.push(lQuestDatas);
-			trace("Save Id" + lQuestDatas.desc.refIntern);
+			trace("Save Id" + lQuestDatas.refIntern);
 		}
 		
 		lastKnowTime = pSave.lastKnowTime;
@@ -160,16 +160,16 @@ class TimeManager {
 	 * @param	pQuest Reference to the quest
 	 * @return  The specific Time Element for the quest
 	 */
-	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeElementQuest {
-		var lTimeElement:TimeElementQuest = {
-			desc: {
+	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeQuestDescription {
+		var lTimeElement:TimeQuestDescription = {
+			//desc: {
 				//todo: réfléchir à un desc
 				refIntern: pDatasQuest.refIntern,
 				progress: pDatasQuest.progress,
 				steps: pDatasQuest.steps,
 				stepIndex:pDatasQuest.stepIndex,
 				end:pDatasQuest.end
-			},
+			//},
 		};
 		
 		listQuest.push(lTimeElement);
@@ -214,15 +214,15 @@ class TimeManager {
 	 * When Quest is completed, go to nextStep on the TimeElement, called from outside
 	 * @param	pElement
 	 */
-	public static function nextStepQuest (pElement:TimeElementQuest):Void {
+	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
 		//trace("progress" + pElement.desc.progress);
 		//trace("end" + pElement.desc.end);
 		trace("update quest");
-		if (pElement.desc.progress == pElement.desc.steps[pElement.desc.stepIndex]) {
+		if (pElement.progress == pElement.steps[pElement.stepIndex]) {
 			trace("next step");
-			pElement.desc.stepIndex++;
+			pElement.stepIndex++;
 			
-			if (pElement.desc.stepIndex == pElement.desc.steps.length - 1){
+			if (pElement.stepIndex == pElement.steps.length - 1){
 				trace("end step");
 				eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
@@ -285,17 +285,17 @@ class TimeManager {
 	 * @param	pElement
 	 * @param	pElapsedTime
 	 */
-	private static function updateQuest (pElement:TimeElementQuest, pElapsedTime:Float):Void {
-		var lPreviousProgress:Float = pElement.desc.progress;
+	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {
+		var lPreviousProgress:Float = pElement.progress;
 		
-		pElement.desc.progress = Math.min(
-			pElement.desc.progress + pElapsedTime,
-			pElement.desc.steps[pElement.desc.stepIndex]
+		pElement.progress = Math.min(
+			pElement.progress + pElapsedTime,
+			pElement.steps[pElement.stepIndex]
 		);
 		
 		// progress has reached next step && just now
-		if (pElement.desc.progress == pElement.desc.steps[pElement.desc.stepIndex] &&
-			pElement.desc.progress != lPreviousProgress) 
+		if (pElement.progress == pElement.steps[pElement.stepIndex] &&
+			pElement.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
 			trace("event!");
@@ -315,7 +315,7 @@ class TimeManager {
 		}
 		
 		for (j in 0...lLengthQuest) {
-			if (pId == listQuest[j].desc.refIntern){
+			if (pId == listQuest[j].refIntern){
 				listQuest.splice(j, 1);
 				break;
 			}

@@ -15,6 +15,7 @@ import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
+import com.isartdigital.perle.ui.popin.choice.Choice;
 
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -59,6 +60,7 @@ class GameManager {
 		HudContextual.addContainer();
 		Phantom.initClass();
 		RegionManager.init();
+		//Choice.init(); //Todo: en attendant mieux
 		SaveManager.createFromSave();
 		UnlockManager.setUnlockItem();
 		ClippingManager.update();

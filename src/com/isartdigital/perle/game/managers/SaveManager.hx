@@ -70,9 +70,8 @@ typedef InternDescription = {
 	var name:String;
 	var isInQuest:Bool;
 	//var avatar: Sprite; //Todo: type à revoir
-	var gender: String; //Angel/Demon
-	var aligment:Float; //Position on the UI?
-	var quest:TimeQuestDescription;	//Linked quest
+	var aligment:String; //Todo:type à changer?
+	var quest:TimeQuestDescription;	//Linked quest Todo: à enlever peut-être
 	var price:Int; //Price of the intern
 	//Stats of the intern
 	var stress:Float;
@@ -243,7 +242,7 @@ class SaveManager {
 	
 	private static function getTimesQuest ():Array<TimeQuestDescription> {
 		return TimeManager.listQuest.map(function (pElement){
-			return pElement.desc;
+			return pElement;
 		});
 	}
 	
@@ -302,7 +301,8 @@ class SaveManager {
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			IdManager.buildFromSave(currentSave);
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
-			QuestsManager.initWithSave(currentSave);
+			//QuestsManager.initWithSave(currentSave);
+			QuestsManager.initWithoutSave();
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			Intern.init();
