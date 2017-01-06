@@ -34,8 +34,8 @@ class VBuilding extends VTile {
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
 	
-	public static inline var ALIGNEMENT_HEAVEN = "heaven";
-	public static inline var ALIGNEMENT_HELL = "eden";
+	public static inline var ALIGNEMENT_HEAVEN = "eden";
+	public static inline var ALIGNEMENT_HELL = "hell";
 	public static inline var ALIGNEMENT_STYX = "styx";
 	public static inline var ALIGNEMENT_ALL = "all";
 	

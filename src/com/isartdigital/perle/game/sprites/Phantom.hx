@@ -4,12 +4,15 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
+import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building.RegionMap;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.Debug;
@@ -33,11 +36,13 @@ class Phantom extends Building {
 	private static var colorMatrix:ColorMatrixFilter;
 	private static var instance:Phantom;
 	private static var container:Container;
+	private static var alignementBuilding:String;
 	
 	private var linkedVBuilding:VBuilding;
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
 	private var precedentBesMapPos:Point = new Point(0, 0);
+	private var vBuilding:VBuilding;
 	
 	public static function initClass ():Void {
 		container = new Container();
@@ -52,6 +57,7 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickShop (pAssetName:String):Void {
+		alignementBuilding = Virtual.ASSETNAME_TO_ALIGNEMENT[pAssetName];
 		createPhantom(pAssetName);
 	}
 	
@@ -64,8 +70,6 @@ class Phantom extends Building {
 		createPhantom(pAssetName);
 		instance.linkedVBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
-		trace(instance.linkedVBuilding);
-		trace("alignement : " + instance.linkedVBuilding.alignementBuilding);
 	}
 	
 	public static function onClickCancelBuild ():Void {
@@ -77,8 +81,19 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmBuild ():Void {
+		//todo pas une valeur en dur : 100
+		if (alignementBuilding == "all"||alignementBuilding == "styx") {
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+		}
+		else if (alignementBuilding == "hell")
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+		else if (alignementBuilding == "eden")
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+		
 		instance.confirmBuild();
 	}
+	
 	public static function onClickConfirmMove ():Void {
 		instance.confirmMove();
 	}
@@ -240,7 +255,22 @@ class Phantom extends Building {
 	
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
+		if (BuyManager.buy(assetName)) {
 		
+			createVBuilding();
+			
+			vBuilding.activate();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
+			destroy();
+			
+			
+			applyChange();
+		} else {
+			displayCantBuy();
+		}
+	}
+	
+	private function createVBuilding():Void {
 		if (BuyManager.buy(assetName)) {
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
@@ -251,16 +281,7 @@ class Phantom extends Building {
 				mapX:regionMap.map.x,
 				mapY:regionMap.map.y
 			};
-
-			var vBuilding:VBuilding = new VBuilding(tileDesc);
-			vBuilding.activate();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
-			destroy();
-			
-			
-			applyChange();
-		} else {
-			displayCantBuy();
+			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
 		}
 	}
 	
@@ -276,12 +297,14 @@ class Phantom extends Building {
 	private function canBuildHere():Bool {
 		setMapColRow(getRoundMapPos(position), Building.ASSETNAME_TO_MAPSIZE[assetName]);
 		regionMap = getRegionMap();
+		if (instance.linkedVBuilding != null)
+			alignementBuilding = instance.linkedVBuilding.alignementBuilding;
 		
-		if (instance.linkedVBuilding.alignementBuilding == VBuilding.ALIGNEMENT_ALL)
+		if (alignementBuilding == VBuilding.ALIGNEMENT_ALL)
 			return buildingOnGround() && buildingCollideOther();
 			
 		// between region or region don't exist
-		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type.getName() != instance.linkedVBuilding.alignementBuilding)
+		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type.getName() != alignementBuilding)
 			return false;
 		
 		return buildingOnGround() && buildingCollideOther();

@@ -6,6 +6,12 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
+import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
+import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.services.facebook.Facebook;
@@ -293,6 +299,12 @@ class Main extends EventEmitter
 			FootPrint,
 			InternElement,
 			Tribunal,
+			VHouseHeaven,
+			VHouseHell,
+			VDecoHeaven,
+			VVirtuesBuilding,
+			VDecoHell,
+			VUrbanHouse
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

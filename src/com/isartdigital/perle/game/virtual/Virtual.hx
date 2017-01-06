@@ -15,6 +15,51 @@ interface HasVirtual {
  */
 class Virtual {
 	
+	public static var ASSETNAME_TO_VCLASS(default, never):Map<String, String> = [
+		"House" => "VHouseHell",	
+		"Bat_Purgatory_colo_Principal" => "VTribunal",
+		"HeavenBuild2" => "VHouseHeaven",
+		AssetName.DECO_HEAVEN_TREE_1 => "VDecoHeaven", // todo : c'est bien des building ??
+		AssetName.DECO_HEAVEN_TREE_2 => "VDecoHeaven",
+		AssetName.DECO_HEAVEN_TREE_3 => "VDecoHeaven",
+		AssetName.DECO_HEAVEN_FOUNTAIN => "VDecoHeaven",
+		AssetName.DECO_HEAVEN_ROCK => "VDecoHeaven",
+		AssetName.DECO_HEAVEN_VERTUE => "VVirtuesBuilding",
+		AssetName.DECO_HELL_TREE_1 => "VDecoHell",
+		AssetName.DECO_HELL_TREE_2 => "VDecoHell",
+		AssetName.DECO_HELL_TREE_3 => "VDecoHell",
+		AssetName.DECO_HELL_ROCK => "VDecoHell",
+		
+		AssetName.BUILDING_HEAVEN_BRIDGE => "VUrbanHouse",
+		AssetName.BUILDING_HEAVEN_BUILD_1 => "VHouseHeaven",
+		AssetName.BUILDING_HEAVEN_BUILD_2 => "VHouseHeaven",
+		AssetName.BUILDING_HELL_BUILD_1 => "VHouseHell",
+		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
+	];
+	
+	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, String> = [
+		"House" => "hell",	
+		"Bat_Purgatory_colo_Principal" => "styx",
+		"HeavenBuild2" => "eden",
+		AssetName.DECO_HEAVEN_TREE_1 => "eden", // todo : c'est bien des building ??
+		AssetName.DECO_HEAVEN_TREE_2 => "eden",
+		AssetName.DECO_HEAVEN_TREE_3 => "eden",
+		AssetName.DECO_HEAVEN_FOUNTAIN => "eden",
+		AssetName.DECO_HEAVEN_ROCK => "eden",
+		AssetName.DECO_HEAVEN_VERTUE => "styx",
+		AssetName.DECO_HELL_TREE_1 => "hell",
+		AssetName.DECO_HELL_TREE_2 => "hell",
+		AssetName.DECO_HELL_TREE_3 => "hell",
+		AssetName.DECO_HELL_ROCK => "hell",
+		
+		AssetName.BUILDING_HEAVEN_BRIDGE => "styx",
+		AssetName.BUILDING_HEAVEN_BUILD_1 => "eden",
+		AssetName.BUILDING_HEAVEN_BUILD_2 => "eden",
+		AssetName.BUILDING_HELL_BUILD_1 => "hell",
+		AssetName.BUILDING_HELL_BUILD_2 => "hell",
+	];
+	
+	
 	/**
 	 * active is true if the instance represented by Virtual should be visible on screen
 	 */

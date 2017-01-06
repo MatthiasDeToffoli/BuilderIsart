@@ -429,6 +429,7 @@ class ResourcesManager
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
 		if (myResourcesData.totalsMap[GeneratorType.badXp] == maxExp && myResourcesData.totalsMap[GeneratorType.goodXp] == maxExp)
 			levelUp();
+		SaveManager.save();
 	}
 	
 	
