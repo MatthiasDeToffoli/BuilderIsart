@@ -263,6 +263,7 @@ class Choice extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		isOpen = false;
 		parent.removeChild(this);
 		instance = null;
 		super.destroy();

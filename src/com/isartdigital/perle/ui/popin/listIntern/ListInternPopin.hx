@@ -104,6 +104,7 @@ class ListInternPopin extends SmartPopin
 	
 	//@Matthias: je te la mets en public pour le feedback de l'envoi de quête, c'est temporaire
 	public function onClose():Void {
+
 		if (Choice.isVisible())
 			return;
 		
@@ -115,9 +116,11 @@ class ListInternPopin extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		var myElement:InternElement;
-		
-		for (myElement in internDescriptionArray) myElement.destroy();
+		var myInternDesc:InternDescription;
+		for (myInternDesc in internDescriptionArray){
+			myInternDesc.destroy();
+			internDescriptionArray.shift();
+		}
 		instance = null;
 		
 		super.destroy();

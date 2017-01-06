@@ -22,13 +22,12 @@ class InternElement extends SmartComponent
 		super(pID);
 		position = pPos;
 		
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
 	}
 	
 	private function onPicture(){
-		GameStage.getInstance().getPopinsContainer().addChild(new InternPopin()); //@ TODO gérer le passage de la descritpion de l'intern
-		ListInternPopin.getInstance().destroy();
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(new InternPopin());
+		
 	}
 	
 	override public function destroy():Void 

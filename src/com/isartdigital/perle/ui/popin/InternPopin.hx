@@ -50,19 +50,18 @@ class InternPopin extends SmartPopin
 	
 	private function onClose(){
 		Hud.getInstance().show();
-		destroy();
+		UIManager.getInstance().closeCurrentPopin();
 	}
 	
 	private function onSeeAll(){
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		destroy();
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	override public function destroy():Void 
 	{
 		btnSeeAll.off(MouseEventType.CLICK, onSeeAll);
 		btnClose.off(MouseEventType.CLICK, onClose);
-		parent.removeChild(this);
 		super.destroy();
 	}
 	
