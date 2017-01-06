@@ -79,7 +79,7 @@ class TimeManager {
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
 		var lLengthQuest:Int = pSave.timesQuest.length;
 		
-		trace(lLengthQuest);
+		//trace(lLengthQuest);
 		for (i in 0...lLength) {
 			listResource.push({
 				desc: pSave.timesResource[i]
@@ -239,7 +239,7 @@ class TimeManager {
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
-		trace("length quest" + listQuest.length);
+		//trace("length quest" + listQuest.length);
 		for (i in 0...lLength) {
 			updateResource(listResource[i], lElapsedTime);
 		}
