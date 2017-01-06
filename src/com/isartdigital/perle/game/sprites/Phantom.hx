@@ -64,6 +64,8 @@ class Phantom extends Building {
 		createPhantom(pAssetName);
 		instance.linkedVBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
+		trace(instance.linkedVBuilding);
+		trace("alignement : " + instance.linkedVBuilding.alignementBuilding);
 	}
 	
 	public static function onClickCancelBuild ():Void {
@@ -275,8 +277,11 @@ class Phantom extends Building {
 		setMapColRow(getRoundMapPos(position), Building.ASSETNAME_TO_MAPSIZE[assetName]);
 		regionMap = getRegionMap();
 		
+		if (instance.linkedVBuilding.alignementBuilding == VBuilding.ALIGNEMENT_ALL)
+			return buildingOnGround() && buildingCollideOther();
+			
 		// between region or region don't exist
-		if (regionMap == null)
+		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type.getName() != instance.linkedVBuilding.alignementBuilding)
 			return false;
 		
 		return buildingOnGround() && buildingCollideOther();

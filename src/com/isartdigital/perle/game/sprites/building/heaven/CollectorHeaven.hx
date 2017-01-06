@@ -12,7 +12,6 @@ class CollectorHeaven extends Collector
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
 	}
 	
 }

@@ -13,7 +13,7 @@ class VCollectorHeaven extends VCollector
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		
+		alignementBuilding = VBuilding.ALIGNEMENT_HEAVEN;
 	}
 	
 }

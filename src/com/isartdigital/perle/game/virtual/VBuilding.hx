@@ -34,10 +34,19 @@ class VBuilding extends VTile {
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
 	
+	public static inline var ALIGNEMENT_HEAVEN = "heaven";
+	public static inline var ALIGNEMENT_HELL = "eden";
+	public static inline var ALIGNEMENT_STYX = "styx";
+	public static inline var ALIGNEMENT_ALL = "all";
+	
+	public var alignementBuilding:String;
+	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		RegionManager.addToRegionBuilding(this);
-		
+		alignementBuilding = ALIGNEMENT_ALL; //todo enelever cette ligne quand c'est reglé : 
+											//quand on creer des batiment il faut creer les bonnes classes 
+											//(pas des Vbuilding mais des VHellBuilding par exemmple)
 		addGenerator();
 		addHudContextual();
 	}

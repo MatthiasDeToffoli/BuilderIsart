@@ -13,7 +13,7 @@ class VInternHouseHell extends VInternHouse
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		
+		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
 	}
 	
 }

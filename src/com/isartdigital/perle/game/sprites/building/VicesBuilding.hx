@@ -4,14 +4,15 @@ import com.isartdigital.perle.game.sprites.Building;
 
 /**
  * ...
- * @author de Toffoli Matthias
+ * @author Rafired
  */
-class MarketingHouse extends Building
+class VicesBuilding extends Building
 {
 
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
+		
 	}
 	
 }

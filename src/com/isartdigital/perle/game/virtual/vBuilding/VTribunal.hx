@@ -37,6 +37,8 @@ class VTribunal extends VBuilding
 	private function new(?pDesc:TileDescription) 
 	{
 		var lDesc:TileDescription;
+		
+		alignementBuilding = VBuilding.ALIGNEMENT_STYX;
 
 		if (pDesc == null){
 			lDesc = {

@@ -12,7 +12,7 @@ class VFactory extends Building
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
+		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
 	}
 	
 }

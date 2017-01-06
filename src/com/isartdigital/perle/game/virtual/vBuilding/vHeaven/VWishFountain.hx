@@ -13,6 +13,7 @@ class VWishFountain extends VGoldGeneratorBuilding
 	{
 		super(pAssetName);
 		
+		alignementBuilding = VBuilding.ALIGNEMENT_HEAVEN;
 	}
 	
 }

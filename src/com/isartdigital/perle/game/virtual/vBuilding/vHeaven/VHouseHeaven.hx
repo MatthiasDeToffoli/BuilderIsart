@@ -13,7 +13,7 @@ class VHouseHeaven extends VHouse
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		
+		alignementBuilding = VBuilding.ALIGNEMENT_HEAVEN;
 	}
 	
 }

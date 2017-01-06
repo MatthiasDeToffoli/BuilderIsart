@@ -7,12 +7,13 @@ import com.isartdigital.perle.game.virtual.VBuilding;
  * ...
  * @author Rafired
  */
-class VVicesVirtuesBuilding extends VBuilding
+class VVirtuesBuilding extends VBuilding
 {
 
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		alignementBuilding = VBuilding.ALIGNEMENT_STYX;
 		
 	}
 	

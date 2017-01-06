@@ -12,7 +12,6 @@ class HouseHeaven extends House
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
 	}
 	
 }

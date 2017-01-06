@@ -14,6 +14,7 @@ class VCollectorHell extends VCollector
 	{
 		super(pDescription);
 		
+		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
 	}
 	
 }

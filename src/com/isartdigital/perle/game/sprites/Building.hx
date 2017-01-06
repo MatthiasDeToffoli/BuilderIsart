@@ -62,7 +62,6 @@ class Building extends Tile implements IZSortable
 	public static var list:Array<Building>;
 	
 	private static var container:Container;	
-	
 	public var colMin:Int;
 	public var colMax:Int;
 	public var rowMin:Int;

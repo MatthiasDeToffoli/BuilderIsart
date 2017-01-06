@@ -12,7 +12,6 @@ class SoulWell extends GoldGeneratorBuilding
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
 	}
 	
 }

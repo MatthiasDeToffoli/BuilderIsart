@@ -12,7 +12,6 @@ class UrbanHouse extends Building
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
 	}
 	
 }
