@@ -18,8 +18,8 @@ class QuestsManager
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
 	//The time's gap between two events will be vary between these constants
-	private static var MIN_TIMELINE(default, null):Int = 2000;
-	private static var MAX_TIMELINE(default, null):Int = 5000;
+	private static var MIN_TIMELINE(default, null):Int = 20000;
+	private static var MAX_TIMELINE(default, null):Int = 30000;
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;

@@ -20,15 +20,16 @@ class Intern
 	
 	public static function init(){
 		internsList = new Array<InternDescription>();
-		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
 		var lId:Int = IdManager.newId();
+		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
 		
 		var lTestInternDatas:InternDescription = {
 			id : lId,
 			name : "Angel A. Merkhell",
-			isInQuest: false,
+			//isInQuest: false,
 			aligment :  "angel",
-			quest : QuestsManager.createQuest(lRandomEvent, lId),
+			//quest : QuestsManager.createQuest(lRandomEvent, lId),
+			quest : null,
 			price : 2000,
 			stress: 0,
 			stressLimit: 10,
@@ -41,9 +42,10 @@ class Intern
 		var lTestInternDatas2:InternDescription = {
 			id : IdManager.newId(),
 			name : "Archanglina Jolie",
-			isInQuest: false,
+			//isInQuest: false,
 			aligment :  "demon",
-			quest : {refIntern:5, progress:0, steps: [3, 5, 1], stepIndex: 0, end: 10},
+			//quest : {refIntern:5, progress:0, steps: [3, 5, 1], stepIndex: 0, end: 10},
+			quest : null,
 			price : 2000,
 			stress: 0,
 			stressLimit: 10,

@@ -88,20 +88,16 @@ class TimeManager {
 		}
 		
 		//Not working don't touch!
-		
 		for (i in 0...lLengthQuest){
 			var lQuestDatas:TimeQuestDescription = {
-			//desc: {
 				refIntern: lQuestArraySaved[i].refIntern,
 				progress: lQuestArraySaved[i].progress,
 				steps: lQuestArraySaved[i].steps,
 				stepIndex: lQuestArraySaved[i].stepIndex,
 				end: lQuestArraySaved[i].end
-			//},
 			};
 			
 			listQuest.push(lQuestDatas);
-			trace("Save Id" + lQuestDatas.refIntern);
 		}
 		
 		lastKnowTime = pSave.lastKnowTime;

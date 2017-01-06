@@ -78,7 +78,8 @@ class ListInternPopin extends SmartPopin
 	 */
 	private function spawnInternDescription(spawnerName:String, pDesc:InternDescription):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
-		var blocDescription:InternElement = pDesc.isInQuest ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
+		//var blocDescription:InternElement = pDesc.isInQuest ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
+		var blocDescription:InternElement = (pDesc.quest != null) ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
 		addChild(blocDescription);
 		internDescriptionArray.push(blocDescription);
 		destroySpawner(spawner);
@@ -101,7 +102,8 @@ class ListInternPopin extends SmartPopin
 		trace("right");
 	}
 	
-	private function onClose():Void {
+	//@Matthias: je te la mets en public pour le feedback de l'envoi de quête, c'est temporaire
+	public function onClose():Void {
 		if (Choice.isVisible())
 			return;
 		

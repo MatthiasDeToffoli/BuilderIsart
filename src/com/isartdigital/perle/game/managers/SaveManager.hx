@@ -68,7 +68,7 @@ typedef GeneratorDescription = {
 typedef InternDescription = {
 	var id:Int; 		// for link with quest i think
 	var name:String;
-	var isInQuest:Bool;
+	//var isInQuest:Bool;
 	//var avatar: Sprite; //Todo: type à revoir
 	var aligment:String; //Todo:type à changer?
 	var quest:TimeQuestDescription;	//Linked quest Todo: à enlever peut-être
