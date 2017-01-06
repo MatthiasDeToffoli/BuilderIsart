@@ -284,7 +284,7 @@ class ResourcesManager
 		
 		SaveManager.save();
 		
-		TimeManager.createTimeResource(1, myGenerator);
+		TimeManager.createTimeResource(10000, myGenerator);
 		
 		return myGenerator;
 		
