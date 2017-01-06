@@ -10,13 +10,12 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
-import com.isartdigital.perle.ui.popin.choice.Choice;
-
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building;
@@ -47,6 +46,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		ServerManager.playerConnexion();
 		ResourcesManager.awake(); // akways befire all ui init
 		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager

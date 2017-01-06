@@ -61,7 +61,8 @@ class Facebook
 		untyped FB.init({
 		  appId      : appId,
 		  xfbml      : true,
-		  version    : "v2.8"
+		  version    : "v2.8",
+		  cookie	 : true
 		});
 		
 		untyped FB.getLoginStatus(getLoginStatus);
