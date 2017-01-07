@@ -7,6 +7,8 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
+import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
 
 enum ShopTab { Building; Interns; Deco; Resources; Currencies; }
 enum ShopBar { Soft; Hard; Marble; Wood; }
@@ -24,6 +26,9 @@ class ShopPopin extends SmartPopin{
 	private var btnInterns:SmartButton;
 	private var tabs:Map<ShopTab, SmartComponent>;
 	private var bars:Map<ShopBar, SmartComponent>;
+	private var carousselSpawner:UISprite;
+	
+	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
 	
 	public static function getInstance (): ShopPopin {
@@ -37,42 +42,45 @@ class ShopPopin extends SmartPopin{
 		
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
+		SmartCheck.traceChildrens(this);
+		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
 		
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
+		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
+		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
+		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
+		
+		tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
+		tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
+		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
+		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
+		tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
+		//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
+		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
+		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
+		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
 			
-		/*try {*/ // todo : pouah ya du boulot...
-			// huuum faire des classes et recréer des élements ? ou ?
-			caroussel = cast(SmartCheck.getChildByName(this, AssetName.SHOP_CAROUSSEL), ShopCaroussel);
-			//cast(test, ShopCaroussel);
-			btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
-			btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
-			btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
-			tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
-			tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
-			tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
-			tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
-			tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
-			//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
-			//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
-			//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
-			//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
-		/*} catch (pError:Dynamic) {
-			if (pError != null)
-				trace(pError);
-			trace('assetName changed in WireFrame in ' + 'ShopPopin');
-		}*/
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
 		btnInterns.on(MouseEventType.CLICK, onClickInterns);
 		
-		caroussel.init();
+		caroussel = new ShopCaroussel();
+		caroussel.init(carousselPos);
+		addChild(caroussel);
+		caroussel.start();
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
 		
 		//var test = cast(getChildByName('Shop_Item_List'), ShopItemList);
 		//ShopItemList.getInstance(); // todo : là je fais quoi, je recrée ou je prends celui deja présent ?
 		// screen achat etdescription
+	}
+	
+	private function initCarousselPos (pAssetName:String):Void {
+		carousselSpawner = cast(SmartCheck.getChildByName(this, pAssetName), UISprite);
+		carousselPos = new Point();
+		carousselPos.copy(carousselSpawner.position);
+		removeChild(carousselSpawner);
+		carousselSpawner.destroy();
 	}
 	
 	private function onClickExit ():Void {

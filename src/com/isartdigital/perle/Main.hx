@@ -190,8 +190,18 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_InternOutQuest/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatBatiment/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuildingDecoTab/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuyableIntern/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuyablePack/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_CurrenciesTab/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabAvailable/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabSearching/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemLocked/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
+		
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Intern_Event/library.json");
@@ -327,7 +337,7 @@ class Main extends EventEmitter
 	 */
 	private function doUIBuilderHack ():Void {
 		var mapMovieClipToClass:Map<String, Class<Dynamic>> = [
-			AssetName.SHOP_CAROUSSEL => ShopCaroussel
+			AssetName.SHOP_CAROUSSEL_BUILDING => ShopCaroussel // todo: plus besoin ?
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

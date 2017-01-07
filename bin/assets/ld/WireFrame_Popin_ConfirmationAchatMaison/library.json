@@ -1,0 +1,883 @@
+{
+ "md5": "7cdab3400c18c3b6dd22f061f0ce502a",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_mediumPopinBG",
+       "origin": [
+        490,
+        285
+       ],
+       "rect": [
+        1,
+        1,
+        980,
+        570
+       ]
+      },
+      {
+       "symbol": "_buildingPortrait_Large",
+       "origin": [
+        160.25,
+        120.25
+       ],
+       "rect": [
+        1,
+        573,
+        321,
+        241
+       ]
+      },
+      {
+       "symbol": "_house_GoldProduction_bg",
+       "origin": [
+        178.5,
+        34.6
+       ],
+       "rect": [
+        1,
+        816,
+        357,
+        70
+       ]
+      },
+      {
+       "symbol": "_houseWindow_Infos_BG",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        888,
+        357,
+        70
+       ]
+      },
+      {
+       "symbol": "_house_buttonUpInfo_up",
+       "origin": [
+        0.25,
+        0.25
+       ],
+       "rect": [
+        324,
+        573,
+        161,
+        121
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "origin": [
+        69,
+        68.9
+       ],
+       "rect": [
+        360,
+        696,
+        138,
+        138
+       ]
+      },
+      {
+       "symbol": "_house_buttonUpInfo_over",
+       "origin": [
+        1.25,
+        1.25
+       ],
+       "rect": [
+        487,
+        573,
+        163,
+        105
+       ]
+      },
+      {
+       "symbol": "_house_buttonUpInfo_down",
+       "origin": [
+        1.25,
+        1.25
+       ],
+       "rect": [
+        360,
+        836,
+        163,
+        105
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        39.5,
+        39.5
+       ],
+       "rect": [
+        360,
+        943,
+        79,
+        79
+       ]
+      },
+      {
+       "symbol": "_closeButton_down",
+       "origin": [
+        39.5,
+        39.5
+       ],
+       "rect": [
+        441,
+        943,
+        79,
+        79
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Large",
+       "origin": [
+        32,
+        32
+       ],
+       "rect": [
+        522,
+        943,
+        64,
+        64
+       ]
+      },
+      {
+       "symbol": "_soulIcon_Large",
+       "origin": [
+        32,
+        32
+       ],
+       "rect": [
+        500,
+        680,
+        64,
+        64
+       ]
+      },
+      {
+       "data": {
+        "y": -38.3,
+        "text": "XXXX",
+        "x": -102.95,
+        "width": 205.9,
+        "font": "63px customTypo*",
+        "align": "center",
+        "height": 76.6,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_house_buttonBuy_Cost_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        487,
+        680,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -83.35,
+        "text": "Name_XXX",
+        "x": -344.25,
+        "width": 688.5,
+        "font": "126px customTypo*",
+        "align": "center",
+        "height": 166.7,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_houseBuilding_Name_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        490,
+        680,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -57.85,
+        "text": "Buy",
+        "x": -242.25,
+        "width": 484.5,
+        "font": "100px customTypo*",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_house_buttonBuy_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        493,
+        680,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.2,
+        "text": "XXXX_MAX",
+        "x": -244.7,
+        "width": 489.45,
+        "font": "72px customTypo*",
+        "align": "center",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_houseWindow_Infos_txtGoldLimit",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        496,
+        680,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.2,
+        "text": "XXXX",
+        "x": -130.65,
+        "width": 261.35,
+        "font": "72px customTypo*",
+        "align": "center",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_houseWindow_Infos_txtGoldProduction",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        487,
+        683,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.2,
+        "text": "XXXX_MAX",
+        "x": -244.9,
+        "width": 489.8,
+        "font": "72px customTypo*",
+        "align": "center",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_houseWindow_Infos_txtPopulation",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        487,
+        686,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -55.6,
+        "text": "MaxLevel_XXX",
+        "x": -293.85,
+        "width": 587.7,
+        "font": "83px customTypo*",
+        "align": "center",
+        "height": 111.25,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "symbol": "_houseBuilding_Level_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        487,
+        689,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.2,
+        "text": "/ DAY",
+        "x": -101.85,
+        "width": 203.75,
+        "font": "72px customTypo*",
+        "align": "center",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_house_perDay",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        487,
+        692,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_mediumPopinBG",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        490,
+        285
+       ]
+      }
+     ],
+     "name": "Background"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_houseBuilding_Level_txt",
+       "loc": [
+        -245.1,
+        192.375
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Building_Level_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_houseBuilding_Name_txt",
+       "loc": [
+        -242.325,
+        112.6
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Building_Name"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -245,
+        -100
+       ],
+       "index": 0,
+       "pivot": [
+        160.25,
+        120.25
+       ],
+       "ref": "_buildingPortrait_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Building_Image"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "houseWindow_Infos_LimitGold",
+       "loc": [
+        82.375,
+        -194.25
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_LimitGold"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "houseWindow_Infos_Population",
+       "loc": [
+        82.375,
+        -115.2
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_Population"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "houseWindow_Infos_GoldProduction",
+       "loc": [
+        84.425,
+        -37.375
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_ProductionGold"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "houseWindow_Infos_BuyPrice",
+       "loc": [
+        260.975,
+        244.875
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_BuyPrice"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonBuy",
+       "loc": [
+        260,
+        129.05
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "BuyButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonClose",
+       "loc": [
+        460,
+        -270
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonClose"
+    }
+   ],
+   "id": "Popin_ConfirmationBuyHouse"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_house_buttonBuy_Cost_TXT",
+       "loc": [
+        30.65,
+        1.75
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonUpgrade_Cost_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -50.5,
+        0
+       ],
+       "index": 0,
+       "pivot": [
+        32,
+        32
+       ],
+       "ref": "_goldIcon_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "GoldIcon"
+    }
+   ],
+   "id": "houseWindow_Infos_BuyPrice"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        178.475,
+        34.625
+       ],
+       "index": 0,
+       "pivot": [
+        178.475,
+        34.625
+       ],
+       "ref": "_house_GoldProduction_bg",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_houseWindow_Infos_txtGoldProduction",
+       "loc": [
+        77.65,
+        34.625
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_txtProductionGold"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_house_perDay",
+       "loc": [
+        278,
+        34.625
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "perTime"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        175,
+        34.4
+       ],
+       "index": 0,
+       "pivot": [
+        32,
+        32
+       ],
+       "ref": "_goldIcon_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "GoldIcon"
+    }
+   ],
+   "id": "houseWindow_Infos_GoldProduction"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.025,
+        0
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_houseWindow_Infos_BG",
+       "scale": [
+        0.9997,
+        1
+       ],
+       "duration": 1,
+       "pivot": [
+        -0.025,
+        0
+       ]
+      }
+     ],
+     "name": "Window_Infos_BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_houseWindow_Infos_txtGoldLimit",
+       "loc": [
+        205.125,
+        36
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_txtGoldLimit"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        36.8,
+        34.85
+       ],
+       "index": 0,
+       "pivot": [
+        32,
+        32
+       ],
+       "ref": "_goldIcon_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "_soft_icon"
+    }
+   ],
+   "id": "houseWindow_Infos_LimitGold"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_houseWindow_Infos_BG",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_houseWindow_Infos_txtPopulation",
+       "loc": [
+        204.75,
+        35.45
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Window_Infos_txtPopulation"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        35,
+        37.25
+       ],
+       "index": 0,
+       "pivot": [
+        32,
+        32
+       ],
+       "ref": "_soulIcon_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Soul_Icon"
+    }
+   ],
+   "id": "houseWindow_Infos_Population"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -121.15,
+        -78.175
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_house_buttonUpInfo_up",
+       "scale": [
+        1.5144,
+        1.3029
+       ],
+       "duration": 1,
+       "pivot": [
+        0.25,
+        0.25
+       ]
+      },
+      {
+       "index": 1,
+       "pivot": [
+        1.25,
+        1.25
+       ],
+       "ref": "_house_buttonUpInfo_over",
+       "scale": [
+        1.5144,
+        1.5144
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "index": 2,
+       "pivot": [
+        1.25,
+        1.25
+       ],
+       "ref": "_house_buttonUpInfo_down",
+       "scale": [
+        1.5144,
+        1.5144
+       ],
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_house_buttonBuy_TXT",
+       "loc": [
+        -0.025,
+        0
+       ],
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Txt"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonBuy"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.025,
+        -0.025
+       ],
+       "index": 0,
+       "pivot": [
+        69,
+        68.925
+       ],
+       "ref": "_closeButton_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.025,
+        0
+       ],
+       "index": 1,
+       "pivot": [
+        39.5,
+        39.475
+       ],
+       "ref": "_closeButton_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.025,
+        -0.025
+       ],
+       "index": 2,
+       "pivot": [
+        39.475,
+        39.475
+       ],
+       "ref": "_closeButton_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonClose"
+  }
+ ],
+ "frameRate": 24
+}

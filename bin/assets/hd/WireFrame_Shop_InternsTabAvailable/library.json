@@ -1,0 +1,284 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_shop_item_list_bg",
+       "rect": [
+        1,
+        1,
+        1823,
+        640
+       ],
+       "origin": [
+        911.5,
+        320
+       ]
+      },
+      {
+       "symbol": "_shop_intern_spawner",
+       "rect": [
+        1,
+        643,
+        539,
+        466
+       ],
+       "origin": [
+        269.15,
+        232.85
+       ]
+      },
+      {
+       "symbol": "_buttonReroll_hit",
+       "rect": [
+        1,
+        1111,
+        291,
+        101
+       ],
+       "origin": [
+        145,
+        50.1
+       ]
+      },
+      {
+       "symbol": "_buttonReroll_over",
+       "rect": [
+        294,
+        1111,
+        291,
+        101
+       ],
+       "origin": [
+        145,
+        50.1
+       ]
+      },
+      {
+       "symbol": "_buttonReroll_down",
+       "rect": [
+        542,
+        643,
+        291,
+        101
+       ],
+       "origin": [
+        145,
+        50.1
+       ]
+      },
+      {
+       "symbol": "_buttonReroll_up",
+       "rect": [
+        542,
+        746,
+        286,
+        96
+       ],
+       "origin": [
+        142.5,
+        47.6
+       ]
+      },
+      {
+       "data": {
+        "y": -38.85,
+        "wordWrap": 0,
+        "text": "Reroll",
+        "width": 208.25,
+        "color": "#000000",
+        "align": "center",
+        "height": 77.75,
+        "font": "66px Arial",
+        "x": -104.15
+       },
+       "symbol": "_buttonReroll_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        542,
+        844,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Shop_InternsTab_List",
+   "layers": [
+    {
+     "name": "Shop_InternsTab_list_BG",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        911.5,
+        320
+       ],
+       "ref": "_shop_item_list_bg"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Intern_1",
+     "keyframes": [
+      {
+       "loc": [
+        -616.2,
+        -51.3
+       ],
+       "duration": 1,
+       "pivot": [
+        269.1,
+        232.8
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Intern_2",
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -51.3
+       ],
+       "duration": 1,
+       "pivot": [
+        269.1,
+        232.8
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Intern_3",
+     "keyframes": [
+      {
+       "loc": [
+        616.2,
+        -51.3
+       ],
+       "duration": 1,
+       "pivot": [
+        269.1,
+        232.8
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Reroll_button",
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        257.1
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "~ButtonReroll"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonReroll",
+   "layers": [
+    {
+     "name": "Button",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        142.5,
+        47.6
+       ],
+       "ref": "_buttonReroll_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        145,
+        50.1
+       ],
+       "ref": "_buttonReroll_over"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 2,
+       "pivot": [
+        145,
+        50.1
+       ],
+       "ref": "_buttonReroll_down"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        145,
+        50.1
+       ],
+       "ref": "_buttonReroll_hit"
+      }
+     ]
+    },
+    {
+     "name": "Txt",
+     "keyframes": [
+      {
+       "loc": [
+        -0.05,
+        0
+       ],
+       "duration": 4,
+       "pivot": [
+        -0.05,
+        0
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_buttonReroll_txt"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "f6b317d6e10bace25b5ae0734d374090"
+}

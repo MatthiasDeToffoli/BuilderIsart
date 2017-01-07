@@ -1,0 +1,297 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_buttonBuyIntern_over",
+       "rect": [
+        1,
+        1,
+        409,
+        354
+       ],
+       "origin": [
+        204.1,
+        176.9
+       ]
+      },
+      {
+       "symbol": "_buttonBuyIntern_down",
+       "rect": [
+        412,
+        1,
+        409,
+        354
+       ],
+       "origin": [
+        204.1,
+        176.9
+       ]
+      },
+      {
+       "symbol": "_buttonBuyIntern_up",
+       "rect": [
+        1,
+        357,
+        405,
+        350
+       ],
+       "origin": [
+        202.25,
+        175
+       ]
+      },
+      {
+       "symbol": "_shop_intern_image",
+       "rect": [
+        823,
+        1,
+        167,
+        167
+       ],
+       "origin": [
+        85.85,
+        86.35
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Medium",
+       "rect": [
+        823,
+        170,
+        72,
+        72
+       ],
+       "origin": [
+        36,
+        36
+       ]
+      },
+      {
+       "symbol": "_alignIcon_Small",
+       "rect": [
+        897,
+        170,
+        48,
+        48
+       ],
+       "origin": [
+        24,
+        24
+       ]
+      },
+      {
+       "data": {
+        "y": -27.15,
+        "wordWrap": 0,
+        "text": "Efficiency",
+        "width": 197.15,
+        "color": "#000000",
+        "align": "center",
+        "height": 54.3,
+        "font": "45px Arial",
+        "x": -98.55
+       },
+       "symbol": "_shop_intern_efficiency_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        992,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -32.7,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 160.5,
+        "color": "#000000",
+        "align": "center",
+        "height": 65.45,
+        "font": "55px Arial",
+        "x": -86.4
+       },
+       "symbol": "_shop_intern_cost",
+       "baseClass": "TextSprite",
+       "rect": [
+        995,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -29.35,
+        "wordWrap": 0,
+        "text": "Intern_Name",
+        "width": 289.85,
+        "color": "#000000",
+        "align": "center",
+        "height": 58.75,
+        "font": "49px Arial",
+        "x": -144.95
+       },
+       "symbol": "_shop_intern_name_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        998,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -27.15,
+        "wordWrap": 0,
+        "text": "Speed",
+        "width": 135.85,
+        "color": "#000000",
+        "align": "center",
+        "height": 54.3,
+        "font": "45px Arial",
+        "x": -67.9
+       },
+       "symbol": "_shop_intern_speed_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1001,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -27.15,
+        "wordWrap": 0,
+        "text": "Stress",
+        "width": 133.45,
+        "color": "#000000",
+        "align": "center",
+        "height": 54.3,
+        "font": "45px Arial",
+        "x": -66.7
+       },
+       "symbol": "_shop_intern_stress_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1004,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Shop_Interns_EfficiencyStat",
+   "layers": [
+    {
+     "name": "txt",
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_efficiency_txt"
+      }
+     ]
+    },
+    {
+     "name": "jauge",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Shop_Interns_SpeedStat",
+   "layers": [
+    {
+     "name": "txt",
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_speed_txt"
+      }
+     ]
+    },
+    {
+     "name": "jauge",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Shop_Interns_StressStat",
+   "layers": [
+    {
+     "name": "txt",
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_intern_stress_txt"
+      }
+     ]
+    },
+    {
+     "name": "jauge",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "baaa3538f8ca5894a0c5b61a5097a36c"
+}

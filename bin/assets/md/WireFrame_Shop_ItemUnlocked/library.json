@@ -1,0 +1,243 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_button_buy_buildingdeco_down",
+       "rect": [
+        1,
+        1,
+        297,
+        342
+       ],
+       "origin": [
+        148.5,
+        171
+       ]
+      },
+      {
+       "symbol": "_button_buy_buildingdeco_over",
+       "rect": [
+        1,
+        345,
+        297,
+        342
+       ],
+       "origin": [
+        148.5,
+        171
+       ]
+      },
+      {
+       "symbol": "_button_buy_buildingdeco_up",
+       "rect": [
+        300,
+        1,
+        294,
+        339
+       ],
+       "origin": [
+        146.6,
+        169.1
+       ]
+      },
+      {
+       "symbol": "_buildingdeco_picture",
+       "rect": [
+        1,
+        689,
+        189,
+        189
+       ],
+       "origin": [
+        94.05,
+        94.05
+       ]
+      },
+      {
+       "symbol": "_currencyIcon_Medium",
+       "rect": [
+        1,
+        880,
+        72,
+        72
+       ],
+       "origin": [
+        36,
+        36
+       ]
+      },
+      {
+       "data": {
+        "y": -34.95,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 166.1,
+        "color": "#000000",
+        "align": "center",
+        "height": 69.9,
+        "font": "56px _sans",
+        "x": -83.05
+       },
+       "symbol": "_buildingdeco_price_txt",
+       "rect": [
+        1,
+        954,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "ITEM_NAME",
+        "width": 365.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 43.1,
+        "font": "35px _sans",
+        "x": -182.8
+       },
+       "symbol": "_buildingdeco_name_txt",
+       "rect": [
+        1,
+        957,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "ButtonBuyBuildingDeco",
+   "layers": [
+    {
+     "name": "Bouton",
+     "keyframes": [
+      {
+       "pivot": [
+        146.625,
+        169.125
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_button_buy_buildingdeco_up"
+      },
+      {
+       "pivot": [
+        148.5,
+        171
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "ref": "_button_buy_buildingdeco_over"
+      },
+      {
+       "pivot": [
+        148.5,
+        171
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "ref": "_button_buy_buildingdeco_down"
+      }
+     ]
+    },
+    {
+     "name": "Item_Picture",
+     "keyframes": [
+      {
+       "pivot": [
+        94.05,
+        94.05
+       ],
+       "duration": 4,
+       "loc": [
+        -0.075,
+        -48
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buildingdeco_picture"
+      }
+     ]
+    },
+    {
+     "name": "Item_Name",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        0.4125,
+        73.125
+       ],
+       "ref": "_buildingdeco_name_txt"
+      }
+     ]
+    },
+    {
+     "name": "Item_Price",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -35.8875,
+        126.075
+       ],
+       "ref": "_buildingdeco_price_txt"
+      }
+     ]
+    },
+    {
+     "name": "Currency_icon",
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "duration": 4,
+       "loc": [
+        62.4,
+        127.5375
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_currencyIcon_Medium"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "b3b49f736718e06ec18364a53a345ee2"
+}

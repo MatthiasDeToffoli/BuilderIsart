@@ -1,0 +1,124 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_buildingdeco_locked_bg",
+       "rect": [
+        1,
+        1,
+        391,
+        451
+       ],
+       "origin": [
+        195.5,
+        225.5
+       ]
+      },
+      {
+       "symbol": "_buildingdeco_picture",
+       "rect": [
+        1,
+        454,
+        251,
+        251
+       ],
+       "origin": [
+        125.4,
+        125.4
+       ]
+      },
+      {
+       "data": {
+        "y": -25.45,
+        "wordWrap": 0,
+        "text": "LOCKED_REASON",
+        "width": 387.9,
+        "color": "#000000",
+        "align": "center",
+        "height": 50.9,
+        "font": "42px _sans",
+        "x": -193.95
+       },
+       "symbol": "_buildingdeco_locked_reason_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        394,
+        1,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Shop_BuildingDeco_LockedItem",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        195.5,
+        225.5
+       ],
+       "ref": "_buildingdeco_locked_bg"
+      }
+     ]
+    },
+    {
+     "name": "Item_Picture",
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -64
+       ],
+       "duration": 1,
+       "pivot": [
+        125.4,
+        125.4
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_buildingdeco_picture"
+      }
+     ]
+    },
+    {
+     "name": "Reason_locked",
+     "keyframes": [
+      {
+       "loc": [
+        -1.05,
+        143.3
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "_buildingdeco_locked_reason_txt"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "037eb36568b3658baac49a1bf6f1c751"
+}

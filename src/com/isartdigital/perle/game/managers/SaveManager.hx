@@ -121,7 +121,7 @@ typedef Save = {
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
-	private static inline var SAVE_VERSION:String = "1.0.1";
+	private static inline var SAVE_VERSION:String = "1.0.2";
 	public static var currentSave(default, null):Save;
 	
 	/**

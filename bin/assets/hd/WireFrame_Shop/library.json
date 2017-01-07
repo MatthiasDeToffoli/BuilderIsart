@@ -19,55 +19,16 @@
        ]
       },
       {
-       "symbol": "_shop_item_list_bg",
+       "symbol": "_shop_item_list_spawner",
        "rect": [
         1,
         1303,
-        1823,
+        1953,
         640
        ],
        "origin": [
-        911.5,
+        976.3,
         320
-       ]
-      },
-      {
-       "symbol": "_buttonarrowright_down",
-       "rect": [
-        1826,
-        1303,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowright_up",
-       "rect": [
-        1826,
-        1568,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_item_lock",
-       "rect": [
-        1826,
-        1833,
-        132,
-        205
-       ],
-       "origin": [
-        65.6,
-        102.05
        ]
       },
       {
@@ -84,155 +45,55 @@
        ]
       },
       {
-       "symbol": "_icon_softcurrency",
+       "symbol": "_stoneIcon_Medium",
        "rect": [
         259,
         1945,
-        92,
-        92
+        96,
+        96
        ],
        "origin": [
-        45.55,
-        45.55
+        48,
+        48
        ]
       },
       {
-       "symbol": "_icon_wood",
+       "symbol": "_hardCurrencyIcon_Medium",
        "rect": [
-        353,
+        357,
         1945,
-        92,
-        92
+        96,
+        96
        ],
        "origin": [
-        45.55,
-        45.55
+        48,
+        48
        ]
       },
       {
-       "symbol": "_icon_marble",
+       "symbol": "_woodIcon_Medium",
        "rect": [
-        447,
+        455,
         1945,
-        92,
-        92
+        96,
+        96
        ],
        "origin": [
-        45.55,
-        45.55
+        48,
+        48
        ]
       },
       {
-       "symbol": "_icon_hardcurrency",
+       "symbol": "_goldIcon_Medium",
        "rect": [
-        541,
+        553,
         1945,
-        91,
-        91
+        96,
+        96
        ],
        "origin": [
-        45.45,
-        45.5
-       ]
-      },
-      {
-       "data": {
-        "y": -40.8,
-        "wordWrap": 0,
-        "text": "Interns",
-        "width": 256,
-        "color": "#000000",
-        "align": "center",
-        "height": 81.55,
-        "font": "70px Times New Roman",
-        "x": -128
-       },
-       "symbol": "_button_InternShop_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2019,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -34.95,
-        "wordWrap": 0,
-        "text": "ITEM_PRICE",
-        "width": 366.65,
-        "color": "#000000",
-        "align": "center",
-        "height": 69.9,
-        "font": "56px _sans",
-        "x": -183.35
-       },
-       "symbol": "_item_price_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2022,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -28.8,
-        "wordWrap": 0,
-        "text": "Decoration",
-        "width": 240.95,
-        "color": "#000000",
-        "align": "center",
-        "height": 57.6,
-        "font": "48px _sans",
-        "x": -120.5
-       },
-       "symbol": "_onget_decorations_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2025,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -36.65,
-        "wordWrap": 0,
-        "text": "Building",
-        "width": 224.8,
-        "color": "#000000",
-        "align": "center",
-        "height": 73.3,
-        "font": "62px _sans",
-        "x": -112.4
-       },
-       "symbol": "_onglet_building_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2028,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
+        48,
+        48
        ]
       },
       {
@@ -251,32 +112,7 @@
        "baseClass": "TextSprite",
        "rect": [
         1,
-        2031,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -21.55,
-        "wordWrap": 0,
-        "text": "ITEM_NAME",
-        "width": 365.65,
-        "color": "#000000",
-        "align": "center",
-        "height": 43.1,
-        "font": "35px _sans",
-        "x": -182.8
-       },
-       "symbol": "_item_name_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2034,
+        2019,
         1,
         1
        ],
@@ -301,7 +137,7 @@
        "baseClass": "TextSprite",
        "rect": [
         1,
-        2037,
+        2022,
         1,
         1
        ],
@@ -325,8 +161,33 @@
        "symbol": "_onglet_resources_txt",
        "baseClass": "TextSprite",
        "rect": [
-        4,
-        2019,
+        1,
+        2025,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -56.35,
+        "wordWrap": 0,
+        "text": "Purgatory",
+        "width": 278,
+        "color": "#000000",
+        "align": "center",
+        "height": 112.7,
+        "font": "72px Arial Narrow",
+        "x": -139
+       },
+       "symbol": "_purgatoryButton_text",
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        2028,
         1,
         1
        ],
@@ -350,8 +211,8 @@
        "symbol": "_infoBar_value",
        "baseClass": "TextSprite",
        "rect": [
-        4,
-        2022,
+        1,
+        2031,
         1,
         1
        ],
@@ -362,21 +223,71 @@
       },
       {
        "data": {
-        "y": -48.5,
+        "y": -56.35,
         "wordWrap": 0,
-        "text": "Purgatory",
-        "width": 248,
+        "text": "Interns",
+        "width": 286.75,
         "color": "#000000",
         "align": "center",
-        "height": 97,
-        "font": "60px Times New Roman",
-        "x": -124
+        "height": 112.7,
+        "font": "96px Arial Narrow",
+        "x": -143.4
        },
-       "symbol": "_button_Purgatory_txt",
+       "symbol": "_internsButton_text",
        "baseClass": "TextSprite",
        "rect": [
-        4,
-        2025,
+        1,
+        2034,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -36.65,
+        "wordWrap": 0,
+        "text": "Building",
+        "width": 224.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 73.3,
+        "font": "62px _sans",
+        "x": -112.4
+       },
+       "symbol": "_onglet_building_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        2037,
+        1,
+        1
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -28.8,
+        "wordWrap": 0,
+        "text": "Decoration",
+        "width": 240.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 57.6,
+        "font": "48px _sans",
+        "x": -120.5
+       },
+       "symbol": "_onget_decorations_txt",
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        2040,
         1,
         1
        ],
@@ -391,49 +302,114 @@
     {
      "textures": [
       {
-       "symbol": "_item_locked_bg",
+       "symbol": "_purgatoryButton_over",
        "rect": [
         1,
         1,
-        368,
-        368
+        276,
+        276
        ],
        "origin": [
-        183.9,
-        183.9
+        138,
+        138
        ]
       },
       {
-       "symbol": "_item_Unlocked_bg",
+       "symbol": "_internsButton_down",
        "rect": [
-        371,
+        279,
         1,
-        368,
-        368
+        276,
+        276
        ],
        "origin": [
-        183.9,
-        183.9
+        138,
+        138
        ]
       },
       {
-       "symbol": "_item_picture",
+       "symbol": "_purgatoryButton_down",
        "rect": [
-        741,
+        557,
         1,
-        251,
-        251
+        276,
+        276
        ],
        "origin": [
-        125.4,
-        125.4
+        138,
+        138
+       ]
+      },
+      {
+       "symbol": "_internsButton_over",
+       "rect": [
+        1,
+        279,
+        276,
+        276
+       ],
+       "origin": [
+        138,
+        138
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "rect": [
+        279,
+        279,
+        276,
+        275
+       ],
+       "origin": [
+        138,
+        137.85
+       ]
+      },
+      {
+       "symbol": "_internsButton_up",
+       "rect": [
+        557,
+        279,
+        261,
+        261
+       ],
+       "origin": [
+        130.5,
+        130.5
+       ]
+      },
+      {
+       "symbol": "_purgatoryButton_up",
+       "rect": [
+        557,
+        542,
+        261,
+        261
+       ],
+       "origin": [
+        130.5,
+        130.5
+       ]
+      },
+      {
+       "symbol": "_buttontab_hit",
+       "rect": [
+        279,
+        556,
+        246,
+        246
+       ],
+       "origin": [
+        122.95,
+        122.95
        ]
       },
       {
        "symbol": "_buttontab_down",
        "rect": [
-        741,
-        254,
+        1,
+        557,
         246,
         246
        ],
@@ -445,21 +421,8 @@
       {
        "symbol": "_buttontab_over",
        "rect": [
-        1,
-        371,
-        246,
-        246
-       ],
-       "origin": [
-        122.95,
-        122.95
-       ]
-      },
-      {
-       "symbol": "_buttontab_hit",
-       "rect": [
         249,
-        371,
+        804,
         246,
         246
        ],
@@ -471,8 +434,8 @@
       {
        "symbol": "_buttontab_up",
        "rect": [
-        497,
-        371,
+        1,
+        805,
         241,
         241
        ],
@@ -482,192 +445,10 @@
        ]
       },
       {
-       "symbol": "_buttonPlus_up",
-       "rect": [
-        497,
-        614,
-        418,
-        128
-       ],
-       "origin": [
-        333.7,
-        63.7
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_up",
-       "rect": [
-        1,
-        619,
-        398,
-        128
-       ],
-       "origin": [
-        63.7,
-        63.7
-       ]
-      },
-      {
-       "symbol": "_buttonPurgatory_over",
-       "rect": [
-        401,
-        744,
-        276,
-        176
-       ],
-       "origin": [
-        138,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonInternShop_down",
-       "rect": [
-        679,
-        744,
-        276,
-        176
-       ],
-       "origin": [
-        137.75,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonInternShop_over",
-       "rect": [
-        1,
-        749,
-        276,
-        176
-       ],
-       "origin": [
-        137.75,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonPurgatory_down",
-       "rect": [
-        279,
-        922,
-        276,
-        176
-       ],
-       "origin": [
-        138,
-        87.75
-       ]
-      },
-      {
-       "symbol": "_buttonPlus_hit",
-       "rect": [
-        557,
-        922,
-        390,
-        120
-       ],
-       "origin": [
-        330,
-        60
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_hit",
-       "rect": [
-        557,
-        1044,
-        390,
-        120
-       ],
-       "origin": [
-        60,
-        60.4
-       ]
-      },
-      {
-       "symbol": "_buttonInternShop_up",
-       "rect": [
-        1,
-        927,
-        272,
-        172
-       ],
-       "origin": [
-        135.75,
-        85.75
-       ]
-      },
-      {
-       "symbol": "_buttonPurgatory_up",
-       "rect": [
-        275,
-        1100,
-        271,
-        172
-       ],
-       "origin": [
-        135.5,
-        85.75
-       ]
-      },
-      {
-       "symbol": "_buttonarrowleft_over",
-       "rect": [
-        1,
-        1101,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowleft_up",
-       "rect": [
-        137,
-        1101,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowleft_down",
-       "rect": [
-        548,
-        1166,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
-       "symbol": "_buttonarrowright_over",
-       "rect": [
-        273,
-        1274,
-        134,
-        263
-       ],
-       "origin": [
-        66.9,
-        131.2
-       ]
-      },
-      {
        "symbol": "_onglet_Icon",
        "rect": [
         1,
-        1366,
+        1048,
         160,
         160
        ],
@@ -677,94 +458,29 @@
        ]
       },
       {
-       "symbol": "_buttonPlus_down",
+       "symbol": "_closeButton_down",
        "rect": [
-        1,
-        1528,
-        142,
-        115
-       ],
-       "origin": [
-        57.5,
-        57.5
-       ]
-      },
-      {
-       "symbol": "_buttonPlus_over",
-       "rect": [
-        684,
-        1166,
-        142,
-        115
-       ],
-       "origin": [
-        57.5,
-        57.5
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_over",
-       "rect": [
-        828,
-        1166,
-        142,
-        115
-       ],
-       "origin": [
-        57.5,
-        57.5
-       ]
-      },
-      {
-       "symbol": "_buttonPlusRevert_down",
-       "rect": [
-        684,
-        1283,
-        142,
-        115
-       ],
-       "origin": [
-        57.5,
-        57.5
-       ]
-      },
-      {
-       "symbol": "_buttonclose_down",
-       "rect": [
+        820,
         279,
-        749,
-        114,
-        114
+        158,
+        158
        ],
        "origin": [
-        56.8,
-        56.6
+        78.95,
+        78.95
        ]
       },
       {
-       "symbol": "_buttonclose_over",
+       "symbol": "_closeButton_over",
        "rect": [
-        145,
-        1528,
-        114,
-        114
+        835,
+        1,
+        158,
+        158
        ],
        "origin": [
-        57.3,
-        57.1
-       ]
-      },
-      {
-       "symbol": "_buttonclose_up",
-       "rect": [
-        740,
-        502,
-        109,
-        109
-       ],
-       "origin": [
-        54.3,
-        54.1
+        79,
+        78.95
        ]
       }
      ],
@@ -803,8 +519,8 @@
      "keyframes": [
       {
        "loc": [
-        173.5,
-        -576.55
+        168.05,
+        -575.2
        ],
        "duration": 1,
        "index": 0,
@@ -818,8 +534,8 @@
      "keyframes": [
       {
        "loc": [
-        634.5,
-        -575.4
+        552.15,
+        -575.65
        ],
        "duration": 1,
        "index": 0,
@@ -833,7 +549,7 @@
      "keyframes": [
       {
        "loc": [
-        -264.6,
+        -216.25,
         -576.55
        ],
        "duration": 1,
@@ -848,7 +564,7 @@
      "keyframes": [
       {
        "loc": [
-        -722.25,
+        -600.5,
         -575.4
        ],
        "duration": 1,
@@ -863,8 +579,8 @@
      "keyframes": [
       {
        "loc": [
-        -795.7,
-        -357.85
+        -671.4,
+        -374.35
        ],
        "duration": 1,
        "index": 0,
@@ -878,8 +594,8 @@
      "keyframes": [
       {
        "loc": [
-        -2.5,
-        -357.85
+        -0.15,
+        -374.35
        ],
        "duration": 1,
        "index": 0,
@@ -893,8 +609,8 @@
      "keyframes": [
       {
        "loc": [
-        -411.1,
-        -359.05
+        -334.3,
+        -375.55
        ],
        "duration": 1,
        "index": 0,
@@ -908,8 +624,8 @@
      "keyframes": [
       {
        "loc": [
-        395.8,
-        -357.85
+        334.7,
+        -374.35
        ],
        "duration": 1,
        "index": 0,
@@ -923,8 +639,8 @@
      "keyframes": [
       {
        "loc": [
-        786.8,
-        -359.05
+        671.2,
+        -375.55
        ],
        "duration": 1,
        "index": 0,
@@ -934,17 +650,21 @@
      ]
     },
     {
-     "name": "Shop_Item_List",
+     "name": "Item_List_Spawner",
      "keyframes": [
       {
        "loc": [
-        -4.15,
-        167
+        -2.15,
+        96.35
        ],
        "duration": 1,
+       "pivot": [
+        976.25,
+        320
+       ],
        "index": 0,
        "tweened": false,
-       "ref": "Shop_Item_List"
+       "ref": "_shop_item_list_spawner"
       }
      ]
     },
@@ -953,14 +673,10 @@
      "keyframes": [
       {
        "loc": [
-        1033.85,
-        -668.55
+        926.4,
+        -559.35
        ],
        "duration": 1,
-       "data": {
-        "UIPosition": "",
-        "UIPosition_Desktop": "top"
-       },
        "index": 0,
        "tweened": false,
        "ref": "~ButtonClose"
@@ -972,13 +688,13 @@
      "keyframes": [
       {
        "loc": [
-        771.95,
-        551.6
+        771.75,
+        551.9
        ],
        "duration": 1,
        "index": 0,
        "tweened": false,
-       "ref": "~Button_Purgatory"
+       "ref": "~ButtonPurgatory"
       }
      ]
     },
@@ -987,284 +703,13 @@
      "keyframes": [
       {
        "loc": [
-        -780.15,
-        551.6
+        -782.3,
+        551.9
        ],
        "duration": 1,
        "index": 0,
        "tweened": false,
-       "ref": "~Button_InternsShop"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Shop_Item_List",
-   "layers": [
-    {
-     "name": "Shop_Item_List_BG",
-     "keyframes": [
-      {
-       "loc": [
-        0,
-        -54.15
-       ],
-       "duration": 1,
-       "pivot": [
-        911.5,
-        320
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_item_list_bg"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Unlocked",
-     "keyframes": [
-      {
-       "loc": [
-        -647.05,
-        -58.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "Shop_Item_Unlocked"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Locked_1",
-     "keyframes": [
-      {
-       "loc": [
-        -216.45,
-        -58.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "Shop_Item_Locked"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Locked_2",
-     "keyframes": [
-      {
-       "loc": [
-        214.15,
-        -58.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "Shop_Item_Locked"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Locked_3",
-     "keyframes": [
-      {
-       "loc": [
-        644.75,
-        -58.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "Shop_Item_Locked"
-      }
-     ]
-    },
-    {
-     "name": "Button_ArrowRight",
-     "keyframes": [
-      {
-       "loc": [
-        914.4,
-        -54.75
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~Button_ArrowRight"
-      }
-     ]
-    },
-    {
-     "name": "Button_ArrowLeft",
-     "keyframes": [
-      {
-       "loc": [
-        -910.35,
-        -55.65
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~Button_LeftArrow"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Shop_Item_Locked",
-   "layers": [
-    {
-     "name": "BG",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        183.9,
-        183.9
-       ],
-       "ref": "_item_locked_bg"
-      }
-     ]
-    },
-    {
-     "name": "Item_Picture",
-     "keyframes": [
-      {
-       "loc": [
-        0.05,
-        -48.55
-       ],
-       "duration": 1,
-       "pivot": [
-        125.4,
-        125.4
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_picture"
-      }
-     ]
-    },
-    {
-     "name": "Item_Name",
-     "keyframes": [
-      {
-       "loc": [
-        -0.6,
-        97.9
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_name_txt"
-      }
-     ]
-    },
-    {
-     "name": "Item_Price",
-     "keyframes": [
-      {
-       "loc": [
-        -0.05,
-        148.45
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_price_txt"
-      }
-     ]
-    },
-    {
-     "name": "Item_Lock",
-     "keyframes": [
-      {
-       "loc": [
-        -4.35,
-        -46
-       ],
-       "duration": 1,
-       "pivot": [
-        65.6,
-        102.05
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_lock"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Shop_Item_Unlocked",
-   "layers": [
-    {
-     "name": "BG",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        183.9,
-        183.9
-       ],
-       "ref": "_item_Unlocked_bg"
-      }
-     ]
-    },
-    {
-     "name": "Item_Picture",
-     "keyframes": [
-      {
-       "loc": [
-        -0.1,
-        -47.9
-       ],
-       "duration": 1,
-       "pivot": [
-        125.4,
-        125.4
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_picture"
-      }
-     ]
-    },
-    {
-     "name": "Item_Name",
-     "keyframes": [
-      {
-       "loc": [
-        0.55,
-        97.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_name_txt"
-      }
-     ]
-    },
-    {
-     "name": "Item_Price",
-     "keyframes": [
-      {
-       "loc": [
-        -0.7,
-        152
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "_item_price_txt"
+       "ref": "~ButtonInterns"
       }
      ]
     }
@@ -1275,49 +720,49 @@
    "id": "~ButtonClose",
    "layers": [
     {
-     "name": "Close_Button",
+     "name": "Layer 1",
      "keyframes": [
       {
        "loc": [
-        -73.1,
-        73.1
+        -0.05,
+        -0.05
        ],
        "duration": 1,
        "pivot": [
-        54.3,
-        54.1
+        138,
+        137.85
        ],
        "index": 0,
        "tweened": false,
-       "ref": "_buttonclose_up"
+       "ref": "_closeButton_up"
       },
       {
        "loc": [
-        -73.1,
-        73.1
+        -0.05,
+        0
        ],
        "duration": 1,
        "pivot": [
-        57.3,
-        57.1
+        79,
+        78.95
        ],
        "index": 1,
        "tweened": false,
-       "ref": "_buttonclose_over"
+       "ref": "_closeButton_over"
       },
       {
        "loc": [
-        -73.1,
-        73.1
+        -0.05,
+        -0.05
        ],
        "duration": 2,
        "pivot": [
-        56.8,
-        56.6
+        78.95,
+        78.95
        ],
        "index": 2,
        "tweened": false,
-       "ref": "_buttonclose_down"
+       "ref": "_closeButton_down"
       }
      ]
     }
@@ -1325,244 +770,103 @@
   },
   {
    "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPlusHC",
+   "id": "~ButtonInterns",
    "layers": [
     {
-     "name": "Layer 1",
+     "name": "Button",
      "keyframes": [
       {
        "tweened": false,
        "duration": 1,
        "index": 0,
        "pivot": [
-        333.7,
-        63.7
+        130.5,
+        130.5
        ],
-       "ref": "_buttonPlus_up"
+       "ref": "_internsButton_up"
       },
       {
        "tweened": false,
        "duration": 1,
        "index": 1,
        "pivot": [
-        57.5,
-        57.5
+        138,
+        138
        ],
-       "ref": "_buttonPlus_over"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlus_down"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
-       "pivot": [
-        330,
-        60
-       ],
-       "ref": "_buttonPlus_hit"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPlusMarble",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        63.7,
-        63.7
-       ],
-       "ref": "_buttonPlusRevert_up"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlusRevert_over"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlusRevert_down"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
-       "pivot": [
-        60,
-        60.4
-       ],
-       "ref": "_buttonPlusRevert_hit"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPlusSC",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        333.7,
-        63.7
-       ],
-       "ref": "_buttonPlus_up"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlus_over"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlus_down"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
-       "pivot": [
-        330,
-        60
-       ],
-       "ref": "_buttonPlus_hit"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPlusWood",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        63.7,
-        63.7
-       ],
-       "ref": "_buttonPlusRevert_up"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlusRevert_over"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
-       "pivot": [
-        57.5,
-        57.5
-       ],
-       "ref": "_buttonPlusRevert_down"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
-       "pivot": [
-        60,
-        60.4
-       ],
-       "ref": "_buttonPlusRevert_hit"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_ArrowRight",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        66.9,
-        131.2
-       ],
-       "ref": "_buttonarrowright_up"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        66.9,
-        131.2
-       ],
-       "ref": "_buttonarrowright_over"
+       "ref": "_internsButton_over"
       },
       {
        "tweened": false,
        "duration": 2,
        "index": 2,
        "pivot": [
-        66.9,
-        131.2
+        138,
+        138
        ],
-       "ref": "_buttonarrowright_down"
+       "ref": "_internsButton_down"
+      }
+     ]
+    },
+    {
+     "name": "Text",
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0,
+       "tweened": false,
+       "ref": "_internsButton_text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonPurgatory",
+   "layers": [
+    {
+     "name": "Button",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        130.5,
+        130.5
+       ],
+       "ref": "_purgatoryButton_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        138,
+        138
+       ],
+       "ref": "_purgatoryButton_over"
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        138,
+        138
+       ],
+       "ref": "_purgatoryButton_down"
+      }
+     ]
+    },
+    {
+     "name": "Text",
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0,
+       "tweened": false,
+       "ref": "_purgatoryButton_text"
       }
      ]
     }
@@ -1825,74 +1129,6 @@
   },
   {
    "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_InternsShop",
-   "layers": [
-    {
-     "name": "Interns_Button",
-     "keyframes": [
-      {
-       "loc": [
-        -0.25,
-        -0.25
-       ],
-       "duration": 1,
-       "pivot": [
-        135.75,
-        85.75
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_buttonInternShop_up"
-      },
-      {
-       "loc": [
-        -0.25,
-        -0.25
-       ],
-       "duration": 1,
-       "pivot": [
-        137.75,
-        87.75
-       ],
-       "index": 1,
-       "tweened": false,
-       "ref": "_buttonInternShop_over"
-      },
-      {
-       "loc": [
-        -0.25,
-        -0.25
-       ],
-       "duration": 2,
-       "pivot": [
-        137.75,
-        87.75
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonInternShop_down"
-      }
-     ]
-    },
-    {
-     "name": "Interns_Button_txt",
-     "keyframes": [
-      {
-       "loc": [
-        -0.05,
-        0.05
-       ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false,
-       "ref": "_button_InternShop_txt"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
    "id": "~Button_Interns_tab",
    "layers": [
     {
@@ -1971,111 +1207,6 @@
        "index": 0,
        "tweened": false,
        "ref": "_onglet_interns_txt"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_LeftArrow",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        66.9,
-        131.2
-       ],
-       "ref": "_buttonarrowleft_up"
-      },
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        66.9,
-        131.2
-       ],
-       "ref": "_buttonarrowleft_over"
-      },
-      {
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "pivot": [
-        66.9,
-        131.2
-       ],
-       "ref": "_buttonarrowleft_down"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Purgatory",
-   "layers": [
-    {
-     "name": "Button_Shop",
-     "keyframes": [
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 1,
-       "pivot": [
-        135.5,
-        85.75
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_buttonPurgatory_up"
-      },
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 1,
-       "pivot": [
-        138,
-        87.75
-       ],
-       "index": 1,
-       "tweened": false,
-       "ref": "_buttonPurgatory_over"
-      },
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 2,
-       "pivot": [
-        138,
-        87.75
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonPurgatory_down"
-      }
-     ]
-    },
-    {
-     "name": "Shop_txt",
-     "keyframes": [
-      {
-       "duration": 4,
-       "index": 0,
-       "tweened": false,
-       "ref": "_button_Purgatory_txt"
       }
      ]
     }
@@ -2200,32 +1331,17 @@
      "keyframes": [
       {
        "loc": [
-        -125,
-        0
+        128.2,
+        -1.05
        ],
        "duration": 1,
        "pivot": [
-        45.45,
-        45.5
+        48,
+        48
        ],
        "index": 0,
        "tweened": false,
-       "ref": "_icon_hardcurrency"
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusHC",
-     "keyframes": [
-      {
-       "loc": [
-        140,
-        0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~ButtonPlusHC"
+       "ref": "_hardCurrencyIcon_Medium"
       }
      ]
     }
@@ -2254,17 +1370,17 @@
      "keyframes": [
       {
        "loc": [
-        125,
-        0
+        127.95,
+        -0.15
        ],
        "duration": 1,
        "pivot": [
-        45.55,
-        45.55
+        48,
+        48
        ],
        "index": 0,
        "tweened": false,
-       "ref": "_icon_marble"
+       "ref": "_stoneIcon_Medium"
       }
      ]
     },
@@ -2276,21 +1392,6 @@
        "index": 0,
        "tweened": false,
        "ref": "_infoBar_value"
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusWood",
-     "keyframes": [
-      {
-       "loc": [
-        -140,
-        0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~ButtonPlusMarble"
       }
      ]
     }
@@ -2319,17 +1420,17 @@
      "keyframes": [
       {
        "loc": [
-        -125,
-        0
+        127.95,
+        -0.2
        ],
        "duration": 1,
        "pivot": [
-        45.55,
-        45.55
+        48,
+        48
        ],
        "index": 0,
        "tweened": false,
-       "ref": "_icon_softcurrency"
+       "ref": "_goldIcon_Medium"
       }
      ]
     },
@@ -2341,21 +1442,6 @@
        "index": 0,
        "tweened": false,
        "ref": "_infoBar_value"
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusSC",
-     "keyframes": [
-      {
-       "loc": [
-        140,
-        0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~ButtonPlusSC"
       }
      ]
     }
@@ -2384,17 +1470,17 @@
      "keyframes": [
       {
        "loc": [
-        125,
+        127.95,
         0
        ],
        "duration": 1,
        "pivot": [
-        45.55,
-        45.55
+        48,
+        48
        ],
        "index": 0,
        "tweened": false,
-       "ref": "_icon_wood"
+       "ref": "_woodIcon_Medium"
       }
      ]
     },
@@ -2408,24 +1494,9 @@
        "ref": "_infoBar_value"
       }
      ]
-    },
-    {
-     "name": "ButtonPlusWood",
-     "keyframes": [
-      {
-       "loc": [
-        -140,
-        0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "ref": "~ButtonPlusWood"
-      }
-     ]
     }
    ]
   }
  ],
- "md5": "aef696c46f12510aa44048c55b82108e"
+ "md5": "c30d7a91ffd67e230eac1de1d7fd721a"
 }

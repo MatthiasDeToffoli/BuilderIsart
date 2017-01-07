@@ -1,0 +1,243 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_button_buy_buildingdeco_down",
+       "rect": [
+        1,
+        1,
+        396,
+        456
+       ],
+       "origin": [
+        198,
+        228
+       ]
+      },
+      {
+       "symbol": "_button_buy_buildingdeco_over",
+       "rect": [
+        1,
+        459,
+        396,
+        456
+       ],
+       "origin": [
+        198,
+        228
+       ]
+      },
+      {
+       "symbol": "_button_buy_buildingdeco_up",
+       "rect": [
+        399,
+        1,
+        391,
+        451
+       ],
+       "origin": [
+        195.5,
+        225.5
+       ]
+      },
+      {
+       "symbol": "_buildingdeco_picture",
+       "rect": [
+        399,
+        454,
+        251,
+        251
+       ],
+       "origin": [
+        125.4,
+        125.4
+       ]
+      },
+      {
+       "symbol": "_currencyIcon_Medium",
+       "rect": [
+        1,
+        917,
+        96,
+        96
+       ],
+       "origin": [
+        48,
+        48
+       ]
+      },
+      {
+       "data": {
+        "y": -34.95,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 166.1,
+        "color": "#000000",
+        "align": "center",
+        "height": 69.9,
+        "font": "56px _sans",
+        "x": -83.05
+       },
+       "symbol": "_buildingdeco_price_txt",
+       "rect": [
+        1,
+        1015,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "ITEM_NAME",
+        "width": 365.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 43.1,
+        "font": "35px _sans",
+        "x": -182.8
+       },
+       "symbol": "_buildingdeco_name_txt",
+       "rect": [
+        1,
+        1018,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "ButtonBuyBuildingDeco",
+   "layers": [
+    {
+     "name": "Bouton",
+     "keyframes": [
+      {
+       "pivot": [
+        195.5,
+        225.5
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_button_buy_buildingdeco_up"
+      },
+      {
+       "pivot": [
+        198,
+        228
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "ref": "_button_buy_buildingdeco_over"
+      },
+      {
+       "pivot": [
+        198,
+        228
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "ref": "_button_buy_buildingdeco_down"
+      }
+     ]
+    },
+    {
+     "name": "Item_Picture",
+     "keyframes": [
+      {
+       "pivot": [
+        125.4,
+        125.4
+       ],
+       "duration": 4,
+       "loc": [
+        -0.1,
+        -64
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buildingdeco_picture"
+      }
+     ]
+    },
+    {
+     "name": "Item_Name",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        0.55,
+        97.5
+       ],
+       "ref": "_buildingdeco_name_txt"
+      }
+     ]
+    },
+    {
+     "name": "Item_Price",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -47.85,
+        168.1
+       ],
+       "ref": "_buildingdeco_price_txt"
+      }
+     ]
+    },
+    {
+     "name": "Currency_icon",
+     "keyframes": [
+      {
+       "pivot": [
+        48,
+        48
+       ],
+       "duration": 4,
+       "loc": [
+        83.2,
+        170.05
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_currencyIcon_Medium"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "b3b49f736718e06ec18364a53a345ee2"
+}

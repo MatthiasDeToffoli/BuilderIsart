@@ -37,7 +37,6 @@ class AssetName{
 	public static inline var DECO_HELL_ROCK:String = "Enfer_Rocher_P";
 	
 	// Confirm
-	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";
 	
 	// Game
@@ -54,17 +53,36 @@ class AssetName{
 	public static inline var SHOP_BTN_TAB_INTERN:String = /*SHOP_PREFIX +*/ "Onglet_Interns";
 	public static inline var SHOP_BTN_TAB_RESOURCE:String = /*SHOP_PREFIX +*/ "Onglet_Ressources";
 	public static inline var SHOP_BTN_TAB_CURRENCIE:String = /*SHOP_PREFIX +*/ "Onglet_Currencies";
+	public static inline var SHOP_CAROUSSEL_SPAWNER:String = /*SHOP_PREFIX +*/ "Item_List_Spawner";
 	
 	// Shop caroussel
-	public static inline var SHOP_CAROUSSEL:String = SHOP_PREFIX + "Item_List";
-	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = SHOP_PREFIX + "Item_Unlocked";
+	public static inline var SHOP_CAROUSSEL_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
+	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "CurrenciesTab_List";
+	public static inline var SHOP_CAROUSSEL_INTERN:String = SHOP_PREFIX + "InternsTab_List";
+	public static inline var SHOP_CAROUSSEL_INTERN_SEARCHING:String = SHOP_PREFIX + "InternsTab_Searching";
+	public static inline var SHOP_CAROUSSEL_RESOURCE:String = SHOP_PREFIX + "ResourcesTab_List";
+	
+	// Shop caroussel card
+	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
 	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "Item_Locked_1";
 	
-	//public static inline var POPIN_SHOP:String = "Shop_Building";
-	//public static inline var SHOP_CAROUSSEL:String = "Shop_Item_List";
-	public static inline var SHOP_BTN_ITEM_UNLOCKED:String = "Shop_Item_Unlocked";
-	//public static inline var SHOP_BTN_CLOSE:String = "Shop_Close_Button";
-
+	// Popin Confirm Buy Building
+	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
+	public static inline var PCBB_IMG:String = "Building_Image";
+	public static inline var PCBB_TEXT_NAME:String = "Building_Name";
+	public static inline var PCBB_TEXT_LEVEL:String = "Building_Level_txt";
+	public static inline var PCBB_PRICE:String = "Window_Infos_BuyPrice";
+	public static inline var PCBB_PRICE_TEXT:String = "ButtonUpgrade_Cost_txt";
+	public static inline var PCBB_GOLD_MAX:String = "Window_Infos_LimitGold";
+	public static inline var PCBB_GOLD_MAX_TEXT:String = "Window_Infos_txtGoldLimit";
+	public static inline var PCBB_POPULATION_MAX:String = "Window_Infos_Population";
+	public static inline var PCBB_POPULATION_MAX_TEXT:String = "Window_Infos_txtPopulation";
+	public static inline var PCBB_GOLD_PER_TIME:String = "Window_Infos_ProductionGold";
+	public static inline var PCBB_GOLD_PER_TIME_TEXT_1:String = "Window_Infos_txtProductionGold";
+	public static inline var PCBB_GOLD_PER_TIME_TEXT_2:String = "perTime";
+	public static inline var PCBB_BTN_CLOSE:String = "ButtonClose";
+	public static inline var PCBB_BTN_BUY:String = "BuyButton";
+	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
 	public static inline var INFO_BUILDING_BTN_CLOSE:String = "CloseButton";

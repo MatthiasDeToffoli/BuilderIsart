@@ -1,0 +1,335 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_shop_item_list_bg",
+       "rect": [
+        1,
+        1,
+        912,
+        320
+       ],
+       "origin": [
+        455.75,
+        160
+       ]
+      },
+      {
+       "symbol": "_shop_buildingdeco_itemspawner",
+       "rect": [
+        1,
+        323,
+        195,
+        225
+       ],
+       "origin": [
+        97.5,
+        112.5
+       ]
+      },
+      {
+       "symbol": "_arrow_right_down",
+       "rect": [
+        915,
+        1,
+        67,
+        143
+       ],
+       "origin": [
+        33.5,
+        71.5
+       ]
+      },
+      {
+       "symbol": "_arrow_left_down",
+       "rect": [
+        915,
+        146,
+        67,
+        143
+       ],
+       "origin": [
+        33.5,
+        71.5
+       ]
+      },
+      {
+       "symbol": "_arrow_left_over",
+       "rect": [
+        915,
+        291,
+        66,
+        142
+       ],
+       "origin": [
+        33,
+        71
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
+       "rect": [
+        1,
+        550,
+        66,
+        142
+       ],
+       "origin": [
+        33,
+        71
+       ]
+      },
+      {
+       "symbol": "_arrow_right_up",
+       "rect": [
+        1,
+        694,
+        65,
+        141
+       ],
+       "origin": [
+        32.25,
+        70.25
+       ]
+      },
+      {
+       "symbol": "_arrow_left_up",
+       "rect": [
+        1,
+        837,
+        65,
+        141
+       ],
+       "origin": [
+        32.25,
+        70.25
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Shop_BuildingDeco_List",
+   "layers": [
+    {
+     "name": "Shop_Item_List_BG",
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -27.075
+       ],
+       "duration": 1,
+       "pivot": [
+        455.75,
+        160
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_item_list_bg"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Unlocked_1",
+     "keyframes": [
+      {
+       "loc": [
+        -314.3,
+        -29.1
+       ],
+       "duration": 1,
+       "pivot": [
+        97.5,
+        112.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_buildingdeco_itemspawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Unlocked_2",
+     "keyframes": [
+      {
+       "loc": [
+        -104.775,
+        -29.275
+       ],
+       "duration": 1,
+       "pivot": [
+        97.5,
+        112.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_buildingdeco_itemspawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Locked_1",
+     "keyframes": [
+      {
+       "loc": [
+        104.775,
+        -29.1
+       ],
+       "duration": 1,
+       "pivot": [
+        97.5,
+        112.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_buildingdeco_itemspawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Item_Locked_2",
+     "keyframes": [
+      {
+       "loc": [
+        314.325,
+        -29.275
+       ],
+       "duration": 1,
+       "pivot": [
+        97.5,
+        112.5
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_buildingdeco_itemspawner"
+      }
+     ]
+    },
+    {
+     "name": "Button_ArrowRight",
+     "keyframes": [
+      {
+       "loc": [
+        457.15,
+        -27.35
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "~ButtonArrowRight"
+      }
+     ]
+    },
+    {
+     "name": "Button_ArrowLeft",
+     "keyframes": [
+      {
+       "loc": [
+        -455.125,
+        -27.35
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "~ButtonArrowLeft"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowLeft",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        32.25,
+        70.25
+       ],
+       "ref": "_arrow_left_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        33,
+        71
+       ],
+       "ref": "_arrow_left_over"
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        33.5,
+        71.5
+       ],
+       "ref": "_arrow_left_down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowRight",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        32.25,
+        70.25
+       ],
+       "ref": "_arrow_right_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        33,
+        71
+       ],
+       "ref": "_arrow_right_over"
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        33.5,
+        71.5
+       ],
+       "ref": "_arrow_right_down"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "27cb293abce40066dc10b811f8ad67c7"
+}

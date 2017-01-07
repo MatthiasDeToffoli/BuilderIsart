@@ -1,0 +1,395 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_shop_item_list_bg",
+       "rect": [
+        1,
+        1,
+        1823,
+        640
+       ],
+       "origin": [
+        911.5,
+        320
+       ]
+      },
+      {
+       "symbol": "_shop_pack_spawner",
+       "rect": [
+        1,
+        643,
+        387,
+        387
+       ],
+       "origin": [
+        193.25,
+        193.2
+       ]
+      },
+      {
+       "symbol": "_arrow_right_down",
+       "rect": [
+        1826,
+        1,
+        134,
+        286
+       ],
+       "origin": [
+        67,
+        143
+       ]
+      },
+      {
+       "symbol": "_arrow_left_down",
+       "rect": [
+        1826,
+        289,
+        134,
+        286
+       ],
+       "origin": [
+        67,
+        143
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
+       "rect": [
+        1826,
+        577,
+        132,
+        284
+       ],
+       "origin": [
+        66,
+        142
+       ]
+      },
+      {
+       "symbol": "_arrow_left_over",
+       "rect": [
+        390,
+        863,
+        132,
+        284
+       ],
+       "origin": [
+        66,
+        142
+       ]
+      },
+      {
+       "symbol": "_arrow_left_up",
+       "rect": [
+        1,
+        1032,
+        129,
+        281
+       ],
+       "origin": [
+        64.5,
+        140.5
+       ]
+      },
+      {
+       "symbol": "_arrow_right_up",
+       "rect": [
+        132,
+        1032,
+        129,
+        281
+       ],
+       "origin": [
+        64.5,
+        140.5
+       ]
+      },
+      {
+       "symbol": "_stoneIcon_Medium",
+       "rect": [
+        263,
+        1032,
+        96,
+        96
+       ],
+       "origin": [
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_woodIcon_Medium",
+       "rect": [
+        263,
+        1130,
+        96,
+        96
+       ],
+       "origin": [
+        48,
+        48
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "Shop_ResourcesTab_List",
+   "layers": [
+    {
+     "name": "Shop_InternsTab_list_BG",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        911.5,
+        320
+       ],
+       "ref": "_shop_item_list_bg"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_1",
+     "keyframes": [
+      {
+       "loc": [
+        -635.35,
+        -0.05
+       ],
+       "duration": 1,
+       "pivot": [
+        193.25,
+        193.2
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_2",
+     "keyframes": [
+      {
+       "loc": [
+        -211.8,
+        0
+       ],
+       "duration": 1,
+       "pivot": [
+        193.25,
+        193.2
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_3",
+     "keyframes": [
+      {
+       "loc": [
+        211.75,
+        -0.05
+       ],
+       "duration": 1,
+       "pivot": [
+        193.25,
+        193.2
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_4",
+     "keyframes": [
+      {
+       "loc": [
+        635.3,
+        -0.05
+       ],
+       "duration": 1,
+       "pivot": [
+        193.25,
+        193.2
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Arrow_Left_Wood",
+     "keyframes": [
+      {
+       "loc": [
+        -929.6,
+        -8.45
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "~ButtonArrowLeft"
+      }
+     ]
+    },
+    {
+     "name": "Arrow_Right_Stone",
+     "keyframes": [
+      {
+       "loc": [
+        929.6,
+        8
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "ref": "~ButtonArrowRight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowLeft",
+   "layers": [
+    {
+     "name": "Bouton",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        64.5,
+        140.5
+       ],
+       "ref": "_arrow_left_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        66,
+        142
+       ],
+       "ref": "_arrow_left_over"
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        67,
+        143
+       ],
+       "ref": "_arrow_left_down"
+      }
+     ]
+    },
+    {
+     "name": "Icon",
+     "keyframes": [
+      {
+       "loc": [
+        13,
+        8.55
+       ],
+       "duration": 4,
+       "pivot": [
+        48,
+        48
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_woodIcon_Medium"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowRight",
+   "layers": [
+    {
+     "name": "Bouton",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        64.5,
+        140.5
+       ],
+       "ref": "_arrow_right_up"
+      },
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        66,
+        142
+       ],
+       "ref": "_arrow_right_over"
+      },
+      {
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        67,
+        143
+       ],
+       "ref": "_arrow_right_down"
+      }
+     ]
+    },
+    {
+     "name": "Icon",
+     "keyframes": [
+      {
+       "loc": [
+        -7.9,
+        -8.2
+       ],
+       "duration": 4,
+       "pivot": [
+        48,
+        48
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_stoneIcon_Medium"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "e2740612657f007d96c5dc321479f9f4"
+}
