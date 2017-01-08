@@ -5,36 +5,15 @@ import haxe.Json;
 	
 /**
  * Interface whit the server
- * @author ambroise
+ * @author Vicktor Grenu
  */
 class ServerManager {
-	
-	/**
-	 * instance unique de la classe ServerManager
-	 */
-	private static var instance: ServerManager;
-	
-	/**
-	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
-	 * @return instance unique
-	 */
-	public static function getInstance (): ServerManager {
-		if (instance == null) instance = new ServerManager();
-		return instance;
-	}
-	
-	/**
-	 * constructeur privé pour éviter qu'une instance soit créée directement
-	 */
-	private function new() {
-		
-	}
 	
 	/**
 	 * start player inscription or get his information
 	 */
 	public static function playerConnexion():Void {
-		message(onDataCallback, onErrorCallback, ServerFile.CONNEXION);
+		callPhpFile(onDataCallback, onErrorCallback, ServerFile.CONNEXION);
 	}
 	
 	/**
@@ -43,32 +22,34 @@ class ServerManager {
 	 * @param	onError callback function on fail
 	 * @param	mFile php file to call
 	 */
-	private static function message(onData:Dynamic->Void, onError:Dynamic->Void, mFile:String):Void
-    {
+	private static function callPhpFile(onData:Dynamic->Void, onError:Dynamic->Void, pFileName:String, ?pParams:Map<String, Dynamic>):Void {
 		// create new http request
-        var lCall:Http = new Http(mFile);
+        var lCall:Http = new Http(pFileName);
         lCall.onData = onData;
         lCall.onError = onError;
-        lCall.request(true);
+		
+		if (pParams != null)
+			for (lKey in pParams.keys())
+				lCall.setParameter(lKey, pParams[lKey]);
+		
+		lCall.request(true);
     }
 
 	private static function onDataCallback(object:Dynamic):Void {
-		trace(Json.parse(object));
+		trace(object);
+		//trace(Json.parse(object)); n'est parfois pas un objet mais un string..
 	}
 
 	private static function onErrorCallback(object:Dynamic):Void {
 		trace("Error php");
 	}
 	
-	/**
-	 * détruit l'instance unique et met sa référence interne à null
-	 */
-	public function destroy (): Void {
-		instance = null;
+	private function new() {
+		
 	}
 
 }
 
 class ServerFile {
-	public static inline var CONNEXION:String = "action.php";
+	public static inline var CONNEXION:String = "login.php";
 }
