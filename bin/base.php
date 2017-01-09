@@ -10,7 +10,7 @@ date_default_timezone_set("UTC");
 session_start(); // todo : included in all php file ??
 
 include("/vendor/autoload.php");
-include("mdp.php");
+include("databaseInfo.php");
 
 // todo : activer lros de release
 // error_reporting(0);
@@ -18,7 +18,7 @@ include("mdp.php");
 
 // database connexion
 try {
-  $db = new PDO("mysql:host=localhost;dbname=perle_alpha", $user, $mdp);
+  $db = new PDO("mysql:host=".$host.";dbname=".$dbName, $user, $pass);
 }
 catch (Exception $e) {
   echo $e->getMessage();
@@ -45,4 +45,3 @@ try {
 }
 
 $fbId = $helper->getUserId();
-
