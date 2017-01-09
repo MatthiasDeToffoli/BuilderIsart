@@ -128,6 +128,14 @@ class Building extends Tile implements IZSortable
 		addListenerOnClick();
 	}
 	
+	public function changeAssetName(pAssetName:String){
+		//setState(pAssetName);
+		trace("AN Before"+assetName);
+		assetName = pAssetName;
+		//parent.removeChild(this);
+		//container.addChild(this);
+		trace("AN After"+assetName);
+	}
 	/**
 	 * 
 	 * @param	pTilePos (TilePosition like if they were only one big region)

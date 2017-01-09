@@ -24,6 +24,7 @@ class InfoBuilding extends SmartPopin {
 	
 	private var btnExit:SmartButton;
 	private var btnSell:SmartButton;
+	private var btnUpgrade:SmartButton;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -42,9 +43,11 @@ class InfoBuilding extends SmartPopin {
 			
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
+		//btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnSell.on(MouseEventType.CLICK, onClickSell);
+		//btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
 	}
 	
 	private function onClickExit ():Void {
@@ -59,6 +62,11 @@ class InfoBuilding extends SmartPopin {
 		SaveManager.save();
 	}
 	
+	private function onClickUpgrade ():Void {
+		trace("upgrade");
+		BuildingHud.virtualBuilding.onClickUpgrade();
+		//UIManager.getInstance().closeCurrentPopin();
+	}
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */

@@ -87,6 +87,9 @@ class AssetName{
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
 	public static inline var INFO_BUILDING_BTN_CLOSE:String = "ButtonClose";
 	public static inline var INFO_BUILDING_BTN_SELL:String = "ButtonDestroy";
+	//public static inline var INFO_BUILDING_BTN_CLOSE:String = "CloseButton";
+	//public static inline var INFO_BUILDING_BTN_SELL:String = "SellButton";
+	public static inline var INFO_BUILDING_BTN_UPGRADE:String = "UpgradeButton";
 	
 	//listIntern
 	public static inline var INTERN_LIST:String = "ListInterns";

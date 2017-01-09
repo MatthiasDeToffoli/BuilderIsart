@@ -105,6 +105,13 @@ class VBuilding extends VTile {
 		setState(VBuildingState.isBuilt);
 	}
 	
+	public function onClickUpgrade():Void{
+		desactivate();
+		//@Todo: revoir quand Ambroise aura fait la base de données
+		BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
+		activate();
+	}
+	
 	public function onClickConfirm ():Void {
 		Phantom.onClickConfirmMove();
 	}
