@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import pixi.core.math.Point;
@@ -38,7 +39,7 @@ class VTribunal extends VBuilding
 	{
 		var lDesc:TileDescription;
 		
-		alignementBuilding = VBuilding.ALIGNEMENT_STYX;
+		alignementBuilding = RegionType.styx;
 
 		if (pDesc == null){
 			lDesc = {

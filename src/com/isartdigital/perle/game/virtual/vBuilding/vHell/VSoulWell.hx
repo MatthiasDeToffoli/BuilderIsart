@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.virtual.vBuilding.VGoldGeneratorBuilding;
 
 /**
@@ -12,7 +13,7 @@ class VSoulWell extends VGoldGeneratorBuilding
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
+		alignementBuilding = RegionType.hell;
 	}
 	
 }

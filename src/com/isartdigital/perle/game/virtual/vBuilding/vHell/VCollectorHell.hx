@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 
@@ -14,7 +15,7 @@ class VCollectorHell extends VCollector
 	{
 		super(pDescription);
 		
-		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
+		alignementBuilding = RegionType.hell;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 
@@ -13,7 +14,7 @@ class VInternHouseHell extends VInternHouse
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		alignementBuilding = VBuilding.ALIGNEMENT_HELL;
+		alignementBuilding = RegionType.hell;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHeaven;
 
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.virtual.vBuilding.VGoldGeneratorBuilding;
 
 /**
@@ -13,7 +14,7 @@ class VWishFountain extends VGoldGeneratorBuilding
 	{
 		super(pAssetName);
 		
-		alignementBuilding = VBuilding.ALIGNEMENT_HEAVEN;
+		alignementBuilding = RegionType.eden;
 	}
 	
 }

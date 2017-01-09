@@ -38,7 +38,6 @@ class Phantom extends Building {
 	private static var container:Container;
 	private static var alignementBuilding:String;
 	
-	private var linkedVBuilding:VBuilding;
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
 	private var precedentBesMapPos:Point = new Point(0, 0);
@@ -68,7 +67,7 @@ class Phantom extends Building {
 	 */
 	public static function onClickMove (pAssetName:String, pVBuilding:VBuilding):Void {
 		createPhantom(pAssetName);
-		instance.linkedVBuilding = pVBuilding;
+		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
 	}
 	
@@ -82,7 +81,7 @@ class Phantom extends Building {
 	
 	public static function onClickConfirmBuild ():Void {
 		//todo pas une valeur en dur : 100
-		if (alignementBuilding == "all"||alignementBuilding == "styx") {
+		if (alignementBuilding == null||alignementBuilding == "styx") {
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 		}
@@ -244,8 +243,8 @@ class Phantom extends Building {
 	private function confirmMove ():Void {
 		if (canBuildHere()) {
 			
-			linkedVBuilding.move(regionMap);
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, linkedVBuilding); 
+			vBuilding.move(regionMap);
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
 			destroy();
 			applyChange();
 			
@@ -255,22 +254,6 @@ class Phantom extends Building {
 	
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
-		if (BuyManager.buy(assetName)) {
-		
-			createVBuilding();
-			
-			vBuilding.activate();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
-			destroy();
-			
-			
-			applyChange();
-		} else {
-			displayCantBuy();
-		}
-	}
-	
-	private function createVBuilding():Void {
 		if (BuyManager.buy(assetName)) {
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
@@ -282,6 +265,15 @@ class Phantom extends Building {
 				mapY:regionMap.map.y
 			};
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
+			
+			vBuilding.activate();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
+			destroy();
+			
+			
+			applyChange();
+		} else {
+			displayCantBuy();
 		}
 	}
 	
@@ -297,10 +289,11 @@ class Phantom extends Building {
 	private function canBuildHere():Bool {
 		setMapColRow(getRoundMapPos(position), Building.ASSETNAME_TO_MAPSIZE[assetName]);
 		regionMap = getRegionMap();
-		if (instance.linkedVBuilding != null)
-			alignementBuilding = instance.linkedVBuilding.alignementBuilding;
 		
-		if (alignementBuilding == VBuilding.ALIGNEMENT_ALL)
+		if (instance.vBuilding != null)
+			alignementBuilding = instance.vBuilding.alignementBuilding.getName();
+		
+		if (alignementBuilding == null)
 			return buildingOnGround() && buildingCollideOther();
 			
 		// between region or region don't exist
@@ -470,7 +463,7 @@ class Phantom extends Building {
 	
 	override public function destroy():Void {
 		FootPrint.removeShadow();
-		linkedVBuilding = null;
+		vBuilding = null;
 		instance = null;
 		removePhantomFilter();
 		removeDesaturateFilter();

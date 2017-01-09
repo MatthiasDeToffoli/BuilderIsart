@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHeaven;
 
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
@@ -14,7 +15,7 @@ class VDecoHeaven extends VBuilding
 	{
 		super(pDescription);
 		
-		alignementBuilding = VBuilding.ALIGNEMENT_HEAVEN;
+		alignementBuilding = RegionType.eden;
 	}
 	
 }

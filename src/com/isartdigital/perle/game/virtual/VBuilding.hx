@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
@@ -34,19 +35,11 @@ class VBuilding extends VTile {
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
 	
-	public static inline var ALIGNEMENT_HEAVEN = "eden";
-	public static inline var ALIGNEMENT_HELL = "hell";
-	public static inline var ALIGNEMENT_STYX = "styx";
-	public static inline var ALIGNEMENT_ALL = "all";
-	
-	public var alignementBuilding:String;
+	public var alignementBuilding:RegionType;
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		RegionManager.addToRegionBuilding(this);
-		alignementBuilding = ALIGNEMENT_ALL; //todo enelever cette ligne quand c'est reglé : 
-											//quand on creer des batiment il faut creer les bonnes classes 
-											//(pas des Vbuilding mais des VHellBuilding par exemmple)
 		addGenerator();
 		addHudContextual();
 	}
