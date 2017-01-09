@@ -46,7 +46,9 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ServerManager.playerConnexion();
+		GameConfig.awake();
 		ResourcesManager.awake(); // akways befire all ui init
 		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager

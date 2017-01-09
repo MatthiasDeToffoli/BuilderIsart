@@ -40,12 +40,17 @@ import pixi.loaders.Loader;
 
 class Main extends EventEmitter
 {
+	
+	public static inline var JSON_FOLDER:String = "json/";
+	public static inline var DIALOGUE_FTUE_JSON_NAME:String = JSON_FOLDER + "dialogue_ftue";
+	public static inline var EXPERIENCE_JSON_NAME:String = JSON_FOLDER + "experience";
+	public static inline var UNLOCK_ITEM_JSON_NAME:String = JSON_FOLDER + "item_to_unlock";
+	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price";
+	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config";
+	
+	private static inline var FACEBOOK_APP_ID = "1764871347166484"; // todo : c'est bien l'app ID ? oui/non ?
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
-	public static var JSON_FOLDER(default,never):String = "json/";
-	public static var DIALOGUE_FTUE_JSON_NAME(default, never):String = JSON_FOLDER + "dialogue_ftue";
-	public static var EXPERIENCE_JSON_NAME(default, never):String = JSON_FOLDER + "experience";
-	public static var UNLOCK_ITEM_JSON_NAME(default, never):String = JSON_FOLDER + "item_to_unlock";
-	public static var PRICE_JSON_NAME(default, never):String = JSON_FOLDER + "buy_price";
+	
 	private static var configPath:String = "config.json";
 	private static var instance: Main;
 	
@@ -107,7 +112,7 @@ class Main extends EventEmitter
 		
 		lConfig.load();
 		Facebook.onLogin = onLogin;
-		Facebook.load("1764871347166484");
+		Facebook.load(FACEBOOK_APP_ID);
 	}
 	
 	private function onLogin():Void{
@@ -216,6 +221,7 @@ class Main extends EventEmitter
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
 		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
 		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
+		lLoader.addTxtFile(GAME_CONFIG + ".json");
 		
 		// BuyManager price
 		lLoader.addTxtFile(PRICE_JSON_NAME + ".json");

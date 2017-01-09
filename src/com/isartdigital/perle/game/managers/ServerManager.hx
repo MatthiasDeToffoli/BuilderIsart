@@ -9,11 +9,18 @@ import haxe.Json;
  */
 class ServerManager {
 	
+	private static inline var KEY_POST_FILE_NAME:String = "module";
+	private static inline var KEY_POST_FUNCTION_NAME:String = "action";
+	
 	/**
 	 * start player inscription or get his information
 	 */
 	public static function playerConnexion():Void {
-		callPhpFile(onDataCallback, onErrorCallback, ServerFile.CONNEXION);
+		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOGIN]);
+	}
+	
+	public static function refreshConfig ():Void { // todo : remplacer par cron ?
+		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
 	}
 	
 	/**
@@ -37,7 +44,7 @@ class ServerManager {
 
 	private static function onDataCallback(object:Dynamic):Void {
 		trace(object);
-		//trace(Json.parse(object)); n'est parfois pas un objet mais un string..
+		trace(Json.parse(object)); //n'est parfois pas un objet mais un string..
 	}
 
 	private static function onErrorCallback(object:Dynamic):Void {
@@ -51,5 +58,7 @@ class ServerManager {
 }
 
 class ServerFile {
-	public static inline var CONNEXION:String = "login.php";
+	public static inline var MAIN_PHP:String = "actions.php";
+	public static inline var LOGIN:String = "Login";
+	public static inline var TEMP_GET_JSON:String = "JsonCreator";
 }
