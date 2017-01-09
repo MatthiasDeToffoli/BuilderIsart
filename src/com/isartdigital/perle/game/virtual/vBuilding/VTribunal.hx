@@ -61,6 +61,11 @@ class VTribunal extends VBuilding
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
 	}
 	
+	
+	override function setHaveRecolter():Void 
+	{
+		haveRecolter = false;
+	}
 
 	override function addGenerator():Void {
 		myGeneratorType = GeneratorType.soul;

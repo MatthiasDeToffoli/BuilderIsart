@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.PoolingObject;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.Debug;
@@ -17,7 +18,7 @@ class Virtual {
 	
 	public static var ASSETNAME_TO_VCLASS(default, never):Map<String, String> = [
 		"House" => "VHouseHell",	
-		"Bat_Purgatory_colo_Principal" => "VTribunal",
+		AssetName.BUILDING_PURGATORY => "VTribunal",
 		"HeavenBuild2" => "VHouseHeaven",
 		AssetName.DECO_HEAVEN_TREE_1 => "VDecoHeaven", // todo : c'est bien des building ??
 		AssetName.DECO_HEAVEN_TREE_2 => "VDecoHeaven",
@@ -37,26 +38,26 @@ class Virtual {
 		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
 	];
 	
-	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, String> = [
-		"House" => "hell",	
-		"Bat_Purgatory_colo_Principal" => "styx",
-		"HeavenBuild2" => "eden",
-		AssetName.DECO_HEAVEN_TREE_1 => "eden", // todo : c'est bien des building ??
-		AssetName.DECO_HEAVEN_TREE_2 => "eden",
-		AssetName.DECO_HEAVEN_TREE_3 => "eden",
-		AssetName.DECO_HEAVEN_FOUNTAIN => "eden",
-		AssetName.DECO_HEAVEN_ROCK => "eden",
-		AssetName.DECO_HEAVEN_VERTUE => "styx",
-		AssetName.DECO_HELL_TREE_1 => "hell",
-		AssetName.DECO_HELL_TREE_2 => "hell",
-		AssetName.DECO_HELL_TREE_3 => "hell",
-		AssetName.DECO_HELL_ROCK => "hell",
+	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
+		"House" => Alignment.hell,	
+		AssetName.BUILDING_PURGATORY => Alignment.neutral,
+		"HeavenBuild2" => Alignment.heaven,
+		AssetName.DECO_HEAVEN_TREE_1 => Alignment.heaven, // todo : c'est bien des building ??
+		AssetName.DECO_HEAVEN_TREE_2 => Alignment.heaven,
+		AssetName.DECO_HEAVEN_TREE_3 => Alignment.heaven,
+		AssetName.DECO_HEAVEN_FOUNTAIN => Alignment.heaven,
+		AssetName.DECO_HEAVEN_ROCK => Alignment.heaven,
+		AssetName.DECO_HEAVEN_VERTUE => Alignment.neutral,
+		AssetName.DECO_HELL_TREE_1 => Alignment.hell,
+		AssetName.DECO_HELL_TREE_2 => Alignment.hell,
+		AssetName.DECO_HELL_TREE_3 => Alignment.hell,
+		AssetName.DECO_HELL_ROCK => Alignment.hell,
 		
-		AssetName.BUILDING_HEAVEN_BRIDGE => "styx",
-		AssetName.BUILDING_HEAVEN_BUILD_1 => "eden",
-		AssetName.BUILDING_HEAVEN_BUILD_2 => "eden",
-		AssetName.BUILDING_HELL_BUILD_1 => "hell",
-		AssetName.BUILDING_HELL_BUILD_2 => "hell",
+		AssetName.BUILDING_HEAVEN_BRIDGE => Alignment.neutral,
+		AssetName.BUILDING_HEAVEN_BUILD_1 => Alignment.heaven,
+		AssetName.BUILDING_HEAVEN_BUILD_2 => Alignment.heaven,
+		AssetName.BUILDING_HELL_BUILD_1 => Alignment.hell,
+		AssetName.BUILDING_HELL_BUILD_2 => Alignment.hell,
 	];
 	
 	

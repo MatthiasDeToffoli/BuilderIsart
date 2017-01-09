@@ -36,7 +36,7 @@ class Phantom extends Building {
 	private static var colorMatrix:ColorMatrixFilter;
 	private static var instance:Phantom;
 	private static var container:Container;
-	private static var alignementBuilding:String;
+	private static var alignementBuilding:Alignment;
 	
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
@@ -80,6 +80,8 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmBuild ():Void {
+		
+		
 		instance.confirmBuild();
 	}
 	
@@ -270,13 +272,13 @@ class Phantom extends Building {
 	
 	private function addExp():Void {
 		//todo pas une valeur en dur : 100
-		if (alignementBuilding == null||alignementBuilding == "styx") {
+		if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 		}
-		else if (alignementBuilding == "hell")
+		else if (alignementBuilding == Alignment.hell)
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
-		else if (alignementBuilding == "eden")
+		else if (alignementBuilding == Alignment.heaven)
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 			
 	}
@@ -295,13 +297,14 @@ class Phantom extends Building {
 		regionMap = getRegionMap();
 		
 		if (instance.vBuilding != null)
-			alignementBuilding = instance.vBuilding.alignementBuilding.getName();
+			alignementBuilding = instance.vBuilding.alignementBuilding;
 		
 		if (alignementBuilding == null)
 			return buildingOnGround() && buildingCollideOther();
 			
+		trace(RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type, alignementBuilding);
 		// between region or region don't exist
-		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type.getName() != alignementBuilding)
+		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding)
 			return false;
 		
 		return buildingOnGround() && buildingCollideOther();

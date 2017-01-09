@@ -24,8 +24,11 @@ class VHudContextual extends Virtual{
 	
 	public function init (pVBuilding:VBuilding):Void {
 		myVBuilding = pVBuilding;
-		virtualGoldBtn = new VButtonProduction();
-		virtualGoldBtn.init(this);
+		
+		if (myVBuilding.haveRecolter){
+			virtualGoldBtn = new VButtonProduction();
+			virtualGoldBtn.init(this);
+		}
 		
 		// ajout cartouche d'âme 
 		// ajout progressbar
@@ -40,7 +43,7 @@ class VHudContextual extends Virtual{
 		lHudContextual.init();
 		
 		
-		virtualGoldBtn.activate();
+		if(myVBuilding.haveRecolter) virtualGoldBtn.activate();
 	}
 	
 	override public function desactivate ():Void {
@@ -51,10 +54,11 @@ class VHudContextual extends Virtual{
 	}
 	
 	override public function destroy():Void {
+		if(myVBuilding.haveRecolter) virtualGoldBtn.destroy();
+		virtualGoldBtn = null;
 		myVBuilding.unlinkContextualHud();
 		myVBuilding = null;
-		virtualGoldBtn.destroy();
-		virtualGoldBtn = null;
+		
 		super.destroy();
 	}
 	

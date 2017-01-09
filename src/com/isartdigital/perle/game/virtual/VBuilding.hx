@@ -31,6 +31,11 @@ class VBuilding extends VTile {
 	private var myGenerator:Generator;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	
+	/**
+	 * said if we can recolt resources with a button in this building
+	 */
+	public var haveRecolter:Bool;
+	
 	private var myVContextualHud:VHudContextual;
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
@@ -39,11 +44,18 @@ class VBuilding extends VTile {
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
+		setHaveRecolter();
 		RegionManager.addToRegionBuilding(this);
 		addGenerator();
 		addHudContextual();
 	}
 	
+	/**
+	 * set true or false in the flag which say if the building have recolter (true by default)
+	 */
+	private function setHaveRecolter():Void{
+		haveRecolter = true;
+	}
 	override public function activate ():Void {
 		super.activate();
 		
