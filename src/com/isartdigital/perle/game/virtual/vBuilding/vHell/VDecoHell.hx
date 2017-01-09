@@ -14,7 +14,6 @@ class VDecoHell extends VBuilding
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		
 		alignementBuilding = Alignment.hell;
 	}
 	
