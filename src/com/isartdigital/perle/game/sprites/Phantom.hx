@@ -80,16 +80,6 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmBuild ():Void {
-		//todo pas une valeur en dur : 100
-		if (alignementBuilding == null||alignementBuilding == "styx") {
-			ResourcesManager.takeXp(100, GeneratorType.badXp);
-			ResourcesManager.takeXp(100, GeneratorType.goodXp);
-		}
-		else if (alignementBuilding == "hell")
-			ResourcesManager.takeXp(100, GeneratorType.badXp);
-		else if (alignementBuilding == "eden")
-			ResourcesManager.takeXp(100, GeneratorType.goodXp);
-		
 		instance.confirmBuild();
 	}
 	
@@ -254,6 +244,7 @@ class Phantom extends Building {
 	
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
+		addExp();
 		if (BuyManager.buy(assetName)) {
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
@@ -275,6 +266,19 @@ class Phantom extends Building {
 		} else {
 			displayCantBuy();
 		}
+	}
+	
+	private function addExp():Void {
+		//todo pas une valeur en dur : 100
+		if (alignementBuilding == null||alignementBuilding == "styx") {
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+		}
+		else if (alignementBuilding == "hell")
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+		else if (alignementBuilding == "eden")
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+			
 	}
 	
 	private function applyChange ():Void {
