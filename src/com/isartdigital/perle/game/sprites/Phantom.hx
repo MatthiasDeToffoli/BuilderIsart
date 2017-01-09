@@ -335,8 +335,8 @@ class Phantom extends Building {
 		
 		var lRegionSize:SizeOnMap = { width:0, height:0, footprint:0 }; // todo: autre typedef ss footprint
 		// todo : factoriser avec une map Region.REGION_TYPE_TO_SIZE
-		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
-		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
+		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
+		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 		
 		return (regionMap.map.x + Building.ASSETNAME_TO_MAPSIZE[assetName].width <= lRegionSize.width &&
 				regionMap.map.y + Building.ASSETNAME_TO_MAPSIZE[assetName].height <= lRegionSize.height);

@@ -1,8 +1,8 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
@@ -178,21 +178,21 @@ class RegionManager
 		worldMap[0][0] = createRegionFromDesc({
 			x:0,
 			y:0,
-			type:RegionType.styx,
+			type:Alignment.neutral,
 			firstTilePos:{x:0,y:0}
 		});
 		
 		createNextBg({
 			x:0,
 			y:0,
-			type:RegionType.styx,
+			type:Alignment.neutral,
 			firstTilePos: {x:0, y:0}
 		});
 		
 		Ground.bgContainer.addChild(background);
 		
-		createRegion(RegionType.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
-		createRegion(RegionType.eden, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
+		createRegion(Alignment.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
+		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
 		VTribunal.getInstance();
 	}
@@ -211,7 +211,7 @@ class RegionManager
 		}
 		
 		for (i in 0...lLength) {		
-			if (pSave.region[i].type != RegionType.styx)
+			if (pSave.region[i].type != Alignment.neutral)
 				addButton(
 					new Point(
 						pSave.region[i].firstTilePos.x,
@@ -233,7 +233,7 @@ class RegionManager
 	 * @param	pFirstTilePos the position of the first tile 
 	 * @param	pWorldPos the position in the worldMap
 	 */
-	public static function createRegion (pType:RegionType, pFirstTilePos:Point, pWorldPos:Index):Void {
+	public static function createRegion (pType:Alignment, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
 		//@TODO: delete when we will have the stick bg
 		createNextBg({
@@ -261,7 +261,7 @@ class RegionManager
 		
 		if (Math.abs(pWorldPos.x) == 1) createStyxRegionIfDontExist(pWorldPos, Std.int(pFirstTilePos.y));
 		
-		if(pType != RegionType.styx) addButton(
+		if(pType != Alignment.neutral) addButton(
 			pFirstTilePos,
 			new Point(
 				pWorldPos.x,
@@ -280,7 +280,7 @@ class RegionManager
 		if (worldMap[0][pWorldPos.y] != null) return;
 			
 		var posWorld:Index = {x:0, y:pWorldPos.y};
-		createRegion(RegionType.styx, new Point(0, pPosY), posWorld);
+		createRegion(Alignment.neutral, new Point(0, pPosY), posWorld);
 		
 		addRegionButtonByStyx(posWorld, pPosY);
 		
@@ -323,12 +323,12 @@ class RegionManager
 	 * @param regionType
 	 * @return background asset name
 	 */
-	private static function getBgAssetname(pRegionType:RegionType): String {
+	private static function getBgAssetname(pRegionType:Alignment): String {
 		switch (pRegionType) 
 		{
-			case RegionType.hell: return AssetName.BACKGROUND_HELL;
-			case RegionType.eden: return AssetName.BACKGROUND_HEAVEN;
-			case RegionType.styx: return AssetName.BACKGROUND_STYX;
+			case Alignment.hell: return AssetName.BACKGROUND_HELL;
+			case Alignment.heaven: return AssetName.BACKGROUND_HEAVEN;
+			case Alignment.neutral: return AssetName.BACKGROUND_STYX;
 			default: trace(pRegionType + " - No background for this"); return null;
 		}
 	}
@@ -365,8 +365,8 @@ class RegionManager
 			for (y in worldMap[x].keys()) {
 				
 				// pourrait être facotriser par une map si plus de taille de région différente. (comme size de building)
-				lRegionSize.width = worldMap[x][y].desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
-				lRegionSize.height = worldMap[x][y].desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
+				lRegionSize.width = worldMap[x][y].desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
+				lRegionSize.height = worldMap[x][y].desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 				
 				//trace(lRegionSize);
 				

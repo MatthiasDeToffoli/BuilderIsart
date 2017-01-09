@@ -1,8 +1,8 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
@@ -35,7 +35,7 @@ class VBuilding extends VTile {
 	
 	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
 	
-	public var alignementBuilding:RegionType;
+	public var alignementBuilding:Alignment;
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);

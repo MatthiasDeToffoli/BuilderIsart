@@ -3,7 +3,7 @@ import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.RegionManager;
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
@@ -86,16 +86,12 @@ class VTile extends Virtual{
 		clippingMap = new Map<Int, Map<Int, Array<VTile>>>(); 
 	}
 	
-	// todo : tjrs immediate visible ? car sert pas pr le load save
-	// todo : déplacer ds regionManager ?
+	// nous sers désormé de grille virtuel pour les débug l'appelle à était désactivé :)
 	public static function buildInsideRegion (pRegion:Region, pImmediateVisible:Bool = false):Void {
 		
-		// todo : add background ! :p
-		// et enlever tile ? ou tile transparente ? plutôt enlever, huuum
-		// et grille blanche par-dessus ?
 		
-		var col:Int = pRegion.desc.type == RegionType.styx ? Ground.COL_X_STYX_LENGTH:Ground.COL_X_LENGTH;
-		var row:Int = pRegion.desc.type == RegionType.styx ? Ground.ROW_Y_STYX_LENGTH:Ground.ROW_Y_LENGTH;
+		var col:Int = pRegion.desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH:Ground.COL_X_LENGTH;
+		var row:Int = pRegion.desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH:Ground.ROW_Y_LENGTH;
 		
 		for (x in 0...col) {	
 			for (y in 0...row) {

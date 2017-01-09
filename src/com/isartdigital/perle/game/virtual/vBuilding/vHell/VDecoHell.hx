@@ -1,6 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
@@ -15,7 +15,7 @@ class VDecoHell extends VBuilding
 	{
 		super(pDescription);
 		
-		alignementBuilding = RegionType.hell;
+		alignementBuilding = Alignment.hell;
 	}
 	
 }

@@ -13,9 +13,8 @@ import pixi.core.sprites.Sprite;
 
 //@:optional vous connaisiez ?
 
-enum RegionType {hell; eden; styx; }
 enum GeneratorType {soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; }
-enum Alignment {neutral; demon; angel; }
+enum Alignment {neutral; hell; heaven; }
 
 
 typedef TileDescription = {
@@ -32,7 +31,7 @@ typedef TileDescription = {
 typedef RegionDescription = {
 	var x:Int;
 	var y:Int;
-	var type:RegionType;
+	var type:Alignment;
 	var firstTilePos:Index;
 }
 
@@ -372,22 +371,14 @@ class SaveManager {
 				return GeneratorType.buildResourceFromParadise;
 			
 			case "hell":
-				return RegionType.hell;
+				return Alignment.hell;
 			
-			case "eden":
-				return RegionType.eden;
-			
-			case "styx":
-				return RegionType.styx;
+			case "heaven":
+				return Alignment.heaven;
 			
 			case "neutral":
 				return Alignment.neutral;
 			
-			case "demon":
-				return Alignment.demon;
-			
-			case "angel":
-				return Alignment.angel;
 				
 			default:
 				return null;

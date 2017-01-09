@@ -1,7 +1,7 @@
 package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.managers.RegionManager;
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.ui.Button;
 import pixi.core.math.Point;
@@ -31,7 +31,7 @@ class ButtonRegion extends Button
 	/**
 	 * the type of the region to add
 	 */
-	private var regionType:RegionType;
+	private var regionType:Alignment;
 	
 	public function new(pPos:Point,pWorldPos:Point) 
 	{
@@ -41,7 +41,7 @@ class ButtonRegion extends Button
 		super();
 		firstCasePos = pPos;
 		worldMapPos = pWorldPos;
-		regionType = (pPos.x < 0) ? RegionType.eden: RegionType.hell;
+		regionType = (pPos.x < 0) ? Alignment.heaven: Alignment.hell;
 	}
 	
 	override function _mouseDown(pEvent:EventTarget):Void {
