@@ -42,8 +42,7 @@ class Ground extends Tile
 	 */
 	private static inline var FILTER_BRIGHTNESS:Float = 1.3;
 	
-	public static var container(default, null):Container;
-	public static var bgContainer(default, null):Container;
+	public static var container(default, null):Container;	
 	
 	
 	public var mapX:Int;
@@ -58,12 +57,10 @@ class Ground extends Tile
 		mapArray = new Map<Int,Map<Int, Ground>>();
 		
 		container = new Container();
-		bgContainer = new Container();
 		
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.brightness(FILTER_BRIGHTNESS, false);
 		
-		GameStage.getInstance().getGameContainer().addChildAt(bgContainer, 0);
 		GameStage.getInstance().getGameContainer().addChild(container);
 		
 		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)

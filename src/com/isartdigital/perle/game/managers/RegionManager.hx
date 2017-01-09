@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.RegionBackground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.VGround;
@@ -37,7 +38,7 @@ typedef Region = {
  */
 class RegionManager 
 {
-	private static var background:FlumpStateGraphic;
+	private static var background:RegionBackground;
 	
 	/**
 	 * the model map who contain all region
@@ -48,6 +49,11 @@ class RegionManager
 	 * the same model than map but for buttonRegion
 	 */
 	public static var buttonMap: Map<Int,Map<Int,ButtonRegion>>;
+	
+	/**
+	 * container of all background
+	 */
+	public static var bgContainer(default, null):Container;
 	
 	/**
 	 * typedef which contain all data resources
@@ -71,8 +77,10 @@ class RegionManager
 	 */
 	public static function init():Void {
 		buttonRegionContainer = new Container();
+		bgContainer = new Container();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getGameContainer().addChild(buttonRegionContainer);
+		GameStage.getInstance().getGameContainer().addChildAt(bgContainer, 0);
 		worldMap = new Map<Int,Map<Int,Region>>();
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
 	}
@@ -157,7 +165,8 @@ class RegionManager
 		worldMap[pNewRegion.desc.x][pNewRegion.desc.y] = pNewRegion;
 		
 		if (background != null)	{
-			Ground.bgContainer.addChild(background);			
+			bgContainer.addChild(background);
+			sortBackground();
 		}
 	}
 	
@@ -189,7 +198,7 @@ class RegionManager
 			firstTilePos: {x:0, y:0}
 		});
 		
-		Ground.bgContainer.addChild(background);
+		bgContainer.addChild(background);
 		
 		createRegion(Alignment.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
@@ -340,10 +349,11 @@ class RegionManager
 	private static function createNextBg(pDesc:RegionDescription): Void {
 		// note d'Ambroise : ok pr utiliser Movie() mais il donne pas le bon scale
 		// ET PAS QUESTION DE RESCALE A LA VUE
-		background = new FlumpStateGraphic(getBgAssetname(pDesc.type));
+		var bgSize:Index = pDesc.type == Alignment.neutral ? {x:Ground.COL_X_STYX_LENGTH, y:Ground.ROW_Y_STYX_LENGTH}:{x:Ground.COL_X_LENGTH, y:Ground.ROW_Y_LENGTH};
+		background = new RegionBackground(getBgAssetname(pDesc.type),pDesc.firstTilePos,bgSize);
 		background.init();
 		background.start();
-		background.position = IsoManager.modelToIsoView(new Point(pDesc.firstTilePos.x, pDesc.firstTilePos.y));
+		background.position = IsoManager.modelToIsoView(VTile.indexToPoint(pDesc.firstTilePos));
 	}
 	
 	
@@ -474,6 +484,13 @@ class RegionManager
 		return pRegion;
 		
 		
+	}
+	
+	/**
+	 * Z-Sorting of Background container.
+	 */
+	public static function sortBackground():Void {
+		bgContainer.children = IsoManager.sortTiles(bgContainer.children);
 	}
 	
 	//Todo: not used but working
