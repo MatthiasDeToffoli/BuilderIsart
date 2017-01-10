@@ -6,42 +6,16 @@
     {
      "textures": [
       {
-       "symbol": "Heaven_Part04",
+       "symbol": "_bg_heaven_02",
        "rect": [
         1,
         1,
-        1027,
-        551
+        1270,
+        1339
        ],
        "origin": [
-        513.5,
-        275.5
-       ]
-      },
-      {
-       "symbol": "Heaven_Part02",
-       "rect": [
-        1,
-        554,
-        1024,
-        550
-       ],
-       "origin": [
-        512,
-        275
-       ]
-      },
-      {
-       "symbol": "Heaven_Part03",
-       "rect": [
-        1,
-        1106,
-        1024,
-        550
-       ],
-       "origin": [
-        512,
-        275
+        0,
+        0
        ]
       }
      ],
@@ -50,16 +24,16 @@
     {
      "textures": [
       {
-       "symbol": "Hell_Part01",
+       "symbol": "_bg_heaven01",
        "rect": [
         1,
         1,
-        1021,
-        551
+        1270,
+        1339
        ],
        "origin": [
-        510.5,
-        275.5
+        1270,
+        0
        ]
       }
      ],
@@ -72,62 +46,24 @@
  "frameRate": 24,
  "movies": [
   {
-   "id": "Heaven_BG",
+   "id": "BG_Heaven",
    "layers": [
     {
      "name": "Calque 1",
      "keyframes": [
       {
-       "loc": [
-        523.1,
-        275.5
+       "pivot": [
+        635,
+        669.5
        ],
        "duration": 1,
-       "pivot": [
-        510.5,
-        275.5
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "Hell_Part01"
-      }
-     ]
-    },
-    {
-     "name": "Calque 5",
-     "keyframes": [
-      {
        "loc": [
-        -499.4,
-        826
+        -597.15,
+        640.2
        ],
-       "duration": 1,
-       "pivot": [
-        512,
-        275
-       ],
-       "index": 0,
        "tweened": false,
-       "ref": "Heaven_Part03"
-      }
-     ]
-    },
-    {
-     "name": "Calque 4",
-     "keyframes": [
-      {
-       "loc": [
-        524.6,
-        826
-       ],
-       "duration": 1,
-       "pivot": [
-        512,
-        275
-       ],
        "index": 0,
-       "tweened": false,
-       "ref": "Heaven_Part02"
+       "ref": "_bg_heaven01"
       }
      ]
     },
@@ -135,23 +71,23 @@
      "name": "Calque 2",
      "keyframes": [
       {
-       "loc": [
-        -500.9,
-        275.5
+       "pivot": [
+        635,
+        669.5
        ],
        "duration": 1,
-       "pivot": [
-        513.5,
-        275.5
+       "loc": [
+        602.95,
+        644.95
        ],
-       "index": 0,
        "tweened": false,
-       "ref": "Heaven_Part04"
+       "index": 0,
+       "ref": "_bg_heaven_02"
       }
      ]
     }
    ]
   }
  ],
- "md5": "3902fed7f801a9c170eae6fc2c389ef7"
+ "md5": "1df1fa387ed4ee4587a66cee91e54ea0"
 }
