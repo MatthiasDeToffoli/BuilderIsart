@@ -44,9 +44,6 @@ class PoolingManager {
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_3 => "DecoHeaven",
 		"HeavenBuild2" => "HouseHeaven",
-		//AssetName.DECO_HEAVEN_TREE_1 => "Building", // todo : c'est bien des building ??
-		//AssetName.DECO_HEAVEN_TREE_2 => "Building",
-		//AssetName.DECO_HEAVEN_TREE_3 => "Building",
 		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
 		AssetName.DECO_HEAVEN_ROCK => "Building",
 		AssetName.DECO_HEAVEN_VERTUE => "Building",

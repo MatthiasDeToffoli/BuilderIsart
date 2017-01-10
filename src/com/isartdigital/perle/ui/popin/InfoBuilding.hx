@@ -40,14 +40,14 @@ class InfoBuilding extends SmartPopin {
 	 */
 	private function new() {
 		super(AssetName.POPIN_INFO_BUILDING);
-			
+		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
-		//btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
+		btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnSell.on(MouseEventType.CLICK, onClickSell);
-		//btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
 	}
 	
 	private function onClickExit ():Void {
