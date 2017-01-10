@@ -302,7 +302,6 @@ class Phantom extends Building {
 		if (alignementBuilding == null)
 			return buildingOnGround() && buildingCollideOther();
 			
-		trace(RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type, alignementBuilding);
 		// between region or region don't exist
 		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding)
 			return false;

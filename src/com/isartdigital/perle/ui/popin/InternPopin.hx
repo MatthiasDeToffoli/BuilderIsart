@@ -27,9 +27,6 @@ class InternPopin extends SmartPopin
 	public function new() 
 	{
 		super(AssetName.INTERN_POPIN);
-		
-		/*for (i in 0...children.length) 
-			trace (children[i].name);*/
 			
 		side = cast(getChildByName(AssetName.INTERN_POPIN_SIDE), TextSprite);
 		internName = cast(getChildByName(AssetName.INTERN_POPIN_NAME), TextSprite);

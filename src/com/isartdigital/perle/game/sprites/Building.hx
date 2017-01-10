@@ -34,7 +34,7 @@ class Building extends Tile implements IZSortable
 		"House" => {width:2, height:2, footprint : 1},
 		"Trees" => {width:1, height:1, footprint : 0},
 		"Villa" => {width:3, height:3, footprint : 1},
-		"Bat_Purgatory_colo_Principal" => {width:3, height:3, footprint : 1},
+		AssetName.BUILDING_PURGATORY => {width:3, height:3, footprint : 1},
 		"HeavenBuild2" => {width:3, height:3, footprint : 1},
 		AssetName.DECO_HEAVEN_TREE_1 => {width:1, height:1, footprint : 0},
 		AssetName.DECO_HEAVEN_TREE_2 => {width:1, height:1, footprint : 0},

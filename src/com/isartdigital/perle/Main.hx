@@ -6,6 +6,8 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
+import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
+import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
@@ -315,6 +317,8 @@ class Main extends EventEmitter
 			FootPrint,
 			InternElement,
 			Tribunal,
+			DecoHeaven,
+			DecoHell,
 			VHouseHeaven,
 			VHouseHell,
 			VDecoHeaven,
