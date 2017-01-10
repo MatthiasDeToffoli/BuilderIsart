@@ -6,7 +6,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VDeco;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class VDecoHell extends VDeco
 {

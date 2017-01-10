@@ -1,0 +1,565 @@
+{
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_smallPopinBG",
+       "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "pivot": [
+        375,
+        200
+       ]
+      }
+     ],
+     "name": "BG_SkipTimerBG"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -140.675,
+        12.9
+       ],
+       "ref": "_txt_type",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_type"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.35,
+        -178.625
+       ],
+       "ref": "_txt_congratulations",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_congratulations"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        138.075,
+        13.275
+       ],
+       "ref": "~_unlock",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_unlock"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -140.775,
+        -24.725
+       ],
+       "ref": "_txt_new",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_new"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        10,
+        -108.8
+       ],
+       "ref": "~BG_Level",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_bg_level"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        7.45,
+        129.25
+       ],
+       "ref": "~ButtonConfirm",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Button_SkipTimeConfirm"
+    }
+   ],
+   "id": "Popin_LevelUp"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        0,
+        4.15
+       ],
+       "ref": "_bg_levelreached",
+       "duration": 1,
+       "pivot": [
+        44.425,
+        44.425
+       ]
+      }
+     ],
+     "name": "_bg_levelreached"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        4.15
+       ],
+       "ref": "_txt_level",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "level"
+    }
+   ],
+   "id": "~BG_Level"
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        0,
+        -0.25
+       ],
+       "ref": "_buttonConfirmLevelUp_up",
+       "duration": 1,
+       "pivot": [
+        123.25,
+        42.5
+       ]
+      },
+      {
+       "index": 1,
+       "tweened": false,
+       "loc": [
+        0,
+        -0.25
+       ],
+       "ref": "_buttonConfirmLevelUp_over",
+       "duration": 1,
+       "pivot": [
+        124,
+        45
+       ]
+      },
+      {
+       "index": 2,
+       "tweened": false,
+       "loc": [
+        -0.1,
+        0.025
+       ],
+       "ref": "_buttonConfirmLevelUp_down",
+       "duration": 2,
+       "pivot": [
+        124,
+        45
+       ]
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -1.225
+       ],
+       "ref": "_txt_continue",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_continue"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0
+      }
+     ],
+     "name": "Text_EnterBuilding"
+    }
+   ],
+   "id": "~ButtonConfirm"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        90.075,
+        -1.875
+       ],
+       "ref": "_txt_description",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Description"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        -129.525,
+        0
+       ],
+       "ref": "_image",
+       "duration": 1,
+       "pivot": [
+        67.375,
+        67.35
+       ]
+      }
+     ],
+     "name": "Image"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        9.825,
+        -46.525
+       ],
+       "ref": "_txt_name",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_txt_name"
+    }
+   ],
+   "id": "~_unlock"
+  }
+ ],
+ "md5": "07580460d473b73e024a1045f9028bdd",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "origin": [
+        372.9,
+        165.9
+       ],
+       "symbol": "BG_Skiptimer",
+       "rect": [
+        1,
+        1,
+        750,
+        400
+       ]
+      },
+      {
+       "origin": [
+        375,
+        200
+       ],
+       "symbol": "_smallPopinBG",
+       "rect": [
+        1,
+        403,
+        750,
+        400
+       ]
+      },
+      {
+       "origin": [
+        124,
+        45
+       ],
+       "symbol": "_buttonConfirmLevelUp_down",
+       "rect": [
+        1,
+        805,
+        252,
+        90
+       ]
+      },
+      {
+       "origin": [
+        124,
+        45
+       ],
+       "symbol": "_buttonConfirmLevelUp_over",
+       "rect": [
+        1,
+        897,
+        252,
+        90
+       ]
+      },
+      {
+       "origin": [
+        123.25,
+        42.5
+       ],
+       "symbol": "_buttonConfirmLevelUp_up",
+       "rect": [
+        255,
+        805,
+        247,
+        85
+       ]
+      },
+      {
+       "origin": [
+        67.4,
+        67.35
+       ],
+       "symbol": "_image",
+       "rect": [
+        504,
+        805,
+        135,
+        135
+       ]
+      },
+      {
+       "origin": [
+        44.4,
+        44.4
+       ],
+       "symbol": "_bg_levelreached",
+       "rect": [
+        255,
+        892,
+        89,
+        89
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.75,
+        "text": "Congratulations !",
+        "x": -749.3,
+        "width": 1498.6,
+        "font": "70px Arial",
+        "align": "center",
+        "height": 85.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_congratulations",
+       "rect": [
+        346,
+        892,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -22.5,
+        "text": "Description </BR>",
+        "x": -284.8,
+        "width": 569.6,
+        "font": "33px Arial",
+        "align": "left",
+        "height": 44.95,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_description",
+       "rect": [
+        346,
+        895,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -69.05,
+        "text": "99",
+        "x": -72.6,
+        "width": 145.2,
+        "font": "120px Arial",
+        "align": "center",
+        "height": 138.1,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_level",
+       "rect": [
+        346,
+        898,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -41.65,
+        "text": "Name",
+        "x": -124.3,
+        "width": 248.6,
+        "font": "71px Arial",
+        "align": "left",
+        "height": 83.3,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_name",
+       "rect": [
+        346,
+        901,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -41.2,
+        "text": "NEW !",
+        "x": -141.4,
+        "width": 282.8,
+        "font": "70px Arial",
+        "align": "center",
+        "height": 82.4,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_new",
+       "rect": [
+        346,
+        904,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -34.05,
+        "text": "Type",
+        "x": -141.6,
+        "width": 283.15,
+        "font": "51px Arial",
+        "align": "center",
+        "height": 68.1,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_type",
+       "rect": [
+        346,
+        907,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -65.35,
+        "text": "Continue",
+        "x": -244.5,
+        "width": 489.05,
+        "font": "96px Arial",
+        "align": "center",
+        "height": 130.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_txt_continue",
+       "rect": [
+        346,
+        910,
+        1,
+        1
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24
+}

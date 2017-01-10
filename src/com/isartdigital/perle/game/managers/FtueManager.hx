@@ -23,8 +23,10 @@ class FtueManager
 		FtueUI.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		
 		//check if first time
-		if (SaveManager.currentSave.ftueProgress > npc_dialogue_ftue.length-1)
+		if (SaveManager.currentSave.ftueProgress > npc_dialogue_ftue.length - 1) {
+			FtueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 			return;
+		}
 		
 		GameStage.getInstance().getHudContainer().addChild(FtueUI.getInstance());
 		

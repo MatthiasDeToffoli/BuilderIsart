@@ -1,7 +1,9 @@
 {
+ "md5": "1fff46ae081e5273efee4c4371f11351",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
      "file": "atlas0.png",
@@ -85,23 +87,23 @@
        ]
       },
       {
-       "symbol": "Window_NPC_Name_TXT",
        "data": {
-        "y": -48.5,
+        "y": -48.65,
         "text": "Name_XXXXX",
-        "x": -262.05,
-        "width": 524.05,
-        "font": "76px Times New Roman",
-        "align": "center",
-        "height": 97,
+        "x": -233.65,
+        "width": 467.3,
+        "font": "72px Times New Roman",
+        "align": "left",
+        "height": 97.35,
         "wordWrap": 0,
         "color": "#000000"
        },
-       "baseClass": "TextSprite",
+       "symbol": "Window_NPC_Name_TXT",
        "origin": [
         0,
         0
        ],
+       "baseClass": "TextSprite",
        "rect": [
         1,
         944,
@@ -110,190 +112,228 @@
        ]
       },
       {
-       "symbol": "Window_NPC_Speech_TXT",
        "data": {
-        "y": -147.25,
-        "text": "Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</BR>Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "x": -579.75,
-        "width": 1159.5,
-        "font": "48px Times New Roman",
-        "align": "left",
-        "height": 277.75,
+        "y": -44.1,
+        "text": "Next",
+        "x": -88.3,
+        "width": 176.55,
+        "font": "76px Times New Roman",
+        "align": "center",
+        "height": 88.15,
         "wordWrap": 1,
         "color": "#000000"
        },
-       "baseClass": "TextSprite",
+       "symbol": "_buttonNext_text",
        "origin": [
         0,
         0
        ],
+       "baseClass": "TextSprite",
        "rect": [
         1,
         947,
         1,
         1
        ]
+      },
+      {
+       "data": {
+        "y": -166.45,
+        "text": "TUTORIAL_TEXT_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "x": -579.75,
+        "width": 1159.5,
+        "font": "48px Times New Roman",
+        "align": "center",
+        "height": 277.75,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "Window_NPC_Speech_TXT",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        950,
+        1,
+        1
+       ]
       }
      ]
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ],
  "movies": [
   {
    "layers": [
     {
-     "name": "Window_BG",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
        "loc": [
         -0.45,
         -2.175
        ],
        "index": 0,
-       "ref": "Window_NPC_BG",
        "pivot": [
         451.5,
         175.3125
-       ]
+       ],
+       "ref": "Window_NPC_BG",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Window_BG"
     },
     {
-     "name": "Window_NPC_Hell",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
        "loc": [
-        -589.6125,
-        -20.25
+        -589.5375,
+        -19.575
        ],
        "index": 0,
-       "ref": "Window_NPC_Hell",
        "pivot": [
         122.1375,
         193.0125
-       ]
+       ],
+       "ref": "Window_NPC_Hell",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Window_NPC_Hell"
     },
     {
-     "name": "Window_NPC_Heaven",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
        "loc": [
         589.35,
         -19.575
        ],
        "index": 0,
-       "ref": "Window_NPC_Heaven",
        "pivot": [
         122.1375,
         193.0125
-       ]
+       ],
+       "ref": "Window_NPC_Heaven",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Window_NPC_Heaven"
     },
     {
-     "name": "Window_NPC_Name_TXT",
      "keyframes": [
       {
-       "duration": 1,
-       "loc": [
-        -250.0875,
-        -125.2125
-       ],
-       "index": 0,
        "ref": "Window_NPC_Name_TXT",
+       "loc": [
+        -260.85,
+        -125.1
+       ],
+       "duration": 1,
+       "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_NPC_Name_TXT"
     },
     {
-     "name": "Window_NPC_Speech_TXT",
      "keyframes": [
       {
-       "duration": 1,
-       "loc": [
-        -2.775,
-        27.8625
-       ],
-       "index": 0,
        "ref": "Window_NPC_Speech_TXT",
+       "loc": [
+        -1.275,
+        47.475
+       ],
+       "duration": 1,
+       "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_NPC_Speech_TXT"
     },
     {
-     "name": "Window_NPC_ButtonNext",
      "keyframes": [
       {
-       "duration": 1,
-       "loc": [
-        303.3375,
-        174.5625
-       ],
-       "index": 0,
        "ref": "~ButtonNext",
+       "loc": [
+        298.6875,
+        186.0375
+       ],
+       "duration": 1,
+       "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_NPC_ButtonNext"
     }
    ],
    "id": "Window_NPC"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
-     "name": "Calque 1",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
        "loc": [
         -0.0375,
         -0.0375
        ],
        "index": 0,
-       "ref": "_buttonNext_up",
        "pivot": [
         135.2625,
         47.475
-       ]
+       ],
+       "ref": "_buttonNext_up",
+       "duration": 1,
+       "tweened": false
       },
       {
+       "ref": "_buttonNext_over",
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "ref": "_buttonNext_over",
        "pivot": [
         137.1375,
         49.35
        ]
       },
       {
+       "ref": "_buttonNext_down",
        "tweened": false,
        "duration": 2,
        "index": 2,
-       "ref": "_buttonNext_down",
        "pivot": [
         137.1375,
         49.35
        ]
       }
-     ]
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonNext_text",
+       "loc": [
+        -0.0375,
+        -0.0375
+       ],
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text"
     }
    ],
+   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonNext"
   }
  ],
- "md5": "21cf7da9ee26bbfddc771aee61345317",
  "frameRate": 24
 }

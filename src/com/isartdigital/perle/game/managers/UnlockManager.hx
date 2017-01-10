@@ -1,4 +1,7 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.ui.UIManager;
+import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.levelUp.LevelUpPoppin;
 import com.isartdigital.utils.loader.GameLoader;
 
 /**
@@ -68,6 +71,7 @@ class UnlockManager
 	 * Unlock item at the level up
 	 */
 	public static function unlockItem():Void {
+		
 		if (itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1] == null)
 			return;
 		for (i in 0...itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1][0].length) {
@@ -75,8 +79,12 @@ class UnlockManager
 			if (lItem == null)
 				return;
 			itemUnlocked.push(lItem);
-			trace("Felicitations vous avez débloqué : " + lItem);
+			if (ResourcesManager.getLevel() != 1) oppenLevelUpPopin(lItem);
 		}
-		
+	}
+	
+	private static function oppenLevelUpPopin (pItem:String):Void {
+		UIManager.getInstance().openPopin(LevelUpPoppin.getInstance(pItem));
+		Hud.getInstance().hide();
 	}
 }

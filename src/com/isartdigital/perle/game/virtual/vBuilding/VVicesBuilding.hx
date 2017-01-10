@@ -6,7 +6,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class VVicesBuilding extends VBuilding
 {

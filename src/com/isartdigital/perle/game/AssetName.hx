@@ -85,8 +85,8 @@ class AssetName{
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
-	public static inline var INFO_BUILDING_BTN_CLOSE:String = "CloseButton";
-	public static inline var INFO_BUILDING_BTN_SELL:String = "SellButton";
+	public static inline var INFO_BUILDING_BTN_CLOSE:String = "ButtonClose";
+	public static inline var INFO_BUILDING_BTN_SELL:String = "ButtonDestroy";
 	
 	//listIntern
 	public static inline var INTERN_LIST:String = "ListInterns";
@@ -182,6 +182,17 @@ class AssetName{
 	public static inline var COUNTER_TXT_RESSOURCE:String = "bar_txt";
 	public static inline var COUNTER_TXT_LEVEL:String = "_level_txt";
 	
+	
+	//LevelUpPoppin
+	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
+	public static inline var LEVELUP_POPPIN_BUTTON:String = "Button_SkipTimeConfirm";
+	public static inline var LEVELUP_POPPIN_LEVELBG:String = "_bg_level";
+	public static inline var LEVELUP_POPPIN_LEVEL:String = "level";
+	public static inline var LEVELUP_POPPIN_TYPE:String = "_txt_type";
+	public static inline var LEVELUP_POPPIN_UNLOCK:String = "_unlock";
+	public static inline var LEVELUP_POPPIN_NAME:String = "_txt_name";
+	public static inline var LEVELUP_POPPIN_IMG:String = "Image";
+	public static inline var LEVELUP_POPPIN_DESCRIPTION:String = "Description";
 	
 	// add background and any other assetName coming from DA
 	//bg

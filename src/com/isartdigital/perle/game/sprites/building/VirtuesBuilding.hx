@@ -4,7 +4,7 @@ import com.isartdigital.perle.game.sprites.Building;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class VirtuesBuilding extends Building
 {
