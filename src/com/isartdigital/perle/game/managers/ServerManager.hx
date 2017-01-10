@@ -43,8 +43,8 @@ class ServerManager {
     }
 
 	private static function onDataCallback(object:Dynamic):Void {
-		trace(object);
-		trace(Json.parse(object)); //n'est parfois pas un objet mais un string..
+		/*trace(object);
+		trace(Json.parse(object)); //n'est parfois pas un objet mais un string..*/
 	}
 
 	private static function onErrorCallback(object:Dynamic):Void {

@@ -170,7 +170,7 @@ class ResourcesManager
 		}
 		
 		var totals:Array<Float> = resourcesDescriptionLoad.totals;
-		
+		myResourcesData.level = resourcesDescriptionLoad.level;
 		myResourcesData.totalsMap[GeneratorType.soft] = totals[0];
 		myResourcesData.totalsMap[GeneratorType.hard] = totals[1];
 		myResourcesData.totalsMap[GeneratorType.goodXp] = totals[2];
@@ -184,7 +184,7 @@ class ResourcesManager
 		maxExp = ExperienceManager.getMaxExp(resourcesDescriptionLoad.level);
 		
 		var i:Int;
-		
+
 		for (i in 0...totalResourcesInfoArray.length){
 			if (i == 0) totalResourcesInfoArray[i].value = resourcesDescriptionLoad.level;
 			else if (i < 7) totalResourcesInfoArray[i].value = totals[i - 1];

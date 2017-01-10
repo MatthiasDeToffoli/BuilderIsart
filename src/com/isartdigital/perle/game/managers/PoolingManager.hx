@@ -22,7 +22,8 @@ class PoolingManager {
 		"Road_br" => 1,
 		"Road_tl" => 1,
 		"Road_v" => 1,
-		"FootPrint" => 1
+		"FootPrint" => 1,
+		AssetName.BUILDING_PURGATORY => 1
 	];
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
