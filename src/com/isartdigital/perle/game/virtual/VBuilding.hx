@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -108,8 +109,17 @@ class VBuilding extends VTile {
 	public function onClickUpgrade():Void{
 		desactivate();
 		//@Todo: revoir quand Ambroise aura fait la base de données
-		BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
+		trace(BuildingHud.virtualBuilding.tileDesc);
+		
+		switch BuildingHud.virtualBuilding.tileDesc.assetName {
+			case AssetName.BUILDING_HELL_HOUSE: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
+			case AssetName.BUILDING_HELL_BUILD_1: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_2;
+			case AssetName.BUILDING_HEAVEN_HOUSE: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HEAVEN_BUILD_1;
+			case AssetName.BUILDING_HEAVEN_BUILD_1: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HEAVEN_BUILD_2;
+		}
+		//BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
 		activate();
+		SaveManager.save();
 	}
 	
 	public function onClickConfirm ():Void {

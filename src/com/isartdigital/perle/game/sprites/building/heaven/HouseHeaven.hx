@@ -11,6 +11,7 @@ class HouseHeaven extends House
 
 	public function new(?pAssetName:String) 
 	{
+		trace("coucou houseH");
 		super(pAssetName);
 	}
 	

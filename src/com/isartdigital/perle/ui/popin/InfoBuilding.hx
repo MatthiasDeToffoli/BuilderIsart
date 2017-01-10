@@ -65,7 +65,7 @@ class InfoBuilding extends SmartPopin {
 	private function onClickUpgrade ():Void {
 		trace("upgrade");
 		BuildingHud.virtualBuilding.onClickUpgrade();
-		//UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closeCurrentPopin();
 	}
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
