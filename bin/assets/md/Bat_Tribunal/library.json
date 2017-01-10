@@ -4,82 +4,49 @@
   {
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "Bat_Purgatory_colo",
-       "origin": [
-        180.8,
-        192.8
-       ],
+       "symbol": "Bat_Tribunal",
        "rect": [
         1,
         1,
-        362,
-        386
-       ]
-      },
-      {
-       "symbol": "BatAdmin",
-       "origin": [
-        173.75,
-        191.05
+        414,
+        440
        ],
-       "rect": [
-        1,
-        389,
-        348,
-        383
+       "origin": [
+        206.95,
+        219.75
        ]
       }
-     ]
+     ],
+     "file": "atlas0.png"
     }
    ],
    "scaleFactor": 1
   }
  ],
+ "frameRate": 60,
  "movies": [
   {
+   "id": "Tribunal",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "pivot": [
-        173.7375,
-        191.0625
-       ],
-       "index": 0,
-       "ref": "BatAdmin",
        "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "BatAdmin_Principal"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        180.7875,
-        192.825
-       ],
+       "duration": 1,
        "index": 0,
-       "ref": "Bat_Purgatory_colo",
-       "tweened": false,
-       "duration": 1
+       "pivot": [
+        206.9625,
+        219.75
+       ],
+       "ref": "Bat_Tribunal"
       }
-     ],
-     "name": "Calque 1"
+     ]
     }
-   ],
-   "id": "Bat_Purgatory_colo_Principal"
+   ]
   }
  ],
- "md5": "12ccff5b36d435a013faaa90ea535e0a",
- "frameRate": 60
+ "md5": "5b0ac9c3579c7c0bd228313022f0e842"
 }

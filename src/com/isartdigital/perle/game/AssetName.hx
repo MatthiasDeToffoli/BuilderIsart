@@ -9,7 +9,7 @@ package com.isartdigital.perle.game;
 class AssetName{
 
 	// Building Neutral
-	public static inline var BUILDING_PURGATORY:String = "Bat_Purgatory_colo_Principal";
+	public static inline var BUILDING_PURGATORY:String = "Tribunal";
 	
 	// Building Heaven
 	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuild2";
