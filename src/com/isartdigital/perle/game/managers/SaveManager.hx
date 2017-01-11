@@ -110,7 +110,7 @@ typedef Save = {
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
-	var itemUnlocked:Array<String>;
+	var itemUnlocked:Array<Array<Array<String>>>;
 	// add what you want to save.
 }
 
@@ -131,7 +131,7 @@ class SaveManager {
 		var buildingSave:Array<TileDescription> = [];
 		var groundSave:Array<TileDescription> = [];
 		var regionSave:Array<RegionDescription> = [];
-		var itemUnlock:Array<String> = [];
+		var itemUnlock:Array<Array<Array<String>>> = [];
 		
 		itemUnlock = UnlockManager.itemUnlocked;
 		

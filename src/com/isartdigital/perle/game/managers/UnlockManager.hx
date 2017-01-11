@@ -11,7 +11,8 @@ import com.isartdigital.utils.loader.GameLoader;
 class UnlockManager
 {
 	private static var itemToUnlockArray:Array<Array<Array<String>>>;
-	public static var itemUnlocked:Array<String>;
+	public static var itemUnlocked:Array<Array<Array<String>>>;
+	public static var itemUnlockedForPoppin:Array<Array<Array<String>>>;
 	public static var isAlreadySaved:Bool = false;
 	
 	/**
@@ -20,6 +21,7 @@ class UnlockManager
 	public static function setUnlockItem() {
 		itemToUnlockArray = [];
 		itemUnlocked = [];
+		itemUnlockedForPoppin = [];
 		parseJsonUnlock(Main.UNLOCK_ITEM_JSON_NAME);
 		checkIfFirstTime();
 	}
@@ -31,7 +33,7 @@ class UnlockManager
 	 */
 	public static function checkIfUnlocked(pName:String):Bool {
 		for (i in 0...itemUnlocked.length) {
-			if (pName == itemUnlocked[i])
+			if (pName == itemUnlocked[i][0][1])
 				return true;
 		}
 		return false;
@@ -46,8 +48,8 @@ class UnlockManager
 			unlockItem();
 		}
 		else {
-			itemUnlocked = [];
 			itemUnlocked = SaveManager.currentSave.itemUnlocked;
+			trace(SaveManager.currentSave.itemUnlocked);
 		}
 	}
 	
@@ -74,17 +76,30 @@ class UnlockManager
 		
 		if (itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1] == null)
 			return;
-		for (i in 0...itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1][0].length) {
-			var lItem:String = itemToUnlockArray[Std.int(ResourcesManager.getLevel()) - 1][0][i];
-			if (lItem == null)
-				return;
-			itemUnlocked.push(lItem);
-			if (ResourcesManager.getLevel() != 1) oppenLevelUpPopin(lItem);
+			
+		for (i in 0...itemToUnlockArray.length-1) {
+			if (Std.parseFloat(itemToUnlockArray[i][0][0]) == Std.int(ResourcesManager.getLevel())) {
+				itemUnlocked[i] = [];
+				
+				var lItem:Array<String> = itemToUnlockArray[i][0];
+				
+				if (lItem == null)
+					return;
+				
+				itemUnlocked[i].push(lItem);
+				
+				if (ResourcesManager.getLevel() != 1) {
+					itemUnlockedForPoppin[itemUnlockedForPoppin.length] = [];
+					itemUnlockedForPoppin[itemUnlockedForPoppin.length - 1].push(lItem);
+					oppenLevelUpPopin();
+				}
+				SaveManager.save();	
+			}
 		}
 	}
 	
-	private static function oppenLevelUpPopin (pItem:String):Void {
-		UIManager.getInstance().openPopin(LevelUpPoppin.getInstance(pItem));
+	private static function oppenLevelUpPopin ():Void {
+		UIManager.getInstance().openPopin(LevelUpPoppin.getInstance());
 		Hud.getInstance().hide();
 	}
 }
