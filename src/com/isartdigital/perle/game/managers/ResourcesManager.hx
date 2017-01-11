@@ -356,7 +356,8 @@ class ResourcesManager
 	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{	
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
 		save(pGenerator);
-		generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, active:true});
+		
+		if(pGenerator.desc.quantity >= pGenerator.desc.max/2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, active:true});
 	}
 	//} endregion
 	
