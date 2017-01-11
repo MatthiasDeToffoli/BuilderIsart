@@ -40,6 +40,19 @@ class UnlockManager
 	}
 	
 	/**
+	 * Function to check what's the level to unlock this item
+	 * @param	pName of the item
+	 * @return level in int
+	 */
+	public static function checkLevelNeeded(pName:String):Int {
+		for (i in 0...itemToUnlockArray.length) {
+			if (pName == itemToUnlockArray[i][0][1])
+				return(Std.parseInt(itemToUnlockArray[i][0][0]));
+		}
+		return null;
+	}
+	
+	/**
 	 * check if it's then first time of the player
 	 */
 	private static function checkIfFirstTime():Void {
@@ -91,11 +104,12 @@ class UnlockManager
 				if (ResourcesManager.getLevel() != 1) {
 					itemUnlockedForPoppin[itemUnlockedForPoppin.length] = [];
 					itemUnlockedForPoppin[itemUnlockedForPoppin.length - 1].push(lItem);
-					oppenLevelUpPopin();
 				}
 				SaveManager.save();	
 			}
 		}
+		if (ResourcesManager.getLevel() != 1)
+			oppenLevelUpPopin();
 	}
 	
 	private static function oppenLevelUpPopin ():Void {

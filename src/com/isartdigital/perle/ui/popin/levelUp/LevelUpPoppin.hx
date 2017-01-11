@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.levelUp;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -27,6 +28,7 @@ class LevelUpPoppin extends SmartPopin
 	private static var nameUnlock:TextSprite;
 	private static var description:TextSprite;
 	private static var img:UISprite;
+	private static var imgImage:FlumpStateGraphic;
 	
 	/**
 	 * instance unique de la classe LevelUpPoppin
@@ -54,11 +56,12 @@ class LevelUpPoppin extends SmartPopin
 	
 	private static function setPopin():Void {
 		level.text = "" + ResourcesManager.getLevel();
+		setImage(UnlockManager.itemUnlockedForPoppin[0][0][1]);
 		nameUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][2];
 		typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
-		UnlockManager.itemUnlockedForPoppin.splice(UnlockManager.itemUnlockedForPoppin.length - 1, 1);
+		UnlockManager.itemUnlockedForPoppin.splice(0, 1);
 	}
 	
 	/**
@@ -79,9 +82,20 @@ class LevelUpPoppin extends SmartPopin
 		btnNext.on(MouseEventType.CLICK, onClickNext);
 	}
 	
+	private static function setImage (pAssetName:String):Void {
+		imgImage = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
+		imgImage.init();
+		imgImage.width = 250;
+		imgImage.height = 250;
+		img.addChild(imgImage);
+		imgImage.start();
+	}
+	
 	private static function onClickNext():Void {
-		if (UnlockManager.itemUnlockedForPoppin.length != 0)
+		if (UnlockManager.itemUnlockedForPoppin.length != 0) {
+			img.removeChild(imgImage);
 			setPopin();
+		}
 		else {
 			Hud.getInstance().show();
 			UIManager.getInstance().closeCurrentPopin();

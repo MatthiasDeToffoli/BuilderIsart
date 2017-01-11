@@ -14,20 +14,12 @@ import pixi.interaction.EventTarget;
  */
 class CarouselCard extends SmartButton {
 
-	private var buildingAssetName:String;
 	private var image:UISprite;
-	private var imageCurrency:UISprite;
-	private var text_name:TextSprite;
-	private var text_price:TextSprite;
+	private var buildingAssetName:String;
 	
-	public function new() {
-		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		
+	public function new(pAsset:String) {
+		super(pAsset);
 		image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
-		imageCurrency = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
-		text_name = cast(SmartCheck.getChildByName(this, "Item_Name"), TextSprite);
-		text_price = cast(SmartCheck.getChildByName(this, "Item_Price"), TextSprite);
-		
 	}
 	
 	public function init (pBuildingAssetName:String):Void {
@@ -35,8 +27,6 @@ class CarouselCard extends SmartButton {
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
 		setImage(buildingAssetName);
-		setName(buildingAssetName);
-		setPrice(Math.floor(Math.random()*2000)); // todo: bon item price par rapprt au json
 	}
 	
 	public function start ():Void {
@@ -53,24 +43,10 @@ class CarouselCard extends SmartButton {
 		lImage.start();
 	}
 	
-	private function setName (pString:String):Void {
-		text_name.text = pString;
-	}
-	
-	private function setPrice (pInt:Int):Void {
-		text_price.text = Std.string(pInt);
-	}
-	
 	override private function _click (pEvent:EventTarget=null):Void {
-		super._click(pEvent);
-		UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
-		ConfirmBuyBuilding.getInstance().init(buildingAssetName);
 	}
 	
 	override public function destroy():Void {
-		//removeListener(MouseEventType.CLICK, onClick);
-		if (parent != null)
-			parent.removeChild(this);
 		super.destroy();
 	}
 	

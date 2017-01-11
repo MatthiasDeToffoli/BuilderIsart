@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.shop;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -19,28 +20,29 @@ class ShopCaroussel extends SmartComponent {
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
 	private var buildingNameList(default, never):Array<String> = [ // todo : c'est bugué ...
-		AssetName.BUILDING_HEAVEN_HOUSE,
-		AssetName.BUILDING_HELL_HOUSE,
-		AssetName.BUILDING_HELL_BUILD_1,
-		AssetName.BUILDING_HELL_BUILD_2,
+		AssetName.BUILDING_HEAVEN_HOUSE,//1
+		AssetName.BUILDING_HELL_HOUSE,//1
+		AssetName.BUILDING_HELL_BUILD_1,//2
+		AssetName.BUILDING_HEAVEN_BUILD_1,//2
 		
-		AssetName.BUILDING_HEAVEN_BRIDGE,
-		AssetName.BUILDING_HEAVEN_BUILD_1,
-		AssetName.BUILDING_HEAVEN_BUILD_2,
-		AssetName.LUMBERMIL_LEVEL1,
-		AssetName.DECO_HEAVEN_TREE_1,
+		AssetName.LUMBERMIL_LEVEL1,//2
+		AssetName.DECO_HELL_TREE_1,//2
+		AssetName.DECO_HEAVEN_TREE_1,//2
+		AssetName.DECO_HEAVEN_FOUNTAIN,//2
 		
-		AssetName.DECO_HEAVEN_TREE_2,
-		AssetName.DECO_HEAVEN_TREE_3,
-		AssetName.DECO_HEAVEN_FOUNTAIN,
-		AssetName.DECO_HEAVEN_ROCK,
+		AssetName.BUILDING_HELL_BUILD_2,//3
+		AssetName.BUILDING_HEAVEN_BUILD_2,//3
+		AssetName.DECO_HEAVEN_VERTUE,//3
+		AssetName.DECO_HEAVEN_TREE_2,//4
 		
-		AssetName.DECO_HEAVEN_VERTUE,
-		AssetName.DECO_HELL_TREE_1,
-		AssetName.DECO_HELL_TREE_2,
-		AssetName.DECO_HELL_TREE_3,
+		AssetName.DECO_HEAVEN_TREE_3,//4
+		AssetName.DECO_HEAVEN_ROCK,//4
+		AssetName.DECO_HELL_TREE_2,//4
+		AssetName.DECO_HELL_TREE_3,//5
 		
-		AssetName.DECO_HELL_ROCK
+		AssetName.DECO_HELL_ROCK//5
+		
+		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
 
 	private var cards:Array<CarouselCard>;
@@ -167,8 +169,11 @@ class ShopCaroussel extends SmartComponent {
 			
 			if (buildingNameList[j] == null)
 				break;
-			
-			cards[i] = new CarouselCard();
+			if (!UnlockManager.checkIfUnlocked(buildingNameList[j]))
+				cards[i] = new CarousselCardLock();
+			else 
+				cards[i] = new CarousselCardUnlock();
+				
 			cards[i].position = pPositions[i];
 			cards[i].init(buildingNameList[j]); // todo temp
 			addChild(cards[i]);

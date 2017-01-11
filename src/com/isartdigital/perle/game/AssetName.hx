@@ -68,7 +68,7 @@ class AssetName{
 	
 	// Shop caroussel card
 	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
-	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "Item_Locked_1";
+	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
 	
 	// Popin Confirm Buy Building
 	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
