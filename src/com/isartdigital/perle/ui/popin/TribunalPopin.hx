@@ -107,7 +107,7 @@ class TribunalPopin extends SmartPopin
 	
 	private function onShop(){
 		UIManager.getInstance().closeCurrentPopin();	
-		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		UIManager.getInstance().openPopin(ShopPopin.getInstance(ShopTab.Building));
 	}
 	
 	private function onIntern() {

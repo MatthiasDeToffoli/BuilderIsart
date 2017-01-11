@@ -15,7 +15,7 @@ enum ShopBar { Soft; Hard; Marble; Wood; }
 
 /**
  * ...
- * @author ambroise
+ * @author ambroise & alexis
  */
 class ShopPopin extends SmartPopin{
 
@@ -31,12 +31,12 @@ class ShopPopin extends SmartPopin{
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
 	
-	public static function getInstance (): ShopPopin {
-		if (instance == null) instance = new ShopPopin();
+	public static function getInstance (pTab:ShopTab): ShopPopin {
+		if (instance == null) instance = new ShopPopin(pTab);
 		return instance;
 	}	
 	
-	private function new() {
+	private function new(pTab:ShopTab) {
 		modal = false;
 		super(AssetName.POPIN_SHOP);
 		
@@ -58,15 +58,16 @@ class ShopPopin extends SmartPopin{
 		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
 		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
 		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
-			
+		tabs[ShopTab.Building].on(MouseEventType.CLICK, onClickOpenBuldings);
+		tabs[ShopTab.Deco].on(MouseEventType.CLICK, onClickOpenDecorations);
+		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
 		btnInterns.on(MouseEventType.CLICK, onClickInterns);
 		
-		caroussel = new ShopCaroussel();
-		caroussel.init(carousselPos);
-		addChild(caroussel);
-		caroussel.start();
+		
+		ShopCaroussel.cardsToShow = [];
+		checkOfOngletToOpen(pTab);
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
 		
@@ -75,12 +76,39 @@ class ShopPopin extends SmartPopin{
 		// screen achat etdescription
 	}
 	
+	private function checkOfOngletToOpen(pTab:ShopTab):Void {
+		switch(pTab.getName()) {
+			case "Building" : onClickOpenBuldings();
+			case "Deco" : onClickOpenDecorations();
+			/*case "Interns" : onClickOpenBuldings();
+			case "Resources" : onClickOpenBuldings();
+			case "Currencies" : onClickOpenBuldings();*/
+		}
+	}
+	
+	private function addCaroussel():Void {
+		caroussel = new ShopCaroussel();
+		caroussel.init(carousselPos);
+		addChild(caroussel);
+		caroussel.start();
+	}
+	
 	private function initCarousselPos (pAssetName:String):Void {
 		carousselSpawner = cast(SmartCheck.getChildByName(this, pAssetName), UISprite);
 		carousselPos = new Point();
 		carousselPos.copy(carousselSpawner.position);
 		removeChild(carousselSpawner);
 		carousselSpawner.destroy();
+	}
+	
+	private function onClickOpenBuldings() {
+		ShopCaroussel.cardsToShow = ShopCaroussel.buildingNameList;
+		addCaroussel();
+	}
+	
+	private function onClickOpenDecorations() {
+		ShopCaroussel.cardsToShow = ShopCaroussel.decoNameList;
+		addCaroussel();
 	}
 	
 	private function onClickExit ():Void {

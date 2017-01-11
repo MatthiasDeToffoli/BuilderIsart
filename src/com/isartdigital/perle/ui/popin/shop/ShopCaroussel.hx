@@ -19,20 +19,24 @@ class ShopCaroussel extends SmartComponent {
 	
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
-	private var buildingNameList(default, never):Array<String> = [ // todo : c'est bugué ...
+	public static var buildingNameList(default, never):Array<String> = [ // todo : c'est bugué ...
 		AssetName.BUILDING_HEAVEN_HOUSE,//1
 		AssetName.BUILDING_HELL_HOUSE,//1
 		AssetName.BUILDING_HELL_BUILD_1,//2
-		AssetName.BUILDING_HEAVEN_BUILD_1,//2
+		AssetName.BUILDING_HEAVEN_BUILD_2,//2
 		
 		AssetName.LUMBERMIL_LEVEL1,//2
+		AssetName.BUILDING_HELL_BUILD_2,//3
+		AssetName.BUILDING_HEAVEN_BUILD_1,//3
+		AssetName.DECO_HEAVEN_VERTUE,//3
+		
+		//AssetName.BUILDING_HEAVEN_BRIDGE,
+	];
+	
+	public static var decoNameList(default, never):Array<String> = [ // todo : c'est bugué ...
 		AssetName.DECO_HELL_TREE_1,//2
 		AssetName.DECO_HEAVEN_TREE_1,//2
 		AssetName.DECO_HEAVEN_FOUNTAIN,//2
-		
-		AssetName.BUILDING_HELL_BUILD_2,//3
-		AssetName.BUILDING_HEAVEN_BUILD_2,//3
-		AssetName.DECO_HEAVEN_VERTUE,//3
 		AssetName.DECO_HEAVEN_TREE_2,//4
 		
 		AssetName.DECO_HEAVEN_TREE_3,//4
@@ -45,6 +49,7 @@ class ShopCaroussel extends SmartComponent {
 		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
 
+	public static var cardsToShow:Array<String>;
 	private var cards:Array<CarouselCard>;
 	
 	private var tempArrowRight:SmartButton;
@@ -53,12 +58,11 @@ class ShopCaroussel extends SmartComponent {
 	private var maxCardsVisible:Int;
 	private var cardsPositions:Array<Point>;
 	private var buildingListIndex:Int = 0;
-
+	
 	// used in UIBuilder.hx, Singleton ou pas ? nom plus précis, comme carousselBuilding etc
 	// todo réutiliser pour d'autre éléments type shoCaroussel ?
 	public function new() { 	
 		super(AssetName.SHOP_CAROUSSEL_BUILDING); // todo:  temp ? ou change classNAme
-		
 		cards = new Array<CarouselCard>();
 		cardsPositions = [];
 		
@@ -77,7 +81,7 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function scrollNext ():Void {
-		if ((buildingListIndex + maxCardsVisible) >= buildingNameList.length)
+		if ((buildingListIndex + maxCardsVisible) >= cardsToShow.length)
 			buildingListIndex = 0;
 		else
 			buildingListIndex += maxCardsVisible;
@@ -87,7 +91,7 @@ class ShopCaroussel extends SmartComponent {
 	
 	public function scrollPrecedent ():Void {
 		if ((buildingListIndex - maxCardsVisible) < 0)
-			buildingListIndex = buildingNameList.length - buildingNameList.length % maxCardsVisible;
+			buildingListIndex = cardsToShow.length - cardsToShow.length % maxCardsVisible;
 		else
 			buildingListIndex -= maxCardsVisible;
 		
@@ -167,15 +171,15 @@ class ShopCaroussel extends SmartComponent {
 		for (i in 0...pPositions.length) {
 			var j:Int = i + buildingListIndex;
 			
-			if (buildingNameList[j] == null)
+			if (cardsToShow[j] == null)
 				break;
-			if (!UnlockManager.checkIfUnlocked(buildingNameList[j]))
+			if (!UnlockManager.checkIfUnlocked(cardsToShow[j]))
 				cards[i] = new CarousselCardLock();
 			else 
 				cards[i] = new CarousselCardUnlock();
 				
 			cards[i].position = pPositions[i];
-			cards[i].init(buildingNameList[j]); // todo temp
+			cards[i].init(cardsToShow[j]); // todo temp
 			addChild(cards[i]);
 			cards[i].start();
 		}

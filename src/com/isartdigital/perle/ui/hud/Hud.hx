@@ -158,7 +158,7 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void {
-		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		UIManager.getInstance().openPopin(ShopPopin.getInstance(ShopTab.Building));
 		hide();
 	}
 	
