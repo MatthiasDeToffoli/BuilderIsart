@@ -27,7 +27,8 @@ class PoolingManager {
 	];
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
-		"House" => "Building",
+		//"House" => "Building",
+		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
 		"Trees" => "Building",
 		"Factory" => "Building",
 		"Villa" => "Building",
@@ -43,7 +44,8 @@ class PoolingManager {
 		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven", // todo : c'est bien des building ??
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_3 => "DecoHeaven",
-		"HeavenBuild2" => "HouseHeaven",
+		//"HeavenBuild2" => "HouseHeaven",
+	    AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
 		AssetName.DECO_HEAVEN_ROCK => "Building",
 		AssetName.DECO_HEAVEN_VERTUE => "Building",
@@ -53,12 +55,16 @@ class PoolingManager {
 		AssetName.DECO_HELL_ROCK => "Building",
 		
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
-		AssetName.BUILDING_HEAVEN_BUILD_1 => "Building",
-		AssetName.BUILDING_HEAVEN_BUILD_2 => "Building",
+		//AssetName.BUILDING_HEAVEN_BUILD_1 => "Building",
+		//AssetName.BUILDING_HEAVEN_BUILD_2 => "Building",
 		AssetName.LUMBERMIL_LEVEL1 => "Lumbermill",
 		AssetName.LUMBERMIL_LEVEL2 => "Lumbermill",
-		AssetName.BUILDING_HELL_BUILD_1 => "Building",
-		AssetName.BUILDING_HELL_BUILD_2 => "Building",
+		//AssetName.BUILDING_HELL_BUILD_1 => "Building",
+		//AssetName.BUILDING_HELL_BUILD_2 => "Building",
+		AssetName.BUILDING_HEAVEN_BUILD_1 => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_BUILD_2 => "HouseHeaven",
+		AssetName.BUILDING_HELL_BUILD_1 => "HouseHell",
+		AssetName.BUILDING_HELL_BUILD_2 => "HouseHell",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon

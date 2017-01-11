@@ -106,22 +106,6 @@ class VBuilding extends VTile {
 		setState(VBuildingState.isBuilt);
 	}
 	
-	public function onClickUpgrade():Void{
-		desactivate();
-		//@Todo: revoir quand Ambroise aura fait la base de données
-		trace(BuildingHud.virtualBuilding.tileDesc);
-		
-		switch BuildingHud.virtualBuilding.tileDesc.assetName {
-			case AssetName.BUILDING_HELL_HOUSE: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
-			case AssetName.BUILDING_HELL_BUILD_1: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_2;
-			case AssetName.BUILDING_HEAVEN_HOUSE: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HEAVEN_BUILD_1;
-			case AssetName.BUILDING_HEAVEN_BUILD_1: BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HEAVEN_BUILD_2;
-		}
-		//BuildingHud.virtualBuilding.tileDesc.assetName = AssetName.BUILDING_HELL_BUILD_1;
-		activate();
-		SaveManager.save();
-	}
-	
 	public function onClickConfirm ():Void {
 		Phantom.onClickConfirmMove();
 	}

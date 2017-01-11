@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.Lumbermill;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
+import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
@@ -337,6 +338,7 @@ class Main extends EventEmitter
 			VDecoHell,
 			VUrbanHouse,
 			VLumbermill,
+			HouseHell,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.events.MouseEventType;
@@ -63,8 +64,10 @@ class InfoBuilding extends SmartPopin {
 	}
 	
 	private function onClickUpgrade ():Void {
-		trace("upgrade");
-		BuildingHud.virtualBuilding.onClickUpgrade();
+		var lAssetName:String = BuildingHud.virtualBuilding.tileDesc.assetName;
+		var lBuildingUpgrade:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
+		
+		lBuildingUpgrade.onClickUpgrade(BuildingHud.virtualBuilding);
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	/**

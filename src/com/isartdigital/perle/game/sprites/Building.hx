@@ -31,11 +31,11 @@ class Building extends Tile implements IZSortable
 {
 	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO faire un json
 		"Factory" => {width:3, height:3, footprint : 1},
-		"House" => {width:2, height:2, footprint : 1},
+		//"House" => {width:2, height:2, footprint : 1},
 		"Trees" => {width:1, height:1, footprint : 0},
 		"Villa" => {width:3, height:3, footprint : 1},
 		AssetName.BUILDING_PURGATORY => {width:3, height:3, footprint : 1},
-		"HeavenBuild2" => {width:3, height:3, footprint : 1},
+		//"HeavenBuild2" => {width:3, height:3, footprint : 1},
 		AssetName.DECO_HEAVEN_TREE_1 => {width:1, height:1, footprint : 0},
 		AssetName.DECO_HEAVEN_TREE_2 => {width:1, height:1, footprint : 0},
 		AssetName.DECO_HEAVEN_TREE_3 => {width:1, height:1, footprint : 0},
@@ -48,11 +48,13 @@ class Building extends Tile implements IZSortable
 		AssetName.DECO_HELL_TREE_3 => {width:1, height:1, footprint : 0},
 		AssetName.DECO_HELL_ROCK => { width:1, height:1, footprint : 0 },
 		
+		AssetName.BUILDING_HELL_HOUSE => {width:3, height:3, footprint : 1},
 		AssetName.BUILDING_HELL_BUILD_1 => {width:3, height:3, footprint : 1},
 		AssetName.BUILDING_HELL_BUILD_2 => { width:3, height:3, footprint : 1 },
 		
 		
 		AssetName.BUILDING_HEAVEN_BRIDGE => { width:1, height:1, footprint : 0 },
+		AssetName.BUILDING_HEAVEN_HOUSE => { width:2, height:2, footprint : 1 },
 		AssetName.BUILDING_HEAVEN_BUILD_1 => { width:2, height:2, footprint : 1 },
 		AssetName.BUILDING_HEAVEN_BUILD_2 => { width:2, height:2, footprint : 1 },
 		AssetName.LUMBERMIL_LEVEL1 => { width:3, height:3, footprint : 1 },

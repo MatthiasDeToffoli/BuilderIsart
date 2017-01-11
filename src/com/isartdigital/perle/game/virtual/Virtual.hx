@@ -17,9 +17,7 @@ interface HasVirtual {
 class Virtual {
 	
 	public static var ASSETNAME_TO_VCLASS(default, never):Map<String, String> = [
-		"House" => "VHouseHell",	
 		AssetName.BUILDING_PURGATORY => "VTribunal",
-		"HeavenBuild2" => "VHouseHeaven",
 		AssetName.DECO_HEAVEN_TREE_1 => "VDecoHeaven", // todo : c'est bien des building ??
 		AssetName.DECO_HEAVEN_TREE_2 => "VDecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_3 => "VDecoHeaven",
@@ -32,18 +30,18 @@ class Virtual {
 		AssetName.DECO_HELL_ROCK => "VDecoHell",
 		
 		AssetName.BUILDING_HEAVEN_BRIDGE => "VUrbanHouse",
+		AssetName.BUILDING_HEAVEN_HOUSE => "VHouseHeaven",
 		AssetName.BUILDING_HEAVEN_BUILD_1 => "VHouseHeaven",
 		AssetName.BUILDING_HEAVEN_BUILD_2 => "VHouseHeaven",
 		AssetName.LUMBERMIL_LEVEL1 => "VLumbermill",
 		AssetName.LUMBERMIL_LEVEL2 => "VLumbermill",
+		AssetName.BUILDING_HELL_HOUSE => "VHouseHell",
 		AssetName.BUILDING_HELL_BUILD_1 => "VHouseHell",
 		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
 	];
 	
-	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
-		"House" => Alignment.hell,	
+	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [	
 		AssetName.BUILDING_PURGATORY => Alignment.neutral,
-		"HeavenBuild2" => Alignment.heaven,
 		AssetName.DECO_HEAVEN_TREE_1 => Alignment.heaven, // todo : c'est bien des building ??
 		AssetName.DECO_HEAVEN_TREE_2 => Alignment.heaven,
 		AssetName.DECO_HEAVEN_TREE_3 => Alignment.heaven,
@@ -56,10 +54,12 @@ class Virtual {
 		AssetName.DECO_HELL_ROCK => Alignment.hell,
 		
 		AssetName.BUILDING_HEAVEN_BRIDGE => Alignment.neutral,
+		AssetName.BUILDING_HEAVEN_HOUSE => Alignment.heaven,
 		AssetName.BUILDING_HEAVEN_BUILD_1 => Alignment.heaven,
 		AssetName.BUILDING_HEAVEN_BUILD_2 => Alignment.heaven,
 		AssetName.LUMBERMIL_LEVEL1 => Alignment.heaven,
 		AssetName.LUMBERMIL_LEVEL2 => Alignment.heaven,
+		AssetName.BUILDING_HELL_HOUSE => Alignment.hell,
 		AssetName.BUILDING_HELL_BUILD_1 => Alignment.hell,
 		AssetName.BUILDING_HELL_BUILD_2 => Alignment.hell,
 	];
