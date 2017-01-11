@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.iso;
 import com.isartdigital.perle.game.sprites.Tile;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.CollisionManager;
 import com.isartdigital.utils.game.StateGraphic;
@@ -142,7 +143,7 @@ class IsoManager
 		}
 		
 		if (pTiles.length != lTilesDrawn.length)
-			throw("Probable error whit colMax/colMin/rowMax/rowMin assignment !");
+			Debug.error("Probable error whit colMax/colMin/rowMax/rowMin assignment !");
 			
 		return lTilesDrawn;
 	};
