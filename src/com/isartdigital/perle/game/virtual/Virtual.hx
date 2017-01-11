@@ -34,6 +34,8 @@ class Virtual {
 		AssetName.BUILDING_HEAVEN_BRIDGE => "VUrbanHouse",
 		AssetName.BUILDING_HEAVEN_BUILD_1 => "VHouseHeaven",
 		AssetName.BUILDING_HEAVEN_BUILD_2 => "VHouseHeaven",
+		AssetName.LUMBERMIL_LEVEL1 => "VLumbermill",
+		AssetName.LUMBERMIL_LEVEL2 => "VLumbermill",
 		AssetName.BUILDING_HELL_BUILD_1 => "VHouseHell",
 		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
 	];
@@ -56,6 +58,8 @@ class Virtual {
 		AssetName.BUILDING_HEAVEN_BRIDGE => Alignment.neutral,
 		AssetName.BUILDING_HEAVEN_BUILD_1 => Alignment.heaven,
 		AssetName.BUILDING_HEAVEN_BUILD_2 => Alignment.heaven,
+		AssetName.LUMBERMIL_LEVEL1 => Alignment.heaven,
+		AssetName.LUMBERMIL_LEVEL2 => Alignment.heaven,
 		AssetName.BUILDING_HELL_BUILD_1 => Alignment.hell,
 		AssetName.BUILDING_HELL_BUILD_2 => Alignment.hell,
 	];

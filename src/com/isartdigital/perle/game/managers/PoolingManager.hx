@@ -55,6 +55,8 @@ class PoolingManager {
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
 		AssetName.BUILDING_HEAVEN_BUILD_1 => "Building",
 		AssetName.BUILDING_HEAVEN_BUILD_2 => "Building",
+		AssetName.LUMBERMIL_LEVEL1 => "Lumbermill",
+		AssetName.LUMBERMIL_LEVEL2 => "Lumbermill",
 		AssetName.BUILDING_HELL_BUILD_1 => "Building",
 		AssetName.BUILDING_HELL_BUILD_2 => "Building",
 	];

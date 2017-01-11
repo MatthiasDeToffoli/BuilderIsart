@@ -27,6 +27,7 @@ class ShopCaroussel extends SmartComponent {
 		AssetName.BUILDING_HEAVEN_BRIDGE,
 		AssetName.BUILDING_HEAVEN_BUILD_1,
 		AssetName.BUILDING_HEAVEN_BUILD_2,
+		AssetName.LUMBERMIL_LEVEL1,
 		AssetName.DECO_HEAVEN_TREE_1,
 		
 		AssetName.DECO_HEAVEN_TREE_2,

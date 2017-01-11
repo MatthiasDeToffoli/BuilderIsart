@@ -55,6 +55,7 @@ class Building extends Tile implements IZSortable
 		AssetName.BUILDING_HEAVEN_BRIDGE => { width:1, height:1, footprint : 0 },
 		AssetName.BUILDING_HEAVEN_BUILD_1 => { width:2, height:2, footprint : 1 },
 		AssetName.BUILDING_HEAVEN_BUILD_2 => { width:2, height:2, footprint : 1 },
+		AssetName.LUMBERMIL_LEVEL1 => { width:3, height:3, footprint : 1 },
 		
 		
 	];

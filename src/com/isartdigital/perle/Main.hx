@@ -7,12 +7,14 @@ import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
+import com.isartdigital.perle.game.sprites.building.heaven.Lumbermill;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VLumbermill;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
@@ -180,13 +182,18 @@ class Main extends EventEmitter
 		//lLoader.addAssetFile("assets.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region_Hell/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region_Heaven/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Styx01/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Styx02/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Bat_Tribunal/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Enfer_Decors/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Paradis_Decors/library.json");
+		
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Bat_Tribunal/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenBuildingPlaceholders/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenLumberMillPlaceholders/library.json");
+		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBuildingPlaceholders/library.json");
 		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
@@ -321,13 +328,15 @@ class Main extends EventEmitter
 			Tribunal,
 			DecoHeaven,
 			DecoHell,
+			HouseHeaven,
+			Lumbermill,
 			VHouseHeaven,
 			VHouseHell,
 			VDecoHeaven,
 			VVirtuesBuilding,
 			VDecoHell,
 			VUrbanHouse,
-			HouseHeaven,
+			VLumbermill,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;
