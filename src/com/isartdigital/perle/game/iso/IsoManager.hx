@@ -1,14 +1,10 @@
 package com.isartdigital.perle.game.iso;
-import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.CollisionManager;
 import com.isartdigital.utils.game.StateGraphic;
-import js.Lib;
-import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
-import pixi.core.math.shapes.Rectangle;
 
 /**
  * Manager Iso
@@ -143,7 +139,7 @@ class IsoManager
 		}
 		
 		if (pTiles.length != lTilesDrawn.length)
-			Debug.error("Probable error whit colMax/colMin/rowMax/rowMin assignment !");
+			Debug.error("Probable error whit colMax/colMin/rowMax/rowMin assignment ! " + "entering container length : " + pTiles.length + " . returning container length : " + lTilesDrawn.length);
 			
 		return lTilesDrawn;
 	};

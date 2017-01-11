@@ -31,6 +31,7 @@ import com.isartdigital.utils.game.StateGraphic;
 import com.isartdigital.utils.loader.GameLoader;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
+import haxe.Json;
 import haxe.Timer;
 import js.Browser;
 import pixi.core.display.Container;
@@ -47,12 +48,13 @@ import pixi.loaders.Loader;
 class Main extends EventEmitter
 {
 	
-	public static inline var JSON_FOLDER:String = "json/";
+	private static inline var JSON_FOLDER:String = "json/";
+	private static inline var JSON_EXTENSION:String = ".json";
 	public static inline var DIALOGUE_FTUE_JSON_NAME:String = JSON_FOLDER + "dialogue_ftue";
 	public static inline var EXPERIENCE_JSON_NAME:String = JSON_FOLDER + "experience";
 	public static inline var UNLOCK_ITEM_JSON_NAME:String = JSON_FOLDER + "item_to_unlock";
-	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price";
-	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config";
+	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price" + JSON_EXTENSION;
+	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config" + JSON_EXTENSION;
 	
 	private static inline var FACEBOOK_APP_ID = "1764871347166484"; // todo : c'est bien l'app ID ? oui/non ?
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
@@ -233,10 +235,12 @@ class Main extends EventEmitter
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
 		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
 		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
-		lLoader.addTxtFile(GAME_CONFIG + ".json");
+		
+		// gameconfig
+		lLoader.addTxtFile(GAME_CONFIG);
 		
 		// BuyManager price
-		lLoader.addTxtFile(PRICE_JSON_NAME + ".json");
+		lLoader.addTxtFile(PRICE_JSON_NAME);
 		
 		// affiche l'écran de préchargement
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen

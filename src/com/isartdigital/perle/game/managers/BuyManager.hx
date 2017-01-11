@@ -76,7 +76,7 @@ class BuyManager {
 		//untyped var lTest = Browser.window.JSON.parse(lString);
 		//untyped trace(lTest.assets["House"]);
 		
-		var lJson:Dynamic = GameLoader.getContent(Main.PRICE_JSON_NAME + ".json");
+		var lJson:Dynamic = GameLoader.getContent(Main.PRICE_JSON_NAME);
 		
 		// ### get fields like refund taht don't need reflect ###
 		// ### and json par, stringify to deepCopy or it will modify lJson ###
