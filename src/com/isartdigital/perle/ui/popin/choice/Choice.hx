@@ -4,11 +4,13 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TextGenerator;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -18,6 +20,10 @@ import pixi.interaction.EventTarget;
 
 enum ChoiceType { HEAVEN; HELL; NONE; }
 enum ChoiceGeneratedText {DESC; HELL; HEAVEN; }
+
+typedef ChoiceDescription = {
+	
+}
 
 /**
  * Choice popin
@@ -48,7 +54,7 @@ class Choice extends SmartPopin
 	
 	//private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
 	
-	//intern state properties
+	// impact on intern properties
 	private var internStress:Int;
 	private var internSpeed:Int;
 	private var internEfficiency:Int;
@@ -60,6 +66,11 @@ class Choice extends SmartPopin
 	
 	private static var isOpen:Bool;
 	public static var eChoiceDone:EventEmitter; //Todo: static ou propriété d'instance?
+	
+	private var internStats:SmartComponent;
+	
+	// temporarily intern
+	private var testIntern:InternDescription;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -81,6 +92,18 @@ class Choice extends SmartPopin
 		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
 		isOpen = true;
+		
+		testIntern = {
+			id : 2,
+			name : "Angel A. Merkhell",
+			aligment :  "angel",
+			quest : null,
+			price : 2000,
+			stress: 0,
+			stressLimit: 10,
+			speed: 5,
+			efficiency: 0.1
+		};
 		
 		addListeners();
 	}
@@ -113,6 +136,8 @@ class Choice extends SmartPopin
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
 		btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
+		
+		internStats = cast(getChildByName("_event_interStats"), SmartComponent);
 	}
 	
 	/**
@@ -134,6 +159,11 @@ class Choice extends SmartPopin
 		btnClose.on(MouseEventType.CLICK, onClose);
 		choiceCard.interactive = true;
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+	}
+	
+	private function showInternStats(internDesc:InternDescription):Void
+	{
+		
 	}
 	
 	private function shareEvent():Void

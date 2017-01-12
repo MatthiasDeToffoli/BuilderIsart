@@ -5,13 +5,14 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
-import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import pixi.core.display.Container;
 
 enum VBuildingState { isBuilt; isBuilding; isMoving; }
@@ -30,6 +31,7 @@ enum VBuildingState { isBuilt; isBuilding; isMoving; }
 class VBuilding extends VTile {
 	
 	private var myGenerator:Generator;
+	private var timeDesc:TimeDescription;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	
 	/**
@@ -39,7 +41,7 @@ class VBuilding extends VTile {
 	
 	private var myVContextualHud:VHudContextual;
 	
-	public var currentState(default, null):VBuildingState = VBuildingState.isBuilt; // todo : temporaire
+	public var currentState:VBuildingState = VBuildingState.isBuilding; // todo : temporaire
 	
 	public var alignementBuilding:Alignment;
 	
@@ -50,6 +52,7 @@ class VBuilding extends VTile {
 		addGenerator();
 		addHudContextual();
 		
+		TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 	}
 	
 	/**
@@ -58,6 +61,15 @@ class VBuilding extends VTile {
 	private function setHaveRecolter():Void{
 		haveRecolter = true;
 	}
+	
+	public function setTimeDesc(pTimeDesc:TimeDescription):Void {
+		timeDesc = pTimeDesc;
+	}
+	
+	public function getTimeDesc():TimeDescription {
+		return timeDesc;
+	}
+	
 	override public function activate ():Void {
 		super.activate();
 		
@@ -195,6 +207,10 @@ class VBuilding extends VTile {
 	private function addHudContextual ():Void {
 		myVContextualHud = new VHudContextual();
 		myVContextualHud.init(this);
+	}
+	
+	private function endOfConstruction(pElement:TimeDescription):Void {
+		setState(VBuildingState.isBuilt);
 	}
 	
 	override public function destroy():Void {

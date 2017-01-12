@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building.RegionMap;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -80,7 +81,6 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmBuild ():Void {
-		
 		
 		instance.confirmBuild();
 	}
@@ -250,21 +250,27 @@ class Phantom extends Building {
 	private function newBuild():Void {
 		
 		if (BuyManager.buy(assetName)) {
+			var newId = IdManager.newId();
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
 				assetName:assetName,
-				id:IdManager.newId(),
+				id:newId,
 				regionX:regionMap.region.x,
 				regionY:regionMap.region.y,
 				mapX:regionMap.map.x,
 				mapY:regionMap.map.y
 			};
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
+			
+			// not definitive // todo => tTime + "duration" (duration on json price or other method ?)
+			var tTime:Float = Date.now().getTime();
+			vBuilding.setTimeDesc({ refTile:newId, end: tTime + 5000, progress: tTime});
+			TimeManager.addConstructionTimer(vBuilding.getTimeDesc());
+			
 			vBuilding.activate();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
 			vBuilding.addExp();
 			destroy();
-			
 			
 			applyChange();
 			
@@ -437,8 +443,7 @@ class Phantom extends Building {
 		Debug.error("tentative de pose de bâtiment, mais currencie insuffisante");
 		trace("comment ce-ci peut-il arriver ?");
 	}
-	
-	
+
 	
 	private function addPhantomFilter():Void {
 		alpha = FILTER_OPACITY;

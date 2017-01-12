@@ -1,11 +1,11 @@
 package com.isartdigital.perle.game.managers;
 
+import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
-import haxe.Timer;
 import eventemitter3.EventEmitter;
+import haxe.Timer;
 
 
 /*interface ZTimeBased 
@@ -45,27 +45,33 @@ class TimeManager {
 	public static inline var EVENT_RESOURCE_TICK:String = "TimeManager_Resource_Tick";
 	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
+	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
 	
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
 	private static inline var TIME_LOOP_DELAY:Int = 5000;
+	private static inline var TIME_LOOO_CONSTRUCTION_DELAY:Int = 1000;
 	
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
+	public static var eConstruct:EventEmitter;
 	
 	public static var gameStartTime(default, null):Float;
 	public static var lastKnowTime(default, null):Float;
 	
 	public static var listResource(default, null):Array<TimeElementResource>;
 	public static var listQuest(default, null):Array<TimeQuestDescription>;
+	public static var listConstruction(default, null):Array<TimeDescription>;
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
 		eTimeQuest = new EventEmitter();
+		eConstruct = new EventEmitter();
 		listResource = new Array<TimeElementResource>();
 		listQuest = new Array<TimeQuestDescription>();
+		listConstruction = new Array<TimeDescription>();
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -151,6 +157,10 @@ class TimeManager {
 			}
 	}
 	
+	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
+		listConstruction.push(pBuildingTimer);
+	}
+	
 	public static function removeTimeResource(pId:Int):Void{
 		var lTimeElement:TimeElementResource;
 		
@@ -202,6 +212,23 @@ class TimeManager {
 	}
 	
 	/**
+	 * Find the corresponding construction time description whit an pId
+	 * @param	pId
+	 * @return	the required TimeDescription
+	 */
+	public static function getTimeDescription (pid:Int):TimeDescription {
+		var llength:Int = listConstruction.length;
+		
+		for (i in 0...llength) 
+		{
+			if (pid == listConstruction[i].refTile)
+				return listConstruction[i];
+		}
+		
+		return null;
+	}
+	
+	/**
 	 * Time is running !
 	 * Call this function at the end of loading.
 	 */
@@ -217,6 +244,10 @@ class TimeManager {
 		//timeLoop();  // non car il veut save du coup, mais save pas encore créer si whitoutSave
 		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY); // todo : variable locale ? sûr ?
 		lTime.run = timeLoop;
+		
+		// faster timeLoop for constrution // not necessary ?
+		var lTimeConstruction:Timer = Timer.delay(timeLoopConstruction, TIME_LOOO_CONSTRUCTION_DELAY); // todo : variable locale ? sûr ?
+		lTimeConstruction.run = timeLoopConstruction;
 	}
 	
 	/**
@@ -260,6 +291,16 @@ class TimeManager {
 		for (i in 0...lLengthQuest) {
 			//trace("length time loop " + lLengthQuest);
 			updateQuest(listQuest[i], lElapsedTime);
+		}		
+	}
+	
+	private static function timeLoopConstruction():Void {
+		var lTimeNow:Float = Date.now().getTime();
+		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow);
+		var lLengthConstruct:Int = listConstruction.length;
+		
+		for (i in 0...lLengthConstruct) {
+			updateConstruction(listConstruction[i], lElapsedTime, i);
 		}
 	}
 	
@@ -312,6 +353,22 @@ class TimeManager {
 		}
 	}
 	
+	/**
+	 * Stop at step until the player do the quest and go to the next step.
+	 * @param	pElement
+	 * @param	pElapsedTime
+	 * @param	pIndex
+	 */
+	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pIndex:Int ):Void {
+		pElement.progress = pElement.progress + pElapsedTime;
+		
+		if (pElement.progress >= pElement.end) {
+			trace("construction : id => " + pElement.refTile + " terminée");
+			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
+			listConstruction.splice(pIndex ,1);
+		}
+	}
+	
 	public static function destroyTimeElement (pId:Int):Void {
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
@@ -329,13 +386,6 @@ class TimeManager {
 				break;
 			}
 		}
-		/*lLength = listConstruction; // va arriver
-		for (i in 0...lLength) {
-			if (pId == listConstruction[i].desc.refTile){
-				listConstruction.splice(i, 1);
-				break;
-			}
-		}*/
 	}
 	
 	
