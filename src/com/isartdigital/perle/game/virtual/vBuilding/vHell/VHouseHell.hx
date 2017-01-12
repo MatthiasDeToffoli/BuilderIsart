@@ -19,7 +19,7 @@ class VHouseHell extends VHouse
 		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_BUILD_1, AssetName.BUILDING_HELL_BUILD_2];
 	}
 	
-	override public function onClickUpgrade(pBuilding:VBuilding):Void 
+	/*override public function onClickUpgrade(pBuilding:VBuilding):Void 
 	{
 		super.onClickUpgrade(pBuilding);
 		var lAssetName = pBuilding.tileDesc.assetName;
@@ -33,6 +33,6 @@ class VHouseHell extends VHouse
 		
 		activate();
 		SaveManager.save();
-	}
+	}*/
 	
 }

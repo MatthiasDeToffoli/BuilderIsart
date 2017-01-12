@@ -80,8 +80,9 @@ class InfoBuilding extends SmartPopin {
 		var lAssetName:String = BuildingHud.virtualBuilding.tileDesc.assetName;
 		var lBuildingUpgrade:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
 		
+		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin level up appear
 		lBuildingUpgrade.onClickUpgrade(BuildingHud.virtualBuilding);
-		UIManager.getInstance().closeCurrentPopin();
+		
 	}
 	/**
 	 * détruit l'instance unique et met sa référence interne à null

@@ -246,7 +246,7 @@ class Phantom extends Building {
 	
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
-		addExp();
+		
 		if (BuyManager.buy(assetName)) {
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
@@ -261,16 +261,19 @@ class Phantom extends Building {
 			vBuilding.activate();
 			trace("test après test");
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
+			vBuilding.addExp();
 			destroy();
 			
 			
 			applyChange();
+			
 		} else {
 			displayCantBuy();
 		}
+		
 	}
 	
-	private function addExp():Void {
+	/*private function addExp():Void {
 		//todo pas une valeur en dur : 100
 		if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
@@ -281,7 +284,7 @@ class Phantom extends Building {
 		else if (alignementBuilding == Alignment.heaven)
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 			
-	}
+	}*/
 	
 	private function applyChange ():Void {
 		SaveManager.save();

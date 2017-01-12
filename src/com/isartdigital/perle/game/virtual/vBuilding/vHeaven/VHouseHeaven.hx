@@ -21,7 +21,7 @@ class VHouseHeaven extends VHouse
 	override public function onClickUpgrade(pBuilding:VBuilding):Void 
 	{
 		super.onClickUpgrade(pBuilding);
-		var lAssetName = pBuilding.tileDesc.assetName;
+		/*var lAssetName = pBuilding.tileDesc.assetName;
 		
 		for (i in 0...UpgradeAssetsList.length){
 			if (lAssetName == UpgradeAssetsList[i] && lAssetName != UpgradeAssetsList[UpgradeAssetsList.length - 1]){
@@ -31,7 +31,7 @@ class VHouseHeaven extends VHouse
 		}
 		
 		activate();
-		SaveManager.save();
+		SaveManager.save();*/
 	}
 	
 }

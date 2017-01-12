@@ -147,6 +147,20 @@ class VBuilding extends VTile {
 		}
 	}
 	
+	
+	public function addExp():Void {
+		//todo pas une valeur en dur : 100
+		if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+		}
+		else if (alignementBuilding == Alignment.hell)
+			ResourcesManager.takeXp(100, GeneratorType.badXp);
+		else if (alignementBuilding == Alignment.heaven)
+			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+			
+	}
+	
 	/**
 	 * Will remove graphic until currentState != isMoving
 	 */
