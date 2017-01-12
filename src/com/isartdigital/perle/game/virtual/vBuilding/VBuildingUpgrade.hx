@@ -21,4 +21,8 @@ class VBuildingUpgrade extends VBuilding
 	public function onClickUpgrade(pBuilding:VBuilding):Void{
 		desactivate();
 	}
+	
+	public function canUpgrade():Bool {
+		return UpgradeAssetsList.indexOf(tileDesc.assetName) < UpgradeAssetsList.length - 1;
+	}
 }

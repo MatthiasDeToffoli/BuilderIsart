@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.building.VirtuesBuilding;
+import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -46,9 +48,20 @@ class InfoBuilding extends SmartPopin {
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
 		btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		
+		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnSell.on(MouseEventType.CLICK, onClickSell);
-		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+		
+		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
+			var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
+			if (myVBuilding.canUpgrade()){
+				btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+				return;
+			}
+		}
+		
+		btnUpgrade.parent.removeChild(btnUpgrade);
+		btnUpgrade.destroy();
 	}
 	
 	private function onClickExit ():Void {
