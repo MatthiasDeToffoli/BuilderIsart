@@ -115,8 +115,8 @@ class ResourcesManager
 		pMapT[GeneratorType.soulBad] = 0;
 		
 		pMapG[GeneratorType.soft] = new Array<Generator>();
-		pMapT[GeneratorType.soft] = 0;
-		
+		pMapT[GeneratorType.soft] = 1000;
+
 		pMapG[GeneratorType.hard] = new Array<Generator>();
 		pMapT[GeneratorType.hard] = 0;
 		
@@ -148,6 +148,9 @@ class ResourcesManager
 		
 		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesWithTime);
+		
+		//todo : a enlever apres alpha je pense, c'est pour avoir des ressources au debut
+		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[GeneratorType.soft], false, GeneratorType.soft);
 	}
 	
 	/**

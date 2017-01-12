@@ -48,7 +48,7 @@ class GameManager {
 		// plus que des new() ds le main
 		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ServerManager.playerConnexion();
-		GameConfig.awake();
+		//GameConfig.awake();
 		ResourcesManager.awake(); // akways befire all ui init
 		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager

@@ -22,13 +22,13 @@ class ShopCaroussel extends SmartComponent {
 	public static var buildingNameList(default, never):Array<String> = [
 		AssetName.BUILDING_HEAVEN_HOUSE,//1 <== level required
 		AssetName.BUILDING_HELL_HOUSE,//1
-		AssetName.BUILDING_HELL_BUILD_1,//2
-		AssetName.BUILDING_HEAVEN_BUILD_2,//2
-		
+		AssetName.BUILDING_HELL_BUILD_1,//1
 		AssetName.DECO_HEAVEN_VERTUE,//2
+		
 		AssetName.LUMBERMIL_LEVEL1,//2
-		AssetName.BUILDING_HELL_BUILD_2,//3
-		AssetName.BUILDING_HEAVEN_BUILD_1,//3
+		//AssetName.BUILDING_HEAVEN_BUILD_2,//2 <== Jai comenter ces lignes car on ne doit pas acheter les upgrades des batiments
+		//AssetName.BUILDING_HELL_BUILD_2,//3
+		//AssetName.BUILDING_HEAVEN_BUILD_1,//3
 		
 	];
 	

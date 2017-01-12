@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -33,7 +34,9 @@ class CarousselCardUnlock extends CarouselCard
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
 		setName(buildingAssetName);
-		setPrice(Math.floor(Math.random()*2000)); // todo: bon item price par rapprt au json
+		if (!BuyManager.canBuy(pBuildingAssetName))
+			alpha = 0.5;
+		setPrice(BuyManager.checkPrice(pBuildingAssetName)); // todo: bon item price par rapprt au json
 	}
 	
 	override public function start ():Void {
@@ -50,7 +53,9 @@ class CarousselCardUnlock extends CarouselCard
 		text_price.text = Std.string(pInt);
 	}
 	
-	override private function _click (pEvent:EventTarget=null):Void {
+	override private function _click (pEvent:EventTarget = null):Void {
+		if (alpha == 0.5)
+			return;
 		super._click(pEvent);
 		UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
 		ConfirmBuyBuilding.getInstance().init(buildingAssetName);

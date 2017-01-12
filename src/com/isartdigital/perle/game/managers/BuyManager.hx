@@ -62,6 +62,13 @@ class BuyManager {
 			   buyPrice.assets[pAssetName].price;
 	}
 	
+	public static function checkPrice(pAssetName:String):Int {
+		if (!checkAssetName(pAssetName))
+			return 0; // if nothing is json it is FREE \o/
+			
+		return buyPrice.assets[pAssetName].price;
+	}
+	
 	private static function checkAssetName (pAssetName:String):Bool {
 		if (buyPrice.assets[pAssetName] == null) {
 			Debug.error("Assetname : '" + pAssetName + "' doesn't exist in buyprice json !");

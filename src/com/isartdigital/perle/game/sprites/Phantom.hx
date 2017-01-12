@@ -259,7 +259,6 @@ class Phantom extends Building {
 			};
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
 			vBuilding.activate();
-			trace("test après test");
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
 			vBuilding.addExp();
 			destroy();
