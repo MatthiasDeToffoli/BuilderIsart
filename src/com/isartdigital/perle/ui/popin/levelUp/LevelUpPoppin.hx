@@ -20,20 +20,21 @@ import com.isartdigital.utils.ui.smart.UISprite;
 class LevelUpPoppin extends SmartPopin 
 {
 	
-	private var btnNext:SmartButton;
-	private var bgLvl:SmartComponent;
-	private var unlock:SmartComponent;
+	/**
+	 * instance unique de la classe LevelUpPoppin
+	 */
+	private static var instance: LevelUpPoppin;
+	
 	private static var level:TextSprite;
 	private static var typeUnlock:TextSprite;
 	private static var nameUnlock:TextSprite;
 	private static var description:TextSprite;
 	private static var img:UISprite;
 	private static var imgImage:FlumpStateGraphic;
+	private var btnNext:SmartButton;
+	private var bgLvl:SmartComponent;
+	private var unlock:SmartComponent;
 	
-	/**
-	 * instance unique de la classe LevelUpPoppin
-	 */
-	private static var instance: LevelUpPoppin;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -44,16 +45,6 @@ class LevelUpPoppin extends SmartPopin
 		return instance;
 	}
 	
-	/**
-	 * constructeur privé pour éviter qu'une instance soit créée directement
-	 */
-	private function new() 
-	{
-		super(AssetName.LEVELUP_POPPIN);
-		setWireframe();
-		setPopin();
-	}
-	
 	private static function setPopin():Void {
 		level.text = "" + ResourcesManager.getLevel();
 		setImage(UnlockManager.itemUnlockedForPoppin[0][0][1]);
@@ -62,24 +53,6 @@ class LevelUpPoppin extends SmartPopin
 		description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
 		UnlockManager.itemUnlockedForPoppin.splice(0, 1);
-	}
-	
-	/**
-	 * Set all the variables to the wireframe
-	 */
-	private function setWireframe():Void {
-		bgLvl = cast(getChildByName(AssetName.LEVELUP_POPPIN_LEVELBG), SmartComponent);
-		unlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_UNLOCK), SmartComponent);
-		
-		level = cast(SmartCheck.getChildByName(bgLvl, AssetName.LEVELUP_POPPIN_LEVEL), TextSprite);
-		nameUnlock = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_NAME), TextSprite);
-		description = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_DESCRIPTION), TextSprite);
-		typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
-		
-		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
-		
-		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
-		btnNext.on(MouseEventType.CLICK, onClickNext);
 	}
 	
 	private static function setImage (pAssetName:String):Void {
@@ -100,6 +73,34 @@ class LevelUpPoppin extends SmartPopin
 			Hud.getInstance().show();
 			UIManager.getInstance().closeCurrentPopin();
 		}
+	}
+	
+	/**
+	 * constructeur privé pour éviter qu'une instance soit créée directement
+	 */
+	private function new() 
+	{
+		super(AssetName.LEVELUP_POPPIN);
+		setWireframe();
+		setPopin();
+	}
+	
+	/**
+	 * Set all the variables to the wireframe
+	 */
+	private function setWireframe():Void {
+		bgLvl = cast(getChildByName(AssetName.LEVELUP_POPPIN_LEVELBG), SmartComponent);
+		unlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_UNLOCK), SmartComponent);
+		
+		level = cast(SmartCheck.getChildByName(bgLvl, AssetName.LEVELUP_POPPIN_LEVEL), TextSprite);
+		nameUnlock = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_NAME), TextSprite);
+		description = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_DESCRIPTION), TextSprite);
+		typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
+		
+		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
+		
+		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
+		btnNext.on(MouseEventType.CLICK, onClickNext);
 	}
 	
 	/**

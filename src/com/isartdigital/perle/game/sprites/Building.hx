@@ -48,7 +48,7 @@ class Building extends Tile implements IZSortable
 		AssetName.DECO_HELL_TREE_3 => {width:1, height:1, footprint : 0},
 		AssetName.DECO_HELL_ROCK => { width:1, height:1, footprint : 0 },
 		
-		AssetName.BUILDING_HELL_HOUSE => {width:3, height:3, footprint : 1},
+		AssetName.BUILDING_HELL_HOUSE => {width:2, height:2, footprint : 1},
 		AssetName.BUILDING_HELL_BUILD_1 => {width:3, height:3, footprint : 1},
 		AssetName.BUILDING_HELL_BUILD_2 => { width:3, height:3, footprint : 1 },
 		
