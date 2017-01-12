@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -41,8 +42,8 @@ class CarousselCardUnlock extends CarouselCard
 		on(MouseEventType.CLICK, onClick);*/
 	}
 	
-	private function setName (pString:String):Void {
-		text_name.text = pString;
+	private function setName (pAssetName:String):Void {
+		text_name.text = FakeTraduction.assetNameNameToTrad(pAssetName);
 	}
 	
 	private function setPrice (pInt:Int):Void {
