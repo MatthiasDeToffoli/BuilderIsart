@@ -25,18 +25,17 @@ class ShopCaroussel extends SmartComponent {
 		AssetName.BUILDING_HELL_BUILD_1,//2
 		AssetName.BUILDING_HEAVEN_BUILD_2,//2
 		
+		AssetName.DECO_HEAVEN_VERTUE,//2
 		AssetName.LUMBERMIL_LEVEL1,//2
 		AssetName.BUILDING_HELL_BUILD_2,//3
 		AssetName.BUILDING_HEAVEN_BUILD_1,//3
-		AssetName.DECO_HEAVEN_VERTUE,//3
 		
-		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
 	
 	public static var decoNameList(default, never):Array<String> = [
 		AssetName.DECO_HELL_TREE_1,//2
 		AssetName.DECO_HEAVEN_TREE_1,//2
-		AssetName.DECO_HEAVEN_FOUNTAIN,//2
+		AssetName.DECO_HEAVEN_FOUNTAIN,//3
 		AssetName.DECO_HEAVEN_TREE_2,//4
 		
 		AssetName.DECO_HEAVEN_TREE_3,//4

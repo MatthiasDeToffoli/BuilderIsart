@@ -62,7 +62,6 @@ class UnlockManager
 		}
 		else {
 			itemUnlocked = SaveManager.currentSave.itemUnlocked;
-			trace(SaveManager.currentSave.itemUnlocked);
 		}
 	}
 	

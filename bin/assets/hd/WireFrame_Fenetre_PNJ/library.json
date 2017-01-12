@@ -1,5 +1,5 @@
 {
- "md5": "1fff46ae081e5273efee4c4371f11351",
+ "md5": "301e00acc404cfda8cd2c8dc0d09b57b",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -87,13 +87,14 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -48.65,
         "text": "Name_XXXXX",
         "x": -233.65,
         "width": 467.3,
         "font": "72px Times New Roman",
-        "align": "left",
+        "align": "center",
         "height": 97.35,
         "wordWrap": 0,
         "color": "#000000"
@@ -103,7 +104,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1100,
         471,
@@ -112,6 +112,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -44.1,
         "text": "Next",
@@ -128,7 +129,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1103,
         471,
@@ -137,8 +137,9 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
-        "y": -166.45,
+        "y": -138.9,
         "text": "TUTORIAL_TEXT_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "x": -579.75,
         "width": 1159.5,
@@ -153,7 +154,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1106,
         471,
@@ -172,18 +172,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -0.6,
-        -2.9
-       ],
-       "index": 0,
        "pivot": [
         602,
         233.75
        ],
+       "index": 0,
+       "loc": [
+        -0.6,
+        -2.9
+       ],
        "ref": "Window_NPC_BG",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Window_BG"
@@ -191,18 +191,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -786.05,
-        -26.1
-       ],
-       "index": 0,
        "pivot": [
         162.85,
         257.35
        ],
+       "index": 0,
+       "loc": [
+        -786.05,
+        -26.1
+       ],
        "ref": "Window_NPC_Hell",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Window_NPC_Hell"
@@ -210,18 +210,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        785.8,
-        -26.1
-       ],
-       "index": 0,
        "pivot": [
         162.85,
         257.35
        ],
+       "index": 0,
+       "loc": [
+        785.8,
+        -26.1
+       ],
        "ref": "Window_NPC_Heaven",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Window_NPC_Heaven"
@@ -230,13 +230,13 @@
      "keyframes": [
       {
        "ref": "Window_NPC_Name_TXT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -347.8,
         -166.8
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Window_NPC_Name_TXT"
@@ -245,13 +245,13 @@
      "keyframes": [
       {
        "ref": "Window_NPC_Speech_TXT",
-       "loc": [
-        -1.7,
-        63.3
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -1.7,
+        31.05
+       ]
       }
      ],
      "name": "Window_NPC_Speech_TXT"
@@ -260,13 +260,13 @@
      "keyframes": [
       {
        "ref": "~ButtonNext",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         398.25,
         248.05
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Window_NPC_ButtonNext"
@@ -279,38 +279,38 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -0.05,
-        -0.05
-       ],
-       "index": 0,
        "pivot": [
         180.35,
         63.3
        ],
+       "index": 0,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
        "ref": "_buttonNext_up",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       },
       {
        "ref": "_buttonNext_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         182.85,
         65.8
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
       },
       {
        "ref": "_buttonNext_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         182.85,
         65.8
-       ]
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "Button"
@@ -319,20 +319,20 @@
      "keyframes": [
       {
        "ref": "_buttonNext_text",
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
        "loc": [
         -0.05,
         -0.05
-       ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonNext"
+   "id": "~ButtonNext",
+   "baseClass": "flash.display.SimpleButton"
   }
  ],
  "frameRate": 24
