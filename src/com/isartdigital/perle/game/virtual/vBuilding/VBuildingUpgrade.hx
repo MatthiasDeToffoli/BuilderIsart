@@ -13,23 +13,23 @@ class VBuildingUpgrade extends VBuilding
 {
 
 	private var UpgradeAssetsList:Array<String>;
+	private var indexLevel:Int;
 	
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		indexLevel = 0;
 		
 	}
 	
-	public function onClickUpgrade(pBuilding:VBuilding):Void{
+	public function onClickUpgrade():Void{
 		desactivate();
 		
 		var lAssetName = tileDesc.assetName;
 		
-		for (i in 0...UpgradeAssetsList.length){
-			if (lAssetName == UpgradeAssetsList[i] && lAssetName != UpgradeAssetsList[UpgradeAssetsList.length - 1]){
-				pBuilding.tileDesc.assetName = UpgradeAssetsList[i + 1];
-				break;
-			}
+		if (indexLevel != 2){
+			indexLevel++;
+			tileDesc.assetName = UpgradeAssetsList[indexLevel];
 		}
 		
 		activate();

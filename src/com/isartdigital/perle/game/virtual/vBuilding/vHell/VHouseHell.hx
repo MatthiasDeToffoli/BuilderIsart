@@ -19,20 +19,4 @@ class VHouseHell extends VHouse
 		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_BUILD_1, AssetName.BUILDING_HELL_BUILD_2];
 	}
 	
-	/*override public function onClickUpgrade(pBuilding:VBuilding):Void 
-	{
-		super.onClickUpgrade(pBuilding);
-		var lAssetName = pBuilding.tileDesc.assetName;
-		
-		for (i in 0...UpgradeAssetsList.length){
-			if (lAssetName == UpgradeAssetsList[i] && lAssetName != UpgradeAssetsList[UpgradeAssetsList.length - 1]){
-				pBuilding.tileDesc.assetName = UpgradeAssetsList[i + 1];
-				break;
-			}
-		}
-		
-		activate();
-		SaveManager.save();
-	}*/
-	
 }

@@ -81,7 +81,7 @@ class InfoBuilding extends SmartPopin {
 		var lBuildingUpgrade:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin level up appear
-		lBuildingUpgrade.onClickUpgrade(BuildingHud.virtualBuilding);
+		lBuildingUpgrade.onClickUpgrade();
 		
 	}
 	/**
