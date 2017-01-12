@@ -291,6 +291,19 @@ class ResourcesManager
 	}
 	
 	/**
+	 * update the value of the resourcesGenerator
+	 * @param	pGenerator the generator to update
+	 * @param	pMax the capacity of the generator
+	 * @return the generator which is update
+	 */
+	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Int,pEnd:Float):Generator{
+		pGenerator.desc.max = pMax;
+		myResourcesData.generatorsMap[pGenerator.desc.type][myResourcesData.generatorsMap[pGenerator.desc.type].indexOf(pGenerator)] = pGenerator;
+		TimeManager.updateTimeResource(pEnd, pGenerator);
+		return pGenerator;
+	}
+	
+	/**
 	 * test if a generator with this id exist and return the generator
 	 * @param pId the id of the generator tested
 	 * @param pType the type of the generator tested

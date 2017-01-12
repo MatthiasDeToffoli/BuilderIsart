@@ -123,6 +123,19 @@ class TimeManager {
 		return lTimeElement;
 	}
 	
+	/**
+	 * update the time speed
+	 * @param	pEnd the new time for increase resources
+	 * @param	pGenerator the generator link to the timeManager
+	 */
+	public static function updateTimeResource(pEnd:Float, pGenerator:Generator):Void{
+		var lTimeElement:TimeElementResource;
+		
+		for (lTimeElement in listResource)
+			if (lTimeElement.generator == pGenerator)
+				lTimeElement.desc.end = pEnd;
+	}
+	
 	/*
 	 * get the generator when we load 
 	 */

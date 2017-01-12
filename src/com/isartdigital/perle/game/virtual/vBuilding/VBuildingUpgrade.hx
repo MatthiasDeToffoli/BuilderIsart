@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -33,6 +34,7 @@ class VBuildingUpgrade extends VBuilding
 		
 		activate();
 		addExp();
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, 20, 8000); //@TODO : mettre de vrais valeur...
 		SaveManager.save();
 		
 	}
