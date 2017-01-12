@@ -19,8 +19,8 @@ class ShopCaroussel extends SmartComponent {
 	
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
-	public static var buildingNameList(default, never):Array<String> = [ // todo : c'est bugué ...
-		AssetName.BUILDING_HEAVEN_HOUSE,//1
+	public static var buildingNameList(default, never):Array<String> = [
+		AssetName.BUILDING_HEAVEN_HOUSE,//1 <== level required
 		AssetName.BUILDING_HELL_HOUSE,//1
 		AssetName.BUILDING_HELL_BUILD_1,//2
 		AssetName.BUILDING_HEAVEN_BUILD_2,//2
@@ -33,7 +33,7 @@ class ShopCaroussel extends SmartComponent {
 		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
 	
-	public static var decoNameList(default, never):Array<String> = [ // todo : c'est bugué ...
+	public static var decoNameList(default, never):Array<String> = [
 		AssetName.DECO_HELL_TREE_1,//2
 		AssetName.DECO_HEAVEN_TREE_1,//2
 		AssetName.DECO_HEAVEN_FOUNTAIN,//2
@@ -49,11 +49,11 @@ class ShopCaroussel extends SmartComponent {
 		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
 
-	public static var cardsToShow:Array<String>;
+	private var cardsToShow:Array<String>;
 	private var cards:Array<CarouselCard>;
 	
 	private var tempArrowRight:SmartButton;
-	private var tempArrowLeft:SmartButton; // todo : les deux aroow seront ensemblent
+	private var tempArrowLeft:SmartButton;
 	
 	private var maxCardsVisible:Int;
 	private var cardsPositions:Array<Point>;
@@ -64,6 +64,7 @@ class ShopCaroussel extends SmartComponent {
 	public function new() { 	
 		super(AssetName.SHOP_CAROUSSEL_BUILDING); // todo:  temp ? ou change classNAme
 		cards = new Array<CarouselCard>();
+		cardsToShow = buildingNameList;
 		cardsPositions = [];
 		
 		tempArrowLeft = cast(SmartCheck.getChildByName(this, "Button_ArrowLeft"), SmartButton); // temp
@@ -78,6 +79,12 @@ class ShopCaroussel extends SmartComponent {
 	public function start ():Void {
 		tempArrowLeft.on(MouseEventType.CLICK, onClickTempArrowLeft);
 		tempArrowRight.on(MouseEventType.CLICK, onClickTempArrowRight);
+	}
+	
+	public function changeCardsToShow (pNameList:Array<String>):Void {
+		cardsToShow = pNameList;
+		buildingListIndex = 0;
+		createCard(cardsPositions);
 	}
 	
 	public function scrollNext ():Void {
@@ -162,9 +169,9 @@ class ShopCaroussel extends SmartComponent {
 		}
 	}
 	
-	// todo : à faire, retiens le spositions pose intelligemment ? ou pas ? façon css ?
+	
 	private function createCard (pPositions:Array<Point>):Void {
-		trace(buildingListIndex);
+		
 		if (cards.length != 0)
 			destroyCards();
 		

@@ -65,8 +65,8 @@ class ShopPopin extends SmartPopin{
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
 		btnInterns.on(MouseEventType.CLICK, onClickInterns);
 		
+		addCaroussel();
 		
-		ShopCaroussel.cardsToShow = [];
 		checkOfOngletToOpen(pTab);
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
@@ -102,13 +102,11 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickOpenBuldings() {
-		ShopCaroussel.cardsToShow = ShopCaroussel.buildingNameList;
-		addCaroussel();
+		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList);
 	}
 	
 	private function onClickOpenDecorations() {
-		ShopCaroussel.cardsToShow = ShopCaroussel.decoNameList;
-		addCaroussel();
+		caroussel.changeCardsToShow(ShopCaroussel.decoNameList);
 	}
 	
 	private function onClickExit ():Void {
@@ -124,10 +122,6 @@ class ShopPopin extends SmartPopin{
 	private function onClickInterns ():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-	}
-	
-	private function onClickFakeBuyBuilding ():Void { // todo temporaire
-		UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
 	}
 	
 	private function onClickFakeBuySoft ():Void { // todo temporaire, confirmBuyCurrencie gère si soft ou hard
