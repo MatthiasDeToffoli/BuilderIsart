@@ -1,86 +1,70 @@
 {
- "md5": "ebefe12298c967f344689dcd73f53c00",
- "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
       {
+       "symbol": "_AltarVirtue",
        "rect": [
         1,
         1,
-        163,
-        230
+        372,
+        372
        ],
-       "symbol": "Paradis_Fontaine",
        "origin": [
-        81.5,
-        114.75
+        185.9,
+        185.9
        ]
       },
       {
-       "rect": [
-        1,
-        233,
-        163,
-        230
-       ],
-       "symbol": "Paradis_Arbre02",
-       "origin": [
-        81.5,
-        114.75
-       ]
-      },
-      {
-       "rect": [
-        166,
-        1,
-        163,
-        230
-       ],
-       "symbol": "Paradis_Arbre03",
-       "origin": [
-        81.5,
-        114.75
-       ]
-      },
-      {
-       "rect": [
-        331,
-        1,
-        163,
-        230
-       ],
        "symbol": "Paradis_Arbre01",
+       "rect": [
+        1,
+        375,
+        163,
+        230
+       ],
        "origin": [
         81.5,
         114.75
        ]
       },
       {
+       "symbol": "Paradis_Arbre02",
+       "rect": [
+        1,
+        607,
+        163,
+        230
+       ],
+       "origin": [
+        81.5,
+        114.75
+       ]
+      },
+      {
+       "symbol": "Paradis_Arbre03",
        "rect": [
         166,
-        233,
+        375,
         163,
         230
        ],
-       "symbol": "Paradis_Rocher",
        "origin": [
         81.5,
         114.75
        ]
       },
       {
+       "symbol": "Paradis_Rocher",
        "rect": [
         331,
-        233,
+        375,
         163,
         230
        ],
-       "symbol": "Paradis_Vertue",
        "origin": [
         81.5,
         114.75
@@ -89,129 +73,141 @@
      ],
      "file": "atlas0.png"
     }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 60,
+ "movies": [
+  {
+   "id": "Altar_Virtue",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        185.925,
+        185.925
+       ],
+       "loc": [
+        22.15,
+        -21.1
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "_AltarVirtue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Paradis_Arbre01_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        81.5,
+        114.75
+       ],
+       "loc": [
+        -2.25,
+        -41.375
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Paradis_Arbre01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Paradis_Arbre02_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        81.5,
+        114.75
+       ],
+       "loc": [
+        -0.85,
+        -35.75
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Paradis_Arbre02"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Paradis_Arbre03_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        81.5,
+        114.75
+       ],
+       "loc": [
+        2.95,
+        -58.025
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Paradis_Arbre03"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Paradis_Rocher_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        81.5,
+        114.75
+       ],
+       "loc": [
+        -1.075,
+        -34.3
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Paradis_Rocher"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
+    }
    ]
   }
  ],
- "movies": [
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Arbre01",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Arbre01_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Arbre02",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Arbre02_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Arbre03",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Arbre03_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Fontaine",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Fontaine_Principal"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Rocher",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Rocher_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Paradis_Vertue",
-       "duration": 1,
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Paradis_Vertue_P"
-  }
- ]
+ "md5": "8b0712a5df5739cb75f2057629658c8a"
 }

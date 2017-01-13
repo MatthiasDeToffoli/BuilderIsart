@@ -32,6 +32,7 @@ class UnlockManager
 	 * @return true or false
 	 */
 	public static function checkIfUnlocked(pName:String):Bool {
+		return true;
 		for (i in 0...itemUnlocked.length) {
 			if (pName == itemUnlocked[i][0][1])
 				return true;

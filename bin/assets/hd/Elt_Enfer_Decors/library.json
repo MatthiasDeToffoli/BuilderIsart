@@ -1,60 +1,70 @@
 {
- "md5": "b90494fc9a5b26c281d5550f7c1644c9",
- "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
       {
+       "symbol": "_altairvice",
        "rect": [
         1,
+        1,
+        379,
+        646
+       ],
+       "origin": [
+        189.3,
+        322.7
+       ]
+      },
+      {
+       "symbol": "Enfer_Arbre01",
+       "rect": [
+        382,
         1,
         326,
         459
        ],
-       "symbol": "Enfer_Arbre03",
        "origin": [
         163,
         229.5
        ]
       },
       {
+       "symbol": "Enfer_Arbre02",
        "rect": [
-        1,
+        382,
         462,
         326,
         459
        ],
-       "symbol": "Enfer_Arbre02",
        "origin": [
         163,
         229.5
        ]
       },
       {
+       "symbol": "Enfer_Arbre03",
+       "rect": [
+        1,
+        649,
+        326,
+        459
+       ],
+       "origin": [
+        163,
+        229.5
+       ]
+      },
+      {
+       "symbol": "Enfer_Rocher",
        "rect": [
         329,
-        1,
+        923,
         326,
         459
        ],
-       "symbol": "Enfer_Arbre01",
-       "origin": [
-        163,
-        229.5
-       ]
-      },
-      {
-       "rect": [
-        657,
-        1,
-        326,
-        459
-       ],
-       "symbol": "Enfer_Rocher",
        "origin": [
         163,
         229.5
@@ -63,89 +73,132 @@
      ],
      "file": "atlas0.png"
     }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 60,
+ "movies": [
+  {
+   "id": "Altair_Vice",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        189.3,
+        322.7
+       ],
+       "loc": [
+        -6.65,
+        -119.8
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "_altairvice"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Enfer_Arbre01_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        163,
+        229.5
+       ],
+       "loc": [
+        -7.15,
+        -57
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Enfer_Arbre01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Enfer_Arbre02_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        163,
+        229.5
+       ],
+       "loc": [
+        -14.7,
+        -67
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Enfer_Arbre02"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Enfer_Arbre03_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        163,
+        229.5
+       ],
+       "loc": [
+        -5.75,
+        -103
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Enfer_Arbre03"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Enfer_Rocher_P",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        163,
+        229.5
+       ],
+       "loc": [
+        13.15,
+        -97.55
+       ],
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "Enfer_Rocher"
+      }
+     ]
+    }
    ]
   }
  ],
- "movies": [
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Enfer_Arbre01",
-       "duration": 1,
-       "pivot": [
-        163,
-        229.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Enfer_Arbre01_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Enfer_Arbre02",
-       "duration": 1,
-       "pivot": [
-        163,
-        229.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Enfer_Arbre02_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Enfer_Arbre03",
-       "duration": 1,
-       "pivot": [
-        163,
-        229.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Enfer_Arbre03_P"
-  },
-  {
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "ref": "Enfer_Rocher",
-       "duration": 1,
-       "pivot": [
-        163,
-        229.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Enfer_Rocher_P"
-  }
- ]
+ "md5": "d942bc8cf4f1d6b2cd5a7a0671277145"
 }

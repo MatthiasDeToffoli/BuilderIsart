@@ -22,9 +22,10 @@ class AssetName{
 	//public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild2";
 	
 	// Building Hell
-	public static inline var BUILDING_HELL_HOUSE:String = "House";
-	public static inline var BUILDING_HELL_BUILD_1:String = "hellBuilding";
-	public static inline var BUILDING_HELL_BUILD_2:String = "hellBuilding2";
+	public static inline var QUARRY_LEVEL_1 = "Hell_Quarry";
+	public static inline var BUILDING_HELL_HOUSE:String = "hellBuilding";
+	public static inline var BUILDING_HELL_BUILD_1:String = "hellBuilding2";
+	public static inline var BUILDING_HELL_BUILD_2:String = "hellBuilding3";
 	
 	// Décoration Heaven
 	public static inline var DECO_HEAVEN_TREE_1:String = "Paradis_Arbre01_P";
@@ -32,7 +33,7 @@ class AssetName{
 	public static inline var DECO_HEAVEN_TREE_3:String = "Paradis_Arbre03_P";
 	public static inline var DECO_HEAVEN_FOUNTAIN:String = "heavenBuild4";
 	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
-	public static inline var DECO_HEAVEN_VERTUE:String = "Paradis_Vertue_P";
+	public static inline var DECO_HEAVEN_VERTUE:String = "Altar_Virtue";
 	
 	// Décoration Hell
 	public static inline var DECO_HELL_TREE_1:String = "Enfer_Arbre01_P";

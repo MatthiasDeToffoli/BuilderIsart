@@ -374,7 +374,7 @@ class ResourcesManager
 		
 		SaveManager.save();
 		
-		TimeManager.createTimeResource(10000, myGenerator);
+		TimeManager.createTimeResource(60000, myGenerator); // 1 minutes
 		
 		return myGenerator;
 		
@@ -471,7 +471,6 @@ class ResourcesManager
 	 * @param quantity the quantity to add
 	 */
 	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{
-		if(pGenerator.desc.type == GeneratorType.soft) trace(quantity);
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
 		save(pGenerator);
 		

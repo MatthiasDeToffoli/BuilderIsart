@@ -135,8 +135,6 @@ class SaveManager {
 		var regionSave:Array<RegionDescription> = [];
 		var itemUnlock:Array<Array<Array<String>>> = [];
 		
-		//trace("save");
-		
 		itemUnlock = UnlockManager.itemUnlocked;
 		
 		// factoriser

@@ -12,7 +12,7 @@ class PoolingManager {
 	 * de toute façon.
 	 */
 	private static var INSTANCE_TO_SPAWN(default, never):Map<String, UInt> = [
-		"House" => 2,
+		AssetName.BUILDING_HELL_HOUSE => 2,
 		"Trees" => 5,
 		"Factory" => 1,
 		"Villa" => 2,
