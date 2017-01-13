@@ -19,7 +19,6 @@ class CarouselCard extends SmartButton {
 	
 	public function new(pAsset:String) {
 		super(pAsset);
-		image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
 	}
 	
 	public function init (pBuildingAssetName:String):Void {

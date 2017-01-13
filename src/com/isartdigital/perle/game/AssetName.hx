@@ -58,6 +58,11 @@ class AssetName{
 	public static inline var SHOP_BTN_TAB_RESOURCE:String = /*SHOP_PREFIX +*/ "Onglet_Ressources";
 	public static inline var SHOP_BTN_TAB_CURRENCIE:String = /*SHOP_PREFIX +*/ "Onglet_Currencies";
 	public static inline var SHOP_CAROUSSEL_SPAWNER:String = /*SHOP_PREFIX +*/ "Item_List_Spawner";
+	public static inline var SHOP_RESSOURCE_SC:String = /*SHOP_PREFIX +*/ "Player_SC";
+	public static inline var SHOP_RESSOURCE_HC:String = /*SHOP_PREFIX +*/ "Player_HC";
+	public static inline var SHOP_RESSOURCE_MARBRE:String = /*SHOP_PREFIX +*/ "Player_Marbre";
+	public static inline var SHOP_RESSOURCE_BOIS:String = /*SHOP_PREFIX +*/ "Player_Bois";
+	public static inline var SHOP_RESSOURCE_TEXT:String = /*SHOP_PREFIX +*/ "bar_txt";
 	
 	// Shop caroussel
 	public static inline var SHOP_CAROUSSEL_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
@@ -171,6 +176,7 @@ class AssetName{
 	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
 	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
 	public static inline var HUD_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
+	public static inline var HUD_BTN_MISSIONS:String = "ButtonMissions_HUD";
 	public static inline var HUD_COUNTER_SOFT:String = HUD_PREFIX + "SoftCurrency";
 	public static inline var HUD_BTN_SOFT:String = /*HUD_PREFIX + */"ButtonPlusSC";
 	public static inline var HUD_COUNTER_HARD:String = HUD_PREFIX + "HardCurrency";
@@ -198,6 +204,10 @@ class AssetName{
 	public static inline var LEVELUP_POPPIN_NAME:String = "_txt_name";
 	public static inline var LEVELUP_POPPIN_IMG:String = "Image";
 	public static inline var LEVELUP_POPPIN_DESCRIPTION:String = "Description";
+	
+	//Destroy Poppin
+	public static inline var DESTROY_POPPIN:String = "Popin_DestroyBuilding";
+	
 	
 	// add background and any other assetName coming from DA
 	//bg

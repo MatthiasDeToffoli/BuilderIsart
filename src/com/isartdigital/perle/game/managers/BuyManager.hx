@@ -33,7 +33,6 @@ class BuyManager {
 	public static function buy (pAssetName:String):Bool {
 		if (!checkAssetName(pAssetName))
 			return true; // if nothing is json it is FREE \o/
-		
 		if (canBuy(pAssetName)) {
 			ResourcesManager.spendTotal(
 				buyPrice.assets[pAssetName].type,
@@ -52,6 +51,10 @@ class BuyManager {
 			// todo : la fc spendTotal est prévu poru fonctionner de cette manière ?
 			- Math.ceil(buyPrice.assets[pAssetName].price * buyPrice.refundRatioBuilded) 
 		);
+	}
+	
+	public static function getSellPrice(pAssetName:String):Int {
+		return(Math.ceil(buyPrice.assets[pAssetName].price * buyPrice.refundRatioBuilded) );
 	}
 	
 	public static function canBuy (pAssetName:String):Bool {

@@ -6,7 +6,7 @@
     {
      "textures": [
       {
-       "symbol": "_shop_bg",
+       "symbol": "_largePopinBG",
        "rect": [
         1,
         1,
@@ -14,28 +14,197 @@
         1300
        ],
        "origin": [
-        1006.35,
-        651.2
+        1009.95,
+        650
        ]
       },
       {
-       "symbol": "_shop_item_list_spawner",
+       "symbol": "_purgatoryButton_over",
        "rect": [
         1,
         1303,
-        1953,
-        640
+        260,
+        260
        ],
        "origin": [
-        976.3,
-        320
+        130,
+        130
+       ]
+      },
+      {
+       "symbol": "_internsButton_down",
+       "rect": [
+        1,
+        1565,
+        260,
+        260
+       ],
+       "origin": [
+        130,
+        130
+       ]
+      },
+      {
+       "symbol": "_purgatoryButton_down",
+       "rect": [
+        263,
+        1303,
+        260,
+        260
+       ],
+       "origin": [
+        130,
+        130
+       ]
+      },
+      {
+       "symbol": "_internsButton_over",
+       "rect": [
+        263,
+        1565,
+        260,
+        260
+       ],
+       "origin": [
+        130,
+        130
+       ]
+      },
+      {
+       "symbol": "_internsButton_up",
+       "rect": [
+        525,
+        1303,
+        245,
+        245
+       ],
+       "origin": [
+        122.5,
+        122.5
+       ]
+      },
+      {
+       "symbol": "_purgatoryButton_up",
+       "rect": [
+        525,
+        1550,
+        245,
+        245
+       ],
+       "origin": [
+        122.5,
+        122.5
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "rect": [
+        525,
+        1797,
+        226,
+        226
+       ],
+       "origin": [
+        112.3,
+        113
+       ]
+      },
+      {
+       "symbol": "_closeButton_hit",
+       "rect": [
+        1,
+        1827,
+        220,
+        220
+       ],
+       "origin": [
+        110,
+        110
+       ]
+      },
+      {
+       "symbol": "_buttontab_over",
+       "rect": [
+        223,
+        1827,
+        169,
+        169
+       ],
+       "origin": [
+        84.2,
+        84.2
+       ]
+      },
+      {
+       "symbol": "_buttontab_hit",
+       "rect": [
+        753,
+        1797,
+        169,
+        169
+       ],
+       "origin": [
+        84.2,
+        84.2
+       ]
+      },
+      {
+       "symbol": "_buttontab_down",
+       "rect": [
+        772,
+        1303,
+        169,
+        169
+       ],
+       "origin": [
+        84.2,
+        84.2
+       ]
+      },
+      {
+       "symbol": "_buttontab_up",
+       "rect": [
+        772,
+        1474,
+        164,
+        164
+       ],
+       "origin": [
+        81.7,
+        81.7
+       ]
+      },
+      {
+       "symbol": "_closeButton_down",
+       "rect": [
+        772,
+        1640,
+        150,
+        150
+       ],
+       "origin": [
+        75,
+        75
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "rect": [
+        924,
+        1640,
+        150,
+        150
+       ],
+       "origin": [
+        75,
+        75
        ]
       },
       {
        "symbol": "_infoBar_bg",
        "rect": [
-        1,
-        1945,
+        753,
+        1968,
         256,
         72
        ],
@@ -45,10 +214,23 @@
        ]
       },
       {
+       "symbol": "_onglet_Icon",
+       "rect": [
+        394,
+        1827,
+        108,
+        108
+       ],
+       "origin": [
+        53.95,
+        53.95
+       ]
+      },
+      {
        "symbol": "_stoneIcon_Medium",
        "rect": [
-        259,
-        1945,
+        394,
+        1937,
         96,
         96
        ],
@@ -60,8 +242,8 @@
       {
        "symbol": "_hardCurrencyIcon_Medium",
        "rect": [
-        357,
-        1945,
+        938,
+        1474,
         96,
         96
        ],
@@ -73,8 +255,8 @@
       {
        "symbol": "_woodIcon_Medium",
        "rect": [
-        455,
-        1945,
+        943,
+        1303,
         96,
         96
        ],
@@ -86,8 +268,8 @@
       {
        "symbol": "_goldIcon_Medium",
        "rect": [
-        553,
-        1945,
+        924,
+        1792,
         96,
         96
        ],
@@ -98,74 +280,99 @@
       },
       {
        "data": {
-        "y": -33.3,
-        "wordWrap": 0,
-        "text": "Currencies",
-        "width": 240.3,
-        "color": "#000000",
-        "align": "center",
-        "height": 57.6,
-        "font": "48px _sans",
-        "x": -120.15
-       },
-       "symbol": "_onglet_Currencies_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2019,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -36.65,
-        "wordWrap": 0,
-        "text": "Interns",
-        "width": 240.15,
-        "color": "#000000",
-        "align": "center",
-        "height": 73.3,
-        "font": "62px _sans",
-        "x": -120.05
-       },
-       "symbol": "_onglet_interns_txt",
-       "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2022,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -32.9,
+        "y": -19.3,
         "wordWrap": 0,
         "text": "Resources",
-        "width": 241.6,
+        "width": 162.45,
         "color": "#000000",
         "align": "center",
-        "height": 65.8,
-        "font": "48px _sans",
-        "x": -120.8
+        "height": 38.6,
+        "font": "31px _sans",
+        "x": -81.25
        },
        "symbol": "_onglet_resources_txt",
-       "baseClass": "TextSprite",
        "rect": [
-        1,
-        2025,
+        772,
+        1792,
         1,
         1
        ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -19.9,
+        "wordWrap": 0,
+        "text": "Decoration",
+        "width": 160.35,
+        "color": "#000000",
+        "align": "center",
+        "height": 39.75,
+        "font": "32px _sans",
+        "x": -80.15
+       },
+       "symbol": "_onget_decorations_txt",
+       "rect": [
+        775,
+        1792,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -21,
+        "wordWrap": 0,
+        "text": "Interns",
+        "width": 105.6,
+        "color": "#000000",
+        "align": "center",
+        "height": 42,
+        "font": "34px _sans",
+        "x": -52.8
+       },
+       "symbol": "_onglet_interns_txt",
+       "rect": [
+        778,
+        1792,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -36.1,
+        "wordWrap": 0,
+        "text": "Purgatory",
+        "width": 225.85,
+        "color": "#000000",
+        "align": "center",
+        "height": 72.15,
+        "font": "48px Arial",
+        "x": -112.95
+       },
+       "symbol": "_purgatoryButton_text",
+       "rect": [
+        781,
+        1792,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -175,22 +382,22 @@
        "data": {
         "y": -56.35,
         "wordWrap": 0,
-        "text": "Purgatory",
-        "width": 278,
+        "text": "Interns",
+        "width": 222.35,
         "color": "#000000",
         "align": "center",
         "height": 112.7,
-        "font": "72px Arial Narrow",
-        "x": -139
+        "font": "76px Arial Narrow",
+        "x": -111.2
        },
-       "symbol": "_purgatoryButton_text",
-       "baseClass": "TextSprite",
+       "symbol": "_internsButton_text",
        "rect": [
-        1,
-        2028,
+        784,
+        1792,
         1,
         1
        ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -209,13 +416,13 @@
         "x": -87.15
        },
        "symbol": "_infoBar_value",
-       "baseClass": "TextSprite",
        "rect": [
-        1,
-        2031,
+        787,
+        1792,
         1,
         1
        ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -223,24 +430,24 @@
       },
       {
        "data": {
-        "y": -56.35,
+        "y": -19.3,
         "wordWrap": 0,
-        "text": "Interns",
-        "width": 286.75,
+        "text": "Currencies",
+        "width": 160.65,
         "color": "#000000",
         "align": "center",
-        "height": 112.7,
-        "font": "96px Arial Narrow",
-        "x": -143.4
+        "height": 38.6,
+        "font": "31px _sans",
+        "x": -80.3
        },
-       "symbol": "_internsButton_text",
-       "baseClass": "TextSprite",
+       "symbol": "_onglet_Currencies_txt",
        "rect": [
-        1,
-        2034,
+        790,
+        1792,
         1,
         1
        ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -248,49 +455,24 @@
       },
       {
        "data": {
-        "y": -36.65,
+        "y": -23.8,
         "wordWrap": 0,
         "text": "Building",
-        "width": 224.8,
+        "width": 148.25,
         "color": "#000000",
         "align": "center",
-        "height": 73.3,
-        "font": "62px _sans",
-        "x": -112.4
+        "height": 47.55,
+        "font": "39px _sans",
+        "x": -74.1
        },
        "symbol": "_onglet_building_txt",
-       "baseClass": "TextSprite",
        "rect": [
-        1,
-        2037,
+        793,
+        1792,
         1,
         1
        ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -28.8,
-        "wordWrap": 0,
-        "text": "Decoration",
-        "width": 240.95,
-        "color": "#000000",
-        "align": "center",
-        "height": 57.6,
-        "font": "48px _sans",
-        "x": -120.5
-       },
-       "symbol": "_onget_decorations_txt",
        "baseClass": "TextSprite",
-       "rect": [
-        1,
-        2040,
-        1,
-        1
-       ],
        "origin": [
         0,
         0
@@ -302,185 +484,16 @@
     {
      "textures": [
       {
-       "symbol": "_purgatoryButton_over",
+       "symbol": "_shop_item_list_spawner",
        "rect": [
         1,
         1,
-        276,
-        276
+        1629,
+        938
        ],
        "origin": [
-        138,
-        138
-       ]
-      },
-      {
-       "symbol": "_internsButton_down",
-       "rect": [
-        279,
-        1,
-        276,
-        276
-       ],
-       "origin": [
-        138,
-        138
-       ]
-      },
-      {
-       "symbol": "_purgatoryButton_down",
-       "rect": [
-        557,
-        1,
-        276,
-        276
-       ],
-       "origin": [
-        138,
-        138
-       ]
-      },
-      {
-       "symbol": "_internsButton_over",
-       "rect": [
-        1,
-        279,
-        276,
-        276
-       ],
-       "origin": [
-        138,
-        138
-       ]
-      },
-      {
-       "symbol": "_closeButton_up",
-       "rect": [
-        279,
-        279,
-        276,
-        275
-       ],
-       "origin": [
-        138,
-        137.85
-       ]
-      },
-      {
-       "symbol": "_internsButton_up",
-       "rect": [
-        557,
-        279,
-        261,
-        261
-       ],
-       "origin": [
-        130.5,
-        130.5
-       ]
-      },
-      {
-       "symbol": "_purgatoryButton_up",
-       "rect": [
-        557,
-        542,
-        261,
-        261
-       ],
-       "origin": [
-        130.5,
-        130.5
-       ]
-      },
-      {
-       "symbol": "_buttontab_hit",
-       "rect": [
-        279,
-        556,
-        246,
-        246
-       ],
-       "origin": [
-        122.95,
-        122.95
-       ]
-      },
-      {
-       "symbol": "_buttontab_down",
-       "rect": [
-        1,
-        557,
-        246,
-        246
-       ],
-       "origin": [
-        122.95,
-        122.95
-       ]
-      },
-      {
-       "symbol": "_buttontab_over",
-       "rect": [
-        249,
-        804,
-        246,
-        246
-       ],
-       "origin": [
-        122.95,
-        122.95
-       ]
-      },
-      {
-       "symbol": "_buttontab_up",
-       "rect": [
-        1,
-        805,
-        241,
-        241
-       ],
-       "origin": [
-        120.45,
-        120.45
-       ]
-      },
-      {
-       "symbol": "_onglet_Icon",
-       "rect": [
-        1,
-        1048,
-        160,
-        160
-       ],
-       "origin": [
-        79.85,
-        79.8
-       ]
-      },
-      {
-       "symbol": "_closeButton_down",
-       "rect": [
-        820,
-        279,
-        158,
-        158
-       ],
-       "origin": [
-        78.95,
-        78.95
-       ]
-      },
-      {
-       "symbol": "_closeButton_over",
-       "rect": [
-        835,
-        1,
-        158,
-        158
-       ],
-       "origin": [
-        79,
-        78.95
+        772.75,
+        442.15
        ]
       }
      ],
@@ -499,18 +512,14 @@
      "name": "Shop_BG",
      "keyframes": [
       {
-       "loc": [
-        0.95,
-        2.15
-       ],
-       "duration": 1,
        "pivot": [
-        1006.35,
-        651.2
+        1009.95,
+        650
        ],
-       "index": 0,
        "tweened": false,
-       "ref": "_shop_bg"
+       "duration": 1,
+       "index": 0,
+       "ref": "_largePopinBG"
       }
      ]
     },
@@ -518,13 +527,13 @@
      "name": "Player_SC",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         168.05,
         -575.2
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "~SoftCurrency"
       }
      ]
@@ -533,13 +542,13 @@
      "name": "Player_HC",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         552.15,
         -575.65
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "~HardCurrency"
       }
      ]
@@ -548,13 +557,13 @@
      "name": "Player_Marbre",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -216.25,
         -576.55
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "~MarbleCounter"
       }
      ]
@@ -563,13 +572,13 @@
      "name": "Player_Bois",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -600.5,
         -575.4
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "~WoodCounter"
       }
      ]
@@ -578,13 +587,13 @@
      "name": "Onglet_Building",
      "keyframes": [
       {
-       "loc": [
-        -671.4,
-        -374.35
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -895.95,
+        301.65
+       ],
        "ref": "~Button_Building_tab"
       }
      ]
@@ -593,13 +602,13 @@
      "name": "Onglet_Interns",
      "keyframes": [
       {
-       "loc": [
-        -0.15,
-        -374.35
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -895.95,
+        -37.45
+       ],
        "ref": "~Button_Interns_tab"
       }
      ]
@@ -608,13 +617,13 @@
      "name": "Onglet_Deco",
      "keyframes": [
       {
-       "loc": [
-        -334.3,
-        -375.55
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -897.2,
+        132.1
+       ],
        "ref": "~Button_Decoration_tab"
       }
      ]
@@ -623,13 +632,13 @@
      "name": "Onglet_Ressources",
      "keyframes": [
       {
-       "loc": [
-        334.7,
-        -374.35
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -897.2,
+        -207
+       ],
        "ref": "~Button_Resources_tab"
       }
      ]
@@ -638,13 +647,13 @@
      "name": "Onglet_Currencies",
      "keyframes": [
       {
-       "loc": [
-        671.2,
-        -375.55
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -897.15,
+        -376.55
+       ],
        "ref": "~Button_Currencies_tab"
       }
      ]
@@ -653,17 +662,17 @@
      "name": "Item_List_Spawner",
      "keyframes": [
       {
-       "loc": [
-        -2.15,
-        96.35
+       "pivot": [
+        772.75,
+        442.15
        ],
        "duration": 1,
-       "pivot": [
-        976.25,
-        320
+       "tweened": false,
+       "scale": [
+        1,
+        1.1207
        ],
        "index": 0,
-       "tweened": false,
        "ref": "_shop_item_list_spawner"
       }
      ]
@@ -672,13 +681,13 @@
      "name": "Shop_Close_Button",
      "keyframes": [
       {
-       "loc": [
-        926.4,
-        -559.35
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        910,
+        -560
+       ],
        "ref": "~ButtonClose"
       }
      ]
@@ -687,13 +696,13 @@
      "name": "Purgatory_Button",
      "keyframes": [
       {
-       "loc": [
-        771.75,
-        551.9
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -773.85,
+        520.1
+       ],
        "ref": "~ButtonPurgatory"
       }
      ]
@@ -702,13 +711,13 @@
      "name": "Interns_Button",
      "keyframes": [
       {
-       "loc": [
-        -782.3,
-        551.9
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        848.35,
+        520.1
+       ],
        "ref": "~ButtonInterns"
       }
      ]
@@ -723,46 +732,56 @@
      "name": "Layer 1",
      "keyframes": [
       {
+       "pivot": [
+        112.3,
+        113
+       ],
+       "duration": 1,
        "loc": [
         -0.05,
         -0.05
        ],
-       "duration": 1,
-       "pivot": [
-        138,
-        137.85
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_closeButton_up"
       },
       {
+       "pivot": [
+        75,
+        75
+       ],
+       "duration": 1,
        "loc": [
         -0.05,
         0
        ],
-       "duration": 1,
-       "pivot": [
-        79,
-        78.95
-       ],
-       "index": 1,
        "tweened": false,
+       "index": 1,
        "ref": "_closeButton_over"
       },
       {
+       "pivot": [
+        75,
+        75
+       ],
+       "duration": 1,
        "loc": [
         -0.05,
         -0.05
        ],
-       "duration": 2,
-       "pivot": [
-        78.95,
-        78.95
-       ],
-       "index": 2,
        "tweened": false,
+       "index": 2,
        "ref": "_closeButton_down"
+      },
+      {
+       "pivot": [
+        110,
+        110
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "ref": "_closeButton_hit"
       }
      ]
     }
@@ -776,33 +795,33 @@
      "name": "Button",
      "keyframes": [
       {
+       "pivot": [
+        122.5,
+        122.5
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        130.5,
-        130.5
-       ],
        "ref": "_internsButton_up"
       },
       {
+       "pivot": [
+        130,
+        130
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        138,
-        138
-       ],
        "ref": "_internsButton_over"
       },
       {
+       "pivot": [
+        130,
+        130
+       ],
        "tweened": false,
        "duration": 2,
        "index": 2,
-       "pivot": [
-        138,
-        138
-       ],
        "ref": "_internsButton_down"
       }
      ]
@@ -811,9 +830,9 @@
      "name": "Text",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
        "ref": "_internsButton_text"
       }
      ]
@@ -828,33 +847,33 @@
      "name": "Button",
      "keyframes": [
       {
+       "pivot": [
+        122.5,
+        122.5
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        130.5,
-        130.5
-       ],
        "ref": "_purgatoryButton_up"
       },
       {
+       "pivot": [
+        130,
+        130
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        138,
-        138
-       ],
        "ref": "_purgatoryButton_over"
       },
       {
+       "pivot": [
+        130,
+        130
+       ],
        "tweened": false,
        "duration": 2,
        "index": 2,
-       "pivot": [
-        138,
-        138
-       ],
        "ref": "_purgatoryButton_down"
       }
      ]
@@ -863,9 +882,9 @@
      "name": "Text",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
        "ref": "_purgatoryButton_text"
       }
      ]
@@ -880,43 +899,43 @@
      "name": "Button_Tab_BG",
      "keyframes": [
       {
+       "pivot": [
+        81.7,
+        81.7
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        120.45,
-        120.45
-       ],
        "ref": "_buttontab_up"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_over"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 2,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_down"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 3,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_hit"
       }
      ]
@@ -925,17 +944,17 @@
      "name": "Icon_Building",
      "keyframes": [
       {
+       "pivot": [
+        53.95,
+        53.95
+       ],
+       "duration": 4,
        "loc": [
         0.8,
         -23.25
        ],
-       "duration": 4,
-       "pivot": [
-        79.85,
-        79.8
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_onglet_Icon"
       }
      ]
@@ -944,13 +963,13 @@
      "name": "Onglet_txt",
      "keyframes": [
       {
-       "loc": [
-        0,
-        81.3
-       ],
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        0,
+        55.5
+       ],
        "ref": "_onglet_building_txt"
       }
      ]
@@ -965,43 +984,43 @@
      "name": "Button_Tab_BG",
      "keyframes": [
       {
+       "pivot": [
+        81.7,
+        81.7
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        120.45,
-        120.45
-       ],
        "ref": "_buttontab_up"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_over"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 2,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_down"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 3,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_hit"
       }
      ]
@@ -1010,17 +1029,17 @@
      "name": "Onglet_Icon",
      "keyframes": [
       {
+       "pivot": [
+        53.95,
+        53.95
+       ],
+       "duration": 4,
        "loc": [
         -0.3,
         -24.05
        ],
-       "duration": 4,
-       "pivot": [
-        79.85,
-        79.8
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_onglet_Icon"
       }
      ]
@@ -1029,13 +1048,13 @@
      "name": "Onglet_currencies_txt",
      "keyframes": [
       {
-       "loc": [
-        0,
-        92.45
-       ],
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        0,
+        56.9
+       ],
        "ref": "_onglet_Currencies_txt"
       }
      ]
@@ -1050,43 +1069,43 @@
      "name": "Button_Tab_BG",
      "keyframes": [
       {
+       "pivot": [
+        81.7,
+        81.7
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        120.45,
-        120.45
-       ],
        "ref": "_buttontab_up"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_over"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 2,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_down"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 3,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_hit"
       }
      ]
@@ -1095,17 +1114,17 @@
      "name": "Onglet_icon",
      "keyframes": [
       {
+       "pivot": [
+        53.95,
+        53.95
+       ],
+       "duration": 4,
        "loc": [
         0.5,
         -21.7
        ],
-       "duration": 4,
-       "pivot": [
-        79.85,
-        79.8
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_onglet_Icon"
       }
      ]
@@ -1114,13 +1133,13 @@
      "name": "Onglet_Deco_txt",
      "keyframes": [
       {
-       "loc": [
-        -2.4,
-        81.95
-       ],
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -0.05,
+        57
+       ],
        "ref": "_onget_decorations_txt"
       }
      ]
@@ -1135,43 +1154,43 @@
      "name": "Button_Tab_BG",
      "keyframes": [
       {
+       "pivot": [
+        81.7,
+        81.7
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        120.45,
-        120.45
-       ],
        "ref": "_buttontab_up"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_over"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 2,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_down"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 3,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_hit"
       }
      ]
@@ -1180,17 +1199,17 @@
      "name": "Onglet_Icon",
      "keyframes": [
       {
+       "pivot": [
+        53.95,
+        53.95
+       ],
+       "duration": 4,
        "loc": [
         -0.5,
         -22.95
        ],
-       "duration": 4,
-       "pivot": [
-        79.85,
-        79.8
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_onglet_Icon"
       }
      ]
@@ -1199,13 +1218,13 @@
      "name": "Onglet_Interns_txt",
      "keyframes": [
       {
-       "loc": [
-        0,
-        82.65
-       ],
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        0,
+        55.85
+       ],
        "ref": "_onglet_interns_txt"
       }
      ]
@@ -1220,43 +1239,43 @@
      "name": "Button_Tab_BG",
      "keyframes": [
       {
+       "pivot": [
+        81.7,
+        81.7
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        120.45,
-        120.45
-       ],
        "ref": "_buttontab_up"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 1,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_over"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 2,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_down"
       },
       {
+       "pivot": [
+        84.2,
+        84.2
+       ],
        "tweened": false,
        "duration": 1,
        "index": 3,
-       "pivot": [
-        122.95,
-        122.95
-       ],
        "ref": "_buttontab_hit"
       }
      ]
@@ -1265,17 +1284,17 @@
      "name": "Onglet_Icon",
      "keyframes": [
       {
+       "pivot": [
+        53.95,
+        53.95
+       ],
+       "duration": 4,
        "loc": [
         -0.15,
         -25.2
        ],
-       "duration": 4,
-       "pivot": [
-        79.85,
-        79.8
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_onglet_Icon"
       }
      ]
@@ -1284,13 +1303,13 @@
      "name": "Onglet_Resources_txt",
      "keyframes": [
       {
-       "loc": [
-        0.85,
-        87.05
-       ],
+       "tweened": false,
        "duration": 4,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        0.05,
+        55.95
+       ],
        "ref": "_onglet_resources_txt"
       }
      ]
@@ -1304,13 +1323,13 @@
      "name": "bar_bg",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         128,
         36
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_infoBar_bg"
       }
      ]
@@ -1319,9 +1338,9 @@
      "name": "bar_txt",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
        "ref": "_infoBar_value"
       }
      ]
@@ -1330,17 +1349,17 @@
      "name": "_icon_hardcurrency",
      "keyframes": [
       {
-       "loc": [
-        128.2,
-        -1.05
-       ],
-       "duration": 1,
        "pivot": [
         48,
         48
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        128.2,
+        -1.05
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_hardCurrencyIcon_Medium"
       }
      ]
@@ -1354,13 +1373,13 @@
      "name": "bar_bg",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         128,
         36
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_infoBar_bg"
       }
      ]
@@ -1369,17 +1388,17 @@
      "name": "_icon_wood",
      "keyframes": [
       {
-       "loc": [
-        127.95,
-        -0.15
-       ],
-       "duration": 1,
        "pivot": [
         48,
         48
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        127.95,
+        -0.15
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_stoneIcon_Medium"
       }
      ]
@@ -1388,9 +1407,9 @@
      "name": "bar_txt",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
        "ref": "_infoBar_value"
       }
      ]
@@ -1404,13 +1423,13 @@
      "name": "bar_bg",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         128,
         36
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_infoBar_bg"
       }
      ]
@@ -1419,17 +1438,17 @@
      "name": "_icon_softcurrency",
      "keyframes": [
       {
-       "loc": [
-        127.95,
-        -0.2
-       ],
-       "duration": 1,
        "pivot": [
         48,
         48
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        127.95,
+        -0.2
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_goldIcon_Medium"
       }
      ]
@@ -1438,9 +1457,9 @@
      "name": "bar_txt",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
        "ref": "_infoBar_value"
       }
      ]
@@ -1454,13 +1473,13 @@
      "name": "bar_bg",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         128,
         36
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_infoBar_bg"
       }
      ]
@@ -1469,17 +1488,17 @@
      "name": "_icon_wood",
      "keyframes": [
       {
-       "loc": [
-        127.95,
-        0
-       ],
-       "duration": 1,
        "pivot": [
         48,
         48
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        127.95,
+        0
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_woodIcon_Medium"
       }
      ]
@@ -1488,9 +1507,9 @@
      "name": "bar_txt",
      "keyframes": [
       {
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
        "ref": "_infoBar_value"
       }
      ]
@@ -1498,5 +1517,5 @@
    ]
   }
  ],
- "md5": "c30d7a91ffd67e230eac1de1d7fd721a"
+ "md5": "b9cce43abde05a4694335e0d5b77e0d4"
 }

@@ -11,24 +11,24 @@
         1,
         1,
         391,
-        451
+        796
        ],
        "origin": [
         195.5,
-        225.5
+        398
        ]
       },
       {
        "symbol": "_buildingdeco_picture",
        "rect": [
+        394,
         1,
-        454,
-        251,
-        251
+        376,
+        376
        ],
        "origin": [
-        125.4,
-        125.4
+        188,
+        188
        ]
       },
       {
@@ -44,13 +44,13 @@
         "x": -193.95
        },
        "symbol": "_buildingdeco_locked_reason_txt",
-       "baseClass": "TextSprite",
        "rect": [
-        394,
         1,
+        799,
         1,
         1
        ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -72,13 +72,13 @@
      "name": "BG",
      "keyframes": [
       {
+       "pivot": [
+        195.5,
+        398
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        195.5,
-        225.5
-       ],
        "ref": "_buildingdeco_locked_bg"
       }
      ]
@@ -87,17 +87,17 @@
      "name": "Item_Picture",
      "keyframes": [
       {
-       "loc": [
-        0,
-        -64
+       "pivot": [
+        188,
+        188
        ],
        "duration": 1,
-       "pivot": [
-        125.4,
-        125.4
+       "loc": [
+        0,
+        -88.9
        ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_buildingdeco_picture"
       }
      ]
@@ -106,13 +106,13 @@
      "name": "Reason_locked",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -1.05,
         143.3
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "_buildingdeco_locked_reason_txt"
       }
      ]
@@ -120,5 +120,5 @@
    ]
   }
  ],
- "md5": "037eb36568b3658baac49a1bf6f1c751"
+ "md5": "8fe84707e5650e6e32322f9084cb6f31"
 }

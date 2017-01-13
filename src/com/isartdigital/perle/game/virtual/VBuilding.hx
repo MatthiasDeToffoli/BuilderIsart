@@ -99,6 +99,10 @@ class VBuilding extends VTile {
 		setState(VBuildingState.isMoving);
 	}
 	
+	public function getAsset():String {
+		return cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName();
+	}
+	
 	public function onClickCancel ():Void {
 		Phantom.onClickCancelMove();
 		ignore = false;

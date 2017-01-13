@@ -10,31 +10,31 @@
        "rect": [
         1,
         1,
-        1823,
-        640
+        1629,
+        938
        ],
        "origin": [
-        911.5,
-        320
+        814.4,
+        468.9
        ]
       },
       {
        "symbol": "_shop_buildingdeco_itemspawner",
        "rect": [
         1,
-        643,
-        390,
-        450
+        941,
+        457,
+        925
        ],
        "origin": [
-        195,
-        225
+        228.4,
+        462.35
        ]
       },
       {
        "symbol": "_arrow_right_down",
        "rect": [
-        1826,
+        1632,
         1,
         134,
         286
@@ -47,8 +47,8 @@
       {
        "symbol": "_arrow_left_down",
        "rect": [
-        1826,
-        289,
+        1768,
+        1,
         134,
         286
        ],
@@ -60,8 +60,8 @@
       {
        "symbol": "_arrow_left_over",
        "rect": [
-        1826,
-        577,
+        1904,
+        1,
         132,
         284
        ],
@@ -73,8 +73,8 @@
       {
        "symbol": "_arrow_right_over",
        "rect": [
-        1,
-        1095,
+        1904,
+        287,
         132,
         284
        ],
@@ -86,8 +86,8 @@
       {
        "symbol": "_arrow_right_up",
        "rect": [
-        1,
-        1381,
+        1632,
+        289,
         129,
         281
        ],
@@ -99,8 +99,8 @@
       {
        "symbol": "_arrow_left_up",
        "rect": [
-        1,
-        1664,
+        1763,
+        289,
         129,
         281
        ],
@@ -125,17 +125,13 @@
      "name": "Shop_Item_List_BG",
      "keyframes": [
       {
-       "loc": [
-        0,
-        -54.15
-       ],
-       "duration": 1,
        "pivot": [
-        911.5,
-        320
+        814.4,
+        468.9
        ],
-       "index": 0,
        "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_shop_item_list_bg"
       }
      ]
@@ -144,17 +140,17 @@
      "name": "Shop_Item_Unlocked_1",
      "keyframes": [
       {
-       "loc": [
-        -628.6,
-        -58.2
+       "pivot": [
+        228.4,
+        462.35
        ],
        "duration": 1,
-       "pivot": [
-        195,
-        225
+       "loc": [
+        -475.45,
+        -0.05
        ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_shop_buildingdeco_itemspawner"
       }
      ]
@@ -163,17 +159,17 @@
      "name": "Shop_Item_Unlocked_2",
      "keyframes": [
       {
-       "loc": [
-        -209.55,
-        -58.55
+       "pivot": [
+        228.4,
+        462.35
        ],
        "duration": 1,
-       "pivot": [
-        195,
-        225
+       "loc": [
+        0,
+        -0.05
        ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_shop_buildingdeco_itemspawner"
       }
      ]
@@ -182,36 +178,17 @@
      "name": "Shop_Item_Locked_1",
      "keyframes": [
       {
-       "loc": [
-        209.55,
-        -58.2
+       "pivot": [
+        228.4,
+        462.35
        ],
        "duration": 1,
-       "pivot": [
-        195,
-        225
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_buildingdeco_itemspawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Locked_2",
-     "keyframes": [
-      {
        "loc": [
-        628.65,
-        -58.55
+        475.45,
+        -0.05
        ],
-       "duration": 1,
-       "pivot": [
-        195,
-        225
-       ],
-       "index": 0,
        "tweened": false,
+       "index": 0,
        "ref": "_shop_buildingdeco_itemspawner"
       }
      ]
@@ -220,13 +197,13 @@
      "name": "Button_ArrowRight",
      "keyframes": [
       {
-       "loc": [
-        914.3,
-        -54.7
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        784.45,
+        0
+       ],
        "ref": "~ButtonArrowRight"
       }
      ]
@@ -235,13 +212,13 @@
      "name": "Button_ArrowLeft",
      "keyframes": [
       {
-       "loc": [
-        -910.25,
-        -54.7
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -784.45,
+        0
+       ],
        "ref": "~ButtonArrowLeft"
       }
      ]
@@ -256,33 +233,33 @@
      "name": "Layer 1",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         64.5,
         140.5
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_arrow_left_up"
       },
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         66,
         142
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
        "ref": "_arrow_left_over"
       },
       {
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         67,
         143
        ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
        "ref": "_arrow_left_down"
       }
      ]
@@ -297,33 +274,33 @@
      "name": "Layer 1",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         64.5,
         140.5
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_arrow_right_up"
       },
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         66,
         142
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
        "ref": "_arrow_right_over"
       },
       {
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         67,
         143
        ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
        "ref": "_arrow_right_down"
       }
      ]
@@ -331,5 +308,5 @@
    ]
   }
  ],
- "md5": "27cb293abce40066dc10b811f8ad67c7"
+ "md5": "0433d37aa8d7764c90d80be3fa253b97"
 }

@@ -86,8 +86,10 @@ class Hud extends SmartScreen
 			
 			switch (pNewBuildingHud) 
 			{
-				case BuildingHudType.HARVEST: 
+				case BuildingHudType.HARVEST: {
 					containerBuildingHud.addChild(BHHarvest.getInstance());
+					BHHarvest.setExit();
+				}
 				case BuildingHudType.CONSTRUCTION: 
 					containerBuildingHud.addChild(BHConstruction.getInstance());
 				case BuildingHudType.MOVING: 
@@ -123,6 +125,8 @@ class Hud extends SmartScreen
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		//var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
+		
 		
 		
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
@@ -141,6 +145,7 @@ class Hud extends SmartScreen
 		
 		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
 		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {

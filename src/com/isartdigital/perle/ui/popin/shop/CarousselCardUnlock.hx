@@ -3,6 +3,9 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.game.sprites.Phantom;
+import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.interaction.EventTarget;
@@ -13,18 +16,23 @@ import pixi.interaction.EventTarget;
  */
 class CarousselCardUnlock extends CarouselCard
 {
+	private var lButton:SmartButton;
 	private var imageCurrency:UISprite;
 	private var text_name:TextSprite;
 	private var text_price:TextSprite;
+	private var sfIcon:UISprite;
 	
 	override public function new() 
 	{
 		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		
+		SmartCheck.traceChildrens(this);
+		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
+		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
+		image = cast(SmartCheck.getChildByName(this, "Item_picture"), UISprite); 
 		//image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
-		imageCurrency = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
+		//imageCurrency = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
 		text_name = cast(SmartCheck.getChildByName(this, "Item_Name"), TextSprite);
-		text_price = cast(SmartCheck.getChildByName(this, "Item_Price"), TextSprite);
+		text_price = cast(SmartCheck.getChildByName(this, "Item_SCPrice"), TextSprite);
 	}
 	
 	
@@ -34,6 +42,15 @@ class CarousselCardUnlock extends CarouselCard
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
 		setName(buildingAssetName);
+		
+		//sfIcon = ShopPopin.iconSoft;
+		/*var lIconCurrencie:FlumpStateGraphic = new FlumpStateGraphic("_goldIcon_Medium"); // todo :pooling à penser
+		lIconCurrencie.init();
+		lIconCurrencie.width = 250;
+		lIconCurrencie.height = 250;
+		sfIcon.addChild(lIconCurrencie);
+		lIconCurrencie.start();*/
+		
 		if (!BuyManager.canBuy(pBuildingAssetName))
 			alpha = 0.5;
 		setPrice(BuyManager.checkPrice(pBuildingAssetName)); // todo: bon item price par rapprt au json
@@ -57,8 +74,16 @@ class CarousselCardUnlock extends CarouselCard
 		if (alpha == 0.5)
 			return;
 		super._click(pEvent);
-		UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
-		ConfirmBuyBuilding.getInstance().init(buildingAssetName);
+		//UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
+		//ConfirmBuyBuilding.getInstance().init(buildingAssetName);
+		if (BuyManager.canBuy(buildingAssetName)) {
+			Phantom.onClickShop(buildingAssetName);
+			Hud.getInstance().hideBuildingHud();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+			Hud.getInstance().show();
+			UIManager.getInstance().closeCurrentPopin();
+			UIManager.getInstance().closeCurrentPopin();
+		}
 	}
 	
 	override public function destroy():Void {

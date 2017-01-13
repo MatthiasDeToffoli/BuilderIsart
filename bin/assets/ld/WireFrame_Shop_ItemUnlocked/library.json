@@ -6,68 +6,171 @@
     {
      "textures": [
       {
-       "symbol": "_button_buy_buildingdeco_down",
+       "symbol": "_itemunlocked_bg",
        "rect": [
         1,
         1,
+        229,
+        463
+       ],
+       "origin": [
+        114.45,
+        231.45
+       ]
+      },
+      {
+       "symbol": "_button_buy_buildingdeco_down",
+       "rect": [
+        1,
+        466,
         198,
-        228
+        401
        ],
        "origin": [
         99,
-        114
+        200.25
        ]
       },
       {
        "symbol": "_button_buy_buildingdeco_over",
        "rect": [
-        1,
-        231,
+        201,
+        466,
         198,
-        228
+        401
        ],
        "origin": [
         99,
-        114
+        200.25
        ]
       },
       {
        "symbol": "_button_buy_buildingdeco_up",
        "rect": [
-        201,
+        232,
         1,
         196,
-        226
+        398
        ],
        "origin": [
         97.75,
-        112.75
+        199
        ]
       },
       {
-       "symbol": "_buildingdeco_picture",
+       "symbol": "_shop_itempicture",
        "rect": [
-        201,
-        229,
-        126,
-        126
+        401,
+        401,
+        188,
+        188
        ],
        "origin": [
-        62.7,
-        62.7
+        94,
+        94
        ]
       },
       {
-       "symbol": "_currencyIcon_Medium",
+       "symbol": "_buttoninfo_over",
        "rect": [
         1,
-        461,
-        48,
-        48
+        869,
+        203,
+        36
        ],
        "origin": [
-        24,
-        24
+        101.5,
+        17.75
+       ]
+      },
+      {
+       "symbol": "_buttoninfo_down",
+       "rect": [
+        1,
+        907,
+        203,
+        36
+       ],
+       "origin": [
+        101.5,
+        17.75
+       ]
+      },
+      {
+       "symbol": "_buttoninfo_up",
+       "rect": [
+        1,
+        945,
+        201,
+        33
+       ],
+       "origin": [
+        100.6,
+        16.4
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Small",
+       "rect": [
+        232,
+        401,
+        32,
+        32
+       ],
+       "origin": [
+        16,
+        16
+       ]
+      },
+      {
+       "symbol": "_alignIcon_Small",
+       "rect": [
+        266,
+        401,
+        32,
+        32
+       ],
+       "origin": [
+        16,
+        16
+       ]
+      },
+      {
+       "symbol": "_buildRessourceIcon_Small",
+       "rect": [
+        300,
+        401,
+        32,
+        32
+       ],
+       "origin": [
+        16,
+        16
+       ]
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "ITEM_NAME",
+        "width": 365.65,
+        "color": "#000000",
+        "align": "center",
+        "height": 48.7,
+        "font": "40px _sans",
+        "x": -182.8
+       },
+       "symbol": "_buildingdeco_name_txt",
+       "rect": [
+        334,
+        401,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
        ]
       },
       {
@@ -84,33 +187,8 @@
        },
        "symbol": "_buildingdeco_price_txt",
        "rect": [
-        51,
-        461,
-        1,
-        1
-       ],
-       "baseClass": "TextSprite",
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -21.55,
-        "wordWrap": 0,
-        "text": "ITEM_NAME",
-        "width": 365.65,
-        "color": "#000000",
-        "align": "center",
-        "height": 43.1,
-        "font": "35px _sans",
-        "x": -182.8
-       },
-       "symbol": "_buildingdeco_name_txt",
-       "rect": [
-        51,
-        464,
+        334,
+        404,
         1,
         1
        ],
@@ -139,7 +217,7 @@
       {
        "pivot": [
         97.75,
-        112.75
+        199
        ],
        "tweened": false,
        "duration": 1,
@@ -149,7 +227,7 @@
       {
        "pivot": [
         99,
-        114
+        200.25
        ],
        "tweened": false,
        "duration": 1,
@@ -159,31 +237,12 @@
       {
        "pivot": [
         99,
-        114
+        200.25
        ],
        "tweened": false,
        "duration": 2,
        "index": 2,
        "ref": "_button_buy_buildingdeco_down"
-      }
-     ]
-    },
-    {
-     "name": "Item_Picture",
-     "keyframes": [
-      {
-       "pivot": [
-        62.7,
-        62.7
-       ],
-       "duration": 4,
-       "loc": [
-        -0.05,
-        -32
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_buildingdeco_picture"
       }
      ]
     },
@@ -195,49 +254,246 @@
        "duration": 4,
        "index": 0,
        "loc": [
-        0.275,
-        48.75
+        0,
+        15.75
        ],
        "ref": "_buildingdeco_name_txt"
       }
      ]
     },
     {
-     "name": "Item_Price",
+     "name": "Item_SCPrice",
      "keyframes": [
       {
        "tweened": false,
        "duration": 4,
        "index": 0,
        "loc": [
-        -23.925,
-        84.05
+        -15.85,
+        80.325
        ],
        "ref": "_buildingdeco_price_txt"
       }
      ]
     },
     {
-     "name": "Currency_icon",
+     "name": "SoftCurrency_icon",
      "keyframes": [
       {
        "pivot": [
-        24,
-        24
+        16,
+        16
        ],
        "duration": 4,
        "loc": [
-        41.6,
-        85.025
+        41.675,
+        80.225
        ],
        "tweened": false,
        "index": 0,
-       "ref": "_currencyIcon_Medium"
+       "ref": "_goldIcon_Small"
+      }
+     ]
+    },
+    {
+     "name": "Item_ResourcePrice",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -15.85,
+        120.55
+       ],
+       "ref": "_buildingdeco_price_txt"
+      }
+     ]
+    },
+    {
+     "name": "Resource_icon",
+     "keyframes": [
+      {
+       "pivot": [
+        16,
+        16
+       ],
+       "duration": 4,
+       "loc": [
+        41.675,
+        120.525
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buildRessourceIcon_Small"
+      }
+     ]
+    },
+    {
+     "name": "Item_ResourcePrice2",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
+       "loc": [
+        -15.85,
+        162.025
+       ],
+       "ref": "_buildingdeco_price_txt"
+      }
+     ]
+    },
+    {
+     "name": "Resource_icon2",
+     "keyframes": [
+      {
+       "pivot": [
+        16,
+        16
+       ],
+       "duration": 4,
+       "loc": [
+        41.675,
+        162
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buildRessourceIcon_Small"
+      }
+     ]
+    },
+    {
+     "name": "Item_picture",
+     "keyframes": [
+      {
+       "pivot": [
+        94,
+        94
+       ],
+       "duration": 4,
+       "loc": [
+        0,
+        -97.75
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_shop_itempicture"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Shop_BuildingDeco_UnlockedItem",
+   "layers": [
+    {
+     "name": "Item_Unlocked_BG",
+     "keyframes": [
+      {
+       "pivot": [
+        114.45,
+        231.45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_itemunlocked_bg"
+      }
+     ]
+    },
+    {
+     "name": "ButtonAchatBuildingDeco",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        20.75
+       ],
+       "ref": "ButtonBuyBuildingDeco"
+      }
+     ]
+    },
+    {
+     "name": "ButtonInfo",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0.325,
+        -208.3
+       ],
+       "ref": "~ButtonInfo"
+      }
+     ]
+    },
+    {
+     "name": "Alignment_Icon",
+     "keyframes": [
+      {
+       "pivot": [
+        16,
+        16
+       ],
+       "duration": 1,
+       "loc": [
+        -98.2,
+        -215.2
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_alignIcon_Small"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonInfo",
+   "layers": [
+    {
+     "name": "Calque 1",
+     "keyframes": [
+      {
+       "pivot": [
+        100.575,
+        16.4
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_buttoninfo_up"
+      },
+      {
+       "pivot": [
+        101.5,
+        17.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "ref": "_buttoninfo_over"
+      },
+      {
+       "pivot": [
+        101.5,
+        17.75
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "ref": "_buttoninfo_down"
       }
      ]
     }
    ]
   }
  ],
- "md5": "b3b49f736718e06ec18364a53a345ee2"
+ "md5": "de1d631090edabab316a558cab2a3d71"
 }

@@ -8,7 +8,9 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import js.Browser;
 
 /**
  * 
@@ -22,6 +24,7 @@ class BHHarvest extends BuildingHud{
 	private var btnDescription:SmartButton;
 	private var btnUpgrade:SmartButton;
 	private var btnDestroy:SmartButton;
+	
 	
 	
 	public static function getInstance (): BHHarvest {
@@ -45,24 +48,45 @@ class BHHarvest extends BuildingHud{
 		btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
 	}
 	
+	public static function setExit():Void {
+		GameStage.getInstance().getGameContainer().interactive = true;
+		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
+	}
+	
+	private function removeListenerGameContainer():Void {
+		GameStage.getInstance().getGameContainer().interactive = false;	
+	}
+	
 	private function onClickMove(): Void {
+		removeListenerGameContainer();
 		BuildingHud.virtualBuilding.onClickMove();
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
+		//trace(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 	}
 	
 	private function onClickDescription(): Void {
+		removeListenerGameContainer();
 		UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 	}
 	
 	private function onClickDestroy(): Void {
-		InfoBuilding.getInstance().onClickSell();
+		UIManager.getInstance().openPopin(BuildingDestroyPoppin.getInstance());
+		removeListenerGameContainer();
 	}
 	
 	private function onClickUpgrade(): Void {
+		removeListenerGameContainer();
 		InfoBuilding.getInstance().onClickUpgrade();
+		Hud.getInstance().hideBuildingHud();
+	}
+	
+	private static function onClickExit ():Void { 
+		GameStage.getInstance().getGameContainer().interactive = false;
+		Hud.getInstance().hideBuildingHud();
 	}
 	
 	override public function destroy():Void {
+		removeListenerGameContainer();
 		instance = null;
 		super.destroy();
 	}

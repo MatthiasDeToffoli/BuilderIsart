@@ -1,0 +1,774 @@
+{
+ "md5": "8c30db8eda5c21e649bd9cd305f4b7e8",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_smallPopinBG",
+       "origin": [
+        750,
+        400
+       ],
+       "rect": [
+        1,
+        1,
+        1500,
+        800
+       ]
+      },
+      {
+       "symbol": "Image_SelectedBuilding",
+       "origin": [
+        170.2,
+        170.2
+       ],
+       "rect": [
+        1503,
+        1,
+        336,
+        336
+       ]
+      },
+      {
+       "symbol": "_buttonDestroyBuildingConfirm_down",
+       "origin": [
+        248,
+        90
+       ],
+       "rect": [
+        1503,
+        339,
+        503,
+        180
+       ]
+      },
+      {
+       "symbol": "_buttonDestroyBuildingConfirm_over",
+       "origin": [
+        248,
+        90
+       ],
+       "rect": [
+        1503,
+        521,
+        503,
+        180
+       ]
+      },
+      {
+       "symbol": "_buttonDestroyBuildingConfirm_up",
+       "origin": [
+        245.5,
+        87.5
+       ],
+       "rect": [
+        1503,
+        703,
+        498,
+        175
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "origin": [
+        112.3,
+        113
+       ],
+       "rect": [
+        1,
+        803,
+        226,
+        226
+       ]
+      },
+      {
+       "symbol": "_closeButton_hit",
+       "origin": [
+        110,
+        110
+       ],
+       "rect": [
+        229,
+        803,
+        220,
+        220
+       ]
+      },
+      {
+       "symbol": "_closeButton_down",
+       "origin": [
+        75,
+        75
+       ],
+       "rect": [
+        1841,
+        1,
+        150,
+        150
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        75,
+        75
+       ],
+       "rect": [
+        1841,
+        153,
+        150,
+        150
+       ]
+      },
+      {
+       "symbol": "_button_PlusSoftCurrency_zone",
+       "origin": [
+        131.5,
+        41.5
+       ],
+       "rect": [
+        451,
+        803,
+        263,
+        83
+       ]
+      },
+      {
+       "symbol": "_softCurrency_Bg",
+       "origin": [
+        -515.5,
+        506.7
+       ],
+       "rect": [
+        716,
+        803,
+        255,
+        75
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Large",
+       "origin": [
+        64,
+        64
+       ],
+       "rect": [
+        973,
+        803,
+        128,
+        128
+       ]
+      },
+      {
+       "symbol": "_icon_plus",
+       "origin": [
+        51.1,
+        51.1
+       ],
+       "rect": [
+        716,
+        880,
+        103,
+        103
+       ]
+      },
+      {
+       "symbol": "_buttonPlusSoftCurrency_over",
+       "origin": [
+        20,
+        20
+       ],
+       "rect": [
+        1993,
+        1,
+        40,
+        40
+       ]
+      },
+      {
+       "symbol": "_buttonPlusSoftCurrency_down",
+       "origin": [
+        20,
+        20
+       ],
+       "rect": [
+        1993,
+        43,
+        40,
+        40
+       ]
+      },
+      {
+       "symbol": "_buttonPlusSoftCurrency_up",
+       "origin": [
+        19,
+        19
+       ],
+       "rect": [
+        1993,
+        85,
+        38,
+        38
+       ]
+      },
+      {
+       "data": {
+        "y": -46.7,
+        "text": "Building_name",
+        "x": -344.85,
+        "width": 689.7,
+        "font": "72px _sans",
+        "align": "left",
+        "height": 93.35,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_text_selectedBuildingName",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        305,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -57.85,
+        "text": "Sell",
+        "x": -246.1,
+        "width": 492.25,
+        "font": "100px Arial",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_text_confirmDestroyBuilding",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        308,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -57.85,
+        "text": "XXXX",
+        "x": -176.5,
+        "width": 353,
+        "font": "100px Arial",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_text_destroyBuildPayment",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        311,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -24.35,
+        "text": "XXXX",
+        "x": -66.7,
+        "width": 133.4,
+        "font": "40px _sans",
+        "align": "center",
+        "height": 48.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_text_softCurrency",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        314,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -35.5,
+        "text": "Building_level",
+        "x": -266.75,
+        "width": 533.5,
+        "font": "56px _sans",
+        "align": "left",
+        "height": 71,
+        "wordWrap": 0,
+        "color": "#666666"
+       },
+       "symbol": "_text_selectedBuildingLevel",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        317,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_smallPopinBG",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        750,
+        400
+       ]
+      }
+     ],
+     "name": "BG_DestroyBuildingBG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuildingConfirm",
+       "loc": [
+        0,
+        280
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Button_DestroyBuildingConfirm"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Button_DestroyBuildingCancel"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_destroyBuildPayment",
+       "loc": [
+        10.25,
+        110.9
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_text_destroyBuildPayment"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        259.55,
+        104.8
+       ],
+       "index": 0,
+       "pivot": [
+        64,
+        64
+       ],
+       "ref": "_goldIcon_Large",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Icon_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -240,
+        118.8
+       ],
+       "index": 0,
+       "pivot": [
+        51.1,
+        51.1
+       ],
+       "ref": "_icon_plus",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Icon_Plus"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_selectedBuildingLevel",
+       "loc": [
+        -71.2,
+        -219.55
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_text_selectedBuildingLevel"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_selectedBuildingName",
+       "loc": [
+        6.9,
+        -303.5
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_text_selectedBuildingName"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -549.9,
+        -182.5
+       ],
+       "index": 0,
+       "pivot": [
+        170.2,
+        170.2
+       ],
+       "ref": "Image_SelectedBuilding",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Image_SelectedBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonClose",
+       "loc": [
+        700,
+        -360
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonClose"
+    }
+   ],
+   "id": "Popin_DestroyBuilding"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -643,
+        469.2
+       ],
+       "index": 0,
+       "pivot": [
+        -515.5,
+        506.7
+       ],
+       "ref": "_softCurrency_Bg",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "BG_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_softCurrency",
+       "loc": [
+        -0.5,
+        0
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_text_softCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Icon_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonPlusSoftCurrency",
+       "loc": [
+        100,
+        0
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Button_PlusSoftCurrency"
+    }
+   ],
+   "data": {
+    "UIPosition": "topRight",
+    "UIPosition_Desktop": "top"
+   },
+   "id": "SoftCurrency"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "pivot": [
+        112.3,
+        113
+       ],
+       "ref": "_closeButton_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.05,
+        0
+       ],
+       "index": 1,
+       "pivot": [
+        75,
+        75
+       ],
+       "ref": "_closeButton_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "index": 2,
+       "pivot": [
+        75,
+        75
+       ],
+       "ref": "_closeButton_down",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_closeButton_hit",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        110,
+        110
+       ]
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonClose"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -0.5
+       ],
+       "index": 0,
+       "pivot": [
+        245.5,
+        87.5
+       ],
+       "ref": "_buttonDestroyBuildingConfirm_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.5
+       ],
+       "index": 1,
+       "pivot": [
+        248,
+        90
+       ],
+       "ref": "_buttonDestroyBuildingConfirm_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.2,
+        0.05
+       ],
+       "index": 2,
+       "pivot": [
+        248,
+        90
+       ],
+       "ref": "_buttonDestroyBuildingConfirm_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_confirmDestroyBuilding",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text_ConfirmCancelConstruction"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonDestroyBuildingConfirm"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "pivot": [
+        19,
+        19
+       ],
+       "ref": "_buttonPlusSoftCurrency_up",
+       "scale": [
+        2.04,
+        2.04
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "index": 1,
+       "pivot": [
+        20,
+        20
+       ],
+       "ref": "_buttonPlusSoftCurrency_over",
+       "scale": [
+        1.8971,
+        1.8971
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "index": 2,
+       "pivot": [
+        20,
+        20
+       ],
+       "ref": "_buttonPlusSoftCurrency_down",
+       "scale": [
+        1.8971,
+        1.8971
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -100,
+        0
+       ],
+       "index": 3,
+       "pivot": [
+        131.5,
+        41.5
+       ],
+       "ref": "_button_PlusSoftCurrency_zone",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonPlusSoftCurrency"
+  }
+ ],
+ "frameRate": 24
+}

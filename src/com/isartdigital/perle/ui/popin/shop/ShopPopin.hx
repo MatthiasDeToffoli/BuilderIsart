@@ -1,12 +1,15 @@
 package com.isartdigital.perle.ui.popin.shop;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
+import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
@@ -15,7 +18,7 @@ enum ShopBar { Soft; Hard; Marble; Wood; }
 
 /**
  * ...
- * @author ambroise & alexis
+ * @author ambroise
  */
 class ShopPopin extends SmartPopin{
 
@@ -31,6 +34,7 @@ class ShopPopin extends SmartPopin{
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
 	
+	
 	public static function getInstance (pTab:ShopTab): ShopPopin {
 		if (instance == null) instance = new ShopPopin(pTab);
 		return instance;
@@ -39,10 +43,25 @@ class ShopPopin extends SmartPopin{
 	private function new(pTab:ShopTab) {
 		modal = false;
 		super(AssetName.POPIN_SHOP);
-		
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
 		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
+		
+		var lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
+		var lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lSCtext.text = "" + ResourcesManager.getTotalForType(GeneratorType.soft);
+		
+		var lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
+		var lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lHCtext.text = "" + ResourcesManager.getTotalForType(GeneratorType.hard);
+		
+		var lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);
+		var lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lmarbretext.text = "" + ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell);
+		
+		var lwood = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_BOIS), SmartComponent);
+		var lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lwoodtext.text = ""+ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise);
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);

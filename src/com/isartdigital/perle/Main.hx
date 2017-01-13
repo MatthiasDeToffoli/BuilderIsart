@@ -220,6 +220,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
 		
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_DestroyBuilding/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_LevelUp/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");

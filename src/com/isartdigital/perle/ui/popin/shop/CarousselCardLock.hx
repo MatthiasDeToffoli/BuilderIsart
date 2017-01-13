@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UISprite;
 
 /**
  * ...
@@ -16,6 +17,7 @@ class CarousselCardLock extends CarouselCard
 	override public function new() 
 	{
 		super(AssetName.CAROUSSEL_CARD_ITEM_LOCKED);
+		image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
 		text_lock = cast(SmartCheck.getChildByName(this, "Reason_locked"), TextSprite);
 	}
 	

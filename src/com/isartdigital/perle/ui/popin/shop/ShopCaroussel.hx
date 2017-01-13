@@ -119,7 +119,6 @@ class ShopCaroussel extends SmartComponent {
 			"Shop_Item_Unlocked_1",
 			"Shop_Item_Unlocked_2",
 			"Shop_Item_Locked_1",
-			"Shop_Item_Locked_2",
 		];
 	}
 	
