@@ -42,7 +42,6 @@ class ShopPopin extends SmartPopin{
 		
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
-		SmartCheck.traceChildrens(this);
 		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);

@@ -44,7 +44,7 @@ class AssetName{
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";
 	
 	// Game
-	public static inline var BTN_PRODUCTION:String = "GoldProduction";
+	public static inline var BTN_PRODUCTION:String = "ProdDone";
 	
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
@@ -167,10 +167,10 @@ class AssetName{
 	
 	// HUD
 	public static inline var HUD_PREFIX:String = "HUD_";
-	public static inline var HUD_BTN_SHOP:String = HUD_PREFIX + "ShopButton";
+	public static inline var HUD_BTN_SHOP:String = "ButtonShop_HUD";
 	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
 	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
-	public static inline var HUD_BTN_INTERNS:String = /*HUD_PREFIX + */"internsButton";
+	public static inline var HUD_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
 	public static inline var HUD_COUNTER_SOFT:String = HUD_PREFIX + "SoftCurrency";
 	public static inline var HUD_BTN_SOFT:String = /*HUD_PREFIX + */"ButtonPlusSC";
 	public static inline var HUD_COUNTER_HARD:String = HUD_PREFIX + "HardCurrency";

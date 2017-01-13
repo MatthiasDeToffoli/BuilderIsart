@@ -68,7 +68,7 @@ class InfoBuilding extends SmartPopin {
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
-	private function onClickSell ():Void {
+	public function onClickSell ():Void {
 		BuyManager.sell(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 		UIManager.getInstance().closeCurrentPopin();
 		BuildingHud.virtualBuilding.destroy();
@@ -76,7 +76,7 @@ class InfoBuilding extends SmartPopin {
 		SaveManager.save();
 	}
 	
-	private function onClickUpgrade ():Void {
+	public function onClickUpgrade ():Void {
 		var lAssetName:String = BuildingHud.virtualBuilding.tileDesc.assetName;
 		var lBuildingUpgrade:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
 		

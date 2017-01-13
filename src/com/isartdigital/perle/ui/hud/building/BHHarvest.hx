@@ -20,7 +20,8 @@ class BHHarvest extends BuildingHud{
 	
 	private var btnMove:SmartButton;
 	private var btnDescription:SmartButton;
-	private var btnClose:SmartButton;
+	private var btnUpgrade:SmartButton;
+	private var btnDestroy:SmartButton;
 	
 	
 	public static function getInstance (): BHHarvest {
@@ -33,12 +34,15 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	override private function addListeners ():Void {
+		SmartCheck.traceChildrens(this);
 		btnMove = cast(getChildByName("MoveButton"), SmartButton);
 		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
-		btnClose = cast(getChildByName("CloseButton"), SmartButton);
+		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
 		btnMove.on(MouseEventType.CLICK, onClickMove);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
-		btnClose.on(MouseEventType.CLICK, onClickClose);
+		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+		btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
 	}
 	
 	private function onClickMove(): Void {
@@ -50,8 +54,12 @@ class BHHarvest extends BuildingHud{
 		UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 	}
 	
-	private function onClickClose(): Void {
-		Hud.getInstance().hideBuildingHud();
+	private function onClickDestroy(): Void {
+		InfoBuilding.getInstance().onClickSell();
+	}
+	
+	private function onClickUpgrade(): Void {
+		InfoBuilding.getInstance().onClickUpgrade();
 	}
 	
 	override public function destroy():Void {
