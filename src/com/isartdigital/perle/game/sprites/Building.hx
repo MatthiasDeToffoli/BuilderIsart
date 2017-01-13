@@ -176,7 +176,6 @@ class Building extends Tile implements IZSortable
 	}
 	
 	private function onClick ():Void {
-		trace("click");
 		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick();
 	}
 	

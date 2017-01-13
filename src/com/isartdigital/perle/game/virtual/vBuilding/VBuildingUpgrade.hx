@@ -13,7 +13,7 @@ class VBuildingUpgrade extends VBuilding
 {
 
 	private var UpgradeAssetsList:Array<String>;
-	private var indexLevel:Int;
+	public var indexLevel:Int;
 	
 	public function new(pDescription:TileDescription) 
 	{
