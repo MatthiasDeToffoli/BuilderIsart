@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.utils.events.MouseEventType;
@@ -44,13 +45,35 @@ class BHHarvest extends BuildingHud{
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
 		btnMove.on(MouseEventType.CLICK, onClickMove);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
-		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
 		btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
 	}
 	
-	public static function setExit():Void {
+	/**
+	 * function to set when the WF is openned
+	 */
+	public static function setOnSpawn():Void {
 		GameStage.getInstance().getGameContainer().interactive = true;
 		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
+		BHHarvest.getInstance().setUpgradeButton();
+		
+	}
+	
+	private function setUpgradeButton():Void {
+		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
+				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
+				if (myVBuilding.canUpgrade()) {
+					btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+				}
+				else
+					btnUpgrade.alpha = 0.5;
+			}
+		else
+			btnUpgrade.alpha = 0.5;
+	}
+	
+	private function removeUpgradeButtonChange():Void {
+		btnUpgrade.removeAllListeners();
+		btnUpgrade.alpha = 1;
 	}
 	
 	private function removeListenerGameContainer():Void {
@@ -58,6 +81,7 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	private function onClickMove(): Void {
+		removeUpgradeButtonChange();
 		removeListenerGameContainer();
 		BuildingHud.virtualBuilding.onClickMove();
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
@@ -65,22 +89,27 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	private function onClickDescription(): Void {
+		removeUpgradeButtonChange();
 		removeListenerGameContainer();
 		UIManager.getInstance().openPopin(InfoBuilding.getInstance());
+		onClickExit();
 	}
 	
 	private function onClickDestroy(): Void {
+		removeUpgradeButtonChange();
 		UIManager.getInstance().openPopin(BuildingDestroyPoppin.getInstance());
 		removeListenerGameContainer();
 	}
 	
 	private function onClickUpgrade(): Void {
+		removeUpgradeButtonChange();
 		removeListenerGameContainer();
 		InfoBuilding.getInstance().onClickUpgrade();
 		Hud.getInstance().hideBuildingHud();
 	}
 	
-	private static function onClickExit ():Void { 
+	private static function onClickExit():Void { 
+		BHHarvest.getInstance().removeUpgradeButtonChange();
 		GameStage.getInstance().getGameContainer().interactive = false;
 		Hud.getInstance().hideBuildingHud();
 	}

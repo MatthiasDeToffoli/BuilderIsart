@@ -20,9 +20,8 @@ class ShopCaroussel extends SmartComponent {
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
 	public static var buildingNameList(default, never):Array<String> = [
-		AssetName.BUILDING_HEAVEN_HOUSE,//1 <== level required
-		AssetName.BUILDING_HELL_HOUSE,//1
-		AssetName.BUILDING_HELL_BUILD_1,//1
+		AssetName.BUILDING_HELL_HOUSE,//1 <== level required
+		AssetName.BUILDING_HEAVEN_HOUSE,//1
 		AssetName.DECO_HEAVEN_VERTUE,//2
 		
 		AssetName.LUMBERMIL_LEVEL1,//2

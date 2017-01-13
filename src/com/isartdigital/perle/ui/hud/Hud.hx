@@ -88,7 +88,7 @@ class Hud extends SmartScreen
 			{
 				case BuildingHudType.HARVEST: {
 					containerBuildingHud.addChild(BHHarvest.getInstance());
-					BHHarvest.setExit();
+					BHHarvest.setOnSpawn();
 				}
 				case BuildingHudType.CONSTRUCTION: 
 					containerBuildingHud.addChild(BHConstruction.getInstance());
