@@ -95,7 +95,7 @@ class Phantom extends Building {
 		else if (instance != null && instance.assetName != pAssetName)
 			throw("instance must be destroyed before creating another phantom");
 		
-		
+		Building.isClickable = false;
 		instance = new Phantom(pAssetName);//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
 		// todo : revoir Pooling ?s
 		instance.init();
@@ -199,8 +199,10 @@ class Phantom extends Building {
 		if (precedentBesMapPos.x != bestMapPos.x ||
 			precedentBesMapPos.y != bestMapPos.y) {
 			
-			if (canBuildHere())
+			if (canBuildHere()){
+				Building.isClickable = true;
 				removeDesaturateFilter();
+			}
 			else
 				addDesaturateFilter();
 		}

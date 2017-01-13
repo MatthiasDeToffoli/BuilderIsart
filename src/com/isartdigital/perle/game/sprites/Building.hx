@@ -71,6 +71,8 @@ class Building extends Tile implements IZSortable
 	public var rowMax:Int;
 	public var behind:Array<IZSortable>;
 	public var inFront:Array<IZSortable>;
+	
+	private static var isClickable:Bool = true;
 
 	
 	/**
@@ -174,7 +176,8 @@ class Building extends Tile implements IZSortable
 	}
 	
 	private function onClick ():Void {
-		cast(linkedVirtualCell, VBuilding).onClick();
+		trace("click");
+		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick();
 	}
 	
 	//} endRegion
