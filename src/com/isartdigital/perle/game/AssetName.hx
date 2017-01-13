@@ -211,7 +211,7 @@ class AssetName{
 	
 	// add background and any other assetName coming from DA
 	//bg
-	public static inline var BACKGROUND_HELL:String = "Hell_bg";
+	public static inline var BACKGROUND_HELL:String = "BG_Hell";
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	

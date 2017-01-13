@@ -4,154 +4,90 @@
   {
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "Hell_floor_down_left",
-       "origin": [
-        0,
-        0
-       ],
+       "symbol": "_bg_Hell01",
        "rect": [
         1,
         1,
-        768,
-        411
-       ]
-      },
-      {
-       "symbol": "Hell_bg_up_left",
-       "origin": [
-        0,
-        0
+        954,
+        1005
        ],
-       "rect": [
-        1,
-        414,
-        768,
-        411
-       ]
-      },
-      {
-       "symbol": "Hell_floor_down_right",
        "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1,
-        827,
-        768,
-        411
+        476.6,
+        502.1
        ]
       }
-     ]
+     ],
+     "file": "atlas0.png"
     },
     {
-     "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "Hell_bg_up_right",
-       "origin": [
-        0,
-        0
-       ],
+       "symbol": "_bg_Hell02",
        "rect": [
         1,
         1,
-        768,
-        409
+        954,
+        1005
+       ],
+       "origin": [
+        476.6,
+        502.1
        ]
       }
-     ]
+     ],
+     "file": "atlas1.png"
     }
    ],
    "scaleFactor": 1
   }
  ],
+ "frameRate": 24,
  "movies": [
   {
+   "id": "BG_Hell",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
        "loc": [
-        -387.15,
-        205.125
+        456.6375,
+        484.35
        ],
-       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "ref": "Hell_bg_up_left",
        "pivot": [
-        384,
-        205.125
-       ]
+        476.625,
+        502.125
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_bg_Hell02"
       }
-     ],
-     "name": "Calque 1"
+     ]
     },
     {
+     "name": "Layer 2",
      "keyframes": [
       {
        "loc": [
-        380.85,
-        613.875
+        -439.725,
+        484.35
        ],
-       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "ref": "Hell_floor_down_right",
        "pivot": [
-        384,
-        205.125
-       ]
-      }
-     ],
-     "name": "Calque 4"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -387.15,
-        613.875
+        476.625,
+        502.125
        ],
-       "tweened": false,
-       "duration": 1,
        "index": 0,
-       "ref": "Hell_floor_down_left",
-       "pivot": [
-        384,
-        205.125
-       ]
-      }
-     ],
-     "name": "Calque 3"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        380.475,
-        204.375
-       ],
        "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "Hell_bg_up_right",
-       "pivot": [
-        383.625,
-        204.375
-       ]
+       "ref": "_bg_Hell01"
       }
-     ],
-     "name": "Calque 2"
+     ]
     }
-   ],
-   "id": "Hell_bg"
+   ]
   }
  ],
- "md5": "beede0c36f91aa65046a72398ba17971",
- "frameRate": 24
+ "md5": "8ce6fac9f8d58c0d9cb65540952e72ee"
 }
