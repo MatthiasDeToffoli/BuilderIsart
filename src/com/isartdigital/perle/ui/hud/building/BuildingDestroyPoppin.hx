@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
+import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.utils.events.MouseEventType;
@@ -45,7 +46,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		
 		//trace(BuildingHud.virtualBuilding)
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
-		//levelBuilding.text = "Level : " +
+		levelBuilding.text = "Level : ";
 		setImage(BuildingHud.virtualBuilding.getAsset());
 		price.text = ""+ BuyManager.getSellPrice(BuildingHud.virtualBuilding.getAsset()); 
 	}

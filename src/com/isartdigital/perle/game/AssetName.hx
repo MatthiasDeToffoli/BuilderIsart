@@ -14,12 +14,12 @@ class AssetName{
 	// Building Heaven
 	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuild0";
 	public static inline var BUILDING_HEAVEN_BRIDGE:String = "HeavenBuild3";
-	//public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild0";
-	//public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild1";
-	public static inline var LUMBERMIL_LEVEL1:String = "LumberMill01";
-	public static inline var LUMBERMIL_LEVEL2:String = "LumberMill02";
 	public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild1";
 	public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild2";
+	public static inline var LUMBERMIL_LEVEL1:String = "LumberMill01";
+	public static inline var LUMBERMIL_LEVEL2:String = "LumberMill02";
+	//public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild1";
+	//public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild2";
 	
 	// Building Hell
 	public static inline var BUILDING_HELL_HOUSE:String = "House";
