@@ -2,6 +2,9 @@ package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.sprites.Tile;
+import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.ui.Button;
 import pixi.core.math.Point;
@@ -47,16 +50,16 @@ class ButtonRegion extends Button
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);
 		
-		RegionManager.createRegion(
-			regionType,
-			firstCasePos,
-			{
-				x: cast(worldMapPos.x, Int),
-				y: cast(worldMapPos.y, Int)
-			}
-		);
+		if (RegionManager.haveMoneyForBuy(worldMapPos,regionType)) {
+				RegionManager.createRegion(
+				regionType,
+				firstCasePos,
+				VTile.pointToIndex(worldMapPos)			
+			);
 		
-		destroy();
+		
+			destroy();
+		}
 		
 	}
 	

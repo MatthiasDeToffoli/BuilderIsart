@@ -444,9 +444,37 @@ class ResourcesManager
 		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
 		
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+		testLevelUp();
+		SaveManager.save();
+	}
+	
+	/**
+	 * add a quantity to the total coresponding
+	 * @param	pType the type of the total resources we want to increase
+	 * @param	quantity the quantity to add
+	 */
+	public static function gainResources(pType:GeneratorType, quantity:Float):Void{
+		
+		myResourcesData.totalsMap[pType] += quantity;
+
+		
+		if (pType == GeneratorType.goodXp || pType == GeneratorType.badXp){
+			myResourcesData.totalsMap[pType]  = Math.min(myResourcesData.totalsMap[pType], maxExp);
+			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+			testLevelUp();
+		} else {
+			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false);
+		}
+		
+		SaveManager.save();
+	}
+	
+	/**
+	 * test if we level up
+	 */
+	private static function testLevelUp():Void{
 		if (myResourcesData.totalsMap[GeneratorType.badXp] == maxExp && myResourcesData.totalsMap[GeneratorType.goodXp] == maxExp)
 			levelUp();
-		SaveManager.save();
 	}
 	
 	

@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
@@ -13,6 +14,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.VGround;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -61,6 +63,39 @@ class RegionManager
 	private static var buttonRegionContainer:Container;
 	
 	/**
+	 * the base prace of region near water (save it into bdd)
+	 */
+	private static var basePriceNearWater:Float;
+	/**
+	 * the base prace of region far water (save it into bdd)
+	 */
+	private static var basePriceFarWater:Float;
+	/**
+	 * factor which be use for know the price of other region (save it into bdd)
+	 */
+	private static var priceFactor:Float;
+	
+	/**
+	 * the xp we gain when we buy a region (a float for the type of the region which bought and a float for the other type)
+	 */
+	private static var baseXpGains:Map<String,Float>;
+	/**
+	 * factors which be use for know the xp gain (one for region near styx and one for region far styx)
+	 */
+	private static var xpFactors:Array<Float>;
+	
+	/**
+	 * the number of region by type(save it into bdd)
+	 */
+	private static var mapNumbersRegion:Map<Alignment,Int>;
+	
+	/**
+	 * use for know the xp gain
+	 */
+	private static inline var CURRENT_TYPE_REGION:String = "current";
+	private static inline var OTHER_TYPE_REGION:String = "other";
+	
+	/**
 	 * factors for place button arrond a region
 	 */
 	private static var factors:Array<Point> =
@@ -83,6 +118,20 @@ class RegionManager
 		GameStage.getInstance().getGameContainer().addChildAt(bgContainer, 0);
 		worldMap = new Map<Int,Map<Int,Region>>();
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
+		mapNumbersRegion = new Map<Alignment,Int>();
+		baseXpGains = new Map<String,Float>();
+		xpFactors = [1.5, 1.2];
+		
+		baseXpGains[CURRENT_TYPE_REGION] = 1500;
+		baseXpGains[OTHER_TYPE_REGION] = 500;
+		
+		basePriceNearWater = 15000;
+		basePriceFarWater = 10000;
+		priceFactor = 1.2;
+		
+		mapNumbersRegion[Alignment.heaven] = -1;
+		mapNumbersRegion[Alignment.hell] = -1;
+		mapNumbersRegion[Alignment.neutral] = 0;
 	}
 	
 
@@ -157,6 +206,9 @@ class RegionManager
 	 * @param pNewRegion region to add
 	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
+		
+		mapNumbersRegion[pNewRegion.desc.type]++;
+		
 		if (worldMap[pNewRegion.desc.x] == null)
 			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
 		if (worldMap[pNewRegion.desc.x][pNewRegion.desc.y] != null)
@@ -245,6 +297,7 @@ class RegionManager
 	public static function createRegion (pType:Alignment, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
 		//@TODO: delete when we will have the stick bg
+		
 		createNextBg({
 			x:pWorldPos.x,
 			y:pWorldPos.y,
@@ -278,6 +331,42 @@ class RegionManager
 			),
 			0
 		);
+	}
+	
+	/**
+	 * test if we have money for by a new region
+	 * @param	pWorldPos the position of the region we want buy
+	 * @param	pType the type of the region we want buy
+	 * @return if we can by the new region
+	 */
+	public static function haveMoneyForBuy(pWorldPos:Point, pType:Alignment):Bool {
+		
+		var basePrice:Float = Math.abs(pWorldPos.x) > 1 ? basePriceFarWater:basePriceNearWater;
+		
+		if (mapNumbersRegion[pType] > 0) basePrice *= priceFactor * mapNumbersRegion[pType];
+		
+		if (basePrice < ResourcesManager.getTotalForType(GeneratorType.soft)){
+			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(basePrice));
+			addExp(pType, Std.int(Math.abs(pWorldPos.x) - 1), mapNumbersRegion[pType]);
+			return true;
+		}
+		
+		var errorMessage:String = "not enought money you must have " + (basePrice - ResourcesManager.getTotalForType(GeneratorType.soft)) + " in more";
+		Debug.error(errorMessage);
+		return false;
+		
+	}
+	
+	private static function addExp(pType:Alignment, pFactorIndice:Int, numberRegion:Float):Void{
+		var lFactor = numberRegion > 0 ? xpFactors[pFactorIndice] * numberRegion:1;
+
+		if (pType == Alignment.heaven){
+			ResourcesManager.gainResources(GeneratorType.goodXp, baseXpGains[CURRENT_TYPE_REGION] * lFactor);
+			ResourcesManager.gainResources(GeneratorType.badXp, baseXpGains[OTHER_TYPE_REGION] * lFactor);		
+		} else {
+			ResourcesManager.gainResources(GeneratorType.badXp, baseXpGains[CURRENT_TYPE_REGION] * lFactor);
+			ResourcesManager.gainResources(GeneratorType.goodXp, baseXpGains[OTHER_TYPE_REGION] * lFactor);
+		}
 	}
 	
 	/**
