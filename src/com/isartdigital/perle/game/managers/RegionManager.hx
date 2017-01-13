@@ -207,7 +207,8 @@ class RegionManager
 	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
 		
-		mapNumbersRegion[pNewRegion.desc.type]++;
+		//mapNumbersRegion[pNewRegion.desc.type]++;
+		mapNumbersRegion[pNewRegion.desc.type] += 1;
 		
 		if (worldMap[pNewRegion.desc.x] == null)
 			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
