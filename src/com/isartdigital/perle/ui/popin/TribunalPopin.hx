@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
@@ -73,21 +75,20 @@ class TribunalPopin extends SmartPopin
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
-		fateName.text = "Ambroise";
+		fateName.text = "Children";
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
-		fateAdjective.text = "Boss";
+		fateAdjective.text = "not guilty";
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_INFO);
 		infoHeaven = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);
-		infoHeaven.text = "0";
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HELL_INFO);
 		infoHell = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);	
-		infoHell.text = "0";
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_ALL_SOULS_INFO);
 		infoSoul = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_ALL_SOULS_NUMBER), TextSprite);	
-		infoSoul.text = "0";
+		
+		changeSoulTextInfo();
 			
 		btnUpgrade.on(MouseEventType.MOUSE_OVER, rewriteUpgradeTxt);
 		btnUpgrade.on(MouseEventType.MOUSE_OUT, rewriteUpgradeTxt);
@@ -98,6 +99,8 @@ class TribunalPopin extends SmartPopin
 		btnShop.on(MouseEventType.CLICK, onShop);
 		btnIntern.on(MouseEventType.CLICK, onIntern);
 		btnUpgrade.on(MouseEventType.CLICK, onUpgrade);
+		
+		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
 	}
 	
 	private function onClose() {
@@ -116,14 +119,31 @@ class TribunalPopin extends SmartPopin
 	}
 	
 	private function onHeaven(){
-		trace("heaven");
+		ResourcesManager.judgePopulation(Alignment.heaven);
+		changeSoulTextInfo();
 	}
 	
 	private function onHell(){
-		trace("hell");
+		ResourcesManager.judgePopulation(Alignment.hell);
+		changeSoulTextInfo();
 	}
 	
-	private function onUpgrade(){
+	private function changeSoulTextInfo():Void{
+		
+		var myTotalPopulation:TotalPopulations = ResourcesManager.getTotalAllPopulations();
+		var myNeutralPopulation:Population = ResourcesManager.getTotalNeutralPopulation();
+		
+		infoHeaven.text = myTotalPopulation.heaven.quantity + "/" + myTotalPopulation.heaven.max;
+		infoHell.text = myTotalPopulation.hell.quantity + "/" + myTotalPopulation.hell.max;
+		infoSoul.text = myNeutralPopulation.quantity + "/" + myNeutralPopulation.max;
+		
+	}
+	
+	private function onSoulArrivedEvent(pParam:Dynamic):Void{
+		changeSoulTextInfo();
+	}
+	
+	private function onUpgrade():Void{
 		rewriteUpgradeTxt();
 		trace("upgrade");
 	}

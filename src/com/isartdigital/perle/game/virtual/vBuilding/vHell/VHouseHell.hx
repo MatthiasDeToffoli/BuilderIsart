@@ -17,6 +17,11 @@ class VHouseHell extends VHouse
 		super(pDescription);
 		alignementBuilding = Alignment.hell;
 		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_BUILD_1, AssetName.BUILDING_HELL_BUILD_2];
+		
+		addPopulation(5);
+		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE] = 5;
+		mapMaxPopulation[AssetName.BUILDING_HELL_BUILD_1] = 15;
+		mapMaxPopulation[AssetName.BUILDING_HELL_BUILD_2] = 40;
 	}
 	
 }

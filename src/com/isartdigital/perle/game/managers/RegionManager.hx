@@ -221,6 +221,7 @@ class RegionManager
 			sortBackground();
 		}
 	}
+
 	
 	/**
 	 * get the button container
@@ -357,6 +358,12 @@ class RegionManager
 		
 	}
 	
+	/**
+	 * add experience in function of the region
+	 * @param	pType the type of the region added
+	 * @param	pFactorIndice an indice help to choos the good factor which increase xp gained
+	 * @param	numberRegion the of the region added
+	 */
 	private static function addExp(pType:Alignment, pFactorIndice:Int, numberRegion:Float):Void{
 		var lFactor = numberRegion > 0 ? xpFactors[pFactorIndice] * numberRegion:1;
 

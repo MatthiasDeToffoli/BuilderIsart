@@ -49,6 +49,7 @@ class VBuilding extends VTile {
 		RegionManager.addToRegionBuilding(this);
 		addGenerator();
 		addHudContextual();
+		
 	}
 	
 	/**
@@ -108,6 +109,12 @@ class VBuilding extends VTile {
 		ignore = false;
 		activate();
 		setState(VBuildingState.isBuilt);
+	}
+	
+	public static function givePopulation(pId:Int):Void{
+		var myVBuilding:VBuilding;
+		
+		
 	}
 	
 	public function onClickConfirm ():Void {

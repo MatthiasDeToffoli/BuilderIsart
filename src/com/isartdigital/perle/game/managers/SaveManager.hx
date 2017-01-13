@@ -25,6 +25,8 @@ typedef TileDescription = {
 	var regionY:Int;
 	var mapX:Int;
 	var mapY:Int;
+	@:optional var currentPopulation:Int;
+	@:optional var maxPopulation:Int;
 	@:optional var isTribunal:Bool;
 }
 
@@ -132,6 +134,8 @@ class SaveManager {
 		var groundSave:Array<TileDescription> = [];
 		var regionSave:Array<RegionDescription> = [];
 		var itemUnlock:Array<Array<Array<String>>> = [];
+		
+		//trace("save");
 		
 		itemUnlock = UnlockManager.itemUnlocked;
 		

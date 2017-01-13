@@ -27,6 +27,12 @@ import eventemitter3.EventEmitter;
  }
  
  
+ typedef Population = {
+	@:optional var buildingRef:Int;
+	 var quantity:Int;
+	 var max:Int;
+ }
+ 
  /**
   * Information send to actualise ui view
   */
@@ -35,6 +41,14 @@ import eventemitter3.EventEmitter;
 	 var isLevel:Bool;
 	 @:optional var max:Float;
 	 @:optional var type:GeneratorType;
+ }
+ 
+ /**
+  * the total of all populations
+  */
+ typedef TotalPopulations = {
+	 var heaven:Population;
+	 var hell:Population;
  }
  
  /**
@@ -56,13 +70,20 @@ class ResourcesManager
 	 */
 	public static var generatorEvent:EventEmitter;
 	public static var totalResourcesEvent:EventEmitter;
+	public static var populationChangementEvent:EventEmitter;
+	public static var soulArrivedEvent:EventEmitter;
 	/**
 	 * name of the event
 	 */
 	public static inline var GENERATOR_EVENT_NAME:String = "GENERATOR";
 	public static inline var TOTAL_RESOURCES_EVENT_NAME:String = "TOTAL RESOURCES";
+	public static inline var POPULATION_CHANGEMENT_EVENT_NAME:String = "POPULATION";
+	public static inline var SOUL_ARRIVED_EVENT_NAME:String = "SOUL_ARRIVED";
 	
 	private static var maxExp:Float;
+	
+	private static var allPopulations:Map<Alignment,Array<Population>>;
+	
 	
 	/**
 	 * 
@@ -89,6 +110,8 @@ class ResourcesManager
 	public static function awake():Void{
 		generatorEvent = new EventEmitter();
 		totalResourcesEvent = new EventEmitter();
+		populationChangementEvent = new EventEmitter();
+		soulArrivedEvent = new EventEmitter();
 		totalResourcesInfoArray = [
 		{value: 1, isLevel: true},
 		{value: 0, isLevel: false, type: GeneratorType.soft },
@@ -100,6 +123,11 @@ class ResourcesManager
 		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromHell},
 		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromParadise},
 		];
+		
+		allPopulations = new Map<Alignment,Array<Population>>();
+		
+		allPopulations[Alignment.heaven] = new Array<Population>();
+		allPopulations[Alignment.hell] = new Array<Population>();
 	}
 	/**
 	 * init all element of the resources data
@@ -230,6 +258,65 @@ class ResourcesManager
 		return myResourcesData.level;
 	}
 	
+	public static function addPopulation(pQuantity:Int, pMax:Int, pType:Alignment, pRef:Int):Population{
+		var newPopulation = {quantity:pQuantity, max:pMax, buildingRef:pRef};
+		allPopulations[pType].push(newPopulation);
+
+		return newPopulation;
+		
+	}
+	
+	public static function updatePopulation(pPopulation:Population,pType:Alignment):Void{
+		allPopulations[pType][allPopulations[pType].indexOf(pPopulation)] = pPopulation;
+	}
+	
+	public static function getTotalAllPopulations():TotalPopulations{
+		var myTotalAllPopulation:TotalPopulations = {heaven:{quantity:0,max:0},hell:{quantity:0,max:0}};
+		
+		myTotalAllPopulation.heaven = getTotalPopuLation(Alignment.heaven);
+		myTotalAllPopulation.hell = getTotalPopuLation(Alignment.hell);
+		
+		return myTotalAllPopulation;
+	}
+	
+	private static function getTotalPopuLation(pType:Alignment):Population{
+		var myTotal:Population = {quantity:0, max:0};
+		var myPop:Population;
+		
+		for (myPop in allPopulations[pType]){
+			myTotal.max += myPop.max;
+			myTotal.quantity += myPop.quantity;
+		}
+		
+		return myTotal;
+	}
+	
+	public static function getTotalNeutralPopulation():Population{
+		
+		var myGenerator:Generator;
+		var myTotal:Population = {quantity:0, max:0};
+		
+		for (myGenerator in myResourcesData.generatorsMap[GeneratorType.soul]){
+			myTotal.quantity += Std.int(myGenerator.desc.quantity);
+			myTotal.max = myGenerator.desc.max;
+		}
+		
+		return myTotal;
+	}
+	
+	public static function judgePopulation(pType:Alignment):Void{
+		var lPopulation:Population, lGenerator:Generator;
+		
+		for (lGenerator in myResourcesData.generatorsMap[GeneratorType.soul])
+			if(lGenerator.desc.quantity > 0)
+				for (lPopulation in allPopulations[pType])
+					if (lPopulation.max > lPopulation.quantity){
+						lPopulation.quantity++;
+						lGenerator.desc.quantity--;
+						populationChangementEvent.emit(POPULATION_CHANGEMENT_EVENT_NAME, lPopulation);
+					}
+		
+	}
 	/**
 	 * actualise and save the data
 	 * @param pGenerator the generator we want save
@@ -361,7 +448,21 @@ class ResourcesManager
 	 * @param data the object contain the generator and the time link
 	 */
 	private static function increaseResourcesWithTime(data:EventResoucreTick):Void{
-		if(data != null) increaseResources(data.generator, data.tickNumber);
+		increaseResourcesWithPolation(Alignment.heaven,data);
+		increaseResourcesWithPolation(Alignment.hell,data);
+	}
+	
+	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Void{
+		if (data != null){
+			var myPopulation:Population;
+			
+			for (myPopulation in allPopulations[pType])
+				if (myPopulation.buildingRef == data.generator.desc.id)
+					increaseResources(data.generator, data.tickNumber * myPopulation.quantity);
+				else increaseResources(data.generator, data.tickNumber);
+			
+			
+		}
 	}
 	
 	/**
@@ -369,11 +470,13 @@ class ResourcesManager
 	 * @param pGenerator the generator target
 	 * @param quantity the quantity to add
 	 */
-	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{	
+	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{
+		if(pGenerator.desc.type == GeneratorType.soft) trace(quantity);
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
 		save(pGenerator);
 		
-		if(pGenerator.desc.quantity >= pGenerator.desc.max/2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, active:true});
+		if (pGenerator.desc.quantity >= pGenerator.desc.max / 2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, active:true});
+		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}
 	//} endregion
 	

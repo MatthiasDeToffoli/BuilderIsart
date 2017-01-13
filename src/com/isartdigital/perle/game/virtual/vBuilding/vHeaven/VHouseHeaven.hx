@@ -16,6 +16,11 @@ class VHouseHeaven extends VHouse
 		super(pDescription);
 		alignementBuilding = Alignment.heaven;
 		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_BUILD_1, AssetName.BUILDING_HEAVEN_BUILD_2];
+		
+		addPopulation(2);
+		mapMaxPopulation[AssetName.BUILDING_HEAVEN_HOUSE] = 2;
+		mapMaxPopulation[AssetName.BUILDING_HEAVEN_BUILD_1] = 6;
+		mapMaxPopulation[AssetName.BUILDING_HEAVEN_BUILD_2] = 16;
 	}
 	
 	override public function onClickUpgrade():Void 
