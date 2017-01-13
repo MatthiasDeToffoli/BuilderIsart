@@ -70,11 +70,11 @@ class IsoManager
 		var lA:IZSortable = cast (pA, IZSortable);
 		var lB:IZSortable = cast (pB, IZSortable);
 		
-		if (lA.rowMax < lB.rowMin) return pB; 
-		else if (lB.rowMax < lA.rowMin) return pA;
+		if (lA.rowMax <= lB.rowMin) return pB; 
+		else if (lB.rowMax <= lA.rowMin) return pA;
 		
-		if (lA.colMax < lB.colMin) return pB; 
-		else if (lB.colMax < lA.colMin) return pA;
+		if (lA.colMax <= lB.colMin) return pB; 
+		else if (lB.colMax <= lA.colMin) return pA;
 		
 		return null;
 	}
