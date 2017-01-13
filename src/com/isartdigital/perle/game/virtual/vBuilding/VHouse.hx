@@ -29,6 +29,10 @@ class VHouse extends VBuildingUpgrade
 		
 	}
 	
+	/**
+	 * add a new population to this building
+	 * @param	pMax the max soul building can has
+	 */
 	private function addPopulation(pMax:Int):Void{
 		if (tileDesc.maxPopulation == null) {
 			tileDesc.currentPopulation = 0;
@@ -38,6 +42,11 @@ class VHouse extends VBuildingUpgrade
 		myPopulation = ResourcesManager.addPopulation(tileDesc.currentPopulation, tileDesc.maxPopulation, alignementBuilding, tileDesc.id);
 	}
 	
+	/**
+	 * update population information
+	 * @param	pQuantity the new quantity of population
+	 * @param	pMax the new max of population
+	 */
 	public function updatePopulation(?pQuantity:Int, ?pMax:Int):Void{
 		if (pQuantity != null){
 			tileDesc.currentPopulation = pQuantity;
@@ -54,6 +63,10 @@ class VHouse extends VBuildingUpgrade
 		SaveManager.save();
 	}
 	
+	/**
+	 * catch the population when it change
+	 * @param	pPopulation the population changed
+	 */
 	public function onPopulationChanged(pPopulation:Dynamic):Void{
 		if (pPopulation.buildingRef != tileDesc.id) return;
 		

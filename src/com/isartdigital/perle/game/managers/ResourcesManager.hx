@@ -258,6 +258,14 @@ class ResourcesManager
 		return myResourcesData.level;
 	}
 	
+	/**
+	 * add a new population in a building
+	 * @param	pQuantity the number of soul building has
+	 * @param	pMax the max of soul building can has
+	 * @param	pType the type of building
+	 * @param	pRef the id of building
+	 * @return
+	 */
 	public static function addPopulation(pQuantity:Int, pMax:Int, pType:Alignment, pRef:Int):Population{
 		var newPopulation = {quantity:pQuantity, max:pMax, buildingRef:pRef};
 		allPopulations[pType].push(newPopulation);
@@ -266,10 +274,20 @@ class ResourcesManager
 		
 	}
 	
+	/**
+	 * update a population information
+	 * @param	pPopulation the population we want update
+	 * @param	pType the type of building
+	 */
 	public static function updatePopulation(pPopulation:Population,pType:Alignment):Void{
 		allPopulations[pType][allPopulations[pType].indexOf(pPopulation)] = pPopulation;
 	}
 	
+	
+	/**
+	 * give the total of soul we have (and the total we can have
+	 * @return all soul we have (except neutral) and all we can have
+	 */
 	public static function getTotalAllPopulations():TotalPopulations{
 		var myTotalAllPopulation:TotalPopulations = {heaven:{quantity:0,max:0},hell:{quantity:0,max:0}};
 		
@@ -279,6 +297,11 @@ class ResourcesManager
 		return myTotalAllPopulation;
 	}
 	
+	/**
+	 * give the total of hell or heaven
+	 * @param	pType the type we want
+	 * @return the population of this type
+	 */
 	private static function getTotalPopuLation(pType:Alignment):Population{
 		var myTotal:Population = {quantity:0, max:0};
 		var myPop:Population;
@@ -291,6 +314,10 @@ class ResourcesManager
 		return myTotal;
 	}
 	
+	/**
+	 * give all population we can have and we have which not placed in a house
+	 * @return population not placed in a house
+	 */
 	public static function getTotalNeutralPopulation():Population{
 		
 		var myGenerator:Generator;
@@ -304,6 +331,10 @@ class ResourcesManager
 		return myTotal;
 	}
 	
+	/**
+	 * place a soul in a house
+	 * @param	pType this help to choos where we want to place soul
+	 */
 	public static function judgePopulation(pType:Alignment):Void{
 		var lPopulation:Population, lGenerator:Generator;
 		
@@ -452,6 +483,11 @@ class ResourcesManager
 		increaseResourcesWithPolation(Alignment.hell,data);
 	}
 	
+	/**
+	 * check if the building have a population and change value of gain in function of that
+	 * @param	pType the type of building we want check
+	 * @param	data data the object contain the generator and the time link
+	 */
 	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Void{
 		if (data != null){
 			var myPopulation:Population;

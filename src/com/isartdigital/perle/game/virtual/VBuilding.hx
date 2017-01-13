@@ -111,12 +111,6 @@ class VBuilding extends VTile {
 		setState(VBuildingState.isBuilt);
 	}
 	
-	public static function givePopulation(pId:Int):Void{
-		var myVBuilding:VBuilding;
-		
-		
-	}
-	
 	public function onClickConfirm ():Void {
 		Phantom.onClickConfirmMove();
 	}
