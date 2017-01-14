@@ -6,8 +6,11 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import com.isartdigital.perle.ui.hud.building.BHBuilt;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
+import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -57,7 +60,7 @@ class Hud extends SmartScreen
 		modal = null;
 		
 		containerBuildingHud = new Container();
-		
+		BHHarvestHouse.getInstance().init();
 		BHHarvest.getInstance().init();
 		BHConstruction.getInstance().init();
 		BHMoving.getInstance().init();
@@ -87,8 +90,9 @@ class Hud extends SmartScreen
 			switch (pNewBuildingHud) 
 			{
 				case BuildingHudType.HARVEST: {
-					containerBuildingHud.addChild(BHHarvest.getInstance());
-					BHHarvest.setOnSpawn();
+					if (Std.is(BuildingHud.virtualBuilding, VHouse))
+						openHarvest(BHHarvestHouse.getInstance());
+					else openHarvest(BHHarvest.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION: 
 					containerBuildingHud.addChild(BHConstruction.getInstance());
@@ -99,6 +103,11 @@ class Hud extends SmartScreen
 				default: throw("No BuildingHud found !");
 			}
 		}
+	}
+	
+	private function openHarvest(pHarvest:BHBuilt):Void{
+		containerBuildingHud.addChild(pHarvest);
+		pHarvest.setOnSpawn();
 	}
 	
 	/**

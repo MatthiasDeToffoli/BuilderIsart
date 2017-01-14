@@ -25,7 +25,7 @@ class CarousselCardUnlock extends CarouselCard
 	override public function new() 
 	{
 		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		SmartCheck.traceChildrens(this);
+		//SmartCheck.traceChildrens(this);
 		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
 		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
 		image = cast(SmartCheck.getChildByName(this, "Item_picture"), UISprite); 

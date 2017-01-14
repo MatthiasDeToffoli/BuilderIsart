@@ -63,6 +63,10 @@ class VHouse extends VBuildingUpgrade
 		SaveManager.save();
 	}
 	
+	public function getPopulation():Population{
+		return myPopulation;
+	}
+	
 	/**
 	 * catch the population when it change
 	 * @param	pPopulation the population changed
