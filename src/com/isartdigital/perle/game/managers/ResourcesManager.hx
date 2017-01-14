@@ -606,7 +606,7 @@ class ResourcesManager
 			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
 			testLevelUp();
 		} else {
-			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false);
+			 Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType);
 		}
 		
 		SaveManager.save();

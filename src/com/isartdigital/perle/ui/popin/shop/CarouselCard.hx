@@ -25,7 +25,8 @@ class CarouselCard extends SmartButton {
 		buildingAssetName = pBuildingAssetName;
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
-		setImage(buildingAssetName);
+		if(ShopCaroussel.lTab == "Building")
+			setImage(buildingAssetName);
 	}
 	
 	public function start ():Void {

@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -13,7 +14,7 @@ import pixi.core.math.Point;
 	
 /**
  * ...
- * @author ambroise
+ * @author ambroise & alexis
  */
 class ShopCaroussel extends SmartComponent {
 	
@@ -44,12 +45,30 @@ class ShopCaroussel extends SmartComponent {
 		AssetName.DECO_HELL_TREE_2,//4
 		AssetName.DECO_HELL_TREE_3,//5
 		
-		AssetName.DECO_HELL_ROCK//5
+		AssetName.DECO_HELL_ROCK,//5
 		
 		//AssetName.BUILDING_HEAVEN_BRIDGE,
 	];
-
-	private var cardsToShow:Array<String>;
+	
+	public static var internsNameList(default, never):Array<String> = [
+	];
+	
+	public static var resourcesNameList(default, never):Array<String> = [
+		"Wood pack",
+		"Iron pack"
+	];
+	
+	public static var currencieNameList(default, never):Array<String> = [
+		"Gold pack",
+		"Karma pack",
+	];
+	
+	public static var bundleNameList(default, never):Array<String> = [
+	];
+	
+	public static var cardsToShow:Array<String>;
+	private static var alreadyOpened:Bool = false;
+	public static var lTab:String;
 	private var cards:Array<CarouselCard>;
 	
 	private var tempArrowRight:SmartButton;
@@ -61,24 +80,51 @@ class ShopCaroussel extends SmartComponent {
 	
 	// used in UIBuilder.hx, Singleton ou pas ? nom plus précis, comme carousselBuilding etc
 	// todo réutiliser pour d'autre éléments type shoCaroussel ?
-	public function new() { 	
-		super(AssetName.SHOP_CAROUSSEL_BUILDING); // todo:  temp ? ou change classNAme
+	public function new(pTab:String) { 	
+		lTab = pTab;
+		checkIfDestroyNeeded();
+		switch(pTab) {
+			case "Building" : {
+				super(AssetName.SHOP_CAROUSSEL_BUILDING); // todo:  temp ? ou change classNAme
+				tempArrowLeft = cast(SmartCheck.getChildByName(this, "Button_ArrowLeft"), SmartButton); // temp
+				tempArrowRight = cast(SmartCheck.getChildByName(this, "Button_ArrowRight"), SmartButton);
+			}
+			case "Resource" : {
+				super(AssetName.SHOP_CAROUSSEL_RESOURCE);
+				tempArrowLeft = cast(SmartCheck.getChildByName(this, "Arrow_Left_Wood"), SmartButton); // temp
+				tempArrowRight = cast(SmartCheck.getChildByName(this, "Arrow_Right_Stone"), SmartButton);
+			}
+			case "Currencies": {
+				super(AssetName.SHOP_CAROUSSEL_CURRENCIE);
+				tempArrowLeft = cast(SmartCheck.getChildByName(this, "Arrow_Left_Hard"), SmartButton); // temp
+				tempArrowRight = cast(SmartCheck.getChildByName(this, "Arrow_Right_Soft"), SmartButton);
+			}
+		}
+	}
+	
+	public function init (pPos:Point,pTab:String):Void {
+		
+		
 		cards = new Array<CarouselCard>();
 		cardsToShow = buildingNameList;
 		cardsPositions = [];
 		
-		tempArrowLeft = cast(SmartCheck.getChildByName(this, "Button_ArrowLeft"), SmartButton); // temp
-		tempArrowRight = cast(SmartCheck.getChildByName(this, "Button_ArrowRight"), SmartButton);
-	}
-	
-	public function init (pPos:Point):Void {
 		position = pPos;
-		createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
+		
+		switch(pTab) {
+			case "Building" : createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
+			case "Resource" : createCard(getSpawnersPosition(getSpawners(getSpawnersResourceAssetName())));
+			case "Currencies":createCard(getSpawnersPosition(getSpawners(getSpawnersCurrenciesAssetName())));
+		}
+		
+		
+		alreadyOpened = true;
 	}
 	
 	public function start ():Void {
 		tempArrowLeft.on(MouseEventType.CLICK, onClickTempArrowLeft);
 		tempArrowRight.on(MouseEventType.CLICK, onClickTempArrowRight);
+		
 	}
 	
 	public function changeCardsToShow (pNameList:Array<String>):Void {
@@ -120,6 +166,26 @@ class ShopCaroussel extends SmartComponent {
 			"Shop_Item_Unlocked_1",
 			"Shop_Item_Unlocked_2",
 			"Shop_Item_Locked_1",
+		];
+	}
+	
+	private function getSpawnersResourceAssetName():Array<String> {
+		return [ // todo : constantes ? c'est des spawners..
+			"Shop_Pack_1",
+			"Shop_Pack_2",
+			"Shop_Pack_3",
+			"Shop_Pack_4",
+			"Shop_Pack_5",
+			"Shop_Pack_6",
+		];
+	}
+	
+	private function getSpawnersCurrenciesAssetName():Array<String> {
+		return [ // todo : constantes ? c'est des spawners..
+			"Shop_Pack_1",
+			"Shop_Pack_2",
+			"Shop_Pack_3",
+			"Shop_Pack_4",
 		];
 	}
 	
@@ -170,7 +236,6 @@ class ShopCaroussel extends SmartComponent {
 	
 	
 	private function createCard (pPositions:Array<Point>):Void {
-		
 		if (cards.length != 0)
 			destroyCards();
 		
@@ -179,8 +244,13 @@ class ShopCaroussel extends SmartComponent {
 			
 			if (cardsToShow[j] == null)
 				break;
-			if (!UnlockManager.checkIfUnlocked(cardsToShow[j]))
-				cards[i] = new CarousselCardLock();
+				
+			if (lTab == "Building") {
+				if (!UnlockManager.checkIfUnlocked(cardsToShow[j]))
+					cards[i] = new CarousselCardLock();
+				else 
+					cards[i] = new CarousselCardUnlock();
+			}
 			else 
 				cards[i] = new CarousselCardUnlock();
 				
@@ -192,7 +262,6 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	private function destroyCards ():Void {
-		
 		var lLength:UInt = cards.length;
 		var j:UInt;
         for (i in 1...lLength +1) {
@@ -202,11 +271,17 @@ class ShopCaroussel extends SmartComponent {
         }
 	}
 	
+	private function checkIfDestroyNeeded():Void {
+		if (alreadyOpened) {
+			ShopPopin.getInstance().removeCaroussel();
+		}
+	}
+	
 	// todo : destroy les cards
 	override public function destroy():Void {
 		destroyCards();
 		cards = null;
-		
+		alreadyOpened = false;
 		super.destroy();
 	}
 

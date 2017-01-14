@@ -58,6 +58,7 @@ class AssetName{
 	public static inline var SHOP_BTN_TAB_INTERN:String = /*SHOP_PREFIX +*/ "Onglet_Interns";
 	public static inline var SHOP_BTN_TAB_RESOURCE:String = /*SHOP_PREFIX +*/ "Onglet_Ressources";
 	public static inline var SHOP_BTN_TAB_CURRENCIE:String = /*SHOP_PREFIX +*/ "Onglet_Currencies";
+	public static inline var SHOP_BTN_TAB_BUNDLE:String = /*SHOP_PREFIX +*/ "Bundles_Button";
 	public static inline var SHOP_CAROUSSEL_SPAWNER:String = /*SHOP_PREFIX +*/ "Item_List_Spawner";
 	public static inline var SHOP_RESSOURCE_SC:String = /*SHOP_PREFIX +*/ "Player_SC";
 	public static inline var SHOP_RESSOURCE_HC:String = /*SHOP_PREFIX +*/ "Player_HC";
@@ -75,6 +76,7 @@ class AssetName{
 	// Shop caroussel card
 	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
 	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
+	public static inline var CAROUSSEL_CARD_BUNDLE:String = /*SHOP_PREFIX + */"ButtonBuyPack";
 	
 	// Popin Confirm Buy Building
 	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";

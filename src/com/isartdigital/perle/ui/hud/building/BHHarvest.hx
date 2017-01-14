@@ -24,31 +24,30 @@ import pixi.flump.Movie;
 class BHHarvest extends BHBuilt{
 	
 	private static var instance:BHHarvest;
-	
-	
-	
+ 
+ 
+ 
 	public static function getInstance (): BHHarvest {
 		if (instance == null) instance = new BHHarvest();
 		return instance;
-	}	
-	
+	} 
+	 
 	private function new() {
 		super("BuiltContext");
 	}
-	
+	 
 	override public function setMoveAndDestroy():Void 
 	{
-		if(Std.is(BuildingHud.virtualBuilding,VTribunal)){
-			btnMove.alpha = 0.5;
-			btnDestroy.alpha = 0.5;
-		} else{
-		super.setMoveAndDestroy();
+	  if(Std.is(BuildingHud.virtualBuilding,VTribunal)){
+	   btnMove.alpha = 0.5;
+	   btnDestroy.alpha = 0.5;
+	  } else{
+	  super.setMoveAndDestroy();
 		}
 	}
-	
-	override public function destroy():Void {
-		instance = null;
-		super.destroy();
-	}
-	
+	 
+	 override public function destroy():Void {
+	  instance = null;
+	  super.destroy();
+	 }
 }

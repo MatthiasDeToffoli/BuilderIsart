@@ -2,6 +2,8 @@ package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -16,6 +18,7 @@ import pixi.interaction.EventTarget;
  */
 class CarousselCardUnlock extends CarouselCard
 {
+	
 	private var lButton:SmartButton;
 	private var imageCurrency:UISprite;
 	private var text_name:TextSprite;
@@ -24,15 +27,23 @@ class CarousselCardUnlock extends CarouselCard
 	
 	override public function new() 
 	{
-		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		//SmartCheck.traceChildrens(this);
+		
+		/*if (ShopCaroussel.cardsToShow == ShopCaroussel.currencieNameList)
+			super(AssetName.CAROUSSEL_CARD_BUNDLE);
+		else {*/
+			
+			super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
+			image = cast(SmartCheck.getChildByName(this, "Item_picture"), UISprite);
+			text_name = cast(SmartCheck.getChildByName(this, "Item_Name"), TextSprite);
+			text_price = cast(SmartCheck.getChildByName(this, "Item_SCPrice"), TextSprite);
+		//}
+			
 		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
 		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
-		image = cast(SmartCheck.getChildByName(this, "Item_picture"), UISprite); 
+		
 		//image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
 		//imageCurrency = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
-		text_name = cast(SmartCheck.getChildByName(this, "Item_Name"), TextSprite);
-		text_price = cast(SmartCheck.getChildByName(this, "Item_SCPrice"), TextSprite);
+		
 	}
 	
 	
@@ -76,14 +87,33 @@ class CarousselCardUnlock extends CarouselCard
 		super._click(pEvent);
 		//UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
 		//ConfirmBuyBuilding.getInstance().init(buildingAssetName);
-		if (BuyManager.canBuy(buildingAssetName)) {
-			Phantom.onClickShop(buildingAssetName);
-			Hud.getInstance().hideBuildingHud();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
-			Hud.getInstance().show();
-			UIManager.getInstance().closeCurrentPopin();
-			UIManager.getInstance().closeCurrentPopin();
+		
+		//todo : j ai codé en dur par manque de temps
+		switch(ShopCaroussel.lTab) {
+			case "Building" : {
+				if (BuyManager.canBuy(buildingAssetName)) {
+					Phantom.onClickShop(buildingAssetName);
+					Hud.getInstance().hideBuildingHud();
+					Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+				}
+			}
+			case "Resource": {
+				switch(text_name.text) {
+					case("Wood pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 1000);
+					case("Iron pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 1000);
+				}
+			}
+			case "Currencies": {
+				switch(text_name.text) {
+					case("Gold pack") : ResourcesManager.gainResources(GeneratorType.soft, 10000);
+					case("Karma pack") : ResourcesManager.gainResources(GeneratorType.hard, 100);
+				}
+			}
 		}
+		
+		Hud.getInstance().show();
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closeCurrentPopin();
 	}
 	
 	override public function destroy():Void {

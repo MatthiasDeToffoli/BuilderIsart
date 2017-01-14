@@ -98,7 +98,7 @@ class BHBuilt extends BuildingHud
 		onClickExit();
 	}
 	
-	private function onClickDestroy(): Void {
+	public function onClickDestroy(): Void {
 		removeButtonsChange();
 		UIManager.getInstance().openPopin(BuildingDestroyPoppin.getInstance());
 		removeListenerGameContainer();

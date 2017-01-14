@@ -31,7 +31,12 @@ class FakeTraduction{
 			AssetName.DECO_HELL_TREE_2  => "HELL TREE",
 			AssetName.DECO_HELL_TREE_3  => "HELL TREE",
 			
-			AssetName.DECO_HELL_ROCK  => "HELL ROCK"
+			AssetName.DECO_HELL_ROCK  => "HELL ROCK",
+			
+			"Wood pack" => "Wood pack",
+			"Iron pack" => "Iron pack",
+			"Gold pack" => "Gold pack",
+			"Karma pack" => "Karma pack"
 		];
 		
 		return traduc[pAssetName];

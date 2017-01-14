@@ -13,12 +13,12 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
-enum ShopTab { Building; Interns; Deco; Resources; Currencies; }
+enum ShopTab { Building; Interns; Deco; Resources; Currencies; Bundle; }
 enum ShopBar { Soft; Hard; Marble; Wood; }
 
 /**
  * ...
- * @author ambroise
+ * @author ambroise & alexis
  */
 class ShopPopin extends SmartPopin{
 
@@ -35,17 +35,18 @@ class ShopPopin extends SmartPopin{
 	private var caroussel:ShopCaroussel;
 	
 	
-	public static function getInstance (pTab:ShopTab): ShopPopin {
-		if (instance == null) instance = new ShopPopin(pTab);
+	public static function getInstance (): ShopPopin {
+		if (instance == null) instance = new ShopPopin();
 		return instance;
 	}	
 	
-	private function new(pTab:ShopTab) {
+	private function new() {
 		modal = false;
 		super(AssetName.POPIN_SHOP);
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
 		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
+		
 		
 		var lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
 		var lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
@@ -72,20 +73,24 @@ class ShopPopin extends SmartPopin{
 		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
 		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
 		tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
+		tabs[ShopTab.Bundle] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUNDLE), SmartButton);
 		//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
 		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
 		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
 		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
 		tabs[ShopTab.Building].on(MouseEventType.CLICK, onClickOpenBuldings);
 		tabs[ShopTab.Deco].on(MouseEventType.CLICK, onClickOpenDecorations);
+		tabs[ShopTab.Interns].on(MouseEventType.CLICK, onClickOpenIntern);
+		tabs[ShopTab.Resources].on(MouseEventType.CLICK, onClickOpenResource);
+		tabs[ShopTab.Currencies].on(MouseEventType.CLICK, onClickOpenCurencies);
+		tabs[ShopTab.Bundle].on(MouseEventType.CLICK, onClickOpenBundle);
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
 		btnInterns.on(MouseEventType.CLICK, onClickInterns);
 		
-		addCaroussel();
 		
-		checkOfOngletToOpen(pTab);
+		
 		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
 		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
 		
@@ -94,21 +99,30 @@ class ShopPopin extends SmartPopin{
 		// screen achat etdescription
 	}
 	
+	public function init(pTab:ShopTab) {
+		checkOfOngletToOpen(pTab);
+	}
+	
 	private function checkOfOngletToOpen(pTab:ShopTab):Void {
 		switch(pTab.getName()) {
 			case "Building" : onClickOpenBuldings();
 			case "Deco" : onClickOpenDecorations();
-			/*case "Interns" : onClickOpenBuldings();
-			case "Resources" : onClickOpenBuldings();
-			case "Currencies" : onClickOpenBuldings();*/
+			case "Interns" : onClickOpenIntern();
+			case "Resources" : onClickOpenResource();
+			case "Currencies" : onClickOpenCurencies();
+			case "Bundle" : onClickOpenBundle();
 		}
 	}
 	
-	private function addCaroussel():Void {
-		caroussel = new ShopCaroussel();
-		caroussel.init(carousselPos);
+	private function addCaroussel(pTab:String):Void {
+		caroussel = new ShopCaroussel(pTab);
+		caroussel.init(carousselPos,pTab);
 		addChild(caroussel);
 		caroussel.start();
+	}
+	
+	public function removeCaroussel():Void {
+		removeChild(caroussel);		
 	}
 	
 	private function initCarousselPos (pAssetName:String):Void {
@@ -120,11 +134,33 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickOpenBuldings() {
+		addCaroussel("Building");
 		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList);
 	}
 	
 	private function onClickOpenDecorations() {
+		addCaroussel("Building");
 		caroussel.changeCardsToShow(ShopCaroussel.decoNameList);
+	}
+	
+	private function onClickOpenIntern() {
+		addCaroussel("Building");
+		caroussel.changeCardsToShow(ShopCaroussel.internsNameList);
+	}
+	
+	private function onClickOpenResource() {
+		addCaroussel("Resource");
+		caroussel.changeCardsToShow(ShopCaroussel.resourcesNameList);
+	}
+	
+	private function onClickOpenCurencies() {
+		addCaroussel("Currencies");
+		caroussel.changeCardsToShow(ShopCaroussel.currencieNameList);
+	}
+	
+	private function onClickOpenBundle() {
+		addCaroussel("Building");
+		caroussel.changeCardsToShow(ShopCaroussel.bundleNameList);
 	}
 	
 	private function onClickExit ():Void {

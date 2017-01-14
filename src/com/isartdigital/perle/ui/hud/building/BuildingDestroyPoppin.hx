@@ -63,7 +63,6 @@ class BuildingDestroyPoppin extends SmartPopin
 	}
 	
 	private function addListeners ():Void {
-		//SmartCheck.traceChildrens(this);
 		image = cast(SmartCheck.getChildByName(this, "Image_SelectedBuilding"), UISprite); 
 		nameBuilding = cast(SmartCheck.getChildByName(this, "_text_selectedBuildingName"), TextSprite); 
 		levelBuilding = cast(SmartCheck.getChildByName(this, "_text_selectedBuildingLevel"), TextSprite); 
@@ -79,7 +78,7 @@ class BuildingDestroyPoppin extends SmartPopin
 	}
 	
 	private function sellBuilding():Void {
-		InfoBuilding.getInstance().onClickSell();
+		InfoBuilding.getInstance().sell();
 	}
 	
 	/**

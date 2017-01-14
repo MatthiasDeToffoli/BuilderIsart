@@ -156,10 +156,10 @@ class Hud extends SmartScreen
 		cast(SmartCheck.getChildByName(marbleMc, AssetName.HUD_BTN_WOOD), SmartButton).on(MouseEventType.CLICK, onClickShop);//OUI les gd se sont trompés sur le nom du boutton, à changer
 		*/
 		var softMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
-		cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton).on(MouseEventType.CLICK, onClickShopCurrencies);
 		
 		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
-		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShop);
+		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShopCurrencies);
 		
 	}
 	
@@ -208,7 +208,14 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void {
-		UIManager.getInstance().openPopin(ShopPopin.getInstance(ShopTab.Building));
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		ShopPopin.getInstance().init(ShopTab.Building);
+		hide();
+	}
+	
+	private function onClickShopCurrencies ():Void {
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		ShopPopin.getInstance().init(ShopTab.Currencies);
 		hide();
 	}
 	
@@ -243,7 +250,6 @@ class Hud extends SmartScreen
 	 * @param	type the type of resource we want to set
 	 */
 	public function setAllTextValues(value:Float, isLevel:Bool, ?type:GeneratorType, ?pMax:Float):Void {
-		
 		if(isLevel) setTextValues(AssetName.HUD_COUNTER_LEVEL, AssetName.COUNTER_TXT_LEVEL, value);
 		//else if (type == GeneratorType.buildResourceFromParadise) setTextValues(AssetName.HUD_COUNTER_MATERIAL_HEAVEN, AssetName.COUNTER_TXT_RESSOURCE, value);
 		//else if (type == GeneratorType.buildResourceFromHell) setTextValues(AssetName.HUD_COUNTER_MATERIAL_HELL, AssetName.COUNTER_TXT_RESSOURCE, value);

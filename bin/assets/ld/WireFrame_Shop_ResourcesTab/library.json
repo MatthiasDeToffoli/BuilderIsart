@@ -10,19 +10,19 @@
        "rect": [
         1,
         1,
-        912,
-        320
+        815,
+        469
        ],
        "origin": [
-        455.75,
-        160
+        407.2,
+        234.45
        ]
       },
       {
        "symbol": "_shop_pack_spawner",
        "rect": [
+        818,
         1,
-        323,
         194,
         194
        ],
@@ -34,8 +34,8 @@
       {
        "symbol": "_arrow_right_down",
        "rect": [
-        915,
-        1,
+        818,
+        197,
         67,
         143
        ],
@@ -47,8 +47,8 @@
       {
        "symbol": "_arrow_left_down",
        "rect": [
-        915,
-        146,
+        887,
+        197,
         67,
         143
        ],
@@ -60,8 +60,8 @@
       {
        "symbol": "_arrow_right_over",
        "rect": [
-        915,
-        291,
+        956,
+        197,
         66,
         142
        ],
@@ -73,8 +73,8 @@
       {
        "symbol": "_arrow_left_over",
        "rect": [
-        197,
-        435,
+        956,
+        341,
         66,
         142
        ],
@@ -86,8 +86,8 @@
       {
        "symbol": "_arrow_left_up",
        "rect": [
-        1,
-        519,
+        818,
+        342,
         65,
         141
        ],
@@ -99,8 +99,8 @@
       {
        "symbol": "_arrow_right_up",
        "rect": [
-        68,
-        519,
+        885,
+        342,
         65,
         141
        ],
@@ -112,8 +112,8 @@
       {
        "symbol": "_stoneIcon_Medium",
        "rect": [
-        135,
-        519,
+        1,
+        472,
         48,
         48
        ],
@@ -125,8 +125,8 @@
       {
        "symbol": "_woodIcon_Medium",
        "rect": [
-        135,
-        569,
+        51,
+        472,
         48,
         48
        ],
@@ -151,13 +151,13 @@
      "name": "Shop_InternsTab_list_BG",
      "keyframes": [
       {
+       "pivot": [
+        407.225,
+        234.45
+       ],
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "pivot": [
-        455.75,
-        160
-       ],
        "ref": "_shop_item_list_bg"
       }
      ]
@@ -166,17 +166,17 @@
      "name": "Shop_Pack_1",
      "keyframes": [
       {
-       "loc": [
-        -317.675,
-        -0.025
-       ],
-       "duration": 1,
        "pivot": [
         96.625,
-        96.6
+        96.625
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        -213.75,
+        -109.875
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_shop_pack_spawner"
       }
      ]
@@ -185,17 +185,17 @@
      "name": "Shop_Pack_2",
      "keyframes": [
       {
-       "loc": [
-        -105.9,
-        0
-       ],
-       "duration": 1,
        "pivot": [
         96.625,
-        96.6
+        96.625
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        3.1,
+        -109.875
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_shop_pack_spawner"
       }
      ]
@@ -204,17 +204,17 @@
      "name": "Shop_Pack_3",
      "keyframes": [
       {
-       "loc": [
-        105.875,
-        -0.025
-       ],
-       "duration": 1,
        "pivot": [
         96.625,
-        96.6
+        96.625
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        219.95,
+        -109.875
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_shop_pack_spawner"
       }
      ]
@@ -223,17 +223,55 @@
      "name": "Shop_Pack_4",
      "keyframes": [
       {
-       "loc": [
-        317.65,
-        -0.025
-       ],
-       "duration": 1,
        "pivot": [
         96.625,
-        96.6
+        96.625
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        -213.75,
+        109.875
+       ],
        "tweened": false,
+       "index": 0,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_5",
+     "keyframes": [
+      {
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "duration": 1,
+       "loc": [
+        3.1,
+        109.875
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_shop_pack_spawner"
+      }
+     ]
+    },
+    {
+     "name": "Shop_Pack_6",
+     "keyframes": [
+      {
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "duration": 1,
+       "loc": [
+        219.95,
+        109.875
+       ],
+       "tweened": false,
+       "index": 0,
        "ref": "_shop_pack_spawner"
       }
      ]
@@ -242,13 +280,13 @@
      "name": "Arrow_Left_Wood",
      "keyframes": [
       {
-       "loc": [
-        -464.8,
-        -4.225
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        -369.075,
+        -4.225
+       ],
        "ref": "~ButtonArrowLeft"
       }
      ]
@@ -257,13 +295,13 @@
      "name": "Arrow_Right_Stone",
      "keyframes": [
       {
-       "loc": [
-        464.8,
-        4
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        369.075,
+        4
+       ],
        "ref": "~ButtonArrowRight"
       }
      ]
@@ -278,33 +316,33 @@
      "name": "Bouton",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         32.25,
         70.25
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_arrow_left_up"
       },
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         33,
         71
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
        "ref": "_arrow_left_over"
       },
       {
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         33.5,
         71.5
        ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
        "ref": "_arrow_left_down"
       }
      ]
@@ -313,17 +351,17 @@
      "name": "Icon",
      "keyframes": [
       {
-       "loc": [
-        6.5,
-        4.275
-       ],
-       "duration": 4,
        "pivot": [
         24,
         24
        ],
-       "index": 0,
+       "duration": 4,
+       "loc": [
+        6.5,
+        4.275
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_woodIcon_Medium"
       }
      ]
@@ -338,33 +376,33 @@
      "name": "Bouton",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         32.25,
         70.25
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "ref": "_arrow_right_up"
       },
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
        "pivot": [
         33,
         71
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
        "ref": "_arrow_right_over"
       },
       {
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
        "pivot": [
         33.5,
         71.5
        ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
        "ref": "_arrow_right_down"
       }
      ]
@@ -373,17 +411,17 @@
      "name": "Icon",
      "keyframes": [
       {
-       "loc": [
-        -3.95,
-        -4.1
-       ],
-       "duration": 4,
        "pivot": [
         24,
         24
        ],
-       "index": 0,
+       "duration": 4,
+       "loc": [
+        -3.95,
+        -4.1
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_stoneIcon_Medium"
       }
      ]
@@ -391,5 +429,5 @@
    ]
   }
  ],
- "md5": "e2740612657f007d96c5dc321479f9f4"
+ "md5": "371d18e99101464cb80b02773d31f88b"
 }

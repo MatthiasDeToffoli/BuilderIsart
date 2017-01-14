@@ -115,6 +115,97 @@
   }
  ],
  "frameRate": 24,
- "movies": [],
- "md5": "fb4bbf6559bc64f5a6cac2a951fe4c53"
+ "movies": [
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "ButtonBuyPack",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        145.3125,
+        145.3125
+       ],
+       "tweened": false,
+       "index": 0,
+       "duration": 1,
+       "ref": "_buttonbuypack_up"
+      },
+      {
+       "pivot": [
+        147.1875,
+        147.1875
+       ],
+       "tweened": false,
+       "index": 1,
+       "duration": 1,
+       "ref": "_buttonbuypack_over"
+      },
+      {
+       "pivot": [
+        147.1875,
+        147.1875
+       ],
+       "tweened": false,
+       "index": 2,
+       "duration": 2,
+       "ref": "_buttonbuypack_down"
+      }
+     ],
+     "name": "Bouton"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -35.925
+       ],
+       "tweened": false,
+       "ref": "_pack_picture",
+       "index": 0,
+       "pivot": [
+        94.05,
+        94.05
+       ],
+       "duration": 4
+      }
+     ],
+     "name": "Pack_Picture"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        0.4125,
+        73.125
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "_pack_content_txt"
+      }
+     ],
+     "name": "Pack_Name"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -0.525,
+        114
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "_pack_price_txt"
+      }
+     ],
+     "name": "Pack_Price"
+    }
+   ]
+  }
+ ],
+ "md5": "3bb1eeca15f6f3c70974918db2cb4309"
 }
