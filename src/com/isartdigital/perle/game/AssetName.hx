@@ -209,6 +209,9 @@ class AssetName{
 	//Destroy Poppin
 	public static inline var DESTROY_POPPIN:String = "Popin_DestroyBuilding";
 	
+	//XP Gauges
+	public static inline var XP_GAUGE_HELL:String = "HUD_HellXP";
+	public static inline var XP_GAUGE_HEAVEN:String = "HUD_HeavenXP";
 	
 	// add background and any other assetName coming from DA
 	//bg

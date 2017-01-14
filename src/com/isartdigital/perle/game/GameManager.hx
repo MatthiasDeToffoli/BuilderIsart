@@ -16,6 +16,7 @@ import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
+import com.isartdigital.perle.ui.hud.Hud;
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building;

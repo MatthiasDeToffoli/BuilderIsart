@@ -586,6 +586,7 @@ class ResourcesManager
 		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
 		
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+		Hud.getInstance().setXpGauge(pType, quantity);
 		testLevelUp();
 		SaveManager.save();
 	}
@@ -615,8 +616,10 @@ class ResourcesManager
 	 * test if we level up
 	 */
 	private static function testLevelUp():Void{
-		if (myResourcesData.totalsMap[GeneratorType.badXp] == maxExp && myResourcesData.totalsMap[GeneratorType.goodXp] == maxExp)
+		if (myResourcesData.totalsMap[GeneratorType.badXp] == maxExp && myResourcesData.totalsMap[GeneratorType.goodXp] == maxExp){
+			Hud.getInstance().initGauges();
 			levelUp();
+		}
 	}
 	
 	

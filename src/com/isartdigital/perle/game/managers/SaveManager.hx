@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.ftue.FtueUI;
 import haxe.Json;
 import js.Browser;
@@ -308,6 +309,7 @@ class SaveManager {
 			VTile.buildFromSave(currentSave);
 			Intern.init();
 			TimeManager.startTimeLoop();
+			Hud.getInstance().initGaugesWithSave();
 			FtueManager.dialogueSaved = currentSave.ftueProgress;
 			UnlockManager.isAlreadySaved = true;
 		}
@@ -325,6 +327,7 @@ class SaveManager {
 		TimeManager.startTimeLoop();
 		SaveManager.save();
 		QuestsManager.initWithoutSave();
+		Hud.getInstance().initGauges();
 	}
 	
 	/**

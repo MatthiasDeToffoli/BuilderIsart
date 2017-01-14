@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud;
 
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.UnlockManager;
@@ -21,6 +22,7 @@ import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import eventemitter3.EventEmitter;
@@ -43,6 +45,9 @@ class Hud extends SmartScreen
 	private var currentBuildingHud:BuildingHudType;
 	
 	private var containerBuildingHud:Container;
+	
+	private var hellXPBar:SmartComponent;
+	private var heavenXPBar:SmartComponent;
 	
 
 	/**
@@ -68,6 +73,7 @@ class Hud extends SmartScreen
 		addChild(containerBuildingHud);
 		
 		addListeners();
+		//initGauges();
 	}
 	
 	/**
@@ -127,7 +133,6 @@ class Hud extends SmartScreen
 	
 
 	private function addListeners ():Void {
-		
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton).on(MouseEventType.CLICK, onClickShop);
@@ -135,8 +140,9 @@ class Hud extends SmartScreen
 		//var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
-		
-		
+		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
+		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
+		SmartCheck.traceChildrens(heavenXPBar);
 		
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
 		
@@ -155,6 +161,36 @@ class Hud extends SmartScreen
 		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
 		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		
+	}
+	
+	public function initGauges():Void{
+		hellXPBar.getChildByName("movingGauge").scale.x = 0;
+		heavenXPBar.getChildByName("movingGauge").scale.x = 0;
+	}
+	
+	public function initGaugesWithSave():Void{
+		hellXPBar.getChildByName("movingGauge").scale.x = ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp]/ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+		heavenXPBar.getChildByName("movingGauge").scale.x = ResourcesManager.getResourcesData().totalsMap[GeneratorType.goodXp]/ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+	}
+	
+	public function setXpGauge(pType:GeneratorType, pQuantity:Float):Void{
+		var lNumberToPercent:Float = pQuantity / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+		var lScaleHellXp:Float = hellXPBar.getChildByName("movingGauge").scale.x;
+		var lScaleHeavenXp:Float = heavenXPBar.getChildByName("movingGauge").scale.x;
+		
+		if (lScaleHellXp != 1 && lScaleHeavenXp != 1){
+			if (pType.getName() == "badXp") {
+				lScaleHellXp += lNumberToPercent;
+				if (lScaleHellXp > 1) lScaleHellXp = 1;
+				hellXPBar.getChildByName("movingGauge").scale.x = lScaleHellXp;
+			}
+		
+			if (pType.getName() == "goodXp") {
+				lScaleHeavenXp += lNumberToPercent;
+				if (lScaleHeavenXp > 1) lScaleHeavenXp = 1;
+				heavenXPBar.getChildByName("movingGauge").scale.x = lScaleHeavenXp;
+			}
+		}
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding):Void {
