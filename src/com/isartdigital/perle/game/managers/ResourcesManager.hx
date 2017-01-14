@@ -479,26 +479,30 @@ class ResourcesManager
 	 * @param data the object contain the generator and the time link
 	 */
 	private static function increaseResourcesWithTime(data:EventResoucreTick):Void{
-		increaseResourcesWithPolation(Alignment.heaven,data);
-		increaseResourcesWithPolation(Alignment.hell,data);
-	}
-	
-	/**
-	 * check if the building have a population and change value of gain in function of that
-	 * @param	pType the type of building we want check
-	 * @param	data data the object contain the generator and the time link
-	 */
-	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Void{
 		if (data != null){
-			var myPopulation:Population;
-			
-			for (myPopulation in allPopulations[pType])
-				if (myPopulation.buildingRef == data.generator.desc.id)
-					increaseResources(data.generator, data.tickNumber * myPopulation.quantity);
-				else increaseResources(data.generator, data.tickNumber);
-			
-			
+			if (increaseResourcesWithPolation(Alignment.heaven, data)) return;
+			if (increaseResourcesWithPolation(Alignment.hell, data)) return;
+			increaseResources(data.generator, data.tickNumber);
 		}
+		
+	}	
+		 
+	 /**
+	  * check if the building have a population and change value of gain in function of that
+	  * @param	pType the type of building we want check
+	  * @param	data data the object contain the generator and the time link
+	  * @return if the fonction found a population link to this generator
+	  */
+	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Bool{
+		var myPopulation:Population;
+			
+		for (myPopulation in allPopulations[pType])
+			if (myPopulation.buildingRef == data.generator.desc.id){
+				increaseResources(data.generator, data.tickNumber * myPopulation.quantity);
+				return true;
+			}
+			
+		return false;
 	}
 	
 	/**

@@ -65,6 +65,7 @@ class PoolingManager {
 		AssetName.BUILDING_HEAVEN_BUILD_2 => "HouseHeaven",
 		AssetName.BUILDING_HELL_BUILD_1 => "HouseHell",
 		AssetName.BUILDING_HELL_BUILD_2 => "HouseHell",
+		AssetName.QUARRY_LEVEL_1 => "Quarry",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon

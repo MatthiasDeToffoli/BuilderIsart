@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.sprites.building.heaven.Lumbermill;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
 import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
+import com.isartdigital.perle.game.sprites.building.hell.Quarry;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
@@ -18,6 +19,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VLumbermill;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VQuarry;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.services.facebook.Facebook;
@@ -345,6 +347,8 @@ class Main extends EventEmitter
 			VUrbanHouse,
 			VLumbermill,
 			HouseHell,
+			Quarry,
+			VQuarry,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

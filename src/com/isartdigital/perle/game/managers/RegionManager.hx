@@ -319,7 +319,7 @@ class RegionManager
 			background: getBgAssetname(pType)		
 		});
 		
-		VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
+		//VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
 		
 		SaveManager.save();
 		

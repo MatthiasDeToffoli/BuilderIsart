@@ -25,6 +25,8 @@ class ShopCaroussel extends SmartComponent {
 		AssetName.DECO_HEAVEN_VERTUE,//2
 		
 		AssetName.LUMBERMIL_LEVEL1,//2
+		AssetName.QUARRY_LEVEL_1,//2
+	
 		//AssetName.BUILDING_HEAVEN_BUILD_2,//2 <== Jai comenter ces lignes car on ne doit pas acheter les upgrades des batiments
 		//AssetName.BUILDING_HELL_BUILD_2,//3
 		//AssetName.BUILDING_HEAVEN_BUILD_1,//3

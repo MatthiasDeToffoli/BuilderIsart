@@ -38,6 +38,7 @@ class Virtual {
 		AssetName.BUILDING_HELL_HOUSE => "VHouseHell",
 		AssetName.BUILDING_HELL_BUILD_1 => "VHouseHell",
 		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
+		AssetName.QUARRY_LEVEL_1 => "VQuarry",
 	];
 	
 	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [	
@@ -62,6 +63,8 @@ class Virtual {
 		AssetName.BUILDING_HELL_HOUSE => Alignment.hell,
 		AssetName.BUILDING_HELL_BUILD_1 => Alignment.hell,
 		AssetName.BUILDING_HELL_BUILD_2 => Alignment.hell,
+		AssetName.QUARRY_LEVEL_1=> Alignment.hell,
+		
 	];
 	
 	
