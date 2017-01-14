@@ -1,4 +1,51 @@
 {
+ "movies": [
+  {
+   "id": "Styx01",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        294,
+        291.375
+       ],
+       "loc": [
+        -632.325,
+        480.1125
+       ],
+       "ref": "styx_gauche",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        294,
+        291.375
+       ],
+       "loc": [
+        -44.325,
+        291.375
+       ],
+       "ref": "styx_droit",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ]
+  }
+ ],
+ "md5": "6e2c4ed32b4061c2a9a5ee05dca31d22",
+ "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -6,83 +53,41 @@
     {
      "textures": [
       {
-       "symbol": "Styx01_Part01",
        "rect": [
         1,
         1,
-        908,
-        588
+        588,
+        583
        ],
        "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "symbol": "Styx01_Part02",
-       "rect": [
-        1,
-        591,
-        908,
-        588
+        294,
+        291.4
        ],
-       "origin": [
-        0,
-        0
-       ]
+       "symbol": "styx_droit"
       }
      ],
      "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        588,
+        583
+       ],
+       "origin": [
+        294,
+        291.4
+       ],
+       "symbol": "styx_gauche"
+      }
+     ],
+     "file": "atlas1.png"
     }
    ],
    "scaleFactor": 1
   }
- ],
- "frameRate": 60,
- "movies": [
-  {
-   "id": "Styx01",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        453.75,
-        293.625
-       ],
-       "duration": 1,
-       "loc": [
-        -802.05,
-        486.3
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "Styx01_Part02"
-      }
-     ]
-    },
-    {
-     "name": "Calque 2",
-     "keyframes": [
-      {
-       "pivot": [
-        453.75,
-        293.625
-       ],
-       "duration": 1,
-       "loc": [
-        -176.4375,
-        228.0375
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "Styx01_Part01"
-      }
-     ]
-    }
-   ]
-  }
- ],
- "md5": "308fc3163f78eb10bfa6779071195219"
+ ]
 }

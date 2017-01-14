@@ -1,4 +1,51 @@
 {
+ "movies": [
+  {
+   "id": "Styx01",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        196,
+        194.25
+       ],
+       "loc": [
+        -421.55,
+        320.075
+       ],
+       "ref": "styx_gauche",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        196,
+        194.25
+       ],
+       "loc": [
+        -29.55,
+        194.25
+       ],
+       "ref": "styx_droit",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ]
+  }
+ ],
+ "md5": "6e2c4ed32b4061c2a9a5ee05dca31d22",
+ "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -6,30 +53,30 @@
     {
      "textures": [
       {
-       "symbol": "Styx01_Part01",
        "rect": [
         1,
         1,
-        605,
-        392
+        392,
+        389
        ],
        "origin": [
-        0,
-        0
-       ]
+        196,
+        194.25
+       ],
+       "symbol": "styx_droit"
       },
       {
-       "symbol": "Styx01_Part02",
        "rect": [
         1,
-        395,
-        605,
-        392
+        392,
+        392,
+        389
        ],
        "origin": [
-        0,
-        0
-       ]
+        196,
+        194.25
+       ],
+       "symbol": "styx_gauche"
       }
      ],
      "file": "atlas0.png"
@@ -37,52 +84,5 @@
    ],
    "scaleFactor": 1
   }
- ],
- "frameRate": 60,
- "movies": [
-  {
-   "id": "Styx01",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        302.5,
-        195.75
-       ],
-       "duration": 1,
-       "loc": [
-        -534.7,
-        324.2
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "Styx01_Part02"
-      }
-     ]
-    },
-    {
-     "name": "Calque 2",
-     "keyframes": [
-      {
-       "pivot": [
-        302.5,
-        195.75
-       ],
-       "duration": 1,
-       "loc": [
-        -117.625,
-        152.025
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "Styx01_Part01"
-      }
-     ]
-    }
-   ]
-  }
- ],
- "md5": "308fc3163f78eb10bfa6779071195219"
+ ]
 }
