@@ -33,7 +33,6 @@ enum VBuildingState { isBuilt; isBuilding; isMoving; }
 class VBuilding extends VTile {
 	
 	private var myGenerator:Generator;
-	private var timeDesc:TimeDescription;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	private var myMaxContains:Float = 10;
 	
@@ -57,11 +56,10 @@ class VBuilding extends VTile {
 		addGenerator();
 		addHudContextual();
 		
-		timeDesc = pDescription.timeDesc;
-		currentState = TimeManager.secureCheckConstructionEnded(pDescription);
-
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
-
+		
+		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
+		if (currentState == VBuildingState.isBuilding) TimeManager.addConstructionTimer(pDescription.timeDesc);
 	}
 	
 	/**
@@ -69,14 +67,6 @@ class VBuilding extends VTile {
 	 */
 	private function setHaveRecolter():Void{
 		haveRecolter = true;
-	}
-	
-	public function setTimeDesc(pTimeDesc:TimeDescription):Void {
-		timeDesc = pTimeDesc;
-	}
-	
-	public function getTimeDesc():TimeDescription {
-		return timeDesc;
 	}
 	
 	override public function activate ():Void {

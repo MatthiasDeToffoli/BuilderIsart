@@ -263,19 +263,18 @@ class Phantom extends Building {
 				regionY:regionMap.region.y,
 				mapX:regionMap.map.x,
 				mapY:regionMap.map.y,
-				timeDesc: { refTile:newId,  end: tTime + 40000, progress: tTime }
+				timeDesc: { refTile:newId,  end: tTime + 20000, progress: 0, creationDate: tTime }
 			};
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
 			
-			TimeManager.addConstructionTimer(vBuilding.getTimeDesc());
+			TimeManager.addConstructionTimer(tileDesc.timeDesc);
 			
 			vBuilding.activate();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding, position); // todo : mettre contruction
 			vBuilding.addExp();
 			destroy();
 			
-			applyChange();
-			
+			applyChange();			
 		} else {
 			displayCantBuy();
 		}

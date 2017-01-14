@@ -47,6 +47,8 @@ class TimeManager {
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
 	
+	public static inline var TIME_DESC_REFLECT:String = "timeDesc";
+	
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
@@ -90,10 +92,6 @@ class TimeManager {
 			listResource.push({
 				desc: pSave.timesResource[i]
 			});
-		}
-		
-		for (j in 0...lLengthConstruction) {
-			if (pSave.timesConstruction[j] != null) addConstructionTimer(pSave.timesConstruction[j]);
 		}
 		
 		//Not working don't touch!
@@ -161,6 +159,10 @@ class TimeManager {
 	}
 	
 	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
+		var dateNow:Float = Date.now().getTime();		
+		if (dateNow >= pBuildingTimer.end) return;	
+		
+		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;		
 		listConstruction.push(pBuildingTimer);
 	}
 	
@@ -345,26 +347,22 @@ class TimeManager {
 	 * @param	pIndex
 	 */
 	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pIndex:Int ):Void {
-		pElement.progress = pElement.progress + pElapsedTime;
+		pElement.progress += pElapsedTime;
+		var diff:Float = pElement.end - pElement.creationDate;
 		
-		if (pElement.progress >= pElement.end) {
+		if (pElement.progress >= diff) {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
 			listConstruction.splice(pIndex , 1);
 		}
 	}
 	
-	// not working yet // todo :: check difference between creation date && end date
-	public static function secureCheckConstructionEnded(pTileDesc:TileDescription):VBuildingState {
-		if (pTileDesc.timeDesc != null) {
-			var lLength:Int = listConstruction.length;
-			for (i in 0...lLength) {
-				if (pTileDesc.timeDesc.progress >= pTileDesc.timeDesc.end) {
-					listConstruction.splice(i, 1);
-					return VBuildingState.isBuilt;
-				}
-				else VBuildingState.isBuilding;
-			}
+
+	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
+		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
+			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;
+			if (pTileDesc.timeDesc.progress >= diff) return VBuildingState.isBuilt;
+			else return VBuildingState.isBuilding;
 		}
 		return VBuildingState.isBuilt;
 	}
