@@ -6,8 +6,10 @@ import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
+import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -43,9 +45,8 @@ class BHHarvest extends BuildingHud{
 		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
 		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
-		btnMove.on(MouseEventType.CLICK, onClickMove);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
-		btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
+		
 	}
 	
 	/**
@@ -55,7 +56,21 @@ class BHHarvest extends BuildingHud{
 		GameStage.getInstance().getGameContainer().interactive = true;
 		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		BHHarvest.getInstance().setUpgradeButton();
+		BHHarvest.getInstance().setMoveAndDestroy();
 		
+	}
+	
+	/**
+	 * listen click on destroy and move if building is not the tribunal
+	 */
+	public function setMoveAndDestroy():Void{
+		if(Std.is(BuildingHud.virtualBuilding,VTribunal)){
+			btnMove.alpha = 0.5;
+			btnDestroy.alpha = 0.5;
+		} else{
+			btnMove.on(MouseEventType.CLICK, onClickMove);		
+			btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
+		}
 	}
 	
 	private function setUpgradeButton():Void {
@@ -71,9 +86,14 @@ class BHHarvest extends BuildingHud{
 			btnUpgrade.alpha = 0.5;
 	}
 	
-	private function removeUpgradeButtonChange():Void {
+	private function removeButtonsChange():Void {
+			
+		btnMove.off(MouseEventType.CLICK, onClickMove);		
+		btnDestroy.off(MouseEventType.CLICK, onClickDestroy);
 		btnUpgrade.removeAllListeners();
 		btnUpgrade.alpha = 1;
+		btnMove.alpha = 1;
+		btnDestroy.alpha = 1;
 	}
 	
 	private function removeListenerGameContainer():Void {
@@ -81,7 +101,7 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	private function onClickMove(): Void {
-		removeUpgradeButtonChange();
+		removeButtonsChange();
 		removeListenerGameContainer();
 		BuildingHud.virtualBuilding.onClickMove();
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
@@ -89,27 +109,28 @@ class BHHarvest extends BuildingHud{
 	}
 	
 	private function onClickDescription(): Void {
-		removeUpgradeButtonChange();
+		removeButtonsChange();
 		removeListenerGameContainer();
-		UIManager.getInstance().openPopin(InfoBuilding.getInstance());
+		if(Std.is(BuildingHud.virtualBuilding,VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
+		else UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 		onClickExit();
 	}
 	
 	private function onClickDestroy(): Void {
-		removeUpgradeButtonChange();
+		removeButtonsChange();
 		UIManager.getInstance().openPopin(BuildingDestroyPoppin.getInstance());
 		removeListenerGameContainer();
 	}
 	
 	private function onClickUpgrade(): Void {
-		removeUpgradeButtonChange();
+		removeButtonsChange();
 		removeListenerGameContainer();
 		InfoBuilding.getInstance().onClickUpgrade();
 		Hud.getInstance().hideBuildingHud();
 	}
 	
 	private static function onClickExit():Void { 
-		BHHarvest.getInstance().removeUpgradeButtonChange();
+		BHHarvest.getInstance().removeButtonsChange();
 		GameStage.getInstance().getGameContainer().interactive = false;
 		Hud.getInstance().hideBuildingHud();
 	}
