@@ -28,6 +28,7 @@ typedef TileDescription = {
 	var mapY:Int;
 	@:optional var currentPopulation:Int;
 	@:optional var maxPopulation:Int;
+	@:optional var timeDesc:TimeDescription;
 	@:optional var isTribunal:Bool;
 }
 
@@ -110,6 +111,7 @@ typedef Save = {
 	var building:Array<TileDescription>;
 	var timesResource:Array<TimeDescription>;
 	var timesQuest:Array<TimeQuestDescription>;
+	var timesConstruction:Array<TimeDescription>;
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
@@ -163,6 +165,7 @@ class SaveManager {
 		currentSave = {
 			timesResource: getTimesResource(),
 			timesQuest: getTimesQuest(),
+			timesConstruction: getTimesConstruction(),
 			lastKnowTime:TimeManager.lastKnowTime,
 			stats: getStats(),
 			idHightest: IdManager.idHightest,
@@ -244,6 +247,12 @@ class SaveManager {
 	
 	private static function getTimesQuest ():Array<TimeQuestDescription> {
 		return TimeManager.listQuest.map(function (pElement){
+			return pElement;
+		});
+	}
+	
+	private static function getTimesConstruction():Array<TimeDescription> {
+		return TimeManager.listConstruction.map(function (pElement) {
 			return pElement;
 		});
 	}

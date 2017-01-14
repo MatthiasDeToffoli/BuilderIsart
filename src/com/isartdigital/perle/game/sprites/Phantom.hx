@@ -251,6 +251,7 @@ class Phantom extends Building {
 		
 		if (BuyManager.buy(assetName)) {
 			var newId = IdManager.newId();
+			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {
 				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
 				assetName:assetName,
@@ -258,13 +259,11 @@ class Phantom extends Building {
 				regionX:regionMap.region.x,
 				regionY:regionMap.region.y,
 				mapX:regionMap.map.x,
-				mapY:regionMap.map.y
+				mapY:regionMap.map.y,
+				timeDesc: { refTile:newId,  end: tTime + 40000, progress: tTime }
 			};
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
 			
-			// not definitive // todo => tTime + "duration" (duration on json price or other method ?)
-			var tTime:Float = Date.now().getTime();
-			vBuilding.setTimeDesc({ refTile:newId, end: tTime + 5000, progress: tTime});
 			TimeManager.addConstructionTimer(vBuilding.getTimeDesc());
 			
 			vBuilding.activate();

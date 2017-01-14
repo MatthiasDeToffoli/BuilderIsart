@@ -2,8 +2,10 @@ package com.isartdigital.perle.game.managers;
 
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
+import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
 
@@ -83,6 +85,8 @@ class TimeManager {
 		var lLength:Int = pSave.timesResource.length;
 		
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
+		var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
+		var lLengthConstruction:Int = pSave.timesConstruction.length;
 		var lLengthQuest:Int = pSave.timesQuest.length;
 		
 		//trace(lLengthQuest);
@@ -90,7 +94,10 @@ class TimeManager {
 			listResource.push({
 				desc: pSave.timesResource[i]
 			});
-			
+		}
+		
+		for (j in 0...lLengthConstruction) {
+			if (pSave.timesConstruction[j] != null) addConstructionTimer(pSave.timesConstruction[j]);
 		}
 		
 		//Not working don't touch!
@@ -365,13 +372,29 @@ class TimeManager {
 		if (pElement.progress >= pElement.end) {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
-			listConstruction.splice(pIndex ,1);
+			listConstruction.splice(pIndex , 1);
 		}
+	}
+	
+	// not working yet // todo :: check difference between creation date && end date
+	public static function secureCheck_constructionEnded(pTileDesc:TileDescription):VBuildingState {
+		if (pTileDesc.timeDesc != null) {
+			var lLength:Int = listConstruction.length;
+			for (i in 0...lLength) {
+				if (pTileDesc.timeDesc.progress >= pTileDesc.timeDesc.end) {
+					listConstruction.splice(i, 1);
+					return VBuildingState.isBuilt;
+				}
+				else VBuildingState.isBuilding;
+			}
+		}
+		return VBuildingState.isBuilt;
 	}
 	
 	public static function destroyTimeElement (pId:Int):Void {
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
+		var lLengthConstruction:Int = listConstruction.length;
 		
 		for (i in 0...lLength) {
 			if (pId == listResource[i].desc.refTile){
@@ -383,6 +406,13 @@ class TimeManager {
 		for (j in 0...lLengthQuest) {
 			if (pId == listQuest[j].refIntern){
 				listQuest.splice(j, 1);
+				break;
+			}
+		}
+		
+		for (k in 0...lLengthConstruction) {
+			if (pId == listConstruction[k].refTile) {
+				listConstruction.splice(k, 1);
 				break;
 			}
 		}

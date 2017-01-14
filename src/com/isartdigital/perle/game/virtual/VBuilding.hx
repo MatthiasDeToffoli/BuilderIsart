@@ -41,7 +41,7 @@ class VBuilding extends VTile {
 	
 	private var myVContextualHud:VHudContextual;
 	
-	public var currentState:VBuildingState = VBuildingState.isBuilding; // todo : temporaire
+	public var currentState:VBuildingState; // todo : temporaire
 	
 	public var alignementBuilding:Alignment;
 	
@@ -52,7 +52,9 @@ class VBuilding extends VTile {
 		addGenerator();
 		addHudContextual();
 		
-		TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
+		timeDesc = pDescription.timeDesc;
+		currentState = TimeManager.secureCheck_constructionEnded(pDescription);
+		trace(timeDesc);
 	}
 	
 	/**
@@ -211,6 +213,8 @@ class VBuilding extends VTile {
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		setState(VBuildingState.isBuilt);
+		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
+		SaveManager.save();
 	}
 	
 	override public function destroy():Void {
@@ -223,7 +227,7 @@ class VBuilding extends VTile {
 		myVContextualHud = null;
 		BuildingHud.unlinkVirtualBuilding(this);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
-		TimeManager.destroyTimeElement(tileDesc.id);
+		TimeManager.destroyTimeElement(tileDesc.id);	
 		
 		ResourcesManager.removeGenerator(myGenerator);
 		myGenerator = null;
