@@ -94,11 +94,11 @@ class ShopCaroussel extends SmartComponent {
 				tempArrowLeft = cast(SmartCheck.getChildByName(this, "Arrow_Left_Wood"), SmartButton); // temp
 				tempArrowRight = cast(SmartCheck.getChildByName(this, "Arrow_Right_Stone"), SmartButton);
 			}
-			case "Currencies": {
+			/*case "Currencies": {
 				super(AssetName.SHOP_CAROUSSEL_CURRENCIE);
 				tempArrowLeft = cast(SmartCheck.getChildByName(this, "Arrow_Left_Hard"), SmartButton); // temp
 				tempArrowRight = cast(SmartCheck.getChildByName(this, "Arrow_Right_Soft"), SmartButton);
-			}
+			}*/
 		}
 	}
 	
@@ -114,7 +114,7 @@ class ShopCaroussel extends SmartComponent {
 		switch(pTab) {
 			case "Building" : createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
 			case "Resource" : createCard(getSpawnersPosition(getSpawners(getSpawnersResourceAssetName())));
-			case "Currencies":createCard(getSpawnersPosition(getSpawners(getSpawnersCurrenciesAssetName())));
+			//case "Currencies":createCard(getSpawnersPosition(getSpawners(getSpawnersCurrenciesAssetName())));
 		}
 		
 		

@@ -157,7 +157,7 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickOpenCurencies() {
-		addCaroussel("Currencies");
+		addCaroussel("Resource");
 		caroussel.changeCardsToShow(ShopCaroussel.currencieNameList);
 	}
 	

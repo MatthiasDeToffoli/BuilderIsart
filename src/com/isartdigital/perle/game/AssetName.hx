@@ -65,6 +65,12 @@ class AssetName{
 	public static inline var SHOP_RESSOURCE_MARBRE:String = /*SHOP_PREFIX +*/ "Player_Marbre";
 	public static inline var SHOP_RESSOURCE_BOIS:String = /*SHOP_PREFIX +*/ "Player_Bois";
 	public static inline var SHOP_RESSOURCE_TEXT:String = /*SHOP_PREFIX +*/ "bar_txt";
+	public static inline var SHOP_RESSOURCE_PACK_BUTTON:String = /*SHOP_PREFIX +*/ "Button";
+	public static inline var SHOP_RESSOURCE_PACK_PRICE:String = /*SHOP_PREFIX +*/ "Pack_Content_txt";
+	public static inline var SHOP_RESSOURCE_PACK_CONTENT:String = /*SHOP_PREFIX +*/ "Pack_Price";
+	public static inline var SHOP_RESSOURCE_CARD_PICTURE:String = /*SHOP_PREFIX +*/ "Item_picture";
+	public static inline var SHOP_RESSOURCE_CARD_NAME:String = /*SHOP_PREFIX +*/ "Item_Name";
+	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_SCPrice";
 	
 	// Shop caroussel
 	public static inline var SHOP_CAROUSSEL_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
@@ -76,7 +82,7 @@ class AssetName{
 	// Shop caroussel card
 	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
 	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
-	public static inline var CAROUSSEL_CARD_BUNDLE:String = /*SHOP_PREFIX + */"ButtonBuyPack";
+	public static inline var CAROUSSEL_CARD_BUNDLE:String ="ButtonBuyPack";
 	
 	// Popin Confirm Buy Building
 	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";

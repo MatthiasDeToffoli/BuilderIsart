@@ -6,36 +6,10 @@
     {
      "textures": [
       {
-       "symbol": "_buttonbuypack_down",
+       "symbol": "_shop_buyablepack_bg",
        "rect": [
         1,
         1,
-        295,
-        295
-       ],
-       "origin": [
-        147.2,
-        147.2
-       ]
-      },
-      {
-       "symbol": "_buttonbuypack_over",
-       "rect": [
-        1,
-        298,
-        295,
-        295
-       ],
-       "origin": [
-        147.2,
-        147.2
-       ]
-      },
-      {
-       "symbol": "_buttonbuypack_up",
-       "rect": [
-        1,
-        595,
         291,
         291
        ],
@@ -45,41 +19,68 @@
        ]
       },
       {
-       "symbol": "_pack_picture",
+       "symbol": "_buttonbuypack_over",
        "rect": [
+        1,
         294,
-        595,
-        189,
-        189
+        275,
+        275
        ],
        "origin": [
-        94.05,
-        94.05
+        137.25,
+        137.25
        ]
       },
       {
-       "data": {
-        "y": -21.55,
-        "wordWrap": 0,
-        "text": "PACK_CONTENT",
-        "width": 365.65,
-        "color": "#000000",
-        "align": "center",
-        "height": 43.1,
-        "font": "35px _sans",
-        "x": -182.8
-       },
-       "symbol": "_pack_content_txt",
-       "baseClass": "TextSprite",
+       "symbol": "_buttonbuypack_down",
        "rect": [
-        485,
         1,
-        1,
-        1
+        571,
+        275,
+        275
        ],
        "origin": [
-        0,
-        0
+        137.25,
+        137.25
+       ]
+      },
+      {
+       "symbol": "_buttonbuypack_up",
+       "rect": [
+        278,
+        294,
+        271,
+        271
+       ],
+       "origin": [
+        135.4,
+        135.4
+       ]
+      },
+      {
+       "symbol": "_pack_picture",
+       "rect": [
+        1,
+        848,
+        160,
+        160
+       ],
+       "origin": [
+        79.9,
+        79.9
+       ]
+      },
+      {
+       "symbol": "_currencyresourceIcon_Small",
+       "rect": [
+        163,
+        848,
+        48,
+        48
+       ],
+       "origin": [
+        24,
+        24
        ]
       },
       {
@@ -95,13 +96,38 @@
         "x": -183.35
        },
        "symbol": "_pack_price_txt",
-       "baseClass": "TextSprite",
        "rect": [
-        488,
         1,
+        1010,
         1,
         1
        ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -21.55,
+        "wordWrap": 0,
+        "text": "XXXX",
+        "width": 113.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 43.1,
+        "font": "35px _sans",
+        "x": -56.9
+       },
+       "symbol": "_pack_content_txt",
+       "rect": [
+        1,
+        1013,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
@@ -123,33 +149,33 @@
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
-        145.3125,
-        145.3125
+        135.375,
+        135.375
        ],
        "tweened": false,
        "index": 0,
-       "duration": 1,
        "ref": "_buttonbuypack_up"
       },
       {
+       "duration": 1,
        "pivot": [
-        147.1875,
-        147.1875
+        137.25,
+        137.25
        ],
        "tweened": false,
        "index": 1,
-       "duration": 1,
        "ref": "_buttonbuypack_over"
       },
       {
+       "duration": 2,
        "pivot": [
-        147.1875,
-        147.1875
+        137.25,
+        137.25
        ],
        "tweened": false,
        "index": 2,
-       "duration": 2,
        "ref": "_buttonbuypack_down"
       }
      ],
@@ -158,18 +184,18 @@
     {
      "keyframes": [
       {
+       "duration": 4,
+       "tweened": false,
        "loc": [
         0,
-        -35.925
+        -46.425
        ],
-       "tweened": false,
-       "ref": "_pack_picture",
-       "index": 0,
        "pivot": [
-        94.05,
-        94.05
+        79.875,
+        79.875
        ],
-       "duration": 4
+       "index": 0,
+       "ref": "_pack_picture"
       }
      ],
      "name": "Pack_Picture"
@@ -177,35 +203,85 @@
     {
      "keyframes": [
       {
-       "tweened": false,
-       "loc": [
-        0.4125,
-        73.125
-       ],
-       "index": 0,
        "duration": 4,
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -22.0875,
+        61.125
+       ],
        "ref": "_pack_content_txt"
       }
      ],
-     "name": "Pack_Name"
+     "name": "Pack_Content_txt"
     },
     {
      "keyframes": [
       {
+       "duration": 4,
        "tweened": false,
+       "loc": [
+        44.5875,
+        62.1
+       ],
+       "pivot": [
+        24,
+        24
+       ],
+       "index": 0,
+       "ref": "_currencyresourceIcon_Small"
+      }
+     ],
+     "name": "Pack_Content_Icon"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "tweened": false,
+       "index": 0,
        "loc": [
         -0.525,
         114
        ],
-       "index": 0,
-       "duration": 4,
        "ref": "_pack_price_txt"
       }
      ],
      "name": "Pack_Price"
     }
    ]
+  },
+  {
+   "id": "Shop_BuyablePack",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "pivot": [
+        145.3125,
+        145.3125
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_shop_buyablepack_bg"
+      }
+     ],
+     "name": "Pack_BG"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "tweened": false,
+       "index": 0,
+       "ref": "ButtonBuyPack"
+      }
+     ],
+     "name": "Button"
+    }
+   ]
   }
  ],
- "md5": "3bb1eeca15f6f3c70974918db2cb4309"
+ "md5": "f278d8fbd2c313208d8c67d26521ef9c"
 }

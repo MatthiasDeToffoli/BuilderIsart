@@ -22,21 +22,27 @@ class CarousselCardUnlock extends CarouselCard
 	private var lButton:SmartButton;
 	private var imageCurrency:UISprite;
 	private var text_name:TextSprite;
+	private var numberRessource:TextSprite;
 	private var text_price:TextSprite;
 	private var sfIcon:UISprite;
+	private var lAssetName:String;
 	
 	override public function new() 
 	{
 		
-		/*if (ShopCaroussel.cardsToShow == ShopCaroussel.currencieNameList)
+		if (ShopCaroussel.lTab != "Building") {
 			super(AssetName.CAROUSSEL_CARD_BUNDLE);
-		else {*/
+			//todo : ces 2 var sont inverser  prevenir GD
+			numberRessource = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_PRICE), TextSprite);
+			text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_CONTENT), TextSprite);
+		}
+		else {
 			
 			super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-			image = cast(SmartCheck.getChildByName(this, "Item_picture"), UISprite);
-			text_name = cast(SmartCheck.getChildByName(this, "Item_Name"), TextSprite);
-			text_price = cast(SmartCheck.getChildByName(this, "Item_SCPrice"), TextSprite);
-		//}
+			image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
+			text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
+			text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
+		}
 			
 		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
 		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
@@ -50,6 +56,7 @@ class CarousselCardUnlock extends CarouselCard
 	
 	override public function init (pBuildingAssetName:String):Void {
 		super.init(pBuildingAssetName);
+		lAssetName = pBuildingAssetName;
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
 		setName(buildingAssetName);
@@ -74,7 +81,10 @@ class CarousselCardUnlock extends CarouselCard
 	}
 	
 	private function setName (pAssetName:String):Void {
-		text_name.text = FakeTraduction.assetNameNameToTrad(pAssetName);
+		if (ShopCaroussel.lTab != "Building")
+			numberRessource.text = "" + numberToGive();
+		else
+			text_name.text = FakeTraduction.assetNameNameToTrad(pAssetName);
 	}
 	
 	private function setPrice (pInt:Int):Void {
@@ -98,13 +108,13 @@ class CarousselCardUnlock extends CarouselCard
 				}
 			}
 			case "Resource": {
-				switch(text_name.text) {
+				switch(lAssetName) {
 					case("Wood pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 1000);
 					case("Iron pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 1000);
 				}
 			}
 			case "Currencies": {
-				switch(text_name.text) {
+				switch(lAssetName) {
 					case("Gold pack") : ResourcesManager.gainResources(GeneratorType.soft, 10000);
 					case("Karma pack") : ResourcesManager.gainResources(GeneratorType.hard, 100);
 				}
@@ -114,6 +124,16 @@ class CarousselCardUnlock extends CarouselCard
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().closeCurrentPopin();
+	}
+	
+	private function numberToGive():Int {
+		switch(lAssetName) {
+			case("Wood pack") : return 1000;
+			case("Iron pack") : return 1000;
+			case("Gold pack") : return 10000;
+			case("Karma pack") : return 100;
+		}
+		return 0;
 	}
 	
 	override public function destroy():Void {
