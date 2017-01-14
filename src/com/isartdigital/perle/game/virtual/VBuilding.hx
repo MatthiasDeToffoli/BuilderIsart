@@ -54,7 +54,9 @@ class VBuilding extends VTile {
 		
 		timeDesc = pDescription.timeDesc;
 		currentState = TimeManager.secureCheck_constructionEnded(pDescription);
-		trace(timeDesc);
+
+		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+
 	}
 	
 	/**
@@ -79,6 +81,11 @@ class VBuilding extends VTile {
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		
 		myVContextualHud.activate();
+	}
+	
+	public function updateGeneratorInfo(?data:Dynamic){
+		if (myGenerator != null && data.id == tileDesc.id)
+			myGenerator.desc = ResourcesManager.getGenerator(tileDesc.id, myGeneratorType);
 	}
 	
 	override public function desactivate ():Void {
@@ -231,6 +238,8 @@ class VBuilding extends VTile {
 		
 		ResourcesManager.removeGenerator(myGenerator);
 		myGenerator = null;
+		
+		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		
 		super.destroy();
 	}

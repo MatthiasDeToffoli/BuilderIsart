@@ -283,6 +283,7 @@ class ResourcesManager
 		allPopulations[pType][allPopulations[pType].indexOf(pPopulation)] = pPopulation;
 	}
 	
+
 	
 	/**
 	 * give the total of soul we have (and the total we can have
@@ -345,6 +346,7 @@ class ResourcesManager
 						lPopulation.quantity++;
 						lGenerator.desc.quantity--;
 						populationChangementEvent.emit(POPULATION_CHANGEMENT_EVENT_NAME, lPopulation);
+						generatorEvent.emit(GENERATOR_EVENT_NAME, {id:lGenerator.desc.id});
 					}
 		
 	}
@@ -405,7 +407,7 @@ class ResourcesManager
 		
 		SaveManager.save();
 		
-		TimeManager.createTimeResource(60000, myGenerator); // 1 minutes
+		TimeManager.createTimeResource(6000, myGenerator); // 1 minutes
 		
 		return myGenerator;
 		
@@ -514,7 +516,8 @@ class ResourcesManager
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
 		save(pGenerator);
 		
-		if (pGenerator.desc.quantity >= pGenerator.desc.max / 2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, active:true});
+		if (pGenerator.desc.quantity >= pGenerator.desc.max / 2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
+		else generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id});
 		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}
 	//} endregion
@@ -573,7 +576,7 @@ class ResourcesManager
 		
 
 		SaveManager.save();
-		generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pDesc.id, active:false});
+		generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pDesc.id, active:false, forButton:true});
 		return pDesc;
 	}
 	

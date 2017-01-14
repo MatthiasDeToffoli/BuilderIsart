@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
 import pixi.core.math.Point;
 
 	
@@ -60,6 +61,18 @@ class VTribunal extends VBuilding
 		super(lDesc);
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
 	}
+	
+	override public function updateGeneratorInfo(?data:Dynamic) 
+	{
+		myGenerator.desc = ResourcesManager.getGenerator(tileDesc.id, myGeneratorType);
+		PurgatorySoulCounter.getInstance().setText({current:myGenerator.desc.quantity, max:myGenerator.desc.max});
+	}
+	override public function activate():Void 
+	{
+		super.activate();
+		PurgatorySoulCounter.getInstance().setText({current:myGenerator.desc.quantity, max:myGenerator.desc.max});
+	}
+	
 	
 	
 	override function setHaveRecolter():Void 

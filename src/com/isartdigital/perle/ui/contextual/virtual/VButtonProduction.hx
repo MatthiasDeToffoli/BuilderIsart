@@ -60,7 +60,7 @@ class VButtonProduction extends VSmartComponent
 	 * @param	data object contain the id of the generator and a boolean said if the generator is empty or not
 	 */
 	private function onGeneratorEvent(data:Dynamic):Void {
-		if (data.id == refBuilding) {
+		if (data.forButton && data.id == refBuilding) {
 			
 			generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
 			
