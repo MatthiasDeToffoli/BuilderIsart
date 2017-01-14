@@ -184,9 +184,10 @@ class AssetName{
 	public static inline var HUD_BTN_SOFT:String = /*HUD_PREFIX + */"ButtonPlusSC";
 	public static inline var HUD_COUNTER_HARD:String = HUD_PREFIX + "HardCurrency";
 	public static inline var HUD_BTN_HARD:String = /*HUD_PREFIX + */"ButtonPlusHC";
-	public static inline var HUD_COUNTER_MATERIAL_HEAVEN:String = HUD_PREFIX + "MarbleCounter";
-	public static inline var HUD_COUNTER_MATERIAL_HELL:String = HUD_PREFIX + "WoodCounter";
-	public static inline var HUD_BTN_WOOD:String = /*HUD_PREFIX + */"ButtonPlusWood";
+	public static inline var HUD_COUNTER_MATERIAL_HEAVEN:String = HUD_PREFIX + "Wood";
+	public static inline var HUD_COUNTER_MATERIAL_HELL:String = HUD_PREFIX + "Iron";
+	public static inline var HUD_BTN_WOOD:String = /*HUD_PREFIX + */"ButtonPlusWOOD";
+	public static inline var HUD_BTN_IRON:String = /*HUD_PREFIX + */"ButtonPlusIRON";
 	public static inline var HUD_COUNTER_XP_HEAVEN:String = HUD_PREFIX + "HeavenXP";
 	public static inline var HUD_COUNTER_XP_HELL:String = HUD_PREFIX + "HellXP";
 	public static inline var HUD_COUNTER_LEVEL:String = HUD_PREFIX + "Level";

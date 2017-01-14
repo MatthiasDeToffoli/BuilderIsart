@@ -57,7 +57,6 @@ class InfoBuilding extends SmartPopin {
 	private function new() {
 		super(AssetName.POPIN_INFO_BUILDING);
 		
-		SmartCheck.traceChildrens(this);
 		
 		levelTxt = cast(SmartCheck.getChildByName(this, "Building_Level_txt"), TextSprite);
 		nameTxt = cast(SmartCheck.getChildByName(this, "Name"), TextSprite);
@@ -67,9 +66,9 @@ class InfoBuilding extends SmartPopin {
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
 		btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
-		
 		nameTxt.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
-		levelTxt.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
+		
+		//levelTxt.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
 		//limitGoldTxt.text = "5/5";
 		
 		setImage(BuildingHud.virtualBuilding.getAsset());

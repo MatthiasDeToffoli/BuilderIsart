@@ -11,6 +11,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import js.Browser;
 import pixi.core.math.Point;
 
 enum ShopTab { Building; Interns; Deco; Resources; Currencies; Bundle; }
@@ -145,6 +146,8 @@ class ShopPopin extends SmartPopin{
 	
 	private function onClickOpenIntern() {
 		addCaroussel("Building");
+		
+		Browser.alert("Work in progress : Special Feature");	
 		caroussel.changeCardsToShow(ShopCaroussel.internsNameList);
 	}
 	
@@ -160,6 +163,7 @@ class ShopPopin extends SmartPopin{
 	
 	private function onClickOpenBundle() {
 		addCaroussel("Building");
+		Browser.alert("Work in progress");
 		caroussel.changeCardsToShow(ShopCaroussel.bundleNameList);
 	}
 	

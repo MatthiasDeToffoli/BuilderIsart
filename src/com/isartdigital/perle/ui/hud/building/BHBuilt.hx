@@ -19,6 +19,7 @@ class BHBuilt extends BuildingHud
 	private var btnDescription:SmartButton;
 	private var btnUpgrade:SmartButton;
 	private var btnDestroy:SmartButton;
+
 	
 	public function new(pID:String=null) 
 	{
@@ -30,6 +31,7 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
+		trace("test");
 		GameStage.getInstance().getGameContainer().interactive = true;
 		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		setUpgradeButton();
