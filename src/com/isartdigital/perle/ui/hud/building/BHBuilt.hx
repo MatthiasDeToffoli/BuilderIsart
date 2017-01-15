@@ -33,8 +33,6 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
-		/*GameStage.getInstance().getGameContainer().interactive = true;
-		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);*/
 		GameStage.getInstance().getBuildContainer().interactive = true;
 		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		setUpgradeButton();
@@ -83,6 +81,7 @@ class BHBuilt extends BuildingHud
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
 	}
+	
 	public function removeListenerGameContainer():Void {
 		GameStage.getInstance().getBuildContainer().interactive = false;
 		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
@@ -94,7 +93,6 @@ class BHBuilt extends BuildingHud
 		BuildingHud.virtualBuilding.onClickMove();
 		
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
-		//trace(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 	}
 	
 	private function onClickDescription(): Void {
