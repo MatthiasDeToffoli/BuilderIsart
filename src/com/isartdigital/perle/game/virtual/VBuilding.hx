@@ -116,6 +116,8 @@ class VBuilding extends VTile {
 			cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName(),
 			this
 		);
+		
+		//Hud.getInstance().buildingPosition = BuildingHud.virtualBuilding.graphic.position;
 		desactivate();
 		ignore = true;
 		setState(VBuildingState.isMoving);

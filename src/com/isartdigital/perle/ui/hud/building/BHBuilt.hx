@@ -7,6 +7,7 @@ import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import pixi.core.math.Point;
 
 /**
  * ...
@@ -88,6 +89,7 @@ class BHBuilt extends BuildingHud
 		removeButtonsChange();
 		removeListenerGameContainer();
 		BuildingHud.virtualBuilding.onClickMove();
+		
 		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
 		//trace(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 	}

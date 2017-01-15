@@ -29,6 +29,7 @@ import eventemitter3.EventEmitter;
 import js.Browser;
 import js.html.KeyboardEvent;
 import pixi.core.display.Container;
+import pixi.core.math.Point;
 
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
@@ -48,6 +49,8 @@ class Hud extends SmartScreen
 	
 	private var hellXPBar:SmartComponent;
 	private var heavenXPBar:SmartComponent;
+	
+	public var buildingPosition:Point;
 	
 
 	/**
@@ -71,9 +74,9 @@ class Hud extends SmartScreen
 		BHMoving.getInstance().init();
 		
 		addChild(containerBuildingHud);
+		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		
 		addListeners();
-		//initGauges();
 	}
 	
 	/**
@@ -86,6 +89,7 @@ class Hud extends SmartScreen
 
 		BuildingHud.linkVirtualBuilding(pVBuilding);
 		// todo : mettre en évidence quel building on sélectionne actuellement...
+		
 		if (pVBuilding != null)
 			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
 		
@@ -102,8 +106,11 @@ class Hud extends SmartScreen
 				}
 				case BuildingHudType.CONSTRUCTION: 
 					containerBuildingHud.addChild(BHConstruction.getInstance());
-				case BuildingHudType.MOVING: 
+				case BuildingHudType.MOVING: {
+					//trace(buildingPosition);
+					//BHMoving.getInstance().position = buildingPosition;
 					containerBuildingHud.addChild(BHMoving.getInstance());
+				}
 				case BuildingHudType.NONE: 
 					
 				default: throw("No BuildingHud found !");
@@ -230,9 +237,6 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickListIntern(){
-		//Todo: Temporaire! En attendant d'avoir plus de précision sur le wireframe
-		//var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
-		//var lQuest:Quest = new Quest(lRandomEvent);
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		
 		Browser.alert("Work in progress : Special Feature");	
