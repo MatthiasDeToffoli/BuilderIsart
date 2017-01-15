@@ -47,6 +47,7 @@ class VHouse extends VBuildingUpgrade
 		maxResources = [50, 225, 1200];
 		myMaxContains = maxResources[0]; 
 		myTime = 60000 / valuesWin[0];
+		
 
 		super.addGenerator();
 	}

@@ -84,6 +84,7 @@ class VButtonProduction extends VSmartComponent
 		return (active && !generatorIsNotEmpty) || (!active);
 	}
 	
+	
 	// todo : faire une methode addgraphic ds virtual et l'ovverride, changer ds les autres descendant de virtual egalement
 	// et du coup condition a l'interrieur de cette function
 	private function addGraphic ():Void {
@@ -103,9 +104,11 @@ class VButtonProduction extends VSmartComponent
 	 */
 	override public function activate ():Void {
 		super.activate(); // put active to true
-
+		
 		if (shoulBeVisible())
 			addGraphic();
+			
+		if (myBtn != null) myBtn.setScale();
 	}
 	
 	override public function desactivate ():Void {

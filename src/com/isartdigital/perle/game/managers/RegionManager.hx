@@ -37,7 +37,6 @@ typedef Region = {
 /**
  * manage all region
  * @author de Toffoli Matthias
- * @author Rabier Ambroise
  */
 class RegionManager 
 {

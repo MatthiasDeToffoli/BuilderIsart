@@ -9,8 +9,6 @@ import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 
  
- //{ ################# typedef #################
- 
  /**
   * typedef which contain all data resources
   */
@@ -57,7 +55,6 @@ import eventemitter3.EventEmitter;
  typedef Generator = {
 	 var desc:GeneratorDescription;
  }
- //} endregion
  
  /**
  * manage all resources, generator and levels
@@ -90,15 +87,7 @@ class ResourcesManager
 	 */
 	private static var totalResourcesInfoArray:Array<TotalResourcesEventParam>;
 	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
- 
-	//function and var rapport to data
-	 //{ ################# data #################
-	 /**
+	/**
 	  * data local to the class
 	  */
 	private static var myResourcesData:ResourcesData;
@@ -362,17 +351,7 @@ class ResourcesManager
 	
 		SaveManager.save();
 	}
-	//}endregion
 
-	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for add soft, hard currency, or xp in there own array
-	//{ ################# addCurrency #################
 	
 	/**
 	 * create a new generator
@@ -443,18 +422,6 @@ class ResourcesManager
 		
 		return null;
 	}
-	//} endregion
-	
-	
-	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for change alignment of soul or intern
-	//{ ################# changeAlignment #################
 	
 	/**
 	 * change the alignment of a generator
@@ -466,16 +433,6 @@ class ResourcesManager
 		save(pGenerator);
 		
 	}
-	//} endregion
-	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for count a resource if her value is lower her max
-	//{ ################# increaseResources #################
 	
 	/**
 	 * increase a generator's quantity link to the time
@@ -514,23 +471,13 @@ class ResourcesManager
 	 * @param quantity the quantity to add
 	 */
 	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{
-		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
+		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);	
 		save(pGenerator);
 		
 		if (pGenerator.desc.quantity >= pGenerator.desc.max / 10) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
 		else generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id});
 		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}
-	//} endregion
-	
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for remove a resource in is own array
-	//{ ################# removeGenerator #################
 
 	/**
 	 * remove a generator
@@ -549,15 +496,6 @@ class ResourcesManager
 	}
 	//} endregion
 	
-
-	/*
-	 ####################
-	 ####################
-	 ####################
-	 */
-	 
-	//functions for use or add total resources
-	//{ ################# totals function #################
 	/**
 	 * add a generator's quantity to the total coresponding and reset the quantity at 0
 	 * @param pDesc the description of the generator target
@@ -658,7 +596,5 @@ class ResourcesManager
 	}
 
 	
-	
-	//} endregion
 	
 }
