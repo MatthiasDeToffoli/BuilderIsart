@@ -142,9 +142,11 @@ class Building extends Tile implements IZSortable
 		super.start();
 		
 		interactive = true;
+		buttonMode = true;
+		
 		addListenerOnClick();
 	}
-	
+
 	/**
 	 * 
 	 * @param	pTilePos (TilePosition like if they were only one big region)
@@ -185,12 +187,17 @@ class Building extends Tile implements IZSortable
 	
 	private function addListenerOnClick ():Void {
 		on(MouseEventType.CLICK, onClick);
+		on(MouseEventType.MOUSE_OVER, changeCursor);
 	}
 	
 	private function onClick ():Void {
-		//trace(isClickable);
 		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick(position);
 	}
 	
+	private function changeCursor():Void{
+		if (isClickable) defaultCursor = "pointer";
+		
+		else defaultCursor = "default";
+	}
 	//} endRegion
 }
