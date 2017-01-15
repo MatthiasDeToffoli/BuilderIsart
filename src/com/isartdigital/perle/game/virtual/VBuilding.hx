@@ -57,7 +57,7 @@ class VBuilding extends VTile {
 		addHudContextual();
 		
 		timeDesc = pDescription.timeDesc;
-		currentState = TimeManager.secureCheck_constructionEnded(pDescription);
+		currentState = TimeManager.secureCheckConstructionEnded(pDescription);
 
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 

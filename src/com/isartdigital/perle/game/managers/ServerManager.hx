@@ -5,7 +5,7 @@ import haxe.Json;
 	
 /**
  * Interface whit the server
- * @author Vicktor Grenu
+ * @author Vicktor Grenu et Ambroise Rabier
  */
 class ServerManager {
 	

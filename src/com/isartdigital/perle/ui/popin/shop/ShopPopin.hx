@@ -105,19 +105,26 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function checkOfOngletToOpen(pTab:ShopTab):Void {
-		switch(pTab.getName()) {
-			case "building" : onClickOpenBuldings();
-			case "Deco" : onClickOpenDecorations();
-			case "Interns" : onClickOpenIntern();
-			case "Resources" : onClickOpenResource();
-			case "Currencies" : onClickOpenCurencies();
-			case "Bundle" : onClickOpenBundle();
+		switch(pTab) {
+			case ShopTab.Building : onClickOpenBuldings();
+			case ShopTab.Deco : onClickOpenDecorations();
+			case ShopTab.Interns : onClickOpenIntern();
+			case ShopTab.Resources : onClickOpenResource();
+			case ShopTab.Currencies : onClickOpenCurencies();
+			case ShopTab.Bundle : onClickOpenBundle();s
 		}
 	}
 	
-	private function addCaroussel(pTab:String):Void {
-		caroussel = new ShopCaroussel(pTab);
-		caroussel.init(carousselPos,pTab);
+	private function addCaroussel(pTab:ShopTab):Void {
+		if (caroussel != null)
+			caroussel.destroy();
+		
+		if (pTab == ShopTab.Building)
+			caroussel = new ShopCarousselBuilding();
+		else if (pTab == ShopTab.Resources)
+			caroussel = new ShopCarousselResource();
+			
+		caroussel.init(carousselPos);
 		addChild(caroussel);
 		caroussel.start();
 	}
@@ -135,34 +142,34 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickOpenBuldings() {
-		addCaroussel("Building");
-		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList);
+		addCaroussel(ShopTab.Building);
+		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList); // todo: mettre cela dans le ShopCaroussel appelé, héritage
 	}
 	
 	private function onClickOpenDecorations() {
-		addCaroussel("Building");
+		addCaroussel(ShopTab.Building);
 		caroussel.changeCardsToShow(ShopCaroussel.decoNameList);
 	}
 	
 	private function onClickOpenIntern() {
-		addCaroussel("Building");
+		addCaroussel(ShopTab.Building);
 		
 		Browser.alert("Work in progress : Special Feature");	
 		caroussel.changeCardsToShow(ShopCaroussel.internsNameList);
 	}
 	
 	private function onClickOpenResource() {
-		addCaroussel("Resource");
+		addCaroussel(ShopTab.Resources);
 		caroussel.changeCardsToShow(ShopCaroussel.resourcesNameList);
 	}
 	
 	private function onClickOpenCurencies() {
-		addCaroussel("Resource");
+		addCaroussel(ShopTab.Resources);
 		caroussel.changeCardsToShow(ShopCaroussel.currencieNameList);
 	}
 	
 	private function onClickOpenBundle() {
-		addCaroussel("Building");
+		addCaroussel(ShopTab.Building);
 		Browser.alert("Work in progress");
 		caroussel.changeCardsToShow(ShopCaroussel.bundleNameList);
 	}

@@ -20,30 +20,18 @@ class CarousselCardUnlock extends CarouselCard
 {
 	
 	private var lButton:SmartButton;
-	private var imageCurrency:UISprite;
+	
 	private var text_name:TextSprite;
-	private var numberRessource:TextSprite;
 	private var text_price:TextSprite;
-	private var sfIcon:UISprite;
+	private var text_number_resource:TextSprite;
+	
 	private var lAssetName:String;
 	
-	override public function new() 
-	{
+	override public function new(pID:String=null) {
+		super(pID);
 		
-		if (ShopCaroussel.lTab != "Building") {
-			super(AssetName.CAROUSSEL_CARD_BUNDLE);
-			//todo : ces 2 var sont inverser  prevenir GD
-			numberRessource = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_PRICE), TextSprite);
-			text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_CONTENT), TextSprite);
-		}
-		else {
-			
-			super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-			image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
-			text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
-			text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
-		}
-			
+		
+		
 		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
 		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
 		
@@ -80,12 +68,7 @@ class CarousselCardUnlock extends CarouselCard
 		on(MouseEventType.CLICK, onClick);*/
 	}
 	
-	private function setName (pAssetName:String):Void {
-		if (ShopCaroussel.lTab != "Building")
-			numberRessource.text = "" + numberToGive();
-		else
-			text_name.text = FakeTraduction.assetNameNameToTrad(pAssetName);
-	}
+	private function setName (pAssetName:String):Void {}
 	
 	private function setPrice (pInt:Int):Void {
 		text_price.text = Std.string(pInt);
@@ -97,26 +80,10 @@ class CarousselCardUnlock extends CarouselCard
 		super._click(pEvent);
 		//UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
 		//ConfirmBuyBuilding.getInstance().init(buildingAssetName);
-		
-		//todo : j ai codé en dur par manque de temps
-		switch(ShopCaroussel.lTab) {
-			case "Building" : {
-				if (BuyManager.canBuy(buildingAssetName)) {
-					Phantom.onClickShop(buildingAssetName);
-					Hud.getInstance().hideBuildingHud();
-					Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
-				}
-			}
-			case "Resource": {
-				switch(lAssetName) {
-					case("Wood pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 1000);
-					case("Iron pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 1000);
-					case("Gold pack") : ResourcesManager.gainResources(GeneratorType.soft, 10000);
-					case("Karma pack") : ResourcesManager.gainResources(GeneratorType.hard, 100);
-				}
-			}
-		}
-		
+		closeShop();
+	}
+	
+	private function closeShop ():Void {
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().closeCurrentPopin();

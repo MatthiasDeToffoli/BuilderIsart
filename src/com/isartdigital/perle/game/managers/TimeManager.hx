@@ -20,9 +20,7 @@ typedef EventResoucreTick = {
 	var tickNumber:Int;
 }
 
-/**
- * infinite repeat
- */
+
 typedef TimeElementResource = {
 	var desc:TimeDescription;
 	@:optional var generator:Generator;
@@ -52,9 +50,7 @@ class TimeManager {
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 5000;
-	private static inline var TIME_LOOO_CONSTRUCTION_DELAY:Int = 1000;
-	
+	private static inline var TIME_LOOP_DELAY:Int = 1000;
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
@@ -186,17 +182,8 @@ class TimeManager {
 	 * @param	pQuest Reference to the quest
 	 * @return  The specific Time Element for the quest
 	 */
-	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeQuestDescription {
-		var lTimeElement:TimeQuestDescription = {
-			//desc: {
-				//todo: réfléchir à un desc
-				refIntern: pDatasQuest.refIntern,
-				progress: pDatasQuest.progress,
-				steps: pDatasQuest.steps,
-				stepIndex:pDatasQuest.stepIndex,
-				end:pDatasQuest.end
-			//},
-		};
+	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeQuestDescription { // todo : un peu inutile comme function ?
+		var lTimeElement:TimeQuestDescription = pDatasQuest;
 		
 		listQuest.push(lTimeElement);
 		return lTimeElement;
@@ -251,10 +238,6 @@ class TimeManager {
 		//timeLoop();  // non car il veut save du coup, mais save pas encore créer si whitoutSave
 		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY); // todo : variable locale ? sûr ?
 		lTime.run = timeLoop;
-		
-		// faster timeLoop for constrution // not necessary ?
-		var lTimeConstruction:Timer = Timer.delay(timeLoopConstruction, TIME_LOOO_CONSTRUCTION_DELAY); // todo : variable locale ? sûr ?
-		lTimeConstruction.run = timeLoopConstruction;
 	}
 	
 	/**
@@ -287,6 +270,7 @@ class TimeManager {
 		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow); // todo: moche ?
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
+		var lLengthConstruct:Int = listConstruction.length;
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
@@ -298,13 +282,7 @@ class TimeManager {
 		for (i in 0...lLengthQuest) {
 			//trace("length time loop " + lLengthQuest);
 			updateQuest(listQuest[i], lElapsedTime);
-		}		
-	}
-	
-	private static function timeLoopConstruction():Void {
-		var lTimeNow:Float = Date.now().getTime();
-		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow);
-		var lLengthConstruct:Int = listConstruction.length;
+		}
 		
 		for (i in 0...lLengthConstruct) {
 			updateConstruction(listConstruction[i], lElapsedTime, i);
@@ -377,7 +355,7 @@ class TimeManager {
 	}
 	
 	// not working yet // todo :: check difference between creation date && end date
-	public static function secureCheck_constructionEnded(pTileDesc:TileDescription):VBuildingState {
+	public static function secureCheckConstructionEnded(pTileDesc:TileDescription):VBuildingState {
 		if (pTileDesc.timeDesc != null) {
 			var lLength:Int = listConstruction.length;
 			for (i in 0...lLength) {

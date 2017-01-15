@@ -22,11 +22,7 @@ class CarouselCard extends SmartButton {
 	}
 	
 	public function init (pBuildingAssetName:String):Void {
-		buildingAssetName = pBuildingAssetName;
-		// image = pBuildingAssetName ....
-		// text idem voir buyManager ?
-		if(ShopCaroussel.lTab == "Building")
-			setImage(buildingAssetName);
+		buildingAssetName = pBuildingAssetName;			
 	}
 	
 	public function start ():Void {
@@ -41,9 +37,6 @@ class CarouselCard extends SmartButton {
 		lImage.height = 250;
 		image.addChild(lImage);
 		lImage.start();
-	}
-	
-	override private function _click (pEvent:EventTarget=null):Void {
 	}
 	
 	override public function destroy():Void {
