@@ -74,7 +74,7 @@ class Hud extends SmartScreen
 		BHConstruction.getInstance().init();
 		BHMoving.getInstance().init();
 		
-		Building.getBuildingHudContainer().addChild(containerBuildingHud);
+		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		
 		addListeners();
@@ -227,7 +227,7 @@ class Hud extends SmartScreen
 	
 	private function onClickShop ():Void {
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
-		ShopPopin.getInstance().init(ShopTab.building);
+		ShopPopin.getInstance().init(ShopTab.Building);
 		hide();
 	}
 	

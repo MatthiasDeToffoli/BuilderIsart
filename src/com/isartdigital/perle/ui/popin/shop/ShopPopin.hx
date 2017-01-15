@@ -14,7 +14,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;
 
-enum ShopTab { building; Interns; Deco; Resources; Currencies; Bundle; }
+enum ShopTab { Building; Interns; Deco; Resources; Currencies; Bundle; }
 enum ShopBar { Soft; Hard; Marble; Wood; }
 
 /**
@@ -69,7 +69,7 @@ class ShopPopin extends SmartPopin{
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
 		
-		tabs[ShopTab.building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
+		tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
 		tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
 		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
 		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
@@ -79,7 +79,7 @@ class ShopPopin extends SmartPopin{
 		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
 		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
 		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
-		tabs[ShopTab.building].on(MouseEventType.CLICK, onClickOpenBuldings);
+		tabs[ShopTab.Building].on(MouseEventType.CLICK, onClickOpenBuldings);
 		tabs[ShopTab.Deco].on(MouseEventType.CLICK, onClickOpenDecorations);
 		tabs[ShopTab.Interns].on(MouseEventType.CLICK, onClickOpenIntern);
 		tabs[ShopTab.Resources].on(MouseEventType.CLICK, onClickOpenResource);
@@ -111,7 +111,7 @@ class ShopPopin extends SmartPopin{
 			case ShopTab.Interns : onClickOpenIntern();
 			case ShopTab.Resources : onClickOpenResource();
 			case ShopTab.Currencies : onClickOpenCurencies();
-			case ShopTab.Bundle : onClickOpenBundle();s
+			case ShopTab.Bundle : onClickOpenBundle();
 		}
 	}
 	
