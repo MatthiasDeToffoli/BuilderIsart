@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.hud.building;
+import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -47,6 +48,8 @@ class BHMoving extends BuildingHud{
 			BuildingHud.virtualBuilding.onClickCancel();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, BuildingHud.virtualBuilding);
 		}
+		
+		Building.isClickable = true;
 	}
 	
 	private function onClickConfirm ():Void {

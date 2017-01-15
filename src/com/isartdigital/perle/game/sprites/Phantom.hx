@@ -96,6 +96,7 @@ class Phantom extends Building {
 			throw("instance must be destroyed before creating another phantom");
 		
 		Building.isClickable = false;
+		trace("createPhantom "+ Building.isClickable);
 		instance = new Phantom(pAssetName);//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
 		// todo : revoir Pooling ?s
 		instance.init();
@@ -199,10 +200,8 @@ class Phantom extends Building {
 		if (precedentBesMapPos.x != bestMapPos.x ||
 			precedentBesMapPos.y != bestMapPos.y) {
 			
-			if (canBuildHere()){
-				Building.isClickable = true;
+			if (canBuildHere())
 				removeDesaturateFilter();
-			}
 			else
 				addDesaturateFilter();
 		}
@@ -239,6 +238,8 @@ class Phantom extends Building {
 			
 			vBuilding.move(regionMap);
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
+			trace("movePhantom " + Building.isClickable);
+			Building.isClickable = true;
 			destroy();
 			applyChange();
 			

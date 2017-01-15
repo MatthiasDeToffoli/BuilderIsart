@@ -24,7 +24,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 	
 /**
  * ...
- * @author ambroise
+ * @author Emeline Berenguier
  */
 class InfoBuilding extends SmartPopin {
 	
