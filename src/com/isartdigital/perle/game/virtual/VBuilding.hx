@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.virtual;
+import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -216,6 +217,8 @@ class VBuilding extends VTile {
 	}
 	
 	private function addGenerator ():Void {
+		trace(alignementBuilding);
+		if(alignementBuilding != null) BoostManager.callEvent(alignementBuilding);
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime);
 	}
 	

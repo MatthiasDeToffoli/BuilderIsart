@@ -16,6 +16,7 @@ import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
+import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -355,6 +356,7 @@ class RegionManager
 		
 		var errorMessage:String = "not enought money you must have " + (basePrice - ResourcesManager.getTotalForType(GeneratorType.soft)) + " in more";
 		Debug.error(errorMessage);
+		Browser.alert(errorMessage);
 		return false;
 		
 	}

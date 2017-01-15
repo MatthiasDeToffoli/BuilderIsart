@@ -13,8 +13,9 @@ class VCollectorHeaven extends VCollector
 
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
 		alignementBuilding = RegionType.eden;
+		super(pDescription);
+		
 	}
 	
 }

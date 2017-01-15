@@ -12,8 +12,9 @@ class VUrbanHouse extends VBuilding
 
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
 		alignementBuilding = null;
+		super(pDescription);
+		
 	}
 	
 }

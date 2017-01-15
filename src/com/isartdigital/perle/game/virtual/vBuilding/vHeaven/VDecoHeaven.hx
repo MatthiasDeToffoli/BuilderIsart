@@ -13,9 +13,10 @@ class VDecoHeaven extends VDeco
 
 	public function new(pDescription:TileDescription) 
 	{
+		alignementBuilding = Alignment.heaven;
 		super(pDescription);
 		
-		alignementBuilding = Alignment.heaven;
+		
 	}
 	
 }

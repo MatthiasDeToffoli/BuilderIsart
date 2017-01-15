@@ -1,6 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHeaven;
 
-import com.isartdigital.perle.game.managers.SaveManager.RegionType;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 
@@ -13,8 +13,9 @@ class VInternHouseHeaven extends VInternHouse
 
 	public function new(pDescription:TileDescription) 
 	{
+		alignementBuilding = Alignment.heaven;
 		super(pDescription);
-		alignementBuilding = RegionType.eden;
+		
 		
 	}
 	

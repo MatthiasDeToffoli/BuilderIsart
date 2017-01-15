@@ -14,8 +14,9 @@ class VLumbermill extends VBuilding
 
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
 		alignementBuilding = Alignment.heaven;
+		super(pDescription);
+		
 	}
 	
 	override function addGenerator():Void 

@@ -14,8 +14,9 @@ class VQuarry extends VBuilding
 
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
 		alignementBuilding = Alignment.hell;
+		super(pDescription);
+		
 	}
 	
 	override function addGenerator():Void 

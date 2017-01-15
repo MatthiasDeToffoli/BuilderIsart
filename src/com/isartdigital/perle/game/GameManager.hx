@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
@@ -48,6 +49,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager
 		ServerManager.refreshConfig(); // todo : remplacer par cron ?

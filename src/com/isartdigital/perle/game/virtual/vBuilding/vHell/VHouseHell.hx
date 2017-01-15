@@ -14,8 +14,9 @@ class VHouseHell extends VHouse
 {
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
 		alignementBuilding = Alignment.hell;
+		super(pDescription);
+		
 		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_BUILD_1, AssetName.BUILDING_HELL_BUILD_2];
 		
 		addPopulation(5);

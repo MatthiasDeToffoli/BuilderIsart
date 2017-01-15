@@ -17,13 +17,10 @@ class VCollectorHell extends VCollector
 
 	public function new(pDescription:TileDescription) 
 	{
+		alignementBuilding = Alignment.hell;
 		super(pDescription);
 		
-<<<<<<< 774273307833011e81638589beb481ed2213014a
-		alignementBuilding = Alignment.hell;
-=======
-		alignementBuilding = RegionType.hell;
->>>>>>> Building in region a bit changed, no more constants
+		
 	}
 	
 }

@@ -13,9 +13,10 @@ class VHouseHeaven extends VHouse
 {	
 	public function new(pDescription:TileDescription) 
 	{
+		alignementBuilding = Alignment.heaven;
 		super(pDescription);
 		
-		alignementBuilding = Alignment.heaven;
+		
 		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_BUILD_1, AssetName.BUILDING_HEAVEN_BUILD_2];
 		
 		addPopulation(2);
