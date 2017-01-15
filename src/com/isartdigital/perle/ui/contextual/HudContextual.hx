@@ -25,7 +25,7 @@ class HudContextual extends Container implements HasVirtual{
 	
 	// not at the same time as initClass
 	public static function addContainer ():Void {
-		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getBuildContainer().addChild(container);
 	}
 	
 	public function new() {

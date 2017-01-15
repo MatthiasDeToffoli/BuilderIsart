@@ -48,7 +48,7 @@ class BHMoving extends BuildingHud{
 			BuildingHud.virtualBuilding.onClickCancel();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, BuildingHud.virtualBuilding);
 		}
-		
+	
 		Building.isClickable = true;
 	}
 	

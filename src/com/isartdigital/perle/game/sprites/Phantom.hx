@@ -48,7 +48,7 @@ class Phantom extends Building {
 		container = new Container();
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.desaturate(false);
-		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getBuildContainer().addChild(container);
 	}
 	
 	public static function gameLoop():Void {
@@ -239,7 +239,7 @@ class Phantom extends Building {
 		if (canBuildHere()) {
 			
 			vBuilding.move(regionMap);
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding, position); 
 			trace("movePhantom " + Building.isClickable);
 			Building.isClickable = true;
 			destroy();
@@ -270,7 +270,7 @@ class Phantom extends Building {
 			TimeManager.addConstructionTimer(vBuilding.getTimeDesc());
 			
 			vBuilding.activate();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); // todo : mettre contruction
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding, position); // todo : mettre contruction
 			vBuilding.addExp();
 			destroy();
 			

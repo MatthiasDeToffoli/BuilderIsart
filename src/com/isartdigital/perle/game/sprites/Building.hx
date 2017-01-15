@@ -85,7 +85,7 @@ class Building extends Tile implements IZSortable
 		uiContainer = new Container();
 		container.position = Ground.container.position;
 		uiContainer.position = container.position;
-		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getBuildContainer().addChild(container);
 		GameStage.getInstance().getGameContainer().addChild(uiContainer);
 		list = new Array<Building>();
 	}
@@ -97,6 +97,13 @@ class Building extends Tile implements IZSortable
 		container.children = IsoManager.sortTiles(container.children);
 	}
 	
+	public static function getBuildingHudContainer():Container{
+		return uiContainer;
+	}
+	
+	public static function getBuildingContainer():Container{
+		return container;
+	}
 	/**
 	 * Create a Building Tile, addchild it and start it.
 	 * @param	pTileDesc
@@ -181,8 +188,8 @@ class Building extends Tile implements IZSortable
 	}
 	
 	private function onClick ():Void {
-		trace(isClickable);
-		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick();
+		//trace(isClickable);
+		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick(position);
 	}
 	
 	//} endRegion

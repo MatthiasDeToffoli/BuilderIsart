@@ -59,12 +59,17 @@ class GameStage extends Container
 	 */
 	private var gameContainer:Container;
 	
+	private var buildContainer:Container;
+	
 	public function new() 
 	{
 		super();
 				
 		gameContainer = new Container();		
 		addChild(gameContainer);
+		
+		buildContainer = new Container();
+		gameContainer.addChild(buildContainer);
 		
 		screensContainer = new Container();
 		addChild(screensContainer);
@@ -206,6 +211,9 @@ class GameStage extends Container
 		return gameContainer;
 	}
 	
+	public function getBuildContainer():Container {
+		return buildContainer;
+	}
 	/**
 	 * accès en lecture au conteneur d'écrans
 	 * @return screensContainer

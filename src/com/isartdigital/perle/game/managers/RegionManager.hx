@@ -114,8 +114,8 @@ class RegionManager
 		buttonRegionContainer = new Container();
 		bgContainer = new Container();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
-		GameStage.getInstance().getGameContainer().addChild(buttonRegionContainer);
-		GameStage.getInstance().getGameContainer().addChildAt(bgContainer, 0);
+		GameStage.getInstance().getBuildContainer().addChild(buttonRegionContainer);
+		GameStage.getInstance().getBuildContainer().addChildAt(bgContainer, 0);
 		worldMap = new Map<Int,Map<Int,Region>>();
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
 		mapNumbersRegion = new Map<Alignment,Int>();

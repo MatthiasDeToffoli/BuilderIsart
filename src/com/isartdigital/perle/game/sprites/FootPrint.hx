@@ -36,7 +36,7 @@ class FootPrint extends Tile
 	
 	public static function initClass():Void {
 		container = new Container();
-		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getBuildContainer().addChild(container);
 	}
 	
 	/**

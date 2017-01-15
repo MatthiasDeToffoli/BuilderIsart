@@ -73,6 +73,7 @@ class BuildingDestroyPoppin extends SmartPopin
 	}
 	
 	private function closePoppin():Void {
+		trace("closePoppin");
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().hideBuildingHud();
 	}

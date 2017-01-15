@@ -61,7 +61,7 @@ class Ground extends Tile
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.brightness(FILTER_BRIGHTNESS, false);
 		
-		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getBuildContainer().addChild(container);
 		
 		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)
 			Browser.window.addEventListener(MouseEventType.MOUSE_MOVE, hoverGround);

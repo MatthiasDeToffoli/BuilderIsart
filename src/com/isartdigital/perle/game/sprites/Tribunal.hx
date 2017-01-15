@@ -13,12 +13,7 @@ class Tribunal extends Building
 
 	public function new(?pAssetName:String) 
 	{
-		super(pAssetName);
-		
-		
-		
-		
-		
+		super(pAssetName);	
 	}
 	
 	override public function init():Void 

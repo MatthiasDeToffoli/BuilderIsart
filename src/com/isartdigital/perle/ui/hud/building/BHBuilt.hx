@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.hud.building;
+import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
@@ -32,9 +33,10 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
-		trace("test");
-		GameStage.getInstance().getGameContainer().interactive = true;
-		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
+		/*GameStage.getInstance().getGameContainer().interactive = true;
+		GameStage.getInstance().getGameContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);*/
+		GameStage.getInstance().getBuildContainer().interactive = true;
+		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		setUpgradeButton();
 		setMoveAndDestroy();
 		
@@ -81,8 +83,9 @@ class BHBuilt extends BuildingHud
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
 		btnDescription.on(MouseEventType.CLICK, onClickDescription);
 	}
-	private function removeListenerGameContainer():Void {
-		GameStage.getInstance().getGameContainer().interactive = false;	
+	public function removeListenerGameContainer():Void {
+		GameStage.getInstance().getBuildContainer().interactive = false;
+		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
 	}
 	
 	private function onClickMove(): Void {
@@ -115,9 +118,10 @@ class BHBuilt extends BuildingHud
 		Hud.getInstance().hideBuildingHud();
 	}
 	
-	private static function onClickExit():Void { 
-		BHHarvest.getInstance().removeButtonsChange();
-		GameStage.getInstance().getGameContainer().interactive = false;
+	private function onClickExit():Void {
+		removeButtonsChange();
+		GameStage.getInstance().getBuildContainer().interactive = false;
+		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
 		Hud.getInstance().hideBuildingHud();
 	}
 	

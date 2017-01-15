@@ -14,6 +14,7 @@ import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import pixi.core.display.Container;
+import pixi.core.math.Point;
 
 enum VBuildingState { isBuilt; isBuilding; isMoving; }
 
@@ -107,8 +108,8 @@ class VBuilding extends VTile {
 	/**
 	 * Called when user click on the graphic
 	 */
-	public function onClick ():Void {
-		Hud.getInstance().onClickBuilding(currentState, this);
+	public function onClick (pPos:Point):Void {
+		Hud.getInstance().onClickBuilding(currentState, this,pPos);
 	}
 	
 	public function onClickMove ():Void {
