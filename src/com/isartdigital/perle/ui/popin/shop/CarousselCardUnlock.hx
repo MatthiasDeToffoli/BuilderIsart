@@ -111,10 +111,6 @@ class CarousselCardUnlock extends CarouselCard
 				switch(lAssetName) {
 					case("Wood pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 1000);
 					case("Iron pack") : ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 1000);
-				}
-			}
-			case "Currencies": {
-				switch(lAssetName) {
 					case("Gold pack") : ResourcesManager.gainResources(GeneratorType.soft, 10000);
 					case("Karma pack") : ResourcesManager.gainResources(GeneratorType.hard, 100);
 				}

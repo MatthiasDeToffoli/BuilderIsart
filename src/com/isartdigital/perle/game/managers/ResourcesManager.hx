@@ -143,7 +143,7 @@ class ResourcesManager
 		pMapT[GeneratorType.soulBad] = 0;
 		
 		pMapG[GeneratorType.soft] = new Array<Generator>();
-		pMapT[GeneratorType.soft] = 10000;
+		pMapT[GeneratorType.soft] = 20000;
 
 		pMapG[GeneratorType.hard] = new Array<Generator>();
 		pMapT[GeneratorType.hard] = 0;
