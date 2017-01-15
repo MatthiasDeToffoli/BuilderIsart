@@ -106,15 +106,14 @@ class Hud extends SmartScreen
 						openHarvest(BHHarvestHouse.getInstance(),pPos);
 					else openHarvest(BHHarvest.getInstance(),pPos);
 				}
-				case BuildingHudType.CONSTRUCTION: 
-					containerBuildingHud.addChild(BHConstruction.getInstance());
-				case BuildingHudType.MOVING: {
+				case BuildingHudType.CONSTRUCTION:
+					openConstruction(BHConstruction.getInstance(), pPos);
+				case BuildingHudType.MOVING: 
 					//trace(buildingPosition);
 					//BHMoving.getInstance().position = buildingPosition;
 					BHHarvest.getInstance().removeListenerGameContainer();
 					BHHarvestHouse.getInstance().removeListenerGameContainer();
 					containerBuildingHud.addChild(BHMoving.getInstance());
-				}
 				case BuildingHudType.NONE: 
 					
 				default: throw("No BuildingHud found !");
@@ -126,6 +125,12 @@ class Hud extends SmartScreen
 		containerBuildingHud.addChild(pHarvest);
 		pHarvest.position = pPos;
 		pHarvest.setOnSpawn();
+	}
+	
+	private function openConstruction(pConstruct:BHConstruction, pPos:Point):Void {
+		containerBuildingHud.addChild(pConstruct);
+		pConstruct.position = pPos;
+		pConstruct.setOnSpawn();
 	}
 	
 	/**
@@ -217,7 +222,9 @@ class Hud extends SmartScreen
 			lBuidldingHudType = BuildingHudType.HARVEST;
 		else if (pCurrentState == VBuildingState.isBuilding)
 			lBuidldingHudType = BuildingHudType.CONSTRUCTION;
-		
+		else if (pCurrentState == VBuildingState.isMoving)
+			lBuidldingHudType = BuildingHudType.MOVING;
+			
 		changeBuildingHud(
 			lBuidldingHudType,
 			pVBuilding,

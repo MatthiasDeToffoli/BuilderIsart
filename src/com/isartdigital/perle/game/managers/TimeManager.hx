@@ -5,7 +5,9 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
 
@@ -52,7 +54,7 @@ class TimeManager {
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 1000;
+	private static inline var TIME_LOOP_DELAY:Int = 5000;
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
@@ -273,6 +275,7 @@ class TimeManager {
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruct:Int = listConstruction.length;
+		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
@@ -287,8 +290,14 @@ class TimeManager {
 		}
 		
 		for (i in 0...lLengthConstruct) {
-			updateConstruction(listConstruction[i], lElapsedTime, i);
-		}
+			updateConstruction(listConstruction[i], lElapsedTime, constructionEnded);
+		}		
+		deleteEndedConstruction(constructionEnded);
+	}
+	
+	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
+		var lLength:Int = pEndedList.length;	
+		for (i in 0...lLength) { listConstruction.splice(pEndedList[i], 1); }
 	}
 	
 	/**
@@ -346,25 +355,60 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 * @param	pIndex
 	 */
-	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pIndex:Int ):Void {
+	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pEndedList:Array<Int>):Void {
 		pElement.progress += pElapsedTime;
 		var diff:Float = pElement.end - pElement.creationDate;
+		trace("update : id => " + pElement.refTile);
 		
 		if (pElement.progress >= diff) {
 			trace("construction : id => " + pElement.refTile + " terminée");
+			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
-			listConstruction.splice(pIndex , 1);
+			pEndedList.push(index);
 		}
 	}
 	
-
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;
 			if (pTileDesc.timeDesc.progress >= diff) return VBuildingState.isBuilt;
 			else return VBuildingState.isBuilding;
 		}
-		return VBuildingState.isBuilt;
+		return VBuildingState.isBuilt;	
+	}
+	
+	public static function getTextTime(pTileDesc:TileDescription):String {		
+		var lLengthConstruct:Int = listConstruction.length;
+		
+		for (i in 0...lLengthConstruct) {
+			if (listConstruction[i].refTile == pTileDesc.id) {
+				var txtLength:Int = Date.fromTime(listConstruction[i].progress).toString().length;
+				var totalTimer:Float = listConstruction[i].end - listConstruction[i].creationDate;
+				var diff:Float = totalTimer - listConstruction[i].progress;
+				return Date.fromTime(diff).toString().substr(txtLength - 5, 5);
+			}
+		}	
+		return "Finish";
+	}
+	
+	public static function increaseProgress(pVBuilding:VBuilding, pBoostValue:Float):Bool {
+		var lLengthConstruct:Int = listConstruction.length;
+		
+		for (i in 0...lLengthConstruct) {
+			if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
+				listConstruction[i].progress += pBoostValue;
+				break;
+			}
+		}	
+		
+		var state:VBuildingState = getBuildingStateFromTime(pVBuilding.tileDesc);
+		if (state == VBuildingState.isBuilt) return true;
+		return false;
+	}
+	
+	public static function getPourcentage(pTimeDesc:TimeDescription):Float {
+		var total = pTimeDesc.end - pTimeDesc.creationDate;
+		return pTimeDesc.progress / total;
 	}
 	
 	public static function destroyTimeElement (pId:Int):Void {

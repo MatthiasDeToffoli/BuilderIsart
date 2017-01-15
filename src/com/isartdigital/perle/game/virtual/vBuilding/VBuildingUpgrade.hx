@@ -3,7 +3,9 @@ package com.isartdigital.perle.game.virtual.vBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
 
 /**
  * Class for the building'upgrade
@@ -27,15 +29,22 @@ class VBuildingUpgrade extends VBuilding
 		
 		var lAssetName = tileDesc.assetName;
 		
-		if (indexLevel != 2){
+		if (indexLevel <= 3){
 			indexLevel++;
 			tileDesc.assetName = UpgradeAssetsList[indexLevel];
 		}
 		
-		activate();
-		addExp();
-		SaveManager.save();
+		var tTime:Float = Date.now().getTime();
+		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + 20000, progress: 0, creationDate: tTime };
+		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
+		TimeManager.addConstructionTimer(tileDesc.timeDesc);
+		if (currentState == VBuildingState.isBuilding) TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
+		activate();
+		addExp();		
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, 20, 8000); //@TODO : mettre de vrais valeur...
+		
+		SaveManager.save();	
 	}
 	
 	public function canUpgrade():Bool {

@@ -59,7 +59,10 @@ class VBuilding extends VTile {
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		
 		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
-		if (currentState == VBuildingState.isBuilding) TimeManager.addConstructionTimer(pDescription.timeDesc);
+		if (currentState == VBuildingState.isBuilding) {
+			TimeManager.addConstructionTimer(pDescription.timeDesc);
+			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
+		}
 	}
 	
 	/**
@@ -218,6 +221,7 @@ class VBuilding extends VTile {
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		setState(VBuildingState.isBuilt);
+		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this, position);
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}
