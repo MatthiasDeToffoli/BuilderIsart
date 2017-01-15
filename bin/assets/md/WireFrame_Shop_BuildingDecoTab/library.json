@@ -1,317 +1,305 @@
 {
+ "md5": "9f08599daf4812b223b87eeb8ccef0b2",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_shop_item_list_bg",
+       "origin": [
+        610.8,
+        351.7
+       ],
        "rect": [
         1,
         1,
         1222,
         704
-       ],
-       "origin": [
-        610.8,
-        351.7
        ]
       },
       {
-       "symbol": "_arrow_right_down",
+       "symbol": "_shop_buildingdeco_itemspawner",
+       "origin": [
+        125.6,
+        290.6
+       ],
        "rect": [
         1225,
         1,
-        101,
-        215
-       ],
-       "origin": [
-        50.25,
-        107.25
+        252,
+        582
        ]
       },
       {
        "symbol": "_arrow_left_down",
-       "rect": [
-        1328,
-        1,
-        101,
-        215
-       ],
        "origin": [
-        50.25,
-        107.25
+        76.9,
+        35.6
+       ],
+       "rect": [
+        1225,
+        585,
+        154,
+        72
        ]
       },
       {
        "symbol": "_arrow_left_over",
-       "rect": [
-        1431,
-        1,
-        99,
-        213
-       ],
        "origin": [
-        49.5,
-        106.5
-       ]
-      },
-      {
-       "symbol": "_arrow_right_over",
-       "rect": [
-        1431,
-        216,
-        99,
-        213
+        76.9,
+        35.6
        ],
-       "origin": [
-        49.5,
-        106.5
-       ]
-      },
-      {
-       "symbol": "_arrow_right_up",
        "rect": [
-        1225,
-        218,
-        97,
-        211
-       ],
-       "origin": [
-        48.4,
-        105.4
+        1381,
+        585,
+        154,
+        72
        ]
       },
       {
        "symbol": "_arrow_left_up",
-       "rect": [
-        1324,
-        218,
-        97,
-        211
-       ],
        "origin": [
-        48.4,
-        105.4
+        76.9,
+        35.6
+       ],
+       "rect": [
+        1225,
+        659,
+        154,
+        72
        ]
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
+      },
       {
-       "symbol": "_shop_buildingdeco_itemspawner",
+       "symbol": "_arrow_right_up",
+       "origin": [
+        76.9,
+        35.6
+       ],
+       "rect": [
+        1381,
+        659,
+        154,
+        72
+       ]
+      },
+      {
+       "symbol": "_arrow_right_down",
+       "origin": [
+        76.9,
+        35.6
+       ],
        "rect": [
         1,
-        1,
-        343,
-        694
-       ],
+        707,
+        154,
+        72
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
        "origin": [
-        171.3,
-        346.75
+        76.9,
+        35.6
+       ],
+       "rect": [
+        157,
+        707,
+        154,
+        72
        ]
       }
-     ],
-     "file": "atlas1.png"
+     ]
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ],
- "frameRate": 24,
  "movies": [
   {
-   "id": "Shop_BuildingDeco_List",
    "layers": [
     {
-     "name": "Shop_Item_List_BG",
      "keyframes": [
       {
        "pivot": [
-        610.8,
-        351.675
+        125.625,
+        290.625
        ],
-       "tweened": false,
-       "duration": 1,
        "index": 0,
-       "ref": "_shop_item_list_bg"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Item_Unlocked_1",
-     "keyframes": [
-      {
-       "pivot": [
-        171.3,
-        346.7625
-       ],
-       "duration": 1,
        "loc": [
         -356.5875,
-        -0.0375
+        -45.975
        ],
+       "ref": "_shop_buildingdeco_itemspawner",
        "tweened": false,
-       "index": 0,
-       "ref": "_shop_buildingdeco_itemspawner"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Shop_Item_Unlocked_1"
     },
     {
-     "name": "Shop_Item_Unlocked_2",
      "keyframes": [
       {
        "pivot": [
-        171.3,
-        346.7625
+        125.625,
+        290.625
        ],
-       "duration": 1,
+       "index": 0,
        "loc": [
         0,
-        -0.0375
+        -45.975
        ],
+       "ref": "_shop_buildingdeco_itemspawner",
        "tweened": false,
-       "index": 0,
-       "ref": "_shop_buildingdeco_itemspawner"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Shop_Item_Unlocked_2"
     },
     {
-     "name": "Shop_Item_Locked_1",
      "keyframes": [
       {
        "pivot": [
-        171.3,
-        346.7625
+        125.625,
+        290.625
        ],
-       "duration": 1,
+       "index": 0,
        "loc": [
         356.5875,
-        -0.0375
+        -45.975
        ],
+       "ref": "_shop_buildingdeco_itemspawner",
        "tweened": false,
-       "index": 0,
-       "ref": "_shop_buildingdeco_itemspawner"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Shop_Item_Locked_1"
     },
     {
-     "name": "Button_ArrowRight",
      "keyframes": [
       {
+       "ref": "~ButtonArrowRight",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
-        588.3375,
-        0
-       ],
-       "ref": "~ButtonArrowRight"
+        356.5875,
+        325.6875
+       ]
       }
-     ]
+     ],
+     "name": "Button_ArrowRight"
     },
     {
-     "name": "Button_ArrowLeft",
      "keyframes": [
       {
+       "ref": "~ButtonArrowLeft",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
-        -588.3375,
-        0
-       ],
-       "ref": "~ButtonArrowLeft"
+        -356.5875,
+        325.6875
+       ]
       }
-     ]
+     ],
+     "name": "Button_ArrowLeft"
     }
-   ]
+   ],
+   "id": "Shop_BuildingDeco_List"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_arrow_left_up",
+       "pivot": [
+        76.875,
+        35.625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.35,
+        "#7DD0FF"
+       ],
+       "index": 1,
+       "ref": "_arrow_left_over",
+       "pivot": [
+        76.875,
+        35.625
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_arrow_left_down",
+       "pivot": [
+        76.875,
+        35.625
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
    "id": "~ButtonArrowLeft",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        48.375,
-        105.375
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_arrow_left_up"
-      },
-      {
-       "pivot": [
-        49.5,
-        106.5
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "ref": "_arrow_left_over"
-      },
-      {
-       "pivot": [
-        50.25,
-        107.25
-       ],
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "ref": "_arrow_left_down"
-      }
-     ]
-    }
-   ]
+   "baseClass": "flash.display.SimpleButton"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonArrowRight",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
+       "ref": "_arrow_right_up",
        "pivot": [
-        48.375,
-        105.375
+        76.875,
+        35.625
        ],
        "tweened": false,
        "duration": 1,
-       "index": 0,
-       "ref": "_arrow_right_up"
+       "index": 0
       },
       {
-       "pivot": [
-        49.5,
-        106.5
-       ],
        "tweened": false,
-       "duration": 1,
+       "tint": [
+        0.35,
+        "#7DD0FF"
+       ],
        "index": 1,
-       "ref": "_arrow_right_over"
+       "ref": "_arrow_right_over",
+       "pivot": [
+        76.875,
+        35.625
+       ],
+       "duration": 1
       },
       {
+       "ref": "_arrow_right_down",
        "pivot": [
-        50.25,
-        107.25
+        76.875,
+        35.625
        ],
        "tweened": false,
        "duration": 2,
-       "index": 2,
-       "ref": "_arrow_right_down"
+       "index": 2
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
-   ]
+   ],
+   "id": "~ButtonArrowRight",
+   "baseClass": "flash.display.SimpleButton"
   }
  ],
- "md5": "0433d37aa8d7764c90d80be3fa253b97"
+ "frameRate": 24
 }

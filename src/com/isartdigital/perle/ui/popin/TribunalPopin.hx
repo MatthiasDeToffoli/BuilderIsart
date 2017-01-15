@@ -62,9 +62,12 @@ class TribunalPopin extends SmartPopin
 		btnHeaven = cast(getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_BUTTON), SmartButton);
 		btnHell = cast(getChildByName(AssetName.PURGATORY_POPIN_HELL_BUTTON), SmartButton);
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
+		SmartCheck.traceChildrens(btnUpgrade);
+		trace(AssetName.PURGATORY_POPIN_UPGRADE);
+		trace(AssetName.PURGATORY_POPIN_UPGRADE_PRICE);
 
-		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE), TextSprite);
-		upgradePrice.text = 2000 + "$";
+		//upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE), TextSprite);
+		//upgradePrice.text = 2000 + "$";
 		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
 		tribunalLevel.text = "LEVEL " + 1;

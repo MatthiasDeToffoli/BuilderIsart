@@ -229,6 +229,7 @@ class Phantom extends Building {
 	private function confirmBuild ():Void {
 		if (canBuildHere()) {
 			newBuild();
+			Building.isClickable = true;
 		} else {
 			displayCantBuild();
 		}

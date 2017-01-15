@@ -1,124 +1,156 @@
 {
+ "md5": "d38d6ea78fc761e1817d7e23a4a48d8b",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_buildingdeco_locked_bg",
+       "origin": [
+        83.75,
+        193.75
+       ],
        "rect": [
         1,
         1,
-        196,
-        398
-       ],
-       "origin": [
-        97.75,
-        199
+        168,
+        388
        ]
       },
       {
        "symbol": "_buildingdeco_picture",
-       "rect": [
-        199,
-        1,
-        188,
-        188
-       ],
        "origin": [
-        94,
-        94
+        70.25,
+        75.25
+       ],
+       "rect": [
+        171,
+        1,
+        141,
+        141
        ]
       },
       {
-       "data": {
-        "y": -25.45,
-        "wordWrap": 0,
-        "text": "LOCKED_REASON",
-        "width": 387.9,
-        "color": "#000000",
-        "align": "center",
-        "height": 50.9,
-        "font": "42px _sans",
-        "x": -193.95
-       },
-       "symbol": "_buildingdeco_locked_reason_txt",
+       "symbol": "_buildingLocked",
+       "origin": [
+        70,
+        20.5
+       ],
        "rect": [
         1,
-        401,
-        1,
-        1
-       ],
+        391,
+        140,
+        41
+       ]
+      },
+      {
        "baseClass": "TextSprite",
+       "data": {
+        "y": -49.9,
+        "text": "LOCKED_REASON",
+        "x": -105.55,
+        "width": 211.1,
+        "font": "42px _sans",
+        "align": "center",
+        "height": 99.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_buildingdeco_locked_reason_txt",
        "origin": [
         0,
         0
+       ],
+       "rect": [
+        1,
+        434,
+        1,
+        1
        ]
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
- "frameRate": 24,
- "movies": [
-  {
-   "id": "Shop_BuildingDeco_LockedItem",
-   "layers": [
-    {
-     "name": "BG",
-     "keyframes": [
-      {
-       "pivot": [
-        97.75,
-        199
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_buildingdeco_locked_bg"
-      }
-     ]
-    },
-    {
-     "name": "Item_Picture",
-     "keyframes": [
-      {
-       "pivot": [
-        94,
-        94
-       ],
-       "duration": 1,
-       "loc": [
-        0,
-        -44.45
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_buildingdeco_picture"
-      }
-     ]
-    },
-    {
-     "name": "Reason_locked",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        -0.525,
-        71.65
-       ],
-       "ref": "_buildingdeco_locked_reason_txt"
       }
      ]
     }
    ]
   }
  ],
- "md5": "8fe84707e5650e6e32322f9084cb6f31"
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buildingdeco_locked_bg",
+       "pivot": [
+        83.75,
+        193.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "BG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        70.25,
+        75.25
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -86.775
+       ],
+       "ref": "_buildingdeco_picture",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Item_Picture"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buildingdeco_locked_reason_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        61.275
+       ]
+      }
+     ],
+     "name": "Reason_locked"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        70,
+        20.5
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        129.9
+       ],
+       "ref": "_buildingLocked",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Lock"
+    }
+   ],
+   "id": "Shop_BuildingDeco_LockedItem"
+  }
+ ],
+ "frameRate": 24
 }

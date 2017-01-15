@@ -168,7 +168,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_INFO_BAR:String = "bar_txt";
 	public static inline var PURGATORY_POPIN_ALL_SOULS_INFO:String = "SoulCounter";
 	public static inline var PURGATORY_POPIN_ALL_SOULS_NUMBER:String = "Value";
-	public static inline var PURGATORY_POPIN_UPGRADE:String = "UpgradeButton";
+	public static inline var PURGATORY_POPIN_UPGRADE:String = "ButtonUpgrade";
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE:String = "Cost";
 	
 	//Ftue
