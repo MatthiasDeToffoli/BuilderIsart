@@ -33,6 +33,7 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
+		InfoBuilding.getInstance().virtualBuilding = BuildingHud.virtualBuilding;
 		GameStage.getInstance().getBuildContainer().interactive = true;
 		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		setUpgradeButton();
@@ -53,14 +54,17 @@ class BHBuilt extends BuildingHud
 	private function setUpgradeButton():Void {
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
 				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
+				
 				if (myVBuilding.canUpgrade()) {
 					btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
 				}
 				else
 					btnUpgrade.alpha = 0.5;
 			}
-		else
+		else{
+			btnDescription.alpha = 0.5;
 			btnUpgrade.alpha = 0.5;
+		}
 	}
 	
 	private function removeButtonsChange():Void {
@@ -101,8 +105,8 @@ class BHBuilt extends BuildingHud
 		Hud.getInstance().hide();
 		if(Std.is(BuildingHud.virtualBuilding,VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
 		else {
-			UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 			InfoBuilding.getInstance().linkVirtualBuilding(BuildingHud.virtualBuilding);
+			UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 		}
 		onClickExit();
 	}

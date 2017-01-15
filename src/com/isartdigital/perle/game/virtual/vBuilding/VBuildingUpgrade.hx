@@ -53,4 +53,8 @@ class VBuildingUpgrade extends VBuilding
 	public function canUpgrade():Bool {
 		return UpgradeAssetsList.indexOf(tileDesc.assetName) < UpgradeAssetsList.length - 1;
 	}
+	
+	//public function getLevel():Int{
+		//return UpgradeAssetsList.indexOf(tileDesc.assetName);
+	//}
 }

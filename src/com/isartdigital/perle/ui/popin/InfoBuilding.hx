@@ -40,6 +40,7 @@ class InfoBuilding extends SmartPopin{
 	private var btnUpgrade:SmartButton;
 	private var btnUpgradeGoldTxt:TextSprite;
 	private var btnUpgradeMaterialsTxt:TextSprite;
+	private var btnUpgradeMaterialsImage:UISprite;
 	private var levelTxt:TextSprite;
 	private var nameTxt:TextSprite;
 	private var image:UISprite;
@@ -90,7 +91,7 @@ class InfoBuilding extends SmartPopin{
 		goldZoneImage.addChild(new UISprite(AssetName.PROD_ICON_SOFT));
 				
 		population = cast(SmartCheck.getChildByName(this, "Population"), SmartComponent);
-		populationTxt = cast(SmartCheck.getChildByName(population, "Pack_Content_txt"), TextSprite);
+		populationTxt = cast(SmartCheck.getChildByName(population, "Window_Infos_txtPopulation"), TextSprite);
 		
 		upgradeInfos = cast(SmartCheck.getChildByName(this, "UpgradeInfo"), SmartComponent);
 		upgradeInfosTxt = cast(SmartCheck.getChildByName(upgradeInfos, "ButtonUpgrade_Cost_txt"), TextSprite);
@@ -99,10 +100,7 @@ class InfoBuilding extends SmartPopin{
 		upgradeInfosGoldIcon.addChild(new UISprite(AssetName.PROD_ICON_SOFT));
 		upgradeInfosMaterialsIcon = cast(SmartCheck.getChildByName(upgradeInfos, "BuildRes1_Icon"), UISprite);
 		
-		if (BuildingHud.virtualBuilding.alignementBuilding == Alignment.heaven)
-			upgradeInfosMaterialsIcon.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
-		if (BuildingHud.virtualBuilding.alignementBuilding == Alignment.hell)
-			upgradeInfosMaterialsIcon.addChild(new UISprite(AssetName.PROD_ICON_STONE));
+
 			
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
 		//btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
@@ -110,18 +108,31 @@ class InfoBuilding extends SmartPopin{
 		btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		btnUpgradeGoldTxt = cast(SmartCheck.getChildByName(btnUpgrade, "_Upgrade_goldValue"), TextSprite);
 		btnUpgradeMaterialsTxt = cast(SmartCheck.getChildByName(btnUpgrade, "_Upgrade_ressValue"), TextSprite);
-
+		btnUpgradeMaterialsImage = cast(SmartCheck.getChildByName(btnUpgrade, "_soulIcon_Small"), UISprite);
+		
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
 		nameTxt.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
-				
-		levelTxt.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
+		
+		if (BuildingHud.virtualBuilding.alignementBuilding == Alignment.heaven){
+			btnUpgradeMaterialsImage.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
+			upgradeInfosMaterialsIcon.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
+		}
+		else {
+			btnUpgradeMaterialsImage.addChild(new UISprite(AssetName.PROD_ICON_STONE));
+			upgradeInfosMaterialsIcon.addChild(new UISprite(AssetName.PROD_ICON_STONE));
+		}
+		
+		//@TODO: Problem here. Create bugs when clicking on a building witch isn't a House. If you decomment, 
+		//you'll have a correct InfoBuildings only for the House Buildings
+		
+		//levelTxt.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
 		goldSecondesTxt.text = "xxx";
-		populationTxt.text = getPopulationText();
-		goldZoneTxt.text = getGoldText();
-		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
+		//populationTxt.text = getPopulationText();
+		//goldZoneTxt.text = getGoldText();
+		//upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
+		//upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
+		//btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
+		//btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
 		
 		setImage(BuildingHud.virtualBuilding.getAsset());
 		
@@ -148,8 +159,12 @@ class InfoBuilding extends SmartPopin{
 		return virtualBuilding;
 	}
 	
-	private function setImage (pAssetName:String):Void { // todo : finir
-		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
+	/**
+	 * Put the correct image in the screen
+	 * @param	pAssetName
+	 */
+	private function setImage (pAssetName:String):Void { 
+		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName);
 		lImage.init();
 		lImage.width = 250;
 		lImage.height = 250;
@@ -157,6 +172,10 @@ class InfoBuilding extends SmartPopin{
 		lImage.start();
 	}
 	
+	/**
+	 * Return the correct population for the building House
+	 * @return
+	 */
 	private function getPopulationText():String {
 		var lVBuilding:VBuilding;
 		
@@ -171,6 +190,10 @@ class InfoBuilding extends SmartPopin{
 		return lPopulationTxt;
 	}
 	
+	/**
+	 * Return the correct gold text for the building House
+	 * @return
+	 */
 	private function getGoldText():String{
 		var lVBuilding:VBuilding;
 		
@@ -183,6 +206,10 @@ class InfoBuilding extends SmartPopin{
 		return lGoldText;
 	}
 	
+	/**
+	 * Return the correct gold values for the upgrade
+	 * @return
+	 */
 	private function getGoldValuesUpgradeText(pLevel:Int):String{
 		var lVBuilding:VBuilding;
 		
@@ -194,6 +221,10 @@ class InfoBuilding extends SmartPopin{
 		return lGoldValuesText;
 	}
 	
+	/**
+	 * Return the correct material values for the upgrade
+	 * @return
+	 */
 	private function getMaterialsValuesUpgradeText(pLevel:Int):String{
 		var lVBuilding:VBuilding;
 		
@@ -205,10 +236,19 @@ class InfoBuilding extends SmartPopin{
 		return lMaterialsValuesText;
 	}
 	
+	/**
+	 * Close the popin
+	 * @return
+	 */
 	private function onClickExit ():Void {
 		UIManager.getInstance().closeCurrentPopin();
+		Hud.getInstance().show();
 	}
 	
+	/**
+	 * Selling of the building
+	 * @return
+	 */
 	private function onClickSell():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		
@@ -223,6 +263,10 @@ class InfoBuilding extends SmartPopin{
 		else BHHarvest.getInstance().onClickDestroy();	
 	}
 	
+	/**
+	 * Selling of the building
+	 * @return
+	 */
 	public function sell ():Void {
 		BuyManager.sell(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
 		UIManager.getInstance().closeCurrentPopin();
@@ -231,6 +275,10 @@ class InfoBuilding extends SmartPopin{
 		SaveManager.save();
 	}
 	
+	/**
+	 * Upgrade of the building
+	 * @return
+	 */
 	public function onClickUpgrade ():Void {
 		var lVBuilding:VBuilding;
 		
@@ -242,6 +290,8 @@ class InfoBuilding extends SmartPopin{
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin level up appear
 		lBuildingUpgrade.onClickUpgrade();
+		
+		Hud.getInstance().show();
 		
 	}
 	/**
