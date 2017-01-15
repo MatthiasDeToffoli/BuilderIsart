@@ -181,6 +181,7 @@ class AssetName{
 	
 	// HUD
 	public static inline var HUD_PREFIX:String = "HUD_";
+	public static inline var HUD_BTN_RESET_DATA:String = "ALPHA_ResetData";
 	public static inline var HUD_BTN_SHOP:String = "ButtonShop_HUD";
 	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
 	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";

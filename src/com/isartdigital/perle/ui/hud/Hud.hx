@@ -4,6 +4,7 @@ package com.isartdigital.perle.ui.hud;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Building;
@@ -67,7 +68,6 @@ class Hud extends SmartScreen
 	{
 		super("HUD_Desktop");
 		modal = null;
-		
 		containerBuildingHud = new Container();
 		BHHarvestHouse.getInstance().init();
 		BHHarvest.getInstance().init();
@@ -147,6 +147,8 @@ class Hud extends SmartScreen
 	private function addListeners ():Void {
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		
+		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton).on(MouseEventType.CLICK, onClickResetData);
+		
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton).on(MouseEventType.CLICK, onClickShop);
 		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
 		//var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
@@ -202,6 +204,10 @@ class Hud extends SmartScreen
 				heavenXPBar.getChildByName("movingGauge").scale.x = lScaleHeavenXp;
 			}
 		}
+	}
+	
+	public function onClickResetData(){
+		SaveManager.reinit();
 	}
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding, pPos:Point):Void {

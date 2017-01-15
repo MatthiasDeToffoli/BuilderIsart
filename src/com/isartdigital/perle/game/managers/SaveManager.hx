@@ -239,6 +239,11 @@ class SaveManager {
 		);
 	}
 	
+	public static function reinit(){
+		Browser.getLocalStorage().clear();
+		Browser.location.reload();
+	}
+	
 	private static function getTimesResource ():Array<TimeDescription> { // todo : facotriser avec en bas
 		return TimeManager.listResource.map(function (pElement){
 			return pElement.desc;
