@@ -18,6 +18,8 @@ class VHouseHeaven extends VHouse
 		
 		
 		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_BUILD_1, AssetName.BUILDING_HEAVEN_BUILD_2];
+		UpgradeGoldValuesList = ["1000", "30 000"];
+		UpgradeMaterialsValuesList = ["340", "5340"];
 		
 		addPopulation(2);
 		mapMaxPopulation[AssetName.BUILDING_HEAVEN_HOUSE] = 2;

@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.utils.events.MouseEventType;
@@ -38,14 +39,13 @@ class BuildingDestroyPoppin extends SmartPopin
 	}
 	
 	/**
-	 * constructeur privé pour éviter qu'une instance soit créée directement
+	 * constructeur privé pour éviter qu'une istance soit créée directement
 	 */
 	private function new() 
 	{
 		super(AssetName.DESTROY_POPPIN);
 		addListeners();
-		
-		//trace(BuildingHud.virtualBuilding)
+
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
 		//levelBuilding.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
 		

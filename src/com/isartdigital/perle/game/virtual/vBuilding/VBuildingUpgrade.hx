@@ -15,6 +15,9 @@ class VBuildingUpgrade extends VBuilding
 {
 
 	private var UpgradeAssetsList:Array<String>;
+	public var UpgradeGoldValuesList:Array<String>;
+	public var UpgradeMaterialsValuesList:Array<String>;
+	
 	public var indexLevel:Int;
 	
 	public function new(pDescription:TileDescription) 

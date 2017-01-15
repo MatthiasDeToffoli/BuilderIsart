@@ -100,7 +100,10 @@ class BHBuilt extends BuildingHud
 		removeListenerGameContainer();
 		Hud.getInstance().hide();
 		if(Std.is(BuildingHud.virtualBuilding,VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
-		else UIManager.getInstance().openPopin(InfoBuilding.getInstance());
+		else {
+			UIManager.getInstance().openPopin(InfoBuilding.getInstance());
+			InfoBuilding.getInstance().linkVirtualBuilding(BuildingHud.virtualBuilding);
+		}
 		onClickExit();
 	}
 	

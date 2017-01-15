@@ -32,7 +32,8 @@ enum VBuildingState { isBuilt; isBuilding; isMoving; }
  */
 class VBuilding extends VTile {
 	
-	private var myGenerator:Generator;
+	public var myGenerator:Generator;
+	private var timeDesc:TimeDescription;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	private var myMaxContains:Float = 10;
 	
