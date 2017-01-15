@@ -1,5 +1,5 @@
 {
- "md5": "8c30db8eda5c21e649bd9cd305f4b7e8",
+ "md5": "24049c621855b838d466b4ad1e66b05f",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -12,13 +12,13 @@
        "symbol": "_smallPopinBG",
        "origin": [
         562.5,
-        300
+        331.1
        ],
        "rect": [
         1,
         1,
         1125,
-        600
+        663
        ]
       },
       {
@@ -37,53 +37,40 @@
       {
        "symbol": "_buttonDestroyBuildingConfirm_down",
        "origin": [
-        186,
-        67.5
+        150,
+        62.25
        ],
        "rect": [
         1128,
         255,
-        378,
-        135
-       ]
-      },
-      {
-       "symbol": "_buttonDestroyBuildingConfirm_over",
-       "origin": [
-        186,
-        67.5
-       ],
-       "rect": [
-        1128,
-        392,
-        378,
-        135
+        300,
+        125
        ]
       },
       {
        "symbol": "_buttonDestroyBuildingConfirm_up",
        "origin": [
-        184.1,
-        65.6
+        150,
+        62.25
        ],
        "rect": [
         1128,
-        529,
-        374,
-        132
+        382,
+        300,
+        125
        ]
       },
       {
-       "symbol": "_closeButton_up",
+       "symbol": "_buttonDestroyBuildingConfirm_over",
        "origin": [
-        84.2,
-        84.75
+        150,
+        62.25
        ],
        "rect": [
-        1,
-        603,
-        169,
-        170
+        1128,
+        509,
+        300,
+        125
        ]
       },
       {
@@ -93,36 +80,10 @@
         82.5
        ],
        "rect": [
-        1,
-        775,
+        1128,
+        636,
         165,
         165
-       ]
-      },
-      {
-       "symbol": "_closeButton_down",
-       "origin": [
-        56.25,
-        56.25
-       ],
-       "rect": [
-        1382,
-        1,
-        113,
-        113
-       ]
-      },
-      {
-       "symbol": "_closeButton_over",
-       "origin": [
-        56.25,
-        56.25
-       ],
-       "rect": [
-        1382,
-        116,
-        113,
-        113
        ]
       },
       {
@@ -132,8 +93,8 @@
         31.1
        ],
        "rect": [
-        1,
-        942,
+        1295,
+        636,
         198,
         63
        ]
@@ -145,8 +106,8 @@
         380
        ],
        "rect": [
-        168,
-        775,
+        1295,
+        701,
         192,
         57
        ]
@@ -158,8 +119,8 @@
         48
        ],
        "rect": [
-        168,
-        834,
+        1382,
+        1,
         96,
         96
        ]
@@ -171,23 +132,49 @@
         38.3
        ],
        "rect": [
-        201,
-        932,
+        1382,
+        99,
         77,
         77
        ]
       },
       {
-       "symbol": "_buttonPlusSoftCurrency_over",
+       "symbol": "_closeButton_down",
        "origin": [
-        15,
-        15
+        38.4,
+        36
        ],
        "rect": [
-        1497,
-        1,
-        30,
-        30
+        1382,
+        178,
+        77,
+        73
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        38.25,
+        35.85
+       ],
+       "rect": [
+        1430,
+        253,
+        77,
+        72
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "origin": [
+        38.25,
+        35.85
+       ],
+       "rect": [
+        1430,
+        327,
+        77,
+        72
        ]
       },
       {
@@ -197,8 +184,21 @@
         15
        ],
        "rect": [
-        1497,
-        33,
+        1461,
+        99,
+        30,
+        30
+       ]
+      },
+      {
+       "symbol": "_buttonPlusSoftCurrency_over",
+       "origin": [
+        15,
+        15
+       ],
+       "rect": [
+        1480,
+        1,
         30,
         30
        ]
@@ -210,43 +210,18 @@
         14.25
        ],
        "rect": [
-        1497,
-        65,
+        1480,
+        33,
         29,
         29
        ]
       },
       {
        "data": {
-        "y": -46.7,
-        "text": "Building_name",
-        "x": -344.85,
-        "width": 689.7,
-        "font": "72px _sans",
-        "align": "left",
-        "height": 93.35,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_text_selectedBuildingName",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        168,
-        932,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
         "y": -57.85,
-        "text": "Sell",
-        "x": -246.1,
-        "width": 492.25,
+        "text": "*Sell",
+        "x": -116.95,
+        "width": 233.85,
         "font": "100px Arial",
         "align": "center",
         "height": 115.75,
@@ -260,8 +235,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        168,
-        935,
+        1480,
+        64,
         1,
         1
        ]
@@ -285,8 +260,33 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        168,
-        938,
+        1480,
+        67,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -46.7,
+        "text": "Building_name",
+        "x": -244.6,
+        "width": 489.15,
+        "font": "72px _sans",
+        "align": "center",
+        "height": 93.35,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_text_selectedBuildingName",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1480,
+        70,
         1,
         1
        ]
@@ -310,8 +310,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        171,
-        932,
+        1480,
+        73,
         1,
         1
        ]
@@ -320,10 +320,10 @@
        "data": {
         "y": -35.5,
         "text": "Building_level",
-        "x": -266.75,
-        "width": 533.5,
+        "x": -173.75,
+        "width": 347.45,
         "font": "56px _sans",
-        "align": "left",
+        "align": "center",
         "height": 71,
         "wordWrap": 0,
         "color": "#666666"
@@ -335,8 +335,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        171,
-        935,
+        1480,
+        76,
         1,
         1
        ]
@@ -358,7 +358,7 @@
        "index": 0,
        "pivot": [
         562.5,
-        300
+        331.0875
        ]
       }
      ],
@@ -378,15 +378,6 @@
       }
      ],
      "name": "Button_DestroyBuildingConfirm"
-    },
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ],
-     "name": "Button_DestroyBuildingCancel"
     },
     {
      "keyframes": [
@@ -446,8 +437,8 @@
       {
        "ref": "_text_selectedBuildingLevel",
        "loc": [
-        -53.4,
-        -164.6625
+        -117.1875,
+        -131.4
        ],
        "duration": 1,
        "index": 0,
@@ -461,8 +452,8 @@
       {
        "ref": "_text_selectedBuildingName",
        "loc": [
-        5.175,
-        -227.625
+        -64.05,
+        -193.0125
        ],
        "duration": 1,
        "index": 0,
@@ -475,8 +466,8 @@
      "keyframes": [
       {
        "loc": [
-        -412.425,
-        -136.875
+        -381.525,
+        -114.7125
        ],
        "index": 0,
        "pivot": [
@@ -495,8 +486,8 @@
       {
        "ref": "~ButtonClose",
        "loc": [
-        525,
-        -270
+        524.2125,
+        -296.475
        ],
        "duration": 1,
        "index": 0,
@@ -586,8 +577,8 @@
        ],
        "index": 0,
        "pivot": [
-        84.225,
-        84.75
+        38.25,
+        35.85
        ],
        "ref": "_closeButton_up",
        "duration": 1,
@@ -599,13 +590,17 @@
         0
        ],
        "index": 1,
-       "pivot": [
-        56.25,
-        56.25
-       ],
+       "tweened": false,
        "ref": "_closeButton_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
        "duration": 1,
-       "tweened": false
+       "pivot": [
+        38.25,
+        35.85
+       ]
       },
       {
        "loc": [
@@ -613,13 +608,17 @@
         -0.0375
        ],
        "index": 2,
-       "pivot": [
-        56.25,
-        56.25
-       ],
+       "tweened": false,
        "ref": "_closeButton_down",
+       "scale": [
+        0.9561,
+        0.9561
+       ],
        "duration": 1,
-       "tweened": false
+       "pivot": [
+        38.4,
+        36
+       ]
       },
       {
        "ref": "_closeButton_hit",
@@ -643,18 +642,14 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        -0.375
-       ],
+       "ref": "_buttonDestroyBuildingConfirm_up",
+       "tweened": false,
+       "duration": 1,
        "index": 0,
        "pivot": [
-        184.125,
-        65.625
-       ],
-       "ref": "_buttonDestroyBuildingConfirm_up",
-       "duration": 1,
-       "tweened": false
+        150,
+        62.25
+       ]
       },
       {
        "loc": [
@@ -662,13 +657,17 @@
         -0.375
        ],
        "index": 1,
-       "pivot": [
-        186,
-        67.5
-       ],
+       "tweened": false,
        "ref": "_buttonDestroyBuildingConfirm_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
        "duration": 1,
-       "tweened": false
+       "pivot": [
+        150,
+        62.25
+       ]
       },
       {
        "loc": [
@@ -677,8 +676,8 @@
        ],
        "index": 2,
        "pivot": [
-        186,
-        67.5
+        150,
+        62.25
        ],
        "ref": "_buttonDestroyBuildingConfirm_down",
        "duration": 2,

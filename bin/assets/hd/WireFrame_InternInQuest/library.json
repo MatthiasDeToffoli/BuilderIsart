@@ -1,5 +1,5 @@
 {
- "md5": "f23a3dffdc1b19270c2c922f809b9002",
+ "md5": "584886e168a4461baab2e46866fcaf3a",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -22,7 +22,7 @@
        ]
       },
       {
-       "symbol": "_buttonPortraitListInQuest_up",
+       "symbol": "_buttonPortraitListInQuest_over",
        "origin": [
         134,
         129
@@ -35,7 +35,7 @@
        ]
       },
       {
-       "symbol": "_buttonPortraitListInQuest_over",
+       "symbol": "_buttonPortraitListInQuest_down",
        "origin": [
         134,
         129
@@ -48,7 +48,7 @@
        ]
       },
       {
-       "symbol": "_buttonPortraitListInQuest_down",
+       "symbol": "_buttonPortraitListInQuest_up",
        "origin": [
         134,
         129
@@ -61,68 +61,55 @@
        ]
       },
       {
-       "symbol": "_listInQuest_image",
-       "origin": [
-        130,
-        125
-       ],
-       "rect": [
-        1,
-        253,
-        260,
-        250
-       ]
-      },
-      {
        "symbol": "_listInQuest_ProgressionBar",
        "origin": [
         480,
         32
        ],
        "rect": [
-        263,
+        1,
         253,
         860,
         64
        ]
       },
       {
-       "symbol": "_buttonInternListAccelerate_over",
+       "symbol": "_buttonAccelerate_over",
        "origin": [
-        138,
-        87.75
+        135,
+        90
        ],
        "rect": [
-        1125,
-        261,
-        276,
-        176
+        863,
+        253,
+        270,
+        180
        ]
       },
       {
-       "symbol": "_buttonInternListAccelerate_down",
+       "symbol": "_buttonAccelerate_down",
        "origin": [
-        138,
-        87.75
+        135,
+        90
        ],
        "rect": [
-        1403,
-        261,
-        276,
-        176
+        1,
+        319,
+        270,
+        180
        ]
       },
       {
-       "symbol": "_buttonInternListAccelerate_up",
+       "symbol": "_buttonAccelerate_up",
        "origin": [
-        135.5,
-        85.75
+        135,
+        90
        ],
        "rect": [
-        1681,
-        261,
-        271,
-        172
+        273,
+        319,
+        270,
+        180
        ]
       },
       {
@@ -132,7 +119,7 @@
         53.2
        ],
        "rect": [
-        263,
+        545,
         319,
         123,
         107
@@ -145,10 +132,36 @@
         39.95
        ],
        "rect": [
-        1954,
-        261,
+        545,
+        428,
         80,
         80
+       ]
+      },
+      {
+       "symbol": "_hardCurrencyIcon_Small",
+       "origin": [
+        32,
+        32
+       ],
+       "rect": [
+        1135,
+        253,
+        64,
+        64
+       ]
+      },
+      {
+       "symbol": "_accelerateIcon_Small",
+       "origin": [
+        32.75,
+        25.35
+       ],
+       "rect": [
+        627,
+        428,
+        65,
+        50
        ]
       },
       {
@@ -162,6 +175,31 @@
         1,
         20,
         55
+       ]
+      },
+      {
+       "data": {
+        "y": -33.2,
+        "text": "Accelerate",
+        "x": -120.3,
+        "width": 240.55,
+        "font": "54px Times New Roman",
+        "align": "center",
+        "height": 66.4,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listAccTxt",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1,
+        510,
+        1,
+        1
        ]
       },
       {
@@ -183,8 +221,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1125,
-        253,
+        1,
+        501,
         1,
         1
        ]
@@ -208,8 +246,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1125,
-        256,
+        1,
+        504,
         1,
         1
        ]
@@ -233,33 +271,33 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1128,
-        253,
+        1,
+        507,
         1,
         1
        ]
       },
       {
        "data": {
-        "y": -33.2,
-        "text": "Accelerate",
-        "x": -120.3,
-        "width": 240.55,
-        "font": "54px Times New Roman",
+        "y": -24.4,
+        "text": "9999",
+        "x": -52.45,
+        "width": 143,
+        "font": "42px Times New Roman",
         "align": "center",
-        "height": 66.4,
+        "height": 50.55,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#FFFFFF"
        },
-       "symbol": "_listAccTxt",
+       "symbol": "_accelerate_text",
        "origin": [
         0,
         0
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1128,
-        256,
+        4,
+        510,
         1,
         1
        ]
@@ -294,10 +332,10 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_InternListAccelerate",
+       "ref": "~ButtonAccelerate",
        "loc": [
-        1329.95,
-        212.9
+        1330,
+        213.25
        ],
        "duration": 1,
        "index": 0,
@@ -422,10 +460,10 @@
        ],
        "index": 0,
        "pivot": [
-        135.5,
-        85.75
+        135,
+        90
        ],
-       "ref": "_buttonInternListAccelerate_up",
+       "ref": "_buttonAccelerate_up",
        "duration": 1,
        "tweened": false
       },
@@ -435,13 +473,17 @@
         -0.25
        ],
        "index": 1,
-       "pivot": [
-        138,
-        87.75
+       "tweened": false,
+       "ref": "_buttonAccelerate_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
        ],
-       "ref": "_buttonInternListAccelerate_over",
        "duration": 1,
-       "tweened": false
+       "pivot": [
+        135,
+        90
+       ]
       },
       {
        "loc": [
@@ -450,10 +492,10 @@
        ],
        "index": 2,
        "pivot": [
-        138,
-        87.75
+        135,
+        90
        ],
-       "ref": "_buttonInternListAccelerate_down",
+       "ref": "_buttonAccelerate_down",
        "duration": 2,
        "tweened": false
       }
@@ -464,54 +506,58 @@
      "keyframes": [
       {
        "loc": [
-        79.2,
-        39.95
+        65,
+        26.75
        ],
        "index": 0,
        "pivot": [
-        39.95,
-        39.95
+        32,
+        32
        ],
-       "ref": "_listQuest_currencyIcon",
+       "ref": "_hardCurrencyIcon_Small",
        "duration": 4,
        "tweened": false
       }
      ],
-     "name": "_accelerate_value"
+     "name": "_accelerate_currency"
     },
     {
      "keyframes": [
       {
-       "ref": "_listAccCost",
+       "ref": "_accelerate_text",
        "loc": [
-        -40.05,
-        42.9
+        -58,
+        25.9
        ],
        "duration": 4,
        "index": 0,
        "tweened": false
       }
      ],
-     "name": "_accelerate_txt"
+     "name": "_accelerate_cost"
     },
     {
      "keyframes": [
       {
-       "ref": "_listAccTxt",
        "loc": [
-        -1,
-        -33.1
+        0.4,
+        -29.25
        ],
-       "duration": 4,
        "index": 0,
+       "pivot": [
+        32.75,
+        25.35
+       ],
+       "ref": "_accelerateIcon_Small",
+       "duration": 4,
        "tweened": false
       }
      ],
-     "name": "_txt_accelerate"
+     "name": "_accelerate_icon"
     }
    ],
    "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_InternListAccelerate"
+   "id": "~ButtonAccelerate"
   },
   {
    "layers": [

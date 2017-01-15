@@ -11,6 +11,7 @@ import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import js.Browser;
 
 	
 /**
@@ -118,8 +119,9 @@ class TribunalPopin extends SmartPopin
 	}
 	
 	private function onIntern() {
-		UIManager.getInstance().closeCurrentPopin();	
-		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		Browser.alert("Work in progress : Special Feature");
+		//UIManager.getInstance().closeCurrentPopin();	
+		//UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	private function onHeaven(){

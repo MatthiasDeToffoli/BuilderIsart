@@ -15,7 +15,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 	
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class BuildingDestroyPoppin extends SmartPopin 
 {

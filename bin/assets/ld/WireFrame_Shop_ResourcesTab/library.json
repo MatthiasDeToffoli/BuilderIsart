@@ -1,433 +1,399 @@
 {
+ "md5": "cbb59ce76b5d7b1ddcb81fa634f7677e",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_shop_item_list_bg",
+       "origin": [
+        407.2,
+        234.45
+       ],
        "rect": [
         1,
         1,
         815,
         469
-       ],
-       "origin": [
-        407.2,
-        234.45
        ]
       },
       {
        "symbol": "_shop_pack_spawner",
+       "origin": [
+        96.6,
+        96.6
+       ],
        "rect": [
         818,
         1,
         194,
         194
-       ],
-       "origin": [
-        96.6,
-        96.6
-       ]
-      },
-      {
-       "symbol": "_arrow_right_down",
-       "rect": [
-        818,
-        197,
-        67,
-        143
-       ],
-       "origin": [
-        33.5,
-        71.5
-       ]
-      },
-      {
-       "symbol": "_arrow_left_down",
-       "rect": [
-        887,
-        197,
-        67,
-        143
-       ],
-       "origin": [
-        33.5,
-        71.5
-       ]
-      },
-      {
-       "symbol": "_arrow_right_over",
-       "rect": [
-        956,
-        197,
-        66,
-        142
-       ],
-       "origin": [
-        33,
-        71
        ]
       },
       {
        "symbol": "_arrow_left_over",
-       "rect": [
-        956,
-        341,
-        66,
-        142
-       ],
        "origin": [
-        33,
-        71
+        47.3,
+        22.75
+       ],
+       "rect": [
+        818,
+        197,
+        95,
+        46
        ]
       },
       {
        "symbol": "_arrow_left_up",
+       "origin": [
+        47.3,
+        22.75
+       ],
+       "rect": [
+        915,
+        197,
+        95,
+        46
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
+       "origin": [
+        47.3,
+        22.75
+       ],
        "rect": [
         818,
-        342,
-        65,
-        141
-       ],
-       "origin": [
-        32.25,
-        70.25
+        245,
+        95,
+        46
        ]
       },
       {
        "symbol": "_arrow_right_up",
-       "rect": [
-        885,
-        342,
-        65,
-        141
-       ],
        "origin": [
-        32.25,
-        70.25
+        47.3,
+        22.75
+       ],
+       "rect": [
+        915,
+        245,
+        95,
+        46
        ]
       },
       {
-       "symbol": "_stoneIcon_Medium",
-       "rect": [
-        1,
-        472,
-        48,
-        48
-       ],
+       "symbol": "_arrow_left_down",
        "origin": [
-        24,
-        24
+        47.5,
+        22.8
+       ],
+       "rect": [
+        818,
+        293,
+        94,
+        46
        ]
       },
       {
-       "symbol": "_woodIcon_Medium",
-       "rect": [
-        51,
-        472,
-        48,
-        48
-       ],
+       "symbol": "_arrow_right_down",
        "origin": [
-        24,
-        24
+        47.5,
+        22.8
+       ],
+       "rect": [
+        914,
+        293,
+        94,
+        46
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -222.9,
+        -142
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_1"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -6.05,
+        -142
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_2"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        210.8,
+        -142
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_3"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -222.9,
+        77.75
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_4"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -6.05,
+        77.75
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_5"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        210.8,
+        77.75
+       ],
+       "index": 0,
+       "pivot": [
+        96.625,
+        96.625
+       ],
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Shop_Pack_6"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonArrowLeft",
+       "loc": [
+        -164.45,
+        220.025
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Arrow_Left_Wood"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonArrowRight",
+       "loc": [
+        153.875,
+        216.975
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Arrow_Right_Stone"
+    }
+   ],
+   "id": "Shop_ResourcesTab_List"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_arrow_left_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        47.325,
+        22.75
+       ]
+      },
+      {
+       "index": 1,
+       "pivot": [
+        47.325,
+        22.75
+       ],
+       "ref": "_arrow_left_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "index": 2,
+       "pivot": [
+        47.5,
+        22.825
+       ],
+       "ref": "_arrow_left_down",
+       "scale": [
+        0.9677,
+        0.9677
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_arrow_left_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        47.325,
+        22.75
        ]
       }
      ],
-     "file": "atlas0.png"
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0
+      }
+     ],
+     "name": "Calque 2"
     }
    ],
-   "scaleFactor": 1
-  }
- ],
- "frameRate": 24,
- "movies": [
-  {
-   "id": "Shop_ResourcesTab_List",
-   "layers": [
-    {
-     "name": "Shop_InternsTab_list_BG",
-     "keyframes": [
-      {
-       "pivot": [
-        407.225,
-        234.45
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_shop_item_list_bg"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_1",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        -213.75,
-        -109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_2",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        3.1,
-        -109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_3",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        219.95,
-        -109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_4",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        -213.75,
-        109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_5",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        3.1,
-        109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_6",
-     "keyframes": [
-      {
-       "pivot": [
-        96.625,
-        96.625
-       ],
-       "duration": 1,
-       "loc": [
-        219.95,
-        109.875
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_shop_pack_spawner"
-      }
-     ]
-    },
-    {
-     "name": "Arrow_Left_Wood",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        -369.075,
-        -4.225
-       ],
-       "ref": "~ButtonArrowLeft"
-      }
-     ]
-    },
-    {
-     "name": "Arrow_Right_Stone",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        369.075,
-        4
-       ],
-       "ref": "~ButtonArrowRight"
-      }
-     ]
-    }
-   ]
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowLeft"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonArrowLeft",
    "layers": [
     {
-     "name": "Bouton",
      "keyframes": [
       {
-       "pivot": [
-        32.25,
-        70.25
-       ],
+       "ref": "_arrow_right_up",
        "tweened": false,
        "duration": 1,
        "index": 0,
-       "ref": "_arrow_left_up"
+       "pivot": [
+        47.325,
+        22.75
+       ]
       },
       {
-       "pivot": [
-        33,
-        71
-       ],
-       "tweened": false,
-       "duration": 1,
        "index": 1,
-       "ref": "_arrow_left_over"
+       "pivot": [
+        47.325,
+        22.75
+       ],
+       "ref": "_arrow_right_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
       },
       {
-       "pivot": [
-        33.5,
-        71.5
-       ],
-       "tweened": false,
-       "duration": 2,
        "index": 2,
-       "ref": "_arrow_left_down"
-      }
-     ]
-    },
-    {
-     "name": "Icon",
-     "keyframes": [
-      {
        "pivot": [
-        24,
-        24
+        47.5,
+        22.825
        ],
-       "duration": 4,
-       "loc": [
-        6.5,
-        4.275
+       "ref": "_arrow_right_down",
+       "scale": [
+        0.9677,
+        0.9677
        ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_arrow_right_up",
        "tweened": false,
-       "index": 0,
-       "ref": "_woodIcon_Medium"
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        47.325,
+        22.75
+       ]
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
-   ]
-  },
-  {
+   ],
    "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonArrowRight",
-   "layers": [
-    {
-     "name": "Bouton",
-     "keyframes": [
-      {
-       "pivot": [
-        32.25,
-        70.25
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_arrow_right_up"
-      },
-      {
-       "pivot": [
-        33,
-        71
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "ref": "_arrow_right_over"
-      },
-      {
-       "pivot": [
-        33.5,
-        71.5
-       ],
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "ref": "_arrow_right_down"
-      }
-     ]
-    },
-    {
-     "name": "Icon",
-     "keyframes": [
-      {
-       "pivot": [
-        24,
-        24
-       ],
-       "duration": 4,
-       "loc": [
-        -3.95,
-        -4.1
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_stoneIcon_Medium"
-      }
-     ]
-    }
-   ]
+   "id": "~ButtonArrowRight"
   }
  ],
- "md5": "371d18e99101464cb80b02773d31f88b"
+ "frameRate": 24
 }

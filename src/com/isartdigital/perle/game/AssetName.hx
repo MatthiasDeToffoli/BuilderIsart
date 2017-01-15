@@ -207,7 +207,8 @@ class AssetName{
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
-	public static inline var LEVELUP_POPPIN_BUTTON:String = "Button_SkipTimeConfirm";
+	public static inline var LEVELUP_POPPIN_BUTTON:String = "Button_NextReward";
+	public static inline var LEVELUP_POPPIN_PASSALL:String = "ButtonShowAll";
 	public static inline var LEVELUP_POPPIN_LEVELBG:String = "_bg_level";
 	public static inline var LEVELUP_POPPIN_LEVEL:String = "level";
 	public static inline var LEVELUP_POPPIN_TYPE:String = "_txt_type";

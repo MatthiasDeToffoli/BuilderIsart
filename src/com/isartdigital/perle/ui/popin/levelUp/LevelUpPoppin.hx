@@ -15,7 +15,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 	
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class LevelUpPoppin extends SmartPopin 
 {
@@ -32,6 +32,7 @@ class LevelUpPoppin extends SmartPopin
 	private static var img:UISprite;
 	private static var imgImage:FlumpStateGraphic;
 	private var btnNext:SmartButton;
+	private var btnCloseAll:SmartButton;
 	private var bgLvl:SmartComponent;
 	private var unlock:SmartComponent;
 	
@@ -53,6 +54,12 @@ class LevelUpPoppin extends SmartPopin
 		description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
 		UnlockManager.itemUnlockedForPoppin.splice(0, 1);
+	}
+	
+	private static function closeAll():Void {
+		UnlockManager.itemUnlockedForPoppin = [];
+		trace(UnlockManager.itemUnlockedForPoppin);
+		onClickNext();
 	}
 	
 	private static function setImage (pAssetName:String):Void {
@@ -100,7 +107,9 @@ class LevelUpPoppin extends SmartPopin
 		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
 		
 		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
+		btnCloseAll = cast(getChildByName(AssetName.LEVELUP_POPPIN_PASSALL), SmartButton);
 		btnNext.on(MouseEventType.CLICK, onClickNext);
+		btnCloseAll.on(MouseEventType.CLICK, closeAll);
 	}
 	
 	/**
