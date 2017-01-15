@@ -1,0 +1,172 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "hell_bg_left_free",
+       "origin": [
+        816.5,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        817,
+        817
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "background_hell_left_occupied",
+       "origin": [
+        815,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        815,
+        816
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas2.png",
+     "textures": [
+      {
+       "symbol": "background_hell_right_occupied",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        813,
+        816
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas3.png",
+     "textures": [
+      {
+       "symbol": "hell_bg_right_free",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        813,
+        816
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "pivot": [
+        407.5,
+        407.75
+       ],
+       "loc": [
+        -405.525,
+        407.75
+       ],
+       "index": 0,
+       "ref": "background_hell_left_occupied",
+       "tweened": false
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "pivot": [
+        406.5,
+        408
+       ],
+       "loc": [
+        406.55,
+        409.425
+       ],
+       "index": 0,
+       "ref": "background_hell_right_occupied",
+       "tweened": false
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ],
+   "id": "background_hell_full_occupied"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "pivot": [
+        408.25,
+        408.5
+       ],
+       "loc": [
+        -406.5,
+        409.05
+       ],
+       "index": 0,
+       "ref": "hell_bg_left_free",
+       "tweened": false
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "pivot": [
+        406.5,
+        408
+       ],
+       "loc": [
+        408.25,
+        408
+       ],
+       "index": 0,
+       "ref": "hell_bg_right_free",
+       "tweened": false
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ],
+   "id": "hell_bg_free"
+  }
+ ],
+ "md5": "0283f73d30a64c249affe9ea650f0f3b",
+ "frameRate": 24
+}

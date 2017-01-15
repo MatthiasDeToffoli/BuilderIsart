@@ -229,6 +229,9 @@ class AssetName{
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
+	public static inline var BACKGROUND_UNDER_HEAVEN = "HeavenBackground";
+	public static inline var BACKGROUND_UNDER_HELL = "hell_bg_free";
+	
 	//button production assets
 	
 	public static inline var PROD_ICON_SOFT:String = "_goldIcon__Large_Prod";

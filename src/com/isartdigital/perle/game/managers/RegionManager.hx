@@ -54,9 +54,19 @@ class RegionManager
 	public static var buttonMap: Map<Int,Map<Int,ButtonRegion>>;
 	
 	/**
+	 * the same model than map but for background under region
+	 */
+	public static var underMap: Map<Int,Map<Int,FlumpStateGraphic>>;
+	
+	/**
 	 * container of all background
 	 */
 	public static var bgContainer(default, null):Container;
+	
+	/**
+	 * container of all beckground under region
+	 */
+	public static var bgUnderContainer(default, null):Container;
 	
 	/**
 	 * typedef which contain all data resources
@@ -114,11 +124,14 @@ class RegionManager
 	public static function init():Void {
 		buttonRegionContainer = new Container();
 		bgContainer = new Container();
+		bgUnderContainer = new Container();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getBuildContainer().addChild(buttonRegionContainer);
 		GameStage.getInstance().getBuildContainer().addChildAt(bgContainer, 0);
+		GameStage.getInstance().getBuildContainer().addChildAt(bgUnderContainer, 0);
 		worldMap = new Map<Int,Map<Int,Region>>();
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
+		underMap = new Map<Int,Map<Int,FlumpStateGraphic>>();
 		mapNumbersRegion = new Map<Alignment,Int>();
 		baseXpGains = new Map<String,Float>();
 		xpFactors = [1.5, 1.2];
@@ -197,6 +210,12 @@ class RegionManager
 			
 			buttonMap[worldPositionX][worldPositionY] = myBtn;
 			buttonRegionContainer.addChild(myBtn);
+			
+			addBgUnder(IsoManager.modelToIsoView(new Point(
+				lCentre.x  + factor.x - Ground.COL_X_LENGTH / 2 + Ground.COL_X_LENGTH * factor.x,
+				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y - factor.y
+			)),
+			{x:worldPositionX, y:worldPositionY});
 		}		
 		
 		addButton(pPos, pWorldPos, indice+ 1);
@@ -221,10 +240,23 @@ class RegionManager
 		if (background != null)	{
 			bgContainer.addChild(background);
 			sortBackground();
+			addBgUnder(background.position, {x:pNewRegion.desc.x, y:pNewRegion.desc.y});
 		}
 	}
 
 	
+	public static function addBgUnder(pPos:Point, pWorlPos:Index):Void{
+		if (!underMap.exists(pWorlPos.x)) underMap[pWorlPos.x] = new Map<Int,FlumpStateGraphic>();
+		else if (underMap[pWorlPos.x].exists(pWorlPos.y)) return;
+		
+		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(AssetName.BACKGROUND_UNDER_HELL); // for have anything in alpha
+			bgUnder.init();
+			bgUnder.start();
+			bgUnder.position = pPos;
+			bgUnderContainer.addChild(bgUnder);
+			
+		underMap[pWorlPos.x][pWorlPos.y] = bgUnder;
+	}
 	/**
 	 * get the button container
 	 * @return Container
