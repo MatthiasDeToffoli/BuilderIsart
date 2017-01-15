@@ -61,7 +61,7 @@ typedef TimeQuestDescription = {
 typedef GeneratorDescription = {
 	var type:GeneratorType;
 	var quantity:Float;
-	var max:Int;
+	var max:Float;
 	var id:Int;
 	@:optional var alignment:Alignment;
 	

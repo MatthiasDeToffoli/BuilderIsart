@@ -34,6 +34,7 @@ class VBuilding extends VTile {
 	private var myGenerator:Generator;
 	private var timeDesc:TimeDescription;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
+	private var myMaxContains:Float = 10;
 	
 	/**
 	 * said if we can recolt resources with a button in this building
@@ -41,6 +42,8 @@ class VBuilding extends VTile {
 	public var haveRecolter:Bool;
 	
 	private var myVContextualHud:VHudContextual;
+	
+	private var myTime:Float = 60000; //1 minutes
 	
 	public var currentState:VBuildingState; // todo : temporaire
 	
@@ -213,7 +216,7 @@ class VBuilding extends VTile {
 	}
 	
 	private function addGenerator ():Void {
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10);
+		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime);
 	}
 	
 	private function addHudContextual ():Void {

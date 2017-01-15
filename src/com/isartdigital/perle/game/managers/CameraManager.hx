@@ -145,7 +145,7 @@ class CameraManager
 			for (region in lMap[row].keys()) {
 				var lPoint:Point = getCameraCenter();
 				if (hitTestRegion(lPoint,lMap[row][region])) {
-					trace("true");
+					//trace("true");
 					var lPos:Point = IsoManager.modelToIsoView(new Point(lMap[row][region].desc.firstTilePos.x, lMap[row][region].desc.firstTilePos.y));
 					
 					if (lMap[row][region].desc.type == Alignment.neutral) {

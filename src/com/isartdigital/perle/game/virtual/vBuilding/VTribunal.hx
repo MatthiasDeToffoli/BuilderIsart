@@ -60,6 +60,8 @@ class VTribunal extends VBuilding
 		
 		super(lDesc);
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
+		
+		
 	}
 	
 	override public function updateGeneratorInfo(?data:Dynamic) 
@@ -81,8 +83,10 @@ class VTribunal extends VBuilding
 	}
 
 	override function addGenerator():Void {
+		myTime = 60000 * 40; //40 minutes
 		myGeneratorType = GeneratorType.soul;
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, 10, Alignment.neutral);
+		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains, myTime, Alignment.neutral, true);
+		
 	}
 	
 	/**

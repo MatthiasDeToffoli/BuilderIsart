@@ -17,13 +17,13 @@ class VHouse extends VBuildingUpgrade
 
 	private var myPopulation:Population;
 	private var mapMaxPopulation:Map<String, Int>;
-	private var mapMaxResources:Map<String, Float>;
+	private var maxResources:Array<Float>;
+	private var valuesWin:Array<Float>;
 	
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
-		mapMaxPopulation = new Map<String, Int>();
-		mapMaxResources = new Map<String, Float>();
+		mapMaxPopulation = new Map < String,Int>();
 
 		ResourcesManager.populationChangementEvent.on(ResourcesManager.POPULATION_CHANGEMENT_EVENT_NAME, onPopulationChanged);
 		
@@ -40,6 +40,15 @@ class VHouse extends VBuildingUpgrade
 		}
 		
 		myPopulation = ResourcesManager.addPopulation(tileDesc.currentPopulation, tileDesc.maxPopulation, alignementBuilding, tileDesc.id);
+	}
+	
+	override function addGenerator():Void 
+	{
+		maxResources = [50, 225, 1200];
+		myMaxContains = maxResources[0]; 
+		myTime = 60000 / valuesWin[0];
+
+		super.addGenerator();
 	}
 	
 	/**
@@ -86,6 +95,10 @@ class VHouse extends VBuildingUpgrade
 		super.onClickUpgrade();
 		
 		updatePopulation(null, mapMaxPopulation[tileDesc.assetName]);
+		myTime = 60000 / valuesWin[indexLevel];
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, maxResources[indexLevel], myTime); //@TODO : mettre de vrais valeur...
+		
+		SaveManager.save();
 	}
 	
 	

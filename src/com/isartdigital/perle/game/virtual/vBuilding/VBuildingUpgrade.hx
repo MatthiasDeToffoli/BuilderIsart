@@ -34,7 +34,6 @@ class VBuildingUpgrade extends VBuilding
 		
 		activate();
 		addExp();
-		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, 20, 8000); //@TODO : mettre de vrais valeur...
 		SaveManager.save();
 		
 	}

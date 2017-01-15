@@ -24,4 +24,10 @@ class VHouseHell extends VHouse
 		mapMaxPopulation[AssetName.BUILDING_HELL_BUILD_2] = 40;
 	}
 	
+	override function addGenerator():Void 
+	{
+		valuesWin = [1, 1.5, 3];
+		super.addGenerator();
+	}
+	
 }

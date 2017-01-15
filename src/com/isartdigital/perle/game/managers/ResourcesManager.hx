@@ -326,7 +326,7 @@ class ResourcesManager
 		
 		for (myGenerator in myResourcesData.generatorsMap[GeneratorType.soul]){
 			myTotal.quantity += Std.int(myGenerator.desc.quantity);
-			myTotal.max = myGenerator.desc.max;
+			myTotal.max = Std.int(myGenerator.desc.max);
 		}
 		
 		return myTotal;
@@ -382,7 +382,7 @@ class ResourcesManager
 	 * @param pAlignment (optional) the alignment of the generator to add
 	 * @return the generator added
 	 */
-	public static function addResourcesGenerator(pId:Int, pType:GeneratorType, pMax:Int, ?pAlignment:Alignment):Generator{
+	public static function addResourcesGenerator(pId:Int, pType:GeneratorType, pMax:Float, pTime:Float, ?pAlignment:Alignment, ?isTribunal:Bool):Generator{
 		
 		var myDesc:GeneratorDescription = getGenerator(pId, pType), myGenerator:Generator;
 
@@ -399,6 +399,7 @@ class ResourcesManager
 			type:pType
 		};
 		
+		if (isTribunal) myDesc.quantity = myDesc.max;
 		
 		if (pAlignment != null) myDesc.alignment = pAlignment;
 		
@@ -407,7 +408,7 @@ class ResourcesManager
 		
 		SaveManager.save();
 		
-		TimeManager.createTimeResource(6000, myGenerator); // 1 minutes
+		TimeManager.createTimeResource(pTime, myGenerator);
 		
 		return myGenerator;
 		
@@ -419,7 +420,7 @@ class ResourcesManager
 	 * @param	pMax the capacity of the generator
 	 * @return the generator which is update
 	 */
-	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Int,pEnd:Float):Generator{
+	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float,pEnd:Float):Generator{
 		pGenerator.desc.max = pMax;
 		myResourcesData.generatorsMap[pGenerator.desc.type][myResourcesData.generatorsMap[pGenerator.desc.type].indexOf(pGenerator)] = pGenerator;
 		TimeManager.updateTimeResource(pEnd, pGenerator);

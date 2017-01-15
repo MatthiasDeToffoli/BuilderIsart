@@ -14,6 +14,7 @@ class VHouseHeaven extends VHouse
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		
 		alignementBuilding = Alignment.heaven;
 		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_BUILD_1, AssetName.BUILDING_HEAVEN_BUILD_2];
 		
@@ -23,9 +24,10 @@ class VHouseHeaven extends VHouse
 		mapMaxPopulation[AssetName.BUILDING_HEAVEN_BUILD_2] = 16;
 	}
 	
-	override public function onClickUpgrade():Void 
+	override function addGenerator():Void 
 	{
-		super.onClickUpgrade();
+		valuesWin = [2.5, 3.75, 7.5];
+		super.addGenerator();
 	}
 	
 }
