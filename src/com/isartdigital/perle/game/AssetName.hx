@@ -235,5 +235,10 @@ class AssetName{
 	public static inline var PROD_ICON_HARD:String = "_hardCurrencyIcon_Large";
 	public static inline var PROD_ICON_WOOD:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";
+	
+	//icone small
+	
+	public static inline var PROD_ICON_SOUL_HEAVEN_SMALL:String = "_heavenSoulIcon_Small";
+	public static inline var PROD_ICON_SOUL_HELL_SMALL:String = "_hellSoulIcon_Small";
 
 }

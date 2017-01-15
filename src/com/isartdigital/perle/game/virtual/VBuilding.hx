@@ -217,7 +217,6 @@ class VBuilding extends VTile {
 	}
 	
 	private function addGenerator ():Void {
-		trace(alignementBuilding);
 		if(alignementBuilding != null) BoostManager.callEvent(alignementBuilding);
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime);
 	}
