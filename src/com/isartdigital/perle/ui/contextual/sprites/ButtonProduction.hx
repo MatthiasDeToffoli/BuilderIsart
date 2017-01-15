@@ -34,7 +34,6 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	// et voir pour pooling de la partie graphique
 	public function new(pType:GeneratorType) {
 		super(AssetName.BTN_PRODUCTION);
-		
 		var graphic:UISprite = new UISprite(assetsName[pType]);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_currency"), UISprite);
 		
@@ -60,7 +59,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	public function setScale():Void{
 		myGeneratorDesc = ResourcesManager.getGenerator(myGeneratorDesc.id, myGeneratorDesc.type);
 		
-		var ratio:Float = myGeneratorDesc.quantity / myGeneratorDesc.max;
+		var ratio:Float = myGeneratorDesc.quantity / (myGeneratorDesc.max/1.5);
 		scale = new Point(ratio,ratio);
 	}
 	/**

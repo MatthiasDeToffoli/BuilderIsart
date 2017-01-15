@@ -47,7 +47,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		
 		//trace(BuildingHud.virtualBuilding)
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
-		levelBuilding.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
+		//levelBuilding.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
 		
 		setImage(BuildingHud.virtualBuilding.getAsset());
 		price.text = ""+ BuyManager.getSellPrice(BuildingHud.virtualBuilding.getAsset()); 
@@ -73,7 +73,6 @@ class BuildingDestroyPoppin extends SmartPopin
 	}
 	
 	private function closePoppin():Void {
-		trace("closePoppin");
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().hideBuildingHud();
 	}

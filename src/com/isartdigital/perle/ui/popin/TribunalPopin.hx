@@ -151,7 +151,6 @@ class TribunalPopin extends SmartPopin
 	
 	private function onUpgrade():Void{
 		rewriteUpgradeTxt();
-		trace("upgrade");
 	}
 	
 	private function rewriteUpgradeTxt(){

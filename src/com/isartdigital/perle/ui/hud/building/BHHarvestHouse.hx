@@ -67,7 +67,10 @@ class BHHarvestHouse extends BHBuilt
 		soulGraphic = new UISprite(aName);
 		soulGraphic.position = spawner.position;
 		addChild(soulGraphic);
-		spawner.parent.removeChild(spawner);
+		
+		//Pardon j'ai commenter sinon il y avait un bug si on plaçais plusieurs maisons  Alexis
+		//if(spawner != null)
+		//spawner.parent.removeChild(spawner);
 	}
 	
 	override function removeButtonsChange():Void 

@@ -58,7 +58,7 @@ class LevelUpPoppin extends SmartPopin
 	
 	private static function closeAll():Void {
 		UnlockManager.itemUnlockedForPoppin = [];
-		trace(UnlockManager.itemUnlockedForPoppin);
+		//trace(UnlockManager.itemUnlockedForPoppin);
 		onClickNext();
 	}
 	
