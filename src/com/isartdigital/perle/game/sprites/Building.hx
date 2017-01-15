@@ -66,6 +66,7 @@ class Building extends Tile implements IZSortable
 	public static var list:Array<Building>;
 	
 	private static var container:Container;	
+	private static var uiContainer:Container;	
 	public var colMin:Int;
 	public var colMax:Int;
 	public var rowMin:Int;
@@ -81,8 +82,11 @@ class Building extends Tile implements IZSortable
 	 */
 	public static function initClass():Void {
 		container = new Container();
+		uiContainer = new Container();
 		container.position = Ground.container.position;
+		uiContainer.position = container.position;
 		GameStage.getInstance().getGameContainer().addChild(container);
+		GameStage.getInstance().getGameContainer().addChild(uiContainer);
 		list = new Array<Building>();
 	}
 	

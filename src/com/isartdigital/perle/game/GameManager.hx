@@ -47,6 +47,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		Tile.initClass();//always before pooling manager
 		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ServerManager.playerConnexion();
 		//GameConfig.awake();
@@ -59,7 +60,6 @@ class GameManager {
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		TimeManager.initClass();
 		VTile.initClass();
-		Tile.initClass();
 		HudContextual.addContainer();
 		Phantom.initClass();
 		RegionManager.init();

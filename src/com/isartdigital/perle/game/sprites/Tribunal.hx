@@ -14,14 +14,23 @@ class Tribunal extends Building
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		PurgatorySoulCounter.getInstance().position = position;
-		PurgatorySoulCounter.getInstance().position.y += 250;
-		GameStage.getInstance().getHudContainer().addChild(PurgatorySoulCounter.getInstance());
+		
+		
+		
+		
+		
 	}
 	
+	override public function init():Void 
+	{
+		super.init();
+		PurgatorySoulCounter.getInstance().position = position.clone();
+		PurgatorySoulCounter.getInstance().position.y += height/2 + 50; // @TODO: positionner autrement pour que cela fonctionne avec toutes les qualité 
+		Building.uiContainer.addChild(PurgatorySoulCounter.getInstance());
+	}
 	override public function destroy():Void 
 	{
-		GameStage.getInstance().getHudContainer().removeChild(PurgatorySoulCounter.getInstance());
+		Building.uiContainer.removeChild(PurgatorySoulCounter.getInstance());
 		super.destroy();
 	}
 }
