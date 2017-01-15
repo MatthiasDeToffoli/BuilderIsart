@@ -1,0 +1,2184 @@
+{
+ "movies": [
+  {
+   "layers": [
+    {
+     "name": "_GaugeBG_TimeSkippedBackground",
+     "keyframes": [
+      {
+       "pivot": [
+        186.5,
+        21.5
+       ],
+       "ref": "_GaugeBG_TimeSkippedBackground",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "_GaugeF_TimeSkippedFront",
+     "keyframes": [
+      {
+       "pivot": [
+        186,
+        21.5
+       ],
+       "ref": "_GaugeF_TimeSkippedFront",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    },
+    {
+     "name": "_Text_TimeSkipGaugeTime",
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "_Text_TimeSkipGaugeTime",
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -0.175,
+        0.8
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "Gauge_TimeSkipped"
+  }
+ ],
+ "md5": "28ee562e8ed4157db93ebf476cd1ef7c",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "origin": [
+        505.1,
+        296.5
+       ],
+       "symbol": "_largePopinBG",
+       "rect": [
+        1,
+        1,
+        1011,
+        595
+       ]
+      },
+      {
+       "origin": [
+        455.75,
+        160
+       ],
+       "symbol": "_shop_item_list_bg",
+       "rect": [
+        1,
+        598,
+        912,
+        320
+       ]
+      },
+      {
+       "origin": [
+        180,
+        35
+       ],
+       "symbol": "_cartoucheInfo_BG_01",
+       "rect": [
+        1,
+        920,
+        360,
+        70
+       ]
+      },
+      {
+       "origin": [
+        257.4,
+        30
+       ],
+       "symbol": "_buttonPlus_hit",
+       "rect": [
+        363,
+        920,
+        290,
+        60
+       ]
+      },
+      {
+       "origin": [
+        100.75,
+        38
+       ],
+       "symbol": "infoBar_bg",
+       "rect": [
+        655,
+        920,
+        202,
+        76
+       ]
+      },
+      {
+       "origin": [
+        53.25,
+        58.25
+       ],
+       "symbol": "_level_sphere",
+       "rect": [
+        915,
+        598,
+        107,
+        117
+       ]
+      },
+      {
+       "origin": [
+        57.05,
+        48.4
+       ],
+       "symbol": "_internButton_HUD_down",
+       "rect": [
+        859,
+        920,
+        118,
+        103
+       ]
+      },
+      {
+       "origin": [
+        47,
+        47
+       ],
+       "symbol": "_buttonMoveBuilding_png",
+       "rect": [
+        915,
+        717,
+        94,
+        94
+       ]
+      },
+      {
+       "origin": [
+        47,
+        47
+       ],
+       "symbol": "_buttonSkip_SmallConstruction_png",
+       "rect": [
+        915,
+        813,
+        94,
+        94
+       ]
+      },
+      {
+       "origin": [
+        90,
+        19
+       ],
+       "symbol": "_internsButton_up",
+       "rect": [
+        363,
+        982,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        20.5,
+        32
+       ],
+       "symbol": "_heavenSoulIcon_Large",
+       "rect": [
+        979,
+        909,
+        41,
+        64
+       ]
+      },
+      {
+       "origin": [
+        20.5,
+        20.5
+       ],
+       "symbol": "_stressIcon_Small",
+       "rect": [
+        979,
+        975,
+        41,
+        41
+       ]
+      },
+      {
+       "origin": [
+        20,
+        20
+       ],
+       "symbol": "_woodIcon_Small",
+       "rect": [
+        545,
+        982,
+        40,
+        40
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_goldIcon_Small",
+       "rect": [
+        587,
+        982,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_buildRessourceIcon_Small",
+       "rect": [
+        621,
+        982,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        15.4
+       ],
+       "symbol": "_stoneIcon_Small",
+       "rect": [
+        1,
+        992,
+        32,
+        31
+       ]
+      },
+      {
+       "origin": [
+        15,
+        15
+       ],
+       "symbol": "_buttonPlus_upp",
+       "rect": [
+        35,
+        992,
+        30,
+        30
+       ]
+      },
+      {
+       "origin": [
+        15,
+        15
+       ],
+       "symbol": "_buttonPlus_over",
+       "rect": [
+        67,
+        992,
+        30,
+        30
+       ]
+      },
+      {
+       "origin": [
+        15,
+        15
+       ],
+       "symbol": "_buttonPlus_down",
+       "rect": [
+        99,
+        992,
+        30,
+        30
+       ]
+      },
+      {
+       "origin": [
+        16.4,
+        12.7
+       ],
+       "symbol": "_accelerateIcon_Small",
+       "rect": [
+        655,
+        998,
+        33,
+        25
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.5,
+        "text": "00:00:00",
+        "x": -200,
+        "width": 400,
+        "font": "70px Arial",
+        "align": "center",
+        "height": 85,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_Text_TimeSkipGaugeTime",
+       "rect": [
+        979,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -37,
+        "text": "9999",
+        "x": -38.45,
+        "width": 96.25,
+        "font": "42px Arial",
+        "align": "center",
+        "height": 50.9,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_TXT",
+       "rect": [
+        979,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -55.9,
+        "text": "99",
+        "x": -83.45,
+        "width": 166.95,
+        "font": "94px _sans",
+        "align": "center",
+        "height": 111.8,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_level_txt",
+       "rect": [
+        982,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.45,
+        "text": "9999",
+        "x": -48.15,
+        "width": 96.25,
+        "font": "42px Arial",
+        "align": "center",
+        "height": 50.9,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgradeRessource_text",
+       "rect": [
+        982,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -51.2,
+        "text": "9999",
+        "x": -79.2,
+        "width": 158.5,
+        "font": "76px Times New Roman",
+        "align": "center",
+        "height": 88.15,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_accelerate_text",
+       "rect": [
+        985,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.45,
+        "text": "9999",
+        "x": -52,
+        "width": 104,
+        "font": "42px Arial",
+        "align": "center",
+        "height": 50.9,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_stoneTxt",
+       "rect": [
+        985,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -56.3,
+        "text": "9999",
+        "x": -123,
+        "width": 245.95,
+        "font": "96px Arial",
+        "align": "center",
+        "height": 112.6,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buyValue_text",
+       "rect": [
+        988,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -41.85,
+        "text": "*Sell",
+        "x": -81.85,
+        "width": 163.65,
+        "font": "72px Times New Roman",
+        "align": "center",
+        "height": 83.7,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonDestroy_text",
+       "rect": [
+        988,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -27.15,
+        "text": "XXXX",
+        "x": -70.4,
+        "width": 140.85,
+        "font": "45px Arial",
+        "align": "center",
+        "height": 54.3,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_infoBar_value",
+       "rect": [
+        991,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -57.3,
+        "text": "BuildingNameXXXX",
+        "x": -344.55,
+        "width": 689.15,
+        "font": "76px Arial",
+        "align": "center",
+        "height": 114.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buildingName_text",
+       "rect": [
+        991,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.8,
+        "text": "Level_XX",
+        "x": -211.15,
+        "width": 422.25,
+        "font": "64px Arial",
+        "align": "left",
+        "height": 85.6,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buildingLevel_text",
+       "rect": [
+        994,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.95,
+        "text": "Dismiss",
+        "x": -131.2,
+        "width": 262.35,
+        "font": "72px Times New Roman",
+        "align": "center",
+        "height": 99.85,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internDismiss_txt",
+       "rect": [
+        994,
+        1021,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -55.15,
+        "text": "9999",
+        "x": -118.65,
+        "width": 237.25,
+        "font": "96px Times New Roman",
+        "align": "center",
+        "height": 110.3,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_accelerateQuest_text",
+       "rect": [
+        997,
+        1018,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -43.55,
+        "text": "Send",
+        "x": -108.6,
+        "width": 217.25,
+        "font": "75px Times New Roman",
+        "align": "center",
+        "height": 87.05,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_listOutQuest_ButtonText",
+       "rect": [
+        997,
+        1021,
+        1,
+        1
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        470.5,
+        278.75
+       ],
+       "symbol": "_mediumPopinBG",
+       "rect": [
+        1,
+        1,
+        941,
+        558
+       ]
+      },
+      {
+       "origin": [
+        375,
+        220.7
+       ],
+       "symbol": "_smallPopinBG",
+       "rect": [
+        1,
+        561,
+        750,
+        442
+       ]
+      },
+      {
+       "origin": [
+        111.7,
+        83.8
+       ],
+       "symbol": "_buildingPortrait_Small",
+       "rect": [
+        753,
+        561,
+        224,
+        168
+       ]
+      },
+      {
+       "origin": [
+        110,
+        70
+       ],
+       "symbol": "house_buttonUpInfo_up",
+       "rect": [
+        753,
+        731,
+        220,
+        140
+       ]
+      },
+      {
+       "origin": [
+        105,
+        70
+       ],
+       "symbol": "_buttonUpgrade_up",
+       "rect": [
+        753,
+        873,
+        210,
+        140
+       ]
+      },
+      {
+       "origin": [
+        39,
+        39
+       ],
+       "symbol": "_stressIcon_Large",
+       "rect": [
+        944,
+        1,
+        78,
+        78
+       ]
+      },
+      {
+       "origin": [
+        37.5,
+        37.5
+       ],
+       "symbol": "_buttonContextt_Hit",
+       "rect": [
+        944,
+        81,
+        75,
+        75
+       ]
+      },
+      {
+       "origin": [
+        34,
+        34
+       ],
+       "symbol": "_woodIcon_Large",
+       "rect": [
+        944,
+        158,
+        68,
+        68
+       ]
+      },
+      {
+       "origin": [
+        28.7,
+        39
+       ],
+       "symbol": "_buttonUpgrade_arrow",
+       "rect": [
+        965,
+        873,
+        58,
+        78
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_goldIcon__Large_Prod",
+       "rect": [
+        944,
+        228,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_evilIcon_Large",
+       "rect": [
+        944,
+        294,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_genericIcon_Large",
+       "rect": [
+        944,
+        360,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_goldIcon_Large",
+       "rect": [
+        944,
+        426,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_buildRessourceIcon_Large",
+       "rect": [
+        944,
+        492,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        28,
+        28
+       ],
+       "symbol": "_woodIcon_Medium",
+       "rect": [
+        965,
+        953,
+        56,
+        56
+       ]
+      },
+      {
+       "origin": [
+        20.5,
+        32
+       ],
+       "symbol": "_neutralSoulIcon_Large",
+       "rect": [
+        975,
+        731,
+        41,
+        64
+       ]
+      },
+      {
+       "origin": [
+        20.5,
+        32
+       ],
+       "symbol": "_hellSoulIcon_Large",
+       "rect": [
+        975,
+        797,
+        41,
+        64
+       ]
+      },
+      {
+       "origin": [
+        15.4,
+        24
+       ],
+       "symbol": "_neutralSoulIcon_Medium",
+       "rect": [
+        979,
+        558,
+        31,
+        48
+       ]
+      },
+      {
+       "origin": [
+        15.35,
+        24
+       ],
+       "symbol": "_heavenSoulIcon_Medium",
+       "rect": [
+        979,
+        608,
+        31,
+        48
+       ]
+      },
+      {
+       "origin": [
+        15.35,
+        24
+       ],
+       "symbol": "_hellSoulIcon_Medium",
+       "rect": [
+        979,
+        658,
+        31,
+        48
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        160.25,
+        120.25
+       ],
+       "symbol": "_buildingPortrait_Large",
+       "rect": [
+        1,
+        1,
+        321,
+        241
+       ]
+      },
+      {
+       "origin": [
+        137,
+        102.8
+       ],
+       "symbol": "_buildingPortrait_Medium",
+       "rect": [
+        324,
+        1,
+        274,
+        206
+       ]
+      },
+      {
+       "origin": [
+        105,
+        70
+       ],
+       "symbol": "_buttonUpgrade_down",
+       "rect": [
+        600,
+        1,
+        210,
+        140
+       ]
+      },
+      {
+       "origin": [
+        105,
+        70
+       ],
+       "symbol": "_buttonUpgrade_over",
+       "rect": [
+        812,
+        1,
+        210,
+        140
+       ]
+      },
+      {
+       "origin": [
+        121.5,
+        56.2
+       ],
+       "symbol": "_buttonAccelerateLarge_over",
+       "rect": [
+        600,
+        143,
+        243,
+        113
+       ]
+      },
+      {
+       "origin": [
+        121.5,
+        56.2
+       ],
+       "symbol": "_buttonAccelerateLarge_down",
+       "rect": [
+        324,
+        209,
+        243,
+        113
+       ]
+      },
+      {
+       "origin": [
+        120.25,
+        55.25
+       ],
+       "symbol": "_buttonAccelerateLarge_up",
+       "rect": [
+        1,
+        244,
+        241,
+        111
+       ]
+      },
+      {
+       "origin": [
+        0.1,
+        4.6
+       ],
+       "symbol": "house_buttonUpInfo_over",
+       "rect": [
+        845,
+        143,
+        161,
+        108
+       ]
+      },
+      {
+       "origin": [
+        0,
+        4.5
+       ],
+       "symbol": "house_buttonUpInfo_down",
+       "rect": [
+        845,
+        253,
+        160,
+        108
+       ]
+      },
+      {
+       "origin": [
+        186.5,
+        21.5
+       ],
+       "symbol": "_GaugeBG_TimeSkippedBackground",
+       "rect": [
+        244,
+        324,
+        373,
+        43
+       ]
+      },
+      {
+       "origin": [
+        186,
+        21.5
+       ],
+       "symbol": "_GaugeF_TimeSkippedFront",
+       "rect": [
+        619,
+        363,
+        372,
+        43
+       ]
+      },
+      {
+       "origin": [
+        60,
+        70.6
+       ],
+       "symbol": "_shopButton_HUD_up",
+       "rect": [
+        1,
+        357,
+        120,
+        128
+       ]
+      },
+      {
+       "origin": [
+        60,
+        70.6
+       ],
+       "symbol": "_shopButton_HUD_over",
+       "rect": [
+        123,
+        369,
+        120,
+        128
+       ]
+      },
+      {
+       "origin": [
+        64,
+        54.5
+       ],
+       "symbol": "_internButton_HUD_over",
+       "rect": [
+        245,
+        369,
+        131,
+        115
+       ]
+      },
+      {
+       "origin": [
+        64,
+        54.5
+       ],
+       "symbol": "_internButton_HUD_up",
+       "rect": [
+        378,
+        369,
+        131,
+        115
+       ]
+      },
+      {
+       "origin": [
+        60.85,
+        50
+       ],
+       "symbol": "_buttonMissions_HUD_over",
+       "rect": [
+        511,
+        408,
+        125,
+        110
+       ]
+      },
+      {
+       "origin": [
+        60.85,
+        50
+       ],
+       "symbol": "_buttonMissions_HUD_up",
+       "rect": [
+        245,
+        486,
+        125,
+        110
+       ]
+      },
+      {
+       "origin": [
+        55,
+        65.25
+       ],
+       "symbol": "_shopButton_HUD_down",
+       "rect": [
+        1,
+        487,
+        110,
+        118
+       ]
+      },
+      {
+       "origin": [
+        82.75,
+        37.5
+       ],
+       "symbol": "_xp_bar_hell_BG",
+       "rect": [
+        619,
+        258,
+        166,
+        75
+       ]
+      },
+      {
+       "origin": [
+        82.75,
+        37.5
+       ],
+       "symbol": "_xp_bar_heaven_BG",
+       "rect": [
+        638,
+        408,
+        166,
+        75
+       ]
+      },
+      {
+       "origin": [
+        58.05,
+        49.25
+       ],
+       "symbol": "_buttonPurgatory_HUD_up",
+       "rect": [
+        113,
+        499,
+        119,
+        104
+       ]
+      },
+      {
+       "origin": [
+        58.05,
+        49.25
+       ],
+       "symbol": "_buttonPurgatory_HUD_over",
+       "rect": [
+        372,
+        486,
+        119,
+        104
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonAccelerate_down",
+       "rect": [
+        806,
+        408,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonListSend_down",
+       "rect": [
+        638,
+        485,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonListSend_over",
+       "rect": [
+        493,
+        520,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonAccelerate_over",
+       "rect": [
+        234,
+        598,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonInternDismiss_down",
+       "rect": [
+        1,
+        607,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        69,
+        43.9
+       ],
+       "symbol": "_buttonInternDismiss_over",
+       "rect": [
+        778,
+        498,
+        138,
+        88
+       ]
+      },
+      {
+       "origin": [
+        55,
+        55
+       ],
+       "symbol": "_closeButton_hit",
+       "rect": [
+        374,
+        592,
+        110,
+        110
+       ]
+      },
+      {
+       "origin": [
+        56.1,
+        45.8
+       ],
+       "symbol": "_buttonMissions_HUD_down",
+       "rect": [
+        633,
+        575,
+        116,
+        101
+       ]
+      },
+      {
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "symbol": "_buttonAccelerate_up",
+       "rect": [
+        486,
+        610,
+        136,
+        86
+       ]
+      },
+      {
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "symbol": "_buttonListSend_up",
+       "rect": [
+        141,
+        688,
+        136,
+        86
+       ]
+      },
+      {
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "symbol": "_buttonInternDismiss_up",
+       "rect": [
+        1,
+        697,
+        136,
+        86
+       ]
+      },
+      {
+       "origin": [
+        67.5,
+        42.5
+       ],
+       "symbol": "_buttonDestroy_over",
+       "rect": [
+        751,
+        588,
+        135,
+        85
+       ]
+      },
+      {
+       "origin": [
+        67.5,
+        42.5
+       ],
+       "symbol": "_buttonDestroy_down",
+       "rect": [
+        888,
+        588,
+        135,
+        85
+       ]
+      },
+      {
+       "origin": [
+        67.5,
+        42.5
+       ],
+       "symbol": "_buttonDestroy_up",
+       "rect": [
+        751,
+        675,
+        135,
+        85
+       ]
+      },
+      {
+       "origin": [
+        53.1,
+        44.9
+       ],
+       "symbol": "_buttonPurgatory_HUD_down",
+       "rect": [
+        624,
+        678,
+        109,
+        95
+       ]
+      },
+      {
+       "origin": [
+        42,
+        42
+       ],
+       "symbol": "_buttonContextual_over",
+       "rect": [
+        918,
+        498,
+        84,
+        84
+       ]
+      },
+      {
+       "origin": [
+        42,
+        42
+       ],
+       "symbol": "_buttonEnterBuilding_png",
+       "rect": [
+        279,
+        688,
+        84,
+        84
+       ]
+      },
+      {
+       "origin": [
+        42,
+        42
+       ],
+       "symbol": "_buttonContextual_up",
+       "rect": [
+        486,
+        698,
+        84,
+        84
+       ]
+      },
+      {
+       "origin": [
+        42,
+        42
+       ],
+       "symbol": "_buttonUpgradeBuilding_png",
+       "rect": [
+        365,
+        704,
+        84,
+        84
+       ]
+      },
+      {
+       "origin": [
+        41.5,
+        41.5
+       ],
+       "symbol": "_buttonDestroyBuilding_png",
+       "rect": [
+        279,
+        774,
+        83,
+        83
+       ]
+      },
+      {
+       "origin": [
+        90,
+        19
+       ],
+       "symbol": "_internsButton_over",
+       "rect": [
+        1,
+        785,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        110.5,
+        18.75
+       ],
+       "symbol": "_purgatoryButton_over",
+       "rect": [
+        1,
+        825,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        90,
+        18.5
+       ],
+       "symbol": "_shopButton_down",
+       "rect": [
+        735,
+        762,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        90,
+        19
+       ],
+       "symbol": "_internsButton_down",
+       "rect": [
+        451,
+        784,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        110.5,
+        18.75
+       ],
+       "symbol": "_purgatoryButton_up",
+       "rect": [
+        633,
+        802,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        90,
+        18.5
+       ],
+       "symbol": "_shopButton_over",
+       "rect": [
+        815,
+        802,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        90,
+        18.5
+       ],
+       "symbol": "_shopButton_up",
+       "rect": [
+        364,
+        824,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        110.9,
+        19
+       ],
+       "symbol": "_purgatoryButton_down",
+       "rect": [
+        546,
+        842,
+        180,
+        38
+       ]
+      },
+      {
+       "origin": [
+        71.5,
+        23.5
+       ],
+       "symbol": "_xp_bar_heaven_Gauge",
+       "rect": [
+        183,
+        859,
+        143,
+        47
+       ]
+      },
+      {
+       "origin": [
+        71.5,
+        23.5
+       ],
+       "symbol": "_xp_bar_hell_Gauge",
+       "rect": [
+        1,
+        865,
+        143,
+        47
+       ]
+      },
+      {
+       "origin": [
+        40.5,
+        40.3
+       ],
+       "symbol": "_buttonContextual_down",
+       "rect": [
+        141,
+        605,
+        81,
+        81
+       ]
+      },
+      {
+       "origin": [
+        78.5,
+        19
+       ],
+       "symbol": "_infoBar_bg",
+       "rect": [
+        328,
+        864,
+        157,
+        38
+       ]
+      },
+      {
+       "origin": [
+        47.3,
+        22.75
+       ],
+       "symbol": "_arrow_left_up",
+       "rect": [
+        888,
+        675,
+        95,
+        46
+       ]
+      },
+      {
+       "origin": [
+        47.3,
+        22.75
+       ],
+       "symbol": "_arrow_right_up",
+       "rect": [
+        917,
+        723,
+        95,
+        46
+       ]
+      },
+      {
+       "origin": [
+        47.3,
+        22.75
+       ],
+       "symbol": "_arrow_left_over",
+       "rect": [
+        728,
+        842,
+        95,
+        46
+       ]
+      },
+      {
+       "origin": [
+        47.3,
+        22.75
+       ],
+       "symbol": "_arrow_right_over",
+       "rect": [
+        487,
+        882,
+        95,
+        46
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        22.8
+       ],
+       "symbol": "_arrow_right_down",
+       "rect": [
+        183,
+        776,
+        94,
+        46
+       ]
+      },
+      {
+       "origin": [
+        47.5,
+        22.8
+       ],
+       "symbol": "_arrow_left_down",
+       "rect": [
+        328,
+        904,
+        94,
+        46
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_soulIcon_Large",
+       "rect": [
+        244,
+        244,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_goodIcon_Large",
+       "rect": [
+        946,
+        408,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_currencyIcon_Large",
+       "rect": [
+        584,
+        882,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_alignIcon_Large",
+       "rect": [
+        650,
+        882,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_hardCurrencyIcon_Large",
+       "rect": [
+        424,
+        930,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        30.7
+       ],
+       "symbol": "_stoneIcon_Large",
+       "rect": [
+        490,
+        930,
+        64,
+        62
+       ]
+      },
+      {
+       "origin": [
+        33.9,
+        26.05
+       ],
+       "symbol": "_accelerateIcon_Large",
+       "rect": [
+        146,
+        908,
+        68,
+        52
+       ]
+      },
+      {
+       "origin": [
+        32.5,
+        29.2
+       ],
+       "symbol": "_timeIcon_Large",
+       "rect": [
+        216,
+        908,
+        59,
+        59
+       ]
+      },
+      {
+       "origin": [
+        29.5,
+        29.5
+       ],
+       "symbol": "_stressIcon_Medium",
+       "rect": [
+        277,
+        952,
+        59,
+        59
+       ]
+      },
+      {
+       "origin": [
+        25.6,
+        24
+       ],
+       "symbol": "_closeButton_down",
+       "rect": [
+        787,
+        258,
+        52,
+        49
+       ]
+      },
+      {
+       "origin": [
+        25.5,
+        23.9
+       ],
+       "symbol": "_closeButton_up",
+       "rect": [
+        787,
+        309,
+        52,
+        48
+       ]
+      },
+      {
+       "origin": [
+        25.5,
+        23.9
+       ],
+       "symbol": "_closeButton_over",
+       "rect": [
+        338,
+        952,
+        52,
+        48
+       ]
+      },
+      {
+       "origin": [
+        27.3,
+        21
+       ],
+       "symbol": "_accelerateIcon_Medium",
+       "rect": [
+        1,
+        962,
+        55,
+        42
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_goodIcon_Medium",
+       "rect": [
+        569,
+        258,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_buildRessourceIcon_Medium",
+       "rect": [
+        572,
+        698,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_alignIcon_Medium",
+       "rect": [
+        58,
+        914,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_genericIcon_Medium",
+       "rect": [
+        108,
+        962,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_goldIcon_Medium",
+       "rect": [
+        58,
+        964,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_currencyIcon_Medium",
+       "rect": [
+        158,
+        962,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_hardCurrencyIcon_Medium",
+       "rect": [
+        208,
+        969,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_evilIcon_Medium",
+       "rect": [
+        556,
+        948,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        24
+       ],
+       "symbol": "_soulIcon_Medium",
+       "rect": [
+        606,
+        948,
+        48,
+        48
+       ]
+      },
+      {
+       "origin": [
+        24,
+        23.05
+       ],
+       "symbol": "_stoneIcon_Medium",
+       "rect": [
+        656,
+        948,
+        48,
+        47
+       ]
+      },
+      {
+       "origin": [
+        25.3,
+        22.65
+       ],
+       "symbol": "_timeIcon_Medium",
+       "rect": [
+        1,
+        914,
+        46,
+        46
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_soulIcon_Small",
+       "rect": [
+        146,
+        865,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_goodIcon_Small",
+       "rect": [
+        108,
+        914,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        17.5,
+        15.7
+       ],
+       "symbol": "_timeIcon_Small",
+       "rect": [
+        572,
+        748,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_genericIcon_Small",
+       "rect": [
+        985,
+        675,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_evilIcon_Small",
+       "rect": [
+        277,
+        908,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_alignIcon_Small",
+       "rect": [
+        451,
+        704,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_currencyIcon_Small",
+       "rect": [
+        451,
+        738,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        16,
+        16
+       ],
+       "symbol": "_hardCurrencyIcon_Small",
+       "rect": [
+        364,
+        790,
+        32,
+        32
+       ]
+      },
+      {
+       "origin": [
+        11.5,
+        18
+       ],
+       "symbol": "_hellSoulIcon_Small",
+       "rect": [
+        888,
+        723,
+        23,
+        36
+       ]
+      },
+      {
+       "origin": [
+        11.5,
+        18
+       ],
+       "symbol": "_neutralSoulIcon_Small",
+       "rect": [
+        993,
+        363,
+        23,
+        36
+       ]
+      },
+      {
+       "origin": [
+        11.5,
+        18
+       ],
+       "symbol": "_heavenSoulIcon_Small",
+       "rect": [
+        569,
+        209,
+        23,
+        36
+       ]
+      }
+     ],
+     "file": "atlas2.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24
+}

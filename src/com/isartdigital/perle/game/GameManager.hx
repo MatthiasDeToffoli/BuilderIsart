@@ -16,6 +16,7 @@ import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
+import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.Hud;
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -47,6 +48,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager
 		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ServerManager.playerConnexion();

@@ -223,6 +223,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Wireframe_Shop_Bundle/library.json");
 		
+		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Share_Atlas/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_DestroyBuilding/library.json");
 		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");

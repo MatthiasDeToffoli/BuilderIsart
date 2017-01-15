@@ -31,6 +31,8 @@ class VButtonProduction extends VSmartComponent
 	 */
 	private var resourceType:GeneratorType;
 	
+	private var myBtn:ButtonProduction;
+	
 	/**
 	 * say if generator is empty of not
 	 */
@@ -60,7 +62,7 @@ class VButtonProduction extends VSmartComponent
 	 * @param	data object contain the id of the generator and a boolean said if the generator is empty or not
 	 */
 	private function onGeneratorEvent(data:Dynamic):Void {
-		if (data.forButton && data.id == refBuilding) {
+		if (data.forButton && data.id == refBuilding && myBtn == null) {
 			
 			generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
 			
@@ -69,6 +71,8 @@ class VButtonProduction extends VSmartComponent
 			else if (active && !generatorIsNotEmpty)
 				removeGraphic();
 		}
+		
+		if (myBtn != null) myBtn.setScale();
 	}
 	
 	private function shoulBeVisible ():Bool {
@@ -83,14 +87,14 @@ class VButtonProduction extends VSmartComponent
 	// todo : faire une methode addgraphic ds virtual et l'ovverride, changer ds les autres descendant de virtual egalement
 	// et du coup condition a l'interrieur de cette function
 	private function addGraphic ():Void {
-		var lButton:ButtonProduction = new ButtonProduction();
+		myBtn = new ButtonProduction(myGeneratorDesc.type);
 		
-		graphic = cast(lButton, Container);
+		graphic = cast(myBtn, Container);
 		
-		lButton.setMyGeneratorDescription(myGeneratorDesc);
+		myBtn.setMyGeneratorDescription(myGeneratorDesc);
 		
 		cast(myVHudContextual.graphic, HudContextual).addComponentBtnProd(
-			cast(lButton, SmartComponent)
+			cast(myBtn, SmartComponent)
 		);
 	}
 	
@@ -109,6 +113,8 @@ class VButtonProduction extends VSmartComponent
 		super.desactivate(); //@TODO: rendre le btn clippable en ajoutant l'implement
 		// difficile car demande bcp d'ajout ds les class de Mathieu, (plein de fc super.recycle)
 		// à voir plus tard on va dire.
+		
+		myBtn = null;
 	}
 	
 	override public function destroy() {	

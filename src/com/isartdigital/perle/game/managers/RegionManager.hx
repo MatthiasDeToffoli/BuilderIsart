@@ -347,7 +347,7 @@ class RegionManager
 		
 		if (mapNumbersRegion[pType] > 0) basePrice *= priceFactor * mapNumbersRegion[pType];
 		
-		if (basePrice < ResourcesManager.getTotalForType(GeneratorType.soft)){
+		if (basePrice <= ResourcesManager.getTotalForType(GeneratorType.soft)){
 			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(basePrice));
 			addExp(pType, Std.int(Math.abs(pWorldPos.x) - 1), mapNumbersRegion[pType]);
 			return true;

@@ -516,7 +516,7 @@ class ResourcesManager
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);		
 		save(pGenerator);
 		
-		if (pGenerator.desc.quantity >= pGenerator.desc.max / 2) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
+		if (pGenerator.desc.quantity >= pGenerator.desc.max / 10) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
 		else generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id});
 		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}

@@ -228,4 +228,11 @@ class AssetName{
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
+	//button production assets
+	
+	public static inline var PROD_ICON_SOFT:String = "_goldIcon__Large_Prod";
+	public static inline var PROD_ICON_HARD:String = "_hardCurrencyIcon_Large";
+	public static inline var PROD_ICON_WOOD:String = "_woodIcon_Large";
+	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";
+
 }
