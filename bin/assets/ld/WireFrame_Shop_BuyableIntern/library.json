@@ -218,27 +218,216 @@
  "frameRate": 24,
  "movies": [
   {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "ButtonBuyIntern",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.025,
+        0
+       ],
+       "tweened": false,
+       "ref": "_buttonBuyIntern_up",
+       "index": 0,
+       "pivot": [
+        134.8,
+        116.65
+       ],
+       "duration": 1
+      },
+      {
+       "loc": [
+        0,
+        -0.025
+       ],
+       "tweened": false,
+       "ref": "_buttonBuyIntern_over",
+       "index": 1,
+       "pivot": [
+        136.05,
+        117.9
+       ],
+       "duration": 1
+      },
+      {
+       "loc": [
+        0,
+        -0.025
+       ],
+       "tweened": false,
+       "ref": "_buttonBuyIntern_down",
+       "index": 2,
+       "pivot": [
+        136.05,
+        117.9
+       ],
+       "duration": 2
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        59.45,
+        -65.3
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "_shop_intern_name_txt"
+      }
+     ],
+     "name": "Intern_Name"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        59.35,
+        -98.5
+       ],
+       "tweened": false,
+       "ref": "_alignIcon_Small",
+       "index": 0,
+       "pivot": [
+        16,
+        16
+       ],
+       "duration": 4
+      }
+     ],
+     "name": "Intern_Side"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -70.025,
+        -52.55
+       ],
+       "tweened": false,
+       "ref": "_shop_intern_image",
+       "index": 0,
+       "pivot": [
+        57.225,
+        57.575
+       ],
+       "duration": 4
+      }
+     ],
+     "name": "Intern_Photo"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -91,
+        98.625
+       ],
+       "tweened": false,
+       "ref": "Shop_Interns_SpeedStat",
+       "index": 0,
+       "pivot": [
+        -0.025,
+        0
+       ],
+       "duration": 4
+      }
+     ],
+     "name": "Intern_Speed"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -75.65,
+        57.9
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "Shop_Interns_EfficiencyStat"
+      }
+     ],
+     "name": "Intern_Efficiency"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        -91.575,
+        17.175
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "Shop_Interns_StressStat"
+      }
+     ],
+     "name": "Intern_Stress"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        38.3,
+        -14.05
+       ],
+       "index": 0,
+       "duration": 4,
+       "ref": "_shop_intern_cost"
+      }
+     ],
+     "name": "Intern_Cost"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        99.35,
+        -13.95
+       ],
+       "tweened": false,
+       "ref": "_goldIcon_Medium",
+       "index": 0,
+       "pivot": [
+        24,
+        24
+       ],
+       "duration": 4
+      }
+     ],
+     "name": "Intern_Price_icon"
+    }
+   ]
+  },
+  {
    "id": "Shop_Interns_EfficiencyStat",
    "layers": [
     {
-     "name": "txt",
      "keyframes": [
       {
-       "duration": 1,
-       "index": 0,
        "tweened": false,
+       "index": 0,
+       "duration": 1,
        "ref": "_shop_intern_efficiency_txt"
       }
-     ]
+     ],
+     "name": "txt"
     },
     {
-     "name": "jauge",
      "keyframes": [
       {
        "index": 0,
        "duration": 1
       }
-     ]
+     ],
+     "name": "jauge"
     }
    ]
   },
@@ -246,24 +435,24 @@
    "id": "Shop_Interns_SpeedStat",
    "layers": [
     {
-     "name": "txt",
      "keyframes": [
       {
-       "duration": 1,
-       "index": 0,
        "tweened": false,
+       "index": 0,
+       "duration": 1,
        "ref": "_shop_intern_speed_txt"
       }
-     ]
+     ],
+     "name": "txt"
     },
     {
-     "name": "jauge",
      "keyframes": [
       {
        "index": 0,
        "duration": 1
       }
-     ]
+     ],
+     "name": "jauge"
     }
    ]
   },
@@ -271,27 +460,27 @@
    "id": "Shop_Interns_StressStat",
    "layers": [
     {
-     "name": "txt",
      "keyframes": [
       {
-       "duration": 1,
-       "index": 0,
        "tweened": false,
+       "index": 0,
+       "duration": 1,
        "ref": "_shop_intern_stress_txt"
       }
-     ]
+     ],
+     "name": "txt"
     },
     {
-     "name": "jauge",
      "keyframes": [
       {
        "index": 0,
        "duration": 1
       }
-     ]
+     ],
+     "name": "jauge"
     }
    ]
   }
  ],
- "md5": "baaa3538f8ca5894a0c5b61a5097a36c"
+ "md5": "b68b4e3e2ac6402440a20125bbd6bf5c"
 }

@@ -100,6 +100,7 @@ class BHBuilt extends BuildingHud
 	private function onClickDescription(): Void {
 		removeButtonsChange();
 		removeListenerGameContainer();
+		Hud.getInstance().hide();
 		if(Std.is(BuildingHud.virtualBuilding,VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
 		else UIManager.getInstance().openPopin(InfoBuilding.getInstance());
 		onClickExit();

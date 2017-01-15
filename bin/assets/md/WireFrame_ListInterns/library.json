@@ -1,5 +1,5 @@
 {
- "md5": "78eaf8f471d8eb1ec8bf128220f77a6c",
+ "md5": "cfb863bb0b403539ff36161e9e465c53",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -22,7 +22,7 @@
        ]
       },
       {
-       "symbol": "midInternHolder",
+       "symbol": "topInternHolder",
        "origin": [
         0,
         0
@@ -35,7 +35,7 @@
        ]
       },
       {
-       "symbol": "topInternHolder",
+       "symbol": "midInternHolder",
        "origin": [
         0,
         0
@@ -48,7 +48,7 @@
        ]
       },
       {
-       "symbol": "_interns_purgatoryButton_over",
+       "symbol": "_purgatoryButton_over",
        "origin": [
         103.5,
         103.5
@@ -61,7 +61,7 @@
        ]
       },
       {
-       "symbol": "_listInterns_shopButton_down",
+       "symbol": "_shopButton_down",
        "origin": [
         103.5,
         103.5
@@ -74,65 +74,130 @@
        ]
       },
       {
-       "symbol": "_arrow_left_down",
+       "symbol": "_closeButton_down",
        "origin": [
-        69.75,
-        107.25
+        59.2,
+        59.2
+       ],
+       "rect": [
+        1140,
+        1396,
+        119,
+        119
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        59.25,
+        59.2
+       ],
+       "rect": [
+        1261,
+        1396,
+        119,
+        119
+       ]
+      },
+      {
+       "symbol": "_arrow_right_up",
+       "origin": [
+        71,
+        34.1
        ],
        "rect": [
         1349,
         978,
-        140,
-        215
+        142,
+        69
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
+       "origin": [
+        71,
+        34.1
+       ],
+       "rect": [
+        1349,
+        1049,
+        142,
+        69
+       ]
+      },
+      {
+       "symbol": "_arrow_left_over",
+       "origin": [
+        71,
+        34.1
+       ],
+       "rect": [
+        1349,
+        1120,
+        142,
+        69
+       ]
+      },
+      {
+       "symbol": "_arrow_left_up",
+       "origin": [
+        71,
+        34.1
+       ],
+       "rect": [
+        1349,
+        1191,
+        142,
+        69
        ]
       },
       {
        "symbol": "_arrow_right_down",
        "origin": [
-        69.75,
-        107.25
+        71.25,
+        34.25
        ],
        "rect": [
         1349,
-        1195,
-        140,
-        215
+        1262,
+        141,
+        68
        ]
       },
       {
-       "symbol": "_buttonCloseInternList_down",
+       "symbol": "_arrow_left_down",
        "origin": [
-        64.45,
-        64.45
+        71.25,
+        34.25
        ],
        "rect": [
-        1140,
-        1396,
-        129,
-        129
+        1382,
+        1332,
+        141,
+        68
        ]
       },
       {
        "data": {
         "y": -56.35,
-        "text": "Shop",
-        "x": -147,
-        "width": 294,
-        "font": "96px Arial Narrow",
+        "text": "Purgatory",
+        "x": -139,
+        "width": 278,
+        "font": "72px Arial Narrow",
         "align": "center",
         "height": 112.7,
         "wordWrap": 0,
         "color": "#000000"
        },
-       "symbol": "_listInterns_shopButton_text",
+       "symbol": "_purgatoryButton_text",
        "origin": [
         0,
         0
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1271,
-        1396,
+        1349,
+        1332,
         1,
         1
        ]
@@ -140,7 +205,7 @@
       {
        "data": {
         "y": -66.15,
-        "text": "Internships",
+        "text": "*Internships",
         "x": -249.9,
         "width": 499.8,
         "font": "96px Times New Roman",
@@ -156,8 +221,8 @@
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1274,
-        1396,
+        1352,
+        1332,
         1,
         1
        ]
@@ -165,24 +230,24 @@
       {
        "data": {
         "y": -56.35,
-        "text": "Purgatory",
-        "x": -174.7,
-        "width": 349.4,
+        "text": "Shop",
+        "x": -147,
+        "width": 294,
         "font": "96px Arial Narrow",
         "align": "center",
         "height": 112.7,
         "wordWrap": 0,
         "color": "#000000"
        },
-       "symbol": "_interns_purgatoryButton_text",
+       "symbol": "_shopButton_text",
        "origin": [
         0,
         0
        ],
        "baseClass": "TextSprite",
        "rect": [
-        1277,
-        1396,
+        1355,
+        1332,
         1,
         1
        ]
@@ -206,7 +271,7 @@
        ]
       },
       {
-       "symbol": "_interns_purgatoryButton_down",
+       "symbol": "_shopButton_over",
        "origin": [
         103.5,
         103.5
@@ -219,7 +284,7 @@
        ]
       },
       {
-       "symbol": "_listInterns_shopButton_over",
+       "symbol": "_purgatoryButton_down",
        "origin": [
         103.5,
         103.5
@@ -232,7 +297,7 @@
        ]
       },
       {
-       "symbol": "_buttonCloseInternList_up",
+       "symbol": "_closeButton_up",
        "origin": [
         103.5,
         103.4
@@ -245,7 +310,7 @@
        ]
       },
       {
-       "symbol": "_listInterns_shopButton_up",
+       "symbol": "_purgatoryButton_up",
        "origin": [
         97.9,
         97.9
@@ -258,7 +323,7 @@
        ]
       },
       {
-       "symbol": "_interns_purgatoryButton_up",
+       "symbol": "_shopButton_up",
        "origin": [
         97.9,
         97.9
@@ -268,71 +333,6 @@
         257,
         196,
         196
-       ]
-      },
-      {
-       "symbol": "_arrow_left_over",
-       "origin": [
-        69,
-        106.5
-       ],
-       "rect": [
-        1349,
-        1,
-        138,
-        213
-       ]
-      },
-      {
-       "symbol": "_arrow_right_over",
-       "origin": [
-        69,
-        106.5
-       ],
-       "rect": [
-        1349,
-        216,
-        138,
-        213
-       ]
-      },
-      {
-       "symbol": "_arrow_right_up",
-       "origin": [
-        67.9,
-        105.4
-       ],
-       "rect": [
-        606,
-        257,
-        136,
-        211
-       ]
-      },
-      {
-       "symbol": "_arrow_left_up",
-       "origin": [
-        67.9,
-        105.4
-       ],
-       "rect": [
-        744,
-        257,
-        136,
-        211
-       ]
-      },
-      {
-       "symbol": "_buttonCloseInternList_over",
-       "origin": [
-        64.45,
-        64.45
-       ],
-       "rect": [
-        882,
-        257,
-        129,
-        129
        ]
       }
      ]
@@ -376,7 +376,7 @@
     {
      "keyframes": [
       {
-       "ref": "~ButtonCloseInternList",
+       "ref": "~ButtonClose",
        "loc": [
         682.5,
         -401.25
@@ -386,14 +386,44 @@
        "tweened": false
       }
      ],
-     "name": "ButtonCancel"
+     "name": "ButtonClose"
     },
     {
      "keyframes": [
       {
-       "ref": "~_arrow_right",
+       "ref": "~ButtonPurgatory",
        "loc": [
-        672.1125,
+        653.25,
+        375
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonPurgatory"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonShop",
+       "loc": [
+        -647.2125,
+        375
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonShop"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonArrowRight",
+       "loc": [
+        697.5,
         0
        ],
        "duration": 1,
@@ -406,9 +436,9 @@
     {
      "keyframes": [
       {
-       "ref": "~_arrow_left",
+       "ref": "~ButtonArrowLeft",
        "loc": [
-        -669.7875,
+        -686.925,
         0
        ],
        "duration": 1,
@@ -471,82 +501,68 @@
     {
      "keyframes": [
       {
-       "ref": "_buttonCloseInternList_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        103.5,
-        103.3875
-       ]
-      },
-      {
-       "ref": "_buttonCloseInternList_over",
-       "tweened": false,
-       "duration": 1,
-       "index": 1,
-       "pivot": [
-        64.4625,
-        64.4625
-       ]
-      },
-      {
-       "ref": "_buttonCloseInternList_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
-       "pivot": [
-        64.4625,
-        64.4625
-       ]
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonCloseInternList"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
        "ref": "_arrow_left_up",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "pivot": [
-        67.875,
-        105.375
+        70.9875,
+        34.125
        ]
       },
       {
-       "ref": "_arrow_left_over",
-       "tweened": false,
-       "duration": 1,
        "index": 1,
        "pivot": [
-        69,
-        106.5
-       ]
+        70.9875,
+        34.125
+       ],
+       "ref": "_arrow_left_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
       },
       {
-       "ref": "_arrow_left_down",
-       "tweened": false,
-       "duration": 2,
        "index": 2,
        "pivot": [
-        69.75,
-        107.25
+        71.25,
+        34.2375
+       ],
+       "ref": "_arrow_left_down",
+       "scale": [
+        0.9677,
+        0.9677
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_arrow_left_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        70.9875,
+        34.125
        ]
       }
      ],
      "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0
+      }
+     ],
+     "name": "Calque 2"
     }
    ],
    "baseClass": "flash.display.SimpleButton",
-   "id": "~_arrow_left"
+   "id": "~ButtonArrowLeft"
   },
   {
    "layers": [
@@ -558,28 +574,46 @@
        "duration": 1,
        "index": 0,
        "pivot": [
-        67.875,
-        105.375
+        70.9875,
+        34.125
        ]
       },
       {
-       "ref": "_arrow_right_over",
-       "tweened": false,
-       "duration": 1,
        "index": 1,
        "pivot": [
-        69,
-        106.5
-       ]
+        70.9875,
+        34.125
+       ],
+       "ref": "_arrow_right_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
       },
       {
-       "ref": "_arrow_right_down",
-       "tweened": false,
-       "duration": 2,
        "index": 2,
        "pivot": [
-        69.75,
-        107.25
+        71.25,
+        34.2375
+       ],
+       "ref": "_arrow_right_down",
+       "scale": [
+        0.9677,
+        0.9677
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_arrow_right_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        70.9875,
+        34.125
        ]
       }
      ],
@@ -587,7 +621,164 @@
     }
    ],
    "baseClass": "flash.display.SimpleButton",
-   "id": "~_arrow_right"
+   "id": "~ButtonArrowRight"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.0375,
+        -0.0375
+       ],
+       "index": 0,
+       "pivot": [
+        103.5,
+        103.3875
+       ],
+       "ref": "_closeButton_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.0375,
+        0
+       ],
+       "index": 1,
+       "pivot": [
+        59.25,
+        59.2125
+       ],
+       "ref": "_closeButton_over",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.0375,
+        -0.0375
+       ],
+       "index": 2,
+       "pivot": [
+        59.2125,
+        59.2125
+       ],
+       "ref": "_closeButton_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonClose"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_purgatoryButton_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        97.875,
+        97.875
+       ]
+      },
+      {
+       "ref": "_purgatoryButton_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        103.5,
+        103.5
+       ]
+      },
+      {
+       "ref": "_purgatoryButton_down",
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        103.5,
+        103.5
+       ]
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_purgatoryButton_text",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonPurgatory"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_shopButton_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        97.875,
+        97.875
+       ]
+      },
+      {
+       "ref": "_shopButton_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 1,
+       "pivot": [
+        103.5,
+        103.5
+       ]
+      },
+      {
+       "ref": "_shopButton_down",
+       "tweened": false,
+       "duration": 2,
+       "index": 2,
+       "pivot": [
+        103.5,
+        103.5
+       ]
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_shopButton_text",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonShop"
   }
  ],
  "frameRate": 24

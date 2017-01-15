@@ -10,6 +10,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;
@@ -34,7 +35,6 @@ class ShopPopin extends SmartPopin{
 	
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
-	
 	
 	public static function getInstance (): ShopPopin {
 		if (instance == null) instance = new ShopPopin();
@@ -69,16 +69,20 @@ class ShopPopin extends SmartPopin{
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
 		
+		
+		
 		tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
 		tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
 		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
 		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
 		tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
 		tabs[ShopTab.Bundle] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUNDLE), SmartButton);
+		
 		//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
 		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
 		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
 		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
+		
 		tabs[ShopTab.Building].on(MouseEventType.CLICK, onClickOpenBuldings);
 		tabs[ShopTab.Deco].on(MouseEventType.CLICK, onClickOpenDecorations);
 		tabs[ShopTab.Interns].on(MouseEventType.CLICK, onClickOpenIntern);
@@ -185,8 +189,9 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickInterns ():Void {
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		Browser.alert("Work in progress : Special Feature");
+		//UIManager.getInstance().closeCurrentPopin();
+		//UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	private function onClickFakeBuySoft ():Void { // todo temporaire, confirmBuyCurrencie gère si soft ou hard

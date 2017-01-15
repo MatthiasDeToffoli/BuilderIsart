@@ -11,6 +11,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UISprite;
+import js.Browser;
 import pixi.core.display.DisplayObject;
 
 	
@@ -46,7 +47,7 @@ class ListInternPopin extends SmartPopin
 	private function new() 
 	{
 		super(AssetName.INTERN_LIST);
-		
+			
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
 			

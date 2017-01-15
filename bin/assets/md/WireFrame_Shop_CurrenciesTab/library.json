@@ -1,395 +1,387 @@
 {
+ "md5": "d9b2dd51901668cbc1b8ac9d1cd3a81b",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_shop_item_list_bg",
+       "origin": [
+        683.6,
+        240
+       ],
        "rect": [
         1,
         1,
         1368,
         480
-       ],
-       "origin": [
-        683.6,
-        240
        ]
       },
       {
        "symbol": "_shop_pack_spawner",
+       "origin": [
+        144.95,
+        144.9
+       ],
        "rect": [
         1,
         483,
         290,
         290
-       ],
-       "origin": [
-        144.95,
-        144.9
-       ]
-      },
-      {
-       "symbol": "_arrow_right_down",
-       "rect": [
-        1371,
-        1,
-        101,
-        215
-       ],
-       "origin": [
-        50.25,
-        107.25
-       ]
-      },
-      {
-       "symbol": "_arrow_left_down",
-       "rect": [
-        1371,
-        218,
-        101,
-        215
-       ],
-       "origin": [
-        50.25,
-        107.25
-       ]
-      },
-      {
-       "symbol": "_arrow_right_over",
-       "rect": [
-        1371,
-        435,
-        99,
-        213
-       ],
-       "origin": [
-        49.5,
-        106.5
        ]
       },
       {
        "symbol": "_arrow_left_over",
-       "rect": [
-        1,
-        775,
-        99,
-        213
-       ],
        "origin": [
-        49.5,
-        106.5
+        71,
+        34.1
+       ],
+       "rect": [
+        1371,
+        1,
+        142,
+        69
        ]
       },
       {
        "symbol": "_arrow_left_up",
-       "rect": [
-        102,
-        775,
-        97,
-        211
-       ],
        "origin": [
-        48.4,
-        105.4
+        71,
+        34.1
+       ],
+       "rect": [
+        1371,
+        72,
+        142,
+        69
+       ]
+      },
+      {
+       "symbol": "_arrow_right_over",
+       "origin": [
+        71,
+        34.1
+       ],
+       "rect": [
+        1371,
+        143,
+        142,
+        69
        ]
       },
       {
        "symbol": "_arrow_right_up",
-       "rect": [
-        201,
-        775,
-        97,
-        211
-       ],
        "origin": [
-        48.4,
-        105.4
+        71,
+        34.1
+       ],
+       "rect": [
+        1371,
+        214,
+        142,
+        69
+       ]
+      },
+      {
+       "symbol": "_arrow_left_down",
+       "origin": [
+        71.25,
+        34.25
+       ],
+       "rect": [
+        1371,
+        285,
+        141,
+        68
+       ]
+      },
+      {
+       "symbol": "_arrow_right_down",
+       "origin": [
+        71.25,
+        34.25
+       ],
+       "rect": [
+        1371,
+        355,
+        141,
+        68
        ]
       },
       {
        "symbol": "_hardCurrencyIcon_Medium",
-       "rect": [
-        293,
-        650,
-        72,
-        72
-       ],
        "origin": [
         36,
         36
+       ],
+       "rect": [
+        1371,
+        425,
+        72,
+        72
        ]
       },
       {
        "symbol": "_goldIcon_Medium",
-       "rect": [
-        293,
-        483,
-        72,
-        72
-       ],
        "origin": [
         36,
         36
+       ],
+       "rect": [
+        1445,
+        425,
+        72,
+        72
        ]
       }
-     ],
-     "file": "atlas0.png"
+     ]
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ],
- "frameRate": 24,
  "movies": [
   {
-   "id": "Shop_CurrenciesTab_List",
    "layers": [
     {
-     "name": "Shop_InternsTab_list_BG",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        683.625,
-        240
-       ],
-       "ref": "_shop_item_list_bg"
-      }
-     ]
-    },
-    {
-     "name": "Shop_Pack_1",
      "keyframes": [
       {
        "loc": [
         -476.5125,
         -0.0375
        ],
-       "duration": 1,
+       "index": 0,
        "pivot": [
         144.9375,
         144.9
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_pack_spawner"
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Shop_Pack_1"
     },
     {
-     "name": "Shop_Pack_2",
      "keyframes": [
       {
        "loc": [
         -158.85,
         0
        ],
-       "duration": 1,
+       "index": 0,
        "pivot": [
         144.9375,
         144.9
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_pack_spawner"
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Shop_Pack_2"
     },
     {
-     "name": "Shop_Pack_3",
      "keyframes": [
       {
        "loc": [
         158.8125,
         -0.0375
        ],
-       "duration": 1,
+       "index": 0,
        "pivot": [
         144.9375,
         144.9
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_pack_spawner"
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Shop_Pack_3"
     },
     {
-     "name": "Shop_Pack_4",
      "keyframes": [
       {
        "loc": [
         476.475,
         0
        ],
-       "duration": 1,
+       "index": 0,
        "pivot": [
         144.9375,
         144.9
        ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_shop_pack_spawner"
+       "ref": "_shop_pack_spawner",
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Shop_Pack_4"
     },
     {
-     "name": "Arrow_Left_Hard",
      "keyframes": [
       {
+       "ref": "~ButtonArrowLeft",
        "loc": [
-        -697.3125,
-        -6.225
+        -169.05,
+        248.7375
        ],
        "duration": 1,
        "index": 0,
-       "tweened": false,
-       "ref": "~ButtonArrowLeft"
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Arrow_Left_Hard"
     },
     {
-     "name": "Arrow_Right_Soft",
      "keyframes": [
       {
+       "ref": "~ButtonArrowRight",
        "loc": [
-        697.2,
-        6
+        162.0375,
+        248.7375
        ],
        "duration": 1,
        "index": 0,
-       "tweened": false,
-       "ref": "~ButtonArrowRight"
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Arrow_Right_Soft"
     }
-   ]
+   ],
+   "id": "Shop_CurrenciesTab_List"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonArrowLeft",
    "layers": [
     {
-     "name": "Bouton",
      "keyframes": [
       {
+       "ref": "_arrow_left_up",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "pivot": [
-        48.375,
-        105.375
-       ],
-       "ref": "_arrow_left_up"
+        70.9875,
+        34.125
+       ]
       },
       {
-       "tweened": false,
-       "duration": 1,
        "index": 1,
        "pivot": [
-        49.5,
-        106.5
+        70.9875,
+        34.125
        ],
-       "ref": "_arrow_left_over"
+       "ref": "_arrow_left_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
       },
       {
-       "tweened": false,
-       "duration": 2,
        "index": 2,
        "pivot": [
-        50.25,
-        107.25
+        71.25,
+        34.2375
        ],
-       "ref": "_arrow_left_down"
+       "ref": "_arrow_left_down",
+       "scale": [
+        0.9677,
+        0.9677
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_arrow_left_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        70.9875,
+        34.125
+       ]
       }
-     ]
+     ],
+     "name": "Layer 1"
     },
     {
-     "name": "Icon",
      "keyframes": [
       {
-       "loc": [
-        9.6,
-        6.375
-       ],
        "duration": 4,
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_hardCurrencyIcon_Medium"
+       "index": 0
       }
-     ]
+     ],
+     "name": "Calque 2"
     }
-   ]
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowLeft"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonArrowRight",
    "layers": [
     {
-     "name": "Bouton",
      "keyframes": [
       {
+       "ref": "_arrow_right_up",
        "tweened": false,
        "duration": 1,
        "index": 0,
        "pivot": [
-        48.375,
-        105.375
-       ],
-       "ref": "_arrow_right_up"
+        70.9875,
+        34.125
+       ]
       },
       {
-       "tweened": false,
-       "duration": 1,
        "index": 1,
        "pivot": [
-        49.5,
-        106.5
+        70.9875,
+        34.125
        ],
-       "ref": "_arrow_right_over"
+       "ref": "_arrow_right_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
       },
       {
-       "tweened": false,
-       "duration": 2,
        "index": 2,
        "pivot": [
-        50.25,
-        107.25
+        71.25,
+        34.2375
        ],
-       "ref": "_arrow_right_down"
-      }
-     ]
-    },
-    {
-     "name": "ICon",
-     "keyframes": [
+       "ref": "_arrow_right_down",
+       "scale": [
+        0.9677,
+        0.9677
+       ],
+       "duration": 1,
+       "tweened": false
+      },
       {
-       "loc": [
-        -5.2875,
-        -5.775
-       ],
-       "duration": 4,
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
+       "ref": "_arrow_right_up",
        "tweened": false,
-       "ref": "_goldIcon_Medium"
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        70.9875,
+        34.125
+       ]
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
-   ]
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonArrowRight"
   }
  ],
- "md5": "cc7406f5917281e199e5327fd86d9f66"
+ "frameRate": 24
 }

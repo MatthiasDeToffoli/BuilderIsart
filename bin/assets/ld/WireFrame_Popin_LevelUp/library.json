@@ -1,30 +1,387 @@
 {
+ "md5": "24716fc57c9c6a7b21928dac6a2abed0",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_buttonConfirmLevelUp_hit",
+       "origin": [
+        415,
+        300
+       ],
+       "rect": [
+        1,
+        1,
+        805,
+        439
+       ]
+      },
+      {
+       "symbol": "_levelUP_BG",
+       "origin": [
+        400,
+        215.5
+       ],
+       "rect": [
+        1,
+        442,
+        800,
+        432
+       ]
+      },
+      {
+       "symbol": "_image",
+       "origin": [
+        67.4,
+        67.35
+       ],
+       "rect": [
+        803,
+        442,
+        135,
+        135
+       ]
+      },
+      {
+       "symbol": "_bg_levelreached",
+       "origin": [
+        64,
+        70
+       ],
+       "rect": [
+        808,
+        1,
+        128,
+        140
+       ]
+      },
+      {
+       "symbol": "_buttonConfirmLevelUp_down",
+       "origin": [
+        90,
+        32
+       ],
+       "rect": [
+        808,
+        143,
+        180,
+        64
+       ]
+      },
+      {
+       "symbol": "_buttonConfirmLevelUp_over",
+       "origin": [
+        90,
+        32
+       ],
+       "rect": [
+        808,
+        209,
+        180,
+        64
+       ]
+      },
+      {
+       "symbol": "_buttonConfirmLevelUp_up",
+       "origin": [
+        90,
+        32
+       ],
+       "rect": [
+        808,
+        275,
+        180,
+        64
+       ]
+      },
+      {
+       "symbol": "_buttonShowAllLvl_hit",
+       "origin": [
+        57.5,
+        34.5
+       ],
+       "rect": [
+        808,
+        341,
+        115,
+        69
+       ]
+      },
+      {
+       "symbol": "_buttonShowAllLvl_over",
+       "origin": [
+        55,
+        32
+       ],
+       "rect": [
+        803,
+        579,
+        110,
+        64
+       ]
+      },
+      {
+       "symbol": "_buttonShowAllLvl_down",
+       "origin": [
+        55,
+        32
+       ],
+       "rect": [
+        803,
+        645,
+        110,
+        64
+       ]
+      },
+      {
+       "symbol": "_buttonShowAllLvl_up",
+       "origin": [
+        55,
+        32
+       ],
+       "rect": [
+        803,
+        711,
+        110,
+        64
+       ]
+      },
+      {
+       "data": {
+        "y": -69.05,
+        "text": "99",
+        "x": -72.6,
+        "width": 145.2,
+        "font": "120px Arial",
+        "align": "center",
+        "height": 138.1,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_txt_level",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        412,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.75,
+        "text": "*Congratulations!",
+        "x": -382.95,
+        "width": 765.95,
+        "font": "96px Arial",
+        "align": "center",
+        "height": 111.25,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_txt_congratulations",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        415,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -55.65,
+        "text": "*Next",
+        "x": -127.95,
+        "width": 255.95,
+        "font": "96px Arial",
+        "align": "center",
+        "height": 111.25,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_txt_continue",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        418,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -22.5,
+        "text": "Description </BR>",
+        "x": -260.45,
+        "width": 520.95,
+        "font": "33px Arial",
+        "align": "center",
+        "height": 44.95,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "symbol": "_txt_description",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        421,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -28.8,
+        "text": "*Skip",
+        "x": -68.55,
+        "width": 137.15,
+        "font": "48px Arial",
+        "align": "center",
+        "height": 57.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_buttonShowAllLvl_text",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        424,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -41.65,
+        "text": "Name",
+        "x": -124.3,
+        "width": 248.6,
+        "font": "71px Arial",
+        "align": "center",
+        "height": 83.3,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "symbol": "_txt_name",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        427,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -41.2,
+        "text": "*NEW!",
+        "x": -141.4,
+        "width": 282.8,
+        "font": "70px Arial",
+        "align": "center",
+        "height": 82.4,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "symbol": "_txt_new",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        430,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -34.05,
+        "text": "Type",
+        "x": -141.6,
+        "width": 283.15,
+        "font": "51px Arial",
+        "align": "center",
+        "height": 68.1,
+        "wordWrap": 0,
+        "color": "#333333"
+       },
+       "symbol": "_txt_type",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        808,
+        433,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
  "movies": [
   {
    "layers": [
     {
      "keyframes": [
       {
-       "ref": "_smallPopinBG",
+       "ref": "_levelUP_BG",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
        "pivot": [
-        375,
-        200
+        400,
+        215.525
        ]
       }
      ],
-     "name": "BG_SkipTimerBG"
+     "name": "BG_LeveUpBG"
     },
     {
      "keyframes": [
       {
-       "loc": [
-        -140.675,
-        12.9
-       ],
        "ref": "_txt_type",
+       "loc": [
+        -145.075,
+        80.875
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -35,11 +392,11 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -0.35,
-        -178.625
-       ],
        "ref": "_txt_congratulations",
+       "loc": [
+        -0.725,
+        -173.675
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -50,11 +407,11 @@
     {
      "keyframes": [
       {
-       "loc": [
-        138.075,
-        13.275
-       ],
        "ref": "~_unlock",
+       "loc": [
+        133.075,
+        90
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -65,11 +422,11 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -140.775,
-        -24.725
-       ],
        "ref": "_txt_new",
+       "loc": [
+        -145,
+        43.25
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -80,11 +437,11 @@
     {
      "keyframes": [
       {
-       "loc": [
-        10,
-        -108.8
-       ],
        "ref": "~BG_Level",
+       "loc": [
+        0.175,
+        -62.075
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -95,17 +452,32 @@
     {
      "keyframes": [
       {
-       "loc": [
-        7.45,
-        129.25
-       ],
        "ref": "~ButtonConfirm",
+       "loc": [
+        0,
+        215
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
       }
      ],
-     "name": "Button_SkipTimeConfirm"
+     "name": "Button_NextReward"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonShowAllLvl",
+       "loc": [
+        275,
+        214.75
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonShowAll"
     }
    ],
    "id": "Popin_LevelUp"
@@ -115,17 +487,13 @@
     {
      "keyframes": [
       {
-       "index": 0,
-       "tweened": false,
-       "loc": [
-        0,
-        4.15
-       ],
        "ref": "_bg_levelreached",
+       "tweened": false,
        "duration": 1,
+       "index": 0,
        "pivot": [
-        44.425,
-        44.425
+        64,
+        70
        ]
       }
      ],
@@ -134,10 +502,6 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        4.15
-       ],
        "ref": "_txt_level",
        "duration": 1,
        "index": 0,
@@ -150,51 +514,64 @@
    "id": "~BG_Level"
   },
   {
-   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
      "keyframes": [
       {
-       "index": 0,
-       "tweened": false,
        "loc": [
         0,
         -0.25
+       ],
+       "index": 0,
+       "pivot": [
+        90,
+        32
        ],
        "ref": "_buttonConfirmLevelUp_up",
        "duration": 1,
-       "pivot": [
-        123.25,
-        42.5
-       ]
+       "tweened": false
       },
       {
-       "index": 1,
-       "tweened": false,
        "loc": [
         0,
         -0.25
        ],
+       "index": 1,
+       "pivot": [
+        90,
+        32
+       ],
        "ref": "_buttonConfirmLevelUp_over",
        "duration": 1,
-       "pivot": [
-        124,
-        45
-       ]
+       "tweened": false
       },
       {
-       "index": 2,
-       "tweened": false,
        "loc": [
         -0.1,
         0.025
        ],
-       "ref": "_buttonConfirmLevelUp_down",
-       "duration": 2,
+       "index": 2,
        "pivot": [
-        124,
-        45
-       ]
+        90,
+        32
+       ],
+       "ref": "_buttonConfirmLevelUp_down",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        11.725,
+        -130.075
+       ],
+       "index": 3,
+       "pivot": [
+        415,
+        300
+       ],
+       "ref": "_buttonConfirmLevelUp_hit",
+       "duration": 1,
+       "tweened": false
       }
      ],
      "name": "Layer 1"
@@ -202,28 +579,20 @@
     {
      "keyframes": [
       {
+       "ref": "_txt_continue",
        "loc": [
         0,
         -1.225
        ],
-       "ref": "_txt_continue",
        "duration": 4,
        "index": 0,
        "tweened": false
       }
      ],
      "name": "_txt_continue"
-    },
-    {
-     "keyframes": [
-      {
-       "duration": 4,
-       "index": 0
-      }
-     ],
-     "name": "Text_EnterBuilding"
     }
    ],
+   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonConfirm"
   },
   {
@@ -231,11 +600,77 @@
     {
      "keyframes": [
       {
-       "loc": [
-        90.075,
-        -1.875
+       "ref": "_buttonShowAllLvl_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        55,
+        32
+       ]
+      },
+      {
+       "index": 1,
+       "pivot": [
+        55,
+        32
        ],
+       "ref": "_buttonShowAllLvl_over",
+       "tint": [
+        0.35,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "ref": "_buttonShowAllLvl_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 2,
+       "pivot": [
+        55,
+        32
+       ]
+      },
+      {
+       "ref": "_buttonShowAllLvl_hit",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        57.5,
+        34.5
+       ]
+      }
+     ],
+     "name": "Button"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonShowAllLvl_text",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonShowAllLvl"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
        "ref": "_txt_description",
+       "loc": [
+        95,
+        -5
+       ],
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -246,18 +681,18 @@
     {
      "keyframes": [
       {
-       "index": 0,
-       "tweened": false,
        "loc": [
         -129.525,
         0
        ],
-       "ref": "_image",
-       "duration": 1,
+       "index": 0,
        "pivot": [
         67.375,
         67.35
-       ]
+       ],
+       "ref": "_image",
+       "duration": 1,
+       "tweened": false
       }
      ],
      "name": "Image"
@@ -265,11 +700,11 @@
     {
      "keyframes": [
       {
+       "ref": "_txt_name",
        "loc": [
-        9.825,
+        95,
         -46.525
        ],
-       "ref": "_txt_name",
        "duration": 1,
        "index": 0,
        "tweened": false
@@ -279,286 +714,6 @@
     }
    ],
    "id": "~_unlock"
-  }
- ],
- "md5": "07580460d473b73e024a1045f9028bdd",
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "origin": [
-        372.9,
-        165.9
-       ],
-       "symbol": "BG_Skiptimer",
-       "rect": [
-        1,
-        1,
-        750,
-        400
-       ]
-      },
-      {
-       "origin": [
-        375,
-        200
-       ],
-       "symbol": "_smallPopinBG",
-       "rect": [
-        1,
-        403,
-        750,
-        400
-       ]
-      },
-      {
-       "origin": [
-        124,
-        45
-       ],
-       "symbol": "_buttonConfirmLevelUp_down",
-       "rect": [
-        1,
-        805,
-        252,
-        90
-       ]
-      },
-      {
-       "origin": [
-        124,
-        45
-       ],
-       "symbol": "_buttonConfirmLevelUp_over",
-       "rect": [
-        1,
-        897,
-        252,
-        90
-       ]
-      },
-      {
-       "origin": [
-        123.25,
-        42.5
-       ],
-       "symbol": "_buttonConfirmLevelUp_up",
-       "rect": [
-        255,
-        805,
-        247,
-        85
-       ]
-      },
-      {
-       "origin": [
-        67.4,
-        67.35
-       ],
-       "symbol": "_image",
-       "rect": [
-        504,
-        805,
-        135,
-        135
-       ]
-      },
-      {
-       "origin": [
-        44.4,
-        44.4
-       ],
-       "symbol": "_bg_levelreached",
-       "rect": [
-        255,
-        892,
-        89,
-        89
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.75,
-        "text": "Congratulations !",
-        "x": -749.3,
-        "width": 1498.6,
-        "font": "70px Arial",
-        "align": "center",
-        "height": 85.45,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_congratulations",
-       "rect": [
-        346,
-        892,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -22.5,
-        "text": "Description </BR>",
-        "x": -284.8,
-        "width": 569.6,
-        "font": "33px Arial",
-        "align": "left",
-        "height": 44.95,
-        "wordWrap": 0,
-        "color": "#333333"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_description",
-       "rect": [
-        346,
-        895,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -69.05,
-        "text": "99",
-        "x": -72.6,
-        "width": 145.2,
-        "font": "120px Arial",
-        "align": "center",
-        "height": 138.1,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_level",
-       "rect": [
-        346,
-        898,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -41.65,
-        "text": "Name",
-        "x": -124.3,
-        "width": 248.6,
-        "font": "71px Arial",
-        "align": "left",
-        "height": 83.3,
-        "wordWrap": 0,
-        "color": "#333333"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_name",
-       "rect": [
-        346,
-        901,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -41.2,
-        "text": "NEW !",
-        "x": -141.4,
-        "width": 282.8,
-        "font": "70px Arial",
-        "align": "center",
-        "height": 82.4,
-        "wordWrap": 0,
-        "color": "#333333"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_new",
-       "rect": [
-        346,
-        904,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -34.05,
-        "text": "Type",
-        "x": -141.6,
-        "width": 283.15,
-        "font": "51px Arial",
-        "align": "center",
-        "height": 68.1,
-        "wordWrap": 0,
-        "color": "#333333"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_type",
-       "rect": [
-        346,
-        907,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -65.35,
-        "text": "Continue",
-        "x": -244.5,
-        "width": 489.05,
-        "font": "96px Arial",
-        "align": "center",
-        "height": 130.7,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_continue",
-       "rect": [
-        346,
-        910,
-        1,
-        1
-       ]
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ],
-   "scaleFactor": 1
   }
  ],
  "frameRate": 24

@@ -1,374 +1,154 @@
 {
- "md5": "386522affb327b4c319292a9a943f348",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1960,
-        1129
-       ],
-       "symbol": "Window_BG",
-       "origin": [
-        929.9,
-        589.2
-       ]
-      },
-      {
-       "rect": [
-        1,
-        1132,
-        721,
-        561
-       ],
-       "symbol": "Pack_Image",
-       "origin": [
-        422.9,
-        214.2
-       ]
-      },
-      {
-       "rect": [
-        724,
-        1132,
-        420,
-        420
-       ],
-       "symbol": "_buttonItem_up",
-       "origin": [
-        209.95,
-        209.65
-       ]
-      },
-      {
-       "rect": [
-        724,
-        1554,
-        721,
-        140
-       ],
-       "symbol": "Window_Infos_BG",
-       "origin": [
-        123.6,
-        129.75
-       ]
-      },
-      {
-       "rect": [
-        1,
-        1695,
-        290,
-        290
-       ],
-       "symbol": "_buttonItem_down",
-       "origin": [
-        145,
-        145
-       ]
-      },
-      {
-       "rect": [
-        293,
-        1695,
-        290,
-        290
-       ],
-       "symbol": "_buttonItem_over",
-       "origin": [
-        145,
-        145
-       ]
-      },
-      {
-       "rect": [
-        1146,
-        1132,
-        321,
-        241
-       ],
-       "symbol": "_buttonUpInfo_up",
-       "origin": [
-        130.5,
-        80.5
-       ]
-      },
-      {
-       "rect": [
-        1447,
-        1375,
-        325,
-        209
-       ],
-       "symbol": "_buttonUpInfo_over",
-       "origin": [
-        132.5,
-        70.4
-       ]
-      },
-      {
-       "rect": [
-        1469,
-        1132,
-        325,
-        209
-       ],
-       "symbol": "_buttonUpInfo_down",
-       "origin": [
-        132.5,
-        70.4
-       ]
-      },
-      {
-       "rect": [
-        585,
-        1695,
-        110,
-        110
-       ],
-       "symbol": "_soul_icon",
-       "origin": [
-        55,
-        55
-       ]
-      },
-      {
-       "rect": [
-        1146,
-        1375,
-        110,
-        110
-       ],
-       "symbol": "_info_gold_icon",
-       "origin": [
-        55,
-        55
-       ]
-      },
-      {
-       "data": {
-        "y": -55.65,
-        "wordWrap": 0,
-        "text": "XXXX",
-        "width": 317.55,
-        "color": "#000000",
-        "align": "left",
-        "height": 111.25,
-        "font": "96px customTypo*",
-        "x": -158.75
-       },
-       "rect": [
-        697,
-        1695,
-        1,
-        1
-       ],
-       "symbol": "_pack_content_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite"
-      },
-      {
-       "data": {
-        "y": -18.3,
-        "wordWrap": 0,
-        "text": "XXXX",
-        "width": 437.8,
-        "color": "#000000",
-        "align": "center",
-        "height": 76.6,
-        "font": "63px customTypo*",
-        "x": -138.9
-       },
-       "rect": [
-        700,
-        1695,
-        1,
-        1
-       ],
-       "symbol": "_buttonBuy_Cost_TXT",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite"
-      },
-      {
-       "data": {
-        "y": -10,
-        "wordWrap": 1,
-        "text": "Name_XXX",
-        "width": 688.5,
-        "color": "#000000",
-        "align": "center",
-        "height": 166.7,
-        "font": "126px customTypo*",
-        "x": -405.95
-       },
-       "rect": [
-        703,
-        1695,
-        1,
-        1
-       ],
-       "symbol": "Pack_Name_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite"
-      },
-      {
-       "data": {
-        "y": -73.25,
-        "wordWrap": 0,
-        "text": "Buy",
-        "width": 436.8,
-        "color": "#000000",
-        "align": "center",
-        "height": 115.75,
-        "font": "100px customTypo*",
-        "x": -204.1
-       },
-       "rect": [
-        706,
-        1695,
-        1,
-        1
-       ],
-       "symbol": "_buttonBuy_TXT",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite"
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ]
-  }
- ],
  "movies": [
   {
    "layers": [
     {
-     "name": "Background",
      "keyframes": [
       {
-       "ref": "Window_BG",
-       "duration": 1,
        "loc": [
-        1.35,
-        -2.85
+        -0.05,
+        -0.05
        ],
-       "tweened": false,
-       "scale": [
-        0.98,
-        0.9074
-       ],
+       "ref": "_buttonBuy_Cost_TXT",
+       "duration": 1,
        "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonBuy_Cost_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        -138.5,
+        -0.2
+       ],
+       "ref": "_currency_icon",
+       "duration": 1,
        "pivot": [
-        929.9,
-        589.2
+        55,
+        55
        ]
       }
-     ]
-    },
+     ],
+     "name": "Gold icon"
+    }
+   ],
+   "id": "Pack_Cost"
+  },
+  {
+   "layers": [
     {
-     "name": "Building_Name",
      "keyframes": [
       {
-       "ref": "Pack_Name_txt",
+       "ref": "_mediumPopinBG",
        "duration": 1,
+       "index": 0,
+       "tweened": false,
+       "pivot": [
+        980,
+        570.05
+       ]
+      }
+     ],
+     "name": "Background"
+    },
+    {
+     "keyframes": [
+      {
        "loc": [
-        -435.35,
+        -473.3,
         200
        ],
-       "scale": [
-        0.9415,
-        0.8585
-       ],
+       "ref": "_pack_Name_txt",
+       "duration": 1,
        "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Building_Name"
     },
     {
-     "name": "Building_Image",
      "keyframes": [
       {
-       "ref": "Pack_Image",
-       "duration": 1,
+       "index": 0,
+       "tweened": false,
        "loc": [
-        -431.05,
-        -176.05
+        -467.7,
+        -161.8
        ],
+       "ref": "_pack_Image",
+       "duration": 1,
        "pivot": [
-        422.9,
-        214.2
-       ],
-       "index": 0,
-       "tweened": false
+        360.55,
+        280.55
+       ]
       }
-     ]
+     ],
+     "name": "Building_Image"
     },
     {
-     "name": "Window_Infos_Content",
      "keyframes": [
       {
-       "ref": "Window_Infos_Population",
-       "duration": 1,
        "loc": [
-        242.15,
-        -150
+        509.6,
+        -210.7
        ],
+       "ref": "Window_Buy_PackContent",
+       "duration": 1,
        "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_Infos_Content"
     },
     {
-     "name": "Window_Infos_BuyButton",
      "keyframes": [
       {
-       "ref": "Window_Infos_BuyButton",
-       "duration": 1,
        "loc": [
-        488.15,
-        331.35
+        500,
+        179.75
        ],
+       "ref": "~ButtonBuyInfo",
+       "duration": 1,
        "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_Infos_BuyButton"
     },
     {
-     "name": "Window_Infos_Close_Button",
      "keyframes": [
       {
-       "ref": "~ButtonItem",
-       "duration": 1,
        "loc": [
-        970.45,
-        -508.75
+        536.15,
+        414.3
        ],
-       "scale": [
-        0.3705,
-        0.3705
-       ],
+       "ref": "Pack_Cost",
+       "duration": 1,
        "index": 0,
        "tweened": false
       }
-     ]
+     ],
+     "name": "Window_Buy_Cost"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        920,
+        -540
+       ],
+       "ref": "~ButtonClose",
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonClose"
     }
    ],
    "id": "Popin_ConfirmationAchatEuros"
@@ -376,235 +156,488 @@
   {
    "layers": [
     {
-     "name": "ButtonUpgrade",
      "keyframes": [
       {
-       "ref": "~ButtonBuyInfo",
-       "duration": 1,
-       "loc": [
-        -53.85,
-        -179.95
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "ButtonUpgrade_txt",
-     "keyframes": [
-      {
-       "ref": "_buttonBuy_TXT",
-       "duration": 1,
-       "loc": [
-        -22.7,
-        -112.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "ButtonUpgrade_Cost_txt",
-     "keyframes": [
-      {
-       "ref": "_buttonBuy_Cost_TXT",
-       "duration": 1,
-       "loc": [
-        -86.35,
-        69.05
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "GoldIcon",
-     "keyframes": [
-      {
-       "ref": "_info_gold_icon",
-       "duration": 1,
-       "loc": [
-        -170.25,
-        89.6
-       ],
-       "pivot": [
-        55,
-        55
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "Window_Infos_BuyButton"
-  },
-  {
-   "layers": [
-    {
-     "name": "Window_Infos_BG",
-     "keyframes": [
-      {
-       "ref": "Window_Infos_BG",
+       "ref": "_window_buy_BG",
        "duration": 1,
        "index": 0,
        "tweened": false,
        "pivot": [
-        123.6,
-        129.75
+        360.5,
+        69.8
        ]
       }
-     ]
+     ],
+     "name": "Window_Infos_BG"
     },
     {
-     "name": "Pack_Content_txt",
      "keyframes": [
       {
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        80,
+        0.55
+       ],
        "ref": "_pack_content_txt",
        "duration": 1,
-       "loc": [
-        327.45,
-        -57.35
-       ],
        "pivot": [
         0,
         -0.05
-       ],
-       "index": 0,
-       "tweened": false
+       ]
       }
-     ]
+     ],
+     "name": "Pack_Content_txt"
     },
     {
-     "name": "Soul_Cion",
      "keyframes": [
       {
-       "ref": "_soul_icon",
-       "duration": 1,
+       "index": 0,
+       "tweened": false,
        "loc": [
-        -20.1,
-        -57.95
+        -150,
+        -0.05
        ],
+       "ref": "_pack_content_icon",
+       "duration": 1,
        "pivot": [
         55,
         55
-       ],
-       "index": 0,
-       "tweened": false
+       ]
       }
-     ]
+     ],
+     "name": "Resource_icon"
     }
    ],
-   "id": "Window_Infos_Population"
+   "id": "Window_Buy_PackContent"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
-     "name": "Calque 1",
      "keyframes": [
       {
-       "ref": "_buttonUpInfo_up",
+       "index": 0,
+       "tweened": false,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_buttonBuyCurrency_up",
        "duration": 1,
        "pivot": [
-        130.5,
-        80.5
+        226.65,
+        170.2
+       ]
+      },
+      {
+       "index": 1,
+       "tweened": false,
+       "loc": [
+        -0.05,
+        -0.05
        ],
-       "scale": [
-        1.5144,
-        1.3029
-       ],
+       "ref": "_buttonBuyCurrency_over",
+       "duration": 1,
+       "pivot": [
+        199.5,
+        150.3
+       ]
+      },
+      {
+       "ref": "_buttonBuyCurrency_down",
+       "duration": 2,
+       "index": 2,
+       "tweened": false,
+       "pivot": [
+        199.55,
+        150.25
+       ]
+      }
+     ],
+     "name": "Button_Buy"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonBuy_TXT",
+       "duration": 4,
        "index": 0,
        "tweened": false
-      },
-      {
-       "ref": "_buttonUpInfo_over",
-       "duration": 1,
-       "pivot": [
-        132.5,
-        70.4
-       ],
-       "scale": [
-        1.5144,
-        1.5144
-       ],
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "ref": "_buttonUpInfo_down",
-       "duration": 2,
-       "pivot": [
-        132.5,
-        70.4
-       ],
-       "scale": [
-        1.5144,
-        1.5144
-       ],
-       "index": 2,
-       "tweened": false
       }
-     ]
+     ],
+     "name": "Buy_txt"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
    "id": "~ButtonBuyInfo"
   },
   {
+   "baseClass": "flash.display.SimpleButton",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
-       "ref": "_buttonItem_up",
-       "duration": 1,
-       "pivot": [
-        209.95,
-        209.65
-       ],
-       "scale": [
-        1.5009,
-        1.5009
-       ],
        "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "_buttonItem_over",
+       "tweened": false,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_closeButton_up",
        "duration": 1,
        "pivot": [
-        145,
-        145
-       ],
-       "scale": [
-        1.5556,
-        1.5556
-       ],
-       "index": 1,
-       "tweened": false
+        138,
+        137.85
+       ]
       },
       {
-       "ref": "_buttonItem_down",
+       "index": 1,
+       "tweened": false,
+       "loc": [
+        -0.05,
+        0
+       ],
+       "ref": "_closeButton_over",
+       "duration": 1,
+       "pivot": [
+        79,
+        78.95
+       ]
+      },
+      {
+       "index": 2,
+       "tweened": false,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_closeButton_down",
        "duration": 2,
        "pivot": [
-        145,
-        145
-       ],
-       "scale": [
-        1.5556,
-        1.5556
-       ],
-       "index": 2,
-       "tweened": false
+        78.95,
+        78.95
+       ]
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonItem"
+   "id": "~ButtonClose"
   }
- ]
+ ],
+ "md5": "0ca8295cd2fe75c88f52f99c12da6ff5",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "origin": [
+        980,
+        570.05
+       ],
+       "symbol": "_mediumPopinBG",
+       "rect": [
+        1,
+        1,
+        1960,
+        1141
+       ]
+      },
+      {
+       "origin": [
+        360.55,
+        280.55
+       ],
+       "symbol": "_pack_Image",
+       "rect": [
+        1,
+        1144,
+        721,
+        561
+       ]
+      },
+      {
+       "origin": [
+        226.65,
+        170.2
+       ],
+       "symbol": "_buttonBuyCurrency_up",
+       "rect": [
+        724,
+        1144,
+        454,
+        341
+       ]
+      },
+      {
+       "origin": [
+        199.5,
+        150.3
+       ],
+       "symbol": "_buttonBuyCurrency_over",
+       "rect": [
+        1,
+        1707,
+        399,
+        301
+       ]
+      },
+      {
+       "origin": [
+        199.55,
+        150.25
+       ],
+       "symbol": "_buttonBuyCurrency_down",
+       "rect": [
+        402,
+        1707,
+        399,
+        301
+       ]
+      },
+      {
+       "origin": [
+        360.5,
+        69.8
+       ],
+       "symbol": "_window_buy_BG",
+       "rect": [
+        724,
+        1487,
+        721,
+        140
+       ]
+      },
+      {
+       "origin": [
+        138,
+        137.85
+       ],
+       "symbol": "_closeButton_up",
+       "rect": [
+        1180,
+        1144,
+        276,
+        275
+       ]
+      },
+      {
+       "origin": [
+        138,
+        137.85
+       ],
+       "symbol": "_buttonClose_buywindow_up",
+       "rect": [
+        1447,
+        1421,
+        276,
+        275
+       ]
+      },
+      {
+       "origin": [
+        85.95,
+        85.95
+       ],
+       "symbol": "_buttonClose_buywindow_down",
+       "rect": [
+        1458,
+        1144,
+        172,
+        172
+       ]
+      },
+      {
+       "origin": [
+        85.95,
+        85.95
+       ],
+       "symbol": "_buttonClose_buywindow_over",
+       "rect": [
+        1632,
+        1144,
+        172,
+        172
+       ]
+      },
+      {
+       "origin": [
+        78.95,
+        78.95
+       ],
+       "symbol": "_closeButton_down",
+       "rect": [
+        1806,
+        1144,
+        158,
+        158
+       ]
+      },
+      {
+       "origin": [
+        79,
+        78.95
+       ],
+       "symbol": "_closeButton_over",
+       "rect": [
+        1806,
+        1304,
+        158,
+        158
+       ]
+      },
+      {
+       "origin": [
+        55,
+        55
+       ],
+       "symbol": "_pack_content_icon",
+       "rect": [
+        1725,
+        1464,
+        110,
+        110
+       ]
+      },
+      {
+       "origin": [
+        55,
+        55
+       ],
+       "symbol": "_currency_icon",
+       "rect": [
+        1837,
+        1464,
+        110,
+        110
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -55.65,
+        "text": "XXXX",
+        "x": -130.85,
+        "width": 261.65,
+        "font": "96px customTypo*",
+        "align": "left",
+        "height": 111.25,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_pack_content_txt",
+       "rect": [
+        1725,
+        1318,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -83.5,
+        "text": "Name_XXX",
+        "x": -344.25,
+        "width": 688.5,
+        "font": "126px customTypo*",
+        "align": "center",
+        "height": 166.7,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_pack_Name_txt",
+       "rect": [
+        1728,
+        1318,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -38.3,
+        "text": "XXXX",
+        "x": -91.65,
+        "width": 183.3,
+        "font": "63px customTypo*",
+        "align": "center",
+        "height": 76.6,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy_Cost_TXT",
+       "rect": [
+        1731,
+        1318,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -57.7,
+        "text": "Buy",
+        "x": -218.55,
+        "width": 436.8,
+        "font": "100px customTypo*",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy_TXT",
+       "rect": [
+        1734,
+        1318,
+        1,
+        1
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        979.65,
+        564.25
+       ],
+       "symbol": "Window_BG",
+       "rect": [
+        1,
+        1,
+        1960,
+        1129
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24
 }

@@ -1,0 +1,744 @@
+{
+ "md5": "830cc72e0caea277073be721d6e7e537",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_smallPopinBG",
+       "origin": [
+        750,
+        441.45
+       ],
+       "rect": [
+        1,
+        1,
+        1500,
+        883
+       ]
+      },
+      {
+       "symbol": "Image_SelectedBuilding",
+       "origin": [
+        167.6,
+        167.6
+       ],
+       "rect": [
+        1503,
+        1,
+        336,
+        336
+       ]
+      },
+      {
+       "symbol": "_buttonCancelConstructionConfirm_over",
+       "origin": [
+        180,
+        90
+       ],
+       "rect": [
+        1503,
+        339,
+        360,
+        180
+       ]
+      },
+      {
+       "symbol": "_buttonCancelConstructionConfirm_up",
+       "origin": [
+        180,
+        90
+       ],
+       "rect": [
+        1503,
+        521,
+        360,
+        180
+       ]
+      },
+      {
+       "symbol": "_buttonCancelConstructionConfirm_down",
+       "origin": [
+        180,
+        90
+       ],
+       "rect": [
+        1503,
+        703,
+        360,
+        180
+       ]
+      },
+      {
+       "symbol": "_GaugeBG_TimeSkippedBackground",
+       "origin": [
+        373,
+        43
+       ],
+       "rect": [
+        1,
+        886,
+        746,
+        86
+       ]
+      },
+      {
+       "symbol": "_GaugeF_TimeSkippedFront",
+       "origin": [
+        372,
+        43
+       ],
+       "rect": [
+        749,
+        886,
+        744,
+        86
+       ]
+      },
+      {
+       "symbol": "_closeButton_hit",
+       "origin": [
+        110,
+        110
+       ],
+       "rect": [
+        1503,
+        885,
+        220,
+        220
+       ]
+      },
+      {
+       "symbol": "_GaugeOL_TimeSkippedOutline",
+       "origin": [
+        122.6,
+        27.5
+       ],
+       "rect": [
+        1,
+        974,
+        405,
+        90
+       ]
+      },
+      {
+       "symbol": "_icon_plus",
+       "origin": [
+        58,
+        58
+       ],
+       "rect": [
+        1841,
+        1,
+        116,
+        116
+       ]
+      },
+      {
+       "symbol": "_closeButton_down",
+       "origin": [
+        51.2,
+        48
+       ],
+       "rect": [
+        1841,
+        119,
+        103,
+        97
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        51,
+        47.8
+       ],
+       "rect": [
+        1841,
+        218,
+        103,
+        96
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "origin": [
+        51,
+        47.8
+       ],
+       "rect": [
+        1865,
+        316,
+        103,
+        96
+       ]
+      },
+      {
+       "symbol": "_sc_icon",
+       "origin": [
+        48.1,
+        47.6
+       ],
+       "rect": [
+        1946,
+        119,
+        96,
+        96
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Medium",
+       "origin": [
+        48,
+        48
+       ],
+       "rect": [
+        1946,
+        217,
+        96,
+        96
+       ]
+      },
+      {
+       "data": {
+        "y": -57.85,
+        "text": "XXXX",
+        "x": -173.55,
+        "width": 347.15,
+        "font": "82px _sans",
+        "align": "center",
+        "height": 115.75,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "Text_CancelConstructionPayment",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        316,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -42.5,
+        "text": "00:00:00",
+        "x": -200,
+        "width": 400,
+        "font": "70px Arial",
+        "align": "center",
+        "height": 85,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_Text_TimeSkipGaugeTime",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        319,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -47.1,
+        "text": "CANCEL",
+        "x": -143.3,
+        "width": 286.6,
+        "font": "64px Arial",
+        "align": "center",
+        "height": 94.15,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_Text_ConfirmCancelConstruction",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        322,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -40.8,
+        "text": "Upgrade_Or_Build",
+        "x": -278.8,
+        "width": 557.55,
+        "font": "62px Arial",
+        "align": "center",
+        "height": 81.55,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_text_skip_UpgradeOrBuild",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        325,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -35.5,
+        "text": "Building_level",
+        "x": -182.25,
+        "width": 364.5,
+        "font": "56px _sans",
+        "align": "left",
+        "height": 71,
+        "wordWrap": 0,
+        "color": "#666666"
+       },
+       "symbol": "Text_SelectedBuildingLevel",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        328,
+        1,
+        1
+       ]
+      },
+      {
+       "data": {
+        "y": -46.65,
+        "text": "Building_name",
+        "x": -238.9,
+        "width": 477.8,
+        "font": "72px _sans",
+        "align": "center",
+        "height": 93.35,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "Text_SelectedBuildingName",
+       "origin": [
+        0,
+        0
+       ],
+       "baseClass": "TextSprite",
+       "rect": [
+        1841,
+        331,
+        1,
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_GaugeBG_TimeSkippedBackground",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        373,
+        43
+       ]
+      }
+     ],
+     "name": "_GaugeBG_TimeSkippedBackground"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_GaugeF_TimeSkippedFront",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        372,
+        43
+       ]
+      }
+     ],
+     "name": "_GaugeF_TimeSkippedFront"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Text_TimeSkipGaugeTime",
+       "loc": [
+        -0.35,
+        1.6
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "_Text_TimeSkipGaugeTime"
+    }
+   ],
+   "id": "Gauge_TimeSkipped"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_smallPopinBG",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        750,
+        441.45
+       ]
+      }
+     ],
+     "name": "BG_CancelConstructionBG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonCancelConstructionConfirm",
+       "loc": [
+        -6.5,
+        311.35
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Button_CancelConstructionConfirm"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonClose",
+       "loc": [
+        698.95,
+        -396.95
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "ButtonClose"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "HardCurrencyStock"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Text_CancelConstructionPayment",
+       "loc": [
+        433.65,
+        312.7
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text_CancelConstructionPayment"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        255.4,
+        307.8
+       ],
+       "index": 0,
+       "pivot": [
+        58,
+        58
+       ],
+       "ref": "_icon_plus",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "IconPlus"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        599.9,
+        300
+       ],
+       "index": 0,
+       "pivot": [
+        48,
+        48
+       ],
+       "ref": "_goldIcon_Medium",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Icon_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Gauge_TimeSkipped",
+       "loc": [
+        -3,
+        149.8
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Timebased Gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Text_SelectedBuildingLevel",
+       "loc": [
+        23.15,
+        -180
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text_SelectedBuildingLevel"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Text_SelectedBuildingName",
+       "loc": [
+        25.15,
+        -272.2
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text_SelectedBuildingName"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_text_skip_UpgradeOrBuild",
+       "loc": [
+        -2.95,
+        46.55
+       ],
+       "duration": 1,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Verb"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -521.45,
+        -159.35
+       ],
+       "index": 0,
+       "pivot": [
+        167.6,
+        167.6
+       ],
+       "ref": "Image_SelectedBuilding",
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Image_SelectedBuilding"
+    }
+   ],
+   "id": "Popin_CancelConstruction"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -0.5
+       ],
+       "index": 0,
+       "pivot": [
+        180,
+        90
+       ],
+       "ref": "_buttonCancelConstructionConfirm_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        0,
+        -0.5
+       ],
+       "index": 1,
+       "tweened": false,
+       "ref": "_buttonCancelConstructionConfirm_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "pivot": [
+        180,
+        90
+       ]
+      },
+      {
+       "loc": [
+        -0.2,
+        0.05
+       ],
+       "index": 2,
+       "pivot": [
+        180,
+        90
+       ],
+       "ref": "_buttonCancelConstructionConfirm_down",
+       "duration": 2,
+       "tweened": false
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Text_ConfirmCancelConstruction",
+       "duration": 4,
+       "index": 0,
+       "tweened": false
+      }
+     ],
+     "name": "Text_ConfirmCancelConstruction"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonCancelConstructionConfirm"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "pivot": [
+        51,
+        47.8
+       ],
+       "ref": "_closeButton_up",
+       "duration": 1,
+       "tweened": false
+      },
+      {
+       "loc": [
+        -0.05,
+        0
+       ],
+       "index": 1,
+       "tweened": false,
+       "ref": "_closeButton_over",
+       "tint": [
+        0.3,
+        "#7DD0FF"
+       ],
+       "duration": 1,
+       "pivot": [
+        51,
+        47.8
+       ]
+      },
+      {
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "index": 2,
+       "tweened": false,
+       "ref": "_closeButton_down",
+       "scale": [
+        0.9561,
+        0.9561
+       ],
+       "duration": 1,
+       "pivot": [
+        51.2,
+        48
+       ]
+      },
+      {
+       "ref": "_closeButton_hit",
+       "tweened": false,
+       "duration": 1,
+       "index": 3,
+       "pivot": [
+        110,
+        110
+       ]
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~ButtonClose"
+  }
+ ],
+ "frameRate": 24
+}
