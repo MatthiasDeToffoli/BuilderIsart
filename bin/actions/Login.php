@@ -3,7 +3,7 @@
  * User: Vicktor Grenu
  */
 
-include("/vendor/autoload.php");
+include("vendor/autoload.php");
 
 // app id number
 $fb = new Facebook\Facebook([
@@ -39,7 +39,7 @@ $reqPre->bindParam(':playerId', $fbId);
 
 try {
     $reqPre->execute();
-    $res = $reqPre->fetch();
+    $res = $reqPre->fetch(); // PDO::FETCH_ASSOC
 
     // if player is in db -> return profil info
     if (!empty($res)) {
