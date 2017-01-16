@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.ui.popin.InfoBuilding;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 
@@ -110,7 +111,7 @@ class VBuilding extends VTile {
 		Hud.getInstance().onClickBuilding(currentState, this,pPos);
 	}
 	
-	public function onClickMove ():Void {
+	public function onClickMove ():Void {	
 		Phantom.onClickMove(
 			cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName(),
 			this
@@ -123,7 +124,12 @@ class VBuilding extends VTile {
 	}
 	
 	public function getAsset():String {
-		return cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName();
+		var lVBuilding:VBuilding;
+		
+		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
+		else lVBuilding = InfoBuilding.getVirtualBuilding();
+		
+		return cast(lVBuilding.graphic, Building).getAssetName();
 	}
 	
 	public function onClickCancel ():Void {
@@ -235,7 +241,13 @@ class VBuilding extends VTile {
 		
 		myVContextualHud.destroy();
 		myVContextualHud = null;
-		BuildingHud.unlinkVirtualBuilding(this);
+		
+		var lVBuilding:VBuilding;
+		
+		if (this != null) lVBuilding = this;
+		else lVBuilding = InfoBuilding.getVirtualBuilding();
+		
+		BuildingHud.unlinkVirtualBuilding(lVBuilding);
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);	
 		

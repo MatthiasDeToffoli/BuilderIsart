@@ -18,8 +18,8 @@ class VHouseHell extends VHouse
 		super(pDescription);
 		
 		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_BUILD_1, AssetName.BUILDING_HELL_BUILD_2];
-		UpgradeGoldValuesList = ["100", "600", "20 000"];
-		UpgradeMaterialsValuesList = ["0", "200", "4000"];
+		UpgradeGoldValuesList = ["600", "20 000"];
+		UpgradeMaterialsValuesList = ["200", "4000"];
 		
 		addPopulation(5);
 		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE] = 5;

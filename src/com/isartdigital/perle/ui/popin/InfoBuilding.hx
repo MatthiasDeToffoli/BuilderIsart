@@ -59,7 +59,7 @@ class InfoBuilding extends SmartPopin{
 	private var upgradeInfosTxt:TextSprite;
 	private var upgradeInfosMaterialsTxt:TextSprite;
 	
-	public var virtualBuilding:VBuilding;
+	public static var virtualBuilding:VBuilding;
 	
 	
 	/**
@@ -75,6 +75,7 @@ class InfoBuilding extends SmartPopin{
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
 	private function new() {
+		trace("new");
 		super(AssetName.POPIN_INFO_BUILDING);
 		
 		levelTxt = cast(SmartCheck.getChildByName(this, "Building_Level_txt"), TextSprite);
@@ -103,7 +104,7 @@ class InfoBuilding extends SmartPopin{
 
 			
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
-		//btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
+		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
 		
 		btnUpgrade = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_UPGRADE), SmartButton);
 		btnUpgradeGoldTxt = cast(SmartCheck.getChildByName(btnUpgrade, "_Upgrade_goldValue"), TextSprite);
@@ -111,9 +112,9 @@ class InfoBuilding extends SmartPopin{
 		btnUpgradeMaterialsImage = cast(SmartCheck.getChildByName(btnUpgrade, "_soulIcon_Small"), UISprite);
 		
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
-		nameTxt.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
+		nameTxt.text = FakeTraduction.assetNameNameToTrad(virtualBuilding.getAsset());
 		
-		if (BuildingHud.virtualBuilding.alignementBuilding == Alignment.heaven){
+		if (virtualBuilding.alignementBuilding == Alignment.heaven){
 			btnUpgradeMaterialsImage.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
 			upgradeInfosMaterialsIcon.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
 		}
@@ -125,37 +126,29 @@ class InfoBuilding extends SmartPopin{
 		//@TODO: Problem here. Create bugs when clicking on a building witch isn't a House. If you decomment, 
 		//you'll have a correct InfoBuildings only for the House Buildings
 		
-		//levelTxt.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
+		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel() + 1);
 		goldSecondesTxt.text = "xxx";
-		//populationTxt.text = getPopulationText();
-		//goldZoneTxt.text = getGoldText();
-		//upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		//upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		//btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
-		//btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel);
+		populationTxt.text = getPopulationText();
+		goldZoneTxt.text = getGoldText();
+		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 		
-		setImage(BuildingHud.virtualBuilding.getAsset());
+		setImage(virtualBuilding.getAsset());
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
-		//btnSell.on(MouseEventType.CLICK, onClickSell);
-		
-		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
-			var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
-			if (myVBuilding.canUpgrade()){
-				btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
-				return;
-			}
-		}
+		btnSell.on(MouseEventType.CLICK, onClickSell);
 		
 		btnUpgrade.parent.removeChild(btnUpgrade);
 		btnUpgrade.destroy();
 	}
-	
+
 	public function linkVirtualBuilding (pVBuilding:VBuilding):Void {
 		virtualBuilding = pVBuilding;
 	}
 	
-	public function getVirtualBuilding():VBuilding{
+	public static function getVirtualBuilding():VBuilding{
 		return virtualBuilding;
 	}
 	
@@ -252,14 +245,10 @@ class InfoBuilding extends SmartPopin{
 	private function onClickSell():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		
-		var lVBuilding:VBuilding;
-		
-		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
-		else lVBuilding = virtualBuilding;
-		
-		trace(virtualBuilding);
-		if (Std.is(virtualBuilding, VHouse)) BHHarvestHouse.getInstance().onClickDestroy();
-
+		if (Std.is(virtualBuilding, VHouse)) {
+			trace(virtualBuilding);
+			BHHarvestHouse.getInstance().onClickDestroy();
+		}
 		else BHHarvest.getInstance().onClickDestroy();	
 	}
 	
@@ -268,11 +257,18 @@ class InfoBuilding extends SmartPopin{
 	 * @return
 	 */
 	public function sell ():Void {
-		BuyManager.sell(cast(BuildingHud.virtualBuilding.graphic, Building).getAssetName());
+		var lVBuilding:VBuilding;
+		
+		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
+		else lVBuilding = virtualBuilding;
+		
+		BuildingHud.linkVirtualBuilding(lVBuilding);
+		BuyManager.sell(cast(lVBuilding.graphic, Building).getAssetName());
 		UIManager.getInstance().closeCurrentPopin();
-		BuildingHud.virtualBuilding.destroy();
+		lVBuilding.destroy();
 		Hud.getInstance().hideBuildingHud();
 		SaveManager.save();
+		Hud.getInstance().show();
 	}
 	
 	/**

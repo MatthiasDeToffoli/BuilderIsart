@@ -45,12 +45,17 @@ class BuildingDestroyPoppin extends SmartPopin
 	{
 		super(AssetName.DESTROY_POPPIN);
 		addListeners();
-
-		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.getAsset());
-		//levelBuilding.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
 		
-		setImage(BuildingHud.virtualBuilding.getAsset());
-		price.text = ""+ BuyManager.getSellPrice(BuildingHud.virtualBuilding.getAsset()); 
+		var lVBuilding:VBuilding;
+		
+		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
+		else lVBuilding = InfoBuilding.getVirtualBuilding();
+		
+		nameBuilding.text = FakeTraduction.assetNameNameToTrad(lVBuilding.getAsset());
+		levelBuilding.text = "Level : " + Std.string(cast(lVBuilding, VBuildingUpgrade).indexLevel + 1);
+		
+		setImage(lVBuilding.getAsset());
+		price.text = ""+ BuyManager.getSellPrice(lVBuilding.getAsset()); 
 	}
 	
 	private function setImage (pAssetName:String):Void { // todo : finir

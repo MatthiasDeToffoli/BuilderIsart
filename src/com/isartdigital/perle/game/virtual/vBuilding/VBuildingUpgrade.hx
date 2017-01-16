@@ -54,7 +54,8 @@ class VBuildingUpgrade extends VBuilding
 		return UpgradeAssetsList.indexOf(tileDesc.assetName) < UpgradeAssetsList.length - 1;
 	}
 	
-	//public function getLevel():Int{
-		//return UpgradeAssetsList.indexOf(tileDesc.assetName);
-	//}
+	public function getLevel():Int{
+		return UpgradeAssetsList.indexOf(tileDesc.assetName);
+		
+	}
 }
