@@ -33,11 +33,13 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
-		//InfoBuilding.getInstance().virtualBuilding = BuildingHud.virtualBuilding;
+		trace(BuildingHud.virtualBuilding);
+		InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 		GameStage.getInstance().getBuildContainer().interactive = true;
 		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
 		setUpgradeButton();
 		setMoveAndDestroy();
+		setDescriptionButton();
 		
 	}
 	
@@ -51,6 +53,17 @@ class BHBuilt extends BuildingHud
 		
 	}
 	
+	private function setDescriptionButton():Void {
+		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal)){
+			btnDescription.alpha = 1;
+			btnDescription.on(MouseEventType.CLICK, onClickDescription);
+		}
+		else {
+			btnDescription.alpha = 0.5;
+			btnDescription.off(MouseEventType.CLICK, onClickDescription);
+		}
+	}
+	
 	private function setUpgradeButton():Void {
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
 				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
@@ -61,10 +74,7 @@ class BHBuilt extends BuildingHud
 				else
 					btnUpgrade.alpha = 0.5;
 			}
-		else{
-			btnDescription.alpha = 0.5;
-			btnUpgrade.alpha = 0.5;
-		}
+		else btnUpgrade.alpha = 0.5;
 	}
 	
 	private function removeButtonsChange():Void {
@@ -83,7 +93,7 @@ class BHBuilt extends BuildingHud
 		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
 		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
-		btnDescription.on(MouseEventType.CLICK, onClickDescription);
+		//btnDescription.on(MouseEventType.CLICK, onClickDescription);
 	}
 	
 	public function removeListenerGameContainer():Void {

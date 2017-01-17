@@ -75,7 +75,6 @@ class InfoBuilding extends SmartPopin{
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
 	private function new() {
-		trace("new");
 		super(AssetName.POPIN_INFO_BUILDING);
 		
 		levelTxt = cast(SmartCheck.getChildByName(this, "Building_Level_txt"), TextSprite);
@@ -100,8 +99,6 @@ class InfoBuilding extends SmartPopin{
 		upgradeInfosGoldIcon = cast(SmartCheck.getChildByName(upgradeInfos, "GoldIcon"), UISprite);
 		upgradeInfosGoldIcon.addChild(new UISprite(AssetName.PROD_ICON_SOFT));
 		upgradeInfosMaterialsIcon = cast(SmartCheck.getChildByName(upgradeInfos, "BuildRes1_Icon"), UISprite);
-		
-
 			
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
@@ -125,23 +122,33 @@ class InfoBuilding extends SmartPopin{
 		
 		//@TODO: Problem here. Create bugs when clicking on a building witch isn't a House. If you decomment, 
 		//you'll have a correct InfoBuildings only for the House Buildings
+		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
+			levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel() + 1);
+			upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+			upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+			btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+			btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+			populationTxt.text = getPopulationText();
+			goldZoneTxt.text = getGoldText();
+			
+			if (cast(virtualBuilding, VBuildingUpgrade).getLevel() >= 2){
+				btnUpgrade.parent.removeChild(btnUpgrade);
+				btnUpgrade.destroy();
+				upgradeInfos.parent.removeChild(upgradeInfos);
+				upgradeInfos.destroy();
+			}
+		}
 		
-		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel() + 1);
 		goldSecondesTxt.text = "xxx";
-		populationTxt.text = getPopulationText();
-		goldZoneTxt.text = getGoldText();
-		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 		
 		setImage(virtualBuilding.getAsset());
 		
+		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnSell.on(MouseEventType.CLICK, onClickSell);
+				
+		trace("coucou3");
 		
-		btnUpgrade.parent.removeChild(btnUpgrade);
-		btnUpgrade.destroy();
 	}
 
 	public function linkVirtualBuilding (pVBuilding:VBuilding):Void {
@@ -188,12 +195,12 @@ class InfoBuilding extends SmartPopin{
 	 * @return
 	 */
 	private function getGoldText():String{
-		var lVBuilding:VBuilding;
+		//var lVBuilding:VBuilding;
+		//
+		//if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
+		//else lVBuilding = virtualBuilding;
 		
-		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
-		else lVBuilding = virtualBuilding;
-		
-		var lGeneratorDesc:GeneratorDescription = lVBuilding.myGenerator.desc;
+		var lGeneratorDesc:GeneratorDescription = virtualBuilding.myGenerator.desc;
 		var lGoldText:String = lGeneratorDesc.quantity + "/" + lGeneratorDesc.max;
 		
 		return lGoldText;
@@ -257,6 +264,7 @@ class InfoBuilding extends SmartPopin{
 	 * @return
 	 */
 	public function sell ():Void {
+		trace("sell");
 		var lVBuilding:VBuilding;
 		
 		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
@@ -278,11 +286,11 @@ class InfoBuilding extends SmartPopin{
 	public function onClickUpgrade ():Void {
 		var lVBuilding:VBuilding;
 		
-		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
-		else lVBuilding = virtualBuilding;
-		
-		var lAssetName:String = lVBuilding.tileDesc.assetName;
-		var lBuildingUpgrade:VBuildingUpgrade = cast(lVBuilding, VBuildingUpgrade);
+		if (virtualBuilding != null) lVBuilding = virtualBuilding;
+		else lVBuilding = BuildingHud.virtualBuilding;
+		trace(virtualBuilding);
+		var lAssetName:String = virtualBuilding.tileDesc.assetName;
+		var lBuildingUpgrade:VBuildingUpgrade = cast(virtualBuilding, VBuildingUpgrade);
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin level up appear
 		lBuildingUpgrade.onClickUpgrade();

@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
+import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -251,10 +252,12 @@ class VBuilding extends VTile {
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);	
 		
-		ResourcesManager.removeGenerator(myGenerator);
-		myGenerator = null;
-		
-		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+		if (Std.is(this, VBuildingUpgrade)){
+			ResourcesManager.removeGenerator(myGenerator);
+			myGenerator = null;
+			
+			ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+		}
 		
 		super.destroy();
 	}
