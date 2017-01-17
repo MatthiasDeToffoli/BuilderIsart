@@ -16,55 +16,69 @@ interface HasVirtual {
  */
 class Virtual {
 	
-	public static var ASSETNAME_TO_VCLASS(default, never):Map<String, String> = [
-		AssetName.BUILDING_PURGATORY => "VTribunal",
-		AssetName.DECO_HEAVEN_TREE_1 => "VDecoHeaven", // todo : c'est bien des building ??
-		AssetName.DECO_HEAVEN_TREE_2 => "VDecoHeaven",
-		AssetName.DECO_HEAVEN_TREE_3 => "VDecoHeaven",
-		AssetName.DECO_HEAVEN_FOUNTAIN => "VDecoHeaven",
-		AssetName.DECO_HEAVEN_ROCK => "VDecoHeaven",
-		AssetName.DECO_HEAVEN_VERTUE => "VVirtuesBuilding",
-		AssetName.DECO_HELL_TREE_1 => "VDecoHell",
-		AssetName.DECO_HELL_TREE_2 => "VDecoHell",
-		AssetName.DECO_HELL_TREE_3 => "VDecoHell",
-		AssetName.DECO_HELL_ROCK => "VDecoHell",
+	public static var BUILDING_NAME_TO_VCLASS(default, never):Map<String, String> = [
+		BuildingName.STYX_PURGATORY => "VTribunal",
+		BuildingName.STYX_VICE => "VVirtuesBuilding",
+		BuildingName.STYX_VIRTUE => "VVirtuesBuilding",
+		BuildingName.STYX_MARKET => "VHouseHell", //todo: mauvaise VClass
 		
-		AssetName.BUILDING_HEAVEN_BRIDGE => "VUrbanHouse",
-		AssetName.BUILDING_HEAVEN_HOUSE => "VHouseHeaven",
-		AssetName.BUILDING_HEAVEN_BUILD_1 => "VHouseHeaven",
-		AssetName.BUILDING_HEAVEN_BUILD_2 => "VHouseHeaven",
-		AssetName.LUMBERMIL_LEVEL1 => "VLumbermill",
-		AssetName.LUMBERMIL_LEVEL2 => "VLumbermill",
-		AssetName.BUILDING_HELL_HOUSE => "VHouseHell",
-		AssetName.BUILDING_HELL_BUILD_1 => "VHouseHell",
-		AssetName.BUILDING_HELL_BUILD_2 => "VHouseHell",
-		AssetName.QUARRY_LEVEL_1 => "VQuarry",
+		
+		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
+		BuildingName.HEAVEN_COLLECTOR => "VLumbermill",
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VHouseHell", //todo
+		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_BIGGER_TREE => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_PRETTY_TREE => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_AWESOME_TREE => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_BUILDING => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => "VDecoHeaven",
+		
+		
+		BuildingName.HELL_HOUSE => "VHouseHell",
+		BuildingName.HELL_COLLECTOR => "VHouseHell", // todo
+		BuildingName.HELL_FACTORY => "VQuarry",
+		BuildingName.HELL_DECO_GENERIC_ROCK => "VDecoHell",
+		BuildingName.HELL_DECO_BIGGER_ROCK => "VDecoHell",
+		BuildingName.HELL_DECO_PRETTY_ROCK => "VDecoHell",
+		BuildingName.HELL_DECO_AWESOME_ROCK => "VDecoHell",
+		BuildingName.HELL_DECO_BUILDING => "VDecoHell",
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell",
+		
+		
+		BuildingName.HOUSE_INTERNS => "VHouseHell", // todo
 	];
 	
-	public static var ASSETNAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [	
-		AssetName.BUILDING_PURGATORY => Alignment.neutral,
-		AssetName.DECO_HEAVEN_TREE_1 => Alignment.heaven, // todo : c'est bien des building ??
-		AssetName.DECO_HEAVEN_TREE_2 => Alignment.heaven,
-		AssetName.DECO_HEAVEN_TREE_3 => Alignment.heaven,
-		AssetName.DECO_HEAVEN_FOUNTAIN => Alignment.heaven,
-		AssetName.DECO_HEAVEN_ROCK => Alignment.heaven,
-		AssetName.DECO_HEAVEN_VERTUE => Alignment.neutral,
-		AssetName.DECO_HELL_TREE_1 => Alignment.hell,
-		AssetName.DECO_HELL_TREE_2 => Alignment.hell,
-		AssetName.DECO_HELL_TREE_3 => Alignment.hell,
-		AssetName.DECO_HELL_ROCK => Alignment.hell,
+	public static var BUILDING_NAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
+	
+		BuildingName.STYX_PURGATORY => Alignment.neutral,
+		BuildingName.STYX_VICE => Alignment.neutral,
+		BuildingName.STYX_VIRTUE => Alignment.neutral,
+		BuildingName.STYX_MARKET => Alignment.neutral,
 		
-		AssetName.BUILDING_HEAVEN_BRIDGE => Alignment.neutral,
-		AssetName.BUILDING_HEAVEN_HOUSE => Alignment.heaven,
-		AssetName.BUILDING_HEAVEN_BUILD_1 => Alignment.heaven,
-		AssetName.BUILDING_HEAVEN_BUILD_2 => Alignment.heaven,
-		AssetName.LUMBERMIL_LEVEL1 => Alignment.heaven,
-		AssetName.LUMBERMIL_LEVEL2 => Alignment.heaven,
-		AssetName.BUILDING_HELL_HOUSE => Alignment.hell,
-		AssetName.BUILDING_HELL_BUILD_1 => Alignment.hell,
-		AssetName.BUILDING_HELL_BUILD_2 => Alignment.hell,
-		AssetName.QUARRY_LEVEL_1=> Alignment.hell,
 		
+		BuildingName.HEAVEN_HOUSE => Alignment.heaven,
+		BuildingName.HEAVEN_COLLECTOR => Alignment.heaven,
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_GENERIC_TREE => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_BIGGER_TREE => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_PRETTY_TREE => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_AWESOME_TREE => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_BUILDING => Alignment.heaven,
+		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => Alignment.heaven,
+		
+		
+		BuildingName.HELL_HOUSE => Alignment.hell,
+		BuildingName.HELL_COLLECTOR => Alignment.hell,
+		BuildingName.HELL_FACTORY => Alignment.hell,
+		BuildingName.HELL_DECO_GENERIC_ROCK => Alignment.hell,
+		BuildingName.HELL_DECO_BIGGER_ROCK => Alignment.hell,
+		BuildingName.HELL_DECO_PRETTY_ROCK => Alignment.hell,
+		BuildingName.HELL_DECO_AWESOME_ROCK => Alignment.hell,
+		BuildingName.HELL_DECO_BUILDING => Alignment.hell,
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING => Alignment.hell,
+		
+		
+		BuildingName.HOUSE_INTERNS => null,
 	];
 	
 	

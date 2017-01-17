@@ -9,23 +9,24 @@ package com.isartdigital.perle.game;
 class AssetName{
 
 	// Building Neutral
-	public static inline var BUILDING_PURGATORY:String = "Tribunal";
+	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
+	public static inline var BUILDING_STYX_VIRTUE:String = "Altar_Virtue";
 	
 	// Building Heaven
 	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuild0";
+	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL2:String = "HeavenBuild1";
+	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL3:String = "HeavenBuild2";
 	public static inline var BUILDING_HEAVEN_BRIDGE:String = "HeavenBuild3";
-	public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild1";
-	public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild2";
-	public static inline var LUMBERMIL_LEVEL1:String = "HeavenLumberMill01";
-	public static inline var LUMBERMIL_LEVEL2:String = "HeavenLumberMill02";
-	//public static inline var BUILDING_HEAVEN_BUILD_1:String = "HeavenBuild1";
-	//public static inline var BUILDING_HEAVEN_BUILD_2:String = "HeavenBuild2";
+	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL1:String = "HeavenLumberMill01";
+	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL2:String = "HeavenLumberMill02";
+	
 	
 	// Building Hell
-	public static inline var QUARRY_LEVEL_1 = "Hell_Quarry";
 	public static inline var BUILDING_HELL_HOUSE:String = "hellBuilding";
-	public static inline var BUILDING_HELL_BUILD_1:String = "hellBuilding2";
-	public static inline var BUILDING_HELL_BUILD_2:String = "hellBuilding3";
+	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
+	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
+	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
+	
 	
 	// Décoration Heaven
 	public static inline var DECO_HEAVEN_TREE_1:String = "Paradis_Arbre01_P";
@@ -33,7 +34,6 @@ class AssetName{
 	public static inline var DECO_HEAVEN_TREE_3:String = "Paradis_Arbre03_P";
 	public static inline var DECO_HEAVEN_FOUNTAIN:String = "heavenBuild4";
 	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
-	public static inline var DECO_HEAVEN_VERTUE:String = "Altar_Virtue";
 	
 	// Décoration Hell
 	public static inline var DECO_HELL_TREE_1:String = "Enfer_Arbre01_P";

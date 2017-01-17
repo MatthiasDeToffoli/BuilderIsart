@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -35,21 +36,21 @@ class CCUBuilding extends CarousselCardUnlock{
 		this.removeChild(item_icon2);	
 	}
 	
-	override public function init(pBuildingAssetName:String):Void {
-		super.init(pBuildingAssetName);
-		setImage(buildingAssetName);
-		setName(buildingAssetName);
+	override public function init(pBuildingName:String):Void {
+		super.init(pBuildingName);
+		setImage(BuildingName.getAssetName(buildingName));
+		setName(FakeTraduction.assetNameNameToTrad(buildingName));
 	}
 	
-	override function setName(pAssetName:String):Void {
-		text_name.text = FakeTraduction.assetNameNameToTrad(pAssetName);
+	override function setName(pString:String):Void {
+		text_name.text = pString;
 	}
 	
 	override function _click(pEvent:EventTarget = null):Void {
 		super._click(pEvent);
 		
-		if (BuyManager.canBuy(buildingAssetName)) {
-			Phantom.onClickShop(buildingAssetName);
+		if (BuyManager.canBuy(buildingName)) {
+			Phantom.onClickShop(buildingName);
 			Hud.getInstance().hideBuildingHud();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
 		}

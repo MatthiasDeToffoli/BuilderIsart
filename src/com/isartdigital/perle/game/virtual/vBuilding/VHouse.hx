@@ -95,7 +95,7 @@ class VHouse extends VBuildingUpgrade
 	{
 		super.onClickUpgrade();
 		
-		updatePopulation(null, mapMaxPopulation[tileDesc.assetName]);
+		updatePopulation(null, mapMaxPopulation[tileDesc.buildingName]);
 		myTime = 60000 / valuesWin[indexLevel];
 		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, maxResources[indexLevel], myTime); //@TODO : mettre de vrais valeur...
 		

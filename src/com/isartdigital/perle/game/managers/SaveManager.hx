@@ -19,8 +19,7 @@ enum Alignment {neutral; hell; heaven; }
 
 
 typedef TileDescription = {
-	var className:String; // todo : enlever
-	var assetName:String; // sûr ? pose problème si on change l'assetName non ?
+	var buildingName:String; // sûr ? pose problème si on change l'assetName non ?
 	var id:Int;
 	var regionX:Int;
 	var regionY:Int;

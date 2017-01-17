@@ -3,7 +3,6 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.ui.popin.shop.CarouselCard;
 import com.isartdigital.utils.ui.smart.SmartButton;
-import pixi.core.math.Point;
 
 /**
  * ...

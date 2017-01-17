@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -21,33 +22,35 @@ class ShopCaroussel extends SmartComponent {
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
 	public static var buildingNameList(default, never):Array<String> = [
-		AssetName.BUILDING_HELL_HOUSE,//1 <== level required
-		AssetName.BUILDING_HEAVEN_HOUSE,//1
-		AssetName.DECO_HEAVEN_VERTUE,//2
+		BuildingName.STYX_VICE,
+		BuildingName.STYX_VIRTUE,
+		BuildingName.STYX_MARKET,
 		
-		AssetName.LUMBERMIL_LEVEL1,//2
-		AssetName.QUARRY_LEVEL_1,//2
-	
-		//AssetName.BUILDING_HEAVEN_BUILD_2,//2 <== Jai comenter ces lignes car on ne doit pas acheter les upgrades des batiments
-		//AssetName.BUILDING_HELL_BUILD_2,//3
-		//AssetName.BUILDING_HEAVEN_BUILD_1,//3
+		BuildingName.HEAVEN_HOUSE,
+		BuildingName.HEAVEN_COLLECTOR,
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
 		
+		BuildingName.HELL_HOUSE,
+		BuildingName.HELL_COLLECTOR,
+		BuildingName.HELL_FACTORY,
+		
+		BuildingName.HOUSE_INTERNS,
 	];
 	
 	public static var decoNameList(default, never):Array<String> = [
-		AssetName.DECO_HELL_TREE_1,//2
-		AssetName.DECO_HEAVEN_TREE_1,//2
-		AssetName.DECO_HEAVEN_FOUNTAIN,//3
-		AssetName.DECO_HEAVEN_TREE_2,//4
-		
-		AssetName.DECO_HEAVEN_TREE_3,//4
-		AssetName.DECO_HEAVEN_ROCK,//4
-		AssetName.DECO_HELL_TREE_2,//4
-		AssetName.DECO_HELL_TREE_3,//5
-		
-		AssetName.DECO_HELL_ROCK,//5
-		
-		//AssetName.BUILDING_HEAVEN_BRIDGE,
+		BuildingName.HEAVEN_DECO_GENERIC_TREE,
+		BuildingName.HEAVEN_DECO_BIGGER_TREE,
+		BuildingName.HEAVEN_DECO_PRETTY_TREE,
+		BuildingName.HEAVEN_DECO_AWESOME_TREE,
+		BuildingName.HEAVEN_DECO_BUILDING,
+		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING,
+	
+		BuildingName.HELL_DECO_GENERIC_ROCK,
+		BuildingName.HELL_DECO_BIGGER_ROCK,
+		BuildingName.HELL_DECO_PRETTY_ROCK,
+		BuildingName.HELL_DECO_AWESOME_ROCK,
+		BuildingName.HELL_DECO_BUILDING,
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING,
 	];
 	
 	public static var internsNameList(default, never):Array<String> = [
@@ -86,7 +89,7 @@ class ShopCaroussel extends SmartComponent {
 	public function init (pPos:Point):Void {
 		
 		cards = new Array<CarouselCard>();
-		cardsToShow = buildingNameList;
+		cardsToShow = buildingNameList; // todo: c'te ligne me semble bizarre
 		cardsPositions = [];
 		
 		position = pPos;
@@ -194,7 +197,7 @@ class ShopCaroussel extends SmartComponent {
 			cards[i] = getNewCard(cardsToShow[j]);
 			
 			cards[i].position = pPositions[i];
-			cards[i].init(cardsToShow[j]); // todo temp
+			cards[i].init(cardsToShow[j]);
 			addChild(cards[i]);
 			cards[i].start();
 		}

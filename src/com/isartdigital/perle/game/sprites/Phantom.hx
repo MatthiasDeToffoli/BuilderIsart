@@ -39,6 +39,8 @@ class Phantom extends Building {
 	private static var container:Container;
 	private static var alignementBuilding:Alignment;
 	
+	public var buildingName:String;
+	
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
 	private var precedentBesMapPos:Point = new Point(0, 0);
@@ -56,9 +58,9 @@ class Phantom extends Building {
 			instance.doAction();
 	}
 	
-	public static function onClickShop (pAssetName:String):Void {
-		alignementBuilding = Virtual.ASSETNAME_TO_ALIGNEMENT[pAssetName];
-		createPhantom(pAssetName);
+	public static function onClickShop (pBuildingName:String):Void {
+		alignementBuilding = Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
+		createPhantom(pBuildingName);
 	}
 	
 	/**
@@ -66,8 +68,8 @@ class Phantom extends Building {
 	 * @param	pAssetName
 	 * @param	pVBuilding
 	 */
-	public static function onClickMove (pAssetName:String, pVBuilding:VBuilding):Void {
-		createPhantom(pAssetName);
+	public static function onClickMove (pBuildingName:String, pVBuilding:VBuilding):Void {
+		createPhantom(pBuildingName);
 		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
 	}
@@ -89,16 +91,17 @@ class Phantom extends Building {
 		instance.confirmMove();
 	}
 	
-	private static function createPhantom (pAssetName:String):Void {
-		if (instance != null && instance.assetName == pAssetName)
+	private static function createPhantom (pBuildingName:String):Void {
+		if (instance != null && instance.assetName == BuildingName.getAssetName(pBuildingName))
 			return;
-		else if (instance != null && instance.assetName != pAssetName)
-			throw("instance must be destroyed before creating another phantom");
+		else if (instance != null && instance.assetName != BuildingName.getAssetName(pBuildingName))
+			Debug.error("instance must be destroyed before creating another phantom");
 		
 		Building.isClickable = false;
 		trace("createPhantom "+ Building.isClickable);
-		instance = new Phantom(pAssetName);//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
+		instance = new Phantom(BuildingName.getAssetName(pBuildingName));//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
 		// todo : revoir Pooling ?s
+		instance.setBuildingName(pBuildingName);
 		instance.init();
 		container.addChild(instance);
 		FootPrint.createShadow(instance);
@@ -122,8 +125,19 @@ class Phantom extends Building {
 		super(pAssetName);
 	}
 	
+	public function setBuildingName (pBuildingName:String):Void {
+		buildingName = pBuildingName;
+	}
+	
 	override public function init():Void {
 		super.init();
+		initPosition();
+	}
+	
+	/**
+	 * put the building in the center of camera
+	 */
+	private function initPosition ():Void {
 		if (position.x == 0 && position.y == 0)
 			position = CameraManager.getCameraCenter();
 	}
@@ -221,8 +235,8 @@ class Phantom extends Building {
 		var mapPos:Index = getRoundMapPos(position);
 		
 		return IsoManager.modelToIsoView(new Point(
-			mapPos.x + Building.ASSETNAME_TO_MAPSIZE[assetName].width / 2,
-			mapPos.y + Building.ASSETNAME_TO_MAPSIZE[assetName].height / 2
+			mapPos.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width / 2,
+			mapPos.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height / 2
 		));
 	}
 	
@@ -252,12 +266,11 @@ class Phantom extends Building {
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
 		
-		if (BuyManager.buy(assetName)) {
+		if (BuyManager.buy(buildingName)) {
 			var newId = IdManager.newId();
 			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {
-				className:"Building", // todo : à revoir, enlever ? (problème semblable au pb du pooling) (House pour hell et heaven ?) (non, car casse le pooling)
-				assetName:assetName,
+				buildingName:buildingName,
 				id:newId,
 				regionX:regionMap.region.x,
 				regionY:regionMap.region.y,
@@ -265,7 +278,8 @@ class Phantom extends Building {
 				mapY:regionMap.map.y,
 				timeDesc: { refTile:newId,  end: tTime + 20000, progress: 0, creationDate: tTime }
 			};
-			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[assetName])), [tileDesc]);
+			trace(buildingName);
+			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
 			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding, position);
 			
@@ -303,7 +317,7 @@ class Phantom extends Building {
 	 * @param	pRect
 	 */
 	private function canBuildHere():Bool {
-		setMapColRow(getRoundMapPos(position), Building.ASSETNAME_TO_MAPSIZE[assetName]);
+		setMapColRow(getRoundMapPos(position), Building.BUILDING_NAME_TO_MAPSIZE[buildingName]);
 		regionMap = getRegionMap();
 		
 		if (instance.vBuilding != null)
@@ -354,8 +368,8 @@ class Phantom extends Building {
 		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
 		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 		
-		return (regionMap.map.x + Building.ASSETNAME_TO_MAPSIZE[assetName].width <= lRegionSize.width &&
-				regionMap.map.y + Building.ASSETNAME_TO_MAPSIZE[assetName].height <= lRegionSize.height);
+		return (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width <= lRegionSize.width &&
+				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height <= lRegionSize.height);
 	}
 	
 	/**
@@ -390,17 +404,17 @@ class Phantom extends Building {
 	private function collisionRectDesc(pVirtual:TileDescription):Bool {
 		var lPoint:Float; // todo @Alexis: lPoint correpond à quoi ?
 		
-		if (Building.ASSETNAME_TO_MAPSIZE[pVirtual.assetName].footprint == 0 ||
-			Building.ASSETNAME_TO_MAPSIZE[assetName].footprint == 0)
+		if (Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint == 0 ||
+			Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint == 0)
 			lPoint = 0;
 		else
-			lPoint = Building.ASSETNAME_TO_MAPSIZE[assetName].footprint;
+			lPoint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;
 
 		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
-		return (regionMap.map.x < pVirtual.mapX + Building.ASSETNAME_TO_MAPSIZE[pVirtual.assetName].width + lPoint &&
-				regionMap.map.x + Building.ASSETNAME_TO_MAPSIZE[assetName].width > pVirtual.mapX - lPoint &&
-				regionMap.map.y < pVirtual.mapY + Building.ASSETNAME_TO_MAPSIZE[pVirtual.assetName].height + lPoint &&
-				regionMap.map.y + Building.ASSETNAME_TO_MAPSIZE[assetName].height > pVirtual.mapY - lPoint );
+		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lPoint &&
+				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lPoint &&
+				regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lPoint &&
+				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lPoint );
 	}
 	
 	/**

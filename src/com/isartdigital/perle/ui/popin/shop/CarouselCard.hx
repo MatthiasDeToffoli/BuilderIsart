@@ -15,14 +15,14 @@ import pixi.interaction.EventTarget;
 class CarouselCard extends SmartButton {
 
 	private var image:UISprite;
-	private var buildingAssetName:String;
+	private var buildingName:String;
 	
 	public function new(pAsset:String) {
 		super(pAsset);
 	}
 	
-	public function init (pBuildingAssetName:String):Void {
-		buildingAssetName = pBuildingAssetName;			
+	public function init (pBuildingName:String):Void {
+		buildingName = pBuildingName;			
 	}
 	
 	public function start ():Void {

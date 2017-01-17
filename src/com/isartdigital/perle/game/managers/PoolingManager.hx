@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.utils.Debug;
 
 /**
  * ...
@@ -13,9 +14,6 @@ class PoolingManager {
 	 */
 	private static var INSTANCE_TO_SPAWN(default, never):Map<String, UInt> = [
 		AssetName.BUILDING_HELL_HOUSE => 2,
-		"Trees" => 5,
-		"Factory" => 1,
-		"Villa" => 2,
 		"Ground" => 400,
 		"Road_h" => 1,
 		"Road_c" => 1,
@@ -23,16 +21,11 @@ class PoolingManager {
 		"Road_tl" => 1,
 		"Road_v" => 1,
 		"FootPrint" => 1,
-		AssetName.BUILDING_PURGATORY => 1
+		AssetName.BUILDING_STYX_PURGATORY => 1
 	];
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
-		//"House" => "Building",
-		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
-		"Trees" => "Building",
-		"Factory" => "Building",
-		"Villa" => "Building",
-		AssetName.BUILDING_PURGATORY => "Tribunal",
+		AssetName.BUILDING_STYX_PURGATORY => "Tribunal",
 		"Ground" => "Ground",
 		"Road_h" => "Ground",
 		"Road_c" => "Ground",
@@ -40,32 +33,23 @@ class PoolingManager {
 		"Road_tl" => "Ground",
 		"Road_v" => "Ground",
 		"FootPrint" => "FootPrint",
-		//"HeavenBuild2" => "Building",
-		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven", // todo : c'est bien des building ??
+		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_3 => "DecoHeaven",
-		//"HeavenBuild2" => "HouseHeaven",
 	    AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
 		AssetName.DECO_HEAVEN_ROCK => "Building",
-		AssetName.DECO_HEAVEN_VERTUE => "Building",
+		AssetName.BUILDING_STYX_VIRTUE => "Building",
 		AssetName.DECO_HELL_TREE_1 => "DecoHell",
 		AssetName.DECO_HELL_TREE_2 => "DecoHell",
 		AssetName.DECO_HELL_TREE_3 => "DecoHell",
 		AssetName.DECO_HELL_ROCK => "Building",
 		
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
-		//AssetName.BUILDING_HEAVEN_BUILD_1 => "Building",
-		//AssetName.BUILDING_HEAVEN_BUILD_2 => "Building",
-		AssetName.LUMBERMIL_LEVEL1 => "Lumbermill",
-		AssetName.LUMBERMIL_LEVEL2 => "Lumbermill",
-		//AssetName.BUILDING_HELL_BUILD_1 => "Building",
-		//AssetName.BUILDING_HELL_BUILD_2 => "Building",
-		AssetName.BUILDING_HEAVEN_BUILD_1 => "HouseHeaven",
-		AssetName.BUILDING_HEAVEN_BUILD_2 => "HouseHeaven",
-		AssetName.BUILDING_HELL_BUILD_1 => "HouseHell",
-		AssetName.BUILDING_HELL_BUILD_2 => "HouseHell",
-		AssetName.QUARRY_LEVEL_1 => "Quarry",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "Lumbermill",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "Lumbermill",
+		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
+		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "Quarry",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon
@@ -136,7 +120,7 @@ class PoolingManager {
 	private static function createInstance(lAssetName:String):Dynamic {
 		var lClassName:String = ASSETNAME_TO_CLASS[lAssetName];
 		if (lClassName == null)
-			throw ("Class for assetName : -- "+lClassName+" -- wasn't found ! Check ASSETNAME_TO_CLASS");
+			Debug.error("Class for assetName : -- "+lAssetName+" -- wasn't found ! Check ASSETNAME_TO_CLASS");
 			
 			
 		return Type.createInstance(Type.resolveClass(

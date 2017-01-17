@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
@@ -25,7 +26,7 @@ class CarousselCardUnlock extends CarouselCard
 	private var text_price:TextSprite;
 	private var text_number_resource:TextSprite;
 	
-	private var lAssetName:String;
+	private var lAssetName:String; // todo @Alexis: suppr et tout ce qui est lié, le switch
 	
 	override public function new(pID:String=null) {
 		super(pID);
@@ -42,12 +43,11 @@ class CarousselCardUnlock extends CarouselCard
 	
 	
 	
-	override public function init (pBuildingAssetName:String):Void {
-		super.init(pBuildingAssetName);
-		lAssetName = pBuildingAssetName;
+	override public function init (pBuildingName:String):Void {
+		super.init(pBuildingName);
+		lAssetName = BuildingName.getAssetName(pBuildingName);
 		// image = pBuildingAssetName ....
 		// text idem voir buyManager ?
-		setName(buildingAssetName);
 		
 		//sfIcon = ShopPopin.iconSoft;
 		/*var lIconCurrencie:FlumpStateGraphic = new FlumpStateGraphic("_goldIcon_Medium"); // todo :pooling à penser
@@ -57,9 +57,9 @@ class CarousselCardUnlock extends CarouselCard
 		sfIcon.addChild(lIconCurrencie);
 		lIconCurrencie.start();*/
 		
-		if (!BuyManager.canBuy(pBuildingAssetName))
+		if (!BuyManager.canBuy(pBuildingName))
 			alpha = 0.5;
-		setPrice(BuyManager.checkPrice(pBuildingAssetName)); // todo: bon item price par rapprt au json
+		setPrice(BuyManager.checkPrice(pBuildingName)); // todo: bon item price par rapprt au json
 	}
 	
 	override public function start ():Void {

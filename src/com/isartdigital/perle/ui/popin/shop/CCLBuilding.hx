@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 
@@ -13,8 +14,8 @@ class CCLBuilding extends CarousselCardLock{
 		super();
 	}
 	
-	override public function init(pBuildingAssetName:String):Void {
-		super.init(pBuildingAssetName);
-		setImage(buildingAssetName);
+	override public function init(pBuildingName:String):Void {
+		super.init(pBuildingName);
+		setImage(BuildingName.getAssetName(buildingName));
 	}
 }

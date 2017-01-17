@@ -29,38 +29,36 @@ typedef RegionMap = {
  */
 class Building extends Tile implements IZSortable
 {
-	public static var ASSETNAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO faire un json
-		"Factory" => {width:3, height:3, footprint : 1},
-		//"House" => {width:2, height:2, footprint : 1},
-		"Trees" => {width:1, height:1, footprint : 0},
-		"Villa" => {width:3, height:3, footprint : 1},
-		AssetName.BUILDING_PURGATORY => {width:3, height:3, footprint : 1},
-		//"HeavenBuild2" => {width:3, height:3, footprint : 1},
-		AssetName.DECO_HEAVEN_TREE_1 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HEAVEN_TREE_2 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HEAVEN_TREE_3 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HEAVEN_FOUNTAIN => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HEAVEN_ROCK => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HEAVEN_VERTUE => { width:3, height:3, footprint : 0 },
-		
-		AssetName.DECO_HELL_TREE_1 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HELL_TREE_2 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HELL_TREE_3 => {width:1, height:1, footprint : 0},
-		AssetName.DECO_HELL_ROCK => { width:1, height:1, footprint : 0 },
-		
-		AssetName.BUILDING_HELL_HOUSE => {width:1, height:2, footprint : 1},
-		AssetName.BUILDING_HELL_BUILD_1 => {width:1, height:2, footprint : 1},
-		AssetName.BUILDING_HELL_BUILD_2 => { width:1, height:2, footprint : 1 },
-		AssetName.QUARRY_LEVEL_1 => { width:3, height:2, footprint : 1 },
+	public static var BUILDING_NAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO obtenir de bdd
+		BuildingName.STYX_PURGATORY => {width:3, height:3, footprint : 1},
+		BuildingName.STYX_VICE => {width:3, height:1, footprint : 1},
+		BuildingName.STYX_VIRTUE => {width:3, height:1, footprint : 1},
+		BuildingName.STYX_MARKET => { width:2, height:3, footprint : 1 },
 		
 		
-		AssetName.BUILDING_HEAVEN_BRIDGE => { width:1, height:1, footprint : 0 },
-		AssetName.BUILDING_HEAVEN_HOUSE => { width:2, height:2, footprint : 1 },
-		AssetName.BUILDING_HEAVEN_BUILD_1 => { width:2, height:2, footprint : 1 },
-		AssetName.BUILDING_HEAVEN_BUILD_2 => { width:2, height:2, footprint : 1 },
-		AssetName.LUMBERMIL_LEVEL1 => { width:2, height:3, footprint : 1 },
+		BuildingName.HEAVEN_HOUSE => {width:2, height:2, footprint : 1},
+		BuildingName.HEAVEN_COLLECTOR => {width:2, height:3, footprint : 1},
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT => {width:3, height:1, footprint : 1},
+		BuildingName.HEAVEN_DECO_GENERIC_TREE => {width:1, height:1, footprint : 1},
+		BuildingName.HEAVEN_DECO_BIGGER_TREE => {width:1, height:1, footprint : 1},
+		BuildingName.HEAVEN_DECO_PRETTY_TREE => {width:1, height:1, footprint : 1},
+		BuildingName.HEAVEN_DECO_AWESOME_TREE => {width:1, height:1, footprint : 1},
+		BuildingName.HEAVEN_DECO_BUILDING => {width:2, height:2, footprint : 1},
+		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => { width:2, height:2, footprint : 1 },
 		
 		
+		BuildingName.HELL_HOUSE => {width:1, height:2, footprint : 1},
+		BuildingName.HELL_COLLECTOR => {width:3, height:2, footprint : 1},
+		BuildingName.HELL_FACTORY => {width:1, height:3, footprint : 1},
+		BuildingName.HELL_DECO_GENERIC_ROCK => {width:1, height:1, footprint : 1},
+		BuildingName.HELL_DECO_BIGGER_ROCK => {width:1, height:1, footprint : 1},
+		BuildingName.HELL_DECO_PRETTY_ROCK => {width:1, height:1, footprint : 1},
+		BuildingName.HELL_DECO_AWESOME_ROCK => {width:1, height:1, footprint : 1},
+		BuildingName.HELL_DECO_BUILDING => {width:2, height:2, footprint : 1},
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING => { width:2, height:2, footprint : 1 },
+		
+		
+		BuildingName.HOUSE_INTERNS => {width:2, height:2, footprint : 1},
 	];
 	
 	public static var list:Array<Building>;
@@ -110,7 +108,7 @@ class Building extends Tile implements IZSortable
 	 * @return
 	 */
 	public static function createBuilding(pTileDesc:TileDescription):Building {
-		var lBuilding:Building = PoolingManager.getFromPool(pTileDesc.assetName);
+		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName));
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
@@ -122,7 +120,7 @@ class Building extends Tile implements IZSortable
 				x:pTileDesc.mapX + regionFirstTilePos.x, 
 				y:pTileDesc.mapY + regionFirstTilePos.y
 			},
-			ASSETNAME_TO_MAPSIZE[pTileDesc.assetName]
+			BUILDING_NAME_TO_MAPSIZE[pTileDesc.buildingName]
 		);
 		list.push(lBuilding);
 		lBuilding.init();

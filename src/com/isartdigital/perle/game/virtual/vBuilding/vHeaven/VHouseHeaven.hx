@@ -17,14 +17,14 @@ class VHouseHeaven extends VHouse
 		super(pDescription);
 		
 		
-		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_BUILD_1, AssetName.BUILDING_HEAVEN_BUILD_2];
+		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3];
 		UpgradeGoldValuesList = ["1000", "30 000"];
 		UpgradeMaterialsValuesList = ["340", "5340"];
 		
 		addPopulation(2);
 		mapMaxPopulation[AssetName.BUILDING_HEAVEN_HOUSE] = 2;
-		mapMaxPopulation[AssetName.BUILDING_HEAVEN_BUILD_1] = 6;
-		mapMaxPopulation[AssetName.BUILDING_HEAVEN_BUILD_2] = 16;
+		mapMaxPopulation[AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2] = 6;
+		mapMaxPopulation[AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3] = 16;
 	}
 	
 	override function addGenerator():Void 

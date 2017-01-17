@@ -53,7 +53,7 @@ class FootPrint extends Tile
 		container.scale.y = 0.5;
 		
 		//point of footprint
-		if (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint == 0)
+		if (Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint == 0)
 			deplacementFootprint = 0;
 		else 
 			deplacementFootprint = DEPLACEMENT_FOOTPRINT_CONST;
@@ -61,8 +61,8 @@ class FootPrint extends Tile
 		//position	
 		footPrint.position = new Point(lInstance.x, (lInstance.y-deplacementFootprint)*2);		
 		//Give width and height
-		footPrint.width = footPrint.width * (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].width + Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint*2);
-		footPrint.height = footPrint.height * (Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].height + Building.ASSETNAME_TO_MAPSIZE[lInstance.assetName].footprint*2);
+		footPrint.width = footPrint.width * (Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].width + Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint*2);
+		footPrint.height = footPrint.height * (Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].height + Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint*2);
 	
 	}
 	

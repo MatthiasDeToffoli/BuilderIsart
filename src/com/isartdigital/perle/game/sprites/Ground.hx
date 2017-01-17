@@ -77,7 +77,7 @@ class Ground extends Tile
 	 * @return
 	 */
 	public static function createGround(pTileDesc:TileDescription):Ground {
-		var lGround:Ground = PoolingManager.getFromPool(pTileDesc.assetName);
+		var lGround:Ground = PoolingManager.getFromPool(pTileDesc.buildingName);
 		
 		
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;

@@ -23,9 +23,9 @@ class CCUResource extends CarousselCardUnlock{
 		text_number_resource.text = "" + numberToGive();	
 	}
 	
-	override public function init(pBuildingAssetName:String):Void 
+	override public function init(pBuildingName:String):Void 
 	{
-		super.init(pBuildingAssetName);
+		super.init(pBuildingName);
 		addGraphic();
 	}
 	

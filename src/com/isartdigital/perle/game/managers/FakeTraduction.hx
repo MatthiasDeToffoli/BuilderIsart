@@ -6,20 +6,14 @@ package com.isartdigital.perle.game.managers;
  */
 class FakeTraduction{
 
-	public static function assetNameNameToTrad (pAssetName:String):String { // todo : plus tard le buildingName
-		var traduc:Map<String,String> = [
+	public static function assetNameNameToTrad (pBuildingName:String):String { // todo : plus tard le buildingName
+		/*var traduc:Map<String,String> = [
 			AssetName.BUILDING_HEAVEN_HOUSE => "HEAVEN HOUSE",
 			AssetName.BUILDING_HELL_HOUSE  => "HELL HOUSE",
-			AssetName.BUILDING_HELL_BUILD_1  => "HELL HOUSE",
-			AssetName.BUILDING_HELL_BUILD_2  => "HELL HOUSE",
-			AssetName.BUILDING_HEAVEN_BUILD_1  => "HEAVEN HOUSE",
-			AssetName.BUILDING_HEAVEN_BUILD_2  => "HEAVEN HOUSE",
 			
-			AssetName.LUMBERMIL_LEVEL1  => "LUMBERMIL",
-			AssetName.QUARRY_LEVEL_1  => "QUARRY",
+			AssetName.BUILDING_HELL_COLLECTOR_LEVEL1  => "LUMBERMIL",
 			//AssetName.BUILDING_HELL_BUILD_2  => "BUILDING_HELL_BUILD_2",
 			//AssetName.BUILDING_HEAVEN_BUILD_1  => "BUILDING_HEAVEN_BUILD_1",
-			AssetName.DECO_HEAVEN_VERTUE  => "VERTUE",
 			
 			AssetName.DECO_HELL_TREE_1  => "HELL TREE",
 			AssetName.DECO_HEAVEN_TREE_1  => "HEAVEN TREE",
@@ -37,9 +31,12 @@ class FakeTraduction{
 			"Iron pack" => "Iron pack",
 			"Gold pack" => "Gold pack",
 			"Karma pack" => "Karma pack"
-		];
+		];*/
 		
-		return traduc[pAssetName];
+		/*if (traduc[pAssetName] != null) // hack temporaire car il faut tt remplacer par BuildingName
+			return traduc[pAssetName];
+		else*/
+			return pBuildingName;
 	}
 	
 	public function new() {

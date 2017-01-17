@@ -99,8 +99,7 @@ class VTile extends Virtual{
 				var tempRoadAssetName:String = (ROAD_MAP[x] != null && ROAD_MAP[x][y] != null && ROAD_MAP[x][y] != "") ? ROAD_MAP[x][y] :"Ground";
 				
 				var tileDesc:TileDescription = {
-					className:"Ground",
-					assetName: tempRoadAssetName,
+					buildingName:"Ground", // si cette fonction sert à rien prq ne pas la sup ?
 					id:IdManager.newId(),
 					regionX:pRegion.desc.x,
 					regionY:pRegion.desc.y,
@@ -131,8 +130,12 @@ class VTile extends Virtual{
 			
 		lLength = pSave.building.length;
 		for (i in 0...lLength)
-			if (pSave.building[i].isTribunal) VTribunal.getInstance(pSave.building[i]);
-			else Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.ASSETNAME_TO_VCLASS[pSave.building[i].assetName])), [pSave.building[i]]);
+			if (pSave.building[i].isTribunal) 
+				VTribunal.getInstance(pSave.building[i]);
+			else 
+				Type.createInstance(Type.resolveClass(Main.getInstance().getPath(
+					Virtual.BUILDING_NAME_TO_VCLASS[pSave.building[i].buildingName]
+				)), [pSave.building[i]]);
 	}
 
 		

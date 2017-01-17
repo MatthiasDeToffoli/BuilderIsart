@@ -30,11 +30,11 @@ class VBuildingUpgrade extends VBuilding
 	public function onClickUpgrade():Void{
 		desactivate();
 		
-		var lAssetName = tileDesc.assetName;
+		var lAssetName = tileDesc.buildingName;
 		
 		if (indexLevel <= 3){
 			indexLevel++;
-			tileDesc.assetName = UpgradeAssetsList[indexLevel];
+			tileDesc.buildingName = UpgradeAssetsList[indexLevel];
 		}
 		
 		var tTime:Float = Date.now().getTime();
@@ -51,11 +51,11 @@ class VBuildingUpgrade extends VBuilding
 	}
 	
 	public function canUpgrade():Bool {
-		return UpgradeAssetsList.indexOf(tileDesc.assetName) < UpgradeAssetsList.length - 1;
+		return UpgradeAssetsList.indexOf(tileDesc.buildingName) < UpgradeAssetsList.length - 1;
 	}
 	
 	public function getLevel():Int{
-		return UpgradeAssetsList.indexOf(tileDesc.assetName);
+		return UpgradeAssetsList.indexOf(tileDesc.buildingName);
 		
 	}
 }

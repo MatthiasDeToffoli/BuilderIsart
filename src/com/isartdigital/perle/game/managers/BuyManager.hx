@@ -30,13 +30,13 @@ class BuyManager {
 		parseJson();
 	}
 	
-	public static function buy (pAssetName:String):Bool {
-		if (!checkAssetName(pAssetName))
+	public static function buy (pBuildingName:String):Bool {
+		if (!checkBuildingName(pBuildingName))
 			return true; // if nothing is json it is FREE \o/
-		if (canBuy(pAssetName)) {
+		if (canBuy(pBuildingName)) {
 			ResourcesManager.spendTotal(
-				buyPrice.assets[pAssetName].type,
-				buyPrice.assets[pAssetName].price
+				buyPrice.assets[pBuildingName].type,
+				buyPrice.assets[pBuildingName].price
 			);
 			return true;
 		}
@@ -44,35 +44,35 @@ class BuyManager {
 	}
 	
 	// todo : refund différent si en construction
-	public static function sell (pAssetName:String):Void {
+	public static function sell (pBuildingName:String):Void {
 		// todo : pourquoi c'est un float dans le tableau contenant les total du resourceManager ?
 		ResourcesManager.spendTotal(
-			buyPrice.assets[pAssetName].type,
+			buyPrice.assets[pBuildingName].type,
 			// todo : la fc spendTotal est prévu poru fonctionner de cette manière ?
-			- Math.ceil(buyPrice.assets[pAssetName].price * buyPrice.refundRatioBuilded) 
+			- Math.ceil(buyPrice.assets[pBuildingName].price * buyPrice.refundRatioBuilded) 
 		);
 	}
 	
-	public static function getSellPrice(pAssetName:String):Int {
-		return(Math.ceil(buyPrice.assets[pAssetName].price * buyPrice.refundRatioBuilded) );
+	public static function getSellPrice(pBuildingName:String):Int {
+		return(Math.ceil(buyPrice.assets[pBuildingName].price * buyPrice.refundRatioBuilded) );
 	}
 	
-	public static function canBuy (pAssetName:String):Bool {
-		if (!checkAssetName(pAssetName))
+	public static function canBuy (pBuildingName:String):Bool {
+		if (!checkBuildingName(pBuildingName))
 			return true; // if nothing is json it is FREE \o/
 		
-		return ResourcesManager.getTotalForType(buyPrice.assets[pAssetName].type) >= 
-			   buyPrice.assets[pAssetName].price;
+		return ResourcesManager.getTotalForType(buyPrice.assets[pBuildingName].type) >= 
+			   buyPrice.assets[pBuildingName].price;
 	}
 	
 	public static function checkPrice(pAssetName:String):Int {
-		if (!checkAssetName(pAssetName))
+		if (!checkBuildingName(pAssetName))
 			return 0; // if nothing is json it is FREE \o/
 			
 		return buyPrice.assets[pAssetName].price;
 	}
 	
-	private static function checkAssetName (pAssetName:String):Bool {
+	private static function checkBuildingName (pAssetName:String):Bool {
 		if (buyPrice.assets[pAssetName] == null) {
 			Debug.error("Assetname : '" + pAssetName + "' doesn't exist in buyprice json !");
 			return false;

@@ -18,7 +18,7 @@ import pixi.core.display.DisplayObject;
  * ...
  * @author ambroise
  */
-class ConfirmBuyBuilding extends SmartPopin {
+/*class ConfirmBuyBuilding extends SmartPopin {
 
 	private static inline var PER_TIME:String = "min"; // todo : traduc toute langue ?
 	private static inline var LEVEL:String = "Level"; // todo : traduc toute langue ?
@@ -145,4 +145,4 @@ class ConfirmBuyBuilding extends SmartPopin {
 		super.destroy();
 	}
 	
-}
+}*/

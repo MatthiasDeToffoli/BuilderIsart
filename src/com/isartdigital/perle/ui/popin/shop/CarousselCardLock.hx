@@ -21,9 +21,9 @@ class CarousselCardLock extends CarouselCard
 		text_lock = cast(SmartCheck.getChildByName(this, "Reason_locked"), TextSprite);
 	}
 	
-	override public function init (pBuildingAssetName:String):Void {
-		super.init(pBuildingAssetName);
-		text_lock.text = UNLOCK_TEXT + UnlockManager.checkLevelNeeded(pBuildingAssetName);
+	override public function init (pBuildingName:String):Void {
+		super.init(pBuildingName);
+		text_lock.text = UNLOCK_TEXT + UnlockManager.checkLevelNeeded(pBuildingName);
 	}
 	
 	override public function start ():Void {

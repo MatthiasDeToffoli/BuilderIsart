@@ -46,6 +46,9 @@ class BuildingDestroyPoppin extends SmartPopin
 		super(AssetName.DESTROY_POPPIN);
 		addListeners();
 		
+		
+		//levelBuilding.text = "Level : " + Std.string(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).indexLevel + 1);
+		
 		var lVBuilding:VBuilding;
 		
 		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
@@ -54,7 +57,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		trace(BuildingHud.virtualBuilding);
 		trace(InfoBuilding.getVirtualBuilding());
 		
-		nameBuilding.text = FakeTraduction.assetNameNameToTrad(lVBuilding.getAsset());
+		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.tileDesc.buildingName);
 		
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade))
 			levelBuilding.text = "Level : " + Std.string(cast(lVBuilding, VBuildingUpgrade).indexLevel + 1);

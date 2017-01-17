@@ -109,7 +109,7 @@ class InfoBuilding extends SmartPopin{
 		btnUpgradeMaterialsImage = cast(SmartCheck.getChildByName(btnUpgrade, "_soulIcon_Small"), UISprite);
 		
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
-		nameTxt.text = FakeTraduction.assetNameNameToTrad(virtualBuilding.getAsset());
+		nameTxt.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.tileDesc.buildingName);
 		
 		if (virtualBuilding.alignementBuilding == Alignment.heaven){
 			btnUpgradeMaterialsImage.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
@@ -289,7 +289,8 @@ class InfoBuilding extends SmartPopin{
 		if (virtualBuilding != null) lVBuilding = virtualBuilding;
 		else lVBuilding = BuildingHud.virtualBuilding;
 		trace(virtualBuilding);
-		var lAssetName:String = lVBuilding.tileDesc.assetName;
+		var lAssetName:String = lVBuilding.tileDesc.buildingName;
+		
 		var lBuildingUpgrade:VBuildingUpgrade = cast(lVBuilding, VBuildingUpgrade);
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin level up appear
