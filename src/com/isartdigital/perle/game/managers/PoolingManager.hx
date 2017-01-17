@@ -26,6 +26,36 @@ class PoolingManager {
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
 		AssetName.BUILDING_STYX_PURGATORY => "Tribunal",
+		AssetName.BUILDING_STYX_VIRTUE => "Building",
+		
+		
+		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
+		AssetName.BUILDING_HELL_HOUSE_LEVEL2 => "HouseHeaven",
+		AssetName.BUILDING_HELL_HOUSE_LEVEL3 => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "Lumbermill",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "Lumbermill",
+		
+		
+		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHell",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHell",
+		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "Quarry",
+	    
+		
+		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",
+		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
+		AssetName.DECO_HEAVEN_TREE_3 => "DecoHeaven",
+		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
+		AssetName.DECO_HEAVEN_ROCK => "Building",
+		
+		
+		AssetName.DECO_HELL_TREE_1 => "DecoHell",
+		AssetName.DECO_HELL_TREE_2 => "DecoHell",
+		AssetName.DECO_HELL_TREE_3 => "DecoHell",
+		AssetName.DECO_HELL_ROCK => "Building",
+		
+		
 		"Ground" => "Ground",
 		"Road_h" => "Ground",
 		"Road_c" => "Ground",
@@ -33,23 +63,6 @@ class PoolingManager {
 		"Road_tl" => "Ground",
 		"Road_v" => "Ground",
 		"FootPrint" => "FootPrint",
-		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",
-		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
-		AssetName.DECO_HEAVEN_TREE_3 => "DecoHeaven",
-	    AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
-		AssetName.DECO_HEAVEN_FOUNTAIN => "Building",
-		AssetName.DECO_HEAVEN_ROCK => "Building",
-		AssetName.BUILDING_STYX_VIRTUE => "Building",
-		AssetName.DECO_HELL_TREE_1 => "DecoHell",
-		AssetName.DECO_HELL_TREE_2 => "DecoHell",
-		AssetName.DECO_HELL_TREE_3 => "DecoHell",
-		AssetName.DECO_HELL_ROCK => "Building",
-		
-		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
-		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "Lumbermill",
-		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "Lumbermill",
-		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
-		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "Quarry",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon

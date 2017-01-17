@@ -25,6 +25,7 @@ typedef TileDescription = {
 	var regionY:Int;
 	var mapX:Int;
 	var mapY:Int;
+	var level:Int;
 	@:optional var currentPopulation:Int;
 	@:optional var maxPopulation:Int;
 	@:optional var timeDesc:TimeDescription;
@@ -125,7 +126,7 @@ typedef Save = {
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
-	private static inline var SAVE_VERSION:String = "1.0.7";
+	private static inline var SAVE_VERSION:String = "1.0.8";
 	public static var currentSave(default, null):Save;
 	
 	/**

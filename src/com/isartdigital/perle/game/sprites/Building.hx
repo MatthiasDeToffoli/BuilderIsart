@@ -108,7 +108,7 @@ class Building extends Tile implements IZSortable
 	 * @return
 	 */
 	public static function createBuilding(pTileDesc:TileDescription):Building {
-		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName));
+		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level));
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?

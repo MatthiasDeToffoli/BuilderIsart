@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
+import com.isartdigital.utils.Debug;
 import pixi.core.math.Point;
 
 
@@ -104,7 +105,8 @@ class VTile extends Virtual{
 					regionX:pRegion.desc.x,
 					regionY:pRegion.desc.y,
 					mapX:x,
-					mapY:y
+					mapY:y,
+					level:0
 				};
 				
 				var lGround:VGround = new VGround(tileDesc);
@@ -132,10 +134,14 @@ class VTile extends Virtual{
 		for (i in 0...lLength)
 			if (pSave.building[i].isTribunal) 
 				VTribunal.getInstance(pSave.building[i]);
-			else 
+			else {
+				if (Virtual.BUILDING_NAME_TO_VCLASS[pSave.building[i].buildingName] == null)
+					Debug.error("VClass for buildingName '"+pSave.building[i].buildingName+"' not found in Virtual.BUILDING_NAME_TO_VCLASS .");
+				
 				Type.createInstance(Type.resolveClass(Main.getInstance().getPath(
 					Virtual.BUILDING_NAME_TO_VCLASS[pSave.building[i].buildingName]
 				)), [pSave.building[i]]);
+			}
 	}
 
 		

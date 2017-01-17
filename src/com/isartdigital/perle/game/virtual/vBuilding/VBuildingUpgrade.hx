@@ -30,21 +30,20 @@ class VBuildingUpgrade extends VBuilding
 	public function onClickUpgrade():Void{
 		desactivate();
 		
-		var lAssetName = tileDesc.buildingName;
-		
-		if (indexLevel <= 3){
-			indexLevel++;
-			tileDesc.buildingName = UpgradeAssetsList[indexLevel];
+		if (tileDesc.level < BuildingName.BUILDING_NAME_TO_ASSETNAMES[tileDesc.buildingName].length-1){
+			tileDesc.level++;
 		}
 		
 		var tTime:Float = Date.now().getTime();
 		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + 20000, progress: 0, creationDate: tTime };
 		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
 		TimeManager.addConstructionTimer(tileDesc.timeDesc);
-		if (currentState == VBuildingState.isBuilding) TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
+		
+		if (currentState == VBuildingState.isBuilding) 
+			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
 		activate();
-		addExp();		
+		addExp();
 		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, 20, 8000); //@TODO : mettre de vrais valeur...
 		
 		SaveManager.save();	
