@@ -51,6 +51,9 @@ class BuildingDestroyPoppin extends SmartPopin
 		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
 		else lVBuilding = InfoBuilding.getVirtualBuilding();
 		
+		trace(BuildingHud.virtualBuilding);
+		trace(InfoBuilding.getVirtualBuilding());
+		
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(lVBuilding.getAsset());
 		
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade))
