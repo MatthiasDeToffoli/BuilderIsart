@@ -49,7 +49,7 @@ typedef TimeDescription = {
 typedef TimeQuestDescription = {
 	var refIntern:Int;
 	var progress:Float;
-	var steps:Array<Float>;
+	var steps:Array<Int>;
 	var stepIndex:Int;
 	var end:Float;
 	//var quest:Quest;

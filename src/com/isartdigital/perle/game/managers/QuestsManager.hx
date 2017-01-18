@@ -17,12 +17,16 @@ class QuestsManager
 {
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
+	private static inline var NUMBER_EVENTS:Int = 3;
+	
 	//The time's gap between two events will be vary between these constants
 	private static var MIN_TIMELINE(default, null):Int = 20000;
 	private static var MAX_TIMELINE(default, null):Int = 30000;
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
+	
+	private static var isFinish:Bool = false;
 	
 	public function new() 
 	{
@@ -51,9 +55,9 @@ class QuestsManager
 	 * @param	pNumberEvents Number of events contained in a quest
 	 * @return	The quest's datas
 	 */
-	public static function createQuest(pNumberEvents:Int, pIdIntern:Int):TimeQuestDescription{
+	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
 		var lIdTimer = pIdIntern;
-		var lStepsArray:Array<Float> = createRandomEventArray(pNumberEvents);
+		var lStepsArray:Array<Int> = createRandomGapArray();
 		
 		var lTimeQuestDescription:TimeQuestDescription = {
 			refIntern: lIdTimer,
@@ -75,10 +79,13 @@ class QuestsManager
 	 * @param	pLength
 	 * @return A new array
 	 */
-	private static function createRandomEventArray(pLength:Int):Array<Float>{
-		var lListEvents:Array<Float> = new Array<Float>();
-		for (i in 0...pLength){
-			lListEvents.push(Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE);
+	private static function createRandomGapArray():Array<Int>{
+		var lListEvents:Array<Int> = new Array<Int>();
+		var lGap:Int = 0;
+		
+		for (i in 0...NUMBER_EVENTS){
+			lGap = Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap;
+			lListEvents.push(lGap);
 		}
 		
 		return lListEvents;
@@ -89,13 +96,14 @@ class QuestsManager
 	 * @param	pListEvents
 	 * @return	the total value
 	 */
-	private static function createEnd(pListEvents:Array<Float>):Float{
-		var lEnd:Float = 0;
-		var lLength:Int = pListEvents.length;
+	private static function createEnd(pListEvents:Array<Int>):Float{
+		var lEnd:Int = 0;
+		var lLength:Int = pListEvents.length - 1;
 		
-		for (i in 0...lLength){
-			lEnd = lEnd + pListEvents[i];
-		}
+		//for (i in 0...lLength){
+			//lEnd = lEnd + pListEvents[i];
+		//}
+		lEnd = pListEvents[lLength];
 		
 		return lEnd;
 	}
@@ -124,7 +132,8 @@ class QuestsManager
 	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeQuestDescription):Void{
 		trace("end");
-		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		//var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		choice(pQuest);
 		
 		TimeManager.destroyTimeElement(pQuest.refIntern);
 		destroyQuest(pQuest.refIntern);
@@ -132,7 +141,8 @@ class QuestsManager
 		for (i in 0...Intern.internsList.length){
 			if (pQuest.refIntern == Intern.internsList[i].id){
 				if (Intern.internsList[i].stress < Intern.internsList[i].stressLimit){
-					Intern.internsList[i].quest = createQuest(lRandomEvent, Intern.internsList[i].id);
+					//Intern.internsList[i].quest = createQuest(lRandomEvent, Intern.internsList[i].id);
+					Intern.internsList[i].quest = null;
 				}
 				
 				else trace("dismiss");

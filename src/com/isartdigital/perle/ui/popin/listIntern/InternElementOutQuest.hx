@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
@@ -25,6 +26,8 @@ class InternElementOutQuest extends InternElement
 	{
 		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
 		
+		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
+		
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		btnSend= cast(getChildByName(AssetName.BUTTON_SEND_OUT_QUEST), SmartButton);
 		
@@ -42,12 +45,15 @@ class InternElementOutQuest extends InternElement
 	private function onSend(){
 		trace("send");
 		var lLength:Int = QuestsManager.questsList.length;
-		var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
-		var lQuest:TimeQuestDescription = QuestsManager.createQuest(lRandomEvent, idIntern);
+		//var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
+		var lQuest:TimeQuestDescription = QuestsManager.createQuest(idIntern);
 		internDatas.quest = lQuest;
-		
 		TimeManager.createTimeQuest(lQuest);
-		ListInternPopin.getInstance().onClose();
+		
+		//For the actualisation of the switch outQuest/InQuest
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 		//todo: a garder en anticipation de bugs
 		//for (i in 0...lLength){
 			//if (QuestsManager.questsList[i].refIntern == idIntern){
@@ -56,6 +62,13 @@ class InternElementOutQuest extends InternElement
 		//}
 	}
 	
+	//For the HUD Popin actualisation
+	private function updateQuestHud(pQuest:TimeQuestDescription):Void{
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+	}
+
 	override public function destroy():Void 
 	{
 		Interactive.removeListenerClick(picture, onPicture);

@@ -35,7 +35,7 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
-
+		
 		InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 		GameStage.getInstance().getBuildContainer().interactive = true;
 		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
@@ -68,7 +68,6 @@ class BHBuilt extends BuildingHud
 	private function setUpgradeButton():Void {
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
 				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
-				trace(myVBuilding.getLevel());
 				if (myVBuilding.canUpgrade()) {
 					Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
 				}

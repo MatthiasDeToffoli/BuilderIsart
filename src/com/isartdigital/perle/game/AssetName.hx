@@ -109,7 +109,7 @@ class AssetName{
 	
 	//listIntern
 	public static inline var INTERN_LIST:String = "ListInterns";
-	public static inline var INTERN_LIST_CANCEL:String = "ButtonCancel";
+	public static inline var INTERN_LIST_CANCEL:String = "ButtonClose";
 	public static inline var INTERN_LIST_LEFT:String = "_arrow_left";
 	public static inline var INTERN_LIST_RIGHT:String = "_arrow_right";
 	public static var internListSpawners:Array<String> = ["Intern01", "Intern02", "Intern03"];

@@ -254,12 +254,13 @@ class TimeManager {
 		trace("update quest");
 		if (pElement.progress == pElement.steps[pElement.stepIndex]) {
 			trace("next step");
-			pElement.stepIndex++;
 			
 			if (pElement.stepIndex == pElement.steps.length - 1){
 				trace("end step");
 				eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
+			
+			pElement.stepIndex++;
 		}
 		else
 			trace("nextStepQuest not ready yet !");
@@ -284,9 +285,9 @@ class TimeManager {
 			updateResource(listResource[i], lElapsedTime);
 		}
 		
-		for (i in 0...lLengthQuest) {
+		for (j in 0...lLengthQuest) {
 			//trace("length time loop " + lLengthQuest);
-			updateQuest(listQuest[i], lElapsedTime);
+			updateQuest(listQuest[j], lElapsedTime);
 		}
 		
 		for (i in 0...lLengthConstruct) {
@@ -344,7 +345,7 @@ class TimeManager {
 			pElement.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
-			trace("event!");
+			trace(pElement.progress);
 			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
 		}
 	}
@@ -389,6 +390,11 @@ class TimeManager {
 			}
 		}	
 		return "Finish";
+	}
+	
+	public static function getTextTimeQuest(pTime:Float):String {
+		var txtLength:Int = Date.fromTime(pTime).toString().length;
+		return Date.fromTime(pTime).toString().substr(txtLength - 5, 5);
 	}
 	
 	public static function increaseProgress(pVBuilding:VBuilding, pBoostValue:Float):Bool {
