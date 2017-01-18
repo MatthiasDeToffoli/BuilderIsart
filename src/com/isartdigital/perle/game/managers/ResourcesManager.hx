@@ -335,7 +335,8 @@ class ResourcesManager
 						lPopulation.quantity++;
 						lGenerator.desc.quantity--;
 						populationChangementEvent.emit(POPULATION_CHANGEMENT_EVENT_NAME, lPopulation);
-						generatorEvent.emit(GENERATOR_EVENT_NAME, {id:lGenerator.desc.id});
+						generatorEvent.emit(GENERATOR_EVENT_NAME, { id:lGenerator.desc.id } );
+						return;
 					}
 		
 	}
@@ -484,7 +485,6 @@ class ResourcesManager
 	 * @param pGenerator generator target
 	 */
 	public static function removeGenerator(pGenerator:Generator):Void{
-		
 		TimeManager.removeTimeResource(pGenerator.desc.id);
 		
 		var myArray:Array<Generator> = myResourcesData.generatorsMap[pGenerator.desc.type];
