@@ -25,6 +25,7 @@ enum ShopBar { Soft; Hard; Marble; Wood; }
 class ShopPopin extends SmartPopin{
 
 	private static var instance:ShopPopin;
+	private static var buttonTab:Array<Array<SmartButton>>;
 	
 	private var btnExit:SmartButton;
 	private var btnPurgatory:SmartButton;
@@ -32,6 +33,7 @@ class ShopPopin extends SmartPopin{
 	private var tabs:Map<ShopTab, SmartComponent>;
 	private var bars:Map<ShopBar, SmartComponent>;
 	private var carousselSpawner:UISprite;
+	
 	
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
@@ -69,10 +71,10 @@ class ShopPopin extends SmartPopin{
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
 		
+		addButton();
 		
-		
-		tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUILDING), SmartButton);
-		tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
+		//tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, "Onglet_Building"), SmartComponent);
+		/*tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
 		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
 		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
 		tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
@@ -89,6 +91,7 @@ class ShopPopin extends SmartPopin{
 		tabs[ShopTab.Resources].on(MouseEventType.CLICK, onClickOpenResource);
 		tabs[ShopTab.Currencies].on(MouseEventType.CLICK, onClickOpenCurencies);
 		tabs[ShopTab.Bundle].on(MouseEventType.CLICK, onClickOpenBundle);
+		*/
 		
 		btnExit.on(MouseEventType.CLICK, onClickExit);
 		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
@@ -102,6 +105,69 @@ class ShopPopin extends SmartPopin{
 		//var test = cast(getChildByName('Shop_Item_List'), ShopItemList);
 		//ShopItemList.getInstance(); // todo : là je fais quoi, je recrée ou je prends celui deja présent ?
 		// screen achat etdescription
+	}
+	
+	private function addButton() {
+		buttonTab = [];
+		var tabBuilding = cast(SmartCheck.getChildByName(this, "Onglet_Building"), SmartComponent);
+		buttonTab[0] = [];
+		var tabDeco= cast(SmartCheck.getChildByName(this, "Onglet_Deco"), SmartComponent);
+		buttonTab[1] = [];
+		var tabInterns = cast(SmartCheck.getChildByName(this, "Onglet_Interns"), SmartComponent);
+		buttonTab[2] = [];
+		var tabCurrencies = cast(SmartCheck.getChildByName(this, "Onglet_Currencies"), SmartComponent);
+		buttonTab[3] = [];
+		var tabRessources = cast(SmartCheck.getChildByName(this, "Onglet_Ressources"), SmartComponent);
+		buttonTab[4] = [];
+		cast(SmartCheck.getChildByName(this, "Bundles_Button"), SmartComponent).on(MouseEventType.CLICK, onClickOpenBundle);
+		
+		var buttonBuilding1 = cast(SmartCheck.getChildByName(tabBuilding, "Current"), SmartButton);
+		buttonBuilding1.on(MouseEventType.CLICK, onClickOpenBuldings);
+		var buttonBuilding2 = cast(SmartCheck.getChildByName(tabBuilding, "Layer 1"), SmartButton);
+		buttonBuilding2.on(MouseEventType.CLICK, onClickOpenBuldings);
+		buttonTab[0].push(buttonBuilding1);
+		buttonTab[0].push(buttonBuilding2);
+		
+		var buttonDeco1 = cast(SmartCheck.getChildByName(tabDeco, "Current"), SmartButton);
+		buttonDeco1.on(MouseEventType.CLICK, onClickOpenDecorations);
+		var buttonDeco2 = cast(SmartCheck.getChildByName(tabDeco, "Layer 1"), SmartButton);
+		buttonDeco2.on(MouseEventType.CLICK, onClickOpenDecorations);
+		buttonTab[1].push(buttonDeco1);
+		buttonTab[1].push(buttonDeco2);
+		
+		var buttonIntern1 = cast(SmartCheck.getChildByName(tabInterns, "Current"), SmartButton);
+		buttonIntern1.on(MouseEventType.CLICK, onClickOpenIntern);
+		var buttonIntern2 = cast(SmartCheck.getChildByName(tabInterns, "Layer 1"), SmartButton);
+		buttonIntern2.on(MouseEventType.CLICK, onClickOpenIntern);
+		buttonTab[2].push(buttonIntern1);
+		buttonTab[2].push(buttonIntern2);
+		
+		var buttonCurrencies1 = cast(SmartCheck.getChildByName(tabCurrencies, "Current"), SmartButton);
+		buttonCurrencies1.on(MouseEventType.CLICK, onClickOpenCurencies);
+		var buttonCurrencies2 = cast(SmartCheck.getChildByName(tabCurrencies, "Layer 1"), SmartButton);
+		buttonCurrencies2.on(MouseEventType.CLICK, onClickOpenCurencies);
+		buttonTab[3].push(buttonCurrencies1);
+		buttonTab[3].push(buttonCurrencies2);
+		
+		var buttonRessources1 = cast(SmartCheck.getChildByName(tabRessources, "Current"), SmartButton);
+		buttonRessources1.on(MouseEventType.CLICK, onClickOpenResource);
+		var buttonRessources2 = cast(SmartCheck.getChildByName(tabRessources, "Layer 1"), SmartButton);
+		buttonRessources2.on(MouseEventType.CLICK, onClickOpenResource);
+		buttonTab[4].push(buttonRessources1);
+		buttonTab[4].push(buttonRessources2);
+	}
+	
+	private function switchButtons() {
+		for (i in 0...buttonTab.length) {
+			buttonTab[i][0].visible = false;
+		}
+	}
+	
+	private function setButtons(pNumber:Int,?pBundleOn:Bool) {
+		switchButtons();
+		if (pBundleOn)
+			return;
+		buttonTab[pNumber][0].visible = true;
 	}
 	
 	public function init(pTab:ShopTab) {
@@ -146,35 +212,38 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	private function onClickOpenBuldings() {
+		setButtons(0);
 		addCaroussel(ShopTab.Building);
 		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList); // todo: mettre cela dans le ShopCaroussel appelé, héritage
 	}
 	
 	private function onClickOpenDecorations() {
+		setButtons(1);
 		addCaroussel(ShopTab.Building);
 		caroussel.changeCardsToShow(ShopCaroussel.decoNameList);
 	}
 	
 	private function onClickOpenIntern() {
-		addCaroussel(ShopTab.Building);
-		
-		Browser.alert("Work in progress : Special Feature");	
+		setButtons(2);
+		addCaroussel(ShopTab.Building);	
 		caroussel.changeCardsToShow(ShopCaroussel.internsNameList);
 	}
 	
-	private function onClickOpenResource() {
-		addCaroussel(ShopTab.Resources);
-		caroussel.changeCardsToShow(ShopCaroussel.resourcesNameList);
-	}
-	
 	private function onClickOpenCurencies() {
+		setButtons(3);
 		addCaroussel(ShopTab.Resources);
 		caroussel.changeCardsToShow(ShopCaroussel.currencieNameList);
 	}
 	
+	private function onClickOpenResource() {
+		setButtons(4);
+		addCaroussel(ShopTab.Resources);
+		caroussel.changeCardsToShow(ShopCaroussel.resourcesNameList);
+	}
+	
 	private function onClickOpenBundle() {
+		setButtons(0,true);
 		addCaroussel(ShopTab.Building);
-		Browser.alert("Work in progress");
 		caroussel.changeCardsToShow(ShopCaroussel.bundleNameList);
 	}
 	

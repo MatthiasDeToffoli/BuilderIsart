@@ -6,7 +6,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.hud.ftue.FtueUI;
+import com.isartdigital.perle.ui.hud.dialogue.DialogueUI;
 import haxe.Json;
 import js.Browser;
 import pixi.core.sprites.Sprite;
@@ -177,7 +177,7 @@ class SaveManager {
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
-			ftueProgress : FtueUI.actualDialogue,
+			ftueProgress : DialogueUI.actualDialogue,
 			itemUnlocked : itemUnlock
 		};
 		setLocalStorage(currentSave);
@@ -325,7 +325,7 @@ class SaveManager {
 			Intern.init();
 			TimeManager.startTimeLoop();
 			Hud.getInstance().initGaugesWithSave();
-			FtueManager.dialogueSaved = currentSave.ftueProgress;
+			DialogueManager.dialogueSaved = currentSave.ftueProgress;
 			UnlockManager.isAlreadySaved = true;
 		}
 		else

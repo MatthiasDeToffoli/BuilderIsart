@@ -1,7 +1,7 @@
-package com.isartdigital.perle.ui.hud.ftue;
+package com.isartdigital.perle.ui.hud.dialogue;
 
 import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.managers.FtueManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -20,7 +20,7 @@ typedef Dialogue = {
  * ...
  * @author Alexis
  */
-class FtueUI extends SmartScreen 
+class DialogueUI extends SmartScreen 
 {
 	
 	
@@ -37,14 +37,14 @@ class FtueUI extends SmartScreen
 	/**
 	 * instance unique de la classe FtueUI
 	 */
-	private static var instance: FtueUI;
+	private static var instance: DialogueUI;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
 	 */
-	public static function getInstance (): FtueUI {
-		if (instance == null) instance = new FtueUI();
+	public static function getInstance (): DialogueUI {
+		if (instance == null) instance = new DialogueUI();
 		return instance;
 	}
 	
@@ -63,7 +63,7 @@ class FtueUI extends SmartScreen
 	 */
 	private function closeFtue() {
 		btnNext.removeAllListeners();
-		FtueManager.removeFtue();
+		DialogueManager.removeFtue();
 	}
 	
 	/**
@@ -94,10 +94,10 @@ class FtueUI extends SmartScreen
 			closeFtue();
 			return;
 		}
-		npc_name.text = FtueManager.npc_dialogue_ftue[actualDialogue][0][0];
-		npc_speach.text = FtueManager.npc_dialogue_ftue[actualDialogue][0][1];
+		npc_name.text = DialogueManager.npc_dialogue_ftue[actualDialogue][0][0];
+		npc_speach.text = DialogueManager.npc_dialogue_ftue[actualDialogue][0][1];
 		//npc_speach.x -= npc_speach.width / 2;
-		changeAlpha(FtueManager.npc_dialogue_ftue[actualDialogue][0][0]);
+		changeAlpha(DialogueManager.npc_dialogue_ftue[actualDialogue][0][0]);
 		SaveManager.save();
 		actualDialogue++;
 	}

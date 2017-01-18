@@ -1,6 +1,6 @@
 package com.isartdigital.perle.ui;
 
-import com.isartdigital.perle.game.managers.FtueManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.Popin;

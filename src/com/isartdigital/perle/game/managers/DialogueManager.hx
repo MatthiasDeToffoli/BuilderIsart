@@ -1,6 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.hud.ftue.FtueUI;
+import com.isartdigital.perle.ui.hud.dialogue.DialogueUI;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
 
@@ -9,7 +9,7 @@ import com.isartdigital.utils.loader.GameLoader;
  * ...
  * @author Alexis
  */
-class FtueManager
+class DialogueManager
 {
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
@@ -20,26 +20,26 @@ class FtueManager
 	public static function createFtue():Void {
 		npc_dialogue_ftue = [];
 		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json
-		FtueUI.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
+		DialogueUI.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		
 		//check if first time
 		if (SaveManager.currentSave.ftueProgress > npc_dialogue_ftue.length - 1) {
-			FtueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
+			DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 			return;
 		}
 		
-		GameStage.getInstance().getHudContainer().addChild(FtueUI.getInstance());
+		GameStage.getInstance().getHudContainer().addChild(DialogueUI.getInstance());
 		
 		//check if FTUE wasn't over
 		if(SaveManager.currentSave.ftueProgress!=null)
-			FtueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
+			DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 		else
-			FtueUI.actualDialogue = 0;
+			DialogueUI.actualDialogue = 0;
 		
 		Hud.getInstance().hide();
-		FtueUI.firstToSpeak = npc_dialogue_ftue[0][0][0];
-		FtueUI.getInstance().open();	
-		FtueUI.getInstance().createText();	
+		DialogueUI.firstToSpeak = npc_dialogue_ftue[0][0][0];
+		DialogueUI.getInstance().open();	
+		DialogueUI.getInstance().createText();	
 	}
 	
 	/**
@@ -63,7 +63,7 @@ class FtueManager
 	 */
 	public static function removeFtue():Void {
 		Hud.getInstance().show();
-		GameStage.getInstance().getHudContainer().removeChild(FtueUI.getInstance());	
+		GameStage.getInstance().getHudContainer().removeChild(DialogueUI.getInstance());	
 	}
 	
 }

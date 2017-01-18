@@ -1,5 +1,5 @@
 {
- "md5": "298402184960277fb852c0710459fbd3",
+ "md5": "72eb1e48598d8cc9c433a4d2620d67d7",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -490,6 +490,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -21,
         "text": "Interns",
@@ -506,7 +507,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         785,
         1008,
@@ -515,6 +515,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -19.3,
         "text": "Currencies",
@@ -531,7 +532,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         785,
         1011,
@@ -540,6 +540,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -19.3,
         "text": "Resources",
@@ -556,7 +557,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         788,
         1008,
@@ -565,6 +565,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -23.8,
         "text": "Building",
@@ -581,7 +582,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         788,
         1011,
@@ -590,6 +590,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -19.9,
         "text": "Decoration",
@@ -606,7 +607,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         791,
         1008,
@@ -615,6 +615,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -27.15,
         "text": "XXXX",
@@ -631,7 +632,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         791,
         1011,
@@ -640,6 +640,7 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
         "y": -28.8,
         "text": "*BUNDLES",
@@ -656,7 +657,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         794,
         1008,
@@ -707,19 +707,9 @@
      "keyframes": [
       {
        "ref": "~Button_Building_tab",
-       "loc": [
-        -31.3,
-        0
-       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "~Button_Building_tab_CURRENT",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
@@ -727,11 +717,17 @@
     {
      "keyframes": [
       {
-       "duration": 2,
-       "index": 0
+       "ref": "~Button_Building_tab_CURRENT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        34.7,
+        -0.075
+       ]
       }
      ],
-     "name": "Layer2"
+     "name": "Current"
     }
    ],
    "id": "ButtonBuildingGroup"
@@ -742,19 +738,9 @@
      "keyframes": [
       {
        "ref": "~Button_Currencies_tab",
-       "loc": [
-        -31.25,
-        0
-       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "~Button_Currencies_tab_CURRENT",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
@@ -762,11 +748,17 @@
     {
      "keyframes": [
       {
-       "duration": 2,
-       "index": 0
+       "ref": "~Button_Currencies_tab_CURRENT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        34.75,
+        2.5
+       ]
       }
      ],
-     "name": "Layer 2"
+     "name": "Current"
     }
    ],
    "id": "ButtonCurrenciesGroup"
@@ -777,19 +769,9 @@
      "keyframes": [
       {
        "ref": "~Button_Decoration_tab",
-       "loc": [
-        -30.3,
-        0
-       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "~Button_Decoration_tab_CURRENT",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
@@ -797,11 +779,17 @@
     {
      "keyframes": [
       {
-       "duration": 2,
-       "index": 0
+       "ref": "~Button_Decoration_tab_CURRENT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        34.7,
+        0.2
+       ]
       }
      ],
-     "name": "Layer 2"
+     "name": "Current"
     }
    ],
    "id": "ButtonDecoGroup"
@@ -812,19 +800,9 @@
      "keyframes": [
       {
        "ref": "~Button_Interns_tab",
-       "loc": [
-        -30.125,
-        0
-       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "~Button_Interns_tab_CURRENT",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
@@ -832,11 +810,17 @@
     {
      "keyframes": [
       {
-       "duration": 2,
-       "index": 0
+       "ref": "~Button_Interns_tab_CURRENT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        34.825,
+        0.2
+       ]
       }
      ],
-     "name": "Layer 2"
+     "name": "Current"
     }
    ],
    "id": "ButtonInternsGroup"
@@ -847,19 +831,9 @@
      "keyframes": [
       {
        "ref": "~Button_Resources_tab",
-       "loc": [
-        -31.275,
-        0
-       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "ref": "~Button_Resources_tab_CURRENT",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
@@ -867,11 +841,17 @@
     {
      "keyframes": [
       {
-       "duration": 2,
-       "index": 0
+       "ref": "~Button_Resources_tab_CURRENT",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        34.725,
+        0.15
+       ]
       }
      ],
-     "name": "Layer 2"
+     "name": "Current"
     }
    ],
    "id": "ButtonResourcesGroup"
@@ -881,18 +861,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        4.575
-       ],
-       "index": 0,
        "pivot": [
         449.75,
         278.75
        ],
+       "index": 0,
+       "loc": [
+        0,
+        4.575
+       ],
        "ref": "_shopPopin_BG",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Shop_BG"
@@ -901,13 +881,13 @@
      "keyframes": [
       {
        "ref": "~SoftCurrency",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         101.525,
         -298.4
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Player_SC"
@@ -916,13 +896,13 @@
      "keyframes": [
       {
        "ref": "~HardCurrency",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         293.575,
         -298.625
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Player_HC"
@@ -931,13 +911,13 @@
      "keyframes": [
       {
        "ref": "~MarbleCounter",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -90.625,
         -299.075
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Player_Marbre"
@@ -946,13 +926,13 @@
      "keyframes": [
       {
        "ref": "~WoodCounter",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -282.75,
         -298.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Player_Bois"
@@ -960,14 +940,14 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_Building_tab_CURRENT",
-       "loc": [
-        -391.25,
-        188.15
-       ],
+       "ref": "ButtonBuildingGroup",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -421.55,
+        188.15
+       ]
       }
      ],
      "name": "Onglet_Building"
@@ -975,14 +955,14 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_Decoration_tab_CURRENT",
-       "loc": [
-        -388.425,
-        95.375
-       ],
+       "ref": "ButtonDecoGroup",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -422.55,
+        95.375
+       ]
       }
      ],
      "name": "Onglet_Deco"
@@ -990,14 +970,14 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_Interns_tab_CURRENT",
-       "loc": [
-        -390.025,
-        2.275
-       ],
+       "ref": "ButtonInternsGroup",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -423.175,
+        4.375
+       ]
       }
      ],
      "name": "Onglet_Interns"
@@ -1005,14 +985,14 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_Currencies_tab_CURRENT",
-       "loc": [
-        -391.25,
-        -86.65
-       ],
+       "ref": "ButtonCurrenciesGroup",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -421.6,
+        -90.175
+       ]
       }
      ],
      "name": "Onglet_Currencies"
@@ -1020,14 +1000,14 @@
     {
      "keyframes": [
       {
-       "ref": "~Button_Resources_tab_CURRENT",
-       "loc": [
-        -392.025,
-        -183.35
-       ],
+       "ref": "ButtonResourcesGroup",
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -421.575,
+        -182.575
+       ]
       }
      ],
      "name": "Onglet_Ressources"
@@ -1035,22 +1015,22 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        359.675,
+        145.975
+       ],
+       "index": 0,
        "loc": [
         12.4,
         35.7
        ],
-       "index": 0,
-       "tweened": false,
        "ref": "_shop_item_list_spawner",
+       "tweened": false,
        "scale": [
         1,
         1.1207
        ],
-       "duration": 1,
-       "pivot": [
-        359.675,
-        145.975
-       ]
+       "duration": 1
       }
      ],
      "name": "Item_List_Spawner"
@@ -1059,13 +1039,13 @@
      "keyframes": [
       {
        "ref": "~ButtonClose",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         414.2,
         -250.25
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Shop_Close_Button"
@@ -1074,13 +1054,13 @@
      "keyframes": [
       {
        "ref": "~ButtonPurgatory",
-       "loc": [
-        -330,
-        309.45
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -273.25,
+        258.125
+       ]
       }
      ],
      "name": "Purgatory_Button"
@@ -1089,13 +1069,13 @@
      "keyframes": [
       {
        "ref": "~ButtonInterns",
-       "loc": [
-        408.325,
-        309.45
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        338.6,
+        258.375
+       ]
       }
      ],
      "name": "Interns_Button"
@@ -1104,13 +1084,13 @@
      "keyframes": [
       {
        "ref": "~ButtonBundles",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         0,
         268.025
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Bundles_Button"
@@ -1123,46 +1103,46 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        7.625
+       "pivot": [
+        88.75,
+        46.25
        ],
        "index": 0,
-       "pivot": [
-        88.75,
-        46.25
+       "loc": [
+        0,
+        7.625
        ],
        "ref": "_buttonBundlesBack_up",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       },
       {
-       "loc": [
-        0,
-        7.625
+       "pivot": [
+        88.75,
+        46.25
        ],
        "index": 1,
-       "pivot": [
-        88.75,
-        46.25
-       ],
-       "ref": "_buttonBundlesBack_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
        "loc": [
         0,
         7.625
        ],
-       "index": 2,
+       "ref": "_buttonBundlesBack_over",
+       "tweened": false,
+       "duration": 1
+      },
+      {
        "pivot": [
         88.75,
         46.25
        ],
+       "index": 2,
+       "loc": [
+        0,
+        7.625
+       ],
        "ref": "_buttonBundlesBack_down",
-       "duration": 2,
-       "tweened": false
+       "tweened": false,
+       "duration": 2
       }
      ],
      "name": "ButtonBG"
@@ -1171,37 +1151,37 @@
      "keyframes": [
       {
        "ref": "_buttonBundles_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        73.75,
-        20
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         73.75,
         20
        ],
-       "ref": "_buttonBundles_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "ref": "_buttonBundles_down",
-       "tweened": false,
-       "duration": 2,
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonBundles_over",
        "pivot": [
         73.75,
         20
-       ]
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonBundles_down",
+       "pivot": [
+        73.75,
+        20
+       ],
+       "tweened": false,
+       "duration": 2,
+       "index": 2
       }
      ],
      "name": "ButtonImg"
@@ -1210,87 +1190,87 @@
      "keyframes": [
       {
        "ref": "_bundleButton_text",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonBundles"
+   "id": "~ButtonBundles",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
-       "loc": [
-        -0.025,
-        -0.025
-       ],
-       "index": 0,
        "pivot": [
         25.5,
         23.9
        ],
-       "ref": "_closeButton_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
+       "index": 0,
        "loc": [
         -0.025,
-        0
+        -0.025
        ],
-       "index": 1,
+       "ref": "_closeButton_up",
        "tweened": false,
-       "ref": "_closeButton_over",
+       "duration": 1
+      },
+      {
+       "pivot": [
+        25.5,
+        23.9
+       ],
        "tint": [
         0.3,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "pivot": [
-        25.5,
-        23.9
-       ]
+       "index": 1,
+       "loc": [
+        -0.025,
+        0
+       ],
+       "ref": "_closeButton_over",
+       "tweened": false,
+       "duration": 1
       },
       {
+       "pivot": [
+        25.6,
+        24
+       ],
+       "index": 2,
        "loc": [
         -0.025,
         -0.025
        ],
-       "index": 2,
-       "tweened": false,
        "ref": "_closeButton_down",
+       "tweened": false,
        "scale": [
         0.9561,
         0.9561
        ],
-       "duration": 1,
-       "pivot": [
-        25.6,
-        24
-       ]
+       "duration": 1
       },
       {
        "ref": "_closeButton_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         55,
         55
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonClose"
+   "id": "~ButtonClose",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1298,54 +1278,54 @@
      "keyframes": [
       {
        "ref": "_internsButton_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        90,
-        19
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         90,
         19
        ],
-       "ref": "_internsButton_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.3,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 1,
+       "ref": "_internsButton_over",
+       "pivot": [
+        90,
+        19
+       ],
+       "duration": 1
       },
       {
        "ref": "_internsButton_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
        "pivot": [
         90,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
       },
       {
        "ref": "_internsButton_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         90,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonInterns"
+   "id": "~ButtonInterns",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1353,48 +1333,48 @@
      "keyframes": [
       {
        "ref": "_purgatoryButton_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        110.5,
-        18.75
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         110.5,
         18.75
        ],
-       "ref": "_purgatoryButton_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 1,
+       "ref": "_purgatoryButton_over",
+       "pivot": [
+        110.5,
+        18.75
+       ],
+       "duration": 1
       },
       {
+       "tweened": false,
        "index": 2,
+       "ref": "_purgatoryButton_down",
        "pivot": [
         110.925,
         19
        ],
-       "ref": "_purgatoryButton_down",
        "scale": [
         0.9187,
         0.9187
        ],
-       "duration": 2,
-       "tweened": false
+       "duration": 2
       }
      ],
      "name": "Button"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPurgatory"
+   "id": "~ButtonPurgatory",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1402,58 +1382,58 @@
      "keyframes": [
       {
        "ref": "_buttonBuildingTab_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        23.75,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonBuildingTab_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.3,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonBuildingTab_down",
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonBuildingTab_down",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonBuildingTab_down",
+       "pivot": [
+        23.75,
+        41.25
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Building_tab"
+   "id": "~Button_Building_tab",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1461,62 +1441,62 @@
      "keyframes": [
       {
        "ref": "_buttonBuildingTab_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        58.5,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonBuildingTab_up",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonBuildingTab_up",
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonBuildingTab_up",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonBuildingTab_up",
+       "pivot": [
+        58.5,
+        41.25
+       ],
+       "duration": 1
       },
       {
+       "pivot": [
+        40.6,
+        40.6
+       ],
+       "index": 3,
        "loc": [
         -27.5,
         0
        ],
-       "index": 3,
-       "pivot": [
-        40.6,
-        40.6
-       ],
        "ref": "_buttontab_hit",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Building_tab_CURRENT"
+   "id": "~Button_Building_tab_CURRENT",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1524,58 +1504,58 @@
      "keyframes": [
       {
        "ref": "_buttonCurrencies_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        23.75,
-        43.75
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         23.75,
         43.75
        ],
-       "ref": "_buttonCurrencies_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonCurrencies_down",
        "pivot": [
         23.75,
         43.75
        ],
-       "ref": "_buttonCurrencies_down",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonCurrencies_down",
+       "pivot": [
+        23.75,
+        43.75
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Currencies_tab"
+   "id": "~Button_Currencies_tab",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1583,58 +1563,58 @@
      "keyframes": [
       {
        "ref": "_pngCurrenciesTab_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        58.5,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         58.5,
         41.25
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.35,
+        "#7DD0FF"
+       ],
+       "index": 1,
        "ref": "_pngCurrenciesTab_over",
-       "tint": [
-        0.35,
-        "#7DD0FF"
-       ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_pngCurrenciesTab_up",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_pngCurrenciesTab_up",
+       "pivot": [
+        58.5,
+        41.25
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Currencies_tab_CURRENT"
+   "id": "~Button_Currencies_tab_CURRENT",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1642,58 +1622,58 @@
      "keyframes": [
       {
        "ref": "_buttonDecoTab_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        23.75,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonDecoTab_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonDecoTab_down",
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonDecoTab_down",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonDecoTab_down",
+       "pivot": [
+        23.75,
+        41.25
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Decoration_tab"
+   "id": "~Button_Decoration_tab",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1701,62 +1681,62 @@
      "keyframes": [
       {
        "ref": "_buttonDecoTab_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        58.5,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonDecoTab_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonDecoTab_over",
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonDecoTab_over",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonDecoTab_over",
+       "pivot": [
+        58.5,
+        41.25
+       ],
+       "duration": 1
       },
       {
-       "loc": [
-        -28.075,
-        0
-       ],
-       "index": 3,
        "pivot": [
         40.6,
         40.6
        ],
+       "index": 3,
+       "loc": [
+        -28.075,
+        0
+       ],
        "ref": "_buttontab_hit",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Decoration_tab_CURRENT"
+   "id": "~Button_Decoration_tab_CURRENT",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1764,58 +1744,58 @@
      "keyframes": [
       {
        "ref": "_buttonInternTab_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        23.75,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonInternTab_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonInternTab_down",
        "pivot": [
         23.75,
         41.25
        ],
-       "ref": "_buttonInternTab_down",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonInternTab_down",
+       "pivot": [
+        23.75,
+        41.25
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Interns_tab"
+   "id": "~Button_Interns_tab",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1823,58 +1803,58 @@
      "keyframes": [
       {
        "ref": "_buttonInternTab_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        58.5,
-        41.25
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonInternTab_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonInternTab_over",
        "pivot": [
         58.5,
         41.25
        ],
-       "ref": "_buttonInternTab_over",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonInternTab_over",
+       "pivot": [
+        58.5,
+        41.25
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Interns_tab_CURRENT"
+   "id": "~Button_Interns_tab_CURRENT",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1882,58 +1862,58 @@
      "keyframes": [
       {
        "ref": "_buttonRessourcesTab_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        23.75,
-        43.75
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         23.75,
         43.75
        ],
-       "ref": "_buttonRessourcesTab_down",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.35,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
+       "index": 1,
+       "ref": "_buttonRessourcesTab_down",
        "pivot": [
         23.75,
         43.75
        ],
-       "ref": "_buttonRessourcesTab_down",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonRessourcesTab_down",
+       "pivot": [
+        23.75,
+        43.75
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Resources_tab"
+   "id": "~Button_Resources_tab",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1941,58 +1921,58 @@
      "keyframes": [
       {
        "ref": "_buttonRessources_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        58.5,
-        43.75
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         58.5,
         43.75
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.35,
+        "#7DD0FF"
+       ],
+       "index": 1,
        "ref": "_buttonRessourcesTab_over",
-       "tint": [
-        0.35,
-        "#7DD0FF"
-       ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
        "pivot": [
         58.5,
         43.75
        ],
-       "ref": "_buttonRessources_up",
+       "duration": 1
+      },
+      {
+       "tweened": false,
        "tint": [
         0.5,
         "#000000"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 2,
+       "ref": "_buttonRessources_up",
+       "pivot": [
+        58.5,
+        43.75
+       ],
+       "duration": 1
       },
       {
        "ref": "_buttontab_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         40.6,
         40.6
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Button_Tab_BG"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Resources_tab_CURRENT"
+   "id": "~Button_Resources_tab_CURRENT",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -2000,13 +1980,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         78.5,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "bar_bg"
@@ -2015,13 +1995,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         16.5,
         0.225
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "bar_txt"
@@ -2029,18 +2009,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -59.125,
-        -1.775
-       ],
-       "index": 0,
        "pivot": [
         24,
         24
        ],
+       "index": 0,
+       "loc": [
+        -59.125,
+        -1.775
+       ],
        "ref": "_hardCurrencyIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_icon_hardcurrency"
@@ -2054,13 +2034,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         78.5,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "bar_bg"
@@ -2068,18 +2048,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -59.425,
-        -0.325
-       ],
-       "index": 0,
        "pivot": [
         24,
         23.05
        ],
+       "index": 0,
+       "loc": [
+        -59.425,
+        -0.325
+       ],
        "ref": "_stoneIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_icon_wood"
@@ -2088,13 +2068,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         16.5,
         0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "bar_txt"
@@ -2108,13 +2088,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         78.5,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "bar_bg"
@@ -2122,18 +2102,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -59.075,
-        -1.5
-       ],
-       "index": 0,
        "pivot": [
         24,
         24
        ],
+       "index": 0,
+       "loc": [
+        -59.075,
+        -1.5
+       ],
        "ref": "_goldIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_icon_softcurrency"
@@ -2142,13 +2122,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         16.5,
         0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "bar_txt"
@@ -2162,13 +2142,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         78.5,
         19
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "bar_bg"
@@ -2176,18 +2156,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -63.3,
-        -4.9
-       ],
-       "index": 0,
        "pivot": [
         28,
         28
        ],
+       "index": 0,
+       "loc": [
+        -63.3,
+        -4.9
+       ],
        "ref": "_woodIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_icon_wood"
@@ -2196,13 +2176,13 @@
      "keyframes": [
       {
        "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         16.5,
         0
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "bar_txt"
