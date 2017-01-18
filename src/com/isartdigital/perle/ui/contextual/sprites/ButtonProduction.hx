@@ -7,6 +7,7 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
+import pixi.flump.Movie;
 import pixi.flump.Sprite;
 import pixi.interaction.EventTarget;
 

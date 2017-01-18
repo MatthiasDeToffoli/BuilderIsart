@@ -253,7 +253,7 @@ class Phantom extends Building {
 		if (canBuildHere()) {
 			
 			vBuilding.move(regionMap);
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding, position); 
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
 			trace("movePhantom " + Building.isClickable);
 			Building.isClickable = true;
 			destroy();
@@ -282,9 +282,10 @@ class Phantom extends Building {
 			
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
-			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding, position);
-			
 			vBuilding.activate();
+			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
+			
+			
 			vBuilding.addExp();
 			destroy();
 			

@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
+import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
@@ -33,7 +34,7 @@ class BHBuilt extends BuildingHud
 	 * function to set when the WF is openned
 	 */
 	public function setOnSpawn():Void {
-		trace(BuildingHud.virtualBuilding);
+
 		InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 		GameStage.getInstance().getBuildContainer().interactive = true;
 		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);

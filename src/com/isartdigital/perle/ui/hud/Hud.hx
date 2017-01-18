@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
@@ -23,6 +24,7 @@ import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
@@ -32,6 +34,7 @@ import js.Browser;
 import js.html.KeyboardEvent;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
@@ -73,7 +76,6 @@ class Hud extends SmartScreen
 		BHHarvest.getInstance().init();
 		BHConstruction.getInstance().init();
 		BHMoving.getInstance().init();
-		
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		
@@ -86,7 +88,7 @@ class Hud extends SmartScreen
 	 * @param	pNewBuildingHud
 	 * @param	pVBuilding
 	 */
-	public function changeBuildingHud (pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding, ?pPos:Point):Void {
+	public function changeBuildingHud (pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
 
 		BuildingHud.linkVirtualBuilding(pVBuilding);
 		// todo : mettre en évidence quel building on sélectionne actuellement...
@@ -97,17 +99,17 @@ class Hud extends SmartScreen
 		
 		if (currentBuildingHud != pNewBuildingHud) {
 			currentBuildingHud = pNewBuildingHud;
-			containerBuildingHud.removeChildren();
+			 containerBuildingHud.removeChildren();
 			
 			switch (pNewBuildingHud) 
 			{
 				case BuildingHudType.HARVEST: {
 					if (Std.is(BuildingHud.virtualBuilding, VHouse))
-						openHarvest(BHHarvestHouse.getInstance(),pPos);
-					else openHarvest(BHHarvest.getInstance(),pPos);
+						openHarvest(BHHarvestHouse.getInstance());
+					else openHarvest(BHHarvest.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION:
-					openConstruction(BHConstruction.getInstance(), pPos);
+					openConstruction(BHConstruction.getInstance());
 				case BuildingHudType.MOVING: 
 					//trace(buildingPosition);
 					//BHMoving.getInstance().position = buildingPosition;
@@ -120,16 +122,36 @@ class Hud extends SmartScreen
 			}
 		}
 	}
+	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...
+	private function addComponent(pComponent:BuildingHud):Void{
+
+		var lLocalBounds:Rectangle = BuildingHud.virtualBuilding.graphic.getLocalBounds();
+		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
+			
+		var lRect:Point = BuildingHud.virtualBuilding.graphic.position;
+		containerBuildingHud.position.x = lRect.x + lAnchor.x;
+		containerBuildingHud.position.y = lRect.y + lAnchor.y;
+		
+		UIPosition.setPositionContextualUI(
+			BuildingHud.virtualBuilding.graphic,
+			pComponent,
+			UIPosition.BOTTOM_CENTER,
+			0,
+			0
+		);
+		
+		containerBuildingHud.addChild(pComponent);
+	}
 	
-	private function openHarvest(pHarvest:BHBuilt, pPos:Point):Void{
-		containerBuildingHud.addChild(pHarvest);
-		pHarvest.position = pPos;
+	private function openHarvest(pHarvest:BHBuilt):Void{
+		addComponent(pHarvest);
 		pHarvest.setOnSpawn();
 	}
 	
-	private function openConstruction(pConstruct:BHConstruction, pPos:Point):Void {
-		containerBuildingHud.addChild(pConstruct);
-		pConstruct.position = pPos;
+	
+	
+	private function openConstruction(pConstruct:BHConstruction):Void {
+		addComponent(pConstruct);
 		pConstruct.setOnSpawn();
 	}
 	
@@ -227,8 +249,7 @@ class Hud extends SmartScreen
 			
 		changeBuildingHud(
 			lBuidldingHudType,
-			pVBuilding,
-			pPos
+			pVBuilding
 		);
 	}
 	

@@ -84,6 +84,10 @@ class VBuilding extends VTile {
 		myVContextualHud.activate();
 	}
 	
+	public function getVirtualContextualHud():VHudContextual{
+		return myVContextualHud;
+	}
+	
 	public function updateGeneratorInfo(?data:Dynamic){
 		if (myGenerator != null && data.id == tileDesc.id)
 			myGenerator.desc = ResourcesManager.getGenerator(tileDesc.id, myGeneratorType);
@@ -229,7 +233,7 @@ class VBuilding extends VTile {
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		setState(VBuildingState.isBuilt);
-		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this, position);
+		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this);
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}

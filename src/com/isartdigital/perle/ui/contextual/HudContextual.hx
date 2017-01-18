@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.contextual;
 
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.UIPosition;

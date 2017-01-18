@@ -32,6 +32,7 @@ class BuildingHud extends SmartComponent {
 		super(pID);
 	}
 	
+
 	public function init ():Void {
 		addListeners();
 	}
