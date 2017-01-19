@@ -4,90 +4,90 @@
   {
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "_bg_Hell01",
+       "symbol": "_bg_Hell_01",
+       "origin": [
+        1219,
+        0
+       ],
        "rect": [
         1,
         1,
-        1271,
-        1339
-       ],
-       "origin": [
-        635.5,
-        669.5
+        1219,
+        1669
        ]
       }
-     ],
-     "file": "atlas0.png"
+     ]
     },
     {
+     "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "_bg_Hell02",
+       "symbol": "_bg_Hell_02",
+       "origin": [
+        0,
+        0
+       ],
        "rect": [
         1,
         1,
-        1271,
-        1339
-       ],
-       "origin": [
-        635.5,
-        669.5
+        1219,
+        1669
        ]
       }
-     ],
-     "file": "atlas1.png"
+     ]
     }
    ],
    "scaleFactor": 1
   }
  ],
- "frameRate": 24,
  "movies": [
   {
-   "id": "BG_Hell",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
-        608.85,
-        645.8
+        600,
+        834.5
+       ],
+       "pivot": [
+        609.5,
+        834.5
        ],
        "duration": 1,
-       "pivot": [
-        635.5,
-        669.5
-       ],
        "index": 0,
-       "tweened": false,
-       "ref": "_bg_Hell02"
+       "ref": "_bg_Hell_02"
       }
-     ]
+     ],
+     "name": "Layer 1"
     },
     {
-     "name": "Layer 2",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
-        -586.3,
-        645.8
+        -619,
+        833.45
+       ],
+       "pivot": [
+        609.5,
+        834.5
        ],
        "duration": 1,
-       "pivot": [
-        635.5,
-        669.5
-       ],
        "index": 0,
-       "tweened": false,
-       "ref": "_bg_Hell01"
+       "ref": "_bg_Hell_01"
       }
-     ]
+     ],
+     "name": "Layer 2"
     }
-   ]
+   ],
+   "id": "BG_Hell"
   }
  ],
- "md5": "8ce6fac9f8d58c0d9cb65540952e72ee"
+ "md5": "ab4560735046b66333cb8b88c5e59caf",
+ "frameRate": 24
 }

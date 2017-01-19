@@ -4,90 +4,90 @@
   {
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "_bg_Hell01",
+       "symbol": "_bg_Hell_01",
+       "origin": [
+        914.25,
+        0
+       ],
        "rect": [
         1,
         1,
-        954,
-        1005
-       ],
-       "origin": [
-        476.6,
-        502.1
+        915,
+        1252
        ]
       }
-     ],
-     "file": "atlas0.png"
+     ]
     },
     {
+     "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "_bg_Hell02",
+       "symbol": "_bg_Hell_02",
+       "origin": [
+        0,
+        0
+       ],
        "rect": [
         1,
         1,
-        954,
-        1005
-       ],
-       "origin": [
-        476.6,
-        502.1
+        915,
+        1252
        ]
       }
-     ],
-     "file": "atlas1.png"
+     ]
     }
    ],
    "scaleFactor": 1
   }
  ],
- "frameRate": 24,
  "movies": [
   {
-   "id": "BG_Hell",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
-        456.6375,
-        484.35
+        450,
+        625.875
+       ],
+       "pivot": [
+        457.125,
+        625.875
        ],
        "duration": 1,
-       "pivot": [
-        476.625,
-        502.125
-       ],
        "index": 0,
-       "tweened": false,
-       "ref": "_bg_Hell02"
+       "ref": "_bg_Hell_02"
       }
-     ]
+     ],
+     "name": "Layer 1"
     },
     {
-     "name": "Layer 2",
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
-        -439.725,
-        484.35
+        -464.25,
+        625.0875
+       ],
+       "pivot": [
+        457.125,
+        625.875
        ],
        "duration": 1,
-       "pivot": [
-        476.625,
-        502.125
-       ],
        "index": 0,
-       "tweened": false,
-       "ref": "_bg_Hell01"
+       "ref": "_bg_Hell_01"
       }
-     ]
+     ],
+     "name": "Layer 2"
     }
-   ]
+   ],
+   "id": "BG_Hell"
   }
  ],
- "md5": "8ce6fac9f8d58c0d9cb65540952e72ee"
+ "md5": "ab4560735046b66333cb8b88c5e59caf",
+ "frameRate": 24
 }
