@@ -120,7 +120,7 @@ class AssetName{
 	public static inline var INTERN_INFO_IN_QUEST:String = "ListInQuest";
 	public static inline var BUTTON_ACCELERATE_IN_QUEST:String = "Bouton_InternSend_Clip";
 	public static inline var INTERN_NAME_IN_QUEST:String = "InQuest_name";
-	public static inline var TIME_IN_QUEST:String = "InQuest_time";
+	public static inline var TIME_IN_QUEST:String = "InQuest_ProgressionBar";
 	public static inline var PORTRAIT_IN_QUEST:String = "InQuest_Portrait";
 	
 	//out quest

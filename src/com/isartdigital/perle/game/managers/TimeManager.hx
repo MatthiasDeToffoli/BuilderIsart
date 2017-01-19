@@ -251,12 +251,9 @@ class TimeManager {
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
 		//trace("progress" + pElement.desc.progress);
 		//trace("end" + pElement.desc.end);
-		trace("update quest");
 		if (pElement.progress == pElement.steps[pElement.stepIndex]) {
-			trace("next step");
 			
 			if (pElement.stepIndex == pElement.steps.length - 1){
-				trace("end step");
 				eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
 			
@@ -345,7 +342,6 @@ class TimeManager {
 			pElement.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
-			trace(pElement.progress);
 			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
 		}
 	}

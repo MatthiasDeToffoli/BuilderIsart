@@ -27,9 +27,11 @@ class InternElement extends SmartComponent
 	}
 	
 	private function onPicture(){
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().openPopin(new InternPopin());
-		
+		//@ToDo: doesn't work
+		trace("picture");
+		//UIManager.getInstance().closeCurrentPopin();
+		//UIManager.getInstance().openPopin(new InternPopin());
+		//
 	}
 	
 	override public function destroy():Void 

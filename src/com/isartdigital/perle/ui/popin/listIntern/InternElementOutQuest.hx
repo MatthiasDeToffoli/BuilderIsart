@@ -52,8 +52,10 @@ class InternElementOutQuest extends InternElement
 		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();
+		InternElementInQuest.canPushNewScreen = true;
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+		
 		//todo: a garder en anticipation de bugs
 		//for (i in 0...lLength){
 			//if (QuestsManager.questsList[i].refIntern == idIntern){

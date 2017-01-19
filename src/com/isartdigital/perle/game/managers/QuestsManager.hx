@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
+import com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest;
 //import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
@@ -115,6 +116,8 @@ class QuestsManager
 	private static function choice(pQuest:TimeQuestDescription):Void{
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
+		InternElementInQuest.elementInQuestList[pQuest.refIntern].heroCursor.position = InternElementInQuest.eventCursorsArray[InternElementInQuest.elementInQuestList[pQuest.refIntern].progressIndex].position;
+		InternElementInQuest.elementInQuestList[pQuest.refIntern].progressIndex++;
 		Hud.getInstance().hide();
 		UIManager.getInstance().closeCurrentPopin;
 		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
