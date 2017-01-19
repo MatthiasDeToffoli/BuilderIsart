@@ -82,10 +82,10 @@ class GameConfig {
 		
 		parseJson(config, GameLoader.getContent(Main.GAME_CONFIG));
 		
-		trace(config);
+		/*trace(config);
 		trace(config[BUILDING]);
 		trace(config[BUILDING][0]);
-		trace(config[BUILDING][0].ID);
+		trace(config[BUILDING][0].ID);*/
 	}
 	
 	public static function getBuilding ():Array<TableTypeBuilding> {
