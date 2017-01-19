@@ -5,6 +5,16 @@ import com.isartdigital.utils.loader.GameLoader;
 import haxe.Json;
 
 
+typedef TableConfig = {
+	var RefundRatioBuilded:Float;
+	var RefundRatioConstruct:Float;
+	var FactorRegionGrowth:Float;
+	var PriceRegion:Float;
+	var RegionXpSameSide:Float;
+	var RegionXpOtherSide:Float;
+	var FactorRegionNearStyx:Float;
+}
+
 typedef TableTypeBuilding = {
 	var ID:Int;
 	var Name:String; // constantes; voir BuildingName.hx
@@ -66,6 +76,7 @@ class GameConfig {
 
 	public static inline var BUILDING:String = "TypeBuilding";
 	public static inline var INTERN:String = "TypeIntern";
+	public static inline var CONFIG:String = "Config";
 	// todo : etc
 	
 	// todo : transformer les string en enum ? ou juste faire getName() sur nos enum ?
@@ -86,6 +97,10 @@ class GameConfig {
 		trace(config[BUILDING]);
 		trace(config[BUILDING][0]);
 		trace(config[BUILDING][0].ID);*/
+	}
+	
+	public static function getConfig ():TableTypeBuilding {
+		return cast(config[CONFIG][0]);
 	}
 	
 	public static function getBuilding ():Array<TableTypeBuilding> {
