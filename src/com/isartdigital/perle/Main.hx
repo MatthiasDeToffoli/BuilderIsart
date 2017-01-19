@@ -57,6 +57,8 @@ class Main extends EventEmitter
 	public static inline var UNLOCK_ITEM_JSON_NAME:String = JSON_FOLDER + "item_to_unlock";
 	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price" + JSON_EXTENSION;
 	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config" + JSON_EXTENSION;
+	public static inline var UI_FOLDER:String = "UI/";
+	public static inline var IN_GAME_FOLDER:String = "InGame/";
 	
 	private static inline var FACEBOOK_APP_ID = "1764871347166484"; // todo : c'est bien l'app ID ? oui/non ?
 	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
@@ -185,55 +187,55 @@ class Main extends EventEmitter
 		lLoader.addSoundFile("sounds.json");
 		
 		//lLoader.addAssetFile("assets.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region_Hell/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Region_Heaven/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Region_Hell/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Region_Heaven/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Background_Heaven/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Background_Hell/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Background_Heaven/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Background_Hell/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Styx01/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Styx02/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Styx01/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Styx02/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Enfer_Decors/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Elt_Paradis_Decors/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Elt_Enfer_Decors/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Elt_Paradis_Decors/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Bat_Tribunal/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Bat_Tribunal/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenBuildingPlaceholders/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HeavenLumberMillPlaceholders/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/HeavenBuildingPlaceholders/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/HeavenLumberMillPlaceholders/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/HellBuildingPlaceholders/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/HellBuildingPlaceholders/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_InternInQuest/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_InternOutQuest/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_InternInQuest/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_InternOutQuest/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuildingDecoTab/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuyableIntern/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_BuyablePack/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_CurrenciesTab/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ResourcesTab/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabAvailable/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabSearching/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemLocked/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Wireframe_Shop_Bundle/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuildingDecoTab/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuyableIntern/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuyablePack/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_CurrenciesTab/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ResourcesTab/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabAvailable/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabSearching/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ItemLocked/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframe_Shop_Bundle/library.json");
 		
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/Share_Atlas/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_DestroyBuilding/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Popin_LevelUp/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_Intern_Event/library.json");
-		lLoader.addAssetFile(DeviceCapabilities.textureType+"/WireFrame_BuyRegion/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Share_Atlas/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_DestroyBuilding/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_LevelUp/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Intern_Event/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_BuyRegion/library.json");
 		
 		
 		lLoader.addFontFile("fonts.css");
