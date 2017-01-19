@@ -13,6 +13,8 @@ class BuildingName {
 	public static inline var STYX_VICE:String = "Altar Vice";
 	public static inline var STYX_VIRTUE:String = "Altar Virtue";
 	public static inline var STYX_MARKET:String = "Market";
+	public static inline var STYX_DECO_BUILDING:String = "Styx Nice Building";
+	public static inline var STYX_DECO_GORGEOUS_BUILDING:String = "Styx Gorgeous Building";
 	
 	
 	public static inline var HEAVEN_HOUSE:String = "Heaven House"; 
@@ -22,7 +24,7 @@ class BuildingName {
 	public static inline var HEAVEN_DECO_BIGGER_TREE:String = "Bigger Tree";
 	public static inline var HEAVEN_DECO_PRETTY_TREE:String = "Pretty Tree";
 	public static inline var HEAVEN_DECO_AWESOME_TREE:String = "Awesome Tree";
-	public static inline var HEAVEN_DECO_BUILDING:String = "Heaven Building";
+	public static inline var HEAVEN_DECO_BUILDING:String = "Heaven Nice Building";
 	public static inline var HEAVEN_DECO_GORGEOUS_BUILDING:String = "Heaven Gorgeous Building";
 	
 	
@@ -33,7 +35,7 @@ class BuildingName {
 	public static inline var HELL_DECO_BIGGER_ROCK:String = "Bigger Rock";
 	public static inline var HELL_DECO_PRETTY_ROCK:String = "Pretty Rock";
 	public static inline var HELL_DECO_AWESOME_ROCK:String = "Awesome Rock";
-	public static inline var HELL_DECO_BUILDING:String = "Hell Building";
+	public static inline var HELL_DECO_BUILDING:String = "Hell Nice Building";
 	public static inline var HELL_DECO_GORGEOUS_BUILDING:String = "Hell Gorgeous Building";
 	
 	

@@ -52,9 +52,9 @@ class GameManager {
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager
-		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ServerManager.playerConnexion();
-		//GameConfig.awake();
+		GameConfig.awake();
+		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
 		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager

@@ -7,8 +7,48 @@ import haxe.Json;
 
 typedef TableTypeBuilding = {
 	var ID:Int;
-	var Price:String;
-	var Name2:String; // enum ?
+	var Name:String; // constantes; voir BuildingName.hx
+	var Level:Int;
+	var Alignment:String; // enum; à travers le json devient string... ou le transformer en enum ?
+	var Width:Int;
+	var Height:Int;
+	var FootPrint:Int;
+	@:optional var CostGold:Int;
+	@:optional var CostWood:Int;
+	@:optional var CostIron:Int;
+	@:optional var CostKarma:Int;
+	var ConstructionTime:String; // HH:MM:SS or HHH:MM:SS
+	@:optional var ProductionType:String; // enum
+	@:optional var ProductionPerHour:Int;
+	@:optional var ProductionResource:String; // enum
+	@:optional var ProductionPerBuildingHeaven:Int;
+	@:optional var ProductionPerBuildingHell:Int;
+	var XPatCreationHeaven:Int;
+	var XPatCreationHell:Int;
+	var LevelUnlocked:Int;
+	@:optional var LimitPerRegion:Int;
+	@:optional var FactoryNeededToUnlock:Int;
+	@:optional var MaxSoulsContained:Int;
+	@:optional var MaxGoldContained:Int;
+	@:optional var IDPack1:TableTypePack;
+	@:optional var IDPack2:TableTypePack;
+	@:optional var IDPack3:TableTypePack;
+	@:optional var IDPack4:TableTypePack;
+	@:optional var IDPack5:TableTypePack;
+	@:optional var IDPack6:TableTypePack;
+	
+}
+
+typedef TableTypePack = {
+	var ID:Int;
+	var Name:String; // varchar, mais pourrait être enum ?
+	var CostGold:Int;
+	var CostKarma:Int;
+	var Time:String; // todo type Time ?
+	var GainWood:Int;
+	var GainIron:Int;
+	var GainFluxSouls:Int;
+	var ProductionResource:String; // enum
 }
 
 typedef TableTypeIntern = {
@@ -41,8 +81,11 @@ class GameConfig {
 		config[BUILDING][0].ID*/
 		
 		parseJson(config, GameLoader.getContent(Main.GAME_CONFIG));
-		trace(getBuilding());
-		trace(getBuildingByName("tribunal"));
+		
+		trace(config);
+		trace(config[BUILDING]);
+		trace(config[BUILDING][0]);
+		trace(config[BUILDING][0].ID);
 	}
 	
 	public static function getBuilding ():Array<TableTypeBuilding> {
@@ -51,7 +94,7 @@ class GameConfig {
 	
 	public static function getBuildingByName (pName:String):TableTypeBuilding { // todo : enum ?
 		for (i in 0...config[BUILDING].length)
-			if (config[BUILDING][i].Name2 == pName)
+			if (config[BUILDING][i].Name == pName)
 				return config[BUILDING][i];
 				
 		return null;
