@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.CollisionManager;
+import haxe.Timer;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 /**
@@ -21,6 +22,12 @@ class CameraManager
 	private static inline var REGION_HEIGHT:Float = Ground.ROW_Y_LENGTH * Tile.TILE_HEIGHT;
 	private static inline var REGION_STYX_WIDTH:Float = (Ground.COL_X_STYX_LENGTH - Ground.ROW_Y_STYX_LENGTH) * Tile.TILE_HEIGHT;
 	private static inline var REGION_STYX_HEIGHT:Float = (Ground.COL_X_STYX_LENGTH - Ground.ROW_Y_STYX_LENGTH) * Tile.TILE_HEIGHT;
+	
+	public static inline var DEFAULT_SPEED:Float = 12;
+	public static inline var DEFAULT_OFFSET_LOCAL:Float = 100;
+	
+	
+	private static var test:Int = 0;
 	
 	/**
 	 * cheat usefull if you don't want clipping to be updated when Camera move.
@@ -57,7 +64,7 @@ class CameraManager
 	 * Add pSpeed to move the Camera,
 	 * @param	pSpeed
 	 */
-	public static function move(pSpeed:Point):Void {
+	public static function move(pSpeedX:Float, pSpeedY:Float):Void {
 		if (Hud.isHide)
 			return;
 		
@@ -79,16 +86,19 @@ class CameraManager
 		
 		defaultPos = lRegionCenters[lIndexRef];
 		
-		target.x += pSpeed.x; target.y += pSpeed.y;
+		target.x += pSpeedX;
+		target.y += pSpeedY;
 		
 		var lCurrentPosCamera:Point = getCameraCenter();
 		
-		if (lCurrentPosCamera.x > defaultPos.x + REGION_WIDTH/2 + Tile.TILE_WIDTH) target.x -= pSpeed.x;
-		if (lCurrentPosCamera.x < defaultPos.x - REGION_WIDTH/2 - Tile.TILE_WIDTH) target.x -= pSpeed.x;
-		if (lCurrentPosCamera.y > defaultPos.y + REGION_HEIGHT/2 + Tile.TILE_HEIGHT) target.y -= pSpeed.y;
-		if (lCurrentPosCamera.y < defaultPos.y - REGION_HEIGHT/2 - Tile.TILE_HEIGHT) target.y -= pSpeed.y;
+		if (lCurrentPosCamera.x > defaultPos.x + REGION_WIDTH/2 + Tile.TILE_WIDTH*2) target.x -= pSpeedX;
+		if (lCurrentPosCamera.x < defaultPos.x - REGION_WIDTH/2 - Tile.TILE_WIDTH*2) target.x -= pSpeedX;
+		if (lCurrentPosCamera.y > defaultPos.y + REGION_HEIGHT/2 + Tile.TILE_HEIGHT*2) target.y -= pSpeedY;
+		if (lCurrentPosCamera.y < defaultPos.y - REGION_HEIGHT / 2 - Tile.TILE_HEIGHT * 2) target.y -= pSpeedY;
 		
-		checkClippingNeed(pSpeed);
+		var lSpeed:Point = new Point(pSpeedX, pSpeedY);
+		
+		checkClippingNeed(lSpeed);
 	}
 	
 	private static function distancePToP(pP1:Point, pP2:Point):Float {
@@ -198,10 +208,10 @@ class CameraManager
 		lWidthTest = lWidth; 
 		lHeightTest = lHeight;
 		
-		if (lPX >= lX - lWidthTest/2 && lPX <= lX + lWidthTest/2)
+		if (lPX >= lX - lWidthTest/2 - Tile.TILE_WIDTH*2 && lPX <= lX + lWidthTest/2 + Tile.TILE_WIDTH*2)
 		{
-			lY =lPosRegion.y - Tile.TILE_HEIGHT;
-			if (lPY >= lY && lPY <= lY + lHeightTest) return true;
+			lY =lPosRegion.y - Tile.TILE_HEIGHT * 2;
+			if (lPY >= lY && lPY <= lY + lHeightTest + Tile.TILE_HEIGHT * 4) return true;
 		}
 		
 		return false;

@@ -16,6 +16,7 @@ import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -80,6 +81,13 @@ class Phantom extends Building {
 	
 	public static function onClickCancelMove ():Void {
 		instance.destroy();
+	}
+	
+	private function onClickConfirm ():Void {
+		if (BuildingHud.virtualBuilding == null)
+			Phantom.onClickConfirmBuild();
+		else
+			BuildingHud.virtualBuilding.onClickConfirm();
 	}
 	
 	public static function onClickConfirmBuild ():Void {
@@ -161,6 +169,9 @@ class Phantom extends Building {
 			on(TouchEventType.TOUCH_START, onMouseDown2);
 			on(TouchEventType.TOUCH_END, onMouseUp2); // todo : touch_end outside c'est ?
 		}
+		
+		on(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
+		on(MouseEventType.CLICK, onClickConfirm);
 	}
 	
 	private function removeBuildListeners():Void {
@@ -168,6 +179,8 @@ class Phantom extends Building {
 		removeListener(MouseEventType.MOUSE_UP, onMouseUp);
 		removeListener(TouchEventType.TOUCH_START, onMouseDown);
 		removeListener(TouchEventType.TOUCH_END, onMouseUp);
+		removeListener(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
+		removeListener(MouseEventType.CLICK, onClickConfirm);
 		
 	}
 	
@@ -185,8 +198,8 @@ class Phantom extends Building {
 	 */
 	private function doActionPhantom():Void {
 		// si click sur batiment et reste enfoncé, touch and hold
-		if (mouseDown)
-			movePhantomOnMouse();
+		/*if (mouseDown)
+			movePhantomOnMouse();*/
 
 	}
 	
