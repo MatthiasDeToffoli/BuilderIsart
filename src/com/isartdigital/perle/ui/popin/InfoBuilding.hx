@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -143,11 +144,9 @@ class InfoBuilding extends SmartPopin{
 		
 		setImage(virtualBuilding.getAsset());
 		
-		btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
-		btnExit.on(MouseEventType.CLICK, onClickExit);
-		btnSell.on(MouseEventType.CLICK, onClickSell);
-				
-		trace("coucou3");
+		Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
+		Interactive.addListenerClick(btnExit, onClickExit);
+		Interactive.addListenerClick(btnSell, onClickSell);
 		
 	}
 
@@ -303,6 +302,10 @@ class InfoBuilding extends SmartPopin{
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
+		Interactive.removeListenerClick(btnExit, onClickExit);
+		Interactive.removeListenerClick(btnSell, onClickSell);
+		
 		instance = null;
 	}
 

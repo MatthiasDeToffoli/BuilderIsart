@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -108,14 +109,17 @@ class LevelUpPoppin extends SmartPopin
 		
 		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
 		btnCloseAll = cast(getChildByName(AssetName.LEVELUP_POPPIN_PASSALL), SmartButton);
-		btnNext.on(MouseEventType.CLICK, onClickNext);
-		btnCloseAll.on(MouseEventType.CLICK, closeAll);
+		Interactive.addListenerClick(btnNext, onClickNext);
+		Interactive.addListenerClick(btnCloseAll, closeAll);
 	}
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnNext, onClickNext);
+		Interactive.removeListenerClick(btnCloseAll, closeAll);
+		
 		instance = null;
 	}
 

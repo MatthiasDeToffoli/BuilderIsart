@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.hud.dialogue;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -73,7 +74,7 @@ class DialogueUI extends SmartScreen
 		npc_name = cast(getChildByName(AssetName.FTUE_NAME), TextSprite);	
 		npc_speach = cast(getChildByName(AssetName.FTUE_SPEACH), TextSprite);	
 		btnNext = cast(getChildByName(AssetName.FTUE_BUTTON), SmartButton);
-		btnNext.on(MouseEventType.CLICK, onClickNext);
+		Interactive.addListenerClick(btnNext, onClickNext);
 	}
 	
 	/**
@@ -121,6 +122,8 @@ class DialogueUI extends SmartScreen
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnNext, onClickNext);
+		
 		instance = null;
 		super.destroy();
 	}

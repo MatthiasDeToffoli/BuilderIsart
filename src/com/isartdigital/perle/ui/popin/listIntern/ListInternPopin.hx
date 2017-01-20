@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -67,9 +68,10 @@ class ListInternPopin extends SmartPopin
 			spawnInternDescription(AssetName.INTERN_LIST_SPAWNER1, {id:2, name:"Meli", isInQuest:true});
 			spawnInternDescription(AssetName.INTERN_LIST_SPAWNER2, {id:3, name:"Kiki", isInQuest:false});
 		*/
-			btnLeft.on(MouseEventType.CLICK, onLeft);
-			btnRight.on(MouseEventType.CLICK, onRight);
-			btnClose.on(MouseEventType.CLICK, onClose);
+		
+		Interactive.addListenerClick(btnLeft, onLeft);
+		Interactive.addListenerClick(btnRight, onRight);
+		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
 	/**
@@ -117,6 +119,10 @@ class ListInternPopin extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnLeft, onLeft);
+		Interactive.removeListenerClick(btnRight, onRight);
+		Interactive.removeListenerClick(btnClose, onClose);
+		
 		var myInternDesc:InternDescription;
 		for (myInternDesc in internDescriptionArray){
 			myInternDesc.destroy();

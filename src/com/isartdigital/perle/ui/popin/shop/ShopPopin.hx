@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -37,6 +38,18 @@ class ShopPopin extends SmartPopin{
 	
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
+	
+	private var buttonOpenBundle:SmartComponent;
+	private var buttonBuilding1:SmartButton;
+	private var buttonBuilding2:SmartButton;
+	private var buttonDeco1:SmartButton;
+	private var buttonDeco2:SmartButton;
+	private var buttonIntern1:SmartButton;
+	private var buttonIntern2:SmartButton;
+	private var buttonCurrencies1:SmartButton;
+	private var buttonCurrencies2:SmartButton;
+	private var buttonRessources1:SmartButton;
+	private var buttonRessources2:SmartButton;
 	
 	public static function getInstance (): ShopPopin {
 		if (instance == null) instance = new ShopPopin();
@@ -73,38 +86,10 @@ class ShopPopin extends SmartPopin{
 		
 		addButton();
 		
-		//tabs[ShopTab.Building] = cast(SmartCheck.getChildByName(this, "Onglet_Building"), SmartComponent);
-		/*tabs[ShopTab.Interns] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_INTERN), SmartButton);
-		tabs[ShopTab.Deco] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_DECO), SmartButton);
-		tabs[ShopTab.Resources] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_RESOURCE), SmartButton);
-		tabs[ShopTab.Currencies] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_CURRENCIE), SmartButton);
-		tabs[ShopTab.Bundle] = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_TAB_BUNDLE), SmartButton);
+		Interactive.addListenerClick(btnExit, onClickExit);
+		Interactive.addListenerClick(btnPurgatory, onClickPurgatory);
+		Interactive.addListenerClick(btnInterns, onClickInterns);
 		
-		//bars[ShopBar.Soft] = cast(getChildByName('Player_SC'), SmartComponent);
-		//bars[ShopBar.Hard] = cast(getChildByName('Player_HC'), SmartComponent);
-		//bars[ShopBar.Marble] = cast(getChildByName('Player_Marbre'), SmartButton);
-		//bars[ShopBar.Wood] = cast(getChildByName('Player_Bois'), SmartButton);
-		
-		tabs[ShopTab.Building].on(MouseEventType.CLICK, onClickOpenBuldings);
-		tabs[ShopTab.Deco].on(MouseEventType.CLICK, onClickOpenDecorations);
-		tabs[ShopTab.Interns].on(MouseEventType.CLICK, onClickOpenIntern);
-		tabs[ShopTab.Resources].on(MouseEventType.CLICK, onClickOpenResource);
-		tabs[ShopTab.Currencies].on(MouseEventType.CLICK, onClickOpenCurencies);
-		tabs[ShopTab.Bundle].on(MouseEventType.CLICK, onClickOpenBundle);
-		*/
-		
-		btnExit.on(MouseEventType.CLICK, onClickExit);
-		btnPurgatory.on(MouseEventType.CLICK, onClickPurgatory);
-		btnInterns.on(MouseEventType.CLICK, onClickInterns);
-		
-		
-		
-		//bars[ShopBar.Soft].on(MouseEventType.CLICK, onClickFakeBuySoft);
-		//bars[ShopBar.Hard].on(MouseEventType.CLICK, onClickFakeBuyHard);
-		
-		//var test = cast(getChildByName('Shop_Item_List'), ShopItemList);
-		//ShopItemList.getInstance(); // todo : là je fais quoi, je recrée ou je prends celui deja présent ?
-		// screen achat etdescription
 	}
 	
 	private function addButton() {
@@ -119,40 +104,41 @@ class ShopPopin extends SmartPopin{
 		buttonTab[3] = [];
 		var tabRessources = cast(SmartCheck.getChildByName(this, "Onglet_Ressources"), SmartComponent);
 		buttonTab[4] = [];
-		cast(SmartCheck.getChildByName(this, "Bundles_Button"), SmartComponent).on(MouseEventType.CLICK, onClickOpenBundle);
+		buttonOpenBundle = cast(SmartCheck.getChildByName(this, "Bundles_Button"), SmartComponent);
+		Interactive.addListenerClick(buttonOpenBundle, onClickOpenBundle);
 		
-		var buttonBuilding1 = cast(SmartCheck.getChildByName(tabBuilding, "Current"), SmartButton);
-		buttonBuilding1.on(MouseEventType.CLICK, onClickOpenBuldings);
-		var buttonBuilding2 = cast(SmartCheck.getChildByName(tabBuilding, "Layer 1"), SmartButton);
-		buttonBuilding2.on(MouseEventType.CLICK, onClickOpenBuldings);
+		buttonBuilding1 = cast(SmartCheck.getChildByName(tabBuilding, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonBuilding1, onClickOpenBuldings);
+		buttonBuilding2 = cast(SmartCheck.getChildByName(tabBuilding, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonBuilding2, onClickOpenBuldings);
 		buttonTab[0].push(buttonBuilding1);
 		buttonTab[0].push(buttonBuilding2);
 		
-		var buttonDeco1 = cast(SmartCheck.getChildByName(tabDeco, "Current"), SmartButton);
-		buttonDeco1.on(MouseEventType.CLICK, onClickOpenDecorations);
-		var buttonDeco2 = cast(SmartCheck.getChildByName(tabDeco, "Layer 1"), SmartButton);
-		buttonDeco2.on(MouseEventType.CLICK, onClickOpenDecorations);
+		buttonDeco1 = cast(SmartCheck.getChildByName(tabDeco, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonDeco1, onClickOpenDecorations);
+		buttonDeco2 = cast(SmartCheck.getChildByName(tabDeco, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonDeco2, onClickOpenDecorations);
 		buttonTab[1].push(buttonDeco1);
 		buttonTab[1].push(buttonDeco2);
 		
-		var buttonIntern1 = cast(SmartCheck.getChildByName(tabInterns, "Current"), SmartButton);
-		buttonIntern1.on(MouseEventType.CLICK, onClickOpenIntern);
-		var buttonIntern2 = cast(SmartCheck.getChildByName(tabInterns, "Layer 1"), SmartButton);
-		buttonIntern2.on(MouseEventType.CLICK, onClickOpenIntern);
+		buttonIntern1 = cast(SmartCheck.getChildByName(tabInterns, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonIntern1, onClickOpenIntern);
+		buttonIntern2 = cast(SmartCheck.getChildByName(tabInterns, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonIntern2, onClickOpenIntern);
 		buttonTab[2].push(buttonIntern1);
 		buttonTab[2].push(buttonIntern2);
 		
-		var buttonCurrencies1 = cast(SmartCheck.getChildByName(tabCurrencies, "Current"), SmartButton);
-		buttonCurrencies1.on(MouseEventType.CLICK, onClickOpenCurencies);
-		var buttonCurrencies2 = cast(SmartCheck.getChildByName(tabCurrencies, "Layer 1"), SmartButton);
-		buttonCurrencies2.on(MouseEventType.CLICK, onClickOpenCurencies);
+		buttonCurrencies1 = cast(SmartCheck.getChildByName(tabCurrencies, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonCurrencies1, onClickOpenCurencies);
+		buttonCurrencies2 = cast(SmartCheck.getChildByName(tabCurrencies, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonCurrencies2, onClickOpenCurencies);
 		buttonTab[3].push(buttonCurrencies1);
 		buttonTab[3].push(buttonCurrencies2);
 		
-		var buttonRessources1 = cast(SmartCheck.getChildByName(tabRessources, "Current"), SmartButton);
-		buttonRessources1.on(MouseEventType.CLICK, onClickOpenResource);
-		var buttonRessources2 = cast(SmartCheck.getChildByName(tabRessources, "Layer 1"), SmartButton);
-		buttonRessources2.on(MouseEventType.CLICK, onClickOpenResource);
+		buttonRessources1 = cast(SmartCheck.getChildByName(tabRessources, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonRessources1, onClickOpenResource);
+		buttonRessources2 = cast(SmartCheck.getChildByName(tabRessources, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonRessources2, onClickOpenResource);
 		buttonTab[4].push(buttonRessources1);
 		buttonTab[4].push(buttonRessources2);
 	}
@@ -272,9 +258,21 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	override public function destroy():Void {
-		btnExit.removeListener(MouseEventType.CLICK, onClickExit);
-		btnPurgatory.removeListener(MouseEventType.CLICK, onClickExit);
-		btnInterns.removeListener(MouseEventType.CLICK, onClickExit);
+		Interactive.removeListenerClick(btnExit, onClickExit);
+		Interactive.removeListenerClick(btnPurgatory, onClickPurgatory);
+		Interactive.removeListenerClick(btnInterns, onClickInterns);
+		
+		Interactive.removeListenerClick(buttonOpenBundle, onClickOpenBundle);
+		Interactive.removeListenerClick(buttonBuilding1, onClickOpenBuldings);
+		Interactive.removeListenerClick(buttonBuilding2, onClickOpenBuldings);
+		Interactive.removeListenerClick(buttonDeco1, onClickOpenDecorations);
+		Interactive.removeListenerClick(buttonDeco2, onClickOpenDecorations);
+		Interactive.removeListenerClick(buttonIntern1, onClickOpenIntern);
+		Interactive.removeListenerClick(buttonIntern2, onClickOpenIntern);
+		Interactive.removeListenerClick(buttonCurrencies1, onClickOpenCurencies);
+		Interactive.removeListenerClick(buttonCurrencies2, onClickOpenCurencies);
+		Interactive.removeListenerClick(buttonRessources1, onClickOpenResource);
+		Interactive.removeListenerClick(buttonRessources2, onClickOpenResource);
 		
 		instance = null;
 		super.destroy();

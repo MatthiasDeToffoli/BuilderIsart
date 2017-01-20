@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -98,8 +99,8 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function start ():Void {
-		arrowLeft.on(MouseEventType.CLICK, onClickTempArrowLeft);
-		arrowRight.on(MouseEventType.CLICK, onClickTempArrowRight);
+		Interactive.addListenerClick(arrowLeft, onClickArrowLeft);
+		Interactive.addListenerClick(arrowRight, onClickArrowRight);
 	}
 	
 	public function changeCardsToShow (pNameList:Array<String>):Void { // todo: changer par héritage
@@ -126,11 +127,11 @@ class ShopCaroussel extends SmartComponent {
 		createCard(cardsPositions);
 	}
 	
-	private function onClickTempArrowLeft ():Void { // todo: rename
+	private function onClickArrowLeft ():Void {
 		scrollPrecedent();
 	}
 	
-	private function onClickTempArrowRight ():Void {
+	private function onClickArrowRight ():Void {
 		scrollNext();
 	}
 	
@@ -220,8 +221,8 @@ class ShopCaroussel extends SmartComponent {
 	// todo : destroy les cards
 	override public function destroy():Void {
 		parent.removeChild(this);
-		arrowLeft.removeListener(MouseEventType.CLICK, onClickTempArrowLeft);
-		arrowRight.removeListener(MouseEventType.CLICK, onClickTempArrowRight);
+		Interactive.removeListenerClick(arrowLeft, onClickArrowLeft);
+		Interactive.removeListenerClick(arrowRight, onClickArrowRight);
 		destroyCards();
 		cards = null;
 		super.destroy();

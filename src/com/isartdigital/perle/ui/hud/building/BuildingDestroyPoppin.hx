@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -24,6 +25,9 @@ class BuildingDestroyPoppin extends SmartPopin
 	private var nameBuilding:TextSprite;
 	private var levelBuilding:TextSprite;
 	private var price:TextSprite;
+	private var btnClose:SmartButton;
+	private var btnSell:SmartButton;
+	
 	/**
 	 * instance unique de la classe BuildingDestroyPoppin
 	 */
@@ -81,9 +85,11 @@ class BuildingDestroyPoppin extends SmartPopin
 		nameBuilding = cast(SmartCheck.getChildByName(this, "_text_selectedBuildingName"), TextSprite); 
 		levelBuilding = cast(SmartCheck.getChildByName(this, "_text_selectedBuildingLevel"), TextSprite); 
 		price = cast(SmartCheck.getChildByName(this, "_text_destroyBuildPayment"), TextSprite); 
+		btnClose = cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton);
+		btnSell = cast(SmartCheck.getChildByName(this, "Button_DestroyBuildingConfirm"), SmartButton);
 		
-		cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton).on(MouseEventType.CLICK, closePoppin);
-		cast(SmartCheck.getChildByName(this, "Button_DestroyBuildingConfirm"), SmartButton).on(MouseEventType.CLICK, sellBuilding);
+		Interactive.addListenerClick(btnClose, closePoppin);
+		Interactive.addListenerClick(btnSell, sellBuilding);
 	}
 	
 	private function closePoppin():Void {
@@ -99,6 +105,9 @@ class BuildingDestroyPoppin extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnClose, closePoppin);
+		Interactive.removeListenerClick(btnSell, sellBuilding);
+		
 		instance = null;
 		super.destroy();
 	}

@@ -17,6 +17,7 @@ import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -171,7 +172,7 @@ class Phantom extends Building {
 		}
 		
 		on(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
-		on(MouseEventType.CLICK, onClickConfirm);
+		Interactive.addListenerClick(this, onClickConfirm);
 	}
 	
 	private function removeBuildListeners():Void {
@@ -180,7 +181,7 @@ class Phantom extends Building {
 		removeListener(TouchEventType.TOUCH_START, onMouseDown);
 		removeListener(TouchEventType.TOUCH_END, onMouseUp);
 		removeListener(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
-		removeListener(MouseEventType.CLICK, onClickConfirm);
+		Interactive.removeListenerClick(this, onClickConfirm);
 		
 	}
 	

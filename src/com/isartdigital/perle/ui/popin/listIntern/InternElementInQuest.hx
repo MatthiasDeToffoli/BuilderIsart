@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.ui.popin.InternPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -32,8 +33,8 @@ class InternElementInQuest extends InternElement
 		
 		picture = cast(getChildByName(AssetName.PORTRAIT_IN_QUEST), SmartButton);
 		
-		btnAccelerate.on(MouseEventType.CLICK, onAccelerate);
-		picture.on(MouseEventType.CLICK, onPicture);
+		Interactive.addListenerClick(btnAccelerate, onAccelerate);
+		Interactive.addListenerClick(picture, onPicture);
 	}
 	
 	private function onAccelerate(){
@@ -42,7 +43,8 @@ class InternElementInQuest extends InternElement
 	
 	override public function destroy():Void 
 	{
-		btnAccelerate.off(MouseEventType.CLICK, onAccelerate);
+		Interactive.removeListenerClick(btnAccelerate, onAccelerate);
+		Interactive.removeListenerClick(picture, onPicture);
 		super.destroy();
 	}
 	

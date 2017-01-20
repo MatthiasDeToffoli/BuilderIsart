@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -42,7 +43,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 		removeChild(spawner);
 		addChild(graphic);
 		interactive = true;
-		on(MouseEventType.CLICK, onClick);
+		Interactive.addListenerClick(this, onClick);
 	}
 	
 	public static function init(){
@@ -71,12 +72,13 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 		myGeneratorDesc = pDesc;
 	}
 
-	function onClick(pEvent:EventTarget = null):Void {
+	function onClick ():Void {
 		//if (myGeneratorDesc != null) // si pas justifié on enlève, mieux vaut pas rendre le code imperméable aux bugs venant d'un truc mal codé
 			myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
 	}
 	
 	override public function destroy():Void { // todo : destroy fonctionnel ?
+		Interactive.removeListenerClick(this, onClick);
 		removeAllListeners();
 		myGeneratorDesc = null;
 		if (parent != null)

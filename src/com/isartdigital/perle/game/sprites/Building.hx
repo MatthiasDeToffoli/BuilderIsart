@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
@@ -167,6 +168,9 @@ class Building extends Tile implements IZSortable
 	override public function destroy():Void {
 		// todo destroy incomplet ?
 		// todo : suppri;er de behind and front du zsorting ?
+		Interactive.removeListenerClick(this, onClick);
+		off(MouseEventType.MOUSE_OVER, changeCursor);
+		
 		if (list.indexOf(this) != -1)
 			list.splice(list.indexOf(this), 1);
 			
@@ -184,8 +188,9 @@ class Building extends Tile implements IZSortable
 	//{ ################# HudContextual #################
 	
 	private function addListenerOnClick ():Void {
-		on(MouseEventType.CLICK, onClick);
+		Interactive.addListenerClick(this, onClick);
 		on(MouseEventType.MOUSE_OVER, changeCursor);
+		
 	}
 	
 	private function onClick ():Void {

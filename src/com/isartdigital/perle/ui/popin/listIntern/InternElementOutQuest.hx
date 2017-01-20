@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -33,8 +34,8 @@ class InternElementOutQuest extends InternElement
 		internDatas = pDesc;
 		idIntern = pDesc.id;
 		
-		picture.on(MouseEventType.CLICK, onPicture);
-		btnSend.on(MouseEventType.CLICK, onSend);
+		Interactive.addListenerClick(picture, onPicture);
+		Interactive.addListenerClick(btnSend, onSend);
 		
 	}
 	
@@ -57,7 +58,8 @@ class InternElementOutQuest extends InternElement
 	
 	override public function destroy():Void 
 	{
-		btnSend.off(MouseEventType.CLICK, onSend);
+		Interactive.removeListenerClick(picture, onPicture);
+		Interactive.removeListenerClick(btnSend, onSend);
 		super.destroy();
 	}
 }

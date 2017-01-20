@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 
@@ -35,8 +36,9 @@ class BHMoving extends BuildingHud{
 	override private function addListeners ():Void {
 		btnCancel = cast(SmartCheck.getChildByName(this, "Button_CancelMovement"), SmartButton);
 		btnConfirm = cast(SmartCheck.getChildByName(this, "Button_ConfirmMovement"), SmartButton);
-		btnCancel.on(MouseEventType.CLICK, onClickCancel);
-		btnConfirm.on(MouseEventType.CLICK, onClickConfirm);
+		
+		Interactive.addListenerClick(btnCancel, onClickCancel);
+		Interactive.addListenerClick(btnConfirm, onClickConfirm);
 	}
 	
 	private function onClickCancel ():Void {
@@ -60,6 +62,9 @@ class BHMoving extends BuildingHud{
 	}
 	
 	override public function destroy():Void {
+		Interactive.removeListenerClick(btnCancel, onClickCancel);
+		Interactive.removeListenerClick(btnConfirm, onClickConfirm);
+		
 		instance = null;
 		super.destroy();
 	}

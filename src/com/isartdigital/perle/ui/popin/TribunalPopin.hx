@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -97,12 +98,13 @@ class TribunalPopin extends SmartPopin
 		btnUpgrade.on(MouseEventType.MOUSE_OVER, rewriteUpgradeTxt);
 		btnUpgrade.on(MouseEventType.MOUSE_OUT, rewriteUpgradeTxt);
 		btnUpgrade.on(MouseEventType.MOUSE_DOWN, rewriteUpgradeTxt);
-		btnClose.on(MouseEventType.CLICK, onClose);
-		btnHeaven.on(MouseEventType.CLICK, onHeaven);
-		btnHell.on(MouseEventType.CLICK, onHell);
-		btnShop.on(MouseEventType.CLICK, onShop);
-		btnIntern.on(MouseEventType.CLICK, onIntern);
-		btnUpgrade.on(MouseEventType.CLICK, onUpgrade);
+		
+		Interactive.addListenerClick(btnClose, onClose);
+		Interactive.addListenerClick(btnHeaven, onHeaven);
+		Interactive.addListenerClick(btnHell, onHell);
+		Interactive.addListenerClick(btnShop, onShop);
+		Interactive.addListenerClick(btnIntern, onIntern);
+		Interactive.addListenerClick(btnUpgrade, onUpgrade);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
 	}
@@ -163,12 +165,12 @@ class TribunalPopin extends SmartPopin
 	 */
 	override public function destroy (): Void {
 		
-		btnClose.off(MouseEventType.CLICK, onClose);
-		btnHeaven.off(MouseEventType.CLICK, onHeaven);
-		btnHell.off(MouseEventType.CLICK, onHell);
-		btnShop.off(MouseEventType.CLICK, onShop);
-		btnIntern.off(MouseEventType.CLICK, onIntern);
-		btnUpgrade.off(MouseEventType.CLICK, onUpgrade);
+		Interactive.removeListenerClick(btnClose, onClose);
+		Interactive.removeListenerClick(btnHeaven, onHeaven);
+		Interactive.removeListenerClick(btnHell, onHell);
+		Interactive.removeListenerClick(btnShop, onShop);
+		Interactive.removeListenerClick(btnIntern, onIntern);
+		Interactive.removeListenerClick(btnUpgrade, onUpgrade);
 		
 		instance = null;
 		

@@ -6,6 +6,7 @@ import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -48,20 +49,19 @@ class BHBuilt extends BuildingHud
 	 * listen click on destroy and move if building is not the tribunal
 	 */
 	public function setMoveAndDestroy():Void{
-
-			btnMove.on(MouseEventType.CLICK, onClickMove);		
-			btnDestroy.on(MouseEventType.CLICK, onClickDestroy);
+		Interactive.addListenerClick(btnMove, onClickMove);
+		Interactive.addListenerClick(btnDestroy, onClickDestroy);
 		
 	}
 	
 	private function setDescriptionButton():Void {
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal)){
 			btnDescription.alpha = 1;
-			btnDescription.on(MouseEventType.CLICK, onClickDescription);
+			Interactive.addListenerClick(btnDescription, onClickDescription);
 		}
 		else {
 			btnDescription.alpha = 0.5;
-			btnDescription.off(MouseEventType.CLICK, onClickDescription);
+			Interactive.removeListenerClick(btnDescription, onClickDescription);
 		}
 	}
 	
@@ -70,7 +70,7 @@ class BHBuilt extends BuildingHud
 				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
 				trace(myVBuilding.getLevel());
 				if (myVBuilding.canUpgrade()) {
-					btnUpgrade.on(MouseEventType.CLICK, onClickUpgrade);
+					Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
 				}
 				else
 					btnUpgrade.alpha = 0.5;
@@ -79,9 +79,9 @@ class BHBuilt extends BuildingHud
 	}
 	
 	private function removeButtonsChange():Void {
-			
-		btnMove.off(MouseEventType.CLICK, onClickMove);		
-		btnDestroy.off(MouseEventType.CLICK, onClickDestroy);
+		
+		Interactive.removeListenerClick(btnMove, onClickMove);
+		Interactive.removeListenerClick(btnDestroy, onClickDestroy);
 		btnUpgrade.removeAllListeners();
 		btnUpgrade.alpha = 1;
 		btnMove.alpha = 1;
@@ -143,6 +143,11 @@ class BHBuilt extends BuildingHud
 	}
 	
 	override public function destroy():Void {
+		Interactive.removeListenerClick(btnMove, onClickMove);
+		Interactive.removeListenerClick(btnDestroy, onClickDestroy);
+		Interactive.removeListenerClick(btnDescription, onClickDescription);
+		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
+		
 		removeListenerGameContainer();
 		super.destroy();
 	}

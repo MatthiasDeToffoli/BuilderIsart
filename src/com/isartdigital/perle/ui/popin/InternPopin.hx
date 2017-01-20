@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -41,8 +42,8 @@ class InternPopin extends SmartPopin
 		
 		btnClose = cast(getChildByName(AssetName.INTERN_POPIN_CANCEL), SmartButton);
 		
-		btnClose.on(MouseEventType.CLICK, onClose);
-		btnSeeAll.on(MouseEventType.CLICK, onSeeAll);
+		Interactive.addListenerClick(btnClose, onClose);
+		Interactive.addListenerClick(btnSeeAll, onSeeAll);
 	}
 	
 	private function onClose(){
@@ -57,8 +58,8 @@ class InternPopin extends SmartPopin
 	
 	override public function destroy():Void 
 	{
-		btnSeeAll.off(MouseEventType.CLICK, onSeeAll);
-		btnClose.off(MouseEventType.CLICK, onClose);
+		Interactive.removeListenerClick(btnClose, onClose);
+		Interactive.removeListenerClick(btnSeeAll, onSeeAll);
 		super.destroy();
 	}
 	

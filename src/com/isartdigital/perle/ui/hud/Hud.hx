@@ -21,6 +21,7 @@ import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -48,6 +49,8 @@ class Hud extends SmartScreen
 	private static var instance: Hud;
 	public static var isHide:Bool = false;
 	
+	public var buildingPosition:Point;
+	
 	private var currentBuildingHud:BuildingHudType;
 	
 	private var containerBuildingHud:Container;
@@ -55,9 +58,17 @@ class Hud extends SmartScreen
 	private var hellXPBar:SmartComponent;
 	private var heavenXPBar:SmartComponent;
 	
-	public var buildingPosition:Point;
+	private var btnResetData:SmartButton;
+	private var btnShop:SmartButton;
+	private var btnPurgatory:SmartButton;
+	private var btnInterns:SmartButton;
+	private var btnMissions:SmartButton;
+	private var btnIron:SmartButton;
+	private var btnWood:SmartButton;
+	private var btnSoft:SmartButton;
+	private var btnHard:SmartButton;
 	
-
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -174,32 +185,41 @@ class Hud extends SmartScreen
 	private function addListeners ():Void {
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		
-		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton).on(MouseEventType.CLICK, onClickResetData);
+		btnResetData = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton);
+		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
+		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
+		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
+		btnMissions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton);
 		
-		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton).on(MouseEventType.CLICK, onClickShop);
-		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton).on(MouseEventType.CLICK, onClickTribunal);
-		//var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
-		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
-		cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton).on(MouseEventType.CLICK, onClickMission);
+		Interactive.addListenerClick(btnResetData, onClickResetData);
+		Interactive.addListenerClick(btnShop, onClickShop);
+		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
+		Interactive.addListenerClick(btnInterns, onClickListIntern);
+		Interactive.addListenerClick(btnMissions, onClickMission);
+		
+		
+		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
 		
-		//var interMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_CONTAINER_BTN_INTERNS);
-		//cast(SmartCheck.getChildByName(interMc, AssetName.HUD_BTN_INTERNS), SmartButton).on(MouseEventType.CLICK, onClickListIntern);
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
-		cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton).on(MouseEventType.CLICK, onClickShopResource);
+		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);
+		Interactive.addListenerClick(btnIron, onClickShopResource);
 		
 		var ironMc:Dynamic = SmartCheck.getChildByName(this,AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
-		cast(SmartCheck.getChildByName(ironMc, AssetName.HUD_BTN_WOOD), SmartButton).on(MouseEventType.CLICK, onClickShopResource);
+		btnWood = cast(SmartCheck.getChildByName(ironMc, AssetName.HUD_BTN_WOOD), SmartButton);
+		Interactive.addListenerClick(btnWood, onClickShopResource);
 		
 		var softMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
-		cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton).on(MouseEventType.CLICK, onClickShopCurrencies);
+		btnSoft = cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton);
+		Interactive.addListenerClick(btnSoft, onClickShopCurrencies);
 		
 		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
-		cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton).on(MouseEventType.CLICK, onClickShopCurrencies);
+		btnHard = cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton);
+		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
 	}
 	
@@ -326,11 +346,6 @@ class Hud extends SmartScreen
 		text.text = pMax != null ? pValue + " / " + pMax : pValue + "";
 	}
 	
-	//hud génant quand ouvre autre screen est ce que on garde ou on fait autrement ?
-	// Ambroise : C'est une bonne méthode à mon avis, par contre le nom de la fonction est encore mal trouvé :/
-	// typiquement en jquery la function se nommerait hide(); et l'autre show();
-	//Matthias : ça va X)
-	
 	/**
 	 * hide the hud
 	 */
@@ -348,15 +363,21 @@ class Hud extends SmartScreen
 	}
 	
 	
-	
-	/*
-		 * btnTest = cast(SmartCheck.getChildByName(this, "ButtonItem"), SmartButton);
-		btnTest.on(MouseEventType.CLICK, onClick);*/
-	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnResetData, onClickResetData);
+		Interactive.removeListenerClick(btnShop, onClickShop);
+		Interactive.removeListenerClick(btnPurgatory, onClickTribunal);
+		Interactive.removeListenerClick(btnInterns, onClickListIntern);
+		Interactive.removeListenerClick(btnMissions, onClickMission);
+		
+		Interactive.removeListenerClick(btnIron, onClickShopResource);
+		Interactive.removeListenerClick(btnWood, onClickShopResource);
+		Interactive.removeListenerClick(btnSoft, onClickShopCurrencies);
+		Interactive.removeListenerClick(btnHard, onClickShopCurrencies);
+		
 		ResourcesManager.totalResourcesEvent.off(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		instance = null;
 		super.destroy();

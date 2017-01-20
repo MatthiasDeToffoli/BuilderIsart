@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -32,7 +34,7 @@ class InternElement extends SmartComponent
 	
 	override public function destroy():Void 
 	{
-		picture.off(MouseEventType.CLICK, onPicture);
+		Interactive.removeListenerClick(picture, onPicture);
 		parent.removeChild(this);
 		super.destroy();
 	}

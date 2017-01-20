@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -153,10 +154,10 @@ class Choice extends SmartPopin
 	}
 	
 	private function addListeners ():Void {
-		btnDismiss.on(MouseEventType.CLICK, onDismiss);
-		btnInterns.on(MouseEventType.CLICK, onSeeAll);
-		btnShare.on(MouseEventType.CLICK, shareEvent);
-		btnClose.on(MouseEventType.CLICK, onClose);
+		Interactive.addListenerClick(btnDismiss, onDismiss);
+		Interactive.addListenerClick(btnInterns, onSeeAll);
+		Interactive.addListenerClick(btnShare, shareEvent);
+		Interactive.addListenerClick(btnClose, onClose);
 		choiceCard.interactive = true;
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 	}
@@ -293,6 +294,11 @@ class Choice extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnDismiss, onDismiss);
+		Interactive.removeListenerClick(btnInterns, onSeeAll);
+		Interactive.removeListenerClick(btnShare, shareEvent);
+		Interactive.removeListenerClick(btnClose, onClose);
+		
 		isOpen = false;
 		parent.removeChild(this);
 		instance = null;

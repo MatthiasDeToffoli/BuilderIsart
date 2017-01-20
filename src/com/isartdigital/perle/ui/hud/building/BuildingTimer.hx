@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -59,7 +60,7 @@ class BuildingTimer extends SmartComponent
 		timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
 		
 		if (TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isBuilding)
-			btnSpeedup.on(MouseEventType.CLICK, onClickSpeedup);
+			Interactive.addListenerClick(btnSpeedup, onClickSpeedup);
 			
 		updateProgressBar();
 	}
@@ -69,7 +70,7 @@ class BuildingTimer extends SmartComponent
 		var isFinish:Bool = TimeManager.increaseProgress(building, 5000);
 		if (isFinish) {
 			timeText.text = "Finish";
-			btnSpeedup.off(MouseEventType.CLICK, onClickSpeedup);
+			Interactive.removeListenerClick(btnSpeedup, onClickSpeedup);
 		}
 		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
 		
@@ -84,6 +85,8 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	override public function destroy():Void {
+		Interactive.removeListenerClick(btnSpeedup, onClickSpeedup);
+		
 		loop.stop();
 		parent.removeChild(this);
 		super.destroy();
