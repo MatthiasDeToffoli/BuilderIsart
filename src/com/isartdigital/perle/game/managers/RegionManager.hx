@@ -225,7 +225,6 @@ class RegionManager
 	 * @param pNewRegion region to add
 	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
-		
 		//mapNumbersRegion[pNewRegion.desc.type]++;
 		mapNumbersRegion[pNewRegion.desc.type] += 1;
 		
@@ -270,19 +269,23 @@ class RegionManager
 	public static function buildWhitoutSave ():Void {
 		worldMap[0] = new Map<Int,Region>();
 		
-		worldMap[0][0] = createRegionFromDesc({
-			x:0,
-			y:0,
+		var origin:Index = {x:0, y:0};
+		
+		worldMap[origin.x][origin.y] = createRegionFromDesc({
+			x:origin.x,
+			y:origin.y,
 			type:Alignment.neutral,
-			firstTilePos:{x:0,y:0}
+			firstTilePos:{x:origin.x,y:origin.y}
 		});
 		
 		createNextBg({
-			x:0,
-			y:0,
+			x:origin.x,
+			y:origin.y,
 			type:Alignment.neutral,
-			firstTilePos: {x:0, y:0}
+			firstTilePos: {x:origin.x, y:origin.y}
 		});
+		
+		ServerManager.addRegionToDataBase(Alignment.neutral.getName(), origin, origin);
 		
 		bgContainer.addChild(background);
 		

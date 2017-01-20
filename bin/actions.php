@@ -37,4 +37,4 @@ $action = str_replace("/", "", $_POST[KEY_POST_FILE_NAME]);
 //ensuite je vérifie que le fichier existe
 if(file_exists(PHP_DIRECTORY.$_POST[KEY_POST_FILE_NAME].PHP_EXTENSION));
     include(PHP_DIRECTORY.$_POST[KEY_POST_FILE_NAME].PHP_EXTENSION);
-
+?>

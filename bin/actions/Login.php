@@ -3,7 +3,7 @@
  * User: Vicktor Grenu
  */
 
-include("vendor/autoload.php");
+/*include("vendor/autoload.php");
 
 // app id number
 $fb = new Facebook\Facebook([
@@ -24,7 +24,12 @@ try {
     exit;
 }
 
-$fbId = $helper->getUserId();
+$fbId = $helper->getUserId();*/
+
+include("FacebookUtils.php");
+
+$accessToken = getToken();
+$fbId = getFacebookId();
 
 // __________________________________
 
@@ -57,6 +62,7 @@ try {
             //$res = $reqInsPre->fetch(PDO::FETCH_ASSOC); inutile ?
         } catch (Exception $e) {
             echo $e->getMessage();
+
             exit;
         }
     }
@@ -68,4 +74,3 @@ try {
 if (isset($accessToken)) {
     echo json_encode($retour);
 }
-
