@@ -23,9 +23,12 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import eventemitter3.EventEmitter;
+import haxe.Json;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.filters.color.ColorMatrixFilter;
+
 
 /**
  * Only graphic class, doesn't have any logical part (no VPhantom)
@@ -33,8 +36,11 @@ import pixi.filters.color.ColorMatrixFilter;
  */
 class Phantom extends Building {
 	
+	public static inline var EVENT_CANT_BUILD:String = "Phantom_Cant_Build";
 	
 	private static inline var FILTER_OPACITY:Float = 0.5;
+	
+	public static var eCantBuild:EventEmitter;
 	
 	private static var colorMatrix:ColorMatrixFilter;
 	private static var instance:Phantom;
@@ -53,6 +59,7 @@ class Phantom extends Building {
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.desaturate(false);
 		GameStage.getInstance().getBuildContainer().addChild(container);
+		eCantBuild = new EventEmitter();
 	}
 	
 	public static function gameLoop():Void {
@@ -384,8 +391,57 @@ class Phantom extends Building {
 		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
 		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 		
+		var lExceeding:Array<Index> = [];
+		
+		// dépassement de 1 ou plus détecté
+		if (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > lRegionSize.width) {
+			trace(regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width - lRegionSize.width);
+		}
+		if (regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > lRegionSize.height) {
+			trace(regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height - lRegionSize.height);
+			
+		}
+		
+		var lStartBuildingFootprint:Index = { 
+			x: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
+			y: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+		};
+		var lEndBuildingFootPrint:Index = { 
+			x: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
+			y: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
+		};
+		
+		
+		// for every building cell including footprint
+		for (lX in lStartBuildingFootprint.x...lEndBuildingFootPrint.x) {
+			for (lY in lStartBuildingFootprint.y...lEndBuildingFootPrint.y) {
+				
+				//exceed from bottom or riht
+				if (lX + regionMap.map.x > lRegionSize.width ||
+					lY + regionMap.map.y > lRegionSize.height)
+					lExceeding.push({
+						x:lX,
+						y:lY
+					});
+				
+				if (lX + regionMap.map.x > lRegionSize.width ||
+					lY + regionMap.map.y > lRegionSize.height)
+			}
+		}
+		
+		if (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > lRegionSize.width ||
+			regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > lRegionSize.height)
+			emitExceeding(lExceeding);
+			
+		trace(Json.stringify(lExceeding));
+		
+		
 		return (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width <= lRegionSize.width &&
 				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height <= lRegionSize.height);
+	}
+	
+	private function emitExceeding (pExceeding:Array<Index>):Void {
+		eCantBuild.emit(EVENT_CANT_BUILD, pExceeding);
 	}
 	
 	/**
@@ -425,7 +481,15 @@ class Phantom extends Building {
 			lPoint = 0;
 		else
 			lPoint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;
-
+		
+		/*
+		trace("test");
+		trace(regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lPoint);
+		trace(regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lPoint);
+		trace(regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lPoint);
+		trace(regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lPoint);
+		*/
+			
 		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
 		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lPoint &&
 				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lPoint &&

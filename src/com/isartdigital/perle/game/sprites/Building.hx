@@ -15,7 +15,7 @@ import pixi.core.display.Container;
 typedef SizeOnMap = {
 	var width:Int;
 	var height:Int;
-	var footprint:Float;
+	var footprint:Int;
 }
 
 typedef RegionMap = {
