@@ -54,7 +54,7 @@ class TimeManager {
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 5000;
+	private static inline var TIME_LOOP_DELAY:Int = 50;
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;

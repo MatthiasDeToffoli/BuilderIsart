@@ -21,8 +21,8 @@ class QuestsManager
 	private static inline var NUMBER_EVENTS:Int = 3;
 	
 	//The time's gap between two events will be vary between these constants
-	private static var MIN_TIMELINE(default, null):Int = 20000;
-	private static var MAX_TIMELINE(default, null):Int = 30000;
+	private static var MIN_TIMELINE(default, null):Int = 2000;
+	private static var MAX_TIMELINE(default, null):Int = 3000;
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
@@ -116,8 +116,6 @@ class QuestsManager
 	private static function choice(pQuest:TimeQuestDescription):Void{
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
-		InternElementInQuest.elementInQuestList[pQuest.refIntern].heroCursor.position = InternElementInQuest.eventCursorsArray[InternElementInQuest.elementInQuestList[pQuest.refIntern].progressIndex].position;
-		InternElementInQuest.elementInQuestList[pQuest.refIntern].progressIndex++;
 		Hud.getInstance().hide();
 		UIManager.getInstance().closeCurrentPopin;
 		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());

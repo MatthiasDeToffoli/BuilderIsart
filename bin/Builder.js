@@ -1731,8 +1731,6 @@ com_isartdigital_perle_game_managers_QuestsManager.createEnd = function(pListEve
 };
 com_isartdigital_perle_game_managers_QuestsManager.choice = function(pQuest) {
 	com_isartdigital_perle_game_managers_QuestsManager.questInProgress = pQuest;
-	com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.elementInQuestList.h[pQuest.refIntern].heroCursor.position = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.elementInQuestList.h[pQuest.refIntern].progressIndex].position;
-	com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.elementInQuestList.h[pQuest.refIntern].progressIndex++;
 	com_isartdigital_perle_ui_hud_Hud.getInstance().hide();
 	($_=com_isartdigital_perle_ui_UIManager.getInstance(),$bind($_,$_.closeCurrentPopin));
 	com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().addChild(com_isartdigital_perle_ui_popin_choice_Choice.getInstance());
@@ -3046,7 +3044,7 @@ com_isartdigital_perle_game_managers_TimeManager.getTimeDescription = function(p
 	return null;
 };
 com_isartdigital_perle_game_managers_TimeManager.startTimeLoop = function() {
-	var lTime = haxe_Timer.delay(com_isartdigital_perle_game_managers_TimeManager.timeLoop,5000);
+	var lTime = haxe_Timer.delay(com_isartdigital_perle_game_managers_TimeManager.timeLoop,50);
 	lTime.run = com_isartdigital_perle_game_managers_TimeManager.timeLoop;
 };
 com_isartdigital_perle_game_managers_TimeManager.nextStepQuest = function(pElement) {
@@ -6567,33 +6565,68 @@ com_isartdigital_perle_ui_popin_listIntern_InternElement.prototype = $extend(com
 var com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest = function(pPos,pDesc) {
 	this.progressIndex = 0;
 	com_isartdigital_perle_ui_popin_listIntern_InternElement.call(this,"ListInQuest",pPos);
-	this.btnAccelerate = js_Boot.__cast(this.getChildByName("Bouton_InternSend_Clip") , com_isartdigital_utils_ui_smart_SmartButton);
-	this.internName = js_Boot.__cast(this.getChildByName("InQuest_name") , com_isartdigital_utils_ui_smart_TextSprite);
-	this.internName.set_text(pDesc.name);
-	this.questTime = js_Boot.__cast(this.getChildByName("InQuest_ProgressionBar") , com_isartdigital_utils_ui_smart_SmartComponent);
-	this.heroCursor = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_hero") , com_isartdigital_utils_ui_smart_UISprite);
-	this.eventCursor1 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent01") , com_isartdigital_utils_ui_smart_UISprite);
-	this.eventCursor2 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent02") , com_isartdigital_utils_ui_smart_UISprite);
-	this.eventCursor3 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent03") , com_isartdigital_utils_ui_smart_UISprite);
+	this.getComponents();
 	com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray = [this.eventCursor1,this.eventCursor2,this.eventCursor3];
-	this.timeEvent = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_eventTime") , com_isartdigital_utils_ui_smart_TextSprite);
-	this.picture = js_Boot.__cast(this.getChildByName("InQuest_Portrait") , com_isartdigital_utils_ui_smart_SmartButton);
-	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnAccelerate,$bind(this,this.onAccelerate));
-	com_isartdigital_perle_utils_Interactive.addListenerClick(this.picture,$bind(this,this.onPicture));
-	if(com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.canPushNewScreen) {
-		{
-			com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.elementInQuestList.h[pDesc.id] = this;
-			this;
-		}
-		com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.canPushNewScreen = false;
-	}
+	this.setOnSpawn(pDesc);
+	this.addListeners();
 };
 $hxClasses["com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest"] = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest;
 com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.__name__ = ["com","isartdigital","perle","ui","popin","listIntern","InternElementInQuest"];
 com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.__super__ = com_isartdigital_perle_ui_popin_listIntern_InternElement;
 com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.prototype = $extend(com_isartdigital_perle_ui_popin_listIntern_InternElement.prototype,{
-	onAccelerate: function() {
+	getComponents: function() {
+		this.btnAccelerate = js_Boot.__cast(this.getChildByName("Bouton_InternSend_Clip") , com_isartdigital_utils_ui_smart_SmartButton);
+		this.internName = js_Boot.__cast(this.getChildByName("InQuest_name") , com_isartdigital_utils_ui_smart_TextSprite);
+		this.questTime = js_Boot.__cast(this.getChildByName("InQuest_ProgressionBar") , com_isartdigital_utils_ui_smart_SmartComponent);
+		this.heroCursor = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_hero") , com_isartdigital_utils_ui_smart_UISprite);
+		this.heroCursorStartPosition = (js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_hero") , com_isartdigital_utils_ui_smart_UISprite)).position.clone();
+		this.eventCursor1 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent01") , com_isartdigital_utils_ui_smart_UISprite);
+		this.eventCursor2 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent02") , com_isartdigital_utils_ui_smart_UISprite);
+		this.eventCursor3 = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_nextEvent03") , com_isartdigital_utils_ui_smart_UISprite);
+		this.timeEvent = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_eventTime") , com_isartdigital_utils_ui_smart_TextSprite);
+		this.picture = js_Boot.__cast(this.getChildByName("InQuest_Portrait") , com_isartdigital_utils_ui_smart_SmartButton);
+		this.questGauge = js_Boot.__cast(this.getChildByName("InQuest_ProgressionBar") , com_isartdigital_utils_ui_smart_SmartComponent);
+	}
+	,setOnSpawn: function(pDesc) {
+		this.loop = haxe_Timer.delay($bind(this,this.progressCursorLoop),10);
+		this.loop.run = $bind(this,this.progressCursorLoop);
+		this.internName.set_text(pDesc.name);
+		this.quest = pDesc.quest;
+		this.intern = pDesc;
+		this.questGaugeLenght = this.questGauge.position.x / 1.75 - this.heroCursorStartPosition.x;
+		var _g1 = 0;
+		var _g = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].position.x = this.questGaugeLenght * this.quest.steps[i] / this.quest.end + this.heroCursorStartPosition.x;
+		}
+		com_isartdigital_perle_game_managers_TimeManager.eTimeQuest.addListener("TimeManager_Construction_End",$bind(this,this.endQuest));
+		this.timeEvent.set_text(com_isartdigital_perle_game_managers_TimeManager.getTextTimeQuest(pDesc.quest.end) + "s");
+	}
+	,addListeners: function() {
+		com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnAccelerate,$bind(this,this.onAccelerate));
+		com_isartdigital_perle_utils_Interactive.addListenerClick(this.picture,$bind(this,this.onPicture));
+	}
+	,onAccelerate: function() {
 		console.log("accelerate");
+	}
+	,progressCursorLoop: function() {
+		if(this.heroCursor.position != null) {
+			var _g1 = 0;
+			var _g = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray.length;
+			while(_g1 < _g) {
+				var i = _g1++;
+				if(i != this.quest.stepIndex) com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 0.5; else com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 1;
+			}
+			this.timeEvent.set_text(com_isartdigital_perle_game_managers_TimeManager.getTextTimeQuest(this.quest.end - this.quest.progress) + "s");
+			this.heroCursor.position.x = Math.min(this.questGaugeLenght * this.quest.progress / this.quest.end + this.heroCursorStartPosition.x,this.questGaugeLenght * this.quest.steps[this.quest.stepIndex] / this.quest.end + this.heroCursorStartPosition.x);
+		} else {
+			console.log("null");
+			this.loop.stop();
+		}
+	}
+	,endQuest: function(pQuest) {
+		this.loop.stop();
 	}
 	,destroy: function() {
 		com_isartdigital_perle_utils_Interactive.removeListenerClick(this.btnAccelerate,$bind(this,this.onAccelerate));
@@ -11026,8 +11059,8 @@ com_isartdigital_perle_game_managers_PoolingManager.ASSETNAME_TO_CLASS = (functi
 }(this));
 com_isartdigital_perle_game_managers_PoolingManager.poolList = new haxe_ds_StringMap();
 com_isartdigital_perle_game_managers_QuestsManager.NUMBER_EVENTS = 3;
-com_isartdigital_perle_game_managers_QuestsManager.MIN_TIMELINE = 20000;
-com_isartdigital_perle_game_managers_QuestsManager.MAX_TIMELINE = 30000;
+com_isartdigital_perle_game_managers_QuestsManager.MIN_TIMELINE = 2000;
+com_isartdigital_perle_game_managers_QuestsManager.MAX_TIMELINE = 3000;
 com_isartdigital_perle_game_managers_QuestsManager.isFinish = false;
 com_isartdigital_perle_game_managers_RegionManager.CURRENT_TYPE_REGION = "current";
 com_isartdigital_perle_game_managers_RegionManager.OTHER_TYPE_REGION = "other";
@@ -11048,7 +11081,7 @@ com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_STEP = "TimeManager
 com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_END = "TimeManager_Resource_End_Reached";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_CONSTRUCT_END = "TimeManager_Construction_End";
 com_isartdigital_perle_game_managers_TimeManager.TIME_DESC_REFLECT = "timeDesc";
-com_isartdigital_perle_game_managers_TimeManager.TIME_LOOP_DELAY = 5000;
+com_isartdigital_perle_game_managers_TimeManager.TIME_LOOP_DELAY = 50;
 com_isartdigital_perle_game_managers_UnlockManager.isAlreadySaved = false;
 com_isartdigital_utils_game_StateGraphic.animAlpha = 1;
 com_isartdigital_utils_game_StateGraphic.boxAlpha = 0;
@@ -11169,7 +11202,6 @@ com_isartdigital_perle_ui_hud_building_BuildingHud.VBUILDING_STATE_TO_BH_TYPE = 
 com_isartdigital_perle_ui_popin_choice_Choice.EVENT_CHOICE_DONE = "Choice_Done";
 com_isartdigital_perle_ui_popin_choice_Choice.MOUSE_DIFF_MAX = 200;
 com_isartdigital_perle_ui_popin_choice_Choice.DIFF_MAX = 80;
-com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.elementInQuestList = new haxe_ds_IntMap();
 com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.canPushNewScreen = false;
 com_isartdigital_perle_ui_popin_shop_CarousselCardLock.UNLOCK_TEXT = "Level : ";
 com_isartdigital_perle_ui_popin_shop_ShopCaroussel.buildingNameList = ["Altar Vice","Altar Virtue","Market","Heaven House","Heaven Collector Lumber Mill","Marketing Department","Hell House","Hell Collector Iron Mines","Factory","Intern Building"];
