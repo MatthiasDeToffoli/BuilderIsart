@@ -27,6 +27,7 @@ import eventemitter3.EventEmitter;
 import haxe.Json;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
 
 
@@ -41,6 +42,7 @@ class Phantom extends Building {
 	private static inline var FILTER_OPACITY:Float = 0.5;
 	
 	public static var eCantBuild:EventEmitter;
+	private static var exceedingTile:Array<Index>;
 	
 	private static var colorMatrix:ColorMatrixFilter;
 	private static var instance:Phantom;
@@ -54,12 +56,15 @@ class Phantom extends Building {
 	private var precedentBesMapPos:Point = new Point(0, 0);
 	private var vBuilding:VBuilding;
 	
+	
+	
 	public static function initClass ():Void {
 		container = new Container();
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.desaturate(false);
 		GameStage.getInstance().getBuildContainer().addChild(container);
 		eCantBuild = new EventEmitter();
+		exceedingTile = [];
 	}
 	
 	public static function gameLoop():Void {
@@ -78,6 +83,7 @@ class Phantom extends Building {
 	 * @param	pVBuilding
 	 */
 	public static function onClickMove (pBuildingName:String, pVBuilding:VBuilding):Void {
+		alignementBuilding = Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
 		createPhantom(pBuildingName);
 		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
@@ -208,7 +214,6 @@ class Phantom extends Building {
 		// si click sur batiment et reste enfoncé, touch and hold
 		/*if (mouseDown)
 			movePhantomOnMouse();*/
-
 	}
 	
 	private function movePhantomOnMouse ():Void {
@@ -246,6 +251,8 @@ class Phantom extends Building {
 			bestMapPos.x,
 			bestMapPos.y
 		));
+		
+		emitExceeding();
 	}
 	
 	/**
@@ -343,12 +350,25 @@ class Phantom extends Building {
 		setMapColRow(getRoundMapPos(position), Building.BUILDING_NAME_TO_MAPSIZE[buildingName]);
 		regionMap = getRegionMap();
 		
-		if (instance.vBuilding != null)
-			alignementBuilding = instance.vBuilding.alignementBuilding;
+		if (alignementBuilding == null) {
+			Debug.error("should not be null in my opinion, i am right ? (this line should never happen, contact Ambroise)");
+			return buildingOnGround() && buildingCollideOther(); 
+		}
 		
-		if (alignementBuilding == null)
-			return buildingOnGround() && buildingCollideOther();
-			
+		// todo: se concerter avec gd sur ce qu'on veut faire, car compte tenu
+		// de la conclusion ci-bas, pour garder de la cohérence on devrait peut-être
+		// enlever les case rouge dans le cas d'un dépassement bas ou droite !
+		// nice to have : pour avoir les cases en rouges lorsque le batiment est hors région, il faudrait
+		// que regionMap ne soit pas null
+		// pr cela tilePosToRegion ne doit pas utilser de double boucle à traver le worldRegion
+		// mais tout faire par calcul
+		// et renvoit la position dans la région ou la batiment se trouve, si cette région n'existe pas il
+		// ajoute le bool : "regionExist:Bool = false" dans le retour.
+		// et c'est probablement pas tout, car à partir de là il faut déterminer l'écart à avec la/les 
+		// régions les plus proches.
+		// en fait, ya une solution, c'est dans la fc tilePosToRegion, il faut pas utiliser isInsideRegion seulement
+		// mais aussi faire une collision rect-rect
+		
 		// between region or region don't exist
 		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding)
 			return false;
@@ -391,57 +411,10 @@ class Phantom extends Building {
 		lRegionSize.width = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH : Ground.COL_X_LENGTH;
 		lRegionSize.height = RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH : Ground.ROW_Y_LENGTH;
 		
-		var lExceeding:Array<Index> = [];
-		
-		// dépassement de 1 ou plus détecté
-		if (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > lRegionSize.width) {
-			trace(regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width - lRegionSize.width);
-		}
-		if (regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > lRegionSize.height) {
-			trace(regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height - lRegionSize.height);
-			
-		}
-		
-		var lStartBuildingFootprint:Index = { 
-			x: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
-			y: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
-		};
-		var lEndBuildingFootPrint:Index = { 
-			x: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
-			y: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
-		};
-		
-		
-		// for every building cell including footprint
-		for (lX in lStartBuildingFootprint.x...lEndBuildingFootPrint.x) {
-			for (lY in lStartBuildingFootprint.y...lEndBuildingFootPrint.y) {
-				
-				//exceed from bottom or riht
-				if (lX + regionMap.map.x > lRegionSize.width ||
-					lY + regionMap.map.y > lRegionSize.height)
-					lExceeding.push({
-						x:lX,
-						y:lY
-					});
-				
-				if (lX + regionMap.map.x > lRegionSize.width ||
-					lY + regionMap.map.y > lRegionSize.height)
-			}
-		}
-		
-		if (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > lRegionSize.width ||
-			regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > lRegionSize.height)
-			emitExceeding(lExceeding);
-			
-		trace(Json.stringify(lExceeding));
-		
+		setExceedBuildingOnGround(lRegionSize);
 		
 		return (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width <= lRegionSize.width &&
 				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height <= lRegionSize.height);
-	}
-	
-	private function emitExceeding (pExceeding:Array<Index>):Void {
-		eCantBuild.emit(EVENT_CANT_BUILD, pExceeding);
 	}
 	
 	/**
@@ -474,28 +447,140 @@ class Phantom extends Building {
 	 * Permit that uninstanciated (unshow) building still make collision !
 	 */
 	private function collisionRectDesc(pVirtual:TileDescription):Bool {
-		var lPoint:Float; // todo @Alexis: lPoint correpond à quoi ?
+		var lCombinedFootprint:Int; // todo @Alexis: lPoint correpond à quoi ?
 		
-		if (Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint == 0 ||
+		/*if (Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint == 0 ||
 			Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint == 0)
-			lPoint = 0;
+			lCombinedFootprint = 0;
 		else
-			lPoint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;
+			lCombinedFootprint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;*/
+		// todo : vérifier que tt fonctionne bien
+		// avec le truc d'avant, ds le cas ou pVirtual à un footprint de 2 et buildingName de 1,
+		// on garderait qu'un footprint de 1.
+		lCombinedFootprint = cast(Math.min(
+			Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint,
+			Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+		), Int);
 		
-		/*
-		trace("test");
-		trace(regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lPoint);
-		trace(regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lPoint);
-		trace(regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lPoint);
-		trace(regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lPoint);
-		*/
+		
+		setExceedCollisionRectDesc(lCombinedFootprint, pVirtual);
 			
 		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
-		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lPoint &&
-				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lPoint &&
-				regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lPoint &&
-				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lPoint );
+		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lCombinedFootprint &&
+				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lCombinedFootprint &&
+				regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lCombinedFootprint &&
+				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lCombinedFootprint );
 	}
+	
+	private function setExceedCollisionRectDesc (pCombinedFootprint:Float, pVirtual:TileDescription):Array<Index> {
+		var lExceeding:Array<Index> = [];
+		
+		var lStartBuilding:Index = { 
+			x: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
+			y: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+		};
+		var lEndBuilding:Index = { 
+			x: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
+			y: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
+		};
+		
+		// for every building cell excluding footprint
+		for (lX in lStartBuilding.x...lEndBuilding.x) {
+			for (lY in lStartBuilding.y...lEndBuilding.y) {
+				
+				// a priori fonctionne bien
+				/*if (lX + regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint &&
+					lX + regionMap.map.x > pVirtual.mapX - pCombinedFootprint &&
+					lY + regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint &&
+					lY + regionMap.map.y > pVirtual.mapY - pCombinedFootprint )*/
+				
+				var collide:Bool = collisionPointRect( {
+					x:lX + regionMap.map.x,
+					y:lY + regionMap.map.y
+				}, new Rectangle(
+					pVirtual.mapX - pCombinedFootprint,
+					pVirtual.mapY - pCombinedFootprint,
+					Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint,
+					Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint
+				));
+				
+				if (collide)
+					lExceeding.push({
+						x:lX,
+						y:lY
+					});
+					
+				//fonctionne pas à priori, 
+				/*if (lX + regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint &&
+					lX + regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - pCombinedFootprint &&
+					lY + regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint &&
+					lY + regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - pCombinedFootprint )
+					lExceeding.push({
+						x:lX,
+						y:lY
+					});*/
+			}
+		}
+		
+		exceedingTile.concat(lExceeding);
+		
+		//trace("setExceedCollisionRectDesc");
+		//trace(Json.stringify(lExceeding));
+		
+		return lExceeding;
+	}
+	
+	private function setExceedBuildingOnGround (plRegionSize:SizeOnMap):Array<Index> {
+		var lExceeding:Array<Index> = [];
+		
+		var lStartBuilding:Index = { 
+			x: 0,//-Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
+			y: 0//-Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+		};
+		var lEndBuilding:Index = { 
+			x: /*Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + */Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
+			y: /*Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + */Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
+		};
+		
+		
+		// for every building cell excluding footprint
+		for (lX in lStartBuilding.x...lEndBuilding.x) {
+			for (lY in lStartBuilding.y...lEndBuilding.y) {
+				
+				//exceed from bottom or right
+				if (lX + regionMap.map.x >= plRegionSize.width ||
+					lY + regionMap.map.y >= plRegionSize.height)
+					lExceeding.push({
+						x:lX,
+						y:lY
+					});
+			}
+		}
+		//trace("setExceedBuildingOnGround");
+		//trace(Json.stringify(lExceeding));
+		
+		exceedingTile.concat(lExceeding);
+		
+		return lExceeding;
+	}
+	
+	/**
+	 * Emitted one time at each mouseMove only.
+	 */
+	private function emitExceeding ():Void {
+		eCantBuild.emit(EVENT_CANT_BUILD, exceedingTile);
+		exceedingTile = [];
+	}
+	
+	private function collisionPointRect (pPoint:Index, pRect:Rectangle):Bool {
+		if (    pPoint.x > pRect.x
+			&&  pPoint.x < pRect.x + pRect.width
+			&&  pPoint.y > pRect.y
+			&&  pPoint.y < pRect.y + pRect.height) {
+			return true;
+		}
+		return false;
+	};
 	
 	/**
 	 * Get the rounded position in map view
