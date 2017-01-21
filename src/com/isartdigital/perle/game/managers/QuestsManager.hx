@@ -113,7 +113,7 @@ class QuestsManager
 	 * Callback of the choice event
 	 * @param	pQuest
 	 */
-	private static function choice(pQuest:TimeQuestDescription):Void{
+	public static function choice(pQuest:TimeQuestDescription):Void{
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
 		Hud.getInstance().hide();

@@ -29,7 +29,6 @@ class InternElementInQuest extends InternElement
 	private var btnAccelerate:SmartButton;
 	private var questTime:SmartComponent;
 	public var heroCursor:UISprite;
-	public var heroCursor2:UISprite;
 	public var heroCursorStartPosition:Point;
 	private var eventCursor1:UISprite;
 	private var eventCursor2:UISprite;
@@ -38,7 +37,7 @@ class InternElementInQuest extends InternElement
 	private var questGauge:SmartComponent;
 	private var questGaugeLenght:Float;
 	private var quest:TimeQuestDescription;
-	private var intern:InternDescription;
+	//private var intern:InternDescription;
 	public var loop:Timer;
 	
 	public static var eventCursorsArray:Array<UISprite>;
@@ -78,7 +77,7 @@ class InternElementInQuest extends InternElement
 		
 		internName.text = pDesc.name;
 		quest = pDesc.quest;
-		intern = pDesc;
+		//intern = pDesc;
 		
 		questGaugeLenght = (questGauge.position.x / 1.75) - heroCursorStartPosition.x;
 		
@@ -98,18 +97,28 @@ class InternElementInQuest extends InternElement
 	
 	private function onAccelerate(){
 		trace("accelerate");
+		if (!TimeManager.increaseQuestProgress(quest)) trace("quest end!");
 	}
 	
 	private function progressCursorLoop():Void {
+		
 		if (heroCursor.position != null){
-			
 			for (i in 0...eventCursorsArray.length){
 				if (i != quest.stepIndex) eventCursorsArray[i].alpha = 0.5;
 				else eventCursorsArray[i].alpha = 1;
 			}
 			
 			timeEvent.text = TimeManager.getTextTimeQuest(quest.end - quest.progress) + "s";
-			heroCursor.position.x = Math.min(((questGaugeLenght * quest.progress) / quest.end) + heroCursorStartPosition.x, ((questGaugeLenght * quest.steps[quest.stepIndex]) / quest.end) + heroCursorStartPosition.x);
+			
+			if (quest.stepIndex != 3) {
+				heroCursor.position.x = Math.min(((questGaugeLenght * quest.progress) / quest.end) + heroCursorStartPosition.x, ((questGaugeLenght * quest.steps[quest.stepIndex]) / quest.end) + heroCursorStartPosition.x);
+			}
+			
+			else {
+				eventCursor3.alpha = 1;
+				heroCursor.position.x = ((questGaugeLenght * quest.steps[2]) / quest.end) + heroCursorStartPosition.x;
+				timeEvent.text =  "00:00 s";
+			}
 		}
 		
 		else {

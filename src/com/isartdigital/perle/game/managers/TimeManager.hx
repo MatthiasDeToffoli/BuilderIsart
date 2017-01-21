@@ -478,6 +478,18 @@ class TimeManager {
 		return false;
 	}
 	
+	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
+		//if(pQuest.progress != pQuest.end)
+		if (pQuest.stepIndex < 3){
+			//pQuest.stepIndex++;
+			pQuest.progress = pQuest.steps[pQuest.stepIndex];
+			QuestsManager.choice(pQuest);
+			return true;
+		}
+		
+		else return false;
+	}
+	
 	public static function getPourcentage(pTimeDesc:TimeDescription):Float {
 		var total = pTimeDesc.end - pTimeDesc.creationDate;
 		return pTimeDesc.progress / total;
@@ -495,16 +507,16 @@ class TimeManager {
 			}
 		}
 		
-		for (j in 0...lLengthQuest) {
-			if (pId == listQuest[j].refIntern){
-				listQuest.splice(j, 1);
+		for (i in 0...lLengthQuest) {
+			if (pId == listQuest[i].refIntern){
+				listQuest.splice(i, 1);
 				break;
 			}
 		}
 		
-		for (k in 0...lLengthConstruction) {
-			if (pId == listConstruction[k].refTile) {
-				listConstruction.splice(k, 1);
+		for (i in 0...lLengthConstruction) {
+			if (pId == listConstruction[i].refTile) {
+				listConstruction.splice(i, 1);
 				break;
 			}
 		}
