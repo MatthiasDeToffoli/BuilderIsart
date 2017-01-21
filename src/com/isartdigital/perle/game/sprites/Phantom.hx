@@ -210,7 +210,6 @@ class Phantom extends Building {
 		doAction = doActionPhantom;
 		addBuildListeners();
 		setState(DEFAULT_STATE); // <-- pas intuitif ! todo sûr que nécessaire ?
-		//FootPrint.createShadow();
 	}
 	
 	/**
@@ -223,7 +222,7 @@ class Phantom extends Building {
 	}
 	
 	private function movePhantomOnMouse ():Void {
-		FootPrint.doActionShadow();
+		FootPrint.setPositionFootPrintAssets(instance);
 		
 		/*FootPrint.footPrint.position = new Point( // todo : une frame de retard ? mettre à la fin de cette fc ?
 			currentSelectedBuilding.x + footPrintPoint.x,
@@ -473,7 +472,9 @@ class Phantom extends Building {
 		
 		
 		setExceedCollisionRectDesc(lCombinedFootprint, pVirtual);
-			
+		
+		//lPoint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;
+		
 		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
 		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lCombinedFootprint &&
 				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lCombinedFootprint &&
@@ -535,7 +536,6 @@ class Phantom extends Building {
 		
 		//trace("setExceedCollisionRectDesc");
 		//trace(Json.stringify(lExceeding));
-		
 		return lExceeding;
 	}
 	
@@ -570,6 +570,7 @@ class Phantom extends Building {
 		
 		exceedingTile = exceedingTile.concat(lExceeding);
 		
+		exceedingTile.concat(lExceeding);
 		return lExceeding;
 	}
 	
@@ -594,6 +595,7 @@ class Phantom extends Building {
 	private function emitExceeding ():Void {
 		eExceedingTiles.emit(EVENT_CANT_BUILD, exceedingTile);
 		exceedingTile = [];
+		trace(exceedingTile);
 	}
 	
 	private function collisionPointRect (pPoint:Index, pRect:Rectangle):Bool {

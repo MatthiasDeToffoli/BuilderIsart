@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
@@ -71,8 +72,9 @@ class GameManager {
 		SaveManager.createFromSave();
 		UnlockManager.setUnlockItem();
 		ClippingManager.update();
+		FootPrint.startClass();
 		
-		//FtueManager.createFtue();
+		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 	}

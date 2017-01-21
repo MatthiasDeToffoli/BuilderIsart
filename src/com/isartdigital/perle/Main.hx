@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
+import com.isartdigital.perle.game.sprites.FootPrintAsset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
@@ -340,7 +341,7 @@ class Main extends EventEmitter
 		var arrayClass:Array<Class<Dynamic>> = [
 			Ground,
 			Building,
-			FootPrint,
+			FootPrintAsset,
 			InternElement,
 			Tribunal,
 			DecoHeaven,

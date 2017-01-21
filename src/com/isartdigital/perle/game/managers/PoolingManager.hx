@@ -20,7 +20,7 @@ class PoolingManager {
 		"Road_br" => 1,
 		"Road_tl" => 1,
 		"Road_v" => 1,
-		"FootPrint" => 1,
+		"FootPrint" => 20,
 		AssetName.BUILDING_STYX_PURGATORY => 1
 	];
 	// todo : remplir
@@ -62,7 +62,7 @@ class PoolingManager {
 		"Road_br" => "Ground",
 		"Road_tl" => "Ground",
 		"Road_v" => "Ground",
-		"FootPrint" => "FootPrint",
+		"FootPrint" => "FootPrintAsset",
 	];
 	
 	// todo : faire un tableau plus évolué pour gérer les cas de même class différent assetName, genre j'ai des House.hx avec un différent assetName, mais je veux chopper le bon
