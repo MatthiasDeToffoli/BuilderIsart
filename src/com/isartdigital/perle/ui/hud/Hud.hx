@@ -296,9 +296,6 @@ class Hud extends SmartScreen
 	
 	private function onClickListIntern(){
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-		
-		//Browser.alert("Work in progress : Special Feature");
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 		hide();
 	}
 	

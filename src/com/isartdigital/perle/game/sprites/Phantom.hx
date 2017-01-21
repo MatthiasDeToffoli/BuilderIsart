@@ -41,7 +41,7 @@ class Phantom extends Building {
 	
 	private static inline var FILTER_OPACITY:Float = 0.5;
 	
-	public static var eCantBuild:EventEmitter;
+	public static var eExceedingTiles:EventEmitter;
 	private static var exceedingTile:Array<Index>;
 	
 	private static var colorMatrix:ColorMatrixFilter;
@@ -63,8 +63,14 @@ class Phantom extends Building {
 		colorMatrix = new ColorMatrixFilter();
 		colorMatrix.desaturate(false);
 		GameStage.getInstance().getBuildContainer().addChild(container);
-		eCantBuild = new EventEmitter();
+		eExceedingTiles = new EventEmitter();
 		exceedingTile = [];
+		eExceedingTiles.addListener(EVENT_CANT_BUILD, test);
+		//eCantBuild.on(EVENT_CANT_BUILD, test);
+	}
+	
+	private static function test (pEvent:Array<Index>):Void {
+		trace(pEvent);
 	}
 	
 	public static function gameLoop():Void {
@@ -245,6 +251,8 @@ class Phantom extends Building {
 				removeDesaturateFilter();
 			else
 				addDesaturateFilter();
+				
+			emitExceeding();
 		}
 		
 		precedentBesMapPos.copy(new Point(
@@ -252,7 +260,6 @@ class Phantom extends Building {
 			bestMapPos.y
 		));
 		
-		emitExceeding();
 	}
 	
 	/**
@@ -369,13 +376,15 @@ class Phantom extends Building {
 		// en fait, ya une solution, c'est dans la fc tilePosToRegion, il faut pas utiliser isInsideRegion seulement
 		// mais aussi faire une collision rect-rect
 		
+		
 		// between region or region don't exist
-		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding)
+		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding) {
+			setExceedingToAll();
 			return false;
+		}
 		
 		return buildingOnGround() && buildingCollideOther();
 	}
-	
 	
 	private function getRegionMap ():RegionMap {
 		var lRegion:Index = RegionManager.tilePosToRegion({
@@ -522,7 +531,7 @@ class Phantom extends Building {
 			}
 		}
 		
-		exceedingTile.concat(lExceeding);
+		exceedingTile = exceedingTile.concat(lExceeding);
 		
 		//trace("setExceedCollisionRectDesc");
 		//trace(Json.stringify(lExceeding));
@@ -559,16 +568,31 @@ class Phantom extends Building {
 		//trace("setExceedBuildingOnGround");
 		//trace(Json.stringify(lExceeding));
 		
-		exceedingTile.concat(lExceeding);
+		exceedingTile = exceedingTile.concat(lExceeding);
 		
 		return lExceeding;
+	}
+	
+	private function setExceedingToAll ():Void {
+		var lAllExceeding:Array<Index> = [];
+		
+		for (lX in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width) {
+			for (lY in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height) {
+				lAllExceeding.push({
+					x:lX,
+					y:lY
+				});
+			}
+		}
+		
+		exceedingTile = exceedingTile.concat(lAllExceeding);
 	}
 	
 	/**
 	 * Emitted one time at each mouseMove only.
 	 */
 	private function emitExceeding ():Void {
-		eCantBuild.emit(EVENT_CANT_BUILD, exceedingTile);
+		eExceedingTiles.emit(EVENT_CANT_BUILD, exceedingTile);
 		exceedingTile = [];
 	}
 	
