@@ -1,43 +1,103 @@
 <?php
-  $TYPE_STYX = "neutral";
-  $TYPE_HEAVEN = "heaven";
-  $TYPE_HELL = "hell";
- $regionType = str_replace("/", "", $_POST["type"]);
- $regionX = intval(str_replace("/", "", $_POST["x"]));
- $regionY = intval(str_replace("/", "", $_POST["y"]));
- $firstTileX = intval(str_replace("/", "", $_POST["firstTileX"]));
- $firstTileY = intval(str_replace("/", "", $_POST["firstTileY"]));
+/**
+* @author: de Toffoli Matthias
+* Include this when you want to use the table Region
+*/
 
- if(($regionX != $TYPE_HELL && $regionX > 0) || ($regionX != $TYPE_HEAVEN && $regionX < 0) || ($regionX != $TYPE_STYX && $regionX == 0)){
-   echo false;
-   exit;
- }
+/**
+ * add a region to the table
+ * @param	$Id the player Id
+ * @param	$Type the type of the region we want to add
+ * @param	$X the position X of the region in world map
+ * @param	$Y the position Y of the region in world map
+ * @param	$FTX the position X of the first tile of the region
+ * @param	$FTY the position Y of the first tile of the region
+ */
+  function createRegion($Id,$Type, $X,$Y,$FTX,$FTY){
+    global $db;
 
- addToTable($regionType,$regionX,$regionY,$firstTileX,$firstTileY);
+    $req = "INSERT INTO Region(IdPlayer, Type, PositionX, PositionY, FistTilePosX, FistTilePosY) VALUES (:playerId,:Type,:X,:Y,:FTX,:FTY)";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':playerId', $Id);
+    $reqPre->bindParam(':Type', $Type);
+    $reqPre->bindParam(':X', $X);
+    $reqPre->bindParam(':Y', $Y);
+    $reqPre->bindParam(':FTX', $FTX);
+    $reqPre->bindParam(':FTY', $FTY);
 
- function addToTable($Type, $X,$Y,$FTX,$FTY){
-   include("FacebookUtils.php");
-   include("vendor/autoload.php");
-   global $db;
+    try {
+      $reqPre->execute();
+
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+
+  }
+
+  /**
+   * test if the position of the region to add is valid
+   * @param $playerId the player id
+   * @param $Type the type of region we want
+   * @param $X the position X of the region in world map
+   * @param $X the position Y of the region in world map
+   * @return a boolean said if we can create the region or not
+   */
+  function testPosition($playerId,$Type, $X,$Y) {
+    global $db;
+    if(testIfAnotherRegionInThisPosition($X,$Y)) return Array("flag" => false,"message" => "Always a region in this position. You try to Hack this  game ? Oo");
+    if($Type == "neutral" && $X == 0 && $Y == 0) return Array("flag" => true);
 
 
-   $id = getId();
+    $req = "SELECT PositionX,PositionY FROM Region WHERE IdPlayer = :pId";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':pId', $playerId);
 
-   $req = "INSERT INTO Region(IdPlayer, Type, PositionX, PositionY, FistTilePosX, FistTilePosY) VALUES (:playerId,:Type,:X,:Y,:FTX,:FTY)";
-   $reqPre = $db->prepare($req);
-   $reqPre->bindParam(':playerId', $id);
-   $reqPre->bindParam(':Type', $Type);
-   $reqPre->bindParam(':X', $X);
-   $reqPre->bindParam(':Y', $Y);
-   $reqPre->bindParam(':FTX', $FTX);
-   $reqPre->bindParam(':FTY', $FTY);
+    try {
+      $reqPre->execute();
+      $res = $reqPre->fetchAll(PDO::FETCH_OBJ);
+      if(empty($res)) return Array("flag" => false, "message" => "no region in database");
 
-   try {
-     $reqPre->execute();
-     echo true;
-   } catch (Exception $e) {
-     echo $e->getMessage();
-     exit;
-   }
- }
+      $length = count($res);
+
+      for($i = 0; $i < $length; $i++){
+        if($X - 1 == $res[$i]->PositionX || $X + 1 == $res[$i]->PositionX) return Array("flag" => true);
+        if($Y - 1 == $res[$i]->PositionY || $Y + 1 == $res[$i]->PositionY) return Array("flag" => true);
+      }
+
+      return Array("flag" => false, "message" => "no region near the region to add. You try to Hack this game ? Oo");
+
+
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+
+  }
+
+  /**
+   * test if the client want to add a region on another region
+   * @param $X the position X of the region in world map
+   * @param $X the position Y of the region in world map
+   * @return a boolean said if a region is in the position want or not
+   */
+  function testIfAnotherRegionInThisPosition($X,$Y){
+    global $db;
+
+    $req = "SELECT * FROM `Region` WHERE PositionX = :X AND PositionY = :Y";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':X', $X);
+    $reqPre->bindParam(':Y', $Y);
+
+    try {
+      $reqPre->execute();
+      $res = $reqPre->fetch();
+      if(!empty($res)) return true;
+      return false;
+
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+  }
 ?>

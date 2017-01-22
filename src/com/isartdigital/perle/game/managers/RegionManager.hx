@@ -156,19 +156,17 @@ class RegionManager
 	 */
 	private static function addButton(pPos:Point, pWorldPos:Point, indice:Int):Void{
 		
-		if (indice >= factors.length) return;
+		//else that make a string concatenation with every calcul problem appear with server's data recuperation Oo
+		pPos = new Point(Std.int(pPos.x), Std.int(pPos.y));
+		pWorldPos = new Point(Std.int(pWorldPos.x), Std.int(pWorldPos.y));
 		
+		if (indice >= factors.length) return;
 		
 		var factor:Point = factors[indice];
 		
-		if ((pWorldPos.x < 0 && factor.x == 1) || (pWorldPos.x > 0 && factor.x == -1)){
-			addButton(pPos, pWorldPos, indice+ 1);
-			return;
-		}
-		
-		var worldPositionX:Int = Std.int(pWorldPos.x + factor.x);
-		var worldPositionY:Int = Std.int(pWorldPos.y - factor.y);
-		
+		var worldPositionX:Int = Std.int(pWorldPos.x) + Std.int(factor.x);
+		var worldPositionY:Int = Std.int(pWorldPos.y) - Std.int(factor.y);
+
 		if (
 			(pWorldPos.x < 0 && factor.x == 1) || 
 			(pWorldPos.x > 0 && factor.x == -1) || 
@@ -178,14 +176,13 @@ class RegionManager
 			return;
 		}
 		
-		
 		if (worldMap.exists(worldPositionX)){
 			if (worldMap[worldPositionX].exists(worldPositionY)){
 				addButton(pPos, pWorldPos, indice+ 1);
 				return;
 			}
 		} 
-
+		
 		var lCentre:Point = new Point(pPos.x + Ground.COL_X_LENGTH / 2, pPos.y + Ground.ROW_Y_LENGTH / 2);
 		var myBtn:ButtonRegion = new ButtonRegion(
 			new Point(
@@ -200,7 +197,7 @@ class RegionManager
 								lCentre.y - Ground.ROW_Y_LENGTH * factor.y
 								)
 							);
-		
+
 		myBtn.position = lPos;	
 		
 		if (buttonMap[worldPositionX] == null)
@@ -209,14 +206,14 @@ class RegionManager
 			
 			buttonMap[worldPositionX][worldPositionY] = myBtn;
 			buttonRegionContainer.addChild(myBtn);
-			
+
 			addBgUnder(IsoManager.modelToIsoView(new Point(
 				lCentre.x  + factor.x - Ground.COL_X_LENGTH / 2 + Ground.COL_X_LENGTH * factor.x,
 				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y - factor.y
 			)),
 			{x:worldPositionX, y:worldPositionY});
 		}		
-		
+
 		addButton(pPos, pWorldPos, indice+ 1);
 	}
 	
@@ -275,17 +272,17 @@ class RegionManager
 			x:origin.x,
 			y:origin.y,
 			type:Alignment.neutral,
-			firstTilePos:{x:origin.x,y:origin.y}
+			firstTilePos:origin
 		});
 		
 		createNextBg({
 			x:origin.x,
 			y:origin.y,
 			type:Alignment.neutral,
-			firstTilePos: {x:origin.x, y:origin.y}
+			firstTilePos: origin
 		});
 		
-		ServerManager.addRegionToDataBase(Alignment.neutral.getName(), origin, origin);
+		
 		
 		bgContainer.addChild(background);
 		
@@ -333,7 +330,7 @@ class RegionManager
 	 */
 	public static function createRegion (pType:Alignment, pFirstTilePos:Point, pWorldPos:Index):Void {
 		
-		//@TODO: delete when we will have the stick bg
+
 		
 		createNextBg({
 			x:pWorldPos.x,
@@ -359,7 +356,7 @@ class RegionManager
 		SaveManager.save();
 		
 		if (Math.abs(pWorldPos.x) == 1) createStyxRegionIfDontExist(pWorldPos, Std.int(pFirstTilePos.y));
-		
+
 		if(pType != Alignment.neutral) addButton(
 			pFirstTilePos,
 			new Point(
@@ -422,7 +419,7 @@ class RegionManager
 		if (worldMap[0][pWorldPos.y] != null) return;
 			
 		var posWorld:Index = {x:0, y:pWorldPos.y};
-		createRegion(Alignment.neutral, new Point(0, pPosY), posWorld);
+		ServerManager.addRegionToDataBase(Alignment.neutral.getName(), posWorld, {x:0, y:pPosY});
 		
 		addRegionButtonByStyx(posWorld, pPosY);
 		

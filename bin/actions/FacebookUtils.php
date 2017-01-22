@@ -1,5 +1,14 @@
 <?php
-//Include this when you want to use facebook
+/**
+* @author: de Toffoli Matthias
+* @author: Grenu Victor
+* Include this when you want to use facebook
+*/
+
+  /**
+	 * give the token delivery by FaceBook
+	 * @return a string reprensenting the token
+	 */
 function getToken(){
   include("vendor/autoload.php");
 
@@ -25,6 +34,10 @@ function getToken(){
    return $token;
 }
 
+/**
+ * give the Facebook id
+ * @return th e Facebook id
+ */
 function getFacebookId(){
   include("vendor/autoload.php");
 
@@ -40,23 +53,16 @@ function getFacebookId(){
   return $helper->getUserId();
 }
 
+/**
+ * give the Player Id find with facebook Id
+ * @return the player Id
+ */
 function getId(){
-  include("vendor/autoload.php");
-
   global $db;
-
-  // app id number
-  $fb = new Facebook\Facebook([
-      'app_id' => '1764871347166484',
-      'app_secret' => '2dac14b3b3d872006edf73eccc301847',
-      'default_graph_version' => 'v2.8'
-  ]);
-
-  $helper = $fb->getJavaScriptHelper();
 
   $req = "SELECT ID FROM Player WHERE IDFacebook = :FbId";
   $reqPre = $db->prepare($req);
-  $reqPre->bindParam(':FbId', $helper->getUserId());
+  $reqPre->bindParam(':FbId', getFacebookId());
 
   try {
     $reqPre->execute();

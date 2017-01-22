@@ -1,8 +1,13 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.utils.Debug;
 import haxe.Http;
 import haxe.Json;
+import pixi.core.math.Point;
 
 	
 /**
@@ -13,6 +18,7 @@ class ServerManager {
 	
 	private static inline var KEY_POST_FILE_NAME:String = "module";
 	private static inline var KEY_POST_FUNCTION_NAME:String = "action";
+	private static var currentButtonRegion:ButtonRegion;
 	
 	/**
 	 * start player inscription or get his information
@@ -25,8 +31,16 @@ class ServerManager {
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
 	}
 	
-	public static function addRegionToDataBase(typeName:String, mapPos:Index, firstTileMapPos:Index):Void {
-		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+	/**
+	 * this function help to call server for test if we can buy a region
+	 * @param	typeName the type of the region we want to add
+	 * @param	mapPos the position of the region in world map
+	 * @param	firstTileMapPos the position of the first tile of the region
+	 * @param	btnRegion the button we click for buy the region
+	 */
+	public static function addRegionToDataBase(typeName:String, mapPos:Index, firstTileMapPos:Index, ?btnRegion:ButtonRegion):Void {
+		currentButtonRegion = btnRegion;
+		callPhpFile(onDataRegionCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 			KEY_POST_FILE_NAME => ServerFile.REGIONS,
 			"playerId" => Facebook.uid,
 			"type" => typeName,
@@ -61,13 +75,48 @@ class ServerManager {
 		//trace(object);
 		//trace(Json.parse(object)); //n'est parfois pas un objet mais un string..
 	}
+	
+	/**
+	 * call when a region is add in the database this create the region for client
+	 * @param	object a object return by database can contain an error message or region information
+	 */
+	private static function onDataRegionCallback(object:Dynamic):Void {
+
+		var data:Dynamic = Json.parse(object);
+	
+		if (data.flag) {
+			if (currentButtonRegion != null) currentButtonRegion.destroy();
+			RegionManager.createRegion(stringToEnum(data.type), new Point(data.ftx, data.fty), {x:Std.int(data.x), y:Std.int(data.y)});
+			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(data.price));
+			currentButtonRegion = null;
+			return;
+		}
+		
+		Debug.error(data.message);
+	}
 
 	private static function onErrorCallback(object:Dynamic):Void {
-		trace("Error php");
+		Debug.error("Error php : " + object);
 	}
 	
 	private function new() {
 		
+	}
+	
+	private static function stringToEnum(pString:String):Dynamic {
+		switch (pString) {
+			case "neutral" :
+				return Alignment.neutral;
+				
+			case "hell" :
+				return Alignment.hell;
+				
+			case "heaven" :
+				return Alignment.heaven;
+				
+			default :
+				return Alignment.neutral;
+		}
 	}
 
 }
@@ -76,5 +125,5 @@ class ServerFile {
 	public static inline var MAIN_PHP:String = "actions.php";
 	public static inline var LOGIN:String = "Login";
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
-	public static inline var REGIONS:String = "regions";
+	public static inline var REGIONS:String = "BuyRegions";
 }

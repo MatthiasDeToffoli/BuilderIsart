@@ -116,10 +116,10 @@ class VTile extends Virtual{
 			}
 		}
 	}
-	
+	//on est d'accord ceci ne sert plus a rien ? X)
 	public static function buildWhitoutSave ():Void {
-		if (RegionManager.worldMap[0][0] == null)
-			throw("first Region not created");
+		/*if (RegionManager.worldMap[0][0] == null)
+			throw("first Region not created");*/
 			
 		//buildInsideRegion(RegionManager.worldMap[0][0]);
 	}

@@ -2048,16 +2048,14 @@ com_isartdigital_perle_game_managers_RegionManager.init = function() {
 	com_isartdigital_perle_game_managers_RegionManager.mapNumbersRegion.set(com_isartdigital_perle_game_managers_Alignment.neutral,0);
 };
 com_isartdigital_perle_game_managers_RegionManager.addButton = function(pPos,pWorldPos,indice) {
+	pPos = new PIXI.Point(pPos.x | 0,pPos.y | 0);
+	pWorldPos = new PIXI.Point(pWorldPos.x | 0,pWorldPos.y | 0);
 	if(indice >= com_isartdigital_perle_game_managers_RegionManager.factors.length) {
 		return;
 	}
 	var factor = com_isartdigital_perle_game_managers_RegionManager.factors[indice];
-	if(pWorldPos.x < 0 && factor.x == 1 || pWorldPos.x > 0 && factor.x == -1) {
-		com_isartdigital_perle_game_managers_RegionManager.addButton(pPos,pWorldPos,indice + 1);
-		return;
-	}
-	var worldPositionX = pWorldPos.x + factor.x | 0;
-	var worldPositionY = pWorldPos.y - factor.y | 0;
+	var worldPositionX = (pWorldPos.x | 0) + (factor.x | 0);
+	var worldPositionY = (pWorldPos.y | 0) - (factor.y | 0);
 	if(pWorldPos.x < 0 && factor.x == 1 || pWorldPos.x > 0 && factor.x == -1 || Math.abs(worldPositionX) > 2) {
 		com_isartdigital_perle_game_managers_RegionManager.addButton(pPos,pWorldPos,indice + 1);
 		return;
@@ -2122,9 +2120,8 @@ com_isartdigital_perle_game_managers_RegionManager.buildWhitoutSave = function()
 	var v = new haxe_ds_IntMap();
 	com_isartdigital_perle_game_managers_RegionManager.worldMap.h[0] = v;
 	var origin = { x : 0, y : 0};
-	com_isartdigital_perle_game_managers_RegionManager.worldMap.h[origin.x].set(origin.y,com_isartdigital_perle_game_managers_RegionManager.createRegionFromDesc({ x : origin.x, y : origin.y, type : com_isartdigital_perle_game_managers_Alignment.neutral, firstTilePos : { x : origin.x, y : origin.y}}));
-	com_isartdigital_perle_game_managers_RegionManager.createNextBg({ x : origin.x, y : origin.y, type : com_isartdigital_perle_game_managers_Alignment.neutral, firstTilePos : { x : origin.x, y : origin.y}});
-	com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase(com_isartdigital_perle_game_managers_Alignment.neutral[0],origin,origin);
+	com_isartdigital_perle_game_managers_RegionManager.worldMap.h[origin.x].set(origin.y,com_isartdigital_perle_game_managers_RegionManager.createRegionFromDesc({ x : origin.x, y : origin.y, type : com_isartdigital_perle_game_managers_Alignment.neutral, firstTilePos : origin}));
+	com_isartdigital_perle_game_managers_RegionManager.createNextBg({ x : origin.x, y : origin.y, type : com_isartdigital_perle_game_managers_Alignment.neutral, firstTilePos : origin});
 	com_isartdigital_perle_game_managers_RegionManager.bgContainer.addChild(com_isartdigital_perle_game_managers_RegionManager.background);
 	com_isartdigital_perle_game_managers_RegionManager.createRegion(com_isartdigital_perle_game_managers_Alignment.hell,new PIXI.Point(3,0),{ x : 1, y : 0});
 	com_isartdigital_perle_game_managers_RegionManager.createRegion(com_isartdigital_perle_game_managers_Alignment.heaven,new PIXI.Point(-12,0),{ x : -1, y : 0});
@@ -2193,7 +2190,7 @@ com_isartdigital_perle_game_managers_RegionManager.createStyxRegionIfDontExist =
 		return;
 	}
 	var posWorld = { x : 0, y : pWorldPos.y};
-	com_isartdigital_perle_game_managers_RegionManager.createRegion(com_isartdigital_perle_game_managers_Alignment.neutral,new PIXI.Point(0,pPosY),posWorld);
+	com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase(com_isartdigital_perle_game_managers_Alignment.neutral[0],posWorld,{ x : 0, y : pPosY});
 	com_isartdigital_perle_game_managers_RegionManager.addRegionButtonByStyx(posWorld,pPosY);
 };
 com_isartdigital_perle_game_managers_RegionManager.addRegionButtonByStyx = function(pWorldPos,pPosY) {
@@ -2874,12 +2871,13 @@ com_isartdigital_perle_game_managers_ServerManager.refreshConfig = function() {
 	}
 	com_isartdigital_perle_game_managers_ServerManager.callPhpFile(com_isartdigital_perle_game_managers_ServerManager.onDataCallback,com_isartdigital_perle_game_managers_ServerManager.onErrorCallback,"actions.php",_g);
 };
-com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase = function(typeName,mapPos,firstTileMapPos) {
+com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase = function(typeName,mapPos,firstTileMapPos,btnRegion) {
+	com_isartdigital_perle_game_managers_ServerManager.currentButtonRegion = btnRegion;
 	var _g = new haxe_ds_StringMap();
 	if(__map_reserved.module != null) {
-		_g.setReserved("module","regions");
+		_g.setReserved("module","BuyRegions");
 	} else {
-		_g.h["module"] = "regions";
+		_g.h["module"] = "BuyRegions";
 	}
 	var value = com_isartdigital_services_facebook_Facebook.uid;
 	if(__map_reserved.playerId != null) {
@@ -2916,7 +2914,7 @@ com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase = functio
 	} else {
 		_g.h["firstTileY"] = value4;
 	}
-	com_isartdigital_perle_game_managers_ServerManager.callPhpFile(com_isartdigital_perle_game_managers_ServerManager.onDataCallback,com_isartdigital_perle_game_managers_ServerManager.onErrorCallback,"actions.php",_g);
+	com_isartdigital_perle_game_managers_ServerManager.callPhpFile(com_isartdigital_perle_game_managers_ServerManager.onDataRegionCallback,com_isartdigital_perle_game_managers_ServerManager.onErrorCallback,"actions.php",_g);
 };
 com_isartdigital_perle_game_managers_ServerManager.callPhpFile = function(onData,onError,pFileName,pParams) {
 	var lCall = new haxe_Http(pFileName);
@@ -2933,8 +2931,36 @@ com_isartdigital_perle_game_managers_ServerManager.callPhpFile = function(onData
 };
 com_isartdigital_perle_game_managers_ServerManager.onDataCallback = function(object) {
 };
+com_isartdigital_perle_game_managers_ServerManager.onDataRegionCallback = function(object) {
+	var data = JSON.parse(object);
+	if(data.flag) {
+		if(com_isartdigital_perle_game_managers_ServerManager.currentButtonRegion != null) {
+			com_isartdigital_perle_game_managers_ServerManager.currentButtonRegion.destroy();
+		}
+		var tmp = com_isartdigital_perle_game_managers_ServerManager.stringToEnum(data.type);
+		var tmp1 = data.x | 0;
+		var tmp2 = data.y | 0;
+		com_isartdigital_perle_game_managers_RegionManager.createRegion(tmp,new PIXI.Point(data.ftx,data.fty),{ x : tmp1, y : tmp2});
+		com_isartdigital_perle_game_managers_ResourcesManager.spendTotal(com_isartdigital_perle_game_managers_GeneratorType.soft,data.price | 0);
+		com_isartdigital_perle_game_managers_ServerManager.currentButtonRegion = null;
+		return;
+	}
+	com_isartdigital_utils_Debug.error(data.message);
+};
 com_isartdigital_perle_game_managers_ServerManager.onErrorCallback = function(object) {
-	console.log("Error php");
+	com_isartdigital_utils_Debug.error("Error php : " + Std.string(object));
+};
+com_isartdigital_perle_game_managers_ServerManager.stringToEnum = function(pString) {
+	switch(pString) {
+	case "heaven":
+		return com_isartdigital_perle_game_managers_Alignment.heaven;
+	case "hell":
+		return com_isartdigital_perle_game_managers_Alignment.hell;
+	case "neutral":
+		return com_isartdigital_perle_game_managers_Alignment.neutral;
+	default:
+		return com_isartdigital_perle_game_managers_Alignment.neutral;
+	}
 };
 com_isartdigital_perle_game_managers_ServerManager.prototype = {
 	__class__: com_isartdigital_perle_game_managers_ServerManager
@@ -4411,9 +4437,6 @@ com_isartdigital_perle_game_virtual_VTile.buildInsideRegion = function(pRegion,p
 	}
 };
 com_isartdigital_perle_game_virtual_VTile.buildWhitoutSave = function() {
-	if(com_isartdigital_perle_game_managers_RegionManager.worldMap.h[0].get(0) == null) {
-		throw new js__$Boot_HaxeError("first Region not created");
-	}
 };
 com_isartdigital_perle_game_virtual_VTile.buildFromSave = function(pSave) {
 	var lLength = pSave.ground.length;
@@ -5519,10 +5542,7 @@ com_isartdigital_perle_ui_hud_ButtonRegion.__super__ = com_isartdigital_utils_ui
 com_isartdigital_perle_ui_hud_ButtonRegion.prototype = $extend(com_isartdigital_utils_ui_Button.prototype,{
 	_mouseDown: function(pEvent) {
 		com_isartdigital_utils_ui_Button.prototype._mouseDown.call(this,pEvent);
-		if(com_isartdigital_perle_game_managers_RegionManager.haveMoneyForBuy(this.worldMapPos,this.regionType)) {
-			com_isartdigital_perle_game_managers_RegionManager.createRegion(this.regionType,this.firstCasePos,com_isartdigital_perle_game_virtual_VTile.pointToIndex(this.worldMapPos));
-			this.destroy();
-		}
+		com_isartdigital_perle_game_managers_ServerManager.addRegionToDataBase(this.regionType[0],com_isartdigital_perle_game_virtual_VTile.pointToIndex(this.worldMapPos),com_isartdigital_perle_game_virtual_VTile.pointToIndex(this.firstCasePos),this);
 	}
 	,destroy: function() {
 		com_isartdigital_perle_game_managers_RegionManager.getButtonContainer().removeChild(this);
@@ -12289,7 +12309,7 @@ com_isartdigital_perle_game_managers_ServerManager.KEY_POST_FUNCTION_NAME = "act
 com_isartdigital_perle_game_managers_ServerFile.MAIN_PHP = "actions.php";
 com_isartdigital_perle_game_managers_ServerFile.LOGIN = "Login";
 com_isartdigital_perle_game_managers_ServerFile.TEMP_GET_JSON = "JsonCreator";
-com_isartdigital_perle_game_managers_ServerFile.REGIONS = "regions";
+com_isartdigital_perle_game_managers_ServerFile.REGIONS = "BuyRegions";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_RESOURCE_TICK = "TimeManager_Resource_Tick";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_STEP = "TimeManager_Quest_Step_Reached";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_END = "TimeManager_Resource_End_Reached";

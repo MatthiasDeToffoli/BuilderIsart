@@ -3,30 +3,9 @@
  * User: Vicktor Grenu
  */
 
-/*include("vendor/autoload.php");
-
-// app id number
-$fb = new Facebook\Facebook([
-    'app_id' => '1764871347166484',
-    'app_secret' => '2dac14b3b3d872006edf73eccc301847',
-    'default_graph_version' => 'v2.8'
-]);
-
-$helper = $fb->getJavaScriptHelper();
-
-try {
-    $accessToken = $helper->getAccessToken();
-} catch (Facebook\Exceptions\FacebookResponseException $e) {
-    echo 'Graph returned an error : ' . $e->getMessage();
-    exit;
-} catch (Facebook\Exceptions\FacebookSDKException $e) {
-    echo 'Facebook SDK returned an error : ' . $e->getMessage();
-    exit;
-}
-
-$fbId = $helper->getUserId();*/
-
 include("FacebookUtils.php");
+include("Regions.php");
+include("Resources.php");
 
 $accessToken = getToken();
 $fbId = getFacebookId();
@@ -54,12 +33,22 @@ try {
     }
     // else -> put it in db
     else {
-        $reqInsertion = "INSERT INTO Player(IDFacebook, DateInscription, DateLastConnexion, email) VALUES (:idFB, NOW(), NOW(), 'monmail')";
+        $reqInsertion = "INSERT INTO Player(IDFacebook, DateInscription, DateLastConnexion, NumberRegionHell, NumberRegionHeaven,FtueProgress) VALUES (:idFB, NOW(), NOW(),0,0,0)";
         $reqInsPre = $db->prepare($reqInsertion);
         $reqInsPre->bindParam(':idFB', $fbId);
         try {
             $reqInsPre->execute();
-            //$res = $reqInsPre->fetch(PDO::FETCH_ASSOC); inutile ?
+            $id = getId();
+            createResources($id, 'soft', 20000);
+            createResources($id, 'hard', 0);
+            createResources($id, 'resourcesFromHell', 0);
+            createResources($id, 'resourcesFromHeaven', 0);
+            createResources($id, 'badXp', 0);
+            createResources($id, 'goodXP', 0);
+            createRegion($id,"heaven",-1,0,-12,0);
+            createRegion($id,"neutral",0,0,0,0);
+            createRegion($id,"hell",1,0,3,0);
+
         } catch (Exception $e) {
             echo $e->getMessage();
 
@@ -74,3 +63,5 @@ try {
 if (isset($accessToken)) {
     echo json_encode($retour);
 }
+
+?>
