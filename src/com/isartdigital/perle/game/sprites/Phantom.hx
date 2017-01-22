@@ -31,6 +31,11 @@ import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
 
 
+typedef EventExceeding = {
+	var phantomPosition:Point;
+	var exceedingTile:Array<Index>;
+}
+
 /**
  * Only graphic class, doesn't have any logical part (no VPhantom)
  * @author ambroise
@@ -65,12 +70,6 @@ class Phantom extends Building {
 		GameStage.getInstance().getBuildContainer().addChild(container);
 		eExceedingTiles = new EventEmitter();
 		exceedingTile = [];
-		eExceedingTiles.addListener(EVENT_CANT_BUILD, test);
-		//eCantBuild.on(EVENT_CANT_BUILD, test);
-	}
-	
-	private static function test (pEvent:Array<Index>):Void {
-		//trace(pEvent);
 	}
 	
 	public static function gameLoop():Void {
@@ -222,7 +221,6 @@ class Phantom extends Building {
 	}
 	
 	private function movePhantomOnMouse ():Void {
-		FootPrint.setPositionFootPrintAssets(instance);
 		
 		/*FootPrint.footPrint.position = new Point( // todo : une frame de retard ? mettre à la fin de cette fc ?
 			currentSelectedBuilding.x + footPrintPoint.x,
@@ -577,8 +575,8 @@ class Phantom extends Building {
 	private function setExceedingToAll ():Void {
 		var lAllExceeding:Array<Index> = [];
 		
-		for (lX in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width) {
-			for (lY in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height) {
+		for (lX in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width+1) {
+			for (lY in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height+1) {
 				lAllExceeding.push({
 					x:lX,
 					y:lY
@@ -593,9 +591,12 @@ class Phantom extends Building {
 	 * Emitted one time at each mouseMove only.
 	 */
 	private function emitExceeding ():Void {
-		eExceedingTiles.emit(EVENT_CANT_BUILD, exceedingTile);
+		//FootPrint.setPositionFootPrintAssets(this);
+		eExceedingTiles.emit(EVENT_CANT_BUILD, {
+			phantomPosition: instance.position,
+			exceedingTile:exceedingTile
+		});
 		exceedingTile = [];
-		//trace(exceedingTile);
 	}
 	
 	private function collisionPointRect (pPoint:Index, pRect:Rectangle):Bool {

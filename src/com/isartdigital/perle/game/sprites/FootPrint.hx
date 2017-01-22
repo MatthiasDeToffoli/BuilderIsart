@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.PoolingObject;
+import com.isartdigital.perle.game.sprites.Phantom.EventExceeding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.game.GameStage;
 import haxe.Json;
@@ -72,31 +73,52 @@ class FootPrint extends Tile
 			}	
 		}
 		eventArray = [];
-		setPositionFootPrintAssets(pInstance);
+		setPositionFootPrintAssets(pInstance.position);
 	}
 	
-	private static function onCantBeBuid(?pEvent:Array<Index>):Void {
-		if (pEvent[0] == null)
-			return;
-		eventArray = pEvent;
+	private static function onCantBeBuid(pEvent:EventExceeding):Void {
+		/*if (pEvent[0] == null)
+			return;*/
+		//trace(pEvent);
+		//trace("onCantBeBuid");
+		//trace("length evetnArray: " + pEvent.exceedingTile.length);
+		eventArray = pEvent.exceedingTile;
+		
+		/*for (i in 0...pEvent.length) {
+			trace(pEvent[i].x);
+			trace(pEvent[i].y);
+		}*/
 		/*for (i in 0...pEvent.length) {
 		}*/
 		//var test:Dynamic = Json.stringify(pEvent);
 		//trace(pEvent[0].x);
+		//trace(pEvent.length);
+		
+		setPositionFootPrintAssets(pEvent.phantomPosition);
+		
+		for (i in 0...pEvent.exceedingTile.length) {
+			//trace("x: " + pEvent[i].x + " y: " + pEvent[i].y);
+			if (FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x+1] != null &&
+				FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x+1][pEvent.exceedingTile[i].y+1] != null)
+				FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].y+1][pEvent.exceedingTile[i].x+1].setStateCantBePut();
+		}
+		
 	}
 	
-	public static function setPositionFootPrintAssets(pInstance:Phantom):Void {
+	public static function setPositionFootPrintAssets(pInstancePosition:Point):Void {
+		
 		for (k in 0...FootPrintAsset.footPrintArray.length) {
 			for (l in 0...FootPrintAsset.footPrintArray[k].length) {
 				var lPoint:Point = new Point(l-1, k-1);
 				lPoint = IsoManager.modelToIsoView(lPoint);
-				var lInstancePosition:Point = lInstance.position;
-				lPoint = new Point(lPoint.x + lInstancePosition.x, lPoint.y + lInstancePosition.y);
+				
+				lPoint = new Point(lPoint.x + pInstancePosition.x, lPoint.y + pInstancePosition.y);
 				FootPrintAsset.footPrintArray[k][l].position = new Point( lPoint.x, lPoint.y);
 				
-				if (eventArray == null)
-					return;
-				checkIfCanBePutted(k, l);
+				/*if (eventArray == null)
+					return;*/
+				FootPrintAsset.footPrintArray[k][l].setStateCanBePut();
+				//checkIfCanBePutted(k, l);
 				/*if (l == eventArray[0].x && k == eventArray[0].y)
 					FootPrintAsset.footPrintArray[k][l].setStateCantBePut();
 				else
@@ -105,14 +127,14 @@ class FootPrint extends Tile
 		}
 	}
 	
-	private static function checkIfCanBePutted(x,y) {
+	/*private static function checkIfCanBePutted(x:Int, y:Int) {
 		for (i in 0...eventArray.length) {
-			if (x == eventArray[i].x && y == eventArray[i].y)
+			if (x == eventArray[i].x+1 && y == eventArray[i].y+1)
 				FootPrintAsset.footPrintArray[x][y].setStateCantBePut();
 			else
 				FootPrintAsset.footPrintArray[x][y].setStateCanBePut();
 		}
-	}
+	}*/
 	
 	public static function removeShadow() {
 		for (k in 0...FootPrintAsset.footPrintArray.length) {
