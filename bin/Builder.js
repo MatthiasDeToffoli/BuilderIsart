@@ -1251,32 +1251,18 @@ com_isartdigital_perle_game_iso_IsoManager.sortTiles = function(pTiles) {
 	}
 	return lTilesDrawn;
 };
-var com_isartdigital_perle_game_managers_BoostManager = function() {
-};
+var com_isartdigital_perle_game_managers_BoostManager = function() { };
 $hxClasses["com.isartdigital.perle.game.managers.BoostManager"] = com_isartdigital_perle_game_managers_BoostManager;
 com_isartdigital_perle_game_managers_BoostManager.__name__ = ["com","isartdigital","perle","game","managers","BoostManager"];
 com_isartdigital_perle_game_managers_BoostManager.awake = function() {
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent = new EventEmitter();
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost = new haxe_ds_EnumValueMap();
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.heaven,0);
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.hell,0);
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.neutral,0);
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent = new EventEmitter();
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent = new EventEmitter();
 };
-com_isartdigital_perle_game_managers_BoostManager.callEvent = function(pType) {
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(pType,com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(pType) + 4);
-	if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
-		com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.hell,Math.max(com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(com_isartdigital_perle_game_managers_Alignment.hell) - 1,0));
-	}
-	if(pType == com_isartdigital_perle_game_managers_Alignment.hell) {
-		com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.heaven,Math.max(com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(com_isartdigital_perle_game_managers_Alignment.heaven) - 1,0));
-	}
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent.emit("BOOST");
+com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding = function(regionPos,casePos) {
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.emit("ALTAR_CALL",{ casePos : casePos, regionPos : regionPos});
 };
-com_isartdigital_perle_game_managers_BoostManager.getBoost = function(pType) {
-	return com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(pType);
-};
-com_isartdigital_perle_game_managers_BoostManager.prototype = {
-	__class__: com_isartdigital_perle_game_managers_BoostManager
+com_isartdigital_perle_game_managers_BoostManager.buildingIsInAltarZone = function(regionPos,casePos,pRef,pType) {
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.emit("BUILDING_CALL",{ casePos : casePos, regionPos : regionPos, buildingRef : pRef, type : pType});
 };
 var com_isartdigital_perle_game_managers_BuyManager = function() { };
 $hxClasses["com.isartdigital.perle.game.managers.BuyManager"] = com_isartdigital_perle_game_managers_BuyManager;
@@ -4673,12 +4659,17 @@ var com_isartdigital_perle_game_virtual_VBuilding = function(pDescription) {
 		com_isartdigital_perle_game_managers_TimeManager.addConstructionTimer(pDescription.timeDesc);
 		com_isartdigital_perle_game_managers_TimeManager.eConstruct.on("TimeManager_Construction_End",$bind(this,this.endOfConstruction));
 	}
+	this.callBoostManager();
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.on("ALTAR_CALL",$bind(this,this.onAltarCheck));
 };
 $hxClasses["com.isartdigital.perle.game.virtual.VBuilding"] = com_isartdigital_perle_game_virtual_VBuilding;
 com_isartdigital_perle_game_virtual_VBuilding.__name__ = ["com","isartdigital","perle","game","virtual","VBuilding"];
 com_isartdigital_perle_game_virtual_VBuilding.__super__ = com_isartdigital_perle_game_virtual_VTile;
 com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_VTile.prototype,{
-	setHaveRecolter: function() {
+	callBoostManager: function() {
+		com_isartdigital_perle_game_managers_BoostManager.buildingIsInAltarZone({ x : this.tileDesc.regionX, y : this.tileDesc.regionY},{ x : this.tileDesc.mapX, y : this.tileDesc.mapY},this.tileDesc.id,this.alignementBuilding);
+	}
+	,setHaveRecolter: function() {
 		this.haveRecolter = true;
 	}
 	,activate: function() {
@@ -4686,6 +4677,27 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		this.graphic = js_Boot.__cast(com_isartdigital_perle_game_sprites_Building.createBuilding(this.tileDesc) , PIXI.Container);
 		(js_Boot.__cast(this.graphic , com_isartdigital_perle_game_virtual_HasVirtual)).linkVirtual(js_Boot.__cast(this , com_isartdigital_perle_game_virtual_Virtual));
 		this.myVContextualHud.activate();
+	}
+	,onAltarCheck: function(pData) {
+		if(pData.regionPos.x != this.tileDesc.regionX || pData.regionPos.y != this.tileDesc.regionY) {
+			return;
+		}
+		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key = this.tileDesc.buildingName;
+		var mapSize = __map_reserved[key] != null?_this.getReserved(key):_this.h[key];
+		var _g1 = this.tileDesc.mapX;
+		var _g = this.tileDesc.mapX + mapSize.width;
+		while(_g1 < _g) {
+			var i = _g1++;
+			var _g3 = this.tileDesc.mapX;
+			var _g2 = this.tileDesc.mapY + mapSize.height;
+			while(_g3 < _g2) {
+				var j = _g3++;
+				if(i == pData.casePos.x && j == pData.casePos.y) {
+					this.callBoostManager();
+				}
+			}
+		}
 	}
 	,getVirtualContextualHud: function() {
 		return this.myVContextualHud;
@@ -4784,9 +4796,6 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_managers_RegionManager.addToRegionBuilding(this);
 	}
 	,addGenerator: function() {
-		if(this.alignementBuilding != null) {
-			com_isartdigital_perle_game_managers_BoostManager.callEvent(this.alignementBuilding);
-		}
 		this.myGenerator = com_isartdigital_perle_game_managers_ResourcesManager.addResourcesGenerator(this.tileDesc.id,this.myGeneratorType,this.myMaxContains,this.myTime);
 	}
 	,addHudContextual: function() {
@@ -4800,6 +4809,7 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_managers_SaveManager.save();
 	}
 	,destroy: function() {
+		com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.off("ALTAR_CALL",$bind(this,this.onAltarCheck));
 		if(this.currentState == com_isartdigital_perle_game_virtual_VBuildingState.isMoving) {
 			throw new js__$Boot_HaxeError("Sure about destroying a moving VBuilding ?? not an error ? ask Ambroise");
 		}
@@ -4836,6 +4846,112 @@ com_isartdigital_perle_game_virtual_VGround.prototype = $extend(com_isartdigital
 		com_isartdigital_perle_game_virtual_VTile.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_game_virtual_VGround
+});
+var com_isartdigital_perle_game_virtual_vBuilding_VAltar = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
+	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+	this.elementHeaven = [];
+	this.elementHell = [];
+	this.elementHeaven = [];
+	this.elementHell = [];
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.on("BUILDING_CALL",$bind(this,this.onBuildingToAdd));
+	this.checkInZone();
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VAltar"] = com_isartdigital_perle_game_virtual_vBuilding_VAltar;
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VAltar"];
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+	checkInZone: function() {
+		this.checkInZoneByAlignment(com_isartdigital_perle_game_managers_Alignment.heaven);
+		this.checkInZoneByAlignment(com_isartdigital_perle_game_managers_Alignment.hell);
+	}
+	,checkInZoneByAlignment: function(pType) {
+		var regionPos = pType == com_isartdigital_perle_game_managers_Alignment.heaven?{ x : this.tileDesc.regionX - 1, y : this.tileDesc.regionY}:{ x : this.tileDesc.regionX + 1, y : this.tileDesc.regionY};
+		var posX;
+		var _g = 0;
+		while(_g < 4) {
+			var i = _g++;
+			var _g2 = 0;
+			var _g1 = 4 - i;
+			while(_g2 < _g1) {
+				var j = _g2++;
+				if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
+					posX = 11 - i;
+				} else {
+					posX = i;
+				}
+				if(this.tileDesc.mapY - j < 0) {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding({ x : regionPos.x, y : regionPos.y - 1},{ x : posX, y : 12 + this.tileDesc.mapY + 1 - j});
+				} else {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding(regionPos,{ x : posX, y : this.tileDesc.mapY - j});
+				}
+				if(this.tileDesc.mapY + j + 1 > 12) {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding({ x : regionPos.x, y : regionPos.y + 1},{ x : posX, y : this.tileDesc.mapY + j - 12});
+				} else {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding(regionPos,{ x : posX, y : this.tileDesc.mapY + 1 + j});
+				}
+			}
+		}
+	}
+	,onBuildingToAdd: function(pData) {
+		if(pData.regionPos.y > this.tileDesc.regionY + 1 || pData.regionPos.y < this.tileDesc.regionY - 1) {
+			return;
+		}
+		var posX;
+		var _g = 0;
+		while(_g < 4) {
+			var i = _g++;
+			var _g2 = 0;
+			var _g1 = 4 - i;
+			while(_g2 < _g1) {
+				var j = _g2++;
+				if(pData.type == com_isartdigital_perle_game_managers_Alignment.heaven) {
+					posX = 11 - i;
+				} else {
+					posX = i;
+				}
+				if(pData.casePos.x == posX && (pData.casePos.y == 12 + this.tileDesc.mapY + 1 - j || pData.casePos.y == this.tileDesc.mapY - j)) {
+					this.addToCorrectArray(pData.buildingRef,pData.type);
+					return;
+				}
+				if(pData.casePos.x == posX && (pData.casePos.y == this.tileDesc.mapY + j - 12 || pData.casePos.y == this.tileDesc.mapY + 1 + j)) {
+					this.addToCorrectArray(pData.buildingRef,pData.type);
+					return;
+				}
+			}
+		}
+	}
+	,addToCorrectArray: function(pRef,pType) {
+		var myArray = pType == com_isartdigital_perle_game_managers_Alignment.heaven?this.elementHeaven:this.elementHell;
+		var _g = 0;
+		while(_g < myArray.length) {
+			var currentRef = myArray[_g];
+			++_g;
+			if(currentRef == pRef) {
+				return;
+			}
+		}
+		myArray.push(pRef);
+		if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
+			this.elementHeaven = myArray;
+		} else {
+			this.elementHell = myArray;
+		}
+	}
+	,addGenerator: function() {
+		this.myMaxContains = 10000;
+		this.myTime = 600000000000;
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
+	}
+	,haveMoreBoost: function(data) {
+		this.myTime = 60000.;
+		com_isartdigital_perle_game_managers_ResourcesManager.UpdateResourcesGenerator(this.myGenerator,this.myMaxContains,this.myTime);
+	}
+	,destroy: function() {
+		com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.off("BUILDING_CALL",$bind(this,this.onBuildingToAdd));
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VAltar
 });
 var com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade = function(pDescription) {
 	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
@@ -4951,30 +5067,6 @@ com_isartdigital_perle_game_virtual_vBuilding_VHouse.prototype = $extend(com_isa
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VHouse
 });
-var com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding = function(pDescription) {
-	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
-	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent.on("BOOST",$bind(this,this.haveMoreBoost));
-};
-$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VPreferenceBuilding"] = com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VPreferenceBuilding"];
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
-	addGenerator: function() {
-		this.myMaxContains = 10000;
-		this.myTime = 60000 / com_isartdigital_perle_game_managers_BoostManager.getBoost(this.alignmentEffect);
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
-	}
-	,haveMoreBoost: function(data) {
-		this.myTime = 60000 / com_isartdigital_perle_game_managers_BoostManager.getBoost(this.alignmentEffect);
-		com_isartdigital_perle_game_managers_ResourcesManager.UpdateResourcesGenerator(this.myGenerator,this.myMaxContains,this.myTime);
-	}
-	,destroy: function() {
-		com_isartdigital_perle_game_managers_BoostManager.boostEvent.off("BOOST",$bind(this,this.haveMoreBoost));
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding
-});
 var com_isartdigital_perle_game_virtual_vBuilding_VTribunal = function(pDesc) {
 	var lDesc;
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
@@ -5036,12 +5128,12 @@ com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse.prototype = $extend(co
 });
 var com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding = function(pDescription) {
 	this.alignmentEffect = com_isartdigital_perle_game_managers_Alignment.heaven;
-	com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.call(this,pDescription);
+	com_isartdigital_perle_game_virtual_vBuilding_VAltar.call(this,pDescription);
 };
 $hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding"] = com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding;
 com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VVirtuesBuilding"];
-com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.prototype,{
+com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VAltar;
+com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype,{
 	__class__: com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding
 });
 var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven = function(pDescription) {
@@ -12253,7 +12345,8 @@ com_isartdigital_perle_game_QuestDictionnary.actions = (function($this) {
 	return $r;
 }(this));
 com_isartdigital_perle_game_QuestDictionnary.secondarySubjects = ["des archéologues.","des voyageurs.","des touristes.","un vagabond.","des animaux.","des trolls nains.","des crocodiles.","des enfants.","des chasseurs.","des milliciens."];
-com_isartdigital_perle_game_managers_BoostManager.BOOST_EVENT_NAME = "BOOST";
+com_isartdigital_perle_game_managers_BoostManager.ALTAR_EVENT_NAME = "ALTAR_CALL";
+com_isartdigital_perle_game_managers_BoostManager.BUILDING_EVENT_NAME = "BUILDING_CALL";
 com_isartdigital_perle_game_managers_CameraManager.REGION_WIDTH = 2400.;
 com_isartdigital_perle_game_managers_CameraManager.REGION_HEIGHT = 1200.;
 com_isartdigital_perle_game_managers_CameraManager.REGION_STYX_WIDTH = -1000.;
@@ -12513,7 +12606,7 @@ com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE = (functio
 		}
 	}
 	{
-		var value2 = { width : 3, height : 1, footprint : 1};
+		var value2 = { width : 3, height : 2, footprint : 1};
 		if(__map_reserved["Altar Virtue"] != null) {
 			_g.setReserved("Altar Virtue",value2);
 		} else {
@@ -13007,6 +13100,7 @@ com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_ALIGNEMENT = (funct
 	return $r;
 }(this));
 com_isartdigital_perle_game_virtual_VTile.ROAD_MAP = [["","","","","Road_br","Road_tl","",""],["","","","Road_br","Road_tl","","",""],["Road_v","Road_v","Road_v","Road_c","","","",""],["","","","Road_h","","","",""],["Road_v","Road_v","Road_v","Road_tl","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""]];
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.ZONESIZE = 4;
 com_isartdigital_utils_ui_Button.UP = 0;
 com_isartdigital_utils_ui_Button.OVER = 1;
 com_isartdigital_utils_ui_Button.DOWN = 2;

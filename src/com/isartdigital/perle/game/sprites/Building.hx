@@ -33,7 +33,7 @@ class Building extends Tile implements IZSortable
 	public static var BUILDING_NAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO obtenir de bdd
 		BuildingName.STYX_PURGATORY => {width:3, height:3, footprint : 1},
 		BuildingName.STYX_VICE => {width:3, height:1, footprint : 1},
-		BuildingName.STYX_VIRTUE => {width:3, height:1, footprint : 1},
+		BuildingName.STYX_VIRTUE => {width:3, height:2, footprint : 1},
 		BuildingName.STYX_MARKET => { width:2, height:3, footprint : 1 },
 		
 		

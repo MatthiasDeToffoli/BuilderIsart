@@ -8,7 +8,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
  * ...
  * @author Alexis
  */
-class VVirtuesBuilding extends VPreferenceBuilding
+class VVirtuesBuilding extends VAltar
 {
 
 	public function new(pDescription:TileDescription) 

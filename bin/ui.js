@@ -882,7 +882,7 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 		return __map_reserved[pClassNameNoPath] != null?_this.getReserved(pClassNameNoPath):_this.h[pClassNameNoPath];
 	}
 	,forceImport: function() {
-		var arrayClass = [com_isartdigital_perle_game_sprites_Ground,com_isartdigital_perle_game_sprites_Building,com_isartdigital_perle_game_sprites_FootPrint,com_isartdigital_perle_ui_popin_listIntern_InternElement,com_isartdigital_perle_game_sprites_Tribunal,com_isartdigital_perle_game_sprites_building_heaven_DecoHeaven,com_isartdigital_perle_game_sprites_building_hell_DecoHell,com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven,com_isartdigital_perle_game_sprites_building_heaven_Lumbermill,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven,com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven,com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding,com_isartdigital_perle_game_virtual_vBuilding_vHell_VDecoHell,com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill,com_isartdigital_perle_game_sprites_building_hell_HouseHell,com_isartdigital_perle_game_sprites_building_hell_Quarry,com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry];
+		var arrayClass = [com_isartdigital_perle_game_sprites_Ground,com_isartdigital_perle_game_sprites_Building,com_isartdigital_perle_game_sprites_FootPrintAsset,com_isartdigital_perle_ui_popin_listIntern_InternElement,com_isartdigital_perle_game_sprites_Tribunal,com_isartdigital_perle_game_sprites_building_heaven_DecoHeaven,com_isartdigital_perle_game_sprites_building_hell_DecoHell,com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven,com_isartdigital_perle_game_sprites_building_heaven_Lumbermill,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven,com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven,com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding,com_isartdigital_perle_game_virtual_vBuilding_vHell_VDecoHell,com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill,com_isartdigital_perle_game_sprites_building_hell_HouseHell,com_isartdigital_perle_game_sprites_building_hell_Quarry,com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry];
 		var lClassName;
 		var lClassNameNoPath;
 		var _g = 0;
@@ -1066,6 +1066,7 @@ com_isartdigital_perle_game_GameManager.prototype = {
 		com_isartdigital_perle_game_managers_SaveManager.createFromSave();
 		com_isartdigital_perle_game_managers_UnlockManager.setUnlockItem();
 		com_isartdigital_perle_game_managers_ClippingManager.update();
+		com_isartdigital_perle_game_sprites_FootPrint.startClass();
 		com_isartdigital_perle_ui_CheatPanel.getInstance().ingame();
 		com_isartdigital_perle_Main.getInstance().on("gameLoop",$bind(this,this.gameLoop));
 	}
@@ -1250,32 +1251,18 @@ com_isartdigital_perle_game_iso_IsoManager.sortTiles = function(pTiles) {
 	}
 	return lTilesDrawn;
 };
-var com_isartdigital_perle_game_managers_BoostManager = function() {
-};
+var com_isartdigital_perle_game_managers_BoostManager = function() { };
 $hxClasses["com.isartdigital.perle.game.managers.BoostManager"] = com_isartdigital_perle_game_managers_BoostManager;
 com_isartdigital_perle_game_managers_BoostManager.__name__ = ["com","isartdigital","perle","game","managers","BoostManager"];
 com_isartdigital_perle_game_managers_BoostManager.awake = function() {
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent = new EventEmitter();
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost = new haxe_ds_EnumValueMap();
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.heaven,0);
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.hell,0);
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.neutral,0);
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent = new EventEmitter();
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent = new EventEmitter();
 };
-com_isartdigital_perle_game_managers_BoostManager.callEvent = function(pType) {
-	com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(pType,com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(pType) + 4);
-	if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
-		com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.hell,Math.max(com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(com_isartdigital_perle_game_managers_Alignment.hell) - 1,0));
-	}
-	if(pType == com_isartdigital_perle_game_managers_Alignment.hell) {
-		com_isartdigital_perle_game_managers_BoostManager.quantityBoost.set(com_isartdigital_perle_game_managers_Alignment.heaven,Math.max(com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(com_isartdigital_perle_game_managers_Alignment.heaven) - 1,0));
-	}
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent.emit("BOOST");
+com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding = function(regionPos,casePos) {
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.emit("ALTAR_CALL",{ casePos : casePos, regionPos : regionPos});
 };
-com_isartdigital_perle_game_managers_BoostManager.getBoost = function(pType) {
-	return com_isartdigital_perle_game_managers_BoostManager.quantityBoost.get(pType);
-};
-com_isartdigital_perle_game_managers_BoostManager.prototype = {
-	__class__: com_isartdigital_perle_game_managers_BoostManager
+com_isartdigital_perle_game_managers_BoostManager.buildingIsInAltarZone = function(regionPos,casePos,pRef,pType) {
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.emit("BUILDING_CALL",{ casePos : casePos, regionPos : regionPos, buildingRef : pRef, type : pType});
 };
 var com_isartdigital_perle_game_managers_BuyManager = function() { };
 $hxClasses["com.isartdigital.perle.game.managers.BuyManager"] = com_isartdigital_perle_game_managers_BuyManager;
@@ -3716,18 +3703,15 @@ var com_isartdigital_perle_game_sprites_FootPrint = function(pAssetName) {
 };
 $hxClasses["com.isartdigital.perle.game.sprites.FootPrint"] = com_isartdigital_perle_game_sprites_FootPrint;
 com_isartdigital_perle_game_sprites_FootPrint.__name__ = ["com","isartdigital","perle","game","sprites","FootPrint"];
+com_isartdigital_perle_game_sprites_FootPrint.startClass = function() {
+	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.addListener("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_FootPrint.onCantBeBuid);
+};
 com_isartdigital_perle_game_sprites_FootPrint.initClass = function() {
 	com_isartdigital_perle_game_sprites_FootPrint.container = new PIXI.Container();
 	com_isartdigital_utils_game_GameStage.getInstance().getBuildContainer().addChild(com_isartdigital_perle_game_sprites_FootPrint.container);
 };
 com_isartdigital_perle_game_sprites_FootPrint.createShadow = function(pInstance) {
 	com_isartdigital_perle_game_sprites_FootPrint.lInstance = pInstance;
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint = com_isartdigital_perle_game_managers_PoolingManager.getFromPool("FootPrint");
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.init();
-	com_isartdigital_perle_game_sprites_FootPrint.container.addChild(com_isartdigital_perle_game_sprites_FootPrint.footPrint);
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.start();
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.rotation = 0.785398;
-	com_isartdigital_perle_game_sprites_FootPrint.container.scale.y = 0.5;
 	var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 	var key = com_isartdigital_perle_game_sprites_FootPrint.lInstance.buildingName;
 	if((__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint == 0) {
@@ -3735,28 +3719,89 @@ com_isartdigital_perle_game_sprites_FootPrint.createShadow = function(pInstance)
 	} else {
 		com_isartdigital_perle_game_sprites_FootPrint.deplacementFootprint = 100;
 	}
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.position = new PIXI.Point(com_isartdigital_perle_game_sprites_FootPrint.lInstance.x,(com_isartdigital_perle_game_sprites_FootPrint.lInstance.y - com_isartdigital_perle_game_sprites_FootPrint.deplacementFootprint) * 2);
-	var tmp = com_isartdigital_perle_game_sprites_FootPrint.footPrint.width;
 	var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 	var key1 = com_isartdigital_perle_game_sprites_FootPrint.lInstance.buildingName;
-	var tmp1 = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width;
+	var tmp = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width;
 	var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 	var key2 = com_isartdigital_perle_game_sprites_FootPrint.lInstance.buildingName;
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.width = tmp * (tmp1 + (__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint * 2);
-	var tmp2 = com_isartdigital_perle_game_sprites_FootPrint.footPrint.height;
+	var lX = js_Boot.__cast(tmp + (__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint * 2 , Int);
 	var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 	var key3 = com_isartdigital_perle_game_sprites_FootPrint.lInstance.buildingName;
-	var tmp3 = (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).height;
+	var tmp1 = (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).height;
 	var _this4 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 	var key4 = com_isartdigital_perle_game_sprites_FootPrint.lInstance.buildingName;
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.height = tmp2 * (tmp3 + (__map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4]).footprint * 2);
+	var lY = js_Boot.__cast(tmp1 + (__map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4]).footprint * 2 , Int);
+	com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray = [];
+	com_isartdigital_perle_game_sprites_FootPrintAsset.arrayContainerFootPrint = [];
+	var _g1 = 0;
+	while(_g1 < lY) {
+		var j = _g1++;
+		com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[j] = [];
+		com_isartdigital_perle_game_sprites_FootPrintAsset.arrayContainerFootPrint[j] = [];
+		var _g3 = 0;
+		while(_g3 < lX) {
+			var i = _g3++;
+			com_isartdigital_perle_game_sprites_FootPrintAsset.createFootPrint(j,i);
+			com_isartdigital_perle_game_sprites_FootPrint.container.addChild(com_isartdigital_perle_game_sprites_FootPrintAsset.arrayContainerFootPrint[j][i]);
+		}
+	}
+	com_isartdigital_perle_game_sprites_FootPrint.eventArray = [];
+	com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(pInstance);
 };
-com_isartdigital_perle_game_sprites_FootPrint.doActionShadow = function() {
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.position = new PIXI.Point(com_isartdigital_perle_game_sprites_FootPrint.lInstance.x,(com_isartdigital_perle_game_sprites_FootPrint.lInstance.y - com_isartdigital_perle_game_sprites_FootPrint.deplacementFootprint) * 2);
+com_isartdigital_perle_game_sprites_FootPrint.onCantBeBuid = function(pEvent) {
+	if(pEvent[0] == null) {
+		return;
+	}
+	com_isartdigital_perle_game_sprites_FootPrint.eventArray = pEvent;
+};
+com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets = function(pInstance) {
+	var _g1 = 0;
+	var _g = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray.length;
+	while(_g1 < _g) {
+		var k = _g1++;
+		var _g3 = 0;
+		var _g2 = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k].length;
+		while(_g3 < _g2) {
+			var l = _g3++;
+			var lPoint = new PIXI.Point(l - 1,k - 1);
+			lPoint = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(lPoint);
+			var lInstancePosition = com_isartdigital_perle_game_sprites_FootPrint.lInstance.position;
+			lPoint = new PIXI.Point(lPoint.x + lInstancePosition.x,lPoint.y + lInstancePosition.y);
+			var tmp = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k];
+			tmp[l].position = new PIXI.Point(lPoint.x,lPoint.y);
+			if(com_isartdigital_perle_game_sprites_FootPrint.eventArray == null) {
+				return;
+			}
+			com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted(k,l);
+		}
+	}
+};
+com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted = function(x,y) {
+	var _g1 = 0;
+	var _g = com_isartdigital_perle_game_sprites_FootPrint.eventArray.length;
+	while(_g1 < _g) {
+		var i = _g1++;
+		if(x == com_isartdigital_perle_game_sprites_FootPrint.eventArray[i].x && y == com_isartdigital_perle_game_sprites_FootPrint.eventArray[i].y) {
+			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[x][y].setStateCantBePut();
+		} else {
+			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[x][y].setStateCanBePut();
+		}
+	}
 };
 com_isartdigital_perle_game_sprites_FootPrint.removeShadow = function() {
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.scale = new PIXI.Point(1,1);
-	com_isartdigital_perle_game_sprites_FootPrint.footPrint.recycle();
+	var _g1 = 0;
+	var _g = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray.length;
+	while(_g1 < _g) {
+		var k = _g1++;
+		var _g3 = 0;
+		var _g2 = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k].length;
+		while(_g3 < _g2) {
+			var l = _g3++;
+			var tmp = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k];
+			tmp[l].scale = new PIXI.Point(1,1);
+			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k][l].recycle();
+		}
+	}
 };
 com_isartdigital_perle_game_sprites_FootPrint.__super__ = com_isartdigital_perle_game_sprites_Tile;
 com_isartdigital_perle_game_sprites_FootPrint.prototype = $extend(com_isartdigital_perle_game_sprites_Tile.prototype,{
@@ -3767,6 +3812,38 @@ com_isartdigital_perle_game_sprites_FootPrint.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_sprites_Tile.prototype.recycle.call(this);
 	}
 	,__class__: com_isartdigital_perle_game_sprites_FootPrint
+});
+var com_isartdigital_perle_game_sprites_FootPrintAsset = function(pAssetName) {
+	com_isartdigital_perle_game_sprites_Tile.call(this,pAssetName);
+};
+$hxClasses["com.isartdigital.perle.game.sprites.FootPrintAsset"] = com_isartdigital_perle_game_sprites_FootPrintAsset;
+com_isartdigital_perle_game_sprites_FootPrintAsset.__name__ = ["com","isartdigital","perle","game","sprites","FootPrintAsset"];
+com_isartdigital_perle_game_sprites_FootPrintAsset.createFootPrint = function(pJ,pI) {
+	com_isartdigital_perle_game_sprites_FootPrintAsset.footPrint = com_isartdigital_perle_game_managers_PoolingManager.getFromPool("FootPrint");
+	com_isartdigital_perle_game_sprites_FootPrintAsset.footPrint.init();
+	var lContainer = new PIXI.Container();
+	lContainer.addChild(com_isartdigital_perle_game_sprites_FootPrintAsset.footPrint);
+	com_isartdigital_perle_game_sprites_FootPrintAsset.footPrint.start();
+	com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[pJ][pI] = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrint;
+	com_isartdigital_perle_game_sprites_FootPrintAsset.arrayContainerFootPrint[pJ][pI] = lContainer;
+};
+com_isartdigital_perle_game_sprites_FootPrintAsset.__super__ = com_isartdigital_perle_game_sprites_Tile;
+com_isartdigital_perle_game_sprites_FootPrintAsset.prototype = $extend(com_isartdigital_perle_game_sprites_Tile.prototype,{
+	setStateCantBePut: function() {
+		this.setState(this.DEFAULT_STATE);
+		this.setState("red");
+	}
+	,setStateCanBePut: function() {
+		this.setState(this.DEFAULT_STATE);
+		this.setState("green");
+	}
+	,setStateAreaEffect: function() {
+		this.setState("yellow");
+	}
+	,init: function() {
+		com_isartdigital_perle_game_sprites_Tile.prototype.init.call(this);
+	}
+	,__class__: com_isartdigital_perle_game_sprites_FootPrintAsset
 });
 var com_isartdigital_perle_game_sprites_Ground = function(pAssetName) {
 	com_isartdigital_perle_game_sprites_Tile.call(this,pAssetName);
@@ -3893,6 +3970,11 @@ com_isartdigital_perle_game_sprites_Phantom.initClass = function() {
 	com_isartdigital_perle_game_sprites_Phantom.colorMatrix = new PIXI.filters.ColorMatrixFilter();
 	com_isartdigital_perle_game_sprites_Phantom.colorMatrix.desaturate(false);
 	com_isartdigital_utils_game_GameStage.getInstance().getBuildContainer().addChild(com_isartdigital_perle_game_sprites_Phantom.container);
+	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles = new EventEmitter();
+	com_isartdigital_perle_game_sprites_Phantom.exceedingTile = [];
+	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.addListener("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.test);
+};
+com_isartdigital_perle_game_sprites_Phantom.test = function(pEvent) {
 };
 com_isartdigital_perle_game_sprites_Phantom.gameLoop = function() {
 	if(com_isartdigital_perle_game_sprites_Phantom.instance != null) {
@@ -3905,6 +3987,8 @@ com_isartdigital_perle_game_sprites_Phantom.onClickShop = function(pBuildingName
 	com_isartdigital_perle_game_sprites_Phantom.createPhantom(pBuildingName);
 };
 com_isartdigital_perle_game_sprites_Phantom.onClickMove = function(pBuildingName,pVBuilding) {
+	var _this = com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_ALIGNEMENT;
+	com_isartdigital_perle_game_sprites_Phantom.alignementBuilding = __map_reserved[pBuildingName] != null?_this.getReserved(pBuildingName):_this.h[pBuildingName];
 	com_isartdigital_perle_game_sprites_Phantom.createPhantom(pBuildingName);
 	com_isartdigital_perle_game_sprites_Phantom.instance.vBuilding = pVBuilding;
 	com_isartdigital_perle_game_sprites_Phantom.instance.position = pVBuilding.graphic.position;
@@ -3997,7 +4081,7 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 	,doActionPhantom: function() {
 	}
 	,movePhantomOnMouse: function() {
-		com_isartdigital_perle_game_sprites_FootPrint.doActionShadow();
+		com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(com_isartdigital_perle_game_sprites_Phantom.instance);
 		var buildingGroundCenter = this.getBuildingGroundCenter();
 		var bestMapPos = this.getRoundMapPos(new PIXI.Point(com_isartdigital_perle_game_managers_MouseManager.getInstance().positionInGame.x + this.x - buildingGroundCenter.x,com_isartdigital_perle_game_managers_MouseManager.getInstance().positionInGame.y + this.y - buildingGroundCenter.y));
 		this.position = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(new PIXI.Point(bestMapPos.x,bestMapPos.y));
@@ -4008,6 +4092,7 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 			} else {
 				this.addDesaturateFilter();
 			}
+			this.emitExceeding();
 		}
 		this.precedentBesMapPos.copy(new PIXI.Point(bestMapPos.x,bestMapPos.y));
 	}
@@ -4070,10 +4155,8 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 		var key = this.buildingName;
 		this.setMapColRow(tmp,__map_reserved[key] != null?_this.getReserved(key):_this.h[key]);
 		this.regionMap = this.getRegionMap();
-		if(com_isartdigital_perle_game_sprites_Phantom.instance.vBuilding != null) {
-			com_isartdigital_perle_game_sprites_Phantom.alignementBuilding = com_isartdigital_perle_game_sprites_Phantom.instance.vBuilding.alignementBuilding;
-		}
 		if(com_isartdigital_perle_game_sprites_Phantom.alignementBuilding == null) {
+			com_isartdigital_utils_Debug.error("should not be null in my opinion, i am right ? (this line should never happen, contact Ambroise)");
 			if(this.buildingOnGround()) {
 				return this.buildingCollideOther();
 			} else {
@@ -4081,6 +4164,7 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 			}
 		}
 		if(this.regionMap == null || com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.regionMap.region.x].get(this.regionMap.region.y).desc.type != com_isartdigital_perle_game_sprites_Phantom.alignementBuilding) {
+			this.setExceedingToAll();
 			return false;
 		}
 		if(this.buildingOnGround()) {
@@ -4099,28 +4183,18 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 		return { regionFirstTile : lRegionFirstTile, region : lRegion, map : { x : this.colMin - lRegionFirstTile.x, y : this.rowMin - lRegionFirstTile.y}};
 	}
 	,buildingOnGround: function() {
-		var lRegionSize_width;
-		var lRegionSize_height;
-		lRegionSize_width = 0;
-		lRegionSize_height = 0;
-		if(com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.regionMap.region.x].get(this.regionMap.region.y).desc.type == com_isartdigital_perle_game_managers_Alignment.neutral) {
-			lRegionSize_width = 3;
-		} else {
-			lRegionSize_width = 12;
-		}
-		if(com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.regionMap.region.x].get(this.regionMap.region.y).desc.type == com_isartdigital_perle_game_managers_Alignment.neutral) {
-			lRegionSize_height = 13;
-		} else {
-			lRegionSize_height = 12;
-		}
+		var lRegionSize = { width : 0, height : 0, footprint : 0};
+		lRegionSize.width = com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.regionMap.region.x].get(this.regionMap.region.y).desc.type == com_isartdigital_perle_game_managers_Alignment.neutral?3:12;
+		lRegionSize.height = com_isartdigital_perle_game_managers_RegionManager.worldMap.h[this.regionMap.region.x].get(this.regionMap.region.y).desc.type == com_isartdigital_perle_game_managers_Alignment.neutral?13:12;
+		this.setExceedBuildingOnGround(lRegionSize);
 		var tmp = this.regionMap.map.x;
 		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 		var key = this.buildingName;
-		if(tmp + (__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).width <= lRegionSize_width) {
+		if(tmp + (__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).width <= lRegionSize.width) {
 			var tmp1 = this.regionMap.map.y;
 			var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 			var key1 = this.buildingName;
-			return tmp1 + (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).height <= lRegionSize_height;
+			return tmp1 + (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).height <= lRegionSize.height;
 		} else {
 			return false;
 		}
@@ -4143,55 +4217,140 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 		return true;
 	}
 	,collisionRectDesc: function(pVirtual) {
-		var lPoint;
-		var tmp;
+		var lCombinedFootprint;
 		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 		var key = pVirtual.buildingName;
-		if((__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint != 0) {
-			var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-			var key1 = this.buildingName;
-			tmp = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).footprint == 0;
-		} else {
-			tmp = true;
-		}
-		if(tmp) {
-			lPoint = 0;
-		} else {
-			var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-			var key2 = this.buildingName;
-			lPoint = (__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint;
-		}
+		var tmp = (__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint;
+		var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key1 = this.buildingName;
+		lCombinedFootprint = js_Boot.__cast(Math.min(tmp,(__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).footprint) , Int);
+		this.setExceedCollisionRectDesc(lCombinedFootprint,pVirtual);
 		var tmp1;
 		var tmp2;
 		var tmp3 = this.regionMap.map.x;
 		var tmp4 = pVirtual.mapX;
-		var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-		var key3 = pVirtual.buildingName;
-		if(tmp3 < tmp4 + (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).width + lPoint) {
+		var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key2 = pVirtual.buildingName;
+		if(tmp3 < tmp4 + (__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).width + lCombinedFootprint) {
 			var tmp5 = this.regionMap.map.x;
-			var _this4 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-			var key4 = this.buildingName;
-			tmp2 = tmp5 + (__map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4]).width > pVirtual.mapX - lPoint;
+			var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+			var key3 = this.buildingName;
+			tmp2 = tmp5 + (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).width > pVirtual.mapX - lCombinedFootprint;
 		} else {
 			tmp2 = false;
 		}
 		if(tmp2) {
 			var tmp6 = this.regionMap.map.y;
 			var tmp7 = pVirtual.mapY;
-			var _this5 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-			var key5 = pVirtual.buildingName;
-			tmp1 = tmp6 < tmp7 + (__map_reserved[key5] != null?_this5.getReserved(key5):_this5.h[key5]).height + lPoint;
+			var _this4 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+			var key4 = pVirtual.buildingName;
+			tmp1 = tmp6 < tmp7 + (__map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4]).height + lCombinedFootprint;
 		} else {
 			tmp1 = false;
 		}
 		if(tmp1) {
 			var tmp8 = this.regionMap.map.y;
-			var _this6 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
-			var key6 = this.buildingName;
-			return tmp8 + (__map_reserved[key6] != null?_this6.getReserved(key6):_this6.h[key6]).height > pVirtual.mapY - lPoint;
+			var _this5 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+			var key5 = this.buildingName;
+			return tmp8 + (__map_reserved[key5] != null?_this5.getReserved(key5):_this5.h[key5]).height > pVirtual.mapY - lCombinedFootprint;
 		} else {
 			return false;
 		}
+	}
+	,setExceedCollisionRectDesc: function(pCombinedFootprint,pVirtual) {
+		var lExceeding = [];
+		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key = this.buildingName;
+		var lStartBuilding_x = -(__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint;
+		var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key1 = this.buildingName;
+		var lStartBuilding_y = -(__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).footprint;
+		var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key2 = this.buildingName;
+		var tmp = (__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint;
+		var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key3 = this.buildingName;
+		var lEndBuilding_x = tmp + (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).width;
+		var _this4 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key4 = this.buildingName;
+		var tmp1 = (__map_reserved[key4] != null?_this4.getReserved(key4):_this4.h[key4]).footprint;
+		var _this5 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key5 = this.buildingName;
+		var lEndBuilding_y = tmp1 + (__map_reserved[key5] != null?_this5.getReserved(key5):_this5.h[key5]).height;
+		var _g1 = lStartBuilding_x;
+		while(_g1 < lEndBuilding_x) {
+			var lX = _g1++;
+			var _g3 = lStartBuilding_y;
+			while(_g3 < lEndBuilding_y) {
+				var lY = _g3++;
+				var tmp2 = { x : lX + this.regionMap.map.x, y : lY + this.regionMap.map.y};
+				var tmp3 = pVirtual.mapX - pCombinedFootprint;
+				var tmp4 = pVirtual.mapY - pCombinedFootprint;
+				var _this6 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+				var key6 = pVirtual.buildingName;
+				var tmp5 = (__map_reserved[key6] != null?_this6.getReserved(key6):_this6.h[key6]).width + pCombinedFootprint;
+				var _this7 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+				var key7 = pVirtual.buildingName;
+				if(this.collisionPointRect(tmp2,new PIXI.Rectangle(tmp3,tmp4,tmp5,(__map_reserved[key7] != null?_this7.getReserved(key7):_this7.h[key7]).height + pCombinedFootprint))) {
+					lExceeding.push({ x : lX, y : lY});
+				}
+			}
+		}
+		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = com_isartdigital_perle_game_sprites_Phantom.exceedingTile.concat(lExceeding);
+		return lExceeding;
+	}
+	,setExceedBuildingOnGround: function(plRegionSize) {
+		var lExceeding = [];
+		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key = this.buildingName;
+		var lEndBuilding_x = (__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).width;
+		var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key1 = this.buildingName;
+		var lEndBuilding_y = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).height;
+		var _g1 = 0;
+		while(_g1 < lEndBuilding_x) {
+			var lX = _g1++;
+			var _g3 = 0;
+			while(_g3 < lEndBuilding_y) {
+				var lY = _g3++;
+				if(lX + this.regionMap.map.x >= plRegionSize.width || lY + this.regionMap.map.y >= plRegionSize.height) {
+					lExceeding.push({ x : lX, y : lY});
+				}
+			}
+		}
+		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = com_isartdigital_perle_game_sprites_Phantom.exceedingTile.concat(lExceeding);
+		com_isartdigital_perle_game_sprites_Phantom.exceedingTile.concat(lExceeding);
+		return lExceeding;
+	}
+	,setExceedingToAll: function() {
+		var lAllExceeding = [];
+		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key = this.buildingName;
+		var _g1 = -(__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint;
+		var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key1 = this.buildingName;
+		var _g = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width;
+		while(_g1 < _g) {
+			var lX = _g1++;
+			var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+			var key2 = this.buildingName;
+			var _g3 = -(__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint;
+			var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+			var key3 = this.buildingName;
+			var _g2 = (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).height;
+			while(_g3 < _g2) lAllExceeding.push({ x : lX, y : _g3++});
+		}
+		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = com_isartdigital_perle_game_sprites_Phantom.exceedingTile.concat(lAllExceeding);
+	}
+	,emitExceeding: function() {
+		com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.emit("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.exceedingTile);
+		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = [];
+	}
+	,collisionPointRect: function(pPoint,pRect) {
+		if(pPoint.x > pRect.x && pPoint.x < pRect.x + pRect.width && pPoint.y > pRect.y && pPoint.y < pRect.y + pRect.height) {
+			return true;
+		}
+		return false;
 	}
 	,getRoundMapPos: function(pPos) {
 		var lPoint = com_isartdigital_perle_game_iso_IsoManager.isoViewToModel(pPos);
@@ -4500,12 +4659,17 @@ var com_isartdigital_perle_game_virtual_VBuilding = function(pDescription) {
 		com_isartdigital_perle_game_managers_TimeManager.addConstructionTimer(pDescription.timeDesc);
 		com_isartdigital_perle_game_managers_TimeManager.eConstruct.on("TimeManager_Construction_End",$bind(this,this.endOfConstruction));
 	}
+	this.callBoostManager();
+	com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.on("ALTAR_CALL",$bind(this,this.onAltarCheck));
 };
 $hxClasses["com.isartdigital.perle.game.virtual.VBuilding"] = com_isartdigital_perle_game_virtual_VBuilding;
 com_isartdigital_perle_game_virtual_VBuilding.__name__ = ["com","isartdigital","perle","game","virtual","VBuilding"];
 com_isartdigital_perle_game_virtual_VBuilding.__super__ = com_isartdigital_perle_game_virtual_VTile;
 com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_VTile.prototype,{
-	setHaveRecolter: function() {
+	callBoostManager: function() {
+		com_isartdigital_perle_game_managers_BoostManager.buildingIsInAltarZone({ x : this.tileDesc.regionX, y : this.tileDesc.regionY},{ x : this.tileDesc.mapX, y : this.tileDesc.mapY},this.tileDesc.id,this.alignementBuilding);
+	}
+	,setHaveRecolter: function() {
 		this.haveRecolter = true;
 	}
 	,activate: function() {
@@ -4513,6 +4677,27 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		this.graphic = js_Boot.__cast(com_isartdigital_perle_game_sprites_Building.createBuilding(this.tileDesc) , PIXI.Container);
 		(js_Boot.__cast(this.graphic , com_isartdigital_perle_game_virtual_HasVirtual)).linkVirtual(js_Boot.__cast(this , com_isartdigital_perle_game_virtual_Virtual));
 		this.myVContextualHud.activate();
+	}
+	,onAltarCheck: function(pData) {
+		if(pData.regionPos.x != this.tileDesc.regionX || pData.regionPos.y != this.tileDesc.regionY) {
+			return;
+		}
+		var _this = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
+		var key = this.tileDesc.buildingName;
+		var mapSize = __map_reserved[key] != null?_this.getReserved(key):_this.h[key];
+		var _g1 = this.tileDesc.mapX;
+		var _g = this.tileDesc.mapX + mapSize.width;
+		while(_g1 < _g) {
+			var i = _g1++;
+			var _g3 = this.tileDesc.mapX;
+			var _g2 = this.tileDesc.mapY + mapSize.height;
+			while(_g3 < _g2) {
+				var j = _g3++;
+				if(i == pData.casePos.x && j == pData.casePos.y) {
+					this.callBoostManager();
+				}
+			}
+		}
 	}
 	,getVirtualContextualHud: function() {
 		return this.myVContextualHud;
@@ -4611,9 +4796,6 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_managers_RegionManager.addToRegionBuilding(this);
 	}
 	,addGenerator: function() {
-		if(this.alignementBuilding != null) {
-			com_isartdigital_perle_game_managers_BoostManager.callEvent(this.alignementBuilding);
-		}
 		this.myGenerator = com_isartdigital_perle_game_managers_ResourcesManager.addResourcesGenerator(this.tileDesc.id,this.myGeneratorType,this.myMaxContains,this.myTime);
 	}
 	,addHudContextual: function() {
@@ -4627,6 +4809,7 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_managers_SaveManager.save();
 	}
 	,destroy: function() {
+		com_isartdigital_perle_game_managers_BoostManager.boostAltarEvent.off("ALTAR_CALL",$bind(this,this.onAltarCheck));
 		if(this.currentState == com_isartdigital_perle_game_virtual_VBuildingState.isMoving) {
 			throw new js__$Boot_HaxeError("Sure about destroying a moving VBuilding ?? not an error ? ask Ambroise");
 		}
@@ -4663,6 +4846,112 @@ com_isartdigital_perle_game_virtual_VGround.prototype = $extend(com_isartdigital
 		com_isartdigital_perle_game_virtual_VTile.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_game_virtual_VGround
+});
+var com_isartdigital_perle_game_virtual_vBuilding_VAltar = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
+	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+	this.elementHeaven = [];
+	this.elementHell = [];
+	this.elementHeaven = [];
+	this.elementHell = [];
+	com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.on("BUILDING_CALL",$bind(this,this.onBuildingToAdd));
+	this.checkInZone();
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VAltar"] = com_isartdigital_perle_game_virtual_vBuilding_VAltar;
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VAltar"];
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+	checkInZone: function() {
+		this.checkInZoneByAlignment(com_isartdigital_perle_game_managers_Alignment.heaven);
+		this.checkInZoneByAlignment(com_isartdigital_perle_game_managers_Alignment.hell);
+	}
+	,checkInZoneByAlignment: function(pType) {
+		var regionPos = pType == com_isartdigital_perle_game_managers_Alignment.heaven?{ x : this.tileDesc.regionX - 1, y : this.tileDesc.regionY}:{ x : this.tileDesc.regionX + 1, y : this.tileDesc.regionY};
+		var posX;
+		var _g = 0;
+		while(_g < 4) {
+			var i = _g++;
+			var _g2 = 0;
+			var _g1 = 4 - i;
+			while(_g2 < _g1) {
+				var j = _g2++;
+				if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
+					posX = 11 - i;
+				} else {
+					posX = i;
+				}
+				if(this.tileDesc.mapY - j < 0) {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding({ x : regionPos.x, y : regionPos.y - 1},{ x : posX, y : 12 + this.tileDesc.mapY + 1 - j});
+				} else {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding(regionPos,{ x : posX, y : this.tileDesc.mapY - j});
+				}
+				if(this.tileDesc.mapY + j + 1 > 12) {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding({ x : regionPos.x, y : regionPos.y + 1},{ x : posX, y : this.tileDesc.mapY + j - 12});
+				} else {
+					com_isartdigital_perle_game_managers_BoostManager.altarCheckIfHasBuilding(regionPos,{ x : posX, y : this.tileDesc.mapY + 1 + j});
+				}
+			}
+		}
+	}
+	,onBuildingToAdd: function(pData) {
+		if(pData.regionPos.y > this.tileDesc.regionY + 1 || pData.regionPos.y < this.tileDesc.regionY - 1) {
+			return;
+		}
+		var posX;
+		var _g = 0;
+		while(_g < 4) {
+			var i = _g++;
+			var _g2 = 0;
+			var _g1 = 4 - i;
+			while(_g2 < _g1) {
+				var j = _g2++;
+				if(pData.type == com_isartdigital_perle_game_managers_Alignment.heaven) {
+					posX = 11 - i;
+				} else {
+					posX = i;
+				}
+				if(pData.casePos.x == posX && (pData.casePos.y == 12 + this.tileDesc.mapY + 1 - j || pData.casePos.y == this.tileDesc.mapY - j)) {
+					this.addToCorrectArray(pData.buildingRef,pData.type);
+					return;
+				}
+				if(pData.casePos.x == posX && (pData.casePos.y == this.tileDesc.mapY + j - 12 || pData.casePos.y == this.tileDesc.mapY + 1 + j)) {
+					this.addToCorrectArray(pData.buildingRef,pData.type);
+					return;
+				}
+			}
+		}
+	}
+	,addToCorrectArray: function(pRef,pType) {
+		var myArray = pType == com_isartdigital_perle_game_managers_Alignment.heaven?this.elementHeaven:this.elementHell;
+		var _g = 0;
+		while(_g < myArray.length) {
+			var currentRef = myArray[_g];
+			++_g;
+			if(currentRef == pRef) {
+				return;
+			}
+		}
+		myArray.push(pRef);
+		if(pType == com_isartdigital_perle_game_managers_Alignment.heaven) {
+			this.elementHeaven = myArray;
+		} else {
+			this.elementHell = myArray;
+		}
+	}
+	,addGenerator: function() {
+		this.myMaxContains = 10000;
+		this.myTime = 600000000000;
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
+	}
+	,haveMoreBoost: function(data) {
+		this.myTime = 60000.;
+		com_isartdigital_perle_game_managers_ResourcesManager.UpdateResourcesGenerator(this.myGenerator,this.myMaxContains,this.myTime);
+	}
+	,destroy: function() {
+		com_isartdigital_perle_game_managers_BoostManager.boostBuildingEvent.off("BUILDING_CALL",$bind(this,this.onBuildingToAdd));
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VAltar
 });
 var com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade = function(pDescription) {
 	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
@@ -4778,30 +5067,6 @@ com_isartdigital_perle_game_virtual_vBuilding_VHouse.prototype = $extend(com_isa
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VHouse
 });
-var com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding = function(pDescription) {
-	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
-	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
-	com_isartdigital_perle_game_managers_BoostManager.boostEvent.on("BOOST",$bind(this,this.haveMoreBoost));
-};
-$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VPreferenceBuilding"] = com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VPreferenceBuilding"];
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
-	addGenerator: function() {
-		this.myMaxContains = 10000;
-		this.myTime = 60000 / com_isartdigital_perle_game_managers_BoostManager.getBoost(this.alignmentEffect);
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
-	}
-	,haveMoreBoost: function(data) {
-		this.myTime = 60000 / com_isartdigital_perle_game_managers_BoostManager.getBoost(this.alignmentEffect);
-		com_isartdigital_perle_game_managers_ResourcesManager.UpdateResourcesGenerator(this.myGenerator,this.myMaxContains,this.myTime);
-	}
-	,destroy: function() {
-		com_isartdigital_perle_game_managers_BoostManager.boostEvent.off("BOOST",$bind(this,this.haveMoreBoost));
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
-	}
-	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding
-});
 var com_isartdigital_perle_game_virtual_vBuilding_VTribunal = function(pDesc) {
 	var lDesc;
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.neutral;
@@ -4863,12 +5128,12 @@ com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse.prototype = $extend(co
 });
 var com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding = function(pDescription) {
 	this.alignmentEffect = com_isartdigital_perle_game_managers_Alignment.heaven;
-	com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.call(this,pDescription);
+	com_isartdigital_perle_game_virtual_vBuilding_VAltar.call(this,pDescription);
 };
 $hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding"] = com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding;
 com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VVirtuesBuilding"];
-com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VPreferenceBuilding.prototype,{
+com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VAltar;
+com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype,{
 	__class__: com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding
 });
 var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven = function(pDescription) {
@@ -5753,7 +6018,6 @@ com_isartdigital_perle_ui_hud_Hud.prototype = $extend(com_isartdigital_utils_ui_
 	}
 	,onClickListIntern: function() {
 		com_isartdigital_perle_ui_UIManager.getInstance().openPopin(com_isartdigital_perle_ui_popin_listIntern_ListInternPopin.getInstance());
-		com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().addChild(com_isartdigital_perle_ui_popin_listIntern_ListInternPopin.getInstance());
 		this.hide();
 	}
 	,onClickMission: function() {
@@ -12081,7 +12345,8 @@ com_isartdigital_perle_game_QuestDictionnary.actions = (function($this) {
 	return $r;
 }(this));
 com_isartdigital_perle_game_QuestDictionnary.secondarySubjects = ["des archéologues.","des voyageurs.","des touristes.","un vagabond.","des animaux.","des trolls nains.","des crocodiles.","des enfants.","des chasseurs.","des milliciens."];
-com_isartdigital_perle_game_managers_BoostManager.BOOST_EVENT_NAME = "BOOST";
+com_isartdigital_perle_game_managers_BoostManager.ALTAR_EVENT_NAME = "ALTAR_CALL";
+com_isartdigital_perle_game_managers_BoostManager.BUILDING_EVENT_NAME = "BUILDING_CALL";
 com_isartdigital_perle_game_managers_CameraManager.REGION_WIDTH = 2400.;
 com_isartdigital_perle_game_managers_CameraManager.REGION_HEIGHT = 1200.;
 com_isartdigital_perle_game_managers_CameraManager.REGION_STYX_WIDTH = -1000.;
@@ -12132,9 +12397,9 @@ com_isartdigital_perle_game_managers_PoolingManager.INSTANCE_TO_SPAWN = (functio
 		_g.h["Road_v"] = 1;
 	}
 	if(__map_reserved.FootPrint != null) {
-		_g.setReserved("FootPrint",1);
+		_g.setReserved("FootPrint",20);
 	} else {
-		_g.h["FootPrint"] = 1;
+		_g.h["FootPrint"] = 20;
 	}
 	if(__map_reserved.Tribunal != null) {
 		_g.setReserved("Tribunal",1);
@@ -12283,9 +12548,9 @@ com_isartdigital_perle_game_managers_PoolingManager.ASSETNAME_TO_CLASS = (functi
 		_g.h["Road_v"] = "Ground";
 	}
 	if(__map_reserved.FootPrint != null) {
-		_g.setReserved("FootPrint","FootPrint");
+		_g.setReserved("FootPrint","FootPrintAsset");
 	} else {
-		_g.h["FootPrint"] = "FootPrint";
+		_g.h["FootPrint"] = "FootPrintAsset";
 	}
 	$r = _g;
 	return $r;
@@ -12341,7 +12606,7 @@ com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE = (functio
 		}
 	}
 	{
-		var value2 = { width : 3, height : 1, footprint : 1};
+		var value2 = { width : 3, height : 2, footprint : 1};
 		if(__map_reserved["Altar Virtue"] != null) {
 			_g.setReserved("Altar Virtue",value2);
 		} else {
@@ -12514,13 +12779,17 @@ com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE = (functio
 com_isartdigital_perle_game_sprites_Building.isClickable = true;
 com_isartdigital_perle_game_sprites_FootPrint.ROTATION_IN_RAD = 0.785398;
 com_isartdigital_perle_game_sprites_FootPrint.DEPLACEMENT_FOOTPRINT_CONST = 100;
-com_isartdigital_perle_game_sprites_FootPrint.FOOTPRINT_ASSET = "FootPrint";
+com_isartdigital_perle_game_sprites_FootPrintAsset.FOOTPRINT_ASSET = "FootPrint";
+com_isartdigital_perle_game_sprites_FootPrintAsset.FOOTPRINT_RED = "red";
+com_isartdigital_perle_game_sprites_FootPrintAsset.FOOTPRINT_GREEN = "green";
+com_isartdigital_perle_game_sprites_FootPrintAsset.FOOTPRINT_YELLOW = "yellow";
 com_isartdigital_perle_game_sprites_Ground.OFFSET_REGION = 0;
 com_isartdigital_perle_game_sprites_Ground.COL_X_LENGTH = 12;
 com_isartdigital_perle_game_sprites_Ground.COL_X_STYX_LENGTH = 3;
 com_isartdigital_perle_game_sprites_Ground.ROW_Y_LENGTH = 12;
 com_isartdigital_perle_game_sprites_Ground.ROW_Y_STYX_LENGTH = 13;
 com_isartdigital_perle_game_sprites_Ground.FILTER_BRIGHTNESS = 1.3;
+com_isartdigital_perle_game_sprites_Phantom.EVENT_CANT_BUILD = "Phantom_Cant_Build";
 com_isartdigital_perle_game_sprites_Phantom.FILTER_OPACITY = 0.5;
 com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_VCLASS = (function($this) {
 	var $r;
@@ -12831,6 +13100,7 @@ com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_ALIGNEMENT = (funct
 	return $r;
 }(this));
 com_isartdigital_perle_game_virtual_VTile.ROAD_MAP = [["","","","","Road_br","Road_tl","",""],["","","","Road_br","Road_tl","","",""],["Road_v","Road_v","Road_v","Road_c","","","",""],["","","","Road_h","","","",""],["Road_v","Road_v","Road_v","Road_tl","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""]];
+com_isartdigital_perle_game_virtual_vBuilding_VAltar.ZONESIZE = 4;
 com_isartdigital_utils_ui_Button.UP = 0;
 com_isartdigital_utils_ui_Button.OVER = 1;
 com_isartdigital_utils_ui_Button.DOWN = 2;

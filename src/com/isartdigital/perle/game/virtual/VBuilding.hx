@@ -54,6 +54,7 @@ class VBuilding extends VTile {
 	
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
+		
 		setHaveRecolter();
 		RegionManager.addToRegionBuilding(this);
 		addGenerator();
@@ -66,8 +67,17 @@ class VBuilding extends VTile {
 			TimeManager.addConstructionTimer(pDescription.timeDesc);
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
+		
+		callBoostManager();
+		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
 	
+	/**
+	 * add this reference to an altar
+	 */
+	private function callBoostManager():Void {
+		BoostManager.buildingIsInAltarZone({x:tileDesc.regionX, y:tileDesc.regionY}, {x:tileDesc.mapX, y:tileDesc.mapY}, tileDesc.id, alignementBuilding);
+	}
 	/**
 	 * set true or false in the flag which say if the building have recolter (true by default)
 	 */
@@ -75,6 +85,7 @@ class VBuilding extends VTile {
 		haveRecolter = true;
 	}
 	
+
 	override public function activate ():Void {
 		super.activate();
 		
@@ -82,6 +93,23 @@ class VBuilding extends VTile {
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		
 		myVContextualHud.activate();
+	}
+	
+	/**
+	 * say if this building is in the altar zone
+	 * @param	pData data contain the region and the case to check
+	 */
+	private function onAltarCheck(pData:BoostInfo):Void {
+		if (pData.regionPos.x != tileDesc.regionX || pData.regionPos.y != tileDesc.regionY) return;
+		
+		var i:Int, j:Int;
+		var mapSize:SizeOnMap = Building.BUILDING_NAME_TO_MAPSIZE[tileDesc.buildingName];
+		
+		for (i in tileDesc.mapX...(tileDesc.mapX + mapSize.width)){
+			for (j in tileDesc.mapX...(tileDesc.mapY + mapSize.height)){
+			 if (i == pData.casePos.x && j == pData.casePos.y) callBoostManager();
+			}	
+		}
 	}
 	
 	public function getVirtualContextualHud():VHudContextual{
@@ -222,7 +250,6 @@ class VBuilding extends VTile {
 	}
 	
 	private function addGenerator ():Void {
-		if(alignementBuilding != null) BoostManager.callEvent(alignementBuilding);
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime);
 	}
 	
@@ -239,6 +266,7 @@ class VBuilding extends VTile {
 	}
 	
 	override public function destroy():Void {
+		BoostManager.boostAltarEvent.off(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 		if (currentState == VBuildingState.isMoving) {
 			throw ("Sure about destroying a moving VBuilding ?? not an error ? ask Ambroise");
 			// if yes => todo : Phantom.linkedVBuilding = null;

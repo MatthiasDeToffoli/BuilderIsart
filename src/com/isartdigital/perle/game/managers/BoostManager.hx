@@ -1,41 +1,66 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.virtual.VTile.Index;
 import eventemitter3.EventEmitter;
 
-/**
- * ...
+ /**
+  * information than every element link to the boost need
+  */
+ typedef BoostInfo =  {
+	 var regionPos:Index;
+	 var casePos:Index;
+	 @:optional var buildingRef:Int;
+	 @:optional var type:Alignment;
+ }
+ 
+ /**
+ * manage all event link to boost
  * @author de Toffoli Matthias
  */
 class BoostManager
 {
 
-	public static var  boostEvent:EventEmitter;
-	private static var quantityBoost:Map<Alignment,Float>;
+	/**
+	 * event call when a new altar is past
+	 */
+	public static var  boostAltarEvent:EventEmitter;
 	
-	public static inline var BOOST_EVENT_NAME:String = "BOOST";
-	public function new() 
-	{
-		
+	/**
+	 * event call when a new building is past
+	 */
+	public static var boostBuildingEvent:EventEmitter;
+	
+	public static inline var ALTAR_EVENT_NAME:String = "ALTAR_CALL";
+	public static inline var BUILDING_EVENT_NAME:String = "BUILDING_CALL";
+	
+	
+	/**
+	 * Initialisation of the class
+	 */
+	public static function awake():Void{
+		boostAltarEvent = new EventEmitter();
+		boostBuildingEvent = new EventEmitter();
+
 	}
 	
-	public static function awake(){
-		boostEvent = new EventEmitter();
-		quantityBoost = new Map<Alignment,Float>();
-		quantityBoost[Alignment.heaven] = 0;
-		quantityBoost[Alignment.hell] = 0;
-		quantityBoost[Alignment.neutral] = 0;
+	/**
+	 * call when altar is past check if every case of the altar zone have a building
+	 * @param	regionPos the position of the region to check
+	 * @param	casePos the position of case to check
+	 */
+	public static function altarCheckIfHasBuilding(regionPos:Index, casePos:Index):Void {
+		boostAltarEvent.emit(ALTAR_EVENT_NAME, {casePos:casePos, regionPos:regionPos});
 	}
 	
-	public static function callEvent(pType:Alignment):Void {
-		quantityBoost[pType] += 4;
-		
-		if (pType == Alignment.heaven) quantityBoost[Alignment.hell] = Math.max(quantityBoost[Alignment.hell] - 1, 0);
-		if (pType == Alignment.hell) quantityBoost[Alignment.heaven] = Math.max(quantityBoost[Alignment.heaven] - 1, 0);
-		boostEvent.emit(BOOST_EVENT_NAME);
-	}
-	
-	public static function getBoost(pType:Alignment):Float {
-		return quantityBoost[pType];
+	/**
+	 * add the building ref to an altar
+	 * @param	regionPos the region of the building
+	 * @param	casePos the position of the case of the Altar's zone
+	 * @param	pRef the building ref
+	 * @param	pType the type of the building
+	 */
+	public static function buildingIsInAltarZone(regionPos:Index, casePos:Index, pRef:Int, pType:Alignment):Void{
+		boostBuildingEvent.emit(BUILDING_EVENT_NAME, {casePos:casePos, regionPos:regionPos, buildingRef:pRef, type:pType});
 	}
 	
 }
