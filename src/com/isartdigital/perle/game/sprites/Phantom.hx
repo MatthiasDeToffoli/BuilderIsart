@@ -70,7 +70,7 @@ class Phantom extends Building {
 	}
 	
 	private static function test (pEvent:Array<Index>):Void {
-		trace(pEvent);
+		//trace(pEvent);
 	}
 	
 	public static function gameLoop():Void {
@@ -595,7 +595,7 @@ class Phantom extends Building {
 	private function emitExceeding ():Void {
 		eExceedingTiles.emit(EVENT_CANT_BUILD, exceedingTile);
 		exceedingTile = [];
-		trace(exceedingTile);
+		//trace(exceedingTile);
 	}
 	
 	private function collisionPointRect (pPoint:Index, pRect:Rectangle):Bool {

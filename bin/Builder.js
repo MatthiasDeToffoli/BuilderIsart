@@ -3790,7 +3790,7 @@ com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets = funct
 		}
 	}
 };
-com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted = function(y,x) {
+com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted = function(x,y) {
 	var _g1 = 0;
 	var _g = com_isartdigital_perle_game_sprites_FootPrint.eventArray.length;
 	while(_g1 < _g) {
@@ -3989,7 +3989,6 @@ com_isartdigital_perle_game_sprites_Phantom.initClass = function() {
 	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.addListener("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.test);
 };
 com_isartdigital_perle_game_sprites_Phantom.test = function(pEvent) {
-	console.log(pEvent.toString());
 };
 com_isartdigital_perle_game_sprites_Phantom.gameLoop = function() {
 	if(com_isartdigital_perle_game_sprites_Phantom.instance != null) {
@@ -4360,7 +4359,6 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 	,emitExceeding: function() {
 		com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.emit("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.exceedingTile);
 		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = [];
-		console.log(com_isartdigital_perle_game_sprites_Phantom.exceedingTile.toString());
 	}
 	,collisionPointRect: function(pPoint,pRect) {
 		if(pPoint.x > pRect.x && pPoint.x < pRect.x + pRect.width && pPoint.y > pRect.y && pPoint.y < pRect.y + pRect.height) {
