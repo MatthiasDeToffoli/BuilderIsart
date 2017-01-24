@@ -204,6 +204,9 @@ class AssetName{
 	public static inline var COUNTER_TXT_RESSOURCE:String = "bar_txt";
 	public static inline var COUNTER_TXT_LEVEL:String = "_level_txt";
 	
+	//collector popin
+	public static inline var COLLECTOR_POPIN:String = "InfoCollector";
+	public static inline var COLLECTOR_PANEL:String = "ProductionPanelsContainer";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";

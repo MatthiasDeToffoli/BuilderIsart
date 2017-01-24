@@ -33,14 +33,14 @@ class PoolingManager {
 		AssetName.BUILDING_HELL_HOUSE_LEVEL2 => "HouseHeaven",
 		AssetName.BUILDING_HELL_HOUSE_LEVEL3 => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
-		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "Lumbermill",
-		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "Lumbermill",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "CollectorHeaven",
+		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "CollectorHeaven",
 		
 		
 		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHell",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHell",
-		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "Quarry",
+		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "CollectorHell",
 	    
 		
 		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",

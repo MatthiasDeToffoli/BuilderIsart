@@ -812,31 +812,10 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 		lLoader.addAssetFile("InGame/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/HellBuildingPlaceholders/library.json");
 		lLoader.addAssetFile("InGame/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/placeholder_flump_sprite/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Compilation/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Purgatoire/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_ListInterns/library.json");
+		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/Wireframes_ALL/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_InternInQuest/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_InternOutQuest/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Interns/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Fenetre_PNJ/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_BuildingDecoTab/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_BuyableIntern/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_BuyablePack/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_CurrenciesTab/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_ResourcesTab/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_InternsTabAvailable/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_InternsTabSearching/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_ItemLocked/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Shop_ItemUnlocked/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/Wireframe_Shop_Bundle/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/Share_Atlas/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Popin_ConfirmationAchatMaison/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Popin_DestroyBuilding/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Popin_ConfirmationAchatEuros/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Popin_LevelUp/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Fenetre_InfoMaison/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Intern_Event/library.json");
-		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_BuyRegion/library.json");
 		lLoader.addFontFile("fonts.css");
 		lLoader.on("progress",$bind(this,this.onLoadProgress));
 		lLoader.once("complete",$bind(this,this.onLoadComplete));
@@ -882,7 +861,7 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 		return __map_reserved[pClassNameNoPath] != null?_this.getReserved(pClassNameNoPath):_this.h[pClassNameNoPath];
 	}
 	,forceImport: function() {
-		var arrayClass = [com_isartdigital_perle_game_sprites_Ground,com_isartdigital_perle_game_sprites_Building,com_isartdigital_perle_game_sprites_FootPrintAsset,com_isartdigital_perle_ui_popin_listIntern_InternElement,com_isartdigital_perle_game_sprites_Tribunal,com_isartdigital_perle_game_sprites_building_heaven_DecoHeaven,com_isartdigital_perle_game_sprites_building_hell_DecoHell,com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven,com_isartdigital_perle_game_sprites_building_heaven_Lumbermill,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven,com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven,com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding,com_isartdigital_perle_game_virtual_vBuilding_vHell_VDecoHell,com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill,com_isartdigital_perle_game_sprites_building_hell_HouseHell,com_isartdigital_perle_game_sprites_building_hell_Quarry,com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry];
+		var arrayClass = [com_isartdigital_perle_game_sprites_Ground,com_isartdigital_perle_game_sprites_Building,com_isartdigital_perle_game_sprites_FootPrintAsset,com_isartdigital_perle_ui_popin_listIntern_InternElement,com_isartdigital_perle_game_sprites_Tribunal,com_isartdigital_perle_game_sprites_building_heaven_DecoHeaven,com_isartdigital_perle_game_sprites_building_hell_DecoHell,com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven,com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven,com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven,com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding,com_isartdigital_perle_game_virtual_vBuilding_vHell_VDecoHell,com_isartdigital_perle_game_virtual_vBuilding_VUrbanHouse,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven,com_isartdigital_perle_game_sprites_building_hell_HouseHell,com_isartdigital_perle_game_sprites_building_hell_CollectorHell,com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell];
 		var lClassName;
 		var lClassNameNoPath;
 		var _g = 0;
@@ -3750,15 +3729,21 @@ com_isartdigital_perle_game_sprites_FootPrint.createShadow = function(pInstance)
 		}
 	}
 	com_isartdigital_perle_game_sprites_FootPrint.eventArray = [];
-	com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(pInstance);
+	com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(pInstance.position);
 };
 com_isartdigital_perle_game_sprites_FootPrint.onCantBeBuid = function(pEvent) {
-	if(pEvent[0] == null) {
-		return;
+	com_isartdigital_perle_game_sprites_FootPrint.eventArray = pEvent.exceedingTile;
+	com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(pEvent.phantomPosition);
+	var _g1 = 0;
+	var _g = pEvent.exceedingTile.length;
+	while(_g1 < _g) {
+		var i = _g1++;
+		if(com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x + 1] != null && com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x + 1][pEvent.exceedingTile[i].y + 1] != null) {
+			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].y + 1][pEvent.exceedingTile[i].x + 1].setStateCantBePut();
+		}
 	}
-	com_isartdigital_perle_game_sprites_FootPrint.eventArray = pEvent;
 };
-com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets = function(pInstance) {
+com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets = function(pInstancePosition) {
 	var _g1 = 0;
 	var _g = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray.length;
 	while(_g1 < _g) {
@@ -3769,26 +3754,10 @@ com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets = funct
 			var l = _g3++;
 			var lPoint = new PIXI.Point(l - 1,k - 1);
 			lPoint = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(lPoint);
-			var lInstancePosition = com_isartdigital_perle_game_sprites_FootPrint.lInstance.position;
-			lPoint = new PIXI.Point(lPoint.x + lInstancePosition.x,lPoint.y + lInstancePosition.y);
+			lPoint = new PIXI.Point(lPoint.x + pInstancePosition.x,lPoint.y + pInstancePosition.y);
 			var tmp = com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k];
 			tmp[l].position = new PIXI.Point(lPoint.x,lPoint.y);
-			if(com_isartdigital_perle_game_sprites_FootPrint.eventArray == null) {
-				return;
-			}
-			com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted(k,l);
-		}
-	}
-};
-com_isartdigital_perle_game_sprites_FootPrint.checkIfCanBePutted = function(x,y) {
-	var _g1 = 0;
-	var _g = com_isartdigital_perle_game_sprites_FootPrint.eventArray.length;
-	while(_g1 < _g) {
-		var i = _g1++;
-		if(x == com_isartdigital_perle_game_sprites_FootPrint.eventArray[i].x && y == com_isartdigital_perle_game_sprites_FootPrint.eventArray[i].y) {
-			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[x][y].setStateCantBePut();
-		} else {
-			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[x][y].setStateCanBePut();
+			com_isartdigital_perle_game_sprites_FootPrintAsset.footPrintArray[k][l].setStateCanBePut();
 		}
 	}
 };
@@ -3976,9 +3945,6 @@ com_isartdigital_perle_game_sprites_Phantom.initClass = function() {
 	com_isartdigital_utils_game_GameStage.getInstance().getBuildContainer().addChild(com_isartdigital_perle_game_sprites_Phantom.container);
 	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles = new EventEmitter();
 	com_isartdigital_perle_game_sprites_Phantom.exceedingTile = [];
-	com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.addListener("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.test);
-};
-com_isartdigital_perle_game_sprites_Phantom.test = function(pEvent) {
 };
 com_isartdigital_perle_game_sprites_Phantom.gameLoop = function() {
 	if(com_isartdigital_perle_game_sprites_Phantom.instance != null) {
@@ -4085,7 +4051,6 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 	,doActionPhantom: function() {
 	}
 	,movePhantomOnMouse: function() {
-		com_isartdigital_perle_game_sprites_FootPrint.setPositionFootPrintAssets(com_isartdigital_perle_game_sprites_Phantom.instance);
 		var buildingGroundCenter = this.getBuildingGroundCenter();
 		var bestMapPos = this.getRoundMapPos(new PIXI.Point(com_isartdigital_perle_game_managers_MouseManager.getInstance().positionInGame.x + this.x - buildingGroundCenter.x,com_isartdigital_perle_game_managers_MouseManager.getInstance().positionInGame.y + this.y - buildingGroundCenter.y));
 		this.position = com_isartdigital_perle_game_iso_IsoManager.modelToIsoView(new PIXI.Point(bestMapPos.x,bestMapPos.y));
@@ -4333,7 +4298,7 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 		var _g1 = -(__map_reserved[key] != null?_this.getReserved(key):_this.h[key]).footprint;
 		var _this1 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 		var key1 = this.buildingName;
-		var _g = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width;
+		var _g = (__map_reserved[key1] != null?_this1.getReserved(key1):_this1.h[key1]).width + 1;
 		while(_g1 < _g) {
 			var lX = _g1++;
 			var _this2 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
@@ -4341,13 +4306,13 @@ com_isartdigital_perle_game_sprites_Phantom.prototype = $extend(com_isartdigital
 			var _g3 = -(__map_reserved[key2] != null?_this2.getReserved(key2):_this2.h[key2]).footprint;
 			var _this3 = com_isartdigital_perle_game_sprites_Building.BUILDING_NAME_TO_MAPSIZE;
 			var key3 = this.buildingName;
-			var _g2 = (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).height;
+			var _g2 = (__map_reserved[key3] != null?_this3.getReserved(key3):_this3.h[key3]).height + 1;
 			while(_g3 < _g2) lAllExceeding.push({ x : lX, y : _g3++});
 		}
 		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = com_isartdigital_perle_game_sprites_Phantom.exceedingTile.concat(lAllExceeding);
 	}
 	,emitExceeding: function() {
-		com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.emit("Phantom_Cant_Build",com_isartdigital_perle_game_sprites_Phantom.exceedingTile);
+		com_isartdigital_perle_game_sprites_Phantom.eExceedingTiles.emit("Phantom_Cant_Build",{ phantomPosition : com_isartdigital_perle_game_sprites_Phantom.instance.position, exceedingTile : com_isartdigital_perle_game_sprites_Phantom.exceedingTile});
 		com_isartdigital_perle_game_sprites_Phantom.exceedingTile = [];
 	}
 	,collisionPointRect: function(pPoint,pRect) {
@@ -4434,6 +4399,15 @@ com_isartdigital_perle_game_sprites_Tribunal.prototype = $extend(com_isartdigita
 	}
 	,__class__: com_isartdigital_perle_game_sprites_Tribunal
 });
+var com_isartdigital_perle_game_sprites_building_Collector = function(pAssetName) {
+	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
+};
+$hxClasses["com.isartdigital.perle.game.sprites.building.Collector"] = com_isartdigital_perle_game_sprites_building_Collector;
+com_isartdigital_perle_game_sprites_building_Collector.__name__ = ["com","isartdigital","perle","game","sprites","building","Collector"];
+com_isartdigital_perle_game_sprites_building_Collector.__super__ = com_isartdigital_perle_game_sprites_Building;
+com_isartdigital_perle_game_sprites_building_Collector.prototype = $extend(com_isartdigital_perle_game_sprites_Building.prototype,{
+	__class__: com_isartdigital_perle_game_sprites_building_Collector
+});
 var com_isartdigital_perle_game_sprites_building_House = function(pAssetName) {
 	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
 };
@@ -4451,6 +4425,15 @@ com_isartdigital_perle_game_sprites_building_VirtuesBuilding.__name__ = ["com","
 com_isartdigital_perle_game_sprites_building_VirtuesBuilding.__super__ = com_isartdigital_perle_game_sprites_Building;
 com_isartdigital_perle_game_sprites_building_VirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_sprites_Building.prototype,{
 	__class__: com_isartdigital_perle_game_sprites_building_VirtuesBuilding
+});
+var com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven = function(pAssetName) {
+	com_isartdigital_perle_game_sprites_building_Collector.call(this,pAssetName);
+};
+$hxClasses["com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven"] = com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven;
+com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven.__name__ = ["com","isartdigital","perle","game","sprites","building","heaven","CollectorHeaven"];
+com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven.__super__ = com_isartdigital_perle_game_sprites_building_Collector;
+com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven.prototype = $extend(com_isartdigital_perle_game_sprites_building_Collector.prototype,{
+	__class__: com_isartdigital_perle_game_sprites_building_heaven_CollectorHeaven
 });
 var com_isartdigital_perle_game_sprites_building_heaven_DecoHeaven = function(pAssetName) {
 	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
@@ -4470,14 +4453,14 @@ com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven.__super__ = com_
 com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven.prototype = $extend(com_isartdigital_perle_game_sprites_building_House.prototype,{
 	__class__: com_isartdigital_perle_game_sprites_building_heaven_HouseHeaven
 });
-var com_isartdigital_perle_game_sprites_building_heaven_Lumbermill = function(pAssetName) {
-	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
+var com_isartdigital_perle_game_sprites_building_hell_CollectorHell = function(pAssetName) {
+	com_isartdigital_perle_game_sprites_building_Collector.call(this,pAssetName);
 };
-$hxClasses["com.isartdigital.perle.game.sprites.building.heaven.Lumbermill"] = com_isartdigital_perle_game_sprites_building_heaven_Lumbermill;
-com_isartdigital_perle_game_sprites_building_heaven_Lumbermill.__name__ = ["com","isartdigital","perle","game","sprites","building","heaven","Lumbermill"];
-com_isartdigital_perle_game_sprites_building_heaven_Lumbermill.__super__ = com_isartdigital_perle_game_sprites_Building;
-com_isartdigital_perle_game_sprites_building_heaven_Lumbermill.prototype = $extend(com_isartdigital_perle_game_sprites_Building.prototype,{
-	__class__: com_isartdigital_perle_game_sprites_building_heaven_Lumbermill
+$hxClasses["com.isartdigital.perle.game.sprites.building.hell.CollectorHell"] = com_isartdigital_perle_game_sprites_building_hell_CollectorHell;
+com_isartdigital_perle_game_sprites_building_hell_CollectorHell.__name__ = ["com","isartdigital","perle","game","sprites","building","hell","CollectorHell"];
+com_isartdigital_perle_game_sprites_building_hell_CollectorHell.__super__ = com_isartdigital_perle_game_sprites_building_Collector;
+com_isartdigital_perle_game_sprites_building_hell_CollectorHell.prototype = $extend(com_isartdigital_perle_game_sprites_building_Collector.prototype,{
+	__class__: com_isartdigital_perle_game_sprites_building_hell_CollectorHell
 });
 var com_isartdigital_perle_game_sprites_building_hell_DecoHell = function(pAssetName) {
 	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
@@ -4496,15 +4479,6 @@ com_isartdigital_perle_game_sprites_building_hell_HouseHell.__name__ = ["com","i
 com_isartdigital_perle_game_sprites_building_hell_HouseHell.__super__ = com_isartdigital_perle_game_sprites_building_House;
 com_isartdigital_perle_game_sprites_building_hell_HouseHell.prototype = $extend(com_isartdigital_perle_game_sprites_building_House.prototype,{
 	__class__: com_isartdigital_perle_game_sprites_building_hell_HouseHell
-});
-var com_isartdigital_perle_game_sprites_building_hell_Quarry = function(pAssetName) {
-	com_isartdigital_perle_game_sprites_Building.call(this,pAssetName);
-};
-$hxClasses["com.isartdigital.perle.game.sprites.building.hell.Quarry"] = com_isartdigital_perle_game_sprites_building_hell_Quarry;
-com_isartdigital_perle_game_sprites_building_hell_Quarry.__name__ = ["com","isartdigital","perle","game","sprites","building","hell","Quarry"];
-com_isartdigital_perle_game_sprites_building_hell_Quarry.__super__ = com_isartdigital_perle_game_sprites_Building;
-com_isartdigital_perle_game_sprites_building_hell_Quarry.prototype = $extend(com_isartdigital_perle_game_sprites_Building.prototype,{
-	__class__: com_isartdigital_perle_game_sprites_building_hell_Quarry
 });
 var com_isartdigital_perle_game_virtual_VBuildingState = { __ename__ : true, __constructs__ : ["isBuilt","isBuilding","isMoving"] };
 com_isartdigital_perle_game_virtual_VBuildingState.isBuilt = ["isBuilt",0];
@@ -4683,7 +4657,9 @@ com_isartdigital_perle_game_virtual_VBuilding.prototype = $extend(com_isartdigit
 		com_isartdigital_perle_game_virtual_VTile.prototype.activate.call(this);
 		this.graphic = js_Boot.__cast(com_isartdigital_perle_game_sprites_Building.createBuilding(this.tileDesc) , PIXI.Container);
 		(js_Boot.__cast(this.graphic , com_isartdigital_perle_game_virtual_HasVirtual)).linkVirtual(js_Boot.__cast(this , com_isartdigital_perle_game_virtual_Virtual));
-		this.myVContextualHud.activate();
+		if(this.haveRecolter) {
+			this.myVContextualHud.activate();
+		}
 	}
 	,onAltarCheck: function(pData) {
 		if(pData.regionPos.x != this.tileDesc.regionX || pData.regionPos.y != this.tileDesc.regionY) {
@@ -5055,6 +5031,45 @@ com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade.prototype = $exte
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade
 });
+var com_isartdigital_perle_game_virtual_vBuilding_VCollector = function(pDescription) {
+	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VCollector"] = com_isartdigital_perle_game_virtual_vBuilding_VCollector;
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VCollector"];
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+	setHaveRecolter: function() {
+		this.myGenerator = { desc : com_isartdigital_perle_game_managers_ResourcesManager.getGenerator(this.tileDesc.id,this.myGeneratorType)};
+		if(this.myGenerator != null) {
+			com_isartdigital_perle_game_virtual_VBuilding.prototype.setHaveRecolter.call(this);
+		} else {
+			this.haveRecolter = false;
+		}
+	}
+	,addGenerator: function() {
+		if(this.haveRecolter) {
+			com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
+		}
+	}
+	,addHudContextual: function() {
+		if(this.haveRecolter) {
+			com_isartdigital_perle_game_virtual_VBuilding.prototype.addHudContextual.call(this);
+		}
+	}
+	,startProduction: function(pTime,pMax) {
+		this.myTime = pTime;
+		this.myMaxContains = pMax;
+		this.haveRecolter = true;
+		this.addGenerator();
+		this.addHudContextual();
+	}
+	,fineProduction: function() {
+		com_isartdigital_perle_game_managers_ResourcesManager.removeGenerator(this.myGenerator);
+		this.myVContextualHud.destroy();
+		this.haveRecolter = false;
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VCollector
+});
 var com_isartdigital_perle_game_virtual_vBuilding_VDeco = function(pDescription) {
 	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
 };
@@ -5201,6 +5216,20 @@ com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_i
 com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype,{
 	__class__: com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding
 });
+var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
+	com_isartdigital_perle_game_virtual_vBuilding_VCollector.call(this,pDescription);
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven"] = com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven;
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHeaven","VCollectorHeaven"];
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VCollector;
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype,{
+	addGenerator: function() {
+		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise;
+		com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype.addGenerator.call(this);
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven
+});
 var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven = function(pDescription) {
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
 	com_isartdigital_perle_game_virtual_vBuilding_VDeco.call(this,pDescription);
@@ -5247,19 +5276,19 @@ com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven.prototype = $
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven
 });
-var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill = function(pDescription) {
-	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
-	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+var com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.hell;
+	com_isartdigital_perle_game_virtual_vBuilding_VCollector.call(this,pDescription);
 };
-$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VLumbermill"] = com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill;
-com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHeaven","VLumbermill"];
-com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell"] = com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell;
+com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHell","VCollectorHell"];
+com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VCollector;
+com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype,{
 	addGenerator: function() {
-		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise;
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
+		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell;
+		com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype.addGenerator.call(this);
 	}
-	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell
 });
 var com_isartdigital_perle_game_virtual_vBuilding_vHell_VDecoHell = function(pDescription) {
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.hell;
@@ -5306,20 +5335,6 @@ com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell.prototype = $exte
 		com_isartdigital_perle_game_virtual_vBuilding_VHouse.prototype.addGenerator.call(this);
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHell_VHouseHell
-});
-var com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry = function(pDescription) {
-	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.hell;
-	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
-};
-$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHell.VQuarry"] = com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry;
-com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHell","VQuarry"];
-com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
-com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
-	addGenerator: function() {
-		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell;
-		com_isartdigital_perle_game_virtual_VBuilding.prototype.addGenerator.call(this);
-	}
-	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHell_VQuarry
 });
 var com_isartdigital_perle_ui_CheatPanel = function() {
 	this.init();
@@ -6179,7 +6194,7 @@ com_isartdigital_perle_ui_hud_building_BHBuilt.prototype = $extend(com_isartdigi
 		com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnDestroy,$bind(this,this.onClickDestroy));
 	}
 	,setDescriptionButton: function() {
-		if(js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade) || js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VTribunal)) {
+		if(js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade) || js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VTribunal) || js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VCollector)) {
 			this.btnDescription.alpha = 1;
 			com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnDescription,$bind(this,this.onClickDescription));
 		} else {
@@ -6226,8 +6241,13 @@ com_isartdigital_perle_ui_hud_building_BHBuilt.prototype = $extend(com_isartdigi
 		this.removeButtonsChange();
 		this.removeListenerGameContainer();
 		com_isartdigital_perle_ui_hud_Hud.getInstance().hide();
+		if(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding == null) {
+			return;
+		}
 		if(js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VTribunal)) {
 			com_isartdigital_perle_ui_UIManager.getInstance().openPopin(com_isartdigital_perle_ui_popin_TribunalPopin.getInstance());
+		} else if(js_Boot.__instanceof(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding,com_isartdigital_perle_game_virtual_vBuilding_VCollector)) {
+			com_isartdigital_perle_ui_UIManager.getInstance().openPopin(com_isartdigital_perle_ui_popin_collector_CollectorPopin.getInstance());
 		} else {
 			com_isartdigital_perle_ui_popin_InfoBuilding.virtualBuilding = com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding;
 			com_isartdigital_perle_ui_UIManager.getInstance().openPopin(com_isartdigital_perle_ui_popin_InfoBuilding.getInstance());
@@ -7052,6 +7072,45 @@ com_isartdigital_perle_ui_popin_choice_Choice.prototype = $extend(com_isartdigit
 		com_isartdigital_utils_ui_smart_SmartPopin.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_ui_popin_choice_Choice
+});
+var com_isartdigital_perle_ui_popin_collector_CollectorPopin = function() {
+	com_isartdigital_utils_ui_smart_SmartPopin.call(this,"InfoCollector");
+	this.btnClose = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"ButtonClose") , com_isartdigital_utils_ui_smart_SmartButton);
+	var spawner = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"_productionSpawner") , com_isartdigital_utils_ui_smart_UISprite);
+	this.prodPanel = new com_isartdigital_perle_ui_popin_collector_ProductionPanel();
+	this.prodPanel.position = spawner.position;
+	this.addChild(this.prodPanel);
+	spawner.parent.removeChild(spawner);
+	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnClose,$bind(this,this.onClose));
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.CollectorPopin"] = com_isartdigital_perle_ui_popin_collector_CollectorPopin;
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.__name__ = ["com","isartdigital","perle","ui","popin","collector","CollectorPopin"];
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.getInstance = function() {
+	if(com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance == null) {
+		com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance = new com_isartdigital_perle_ui_popin_collector_CollectorPopin();
+	}
+	return com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance;
+};
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.__super__ = com_isartdigital_utils_ui_smart_SmartPopin;
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.prototype = $extend(com_isartdigital_utils_ui_smart_SmartPopin.prototype,{
+	onClose: function() {
+		com_isartdigital_perle_ui_hud_Hud.getInstance().show();
+		com_isartdigital_perle_ui_UIManager.getInstance().closeCurrentPopin();
+	}
+	,destroy: function() {
+		com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance = null;
+		com_isartdigital_utils_ui_smart_SmartPopin.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_ui_popin_collector_CollectorPopin
+});
+var com_isartdigital_perle_ui_popin_collector_ProductionPanel = function() {
+	com_isartdigital_utils_ui_smart_SmartComponent.call(this,"ProductionPanelsContainer");
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.ProductionPanel"] = com_isartdigital_perle_ui_popin_collector_ProductionPanel;
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.__name__ = ["com","isartdigital","perle","ui","popin","collector","ProductionPanel"];
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	__class__: com_isartdigital_perle_ui_popin_collector_ProductionPanel
 });
 var com_isartdigital_perle_ui_popin_levelUp_LevelUpPoppin = function() {
 	com_isartdigital_utils_ui_smart_SmartPopin.call(this,"Popin_LevelUp");
@@ -12144,6 +12203,8 @@ com_isartdigital_perle_game_AssetName.HUD_COUNTER_LEVEL = "HUD_" + "Level";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_XP = "Hud_xp_txt";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_RESSOURCE = "bar_txt";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_LEVEL = "_level_txt";
+com_isartdigital_perle_game_AssetName.COLLECTOR_POPIN = "InfoCollector";
+com_isartdigital_perle_game_AssetName.COLLECTOR_PANEL = "ProductionPanelsContainer";
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN = "Popin_LevelUp";
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN_BUTTON = "Button_NextReward";
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN_PASSALL = "ButtonShowAll";
@@ -12509,14 +12570,14 @@ com_isartdigital_perle_game_managers_PoolingManager.ASSETNAME_TO_CLASS = (functi
 		_g.h["HeavenBuild3"] = "Building";
 	}
 	if(__map_reserved.HeavenLumberMill01 != null) {
-		_g.setReserved("HeavenLumberMill01","Lumbermill");
+		_g.setReserved("HeavenLumberMill01","CollectorHeaven");
 	} else {
-		_g.h["HeavenLumberMill01"] = "Lumbermill";
+		_g.h["HeavenLumberMill01"] = "CollectorHeaven";
 	}
 	if(__map_reserved.HeavenLumberMill02 != null) {
-		_g.setReserved("HeavenLumberMill02","Lumbermill");
+		_g.setReserved("HeavenLumberMill02","CollectorHeaven");
 	} else {
-		_g.h["HeavenLumberMill02"] = "Lumbermill";
+		_g.h["HeavenLumberMill02"] = "CollectorHeaven";
 	}
 	if(__map_reserved.hellBuilding != null) {
 		_g.setReserved("hellBuilding","HouseHell");
@@ -12534,9 +12595,9 @@ com_isartdigital_perle_game_managers_PoolingManager.ASSETNAME_TO_CLASS = (functi
 		_g.h["HeavenBuild2"] = "HouseHell";
 	}
 	if(__map_reserved.Hell_Quarry != null) {
-		_g.setReserved("Hell_Quarry","Quarry");
+		_g.setReserved("Hell_Quarry","CollectorHell");
 	} else {
-		_g.h["Hell_Quarry"] = "Quarry";
+		_g.h["Hell_Quarry"] = "CollectorHell";
 	}
 	if(__map_reserved.Paradis_Arbre01_P != null) {
 		_g.setReserved("Paradis_Arbre01_P","DecoHeaven");
@@ -12886,9 +12947,9 @@ com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_VCLASS = (function(
 		_g.h["Heaven House"] = "VHouseHeaven";
 	}
 	if(__map_reserved["Heaven Collector Lumber Mill"] != null) {
-		_g.setReserved("Heaven Collector Lumber Mill","VLumbermill");
+		_g.setReserved("Heaven Collector Lumber Mill","VCollectorHeaven");
 	} else {
-		_g.h["Heaven Collector Lumber Mill"] = "VLumbermill";
+		_g.h["Heaven Collector Lumber Mill"] = "VCollectorHeaven";
 	}
 	if(__map_reserved["Marketing Department"] != null) {
 		_g.setReserved("Marketing Department","VHouseHell");
@@ -12936,9 +12997,9 @@ com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_VCLASS = (function(
 		_g.h["Hell Collector Iron Mines"] = "VHouseHell";
 	}
 	if(__map_reserved.Factory != null) {
-		_g.setReserved("Factory","VQuarry");
+		_g.setReserved("Factory","VCollectorHell");
 	} else {
-		_g.h["Factory"] = "VQuarry";
+		_g.h["Factory"] = "VCollectorHell";
 	}
 	if(__map_reserved["Generic Rock"] != null) {
 		_g.setReserved("Generic Rock","VDecoHell");

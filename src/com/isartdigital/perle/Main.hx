@@ -7,20 +7,20 @@ import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.FootPrintAsset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
+import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
-import com.isartdigital.perle.game.sprites.building.heaven.Lumbermill;
+import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
 import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
-import com.isartdigital.perle.game.sprites.building.hell.Quarry;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
-import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VLumbermill;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
-import com.isartdigital.perle.game.virtual.vBuilding.vHell.VQuarry;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.services.facebook.Facebook;
@@ -210,33 +210,10 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
 		
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Purgatoire/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_ListInterns/library.json");
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframes_ALL/library.json");
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_InternInQuest/library.json");
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_InternOutQuest/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Interns/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Fenetre_PNJ/library.json");
-		
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuildingDecoTab/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuyableIntern/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_BuyablePack/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_CurrenciesTab/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ResourcesTab/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabAvailable/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_InternsTabSearching/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ItemLocked/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Shop_ItemUnlocked/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframe_Shop_Bundle/library.json");
-		
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Share_Atlas/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatMaison/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_DestroyBuilding/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_ConfirmationAchatEuros/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Popin_LevelUp/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Fenetre_InfoMaison/library.json");
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Intern_Event/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_BuyRegion/library.json");
 		
 		
 		lLoader.addFontFile("fonts.css");
@@ -347,17 +324,17 @@ class Main extends EventEmitter
 			DecoHeaven,
 			DecoHell,
 			HouseHeaven,
-			Lumbermill,
+			CollectorHeaven,
 			VHouseHeaven,
 			VHouseHell,
 			VDecoHeaven,
 			VVirtuesBuilding,
 			VDecoHell,
 			VUrbanHouse,
-			VLumbermill,
+			VCollectorHeaven,
 			HouseHell,
-			Quarry,
-			VQuarry,
+			CollectorHell,
+			VCollectorHell,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

@@ -24,7 +24,7 @@ class Virtual {
 		
 		
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
-		BuildingName.HEAVEN_COLLECTOR => "VLumbermill",
+		BuildingName.HEAVEN_COLLECTOR => "VCollectorHeaven",
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VHouseHell", //todo
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_BIGGER_TREE => "VDecoHeaven",
@@ -36,7 +36,7 @@ class Virtual {
 		
 		BuildingName.HELL_HOUSE => "VHouseHell",
 		BuildingName.HELL_COLLECTOR => "VHouseHell", // todo
-		BuildingName.HELL_FACTORY => "VQuarry",
+		BuildingName.HELL_FACTORY => "VCollectorHell",
 		BuildingName.HELL_DECO_GENERIC_ROCK => "VDecoHell",
 		BuildingName.HELL_DECO_BIGGER_ROCK => "VDecoHell",
 		BuildingName.HELL_DECO_PRETTY_ROCK => "VDecoHell",

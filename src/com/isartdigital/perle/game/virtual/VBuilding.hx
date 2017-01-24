@@ -100,7 +100,7 @@ class VBuilding extends VTile {
 		graphic = cast(Building.createBuilding(tileDesc), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 
-		myVContextualHud.activate();
+		if(haveRecolter) myVContextualHud.activate();
 	}
 	
 	/**
