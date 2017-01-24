@@ -14,8 +14,9 @@ class CCLBuilding extends CarousselCardLock{
 		super();
 	}
 	
-	override public function init(pBuildingName:String):Void {
-		super.init(pBuildingName);
+	override function buildCard():Void {
+		super.buildCard();
 		setImage(BuildingName.getAssetName(buildingName));
 	}
+	
 }

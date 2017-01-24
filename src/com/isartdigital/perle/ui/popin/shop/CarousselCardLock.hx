@@ -14,20 +14,20 @@ class CarousselCardLock extends CarouselCard
 	private static inline var UNLOCK_TEXT = "Level : ";
 	private var text_lock:TextSprite;
 	
-	override public function new() 
-	{
+	override public function new() {
 		super(AssetName.CAROUSSEL_CARD_ITEM_LOCKED);
+	}
+	
+	override function buildCard ():Void {
+		super.buildCard();
+		
 		image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
 		text_lock = cast(SmartCheck.getChildByName(this, "Reason_locked"), TextSprite);
+		setText();
 	}
 	
-	override public function init (pBuildingName:String):Void {
-		super.init(pBuildingName);
-		text_lock.text = UNLOCK_TEXT + UnlockManager.checkLevelNeeded(pBuildingName);
-	}
-	
-	override public function start ():Void {
-		super.start();
+	private function setText ():Void {
+		text_lock.text = UNLOCK_TEXT + UnlockManager.checkLevelNeeded(buildingName);
 	}
 	
 	override public function destroy():Void {

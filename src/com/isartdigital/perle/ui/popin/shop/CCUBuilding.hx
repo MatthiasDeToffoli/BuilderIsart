@@ -17,11 +17,6 @@ class CCUBuilding extends CarousselCardUnlock{
 
 	public function new() {
 		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
-		
-		image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
-		text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
-		text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
-		setRessourcesPrice();
 	}
 	
 	private function setRessourcesPrice() {
@@ -30,16 +25,23 @@ class CCUBuilding extends CarousselCardUnlock{
 		var item_price2 = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice2"), TextSprite);
 		var item_icon = cast(SmartCheck.getChildByName(this, "Resource_icon"), UISprite);
 		var item_icon2 = cast(SmartCheck.getChildByName(this, "Resource_icon2"), UISprite);
-		this.removeChild(item_price);	
-		this.removeChild(item_price2);	
-		this.removeChild(item_icon);	
-		this.removeChild(item_icon2);	
+		removeChild(item_price);	
+		removeChild(item_price2);	
+		removeChild(item_icon);	
+		removeChild(item_icon2);	
 	}
 	
-	override public function init(pBuildingName:String):Void {
-		super.init(pBuildingName);
+	override function buildCard():Void {
+		super.buildCard();
+		
+		image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
+		text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
+		text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
+		setRessourcesPrice();
+		
 		setImage(BuildingName.getAssetName(buildingName));
 		setName(FakeTraduction.assetNameNameToTrad(buildingName));
+		setPrice(BuyManager.checkPrice(buildingName));
 	}
 	
 	override function setName(pString:String):Void {

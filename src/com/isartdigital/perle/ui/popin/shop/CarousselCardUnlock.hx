@@ -44,28 +44,17 @@ class CarousselCardUnlock extends CarouselCard
 	
 	
 	override public function init (pBuildingName:String):Void {
+		lAssetName = BuildingName.getAssetName(pBuildingName); // todo : inutile ?
 		super.init(pBuildingName);
-		lAssetName = BuildingName.getAssetName(pBuildingName);
-		// image = pBuildingAssetName ....
-		// text idem voir buyManager ?
 		
-		//sfIcon = ShopPopin.iconSoft;
-		/*var lIconCurrencie:FlumpStateGraphic = new FlumpStateGraphic("_goldIcon_Medium"); // todo :pooling à penser
-		lIconCurrencie.init();
-		lIconCurrencie.width = 250;
-		lIconCurrencie.height = 250;
-		sfIcon.addChild(lIconCurrencie);
-		lIconCurrencie.start();*/
-		
-		if (!BuyManager.canBuy(pBuildingName))
-			alpha = 0.5;
-		setPrice(BuyManager.checkPrice(pBuildingName)); // todo: bon item price par rapprt au json
 	}
 	
-	override public function start ():Void {
-		super.start();
-		/*interactive = true;
-		on(MouseEventType.CLICK, onClick);*/
+	override function buildCard():Void {
+		super.buildCard();
+		if (!BuyManager.canBuy(buildingName))
+			alpha = 0.5;
+			
+		
 	}
 	
 	private function setName (pAssetName:String):Void {}
