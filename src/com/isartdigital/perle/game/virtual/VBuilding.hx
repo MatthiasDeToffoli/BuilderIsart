@@ -68,16 +68,24 @@ class VBuilding extends VTile {
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
 		
-		callBoostManager();
+		checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
 	
 	/**
 	 * add this reference to an altar
 	 */
-	private function callBoostManager():Void {
-		BoostManager.buildingIsInAltarZone({x:tileDesc.regionX, y:tileDesc.regionY}, {x:tileDesc.mapX, y:tileDesc.mapY}, tileDesc.id, alignementBuilding);
+	private function checkIfIsInAltarZone():Void {
+		BoostManager.buildingIsInAltarZone(true, tileDesc.id, alignementBuilding,{x:tileDesc.regionX, y:tileDesc.regionY}, {x:tileDesc.mapX, y:tileDesc.mapY});
 	}
+	
+	/**
+	 * remove the reference to an altar if is referenced
+	 */
+	private function checkIfIsOutAnAltarZone():Void {
+		BoostManager.buildingIsInAltarZone(false, tileDesc.id, alignementBuilding,{x:tileDesc.regionX, y:tileDesc.regionY});
+	}
+	
 	/**
 	 * set true or false in the flag which say if the building have recolter (true by default)
 	 */
@@ -91,7 +99,7 @@ class VBuilding extends VTile {
 		
 		graphic = cast(Building.createBuilding(tileDesc), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
-		
+
 		myVContextualHud.activate();
 	}
 	
@@ -107,7 +115,7 @@ class VBuilding extends VTile {
 		
 		for (i in tileDesc.mapX...(tileDesc.mapX + mapSize.width)){
 			for (j in tileDesc.mapX...(tileDesc.mapY + mapSize.height)){
-			 if (i == pData.casePos.x && j == pData.casePos.y) callBoostManager();
+			 if (i == pData.casePos.x && j == pData.casePos.y) checkIfIsInAltarZone();
 			}	
 		}
 	}
@@ -177,6 +185,7 @@ class VBuilding extends VTile {
 	}
 	
 	public function move (pRegionMap:RegionMap):Void {
+		checkIfIsOutAnAltarZone();
 		updateWorldMapPosition(pRegionMap);
 		activate();
 		// change bellow if possible to move building when constructing
@@ -247,6 +256,7 @@ class VBuilding extends VTile {
 		tileDesc.mapY = pRegionMap.map.y;
 		
 		RegionManager.addToRegionBuilding(this); // todo : FACTORISER addToRegionBuilding
+		checkIfIsInAltarZone();
 	}
 	
 	private function addGenerator ():Void {
@@ -266,6 +276,7 @@ class VBuilding extends VTile {
 	}
 	
 	override public function destroy():Void {
+		checkIfIsOutAnAltarZone();
 		BoostManager.boostAltarEvent.off(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 		if (currentState == VBuildingState.isMoving) {
 			throw ("Sure about destroying a moving VBuilding ?? not an error ? ask Ambroise");

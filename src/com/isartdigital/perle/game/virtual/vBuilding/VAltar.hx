@@ -20,6 +20,8 @@ class VAltar extends VBuilding
 	private var elementHeaven:Array<Int>;
 	private var elementHell:Array<Int>;
 	private static inline var ZONESIZE:Int = 4;
+	private var heavenBonus:Float;
+	private var hellBonus:Float;
 	
 	public function new(pDescription:TileDescription) 
 	{
@@ -31,9 +33,10 @@ class VAltar extends VBuilding
 
 		elementHeaven = new Array<Int>();
 		elementHell = new Array<Int>();
-		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_EVENT_NAME, onBuildingToAdd);
+		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_ON_EVENT_NAME, onBuildingToAdd);
+		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_OFF_EVENT_NAME, onBuildingToRemove);
 		checkInZone();
-		
+		myMaxContains = 20000;
 	}
 	
 	/**
@@ -65,6 +68,11 @@ class VAltar extends VBuilding
 				else BoostManager.altarCheckIfHasBuilding(regionPos, {x:posX, y:tileDesc.mapY + 1 + j});
 			}
 		}
+	}
+	
+	override function addHudContextual():Void 
+	{
+		if(haveRecolter) super.addHudContextual();
 	}
 	
 	/**
@@ -115,23 +123,67 @@ class VAltar extends VBuilding
 		
 		if (pType == Alignment.heaven) elementHeaven = myArray;
 		else elementHell = myArray;
+		
+		calculTime();
+		
+		if (myTime > 0){
+			if (!haveRecolter){
+				haveRecolter = true;
+				addGenerator();
+				addHudContextual();
+			} else haveMoreBoost();	
+		}
+		
+	}
+	
+	override function setHaveRecolter():Void 
+	{
+		haveRecolter = false;
+	}
+	private function onBuildingToRemove(pData:BoostInfo):Void {
+		if (pData.regionPos.y > tileDesc.regionY + 1 || pData.regionPos.y < tileDesc.regionY - 1) return;
+		
+		var myArray:Array<Int> = pData.type == Alignment.heaven ? elementHeaven : elementHell;
+		
+		var i:Int, l:Int = myArray.length;
+		
+		for (i in 0...l) 
+			if (myArray[i] == pData.buildingRef) {
+				myArray.splice(i, 1);
+				if (pData.type == Alignment.heaven) elementHeaven = myArray;
+				else elementHell = myArray;
+			}
+			
+		haveMoreBoost();
 	}
 	
 	override function addGenerator():Void 
 	{
-		myMaxContains = 10000;
-		myTime = 600000000000;
-		super.addGenerator();
+		if (haveRecolter) {
+			super.addGenerator();
+		}
+		
+		
 	}
 	
-	private function haveMoreBoost(?data:Dynamic):Void{
-		myTime = 60000 / 1;
-		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+	private function calculTime():Void{
+		if (elementHeaven.length == 0 && elementHell.length == 0) myTime = 0;
+		else myTime = 60000 / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
+	}
+	private function haveMoreBoost():Void{
+		calculTime();
+		
+		if (myTime <= 0){
+			myVContextualHud.destroy();
+			ResourcesManager.removeGenerator(myGenerator);
+			haveRecolter = false;
+		}
+		else ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
 	}
 	
 	override public function destroy():Void 
 	{
-		BoostManager.boostBuildingEvent.off(BoostManager.BUILDING_EVENT_NAME, onBuildingToAdd);
+		BoostManager.boostBuildingEvent.off(BoostManager.BUILDING_ON_EVENT_NAME, onBuildingToAdd);
 		super.destroy();
 	}
 	

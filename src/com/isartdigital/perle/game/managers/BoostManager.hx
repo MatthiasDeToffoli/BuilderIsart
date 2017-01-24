@@ -31,7 +31,8 @@ class BoostManager
 	public static var boostBuildingEvent:EventEmitter;
 	
 	public static inline var ALTAR_EVENT_NAME:String = "ALTAR_CALL";
-	public static inline var BUILDING_EVENT_NAME:String = "BUILDING_CALL";
+	public static inline var BUILDING_ON_EVENT_NAME:String = "BUILDING_ENTER_ZONE";
+	public static inline var BUILDING_OFF_EVENT_NAME:String = "BUILDING_OUT_ZONE";
 	
 	
 	/**
@@ -59,8 +60,9 @@ class BoostManager
 	 * @param	pRef the building ref
 	 * @param	pType the type of the building
 	 */
-	public static function buildingIsInAltarZone(regionPos:Index, casePos:Index, pRef:Int, pType:Alignment):Void{
-		boostBuildingEvent.emit(BUILDING_EVENT_NAME, {casePos:casePos, regionPos:regionPos, buildingRef:pRef, type:pType});
+	public static function buildingIsInAltarZone(toAdd:Bool, pRef:Int, pType:Alignment,regionPos:Index, ?casePos:Index):Void{
+		if (toAdd) boostBuildingEvent.emit(BUILDING_ON_EVENT_NAME, {casePos:casePos, regionPos:regionPos, buildingRef:pRef, type:pType});
+		else boostBuildingEvent.emit(BUILDING_OFF_EVENT_NAME, {regionPos:regionPos, buildingRef:pRef, type:pType});
 	}
 	
 }
