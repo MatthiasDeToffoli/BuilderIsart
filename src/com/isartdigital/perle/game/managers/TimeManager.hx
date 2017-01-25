@@ -3,10 +3,12 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector.ProductionPack;
 import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
@@ -48,6 +50,8 @@ class TimeManager {
 	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
+	public static inline var EVENT_COLLECTOR_PRODUCTION:String = "Production_Time";
+	public static inline var EVENT_COLLECTOR_PRODUCTION_FINE:String = "Production_Fine";
 	
 	public static inline var TIME_DESC_REFLECT:String = "timeDesc";
 	
@@ -59,6 +63,7 @@ class TimeManager {
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
 	public static var eConstruct:EventEmitter;
+	public static var eProduction:EventEmitter;
 	
 	public static var gameStartTime(default, null):Float;
 	public static var lastKnowTime(default, null):Float;
@@ -66,14 +71,17 @@ class TimeManager {
 	public static var listResource(default, null):Array<TimeElementResource>;
 	public static var listQuest(default, null):Array<TimeQuestDescription>;
 	public static var listConstruction(default, null):Array<TimeDescription>;
+	public static var listProduction(default, null):Array<TimeCollectorProduction>;
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
 		eTimeQuest = new EventEmitter();
 		eConstruct = new EventEmitter();
+		eProduction = new EventEmitter();
 		listResource = new Array<TimeElementResource>();
 		listQuest = new Array<TimeQuestDescription>();
 		listConstruction = new Array<TimeDescription>();
+		listProduction = new Array<TimeCollectorProduction>();
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -158,6 +166,18 @@ class TimeManager {
 				lTimeElement.generator = pGenerator;
 				return;
 			}
+	}
+	
+	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeCollectorProduction{
+		var myTime:TimeCollectorProduction = {
+			buildingRef: ref,
+			gain: pack.quantity,
+			progress: pack.time
+		}
+		
+		listProduction.push(myTime);
+		
+		return myTime;
 	}
 	
 	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
@@ -273,6 +293,7 @@ class TimeManager {
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruct:Int = listConstruction.length;
+		var lLenghtProd:Int = listProduction.length;
 		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		lastKnowTime = lTimeNow;
@@ -286,6 +307,9 @@ class TimeManager {
 			//trace("length time loop " + lLengthQuest);
 			updateQuest(listQuest[j], lElapsedTime);
 		}
+		
+		for ( i in 0...lLenghtProd)
+			updateProductionTime(listProduction[i], lElapsedTime);
 		
 		for (i in 0...lLengthConstruct) {
 			updateConstruction(listConstruction[i], lElapsedTime, constructionEnded);
@@ -365,6 +389,14 @@ class TimeManager {
 		}
 	}
 	
+	private static function updateProductionTime(pElement:TimeCollectorProduction, pEllapsedTime:Float):Void {
+		pElement.progress -= pEllapsedTime;
+		if (pElement.progress < 0){
+			pElement.progress = 0;
+			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE);
+		}
+		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
+	}
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;

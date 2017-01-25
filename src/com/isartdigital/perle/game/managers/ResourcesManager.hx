@@ -456,7 +456,8 @@ class ResourcesManager
 	  */
 	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Bool{
 		var myPopulation:Population;
-			
+
+		if (data.generator == null) return false;	
 		for (myPopulation in allPopulations[pType])
 			if (myPopulation.buildingRef == data.generator.desc.id){
 				increaseResources(data.generator, data.tickNumber * myPopulation.quantity);
@@ -472,6 +473,8 @@ class ResourcesManager
 	 * @param quantity the quantity to add
 	 */
 	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{
+		if (pGenerator == null) return;
+		
 		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);	
 		save(pGenerator);
 		

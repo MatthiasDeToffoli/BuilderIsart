@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.contextual;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.ui.contextual.virtual.VButtonProduction;
+import com.isartdigital.perle.ui.contextual.virtual.VButtonProductionGenerator;
 import pixi.core.display.Container;
 
 /**
@@ -26,7 +27,7 @@ class VHudContextual extends Virtual{
 		myVBuilding = pVBuilding;
 		
 		if (myVBuilding.haveRecolter){
-			virtualGoldBtn = new VButtonProduction();
+			virtualGoldBtn = new VButtonProductionGenerator();
 			virtualGoldBtn.init(this);
 		}
 		

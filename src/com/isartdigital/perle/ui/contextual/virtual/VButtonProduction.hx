@@ -12,24 +12,17 @@ import pixi.core.display.Container;
  * contain all information for the button production
  * Is not saved, is not in clipping List directly, is contained by VHudContextual
  * @author de Toffoli Matthias
+ * @author Rabier Ambroise
  */
 class VButtonProduction extends VSmartComponent
 {
 	
-	/**
-	 * description of the generator link te this button
-	 */
-	private var myGeneratorDesc:GeneratorDescription;
+	
 	
 	/**
 	 * id of the building link to this button
 	 */
 	private var refBuilding:Int;
-	
-	/**
-	 * type of generator which had by this button
-	 */
-	private var resourceType:GeneratorType;
 	
 	private var myBtn:ButtonProduction;
 	
@@ -41,7 +34,7 @@ class VButtonProduction extends VSmartComponent
 	public function new() 
 	{
 		super();
-		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
+		
 	}
 	
 	/**
@@ -53,27 +46,10 @@ class VButtonProduction extends VSmartComponent
 	override public function init (pVHud:VHudContextual):Void {
 		super.init(pVHud);
 		refBuilding = pVHud.myVBuilding.tileDesc.id;
-		myGeneratorDesc = ResourcesManager.getGenerator(refBuilding, pVHud.myVBuilding.myGeneratorType);
-		generatorIsNotEmpty = ResourcesManager.GeneratorIsNotEmpty(myGeneratorDesc);
+		
 	}
 	
-	/**
-	 * when the générator have changement (if he increase is value or when he send his resources to his total)
-	 * @param	data object contain the id of the generator and a boolean said if the generator is empty or not
-	 */
-	private function onGeneratorEvent(data:Dynamic):Void {
-		if (data.forButton && data.id == refBuilding && myBtn == null) {
-			
-			generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
-			
-			if (shoulBeVisible() && graphic == null)
-				addGraphic();
-			else if (active && !generatorIsNotEmpty)
-				removeGraphic();
-		}
-		
-		if (myBtn != null) myBtn.setScale();
-	}
+	
 	
 	private function shoulBeVisible ():Bool {
 		return active && generatorIsNotEmpty;
@@ -88,11 +64,9 @@ class VButtonProduction extends VSmartComponent
 	// todo : faire une methode addgraphic ds virtual et l'ovverride, changer ds les autres descendant de virtual egalement
 	// et du coup condition a l'interrieur de cette function
 	private function addGraphic ():Void {
-		myBtn = new ButtonProduction(myGeneratorDesc.type);
 		
 		graphic = cast(myBtn, Container);
 		
-		myBtn.setMyGeneratorDescription(myGeneratorDesc);
 		
 		cast(myVHudContextual.graphic, HudContextual).addComponentBtnProd(
 			cast(myBtn, SmartComponent)
@@ -108,7 +82,6 @@ class VButtonProduction extends VSmartComponent
 		if (shoulBeVisible())
 			addGraphic();
 			
-		if (myBtn != null) myBtn.setScale();
 	}
 	
 	override public function desactivate ():Void {
@@ -118,10 +91,5 @@ class VButtonProduction extends VSmartComponent
 		// à voir plus tard on va dire.
 		
 		myBtn = null;
-	}
-	
-	override public function destroy() {	
-		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
-		super.destroy();
 	}
 }

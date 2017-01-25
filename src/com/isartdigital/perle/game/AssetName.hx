@@ -207,6 +207,19 @@ class AssetName{
 	//collector popin
 	public static inline var COLLECTOR_POPIN:String = "InfoCollector";
 	public static inline var COLLECTOR_PANEL:String = "ProductionPanelsContainer";
+	public static inline var PACK_COLLECTOR_PANEL:String = "ProductionPanel";
+	public static inline var PACK_COLLECTOR_LOCK_PANEL:String = "ProductionPanel_Locked";
+	public static inline var PANEL_COLLECTOR_SPAWNER:String = "_productionPanelSpawner";
+	public static inline var PANEL_COLLECTOR_SPAWNER_ICON:String = "_buildRessourceIcon_Large";
+	public static inline var PANEL_COLLECTOR_TIME_TEXT:String = "_time_value";
+	public static inline var PANEL_COLLECTOR_GAIN:String = "_ressourceGain_text";
+	public static inline var PANEL_COLLECTOR_BUTTON:String = "ButtonProduce";
+	public static inline var PANEL_COLLECTOR_BUTTON_TEXT:String = "_buttonProduce_GoldValue";
+	public static inline var COLLECTOR_TIME_IN_PROD:String = "CollectorInProduction";
+	public static inline var COLLECTOR_TIME_GAUGE:String = "TimeGauge";
+	public static inline var COLLECTOR_TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
+	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
+	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
@@ -247,5 +260,9 @@ class AssetName{
 	
 	public static inline var PROD_ICON_SOUL_HEAVEN_SMALL:String = "_heavenSoulIcon_Small";
 	public static inline var PROD_ICON_SOUL_HELL_SMALL:String = "_hellSoulIcon_Small";
+	
+	//icone large
+	public static inline var PROD_ICON_WOOD_LARGE:String = "_woodIcon_Large";
+	public static inline var PROD_ICON_STONE_LARGE:String = "_stoneIcon_Large";
 
 }

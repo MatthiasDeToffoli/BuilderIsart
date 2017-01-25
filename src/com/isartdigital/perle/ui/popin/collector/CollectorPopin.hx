@@ -2,7 +2,9 @@ package com.isartdigital.perle.ui.popin.collector;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.MouseManager;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -24,6 +26,8 @@ class CollectorPopin extends SmartPopin
 	
 	private var prodPanel:ProductionPanel;
 	private var btnClose:SmartButton;
+	private var timer:TimerInProd;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -40,20 +44,33 @@ class CollectorPopin extends SmartPopin
 	{
 		super(AssetName.COLLECTOR_POPIN);
 		
+		var myCollector:VCollector = cast(BuildingHud.virtualBuilding, VCollector);
+		
 		btnClose = cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_productionSpawner"), UISprite);
 			
-			
-		prodPanel = new ProductionPanel();
-		prodPanel.position = spawner.position;
+		if (myCollector.product) addTimer(spawner,myCollector);
+		else addPanel(spawner);
 		
-		addChild(prodPanel);
 		spawner.parent.removeChild(spawner);
 		Interactive.addListenerClick(btnClose, onClose);
 		
 	}
 	
-	private function onClose(){
+	private function addPanel(spawner:UISprite):Void{
+		prodPanel = new ProductionPanel();
+		prodPanel.position = spawner.position;
+		
+		addChild(prodPanel);
+	}
+	
+	private function addTimer(spawner:UISprite, pCollector:VCollector):Void {
+		timer = new TimerInProd(pCollector);
+		timer.position = spawner.position;
+		
+		addChild(timer);
+	}
+	public function onClose(){
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 		
@@ -63,6 +80,7 @@ class CollectorPopin extends SmartPopin
 	 */
 	override public function destroy (): Void {
 		instance = null;
+		Interactive.removeListenerClick(btnClose, onClose);
 		super.destroy();
 	}
 
