@@ -141,6 +141,7 @@ class AssetName{
 	public static inline var INTERN_EVENT_CARD:String = "_event_FateCard";
 	public static inline var INTERN_EVENT_NAME:String = "_event_internName";
 	public static inline var INTERN_EVENT_SIDE:String = "_event_internSide";
+	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";

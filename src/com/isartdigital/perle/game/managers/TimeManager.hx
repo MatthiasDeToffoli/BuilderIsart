@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector.ProductionPack;
@@ -382,9 +383,11 @@ class TimeManager {
 	 */
 	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {
 		var lPreviousProgress:Float = pElement.progress;
+		//trace(Intern.internsList[pElement.refIntern]);
 		
 		pElement.progress = Math.min(
-			pElement.progress + pElapsedTime,
+			pElement.progress + (pElapsedTime * Intern.internsList[pElement.refIntern].speed),
+			//pElement.progress + pElapsedTime,
 			pElement.steps[pElement.stepIndex]
 		);
 		

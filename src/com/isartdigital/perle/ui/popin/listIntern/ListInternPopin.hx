@@ -57,8 +57,8 @@ class ListInternPopin extends SmartPopin
 			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
 			
 			for (i in 0...AssetName.internListSpawners.length){
-				if (i < Intern.internsList.length){
-					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsList[i]);
+				if (i < Intern.internsListArray.length){
+					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
 				}
 				
 				else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));

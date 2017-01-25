@@ -717,6 +717,7 @@ com_isartdigital_perle_Main.prototype = $extend(EventEmitter.prototype,{
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Fenetre_InfoMaison/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Intern_Event/library.json");
 		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_BuyRegion/library.json");
+		lLoader.addAssetFile("UI/" + com_isartdigital_utils_system_DeviceCapabilities.textureType + "/WireFrame_Intern_MaxStress/library.json");
 		lLoader.addFontFile("fonts.css");
 		lLoader.on("progress",$bind(this,this.onLoadProgress));
 		lLoader.once("complete",$bind(this,this.onLoadComplete));
@@ -1834,20 +1835,34 @@ com_isartdigital_perle_game_managers_QuestsManager.choice = function(pQuest) {
 com_isartdigital_perle_game_managers_QuestsManager.goToNextStep = function() {
 	com_isartdigital_perle_ui_popin_choice_Choice.getInstance().hide();
 	com_isartdigital_perle_game_managers_TimeManager.nextStepQuest(com_isartdigital_perle_game_managers_QuestsManager.questInProgress);
+	com_isartdigital_perle_game_sprites_Intern.internsList.h[com_isartdigital_perle_game_managers_QuestsManager.questInProgress.refIntern].stress += 4;
 };
 com_isartdigital_perle_game_managers_QuestsManager.endQuest = function(pQuest) {
 	console.log("end");
 	com_isartdigital_perle_game_managers_QuestsManager.choice(pQuest);
-	com_isartdigital_perle_game_managers_TimeManager.destroyTimeElement(pQuest.refIntern);
-	com_isartdigital_perle_game_managers_QuestsManager.destroyQuest(pQuest.refIntern);
+	console.log(pQuest.refIntern);
+	console.log(com_isartdigital_perle_game_sprites_Intern.internsList.toString());
+	console.log(com_isartdigital_perle_game_sprites_Intern.internsList.h[pQuest.refIntern]);
+	var lIntern = com_isartdigital_perle_game_sprites_Intern.internsList.h[pQuest.refIntern];
+	if(lIntern.stress < lIntern.stressLimit) lIntern.quest = null; else {
+		console.log("dismiss");
+		lIntern.quest = null;
+	}
 	var _g1 = 0;
-	var _g = com_isartdigital_perle_game_sprites_Intern.internsList.length;
+	var _g = com_isartdigital_perle_game_sprites_Intern.internsListArray.length;
 	while(_g1 < _g) {
 		var i = _g1++;
-		if(pQuest.refIntern == com_isartdigital_perle_game_sprites_Intern.internsList[i].id) {
-			if(com_isartdigital_perle_game_sprites_Intern.internsList[i].stress < com_isartdigital_perle_game_sprites_Intern.internsList[i].stressLimit) com_isartdigital_perle_game_sprites_Intern.internsList[i].quest = null; else console.log("dismiss");
+		if(pQuest.refIntern == com_isartdigital_perle_game_sprites_Intern.internsListArray[i].id) {
+			if(com_isartdigital_perle_game_sprites_Intern.internsListArray[i].stress < com_isartdigital_perle_game_sprites_Intern.internsListArray[i].stressLimit) com_isartdigital_perle_game_sprites_Intern.internsListArray[i].quest = null; else {
+				console.log("dismiss");
+				($_=com_isartdigital_perle_ui_UIManager.getInstance(),$bind($_,$_.closeCurrentPopin));
+				com_isartdigital_utils_game_GameStage.getInstance().getPopinsContainer().addChild(com_isartdigital_perle_ui_popin_listIntern_MaxStress.getInstance());
+				lIntern.quest = null;
+			}
 		}
 	}
+	com_isartdigital_perle_game_managers_QuestsManager.destroyQuest(pQuest.refIntern);
+	com_isartdigital_perle_game_managers_TimeManager.destroyTimeElement(pQuest.refIntern);
 };
 com_isartdigital_perle_game_managers_QuestsManager.getQuest = function(pId) {
 	var lQuest = null;
@@ -2316,7 +2331,7 @@ com_isartdigital_perle_game_managers_ResourcesManager.awake = function() {
 	com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesEvent = new EventEmitter();
 	com_isartdigital_perle_game_managers_ResourcesManager.populationChangementEvent = new EventEmitter();
 	com_isartdigital_perle_game_managers_ResourcesManager.soulArrivedEvent = new EventEmitter();
-	com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesInfoArray = [{ value : 1, isLevel : true},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soft},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.hard},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.goodXp},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.badXp},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soulGood},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soulBad},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise}];
+	com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesInfoArray = [{ value : 1, isLevel : true},{ value : 20000, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soft},{ value : 100, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.hard},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.goodXp},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.badXp},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soulGood},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.soulBad},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromHell},{ value : 0, isLevel : false, type : com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise}];
 	com_isartdigital_perle_game_managers_ResourcesManager.allPopulations = new haxe_ds_EnumValueMap();
 	var v = [];
 	com_isartdigital_perle_game_managers_ResourcesManager.allPopulations.set(com_isartdigital_perle_game_managers_Alignment.heaven,v);
@@ -2351,8 +2366,8 @@ com_isartdigital_perle_game_managers_ResourcesManager.initWithoutSave = function
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.hard,v2);
 	v2;
 	{
-		pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.hard,0);
-		0;
+		pMapT.set(com_isartdigital_perle_game_managers_GeneratorType.hard,100);
+		100;
 	}
 	var v3 = [];
 	pMapG.set(com_isartdigital_perle_game_managers_GeneratorType.badXp,v3);
@@ -2395,7 +2410,6 @@ com_isartdigital_perle_game_managers_ResourcesManager.initWithoutSave = function
 	com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesInfoArray[4].max = com_isartdigital_perle_game_managers_ResourcesManager.maxExp;
 	com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesEvent.emit("TOTAL RESOURCES",com_isartdigital_perle_game_managers_ResourcesManager.totalResourcesInfoArray);
 	com_isartdigital_perle_game_managers_TimeManager.eTimeGenerator.on("TimeManager_Resource_Tick",com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesWithTime);
-	com_isartdigital_perle_ui_hud_Hud.getInstance().setAllTextValues(com_isartdigital_perle_game_managers_ResourcesManager.myResourcesData.totalsMap.get(com_isartdigital_perle_game_managers_GeneratorType.soft),false,com_isartdigital_perle_game_managers_GeneratorType.soft);
 };
 com_isartdigital_perle_game_managers_ResourcesManager.initWithLoad = function(resourcesDescriptionLoad) {
 	com_isartdigital_perle_game_managers_ResourcesManager.initWithoutSave();
@@ -3327,7 +3341,7 @@ com_isartdigital_perle_game_managers_TimeManager.updateResource = function(pElem
 };
 com_isartdigital_perle_game_managers_TimeManager.updateQuest = function(pElement,pElapsedTime) {
 	var lPreviousProgress = pElement.progress;
-	pElement.progress = Math.min(pElement.progress + pElapsedTime,pElement.steps[pElement.stepIndex]);
+	pElement.progress = Math.min(pElement.progress + pElapsedTime * com_isartdigital_perle_game_sprites_Intern.internsList.h[pElement.refIntern].speed,pElement.steps[pElement.stepIndex]);
 	if(pElement.progress == pElement.steps[pElement.stepIndex] && pElement.progress != lPreviousProgress) com_isartdigital_perle_game_managers_TimeManager.eTimeQuest.emit("TimeManager_Quest_Step_Reached",pElement);
 };
 com_isartdigital_perle_game_managers_TimeManager.updateConstruction = function(pElement,pElapsedTime,pEndedList) {
@@ -4156,17 +4170,21 @@ com_isartdigital_perle_game_sprites_Ground.prototype = $extend(com_isartdigital_
 	,__class__: com_isartdigital_perle_game_sprites_Ground
 });
 var com_isartdigital_perle_game_sprites_Intern = function(pInternDatas) {
-	com_isartdigital_perle_game_sprites_Intern.internsList.push(pInternDatas);
+	{
+		com_isartdigital_perle_game_sprites_Intern.internsList.h[pInternDatas.id] = pInternDatas;
+		pInternDatas;
+	}
+	com_isartdigital_perle_game_sprites_Intern.internsListArray.push(pInternDatas);
 };
 $hxClasses["com.isartdigital.perle.game.sprites.Intern"] = com_isartdigital_perle_game_sprites_Intern;
 com_isartdigital_perle_game_sprites_Intern.__name__ = ["com","isartdigital","perle","game","sprites","Intern"];
 com_isartdigital_perle_game_sprites_Intern.init = function() {
-	com_isartdigital_perle_game_sprites_Intern.internsList = [];
+	com_isartdigital_perle_game_sprites_Intern.internsListArray = [];
+	com_isartdigital_perle_game_sprites_Intern.internsList = new haxe_ds_IntMap();
 	var lId = com_isartdigital_perle_game_managers_IdManager.newId();
-	var lRandomEvent = Math.round(Math.random() * 3 + 1);
-	var lTestInternDatas = { id : lId, name : "Angel A. Merkhell", aligment : "angel", quest : null, price : 2000, stress : 0, stressLimit : 10, speed : 5, efficiency : 0.1};
+	var lTestInternDatas = { id : lId, name : "Angel A. Merkhell", aligment : "angel", quest : null, price : 2000, stress : 0, stressLimit : 10, speed : 1.5, efficiency : 0.1};
 	var lTestNewIntern = new com_isartdigital_perle_game_sprites_Intern(lTestInternDatas);
-	var lTestInternDatas2 = { id : com_isartdigital_perle_game_managers_IdManager.newId(), name : "Archanglina Jolie", aligment : "demon", quest : null, price : 2000, stress : 0, stressLimit : 10, speed : 5, efficiency : 0.1};
+	var lTestInternDatas2 = { id : com_isartdigital_perle_game_managers_IdManager.newId(), name : "Archanglina Jolie", aligment : "demon", quest : null, price : 2000, stress : 0, stressLimit : 10, speed : 1, efficiency : 0.1};
 	var lTestNewIntern2 = new com_isartdigital_perle_game_sprites_Intern(lTestInternDatas2);
 };
 com_isartdigital_perle_game_sprites_Intern.prototype = {
@@ -7673,6 +7691,7 @@ com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.__super__ = com_
 com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.prototype = $extend(com_isartdigital_perle_ui_popin_listIntern_InternElement.prototype,{
 	getComponents: function() {
 		this.btnAccelerate = js_Boot.__cast(this.getChildByName("Bouton_InternSend_Clip") , com_isartdigital_utils_ui_smart_SmartButton);
+		this.accelerateValue = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.btnAccelerate,"_accelerate_cost") , com_isartdigital_utils_ui_smart_TextSprite);
 		this.internName = js_Boot.__cast(this.getChildByName("InQuest_name") , com_isartdigital_utils_ui_smart_TextSprite);
 		this.questTime = js_Boot.__cast(this.getChildByName("InQuest_ProgressionBar") , com_isartdigital_utils_ui_smart_SmartComponent);
 		this.heroCursor = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.questTime,"_listInQuest_hero") , com_isartdigital_utils_ui_smart_UISprite);
@@ -7685,9 +7704,10 @@ com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.prototype = $ext
 		this.questGauge = js_Boot.__cast(this.getChildByName("InQuest_ProgressionBar") , com_isartdigital_utils_ui_smart_SmartComponent);
 	}
 	,setOnSpawn: function(pDesc) {
-		this.loop = haxe_Timer.delay($bind(this,this.progressCursorLoop),10);
-		this.loop.run = $bind(this,this.progressCursorLoop);
+		this.loop = haxe_Timer.delay($bind(this,this.progressLoop),10);
+		this.loop.run = $bind(this,this.progressLoop);
 		this.internName.set_text(pDesc.name);
+		this.accelerateValue.set_text("2");
 		this.quest = pDesc.quest;
 		this.questGaugeLenght = this.questGauge.position.x / 1.75 - this.heroCursorStartPosition.x;
 		var _g1 = 0;
@@ -7704,26 +7724,29 @@ com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.prototype = $ext
 		com_isartdigital_perle_utils_Interactive.addListenerClick(this.picture,$bind(this,this.onPicture));
 	}
 	,onAccelerate: function() {
-		console.log("accelerate");
+		com_isartdigital_perle_game_managers_ResourcesManager.spendTotal(com_isartdigital_perle_game_managers_GeneratorType.hard,2);
 		if(!com_isartdigital_perle_game_managers_TimeManager.increaseQuestProgress(this.quest)) console.log("quest end!");
 	}
-	,progressCursorLoop: function() {
+	,progressLoop: function() {
 		if(this.heroCursor.position != null) {
-			var _g1 = 0;
-			var _g = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray.length;
-			while(_g1 < _g) {
-				var i = _g1++;
-				if(i != this.quest.stepIndex) com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 0.5; else com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 1;
-			}
-			this.timeEvent.set_text(com_isartdigital_perle_game_managers_TimeManager.getTextTimeQuest(this.quest.end - this.quest.progress) + "s");
-			if(this.quest.stepIndex != 3) this.heroCursor.position.x = Math.min(this.questGaugeLenght * this.quest.progress / this.quest.end + this.heroCursorStartPosition.x,this.questGaugeLenght * this.quest.steps[this.quest.stepIndex] / this.quest.end + this.heroCursorStartPosition.x); else {
-				this.eventCursor3.alpha = 1;
-				this.heroCursor.position.x = this.questGaugeLenght * this.quest.steps[2] / this.quest.end + this.heroCursorStartPosition.x;
-				this.timeEvent.set_text("00:00 s");
-			}
-		} else {
-			console.log("null");
-			this.loop.stop();
+			this.updateEventCursors();
+			this.timeEvent.set_text(com_isartdigital_perle_game_managers_TimeManager.getTextTimeQuest(this.quest.steps[this.quest.stepIndex] - this.quest.progress) + "s");
+			this.updateCursorPosition();
+		} else this.loop.stop();
+	}
+	,updateEventCursors: function() {
+		var _g1 = 0;
+		var _g = com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			if(i != this.quest.stepIndex) com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 0.5; else com_isartdigital_perle_ui_popin_listIntern_InternElementInQuest.eventCursorsArray[i].alpha = 1;
+		}
+	}
+	,updateCursorPosition: function() {
+		if(this.quest.stepIndex != 3) this.heroCursor.position.x = Math.min(this.questGaugeLenght * this.quest.progress / this.quest.end + this.heroCursorStartPosition.x,this.questGaugeLenght * this.quest.steps[this.quest.stepIndex] / this.quest.end + this.heroCursorStartPosition.x); else {
+			this.eventCursor3.alpha = 1;
+			this.heroCursor.position.x = this.questGaugeLenght * this.quest.steps[2] / this.quest.end + this.heroCursorStartPosition.x;
+			this.timeEvent.set_text("00:00 s");
 		}
 	}
 	,endQuest: function(pQuest) {
@@ -7785,7 +7808,7 @@ var com_isartdigital_perle_ui_popin_listIntern_ListInternPopin = function() {
 	var _g = com_isartdigital_perle_game_AssetName.internListSpawners.length;
 	while(_g1 < _g) {
 		var i = _g1++;
-		if(i < com_isartdigital_perle_game_sprites_Intern.internsList.length) this.spawnInternDescription(com_isartdigital_perle_game_AssetName.internListSpawners[i],com_isartdigital_perle_game_sprites_Intern.internsList[i]); else this.destroySpawner(js_Boot.__cast(this.getChildByName(com_isartdigital_perle_game_AssetName.internListSpawners[i]) , com_isartdigital_utils_ui_smart_UISprite));
+		if(i < com_isartdigital_perle_game_sprites_Intern.internsListArray.length) this.spawnInternDescription(com_isartdigital_perle_game_AssetName.internListSpawners[i],com_isartdigital_perle_game_sprites_Intern.internsListArray[i]); else this.destroySpawner(js_Boot.__cast(this.getChildByName(com_isartdigital_perle_game_AssetName.internListSpawners[i]) , com_isartdigital_utils_ui_smart_UISprite));
 	}
 	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnLeft,$bind(this,this.onLeft));
 	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnRight,$bind(this,this.onRight));
@@ -7840,6 +7863,22 @@ com_isartdigital_perle_ui_popin_listIntern_ListInternPopin.prototype = $extend(c
 		com_isartdigital_utils_ui_smart_SmartPopin.prototype.destroy.call(this);
 	}
 	,__class__: com_isartdigital_perle_ui_popin_listIntern_ListInternPopin
+});
+var com_isartdigital_perle_ui_popin_listIntern_MaxStress = function(pID) {
+	com_isartdigital_utils_ui_smart_SmartPopin.call(this,"Popin_MaxStress");
+};
+$hxClasses["com.isartdigital.perle.ui.popin.listIntern.MaxStress"] = com_isartdigital_perle_ui_popin_listIntern_MaxStress;
+com_isartdigital_perle_ui_popin_listIntern_MaxStress.__name__ = ["com","isartdigital","perle","ui","popin","listIntern","MaxStress"];
+com_isartdigital_perle_ui_popin_listIntern_MaxStress.getInstance = function() {
+	if(com_isartdigital_perle_ui_popin_listIntern_MaxStress.instance == null) com_isartdigital_perle_ui_popin_listIntern_MaxStress.instance = new com_isartdigital_perle_ui_popin_listIntern_MaxStress();
+	return com_isartdigital_perle_ui_popin_listIntern_MaxStress.instance;
+};
+com_isartdigital_perle_ui_popin_listIntern_MaxStress.__super__ = com_isartdigital_utils_ui_smart_SmartPopin;
+com_isartdigital_perle_ui_popin_listIntern_MaxStress.prototype = $extend(com_isartdigital_utils_ui_smart_SmartPopin.prototype,{
+	destroy: function() {
+		com_isartdigital_perle_ui_popin_listIntern_MaxStress.instance = null;
+	}
+	,__class__: com_isartdigital_perle_ui_popin_listIntern_MaxStress
 });
 var com_isartdigital_utils_ui_smart_SmartButton = function(pID) {
 	com_isartdigital_utils_ui_smart_SmartComponent.call(this,pID);
@@ -10752,6 +10791,20 @@ haxe_ds_IntMap.prototype = {
 		}
 		return HxOverrides.iter(a);
 	}
+	,toString: function() {
+		var s_b = "";
+		s_b += "{";
+		var it = this.keys();
+		while( it.hasNext() ) {
+			var i = it.next();
+			if(i == null) s_b += "null"; else s_b += "" + i;
+			s_b += " => ";
+			s_b += Std.string(Std.string(this.h[i]));
+			if(it.hasNext()) s_b += ", ";
+		}
+		s_b += "}";
+		return s_b;
+	}
 	,__class__: haxe_ds_IntMap
 };
 var haxe_ds_ObjectMap = function() {
@@ -12005,6 +12058,7 @@ com_isartdigital_perle_game_AssetName.INTERN_EVENT_CLOSE = "CloseButton";
 com_isartdigital_perle_game_AssetName.INTERN_EVENT_CARD = "_event_FateCard";
 com_isartdigital_perle_game_AssetName.INTERN_EVENT_NAME = "_event_internName";
 com_isartdigital_perle_game_AssetName.INTERN_EVENT_SIDE = "_event_internSide";
+com_isartdigital_perle_game_AssetName.INTERN_EVENT_MAX_STRESS = "Popin_MaxStress";
 com_isartdigital_perle_game_AssetName.INTERN_POPIN = "Interns";
 com_isartdigital_perle_game_AssetName.INTERN_POPIN_SIDE = "_intern_side";
 com_isartdigital_perle_game_AssetName.INTERN_POPIN_NAME = "_intern_name";

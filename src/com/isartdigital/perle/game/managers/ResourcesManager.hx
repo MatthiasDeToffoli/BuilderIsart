@@ -102,15 +102,15 @@ class ResourcesManager
 		populationChangementEvent = new EventEmitter();
 		soulArrivedEvent = new EventEmitter();
 		totalResourcesInfoArray = [
-		{value: 1, isLevel: true},
-		{value: 0, isLevel: false, type: GeneratorType.soft },
-		{value: 0, isLevel: false, type: GeneratorType.hard},
-		{value: 0, isLevel: false, type: GeneratorType.goodXp},
-		{value: 0, isLevel: false, type: GeneratorType.badXp},
-		{value: 0, isLevel: false, type: GeneratorType.soulGood},
-		{value: 0, isLevel: false, type: GeneratorType.soulBad},
-		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromHell},
-		{value: 0, isLevel: false, type: GeneratorType.buildResourceFromParadise},
+			{value: 1, isLevel: true},
+			{value: 20000, isLevel: false, type: GeneratorType.soft },
+			{value: 100, isLevel: false, type: GeneratorType.hard},
+			{value: 0, isLevel: false, type: GeneratorType.goodXp},
+			{value: 0, isLevel: false, type: GeneratorType.badXp},
+			{value: 0, isLevel: false, type: GeneratorType.soulGood},
+			{value: 0, isLevel: false, type: GeneratorType.soulBad},
+			{value: 0, isLevel: false, type: GeneratorType.buildResourceFromHell},
+			{value: 0, isLevel: false, type: GeneratorType.buildResourceFromParadise},
 		];
 		
 		allPopulations = new Map<Alignment,Array<Population>>();
@@ -135,7 +135,7 @@ class ResourcesManager
 		pMapT[GeneratorType.soft] = 20000;
 
 		pMapG[GeneratorType.hard] = new Array<Generator>();
-		pMapT[GeneratorType.hard] = 0;
+		pMapT[GeneratorType.hard] = 100; //@ToDo Temporaire, juste pour avoir des ressources au début
 		
 		pMapG[GeneratorType.badXp] = new Array<Generator>();
 		pMapT[GeneratorType.badXp] = 0;
@@ -165,9 +165,6 @@ class ResourcesManager
 		
 		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 		TimeManager.eTimeGenerator.on(TimeManager.EVENT_RESOURCE_TICK, increaseResourcesWithTime);
-		
-		//todo : a enlever apres alpha je pense, c'est pour avoir des ressources au debut
-		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[GeneratorType.soft], false, GeneratorType.soft);
 	}
 	
 	/**
@@ -482,7 +479,7 @@ class ResourcesManager
 		else generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id});
 		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}
-
+	
 	/**
 	 * remove a generator
 	 * @param pGenerator generator target

@@ -346,7 +346,6 @@ class Hud extends SmartScreen
 	 */
 	private function setTextValues(pContainerName:String, pTextName:String, pValue:Float, ?pMax:Float):Void{
 		var textContainer:Dynamic = SmartCheck.getChildByName(this, pContainerName);
-		
 		var text:TextSprite = cast(SmartCheck.getChildByName(textContainer, pTextName), TextSprite);
 		text.text = pMax != null ? pValue + " / " + pMax : pValue + "";
 	}

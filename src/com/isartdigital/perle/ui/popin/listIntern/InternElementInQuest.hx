@@ -1,8 +1,11 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.InternPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
@@ -27,6 +30,7 @@ class InternElementInQuest extends InternElement
 	public static var canPushNewScreen:Bool = false;
 	public var progressIndex:Int = 0;
 	private var btnAccelerate:SmartButton;
+	private var accelerateValue:TextSprite;
 	private var questTime:SmartComponent;
 	public var heroCursor:UISprite;
 	public var heroCursorStartPosition:Point;
@@ -56,6 +60,7 @@ class InternElementInQuest extends InternElement
 	
 	private function getComponents():Void{
 		btnAccelerate = cast(getChildByName(AssetName.BUTTON_ACCELERATE_IN_QUEST), SmartButton);
+		accelerateValue = cast(SmartCheck.getChildByName(btnAccelerate, "_accelerate_cost"), TextSprite);
 		internName = cast(getChildByName(AssetName.INTERN_NAME_IN_QUEST), TextSprite);
 		
 		questTime = cast(getChildByName(AssetName.TIME_IN_QUEST), SmartComponent);
@@ -72,12 +77,12 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function setOnSpawn(pDesc:InternDescription):Void{
-		loop = Timer.delay(progressCursorLoop, 10);
-		loop.run = progressCursorLoop;
+		loop = Timer.delay(progressLoop, 10);
+		loop.run = progressLoop;
 		
 		internName.text = pDesc.name;
+		accelerateValue.text = "2"; //@ToDo: Provisoire, en attendant le balancing des GD
 		quest = pDesc.quest;
-		//intern = pDesc;
 		
 		questGaugeLenght = (questGauge.position.x / 1.75) - heroCursorStartPosition.x;
 		
@@ -96,34 +101,41 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function onAccelerate(){
-		trace("accelerate");
+		ResourcesManager.spendTotal(GeneratorType.hard, 2);
 		if (!TimeManager.increaseQuestProgress(quest)) trace("quest end!");
 	}
 	
-	private function progressCursorLoop():Void {
+	private function progressLoop():Void {
 		
 		if (heroCursor.position != null){
-			for (i in 0...eventCursorsArray.length){
-				if (i != quest.stepIndex) eventCursorsArray[i].alpha = 0.5;
-				else eventCursorsArray[i].alpha = 1;
-			}
-			
-			timeEvent.text = TimeManager.getTextTimeQuest(quest.end - quest.progress) + "s";
-			
-			if (quest.stepIndex != 3) {
-				heroCursor.position.x = Math.min(((questGaugeLenght * quest.progress) / quest.end) + heroCursorStartPosition.x, ((questGaugeLenght * quest.steps[quest.stepIndex]) / quest.end) + heroCursorStartPosition.x);
-			}
-			
-			else {
-				eventCursor3.alpha = 1;
-				heroCursor.position.x = ((questGaugeLenght * quest.steps[2]) / quest.end) + heroCursorStartPosition.x;
-				timeEvent.text =  "00:00 s";
-			}
+			updateEventCursors();
+			//timeEvent.text = TimeManager.getTextTimeQuest(quest.end - quest.progress) + "s";
+			timeEvent.text = TimeManager.getTextTimeQuest(quest.steps[quest.stepIndex] - quest.progress) + "s";
+			updateCursorPosition();
 		}
 		
 		else {
-			trace("null");
 			loop.stop();
+		}
+	}
+	
+	private function updateEventCursors():Void{
+		
+		for (i in 0...eventCursorsArray.length){
+			if (i != quest.stepIndex) eventCursorsArray[i].alpha = 0.5;
+			else eventCursorsArray[i].alpha = 1;
+		}
+	}
+	
+	private function updateCursorPosition():Void{
+		if (quest.stepIndex != 3) {
+			heroCursor.position.x = Math.min(((questGaugeLenght * quest.progress) / quest.end) + heroCursorStartPosition.x, ((questGaugeLenght * quest.steps[quest.stepIndex]) / quest.end) + heroCursorStartPosition.x);
+		}
+			
+		else {
+			eventCursor3.alpha = 1;
+			heroCursor.position.x = ((questGaugeLenght * quest.steps[2]) / quest.end) + heroCursorStartPosition.x;
+			timeEvent.text =  "00:00 s";
 		}
 	}
 	

@@ -1,9 +1,11 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest;
+import com.isartdigital.perle.ui.popin.listIntern.MaxStress;
 //import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
@@ -124,6 +126,7 @@ class QuestsManager
 	public static function goToNextStep():Void{
 		Choice.getInstance().hide();
 		TimeManager.nextStepQuest(questInProgress);
+		Intern.internsList[questInProgress.refIntern].stress += 4; //Todo: Temporaire, en attendant le baalncing
 	}
 	
 	/**
@@ -133,22 +136,39 @@ class QuestsManager
 	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeQuestDescription):Void{
 		trace("end");
-		//var lRandomEvent:Int = Math.round(Math.random() * 3 + 1);
 		choice(pQuest);
 		
-		TimeManager.destroyTimeElement(pQuest.refIntern);
-		destroyQuest(pQuest.refIntern);
 		//Si stagiaire pas stressé max
-		for (i in 0...Intern.internsList.length){
-			if (pQuest.refIntern == Intern.internsList[i].id){
-				if (Intern.internsList[i].stress < Intern.internsList[i].stressLimit){
-					//Intern.internsList[i].quest = createQuest(lRandomEvent, Intern.internsList[i].id);
-					Intern.internsList[i].quest = null;
+		trace(pQuest.refIntern);
+		trace(Intern.internsList);
+		trace(Intern.internsList[pQuest.refIntern]);
+		
+		var lIntern:InternDescription = Intern.internsList[pQuest.refIntern];
+		if (lIntern.stress < lIntern.stressLimit){
+			lIntern.quest = null;
+		}
+		else {
+			trace("dismiss");
+			lIntern.quest = null;
+		}
+		
+		for (i in 0...Intern.internsListArray.length){
+			if (pQuest.refIntern == Intern.internsListArray[i].id){
+				if (Intern.internsListArray[i].stress < Intern.internsListArray[i].stressLimit){
+					Intern.internsListArray[i].quest = null;
 				}
 				
-				else trace("dismiss");
+				else {
+					trace("dismiss");
+					//UIManager.getInstance().closeCurrentPopin;
+					//GameStage.getInstance().getPopinsContainer().addChild(MaxStress.getInstance());
+					lIntern.quest = null;
+				}
 			}
 		}
+		
+		destroyQuest(pQuest.refIntern);
+		TimeManager.destroyTimeElement(pQuest.refIntern);
 	}
 	
 	/**
