@@ -30,7 +30,7 @@ typedef RegionMap = {
  */
 class Building extends Tile implements IZSortable
 {
-	public static var BUILDING_NAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO obtenir de bdd
+	/*public static var BUILDING_NAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO obtenir de bdd
 		BuildingName.STYX_PURGATORY => {width:3, height:3, footprint : 1},
 		BuildingName.STYX_VICE => {width:3, height:1, footprint : 1},
 		BuildingName.STYX_VIRTUE => {width:3, height:2, footprint : 1},
@@ -60,7 +60,7 @@ class Building extends Tile implements IZSortable
 		
 		
 		BuildingName.HOUSE_INTERNS => {width:2, height:2, footprint : 1},
-	];
+	];*/
 	
 	public static var list:Array<Building>;
 	
@@ -87,6 +87,15 @@ class Building extends Tile implements IZSortable
 		GameStage.getInstance().getBuildContainer().addChild(container);
 		GameStage.getInstance().getGameContainer().addChild(uiContainer);
 		list = new Array<Building>();
+	}
+	
+	// todo : optimisé (réduire) l'appelle à la function GameConfig.getBuildingByName (à travers getSizeOnMap)
+	public static function getSizeOnMap (pBuildingName:String):SizeOnMap {
+		return {
+			width: GameConfig.getBuildingByName(pBuildingName).width,
+			height: GameConfig.getBuildingByName(pBuildingName).height,
+			footprint: GameConfig.getBuildingByName(pBuildingName).footPrint
+		}
 	}
 	
 	/**
@@ -121,7 +130,7 @@ class Building extends Tile implements IZSortable
 				x:pTileDesc.mapX + regionFirstTilePos.x, 
 				y:pTileDesc.mapY + regionFirstTilePos.y
 			},
-			BUILDING_NAME_TO_MAPSIZE[pTileDesc.buildingName]
+			Building.getSizeOnMap(pTileDesc.buildingName)
 		);
 		list.push(lBuilding);
 		lBuilding.init();

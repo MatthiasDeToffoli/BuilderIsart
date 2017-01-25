@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -15,37 +16,63 @@ import pixi.interaction.EventTarget;
  */
 class CCUBuilding extends CarousselCardUnlock{
 
+	
+	private var textPriceSoft:TextSprite;
+	private var textPriceWood:TextSprite;
+	private var textPriceIron:TextSprite;
+	private var iconIron:UISprite;
+	private var iconWood:UISprite;
+	
 	public function new() {
 		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
 	}
 	
-	private function setRessourcesPrice() {
-	
-		var item_price = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice"), TextSprite);
-		var item_price2 = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice2"), TextSprite);
-		var item_icon = cast(SmartCheck.getChildByName(this, "Resource_icon"), UISprite);
-		var item_icon2 = cast(SmartCheck.getChildByName(this, "Resource_icon2"), UISprite);
-		removeChild(item_price);	
-		removeChild(item_price2);	
-		removeChild(item_icon);	
-		removeChild(item_icon2);	
+	private function setRessourcesPrice () {
+		textPriceSoft = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
+		textPriceWood = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice"), TextSprite);
+		textPriceIron = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice2"), TextSprite);
+		iconIron = cast(SmartCheck.getChildByName(this, "Resource_icon2"), UISprite);
+		iconWood = cast(SmartCheck.getChildByName(this, "Resource_icon"), UISprite);
 	}
 	
-	override function buildCard():Void {
+	override function buildCard ():Void {
 		super.buildCard();
 		
 		image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
 		text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
-		text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
+		SmartCheck.traceChildrens(this);
 		setRessourcesPrice();
 		
 		setImage(BuildingName.getAssetName(buildingName));
 		setName(FakeTraduction.assetNameNameToTrad(buildingName));
-		setPrice(BuyManager.checkPrice(buildingName));
+		setPrice(BuyManager.getPrice(buildingName));
 	}
 	
-	override function setName(pString:String):Void {
+	override function setName (pString:String):Void {
 		text_name.text = pString;
+	}
+	
+	function setPrice (pPrices:Map<GeneratorType, Int>):Void {
+		
+		textPriceSoft.text = Std.string(pPrices[GeneratorType.soft]);
+		
+		if (pPrices[GeneratorType.buildResourceFromParadise] == null) {
+			removeChild(iconWood);
+			removeChild(textPriceWood);
+		}
+		else
+			textPriceWood.text = Std.string(pPrices[GeneratorType.buildResourceFromParadise]);
+			
+		if (pPrices[GeneratorType.buildResourceFromHell] == null) {
+			removeChild(iconIron);
+			removeChild(textPriceIron);
+		}
+		else
+			textPriceIron.text = Std.string(pPrices[GeneratorType.buildResourceFromHell]);
+		
+		
+		//iconIron // todo : intégrer ds .fla ou voir gd
+		//iconWood
 	}
 	
 	override function _click(pEvent:EventTarget = null):Void {

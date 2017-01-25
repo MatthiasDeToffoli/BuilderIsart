@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.loader.GameLoader;
@@ -6,59 +7,59 @@ import haxe.Json;
 
 
 typedef TableConfig = {
-	var RefundRatioBuilded:Float;
-	var RefundRatioConstruct:Float;
-	var FactorRegionGrowth:Float;
-	var PriceRegion:Float;
-	var RegionXpSameSide:Float;
-	var RegionXpOtherSide:Float;
-	var FactorRegionNearStyx:Float;
+	var refundRatioBuilded:Float;
+	var refundRatioConstruct:Float;
+	var factorRegionGrowth:Float;
+	var priceRegion:Float;
+	var regionXpSameSide:Float;
+	var regionXpOtherSide:Float;
+	var factorRegionNearStyx:Float;
 }
 
 typedef TableTypeBuilding = {
-	var ID:Int;
-	var Name:String; // constantes; voir BuildingName.hx
-	var Level:Int;
-	var Alignment:String; // enum; à travers le json devient string... ou le transformer en enum ?
-	var Width:Int;
-	var Height:Int;
-	var FootPrint:Int;
-	@:optional var CostGold:Int;
-	@:optional var CostWood:Int;
-	@:optional var CostIron:Int;
-	@:optional var CostKarma:Int;
-	var ConstructionTime:String; // HH:MM:SS or HHH:MM:SS
-	@:optional var ProductionType:String; // enum
-	@:optional var ProductionPerHour:Int;
-	@:optional var ProductionResource:String; // enum
-	@:optional var ProductionPerBuildingHeaven:Int;
-	@:optional var ProductionPerBuildingHell:Int;
-	var XPatCreationHeaven:Int;
-	var XPatCreationHell:Int;
-	var LevelUnlocked:Int;
-	@:optional var LimitPerRegion:Int;
-	@:optional var FactoryNeededToUnlock:Int;
-	@:optional var MaxSoulsContained:Int;
-	@:optional var MaxGoldContained:Int;
-	@:optional var IDPack1:TableTypePack;
-	@:optional var IDPack2:TableTypePack;
-	@:optional var IDPack3:TableTypePack;
-	@:optional var IDPack4:TableTypePack;
-	@:optional var IDPack5:TableTypePack;
-	@:optional var IDPack6:TableTypePack;
+	var iD:Int;
+	var name:String; // constantes; voir BuildingName.hx
+	var level:Int;
+	var alignment:Alignment; // enum; à travers le json devient string... ou le transformer en enum ?
+	var width:Int;
+	var height:Int;
+	var footPrint:Int;
+	@:optional var costGold:Int;
+	@:optional var costWood:Int;
+	@:optional var costIron:Int;
+	@:optional var costKarma:Int;
+	var constructionTime:String; // HH:MM:SS or HHH:MM:SS
+	@:optional var productionType:String; // enum
+	@:optional var productionPerHour:Int;
+	@:optional var productionResource:String; // enum
+	@:optional var productionPerBuildingHeaven:Int;
+	@:optional var productionPerBuildingHell:Int;
+	var xPatCreationHeaven:Int;
+	var xPatCreationHell:Int;
+	var levelUnlocked:Int;
+	@:optional var limitPerRegion:Int;
+	@:optional var factoryNeededToUnlock:Int;
+	@:optional var maxSoulsContained:Int;
+	@:optional var maxGoldContained:Int;
+	@:optional var iDPack1:TableTypePack;
+	@:optional var iDPack2:TableTypePack;
+	@:optional var iDPack3:TableTypePack;
+	@:optional var iDPack4:TableTypePack;
+	@:optional var iDPack5:TableTypePack;
+	@:optional var iDPack6:TableTypePack;
 	
 }
 
 typedef TableTypePack = {
-	var ID:Int;
-	var Name:String; // varchar, mais pourrait être enum ?
-	var CostGold:Int;
-	var CostKarma:Int;
-	var Time:String; // todo type Time ?
-	var GainWood:Int;
-	var GainIron:Int;
-	var GainFluxSouls:Int;
-	var ProductionResource:String; // enum
+	var iD:Int;
+	var name:String; // varchar, mais pourrait être enum ?
+	var costGold:Int;
+	var costKarma:Int;
+	var time:String; // todo type Time ?
+	var gainWood:Int;
+	var gainIron:Int;
+	var gainFluxSouls:Int;
+	var productionResource:String; // enum
 }
 
 typedef TableTypeIntern = {
@@ -99,7 +100,7 @@ class GameConfig {
 		trace(config[BUILDING][0].ID);*/
 	}
 	
-	public static function getConfig ():TableTypeBuilding {
+	public static function getConfig ():TableConfig {
 		return cast(config[CONFIG][0]);
 	}
 	
@@ -109,9 +110,10 @@ class GameConfig {
 	
 	public static function getBuildingByName (pName:String):TableTypeBuilding { // todo : enum ?
 		for (i in 0...config[BUILDING].length)
-			if (config[BUILDING][i].Name == pName)
+			if (config[BUILDING][i].name == pName)
 				return config[BUILDING][i];
 				
+		Debug.error("BuildingName '" + pName +"' missing.");
 		return null;
 	}
 	
@@ -132,13 +134,70 @@ class GameConfig {
 			
 			var anotherFields:Array<String> = Reflect.fields(Reflect.field(pContent, fields[i]));
 			for (j in 0...anotherFields.length) {
-				pConfig[fields[i]][j] = Reflect.field(
+				// met les propriétés en maj comme ds la bdd
+				// par contre me met le bon type et pas un vulgaire string de json :/
+				/*pConfig[fields[i]][j] = Reflect.field( 
 					Reflect.field(pContent, fields[i]),
 					anotherFields[j]
-				);
+				);*/
+				
+				// c'est vrai cela, pourquoi en cours ils mettents des majuscule en bdd les profs ??
+				var typedefFields:Array<String> = Reflect.fields(Reflect.field(
+					Reflect.field(pContent, fields[i]),
+					anotherFields[j]
+				));
+				var lowerCaseTypeDef:Dynamic = { };
+				
+				for (n in 0...typedefFields.length) {
+					var lKey:String = typedefFields[n];
+					var keyToLower:String = lKey.charAt(0).toLowerCase() + lKey.substr(1);
+					var lValue:Dynamic = Reflect.field(
+						Reflect.field(
+							Reflect.field(pContent, fields[i]),
+							anotherFields[j]
+						),
+						typedefFields[n]
+					);
+					var lNewValue:Dynamic = null;
+					
+					
+					if (ServerManager.stringToEnum(lValue) != null)
+						lNewValue = ServerManager.stringToEnum(lValue);
+					else if (isInt(lValue))
+						lNewValue = Std.parseInt(lValue);
+					else if (isFloat(lValue))
+						lNewValue = Std.parseFloat(lValue);
+					else
+						lNewValue = lValue;
+					
+					Reflect.setProperty(lowerCaseTypeDef, keyToLower, lNewValue);
+				}
+				
+				pConfig[fields[i]][j] = lowerCaseTypeDef;
 			}
 		}
+	}
+	
+	private static function isInt (pString:String):Bool {
+		if (pString == null)
+			return true;
+		for (i in 0...pString.length) {
+			if ("0123456789".indexOf(pString.charAt(i)) == -1)
+				return false;
+		}
 		
+		return true;
+	}
+	
+	private static function isFloat (pString:String):Bool {
+		if (pString == null)
+			return true;
+		for (i in 0...pString.length) {
+			if (".0123456789".indexOf(pString.charAt(i)) == -1)
+				return false;
+		}
+		
+		return true;
 	}
 	
 	public function new() {

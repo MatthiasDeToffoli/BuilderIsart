@@ -23,8 +23,6 @@ class CarousselCardUnlock extends CarouselCard
 	private var lButton:SmartButton;
 	
 	private var text_name:TextSprite;
-	private var text_price:TextSprite;
-	private var text_number_resource:TextSprite;
 	
 	private var lAssetName:String; // todo @Alexis: suppr et tout ce qui est lié, le switch
 	
@@ -58,10 +56,6 @@ class CarousselCardUnlock extends CarouselCard
 	}
 	
 	private function setName (pAssetName:String):Void {}
-	
-	private function setPrice (pInt:Int):Void {
-		text_price.text = Std.string(pInt);
-	}
 	
 	override private function _click (pEvent:EventTarget = null):Void {
 		if (alpha == 0.5)

@@ -13,6 +13,9 @@ import pixi.interaction.EventTarget;
  */
 class CCUResource extends CarousselCardUnlock{
 	
+	var text_number_resource:TextSprite;
+	var text_price:TextSprite;
+	
 	public function new() {
 		super(AssetName.CAROUSSEL_CARD_BUNDLE);
 		text_number_resource = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_PRICE), TextSprite);

@@ -18,12 +18,17 @@ class Virtual {
 	
 	public static var BUILDING_NAME_TO_VCLASS(default, never):Map<String, String> = [
 		BuildingName.STYX_PURGATORY => "VTribunal",
-		BuildingName.STYX_VICE => "VVirtuesBuilding",
-		BuildingName.STYX_VIRTUE => "VVirtuesBuilding",
+		BuildingName.STYX_VICE_1 => "VVirtuesBuilding",
+		BuildingName.STYX_VICE_2 => "VVirtuesBuilding",
+		BuildingName.STYX_VICE_3 => "VVirtuesBuilding",
+		BuildingName.STYX_VIRTUE_1 => "VVirtuesBuilding",
+		BuildingName.STYX_VIRTUE_2 => "VVirtuesBuilding",
+		BuildingName.STYX_VIRTUE_3 => "VVirtuesBuilding",
 		BuildingName.STYX_MARKET => "VHouseHell", //todo: mauvaise VClass
 		
 		
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
+		BuildingName.HEAVEN_HOUSE_INTERNS => "VHouseHell", // todo
 		BuildingName.HEAVEN_COLLECTOR => "VCollectorHeaven",
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VHouseHell", //todo
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",
@@ -35,6 +40,7 @@ class Virtual {
 		
 		
 		BuildingName.HELL_HOUSE => "VHouseHell",
+		BuildingName.HELL_HOUSE_INTERNS => "VHouseHell", // todo
 		BuildingName.HELL_COLLECTOR => "VCollectorHell", // todo
 		BuildingName.HELL_FACTORY => "VFactory",
 		BuildingName.HELL_DECO_GENERIC_ROCK => "VDecoHell",
@@ -42,13 +48,10 @@ class Virtual {
 		BuildingName.HELL_DECO_PRETTY_ROCK => "VDecoHell",
 		BuildingName.HELL_DECO_AWESOME_ROCK => "VDecoHell",
 		BuildingName.HELL_DECO_BUILDING => "VDecoHell",
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell",
-		
-		
-		BuildingName.HOUSE_INTERNS => "VHouseHell", // todo
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell"
 	];
 	
-	public static var BUILDING_NAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
+	/*public static var BUILDING_NAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
 	
 		BuildingName.STYX_PURGATORY => Alignment.neutral,
 		BuildingName.STYX_VICE => Alignment.neutral,
@@ -57,6 +60,7 @@ class Virtual {
 		
 		
 		BuildingName.HEAVEN_HOUSE => Alignment.heaven,
+		BuildingName.HEAVEN_HOUSE_INTERNS => Alignment.heaven,
 		BuildingName.HEAVEN_COLLECTOR => Alignment.heaven,
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT => Alignment.heaven,
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => Alignment.heaven,
@@ -68,6 +72,7 @@ class Virtual {
 		
 		
 		BuildingName.HELL_HOUSE => Alignment.hell,
+		BuildingName.HELL_HOUSE_INTERNS => Alignment.hell,
 		BuildingName.HELL_COLLECTOR => Alignment.hell,
 		BuildingName.HELL_FACTORY => Alignment.hell,
 		BuildingName.HELL_DECO_GENERIC_ROCK => Alignment.hell,
@@ -75,11 +80,8 @@ class Virtual {
 		BuildingName.HELL_DECO_PRETTY_ROCK => Alignment.hell,
 		BuildingName.HELL_DECO_AWESOME_ROCK => Alignment.hell,
 		BuildingName.HELL_DECO_BUILDING => Alignment.hell,
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING => Alignment.hell,
-		
-		
-		BuildingName.HOUSE_INTERNS => null,
-	];
+		BuildingName.HELL_DECO_GORGEOUS_BUILDING => Alignment.hell
+	];*/
 	
 	
 	/**
@@ -97,7 +99,7 @@ class Virtual {
 	 * instance linked to VCell when active
 	 */
 	public var graphic(default, null):Container;
-
+	
 	public function new () {}
 	
 	

@@ -57,7 +57,6 @@ class GameManager {
 		GameConfig.awake();
 		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
-		BuyManager.initClass();
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();	
 		PoolingManager.init();

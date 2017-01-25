@@ -74,7 +74,7 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickShop (pBuildingName:String):Void {
-		alignementBuilding = Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
+		alignementBuilding = GameConfig.getBuildingByName(pBuildingName).alignment;//Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];  
 		createPhantom(pBuildingName);
 	}
 	
@@ -84,7 +84,7 @@ class Phantom extends Building {
 	 * @param	pVBuilding
 	 */
 	public static function onClickMove (pBuildingName:String, pVBuilding:VBuilding):Void {
-		alignementBuilding = Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
+		alignementBuilding = GameConfig.getBuildingByName(pBuildingName).alignment;//Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
 		createPhantom(pBuildingName);
 		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
@@ -263,8 +263,8 @@ class Phantom extends Building {
 		var mapPos:Index = getRoundMapPos(position);
 		
 		return IsoManager.modelToIsoView(new Point(
-			mapPos.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width / 2,
-			mapPos.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height / 2
+			mapPos.x + Building.getSizeOnMap(buildingName).width / 2,
+			mapPos.y + Building.getSizeOnMap(buildingName).height / 2
 		));
 	}
 	
@@ -294,7 +294,9 @@ class Phantom extends Building {
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
 		
-		if (BuyManager.buy(buildingName)) {
+		if (BuyManager.canBuy(buildingName)) {
+			BuyManager.buy(buildingName);
+			
 			var newId = IdManager.newId();
 			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {
@@ -347,7 +349,7 @@ class Phantom extends Building {
 	 * @param	pRect
 	 */
 	private function canBuildHere():Bool {
-		setMapColRow(getRoundMapPos(position), Building.BUILDING_NAME_TO_MAPSIZE[buildingName]);
+		setMapColRow(getRoundMapPos(position), Building.getSizeOnMap(buildingName));
 		regionMap = getRegionMap();
 		
 		if (alignementBuilding == null) {
@@ -415,8 +417,8 @@ class Phantom extends Building {
 		
 		setExceedBuildingOnGround(lRegionSize);
 		
-		return (regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width <= lRegionSize.width &&
-				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height <= lRegionSize.height);
+		return (regionMap.map.x + Building.getSizeOnMap(buildingName).width <= lRegionSize.width &&
+				regionMap.map.y + Building.getSizeOnMap(buildingName).height <= lRegionSize.height);
 	}
 	
 	/**
@@ -451,52 +453,46 @@ class Phantom extends Building {
 	private function collisionRectDesc(pVirtual:TileDescription):Bool {
 		var lCombinedFootprint:Int; // todo @Alexis: lPoint correpond à quoi ?
 		
-		/*if (Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint == 0 ||
-			Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint == 0)
+		/*if (Building.getSizeOnMap(pVirtual.buildingName).footprint == 0 ||
+			Building.getSizeOnMap(buildingName].footprint == 0)
 			lCombinedFootprint = 0;
 		else
-			lCombinedFootprint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;*/
+			lCombinedFootprint = Building.getSizeOnMap(buildingName).footprint;*/
 		// todo : vérifier que tt fonctionne bien
 		// avec le truc d'avant, ds le cas ou pVirtual à un footprint de 2 et buildingName de 1,
 		// on garderait qu'un footprint de 1.
 		lCombinedFootprint = cast(Math.min(
-			Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].footprint,
-			Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+			Building.getSizeOnMap(pVirtual.buildingName).footprint,
+			Building.getSizeOnMap(buildingName).footprint
 		), Int);
 		
 		
 		setExceedCollisionRectDesc(lCombinedFootprint, pVirtual);
 		
-		//lPoint = Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint;
+		//lPoint = Building.getSizeOnMap(buildingName).footprint;
 		
 		// todo :  créer méthode de collision classique entre deux rect et donner ces valeurs ci-dessous en paramètres.
-		return (regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + lCombinedFootprint &&
-				regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - lCombinedFootprint &&
-				regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + lCombinedFootprint &&
-				regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - lCombinedFootprint );
+		return (regionMap.map.x < pVirtual.mapX + Building.getSizeOnMap(pVirtual.buildingName).width + lCombinedFootprint &&
+				regionMap.map.x + Building.getSizeOnMap(buildingName).width > pVirtual.mapX - lCombinedFootprint &&
+				regionMap.map.y < pVirtual.mapY + Building.getSizeOnMap(pVirtual.buildingName).height + lCombinedFootprint &&
+				regionMap.map.y + Building.getSizeOnMap(buildingName).height > pVirtual.mapY - lCombinedFootprint );
 	}
 	
 	private function setExceedCollisionRectDesc (pCombinedFootprint:Float, pVirtual:TileDescription):Array<Index> {
 		var lExceeding:Array<Index> = [];
 		
 		var lStartBuilding:Index = { 
-			x: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
-			y: -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+			x: -Building.getSizeOnMap(buildingName).footprint,
+			y: -Building.getSizeOnMap(buildingName).footprint
 		};
 		var lEndBuilding:Index = { 
-			x: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
-			y: Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
+			x: Building.getSizeOnMap(buildingName).footprint + Building.getSizeOnMap(buildingName).width,
+			y: Building.getSizeOnMap(buildingName).footprint + Building.getSizeOnMap(buildingName).height
 		};
 		
 		// for every building cell excluding footprint
 		for (lX in lStartBuilding.x...lEndBuilding.x) {
 			for (lY in lStartBuilding.y...lEndBuilding.y) {
-				
-				// a priori fonctionne bien
-				/*if (lX + regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint &&
-					lX + regionMap.map.x > pVirtual.mapX - pCombinedFootprint &&
-					lY + regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint &&
-					lY + regionMap.map.y > pVirtual.mapY - pCombinedFootprint )*/
 				
 				var collide:Bool = collisionPointRect( {
 					x:lX + regionMap.map.x,
@@ -504,8 +500,8 @@ class Phantom extends Building {
 				}, new Rectangle(
 					pVirtual.mapX - pCombinedFootprint,
 					pVirtual.mapY - pCombinedFootprint,
-					Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint,
-					Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint
+					Building.getSizeOnMap(pVirtual.buildingName).width + pCombinedFootprint,
+					Building.getSizeOnMap(pVirtual.buildingName).height + pCombinedFootprint
 				));
 				
 				if (collide)
@@ -513,16 +509,6 @@ class Phantom extends Building {
 						x:lX,
 						y:lY
 					});
-					
-				//fonctionne pas à priori, 
-				/*if (lX + regionMap.map.x < pVirtual.mapX + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].width + pCombinedFootprint &&
-					lX + regionMap.map.x + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width > pVirtual.mapX - pCombinedFootprint &&
-					lY + regionMap.map.y < pVirtual.mapY + Building.BUILDING_NAME_TO_MAPSIZE[pVirtual.buildingName].height + pCombinedFootprint &&
-					lY + regionMap.map.y + Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height > pVirtual.mapY - pCombinedFootprint )
-					lExceeding.push({
-						x:lX,
-						y:lY
-					});*/
 			}
 		}
 		
@@ -537,12 +523,12 @@ class Phantom extends Building {
 		var lExceeding:Array<Index> = [];
 		
 		var lStartBuilding:Index = { 
-			x: 0,//-Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint,
-			y: 0//-Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint
+			x: 0,//-Building.getSizeOnMap(buildingName).footprint,
+			y: 0//-Building.getSizeOnMap(buildingName).footprint
 		};
 		var lEndBuilding:Index = { 
-			x: /*Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + */Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width,
-			y: /*Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint + */Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height
+			x: /*Building.getSizeOnMap(buildingName).footprint + */Building.getSizeOnMap(buildingName).width,
+			y: /*Building.getSizeOnMap(buildingName).footprint + */Building.getSizeOnMap(buildingName).height
 		};
 		
 		
@@ -571,8 +557,8 @@ class Phantom extends Building {
 	private function setExceedingToAll ():Void {
 		var lAllExceeding:Array<Index> = [];
 		
-		for (lX in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].width+1) {
-			for (lY in -Building.BUILDING_NAME_TO_MAPSIZE[buildingName].footprint...Building.BUILDING_NAME_TO_MAPSIZE[buildingName].height+1) {
+		for (lX in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).width+1) {
+			for (lY in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).height+1) {
 				lAllExceeding.push({
 					x:lX,
 					y:lY

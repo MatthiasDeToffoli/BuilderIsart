@@ -111,7 +111,7 @@ class VBuilding extends VTile {
 		if (pData.regionPos.x != tileDesc.regionX || pData.regionPos.y != tileDesc.regionY) return;
 		
 		var i:Int, j:Int;
-		var mapSize:SizeOnMap = Building.BUILDING_NAME_TO_MAPSIZE[tileDesc.buildingName];
+		var mapSize:SizeOnMap = Building.getSizeOnMap(tileDesc.buildingName);
 		
 		for (i in tileDesc.mapX...(tileDesc.mapX + mapSize.width)){
 			for (j in tileDesc.mapX...(tileDesc.mapY + mapSize.height)){

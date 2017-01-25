@@ -54,13 +54,13 @@ class FootPrint extends Tile
 	public static function createShadow(pInstance:Phantom):Void {
 		lInstance = pInstance;
 		//point of footprint
-		if (Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint == 0)
+		if (Building.getSizeOnMap(lInstance.buildingName).footprint == 0)
 			deplacementFootprint = 0;
 		else 
 			deplacementFootprint = DEPLACEMENT_FOOTPRINT_CONST;
-		
-		var lX:Int = cast(Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].width + Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint * 2,Int);
-		var lY:Int = cast(Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].height + Building.BUILDING_NAME_TO_MAPSIZE[lInstance.buildingName].footprint * 2,Int);
+		trace(Building.getSizeOnMap(lInstance.buildingName));
+		var lX:Int = Building.getSizeOnMap(lInstance.buildingName).width + Building.getSizeOnMap(lInstance.buildingName).footprint * 2;
+		var lY:Int = Building.getSizeOnMap(lInstance.buildingName).height + Building.getSizeOnMap(lInstance.buildingName).footprint * 2;
 		
 		FootPrintAsset.footPrintArray = [];
 		FootPrintAsset.arrayContainerFootPrint = [];

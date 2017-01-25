@@ -23,11 +23,16 @@ class ShopCaroussel extends SmartComponent {
 	// no json because i'm using constants
 	// todo : utiliserBDD pour enregistrer cela
 	public static var buildingNameList(default, never):Array<String> = [
-		BuildingName.STYX_VICE,
-		BuildingName.STYX_VIRTUE,
+		BuildingName.STYX_VICE_1,
+		BuildingName.STYX_VICE_2,
+		BuildingName.STYX_VICE_3,
+		BuildingName.STYX_VIRTUE_1,
+		BuildingName.STYX_VIRTUE_2,
+		BuildingName.STYX_VIRTUE_3,
 		BuildingName.STYX_MARKET,
 		
 		BuildingName.HEAVEN_HOUSE,
+		BuildingName.HEAVEN_HOUSE_INTERNS,
 		BuildingName.HEAVEN_COLLECTOR,
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
 		
@@ -35,7 +40,7 @@ class ShopCaroussel extends SmartComponent {
 		BuildingName.HELL_COLLECTOR,
 		BuildingName.HELL_FACTORY,
 		
-		BuildingName.HOUSE_INTERNS,
+		BuildingName.HELL_HOUSE_INTERNS,
 	];
 	
 	public static var decoNameList(default, never):Array<String> = [

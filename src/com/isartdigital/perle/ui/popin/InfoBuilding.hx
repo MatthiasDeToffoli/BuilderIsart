@@ -286,7 +286,7 @@ class InfoBuilding extends SmartPopin{
 	public function sell ():Void {
 		
 		BuildingHud.linkVirtualBuilding(virtualBuilding);
-		BuyManager.sell(cast(virtualBuilding.graphic, Building).getAssetName());
+		BuyManager.sell(virtualBuilding.tileDesc.buildingName, true); // todo : changer true par si le building se construit ou pas
 		UIManager.getInstance().closeCurrentPopin();
 		virtualBuilding.destroy();
 		Hud.getInstance().hideBuildingHud();

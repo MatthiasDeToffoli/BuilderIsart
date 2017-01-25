@@ -103,7 +103,7 @@ class ServerManager {
 		
 	}
 	
-	private static function stringToEnum(pString:String):Dynamic {
+	public static function stringToEnum(pString:String):Dynamic {
 		switch (pString) {
 			case "neutral" :
 				return Alignment.neutral;
@@ -115,7 +115,7 @@ class ServerManager {
 				return Alignment.heaven;
 				
 			default :
-				return Alignment.neutral;
+				return null;
 		}
 	}
 
