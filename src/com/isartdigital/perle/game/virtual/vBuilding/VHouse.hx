@@ -46,7 +46,7 @@ class VHouse extends VBuildingUpgrade
 	{
 		maxResources = [50, 225, 1200];
 		myMaxContains = maxResources[0]; 
-		myTime = 60000 / valuesWin[0];
+		myTime = TimesInfo.MIN / valuesWin[0];
 		
 
 		super.addGenerator();
@@ -96,7 +96,7 @@ class VHouse extends VBuildingUpgrade
 		super.onClickUpgrade();
 		
 		updatePopulation(null, mapMaxPopulation[tileDesc.buildingName]);
-		myTime = 60000 / valuesWin[indexLevel];
+		myTime = TimesInfo.MIN / valuesWin[indexLevel];
 		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, maxResources[indexLevel], myTime); //@TODO : mettre de vrais valeur...
 		
 		SaveManager.save();

@@ -168,7 +168,7 @@ class VAltar extends VBuilding
 	
 	private function calculTime():Void{
 		if (elementHeaven.length == 0 && elementHell.length == 0) myTime = 0;
-		else myTime = 60000 / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
+		else myTime = TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
 	}
 	private function haveMoreBoost():Void{
 		calculTime();

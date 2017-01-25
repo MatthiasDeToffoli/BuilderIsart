@@ -83,7 +83,7 @@ class VTribunal extends VBuilding
 	}
 
 	override function addGenerator():Void {
-		myTime = 60000 * 40; //40 minutes
+		myTime = TimesInfo.MIN * 40; //40 minutes
 		myGeneratorType = GeneratorType.soul;
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains, myTime, Alignment.neutral, true);
 		

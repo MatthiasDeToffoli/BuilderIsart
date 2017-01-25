@@ -46,7 +46,7 @@ class VBuilding extends VTile {
 	
 	private var myVContextualHud:VHudContextual;
 	
-	private var myTime:Float = 60000; //1 minutes
+	private var myTime:Float = TimesInfo.MIN;
 	
 	public var currentState:VBuildingState; // todo : temporaire
 	

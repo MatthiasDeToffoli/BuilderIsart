@@ -1148,6 +1148,15 @@ com_isartdigital_perle_game_ActionType.GOOD.__enum__ = com_isartdigital_perle_ga
 var com_isartdigital_perle_game_QuestDictionnary = function() { };
 $hxClasses["com.isartdigital.perle.game.QuestDictionnary"] = com_isartdigital_perle_game_QuestDictionnary;
 com_isartdigital_perle_game_QuestDictionnary.__name__ = ["com","isartdigital","perle","game","QuestDictionnary"];
+var com_isartdigital_perle_game_TimesInfo = function() { };
+$hxClasses["com.isartdigital.perle.game.TimesInfo"] = com_isartdigital_perle_game_TimesInfo;
+com_isartdigital_perle_game_TimesInfo.__name__ = ["com","isartdigital","perle","game","TimesInfo"];
+com_isartdigital_perle_game_TimesInfo.getClock = function(pTime) {
+	var currentHou = Math.floor(pTime / 3600000);
+	var currentMin = Math.floor((pTime - currentHou * 3600000) / 60000);
+	var currentSec = Math.floor((pTime - currentMin * 60000) / 1000);
+	return { houre : currentHou < 10?"0" + currentHou:"" + currentHou, minute : currentMin < 10?"0" + currentMin:"" + currentMin, seconde : currentSec < 10?"0" + currentSec:"" + currentSec};
+};
 var com_isartdigital_perle_game_iso_IZSortable = function() { };
 $hxClasses["com.isartdigital.perle.game.iso.IZSortable"] = com_isartdigital_perle_game_iso_IZSortable;
 com_isartdigital_perle_game_iso_IZSortable.__name__ = ["com","isartdigital","perle","game","iso","IZSortable"];
@@ -2524,6 +2533,9 @@ com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesWithTime 
 	}
 };
 com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesWithPolation = function(pType,data) {
+	if(data.generator == null) {
+		return false;
+	}
 	var _g = 0;
 	var _g1 = com_isartdigital_perle_game_managers_ResourcesManager.allPopulations.get(pType);
 	while(_g < _g1.length) {
@@ -2537,6 +2549,9 @@ com_isartdigital_perle_game_managers_ResourcesManager.increaseResourcesWithPolat
 	return false;
 };
 com_isartdigital_perle_game_managers_ResourcesManager.increaseResources = function(pGenerator,quantity) {
+	if(pGenerator == null) {
+		return;
+	}
 	pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity,pGenerator.desc.max);
 	com_isartdigital_perle_game_managers_ResourcesManager.save(pGenerator);
 	if(pGenerator.desc.quantity >= pGenerator.desc.max / 10) {
@@ -2963,9 +2978,11 @@ com_isartdigital_perle_game_managers_TimeManager.initClass = function() {
 	com_isartdigital_perle_game_managers_TimeManager.eTimeGenerator = new EventEmitter();
 	com_isartdigital_perle_game_managers_TimeManager.eTimeQuest = new EventEmitter();
 	com_isartdigital_perle_game_managers_TimeManager.eConstruct = new EventEmitter();
+	com_isartdigital_perle_game_managers_TimeManager.eProduction = new EventEmitter();
 	com_isartdigital_perle_game_managers_TimeManager.listResource = [];
 	com_isartdigital_perle_game_managers_TimeManager.listQuest = [];
 	com_isartdigital_perle_game_managers_TimeManager.listConstruction = [];
+	com_isartdigital_perle_game_managers_TimeManager.listProduction = [];
 };
 com_isartdigital_perle_game_managers_TimeManager.buildWhitoutSave = function() {
 	com_isartdigital_perle_game_managers_TimeManager.gameStartTime = new Date().getTime();
@@ -3011,6 +3028,11 @@ com_isartdigital_perle_game_managers_TimeManager.addGenerator = function(pGenera
 			return;
 		}
 	}
+};
+com_isartdigital_perle_game_managers_TimeManager.createProductionTime = function(pack,ref) {
+	var myTime = { buildingRef : ref, gain : pack.quantity, progress : pack.time};
+	com_isartdigital_perle_game_managers_TimeManager.listProduction.push(myTime);
+	return myTime;
 };
 com_isartdigital_perle_game_managers_TimeManager.addConstructionTimer = function(pBuildingTimer) {
 	var dateNow = new Date().getTime();
@@ -3080,6 +3102,7 @@ com_isartdigital_perle_game_managers_TimeManager.timeLoop = function() {
 	var lLength = com_isartdigital_perle_game_managers_TimeManager.listResource.length;
 	var lLengthQuest = com_isartdigital_perle_game_managers_TimeManager.listQuest.length;
 	var lLengthConstruct = com_isartdigital_perle_game_managers_TimeManager.listConstruction.length;
+	var lLenghtProd = com_isartdigital_perle_game_managers_TimeManager.listProduction.length;
 	var constructionEnded = [];
 	com_isartdigital_perle_game_managers_TimeManager.lastKnowTime = lTimeNow;
 	com_isartdigital_perle_game_managers_SaveManager.saveLastKnowTime(com_isartdigital_perle_game_managers_TimeManager.lastKnowTime);
@@ -3090,8 +3113,11 @@ com_isartdigital_perle_game_managers_TimeManager.timeLoop = function() {
 	var _g2 = lLengthQuest;
 	while(_g11 < _g2) com_isartdigital_perle_game_managers_TimeManager.updateQuest(com_isartdigital_perle_game_managers_TimeManager.listQuest[_g11++],lElapsedTime);
 	var _g12 = 0;
-	var _g3 = lLengthConstruct;
-	while(_g12 < _g3) com_isartdigital_perle_game_managers_TimeManager.updateConstruction(com_isartdigital_perle_game_managers_TimeManager.listConstruction[_g12++],lElapsedTime,constructionEnded);
+	var _g3 = lLenghtProd;
+	while(_g12 < _g3) com_isartdigital_perle_game_managers_TimeManager.updateProductionTime(com_isartdigital_perle_game_managers_TimeManager.listProduction[_g12++],lElapsedTime);
+	var _g13 = 0;
+	var _g4 = lLengthConstruct;
+	while(_g13 < _g4) com_isartdigital_perle_game_managers_TimeManager.updateConstruction(com_isartdigital_perle_game_managers_TimeManager.listConstruction[_g13++],lElapsedTime,constructionEnded);
 	com_isartdigital_perle_game_managers_TimeManager.deleteEndedConstruction(constructionEnded);
 };
 com_isartdigital_perle_game_managers_TimeManager.deleteEndedConstruction = function(pEndedList) {
@@ -3125,6 +3151,14 @@ com_isartdigital_perle_game_managers_TimeManager.updateConstruction = function(p
 		com_isartdigital_perle_game_managers_TimeManager.eConstruct.emit("TimeManager_Construction_End",pElement);
 		pEndedList.push(index);
 	}
+};
+com_isartdigital_perle_game_managers_TimeManager.updateProductionTime = function(pElement,pEllapsedTime) {
+	pElement.progress -= pEllapsedTime;
+	if(pElement.progress < 0) {
+		pElement.progress = 0;
+		com_isartdigital_perle_game_managers_TimeManager.eProduction.emit("Production_Fine");
+	}
+	com_isartdigital_perle_game_managers_TimeManager.eProduction.emit("Production_Time",pElement);
 };
 com_isartdigital_perle_game_managers_TimeManager.getBuildingStateFromTime = function(pTileDesc) {
 	if(Object.prototype.hasOwnProperty.call(pTileDesc,"timeDesc")) {
@@ -4992,6 +5026,38 @@ com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade.prototype = $exte
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VBuildingUpgrade
 });
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
+=======
+var com_isartdigital_perle_game_virtual_vBuilding_VCollector = function(pDescription) {
+	this.product = false;
+	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+	com_isartdigital_perle_game_managers_TimeManager.eProduction.on("Production_Time",$bind(this,this.updateMyTime));
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.VCollector"] = com_isartdigital_perle_game_virtual_vBuilding_VCollector;
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","VCollector"];
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.__super__ = com_isartdigital_perle_game_virtual_VBuilding;
+com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype = $extend(com_isartdigital_perle_game_virtual_VBuilding.prototype,{
+	setHaveRecolter: function() {
+		this.haveRecolter = false;
+	}
+	,addGenerator: function() {
+	}
+	,updateMyTime: function(pTime) {
+		if(pTime.buildingRef == this.tileDesc.id) {
+			this.timeProd = pTime;
+		}
+	}
+	,startProduction: function(pack) {
+		this.timeProd = com_isartdigital_perle_game_managers_TimeManager.createProductionTime(pack,this.tileDesc.id);
+		this.product = true;
+	}
+	,destroy: function() {
+		com_isartdigital_perle_game_managers_TimeManager.eProduction.off("Production_Time",$bind(this,this.updateMyTime));
+		com_isartdigital_perle_game_virtual_VBuilding.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_VCollector
+});
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 var com_isartdigital_perle_game_virtual_vBuilding_VDeco = function(pDescription) {
 	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
 };
@@ -5136,6 +5202,24 @@ com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.__super__ = com_i
 com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VAltar.prototype,{
 	__class__: com_isartdigital_perle_game_virtual_vBuilding_VVirtuesBuilding
 });
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
+=======
+var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
+	com_isartdigital_perle_game_virtual_vBuilding_VCollector.call(this,pDescription);
+};
+$hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven"] = com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven;
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHeaven","VCollectorHeaven"];
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.__super__ = com_isartdigital_perle_game_virtual_vBuilding_VCollector;
+com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven.prototype = $extend(com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype,{
+	addGenerator: function() {
+		this.myGeneratorType = com_isartdigital_perle_game_managers_GeneratorType.buildResourceFromParadise;
+		com_isartdigital_perle_game_virtual_vBuilding_VCollector.prototype.addGenerator.call(this);
+		this.myPacks = [{ cost : 1, time : 30000, quantity : 3},{ cost : 2, time : 35000, quantity : 10},{ cost : 3, time : 40000, quantity : 100},{ cost : 1, time : 30000, quantity : 3},{ cost : 2, time : 35000, quantity : 10},{ cost : 3, time : 40000, quantity : 100}];
+	}
+	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven
+});
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VDecoHeaven = function(pDescription) {
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
 	com_isartdigital_perle_game_virtual_vBuilding_VDeco.call(this,pDescription);
@@ -5182,9 +5266,16 @@ com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven.prototype = $
 	}
 	,__class__: com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VHouseHeaven
 });
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
 var com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill = function(pDescription) {
 	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.heaven;
 	com_isartdigital_perle_game_virtual_VBuilding.call(this,pDescription);
+=======
+var com_isartdigital_perle_game_virtual_vBuilding_vHell_VCollectorHell = function(pDescription) {
+	this.alignementBuilding = com_isartdigital_perle_game_managers_Alignment.hell;
+	com_isartdigital_perle_game_virtual_vBuilding_VCollector.call(this,pDescription);
+	this.myPacks = [{ cost : 5, time : 50000, quantity : 5},{ cost : 7, time : 40000, quantity : 20},{ cost : 400, time : 300000, quantity : 300},{ cost : 450, time : 400000, quantity : 500},{ cost : 5, time : 50000, quantity : 5},{ cost : 7, time : 40000, quantity : 20},{ cost : 400, time : 300000, quantity : 300},{ cost : 450, time : 400000, quantity : 500}];
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 };
 $hxClasses["com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VLumbermill"] = com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill;
 com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VLumbermill.__name__ = ["com","isartdigital","perle","game","virtual","vBuilding","vHeaven","VLumbermill"];
@@ -5424,7 +5515,7 @@ com_isartdigital_perle_ui_contextual_VHudContextual.prototype = $extend(com_isar
 	init: function(pVBuilding) {
 		this.myVBuilding = pVBuilding;
 		if(this.myVBuilding.haveRecolter) {
-			this.virtualGoldBtn = new com_isartdigital_perle_ui_contextual_virtual_VButtonProduction();
+			this.virtualGoldBtn = new com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator();
 			this.virtualGoldBtn.init(this);
 		}
 	}
@@ -5660,7 +5751,6 @@ com_isartdigital_perle_ui_contextual_virtual_VSmartComponent.prototype = $extend
 var com_isartdigital_perle_ui_contextual_virtual_VButtonProduction = function() {
 	this.generatorIsNotEmpty = false;
 	com_isartdigital_perle_ui_contextual_virtual_VSmartComponent.call(this);
-	com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.on("GENERATOR",$bind(this,this.onGeneratorEvent));
 };
 $hxClasses["com.isartdigital.perle.ui.contextual.virtual.VButtonProduction"] = com_isartdigital_perle_ui_contextual_virtual_VButtonProduction;
 com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.__name__ = ["com","isartdigital","perle","ui","contextual","virtual","VButtonProduction"];
@@ -5669,21 +5759,6 @@ com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype = $exte
 	init: function(pVHud) {
 		com_isartdigital_perle_ui_contextual_virtual_VSmartComponent.prototype.init.call(this,pVHud);
 		this.refBuilding = pVHud.myVBuilding.tileDesc.id;
-		this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.getGenerator(this.refBuilding,pVHud.myVBuilding.myGeneratorType);
-		this.generatorIsNotEmpty = com_isartdigital_perle_game_managers_ResourcesManager.GeneratorIsNotEmpty(this.myGeneratorDesc);
-	}
-	,onGeneratorEvent: function(data) {
-		if(data.forButton && data.id == this.refBuilding && this.myBtn == null) {
-			this.generatorIsNotEmpty = data.active;
-			if(this.shoulBeVisible() && this.graphic == null) {
-				this.addGraphic();
-			} else if(this.active && !this.generatorIsNotEmpty) {
-				this.removeGraphic();
-			}
-		}
-		if(this.myBtn != null) {
-			this.myBtn.setScale();
-		}
 	}
 	,shoulBeVisible: function() {
 		if(this.active) {
@@ -5700,9 +5775,7 @@ com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype = $exte
 		}
 	}
 	,addGraphic: function() {
-		this.myBtn = new com_isartdigital_perle_ui_contextual_sprites_ButtonProduction(this.myGeneratorDesc.type);
 		this.graphic = js_Boot.__cast(this.myBtn , PIXI.Container);
-		this.myBtn.setMyGeneratorDescription(this.myGeneratorDesc);
 		(js_Boot.__cast(this.myVHudContextual.graphic , com_isartdigital_perle_ui_contextual_HudContextual)).addComponentBtnProd(js_Boot.__cast(this.myBtn , com_isartdigital_utils_ui_smart_SmartComponent));
 	}
 	,activate: function() {
@@ -5710,19 +5783,55 @@ com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype = $exte
 		if(this.shoulBeVisible()) {
 			this.addGraphic();
 		}
-		if(this.myBtn != null) {
-			this.myBtn.setScale();
-		}
 	}
 	,desactivate: function() {
 		com_isartdigital_perle_ui_contextual_virtual_VSmartComponent.prototype.desactivate.call(this);
 		this.myBtn = null;
 	}
+	,__class__: com_isartdigital_perle_ui_contextual_virtual_VButtonProduction
+});
+var com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator = function() {
+	com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.call(this);
+	com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.on("GENERATOR",$bind(this,this.onGeneratorEvent));
+};
+$hxClasses["com.isartdigital.perle.ui.contextual.virtual.VButtonProductionGenerator"] = com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator;
+com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator.__name__ = ["com","isartdigital","perle","ui","contextual","virtual","VButtonProductionGenerator"];
+com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator.__super__ = com_isartdigital_perle_ui_contextual_virtual_VButtonProduction;
+com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator.prototype = $extend(com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype,{
+	init: function(pVHud) {
+		com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype.init.call(this,pVHud);
+		this.myGeneratorDesc = com_isartdigital_perle_game_managers_ResourcesManager.getGenerator(this.refBuilding,pVHud.myVBuilding.myGeneratorType);
+		this.generatorIsNotEmpty = com_isartdigital_perle_game_managers_ResourcesManager.GeneratorIsNotEmpty(this.myGeneratorDesc);
+	}
+	,onGeneratorEvent: function(data) {
+		if(data.forButton && data.id == this.refBuilding && this.myBtn == null) {
+			this.generatorIsNotEmpty = data.active;
+			if(this.shoulBeVisible() && this.graphic == null) {
+				this.addGraphic();
+			} else if(this.active && !this.generatorIsNotEmpty) {
+				this.removeGraphic();
+			}
+		}
+		if(this.myBtn != null) {
+			this.myBtn.setScale();
+		}
+	}
+	,addGraphic: function() {
+		this.myBtn = new com_isartdigital_perle_ui_contextual_sprites_ButtonProduction(this.myGeneratorDesc.type);
+		this.myBtn.setMyGeneratorDescription(this.myGeneratorDesc);
+		com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype.addGraphic.call(this);
+	}
+	,activate: function() {
+		com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype.activate.call(this);
+		if(this.myBtn != null) {
+			this.myBtn.setScale();
+		}
+	}
 	,destroy: function() {
 		com_isartdigital_perle_game_managers_ResourcesManager.generatorEvent.off("GENERATOR",$bind(this,this.onGeneratorEvent));
-		com_isartdigital_perle_ui_contextual_virtual_VSmartComponent.prototype.destroy.call(this);
+		com_isartdigital_perle_ui_contextual_virtual_VButtonProduction.prototype.destroy.call(this);
 	}
-	,__class__: com_isartdigital_perle_ui_contextual_virtual_VButtonProduction
+	,__class__: com_isartdigital_perle_ui_contextual_virtual_VButtonProductionGenerator
 });
 var com_isartdigital_utils_ui_Button = function() {
 	com_isartdigital_utils_game_StateGraphic.call(this);
@@ -6988,6 +7097,162 @@ com_isartdigital_perle_ui_popin_choice_Choice.prototype = $extend(com_isartdigit
 	}
 	,__class__: com_isartdigital_perle_ui_popin_choice_Choice
 });
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
+=======
+var com_isartdigital_perle_ui_popin_collector_CollectorPopin = function() {
+	com_isartdigital_utils_ui_smart_SmartPopin.call(this,"InfoCollector");
+	var myCollector = js_Boot.__cast(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding , com_isartdigital_perle_game_virtual_vBuilding_VCollector);
+	this.btnClose = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"ButtonClose") , com_isartdigital_utils_ui_smart_SmartButton);
+	var spawner = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"_productionSpawner") , com_isartdigital_utils_ui_smart_UISprite);
+	if(myCollector.product) {
+		this.addTimer(spawner,myCollector);
+	} else {
+		this.addPanel(spawner);
+	}
+	spawner.parent.removeChild(spawner);
+	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnClose,$bind(this,this.onClose));
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.CollectorPopin"] = com_isartdigital_perle_ui_popin_collector_CollectorPopin;
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.__name__ = ["com","isartdigital","perle","ui","popin","collector","CollectorPopin"];
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.getInstance = function() {
+	if(com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance == null) {
+		com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance = new com_isartdigital_perle_ui_popin_collector_CollectorPopin();
+	}
+	return com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance;
+};
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.__super__ = com_isartdigital_utils_ui_smart_SmartPopin;
+com_isartdigital_perle_ui_popin_collector_CollectorPopin.prototype = $extend(com_isartdigital_utils_ui_smart_SmartPopin.prototype,{
+	addPanel: function(spawner) {
+		this.prodPanel = new com_isartdigital_perle_ui_popin_collector_ProductionPanel();
+		this.prodPanel.position = spawner.position;
+		this.addChild(this.prodPanel);
+	}
+	,addTimer: function(spawner,pCollector) {
+		this.timer = new com_isartdigital_perle_ui_popin_collector_TimerInProd(pCollector);
+		this.timer.position = spawner.position;
+		this.addChild(this.timer);
+	}
+	,onClose: function() {
+		com_isartdigital_perle_ui_hud_Hud.getInstance().show();
+		com_isartdigital_perle_ui_UIManager.getInstance().closeCurrentPopin();
+	}
+	,destroy: function() {
+		com_isartdigital_perle_ui_popin_collector_CollectorPopin.instance = null;
+		com_isartdigital_perle_utils_Interactive.removeListenerClick(this.btnClose,$bind(this,this.onClose));
+		com_isartdigital_utils_ui_smart_SmartPopin.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_ui_popin_collector_CollectorPopin
+});
+var com_isartdigital_perle_ui_popin_collector_PackPanel = function(pID,i) {
+	com_isartdigital_utils_ui_smart_SmartComponent.call(this,pID);
+	this.vBuildingLink = js_Boot.__cast(com_isartdigital_perle_ui_hud_building_BuildingHud.virtualBuilding , com_isartdigital_perle_game_virtual_vBuilding_VCollector);
+	var spawner = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"_buildRessourceIcon_Large") , com_isartdigital_utils_ui_smart_UISprite);
+	var icon = new com_isartdigital_utils_ui_smart_UISprite(js_Boot.__instanceof(this.vBuildingLink,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven)?"_woodIcon_Large":"_stoneIcon_Large");
+	icon.position = spawner.position;
+	spawner.parent.removeChild(spawner);
+	this.addChild(icon);
+	this.timeText = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"_time_value") , com_isartdigital_utils_ui_smart_TextSprite);
+	this.gainText = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"_ressourceGain_text") , com_isartdigital_utils_ui_smart_TextSprite);
+	this.pack = this.vBuildingLink.myPacks[i];
+	var lClock = com_isartdigital_perle_game_TimesInfo.getClock(this.pack.time);
+	this.timeText.set_text(lClock.minute + ":" + lClock.seconde);
+	this.gainText.set_text("" + this.pack.quantity);
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.PackPanel"] = com_isartdigital_perle_ui_popin_collector_PackPanel;
+com_isartdigital_perle_ui_popin_collector_PackPanel.__name__ = ["com","isartdigital","perle","ui","popin","collector","PackPanel"];
+com_isartdigital_perle_ui_popin_collector_PackPanel.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_perle_ui_popin_collector_PackPanel.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	__class__: com_isartdigital_perle_ui_popin_collector_PackPanel
+});
+var com_isartdigital_perle_ui_popin_collector_PackPanelLock = function(i) {
+	com_isartdigital_perle_ui_popin_collector_PackPanel.call(this,"ProductionPanel_Locked",i);
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.PackPanelLock"] = com_isartdigital_perle_ui_popin_collector_PackPanelLock;
+com_isartdigital_perle_ui_popin_collector_PackPanelLock.__name__ = ["com","isartdigital","perle","ui","popin","collector","PackPanelLock"];
+com_isartdigital_perle_ui_popin_collector_PackPanelLock.__super__ = com_isartdigital_perle_ui_popin_collector_PackPanel;
+com_isartdigital_perle_ui_popin_collector_PackPanelLock.prototype = $extend(com_isartdigital_perle_ui_popin_collector_PackPanel.prototype,{
+	__class__: com_isartdigital_perle_ui_popin_collector_PackPanelLock
+});
+var com_isartdigital_perle_ui_popin_collector_PackPanelUnlock = function(i) {
+	com_isartdigital_perle_ui_popin_collector_PackPanel.call(this,"ProductionPanel",i);
+	this.btnLunch = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"ButtonProduce") , com_isartdigital_utils_ui_smart_SmartButton);
+	this.rewrite();
+	com_isartdigital_perle_utils_Interactive.addListenerClick(this.btnLunch,$bind(this,this.onClick),null,$bind(this,this.rewrite));
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.PackPanelUnlock"] = com_isartdigital_perle_ui_popin_collector_PackPanelUnlock;
+com_isartdigital_perle_ui_popin_collector_PackPanelUnlock.__name__ = ["com","isartdigital","perle","ui","popin","collector","PackPanelUnlock"];
+com_isartdigital_perle_ui_popin_collector_PackPanelUnlock.__super__ = com_isartdigital_perle_ui_popin_collector_PackPanel;
+com_isartdigital_perle_ui_popin_collector_PackPanelUnlock.prototype = $extend(com_isartdigital_perle_ui_popin_collector_PackPanel.prototype,{
+	onClick: function() {
+		this.rewrite();
+		this.vBuildingLink.startProduction(this.pack);
+		com_isartdigital_perle_ui_popin_collector_CollectorPopin.getInstance().onClose();
+	}
+	,rewrite: function() {
+		(js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this.btnLunch,"_buttonProduce_GoldValue") , com_isartdigital_utils_ui_smart_TextSprite)).set_text("" + this.pack.cost);
+	}
+	,destroy: function() {
+		com_isartdigital_perle_utils_Interactive.removeListenerClick(this.btnLunch,$bind(this,this.onClick),null,$bind(this,this.rewrite));
+		com_isartdigital_perle_ui_popin_collector_PackPanel.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_ui_popin_collector_PackPanelUnlock
+});
+var com_isartdigital_perle_ui_popin_collector_ProductionPanel = function() {
+	com_isartdigital_utils_ui_smart_SmartComponent.call(this,"ProductionPanelsContainer");
+	this.panels = [];
+	var _g = 0;
+	while(_g < 6) {
+		var i = _g++;
+		if(i < 3) {
+			this.spawnPackPanel("_productionPanelSpawner" + (i + 1),false,i);
+		} else {
+			this.spawnPackPanel("_productionPanelSpawner" + (i + 1),true,i);
+		}
+	}
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.ProductionPanel"] = com_isartdigital_perle_ui_popin_collector_ProductionPanel;
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.__name__ = ["com","isartdigital","perle","ui","popin","collector","ProductionPanel"];
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_perle_ui_popin_collector_ProductionPanel.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	spawnPackPanel: function(spawnerName,isLocked,i) {
+		var panel = isLocked?new com_isartdigital_perle_ui_popin_collector_PackPanelLock(i):new com_isartdigital_perle_ui_popin_collector_PackPanelUnlock(i);
+		var spawner = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,spawnerName) , com_isartdigital_utils_ui_smart_UISprite);
+		panel.position = spawner.position;
+		spawner.parent.removeChild(spawner);
+		this.addChild(panel);
+		this.panels.push(panel);
+	}
+	,__class__: com_isartdigital_perle_ui_popin_collector_ProductionPanel
+});
+var com_isartdigital_perle_ui_popin_collector_TimerInProd = function(collector) {
+	com_isartdigital_utils_ui_smart_SmartComponent.call(this,"CollectorInProduction");
+	com_isartdigital_perle_ui_SmartCheck.traceChildrens(this);
+	this.progressBarTxt = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"TimeGauge") , com_isartdigital_utils_ui_smart_SmartComponent),"_Text_TimeSkipGaugeTime") , com_isartdigital_utils_ui_smart_TextSprite);
+	this.rewrite(collector.timeProd);
+	this.gain = com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"ProducingValue");
+	this.gain.set_text(collector.timeProd.gain + "");
+	var spawner = com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"ProducingIcon");
+	var icone = new com_isartdigital_utils_ui_smart_UISprite(js_Boot.__instanceof(collector,com_isartdigital_perle_game_virtual_vBuilding_vHeaven_VCollectorHeaven)?"_woodIcon_Large":"_stoneIcon_Large");
+	icone.position = spawner.position;
+	this.addChild(icone);
+	spawner.parent.removeChild(spawner);
+	com_isartdigital_perle_game_managers_TimeManager.eProduction.on("Production_Time",$bind(this,this.rewrite));
+};
+$hxClasses["com.isartdigital.perle.ui.popin.collector.TimerInProd"] = com_isartdigital_perle_ui_popin_collector_TimerInProd;
+com_isartdigital_perle_ui_popin_collector_TimerInProd.__name__ = ["com","isartdigital","perle","ui","popin","collector","TimerInProd"];
+com_isartdigital_perle_ui_popin_collector_TimerInProd.__super__ = com_isartdigital_utils_ui_smart_SmartComponent;
+com_isartdigital_perle_ui_popin_collector_TimerInProd.prototype = $extend(com_isartdigital_utils_ui_smart_SmartComponent.prototype,{
+	rewrite: function(pTime) {
+		var clock = com_isartdigital_perle_game_TimesInfo.getClock(pTime.progress);
+		this.progressBarTxt.set_text(clock.minute + ":" + clock.seconde);
+	}
+	,destroy: function() {
+		com_isartdigital_perle_game_managers_TimeManager.eProduction.off("Production_Time",$bind(this,this.rewrite));
+		com_isartdigital_utils_ui_smart_SmartComponent.prototype.destroy.call(this);
+	}
+	,__class__: com_isartdigital_perle_ui_popin_collector_TimerInProd
+});
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 var com_isartdigital_perle_ui_popin_levelUp_LevelUpPoppin = function() {
 	com_isartdigital_utils_ui_smart_SmartPopin.call(this,"Popin_LevelUp");
 	this.setWireframe();
@@ -7324,15 +7589,39 @@ com_isartdigital_perle_ui_popin_shop_CarouselCard.__super__ = com_isartdigital_u
 com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype = $extend(com_isartdigital_utils_ui_smart_SmartButton.prototype,{
 	init: function(pBuildingName) {
 		this.buildingName = pBuildingName;
+		this.isInit = true;
+		this.buildCard();
+	}
+	,_mouseDown: function(pEvent) {
+		com_isartdigital_utils_ui_smart_SmartButton.prototype._mouseDown.call(this,pEvent);
+		if(this.isInit) {
+			this.buildCard();
+		}
+	}
+	,_mouseOver: function(pEvent) {
+		com_isartdigital_utils_ui_smart_SmartButton.prototype._mouseOver.call(this,pEvent);
+		if(this.isInit) {
+			this.buildCard();
+		}
+	}
+	,_mouseOut: function(pEvent) {
+		com_isartdigital_utils_ui_smart_SmartButton.prototype._mouseOut.call(this,pEvent);
+		if(this.isInit) {
+			this.buildCard();
+		}
+	}
+	,buildCard: function() {
 	}
 	,start: function() {
 	}
 	,setImage: function(pAssetName) {
 		var lImage = new com_isartdigital_perle_game_sprites_FlumpStateGraphic(pAssetName);
 		lImage.init();
-		lImage.width = 250;
-		lImage.height = 250;
+		lImage.width = this.image.width;
+		lImage.height = this.image.height;
 		this.image.addChild(lImage);
+		lImage.x = 0;
+		lImage.y = 0;
 		lImage.start();
 	}
 	,destroy: function() {
@@ -7342,19 +7631,19 @@ com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype = $extend(com_isartd
 });
 var com_isartdigital_perle_ui_popin_shop_CarousselCardLock = function() {
 	com_isartdigital_perle_ui_popin_shop_CarouselCard.call(this,"Shop_" + "BuildingDeco_LockedItem");
-	this.image = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_Picture") , com_isartdigital_utils_ui_smart_UISprite);
-	this.text_lock = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Reason_locked") , com_isartdigital_utils_ui_smart_TextSprite);
 };
 $hxClasses["com.isartdigital.perle.ui.popin.shop.CarousselCardLock"] = com_isartdigital_perle_ui_popin_shop_CarousselCardLock;
 com_isartdigital_perle_ui_popin_shop_CarousselCardLock.__name__ = ["com","isartdigital","perle","ui","popin","shop","CarousselCardLock"];
 com_isartdigital_perle_ui_popin_shop_CarousselCardLock.__super__ = com_isartdigital_perle_ui_popin_shop_CarouselCard;
 com_isartdigital_perle_ui_popin_shop_CarousselCardLock.prototype = $extend(com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype,{
-	init: function(pBuildingName) {
-		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.init.call(this,pBuildingName);
-		this.text_lock.set_text("Level : " + com_isartdigital_perle_game_managers_UnlockManager.checkLevelNeeded(pBuildingName));
+	buildCard: function() {
+		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.buildCard.call(this);
+		this.image = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_Picture") , com_isartdigital_utils_ui_smart_UISprite);
+		this.text_lock = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Reason_locked") , com_isartdigital_utils_ui_smart_TextSprite);
+		this.setText();
 	}
-	,start: function() {
-		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.start.call(this);
+	,setText: function() {
+		this.text_lock.set_text("Level : " + com_isartdigital_perle_game_managers_UnlockManager.checkLevelNeeded(this.buildingName));
 	}
 	,destroy: function() {
 		if(this.parent != null) {
@@ -7371,8 +7660,8 @@ $hxClasses["com.isartdigital.perle.ui.popin.shop.CCLBuilding"] = com_isartdigita
 com_isartdigital_perle_ui_popin_shop_CCLBuilding.__name__ = ["com","isartdigital","perle","ui","popin","shop","CCLBuilding"];
 com_isartdigital_perle_ui_popin_shop_CCLBuilding.__super__ = com_isartdigital_perle_ui_popin_shop_CarousselCardLock;
 com_isartdigital_perle_ui_popin_shop_CCLBuilding.prototype = $extend(com_isartdigital_perle_ui_popin_shop_CarousselCardLock.prototype,{
-	init: function(pBuildingName) {
-		com_isartdigital_perle_ui_popin_shop_CarousselCardLock.prototype.init.call(this,pBuildingName);
+	buildCard: function() {
+		com_isartdigital_perle_ui_popin_shop_CarousselCardLock.prototype.buildCard.call(this);
 		this.setImage(com_isartdigital_perle_game_BuildingName.getAssetName(this.buildingName));
 	}
 	,__class__: com_isartdigital_perle_ui_popin_shop_CCLBuilding
@@ -7385,15 +7674,14 @@ com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.__name__ = ["com","isar
 com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.__super__ = com_isartdigital_perle_ui_popin_shop_CarouselCard;
 com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.prototype = $extend(com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype,{
 	init: function(pBuildingName) {
-		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.init.call(this,pBuildingName);
 		this.lAssetName = com_isartdigital_perle_game_BuildingName.getAssetName(pBuildingName);
-		if(!com_isartdigital_perle_game_managers_BuyManager.canBuy(pBuildingName)) {
+		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.init.call(this,pBuildingName);
+	}
+	,buildCard: function() {
+		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.buildCard.call(this);
+		if(!com_isartdigital_perle_game_managers_BuyManager.canBuy(this.buildingName)) {
 			this.alpha = 0.5;
 		}
-		this.setPrice(com_isartdigital_perle_game_managers_BuyManager.checkPrice(pBuildingName));
-	}
-	,start: function() {
-		com_isartdigital_perle_ui_popin_shop_CarouselCard.prototype.start.call(this);
 	}
 	,setName: function(pAssetName) {
 	}
@@ -7435,10 +7723,6 @@ com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.prototype = $extend(com
 });
 var com_isartdigital_perle_ui_popin_shop_CCUBuilding = function() {
 	com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.call(this,"ButtonBuyBuildingDeco");
-	this.image = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_picture") , com_isartdigital_utils_ui_smart_UISprite);
-	this.text_name = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_Name") , com_isartdigital_utils_ui_smart_TextSprite);
-	this.text_price = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_SCPrice") , com_isartdigital_utils_ui_smart_TextSprite);
-	this.setRessourcesPrice();
 };
 $hxClasses["com.isartdigital.perle.ui.popin.shop.CCUBuilding"] = com_isartdigital_perle_ui_popin_shop_CCUBuilding;
 com_isartdigital_perle_ui_popin_shop_CCUBuilding.__name__ = ["com","isartdigital","perle","ui","popin","shop","CCUBuilding"];
@@ -7454,10 +7738,15 @@ com_isartdigital_perle_ui_popin_shop_CCUBuilding.prototype = $extend(com_isartdi
 		this.removeChild(item_icon);
 		this.removeChild(item_icon2);
 	}
-	,init: function(pBuildingName) {
-		com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.prototype.init.call(this,pBuildingName);
+	,buildCard: function() {
+		com_isartdigital_perle_ui_popin_shop_CarousselCardUnlock.prototype.buildCard.call(this);
+		this.image = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_picture") , com_isartdigital_utils_ui_smart_UISprite);
+		this.text_name = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_Name") , com_isartdigital_utils_ui_smart_TextSprite);
+		this.text_price = js_Boot.__cast(com_isartdigital_perle_ui_SmartCheck.getChildByName(this,"Item_SCPrice") , com_isartdigital_utils_ui_smart_TextSprite);
+		this.setRessourcesPrice();
 		this.setImage(com_isartdigital_perle_game_BuildingName.getAssetName(this.buildingName));
 		this.setName(com_isartdigital_perle_game_managers_FakeTraduction.assetNameNameToTrad(this.buildingName));
+		this.setPrice(com_isartdigital_perle_game_managers_BuyManager.checkPrice(this.buildingName));
 	}
 	,setName: function(pString) {
 		this.text_name.set_text(pString);
@@ -7953,16 +8242,30 @@ var com_isartdigital_perle_utils_Interactive = function() {
 };
 $hxClasses["com.isartdigital.perle.utils.Interactive"] = com_isartdigital_perle_utils_Interactive;
 com_isartdigital_perle_utils_Interactive.__name__ = ["com","isartdigital","perle","utils","Interactive"];
-com_isartdigital_perle_utils_Interactive.addListenerClick = function(pElement,pCallBack,pContext) {
+com_isartdigital_perle_utils_Interactive.addListenerClick = function(pElement,pCallBack,pContext,pCallback2) {
 	if(com_isartdigital_utils_system_DeviceCapabilities.get_system() == "Desktop") {
 		pElement.addListener("click",pCallBack,pContext);
+		if(pCallback2 != null) {
+			pElement.addListener("mousedown",pCallback2);
+			pElement.addListener("mouseout",pCallback2);
+			pElement.addListener("mouseover",pCallback2);
+			pElement.addListener("mouseup",pCallback2);
+			pElement.addListener("mouseupoutside",pCallback2);
+		}
 	} else {
 		pElement.addListener("tap",pCallBack,pContext);
 	}
 };
-com_isartdigital_perle_utils_Interactive.removeListenerClick = function(pElement,pCallBack,pOnce) {
+com_isartdigital_perle_utils_Interactive.removeListenerClick = function(pElement,pCallBack,pOnce,pCallback2) {
 	if(com_isartdigital_utils_system_DeviceCapabilities.get_system() == "Desktop") {
 		pElement.removeListener("click",pCallBack,pOnce);
+		if(pCallback2 != null) {
+			pElement.removeListener("mousedown",pCallback2);
+			pElement.removeListener("mouseout",pCallback2);
+			pElement.removeListener("mouseover",pCallback2);
+			pElement.removeListener("mouseup",pCallback2);
+			pElement.removeListener("mouseupoutside",pCallback2);
+		}
 	} else {
 		pElement.removeListener("tap",pCallBack,pOnce);
 	}
@@ -12079,6 +12382,24 @@ com_isartdigital_perle_game_AssetName.HUD_COUNTER_LEVEL = "HUD_" + "Level";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_XP = "Hud_xp_txt";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_RESSOURCE = "bar_txt";
 com_isartdigital_perle_game_AssetName.COUNTER_TXT_LEVEL = "_level_txt";
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
+=======
+com_isartdigital_perle_game_AssetName.COLLECTOR_POPIN = "InfoCollector";
+com_isartdigital_perle_game_AssetName.COLLECTOR_PANEL = "ProductionPanelsContainer";
+com_isartdigital_perle_game_AssetName.PACK_COLLECTOR_PANEL = "ProductionPanel";
+com_isartdigital_perle_game_AssetName.PACK_COLLECTOR_LOCK_PANEL = "ProductionPanel_Locked";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_SPAWNER = "_productionPanelSpawner";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_SPAWNER_ICON = "_buildRessourceIcon_Large";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_TIME_TEXT = "_time_value";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_GAIN = "_ressourceGain_text";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_BUTTON = "ButtonProduce";
+com_isartdigital_perle_game_AssetName.PANEL_COLLECTOR_BUTTON_TEXT = "_buttonProduce_GoldValue";
+com_isartdigital_perle_game_AssetName.COLLECTOR_TIME_IN_PROD = "CollectorInProduction";
+com_isartdigital_perle_game_AssetName.COLLECTOR_TIME_GAUGE = "TimeGauge";
+com_isartdigital_perle_game_AssetName.COLLECTOR_TIME_GAUGE_TEXT = "_Text_TimeSkipGaugeTime";
+com_isartdigital_perle_game_AssetName.COLLECTOR_TIME_GAIN = "ProducingValue";
+com_isartdigital_perle_game_AssetName.COLLECTOR_TIME_ICON = "ProducingIcon";
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN = "Popin_LevelUp";
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN_BUTTON = "Button_NextReward";
 com_isartdigital_perle_game_AssetName.LEVELUP_POPPIN_PASSALL = "ButtonShowAll";
@@ -12103,6 +12424,8 @@ com_isartdigital_perle_game_AssetName.PROD_ICON_WOOD = "_woodIcon_Large";
 com_isartdigital_perle_game_AssetName.PROD_ICON_STONE = "_stoneIcon_Large";
 com_isartdigital_perle_game_AssetName.PROD_ICON_SOUL_HEAVEN_SMALL = "_heavenSoulIcon_Small";
 com_isartdigital_perle_game_AssetName.PROD_ICON_SOUL_HELL_SMALL = "_hellSoulIcon_Small";
+com_isartdigital_perle_game_AssetName.PROD_ICON_WOOD_LARGE = "_woodIcon_Large";
+com_isartdigital_perle_game_AssetName.PROD_ICON_STONE_LARGE = "_stoneIcon_Large";
 com_isartdigital_perle_game_BuildingName.STYX_PURGATORY = "Purgatory";
 com_isartdigital_perle_game_BuildingName.STYX_VICE = "Altar Vice";
 com_isartdigital_perle_game_BuildingName.STYX_VIRTUE = "Altar Virtue";
@@ -12345,6 +12668,9 @@ com_isartdigital_perle_game_QuestDictionnary.actions = (function($this) {
 	return $r;
 }(this));
 com_isartdigital_perle_game_QuestDictionnary.secondarySubjects = ["des archéologues.","des voyageurs.","des touristes.","un vagabond.","des animaux.","des trolls nains.","des crocodiles.","des enfants.","des chasseurs.","des milliciens."];
+com_isartdigital_perle_game_TimesInfo.SEC = 1000;
+com_isartdigital_perle_game_TimesInfo.MIN = 60000;
+com_isartdigital_perle_game_TimesInfo.HOU = 3600000;
 com_isartdigital_perle_game_managers_BoostManager.ALTAR_EVENT_NAME = "ALTAR_CALL";
 com_isartdigital_perle_game_managers_BoostManager.BUILDING_EVENT_NAME = "BUILDING_CALL";
 com_isartdigital_perle_game_managers_CameraManager.REGION_WIDTH = 2400.;
@@ -12579,6 +12905,8 @@ com_isartdigital_perle_game_managers_TimeManager.EVENT_RESOURCE_TICK = "TimeMana
 com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_STEP = "TimeManager_Quest_Step_Reached";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_QUEST_END = "TimeManager_Resource_End_Reached";
 com_isartdigital_perle_game_managers_TimeManager.EVENT_CONSTRUCT_END = "TimeManager_Construction_End";
+com_isartdigital_perle_game_managers_TimeManager.EVENT_COLLECTOR_PRODUCTION = "Production_Time";
+com_isartdigital_perle_game_managers_TimeManager.EVENT_COLLECTOR_PRODUCTION_FINE = "Production_Fine";
 com_isartdigital_perle_game_managers_TimeManager.TIME_DESC_REFLECT = "timeDesc";
 com_isartdigital_perle_game_managers_TimeManager.TIME_LOOP_DELAY = 50;
 com_isartdigital_perle_game_managers_UnlockManager.isAlreadySaved = false;
@@ -12865,14 +13193,20 @@ com_isartdigital_perle_game_virtual_Virtual.BUILDING_NAME_TO_VCLASS = (function(
 		_g.h["Hell House"] = "VHouseHell";
 	}
 	if(__map_reserved["Hell Collector Iron Mines"] != null) {
-		_g.setReserved("Hell Collector Iron Mines","VHouseHell");
+		_g.setReserved("Hell Collector Iron Mines","VCollectorHell");
 	} else {
-		_g.h["Hell Collector Iron Mines"] = "VHouseHell";
+		_g.h["Hell Collector Iron Mines"] = "VCollectorHell";
 	}
 	if(__map_reserved.Factory != null) {
+<<<<<<< 12929c27180a485bacfa82b7fa41d0db56208271:bin/ui.js
 		_g.setReserved("Factory","VQuarry");
 	} else {
 		_g.h["Factory"] = "VQuarry";
+=======
+		_g.setReserved("Factory","VFactory");
+	} else {
+		_g.h["Factory"] = "VFactory";
+>>>>>>> add time info has a const for minute seconde and houre and can transform a time in ms at time format hh, mm, ss:bin/Builder.js
 	}
 	if(__map_reserved["Generic Rock"] != null) {
 		_g.setReserved("Generic Rock","VDecoHell");
