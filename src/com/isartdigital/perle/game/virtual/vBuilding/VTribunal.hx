@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
+import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
 
 	
@@ -32,11 +33,13 @@ class VTribunal extends VBuilding
 		return instance;
 	}
 	
+	private var BASETIMEWITHOUTBOOST(default, never):Int = 40 * TimesInfo.MIN;
 	/**
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
 	private function new(?pDesc:TileDescription) 
 	{
+		
 		var lDesc:TileDescription;
 		
 		alignementBuilding = Alignment.neutral;
@@ -83,10 +86,19 @@ class VTribunal extends VBuilding
 	}
 
 	override function addGenerator():Void {
-		myTime = TimesInfo.MIN * 40; //40 minutes
+		myTime = BASETIMEWITHOUTBOOST;
 		myGeneratorType = GeneratorType.soul;
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains, myTime, Alignment.neutral, true);
 		
+	}
+	
+	/**
+	 * update the time of production
+	 * @param	denominator the number to divise the time
+	 */
+	public function updateGenerator(denominator:Float):Void {
+		myTime = BASETIMEWITHOUTBOOST / denominator;
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
 	}
 	
 	/**

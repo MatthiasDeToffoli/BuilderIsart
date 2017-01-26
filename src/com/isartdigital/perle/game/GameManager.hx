@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
@@ -17,6 +18,7 @@ import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -51,6 +53,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		MarketingManager.awake(); // always before VTile
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager

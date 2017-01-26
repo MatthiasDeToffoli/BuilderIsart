@@ -200,7 +200,7 @@ class InfoBuilding extends SmartPopin{
 	
 	private function setButtonsAndAddListeners():Void{
 		
-		btnExit = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_CLOSE), SmartButton);
+		btnExit = cast(SmartCheck.getChildByName(this, AssetName.BTN_CLOSE), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, AssetName.INFO_BUILDING_BTN_SELL), SmartButton);
 		
 		//@ToDo: bug with the upgrade/destroy via the button

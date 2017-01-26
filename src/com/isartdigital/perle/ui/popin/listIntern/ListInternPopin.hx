@@ -52,7 +52,7 @@ class ListInternPopin extends SmartPopin
 		/*for (i in 0...children.length) 
 			trace (children[i].name);*/
 			
-			btnClose = cast(getChildByName(AssetName.INTERN_LIST_CANCEL), SmartButton);
+			btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 			btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
 			

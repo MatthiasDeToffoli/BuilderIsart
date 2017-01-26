@@ -30,7 +30,7 @@ class Virtual {
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
 		BuildingName.HEAVEN_HOUSE_INTERNS => "VHouseHell", // todo
 		BuildingName.HEAVEN_COLLECTOR => "VCollectorHeaven",
-		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VHouseHell", //todo
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VMarketingHouse", //todo
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_BIGGER_TREE => "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_PRETTY_TREE => "VDecoHeaven",
@@ -50,38 +50,6 @@ class Virtual {
 		BuildingName.HELL_DECO_BUILDING => "VDecoHell",
 		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell"
 	];
-	
-	/*public static var BUILDING_NAME_TO_ALIGNEMENT(default, never):Map<String, Alignment> = [
-	
-		BuildingName.STYX_PURGATORY => Alignment.neutral,
-		BuildingName.STYX_VICE => Alignment.neutral,
-		BuildingName.STYX_VIRTUE => Alignment.neutral,
-		BuildingName.STYX_MARKET => Alignment.neutral,
-		
-		
-		BuildingName.HEAVEN_HOUSE => Alignment.heaven,
-		BuildingName.HEAVEN_HOUSE_INTERNS => Alignment.heaven,
-		BuildingName.HEAVEN_COLLECTOR => Alignment.heaven,
-		BuildingName.HEAVEN_MARKETING_DEPARTMENT => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_GENERIC_TREE => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_BIGGER_TREE => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_PRETTY_TREE => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_AWESOME_TREE => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_BUILDING => Alignment.heaven,
-		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => Alignment.heaven,
-		
-		
-		BuildingName.HELL_HOUSE => Alignment.hell,
-		BuildingName.HELL_HOUSE_INTERNS => Alignment.hell,
-		BuildingName.HELL_COLLECTOR => Alignment.hell,
-		BuildingName.HELL_FACTORY => Alignment.hell,
-		BuildingName.HELL_DECO_GENERIC_ROCK => Alignment.hell,
-		BuildingName.HELL_DECO_BIGGER_ROCK => Alignment.hell,
-		BuildingName.HELL_DECO_PRETTY_ROCK => Alignment.hell,
-		BuildingName.HELL_DECO_AWESOME_ROCK => Alignment.hell,
-		BuildingName.HELL_DECO_BUILDING => Alignment.hell,
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING => Alignment.hell
-	];*/
 	
 	
 	/**

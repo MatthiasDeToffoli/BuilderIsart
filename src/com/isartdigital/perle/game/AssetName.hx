@@ -47,6 +47,8 @@ class AssetName{
 	// Game
 	public static inline var BTN_PRODUCTION:String = "ProdDone";
 	
+	//element in many popin
+	public static inline var BTN_CLOSE:String = "ButtonClose";
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
@@ -98,18 +100,15 @@ class AssetName{
 	public static inline var PCBB_GOLD_PER_TIME:String = "Window_Infos_ProductionGold";
 	public static inline var PCBB_GOLD_PER_TIME_TEXT_1:String = "Window_Infos_txtProductionGold";
 	public static inline var PCBB_GOLD_PER_TIME_TEXT_2:String = "perTime";
-	public static inline var PCBB_BTN_CLOSE:String = "ButtonClose";
 	public static inline var PCBB_BTN_BUY:String = "BuyButton";
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";
-	public static inline var INFO_BUILDING_BTN_CLOSE:String = "ButtonClose";
 	public static inline var INFO_BUILDING_BTN_SELL:String = "ButtonDestroy";
 	public static inline var INFO_BUILDING_BTN_UPGRADE:String = "ButtonUpgrade";
 	
 	//listIntern
 	public static inline var INTERN_LIST:String = "ListInterns";
-	public static inline var INTERN_LIST_CANCEL:String = "ButtonClose";
 	public static inline var INTERN_LIST_LEFT:String = "_arrow_left";
 	public static inline var INTERN_LIST_RIGHT:String = "_arrow_right";
 	public static var internListSpawners:Array<String> = ["Intern01", "Intern02", "Intern03"];
@@ -221,6 +220,9 @@ class AssetName{
 	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
 	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
 	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON:String = "AccelerateButton";
+	
+	//Marketing popin
+	public static inline var MARKETING_POPIN:String = "InfoMarketing";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
