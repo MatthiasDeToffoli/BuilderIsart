@@ -1,6 +1,5 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
-
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.RegionType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;

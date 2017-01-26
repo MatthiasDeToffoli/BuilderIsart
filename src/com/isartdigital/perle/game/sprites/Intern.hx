@@ -35,12 +35,11 @@ class Intern
 	
 	public static function init(){
 		internsListArray = new Array<InternDescription>();
-		//internsList = new Map<Int, InternDescription>();
 		
 		var lId:Int = IdManager.newId();
 		
 		var lTestInternDatas:InternDescription = {
-			id : lId,
+			id : 5,
 			name : "Angel A. Merkhell",
 			aligment :  "angel",
 			status: "resting",
@@ -56,7 +55,7 @@ class Intern
 		var lTestNewIntern:Intern = new Intern(lTestInternDatas);
 		
 		var lTestInternDatas2:InternDescription = {
-			id : IdManager.newId(),
+			id : 6,
 			name : "Archanglina Jolie",
 			aligment :  "demon",
 			status: "resting",

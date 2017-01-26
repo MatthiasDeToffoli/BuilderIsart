@@ -2,6 +2,7 @@ package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
@@ -76,6 +77,7 @@ class GameManager {
 		//UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		FootPrint.startClass();
+		ChoiceManager.init();
 		
 		DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();

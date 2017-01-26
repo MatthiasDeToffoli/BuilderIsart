@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -11,12 +12,15 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
+enum ConstructionTimeAction { ADD; REM; GET; }
+
 /**
  * Interface whit the server
  * @author Vicktor Grenu et Ambroise Rabier
  */
 class ServerManager {
 	
+	private static inline var SECOND:Int = 1000;
 	private static inline var KEY_POST_FILE_NAME:String = "module";
 	private static inline var KEY_POST_FUNCTION_NAME:String = "action";
 	private static var currentButtonRegion:ButtonRegion;
@@ -30,6 +34,54 @@ class ServerManager {
 	
 	public static function refreshConfig ():Void { // todo : remplacer par cron ?
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
+	}
+	
+	public static function getJsonChoices():Void {
+		callPhpFile(ChoiceManager.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES]);
+	}
+	
+	/**
+	 * call server and ask him to execute a specifique fonction
+	 * @param	pConstructTimeDesc TimeDescription of concerne building
+	 * @param	pAction Action to execute
+	 * @return 	false if GET return a construction time / else allways true
+	 */
+	public static function ContructionTimeAction(pConstructTimeDesc:TimeDescription, pAction:ConstructionTimeAction):Void {
+		var actionCall:String = Std.string(pAction);
+		switch (pAction) 
+		{
+			case ConstructionTimeAction.ADD:
+				var creaTimeFloor:Int = Math.floor(pConstructTimeDesc.creationDate / SECOND);
+				var endTimeFloor:Int = Math.floor(pConstructTimeDesc.end / SECOND);
+				var creaSeconds:Int = Std.int(pConstructTimeDesc.creationDate - creaTimeFloor * SECOND);
+				var endSeconds:Int = Std.int(pConstructTimeDesc.end - endTimeFloor * SECOND);
+		
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
+					"buildId" => pConstructTimeDesc.refTile,
+					"creationDate" => creaTimeFloor,
+					"creationSec" => creaSeconds,
+					"endDate" => endTimeFloor,
+					"endSec" => endSeconds,
+					"funct" => actionCall
+				]);
+				
+			case ConstructionTimeAction.REM:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
+					"buildId" => pConstructTimeDesc.refTile,
+					"funct" => actionCall
+				]);
+			
+			case ConstructionTimeAction.GET:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
+					"buildId" => pConstructTimeDesc.refTile,
+					"funct" => actionCall
+				]);
+				
+			default: return;
+		}
 	}
 	
 	/**
@@ -130,4 +182,6 @@ class ServerFile {
 	public static inline var LOGIN:String = "Login";
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
 	public static inline var REGIONS:String = "BuyRegions";
+	public static inline var CHOICES:String = "Choices";
+	public static inline var TIME_BUILD:String = "BuildingTime";
 }

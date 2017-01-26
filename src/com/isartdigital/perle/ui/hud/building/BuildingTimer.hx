@@ -22,6 +22,7 @@ class BuildingTimer extends SmartComponent
 	private var btnSpeedup:SmartButton;	
 	private var timeText:TextSprite;
 	private var progressBar:UISprite;
+	private var progressBarWidth:Float;
 
 	private var loop:Timer;
 	private var building:VBuilding;
@@ -54,6 +55,7 @@ class BuildingTimer extends SmartComponent
 	
 	private function updateProgressBar():Void {
 		progressBar.scale.x = TimeManager.getPourcentage(building.tileDesc.timeDesc);
+		progressBar.position.x = -progressBarWidth / 2 + progressBar.width / 2;
 	}
 	
 	private function showTime():Void {
@@ -67,7 +69,7 @@ class BuildingTimer extends SmartComponent
 	
 	private function onClickSpeedup():Void {
 		trace("decrease time contruction: -5s");
-		var isFinish:Bool = TimeManager.increaseProgress(building, 5000);
+		var isFinish:Bool = TimeManager.increaseProgress(building, 20000);
 		if (isFinish) {
 			timeText.text = "Finish";
 			Interactive.removeListenerClick(btnSpeedup, onClickSpeedup);
@@ -82,6 +84,7 @@ class BuildingTimer extends SmartComponent
 		timeText = cast(progress.getChildByName("_time"), TextSprite);
 		progressBar = cast(progress.getChildByName("_gauge"), UISprite);
 		btnSpeedup = cast(getChildByName("Button"), SmartButton);
+		progressBarWidth = progressBar.width;
 	}
 	
 	override public function destroy():Void {

@@ -160,6 +160,9 @@ class AssetName{
 	public static inline var INTERN_EVENT_NAME:String = "_intern_name";
 	public static inline var INTERN_EVENT_SIDE:String = "_intern_side";
 	public static inline var INTERN_EVENT_STATS:String = "InternsStatsInEvent";
+	public static inline var INTERN_EVENT_STRESS:String = "_interns_stress";
+	public static inline var INTERN_EVENT_SPEED:String = "_intern_speed";
+	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";

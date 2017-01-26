@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.choice;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TextGenerator;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -49,16 +50,14 @@ class Choice extends SmartPopin
 	private var evilChoice:TextSprite;
 	private var internName:TextSprite;
 	private var internSide:TextSprite;
+	private var internStress:TextSprite;
+	private var internSpeed:TextSprite;
+	private var internEfficiency:TextSprite;
 	private var choiceCard:UISprite;
 	
 	private var textDescAnswer:Map<ChoiceGeneratedText, String>;
 	
 	//private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
-	
-	// impact on intern properties
-	private var internStress:Int;
-	private var internSpeed:Int;
-	private var internEfficiency:Int;
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -71,7 +70,7 @@ class Choice extends SmartPopin
 	private var internStats:SmartComponent;
 	
 	// temporarily intern
-	private var testIntern:InternDescription;
+	private var intern:InternDescription;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -88,40 +87,13 @@ class Choice extends SmartPopin
 		
 		getComponents();
 		//addInternInfo();
-		createChoiceText();
 		
 		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
 		isOpen = true;
 		
-		testIntern = {
-			id : 2,
-			name : "Angel A. Merkhell",
-			aligment :  "angel",
-			status : "waiting",
-			quest : null,
-			price : 2000,
-			stress: 0,
-			stressLimit: 10,
-			speed: 5,
-			efficiency: 0.1
-		};
-		
 		addListeners();
 	}
-	
-	//Todo: en attendant mieux
-	//public static function init():Void{
-		//eChoiceDone = new EventEmitter();
-	//}
-	/**
-	 * show intern name, side...
-	 */
-	//private function addInternInfo():Void
-	//{
-		//internName.text = internTest.name;
-		//internSide.text = "Ange";
-	//}
 	
 	/**
 	 * get all intern event popin elements
@@ -139,18 +111,31 @@ class Choice extends SmartPopin
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
+		internStress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), TextSprite);
+		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_EVENT_SPEED), TextSprite);
+		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
+	}
+	
+	public function setIntern(pIntern:InternDescription):Void {
+		intern = pIntern;
+		createChoiceText();
 	}
 	
 	/**
 	 * get new generated text
 	 */
-	public function createChoiceText():Void
-	{
-		var txtChoice:Array<String> = TextGenerator.GetNewSituation();
-		textDescAnswer = [ ChoiceGeneratedText.DESC => txtChoice[0], ChoiceGeneratedText.HELL => txtChoice[2], ChoiceGeneratedText.HEAVEN => txtChoice[1] ];
-		presentationChoice.text = textDescAnswer[ChoiceGeneratedText.DESC];
-		heavenChoice.text = textDescAnswer[ChoiceGeneratedText.HEAVEN];
-		evilChoice.text = textDescAnswer[ChoiceGeneratedText.HELL];
+	private function createChoiceText():Void
+	{		
+		var newChoice:Dynamic = ChoiceManager.selectChoice();
+		presentationChoice.text = newChoice.text;
+		heavenChoice.text = newChoice.heavenChoice;
+		evilChoice.text = newChoice.hellChoice;
+		
+		internName.text = intern.name;
+		internSide.text = intern.aligment;
+		internStress.text = Std.string(intern.stress);
+		internSpeed.text = Std.string(intern.speed);
+		internEfficiency.text = Std.string(intern.efficiency);
 	}
 	
 	private function addListeners ():Void {
@@ -169,13 +154,6 @@ class Choice extends SmartPopin
 	private function shareEvent():Void
 	{
 		trace("share");
-	}
-	
-	/**
-	 * Close choice
-	 */
-	private function onDismiss ():Void {
-		trace("dismiss");
 	}
 	
 	private function onSeeAll():Void
@@ -242,7 +220,6 @@ class Choice extends SmartPopin
 	 */
 	private function chooseHellChoice():Void
 	{
-		trace(textDescAnswer[ChoiceGeneratedText.HELL]);
 		//emit
 		//eChoiceDone.emit(EVENT_CHOICE_DONE);
 		QuestsManager.goToNextStep();
@@ -253,7 +230,6 @@ class Choice extends SmartPopin
 	 */
 	private function chooseHeavenCHoice():Void
 	{
-		trace(textDescAnswer[ChoiceGeneratedText.HEAVEN]);
 		//emit
 		QuestsManager.goToNextStep();
 	}
@@ -296,6 +272,8 @@ class Choice extends SmartPopin
 		Interactive.removeListenerClick(btnInterns, onSeeAll);
 		Interactive.removeListenerClick(btnShare, shareEvent);
 		Interactive.removeListenerClick(btnClose, onClose);
+		choiceCard.interactive = false;
+		choiceCard.off(MouseEventType.MOUSE_DOWN, startFollow);
 		
 		isOpen = false;
 		parent.removeChild(this);

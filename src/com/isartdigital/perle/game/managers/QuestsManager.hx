@@ -121,10 +121,16 @@ class QuestsManager
 	public static function choice(pQuest:TimeQuestDescription):Void{
 		trace("choice");
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
-		questInProgress = pQuest;
-		Hud.getInstance().hide();
-		UIManager.getInstance().closeCurrentPopin;
-		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
+		if (!isMaxStress(pQuest.refIntern)){
+			questInProgress = pQuest;
+			Hud.getInstance().hide();
+			UIManager.getInstance().closeCurrentPopin;
+			Choice.getInstance().setIntern(Intern.getIntern(pQuest.refIntern));
+			GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
+		}
+		else{
+			trace("dismiss");
+		}
 	}
 	
 	public static function goToNextStep():Void{
@@ -152,6 +158,7 @@ class QuestsManager
 			//TimeManager.nextStepQuest(questInProgress);
 		}
 		
+		ChoiceManager.nextStep();
 	}
 	
 	/**

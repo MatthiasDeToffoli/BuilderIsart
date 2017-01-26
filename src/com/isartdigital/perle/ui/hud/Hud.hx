@@ -168,16 +168,6 @@ class Hud extends SmartScreen
 		pConstruct.setOnSpawn();
 	}
 	
-	/**
-	 * Temporarily function use to test choice popin
-	 * @param	pEvent
-	 */
-	public function showInternEvent (pEvent:KeyboardEvent):Void {
-		if (pEvent.key != "i") return;
-		hide();
-		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
-	}
-	
 	// todo : called from any clic outside a building
 	public function hideBuildingHud ():Void {
 		changeBuildingHud(BuildingHudType.NONE);
@@ -202,8 +192,6 @@ class Hud extends SmartScreen
 		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
-		
-		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);

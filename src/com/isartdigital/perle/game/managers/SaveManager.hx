@@ -48,6 +48,7 @@ typedef TimeDescription = {
 	var refTile:Int; // l'id du bâtiment auquel il est associé
 	var progress:Float; // de 0 à end pour une barre de progression
 	var end:Float; // millisecondes
+	@:optional var timeBoost:Float;
 	@:optional var creationDate:Float;
 }
 

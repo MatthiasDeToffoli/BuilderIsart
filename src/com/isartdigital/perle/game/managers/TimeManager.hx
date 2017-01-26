@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ServerManager.ConstructionTimeAction;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
@@ -60,11 +61,13 @@ class TimeManager {
 	public static inline var EVENT_CAMPAIGN_FINE:String = "Campaign fine";
 	
 	public static inline var TIME_DESC_REFLECT:String = "timeDesc";
+	public static inline var TIME_DESC_REFLECT_BOOST:String = "timeBoost";
 	
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 50;
+	private static inline var TIME_LOOP_DELAY:Int = 5000;
+	private static inline var TIME_LOOP_DELAY_PROGRESSION:Int = 50;
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
@@ -210,7 +213,8 @@ class TimeManager {
 		var dateNow:Float = Date.now().getTime();		
 		if (dateNow >= pBuildingTimer.end) return;	
 		
-		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;		
+		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;
+		ServerManager.ContructionTimeAction(pBuildingTimer, ConstructionTimeAction.ADD);
 		listConstruction.push(pBuildingTimer);
 	}
 	
@@ -288,6 +292,29 @@ class TimeManager {
 		//timeLoop();  // non car il veut save du coup, mais save pas encore créer si whitoutSave
 		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY); // todo : variable locale ? sûr ?
 		lTime.run = timeLoop;
+		
+		var loopProgression:Timer = Timer.delay(timeLoopProgression, TIME_LOOP_DELAY_PROGRESSION);
+		loopProgression.run = timeLoopProgression;
+	}
+	
+	public static function timeLoopProgression():Void {
+		var lTimeNow:Float = Date.now().getTime();
+		var constructionEnded:Array<Int> = new Array<Int>();
+		var lLengthQuest:Int = listQuest.length;
+		var lLengthConstruct:Int = listConstruction.length;
+		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow);
+		
+		lastKnowTime = lTimeNow;
+		SaveManager.saveLastKnowTime(lastKnowTime);
+		
+		for (j in 0...lLengthQuest) {
+			updateQuest(listQuest[j], lElapsedTime);
+		}
+		
+		for (i in 0...lLengthConstruct) {
+			updateConstruction(listConstruction[i], constructionEnded);
+		}		
+		deleteEndedConstruction(constructionEnded);
 	}
 	
 	/**
@@ -318,10 +345,7 @@ class TimeManager {
 		var lTimeNow:Float = Date.now().getTime();
 		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow); // todo: moche ?
 		var lLength:Int = listResource.length;
-		var lLengthQuest:Int = listQuest.length;
-		var lLengthConstruct:Int = listConstruction.length;
 		var lLenghtProd:Int = listProduction.length;
-		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
@@ -333,18 +357,8 @@ class TimeManager {
 			updateResource(listResource[i], lElapsedTime);
 		}
 		
-		for (j in 0...lLengthQuest) {
-			//trace("length time loop " + lLengthQuest);
-			updateQuest(listQuest[j], lElapsedTime);
-		}
-		
 		for ( i in 0...lLenghtProd)
 			updateProductionTime(listProduction[i], lElapsedTime);
-		
-		for (i in 0...lLengthConstruct) {
-			updateConstruction(listConstruction[i], lElapsedTime, constructionEnded);
-		}		
-		deleteEndedConstruction(constructionEnded);
 	}
 	
 	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
@@ -408,10 +422,10 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 * @param	pIndex
 	 */
-	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pEndedList:Array<Int>):Void {
-		pElement.progress += pElapsedTime;
+	private static function updateConstruction(pElement:TimeDescription, ?pEndedList:Array<Int>=null):Void {
+		pElement.progress = Date.now().getTime() - pElement.creationDate;
+		if (Reflect.hasField(pElement, TIME_DESC_REFLECT_BOOST)) pElement.progress += pElement.timeBoost;
 		var diff:Float = pElement.end - pElement.creationDate;
-		//trace("update : id => " + pElement.refTile);
 		
 		if (pElement.progress >= diff) {
 			trace("construction : id => " + pElement.refTile + " terminée");
@@ -440,6 +454,11 @@ class TimeManager {
 			}
 	}
 	
+	/**
+	 * Get actual state of construction time
+	 * @param	pTileDesc
+	 * @return
+	 */
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;
@@ -463,20 +482,36 @@ class TimeManager {
 		return "Finish";
 	}
 	
+	
+	/**
+	 * Get time with quest format
+	 * @param	pTime
+	 * @return
+	 */
 	public static function getTextTimeQuest(pTime:Float):String {
 		var txtLength:Int = Date.fromTime(pTime).toString().length;
 		return Date.fromTime(pTime).toString().substr(txtLength - 5, 5);
 	}
 	
+	/**
+	 * Decrease a construction time
+	 * @param	pVBuilding
+	 * @param	pBoostValue
+	 * @return
+	 */
 	public static function increaseProgress(pVBuilding:VBuilding, pBoostValue:Float):Bool {
 		var lLengthConstruct:Int = listConstruction.length;
+		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		for (i in 0...lLengthConstruct) {
 			if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
-				listConstruction[i].progress += pBoostValue;
+				if (Reflect.hasField(listConstruction[i], TIME_DESC_REFLECT_BOOST)) listConstruction[i].timeBoost += pBoostValue;
+				else listConstruction[i].timeBoost = pBoostValue;
+				updateConstruction(listConstruction[i], constructionEnded);
 				break;
 			}
 		}	
+		deleteEndedConstruction(constructionEnded);
 		
 		var state:VBuildingState = getBuildingStateFromTime(pVBuilding.tileDesc);
 		if (state == VBuildingState.isBuilt) return true;
@@ -495,6 +530,11 @@ class TimeManager {
 		else return false;
 	}
 	
+	/**
+	 * Get progress pourcentage of a construction timeDesc
+	 * @param	pTimeDesc
+	 * @return
+	 */
 	public static function getPourcentage(pTimeDesc:TimeDescription):Float {
 		var total = pTimeDesc.end - pTimeDesc.creationDate;
 		return pTimeDesc.progress / total;

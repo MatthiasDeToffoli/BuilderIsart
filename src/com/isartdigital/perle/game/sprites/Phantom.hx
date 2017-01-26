@@ -111,7 +111,7 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmMove ():Void {
-		instance.confirmMove();
+		if (instance != null) instance.confirmMove();
 	}
 	
 	private static function createPhantom (pBuildingName:String):Void {
