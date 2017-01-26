@@ -2,6 +2,7 @@ package com.isartdigital.perle;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.FootPrintAsset;
@@ -21,6 +22,8 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
+import com.isartdigital.perle.ui.hud.dialogue.Arrow;
+import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
 import com.isartdigital.services.facebook.Facebook;
@@ -54,6 +57,7 @@ class Main extends EventEmitter
 	private static inline var JSON_FOLDER:String = "json/";
 	private static inline var JSON_EXTENSION:String = ".json";
 	public static inline var DIALOGUE_FTUE_JSON_NAME:String = JSON_FOLDER + "dialogue_ftue";
+	public static inline var FTUE_JSON_NAME:String = JSON_FOLDER + "FTUE"+ JSON_EXTENSION;
 	public static inline var EXPERIENCE_JSON_NAME:String = JSON_FOLDER + "experience";
 	public static inline var UNLOCK_ITEM_JSON_NAME:String = JSON_FOLDER + "item_to_unlock";
 	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price" + JSON_EXTENSION;
@@ -223,6 +227,9 @@ class Main extends EventEmitter
 		
 		//dialogue FTUE
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
+		lLoader.addTxtFile(FTUE_JSON_NAME);
+		
+		//Experience and Unlocks
 		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
 		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
 		
@@ -264,6 +271,7 @@ class Main extends EventEmitter
 		// Ouvre la TitleClard
 		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
 		
+		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		GameManager.getInstance().start();
 	}
 	

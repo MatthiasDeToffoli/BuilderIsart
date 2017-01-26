@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud;
 
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -22,6 +23,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -36,6 +38,7 @@ import js.html.KeyboardEvent;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
+import pixi.interaction.EventTarget;
 
 enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
 
@@ -89,6 +92,7 @@ class Hud extends SmartScreen
 		BHMoving.getInstance().init();
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
+		name = componentName;
 		
 		addListeners();
 	}
@@ -196,12 +200,10 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnMissions, onClickMission);
 		
 		
-		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, showInternEvent);
-		
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);
@@ -219,6 +221,14 @@ class Hud extends SmartScreen
 		btnHard = cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton);
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
+		on(EventType.ADDED, registerForFTUE);
+	}
+	
+	private function registerForFTUE (pEvent:EventTarget):Void {
+		for (i in 0...children.length) {
+			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i]);
+		}
+		off(EventType.ADDED, registerForFTUE);
 	}
 	
 	public function initGauges():Void{

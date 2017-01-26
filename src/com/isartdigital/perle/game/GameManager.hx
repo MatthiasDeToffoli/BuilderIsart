@@ -20,6 +20,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.loader.GameLoader;
 
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building;
@@ -73,9 +74,10 @@ class GameManager {
 		ClippingManager.update();
 		FootPrint.startClass();
 		
-		//DialogueManager.createFtue();
+		DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
+		
 	}
 	
 	/**

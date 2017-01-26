@@ -55,7 +55,6 @@ class PoolingManager {
 		AssetName.DECO_HELL_TREE_3 => "DecoHell",
 		AssetName.DECO_HELL_ROCK => "Building",
 		
-		
 		"Ground" => "Ground",
 		"Road_h" => "Ground",
 		"Road_c" => "Ground",

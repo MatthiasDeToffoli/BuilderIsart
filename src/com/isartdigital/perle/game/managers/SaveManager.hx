@@ -182,7 +182,7 @@ class SaveManager {
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
-			ftueProgress : DialogueUI.actualDialogue,
+			ftueProgress : DialogueManager.dialogueSaved,
 			itemUnlocked : itemUnlock
 		};
 		setLocalStorage(currentSave);
