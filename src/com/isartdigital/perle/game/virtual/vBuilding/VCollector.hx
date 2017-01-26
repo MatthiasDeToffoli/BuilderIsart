@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.TimeManager;
@@ -26,6 +27,7 @@ class VCollector extends VBuilding
 	{
 		super(pDescription);
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION, updateMyTime);
+		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION_STOP, stopProduction);
 	}
 	
 	override function setHaveRecolter():Void 
@@ -45,14 +47,23 @@ class VCollector extends VBuilding
 			
 	}
 	
-	public function startProduction(pack:ProductionPack){
+	private function stopProduction(pRef:Int):Void {
+		if (pRef != tileDesc.id) return;
+		
+		timeProd = null;
+		product = false;
+	}
+	
+	public function startProduction(pack:ProductionPack):Void{
 		timeProd = TimeManager.createProductionTime(pack, tileDesc.id);
 		product = true;
+		ResourcesManager.spendTotal(GeneratorType.soft, pack.cost);
 	}
 	
 	override public function destroy():Void 
 	{
 		TimeManager.eProduction.off(TimeManager.EVENT_COLLECTOR_PRODUCTION, updateMyTime);
+		TimeManager.eProduction.off(TimeManager.EVENT_COLLECTOR_PRODUCTION_STOP, stopProduction);
 		super.destroy();
 	}
 	

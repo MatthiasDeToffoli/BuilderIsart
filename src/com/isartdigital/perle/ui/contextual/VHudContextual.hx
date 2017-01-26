@@ -2,7 +2,9 @@ package com.isartdigital.perle.ui.contextual;
 
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.Virtual;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.contextual.virtual.VButtonProduction;
+import com.isartdigital.perle.ui.contextual.virtual.VButtonProductionCollector;
 import com.isartdigital.perle.ui.contextual.virtual.VButtonProductionGenerator;
 import pixi.core.display.Container;
 
@@ -29,6 +31,9 @@ class VHudContextual extends Virtual{
 		if (myVBuilding.haveRecolter){
 			virtualGoldBtn = new VButtonProductionGenerator();
 			virtualGoldBtn.init(this);
+		} else if (Std.is(myVBuilding, VCollector)) {
+			virtualGoldBtn = new VButtonProductionCollector();
+			virtualGoldBtn.init(this);
 		}
 		
 		// ajout cartouche d'âme 
@@ -43,8 +48,7 @@ class VHudContextual extends Virtual{
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual));
 		lHudContextual.init();
 		
-		
-		if(myVBuilding.haveRecolter) virtualGoldBtn.activate();
+		if(virtualGoldBtn != null) virtualGoldBtn.activate();
 	}
 	
 	override public function desactivate ():Void {
@@ -55,7 +59,7 @@ class VHudContextual extends Virtual{
 	}
 	
 	override public function destroy():Void {
-		if(myVBuilding.haveRecolter) virtualGoldBtn.destroy();
+		if(virtualGoldBtn != null) virtualGoldBtn.destroy();
 		virtualGoldBtn = null;
 		myVBuilding.unlinkContextualHud();
 		myVBuilding = null;

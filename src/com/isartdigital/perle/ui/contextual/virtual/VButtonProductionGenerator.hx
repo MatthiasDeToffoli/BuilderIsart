@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
+import com.isartdigital.perle.ui.contextual.sprites.ButtonProductionGenerator;
 
 /**
  * contain all information for the button production link to a generator
@@ -17,11 +18,6 @@ class VButtonProductionGenerator extends VButtonProduction
 	 * description of the generator link te this button
 	 */
 	private var myGeneratorDesc:GeneratorDescription;
-	
-	/**
-	 * type of generator which had by this button
-	 */
-	private var resourceType:GeneratorType;
 
 	public function new() 
 	{
@@ -51,13 +47,13 @@ class VButtonProductionGenerator extends VButtonProduction
 				removeGraphic();
 		}
 		
-		if (myBtn != null) myBtn.setScale();
+		if (myBtn != null) cast(myBtn,ButtonProductionGenerator).setScale();
 	}
 	
 	override function addGraphic():Void 
 	{
-		myBtn = new ButtonProduction(myGeneratorDesc.type);
-		myBtn.setMyGeneratorDescription(myGeneratorDesc);
+		myBtn = new ButtonProductionGenerator(myGeneratorDesc.type);
+		cast(myBtn,ButtonProductionGenerator).setMyGeneratorDescription(myGeneratorDesc);
 		super.addGraphic();
 	}
 	
@@ -65,7 +61,7 @@ class VButtonProductionGenerator extends VButtonProduction
 	{
 		super.activate();
 		
-		if (myBtn != null) myBtn.setScale();
+		if (myBtn != null) cast(myBtn,ButtonProductionGenerator).setScale();
 	}
 	
 	override public function destroy() 

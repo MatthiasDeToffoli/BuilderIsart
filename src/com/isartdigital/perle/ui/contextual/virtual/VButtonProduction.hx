@@ -78,7 +78,6 @@ class VButtonProduction extends VSmartComponent
 	 */
 	override public function activate ():Void {
 		super.activate(); // put active to true
-		
 		if (shoulBeVisible())
 			addGraphic();
 			

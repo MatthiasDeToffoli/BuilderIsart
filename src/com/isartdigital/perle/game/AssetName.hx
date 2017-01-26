@@ -220,6 +220,7 @@ class AssetName{
 	public static inline var COLLECTOR_TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
 	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
 	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
+	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON:String = "AccelerateButton";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";

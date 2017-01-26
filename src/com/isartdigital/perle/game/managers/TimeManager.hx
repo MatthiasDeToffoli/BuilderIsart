@@ -52,6 +52,7 @@ class TimeManager {
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
 	public static inline var EVENT_COLLECTOR_PRODUCTION:String = "Production_Time";
 	public static inline var EVENT_COLLECTOR_PRODUCTION_FINE:String = "Production_Fine";
+	public static inline var EVENT_COLLECTOR_PRODUCTION_STOP:String = "Production_STOP";
 	
 	public static inline var TIME_DESC_REFLECT:String = "timeDesc";
 	
@@ -393,10 +394,21 @@ class TimeManager {
 		pElement.progress -= pEllapsedTime;
 		if (pElement.progress < 0){
 			pElement.progress = 0;
-			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE);
+			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE,pElement);
 		}
 		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
 	}
+	
+	public static function removeProductionTIme(ref:Int){
+	 	var i:Int, l:Int = listProduction.length;
+		
+		for (i in 0...l)
+			if (listProduction[i].buildingRef == ref) {
+				listProduction.splice(i, 1);
+				eProduction.emit(EVENT_COLLECTOR_PRODUCTION_STOP, ref);
+			}
+	}
+	
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;

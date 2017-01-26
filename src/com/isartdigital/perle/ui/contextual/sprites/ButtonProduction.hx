@@ -15,19 +15,12 @@ import pixi.interaction.EventTarget;
 
 
 /**
- * ...
+ * Button class for all kind of Resources link to a building
  * @author COQUERELLE Killian
  */
 
- /**
-  * Button class for all kind of Resources generator (except intern) link to a building
-  */
 class ButtonProduction extends SmartComponent // todo : si hérite de SmartButton il doit être un symbol btn ds le wireframe
 { 
-	/**
-	 * description of the generator link te this button
-	 */
-	private var myGeneratorDesc:GeneratorDescription;
 	
 	private static var assetsName:Map<GeneratorType,String>;
 	
@@ -54,33 +47,14 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 		assetsName[GeneratorType.buildResourceFromParadise] = AssetName.PROD_ICON_WOOD;
 		assetsName[GeneratorType.buildResourceFromHell] = AssetName.PROD_ICON_STONE;
 	}
-	
-	/**
-	 * use for alpha fellback change size of the button
-	 */
-	public function setScale():Void{
-		myGeneratorDesc = ResourcesManager.getGenerator(myGeneratorDesc.id, myGeneratorDesc.type);
-		
-		var ratio:Float = myGeneratorDesc.quantity / (myGeneratorDesc.max/1.5);
-		scale = new Point(ratio,ratio);
-	}
-	/**
-	 * take the generator description
-	 * @param	pDesc the generator description
-	 */
-	public function setMyGeneratorDescription(pDesc:GeneratorDescription):Void {
-		myGeneratorDesc = pDesc;
-	}
 
-	function onClick ():Void {
-		//if (myGeneratorDesc != null) // si pas justifié on enlève, mieux vaut pas rendre le code imperméable aux bugs venant d'un truc mal codé
-			myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
+	private function onClick ():Void {
+			
 	}
 	
 	override public function destroy():Void { // todo : destroy fonctionnel ?
 		Interactive.removeListenerClick(this, onClick);
 		removeAllListeners();
-		myGeneratorDesc = null;
 		if (parent != null)
 			parent.removeChild(this);
 		super.destroy();

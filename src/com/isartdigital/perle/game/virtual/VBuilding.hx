@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -100,7 +101,7 @@ class VBuilding extends VTile {
 		graphic = cast(Building.createBuilding(tileDesc), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 
-		if(haveRecolter) myVContextualHud.activate();
+		if(haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
 	}
 	
 	/**
