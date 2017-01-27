@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 
+import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -53,6 +54,8 @@ class TimeManager {
 	public static inline var EVENT_COLLECTOR_PRODUCTION:String = "Production_Time";
 	public static inline var EVENT_COLLECTOR_PRODUCTION_FINE:String = "Production_Fine";
 	public static inline var EVENT_COLLECTOR_PRODUCTION_STOP:String = "Production_STOP";
+	public static inline var EVENT_CAMPAIGN:String = "Campaign";
+	public static inline var EVENT_CAMPAIGN_FINE:String = "Campaign fine";
 	
 	public static inline var TIME_DESC_REFLECT:String = "timeDesc";
 	
@@ -65,6 +68,7 @@ class TimeManager {
 	public static var eTimeQuest:EventEmitter;
 	public static var eConstruct:EventEmitter;
 	public static var eProduction:EventEmitter;
+	public static var eCampaign:EventEmitter;
 	
 	public static var gameStartTime(default, null):Float;
 	public static var lastKnowTime(default, null):Float;
@@ -72,17 +76,20 @@ class TimeManager {
 	public static var listResource(default, null):Array<TimeElementResource>;
 	public static var listQuest(default, null):Array<TimeQuestDescription>;
 	public static var listConstruction(default, null):Array<TimeDescription>;
-	public static var listProduction(default, null):Array<TimeCollectorProduction>;
+	public static var listProduction(default, null):Array < TimeCollectorProduction>;
+	public static var campaignTime(default, null):Float;
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
 		eTimeQuest = new EventEmitter();
 		eConstruct = new EventEmitter();
 		eProduction = new EventEmitter();
+		eCampaign = new EventEmitter();
 		listResource = new Array<TimeElementResource>();
 		listQuest = new Array<TimeQuestDescription>();
 		listConstruction = new Array<TimeDescription>();
 		listProduction = new Array<TimeCollectorProduction>();
+		campaignTime = 0;
 	}
 	
 	public static function buildWhitoutSave ():Void {
@@ -119,6 +126,22 @@ class TimeManager {
 		}
 		
 		lastKnowTime = pSave.lastKnowTime;
+	}
+	
+	public static function setCampaignTime(pTime:Float):Void {
+		campaignTime = pTime;
+	}
+	
+	private static function updateCampaignTime(ElapsedTime:Float):Void {
+		campaignTime = Math.max(campaignTime - ElapsedTime, 0);
+		
+		if (campaignTime == 0){
+			MarketingManager.setCampaign(CampaignType.none);
+			eCampaign.emit(EVENT_CAMPAIGN_FINE);
+		} else {
+			eCampaign.emit(EVENT_CAMPAIGN, campaignTime);
+		}
+		
 	}
 	
 	/**
@@ -300,6 +323,9 @@ class TimeManager {
 		lastKnowTime = lTimeNow;
 		SaveManager.saveLastKnowTime(lastKnowTime);
 		//trace("length quest" + listQuest.length);
+		
+		if (campaignTime > 0) updateCampaignTime(lElapsedTime);
+		
 		for (i in 0...lLength) {
 			updateResource(listResource[i], lElapsedTime);
 		}

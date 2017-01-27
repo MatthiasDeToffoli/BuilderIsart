@@ -33,7 +33,7 @@ class TimerInProd extends SmartComponent
 		
 		var progressBar:SmartComponent = cast(SmartCheck.getChildByName(this, AssetName.COLLECTOR_TIME_GAUGE), SmartComponent);
 		
-		progressBarTxt = cast(SmartCheck.getChildByName(progressBar, AssetName.COLLECTOR_TIME_GAUGE_TEXT), TextSprite);
+		progressBarTxt = cast(SmartCheck.getChildByName(progressBar, AssetName.TIME_GAUGE_TEXT), TextSprite);
 		
 		rewrite(collector.timeProd);
 		

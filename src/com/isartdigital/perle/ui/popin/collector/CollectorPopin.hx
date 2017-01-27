@@ -46,7 +46,7 @@ class CollectorPopin extends SmartPopin
 		
 		var myCollector:VCollector = cast(BuildingHud.virtualBuilding, VCollector);
 		
-		btnClose = cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton);
+		btnClose = cast(SmartCheck.getChildByName(this, AssetName.BTN_CLOSE), SmartButton);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_productionSpawner"), UISprite);
 			
 		if (myCollector.product) addTimer(spawner,myCollector);

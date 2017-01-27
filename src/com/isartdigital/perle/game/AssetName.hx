@@ -49,6 +49,7 @@ class AssetName{
 	
 	//element in many popin
 	public static inline var BTN_CLOSE:String = "ButtonClose";
+	public static inline var TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
@@ -216,13 +217,23 @@ class AssetName{
 	public static inline var PANEL_COLLECTOR_BUTTON_TEXT:String = "_buttonProduce_GoldValue";
 	public static inline var COLLECTOR_TIME_IN_PROD:String = "CollectorInProduction";
 	public static inline var COLLECTOR_TIME_GAUGE:String = "TimeGauge";
-	public static inline var COLLECTOR_TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
 	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
 	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
 	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON:String = "AccelerateButton";
 	
 	//Marketing popin
 	public static inline var MARKETING_POPIN:String = "InfoMarketing";
+	public static inline var MARKETING_PANEL_CAMPAIGN:String = "MarketingCampaigns_Spawn";
+	public static inline var MARKETING_CAMPAIGN:String = "MarketingCampaign";
+	public static inline var VIDEO:String = "Video";
+	public static inline var VIDEO_BTN:String = VIDEO + "Button";
+	public static inline var CAMPAIGN_BTN:String = "CampaignButton";
+	public static inline var CAMPAIGN_BOOST_VALUE:String = "IncomeValue";
+	public static inline var CAMPAIGN_TIME_VALUE:String = "IncomeTime";
+	public static inline var CAMPAIGN_PANEL_TIMER:String = "MarketingIsCampaigning";
+	public static inline var CAMPAIGN_TIMER:String = "TimeBar";
+	public static inline var CAMPAIGN_TIMER_BOOST_VALUE:String = "CampaignIncomingValue";
+	public static inline var CAMPAIGN_TIMER_TIME_VALUE:String = "CampaignIncomingTime";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
