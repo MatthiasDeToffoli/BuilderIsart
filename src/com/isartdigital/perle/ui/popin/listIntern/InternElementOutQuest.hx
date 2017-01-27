@@ -9,6 +9,7 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
 /**
@@ -27,9 +28,9 @@ class InternElementOutQuest extends InternElement
 		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
 		
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
-		
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
-		btnSend= cast(getChildByName(AssetName.BUTTON_SEND_OUT_QUEST), SmartButton);
+		//btnSend= cast(getChildByName(AssetName.BUTTON_SEND_OUT_QUEST), SmartButton);
+		spawnButton("_spawner_buttonStress_accelerate");
 		
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
 		internName.text = pDesc.name;
@@ -38,8 +39,28 @@ class InternElementOutQuest extends InternElement
 		idIntern = pDesc.id;
 		
 		Interactive.addListenerClick(picture, onPicture);
+		//Interactive.addListenerClick(btnSend, onSend);
+		
+	}
+	
+	private function spawnButton(spawnerName:String):Void{
+		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
+		btnSend = new SendButton(spawner.position);
+		//btnSend = new StressButton(spawner.position);
+		btnSend.position = spawner.position;
 		Interactive.addListenerClick(btnSend, onSend);
 		
+		addChild(btnSend);
+		destroySpawner(spawner);
+	}
+	
+	/**
+	 * destroy the spawner
+	 * @param spawner to destroy
+	 */
+	private function destroySpawner(spawner:UISprite):Void{	
+		spawner.parent.removeChild(spawner);
+		spawner.destroy();
 	}
 	
 	private function onSend(){
@@ -55,13 +76,6 @@ class InternElementOutQuest extends InternElement
 		InternElementInQuest.canPushNewScreen = true;
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		
-		//todo: a garder en anticipation de bugs
-		//for (i in 0...lLength){
-			//if (QuestsManager.questsList[i].refIntern == idIntern){
-				//TimeManager.createTimeQuest(QuestsManager.questsList[i]);
-			//}
-		//}
 	}
 	
 	//For the HUD Popin actualisation
@@ -74,7 +88,7 @@ class InternElementOutQuest extends InternElement
 	override public function destroy():Void 
 	{
 		Interactive.removeListenerClick(picture, onPicture);
-		Interactive.removeListenerClick(btnSend, onSend);
+		//Interactive.removeListenerClick(btnSend, onSend);
 		super.destroy();
 	}
 }

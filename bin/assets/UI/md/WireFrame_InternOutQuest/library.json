@@ -1,431 +1,1136 @@
 {
- "md5": "66308dace7f090e9bee4152522ac1b35",
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_intern03_bg",
-       "origin": [
-        450,
-        93.75
-       ],
        "rect": [
         1,
         1,
-        900,
+        987,
         188
+       ],
+       "origin": [
+        450,
+        93.75
        ]
       },
       {
-       "symbol": "_buttonPortraitListOutQuest_down",
-       "origin": [
-        100.5,
-        96.75
-       ],
+       "symbol": "_buttonPortraitListOutQuest_up",
        "rect": [
         1,
         191,
         201,
         194
-       ]
-      },
-      {
-       "symbol": "_buttonPortraitListOutQuest_up",
+       ],
        "origin": [
         100.5,
         96.75
-       ],
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_down",
        "rect": [
         1,
         387,
         201,
         194
+       ],
+       "origin": [
+        100.5,
+        96.75
        ]
       },
       {
        "symbol": "_buttonPortraitListOutQuest_over",
-       "origin": [
-        100.5,
-        96.75
-       ],
        "rect": [
         1,
         583,
         201,
         194
+       ],
+       "origin": [
+        100.5,
+        96.75
        ]
       },
       {
        "symbol": "_intern03_image",
-       "origin": [
-        97.5,
-        93.75
-       ],
        "rect": [
         1,
         779,
         195,
         188
+       ],
+       "origin": [
+        97.5,
+        93.75
        ]
       },
       {
-       "symbol": "_buttonListSend_down",
-       "origin": [
-        103.5,
-        65.8
-       ],
+       "symbol": "_spawner_buttonStress_accelerate",
        "rect": [
         198,
         779,
         207,
-        132
+        139
+       ],
+       "origin": [
+        103.1,
+        69.4
        ]
       },
       {
-       "symbol": "_buttonListSend_over",
-       "origin": [
-        103.5,
-        65.8
-       ],
+       "symbol": "_buttonListSend_down",
        "rect": [
         204,
         191,
         207,
         132
+       ],
+       "origin": [
+        103.5,
+        65.8
+       ]
+      },
+      {
+       "symbol": "_buttonListSend_over",
+       "rect": [
+        204,
+        325,
+        207,
+        132
+       ],
+       "origin": [
+        103.5,
+        65.8
        ]
       },
       {
        "symbol": "_buttonListSend_up",
+       "rect": [
+        204,
+        459,
+        204,
+        129
+       ],
        "origin": [
         101.6,
         64.3
-       ],
+       ]
+      },
+      {
+       "symbol": "_bg_stress_jauge",
        "rect": [
-        204,
-        325,
-        204,
-        129
+        1,
+        969,
+        267,
+        45
+       ],
+       "origin": [
+        251.9,
+        7.5
+       ]
+      },
+      {
+       "symbol": "_bg_efficiency_jauge",
+       "rect": [
+        198,
+        920,
+        267,
+        45
+       ],
+       "origin": [
+        251.9,
+        7.5
+       ]
+      },
+      {
+       "symbol": "_bg_speed_jauge",
+       "rect": [
+        270,
+        967,
+        267,
+        45
+       ],
+       "origin": [
+        251.9,
+        7.5
        ]
       },
       {
        "symbol": "_listOutQuest_currencyIcon",
+       "rect": [
+        204,
+        590,
+        106,
+        106
+       ],
        "origin": [
         52.55,
         52.55
-       ],
-       "rect": [
-        198,
-        913,
-        106,
-        106
        ]
       },
       {
-       "data": {
-        "y": -43.55,
-        "text": "Send",
-        "x": -108.6,
-        "width": 217.25,
-        "font": "75px Times New Roman",
-        "align": "center",
-        "height": 87.05,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listOutQuest_ButtonText",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
+       "symbol": "_jaugeEfficiency_03",
        "rect": [
+        990,
         1,
-        1021,
-        1,
-        1
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
        ]
       },
       {
-       "data": {
-        "y": -0.05,
-        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
-        "x": 0.35,
-        "width": 1503.3,
-        "font": "76px Times New Roman",
-        "align": "left",
-        "height": 88.15,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listOutQuest_name",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
+       "symbol": "_jaugeEfficiency_02",
        "rect": [
-        4,
-        1021,
-        1,
-        1
+        990,
+        33,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_01",
+       "rect": [
+        990,
+        65,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_04",
+       "rect": [
+        990,
+        97,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_05",
+       "rect": [
+        990,
+        129,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_01",
+       "rect": [
+        990,
+        161,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_02",
+       "rect": [
+        204,
+        698,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_03",
+       "rect": [
+        204,
+        730,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_04",
+       "rect": [
+        236,
+        698,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_05",
+       "rect": [
+        236,
+        730,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_01",
+       "rect": [
+        268,
+        698,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_02",
+       "rect": [
+        268,
+        730,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_03",
+       "rect": [
+        300,
+        698,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_04",
+       "rect": [
+        300,
+        730,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_05",
+       "rect": [
+        312,
+        590,
+        30,
+        30
+       ],
+       "origin": [
+        15,
+        15
        ]
       },
       {
        "data": {
         "y": -43.5,
-        "text": "9999",
-        "x": -95.4,
-        "width": 190.8,
-        "font": "75px Times New Roman",
-        "align": "center",
-        "height": 87.05,
         "wordWrap": 0,
-        "color": "#000000"
+        "text": "9999",
+        "width": 190.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 95.55,
+        "font": "75px Calibri",
+        "x": -95.4
        },
        "symbol": "_listOutQuest_sendCost",
+       "rect": [
+        1022,
+        1,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
-       ],
-       "baseClass": "TextSprite",
+       ]
+      },
+      {
+       "data": {
+        "y": -30,
+        "wordWrap": 0,
+        "text": "Stress",
+        "width": 117.9,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -58.95
+       },
+       "symbol": "_interns_stress",
        "rect": [
-        7,
-        1021,
+        1022,
+        4,
         1,
         1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
        ]
+      },
+      {
+       "data": {
+        "y": -44.1,
+        "wordWrap": 0,
+        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
+        "width": 1503.3,
+        "color": "#000000",
+        "align": "left",
+        "height": 96.75,
+        "font": "76px Calibri",
+        "x": -0.65
+       },
+       "symbol": "_listOutQuest_name",
+       "rect": [
+        1022,
+        7,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -43.55,
+        "wordWrap": 0,
+        "text": "Send",
+        "width": 217.25,
+        "color": "#000000",
+        "align": "center",
+        "height": 87.05,
+        "font": "75px Times New Roman",
+        "x": -108.6
+       },
+       "symbol": "_listOutQuest_ButtonText",
+       "rect": [
+        1022,
+        10,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -28,
+        "wordWrap": 0,
+        "text": "Speed",
+        "width": 118.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -59.45
+       },
+       "symbol": "_intern_speed",
+       "rect": [
+        1022,
+        13,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -28,
+        "wordWrap": 0,
+        "text": "Efficiency",
+        "width": 204.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -102.45
+       },
+       "symbol": "_txt_efficiency03",
+       "rect": [
+        1022,
+        16,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "ListOutQuest",
+   "layers": [
+    {
+     "name": "_intern03_bg",
+     "keyframes": [
+      {
+       "pivot": [
+        450,
+        93.75
+       ],
+       "duration": 1,
+       "loc": [
+        663.4875,
+        169.2
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_intern03_bg"
+      }
+     ]
+    },
+    {
+     "name": "_intern03_name05",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        38.7
+       ],
+       "ref": "_listOutQuest_name"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_efficiency",
+     "keyframes": [
+      {
+       "pivot": [
+        -0.2625,
+        -0.5625
+       ],
+       "duration": 1,
+       "loc": [
+        1026.8625,
+        233.5125
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "~_jauge_efficiency"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_speed",
+     "keyframes": [
+      {
+       "pivot": [
+        -0.2625,
+        -0.5625
+       ],
+       "duration": 1,
+       "loc": [
+        1027.35,
+        169.2375
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "~_jauge_speed"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_stress",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        1028.25,
+        105.3
+       ],
+       "ref": "~_jauge_stress"
+      }
+     ]
+    },
+    {
+     "name": "_interns_stress",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        839.25,
+        105.3
+       ],
+       "ref": "_interns_stress"
+      }
+     ]
+    },
+    {
+     "name": "_txt_efficiency03",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        807,
+        235.0125
+       ],
+       "ref": "_txt_efficiency03"
+      }
+     ]
+    },
+    {
+     "name": "_spawner_buttonStress_accelerate",
+     "keyframes": [
+      {
+       "pivot": [
+        103.125,
+        69.375
+       ],
+       "duration": 1,
+       "loc": [
+        333,
+        171.9
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_spawner_buttonStress_accelerate"
+      }
+     ]
+    },
+    {
+     "name": "_intern_speed",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        838.875,
+        169.8
+       ],
+       "ref": "_intern_speed"
+      }
+     ]
+    },
+    {
+     "name": "OutQuest_Portrait",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        75.75
+       ],
+       "ref": "~Button_Portrait_ListOutQuest"
+      }
+     ]
+    },
+    {
+     "name": "_icon_hc",
+     "keyframes": [
+      {
+       "pivot": [
+        52.5375,
+        52.5375
+       ],
+       "duration": 1,
+       "loc": [
+        663.75,
+        168.9
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_listOutQuest_currencyIcon"
+      }
+     ]
+    },
+    {
+     "name": "sendCost",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        531,
+        168.9
+       ],
+       "ref": "_listOutQuest_sendCost"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_Portrait_ListOutQuest",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "pivot": [
+        100.5,
+        96.75
+       ],
+       "duration": 1,
+       "loc": [
+        97.5,
+        93.75
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonPortraitListOutQuest_up"
+      },
+      {
+       "pivot": [
+        100.5,
+        96.75
+       ],
+       "duration": 1,
+       "loc": [
+        97.5,
+        93.75
+       ],
+       "tweened": false,
+       "index": 1,
+       "ref": "_buttonPortraitListOutQuest_over"
+      },
+      {
+       "pivot": [
+        100.5,
+        96.75
+       ],
+       "duration": 2,
+       "loc": [
+        97.5,
+        93.75
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonPortraitListOutQuest_down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_efficiency",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        251.8875,
+        7.5
+       ],
+       "duration": 1,
+       "loc": [
+        118.2,
+        -15.5625
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_efficiency_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeEfficiency_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_speed",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        251.8875,
+        7.5
+       ],
+       "duration": 1,
+       "loc": [
+        118.2,
+        -15.5625
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_speed_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeSpeed_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_stress",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        251.8875,
+        7.5
+       ],
+       "duration": 1,
+       "loc": [
+        118.2,
+        -15.5625
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_stress_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeStress_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -52.5,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        15,
+        15
+       ],
+       "duration": 1,
+       "loc": [
+        -105,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_01"
       }
      ]
     }
    ]
   }
  ],
- "movies": [
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_name",
-       "loc": [
-        -0.75,
-        -0.3
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "_intern03_name05"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        663.4875,
-        169.2
-       ],
-       "index": 0,
-       "pivot": [
-        450,
-        93.75
-       ],
-       "ref": "_intern03_bg",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "_intern03_bg"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "~Button_Send",
-       "loc": [
-        460.9875,
-        166.8
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "Bouton_SendIntern_List"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "~Button_Portrait_ListOutQuest",
-       "loc": [
-        0,
-        75.75
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "OutQuest_Portrait"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        821.475,
-        166.65
-       ],
-       "index": 0,
-       "pivot": [
-        52.5375,
-        52.5375
-       ],
-       "ref": "_listOutQuest_currencyIcon",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "_icon_hc"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_sendCost",
-       "loc": [
-        663.225,
-        168.9
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "sendCost"
-    }
-   ],
-   "id": "ListOutQuest"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        97.5,
-        93.75
-       ],
-       "index": 0,
-       "pivot": [
-        100.5,
-        96.75
-       ],
-       "ref": "_buttonPortraitListOutQuest_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        97.5,
-        93.75
-       ],
-       "index": 1,
-       "pivot": [
-        100.5,
-        96.75
-       ],
-       "ref": "_buttonPortraitListOutQuest_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        97.5,
-        93.75
-       ],
-       "index": 2,
-       "pivot": [
-        100.5,
-        96.75
-       ],
-       "ref": "_buttonPortraitListOutQuest_down",
-       "duration": 2,
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Portrait_ListOutQuest"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        0,
-        -0.1875
-       ],
-       "index": 0,
-       "pivot": [
-        101.625,
-        64.3125
-       ],
-       "ref": "_buttonListSend_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        0,
-        -0.1875
-       ],
-       "index": 1,
-       "pivot": [
-        103.5,
-        65.8125
-       ],
-       "ref": "_buttonListSend_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        0,
-        -0.1875
-       ],
-       "index": 2,
-       "pivot": [
-        103.5,
-        65.8125
-       ],
-       "ref": "_buttonListSend_down",
-       "duration": 2,
-       "tweened": false
-      }
-     ],
-     "name": "Calque 1"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_ButtonText",
-       "duration": 4,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "buttonSendText"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Send"
-  }
- ],
- "frameRate": 24
+ "md5": "e8c053272689878160d7f16cff3f3e51"
 }

@@ -1,431 +1,1136 @@
 {
- "md5": "66308dace7f090e9bee4152522ac1b35",
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
        "symbol": "_intern03_bg",
+       "rect": [
+        1,
+        1,
+        658,
+        125
+       ],
        "origin": [
         300,
         62.5
-       ],
-       "rect": [
-        1,
-        1,
-        600,
-        125
-       ]
-      },
-      {
-       "symbol": "_buttonPortraitListOutQuest_down",
-       "origin": [
-        67,
-        64.5
-       ],
-       "rect": [
-        603,
-        1,
-        134,
-        129
        ]
       },
       {
        "symbol": "_buttonPortraitListOutQuest_up",
-       "origin": [
-        67,
-        64.5
-       ],
        "rect": [
-        739,
+        661,
         1,
         134,
         129
+       ],
+       "origin": [
+        67,
+        64.5
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_down",
+       "rect": [
+        797,
+        1,
+        134,
+        129
+       ],
+       "origin": [
+        67,
+        64.5
        ]
       },
       {
        "symbol": "_buttonPortraitListOutQuest_over",
+       "rect": [
+        1,
+        128,
+        134,
+        129
+       ],
        "origin": [
         67,
         64.5
-       ],
-       "rect": [
-        875,
-        1,
-        134,
-        129
        ]
       },
       {
        "symbol": "_intern03_image",
-       "origin": [
-        65,
-        62.5
-       ],
        "rect": [
-        1,
+        137,
         128,
         130,
         125
+       ],
+       "origin": [
+        65,
+        62.5
+       ]
+      },
+      {
+       "symbol": "_spawner_buttonStress_accelerate",
+       "rect": [
+        269,
+        128,
+        138,
+        93
+       ],
+       "origin": [
+        68.75,
+        46.25
        ]
       },
       {
        "symbol": "_buttonListSend_down",
-       "origin": [
-        69,
-        43.9
-       ],
        "rect": [
-        133,
+        409,
         128,
         138,
         88
+       ],
+       "origin": [
+        69,
+        43.9
        ]
       },
       {
        "symbol": "_buttonListSend_over",
+       "rect": [
+        549,
+        132,
+        138,
+        88
+       ],
        "origin": [
         69,
         43.9
-       ],
-       "rect": [
-        273,
-        128,
-        138,
-        88
        ]
       },
       {
        "symbol": "_buttonListSend_up",
+       "rect": [
+        409,
+        218,
+        136,
+        86
+       ],
        "origin": [
         67.75,
         42.9
-       ],
+       ]
+      },
+      {
+       "symbol": "_bg_stress_jauge",
        "rect": [
-        413,
-        128,
-        136,
-        86
+        137,
+        255,
+        178,
+        30
+       ],
+       "origin": [
+        167.9,
+        5
+       ]
+      },
+      {
+       "symbol": "_bg_efficiency_jauge",
+       "rect": [
+        1,
+        287,
+        178,
+        30
+       ],
+       "origin": [
+        167.9,
+        5
+       ]
+      },
+      {
+       "symbol": "_bg_speed_jauge",
+       "rect": [
+        181,
+        287,
+        178,
+        30
+       ],
+       "origin": [
+        167.9,
+        5
        ]
       },
       {
        "symbol": "_listOutQuest_currencyIcon",
+       "rect": [
+        933,
+        1,
+        70,
+        70
+       ],
        "origin": [
         35,
         35
-       ],
-       "rect": [
-        551,
-        132,
-        70,
-        70
        ]
       },
       {
-       "data": {
-        "y": -43.55,
-        "text": "Send",
-        "x": -108.6,
-        "width": 217.25,
-        "font": "75px Times New Roman",
-        "align": "center",
-        "height": 87.05,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listOutQuest_ButtonText",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
+       "symbol": "_jaugeEfficiency_03",
        "rect": [
-        551,
-        128,
         1,
-        1
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
        ]
       },
       {
-       "data": {
-        "y": -0.05,
-        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
-        "x": 0.35,
-        "width": 1503.3,
-        "font": "76px Times New Roman",
-        "align": "left",
-        "height": 88.15,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listOutQuest_name",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
+       "symbol": "_jaugeEfficiency_02",
        "rect": [
-        554,
-        128,
-        1,
-        1
+        23,
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_01",
+       "rect": [
+        45,
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_04",
+       "rect": [
+        67,
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeEfficiency_05",
+       "rect": [
+        89,
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_01",
+       "rect": [
+        111,
+        259,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_02",
+       "rect": [
+        269,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_03",
+       "rect": [
+        291,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_04",
+       "rect": [
+        313,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeSpeed_05",
+       "rect": [
+        317,
+        245,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_01",
+       "rect": [
+        335,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_02",
+       "rect": [
+        339,
+        245,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_03",
+       "rect": [
+        357,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_04",
+       "rect": [
+        379,
+        223,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
+       ]
+      },
+      {
+       "symbol": "_jaugeStress_05",
+       "rect": [
+        361,
+        245,
+        20,
+        20
+       ],
+       "origin": [
+        10,
+        10
        ]
       },
       {
        "data": {
         "y": -43.5,
-        "text": "9999",
-        "x": -95.4,
-        "width": 190.8,
-        "font": "75px Times New Roman",
-        "align": "center",
-        "height": 87.05,
         "wordWrap": 0,
-        "color": "#000000"
+        "text": "9999",
+        "width": 190.8,
+        "color": "#000000",
+        "align": "center",
+        "height": 95.55,
+        "font": "75px Calibri",
+        "x": -95.4
        },
        "symbol": "_listOutQuest_sendCost",
+       "rect": [
+        133,
+        259,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
        "origin": [
         0,
         0
-       ],
-       "baseClass": "TextSprite",
+       ]
+      },
+      {
+       "data": {
+        "y": -30,
+        "wordWrap": 0,
+        "text": "Stress",
+        "width": 117.9,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -58.95
+       },
+       "symbol": "_interns_stress",
        "rect": [
-        557,
-        128,
+        133,
+        262,
         1,
         1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
        ]
+      },
+      {
+       "data": {
+        "y": -44.1,
+        "wordWrap": 0,
+        "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
+        "width": 1503.3,
+        "color": "#000000",
+        "align": "left",
+        "height": 96.75,
+        "font": "76px Calibri",
+        "x": -0.65
+       },
+       "symbol": "_listOutQuest_name",
+       "rect": [
+        133,
+        265,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -43.55,
+        "wordWrap": 0,
+        "text": "Send",
+        "width": 217.25,
+        "color": "#000000",
+        "align": "center",
+        "height": 87.05,
+        "font": "75px Times New Roman",
+        "x": -108.6
+       },
+       "symbol": "_listOutQuest_ButtonText",
+       "rect": [
+        133,
+        268,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -28,
+        "wordWrap": 0,
+        "text": "Speed",
+        "width": 118.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -59.45
+       },
+       "symbol": "_intern_speed",
+       "rect": [
+        133,
+        271,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      },
+      {
+       "data": {
+        "y": -28,
+        "wordWrap": 0,
+        "text": "Efficiency",
+        "width": 204.95,
+        "color": "#000000",
+        "align": "center",
+        "height": 61.35,
+        "font": "47px Calibri",
+        "x": -102.45
+       },
+       "symbol": "_txt_efficiency03",
+       "rect": [
+        133,
+        274,
+        1,
+        1
+       ],
+       "baseClass": "TextSprite",
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "ListOutQuest",
+   "layers": [
+    {
+     "name": "_intern03_bg",
+     "keyframes": [
+      {
+       "pivot": [
+        300,
+        62.5
+       ],
+       "duration": 1,
+       "loc": [
+        442.325,
+        112.8
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_intern03_bg"
+      }
+     ]
+    },
+    {
+     "name": "_intern03_name05",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        25.8
+       ],
+       "ref": "_listOutQuest_name"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_efficiency",
+     "keyframes": [
+      {
+       "pivot": [
+        -0.175,
+        -0.375
+       ],
+       "duration": 1,
+       "loc": [
+        684.575,
+        155.675
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "~_jauge_efficiency"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_speed",
+     "keyframes": [
+      {
+       "pivot": [
+        -0.175,
+        -0.375
+       ],
+       "duration": 1,
+       "loc": [
+        684.9,
+        112.825
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "~_jauge_speed"
+      }
+     ]
+    },
+    {
+     "name": "_jauge_stress",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        685.5,
+        70.2
+       ],
+       "ref": "~_jauge_stress"
+      }
+     ]
+    },
+    {
+     "name": "_interns_stress",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        559.5,
+        70.2
+       ],
+       "ref": "_interns_stress"
+      }
+     ]
+    },
+    {
+     "name": "_txt_efficiency03",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        538,
+        156.675
+       ],
+       "ref": "_txt_efficiency03"
+      }
+     ]
+    },
+    {
+     "name": "_spawner_buttonStress_accelerate",
+     "keyframes": [
+      {
+       "pivot": [
+        68.75,
+        46.25
+       ],
+       "duration": 1,
+       "loc": [
+        222,
+        114.6
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_spawner_buttonStress_accelerate"
+      }
+     ]
+    },
+    {
+     "name": "_intern_speed",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        559.25,
+        113.2
+       ],
+       "ref": "_intern_speed"
+      }
+     ]
+    },
+    {
+     "name": "OutQuest_Portrait",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        50.5
+       ],
+       "ref": "~Button_Portrait_ListOutQuest"
+      }
+     ]
+    },
+    {
+     "name": "_icon_hc",
+     "keyframes": [
+      {
+       "pivot": [
+        35.025,
+        35.025
+       ],
+       "duration": 1,
+       "loc": [
+        442.5,
+        112.6
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_listOutQuest_currencyIcon"
+      }
+     ]
+    },
+    {
+     "name": "sendCost",
+     "keyframes": [
+      {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        354,
+        112.6
+       ],
+       "ref": "_listOutQuest_sendCost"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "baseClass": "flash.display.SimpleButton",
+   "id": "~Button_Portrait_ListOutQuest",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "pivot": [
+        67,
+        64.5
+       ],
+       "duration": 1,
+       "loc": [
+        65,
+        62.5
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_buttonPortraitListOutQuest_up"
+      },
+      {
+       "pivot": [
+        67,
+        64.5
+       ],
+       "duration": 1,
+       "loc": [
+        65,
+        62.5
+       ],
+       "tweened": false,
+       "index": 1,
+       "ref": "_buttonPortraitListOutQuest_over"
+      },
+      {
+       "pivot": [
+        67,
+        64.5
+       ],
+       "duration": 2,
+       "loc": [
+        65,
+        62.5
+       ],
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonPortraitListOutQuest_down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_efficiency",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        167.925,
+        5
+       ],
+       "duration": 1,
+       "loc": [
+        78.8,
+        -10.375
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_efficiency_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeEfficiency_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeEfficiency_01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_speed",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        167.925,
+        5
+       ],
+       "duration": 1,
+       "loc": [
+        78.8,
+        -10.375
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_speed_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeSpeed_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeSpeed_01"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "~_jauge_stress",
+   "layers": [
+    {
+     "name": "BG",
+     "keyframes": [
+      {
+       "pivot": [
+        167.925,
+        5
+       ],
+       "duration": 1,
+       "loc": [
+        78.8,
+        -10.375
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_bg_stress_jauge"
+      }
+     ]
+    },
+    {
+     "name": "Calque 6",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_05"
+      }
+     ]
+    },
+    {
+     "name": "Calque 5",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_04"
+      }
+     ]
+    },
+    {
+     "name": "Calque 4",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "ref": "_jaugeStress_03"
+      }
+     ]
+    },
+    {
+     "name": "Calque 3",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -35,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_02"
+      }
+     ]
+    },
+    {
+     "name": "Calque 2",
+     "keyframes": [
+      {
+       "pivot": [
+        10,
+        10
+       ],
+       "duration": 1,
+       "loc": [
+        -70,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "_jaugeStress_01"
       }
      ]
     }
    ]
   }
  ],
- "movies": [
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_name",
-       "loc": [
-        -0.5,
-        -0.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "_intern03_name05"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        442.325,
-        112.8
-       ],
-       "index": 0,
-       "pivot": [
-        300,
-        62.5
-       ],
-       "ref": "_intern03_bg",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "_intern03_bg"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "~Button_Send",
-       "loc": [
-        307.325,
-        111.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "Bouton_SendIntern_List"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "~Button_Portrait_ListOutQuest",
-       "loc": [
-        0,
-        50.5
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "OutQuest_Portrait"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        547.65,
-        111.1
-       ],
-       "index": 0,
-       "pivot": [
-        35.025,
-        35.025
-       ],
-       "ref": "_listOutQuest_currencyIcon",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "_icon_hc"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_sendCost",
-       "loc": [
-        442.15,
-        112.6
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "sendCost"
-    }
-   ],
-   "id": "ListOutQuest"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        65,
-        62.5
-       ],
-       "index": 0,
-       "pivot": [
-        67,
-        64.5
-       ],
-       "ref": "_buttonPortraitListOutQuest_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        65,
-        62.5
-       ],
-       "index": 1,
-       "pivot": [
-        67,
-        64.5
-       ],
-       "ref": "_buttonPortraitListOutQuest_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        65,
-        62.5
-       ],
-       "index": 2,
-       "pivot": [
-        67,
-        64.5
-       ],
-       "ref": "_buttonPortraitListOutQuest_down",
-       "duration": 2,
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Portrait_ListOutQuest"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        0,
-        -0.125
-       ],
-       "index": 0,
-       "pivot": [
-        67.75,
-        42.875
-       ],
-       "ref": "_buttonListSend_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        0,
-        -0.125
-       ],
-       "index": 1,
-       "pivot": [
-        69,
-        43.875
-       ],
-       "ref": "_buttonListSend_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "loc": [
-        0,
-        -0.125
-       ],
-       "index": 2,
-       "pivot": [
-        69,
-        43.875
-       ],
-       "ref": "_buttonListSend_down",
-       "duration": 2,
-       "tweened": false
-      }
-     ],
-     "name": "Calque 1"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_listOutQuest_ButtonText",
-       "duration": 4,
-       "index": 0,
-       "tweened": false
-      }
-     ],
-     "name": "buttonSendText"
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~Button_Send"
-  }
- ],
- "frameRate": 24
+ "md5": "e8c053272689878160d7f16cff3f3e51"
 }

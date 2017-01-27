@@ -32,7 +32,7 @@
        ]
       },
       {
-       "symbol": "_buttonPortraitListInQuest_over",
+       "symbol": "_buttonPortraitListInQuest_up",
        "rect": [
         1473,
         1,
@@ -45,7 +45,7 @@
        ]
       },
       {
-       "symbol": "_buttonPortraitListInQuest_up",
+       "symbol": "_buttonPortraitListInQuest_over",
        "rect": [
         1743,
         1,
@@ -66,53 +66,27 @@
         64
        ],
        "origin": [
-        430,
-        32
+        860,
+        32.05
        ]
       },
       {
-       "symbol": "_buttonAccelerate_over",
+       "symbol": "_spawner_buttonStress_accelerate",
        "rect": [
         863,
         253,
-        270,
-        180
+        275,
+        185
        ],
        "origin": [
-        135,
-        90
-       ]
-      },
-      {
-       "symbol": "_buttonAccelerate_up",
-       "rect": [
-        1,
-        319,
-        270,
-        180
-       ],
-       "origin": [
-        135,
-        90
-       ]
-      },
-      {
-       "symbol": "_buttonAccelerate_down",
-       "rect": [
-        273,
-        319,
-        270,
-        180
-       ],
-       "origin": [
-        135,
-        90
+        137.5,
+        92.5
        ]
       },
       {
        "symbol": "_listInQuest_hero",
        "rect": [
-        545,
+        1,
         319,
         95,
         83
@@ -123,22 +97,9 @@
        ]
       },
       {
-       "symbol": "_listQuest_currencyIcon",
-       "rect": [
-        545,
-        404,
-        80,
-        80
-       ],
-       "origin": [
-        39.95,
-        39.95
-       ]
-      },
-      {
        "symbol": "_listInQuest_nextEvent03",
        "rect": [
-        1135,
+        1140,
         253,
         35,
         140
@@ -151,7 +112,7 @@
       {
        "symbol": "_listInQuest_nextEvent02",
        "rect": [
-        642,
+        98,
         319,
         35,
         140
@@ -164,7 +125,7 @@
       {
        "symbol": "_listInQuest_nextEvent01",
        "rect": [
-        679,
+        135,
         319,
         35,
         140
@@ -175,32 +136,6 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Small",
-       "rect": [
-        716,
-        319,
-        64,
-        64
-       ],
-       "origin": [
-        32,
-        32
-       ]
-      },
-      {
-       "symbol": "_accelerateIcon_Small",
-       "rect": [
-        782,
-        319,
-        65,
-        50
-       ],
-       "origin": [
-        32.75,
-        25.35
-       ]
-      },
-      {
        "data": {
         "y": -31,
         "wordWrap": 0,
@@ -208,43 +143,18 @@
         "width": 235.15,
         "color": "#000000",
         "align": "right",
-        "height": 62,
-        "font": "49px Times New Roman",
+        "height": 63.8,
+        "font": "49px Calibri",
         "x": -117.55
        },
        "symbol": "_listInQuest_eventTime",
-       "baseClass": "TextSprite",
        "rect": [
-        627,
-        404,
+        1177,
+        253,
         1,
         1
        ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -33.2,
-        "wordWrap": 0,
-        "text": "Accelerate",
-        "width": 240.55,
-        "color": "#000000",
-        "align": "center",
-        "height": 66.4,
-        "font": "54px Times New Roman",
-        "x": -120.3
-       },
-       "symbol": "_listAccTxt",
        "baseClass": "TextSprite",
-       "rect": [
-        630,
-        404,
-        1,
-        1
-       ],
        "origin": [
         0,
         0
@@ -257,69 +167,19 @@
         "text": "NameXXXXXXXXXXXXXXXXXXXXXXXX",
         "width": 1515.9,
         "color": "#000000",
-        "align": "center",
-        "height": 88.15,
-        "font": "76px Times New Roman",
-        "x": -757.95
+        "align": "left",
+        "height": 96.75,
+        "font": "76px Calibri",
+        "x": 0.05
        },
        "symbol": "_listInQuest_name",
-       "baseClass": "TextSprite",
        "rect": [
-        633,
-        404,
+        1180,
+        253,
         1,
         1
        ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -24.4,
-        "wordWrap": 0,
-        "text": "9999",
-        "width": 143,
-        "color": "#FFFFFF",
-        "align": "center",
-        "height": 50.55,
-        "font": "42px Times New Roman",
-        "x": -52.45
-       },
-       "symbol": "_accelerate_text",
        "baseClass": "TextSprite",
-       "rect": [
-        636,
-        404,
-        1,
-        1
-       ],
-       "origin": [
-        0,
-        0
-       ]
-      },
-      {
-       "data": {
-        "y": -33,
-        "wordWrap": 0,
-        "text": "9999",
-        "width": 158.5,
-        "color": "#000000",
-        "align": "center",
-        "height": 66,
-        "font": "56px Times New Roman",
-        "x": -79.25
-       },
-       "symbol": "_listAccCost",
-       "baseClass": "TextSprite",
-       "rect": [
-        639,
-        404,
-        1,
-        1
-       ],
        "origin": [
         0,
         0
@@ -341,17 +201,17 @@
      "name": "InQuest_bg",
      "keyframes": [
       {
-       "loc": [
-        884.95,
-        212.9
-       ],
-       "duration": 1,
        "pivot": [
         600,
         125
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        884.95,
+        212.9
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_intern01_bg"
       }
      ]
@@ -360,14 +220,18 @@
      "name": "Bouton_InternSend_Clip",
      "keyframes": [
       {
-       "loc": [
-        1341.9,
-        211.05
+       "pivot": [
+        137.5,
+        92.5
        ],
        "duration": 1,
-       "index": 0,
+       "loc": [
+        1342.9,
+        207.8
+       ],
        "tweened": false,
-       "ref": "~ButtonAccelerate"
+       "index": 0,
+       "ref": "_spawner_buttonStress_accelerate"
       }
      ]
     },
@@ -375,13 +239,13 @@
      "name": "InQuest_name",
      "keyframes": [
       {
-       "loc": [
-        758.95,
-        43.75
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false,
+       "loc": [
+        5.95,
+        43.75
+       ],
        "ref": "_listInQuest_name"
       }
      ]
@@ -390,13 +254,13 @@
      "name": "InQuest_Portrait",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         5.9,
         92.8
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "~Button_Portrait_ListInQuest"
       }
      ]
@@ -405,13 +269,13 @@
      "name": "InQuest_ProgressionBar",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         752.95,
         265.85
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "_listInQuest_ProgressionBar"
       }
      ]
@@ -425,17 +289,17 @@
      "name": "_listInQuest_hero",
      "keyframes": [
       {
-       "loc": [
-        -426.05,
-        -73.05
-       ],
-       "duration": 1,
        "pivot": [
         47.4,
         41.15
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        -409.05,
+        -73.05
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_listInQuest_hero"
       }
      ]
@@ -444,13 +308,17 @@
      "name": "_listInQuest_progressionBarBG",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
-        430,
-        32
+        860,
+        32.05
        ],
+       "duration": 1,
+       "loc": [
+        446,
+        0
+       ],
+       "tweened": false,
+       "index": 0,
        "ref": "_listInQuest_progressionBarBG"
       }
      ]
@@ -459,17 +327,17 @@
      "name": "_listInQuest_nextEvent02",
      "keyframes": [
       {
-       "loc": [
-        146,
-        -37.6
-       ],
-       "duration": 1,
        "pivot": [
         17.15,
         69.55
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        146,
+        -37.6
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_listInQuest_nextEvent02"
       }
      ]
@@ -478,17 +346,17 @@
      "name": "_listInQuest_nextEvent03",
      "keyframes": [
       {
-       "loc": [
-        428,
-        -37.6
-       ],
-       "duration": 1,
        "pivot": [
         17.15,
         69.55
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        428,
+        -37.6
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_listInQuest_nextEvent03"
       }
      ]
@@ -497,17 +365,17 @@
      "name": "_listInQuest_nextEvent01",
      "keyframes": [
       {
-       "loc": [
-        -144,
-        -37.6
-       ],
-       "duration": 1,
        "pivot": [
         17.15,
         69.55
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        -144,
+        -37.6
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_listInQuest_nextEvent01"
       }
      ]
@@ -516,124 +384,14 @@
      "name": "_listInQuest_eventTime",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -293.05,
         -1.05
        ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
        "ref": "_listInQuest_eventTime"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonAccelerate",
-   "layers": [
-    {
-     "name": "Button",
-     "keyframes": [
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 1,
-       "pivot": [
-        135,
-        90
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_buttonAccelerate_up"
-      },
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 1,
-       "tweened": false,
-       "tint": [
-        0.3,
-        "#7DD0FF"
-       ],
-       "index": 1,
-       "pivot": [
-        135,
-        90
-       ],
-       "ref": "_buttonAccelerate_over"
-      },
-      {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "duration": 2,
-       "pivot": [
-        135,
-        90
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonAccelerate_down"
-      }
-     ]
-    },
-    {
-     "name": "_accelerate_currency",
-     "keyframes": [
-      {
-       "loc": [
-        65,
-        26.75
-       ],
-       "duration": 4,
-       "pivot": [
-        32,
-        32
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_hardCurrencyIcon_Small"
-      }
-     ]
-    },
-    {
-     "name": "_accelerate_cost",
-     "keyframes": [
-      {
-       "loc": [
-        -58,
-        25.9
-       ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false,
-       "ref": "_accelerate_text"
-      }
-     ]
-    },
-    {
-     "name": "_accelerate_icon",
-     "keyframes": [
-      {
-       "loc": [
-        0.4,
-        -29.25
-       ],
-       "duration": 4,
-       "pivot": [
-        32.75,
-        25.35
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "_accelerateIcon_Small"
       }
      ]
     }
@@ -647,45 +405,45 @@
      "name": "Layer 1",
      "keyframes": [
       {
-       "loc": [
-        130,
-        125
-       ],
-       "duration": 1,
        "pivot": [
         134,
         129
        ],
-       "index": 0,
+       "duration": 1,
+       "loc": [
+        130,
+        125
+       ],
        "tweened": false,
+       "index": 0,
        "ref": "_buttonPortraitListInQuest_up"
       },
       {
-       "loc": [
-        130,
-        125
-       ],
-       "duration": 1,
        "pivot": [
         134,
         129
        ],
-       "index": 1,
+       "duration": 1,
+       "loc": [
+        130,
+        125
+       ],
        "tweened": false,
+       "index": 1,
        "ref": "_buttonPortraitListInQuest_over"
       },
       {
-       "loc": [
-        130,
-        125
-       ],
-       "duration": 2,
        "pivot": [
         134,
         129
        ],
-       "index": 2,
+       "duration": 2,
+       "loc": [
+        130,
+        125
+       ],
        "tweened": false,
+       "index": 2,
        "ref": "_buttonPortraitListInQuest_down"
       }
      ]
@@ -693,5 +451,5 @@
    ]
   }
  ],
- "md5": "a6db4fea9942112a5eb20cc74149de63"
+ "md5": "47ee45f3f336503975ed3474222336b9"
 }

@@ -125,7 +125,8 @@ class AssetName{
 	
 	//out quest
 	public static inline var INTERN_INFO_OUT_QUEST:String = "ListOutQuest";
-	public static inline var BUTTON_SEND_OUT_QUEST:String = "Bouton_SendIntern_List";
+	//public static inline var BUTTON_SEND_OUT_QUEST:String = "Bouton_SendIntern_List";
+	public static inline var BUTTON_SEND_OUT_QUEST:String = "ButtonSend";
 	public static inline var INTERN_NAME_OUT_QUEST:String = "_intern03_name05";
 	public static inline var PORTRAIT_OUT_QUEST:String = "OutQuest_Portrait";
 	
@@ -135,13 +136,12 @@ class AssetName{
 	public static inline var INTERN_EVENT_HEAVEN_CHOICE:String = "_heavenChoice_text";
 	public static inline var INTERN_EVENT_HELL_CHOICE:String = "_hellChoice_text";
 	public static inline var INTERN_EVENT_SEE_ALL:String = "ButtonInterns";
-	public static inline var INTERN_EVENT_DISMISS:String = "BoutonDismissIntern";
 	public static inline var INTERN_EVENT_SHARE:String = "Button_Friends";
 	public static inline var INTERN_EVENT_CLOSE:String = "CloseButton";
 	public static inline var INTERN_EVENT_CARD:String = "_event_FateCard";
-	public static inline var INTERN_EVENT_NAME:String = "_event_internName";
-	public static inline var INTERN_EVENT_SIDE:String = "_event_internSide";
-	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
+	public static inline var INTERN_EVENT_NAME:String = "_intern_name";
+	public static inline var INTERN_EVENT_SIDE:String = "_intern_side";
+	public static inline var INTERN_EVENT_STATS:String = "InternsStatsInEvent";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";
@@ -150,6 +150,7 @@ class AssetName{
 	public static inline var INTERN_POPIN_SEE_ALL_CONTAINER:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_POPIN_SEE_ALL:String = "Button";
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
+	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
 	
 	//purtagory popin
 	public static inline var PURGATORY_POPIN:String = "PurgatoryPop";

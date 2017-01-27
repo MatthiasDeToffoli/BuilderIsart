@@ -383,10 +383,9 @@ class TimeManager {
 	 */
 	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {
 		var lPreviousProgress:Float = pElement.progress;
-		//trace(Intern.internsList[pElement.refIntern]);
 		
 		pElement.progress = Math.min(
-			pElement.progress + (pElapsedTime * Intern.internsList[pElement.refIntern].speed),
+			pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed),
 			//pElement.progress + pElapsedTime,
 			pElement.steps[pElement.stepIndex]
 		);

@@ -12,18 +12,30 @@ class Intern
 {
 	private var desc:InternDescription;
 	public static var internsListArray:Array<InternDescription>; 
-	public static var internsList:Map<Int,InternDescription>; //Only use when you want to get a specific intern
+	//private static var internsList:Map<Int,InternDescription>; //Only use when you want to get a specific intern
 	//public static var numberInterns:Int;
 
 	public function new(pInternDatas:InternDescription) 
 	{
-		internsList[pInternDatas.id] = pInternDatas;
 		internsListArray.push(pInternDatas);
+		trace(internsListArray[internsListArray.length - 1].id);
+		//internsList[pInternDatas.id] = internsListArray[internsListArray.length - 1]; //@Todo: peut-être raccourcir en pInternDatas
+	}
+	
+	public static function getIntern(pId:Int):InternDescription{
+		var lIntern:InternDescription = null;
+		
+		for (i in 0...Intern.internsListArray.length){
+			if (pId == internsListArray[i].id){
+				lIntern = internsListArray[i];
+			}
+		}
+		return lIntern;
 	}
 	
 	public static function init(){
 		internsListArray = new Array<InternDescription>();
-		internsList = new Map<Int, InternDescription>();
+		//internsList = new Map<Int, InternDescription>();
 		
 		var lId:Int = IdManager.newId();
 		

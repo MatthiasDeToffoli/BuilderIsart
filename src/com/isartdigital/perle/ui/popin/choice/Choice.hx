@@ -40,7 +40,6 @@ class Choice extends SmartPopin
 	private static inline var DIFF_MAX:Float = 80;
 	
 	// elements
-	private var btnDismiss:SmartButton;
 	private var btnInterns:SmartButton;
 	private var btnClose:SmartButton;
 	private var btnShare:SmartButton;
@@ -66,7 +65,7 @@ class Choice extends SmartPopin
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
-	public static var eChoiceDone:EventEmitter; //Todo: static ou propriété d'instance?
+	//public static var eChoiceDone:EventEmitter; //Todo: static ou propriété d'instance?
 	
 	private var internStats:SmartComponent;
 	
@@ -133,12 +132,11 @@ class Choice extends SmartPopin
 		internName = cast(getChildByName(AssetName.INTERN_EVENT_NAME), TextSprite);
 		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
 		btnInterns = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
-		btnDismiss = cast(getChildByName(AssetName.INTERN_EVENT_DISMISS), SmartButton);
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
 		btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
-		internStats = cast(getChildByName("_event_interStats"), SmartComponent);
+		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
 	}
 	
 	/**
@@ -154,7 +152,6 @@ class Choice extends SmartPopin
 	}
 	
 	private function addListeners ():Void {
-		Interactive.addListenerClick(btnDismiss, onDismiss);
 		Interactive.addListenerClick(btnInterns, onSeeAll);
 		Interactive.addListenerClick(btnShare, shareEvent);
 		Interactive.addListenerClick(btnClose, onClose);
@@ -294,7 +291,6 @@ class Choice extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		Interactive.removeListenerClick(btnDismiss, onDismiss);
 		Interactive.removeListenerClick(btnInterns, onSeeAll);
 		Interactive.removeListenerClick(btnShare, shareEvent);
 		Interactive.removeListenerClick(btnClose, onClose);
