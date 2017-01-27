@@ -56,7 +56,6 @@ class Main extends EventEmitter
 	public static inline var DIALOGUE_FTUE_JSON_NAME:String = JSON_FOLDER + "dialogue_ftue";
 	public static inline var FTUE_JSON_NAME:String = JSON_FOLDER + "FTUE"+ JSON_EXTENSION;
 	public static inline var EXPERIENCE_JSON_NAME:String = JSON_FOLDER + "experience";
-	public static inline var UNLOCK_ITEM_JSON_NAME:String = JSON_FOLDER + "item_to_unlock";
 	public static inline var PRICE_JSON_NAME:String = JSON_FOLDER + "buy_price" + JSON_EXTENSION;
 	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config" + JSON_EXTENSION;
 	public static inline var UI_FOLDER:String = "UI/";
@@ -228,7 +227,6 @@ class Main extends EventEmitter
 		
 		//Experience and Unlocks
 		lLoader.addTxtFile(EXPERIENCE_JSON_NAME + ".json");
-		lLoader.addTxtFile(UNLOCK_ITEM_JSON_NAME + ".json");
 		
 		// gameconfig
 		lLoader.addTxtFile(GAME_CONFIG);

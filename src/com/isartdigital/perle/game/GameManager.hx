@@ -73,7 +73,7 @@ class GameManager {
 		RegionManager.init();
 		//Choice.init(); //Todo: en attendant mieux
 		SaveManager.createFromSave();
-		UnlockManager.setUnlockItem();
+		//UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		FootPrint.startClass();
 		

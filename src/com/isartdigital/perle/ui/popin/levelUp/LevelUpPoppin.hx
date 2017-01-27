@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin.levelUp;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
+import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
@@ -48,18 +50,21 @@ class LevelUpPoppin extends SmartPopin
 	}
 	
 	private static function setPopin():Void {
+		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
-		setImage(UnlockManager.itemUnlockedForPoppin[0][0][1]);
-		nameUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][2];
-		typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
-		description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
+		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
+		setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
+		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
 		
-		UnlockManager.itemUnlockedForPoppin.splice(0, 1);
+		nameUnlock.text = UnlockManager.unlockedItem[0].name;
+		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
+		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
+		
+		UnlockManager.unlockedItem.splice(0, 1);
 	}
 	
 	private static function closeAll():Void {
-		UnlockManager.itemUnlockedForPoppin = [];
-		//trace(UnlockManager.itemUnlockedForPoppin);
+		UnlockManager.unlockedItem = [];
 		onClickNext();
 	}
 	
@@ -73,7 +78,7 @@ class LevelUpPoppin extends SmartPopin
 	}
 	
 	private static function onClickNext():Void {
-		if (UnlockManager.itemUnlockedForPoppin.length != 0) {
+		if (UnlockManager.unlockedItem.length != 0) {
 			img.removeChild(imgImage);
 			setPopin();
 		}

@@ -121,7 +121,6 @@ typedef Save = {
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
-	var itemUnlocked:Array<Array<Array<String>>>;
 	// add what you want to save.
 }
 
@@ -144,7 +143,6 @@ class SaveManager {
 		var regionSave:Array<RegionDescription> = [];
 		var itemUnlock:Array<Array<Array<String>>> = [];
 		
-		itemUnlock = UnlockManager.itemUnlocked;
 		
 		// factoriser
 		for (regionX in RegionManager.worldMap.keys()) {
@@ -182,8 +180,7 @@ class SaveManager {
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
-			ftueProgress : DialogueManager.dialogueSaved,
-			itemUnlocked : itemUnlock
+			ftueProgress : DialogueManager.dialogueSaved
 		};
 		setLocalStorage(currentSave);
 	}
@@ -331,7 +328,6 @@ class SaveManager {
 			TimeManager.startTimeLoop();
 			Hud.getInstance().initGaugesWithSave();
 			DialogueManager.dialogueSaved = currentSave.ftueProgress;
-			UnlockManager.isAlreadySaved = true;
 		}
 		else
 			createWhitoutSave();
