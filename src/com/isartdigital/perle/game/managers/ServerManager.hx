@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
 import haxe.Http;
@@ -105,17 +106,20 @@ class ServerManager {
 	
 	public static function stringToEnum(pString:String):Dynamic {
 		switch (pString) {
-			case "neutral" :
-				return Alignment.neutral;
+			case "neutral" : 		return Alignment.neutral;
+			case "hell" : 			return Alignment.hell;
+			case "heaven" : 		return Alignment.heaven;
+			case "Bundle" : 		return ShopTab.Bundle;
+			case "Currencies" : 	return ShopTab.Currencies;
+			case "Resources" : 		return ShopTab.Resources;
+			case "Interns" : 		return ShopTab.Interns;
+			case "InternsSearch" : 	return ShopTab.InternsSearch;
+			case "Building" : 		return ShopTab.Building;
+			case "Deco" : 			return ShopTab.Deco;
 				
-			case "hell" :
-				return Alignment.hell;
-				
-			case "heaven" :
-				return Alignment.heaven;
-				
-			default :
-				return null;
+			default : return null;
+			// default : Debug.error("No Enum found for '" + pString + "'."); 
+			// not good idea since i use this function as "hasEnum()" function in GameConfig
 		}
 	}
 

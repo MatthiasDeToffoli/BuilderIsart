@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
@@ -44,7 +45,8 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function init (pPos:Point):Void {
-		
+		initArrows();
+		cardsToShow = getCardToShow();
 		cards = new Array<CarouselCard>();
 		cardsPositions = [];
 		
@@ -54,11 +56,6 @@ class ShopCaroussel extends SmartComponent {
 			createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
 		else
 			Debug.error("No cards to show, it must be setted before super.init()");
-	}
-	
-	public function start ():Void {
-		Interactive.addListenerClick(arrowLeft, onClickArrowLeft);
-		Interactive.addListenerClick(arrowRight, onClickArrowRight);
 	}
 	
 	public function scrollNext ():Void {
@@ -77,6 +74,13 @@ class ShopCaroussel extends SmartComponent {
 			buildingListIndex -= maxCardsVisible;
 		
 		createCard(cardsPositions);
+	}
+	
+	private function initArrows ():Void {
+		arrowLeft = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_ARROW_LEFT), SmartButton);
+		arrowRight = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_ARROW_RIGHT), SmartButton);
+		Interactive.addListenerClick(arrowLeft, onClickArrowLeft);
+		Interactive.addListenerClick(arrowRight, onClickArrowRight);
 	}
 	
 	private function onClickArrowLeft ():Void {
@@ -160,6 +164,10 @@ class ShopCaroussel extends SmartComponent {
 		return null;
 	}
 	
+	private function getCardToShow ():Array<String> {
+		return null;
+	}
+	
 	private function destroyCards ():Void {
 		var lLength:UInt = cards.length;
 		var j:UInt;
@@ -173,8 +181,11 @@ class ShopCaroussel extends SmartComponent {
 	// todo : destroy les cards
 	override public function destroy():Void {
 		parent.removeChild(this);
-		Interactive.removeListenerClick(arrowLeft, onClickArrowLeft);
-		Interactive.removeListenerClick(arrowRight, onClickArrowRight);
+		// those arrow are null on intern caroussel
+		if (arrowLeft != null)
+			Interactive.removeListenerClick(arrowLeft, onClickArrowLeft);
+		if (arrowRight != null)
+			Interactive.removeListenerClick(arrowRight, onClickArrowRight);
 		destroyCards();
 		cards = null;
 		super.destroy();

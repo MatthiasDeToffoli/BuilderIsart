@@ -1,4 +1,9 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
+import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CarousselCardPack;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 
 /**
  * ...
@@ -7,7 +12,7 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 class ShopCarousselCurrencies extends ShopCaroussel{
 
 	public function new() {
-		super();
+		super(AssetName.SHOP_CAROUSSEL_CURRENCIE);
 		
 	}
 
@@ -18,6 +23,21 @@ class ShopCarousselCurrencies extends ShopCaroussel{
 			"Shop_Pack_3",
 			"Shop_Pack_4"
 		];
+	}
+	
+	override private function getNewCard (pCardToShow:String):CarouselCard {
+		return new CarousselCardPack();
+	}
+	
+	override private function getCardToShow ():Array<String> {
+		var result:Array<String> = new Array<String>();
+		
+		for (i in 0...GameConfig.getShopPack().length) {
+			if (GameConfig.getShopPack()[i].tab == ShopTab.Currencies)
+				result.push(GameConfig.getShopPack()[i].packName);
+		}
+		
+		return result;
 	}
 	
 }

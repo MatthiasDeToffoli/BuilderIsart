@@ -12,10 +12,16 @@ class CarousselCardLock extends CarouselCard
 {
 
 	private static inline var UNLOCK_TEXT = "Level : ";
+	private var buildingName:String;
 	private var text_lock:TextSprite;
 	
 	override public function new() {
-		super(AssetName.CAROUSSEL_CARD_ITEM_LOCKED);
+		super(AssetName.CAROUSSEL_CARD_LOCKED);
+	}
+	
+	override public function init(pName:String):Void {
+		buildingName = pName;
+		super.init(pName);
 	}
 	
 	override function buildCard ():Void {
@@ -31,9 +37,6 @@ class CarousselCardLock extends CarouselCard
 	}
 	
 	override public function destroy():Void {
-		//removeListener(MouseEventType.CLICK, onClick);
-		if (parent != null)
-			parent.removeChild(this);
 		super.destroy();
 	}
 }

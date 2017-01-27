@@ -12,13 +12,13 @@ import pixi.interaction.EventTarget;
  * ...
  * @author ambroise
  */
-class CCUResource extends CarousselCardUnlock{
+/*class CCUResource extends CarousselCardUnlock{
 	
 	var text_number_resource:TextSprite;
 	var text_price:TextSprite;
 	
 	public function new() {
-		super(AssetName.CAROUSSEL_CARD_BUNDLE);
+		super(AssetName.CAROUSSEL_CARD_BUNDLE); // ????
 		text_number_resource = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_PRICE), TextSprite);
 		text_price = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_PACK_CONTENT), TextSprite);
 	}
@@ -61,4 +61,4 @@ class CCUResource extends CarousselCardUnlock{
 			case("Karma pack") : ResourcesManager.gainResources(GeneratorType.hard, 100);
 		}
 	}
-}
+}*/

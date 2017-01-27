@@ -16,7 +16,7 @@ import pixi.interaction.EventTarget;
  */
 class CCUBuilding extends CarousselCardUnlock{
 
-	
+	private var text_name:TextSprite;
 	private var textPriceSoftHard:TextSprite;
 	private var textPriceWood:TextSprite;
 	private var textPriceIron:TextSprite;
@@ -25,7 +25,7 @@ class CCUBuilding extends CarousselCardUnlock{
 	private var iconWood:UISprite;
 	
 	public function new() {
-		super(AssetName.CAROUSSEL_CARD_ITEM_UNLOCKED);
+		super(AssetName.CAROUSSEL_CARD_UNLOCKED);
 	}
 	
 	private function setRessourcesPrice () {
@@ -80,8 +80,8 @@ class CCUBuilding extends CarousselCardUnlock{
 			textPriceIron.text = Std.string(pPrice);
 	}
 	
-	override function _click(pEvent:EventTarget = null):Void {
-		super._click(pEvent);
+	override function _click(/*pEvent:EventTarget = null*/):Void {
+		super._click(/*pEvent*/);
 		
 		if (BuyManager.canBuy(buildingName)) {
 			Phantom.onClickShop(buildingName);

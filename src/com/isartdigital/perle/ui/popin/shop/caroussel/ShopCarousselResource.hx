@@ -1,9 +1,13 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CarousselCardPack;
 import com.isartdigital.perle.ui.popin.shop.card.CCUResource;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import pixi.core.math.Point;
 
 /**
  * ...
@@ -13,8 +17,6 @@ class ShopCarousselResource extends ShopCaroussel{
 
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_RESOURCE);
-		arrowLeft = cast(SmartCheck.getChildByName(this, "Arrow_Left_Wood"), SmartButton); // temp
-		arrowRight = cast(SmartCheck.getChildByName(this, "Arrow_Right_Stone"), SmartButton);
 	}
 	
 	override function getSpawnersAssetNames():Array<String> {
@@ -28,10 +30,19 @@ class ShopCarousselResource extends ShopCaroussel{
 		];
 	}
 	
-	override function getNewCard(pCardToShow:String):CarouselCard {
-		/*return UnlockManager.checkIfUnlocked(pCardToShow) ? 
-				new CCUResource() : new CCLResource();*/
-				return new CCUResource();
+	override private function getNewCard (pCardToShow:String):CarouselCard {
+		return new CarousselCardPack();
+	}
+	
+	override private function getCardToShow ():Array<String> {
+		var result:Array<String> = new Array<String>();
+		
+		for (i in 0...GameConfig.getShopPack().length) {
+			if (GameConfig.getShopPack()[i].tab == ShopTab.Resources)
+				result.push(GameConfig.getShopPack()[i].packName);
+		}
+		
+		return result;
 	}
 	
 }

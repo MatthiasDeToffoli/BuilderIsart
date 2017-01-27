@@ -10,7 +10,7 @@ import pixi.core.math.Point;
  */
 class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 
-	private static var buildingNameList(default, never):Array<String> = [
+	private static var NAME_LIST(default, never):Array<String> = [
 		BuildingName.STYX_VICE_1,
 		BuildingName.STYX_VICE_2,
 		BuildingName.STYX_VICE_3,
@@ -35,9 +35,7 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		super();
 	}
 	
-	override public function init(pPos:Point):Void {
-		cardsToShow = buildingNameList;
-		super.init(pPos);
+	override function getCardToShow():Array<String> {
+		return NAME_LIST;
 	}
-	
 }

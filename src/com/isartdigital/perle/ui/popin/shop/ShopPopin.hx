@@ -10,6 +10,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBundle;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselCurrencies;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDeco;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInternsSearch;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
@@ -21,7 +22,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;
 
-enum ShopTab { Building; Interns; Deco; Resources; Currencies; Bundle; }
+enum ShopTab { Building; Interns; InternsSearch; Deco; Resources; Currencies; Bundle; }
 enum ShopBar { Soft; Hard; Marble; Wood; }
 
 /**
@@ -127,9 +128,9 @@ class ShopPopin extends SmartPopin{
 		buttonTab[1].push(buttonDeco2);
 		
 		buttonIntern1 = cast(SmartCheck.getChildByName(tabInterns, "Current"), SmartButton);
-		Interactive.addListenerClick(buttonIntern1, onClickOpenIntern);
+		Interactive.addListenerClick(buttonIntern1, onClickOpenInterns);
 		buttonIntern2 = cast(SmartCheck.getChildByName(tabInterns, "Layer 1"), SmartButton);
-		Interactive.addListenerClick(buttonIntern2, onClickOpenIntern);
+		Interactive.addListenerClick(buttonIntern2, onClickOpenInterns);
 		buttonTab[2].push(buttonIntern1);
 		buttonTab[2].push(buttonIntern2);
 		
@@ -162,14 +163,11 @@ class ShopPopin extends SmartPopin{
 	}
 	
 	public function init(pTab:ShopTab) {
-		checkOfOngletToOpen(pTab);
-	}
-	
-	private function checkOfOngletToOpen(pTab:ShopTab):Void {
 		switch(pTab) {
 			case ShopTab.Building : onClickOpenBuldings();
 			case ShopTab.Deco : onClickOpenDecorations();
-			case ShopTab.Interns : onClickOpenIntern();
+			case ShopTab.Interns : onClickOpenInterns();
+			case ShopTab.InternsSearch : onClickOpenInternsSearch();
 			case ShopTab.Resources : onClickOpenResource();
 			case ShopTab.Currencies : onClickOpenCurencies();
 			case ShopTab.Bundle : onClickOpenBundle();
@@ -186,13 +184,13 @@ class ShopPopin extends SmartPopin{
 			case ShopTab.Deco: 			caroussel = new ShopCarousselDeco();
 			case ShopTab.Currencies: 	caroussel = new ShopCarousselCurrencies();
 			case ShopTab.Interns: 		caroussel = new ShopCarousselInterns();
+			case ShopTab.InternsSearch: caroussel = new ShopCarousselInternsSearch();
 			case ShopTab.Bundle: 		caroussel = new ShopCarousselBundle();
 			default: Debug.error("Undefined caroussel class for ShopTab : " + pTab);
 		}
 		
 		caroussel.init(carousselPos);
 		addChild(caroussel);
-		caroussel.start();
 	}
 	
 	public function removeCaroussel():Void {
@@ -207,32 +205,36 @@ class ShopPopin extends SmartPopin{
 		carousselSpawner.destroy();
 	}
 	
-	private function onClickOpenBuldings() {
+	private function onClickOpenBuldings () {
 		setButtons(0);
 		addCaroussel(ShopTab.Building);
 	}
 	
-	private function onClickOpenDecorations() {
+	private function onClickOpenDecorations () {
 		setButtons(1);
 		addCaroussel(ShopTab.Deco);
 	}
 	
-	private function onClickOpenIntern() {
+	private function onClickOpenInterns () {
 		setButtons(2);
 		addCaroussel(ShopTab.Interns);	
 	}
 	
-	private function onClickOpenCurencies() {
+	private function onClickOpenInternsSearch () {
+		addCaroussel(ShopTab.InternsSearch);
+	}
+	
+	private function onClickOpenCurencies () {
 		setButtons(3);
 		addCaroussel(ShopTab.Currencies);
 	}
 	
-	private function onClickOpenResource() {
+	private function onClickOpenResource () {
 		setButtons(4);
 		addCaroussel(ShopTab.Resources);
 	}
 	
-	private function onClickOpenBundle() {
+	private function onClickOpenBundle () {
 		setButtons(0,true);
 		addCaroussel(ShopTab.Bundle);
 	}
@@ -271,8 +273,8 @@ class ShopPopin extends SmartPopin{
 		Interactive.removeListenerClick(buttonBuilding2, onClickOpenBuldings);
 		Interactive.removeListenerClick(buttonDeco1, onClickOpenDecorations);
 		Interactive.removeListenerClick(buttonDeco2, onClickOpenDecorations);
-		Interactive.removeListenerClick(buttonIntern1, onClickOpenIntern);
-		Interactive.removeListenerClick(buttonIntern2, onClickOpenIntern);
+		Interactive.removeListenerClick(buttonIntern1, onClickOpenInterns);
+		Interactive.removeListenerClick(buttonIntern2, onClickOpenInterns);
 		Interactive.removeListenerClick(buttonCurrencies1, onClickOpenCurencies);
 		Interactive.removeListenerClick(buttonCurrencies2, onClickOpenCurencies);
 		Interactive.removeListenerClick(buttonRessources1, onClickOpenResource);

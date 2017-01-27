@@ -14,8 +14,6 @@ class ShopCarousselDecoBuilding extends ShopCaroussel{
 	
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_DECO_BUILDING);
-		arrowLeft = cast(SmartCheck.getChildByName(this, "Button_ArrowLeft"), SmartButton);
-		arrowRight = cast(SmartCheck.getChildByName(this, "Button_ArrowRight"), SmartButton);
 	}
 	
 	override function getSpawnersAssetNames():Array<String> {

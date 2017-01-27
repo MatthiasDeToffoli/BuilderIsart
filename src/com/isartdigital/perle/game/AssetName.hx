@@ -75,18 +75,31 @@ class AssetName{
 	public static inline var SHOP_RESSOURCE_CARD_PICTURE:String = /*SHOP_PREFIX +*/ "Item_picture";
 	public static inline var SHOP_RESSOURCE_CARD_NAME:String = /*SHOP_PREFIX +*/ "Item_Name";
 	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_CurrencyPrice";
-	
-	// Shop caroussel
 	public static inline var SHOP_CAROUSSEL_DECO_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
 	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "CurrenciesTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN:String = SHOP_PREFIX + "InternsTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN_SEARCHING:String = SHOP_PREFIX + "InternsTab_Searching";
 	public static inline var SHOP_CAROUSSEL_RESOURCE:String = SHOP_PREFIX + "ResourcesTab_List";
+	public static inline var SHOP_CAROUSSEL_BUNDLE:String = SHOP_PREFIX + "Bundles_List";
+	
+	// Shop caroussel
+	public static inline var CAROUSSEL_ARROW_LEFT:String = "Button_ArrowLeft";
+	public static inline var CAROUSSEL_ARROW_RIGHT:String = "Button_ArrowRight";
+	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";
+	
 	
 	// Shop caroussel card
-	public static inline var CAROUSSEL_CARD_ITEM_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
-	public static inline var CAROUSSEL_CARD_ITEM_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
-	public static inline var CAROUSSEL_CARD_BUNDLE:String ="ButtonBuyPack";
+	public static inline var CAROUSSEL_CARD_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
+	public static inline var CAROUSSEL_CARD_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
+	//public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBuyPack"; // outdated ?
+	public static inline var CAROUSSEL_CARD_PACK:String = "Shop_BuyablePack";
+	
+	// Shop caroussel card pack
+	public static inline var CARD_PACK_PRICE:String ="Pack_Price";
+	public static inline var CARD_PACK_ICON:String ="Pack_Content_Icon";
+	public static inline var CARD_PACK_NAME:String ="Pack_Content_txt";
+	public static inline var CARD_PACK_PICTURE:String ="Pack_Picture";
+	public static inline var CARD_PACK_BTN:String ="Bouton";
 	
 	// Popin Confirm Buy Building
 	/*public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";

@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -14,20 +15,25 @@ import pixi.interaction.EventTarget;
  * ...
  * @author ambroise
  */
-class CarouselCard extends SmartButton {
+class CarouselCard extends SmartComponent { // n'est pas un smart btn ds le .fla...
 
 	private var image:UISprite;
-	private var buildingName:String;
+	
 	private var isInit:Bool;
 	
 	public function new(pAsset:String) {
 		super(pAsset);
+		//interactive = true;
 	}
 	
-	public function init (pBuildingName:String):Void {
-		buildingName = pBuildingName;
+	/**
+	 * Do what you want whit pName in descendant (héritage)
+	 * @param	pName
+	 */
+	public function init (pName:String):Void {
 		isInit = true;
 		buildCard();
+		//Interactive.addListenerClick(this, _click);
 	}
 	
 	/*override public function build(pFrame:Int = 0):Void {
@@ -35,6 +41,10 @@ class CarouselCard extends SmartButton {
 		trace("buildsecond");
 		
 	}*/
+	
+	private function _click ():Void {
+		
+	}
 	
 	override private function _mouseDown (pEvent:EventTarget = null): Void {
 		super._mouseDown(pEvent);
@@ -56,11 +66,6 @@ class CarouselCard extends SmartButton {
 	
 	private function buildCard ():Void {}
 	
-	public function start ():Void {
-		/*interactive = true;
-		on(MouseEventType.CLICK, onClick);*/
-	}
-	
 	private function setImage (pAssetName:String):Void { // todo : finir
 		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
 		
@@ -76,6 +81,9 @@ class CarouselCard extends SmartButton {
 	}
 	
 	override public function destroy():Void {
+		if (parent != null)
+			parent.removeChild(this);
+		//Interactive.removeListenerClick(this, _click);
 		super.destroy();
 	}
 	

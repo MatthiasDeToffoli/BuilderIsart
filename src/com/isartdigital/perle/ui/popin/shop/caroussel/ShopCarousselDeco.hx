@@ -9,7 +9,7 @@ import pixi.core.math.Point;
  */
 class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 
-	public static var decoNameList(default, never):Array<String> = [
+	private static var NAME_LIST(default, never):Array<String> = [
 		BuildingName.HEAVEN_DECO_GENERIC_TREE,
 		BuildingName.HEAVEN_DECO_BIGGER_TREE,
 		BuildingName.HEAVEN_DECO_PRETTY_TREE,
@@ -29,9 +29,8 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 		super();
 	}
 	
-	override public function init(pPos:Point):Void {
-		cardsToShow = decoNameList;
-		super.init(pPos);
+	override function getCardToShow():Array<String> {
+		return NAME_LIST;
 	}
 	
 }

@@ -411,7 +411,7 @@ class TimeManager {
 	private static function updateConstruction(pElement:TimeDescription, pElapsedTime:Float, pEndedList:Array<Int>):Void {
 		pElement.progress += pElapsedTime;
 		var diff:Float = pElement.end - pElement.creationDate;
-		trace("update : id => " + pElement.refTile);
+		//trace("update : id => " + pElement.refTile);
 		
 		if (pElement.progress >= diff) {
 			trace("construction : id => " + pElement.refTile + " terminée");

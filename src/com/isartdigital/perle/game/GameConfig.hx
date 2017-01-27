@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.loader.GameLoader;
 import haxe.Json;
@@ -41,7 +42,7 @@ typedef TableTypeBuilding = {
 	@:optional var factoryNeededToUnlock:Int;
 	@:optional var maxSoulsContained:Int;
 	@:optional var maxGoldContained:Int;
-	@:optional var iDPack1:TableTypePack;
+	@:optional var iDPack1:TableTypePack; // todo : renvoit que l'id et pas le contenu de la table
 	@:optional var iDPack2:TableTypePack;
 	@:optional var iDPack3:TableTypePack;
 	@:optional var iDPack4:TableTypePack;
@@ -66,6 +67,18 @@ typedef TableTypeIntern = {
 	
 }
 
+typedef TableTypeShopPack = {
+	var iD:Int;
+	var tab:ShopTab;
+	var packName:String;
+	var priceKarma:Int;
+	var priceIP:Float;
+	var giveGold:Int;
+	var giveKarma:Int;
+	var giveIron:Int;
+	var giveWood:Int;
+}
+
 
 /**
  * ...
@@ -76,7 +89,9 @@ class GameConfig {
 	private static var config:Map<String, Array<Dynamic>>;
 
 	public static inline var BUILDING:String = "TypeBuilding";
+	public static inline var BUILDING_PACK:String = "TypePack"; // todo : renommé TypeBuildingPack
 	public static inline var INTERN:String = "TypeIntern";
+	public static inline var SHOP_PACK:String = "TypeShopPack";
 	public static inline var CONFIG:String = "Config";
 	// todo : etc
 	
@@ -108,12 +123,25 @@ class GameConfig {
 		return cast(config[BUILDING]);
 	}
 	
-	public static function getBuildingByName (pName:String):TableTypeBuilding { // todo : enum ?
+	public static function getBuildingByName (pName:String):TableTypeBuilding {
 		for (i in 0...config[BUILDING].length)
 			if (config[BUILDING][i].name == pName)
 				return config[BUILDING][i];
 				
 		Debug.error("BuildingName '" + pName +"' missing.");
+		return null;
+	}
+	
+	public static function getShopPack ():Array<TableTypeShopPack> {
+		return cast(config[SHOP_PACK]);
+	}
+	
+	public static function getShopPackByName (pName:String):TableTypeShopPack {
+		for (i in 0...config[SHOP_PACK].length)
+			if (config[SHOP_PACK][i].packName == pName)
+				return config[SHOP_PACK][i];
+				
+		Debug.error("ShopPack name '" + pName +"' missing.");
 		return null;
 	}
 	

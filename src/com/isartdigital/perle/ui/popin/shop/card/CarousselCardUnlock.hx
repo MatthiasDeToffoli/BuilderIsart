@@ -13,30 +13,14 @@ import pixi.interaction.EventTarget;
  */
 class CarousselCardUnlock extends CarouselCard
 {
-	
-	private var lButton:SmartButton;
-	
-	private var text_name:TextSprite;
-	
-	private var lAssetName:String; // todo @Alexis: suppr et tout ce qui est lié, le switch
+	private var buildingName:String;
 	
 	override public function new(pID:String=null) {
 		super(pID);
-		
-		
-		
-		//sfIcon = cast(SmartCheck.getChildByName(this, "SoftCurrency_icon"), UISprite); 
-		//lButton = cast(SmartCheck.getChildByName(this, "ButtonBuyBuildingDeco"), SmartButton); 
-		
-		//image = cast(SmartCheck.getChildByName(this, "Item_Picture"), UISprite); // todo : finir
-		//imageCurrency = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
-		
 	}
 	
-	
-	
 	override public function init (pBuildingName:String):Void {
-		lAssetName = BuildingName.getAssetName(pBuildingName); // todo : inutile ?
+		buildingName = pBuildingName;
 		super.init(pBuildingName);
 		
 	}
@@ -51,35 +35,20 @@ class CarousselCardUnlock extends CarouselCard
 	
 	private function setName (pAssetName:String):Void {}
 	
-	override private function _click (pEvent:EventTarget = null):Void {
+	override private function _click (/*pEvent:EventTarget = null*/):Void {
 		if (alpha == 0.5)
 			return;
-		super._click(pEvent);
-		//UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
-		//ConfirmBuyBuilding.getInstance().init(buildingAssetName);
+		super._click(/*pEvent*/);
 		closeShop();
 	}
 	
-	private function closeShop ():Void {
+	private function closeShop ():Void { // todo : dans la mauvaise class...
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
-	private function numberToGive():Int {
-		switch(lAssetName) {
-			case("Wood pack") : return 1000;
-			case("Iron pack") : return 1000;
-			case("Gold pack") : return 10000;
-			case("Karma pack") : return 100;
-		}
-		return 0;
-	}
-	
 	override public function destroy():Void {
-		//removeListener(MouseEventType.CLICK, onClick);
-		if (parent != null)
-			parent.removeChild(this);
 		super.destroy();
 	}
 	
