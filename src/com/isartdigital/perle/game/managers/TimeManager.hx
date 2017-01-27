@@ -42,7 +42,7 @@ typedef TimeElementResource = {
 
 /**
  * Control every TimeBased Mechanic (working constantly like a server)
- * @author ambroise rabier
+ * @author Vicktor Grenu et ambroise rabier
  */
 class TimeManager {
 	

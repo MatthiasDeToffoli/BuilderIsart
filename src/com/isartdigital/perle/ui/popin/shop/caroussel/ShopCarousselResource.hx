@@ -1,6 +1,8 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.caroussel;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CCUResource;
 import com.isartdigital.utils.ui.smart.SmartButton;
 
 /**

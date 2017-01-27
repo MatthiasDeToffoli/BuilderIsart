@@ -1,6 +1,7 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.ui.popin.shop.card.CarousselCardUnlock;
 import pixi.interaction.EventTarget;
 
 /**

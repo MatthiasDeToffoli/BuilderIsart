@@ -1,4 +1,5 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.card;
+import com.isartdigital.perle.ui.popin.shop.card.CarousselCardLock;
 
 /**
  * ...

@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.events.MouseEventType;

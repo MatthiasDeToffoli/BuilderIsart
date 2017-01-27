@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 /**
  * ...

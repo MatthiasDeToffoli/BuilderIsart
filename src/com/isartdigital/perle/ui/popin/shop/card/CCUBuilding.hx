@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
@@ -17,9 +17,10 @@ import pixi.interaction.EventTarget;
 class CCUBuilding extends CarousselCardUnlock{
 
 	
-	private var textPriceSoft:TextSprite;
+	private var textPriceSoftHard:TextSprite;
 	private var textPriceWood:TextSprite;
 	private var textPriceIron:TextSprite;
+	private var iconSoftHard:UISprite;
 	private var iconIron:UISprite;
 	private var iconWood:UISprite;
 	
@@ -28,9 +29,10 @@ class CCUBuilding extends CarousselCardUnlock{
 	}
 	
 	private function setRessourcesPrice () {
-		textPriceSoft = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
-		textPriceWood = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice"), TextSprite);
+		textPriceSoftHard = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
+		textPriceWood = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice"), TextSprite); // todo: contantes
 		textPriceIron = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice2"), TextSprite);
+		iconSoftHard = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
 		iconIron = cast(SmartCheck.getChildByName(this, "Resource_icon2"), UISprite);
 		iconWood = cast(SmartCheck.getChildByName(this, "Resource_icon"), UISprite);
 	}
@@ -40,7 +42,7 @@ class CCUBuilding extends CarousselCardUnlock{
 		
 		image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
 		text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
-		SmartCheck.traceChildrens(this);
+		
 		setRessourcesPrice();
 		
 		setImage(BuildingName.getAssetName(buildingName));
@@ -52,27 +54,30 @@ class CCUBuilding extends CarousselCardUnlock{
 		text_name.text = pString;
 	}
 	
-	function setPrice (pPrices:Map<GeneratorType, Int>):Void {
+	private function setPrice (pPrices:Map<GeneratorType, Int>):Void {
 		
-		textPriceSoft.text = Std.string(pPrices[GeneratorType.soft]);
+		textPriceSoftHard.text = Std.string(pPrices[GeneratorType.soft]);
 		
-		if (pPrices[GeneratorType.buildResourceFromParadise] == null) {
+		setWoodPrice(pPrices[GeneratorType.buildResourceFromParadise]);
+		setIronPrice(pPrices[GeneratorType.buildResourceFromHell]);
+	}
+	
+	private function setWoodPrice (pPrice:Int):Void {
+		if (pPrice == null) {
 			removeChild(iconWood);
 			removeChild(textPriceWood);
 		}
 		else
-			textPriceWood.text = Std.string(pPrices[GeneratorType.buildResourceFromParadise]);
-			
-		if (pPrices[GeneratorType.buildResourceFromHell] == null) {
+			textPriceWood.text = Std.string(pPrice);
+	}
+	
+	private function setIronPrice (pPrice:Int):Void {
+		if (pPrice == null) {
 			removeChild(iconIron);
 			removeChild(textPriceIron);
 		}
 		else
-			textPriceIron.text = Std.string(pPrices[GeneratorType.buildResourceFromHell]);
-		
-		
-		//iconIron // todo : intégrer ds .fla ou voir gd
-		//iconWood
+			textPriceIron.text = Std.string(pPrice);
 	}
 	
 	override function _click(pEvent:EventTarget = null):Void {

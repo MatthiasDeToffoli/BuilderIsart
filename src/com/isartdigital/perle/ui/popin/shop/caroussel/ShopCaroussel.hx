@@ -1,16 +1,11 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.caroussel;
 
-import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.BuildingName;
-import com.isartdigital.perle.game.managers.ClippingManager;
-import com.isartdigital.perle.game.managers.UnlockManager;
-import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.display.Container;
 import pixi.core.math.Point;
 
 	
@@ -20,47 +15,6 @@ import pixi.core.math.Point;
  */
 class ShopCaroussel extends SmartComponent {
 	
-	// no json because i'm using constants
-	// todo : utiliserBDD pour enregistrer cela
-	public static var buildingNameList(default, never):Array<String> = [
-		BuildingName.STYX_VICE_1,
-		BuildingName.STYX_VICE_2,
-		BuildingName.STYX_VICE_3,
-		BuildingName.STYX_VIRTUE_1,
-		BuildingName.STYX_VIRTUE_2,
-		BuildingName.STYX_VIRTUE_3,
-		BuildingName.STYX_MARKET,
-		
-		BuildingName.HEAVEN_HOUSE,
-		BuildingName.HEAVEN_HOUSE_INTERNS,
-		BuildingName.HEAVEN_COLLECTOR,
-		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
-		
-		BuildingName.HELL_HOUSE,
-		BuildingName.HELL_COLLECTOR,
-		BuildingName.HELL_FACTORY,
-		
-		BuildingName.HELL_HOUSE_INTERNS,
-	];
-	
-	public static var decoNameList(default, never):Array<String> = [
-		BuildingName.HEAVEN_DECO_GENERIC_TREE,
-		BuildingName.HEAVEN_DECO_BIGGER_TREE,
-		BuildingName.HEAVEN_DECO_PRETTY_TREE,
-		BuildingName.HEAVEN_DECO_AWESOME_TREE,
-		BuildingName.HEAVEN_DECO_BUILDING,
-		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING,
-	
-		BuildingName.HELL_DECO_GENERIC_ROCK,
-		BuildingName.HELL_DECO_BIGGER_ROCK,
-		BuildingName.HELL_DECO_PRETTY_ROCK,
-		BuildingName.HELL_DECO_AWESOME_ROCK,
-		BuildingName.HELL_DECO_BUILDING,
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING,
-	];
-	
-	public static var internsNameList(default, never):Array<String> = [
-	];
 	
 	public static var resourcesNameList(default, never):Array<String> = [
 		"Wood pack",
@@ -75,13 +29,10 @@ class ShopCaroussel extends SmartComponent {
 	public static var bundleNameList(default, never):Array<String> = [
 	];
 	
-	public static var cardsToShow:Array<String>;
-	
+	private var cardsToShow:Array<String>;
 	private var cards:Array<CarouselCard>;
-	
-	private var arrowRight:SmartButton; // todo : rename
+	private var arrowRight:SmartButton;
 	private var arrowLeft:SmartButton;
-	
 	private var maxCardsVisible:Int;
 	private var cardsPositions:Array<Point>;
 	private var buildingListIndex:Int = 0;
@@ -95,23 +46,19 @@ class ShopCaroussel extends SmartComponent {
 	public function init (pPos:Point):Void {
 		
 		cards = new Array<CarouselCard>();
-		cardsToShow = buildingNameList; // todo: c'te ligne me semble bizarre
 		cardsPositions = [];
 		
 		position = pPos;
 		
-		createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
+		if (cardsToShow != null)
+			createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
+		else
+			Debug.error("No cards to show, it must be setted before super.init()");
 	}
 	
 	public function start ():Void {
 		Interactive.addListenerClick(arrowLeft, onClickArrowLeft);
 		Interactive.addListenerClick(arrowRight, onClickArrowRight);
-	}
-	
-	public function changeCardsToShow (pNameList:Array<String>):Void { // todo: changer par héritage
-		cardsToShow = pNameList;
-		buildingListIndex = 0;
-		createCard(cardsPositions);
 	}
 	
 	public function scrollNext ():Void {

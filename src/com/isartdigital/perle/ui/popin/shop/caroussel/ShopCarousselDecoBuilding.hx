@@ -1,17 +1,19 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.caroussel;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.UnlockManager;
-import com.isartdigital.perle.ui.popin.shop.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CCLBuilding;
+import com.isartdigital.perle.ui.popin.shop.card.CCUBuilding;
 import com.isartdigital.utils.ui.smart.SmartButton;
 
 /**
  * ...
  * @author ambroise
  */
-class ShopCarousselBuilding extends ShopCaroussel{
-
+class ShopCarousselDecoBuilding extends ShopCaroussel{
+	
 	public function new() {
-		super(AssetName.SHOP_CAROUSSEL_BUILDING); // todo:  temp ? ou change classNAme
+		super(AssetName.SHOP_CAROUSSEL_DECO_BUILDING);
 		arrowLeft = cast(SmartCheck.getChildByName(this, "Button_ArrowLeft"), SmartButton);
 		arrowRight = cast(SmartCheck.getChildByName(this, "Button_ArrowRight"), SmartButton);
 	}

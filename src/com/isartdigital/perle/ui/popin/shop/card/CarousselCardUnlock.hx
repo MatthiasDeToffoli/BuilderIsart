@@ -1,16 +1,10 @@
-package com.isartdigital.perle.ui.popin.shop;
-import com.isartdigital.perle.game.AssetName;
+package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
-import com.isartdigital.perle.game.managers.FakeTraduction;
-import com.isartdigital.perle.game.managers.ResourcesManager;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
-import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
-import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.interaction.EventTarget;
 
 /**

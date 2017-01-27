@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin.shop;
+package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.utils.ui.smart.TextSprite;

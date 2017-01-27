@@ -4,14 +4,19 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBuilding;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBundle;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselCurrencies;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDeco;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
 import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
-import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;
@@ -175,11 +180,16 @@ class ShopPopin extends SmartPopin{
 		if (caroussel != null)
 			caroussel.destroy();
 		
-		if (pTab == ShopTab.Building)
-			caroussel = new ShopCarousselBuilding();
-		else if (pTab == ShopTab.Resources)
-			caroussel = new ShopCarousselResource();
-			
+		switch (pTab) {
+			case ShopTab.Building: 		caroussel = new ShopCarousselBuilding();
+			case ShopTab.Resources: 	caroussel = new ShopCarousselResource();
+			case ShopTab.Deco: 			caroussel = new ShopCarousselDeco();
+			case ShopTab.Currencies: 	caroussel = new ShopCarousselCurrencies();
+			case ShopTab.Interns: 		caroussel = new ShopCarousselInterns();
+			case ShopTab.Bundle: 		caroussel = new ShopCarousselBundle();
+			default: Debug.error("Undefined caroussel class for ShopTab : " + pTab);
+		}
+		
 		caroussel.init(carousselPos);
 		addChild(caroussel);
 		caroussel.start();
@@ -200,37 +210,31 @@ class ShopPopin extends SmartPopin{
 	private function onClickOpenBuldings() {
 		setButtons(0);
 		addCaroussel(ShopTab.Building);
-		caroussel.changeCardsToShow(ShopCaroussel.buildingNameList); // todo: mettre cela dans le ShopCaroussel appelé, héritage
 	}
 	
 	private function onClickOpenDecorations() {
 		setButtons(1);
-		addCaroussel(ShopTab.Building);
-		caroussel.changeCardsToShow(ShopCaroussel.decoNameList);
+		addCaroussel(ShopTab.Deco);
 	}
 	
 	private function onClickOpenIntern() {
 		setButtons(2);
-		addCaroussel(ShopTab.Building);	
-		caroussel.changeCardsToShow(ShopCaroussel.internsNameList);
+		addCaroussel(ShopTab.Interns);	
 	}
 	
 	private function onClickOpenCurencies() {
 		setButtons(3);
-		addCaroussel(ShopTab.Resources);
-		caroussel.changeCardsToShow(ShopCaroussel.currencieNameList);
+		addCaroussel(ShopTab.Currencies);
 	}
 	
 	private function onClickOpenResource() {
 		setButtons(4);
 		addCaroussel(ShopTab.Resources);
-		caroussel.changeCardsToShow(ShopCaroussel.resourcesNameList);
 	}
 	
 	private function onClickOpenBundle() {
 		setButtons(0,true);
-		addCaroussel(ShopTab.Building);
-		caroussel.changeCardsToShow(ShopCaroussel.bundleNameList);
+		addCaroussel(ShopTab.Bundle);
 	}
 	
 	private function onClickExit ():Void {

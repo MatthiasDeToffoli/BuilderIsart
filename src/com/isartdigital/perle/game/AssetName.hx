@@ -72,10 +72,10 @@ class AssetName{
 	public static inline var SHOP_RESSOURCE_PACK_CONTENT:String = /*SHOP_PREFIX +*/ "Pack_Price";
 	public static inline var SHOP_RESSOURCE_CARD_PICTURE:String = /*SHOP_PREFIX +*/ "Item_picture";
 	public static inline var SHOP_RESSOURCE_CARD_NAME:String = /*SHOP_PREFIX +*/ "Item_Name";
-	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_SCPrice";
+	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_CurrencyPrice";
 	
 	// Shop caroussel
-	public static inline var SHOP_CAROUSSEL_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
+	public static inline var SHOP_CAROUSSEL_DECO_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
 	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "CurrenciesTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN:String = SHOP_PREFIX + "InternsTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN_SEARCHING:String = SHOP_PREFIX + "InternsTab_Searching";
@@ -87,7 +87,7 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_BUNDLE:String ="ButtonBuyPack";
 	
 	// Popin Confirm Buy Building
-	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
+	/*public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
 	public static inline var PCBB_IMG:String = "Building_Image";
 	public static inline var PCBB_TEXT_NAME:String = "Building_Name";
 	public static inline var PCBB_TEXT_LEVEL:String = "Building_Level_txt";
@@ -100,7 +100,7 @@ class AssetName{
 	public static inline var PCBB_GOLD_PER_TIME:String = "Window_Infos_ProductionGold";
 	public static inline var PCBB_GOLD_PER_TIME_TEXT_1:String = "Window_Infos_txtProductionGold";
 	public static inline var PCBB_GOLD_PER_TIME_TEXT_2:String = "perTime";
-	public static inline var PCBB_BTN_BUY:String = "BuyButton";
+	public static inline var PCBB_BTN_BUY:String = "BuyButton";*/
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";

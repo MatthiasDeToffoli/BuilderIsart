@@ -4,18 +4,15 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.Building;
-import com.isartdigital.perle.game.sprites.FootPrint;
+import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
+import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
+import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
+import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
+import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
+import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
 import com.isartdigital.perle.game.sprites.FootPrintAsset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
-import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
-import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
-import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
-import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
-import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
-import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
-import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
-import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
@@ -23,10 +20,10 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
-import com.isartdigital.perle.ui.hud.dialogue.Arrow;
-import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
+import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
+import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
-import com.isartdigital.perle.ui.popin.shop.ShopCaroussel;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
@@ -38,7 +35,6 @@ import com.isartdigital.utils.game.StateGraphic;
 import com.isartdigital.utils.loader.GameLoader;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
-import haxe.Json;
 import haxe.Timer;
 import js.Browser;
 import pixi.core.display.Container;
@@ -367,7 +363,7 @@ class Main extends EventEmitter
 	 */
 	private function doUIBuilderHack ():Void {
 		var mapMovieClipToClass:Map<String, Class<Dynamic>> = [
-			AssetName.SHOP_CAROUSSEL_BUILDING => ShopCaroussel // todo: plus besoin ?
+			AssetName.SHOP_CAROUSSEL_DECO_BUILDING => ShopCarousselDecoBuilding // todo: plus besoin ?
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;
