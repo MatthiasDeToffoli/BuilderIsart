@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.InternPopin;
+import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameObject;
@@ -24,6 +25,7 @@ import pixi.interaction.EventTarget;
 /**
  * the bloc when intern is in quest
  * @author de Toffoli Matthias
+ * @author Emeline Berenguier
  */
 class InternElementInQuest extends InternElement
 {
@@ -46,7 +48,7 @@ class InternElementInQuest extends InternElement
 	private var newEvent:Bool = false;
 	public var loop:Timer;
 	
-	private var questInProgress:TimeQuestDescription;
+	//private var questInProgress:TimeQuestDescription;
 	
 	public static var eventCursorsArray:Array<UISprite>;
 	
@@ -59,6 +61,7 @@ class InternElementInQuest extends InternElement
 		eventCursorsArray = [eventCursor1, eventCursor2, eventCursor3];
 		
 		setOnSpawn(pDesc);
+		spawnButton("Bouton_InternSend_Clip");
 		addListeners();
 	}
 	
@@ -68,8 +71,6 @@ class InternElementInQuest extends InternElement
 		questTime = cast(getChildByName(AssetName.TIME_IN_QUEST), SmartComponent);
 		heroCursor = cast(SmartCheck.getChildByName(questTime, "_listInQuest_hero"), UISprite);
 		heroCursorStartPosition = cast(SmartCheck.getChildByName(questTime, "_listInQuest_hero"), UISprite).position.clone();
-		
-		spawnButton("Bouton_InternSend_Clip");
 		
 		eventCursor1 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent01"), UISprite);
 		eventCursor2 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent02"), UISprite);
@@ -94,41 +95,28 @@ class InternElementInQuest extends InternElement
 		}
 		
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_END, endQuest);
-		
-		//QuestsManager.eGoToNextStep.on(QuestsManager.EVENT_CHOICE_DONE, reputButtons);
 		
 		timeEvent.text = TimeManager.getTextTimeQuest(pDesc.quest.end) + "s";
 	}
 	
-	private function spawnButton(spawnerName:String, ?pButtonName:String=null):Void{
+	private function spawnButton(spawnerName:String):Void{
+		trace(Intern.getIntern(quest.refIntern).status);
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var lButton:SmartButton = null;
 		
-		if (!newEvent){
+		//if (!newEvent){
+		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING){
 			lButton = new AccelerateButton(spawner.position);
 			Interactive.addListenerClick(lButton, onAccelerate);	
 		}
 		
-		else if (newEvent){
+		//else if (newEvent){
+		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING){
 			lButton = new ResolveButton(spawner.position);
 			Interactive.addListenerClick(lButton, onResolve);	
 		}
-		//if (pButtonName == null){
-			//btnAccelerate = new AccelerateButton(spawner.position);
-			//btnAccelerate.position = spawner.position;
-			//Interactive.addListenerClick(btnAccelerate, onAccelerate);	
-			//addChild(btnAccelerate);
-		//}
-		//
-		//else if (pButtonName == "resolve"){
-			//Interactive.removeListenerClick(btnAccelerate, onAccelerate);
-			//btnResolve = new ResolveButton(spawner.position);
-			//btnResolve.position = spawner.position;
-			//Interactive.addListenerClick(btnResolve, onResolve);	
-			//addChild(btnResolve);
-			//trace("here");
-		//}
 		
 		else trace ("just an else");
 		
@@ -150,7 +138,7 @@ class InternElementInQuest extends InternElement
 	
 	private function onResolve(){
 		trace("resolve");
-		QuestsManager.choice(questInProgress);
+		QuestsManager.choice(quest);
 	}
 	
 	private function progressLoop():Void {
@@ -188,21 +176,17 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function changeButtons(?pQuest:TimeQuestDescription):Void{
-		newEvent = true;
-		questInProgress =  pQuest;
+		trace("change");
+		//For the actualisation of the switch buttonResolve/Acelerate/Stress
+		UIManager.getInstance().closeCurrentPopin();
+		InternElementInQuest.canPushNewScreen = true;
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 	}
 	
 	private function reputButtons(pEvent:EventTarget):Void{
 		newEvent = false;
 	}
-	
-	//private function updateButtons():Void{
-		//if (newEvent) {
-			////btnAccelerate.destroy();
-			//spawnButton("Bouton_InternSend_Clip", "resolve");
-			//newEvent = false;
-		//}
-	//}
 	
 	/**
 	 * Precaution function
@@ -224,7 +208,7 @@ class InternElementInQuest extends InternElement
 	
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(btnAccelerate, onAccelerate);
+		//Interactive.removeListenerClick(btnAccelerate, onAccelerate);
 		Interactive.removeListenerClick(picture, onPicture);
 
 		super.destroy();

@@ -40,6 +40,7 @@ class Choice extends SmartPopin
 	private static inline var DIFF_MAX:Float = 80;
 	
 	// elements
+	public var eChoiceDone:EventEmitter;
 	private var btnInterns:SmartButton;
 	private var btnClose:SmartButton;
 	private var btnShare:SmartButton;
@@ -97,6 +98,7 @@ class Choice extends SmartPopin
 			id : 2,
 			name : "Angel A. Merkhell",
 			aligment :  "angel",
+			status : "waiting",
 			quest : null,
 			price : 2000,
 			stress: 0,

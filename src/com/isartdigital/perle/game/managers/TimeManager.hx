@@ -49,6 +49,7 @@ typedef TimeElementResource = {
 class TimeManager {
 	
 	public static inline var EVENT_RESOURCE_TICK:String = "TimeManager_Resource_Tick";
+	public static inline var EVENT_CHOICE_DONE:String = "TimeManager_Choice_Done";
 	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
@@ -294,8 +295,7 @@ class TimeManager {
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
-		//trace("progress" + pElement.desc.progress);
-		//trace("end" + pElement.desc.end);
+		
 		if (pElement.progress == pElement.steps[pElement.stepIndex]) {
 			
 			if (pElement.stepIndex == pElement.steps.length - 1){
@@ -303,6 +303,8 @@ class TimeManager {
 			}
 			
 			pElement.stepIndex++;
+			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
+			eTimeQuest.emit(EVENT_CHOICE_DONE);
 		}
 		else
 			trace("nextStepQuest not ready yet !");
@@ -395,6 +397,7 @@ class TimeManager {
 			pElement.progress != lPreviousProgress) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
+			Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
 			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
 		}
 	}

@@ -12,8 +12,10 @@ class Intern
 {
 	private var desc:InternDescription;
 	public static var internsListArray:Array<InternDescription>; 
-	//private static var internsList:Map<Int,InternDescription>; //Only use when you want to get a specific intern
-	//public static var numberInterns:Int;
+
+	public static inline var STATE_RESTING:String = "resting";
+	public static inline var STATE_WAITING:String = "waiting";
+	public static inline var STATE_MAX_STRESS:String = "stressing";
 
 	public function new(pInternDatas:InternDescription) 
 	{
@@ -43,6 +45,7 @@ class Intern
 			id : lId,
 			name : "Angel A. Merkhell",
 			aligment :  "angel",
+			status: "resting",
 			//quest : QuestsManager.createQuest(lRandomEvent, lId),
 			quest : null,
 			price : 2000,
@@ -58,6 +61,7 @@ class Intern
 			id : IdManager.newId(),
 			name : "Archanglina Jolie",
 			aligment :  "demon",
+			status: "resting",
 			//quest : {refIntern:5, progress:0, steps: [3, 5, 1], stepIndex: 0, end: 10},
 			quest : null,
 			price : 2000,

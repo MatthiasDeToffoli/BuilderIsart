@@ -107,9 +107,6 @@ class QuestsManager
 		var lEnd:Int = 0;
 		var lLength:Int = pListEvents.length - 1;
 		
-		//for (i in 0...lLength){
-			//lEnd = lEnd + pListEvents[i];
-		//}
 		lEnd = pListEvents[lLength];
 		
 		return lEnd;
@@ -134,6 +131,7 @@ class QuestsManager
 	}
 	
 	public static function goToNextStep():Void{
+		trace("gotonextstep");
 		Choice.getInstance().hide();
 		TimeManager.nextStepQuest(questInProgress);
 		//eGoToNextStep.emit(EVENT_CHOICE_DONE);
