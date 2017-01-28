@@ -1,93 +1,93 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_bg_heaven_02",
+       "origin": [
+        -36.15,
+        63.85
+       ],
+       "rect": [
+        1,
+        1,
+        1269,
+        1396
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "_bg_heaven01",
+       "origin": [
+        1302.1,
+        58.25
+       ],
+       "rect": [
+        1,
+        1,
+        1269,
+        1396
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "HeavenBackground",
    "layers": [
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
-        329,
-        329.75
+        667.1,
+        727.75
        ],
        "loc": [
-        -329,
-        0
+        -597.15,
+        640.2
        ],
-       "tweened": false,
-       "ref": "_HeavenBackground_01",
        "index": 0,
-       "duration": 1
+       "ref": "_bg_heaven01",
+       "tweened": false
       }
      ],
-     "name": "Layer 1"
+     "name": "Calque 1"
     },
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
-        329,
-        329.75
+        598.85,
+        733.35
        ],
        "loc": [
-        329,
-        0
+        602.95,
+        644.95
        ],
-       "tweened": false,
-       "ref": "_HeavenBackground_02",
        "index": 0,
-       "duration": 1
+       "ref": "_bg_heaven_02",
+       "tweened": false
       }
      ],
-     "name": "Layer 2"
+     "name": "Calque 2"
     }
-   ]
+   ],
+   "id": "BG_Heaven"
   }
  ],
- "md5": "4d064546d06f1b61d19922fd91214efa",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        658,
-        660
-       ],
-       "origin": [
-        329,
-        329.75
-       ],
-       "symbol": "_HeavenBackground_01"
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        658,
-        660
-       ],
-       "origin": [
-        329,
-        329.75
-       ],
-       "symbol": "_HeavenBackground_02"
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ]
-  }
- ]
+ "md5": "7ffb4b59550e0d966efeb08a078a61ec",
+ "frameRate": 24
 }
