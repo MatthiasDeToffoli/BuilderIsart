@@ -102,7 +102,6 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
-		trace(Intern.getIntern(quest.refIntern).status);
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var lButton:SmartButton = null;
 		
@@ -137,7 +136,6 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function onResolve(){
-		trace("resolve");
 		QuestsManager.choice(quest);
 	}
 	
@@ -176,7 +174,6 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function changeButtons(?pQuest:TimeQuestDescription):Void{
-		trace("change");
 		//For the actualisation of the switch buttonResolve/Acelerate/Stress
 		UIManager.getInstance().closeCurrentPopin();
 		InternElementInQuest.canPushNewScreen = true;
