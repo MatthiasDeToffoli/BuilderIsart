@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -80,9 +81,13 @@ class MaxStressPopin extends SmartPopin
 	private function onReset():Void{
 		Intern.getIntern(quest.refIntern).stress = 0;
 		Intern.getIntern(quest.refIntern).status = Intern.STATE_RESTING;
+		
+		updateQuestPopin();
 	}
 	
 	private function onDismiss():Void{
+		Intern.destroyIntern(quest.refIntern);
+		updateQuestPopin();
 		//QuestsManager.destroyQuest(quest.refIntern);
 		//TimeManager.destroyTimeElement(quest.refIntern);
 	}
@@ -91,6 +96,14 @@ class MaxStressPopin extends SmartPopin
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
 	}
+	
+		//For the HUD Popin actualisation
+	private function updateQuestPopin():Void{
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+	}
+	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */

@@ -24,6 +24,7 @@ class InternElementOutQuest extends InternElement
 	private var btnMaxStress:SmartButton;
 	private var idIntern:Int;
 	private var internDatas:InternDescription;
+	private var quest:TimeQuestDescription;
 
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
@@ -39,14 +40,12 @@ class InternElementOutQuest extends InternElement
 		idIntern = pDesc.id;
 		
 		spawnButton("_spawner_buttonStress_accelerate");
-				
-		Interactive.addListenerClick(picture, onPicture);		
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		
-		//if (idIntern != null){
+		//if (idIntern != null){ //Todo: faire un switch
 			if (Intern.getIntern(idIntern).status == Intern.STATE_RESTING){
 				btnSend = new SendButton(spawner.position);
 				btnSend.position = spawner.position;
@@ -58,7 +57,7 @@ class InternElementOutQuest extends InternElement
 			if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
 				btnMaxStress = new StressButton(spawner.position);
 				btnMaxStress.position = spawner.position;
-				//Interactive.addListenerClick(btnSend, onSend);	
+				Interactive.addListenerClick(btnMaxStress, onStress);
 				addChild(btnMaxStress);
 			}
 		//}
@@ -74,6 +73,10 @@ class InternElementOutQuest extends InternElement
 		destroySpawner(spawner);
 	}
 	
+	private function addListerners():Void{
+		Interactive.addListenerClick(picture, onPicture);
+	}
+	
 	/**
 	 * destroy the spawner
 	 * @param spawner to destroy
@@ -84,17 +87,23 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function onSend(){
-		var lLength:Int = QuestsManager.questsList.length;
-		var lQuest:TimeQuestDescription = QuestsManager.createQuest(idIntern);
+		//var lLength:Int = QuestsManager.questsList.length;
+		quest = QuestsManager.createQuest(idIntern);
 		
-		internDatas.quest = lQuest;
-		TimeManager.createTimeQuest(lQuest);
+		internDatas.quest = quest;
+		TimeManager.createTimeQuest(quest);
 		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();
 		InternElementInQuest.canPushNewScreen = true;
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+	}
+	
+	private function onStress(){
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
+		GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 	}
 	
 	//For the HUD Popin actualisation

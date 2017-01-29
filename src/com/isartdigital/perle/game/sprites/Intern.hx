@@ -20,8 +20,6 @@ class Intern
 	public function new(pInternDatas:InternDescription) 
 	{
 		internsListArray.push(pInternDatas);
-		trace(internsListArray[internsListArray.length - 1].id);
-		//internsList[pInternDatas.id] = internsListArray[internsListArray.length - 1]; //@Todo: peut-être raccourcir en pInternDatas
 	}
 	
 	public static function getIntern(pId:Int):InternDescription{
@@ -73,6 +71,17 @@ class Intern
 		//
 		var lTestNewIntern2:Intern = new Intern(lTestInternDatas2);
 		
+	}
+	
+	public static function destroyIntern(pId:Int):Void{	
+		trace("length" + internsListArray.length);
+		for (i in 0...internsListArray.length){
+			if (pId == internsListArray[i].id){
+				trace("intern" + internsListArray[i]);
+				internsListArray.splice(internsListArray.indexOf(internsListArray[i]), 1);
+				break;
+			}
+		}
 	}
 	
 }
