@@ -387,7 +387,8 @@ class TimeManager {
 		var lPreviousProgress:Float = pElement.progress;
 		
 		pElement.progress = Math.min(
-			pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed),
+			pElement.progress + pElapsedTime,
+			//pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed), //@todo: à remettre après le save
 			//pElement.progress + pElapsedTime,
 			pElement.steps[pElement.stepIndex]
 		);

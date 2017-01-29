@@ -96,7 +96,7 @@ class InternElementInQuest extends InternElement
 		
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_END, endQuest);
+		//TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_END, endQuest);
 		
 		timeEvent.text = TimeManager.getTextTimeQuest(pDesc.quest.end) + "s";
 	}
@@ -174,15 +174,13 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function changeButtons(?pQuest:TimeQuestDescription):Void{
-		//For the actualisation of the switch buttonResolve/Acelerate/Stress
-		UIManager.getInstance().closeCurrentPopin();
-		InternElementInQuest.canPushNewScreen = true;
-		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-	}
-	
-	private function reputButtons(pEvent:EventTarget):Void{
-		newEvent = false;
+		//if (quest.stepIndex != 2){
+			//For the actualisation of the switch buttonResolve/Acelerate/Stress
+			UIManager.getInstance().closeCurrentPopin();
+			InternElementInQuest.canPushNewScreen = true;
+			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+			GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+		//}
 	}
 	
 	/**

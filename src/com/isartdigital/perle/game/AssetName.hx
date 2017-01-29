@@ -166,6 +166,9 @@ class AssetName{
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
 	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
 	
+	//Gatcha popin
+	public static inline var GATCHA_POPIN:String = "PopinGatcha";
+	
 	//purtagory popin
 	public static inline var PURGATORY_POPIN:String = "PurgatoryPop";
 	public static inline var PURGATORY_POPIN_CANCEL:String = "CloseButton";
