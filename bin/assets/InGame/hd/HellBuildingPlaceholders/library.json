@@ -8,12 +8,12 @@
       {
        "tweened": false,
        "loc": [
-        56.1,
-        125
+        1.95,
+        -7.15
        ],
        "pivot": [
-        252.5,
-        125
+        253.5,
+        300
        ],
        "ref": "_Hell_Quarry",
        "index": 0,
@@ -25,17 +25,39 @@
    ]
   },
   {
-   "id": "hellBuilding",
+   "id": "Hell_lake",
    "layers": [
     {
      "keyframes": [
       {
-       "tweened": false,
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "hellBuiding",
+   "layers": [
+    {
+     "keyframes": [
+      {
        "pivot": [
-        192.7,
-        120.1
+        97,
+        96
        ],
        "ref": "_hellBuilding",
+       "loc": [
+        -22.9,
+        -25.7
+       ],
+       "tweened": false,
+       "scale": [
+        2,
+        2
+       ],
        "index": 0,
        "duration": 1
       }
@@ -52,12 +74,12 @@
       {
        "tweened": false,
        "loc": [
-        -2,
-        133.65
+        19.8,
+        -46.95
        ],
        "pivot": [
-        211.65,
-        255.7
+        205,
+        299
        ],
        "ref": "_hellBuilding2",
        "index": 0,
@@ -76,12 +98,12 @@
       {
        "tweened": false,
        "loc": [
-        0,
-        133.95
+        9,
+        -158.95
        ],
        "pivot": [
-        178.7,
-        297
+        210,
+        321
        ],
        "ref": "_hellBuilding3",
        "index": 0,
@@ -93,7 +115,7 @@
    ]
   }
  ],
- "md5": "17ee0854e4fa98257d200d15b6c9ad59",
+ "md5": "37bd3f80a6a4c4a4390088b2aa51689a",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
@@ -105,51 +127,51 @@
        "rect": [
         1,
         1,
-        505,
-        250
+        507,
+        600
        ],
        "origin": [
-        0,
-        0
+        253.5,
+        300
        ],
        "symbol": "_Hell_Quarry"
       },
       {
        "rect": [
-        508,
+        510,
         1,
-        302,
-        312
+        420,
+        642
        ],
        "origin": [
-        178.7,
-        163.05
+        210,
+        321
        ],
        "symbol": "_hellBuilding3"
       },
       {
        "rect": [
         1,
-        253,
-        301,
-        299
+        603,
+        410,
+        598
        ],
        "origin": [
-        211.65,
-        121.75
+        205,
+        299
        ],
        "symbol": "_hellBuilding2"
       },
       {
        "rect": [
-        1,
-        554,
-        304,
-        274
+        413,
+        645,
+        194,
+        192
        ],
        "origin": [
-        192.7,
-        120.1
+        97,
+        96
        ],
        "symbol": "_hellBuilding"
       }

@@ -1,200 +1,185 @@
 {
+ "movies": [
+  {
+   "id": "Hell_Quarry",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        0.975,
+        -3.575
+       ],
+       "pivot": [
+        126.75,
+        150
+       ],
+       "ref": "_Hell_Quarry",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "Hell_lake",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "hellBuiding",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        48.5,
+        48
+       ],
+       "ref": "_hellBuilding",
+       "loc": [
+        -11.45,
+        -12.85
+       ],
+       "tweened": false,
+       "scale": [
+        2,
+        2
+       ],
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "hellBuilding2",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        9.9,
+        -23.475
+       ],
+       "pivot": [
+        102.5,
+        149.5
+       ],
+       "ref": "_hellBuilding2",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "hellBuilding3",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "loc": [
+        4.5,
+        -79.475
+       ],
+       "pivot": [
+        105,
+        160.5
+       ],
+       "ref": "_hellBuilding3",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  }
+ ],
+ "md5": "37bd3f80a6a4c4a4390088b2aa51689a",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "_Hell_Quarry",
-       "origin": [
-        0,
-        0
-       ],
        "rect": [
         1,
         1,
-        253,
-        125
-       ]
-      },
-      {
-       "symbol": "_hellBuilding",
-       "origin": [
-        96.75,
-        66.5
+        254,
+        300
        ],
-       "rect": [
-        256,
-        1,
-        159,
-        151
-       ]
-      },
-      {
-       "symbol": "_hellBuilding3",
        "origin": [
-        89.35,
-        81.5
-       ],
-       "rect": [
-        1,
-        128,
-        151,
-        156
-       ]
-      },
-      {
-       "symbol": "_hellBuilding2",
-       "origin": [
-        105.8,
-        60.9
-       ],
-       "rect": [
-        1,
-        286,
-        151,
+        126.75,
         150
-       ]
+       ],
+       "symbol": "_Hell_Quarry"
       },
       {
-       "symbol": "_Hell_lake",
-       "origin": [
-        45,
-        24.5
+       "rect": [
+        257,
+        1,
+        210,
+        321
        ],
+       "origin": [
+        105,
+        160.5
+       ],
+       "symbol": "_hellBuilding3"
+      },
+      {
        "rect": [
         1,
-        438,
-        90,
-        49
-       ]
+        303,
+        205,
+        299
+       ],
+       "origin": [
+        102.5,
+        149.5
+       ],
+       "symbol": "_hellBuilding2"
+      },
+      {
+       "rect": [
+        208,
+        324,
+        97,
+        96
+       ],
+       "origin": [
+        48.5,
+        48
+       ],
+       "symbol": "_hellBuilding"
       }
-     ]
+     ],
+     "file": "atlas0.png"
     }
    ],
    "scaleFactor": 1
   }
- ],
- "movies": [
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        28.05,
-        62.5
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_Hell_Quarry",
-       "pivot": [
-        126.25,
-        62.5
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "Hell_Quarry"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -1,
-        22
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_Hell_lake",
-       "pivot": [
-        45,
-        24.5
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "Hell_lake"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_hellBuilding",
-       "pivot": [
-        96.75,
-        66.5
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "hellBuilding"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        9.5,
-        59.325
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_hellBuilding2",
-       "pivot": [
-        105.825,
-        127.85
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "hellBuilding2"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -6,
-        61.975
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_hellBuilding3",
-       "pivot": [
-        89.35,
-        148.5
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "hellBuilding3"
-  }
- ],
- "md5": "36d6370763523aacd3ebeb1e3d1f3805",
- "frameRate": 24
+ ]
 }
