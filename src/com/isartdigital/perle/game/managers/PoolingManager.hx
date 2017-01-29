@@ -35,6 +35,7 @@ class PoolingManager {
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "CollectorHeaven",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "CollectorHeaven",
+		AssetName.MARKETING_HOUSE => "MarketingHouse",
 		
 		
 		AssetName.BUILDING_HELL_HOUSE => "HouseHell",

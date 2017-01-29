@@ -1,4 +1,4 @@
-package com.isartdigital.perle.game.sprites.building;
+package com.isartdigital.perle.game.sprites.building.heaven;
 
 import com.isartdigital.perle.game.sprites.Building;
 

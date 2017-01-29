@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
+import com.isartdigital.perle.game.sprites.building.heaven.MarketingHouse;
 import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
 import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
@@ -341,6 +342,7 @@ class Main extends EventEmitter
 			CollectorHell,
 			VCollectorHell,
 			VMarketingHouse,
+			MarketingHouse,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

@@ -10,19 +10,20 @@ class AssetName{
 
 	// Building Neutral
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
-	public static inline var BUILDING_STYX_VIRTUE:String = "Altar_Virtue";
+	public static inline var BUILDING_STYX_VIRTUE:String = "HeavenAltarVirtue";
 	
 	// Building Heaven
-	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuild0";
-	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL2:String = "HeavenBuild1";
-	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL3:String = "HeavenBuild2";
+	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuilding01";
+	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL2:String = "HeavenBuilding02";
+	public static inline var BUILDING_HEAVEN_HOUSE_LEVEL3:String = "HeavenBuilding03";
 	public static inline var BUILDING_HEAVEN_BRIDGE:String = "HeavenBuild3";
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL1:String = "HeavenLumberMill01";
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL2:String = "HeavenLumberMill02";
+	public static inline var MARKETING_HOUSE:String = "HeavenMarketingPlace";
 	
 	
 	// Building Hell
-	public static inline var BUILDING_HELL_HOUSE:String = "hellBuilding";
+	public static inline var BUILDING_HELL_HOUSE:String = "hellBuiding";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
