@@ -1,105 +1,26 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "symbol": "_hellBuilding3",
-       "rect": [
-        1,
-        1,
-        268,
-        243
-       ],
-       "origin": [
-        134,
-        108.5
-       ]
-      },
-      {
-       "symbol": "_HeavenLumberMill_02",
-       "rect": [
-        1,
-        246,
-        244,
-        215
-       ],
-       "origin": [
-        122,
-        107.5
-       ]
-      },
-      {
-       "symbol": "_hellBuilding",
-       "rect": [
-        1,
-        463,
-        278,
-        176
-       ],
-       "origin": [
-        134,
-        15.6
-       ]
-      },
-      {
-       "symbol": "_HeavenLumberMill_01",
-       "rect": [
-        247,
-        246,
-        218,
-        176
-       ],
-       "origin": [
-        144.05,
-        50.9
-       ]
-      },
-      {
-       "symbol": "_ground",
-       "rect": [
-        271,
-        1,
-        90,
-        45
-       ],
-       "origin": [
-        44.7,
-        0
-       ]
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
- "frameRate": 24,
  "movies": [
   {
    "id": "HeavenLumberMill01",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
        "pivot": [
-        144.05,
-        50.9
+        126.325,
+        68.4
        ],
-       "duration": 1,
        "loc": [
-        -1,
-        -0.5
+        -0.225,
+        1.075
        ],
        "tweened": false,
+       "ref": "_HeavenLumberMill_01",
        "index": 0,
-       "ref": "_HeavenLumberMill_01"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
    ]
   },
@@ -107,22 +28,105 @@
    "id": "HeavenLumberMill02",
    "layers": [
     {
-     "name": "Layer 1",
      "keyframes": [
       {
        "pivot": [
-        122,
-        107.5
+        112.225,
+        117.45
+       ],
+       "loc": [
+        -0.775,
+        0
        ],
        "tweened": false,
-       "duration": 1,
+       "ref": "_HeavenLumberMill_02",
        "index": 0,
-       "ref": "_HeavenLumberMill_02"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
    ]
   }
  ],
- "md5": "8543ac84ebaca3e938d67ab613689a0a"
+ "md5": "526d12da983fb46c4e20006a70722fd0",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        268,
+        253
+       ],
+       "origin": [
+        134,
+        118.45
+       ],
+       "symbol": "_hellBuilding3"
+      },
+      {
+       "rect": [
+        1,
+        256,
+        298,
+        194
+       ],
+       "origin": [
+        134,
+        31.55
+       ],
+       "symbol": "_hellBuilding"
+      },
+      {
+       "rect": [
+        271,
+        1,
+        221,
+        222
+       ],
+       "origin": [
+        112.2,
+        117.45
+       ],
+       "symbol": "_HeavenLumberMill_02"
+      },
+      {
+       "rect": [
+        1,
+        452,
+        219,
+        194
+       ],
+       "origin": [
+        126.3,
+        68.4
+       ],
+       "symbol": "_HeavenLumberMill_01"
+      },
+      {
+       "rect": [
+        222,
+        452,
+        90,
+        45
+       ],
+       "origin": [
+        44.7,
+        0
+       ],
+       "symbol": "_ground"
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ]
 }
