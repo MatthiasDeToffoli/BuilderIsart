@@ -1,4 +1,51 @@
 {
+ "movies": [
+  {
+   "id": "BG_Heaven",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        667.1,
+        727.75
+       ],
+       "loc": [
+        -597.15,
+        703.2
+       ],
+       "ref": "_bg_heaven01",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        598.85,
+        733.35
+       ],
+       "loc": [
+        603.6,
+        708.8
+       ],
+       "ref": "_bg_heaven_02",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ]
+  }
+ ],
+ "md5": "6fa695892ebe9ea7a2d159f40337e0a0",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -6,17 +53,17 @@
     {
      "textures": [
       {
-       "symbol": "_bg_heaven_02",
        "rect": [
         1,
         1,
-        1270,
-        1339
+        1269,
+        1396
        ],
        "origin": [
-        0,
-        0
-       ]
+        -36.15,
+        63.85
+       ],
+       "symbol": "_bg_heaven_02"
       }
      ],
      "file": "atlas0.png"
@@ -24,17 +71,17 @@
     {
      "textures": [
       {
-       "symbol": "_bg_heaven01",
        "rect": [
         1,
         1,
-        1270,
-        1339
+        1269,
+        1396
        ],
        "origin": [
-        1270,
-        0
-       ]
+        1302.1,
+        58.25
+       ],
+       "symbol": "_bg_heaven01"
       }
      ],
      "file": "atlas1.png"
@@ -42,52 +89,5 @@
    ],
    "scaleFactor": 1
   }
- ],
- "frameRate": 24,
- "movies": [
-  {
-   "id": "BG_Heaven",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        635,
-        669.5
-       ],
-       "duration": 1,
-       "loc": [
-        -597.15,
-        640.2
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_bg_heaven01"
-      }
-     ]
-    },
-    {
-     "name": "Calque 2",
-     "keyframes": [
-      {
-       "pivot": [
-        635,
-        669.5
-       ],
-       "duration": 1,
-       "loc": [
-        602.95,
-        644.95
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_bg_heaven_02"
-      }
-     ]
-    }
-   ]
-  }
- ],
- "md5": "1df1fa387ed4ee4587a66cee91e54ea0"
+ ]
 }

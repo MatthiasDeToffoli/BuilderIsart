@@ -1,4 +1,51 @@
 {
+ "movies": [
+  {
+   "id": "BG_Heaven",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        500.325,
+        545.8125
+       ],
+       "loc": [
+        -447.8625,
+        527.4
+       ],
+       "ref": "_bg_heaven01",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        449.1375,
+        550.0125
+       ],
+       "loc": [
+        452.7,
+        531.6
+       ],
+       "ref": "_bg_heaven_02",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ]
+  }
+ ],
+ "md5": "6fa695892ebe9ea7a2d159f40337e0a0",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -6,17 +53,17 @@
     {
      "textures": [
       {
-       "symbol": "_bg_heaven_02",
        "rect": [
         1,
         1,
-        953,
-        1005
+        952,
+        1047
        ],
        "origin": [
-        0,
-        0
-       ]
+        -27.1,
+        47.9
+       ],
+       "symbol": "_bg_heaven_02"
       }
      ],
      "file": "atlas0.png"
@@ -24,17 +71,17 @@
     {
      "textures": [
       {
-       "symbol": "_bg_heaven01",
        "rect": [
         1,
         1,
-        953,
-        1005
+        952,
+        1047
        ],
        "origin": [
-        952.5,
-        0
-       ]
+        976.6,
+        43.7
+       ],
+       "symbol": "_bg_heaven01"
       }
      ],
      "file": "atlas1.png"
@@ -42,52 +89,5 @@
    ],
    "scaleFactor": 1
   }
- ],
- "frameRate": 24,
- "movies": [
-  {
-   "id": "BG_Heaven",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        476.25,
-        502.125
-       ],
-       "duration": 1,
-       "loc": [
-        -447.8625,
-        480.15
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_bg_heaven01"
-      }
-     ]
-    },
-    {
-     "name": "Calque 2",
-     "keyframes": [
-      {
-       "pivot": [
-        476.25,
-        502.125
-       ],
-       "duration": 1,
-       "loc": [
-        452.2125,
-        483.7125
-       ],
-       "tweened": false,
-       "index": 0,
-       "ref": "_bg_heaven_02"
-      }
-     ]
-    }
-   ]
-  }
- ],
- "md5": "1df1fa387ed4ee4587a66cee91e54ea0"
+ ]
 }
