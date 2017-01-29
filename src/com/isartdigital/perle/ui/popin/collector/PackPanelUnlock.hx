@@ -34,7 +34,7 @@ class PackPanelUnlock extends PackPanel
 	private function onClick(){
 		rewrite();
 		vBuildingLink.startProduction(pack);
-		CollectorPopin.getInstance().onClose();
+		CollectorPopin.getInstance().switchPanel();
 	}
 	
 	private function rewrite(){

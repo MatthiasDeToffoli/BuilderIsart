@@ -48,4 +48,10 @@ class ProductionPanel extends SmartComponent
 		panels.push(panel);
 	}
 	
+	override public function destroy():Void 
+	{
+		parent.removeChild(this);
+		super.destroy();
+	}
+	
 }

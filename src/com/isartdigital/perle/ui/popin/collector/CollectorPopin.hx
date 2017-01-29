@@ -10,6 +10,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
 
 	
 /**
@@ -27,6 +28,7 @@ class CollectorPopin extends SmartPopin
 	private var prodPanel:ProductionPanel;
 	private var btnClose:SmartButton;
 	private var timer:TimerInProd;
+	private var myCollector:VCollector;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -44,32 +46,45 @@ class CollectorPopin extends SmartPopin
 	{
 		super(AssetName.COLLECTOR_POPIN);
 		
-		var myCollector:VCollector = cast(BuildingHud.virtualBuilding, VCollector);
+		myCollector = cast(BuildingHud.virtualBuilding, VCollector);
 		
 		btnClose = cast(SmartCheck.getChildByName(this, AssetName.BTN_CLOSE), SmartButton);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_productionSpawner"), UISprite);
 			
-		if (myCollector.product) addTimer(spawner,myCollector);
-		else addPanel(spawner);
+		if (myCollector.product) addTimer(spawner.position,myCollector);
+		else addPanel(spawner.position);
 		
 		spawner.parent.removeChild(spawner);
 		Interactive.addListenerClick(btnClose, onClose);
 		
 	}
 	
-	private function addPanel(spawner:UISprite):Void{
+	private function addPanel(pPos:Point):Void{
 		prodPanel = new ProductionPanel();
-		prodPanel.position = spawner.position;
+		prodPanel.position = pPos;
 		
 		addChild(prodPanel);
 	}
 	
-	private function addTimer(spawner:UISprite, pCollector:VCollector):Void {
+	private function addTimer(pPos:Point, pCollector:VCollector):Void {
 		timer = new TimerInProd(pCollector);
-		timer.position = spawner.position;
+		timer.position = pPos;
 		
 		addChild(timer);
 	}
+	
+	public function switchPanel():Void {
+		if (prodPanel != null) {
+			addTimer(prodPanel.position, myCollector);
+			prodPanel.destroy();
+			prodPanel = null;
+		} else if(timer != null) {
+			addPanel(timer.position);
+			timer.destroy();
+			timer = null;
+		}
+	}
+	
 	public function onClose(){
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
@@ -79,6 +94,7 @@ class CollectorPopin extends SmartPopin
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		myCollector = null;
 		instance = null;
 		Interactive.removeListenerClick(btnClose, onClose);
 		super.destroy();

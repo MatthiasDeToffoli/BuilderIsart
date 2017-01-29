@@ -47,4 +47,9 @@ class PackPanel extends SmartComponent
 		gainText.text = "" + pack.quantity;
 	}
 	
+	override public function destroy():Void 
+	{
+		super.destroy();
+	}
+	
 }
