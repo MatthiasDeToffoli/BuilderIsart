@@ -80,8 +80,8 @@ class CCUBuilding extends CarousselCardUnlock{
 			textPriceIron.text = Std.string(pPrice);
 	}
 	
-	override function _click(/*pEvent:EventTarget = null*/):Void {
-		super._click(/*pEvent*/);
+	override function _click(pEvent:EventTarget = null):Void {
+		super._click(pEvent);
 		
 		if (BuyManager.canBuy(buildingName)) {
 			Phantom.onClickShop(buildingName);

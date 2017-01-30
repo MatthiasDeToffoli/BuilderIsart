@@ -156,7 +156,6 @@ class ShopCaroussel extends SmartComponent {
 			cards[i].position = pPositions[i];
 			cards[i].init(cardsToShow[j]);
 			addChild(cards[i]);
-			cards[i].start();
 		}
 	}
 	

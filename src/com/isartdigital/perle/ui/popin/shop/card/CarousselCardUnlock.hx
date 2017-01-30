@@ -35,10 +35,10 @@ class CarousselCardUnlock extends CarouselCard
 	
 	private function setName (pAssetName:String):Void {}
 	
-	override private function _click (/*pEvent:EventTarget = null*/):Void {
+	override private function _click (pEvent:EventTarget = null):Void {
 		if (alpha == 0.5)
 			return;
-		super._click(/*pEvent*/);
+		super._click(pEvent);
 		closeShop();
 	}
 	

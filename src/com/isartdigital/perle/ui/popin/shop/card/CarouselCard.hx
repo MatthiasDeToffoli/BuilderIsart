@@ -1,21 +1,14 @@
 package com.isartdigital.perle.ui.popin.shop.card;
-import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
-import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
-import com.isartdigital.utils.ui.smart.SmartComponent;
-import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.math.Point;
-import pixi.core.math.shapes.Rectangle;
 import pixi.interaction.EventTarget;
 
 /**
  * ...
  * @author ambroise
  */
-class CarouselCard extends SmartComponent { // n'est pas un smart btn ds le .fla...
+class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 
 	private var image:UISprite;
 	
@@ -42,9 +35,9 @@ class CarouselCard extends SmartComponent { // n'est pas un smart btn ds le .fla
 		
 	}*/
 	
-	private function _click ():Void {
+	/*private function _click ():Void {
 		
-	}
+	}*/
 	
 	override private function _mouseDown (pEvent:EventTarget = null): Void {
 		super._mouseDown(pEvent);
