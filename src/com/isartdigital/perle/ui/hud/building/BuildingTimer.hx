@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 
+import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
@@ -76,6 +77,7 @@ class BuildingTimer extends SmartComponent
 		}
 		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
 		
+		ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, ConstructionTimeAction.UPDT);
 		updateProgressBar();
 	}
 	

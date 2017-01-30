@@ -86,7 +86,6 @@ typedef InternDescription = {
 	var price:Int; //Price of the intern
 	//Stats of the intern
 	var stress:Float;
-	var stressLimit:Float;
 	var speed:Float;
 	var efficiency:Float;
 }

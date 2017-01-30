@@ -121,16 +121,11 @@ class QuestsManager
 	public static function choice(pQuest:TimeQuestDescription):Void{
 		trace("choice");
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
-		if (!isMaxStress(pQuest.refIntern)){
-			questInProgress = pQuest;
-			Hud.getInstance().hide();
-			UIManager.getInstance().closeCurrentPopin;
-			Choice.getInstance().setIntern(Intern.getIntern(pQuest.refIntern));
-			GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
-		}
-		else{
-			trace("dismiss");
-		}
+		questInProgress = pQuest;
+		Hud.getInstance().hide();
+		UIManager.getInstance().closeCurrentPopin;
+		Choice.getInstance().setIntern(Intern.getIntern(pQuest.refIntern));
+		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
 	}
 	
 	public static function goToNextStep():Void{
@@ -224,7 +219,7 @@ class QuestsManager
 	
 	//A peut-être mettre dans Intern
 	private static function isMaxStress(pId:Int):Bool{
-		if (Intern.getIntern(pId).stress < Intern.getIntern(pId).stressLimit) return false;
+		if (Intern.getIntern(pId).stress < Intern.MAX_STRESS) return false;
 		else return true;
 	}
 	

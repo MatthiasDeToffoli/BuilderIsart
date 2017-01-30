@@ -5,13 +5,14 @@ $crea = intval(str_replace("/", "", $_POST["creationDate"]));
 $endDate = intval(str_replace("/", "", $_POST["endDate"]));
 $creationSec = intval(str_replace("/", "", $_POST["creationSec"]));
 $endSeconds = intval(str_replace("/", "", $_POST["endSec"]));
+$boostVal = intval(str_replace("/", "", $_POST["boost"]));
 $functionExe = str_replace("/", "", $_POST["funct"]);
 
 Include("FacebookUtils.php");
 switch ($functionExe) {
   case "ADD": newConstructionTime($buildID, $crea, $creationSec, $endDate, $endSeconds); break;
   case "REM": removeConstructionTime($buildID); break;
-  case "GET": getConstructionTime($buildID); break;
+  case "UPDT": updateConstructionTime($buildID, $boostVal); break;
   default: echo "No function"; break;
 }
 
@@ -68,6 +69,36 @@ switch ($functionExe) {
       $reqPre->execute();
       $res = $reqPre->fetchAll();
       if (isset($res[0])) die();
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+  }
+
+  function updateConstructionTime($buildID, $boostVal) {
+    global $db;
+    $boostBonus = 0;
+
+    $req = "SELECT Boost FROM TimeConstruction WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
+    $reqPre = $db->prepare($req);
+    $ID = getId();
+    $reqPre->bindParam(':idPlayer', $ID);
+    $reqPre->bindParam(':idBuild', $buildID);
+
+    $reqPre->execute();
+    $res = $reqPre->fetchAll();
+    if ($res["Boost"] != 0) $boostBonus = $res["Boost"] + $boostVal;
+    else $boostBonus = $boostVal;
+
+    $req = "UPDATE TimeConstruction SET Boost = :boostVal WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
+    $reqPre = $db->prepare($req);
+    $ID = getId();
+    $reqPre->bindParam(':idPlayer', $ID);
+    $reqPre->bindParam(':idBuild', $buildID);
+    $reqPre->bindParam(':boostVal', $boostBonus);
+
+    try {
+      $reqPre->execute();
     } catch (Exception $e) {
       echo $e->getMessage();
       exit;

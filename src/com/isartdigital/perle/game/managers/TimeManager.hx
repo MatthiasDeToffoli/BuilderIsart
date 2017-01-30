@@ -431,6 +431,7 @@ class TimeManager {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
+			ServerManager.ContructionTimeAction(pElement, ConstructionTimeAction.REM);
 			pEndedList.push(index);
 		}
 	}

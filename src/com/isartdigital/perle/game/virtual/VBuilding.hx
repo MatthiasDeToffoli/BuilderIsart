@@ -273,7 +273,6 @@ class VBuilding extends VTile {
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		setState(VBuildingState.isBuilt);
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
-		ServerManager.ContructionTimeAction(pElement, ConstructionTimeAction.REM);
 		SaveManager.save();
 	}
 	

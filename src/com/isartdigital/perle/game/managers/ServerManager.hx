@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -12,7 +13,7 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
-enum ConstructionTimeAction { ADD; REM; GET; }
+enum ConstructionTimeAction { ADD; REM; UPDT; }
 
 /**
  * Interface whit the server
@@ -38,6 +39,10 @@ class ServerManager {
 	
 	public static function getJsonChoices():Void {
 		callPhpFile(ChoiceManager.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES]);
+	}
+	
+	public static function getJsonInterns():Void {
+		callPhpFile(Intern.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION]);
 	}
 	
 	/**
@@ -73,10 +78,11 @@ class ServerManager {
 					"funct" => actionCall
 				]);
 			
-			case ConstructionTimeAction.GET:
+			case ConstructionTimeAction.UPDT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
 					"buildId" => pConstructTimeDesc.refTile,
+					"boost" => pConstructTimeDesc.timeBoost,
 					"funct" => actionCall
 				]);
 				
@@ -184,4 +190,5 @@ class ServerFile {
 	public static inline var REGIONS:String = "BuyRegions";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
+	public static inline var INTER_ACTION:String = "InternAction";
 }
