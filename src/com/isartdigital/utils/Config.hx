@@ -6,6 +6,7 @@ import js.html.Storage;
 /**
  * Classe utilitaire contenant les données de configuration du jeu
  * @author Mathieu ANTHOINE
+ * @version 0.2.0
  */
 class Config 
 {
@@ -92,9 +93,11 @@ class Config
 		var lVersion:String = lStorage.getItem(gameName)==null ? null : Json.parse(lStorage.getItem(gameName)).version;
 		if (lVersion != null) cache = version == lVersion;
 		lStorage.setItem(gameName, Json.stringify({version:version}));
+		
+		if (_data.languages == "" || _data.languages == []) throw "Pas de langues dans la liste des langues supportées";
+		if (_data.language == null || _data.language == "") _data.language = Browser.window.navigator.language.substr(0, 2);
+		if (_data.languages.indexOf(_data.language) ==-1) _data.language = _data.languages[0];
 				
-		if (_data.language == null || _data.language=="") _data.language = Browser.window.navigator.language.substr(0, 2);
-		if (_data.languages=="" || _data.languages == []) _data.languages.push(_data.language);
 		if (_data.debug == null || _data.debug=="") _data.debug = false;
 		if (_data.fps == null || _data.fps=="") _data.fps = false;
 		if (_data.qrcode == null || _data.qrcode=="") _data.qrcode = false;
