@@ -56,13 +56,13 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	private function getComponents():Void{
-		btnClose = cast(getChildByName("ButtonClose"), SmartButton);
-		btnDismiss = cast(getChildByName("ButtonDismiss"), SmartButton);
-		btnReset = cast(getChildByName("ButtonResetStress"), SmartButton);
-		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, "_resetStress_value_text"), TextSprite);
-		picture = cast(getChildByName("_internPortrait"), UISprite);
-		internName = cast(getChildByName("_intern_name"), TextSprite);
-		aligment = cast(getChildByName("_intern_side"), TextSprite);
+		btnClose = cast(getChildByName(AssetName.MAXSTRESS_POPIN_CLOSE_BUTTON), SmartButton);
+		btnDismiss = cast(getChildByName(AssetName.MAXSTRESS_POPIN_DISMISS_BUTTON), SmartButton);
+		btnReset = cast(getChildByName(AssetName.MAXSTRESS_POPIN_RESET_BUTTON), SmartButton);
+		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
+		picture = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_PORTRAIT), UISprite);
+		internName = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_NAME), TextSprite);
+		aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
 	}
 	
 	public function setDatas():Void{

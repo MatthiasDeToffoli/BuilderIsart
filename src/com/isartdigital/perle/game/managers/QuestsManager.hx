@@ -170,7 +170,7 @@ class QuestsManager
 		for (i in 0...Intern.internsListArray.length){
 			if (pQuest.refIntern == Intern.internsListArray[i].id){
 				////if (Intern.internsListArray[i].stress < Intern.internsListArray[i].stressLimit){
-					Intern.internsListArray[i].quest = null;
+				Intern.internsListArray[i].quest = null;
 			}
 		}
 		
@@ -180,8 +180,9 @@ class QuestsManager
 	
 	public static function finishQuest(pQuest:TimeQuestDescription):Void{
 		if (isMaxStress(questInProgress.refIntern)){
-			UIManager.getInstance().closeCurrentPopin();
 			MaxStressPopin.quest = pQuest;
+			trace(MaxStressPopin.quest);
+			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 		}

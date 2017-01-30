@@ -5,6 +5,8 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
+import com.isartdigital.perle.ui.popin.listIntern.SendButton;
+import com.isartdigital.perle.ui.popin.listIntern.StressButton;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -30,7 +32,6 @@ class InternElementOutQuest extends InternElement
 	{
 		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
 		
-		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
@@ -39,41 +40,47 @@ class InternElementOutQuest extends InternElement
 		internDatas = pDesc;
 		idIntern = pDesc.id;
 		
-		spawnButton("_spawner_buttonStress_accelerate");
+		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		
 		//if (idIntern != null){ //Todo: faire un switch
-			if (Intern.getIntern(idIntern).status == Intern.STATE_RESTING){
+		switch (Intern.getIntern(idIntern).status){
+			case Intern.STATE_RESTING : {
 				btnSend = new SendButton(spawner.position);
 				btnSend.position = spawner.position;
 				Interactive.addListenerClick(btnSend, onSend);
-		
 				addChild(btnSend);
 			}
-		
-			if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
+			//if (Intern.getIntern(idIntern).status == Intern.STATE_RESTING){
+				//btnSend = new SendButton(spawner.position);
+				//btnSend.position = spawner.position;
+				//Interactive.addListenerClick(btnSend, onSend);
+				//addChild(btnSend);
+			case Intern.STATE_MAX_STRESS : {
 				btnMaxStress = new StressButton(spawner.position);
 				btnMaxStress.position = spawner.position;
 				Interactive.addListenerClick(btnMaxStress, onStress);
 				addChild(btnMaxStress);
 			}
-		//}
+		}
 		
-		//else {
-			//btnSend = new SendButton(spawner.position);
-			//btnSend.position = spawner.position;
-			//Interactive.addListenerClick(btnSend, onSend);
-			//
-			//addChild(btnSend);
-		//}
+			//}
+		
+			//if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
+				//btnMaxStress = new StressButton(spawner.position);
+				//btnMaxStress.position = spawner.position;
+				//Interactive.addListenerClick(btnMaxStress, onStress);
+				//addChild(btnMaxStress);
+			//}		
 		
 		destroySpawner(spawner);
 	}
 	
 	private function addListerners():Void{
+		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
 		Interactive.addListenerClick(picture, onPicture);
 	}
 	

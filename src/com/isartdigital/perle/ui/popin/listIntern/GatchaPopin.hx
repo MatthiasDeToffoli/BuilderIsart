@@ -52,11 +52,11 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	private function getComponents():Void{
-		btnClose = cast(getChildByName("ButtonClose"), SmartButton);
-		btnGift = cast(getChildByName("GatchaBag"), SmartButton);
-		picture = cast(getChildByName("_internPortrait"), UISprite);
-		internName = cast(getChildByName("_intern_name"), TextSprite);
-		aligment = cast(getChildByName("_intern_side"), TextSprite);
+		btnClose = cast(getChildByName(AssetName.GATCHA_POPIN_CLOSE_BUTTON), SmartButton);
+		btnGift = cast(getChildByName(AssetName.GATCHA_POPIN_GATCHA_BAG), SmartButton);
+		picture = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_PORTRAIT), UISprite);
+		internName = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_NAME), TextSprite);
+		aligment = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_SIDE), TextSprite);
 	}
 	
 	public function setDatas():Void{

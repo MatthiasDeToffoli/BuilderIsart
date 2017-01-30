@@ -389,7 +389,6 @@ class TimeManager {
 		pElement.progress = Math.min(
 			pElement.progress + pElapsedTime,
 			//pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed), //@todo: à remettre après le save
-			//pElement.progress + pElapsedTime,
 			pElement.steps[pElement.stepIndex]
 		);
 		

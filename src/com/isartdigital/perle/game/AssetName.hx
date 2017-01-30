@@ -135,7 +135,10 @@ class AssetName{
 	public static inline var BUTTON_ACCELERATE_IN_QUEST:String = "Bouton_InternSend_Clip";
 	public static inline var INTERN_NAME_IN_QUEST:String = "InQuest_name";
 	public static inline var TIME_IN_QUEST:String = "InQuest_ProgressionBar";
+	public static inline var IN_QUEST_EVENT_TIME:String = "_listInQuest_eventTime";
+	public static inline var IN_QUEST_GAUGE:String = "InQuest_ProgressionBar";
 	public static inline var PORTRAIT_IN_QUEST:String = "InQuest_Portrait";
+	public static inline var IN_QUEST_HERO_CURSOR:String = "_listInQuest_hero";
 	
 	//out quest
 	public static inline var INTERN_INFO_OUT_QUEST:String = "ListOutQuest";
@@ -143,6 +146,7 @@ class AssetName{
 	public static inline var BUTTON_SEND_OUT_QUEST:String = "ButtonSend";
 	public static inline var INTERN_NAME_OUT_QUEST:String = "_intern03_name05";
 	public static inline var PORTRAIT_OUT_QUEST:String = "OutQuest_Portrait";
+	public static inline var SPAWNER_BUTTON_OUT_QUEST:String = "_spawner_buttonStress_accelerate";
 	
 	//inter event popin
 	public static inline var INTERN_EVENT:String = "Intern_Event";
@@ -164,10 +168,25 @@ class AssetName{
 	public static inline var INTERN_POPIN_SEE_ALL_CONTAINER:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_POPIN_SEE_ALL:String = "Button";
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
-	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
+
 	
 	//Gatcha popin
 	public static inline var GATCHA_POPIN:String = "PopinGatcha";
+	public static inline var GATCHA_POPIN_CLOSE_BUTTON:String = "ButtonClose";
+	public static inline var GATCHA_POPIN_GATCHA_BAG:String = "GatchaBag";
+	public static inline var GATCHA_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
+	public static inline var GATCHA_POPIN_INTERN_NAME:String = "_intern_name";
+	public static inline var GATCHA_POPIN_INTERN_SIDE:String = "_intern_side";
+	
+	//Max Stress popin
+	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
+	public static inline var MAXSTRESS_POPIN_CLOSE_BUTTON:String = "ButtonClose";
+	public static inline var MAXSTRESS_POPIN_RESET_BUTTON:String = "ButtonResetStress";
+	public static inline var MAXSTRESS_POPIN_DISMISS_BUTTON:String = "ButtonDismiss";
+	public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "_resetStress_value_text";
+	public static inline var MAXSTRESS_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
+	public static inline var MAXSTRESS_POPIN_INTERN_NAME:String = "_intern_name";
+	public static inline var MAXSTRESS_POPIN_INTERN_SIDE:String = "_intern_side";
 	
 	//purtagory popin
 	public static inline var PURGATORY_POPIN:String = "PurgatoryPop";

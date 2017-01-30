@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.InternPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
+import com.isartdigital.perle.ui.popin.listIntern.ResolveButton;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameObject;
@@ -69,16 +70,16 @@ class InternElementInQuest extends InternElement
 		internName = cast(getChildByName(AssetName.INTERN_NAME_IN_QUEST), TextSprite);
 		
 		questTime = cast(getChildByName(AssetName.TIME_IN_QUEST), SmartComponent);
-		heroCursor = cast(SmartCheck.getChildByName(questTime, "_listInQuest_hero"), UISprite);
-		heroCursorStartPosition = cast(SmartCheck.getChildByName(questTime, "_listInQuest_hero"), UISprite).position.clone();
+		heroCursor = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_HERO_CURSOR), UISprite);
+		heroCursorStartPosition = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_HERO_CURSOR), UISprite).position.clone();
 		
 		eventCursor1 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent01"), UISprite);
 		eventCursor2 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent02"), UISprite);
 		eventCursor3 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent03"), UISprite);
 		
-		timeEvent = cast(SmartCheck.getChildByName(questTime, "_listInQuest_eventTime"), TextSprite);
+		timeEvent = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_EVENT_TIME), TextSprite);
 		picture = cast(getChildByName(AssetName.PORTRAIT_IN_QUEST), SmartButton);
-		questGauge = cast(getChildByName("InQuest_ProgressionBar"), SmartComponent);
+		questGauge = cast(getChildByName(AssetName.IN_QUEST_GAUGE), SmartComponent);
 	}
 	
 	private function setOnSpawn(pDesc:InternDescription):Void{
@@ -94,10 +95,6 @@ class InternElementInQuest extends InternElement
 			eventCursorsArray[i].position.x = ((questGaugeLenght * quest.steps[i]) / quest.end) + heroCursorStartPosition.x;
 		}
 		
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
-		//TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_END, endQuest);
-		
 		timeEvent.text = TimeManager.getTextTimeQuest(pDesc.quest.end) + "s";
 	}
 	
@@ -105,13 +102,12 @@ class InternElementInQuest extends InternElement
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var lButton:SmartButton = null;
 		
-		//if (!newEvent){
+		//@todo: faire un switch
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING){
 			lButton = new AccelerateButton(spawner.position);
 			Interactive.addListenerClick(lButton, onAccelerate);	
 		}
 		
-		//else if (newEvent){
 		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING){
 			lButton = new ResolveButton(spawner.position);
 			Interactive.addListenerClick(lButton, onResolve);	
@@ -126,6 +122,8 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function addListeners():Void{
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
 		//Interactive.addListenerClick(btnAccelerate, onAccelerate);
 		Interactive.addListenerClick(picture, onPicture);
 	}
@@ -145,7 +143,6 @@ class InternElementInQuest extends InternElement
 			updateEventCursors();
 			timeEvent.text = TimeManager.getTextTimeQuest(quest.steps[quest.stepIndex] - quest.progress) + "s";
 			updateCursorPosition();
-			//updateButtons();
 		}
 		
 		else {
