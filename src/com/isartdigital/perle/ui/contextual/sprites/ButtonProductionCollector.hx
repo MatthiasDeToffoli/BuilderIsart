@@ -15,19 +15,16 @@ class ButtonProductionCollector extends ButtonProduction
 	private var ref:Int;
 	private var type:GeneratorType;
 	
-	public function new(pType:GeneratorType, val:Int, pRef:Int) 
-	{
+	public function new(pType:GeneratorType, val:Int, pRef:Int) {
 		super(pType);
 		valueToAdd = val;
 		type = pType;
 		ref = pRef;
 	}
 	
-	override function onClick():Void 
-	{
+	override function applyResourceGain():Void {
 		ResourcesManager.gainResources(type, valueToAdd);
 		TimeManager.removeProductionTIme(ref);
-		super.onClick();
 	}
 	
 }

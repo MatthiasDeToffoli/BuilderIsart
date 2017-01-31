@@ -11,12 +11,9 @@ import pixi.core.display.DisplayObject;
  */
 class Interactive{
 
-	public static function addListenerClick (pElement:DisplayObject, pCallBack:Void->Void, ?pContext:Dynamic):Void {
-		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP){			
-			pElement.addListener(MouseEventType.CLICK, pCallBack, pContext);
-		}
-		else
-			pElement.addListener(TouchEventType.TAP, pCallBack, pContext);
+	public static function addListenerClick (pElement:DisplayObject, pCallBack:Void->Void, ?pContext:Dynamic):Void {			
+		pElement.addListener(MouseEventType.CLICK, pCallBack, pContext);
+		pElement.addListener(TouchEventType.TAP, pCallBack, pContext);
 	}
 	
 	public static function addListenerRewrite(pElement:DisplayObject, pCallback:Void->Void):Void {
@@ -28,12 +25,8 @@ class Interactive{
 	}
 	
 	public static function removeListenerClick (pElement:DisplayObject, pCallBack:Void->Void, ?pOnce:Dynamic):Void {
-		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP){
-			
-			pElement.removeListener(MouseEventType.CLICK, pCallBack, pOnce);
-		}
-		else
-			pElement.removeListener(TouchEventType.TAP, pCallBack, pOnce);
+		pElement.removeListener(MouseEventType.CLICK, pCallBack, pOnce);
+		pElement.removeListener(TouchEventType.TAP, pCallBack, pOnce);
 	}
 	
 	public static function removeListenerRewrite(pElement:DisplayObject, pCallback:Void->Void):Void{

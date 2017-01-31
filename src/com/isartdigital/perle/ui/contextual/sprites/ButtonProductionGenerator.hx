@@ -17,16 +17,13 @@ class ButtonProductionGenerator extends ButtonProduction
 	 */
 	private var myGeneratorDesc:GeneratorDescription;
 
-	public function new(pType:GeneratorType) 
-	{
+	public function new(pType:GeneratorType) {
 		super(pType);
 		
 	}
 	
-	override function onClick():Void 
-	{
+	override function applyResourceGain():Void {
 		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
-		super.onClick();
 	}
 	
 	/**

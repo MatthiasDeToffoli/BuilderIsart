@@ -70,6 +70,7 @@ class Hud extends SmartScreen
 	private var btnWood:SmartButton;
 	private var btnSoft:SmartButton;
 	private var btnHard:SmartButton;
+	private var containerEffect:Container;
 	
 	
 	/**
@@ -93,8 +94,18 @@ class Hud extends SmartScreen
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
+		containerEffect = new Container();
+		addChild(containerEffect); // over everything
 		
 		addListeners();
+	}
+	
+	public function getContainerEffect ():Container {
+		return containerEffect;
+	}
+	
+	public function getGoldIconPos ():Point {
+		return containerEffect.toLocal(SmartCheck.getChildByName(btnSoft.parent, "_icon_softcurrency").position, btnSoft.parent);
 	}
 	
 	/**
@@ -194,19 +205,18 @@ class Hud extends SmartScreen
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
-		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);
-		Interactive.addListenerClick(btnIron, onClickShopResource);
-		
-		var ironMc:Dynamic = SmartCheck.getChildByName(this,AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
-		btnWood = cast(SmartCheck.getChildByName(ironMc, AssetName.HUD_BTN_WOOD), SmartButton);
-		Interactive.addListenerClick(btnWood, onClickShopResource);
-		
+		var ironMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
 		var softMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
-		btnSoft = cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton);
-		Interactive.addListenerClick(btnSoft, onClickShopCurrencies);
-		
 		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
+		
+		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);
+		btnWood = cast(SmartCheck.getChildByName(ironMc, AssetName.HUD_BTN_WOOD), SmartButton);
+		btnSoft = cast(SmartCheck.getChildByName(softMc, AssetName.HUD_BTN_SOFT), SmartButton);
 		btnHard = cast(SmartCheck.getChildByName(hardMc, AssetName.HUD_BTN_HARD), SmartButton);
+		
+		Interactive.addListenerClick(btnIron, onClickShopResource);
+		Interactive.addListenerClick(btnWood, onClickShopResource);		
+		Interactive.addListenerClick(btnSoft, onClickShopCurrencies);
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
 		on(EventType.ADDED, registerForFTUE);

@@ -383,12 +383,8 @@ class Main extends EventEmitter
 	 * fait le rendu de l'écran
 	 */
 	private function render (): Void {
-		/*if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP)
-			renderer.render(stage);
-		else {*/ // todo supprimer commentaire :p, osef du 60fps affichage pc non ?
-			if (frames++ % 2 == 0) renderer.render(stage); // dissocie rendu du calcul.
-			else GameStage.getInstance().updateTransform();
-		//}
+		if (frames++ % 2 == 0) renderer.render(stage); // dissocie rendu du calcul.
+		else GameStage.getInstance().updateTransform(); // ne met pas à jour le graphique
 	}
 		
 	/**
