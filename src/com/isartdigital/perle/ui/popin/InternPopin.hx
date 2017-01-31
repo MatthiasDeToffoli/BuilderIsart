@@ -15,7 +15,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
  * popin contained information of a intern (more detailled than ListInternPopin)
  * @author de Toffoli Matthias
  */
-class InternPopin extends SmartPopin
+class InternPopin extends SmartPopinExtended
 {
 
 	private var side:TextSprite;

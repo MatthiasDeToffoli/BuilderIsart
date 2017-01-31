@@ -17,7 +17,7 @@ import pixi.core.math.Point;
  * ...
  * @author de Toffoli Matthias
  */
-class CollectorPopin extends SmartPopin 
+class CollectorPopin extends SmartPopinExtended 
 {
 	
 	/**

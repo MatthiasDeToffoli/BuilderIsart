@@ -1,4 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop.card;
+import com.greensock.easing.Back;
+import com.greensock.TweenMax;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -10,13 +12,19 @@ import pixi.interaction.EventTarget;
  */
 class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 
+	private static inline var TWEEN_DURATION:Float = 1;
+	private static inline var TWEEN_START_SCALE:Float = 0.8;
+	private static inline var TWEEN_BACK_PARAM_1:Float = 1.2;
+	
 	private var image:UISprite;
 	
 	private var isInit:Bool;
 	
 	public function new(pAsset:String) {
 		super(pAsset);
-		//interactive = true;
+		
+		scale.x = TWEEN_START_SCALE;
+		scale.y = TWEEN_START_SCALE;
 	}
 	
 	/**
@@ -26,18 +34,8 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	public function init (pName:String):Void {
 		isInit = true;
 		buildCard();
-		//Interactive.addListenerClick(this, _click);
+		//tweenPopin();
 	}
-	
-	/*override public function build(pFrame:Int = 0):Void {
-		super.build(pFrame);
-		trace("buildsecond");
-		
-	}*/
-	
-	/*private function _click ():Void {
-		
-	}*/
 	
 	override private function _mouseDown (pEvent:EventTarget = null): Void {
 		super._mouseDown(pEvent);
@@ -59,6 +57,17 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	private function buildCard ():Void {}
 	
+	/**
+	 * Put scale to 1:1
+	 */
+	private function tweenPopin ():Void {
+		TweenMax.to(scale, TWEEN_DURATION, {
+			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
+			x:1,
+			y:1
+		} );
+	}
+	
 	private function setImage (pAssetName:String):Void { // todo : finir
 		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
 		
@@ -70,13 +79,11 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		lImage.y = 0;
 		lImage.start();
 		
-		
 	}
 	
 	override public function destroy():Void {
 		if (parent != null)
 			parent.removeChild(this);
-		//Interactive.removeListenerClick(this, _click);
 		super.destroy();
 	}
 	

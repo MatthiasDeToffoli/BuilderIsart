@@ -15,7 +15,7 @@ import pixi.core.math.Point;
  * ...
  * @author de Toffoli Matthias
  */
-class MarketingPopin extends SmartPopin 
+class MarketingPopin extends SmartPopinExtended 
 {
 	
 	/**

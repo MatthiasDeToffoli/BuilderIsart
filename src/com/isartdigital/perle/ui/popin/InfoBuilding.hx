@@ -29,7 +29,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
  * Poppin of the description of the building
  * @author Emeline Berenguier
  */
-class InfoBuilding extends SmartPopin{
+class InfoBuilding extends SmartPopinExtended{
 	
 	/**
 	 * instance unique de la classe InfoBuilding

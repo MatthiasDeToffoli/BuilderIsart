@@ -31,7 +31,7 @@ typedef ChoiceDescription = {
  * Choice popin
  * @author grenu
  */
-class Choice extends SmartPopin
+class Choice extends SmartPopinExtended
 {
 	private static var instance:Choice;
 	

@@ -20,7 +20,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
  * ...
  * @author Alexis
  */
-class LevelUpPoppin extends SmartPopin 
+class LevelUpPoppin extends SmartPopinExtended 
 {
 	
 	/**

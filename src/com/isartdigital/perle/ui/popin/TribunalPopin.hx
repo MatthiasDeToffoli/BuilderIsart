@@ -19,7 +19,7 @@ import js.Browser;
  * tribunal description and all action we can do with this
  * @author de Toffoli Matthias
  */
-class TribunalPopin extends SmartPopin 
+class TribunalPopin extends SmartPopinExtended 
 {
 	
 	/**

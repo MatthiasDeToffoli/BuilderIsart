@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop;
 
+import com.greensock.TweenMax;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -12,6 +13,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDeco;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInternsSearch;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
+import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -29,8 +31,8 @@ enum ShopBar { Soft; Hard; Marble; Wood; }
  * ...
  * @author ambroise & alexis
  */
-class ShopPopin extends SmartPopin{
-
+class ShopPopin extends SmartPopinExtended {
+	
 	private static var instance:ShopPopin;
 	private static var buttonTab:Array<Array<SmartButton>>;
 	
@@ -71,20 +73,19 @@ class ShopPopin extends SmartPopin{
 		
 		
 		var lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
-		var lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		lSCtext.text = "" + ResourcesManager.getTotalForType(GeneratorType.soft);
-		
 		var lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
-		var lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		lHCtext.text = "" + ResourcesManager.getTotalForType(GeneratorType.hard);
-		
 		var lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);
-		var lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		lmarbretext.text = "" + ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell);
-		
 		var lwood = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_BOIS), SmartComponent);
+		
+		var lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		var lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		var lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		var lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		lwoodtext.text = ""+ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise);
+		
+		lSCtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.soft));
+		lHCtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.hard));
+		lmarbretext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell));
+		lwoodtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
