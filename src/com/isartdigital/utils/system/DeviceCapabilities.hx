@@ -79,8 +79,19 @@ class DeviceCapabilities
 	public static var isCocoonJS (get, never) : Bool;
 	
 	private static function get_isCocoonJS () {
-		return untyped Browser.navigator.isCocoonJS;
+		return untyped Browser.navigator.isCocoonJS || untyped Browser.window.CocoonJS!=null;
 	}
+	
+	/**
+	 * Est-ce que le jeu tourne en mode Canvas+ ou Webview+ sous CocoonJS
+	 */
+	public static var isCanvasPlus (get, never) : Bool;
+	
+	private static function get_isCanvasPlus () {
+		return untyped Browser.navigator.isCocoonJS && untyped Browser.window.CocoonJS != null;
+	}
+	
+	/** 
 	
 	/**
 	 * affiche le bouton de fullscreen

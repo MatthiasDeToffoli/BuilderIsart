@@ -46,6 +46,16 @@ class Button extends StateGraphic
 		
 		start();
 		
+	}	
+	
+	public function registerClick (pCallBack:EventTarget->Void):Void {
+		on(MouseEventType.CLICK, pCallBack);
+		on(TouchEventType.TAP, pCallBack);
+	}
+	
+	public function unregisterClick (pCallBack:EventTarget->Void):Void {
+		off(MouseEventType.CLICK, pCallBack);
+		off(TouchEventType.TAP, pCallBack);
 	}
 	
 	private function createText ():Void {

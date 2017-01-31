@@ -162,9 +162,6 @@ class Main extends EventEmitter
 		// initialise le GameStage et défini la taille de la safeZone
 		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true); // premier false => éviter le 0,0 au centre.
 		
-		// affiche le bouton FullScreen quand c'est nécessaire
-		DeviceCapabilities.displayFullScreenButton();
-		
 		// Ajoute le GameStage au stage
 		stage.addChild(GameStage.getInstance());
 		
@@ -268,6 +265,9 @@ class Main extends EventEmitter
 		
 		// Ouvre la TitleClard
 		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
+		
+		// affiche le bouton FullScreen quand c'est nécessaire
+		DeviceCapabilities.displayFullScreenButton();
 		
 		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		GameManager.getInstance().start();

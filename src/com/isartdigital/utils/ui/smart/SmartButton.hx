@@ -34,6 +34,16 @@ class SmartButton extends SmartComponent
 		
 	}
 	
+	public function registerClick (pCallBack:EventTarget->Void):Void {
+		on(MouseEventType.CLICK, pCallBack);
+		on(TouchEventType.TAP, pCallBack);
+	}
+	
+	public function unregisterClick (pCallBack:EventTarget->Void):Void {
+		off(MouseEventType.CLICK, pCallBack);
+		off(TouchEventType.TAP, pCallBack);
+	}
+	
 	override public function build(pFrame:Int = 0):Void 
 	{
 		super.build(3);		

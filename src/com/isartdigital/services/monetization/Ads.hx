@@ -90,7 +90,7 @@ class Ads
 	public static function getMovie (pCallback:Dynamic->Void): Bool {
 		if (current!=null || (Config.data.ads!=null && !Config.data.ads)) return false;
 		
-		if (DeviceCapabilities.isCocoonJS) return getImage(pCallback);
+		if (DeviceCapabilities.isCanvasPlus) return getImage(pCallback);
 		
 		var lRequest:HttpService = initService(pCallback);
 		lRequest.addParameter("ad", MOVIE);

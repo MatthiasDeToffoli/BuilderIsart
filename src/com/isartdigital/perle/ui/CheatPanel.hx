@@ -41,7 +41,7 @@ class CheatPanel
 	}
 	
 	private function init():Void {
-		if (Config.debug && Config.data.cheat && !DeviceCapabilities.isCocoonJS) gui = new GUI();
+		if (Config.debug && Config.data.cheat && !DeviceCapabilities.isCanvasPlus) gui = new GUI();
 	}
 	
 	// exemple de méthode configurant le panneau de cheat suivant le contexte
