@@ -35,12 +35,22 @@ class PanelCampaign extends SmartComponent
 		}
 		//SmartCheck.traceChildrens(this);
 		
-		Interactive.addListenerClick(btnCampaigns[0], onClickVideo);
-		Interactive.addListenerClick(btnCampaigns[1], onCLickSmall,null,rewriteSmall);
-		Interactive.addListenerClick(btnCampaigns[2], onClickMedium,null,rewriteMedium);
-		Interactive.addListenerClick(btnCampaigns[3], onClickLarge, null, rewriteLarge);
+		addButtonsListener(btnCampaigns[0], onClickVideo);
+		addButtonsListener(btnCampaigns[1], onCLickSmall,rewriteSmall);
+		addButtonsListener(btnCampaigns[2], onClickMedium,rewriteMedium);
+		addButtonsListener(btnCampaigns[3], onClickLarge,rewriteLarge);
 		
 		
+	}
+	
+	private function addButtonsListener(btn:SmartButton, callBackClick:Void -> Void, ?callBackRewrite:Void -> Void):Void {
+		Interactive.addListenerClick(btn, callBackClick);
+		if (callBackRewrite != null) Interactive.addListenerRewrite(btn, callBackRewrite);
+	}
+	
+	private function removeButtonsListener(btn:SmartButton, callBackClick:Void -> Void, ?callBackRewrite:Void -> Void):Void {
+		Interactive.removeListenerClick(btn, callBackClick);
+		if (callBackRewrite != null) Interactive.removeListenerRewrite(btn, callBackRewrite);
 	}
 	
 	private function addCampaignButton(pName:String,indice:Int):Void {
@@ -111,10 +121,10 @@ class PanelCampaign extends SmartComponent
 
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(btnCampaigns[0], onClickVideo);
-		Interactive.removeListenerClick(btnCampaigns[1], onCLickSmall,null,rewriteSmall);
-		Interactive.removeListenerClick(btnCampaigns[2], onClickMedium,null,rewriteMedium);
-		Interactive.removeListenerClick(btnCampaigns[3], onClickLarge, null, rewriteLarge);
+		removeButtonsListener(btnCampaigns[0], onClickVideo);
+		removeButtonsListener(btnCampaigns[1], onCLickSmall,rewriteSmall);
+		removeButtonsListener(btnCampaigns[2], onClickMedium,rewriteMedium);
+		removeButtonsListener(btnCampaigns[3], onClickLarge,rewriteLarge);
 		btnCampaigns = null;
 		parent.removeChild(this);
 		

@@ -26,7 +26,8 @@ class PackPanelUnlock extends PackPanel
 		
 		rewrite();
 		
-		Interactive.addListenerClick(btnLunch, onClick,null,rewrite);
+		Interactive.addListenerClick(btnLunch, onClick);
+		Interactive.addListenerRewrite(btnLunch, rewrite);
 		
 		
 	}
@@ -44,7 +45,9 @@ class PackPanelUnlock extends PackPanel
 	
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(btnLunch, onClick, null, rewrite);
+		Interactive.removeListenerClick(btnLunch, onClick);
+		Interactive.removeListenerRewrite(btnLunch, rewrite);
+		
 		super.destroy();
 	}
 	
