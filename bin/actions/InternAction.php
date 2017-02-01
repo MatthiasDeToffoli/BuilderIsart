@@ -2,9 +2,13 @@
 
   $req = "SELECT * FROM Interns";
   $reqPre = $db->prepare($req);
-  $reqPre->execute();
-  $res = $reqPre->fetchAll();
 
-  echo json_encode($res);
+  try {
+    $reqPre->execute();
+    $res = $reqPre->fetchAll();
+    echo json_encode($res);
+  } catch (Exception $e) {
+
+  }
 
  ?>

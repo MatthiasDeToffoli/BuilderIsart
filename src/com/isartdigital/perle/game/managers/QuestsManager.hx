@@ -130,8 +130,8 @@ class QuestsManager
 	
 	public static function goToNextStep():Void{
 		trace("gotonextstep");
+		ChoiceManager.nextStep();
 		Choice.getInstance().hide();
-		Intern.getIntern(questInProgress.refIntern).stress += 4; //Todo: Temporaire, en attendant le baalncing
 		
 		if (questInProgress.stepIndex != 2){
 			
@@ -152,8 +152,6 @@ class QuestsManager
 			endQuest(questInProgress);
 			//TimeManager.nextStepQuest(questInProgress);
 		}
-		
-		ChoiceManager.nextStep();
 	}
 	
 	/**

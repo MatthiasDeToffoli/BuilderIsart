@@ -305,7 +305,6 @@ class TimeManager {
 		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow);
 		
 		lastKnowTime = lTimeNow;
-		SaveManager.saveLastKnowTime(lastKnowTime);
 		
 		for (j in 0...lLengthQuest) {
 			updateQuest(listQuest[j], lElapsedTime);

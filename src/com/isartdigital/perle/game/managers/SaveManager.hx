@@ -85,9 +85,10 @@ typedef InternDescription = {
 	var quest:TimeQuestDescription;	//Linked quest Todo: à enlever peut-être
 	var price:Int; //Price of the intern
 	//Stats of the intern
-	var stress:Float;
-	var speed:Float;
-	var efficiency:Float;
+	var stress:Int;
+	var speed:Int;
+	var efficiency:Int;
+	var unlockLevel:Int;
 }
 
 typedef ResourcesGeneratorDescription = {

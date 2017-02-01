@@ -1,4 +1,6 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
+import com.isartdigital.perle.game.managers.ChoiceManager.EfficiencyStep;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -79,6 +81,17 @@ typedef TableTypeShopPack = {
 	var giveWood:Int;
 }
 
+typedef TableInterns = {
+	var id:Int;
+	var name:String;
+	var	alignment:String;
+	var price:Int;
+	var stress:Int;
+	var speed:Int;
+	var efficiency:Int;
+	var unlockLevel:Int;
+}
+
 
 /**
  * ...
@@ -93,6 +106,9 @@ class GameConfig {
 	public static inline var INTERN:String = "TypeIntern";
 	public static inline var SHOP_PACK:String = "TypeShopPack";
 	public static inline var CONFIG:String = "Config";
+	public static inline var INTERNS:String = "Interns";
+	public static inline var CHOICES:String = "Choices";
+	public static inline var CONFIG_EVENT:String = "ConfigEvent";
 	// todo : etc
 	
 	// todo : transformer les string en enum ? ou juste faire getName() sur nos enum ?
@@ -121,6 +137,18 @@ class GameConfig {
 	
 	public static function getBuilding ():Array<TableTypeBuilding> {
 		return cast(config[BUILDING]);
+	}
+	
+	public static function getInterns():Array<TableInterns> {
+		return cast(config[INTERNS]);
+	}
+	
+	public static function getChoices():Array<ChoiceDescription> {
+		return cast(config[CHOICES]);
+	}
+	
+	public static function getChoicesConfig():Array<EfficiencyStep> {
+		return cast(config[CONFIG_EVENT]);
 	}
 	
 	public static function getBuildingByName (pName:String):TableTypeBuilding {

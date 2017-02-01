@@ -1,11 +1,11 @@
 package com.isartdigital.perle.ui.popin.choice;
 
 import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.TextGenerator;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
-import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
@@ -21,10 +21,14 @@ import pixi.interaction.EventEmitter;
 import pixi.interaction.EventTarget;
 
 enum ChoiceType { HEAVEN; HELL; NONE; }
-enum ChoiceGeneratedText {DESC; HELL; HEAVEN; }
 
-typedef ChoiceDescription = {
-	
+typedef EventRewardDesc = {
+	var gold:Int;
+	var karma:Int;
+	var wood:Int;
+	var iron:Int;
+	var soul:Int;
+	var xp:Int;
 }
 
 /**
@@ -54,10 +58,7 @@ class Choice extends SmartPopinExtended
 	private var internSpeed:TextSprite;
 	private var internEfficiency:TextSprite;
 	private var choiceCard:UISprite;
-	
-	private var textDescAnswer:Map<ChoiceGeneratedText, String>;
-	
-	//private var internTest:InternDescription = {id:5, name:"Stagiaire ange", isInQuest:true };
+	private var internStats:SmartComponent;
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -65,12 +66,10 @@ class Choice extends SmartPopinExtended
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
-	//public static var eChoiceDone:EventEmitter; //Todo: static ou propriété d'instance?
-	
-	private var internStats:SmartComponent;
 	
 	// temporarily intern
 	private var intern:InternDescription;
+	private var reward:EventRewardDesc;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -86,7 +85,6 @@ class Choice extends SmartPopinExtended
 		super(AssetName.INTERN_EVENT);
 		
 		getComponents();
-		//addInternInfo();
 		
 		choiceType = ChoiceType.NONE;
 		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
@@ -118,24 +116,38 @@ class Choice extends SmartPopinExtended
 	
 	public function setIntern(pIntern:InternDescription):Void {
 		intern = pIntern;
-		createChoiceText();
+		
+		var newChoice:ChoiceDescription = ChoiceManager.selectChoice();
+		createChoiceText(newChoice);
+		initReward(newChoice, intern);
 	}
 	
 	/**
 	 * get new generated text
 	 */
-	private function createChoiceText():Void
+	private function createChoiceText(newChoice:ChoiceDescription):Void
 	{		
-		var newChoice:Dynamic = ChoiceManager.selectChoice();
 		presentationChoice.text = newChoice.text;
-		heavenChoice.text = newChoice.heavenChoice;
-		evilChoice.text = newChoice.hellChoice;
+		heavenChoice.text = newChoice.heavenAnswer;
+		evilChoice.text = newChoice.hellAnswer;
 		
 		internName.text = intern.name;
 		internSide.text = intern.aligment;
 		internStress.text = Std.string(intern.stress);
 		internSpeed.text = Std.string(intern.speed);
 		internEfficiency.text = Std.string(intern.efficiency);
+	}
+	
+	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {
+		var indexEff:Int = internDesc.efficiency - 1;
+		reward = {
+			gold : newChoice.gold + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].gold,
+			karma : newChoice.karma + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].karma,
+			wood : newChoice.wood + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].wood,
+			iron : newChoice.iron + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].iron,
+			soul : internDesc.efficiency, 
+			xp : Std.int(internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].xP)
+		};
 	}
 	
 	private function addListeners ():Void {
@@ -209,29 +221,10 @@ class Choice extends SmartPopinExtended
 		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
 		
 		if (choiceType != ChoiceType.NONE) {
-			if (choiceType == ChoiceType.HEAVEN) chooseHeavenCHoice();
-			else chooseHellChoice();
+			ChoiceManager.applyReward(intern, reward, choiceType);
+			QuestsManager.goToNextStep();
 			onClose();
 		}
-	}
-	
-	/**
-	 * validate hell choice
-	 */
-	private function chooseHellChoice():Void
-	{
-		//emit
-		//eChoiceDone.emit(EVENT_CHOICE_DONE);
-		QuestsManager.goToNextStep();
-	}
-	
-	/**
-	 * validate heaven choice
-	 */
-	private function chooseHeavenCHoice():Void
-	{
-		//emit
-		QuestsManager.goToNextStep();
 	}
 	
 	/**

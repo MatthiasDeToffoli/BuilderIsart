@@ -36,9 +36,6 @@ class InternElementOutQuest extends InternElement
 	private var internEfficiency:TextSprite;
 	private var sendCost:TextSprite;
 	
-	// temporarily
-	private var sendCostValue:Int = 2000;
-	
 	private var jaugeArray:Array<Array<UISprite>>;
 
 	public function new(pPos:Point, pDesc:InternDescription) 
@@ -48,7 +45,7 @@ class InternElementOutQuest extends InternElement
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		
 		sendCost = cast(getChildByName("sendCost"), TextSprite);
-		sendCost.text = Std.string(sendCostValue);
+		sendCost.text = Std.string(pDesc.price);
 		
 		internStress = cast(getChildByName("_interns_stress"), TextSprite);
 		internSpeed = cast(getChildByName("_intern_speed"), TextSprite);
@@ -127,7 +124,7 @@ class InternElementOutQuest extends InternElement
 		internDatas.quest = quest;
 		TimeManager.createTimeQuest(quest);
 		
-		ResourcesManager.spendTotal(GeneratorType.soft, sendCostValue);
+		ResourcesManager.spendTotal(GeneratorType.soft, internDatas.price);
 		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();

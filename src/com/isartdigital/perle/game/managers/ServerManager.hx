@@ -37,14 +37,6 @@ class ServerManager {
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
 	}
 	
-	public static function getJsonChoices():Void {
-		callPhpFile(ChoiceManager.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES]);
-	}
-	
-	public static function getJsonInterns():Void {
-		callPhpFile(Intern.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION]);
-	}
-	
 	/**
 	 * call server and ask him to execute a specifique fonction
 	 * @param	pConstructTimeDesc TimeDescription of concerne building
