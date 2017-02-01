@@ -1,5 +1,46 @@
 {
- "md5": "26ca7d3665a367b0c12cdce83880c207",
+ "movies": [
+  {
+   "id": "BG_Under_heaven",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        971.3625,
+        0
+       ],
+       "loc": [
+        -0.6375,
+        -487.5
+       ],
+       "ref": "BG_Heaven_G",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.75,
+        -487.5
+       ],
+       "ref": "BG_Heaven_D",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 2"
+    }
+   ]
+  }
+ ],
+ "md5": "6705dea64d9b4daf9efd5e3b0deeb78d",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
@@ -15,11 +56,11 @@
         973,
         975
        ],
-       "symbol": "BG_Heaven_D",
        "origin": [
         0,
         0
-       ]
+       ],
+       "symbol": "BG_Heaven_D"
       }
      ],
      "file": "atlas0.png"
@@ -33,57 +74,16 @@
         972,
         975
        ],
-       "symbol": "BG_Heaven_G",
        "origin": [
         971.35,
         0
-       ]
+       ],
+       "symbol": "BG_Heaven_G"
       }
      ],
      "file": "atlas1.png"
     }
    ]
-  }
- ],
- "movies": [
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "ref": "BG_Heaven_G",
-       "duration": 1,
-       "loc": [
-        -0.6375,
-        -487.5
-       ],
-       "pivot": [
-        971.3625,
-        0
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "Layer 2",
-     "keyframes": [
-      {
-       "ref": "BG_Heaven_D",
-       "duration": 1,
-       "loc": [
-        -0.75,
-        -487.5
-       ],
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "id": "BG_Heaven"
   }
  ]
 }
