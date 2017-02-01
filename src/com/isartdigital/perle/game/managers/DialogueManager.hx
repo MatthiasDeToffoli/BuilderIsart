@@ -105,7 +105,9 @@ class DialogueManager
 	}
 	
 	private static function endOfStep ():Void {
-	
+		if (dialogueSaved >= steps.length)
+			return;
+		
 		if (Std.is(steps[dialogueSaved].item, SmartButton)) {
 			cast(steps[dialogueSaved].item, SmartButton).off(MouseEventType.CLICK, endOfStep);
 			steps[dialogueSaved].item = null;
