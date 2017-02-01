@@ -1,23 +1,66 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "hell_bg_left_free",
+       "origin": [
+        650,
+        650.5
+       ],
+       "rect": [
+        1,
+        1,
+        1300,
+        1301
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "hell_bg_right_free",
+       "origin": [
+        648.5,
+        650
+       ],
+       "rect": [
+        1,
+        1,
+        1297,
+        1300
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "hell_bg_free",
    "layers": [
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
         650,
         650.5
        ],
        "loc": [
-        -654,
-        650.5
+        -646,
+        649.5
        ],
-       "ref": "hell_bg_left_free",
        "index": 0,
-       "tweened": false,
-       "duration": 1
+       "ref": "hell_bg_left_free",
+       "tweened": false
       }
      ],
      "name": "Calque 1"
@@ -25,69 +68,26 @@
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
         648.5,
         650
        ],
        "loc": [
-        644.5,
+        652.5,
         650
        ],
-       "ref": "hell_bg_right_free",
        "index": 0,
-       "tweened": false,
-       "duration": 1
+       "ref": "hell_bg_right_free",
+       "tweened": false
       }
      ],
      "name": "Calque 2"
     }
-   ]
+   ],
+   "id": "hell_bg_free"
   }
  ],
- "md5": "f21a4c478e4c2d15a5b72425c1a3a404",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1300,
-        1301
-       ],
-       "origin": [
-        650,
-        650.5
-       ],
-       "symbol": "hell_bg_left_free"
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1297,
-        1300
-       ],
-       "origin": [
-        648.5,
-        650
-       ],
-       "symbol": "hell_bg_right_free"
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ]
-  }
- ]
+ "md5": "2b05bd528fe2c87e784b32bc63adc852",
+ "frameRate": 24
 }
