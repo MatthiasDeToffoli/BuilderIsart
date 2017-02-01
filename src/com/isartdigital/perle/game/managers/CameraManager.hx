@@ -101,6 +101,25 @@ class CameraManager
 		checkClippingNeed(lSpeed);
 	}
 	
+	public static function scrollOnLimitsScreen(pMouseLocalPos:Point) {
+		var cameraCenter:Point = getCameraCenter();
+		
+		var lLimitLeftR:Float = cameraCenter.x - Main.getInstance().renderer.width + DEFAULT_OFFSET_LOCAL;
+		var lLimitLeftL:Float = cameraCenter.x - Main.getInstance().renderer.width;
+		var lLimitRightL:Float = cameraCenter.x + Main.getInstance().renderer.width - DEFAULT_OFFSET_LOCAL;
+		var lLimitRightR:Float = cameraCenter.x + Main.getInstance().renderer.width;
+		
+		var lLimitTopB:Float = cameraCenter.y - Main.getInstance().renderer.height + DEFAULT_OFFSET_LOCAL;
+		var lLimitTopT:Float = cameraCenter.y - Main.getInstance().renderer.height;
+		var lLimitBottomT:Float = cameraCenter.y + Main.getInstance().renderer.height - DEFAULT_OFFSET_LOCAL;
+		var lLimitBottomB:Float = cameraCenter.y + Main.getInstance().renderer.height;
+		
+		if(pMouseLocalPos.x < lLimitLeftR && pMouseLocalPos.x > lLimitLeftL) move(DEFAULT_SPEED, 0);
+		if(pMouseLocalPos.x > lLimitRightL && pMouseLocalPos.x < lLimitRightR) move(-DEFAULT_SPEED, 0);
+		if(pMouseLocalPos.y < lLimitTopB && pMouseLocalPos.y > lLimitTopT) move(0, DEFAULT_SPEED);
+		if(pMouseLocalPos.y > lLimitBottomT && pMouseLocalPos.y < lLimitBottomB) move(0, -DEFAULT_SPEED);
+	}
+	
 	private static function distancePToP(pP1:Point, pP2:Point):Float {
 		return Math.sqrt((pP2.x - pP1.x) * (pP2.x - pP1.x) + (pP2.y - pP1.y) * (pP2.y - pP1.y));
 	}

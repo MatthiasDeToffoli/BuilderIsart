@@ -73,6 +73,10 @@ class Phantom extends Building {
 			instance.doAction();
 	}
 	
+	public static function getInstancePhantom():Phantom {
+		return instance;
+	}
+	
 	public static function onClickShop (pBuildingName:String):Void {
 		alignementBuilding = GameConfig.getBuildingByName(pBuildingName).alignment;//Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];  
 		createPhantom(pBuildingName);

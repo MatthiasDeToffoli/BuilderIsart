@@ -101,8 +101,10 @@ class MouseManager {
 		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
 			
-		else 
-			scrollOnLimitsScreen(positionInGame);
+		if (testInstancePhantom()) {
+			CameraManager.scrollOnLimitsScreen(positionInGame);
+			updatePrecedentMousePos();
+		}
 	}
 	
 	/**
@@ -118,29 +120,17 @@ class MouseManager {
 				CameraManager.move(lSoustract.x, lSoustract.y);
 		}
 		
-		precedentMousePos.copy(getLocalPos(GameStage.getInstance().getGameContainer()));
+		updatePrecedentMousePos();
 	}
 	
-	private function scrollOnLimitsScreen(pMouseLocalPos:Point) {
-		var cameraCenter:Point = CameraManager.getCameraCenter();
-		
-		var lLimitLeftR:Float = cameraCenter.x - Main.getInstance().renderer.width + CameraManager.DEFAULT_OFFSET_LOCAL;
-		var lLimitLeftL:Float = cameraCenter.x - Main.getInstance().renderer.width;
-		var lLimitRightL:Float = cameraCenter.x + Main.getInstance().renderer.width - CameraManager.DEFAULT_OFFSET_LOCAL;
-		var lLimitRightR:Float = cameraCenter.x + Main.getInstance().renderer.width;
-		
-		var lLimitTopB:Float = cameraCenter.y - Main.getInstance().renderer.height + CameraManager.DEFAULT_OFFSET_LOCAL;
-		var lLimitTopT:Float = cameraCenter.y - Main.getInstance().renderer.height;
-		var lLimitBottomT:Float = cameraCenter.y + Main.getInstance().renderer.height - CameraManager.DEFAULT_OFFSET_LOCAL;
-		var lLimitBottomB:Float = cameraCenter.y + Main.getInstance().renderer.height;
-		
-		if(pMouseLocalPos.x < lLimitLeftR && pMouseLocalPos.x > lLimitLeftL) CameraManager.move(CameraManager.DEFAULT_SPEED, 0);
-		if(pMouseLocalPos.x > lLimitRightL && pMouseLocalPos.x < lLimitRightR) CameraManager.move(-CameraManager.DEFAULT_SPEED, 0);
-		if(pMouseLocalPos.y < lLimitTopB && pMouseLocalPos.y > lLimitTopT) CameraManager.move(0, CameraManager.DEFAULT_SPEED);
-		if(pMouseLocalPos.y > lLimitBottomT && pMouseLocalPos.y < lLimitBottomB) CameraManager.move(0, -CameraManager.DEFAULT_SPEED);
-		
-		
+	private function updatePrecedentMousePos():Void {
 		precedentMousePos.copy(getLocalPos(GameStage.getInstance().getGameContainer()));
+	}
+		
+	private function testInstancePhantom():Bool {
+		var lInstancePhantom:Phantom = Phantom.getInstancePhantom();
+		
+		return lInstancePhantom != null;
 	}
 	
 	// todo : n'agit pas si sur HUD
