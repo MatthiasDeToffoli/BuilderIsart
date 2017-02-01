@@ -23,6 +23,8 @@ class SmartPopinExtended extends SmartPopin{
 		tweenPopin();
 	}
 	
+	// todo : héritage onClickExit onClose, avec Hud show et hide
+	
 	/**
 	 * Put scale to 1:1
 	 */

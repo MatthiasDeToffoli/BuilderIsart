@@ -128,6 +128,7 @@ class Phantom extends Building {
 		else if (instance != null && instance.assetName != BuildingName.getAssetName(pBuildingName))
 			Debug.error("instance must be destroyed before creating another phantom");
 		
+		Hud.getInstance().hide();
 		Building.isClickable = false;
 		trace("createPhantom "+ Building.isClickable);
 		instance = new Phantom(BuildingName.getAssetName(pBuildingName));//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
@@ -684,6 +685,7 @@ class Phantom extends Building {
 	}*/
 	
 	override public function destroy():Void {
+		Hud.getInstance().show();
 		FootPrint.removeShadow();
 		vBuilding = null;
 		instance = null;

@@ -351,17 +351,22 @@ class Hud extends SmartScreen
 	/**
 	 * hide the hud
 	 */
-	public function hide():Void{
-		GameStage.getInstance().getHudContainer().removeChild(this);
-		isHide = true;
+	public function hide():Void { // todo : should still show phantom menu (accept or cancel build)
+		if (!isHide) {
+			GameStage.getInstance().getHudContainer().removeChild(this);
+			isHide = true;
+		}
+
 	}
 	
 	/**
 	 * show the hud
 	 */
-	public function show():Void{
-		GameStage.getInstance().getHudContainer().addChild(this);
-		isHide = false;
+	public function show():Void { // todo : should still show phantom menu (accept or cancel build)
+		if (isHide) {	
+			GameStage.getInstance().getHudContainer().addChild(this);
+			isHide = false;
+		}
 	}
 	
 	
