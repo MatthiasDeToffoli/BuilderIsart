@@ -248,6 +248,11 @@ class Phantom extends Building {
 			MouseManager.getInstance().positionInGame.x + x - buildingGroundCenter.x,
 			MouseManager.getInstance().positionInGame.y + y - buildingGroundCenter.y
 		);
+		
+		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP) {
+			perfectMouseFollow.y -= instance.height / 2;
+		}
+		
 		var bestMapPos:Index = getRoundMapPos(perfectMouseFollow);
 		
 		position = IsoManager.modelToIsoView(new Point(
