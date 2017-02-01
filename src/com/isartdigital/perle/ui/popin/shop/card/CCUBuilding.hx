@@ -45,7 +45,7 @@ class CCUBuilding extends CarousselCardUnlock{
 		
 		setRessourcesPrice();
 		
-		setImage(BuildingName.getAssetName(buildingName));
+		SmartPopinExtended.setImage(image, BuildingName.getAssetName(buildingName));
 		setName(FakeTraduction.assetNameNameToTrad(buildingName));
 		setPrice(BuyManager.getPrice(buildingName));
 	}

@@ -95,6 +95,8 @@ class Hud extends SmartScreen
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
+		//addChild(new SmartComponent("MovingBuilding"));
+		
 		containerEffect = new Container();
 		addChild(containerEffect); // over everything
 		

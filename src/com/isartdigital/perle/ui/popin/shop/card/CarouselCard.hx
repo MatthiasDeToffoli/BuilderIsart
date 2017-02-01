@@ -3,7 +3,12 @@ import com.greensock.easing.Back;
 import com.greensock.TweenMax;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.display.Container;
+import pixi.core.display.DisplayObject;
+import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 import pixi.interaction.EventTarget;
 
 /**
@@ -66,19 +71,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 			x:1,
 			y:1
 		} );
-	}
-	
-	private function setImage (pAssetName:String):Void { // todo : finir
-		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
-		
-		lImage.init();
-		lImage.width = image.width;
-		lImage.height = image.height;
-		image.addChild(lImage);
-		lImage.x = 0;
-		lImage.y = 0;
-		lImage.start();
-		
 	}
 	
 	override public function destroy():Void {

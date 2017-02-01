@@ -16,7 +16,7 @@ class CCLBuilding extends CarousselCardLock{
 	
 	override function buildCard():Void {
 		super.buildCard();
-		setImage(BuildingName.getAssetName(buildingName));
+		SmartPopinExtended.setImage(image, BuildingName.getAssetName(buildingName));
 	}
 	
 }
