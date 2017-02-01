@@ -1,204 +1,217 @@
 {
+ "movies": [
+  {
+   "id": "HellPropBones",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        33.25,
+        24.5
+       ],
+       "loc": [
+        0,
+        15.025
+       ],
+       "ref": "_hell_prop_bones",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ]
+  },
+  {
+   "id": "HellPropBones02",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        34.5,
+        22.5
+       ],
+       "loc": [
+        1.875,
+        21.875
+       ],
+       "ref": "_hell_prop_bones02",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ]
+  },
+  {
+   "id": "HellPropCrystal",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30,
+        27.25
+       ],
+       "loc": [
+        0.625,
+        -3.75
+       ],
+       "ref": "_hell_prop_crystal",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ]
+  },
+  {
+   "id": "HellPropCrystal02",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        32.5,
+        34.25
+       ],
+       "loc": [
+        1.875,
+        0.65
+       ],
+       "ref": "_hell_prop_crystal02",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ]
+  },
+  {
+   "id": "HellPropLake",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        43.75,
+        25.75
+       ],
+       "loc": [
+        -0.625,
+        20.675
+       ],
+       "ref": "_hell_prop_lake",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ]
+  }
+ ],
+ "md5": "395b06f8c0ce684458718f37ac078cea",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
       {
-       "symbol": "_altairvice",
        "rect": [
         1,
         1,
-        190,
-        323
+        88,
+        52
        ],
        "origin": [
-        94.65,
-        161.35
-       ]
+        43.75,
+        25.75
+       ],
+       "symbol": "_hell_prop_lake"
       },
       {
-       "symbol": "Enfer_Arbre01",
        "rect": [
-        193,
+        91,
         1,
-        163,
-        230
+        65,
+        69
        ],
        "origin": [
-        81.5,
-        114.75
-       ]
+        32.5,
+        34.25
+       ],
+       "symbol": "_hell_prop_crystal02"
       },
       {
-       "symbol": "Enfer_Arbre02",
        "rect": [
-        193,
-        233,
-        163,
-        230
+        158,
+        1,
+        90,
+        45
        ],
        "origin": [
-        81.5,
-        114.75
-       ]
+        44.7,
+        0
+       ],
+       "symbol": "_ground"
       },
       {
-       "symbol": "Enfer_Arbre03",
        "rect": [
         1,
-        326,
-        163,
-        230
+        55,
+        60,
+        55
        ],
        "origin": [
-        81.5,
-        114.75
-       ]
+        30,
+        27.25
+       ],
+       "symbol": "_hell_prop_crystal"
       },
       {
-       "symbol": "Enfer_Rocher",
        "rect": [
-        166,
-        465,
-        163,
-        230
+        158,
+        48,
+        67,
+        49
        ],
        "origin": [
-        81.5,
-        114.75
-       ]
+        33.25,
+        24.5
+       ],
+       "symbol": "_hell_prop_bones"
+      },
+      {
+       "rect": [
+        63,
+        72,
+        69,
+        45
+       ],
+       "origin": [
+        34.5,
+        22.5
+       ],
+       "symbol": "_hell_prop_bones02"
       }
      ],
      "file": "atlas0.png"
     }
-   ],
-   "scaleFactor": 1
-  }
- ],
- "frameRate": 60,
- "movies": [
-  {
-   "id": "Altair_Vice",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        94.65,
-        161.35
-       ],
-       "loc": [
-        -3.325,
-        -59.9
-       ],
-       "duration": 1,
-       "tweened": false,
-       "index": 0,
-       "ref": "_altairvice"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Enfer_Arbre01_P",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "loc": [
-        -3.575,
-        -28.5
-       ],
-       "duration": 1,
-       "tweened": false,
-       "index": 0,
-       "ref": "Enfer_Arbre01"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Enfer_Arbre02_P",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "loc": [
-        -7.35,
-        -33.5
-       ],
-       "duration": 1,
-       "tweened": false,
-       "index": 0,
-       "ref": "Enfer_Arbre02"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Enfer_Arbre03_P",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "loc": [
-        -2.875,
-        -51.5
-       ],
-       "duration": 1,
-       "tweened": false,
-       "index": 0,
-       "ref": "Enfer_Arbre03"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "Enfer_Rocher_P",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "pivot": [
-        81.5,
-        114.75
-       ],
-       "loc": [
-        6.575,
-        -48.775
-       ],
-       "duration": 1,
-       "tweened": false,
-       "index": 0,
-       "ref": "Enfer_Rocher"
-      }
-     ]
-    }
    ]
   }
- ],
- "md5": "d942bc8cf4f1d6b2cd5a7a0671277145"
+ ]
 }
