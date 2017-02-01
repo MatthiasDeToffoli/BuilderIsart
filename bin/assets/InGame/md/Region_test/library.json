@@ -1,0 +1,93 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "_bk_test01",
+       "rect": [
+        1,
+        1,
+        974,
+        984
+       ],
+       "origin": [
+        973.5,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "symbol": "_bk_test02",
+       "rect": [
+        1,
+        1,
+        974,
+        984
+       ],
+       "origin": [
+        0,
+        0
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "BK_Test",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "loc": [
+        486.75,
+        492
+       ],
+       "pivot": [
+        486.75,
+        492
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_bk_test02"
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "loc": [
+        -486.75,
+        492
+       ],
+       "pivot": [
+        486.75,
+        492
+       ],
+       "index": 0,
+       "tweened": false,
+       "ref": "_bk_test01"
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ]
+  }
+ ],
+ "md5": "b6054fd7c2564662a68b690b320a21d5"
+}

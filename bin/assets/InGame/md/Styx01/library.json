@@ -1,23 +1,66 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "styx_droit",
+       "origin": [
+        319.9,
+        354.4
+       ],
+       "rect": [
+        1,
+        1,
+        640,
+        709
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "styx_gauche",
+       "origin": [
+        319.9,
+        354.4
+       ],
+       "rect": [
+        1,
+        1,
+        640,
+        709
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "Styx01",
    "layers": [
     {
      "keyframes": [
       {
-       "tweened": false,
+       "duration": 1,
        "pivot": [
-        279,
-        304.275
+        319.875,
+        354.375
        ],
        "loc": [
-        -632.325,
-        480.1125
+        -702.7875,
+        552.1125
        ],
-       "ref": "styx_gauche",
        "index": 0,
-       "duration": 1
+       "ref": "styx_gauche",
+       "tweened": false
       }
      ],
      "name": "Calque 1"
@@ -25,69 +68,26 @@
     {
      "keyframes": [
       {
-       "tweened": false,
+       "duration": 1,
        "pivot": [
-        294,
-        280.425
+        319.875,
+        354.375
        ],
        "loc": [
-        -44.325,
-        291.375
+        -66.0375,
+        354.375
        ],
-       "ref": "styx_droit",
        "index": 0,
-       "duration": 1
+       "ref": "styx_droit",
+       "tweened": false
       }
      ],
      "name": "Calque 2"
     }
-   ]
+   ],
+   "id": "Styx01"
   }
  ],
- "md5": "d72169a3622812b2d2cc945f00fd9523",
- "frameRate": 60,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        573,
-        687
-       ],
-       "origin": [
-        294,
-        280.4
-       ],
-       "symbol": "styx_droit"
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        573,
-        671
-       ],
-       "origin": [
-        279,
-        304.3
-       ],
-       "symbol": "styx_gauche"
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ],
-   "scaleFactor": 1
-  }
- ]
+ "md5": "be088cf36f37f13ff2a86977a3c549a3",
+ "frameRate": 60
 }

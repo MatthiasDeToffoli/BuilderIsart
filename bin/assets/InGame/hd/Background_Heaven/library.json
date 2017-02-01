@@ -1,23 +1,66 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "BG_Heaven_D",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        1297,
+        1300
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "BG_Heaven_G",
+       "origin": [
+        1295.15,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        1295,
+        1300
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "BG_Under_heaven",
    "layers": [
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
         1295.15,
         0
        ],
        "loc": [
         -0.85,
-        -650
+        0
        ],
-       "ref": "BG_Heaven_G",
        "index": 0,
-       "tweened": false,
-       "duration": 1
+       "ref": "BG_Heaven_G",
+       "tweened": false
       }
      ],
      "name": "Layer 1"
@@ -25,65 +68,22 @@
     {
      "keyframes": [
       {
+       "tweened": false,
        "loc": [
         -1,
-        -650
+        0
        ],
-       "ref": "BG_Heaven_D",
        "index": 0,
-       "tweened": false,
+       "ref": "BG_Heaven_D",
        "duration": 1
       }
      ],
      "name": "Layer 2"
     }
-   ]
+   ],
+   "id": "BG_Under_heaven"
   }
  ],
- "md5": "6705dea64d9b4daf9efd5e3b0deeb78d",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1297,
-        1300
-       ],
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "BG_Heaven_D"
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1295,
-        1300
-       ],
-       "origin": [
-        1295.15,
-        0
-       ],
-       "symbol": "BG_Heaven_G"
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ]
-  }
- ]
+ "md5": "95c6d4cebf437301bd3ea964522f7662",
+ "frameRate": 24
 }

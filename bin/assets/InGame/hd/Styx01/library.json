@@ -1,23 +1,61 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "styx_droit",
+       "origin": [
+        426.5,
+        472.5
+       ],
+       "rect": [
+        1,
+        1,
+        853,
+        945
+       ]
+      },
+      {
+       "symbol": "styx_gauche",
+       "origin": [
+        426.5,
+        472.5
+       ],
+       "rect": [
+        1,
+        948,
+        853,
+        945
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "Styx01",
    "layers": [
     {
      "keyframes": [
       {
-       "tweened": false,
+       "duration": 1,
        "pivot": [
-        372,
-        405.7
+        426.5,
+        472.5
        ],
        "loc": [
-        -843.1,
-        640.15
+        -937.05,
+        736.15
        ],
-       "ref": "styx_gauche",
        "index": 0,
-       "duration": 1
+       "ref": "styx_gauche",
+       "tweened": false
       }
      ],
      "name": "Calque 1"
@@ -25,64 +63,26 @@
     {
      "keyframes": [
       {
-       "tweened": false,
+       "duration": 1,
        "pivot": [
-        392,
-        373.9
+        426.5,
+        472.5
        ],
        "loc": [
-        -59.1,
-        388.5
+        -88.05,
+        472.5
        ],
-       "ref": "styx_droit",
        "index": 0,
-       "duration": 1
+       "ref": "styx_droit",
+       "tweened": false
       }
      ],
      "name": "Calque 2"
     }
-   ]
+   ],
+   "id": "Styx01"
   }
  ],
- "md5": "d72169a3622812b2d2cc945f00fd9523",
- "frameRate": 60,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        764,
-        916
-       ],
-       "origin": [
-        392,
-        373.9
-       ],
-       "symbol": "styx_droit"
-      },
-      {
-       "rect": [
-        1,
-        919,
-        764,
-        894
-       ],
-       "origin": [
-        372,
-        405.7
-       ],
-       "symbol": "styx_gauche"
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ],
-   "scaleFactor": 1
-  }
- ]
+ "md5": "be088cf36f37f13ff2a86977a3c549a3",
+ "frameRate": 60
 }
