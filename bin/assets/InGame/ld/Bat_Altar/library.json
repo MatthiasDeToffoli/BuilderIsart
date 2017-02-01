@@ -1,0 +1,93 @@
+{
+ "md5": "e19b680efd3805f19530d9eb9e79fc8b",
+ "frameRate": 60,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        129,
+        176
+       ],
+       "symbol": "Bat_Altar_Vice_1",
+       "origin": [
+        64.25,
+        88
+       ]
+      },
+      {
+       "rect": [
+        1,
+        179,
+        129,
+        176
+       ],
+       "symbol": "Bat_Altar_Virtue_1",
+       "origin": [
+        64.25,
+        88
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "Bat_Altar_Vice_1",
+       "pivot": [
+        64.25,
+        88
+       ],
+       "loc": [
+        -4,
+        -9.5
+       ],
+       "tweened": false,
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "id": "Bat_Altar_Vice"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "Bat_Altar_Virtue_1",
+       "pivot": [
+        64.25,
+        88
+       ],
+       "loc": [
+        -8.5,
+        -9.5
+       ],
+       "tweened": false,
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "id": "Bat_Altar_Virtue"
+  }
+ ]
+}
