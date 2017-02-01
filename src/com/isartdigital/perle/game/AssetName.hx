@@ -316,7 +316,7 @@ class AssetName{
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
-	public static inline var BACKGROUND_UNDER_HEAVEN = "HeavenBackground";
+	public static inline var BACKGROUND_UNDER_HEAVEN = "BG_Under_heaven";
 	public static inline var BACKGROUND_UNDER_HELL = "hell_bg_free";
 	
 	//button production assets

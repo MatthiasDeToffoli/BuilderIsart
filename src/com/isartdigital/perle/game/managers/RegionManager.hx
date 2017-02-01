@@ -207,11 +207,11 @@ class RegionManager
 			buttonMap[worldPositionX][worldPositionY] = myBtn;
 			buttonRegionContainer.addChild(myBtn);
 
-			addBgUnder(IsoManager.modelToIsoView(new Point(
+			/*addBgUnder(IsoManager.modelToIsoView(new Point(
 				lCentre.x  + factor.x - Ground.COL_X_LENGTH / 2 + Ground.COL_X_LENGTH * factor.x,
 				lCentre.y - Ground.ROW_Y_LENGTH / 2 - Ground.ROW_Y_LENGTH * factor.y - factor.y
 			)),
-			{x:worldPositionX, y:worldPositionY});
+			{x:worldPositionX, y:worldPositionY});*/
 		}		
 
 		addButton(pPos, pWorldPos, indice+ 1);
@@ -235,7 +235,7 @@ class RegionManager
 		if (background != null)	{
 			bgContainer.addChild(background);
 			sortBackground();
-			addBgUnder(background.position, {x:pNewRegion.desc.x, y:pNewRegion.desc.y});
+			//addBgUnder(background.position, {x:pNewRegion.desc.x, y:pNewRegion.desc.y});
 		}
 	}
 
@@ -244,7 +244,7 @@ class RegionManager
 		if (!underMap.exists(pWorlPos.x)) underMap[pWorlPos.x] = new Map<Int,FlumpStateGraphic>();
 		else if (underMap[pWorlPos.x].exists(pWorlPos.y)) return;
 		
-		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(AssetName.BACKGROUND_UNDER_HELL); // for have anything in alpha
+		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:AssetName.BACKGROUND_UNDER_HELL); // for have anything in alpha
 			bgUnder.init();
 			bgUnder.start();
 			bgUnder.position = pPos;
@@ -285,11 +285,36 @@ class RegionManager
 		
 		
 		bgContainer.addChild(background);
-		
+		createManyBgUnderInHell(new Point(Ground.COL_X_STYX_LENGTH, - 2 * Ground.ROW_Y_LENGTH), {x:1, y:-2}, 3,5);
+		createManyBgUnderInHeaven(new Point(-Ground.COL_X_LENGTH, - 2 * Ground.ROW_Y_LENGTH), {x:-1, y:-2}, 3,5);
 		createRegion(Alignment.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
 		VTribunal.getInstance();
+	}
+	
+	private static function createManyBgUnderInHell(startPos:Point, startMapPos:Index, numberX:Int, numberY:Int):Void {
+		var i:Int, j:Int;
+		
+		for (j in 0...numberY) {
+			for (i in 0...numberX) {
+				var lPos:Point = new Point(startPos.x + i * Ground.COL_X_LENGTH, startPos.y + j * Ground.ROW_Y_LENGTH);
+				var lMapPos:Index = {x:startMapPos.x + i, y:startMapPos.y + j};
+				addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
+			}
+		}
+	}
+	
+	private static function createManyBgUnderInHeaven(startPos:Point, startMapPos:Index, numberX:Int, numberY:Int):Void {
+		var i:Int, j:Int;
+		
+		for (j in 0...numberY) {
+			for (i in 0...numberX) {
+				var lPos:Point = new Point(startPos.x - i * Ground.COL_X_LENGTH, startPos.y + j * Ground.ROW_Y_LENGTH);
+				var lMapPos:Index = {x:startMapPos.x - i, y:startMapPos.y + j};
+				addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
+			}
+		}
 	}
 	
 	

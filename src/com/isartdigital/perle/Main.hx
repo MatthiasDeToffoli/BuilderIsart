@@ -197,6 +197,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Region_Heaven/library.json");
 		
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Background_Hell/library.json");
+		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Background_Heaven/library.json");
 		
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Styx01/library.json");
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/Styx02/library.json");
