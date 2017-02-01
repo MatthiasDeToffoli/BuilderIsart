@@ -12,7 +12,8 @@ class AssetName{
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL3:String = "Tribunal_3";
-	public static inline var BUILDING_STYX_VIRTUE:String = "HeavenAltarVirtue";
+	public static inline var BUILDING_STYX_VICE:String = "Bat_Altar_Vice";
+	public static inline var BUILDING_STYX_VIRTUE:String = "Bat_Altar_Virtue";
 	
 	// Building Heaven
 	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuilding01";

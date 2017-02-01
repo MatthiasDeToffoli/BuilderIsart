@@ -29,6 +29,7 @@ class PoolingManager {
 		AssetName.BUILDING_STYX_PURGATORY_LEVEL2 => "Tribunal",
 		AssetName.BUILDING_STYX_PURGATORY_LEVEL3=> "Tribunal",
 		AssetName.BUILDING_STYX_VIRTUE => "Building",
+		AssetName.BUILDING_STYX_VICE => "Building",
 		
 		
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",

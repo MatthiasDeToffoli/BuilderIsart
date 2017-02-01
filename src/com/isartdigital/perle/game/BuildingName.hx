@@ -100,9 +100,9 @@ class BuildingName {
 		STYX_VICE_1 					=> [AssetName.BUILDING_STYX_VIRTUE],
 		STYX_VICE_2 					=> [AssetName.BUILDING_STYX_VIRTUE],
 		STYX_VICE_3 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_3 					=> [AssetName.BUILDING_STYX_VIRTUE],
+		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VICE],
+		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VICE],
+		STYX_VIRTUE_3 					=> [AssetName.BUILDING_STYX_VICE],
 		STYX_MARKET 					=> [AssetName.BUILDING_HELL_HOUSE],
 	];
 }
