@@ -1,5 +1,5 @@
 {
- "md5": "e19b680efd3805f19530d9eb9e79fc8b",
+ "md5": "f7e8ce361baa7863892082fbfd4a2aee",
  "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
@@ -12,6 +12,19 @@
        "rect": [
         1,
         1,
+        206,
+        189
+       ],
+       "symbol": "Altar_Vice_2",
+       "origin": [
+        103,
+        94.5
+       ]
+      },
+      {
+       "rect": [
+        209,
+        1,
         129,
         176
        ],
@@ -23,8 +36,8 @@
       },
       {
        "rect": [
+        340,
         1,
-        179,
         129,
         176
        ],
@@ -44,23 +57,23 @@
   {
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
        "ref": "Bat_Altar_Vice_1",
-       "pivot": [
-        64.25,
-        88
-       ],
+       "duration": 1,
        "loc": [
         -4,
         -9.5
        ],
-       "tweened": false,
+       "pivot": [
+        64.25,
+        88
+       ],
        "index": 0,
-       "duration": 1
+       "tweened": false
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
    "id": "Bat_Altar_Vice"
@@ -68,23 +81,47 @@
   {
    "layers": [
     {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "ref": "Altar_Vice_2",
+       "duration": 1,
+       "loc": [
+        6.25,
+        -4.4
+       ],
+       "pivot": [
+        103,
+        94.5
+       ],
+       "index": 0,
+       "tweened": false
+      }
+     ]
+    }
+   ],
+   "id": "Bat_Altar_Vice_2"
+  },
+  {
+   "layers": [
+    {
+     "name": "Layer 1",
      "keyframes": [
       {
        "ref": "Bat_Altar_Virtue_1",
-       "pivot": [
-        64.25,
-        88
-       ],
+       "duration": 1,
        "loc": [
         -8.5,
         -9.5
        ],
-       "tweened": false,
+       "pivot": [
+        64.25,
+        88
+       ],
        "index": 0,
-       "duration": 1
+       "tweened": false
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ],
    "id": "Bat_Altar_Virtue"
