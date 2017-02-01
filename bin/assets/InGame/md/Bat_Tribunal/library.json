@@ -1,52 +1,135 @@
 {
- "isNamespaced": false,
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "Bat_Tribunal",
+       "loc": [
+        -25.5,
+        19.4625
+       ],
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        347.25,
+        283.875
+       ]
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Tribunal"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "Bat_Tribunal_2",
+       "loc": [
+        10.5375,
+        -58.5
+       ],
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        348,
+        339
+       ]
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Tribunal_2"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "ref": "Bat_Tribunal_3",
+       "loc": [
+        21,
+        -58.5
+       ],
+       "duration": 1,
+       "index": 0,
+       "pivot": [
+        346.875,
+        339
+       ]
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Tribunal_3"
+  }
+ ],
  "textureGroups": [
   {
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "Bat_Tribunal",
+       "symbol": "Bat_Tribunal_2",
+       "origin": [
+        348,
+        339
+       ],
        "rect": [
         1,
         1,
-        414,
-        440
-       ],
+        696,
+        678
+       ]
+      },
+      {
+       "symbol": "Bat_Tribunal_3",
        "origin": [
-        206.95,
-        219.75
+        346.9,
+        339
+       ],
+       "rect": [
+        1,
+        681,
+        694,
+        678
        ]
       }
-     ],
-     "file": "atlas0.png"
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "Bat_Tribunal",
+       "origin": [
+        347.25,
+        283.9
+       ],
+       "rect": [
+        1,
+        1,
+        695,
+        568
+       ]
+      }
+     ]
     }
    ],
    "scaleFactor": 1
   }
  ],
- "frameRate": 60,
- "movies": [
-  {
-   "id": "Tribunal",
-   "layers": [
-    {
-     "name": "Calque 1",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        206.9625,
-        219.75
-       ],
-       "ref": "Bat_Tribunal"
-      }
-     ]
-    }
-   ]
-  }
- ],
- "md5": "5b0ac9c3579c7c0bd228313022f0e842"
+ "md5": "c53390bbc56d61356e4537609bea2b60",
+ "isNamespaced": false,
+ "frameRate": 60
 }
