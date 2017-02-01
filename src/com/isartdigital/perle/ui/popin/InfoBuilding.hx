@@ -304,11 +304,6 @@ class InfoBuilding extends SmartPopinExtended{
 		if (virtualBuilding != null) lVBuilding = virtualBuilding;
 		else lVBuilding = BuildingHud.virtualBuilding;
 		
-		trace(BuildingHud.virtualBuilding);
-		trace(virtualBuilding);
-		
-		var lAssetName:String = lVBuilding.tileDesc.buildingName;
-		
 		var lBuildingUpgrade:VBuildingUpgrade = cast(lVBuilding, VBuildingUpgrade);
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin levels up appears

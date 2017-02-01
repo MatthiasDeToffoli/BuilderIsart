@@ -139,7 +139,7 @@ class BHBuilt extends BuildingHud
 	private function onClickUpgrade(): Void {
 		removeButtonsChange();
 		removeListenerGameContainer();
-		InfoBuilding.getInstance().onClickUpgrade();
+		cast(BuildingHud.virtualBuilding, VBuildingUpgrade).onClickUpgrade();
 		Hud.getInstance().hideBuildingHud();
 	}
 	

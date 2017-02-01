@@ -10,6 +10,8 @@ class AssetName{
 
 	// Building Neutral
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
+	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";
+	public static inline var BUILDING_STYX_PURGATORY_LEVEL3:String = "Tribunal_3";
 	public static inline var BUILDING_STYX_VIRTUE:String = "HeavenAltarVirtue";
 	
 	// Building Heaven

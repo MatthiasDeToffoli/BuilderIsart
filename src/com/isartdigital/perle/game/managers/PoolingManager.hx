@@ -26,6 +26,8 @@ class PoolingManager {
 	// todo : remplir
 	private static var ASSETNAME_TO_CLASS(default, never):Map<String, String> = [
 		AssetName.BUILDING_STYX_PURGATORY => "Tribunal",
+		AssetName.BUILDING_STYX_PURGATORY_LEVEL2 => "Tribunal",
+		AssetName.BUILDING_STYX_PURGATORY_LEVEL3=> "Tribunal",
 		AssetName.BUILDING_STYX_VIRTUE => "Building",
 		
 		

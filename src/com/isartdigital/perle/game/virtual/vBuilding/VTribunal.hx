@@ -16,7 +16,7 @@ import pixi.core.math.Point;
  * a sigleton represanting the tribunal (non graphic)
  * @author de Toffoli Matthias
  */
-class VTribunal extends VBuilding 
+class VTribunal extends VBuildingUpgrade 
 {
 	
 	/**
@@ -39,7 +39,7 @@ class VTribunal extends VBuilding
 	 */
 	private function new(?pDesc:TileDescription) 
 	{
-		
+		UpgradeAssetsList = [AssetName.BUILDING_STYX_PURGATORY, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3];
 		var lDesc:TileDescription;
 		
 		alignementBuilding = Alignment.neutral;
