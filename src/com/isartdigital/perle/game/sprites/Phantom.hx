@@ -16,11 +16,13 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
+import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -41,8 +43,10 @@ class Phantom extends Building {
 	public static inline var EVENT_CANT_BUILD:String = "Phantom_Cant_Build";
 	
 	private static inline var FILTER_OPACITY:Float = 0.5;
+	private static inline var MAX_DURATION_FOR_CLICK:Int = 500;// milliseconds
 	
 	public static var eExceedingTiles:EventEmitter;
+	
 	private static var exceedingTile:Array<Index>;
 	
 	private static var colorMatrix:ColorMatrixFilter;
@@ -57,7 +61,8 @@ class Phantom extends Building {
 	private var precedentBesMapPos:Point = new Point(0, 0);
 	private var vBuilding:VBuilding;
 	
-	
+	private var mouseDownDuration:Int = 0;// milliseconds
+	private var touchUpdateNeeded:Bool;
 	
 	public static function initClass ():Void {
 		container = new Container();
@@ -110,7 +115,6 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmBuild ():Void {
-		
 		instance.confirmBuild();
 	}
 	
@@ -134,19 +138,6 @@ class Phantom extends Building {
 		FootPrint.createShadow(instance);
 		instance.start();
 	}
-	
-
-	// todo : le onClick doit se trouve ds l'hud et la function createPhantombuilding ici
-	/*public static function onClickHudBuilding(pAssetName:String):Void {
-		if (currentSelectedBuilding == null)
-			createPhantom(pAssetName);
-		else if (assetName != pAssetName) {
-			removePhantom();
-			createPhantom(pAssetName);
-		}
-		else if (assetName == pAssetName)
-			removePhantom();
-	}*/
 	
 	public function new(?pAssetName:String) {
 		super(pAssetName);
@@ -180,27 +171,44 @@ class Phantom extends Building {
 	 * Listen to click or touch_end to build the building
 	 */
 	private function addBuildListeners():Void {
-		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP) {
-			on(MouseEventType.MOUSE_DOWN, onMouseDown2);
-			on(MouseEventType.MOUSE_UP, onMouseUp2);
-		}
-		else {
-			on(TouchEventType.TOUCH_START, onMouseDown2);
-			on(TouchEventType.TOUCH_END, onMouseUp2); // todo : touch_end outside c'est ?
-		}
-		
+		on(MouseEventType.MOUSE_DOWN, onMouseDown2);
+		on(MouseEventType.MOUSE_UP, onMouseUp2);
 		on(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
-		Interactive.addListenerClick(this, onClickConfirm);
+		
+		// touch event on GameStage.getInstance().getGameContainer() doesn't work :(
+		// TouchEventType.TAP doesn't work either
+		// and at last, don't add on(TouchEventType.TOUCH_START, onMouseDown2); 
+		// or you can build the building whitout
+		Browser.window.addEventListener(TouchEventType.TOUCH_START, onTouchStartGlobal);
 	}
 	
 	private function removeBuildListeners():Void {
-		removeListener(MouseEventType.MOUSE_DOWN, onMouseDown);
-		removeListener(MouseEventType.MOUSE_UP, onMouseUp);
-		removeListener(TouchEventType.TOUCH_START, onMouseDown);
-		removeListener(TouchEventType.TOUCH_END, onMouseUp);
+		removeListener(MouseEventType.MOUSE_DOWN, onMouseDown2);
+		removeListener(MouseEventType.MOUSE_UP, onMouseUp2);
 		removeListener(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
-		Interactive.removeListenerClick(this, onClickConfirm);
+		Browser.window.removeEventListener(TouchEventType.TOUCH_START, onTouchStartGlobal);
+	}
+	
+	private function onTouchStartGlobal (p:Dynamic):Void {
+		touchUpdateNeeded = true;
+	}
+	
+	private function doActionClickBuild ():Void {
 		
+		if (mouseDown)
+			mouseDownDuration += Main.FRAME_INTERVAL;
+		else if (mouseDownDuration != 0) {
+			validateClickBuild();
+			mouseDownDuration = 0;
+		}
+		else
+			mouseDownDuration = 0;
+	}
+	
+	private function validateClickBuild ():Void {
+		if (mouseDownDuration > 0 && 
+			mouseDownDuration <  MAX_DURATION_FOR_CLICK)
+			onClickConfirm();
 	}
 	
 	// todo : renommer je crois qu'il les nomment différemment
@@ -218,6 +226,13 @@ class Phantom extends Building {
 		// si click sur batiment et reste enfoncé, touch and hold
 		/*if (mouseDown)
 			movePhantomOnMouse();*/
+			
+		doActionClickBuild();
+		
+		if (touchUpdateNeeded) {
+			touchUpdateNeeded = false;
+			movePhantomOnMouse();
+		}
 	}
 	
 	private function movePhantomOnMouse ():Void {
@@ -617,7 +632,7 @@ class Phantom extends Building {
 		return instance != null && instance.mouseDown;
 	}
 	
-	// Interation Manager being annoying becaus he has a unusable OnMouseDown Property !
+	// Interation Manager being annoying becaus he has a unusable OnMouseDown function !
 	function onMouseDown2 ():Void {
 		mouseDown = true;
 	}

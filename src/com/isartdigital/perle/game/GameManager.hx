@@ -88,7 +88,7 @@ class GameManager {
 		// todo : doublon mousePos X,y
 		
 		
-		MouseManager.getInstance().gameLoop();
+		MouseManager.getInstance().gameLoop(); // before Phantom
 		Phantom.gameLoop();
 	}
 	

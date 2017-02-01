@@ -4,11 +4,13 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import eventemitter3.EventEmitter;
 import js.Browser;
 import js.html.TouchEvent;
 import pixi.core.display.Container;
@@ -79,15 +81,15 @@ class MouseManager {
 	private function init():Void {
 		desktop = DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP;
 		
-		if (desktop) {
+		//if (desktop) {
 			Browser.window.addEventListener(MouseEventType.MOUSE_UP, onMouseTouchUp);
 			Browser.window.addEventListener(MouseEventType.MOUSE_DOWN, onMouseDown);
-		}
-		else {
+		/*}
+		else {*/
 			Browser.window.addEventListener(TouchEventType.TOUCH_END, onMouseTouchUp);
 			Browser.window.addEventListener(TouchEventType.TOUCH_START, onTouchDown);
 			Browser.window.addEventListener(TouchEventType.TOUCH_MOVE, onTouchMove);
-		}
+		//}
 	}
 	
 	public function gameLoop():Void {
@@ -105,6 +107,14 @@ class MouseManager {
 			CameraManager.scrollOnLimitsScreen(positionInGame);
 			updatePrecedentMousePos();
 		}
+	}
+	
+	/**
+	 * not used, don't forget global pos is updated in gameLoop, not immediately.
+	 * @return
+	 */
+	public function getImmediateTouchGlobalPos ():Point {
+		return touchGlobalPos;
 	}
 	
 	/**
@@ -137,20 +147,21 @@ class MouseManager {
 	/*if (!Std.is(pEvent.target, Hud))m inutile ce truc :|
 	return; ?*/
 	private function onMouseDown(pEvent:Dynamic):Void {
-		if (!Phantom.isMoving()) {
+		//if (!Phantom.isMoving()) {
 			mouseTouchDown = true;
 			precedentMousePos.copy(positionInGame);
-		}
+		//}
 	}
 	
 	private function onTouchDown(pEvent:TouchEvent):Void {
+		
 		// don't rely only en TouchEvent.MOVE to get globalPos !
-		if (!Phantom.isMoving()) {
+		//if (!Phantom.isMoving()) {
 			touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
 			mouseTouchDown = true;
 			precedentMousePos.copy(positionInGame);
 			oneFrameHack = true;
-		}
+		//}
 	}
 	
 	private function onMouseTouchUp (): Void {

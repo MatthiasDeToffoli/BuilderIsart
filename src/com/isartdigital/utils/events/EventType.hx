@@ -13,4 +13,6 @@ class EventType
 	public static inline var ADDED:String = "added";
 	public static inline var REMOVED:String = "removed";
 	
+	
+	
 }

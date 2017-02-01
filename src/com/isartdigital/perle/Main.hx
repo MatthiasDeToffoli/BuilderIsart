@@ -63,8 +63,10 @@ class Main extends EventEmitter
 	public static inline var UI_FOLDER:String = "UI/";
 	public static inline var IN_GAME_FOLDER:String = "InGame/";
 	
+	public static inline var FRAME_INTERVAL:UInt = 16; // Math.floor(1000/60) milliseconds
+	
 	private static inline var FACEBOOK_APP_ID = "1764871347166484"; // todo : c'est bien l'app ID ? oui/non ?
-	private static inline var FPS:UInt = 16; // Math.floor(1000/60)
+	
 	
 	private static var configPath:String = "config.json";
 	private static var instance: Main;
@@ -236,7 +238,7 @@ class Main extends EventEmitter
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen
 		
 		//Browser.window.requestAnimationFrame(gameLoop);
-		Timer.delay(gameLoop, FPS);
+		Timer.delay(gameLoop, FRAME_INTERVAL);
 		
 		lLoader.load();
 		
@@ -276,7 +278,7 @@ class Main extends EventEmitter
 	 */
 	private function gameLoop(/*pID:Float*/):Void {
 		//Browser.window.requestAnimationFrame(gameLoop);
-		Timer.delay(gameLoop, FPS);
+		Timer.delay(gameLoop, FRAME_INTERVAL);
 		
 		render();		
 		emit(EventType.GAME_LOOP);
