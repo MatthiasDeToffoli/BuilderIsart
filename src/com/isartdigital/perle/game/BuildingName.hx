@@ -37,11 +37,11 @@ class BuildingName {
 	public static inline var HELL_HOUSE_INTERNS:String = "Intern Building Hell";
 	public static inline var HELL_COLLECTOR:String = "Hell Collector Iron Mines";
 	public static inline var HELL_FACTORY:String = "Factory";
-	public static inline var HELL_DECO_GENERIC_ROCK:String = "Generic Rock";
-	public static inline var HELL_DECO_BIGGER_ROCK:String = "Bigger Rock";
-	public static inline var HELL_DECO_PRETTY_ROCK:String = "Pretty Rock";
-	public static inline var HELL_DECO_AWESOME_ROCK:String = "Awesome Rock";
-	public static inline var HELL_DECO_BUILDING:String = "Hell Nice Building";
+	public static inline var HELL_DECO_SMALL_CRYSTAL:String = "Small Crystal";
+	public static inline var HELL_DECO_BIGGER_CRYSTAL:String = "Bigger Crystal";
+	public static inline var HELL_DECO_DEAD_HEAD:String = "Dead Head";
+	public static inline var HELL_DECO_BONES:String = "Bones";
+	public static inline var HELL_DECO_LAVA_SOURCE:String = "Lava Source";
 	public static inline var HELL_DECO_GORGEOUS_BUILDING:String = "Hell Gorgeous Building";
 	
 	
@@ -89,11 +89,11 @@ class BuildingName {
 		HELL_HOUSE_INTERNS				=> [AssetName.BUILDING_HELL_HOUSE],
 		HELL_COLLECTOR 					=> [AssetName.BUILDING_HELL_COLLECTOR_LEVEL1],
 		HELL_FACTORY 					=> [AssetName.BUILDING_HELL_HOUSE],
-		HELL_DECO_GENERIC_ROCK 			=> [AssetName.DECO_HELL_ROCK],
-		HELL_DECO_BIGGER_ROCK 			=> [AssetName.DECO_HELL_ROCK],
-		HELL_DECO_PRETTY_ROCK 			=> [AssetName.DECO_HELL_ROCK],
-		HELL_DECO_AWESOME_ROCK 			=> [AssetName.DECO_HELL_ROCK],
-		HELL_DECO_BUILDING 				=> [AssetName.BUILDING_HELL_HOUSE],
+		HELL_DECO_SMALL_CRYSTAL 		=> [AssetName.DECO_HELL_CRYSTAL_SMALL],
+		HELL_DECO_BIGGER_CRYSTAL		=> [AssetName.DECO_HELL_CRYSTAL_BIG],
+		HELL_DECO_DEAD_HEAD 			=> [AssetName.DECO_HELL_DEAD_HEAD],
+		HELL_DECO_BONES		 			=> [AssetName.DECO_HELL_BONES],
+		HELL_DECO_LAVA_SOURCE 			=> [AssetName.DECO_HELL_LAVA],
 		HELL_DECO_GORGEOUS_BUILDING 	=> [AssetName.BUILDING_HELL_HOUSE],
 		
 		STYX_PURGATORY					=> [AssetName.BUILDING_STYX_PURGATORY, AssetName.BUILDING_STYX_PURGATORY_LEVEL2, AssetName.BUILDING_STYX_PURGATORY_LEVEL3],

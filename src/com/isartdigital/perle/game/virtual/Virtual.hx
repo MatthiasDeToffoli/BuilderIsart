@@ -43,11 +43,11 @@ class Virtual {
 		BuildingName.HELL_HOUSE_INTERNS => "VHouseHell", // todo
 		BuildingName.HELL_COLLECTOR => "VCollectorHell", // todo
 		BuildingName.HELL_FACTORY => "VFactory",
-		BuildingName.HELL_DECO_GENERIC_ROCK => "VDecoHell",
-		BuildingName.HELL_DECO_BIGGER_ROCK => "VDecoHell",
-		BuildingName.HELL_DECO_PRETTY_ROCK => "VDecoHell",
-		BuildingName.HELL_DECO_AWESOME_ROCK => "VDecoHell",
-		BuildingName.HELL_DECO_BUILDING => "VDecoHell",
+		BuildingName.HELL_DECO_SMALL_CRYSTAL => "VDecoHell",
+		BuildingName.HELL_DECO_BIGGER_CRYSTAL=> "VDecoHell",
+		BuildingName.HELL_DECO_DEAD_HEAD => "VDecoHell",
+		BuildingName.HELL_DECO_BONES => "VDecoHell",
+		BuildingName.HELL_DECO_LAVA_SOURCE => "VDecoHell",
 		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell"
 	];
 	

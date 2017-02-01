@@ -39,10 +39,11 @@ class AssetName{
 	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
 	
 	// Décoration Hell
-	public static inline var DECO_HELL_TREE_1:String = "Enfer_Arbre01_P";
-	public static inline var DECO_HELL_TREE_2:String = "Enfer_Arbre02_P";
-	public static inline var DECO_HELL_TREE_3:String = "Enfer_Arbre03_P";
-	public static inline var DECO_HELL_ROCK:String = "Enfer_Rocher_P";
+	public static inline var DECO_HELL_BONES:String = "HellPropBones";
+	public static inline var DECO_HELL_DEAD_HEAD:String = "HellPropBones02";
+	public static inline var DECO_HELL_CRYSTAL_SMALL:String = "HellPropCrystal";
+	public static inline var DECO_HELL_CRYSTAL_BIG:String = "HellPropCrystal02";
+	public static inline var DECO_HELL_LAVA:String = "HellPropLake";
 	
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";

@@ -17,11 +17,11 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 		BuildingName.HEAVEN_DECO_BUILDING,
 		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING,
 		
-		BuildingName.HELL_DECO_GENERIC_ROCK,
-		BuildingName.HELL_DECO_BIGGER_ROCK,
-		BuildingName.HELL_DECO_PRETTY_ROCK,
-		BuildingName.HELL_DECO_AWESOME_ROCK,
-		BuildingName.HELL_DECO_BUILDING,
+		BuildingName.HELL_DECO_SMALL_CRYSTAL,
+		BuildingName.HELL_DECO_BIGGER_CRYSTAL,
+		BuildingName.HELL_DECO_DEAD_HEAD,
+		BuildingName.HELL_DECO_BONES,
+		BuildingName.HELL_DECO_LAVA_SOURCE,
 		BuildingName.HELL_DECO_GORGEOUS_BUILDING,
 	];
 	
