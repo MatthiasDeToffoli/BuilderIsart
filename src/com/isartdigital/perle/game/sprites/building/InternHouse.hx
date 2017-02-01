@@ -12,11 +12,6 @@ class InternHouse extends Building
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		test();
-	}
-	
-	private function test():Void{
-		
 	}
 	
 }

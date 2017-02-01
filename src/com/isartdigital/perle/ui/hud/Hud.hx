@@ -18,6 +18,7 @@ import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.ui.popin.InternHousePopin;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
@@ -225,9 +226,9 @@ class Hud extends SmartScreen
 	}
 	
 	private function onKeyDown(pEvent:KeyboardEvent){
-		trace("yo");
-		if (pEvent.key != "i") return;
-		ResourcesManager.levelUp();
+		if (pEvent.key != "i" && pEvent.key != "j") return;
+		if (pEvent.key == "i") ResourcesManager.levelUp();
+		if (pEvent.key == "j") UIManager.getInstance().openPopin(InternHousePopin.getInstance());
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {

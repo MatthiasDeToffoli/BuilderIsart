@@ -23,7 +23,7 @@ class AssetName{
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL1:String = "HeavenLumberMill01";
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL2:String = "HeavenLumberMill02";
 	public static inline var MARKETING_HOUSE:String = "HeavenMarketingPlace";
-	//public static inline var BUILDING_INTERN_HEAVEN_HOUSE:String = "HeavenBuilding0"; //todo: quel nom?
+	public static inline var BUILDING_INTERN_HEAVEN_HOUSE:String = "InternHouseHeaven"; //todo: quel nom?
 	
 	
 	// Building Hell
@@ -31,7 +31,7 @@ class AssetName{
 	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
-	//public static inline var BUILDING_INTERN_HELL_HOUSE:String = "HeavenBuilding1"; //todo: quel nom?
+	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "_InternHouseHell"; //todo: quel nom?
 	
 	
 	// Décoration Heaven
@@ -196,6 +196,15 @@ class AssetName{
 	public static inline var MAXSTRESS_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
 	public static inline var MAXSTRESS_POPIN_INTERN_NAME:String = "_intern_name";
 	public static inline var MAXSTRESS_POPIN_INTERN_SIDE:String = "_intern_side";
+	
+	//Intern House Popin
+	public static inline var INTERN_HOUSE_INFOS_POPIN:String = "Interns";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_CLOSE_BUTTON:String = "ButtonClose";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_QUESTS_SPAWNER:String = "QuestSpawner";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_INTERN_NAME:String = "_intern_name";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_INTERN_SIDE:String = "_intern_side";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_INTERNS_IN_QUEST:String = "_internsInQuest_value";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_PORTRAIT:String = "_internPortrait";
 	
 	//purtagory popin
 	public static inline var PURGATORY_POPIN:String = "PurgatoryPop";

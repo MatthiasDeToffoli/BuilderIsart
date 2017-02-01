@@ -12,6 +12,7 @@ class InternHouseHell extends InternHouse
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
+		trace("internHouseHell");
 	}
 	
 }

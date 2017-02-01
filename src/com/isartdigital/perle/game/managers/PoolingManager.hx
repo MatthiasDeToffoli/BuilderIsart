@@ -32,21 +32,21 @@ class PoolingManager {
 		AssetName.BUILDING_STYX_VICE => "Building",
 		
 		
-		AssetName.BUILDING_HEAVEN_HOUSE => "InternHouseHeaven",// "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.BUILDING_HELL_HOUSE_LEVEL2 => "HouseHeaven",
 		AssetName.BUILDING_HELL_HOUSE_LEVEL3 => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "CollectorHeaven",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "CollectorHeaven",
 		AssetName.MARKETING_HOUSE => "MarketingHouse",
-		//AssetName.BUILDING_INTERN_HEAVEN_HOUSE => "InternHouseHeaven",
+		AssetName.BUILDING_INTERN_HEAVEN_HOUSE => "InternHouseHeaven",
 		
 		
-		AssetName.BUILDING_HELL_HOUSE => "InternHouseHell",//"HouseHell",
+		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHell",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHell",
 		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "CollectorHell",
-	    //AssetName.BUILDING_INTERN_HELL_HOUSE => "InternHouseHell",
+	    AssetName.BUILDING_INTERN_HELL_HOUSE => "InternHouseHell",
 		
 		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
@@ -93,7 +93,6 @@ class PoolingManager {
 	 * @return
 	 */
 	public static function getFromPool(lAssetName:String):Dynamic {
-		trace("pooling");
 		//trace("get " + lAssetName + " " + poolList[lAssetName].length);
 		if (poolList[lAssetName] == null) {
 			trace("missing " + lAssetName+" in poolArray");

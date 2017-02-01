@@ -13,6 +13,7 @@ class VInternHouseHeaven extends VInternHouse
 
 	public function new(pDescription:TileDescription) 
 	{
+		trace("vInternHouseHeaven");
 		alignementBuilding = Alignment.heaven;
 		super(pDescription);
 		

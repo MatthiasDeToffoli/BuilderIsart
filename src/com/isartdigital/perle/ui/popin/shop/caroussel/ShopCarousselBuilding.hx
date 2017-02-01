@@ -26,8 +26,7 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		
 		BuildingName.HELL_HOUSE,
 		BuildingName.HELL_COLLECTOR,
-		BuildingName.HELL_FACTORY,
-		
+		BuildingName.HELL_FACTORY,		
 		BuildingName.HELL_HOUSE_INTERNS,
 	];
 	

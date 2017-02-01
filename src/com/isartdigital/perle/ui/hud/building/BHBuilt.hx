@@ -2,11 +2,13 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
+import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
+import com.isartdigital.perle.ui.popin.InternHousePopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.collector.CollectorPopin;
 import com.isartdigital.perle.ui.popin.marketing.MarketingPopin;
@@ -60,7 +62,7 @@ class BHBuilt extends BuildingHud
 	
 	private function setDescriptionButton():Void {
 		//@HERE : pourquoi on bloque la description quand c'est pas upgradable ? Oo
-		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse)){
+		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse) || Std.is(BuildingHud.virtualBuilding, VInternHouse)){
 			btnDescription.alpha = 1;
 			Interactive.addListenerClick(btnDescription, onClickDescription);
 		}
@@ -123,6 +125,7 @@ class BHBuilt extends BuildingHud
 		if (Std.is(BuildingHud.virtualBuilding, VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
 		else if (Std.is(BuildingHud.virtualBuilding, VCollector)) UIManager.getInstance().openPopin(CollectorPopin.getInstance()); 
 		else if (Std.is(BuildingHud.virtualBuilding, VMarketingHouse)) UIManager.getInstance().openPopin(MarketingPopin.getInstance()); 
+		else if (Std.is(BuildingHud.virtualBuilding, VInternHouse)) UIManager.getInstance().openPopin(InternHousePopin.getInstance()); 
 		else {
 			InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 			UIManager.getInstance().openPopin(InfoBuilding.getInstance());

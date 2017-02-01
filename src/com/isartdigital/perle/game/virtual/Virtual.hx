@@ -40,7 +40,7 @@ class Virtual {
 		
 		
 		BuildingName.HELL_HOUSE => "VHouseHell",
-		BuildingName.HELL_HOUSE_INTERNS => "VHouseHell", // todo
+		BuildingName.HELL_HOUSE_INTERNS => "VInternHouseHell", // todo
 		BuildingName.HELL_COLLECTOR => "VCollectorHell", // todo
 		BuildingName.HELL_FACTORY => "VFactory",
 		BuildingName.HELL_DECO_SMALL_CRYSTAL => "VDecoHell",

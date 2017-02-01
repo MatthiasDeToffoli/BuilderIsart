@@ -16,9 +16,4 @@ class InternHouseHeaven extends InternHouse
 		
 	}
 	
-	override function test():Void 
-	{
-		trace("fuck");
-	}
-	
 }

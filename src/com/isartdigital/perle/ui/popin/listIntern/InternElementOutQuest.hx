@@ -70,28 +70,32 @@ class InternElementOutQuest extends InternElement
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		
 		//if (idIntern != null){ //Todo: faire un switch
-		switch (Intern.getIntern(idIntern).status){
-			case Intern.STATE_RESTING : {
-				btnSend = new SendButton(spawner.position);
-				btnSend.position = spawner.position;
-				Interactive.addListenerClick(btnSend, onSend);
-				addChild(btnSend);
-			}
+		//switch (Intern.getIntern(idIntern).status){
+			//case Intern.STATE_RESTING : {
+				//btnSend = new SendButton(spawner.position);
+				//btnSend.position = spawner.position;
+				//Interactive.addListenerClick(btnSend, onSend);
+				//addChild(btnSend);
+			//}
 			//if (Intern.getIntern(idIntern).status == Intern.STATE_RESTING){
 				//btnSend = new SendButton(spawner.position);
 				//btnSend.position = spawner.position;
 				//Interactive.addListenerClick(btnSend, onSend);
 				//addChild(btnSend);
-			case Intern.STATE_MAX_STRESS : {
-				btnMaxStress = new StressButton(spawner.position);
-				btnMaxStress.position = spawner.position;
-				Interactive.addListenerClick(btnMaxStress, onStress);
-				addChild(btnMaxStress);
-			}
+		if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
+			btnMaxStress = new StressButton(spawner.position);
+			btnMaxStress.position = spawner.position;
+			Interactive.addListenerClick(btnMaxStress, onStress);
+			addChild(btnMaxStress);
 		}
-		
-			//}
-		
+			
+		else {
+			btnSend = new SendButton(spawner.position);
+			btnSend.position = spawner.position;
+			Interactive.addListenerClick(btnSend, onSend);
+			addChild(btnSend);
+		}	
+			//}	
 			//if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
 				//btnMaxStress = new StressButton(spawner.position);
 				//btnMaxStress.position = spawner.position;
