@@ -220,6 +220,14 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
 		on(EventType.ADDED, registerForFTUE);
+		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
+		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, onKeyDown);
+	}
+	
+	private function onKeyDown(pEvent:KeyboardEvent){
+		trace("yo");
+		if (pEvent.key != "i") return;
+		ResourcesManager.levelUp();
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {

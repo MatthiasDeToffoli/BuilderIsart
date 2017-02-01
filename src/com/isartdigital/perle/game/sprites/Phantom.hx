@@ -316,7 +316,6 @@ class Phantom extends Building {
 		
 		if (BuyManager.canBuy(buildingName)) {
 			BuyManager.buy(buildingName);
-			
 			var newId = IdManager.newId();
 			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {

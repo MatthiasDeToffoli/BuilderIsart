@@ -23,6 +23,7 @@ class AssetName{
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL1:String = "HeavenLumberMill01";
 	public static inline var BUILDING_HEAVEN_COLLECTOR_LEVEL2:String = "HeavenLumberMill02";
 	public static inline var MARKETING_HOUSE:String = "HeavenMarketingPlace";
+	//public static inline var BUILDING_INTERN_HEAVEN_HOUSE:String = "HeavenBuilding0"; //todo: quel nom?
 	
 	
 	// Building Hell
@@ -30,6 +31,7 @@ class AssetName{
 	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
+	//public static inline var BUILDING_INTERN_HELL_HOUSE:String = "HeavenBuilding1"; //todo: quel nom?
 	
 	
 	// Décoration Heaven

@@ -11,8 +11,14 @@ class InternHouseHeaven extends InternHouse
 
 	public function new(?pAssetName:String) 
 	{
+		trace("internHouseHeaven");
 		super(pAssetName);
 		
+	}
+	
+	override function test():Void 
+	{
+		trace("fuck");
 	}
 	
 }

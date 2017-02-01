@@ -13,9 +13,9 @@ class VHouseHeaven extends VHouse
 {	
 	public function new(pDescription:TileDescription) 
 	{
+		trace("vhouse");
 		alignementBuilding = Alignment.heaven;
 		super(pDescription);
-		
 		
 		UpgradeAssetsList = [AssetName.BUILDING_HEAVEN_HOUSE, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2, AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3];
 		UpgradeGoldValuesList = ["1000", "30 000"];

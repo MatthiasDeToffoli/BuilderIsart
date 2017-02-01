@@ -45,7 +45,7 @@ class Intern
 				id : array[i].ID,
 				name : array[i].Name,
 				aligment :  array[i].Alignment,
-				status: "resting",
+				status: STATE_RESTING,
 				quest : null,
 				price : Std.int(array[i].PricePerLvl),
 				stress: Std.int(array[i].Stress),

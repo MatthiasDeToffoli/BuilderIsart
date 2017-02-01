@@ -12,8 +12,7 @@ class VInternHouse extends VBuilding
 
 	public function new(pDescription:TileDescription) 
 	{
-		super(pDescription);
-		
+		super(pDescription);	
 	}
 	
 }

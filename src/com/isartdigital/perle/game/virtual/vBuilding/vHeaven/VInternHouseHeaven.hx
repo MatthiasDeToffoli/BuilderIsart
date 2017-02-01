@@ -16,7 +16,6 @@ class VInternHouseHeaven extends VInternHouse
 		alignementBuilding = Alignment.heaven;
 		super(pDescription);
 		
-		
 	}
 	
 }

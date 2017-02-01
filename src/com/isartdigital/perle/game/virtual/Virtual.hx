@@ -28,7 +28,7 @@ class Virtual {
 		
 		
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
-		BuildingName.HEAVEN_HOUSE_INTERNS => "VHouseHell", // todo
+		BuildingName.HEAVEN_HOUSE_INTERNS => "VInternHouseHeaven", // todo
 		BuildingName.HEAVEN_COLLECTOR => "VCollectorHeaven",
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VMarketingHouse", //todo
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",

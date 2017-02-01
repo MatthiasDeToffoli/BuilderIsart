@@ -98,7 +98,6 @@ class VBuilding extends VTile {
 
 	override public function activate ():Void {
 		super.activate();
-		
 		graphic = cast(Building.createBuilding(tileDesc), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 

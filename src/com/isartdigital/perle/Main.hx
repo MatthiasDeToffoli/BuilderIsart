@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
+import com.isartdigital.perle.game.sprites.building.heaven.InternHouseHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.MarketingHouse;
 import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
@@ -14,15 +15,18 @@ import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
 import com.isartdigital.perle.game.sprites.FootPrintAsset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
+import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VInternHouseHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VUrbanHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
 import com.isartdigital.services.facebook.Facebook;
@@ -344,6 +348,10 @@ class Main extends EventEmitter
 			VCollectorHell,
 			VMarketingHouse,
 			MarketingHouse,
+			InternHouseHeaven,
+			InternHouseHell,
+			VInternHouseHeaven,
+			VInternHouseHell			
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;
