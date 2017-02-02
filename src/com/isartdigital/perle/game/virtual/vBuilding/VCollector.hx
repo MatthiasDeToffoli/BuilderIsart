@@ -17,7 +17,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
  * ...
  * @author de Toffoli Matthias
  */
-class VCollector extends VBuilding
+class VCollector extends VBuildingUpgrade
 {
 	public var myPacks(default, null):Array<ProductionPack>;
 	public var timeProd:TimeCollectorProduction;

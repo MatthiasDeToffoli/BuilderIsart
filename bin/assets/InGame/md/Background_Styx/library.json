@@ -1,0 +1,101 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "bg_under_styx_part2",
+       "rect": [
+        1,
+        1,
+        671,
+        335
+       ],
+       "origin": [
+        335.05,
+        167.45
+       ]
+      },
+      {
+       "symbol": "bg_under_styx_part1",
+       "rect": [
+        1,
+        338,
+        604,
+        302
+       ],
+       "origin": [
+        301.55,
+        150.7
+       ]
+      },
+      {
+       "symbol": "_ground",
+       "rect": [
+        607,
+        338,
+        134,
+        67
+       ],
+       "origin": [
+        67,
+        0
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
+ "movies": [
+  {
+   "id": "BG_Under_Styx",
+   "layers": [
+    {
+     "name": "part2",
+     "keyframes": [
+      {
+       "pivot": [
+        301.5375,
+        150.675
+       ],
+       "duration": 1,
+       "loc": [
+        -101.925,
+        150.675
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "bg_under_styx_part1"
+      }
+     ]
+    },
+    {
+     "name": "part1",
+     "keyframes": [
+      {
+       "pivot": [
+        335.0625,
+        167.4375
+       ],
+       "duration": 1,
+       "loc": [
+        -535.05,
+        367.1625
+       ],
+       "tweened": false,
+       "index": 0,
+       "ref": "bg_under_styx_part2"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "md5": "328ccf9e6a26a24cd6a631a81d0c002e"
+}

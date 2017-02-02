@@ -222,7 +222,12 @@ class RegionManager
 	 * @param pNewRegion region to add
 	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
-		//mapNumbersRegion[pNewRegion.desc.type]++;
+		
+		
+		if(pNewRegion.desc.type == Alignment.hell )createManyBgUnderInHell(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3}, 5,7);
+		else if(pNewRegion.desc.type == Alignment.heaven)createManyBgUnderInHeaven(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3}, 5,7);
+		else if(pNewRegion.desc.type == Alignment.neutral)createManyBgUnderInStyx(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3},7);
+	
 		mapNumbersRegion[pNewRegion.desc.type] += 1;
 		
 		if (worldMap[pNewRegion.desc.x] == null)
@@ -244,7 +249,7 @@ class RegionManager
 		if (!underMap.exists(pWorlPos.x)) underMap[pWorlPos.x] = new Map<Int,FlumpStateGraphic>();
 		else if (underMap[pWorlPos.x].exists(pWorlPos.y)) return;
 		
-		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:AssetName.BACKGROUND_UNDER_HELL); // for have anything in alpha
+		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:pWorlPos.x > 0 ? AssetName.BACKGROUND_UNDER_HELL:AssetName.BACKGROUND_UNDER_STYX); // for have anything in alpha
 			bgUnder.init();
 			bgUnder.start();
 			bgUnder.position = pPos;
@@ -285,8 +290,7 @@ class RegionManager
 		
 		
 		bgContainer.addChild(background);
-		createManyBgUnderInHell(new Point(Ground.COL_X_STYX_LENGTH, - 2 * Ground.ROW_Y_LENGTH), {x:1, y:-2}, 3,5);
-		createManyBgUnderInHeaven(new Point(-Ground.COL_X_LENGTH, - 2 * Ground.ROW_Y_LENGTH), {x:-1, y:-2}, 3,5);
+		
 		createRegion(Alignment.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
@@ -314,6 +318,17 @@ class RegionManager
 				var lMapPos:Index = {x:startMapPos.x - i, y:startMapPos.y + j};
 				addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
 			}
+		}
+	}
+	
+	private static function createManyBgUnderInStyx(startPos:Point, startMapPos:Index, numberY:Int):Void {
+		var i:Int, j:Int;
+		
+		for (j in 0...numberY) {
+			var lPos:Point = new Point(startPos.x + 1, startPos.y + j * (Ground.ROW_Y_LENGTH -1));
+			var lMapPos:Index = {x:startMapPos.x, y:startMapPos.y + j};
+			addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
+			
 		}
 	}
 	
@@ -354,9 +369,7 @@ class RegionManager
 	 * @param	pWorldPos the position in the worldMap
 	 */
 	public static function createRegion (pType:Alignment, pFirstTilePos:Point, pWorldPos:Index):Void {
-		
-
-		
+	
 		createNextBg({
 			x:pWorldPos.x,
 			y:pWorldPos.y,
