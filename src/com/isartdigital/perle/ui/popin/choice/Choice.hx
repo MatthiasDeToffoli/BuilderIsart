@@ -141,10 +141,10 @@ class Choice extends SmartPopinExtended
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {
 		var indexEff:Int = internDesc.efficiency - 1;
 		reward = {
-			gold : newChoice.gold + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].gold,
-			karma : newChoice.karma + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].karma,
-			wood : newChoice.wood + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].wood,
-			iron : newChoice.iron + internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].iron,
+			gold : /*newChoice.gold + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].gold,
+			karma :/* newChoice.karma + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].karma,
+			wood : /*newChoice.wood + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].wood,
+			iron : /*newChoice.iron + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].iron,
 			soul : internDesc.efficiency, 
 			xp : Std.int(internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].xP)
 		};

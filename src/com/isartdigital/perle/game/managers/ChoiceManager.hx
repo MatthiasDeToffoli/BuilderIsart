@@ -12,16 +12,27 @@ typedef ChoiceDescription = {
 	var hellAnswer:String;
 	var heavenAnswer:String;
 	var hellStress:Int;
-	var heavenStress:Int;
-	var goldIndic:Int;
-	var gold:Int;
-	var karmaIndic:Int;
-	var karma:Int;
-	var woodIndic:Int;
-	var wood:Int;
-	var ironIndic:Int;
-	var iron:Int;
-	var soul:Int;
+	var heavenStress:Int;	
+	var goldIndicatorHeaven:Int;
+	var goldHeaven:Int;
+	var karmaIndicatorHeaven:Int;
+	var karmaHeaven:Int;
+	var woodIndicatorHeaven:Int;
+	var woodHeaven:Int;
+	var ironIndicatorHeaven:Int;
+	var ironHeaven:Int;
+	var soulIndicatorHeaven:Int;
+	var soulHeaven:Int;	
+	var goldIndicatorHell:Int;
+	var goldHell:Int;
+	var karmaIndicatorHell:Int;
+	var karmaHell:Int;
+	var woodIndicatorHell:Int;
+	var woodHell:Int;
+	var ironIndicatorHell:Int;
+	var ironHell:Int;
+	var soulIndicatorHell:Int;
+	var soulHell:Int;
 }
 
 typedef EfficiencyStep = {
@@ -56,6 +67,8 @@ class ChoiceManager
 	public static function getJsons():Void {
 		allChoices = GameConfig.getChoices();
 		efficiencyBalance = GameConfig.getChoicesConfig();
+		
+		trace(allChoices[0]);
 	}
 	
 	public static function getNewChoiceID():Int {
