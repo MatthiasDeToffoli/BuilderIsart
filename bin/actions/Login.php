@@ -14,7 +14,6 @@ $fbId = getFacebookId();
 
 // return json format
 $returnSize = 5;
-$retour = array();
 
 // request to check if player is already in the database
 $req = "SELECT * FROM Player WHERE IDFacebook = :playerId";
@@ -27,15 +26,19 @@ try {
 
     // if player is in db -> return profil info
     if (!empty($res)) {
-        for ($i=0; $i < $returnSize; $i++) {
-            $retour[$i] = $res[$i];
+        foreach ($res as $key => $value) {
+          $retour[$key] = $res[0];
         }
+        $retour['isNewPlayer'] = false;
     }
     // else -> put it in db
     else {
+        $retour['isNewPlayer'] = true;
+
         $reqInsertion = "INSERT INTO Player(IDFacebook, DateInscription, DateLastConnexion, NumberRegionHell, NumberRegionHeaven,FtueProgress) VALUES (:idFB, NOW(), NOW(),0,0,0)";
         $reqInsPre = $db->prepare($reqInsertion);
         $reqInsPre->bindParam(':idFB', $fbId);
+
         try {
             $reqInsPre->execute();
             $id = getId();
@@ -48,10 +51,8 @@ try {
             createRegion($id,"heaven",-1,0,-12,0);
             createRegion($id,"neutral",0,0,0,0);
             createRegion($id,"hell",1,0,3,0);
-
         } catch (Exception $e) {
             echo $e->getMessage();
-
             exit;
         }
     }

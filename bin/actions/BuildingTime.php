@@ -50,7 +50,8 @@ switch ($functionExe) {
 
     try {
       $reqPre->execute();
-    } catch (Exception $e) {
+    }
+    catch (Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -69,7 +70,8 @@ switch ($functionExe) {
       $reqPre->execute();
       $res = $reqPre->fetchAll();
       if (isset($res[0])) die();
-    } catch (Exception $e) {
+    }
+    catch (Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -99,7 +101,8 @@ switch ($functionExe) {
 
     try {
       $reqPre->execute();
-    } catch (Exception $e) {
+    }
+    catch (Exception $e) {
       echo $e->getMessage();
       exit;
     }

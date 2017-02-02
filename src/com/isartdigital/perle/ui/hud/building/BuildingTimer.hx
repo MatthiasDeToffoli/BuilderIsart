@@ -77,7 +77,7 @@ class BuildingTimer extends SmartComponent
 		}
 		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
 		
-		ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, ConstructionTimeAction.UPDT);
+		ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, DbAction.UPDT);
 		updateProgressBar();
 	}
 	

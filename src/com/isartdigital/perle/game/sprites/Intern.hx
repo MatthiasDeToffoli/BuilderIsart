@@ -35,26 +35,25 @@ class Intern
 	
 	public static function init(){
 		internsListArray = new Array<InternDescription>();
-		getJson();
+		ServerManager.InternAction(DbAction.GET_SPE_JSON);
 	}
 	
-	public static function getJson():Void {
-		var array:Array<TableInterns> = new Array<TableInterns>();
-		array = GameConfig.getInterns();
-		var lLength:Int = array.length - 1;
+	public static function getJson(object:Dynamic):Void {
+		var data:Dynamic = Json.parse(object);
+		var lLength:Int = Std.int(data.length);
 		
-		for (i in 0...array.length) {
+		for (i in 0...lLength) {
 			var newIntern:InternDescription = {
-				id : array[i].id,
-				name : array[i].name,
-				aligment :  array[i].alignment,
+				id : Std.int(data[i].ID),
+				name : data[i].Name,
+				aligment :  data[i].Alignment,
 				status: STATE_RESTING,
 				quest : null,
-				price : array[i].price,
-				stress: array[i].stress,
-				speed: array[i].speed,
-				efficiency: array[i].efficiency,
-				unlockLevel: array[i].unlockLevel
+				price : Std.int(data[i].Price),
+				stress: Std.int(data[i].Stress),
+				speed: Std.int(data[i].Speed),
+				efficiency: Std.int(data[i].Efficiency),
+				unlockLevel: Std.int(data[i].UnlockLevel)
 			};
 			
 			internsListArray.push(newIntern);

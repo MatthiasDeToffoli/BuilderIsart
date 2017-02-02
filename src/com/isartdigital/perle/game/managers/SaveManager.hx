@@ -326,7 +326,6 @@ class SaveManager {
 			QuestsManager.initWithoutSave();
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
-			Intern.init();
 			TimeManager.startTimeLoop();
 			Hud.getInstance().initGaugesWithSave();
 			DialogueManager.dialogueSaved = currentSave.ftueProgress;
@@ -341,7 +340,6 @@ class SaveManager {
 		ResourcesManager.initWithoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();
-		Intern.init();
 		TimeManager.startTimeLoop();
 		SaveManager.save();
 		QuestsManager.initWithoutSave();

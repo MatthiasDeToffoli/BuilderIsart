@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
@@ -13,7 +14,7 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
-enum ConstructionTimeAction { ADD; REM; UPDT; }
+enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; }
 
 /**
  * Interface whit the server
@@ -38,16 +39,16 @@ class ServerManager {
 	}
 	
 	/**
-	 * call server and ask him to execute a specifique fonction
+	 * call server and ask him to execute a specifique fonction on ConstructionTime // todo -> move var instanciation in php
 	 * @param	pConstructTimeDesc TimeDescription of concerne building
 	 * @param	pAction Action to execute
-	 * @return 	false if GET return a construction time / else allways true
+	 * @return 	
 	 */
-	public static function ContructionTimeAction(pConstructTimeDesc:TimeDescription, pAction:ConstructionTimeAction):Void {
+	public static function ContructionTimeAction(pConstructTimeDesc:TimeDescription, pAction:DbAction):Void {
 		var actionCall:String = Std.string(pAction);
 		switch (pAction) 
 		{
-			case ConstructionTimeAction.ADD:
+			case DbAction.ADD:
 				var creaTimeFloor:Int = Math.floor(pConstructTimeDesc.creationDate / SECOND);
 				var endTimeFloor:Int = Math.floor(pConstructTimeDesc.end / SECOND);
 				var creaSeconds:Int = Std.int(pConstructTimeDesc.creationDate - creaTimeFloor * SECOND);
@@ -63,20 +64,44 @@ class ServerManager {
 					"funct" => actionCall
 				]);
 				
-			case ConstructionTimeAction.REM:
+			case DbAction.REM:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
 					"buildId" => pConstructTimeDesc.refTile,
 					"funct" => actionCall
 				]);
 			
-			case ConstructionTimeAction.UPDT:
+			case DbAction.UPDT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
 					"buildId" => pConstructTimeDesc.refTile,
 					"boost" => pConstructTimeDesc.timeBoost,
 					"funct" => actionCall
 				]);
+				
+			default: return;
+		}
+	}
+	
+	/**
+	 * call server and ask him to execute a specifique fonction on Interns
+	 * @param	pAction action to call
+	 * @param	pIntern sometime you need an InternDescription
+	 * @return 	
+	 */
+	public static function InternAction(pAction:DbAction, ?pIntern:InternDescription=null):Void {
+		var actionCall:String = Std.string(pAction);
+		
+		switch (pAction) 
+		{
+			case DbAction.ADD:
+				
+			case DbAction.REM:
+			
+			case DbAction.UPDT:
+				
+			case DbAction.GET_SPE_JSON:
+				callPhpFile(Intern.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
 				
 			default: return;
 		}
@@ -123,7 +148,7 @@ class ServerManager {
     }
 
 	private static function onDataCallback(object:Dynamic):Void {
-		//trace(object);
+		//trace(Json.parse(object));
 		//trace(Json.parse(object)); //n'est parfois pas un objet mais un string..
 	}
 	

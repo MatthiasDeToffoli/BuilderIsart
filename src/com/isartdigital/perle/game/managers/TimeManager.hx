@@ -7,7 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.ServerManager.ConstructionTimeAction;
+import com.isartdigital.perle.game.managers.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
@@ -214,7 +214,7 @@ class TimeManager {
 		if (dateNow >= pBuildingTimer.end) return;	
 		
 		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;
-		ServerManager.ContructionTimeAction(pBuildingTimer, ConstructionTimeAction.ADD);
+		ServerManager.ContructionTimeAction(pBuildingTimer, DbAction.ADD);
 		listConstruction.push(pBuildingTimer);
 	}
 	
@@ -430,7 +430,7 @@ class TimeManager {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
-			ServerManager.ContructionTimeAction(pElement, ConstructionTimeAction.REM);
+			ServerManager.ContructionTimeAction(pElement, DbAction.REM);
 			pEndedList.push(index);
 		}
 	}

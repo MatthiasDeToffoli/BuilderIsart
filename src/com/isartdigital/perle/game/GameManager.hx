@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.FootPrint;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -68,6 +69,7 @@ class GameManager {
 		//UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		FootPrint.startClass();
+		Intern.init();
 		ChoiceManager.init();
 		
 		DialogueManager.createFtue();
