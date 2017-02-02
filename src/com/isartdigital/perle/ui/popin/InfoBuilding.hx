@@ -77,7 +77,7 @@ class InfoBuilding extends SmartPopinExtended{
 	 */
 	private function new() {
 		super(AssetName.POPIN_INFO_BUILDING);
-		trace(virtualBuilding);
+		
 		setGlobalInfos();
 		
 		setGoldZone();

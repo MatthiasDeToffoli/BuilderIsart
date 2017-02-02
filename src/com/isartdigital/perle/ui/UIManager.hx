@@ -24,7 +24,7 @@ class UIManager
 	/**
 	 * tableau des popins ouverts
 	 */
-	private var popins:Array<Popin>;
+	public var popins:Array<Popin>;
 
 	public function new() 
 	{

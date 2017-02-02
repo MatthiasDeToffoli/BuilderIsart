@@ -31,7 +31,7 @@ class ListInternPopin extends SmartPopin
 	private var btnClose:SmartButton;
 	private var btnLeft:SmartButton;
 	private var btnRight:SmartButton;
-	private var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
+	public var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable

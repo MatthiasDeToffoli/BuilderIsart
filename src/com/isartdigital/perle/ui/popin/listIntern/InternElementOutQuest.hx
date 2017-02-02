@@ -12,6 +12,7 @@ import com.isartdigital.perle.ui.popin.listIntern.StressButton;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.ui.Popin;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -79,20 +80,23 @@ class InternElementOutQuest extends InternElement
 				//btnSend.position = spawner.position;
 				//Interactive.addListenerClick(btnSend, onSend);
 				//addChild(btnSend);
-		if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
-			btnMaxStress = new StressButton(spawner.position);
-			btnMaxStress.position = spawner.position;
-			Interactive.addListenerClick(btnMaxStress, onStress);
-			addChild(btnMaxStress);
-		}
+			if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS) {
+				btnMaxStress = new StressButton(spawner.position);
+				btnMaxStress.position = spawner.position;
+				Interactive.addListenerClick(btnMaxStress, onStress);
+				addChild(btnMaxStress);
+			}
 			
-		else {
-			btnSend = new SendButton(spawner.position);
-			btnSend.position = spawner.position;
-			Interactive.addListenerClick(btnSend, onSend);
-			addChild(btnSend);
-		}	
-			//}	
+			else {
+				btnSend = new SendButton(spawner.position);
+				btnSend.position = spawner.position;
+				Interactive.addListenerClick(btnSend, onSend);
+				addChild(btnSend);
+			}
+		//}
+		
+			//}
+		
 			//if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
 				//btnMaxStress = new StressButton(spawner.position);
 				//btnMaxStress.position = spawner.position;
@@ -118,6 +122,7 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function onSend(){
+		trace("send");
 		//var lLength:Int = QuestsManager.questsList.length;
 		quest = QuestsManager.createQuest(idIntern);
 		
@@ -127,10 +132,23 @@ class InternElementOutQuest extends InternElement
 		ResourcesManager.spendTotal(GeneratorType.soft, internDatas.price);
 		
 		//For the actualisation of the switch outQuest/InQuest
+		//var lCurrentPopin:Popin = UIManager.getInstance().popins[UIManager.getInstance().popins.length - 1];
 		UIManager.getInstance().closeCurrentPopin();
 		InternElementInQuest.canPushNewScreen = true;
+		//trace(lCurrentPopin);
+		//trace(InternHousePopin.getInstance());
+		//trace(lCurrentPopin == InternHousePopin.getInstance());
+		//if (lCurrentPopin == ListInternPopin.getInstance()){
+			//trace("listIntern");
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
+		//}
+		
+		//if (lCurrentPopin == InternHousePopin.getInstance()){
+			//trace("InternHouse");
+			//UIManager.getInstance().openPopin(InternHousePopin.getInstance());
+			//GameStage.getInstance().getPopinsContainer().addChild(InternHousePopin.getInstance());
+		//}
 	}
 	
 	private function onStress(){

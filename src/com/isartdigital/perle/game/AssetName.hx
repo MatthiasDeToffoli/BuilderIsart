@@ -205,6 +205,8 @@ class AssetName{
 	public static inline var INTERN_HOUSE_INFOS_POPIN_INTERN_SIDE:String = "_intern_side";
 	public static inline var INTERN_HOUSE_INFOS_POPIN_INTERNS_IN_QUEST:String = "_internsInQuest_value";
 	public static inline var INTERN_HOUSE_INFOS_POPIN_PORTRAIT:String = "_internPortrait";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_STATS:String = "_intern_bg_stats";
+	public static inline var INTERN_HOUSE_INFOS_POPIN_DISMISS_BUTTON:String = "Bouton_InternDismiss_Clip";
 	
 	//purtagory popin
 	public static inline var PURGATORY_POPIN:String = "PurgatoryPop";

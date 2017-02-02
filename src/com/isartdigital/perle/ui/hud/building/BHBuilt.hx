@@ -62,6 +62,7 @@ class BHBuilt extends BuildingHud
 	
 	private function setDescriptionButton():Void {
 		//@HERE : pourquoi on bloque la description quand c'est pas upgradable ? Oo
+		//if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse)){
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse) || Std.is(BuildingHud.virtualBuilding, VInternHouse)){
 			btnDescription.alpha = 1;
 			Interactive.addListenerClick(btnDescription, onClickDescription);
