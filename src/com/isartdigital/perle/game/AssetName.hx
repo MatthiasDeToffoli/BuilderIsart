@@ -31,7 +31,7 @@ class AssetName{
 	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
-	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "_InternHouseHell"; //todo: quel nom?
+	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "InternHouseHell"; //todo: quel nom?
 	
 	
 	// Décoration Heaven
