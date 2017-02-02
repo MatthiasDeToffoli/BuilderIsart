@@ -28,6 +28,7 @@ import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -72,6 +73,7 @@ class Hud extends SmartScreen
 	private var btnSoft:SmartButton;
 	private var btnHard:SmartButton;
 	private var containerEffect:Container;
+	private var movingBuilding:SmartComponent;
 	
 	
 	/**
@@ -95,7 +97,6 @@ class Hud extends SmartScreen
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
-		//addChild(new SmartComponent("MovingBuilding"));
 		
 		containerEffect = new Container();
 		addChild(containerEffect); // over everything
@@ -128,7 +129,8 @@ class Hud extends SmartScreen
 		
 		if (currentBuildingHud != pNewBuildingHud) {
 			currentBuildingHud = pNewBuildingHud;
-			 containerBuildingHud.removeChildren();
+			containerBuildingHud.removeChildren();
+			GameStage.getInstance().getHudContainer().removeChild(BHMoving.getInstance());
 			
 			switch (pNewBuildingHud) 
 			{
@@ -142,7 +144,7 @@ class Hud extends SmartScreen
 				case BuildingHudType.MOVING: 
 					BHHarvest.getInstance().removeListenerGameContainer();
 					BHHarvestHouse.getInstance().removeListenerGameContainer();
-					containerBuildingHud.addChild(BHMoving.getInstance());
+					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
 				case BuildingHudType.NONE: 
 					
 				default: throw("No BuildingHud found !");

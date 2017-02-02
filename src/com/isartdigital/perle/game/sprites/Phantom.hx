@@ -260,7 +260,6 @@ class Phantom extends Building {
 			bestMapPos.y
 		));
 		
-		BHMoving.getInstance().position = new Point(position.x/2, position.y/2);
 		// optimization to make less call to canBuiltHere();
 		if (precedentBesMapPos.x != bestMapPos.x ||
 			precedentBesMapPos.y != bestMapPos.y) {

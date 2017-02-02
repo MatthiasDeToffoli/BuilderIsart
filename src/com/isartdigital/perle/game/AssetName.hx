@@ -254,6 +254,10 @@ class AssetName{
 	public static inline var HUD_COUNTER_XP_HEAVEN:String = HUD_PREFIX + "HeavenXP";
 	public static inline var HUD_COUNTER_XP_HELL:String = HUD_PREFIX + "HellXP";
 	public static inline var HUD_COUNTER_LEVEL:String = HUD_PREFIX + "Level";
+	public static inline var HUD_MOVNG_BUILDING:String = /*HUD_PREFIX + */"MovingBuilding";
+	public static inline var HUD_MOVNG_BUILDING_DESKTOP:String = /*HUD_PREFIX + */"MoveBuilding_Desktop";
+	public static inline var HUD_MOVNG_BUILDING_BTN_CANCEL:String = "Button_CancelMovement";
+	public static inline var HUD_MOVNG_BUILDING_BTN_CONFIRM:String = "Button_ConfirmMovement";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";
