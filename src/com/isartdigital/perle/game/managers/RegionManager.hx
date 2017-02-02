@@ -273,6 +273,8 @@ class RegionManager
 		
 		var origin:Index = {x:0, y:0};
 		
+		createManyBgUnderInStyx(new Point(origin.x, origin.y - 3 * Ground.ROW_Y_LENGTH), {x:origin.x, y:origin.y - 3}, 7);
+		
 		worldMap[origin.x][origin.y] = createRegionFromDesc({
 			x:origin.x,
 			y:origin.y,

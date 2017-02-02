@@ -37,10 +37,10 @@ class AssetName{
 	
 	
 	// Décoration Heaven
-	public static inline var DECO_HEAVEN_TREE_1:String = "Paradis_Arbre01_P";
-	public static inline var DECO_HEAVEN_TREE_2:String = "Paradis_Arbre02_P";
-	public static inline var DECO_HEAVEN_TREE_3:String = "Paradis_Arbre03_P";
-	public static inline var DECO_HEAVEN_FOUNTAIN:String = "heavenBuild4";
+	public static inline var DECO_HEAVEN_TREE_1:String = "HeavenPropTree01";
+	public static inline var DECO_HEAVEN_TREE_2:String = "HeavenPropTree02";
+	public static inline var DECO_HEAVEN_CLOUD:String = "HeavenCloud02";
+	public static inline var DECO_HEAVEN_LAKE:String = "HeavenNature01";
 	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
 	
 	// Décoration Hell

@@ -12,9 +12,9 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 	private static var NAME_LIST(default, never):Array<String> = [
 		BuildingName.HEAVEN_DECO_GENERIC_TREE,
 		BuildingName.HEAVEN_DECO_BIGGER_TREE,
-		BuildingName.HEAVEN_DECO_PRETTY_TREE,
-		BuildingName.HEAVEN_DECO_AWESOME_TREE,
-		BuildingName.HEAVEN_DECO_BUILDING,
+		BuildingName.HEAVEN_DECO_CLOUD,
+		BuildingName.HEAVEN_DECO_PARK,
+		BuildingName.HEAVEN_DECO_LAKE,
 		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING,
 		
 		BuildingName.HELL_DECO_SMALL_CRYSTAL,

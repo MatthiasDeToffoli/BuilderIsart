@@ -33,9 +33,9 @@ class Virtual {
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT => "VMarketingHouse", //todo
 		BuildingName.HEAVEN_DECO_GENERIC_TREE => "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_BIGGER_TREE => "VDecoHeaven",
-		BuildingName.HEAVEN_DECO_PRETTY_TREE => "VDecoHeaven",
-		BuildingName.HEAVEN_DECO_AWESOME_TREE => "VDecoHeaven",
-		BuildingName.HEAVEN_DECO_BUILDING => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_CLOUD => "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_LAKE=> "VDecoHeaven",
+		BuildingName.HEAVEN_DECO_PARK=> "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => "VDecoHeaven",
 		
 		

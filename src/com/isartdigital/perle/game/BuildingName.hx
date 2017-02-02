@@ -27,9 +27,9 @@ class BuildingName {
 	public static inline var HEAVEN_MARKETING_DEPARTMENT:String = "Marketing Department";
 	public static inline var HEAVEN_DECO_GENERIC_TREE:String = "Generic Tree";
 	public static inline var HEAVEN_DECO_BIGGER_TREE:String = "Bigger Tree";
-	public static inline var HEAVEN_DECO_PRETTY_TREE:String = "Pretty Tree";
-	public static inline var HEAVEN_DECO_AWESOME_TREE:String = "Awesome Tree";
-	public static inline var HEAVEN_DECO_BUILDING:String = "Heaven Nice Building";
+	public static inline var HEAVEN_DECO_CLOUD:String = "Cloud";
+	public static inline var HEAVEN_DECO_LAKE:String = "Lake";
+	public static inline var HEAVEN_DECO_PARK:String = "Park";
 	public static inline var HEAVEN_DECO_GORGEOUS_BUILDING:String = "Heaven Gorgeous Building";
 	
 	
@@ -80,9 +80,9 @@ class BuildingName {
 		HEAVEN_MARKETING_DEPARTMENT 	=> [AssetName.MARKETING_HOUSE],
 		HEAVEN_DECO_GENERIC_TREE 		=> [AssetName.DECO_HEAVEN_TREE_1],
 		HEAVEN_DECO_BIGGER_TREE 		=> [AssetName.DECO_HEAVEN_TREE_2],
-		HEAVEN_DECO_PRETTY_TREE 		=> [AssetName.DECO_HEAVEN_TREE_3],
-		HEAVEN_DECO_AWESOME_TREE 		=> [AssetName.DECO_HEAVEN_TREE_3],
-		HEAVEN_DECO_BUILDING 			=> [AssetName.BUILDING_HEAVEN_HOUSE],
+		HEAVEN_DECO_CLOUD		 		=> [AssetName.DECO_HEAVEN_CLOUD],
+		HEAVEN_DECO_LAKE		 		=> [AssetName.DECO_HEAVEN_LAKE],
+		HEAVEN_DECO_PARK	 			=> [AssetName.BUILDING_HEAVEN_HOUSE],
 		HEAVEN_DECO_GORGEOUS_BUILDING 	=> [AssetName.BUILDING_HEAVEN_HOUSE],
 		
 		HELL_HOUSE 						=> [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_HOUSE_LEVEL2, AssetName.BUILDING_HELL_HOUSE_LEVEL3],
