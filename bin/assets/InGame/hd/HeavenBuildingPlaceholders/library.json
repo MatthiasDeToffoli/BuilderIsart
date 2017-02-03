@@ -1,232 +1,11 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "_heaven_building_03",
-       "origin": [
-        167.55,
-        345.65
-       ],
-       "rect": [
-        1,
-        1,
-        494,
-        510
-       ]
-      },
-      {
-       "symbol": "_heaven_alta_virtue",
-       "origin": [
-        230,
-        228.5
-       ],
-       "rect": [
-        1,
-        513,
-        460,
-        457
-       ]
-      },
-      {
-       "symbol": "_heavenBuild2",
-       "origin": [
-        186,
-        149.1
-       ],
-       "rect": [
-        1,
-        972,
-        412,
-        406
-       ]
-      },
-      {
-       "symbol": "_heaven_interns_portal",
-       "origin": [
-        204.05,
-        204.55
-       ],
-       "rect": [
-        1,
-        1380,
-        413,
-        401
-       ]
-      },
-      {
-       "symbol": "_heaven_marketing_place",
-       "origin": [
-        206.6,
-        207.95
-       ],
-       "rect": [
-        415,
-        972,
-        372,
-        403
-       ]
-      },
-      {
-       "symbol": "_heaven_building_02",
-       "origin": [
-        214.35,
-        195.65
-       ],
-       "rect": [
-        463,
-        513,
-        355,
-        410
-       ]
-      },
-      {
-       "symbol": "_heaven_prop_tree02",
-       "origin": [
-        186.5,
-        191
-       ],
-       "rect": [
-        497,
-        1,
-        373,
-        382
-       ]
-      },
-      {
-       "symbol": "_heavenBuild0",
-       "origin": [
-        128.05,
-        123.05
-       ],
-       "rect": [
-        416,
-        1377,
-        404,
-        324
-       ]
-      },
-      {
-       "symbol": "_heaven_building01",
-       "origin": [
-        173,
-        119.35
-       ],
-       "rect": [
-        416,
-        1703,
-        356,
-        340
-       ]
-      },
-      {
-       "symbol": "_heaven_nature_01",
-       "origin": [
-        171,
-        156.5
-       ],
-       "rect": [
-        774,
-        1703,
-        342,
-        313
-       ]
-      },
-      {
-       "symbol": "_heaven_Fountain",
-       "origin": [
-        154.35,
-        88.75
-       ],
-       "rect": [
-        789,
-        925,
-        311,
-        276
-       ]
-      },
-      {
-       "symbol": "_heaven_prop_tree01",
-       "origin": [
-        108,
-        174
-       ],
-       "rect": [
-        822,
-        1203,
-        216,
-        348
-       ]
-      },
-      {
-       "symbol": "_heaven_cloud_02",
-       "origin": [
-        148.5,
-        116
-       ],
-       "rect": [
-        1,
-        1783,
-        297,
-        232
-       ]
-      },
-      {
-       "symbol": "_heaven_Bridge",
-       "origin": [
-        130.05,
-        11.7
-       ],
-       "rect": [
-        1040,
-        1203,
-        260,
-        263
-       ]
-      },
-      {
-       "symbol": "_heaven_cloud01",
-       "origin": [
-        142,
-        106
-       ],
-       "rect": [
-        1040,
-        1468,
-        284,
-        212
-       ]
-      },
-      {
-       "symbol": "_ground",
-       "origin": [
-        89.35,
-        0
-       ],
-       "rect": [
-        822,
-        1553,
-        179,
-        90
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
+   "id": "HeavenAltarVirtue",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
         230,
         228.5
@@ -235,22 +14,22 @@
         -16.9,
         -36.4
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_alta_virtue",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenAltarVirtue"
+   ]
   },
   {
+   "id": "HeavenBuild0",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
         128.05,
         123
@@ -259,142 +38,94 @@
         -49.75,
         25.35
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heavenBuild0",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "HeavenBuild0"
+   ]
   },
   {
+   "id": "HeavenBuilding01",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
-        173,
-        119.35
+        246.1,
+        171.75
        ],
        "loc": [
         -18,
         -36.45
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_building01",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenBuilding01"
+   ]
   },
   {
+   "id": "HeavenBuilding02",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
-        214.35,
-        195.65
+        361.75,
+        280.5
        ],
        "loc": [
         22.1,
         -29.7
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_building_02",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenBuilding02"
+   ]
   },
   {
+   "id": "HeavenBuilding03",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
-        167.55,
-        345.65
+        258.45,
+        362.05
        ],
        "loc": [
         15.55,
         -3.9
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_building_03",
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "id": "HeavenBuilding03"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "pivot": [
-        142,
-        106
-       ],
-       "loc": [
-        25.7,
-        67.45
-       ],
        "index": 0,
-       "ref": "_heaven_cloud01",
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenCloud01"
+   ]
   },
   {
+   "id": "HeavenInternsPortal",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        148.5,
-        116
-       ],
-       "loc": [
-        18.05,
-        32.25
-       ],
-       "index": 0,
-       "ref": "_heaven_cloud_02",
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "id": "HeavenCloud02"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "duration": 1,
        "pivot": [
         204.05,
         204.55
@@ -403,118 +134,46 @@
         1.55,
         -43.7
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_interns_portal",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenInternsPortal"
+   ]
   },
   {
+   "id": "HeavenMarketingPlace",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
         206.6,
-        207.95
+        240.5
        ],
        "loc": [
-        116.9,
-        3.45
+        195.05,
+        19.85
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_marketing_place",
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "id": "HeavenMarketingPlace"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "pivot": [
-        171,
-        156.5
-       ],
-       "loc": [
-        -9.6,
-        0
-       ],
        "index": 0,
-       "ref": "_heaven_nature_01",
-       "tweened": false
+       "duration": 1
       }
      ],
      "name": "Layer 1"
     }
-   ],
-   "id": "HeavenNature01"
+   ]
   },
   {
+   "id": "Heaven_Bridge",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        108,
-        174
-       ],
-       "loc": [
-        0,
-        -36.05
-       ],
-       "index": 0,
-       "ref": "_heaven_prop_tree01",
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "id": "HeavenPropTree01"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "duration": 1,
-       "pivot": [
-        186.5,
-        191
-       ],
-       "loc": [
-        20.6,
-        -29.85
-       ],
-       "index": 0,
-       "ref": "_heaven_prop_tree02",
-       "tweened": false
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ],
-   "id": "HeavenPropTree02"
-  },
-  {
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "duration": 1,
        "pivot": [
         130.8,
         145.55
@@ -523,22 +182,22 @@
         0,
         133.85
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_Bridge",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "Heaven_Bridge"
+   ]
   },
   {
+   "id": "InternHouseHeaven",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
         186.75,
         208.4
@@ -547,22 +206,22 @@
         3,
         26.9
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heavenBuild2",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "InternHouseHeaven"
+   ]
   },
   {
+   "id": "heaven_Fountain",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "pivot": [
         155.1,
         222.6
@@ -571,17 +230,173 @@
         -0.05,
         133.85
        ],
-       "index": 0,
+       "tweened": false,
        "ref": "_heaven_Fountain",
-       "tweened": false
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "heaven_Fountain"
+   ]
   }
  ],
- "md5": "8b9085dcd6e7fb07a24903276f776c69",
- "frameRate": 24
+ "md5": "e38f0ece21c9c699e623e827fe2d3bcb",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        667,
+        658
+       ],
+       "origin": [
+        361.75,
+        280.5
+       ],
+       "symbol": "_heaven_building_02"
+      },
+      {
+       "rect": [
+        670,
+        1,
+        629,
+        559
+       ],
+       "origin": [
+        258.45,
+        362.05
+       ],
+       "symbol": "_heaven_building_03"
+      },
+      {
+       "rect": [
+        1301,
+        1,
+        511,
+        516
+       ],
+       "origin": [
+        246.1,
+        171.75
+       ],
+       "symbol": "_heaven_building01"
+      },
+      {
+       "rect": [
+        1301,
+        519,
+        460,
+        457
+       ],
+       "origin": [
+        230,
+        228.5
+       ],
+       "symbol": "_heaven_alta_virtue"
+      },
+      {
+       "rect": [
+        670,
+        562,
+        412,
+        406
+       ],
+       "origin": [
+        186,
+        149.1
+       ],
+       "symbol": "_heavenBuild2"
+      },
+      {
+       "rect": [
+        1,
+        661,
+        413,
+        401
+       ],
+       "origin": [
+        204.05,
+        204.55
+       ],
+       "symbol": "_heaven_interns_portal"
+      },
+      {
+       "rect": [
+        416,
+        970,
+        374,
+        436
+       ],
+       "origin": [
+        206.6,
+        240.5
+       ],
+       "symbol": "_heaven_marketing_place"
+      },
+      {
+       "rect": [
+        1,
+        1064,
+        404,
+        324
+       ],
+       "origin": [
+        128.05,
+        123.05
+       ],
+       "symbol": "_heavenBuild0"
+      },
+      {
+       "rect": [
+        1,
+        1390,
+        311,
+        276
+       ],
+       "origin": [
+        154.35,
+        88.75
+       ],
+       "symbol": "_heaven_Fountain"
+      },
+      {
+       "rect": [
+        1763,
+        519,
+        260,
+        263
+       ],
+       "origin": [
+        130.05,
+        11.7
+       ],
+       "symbol": "_heaven_Bridge"
+      },
+      {
+       "rect": [
+        416,
+        661,
+        179,
+        90
+       ],
+       "origin": [
+        89.35,
+        0
+       ],
+       "symbol": "_ground"
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ]
 }
