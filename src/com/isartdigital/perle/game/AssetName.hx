@@ -172,6 +172,7 @@ class AssetName{
 	public static inline var INTERN_EVENT_STRESS:String = "_interns_stress";
 	public static inline var INTERN_EVENT_SPEED:String = "_intern_speed";
 	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
+	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";

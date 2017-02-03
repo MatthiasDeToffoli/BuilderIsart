@@ -54,11 +54,14 @@ class Choice extends SmartPopinExtended
 	private var evilChoice:TextSprite;
 	private var internName:TextSprite;
 	private var internSide:TextSprite;
+	private var choiceCard:UISprite;
+		
+	private var internStats:SmartComponent;
 	private var internStress:TextSprite;
 	private var internSpeed:TextSprite;
 	private var internEfficiency:TextSprite;
-	private var choiceCard:UISprite;
-	private var internStats:SmartComponent;
+	private var stressBar:SmartComponent;
+	
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -112,6 +115,8 @@ class Choice extends SmartPopinExtended
 		internStress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), TextSprite);
 		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_EVENT_SPEED), TextSprite);
 		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
+		
+		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {

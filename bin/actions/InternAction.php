@@ -1,7 +1,5 @@
 <?php
 
-  //$req = "SELECT * FROM Interns WHERE ID IN (SELECT IDIntern FROM PlayerInterns WHERE IDPlayer = :playerId) AND Interns.UnlockLevel <= :level";
-
   $functionExe = str_replace("/", "", $_POST["funct"]);
 
   Include("FacebookUtils.php");

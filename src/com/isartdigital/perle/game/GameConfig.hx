@@ -82,7 +82,7 @@ typedef TableTypeShopPack = {
 }
 
 typedef TableInterns = {
-	var id:Int;
+	var iD:Int;
 	var name:String;
 	var	alignment:String;
 	var price:Int;
