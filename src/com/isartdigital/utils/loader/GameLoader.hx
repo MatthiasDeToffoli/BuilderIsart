@@ -84,7 +84,7 @@ class GameLoader extends Loader
 	* @param	pUrl chaine de caractère spécifiant le nom du fichier
 	*/
 	public function addFontFile (pUrl:String):Void {
-		if (DeviceCapabilities.isCocoonJS) return;
+		if (DeviceCapabilities.isCanvasPlus) return;
 		var lUrl:String = Config.fontsPath + pUrl;
 		add(Config.url(lUrl));		
 	}

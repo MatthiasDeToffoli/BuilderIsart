@@ -7,14 +7,22 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.system.DeviceCapabilities;
 import haxe.Http;
 import haxe.Json;
 import pixi.core.math.Point;
 
 	
 enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; }
+
+typedef EventSuccessConnexion = {
+	var isNewPlayer:Bool;
+	var userId:String;
+}
 
 /**
  * Interface whit the server
@@ -31,7 +39,7 @@ class ServerManager {
 	 * start player inscription or get his information
 	 */
 	public static function playerConnexion():Void {
-		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOGIN]);
+		callPhpFile(onSuccessPlayerConnexion, onErrorPlayerConnexion, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOGIN]);
 	}
 	
 	public static function refreshConfig ():Void { // todo : remplacer par cron ?
@@ -172,6 +180,15 @@ class ServerManager {
 	}
 
 	private static function onErrorCallback(object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
+	private static function onSuccessPlayerConnexion (pObject:String):Void {
+		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
+		DeltaDNAManager.listenToCloseGame();
+	}
+	
+	private static function onErrorPlayerConnexion (object:Dynamic):Void {
 		Debug.error("Error php : " + object);
 	}
 	
