@@ -1,9 +1,10 @@
 <?php
 /**
  * User: Vicktor Grenu
+ * User: Ambroise Rabier
  */
 
-header('Content-Type: application/json');
+header('Content-Type: application/json;'/* charset=utf8_general_ci'*/);
 date_default_timezone_set("UTC");
 
 session_start(); // todo : included in all php file ??
@@ -18,7 +19,7 @@ function getDataBase () {
 
     // database connexion
     try {
-        return new PDO("mysql:host=".$host.";dbname=".$dbName, $user, $pass);
+        return new PDO("mysql:host=".$host.";dbname=".$dbName/*.";mysql:charset=utf8_general_ci"*/, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     }
     catch (Exception $e) {
         echo $e->getMessage();
