@@ -112,6 +112,7 @@ class Intern
 	 */
 	public static function incrementeInternHouses(pAlignment:Alignment):Void{
 		numberInternHouses[pAlignment] += 1;
+		trace(numberInternHouses[pAlignment]);
 	}
 	
 	public static function destroyIntern(pId:Int):Void{	

@@ -231,8 +231,8 @@ class Hud extends SmartScreen
 	}
 	
 	private function onKeyDown(pEvent:KeyboardEvent){
-		if (pEvent.key != "i" && pEvent.key != "j") return;
-		if (pEvent.key == "i") ResourcesManager.levelUp();
+		if (pEvent.key != "g" && pEvent.key != "j") return;
+		if (pEvent.key == "g") ResourcesManager.levelUp();
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {
