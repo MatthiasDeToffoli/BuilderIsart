@@ -35,14 +35,18 @@ class ShopCarousselInterns extends ShopCaroussel{
 	
 	override private function getSpawnersAssetNames():Array<String> {
 		return [ // todo : constantes ? c'est des spawners..
-			"Shop_Intern_1",
+			/*"Shop_Intern_1",
 			"Shop_Intern_2",
-			"Shop_Intern_3"
+			"Shop_Intern_3"*/
 		];
 	}
 	
 	private function onClickReroll ():Void {
 		ShopPopin.getInstance().init(ShopTab.InternsSearch);
+	}
+	
+	override function getCardToShow():Array<String> {
+		return new Array<String>();
 	}
 	
 	override public function destroy():Void {

@@ -99,7 +99,8 @@ class AssetName{
 	
 	
 	// Shop caroussel card
-	public static inline var CAROUSSEL_CARD_UNLOCKED:String = /*SHOP_PREFIX +*/ "ButtonBuyBuildingDeco";
+	public static inline var CAROUSSEL_CARD_UNLOCKED:String = "ButtonBuyBuildingDeco";
+	public static inline var CAROUSSEL_CARD_UNLOCKED_BTN_INFO:String = "ButtonInfo";
 	public static inline var CAROUSSEL_CARD_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
 	//public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBuyPack"; // outdated ?
 	public static inline var CAROUSSEL_CARD_PACK:String = "Shop_BuyablePack";
