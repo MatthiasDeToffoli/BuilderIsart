@@ -2,7 +2,7 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
-import com.isartdigital.perle.ui.popin.shop.card.CarousselCardPack;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCardPackCurrency;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 
 /**
@@ -26,7 +26,7 @@ class ShopCarousselCurrencies extends ShopCaroussel{
 	}
 	
 	override private function getNewCard (pCardToShow:String):CarouselCard {
-		return new CarousselCardPack();
+		return new CarouselCardPackCurrency();
 	}
 	
 	override private function getCardToShow ():Array<String> {

@@ -66,7 +66,7 @@ class GameManager {
 		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
-		UIManager.getInstance().startGame();	
+		UIManager.getInstance().startGame();
 		PoolingManager.init();
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());

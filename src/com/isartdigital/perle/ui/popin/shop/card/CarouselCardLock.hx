@@ -8,7 +8,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
  * ...
  * @author Alexis
  */
-class CarousselCardLock extends CarouselCard
+class CarouselCardLock extends CarouselCard
 {
 
 	private static inline var UNLOCK_TEXT = "Level : ";

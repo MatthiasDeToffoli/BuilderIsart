@@ -14,7 +14,7 @@ import pixi.interaction.EventTarget;
  * ...
  * @author ambroise
  */
-class CCUBuilding extends CarousselCardUnlock{
+class CCUBuilding extends CarouselCardUnlock{
 
 	private var text_name:TextSprite;
 	private var textPriceSoftHard:TextSprite;

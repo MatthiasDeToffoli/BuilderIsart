@@ -8,7 +8,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
  * ...
  * @author ambroise
  */
-class CCLBuilding extends CarousselCardLock{
+class CCLBuilding extends CarouselCardLock{
 
 	public function new() {
 		super();

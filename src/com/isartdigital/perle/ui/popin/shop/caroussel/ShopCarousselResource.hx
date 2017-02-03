@@ -3,7 +3,8 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
-import com.isartdigital.perle.ui.popin.shop.card.CarousselCardPack;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCardPack;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCardPackResource;
 import com.isartdigital.perle.ui.popin.shop.card.CCUResource;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -31,7 +32,7 @@ class ShopCarousselResource extends ShopCaroussel{
 	}
 	
 	override private function getNewCard (pCardToShow:String):CarouselCard {
-		return new CarousselCardPack();
+		return new CarouselCardPackResource();
 	}
 	
 	override private function getCardToShow ():Array<String> {

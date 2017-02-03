@@ -9,7 +9,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
  * ...
  * @author ambroise
  */
-class CarousselCardPack extends CarouselCard{
+class CarouselCardPack extends CarouselCard{
 
 	private var cardName:String;
 	private var price:TextSprite;
@@ -18,8 +18,8 @@ class CarousselCardPack extends CarouselCard{
 	private var picture:UISprite;
 	private var btn:SmartButton;// les gd l'ont construit bizarrement...
 	
-	public function new() {
-		super(AssetName.CAROUSSEL_CARD_PACK);
+	public function new(pID:String=null) {
+		super(pID);
 	}
 	
 	override public function init(pName:String):Void {

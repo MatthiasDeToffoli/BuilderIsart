@@ -11,7 +11,7 @@ import pixi.interaction.EventTarget;
  * ...
  * @author Alexis
  */
-class CarousselCardUnlock extends CarouselCard
+class CarouselCardUnlock extends CarouselCard
 {
 	private var buildingName:String;
 	
