@@ -64,8 +64,6 @@ class AssetName{
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
 	public static inline var SHOP_BTN_CLOSE:String = SHOP_PREFIX +  "Close_Button";
-	public static inline var SHOP_BTN_PURGATORY:String = /*SHOP_PREFIX +*/ "Purgatory_Button";
-	public static inline var SHOP_BTN_INTERNS:String = /*SHOP_PREFIX +*/ "Interns_Button";
 	public static inline var SHOP_BTN_TAB_BUILDING:String = /*SHOP_PREFIX +*/ "Onglet_Building";
 	public static inline var SHOP_BTN_TAB_DECO:String = /*SHOP_PREFIX +*/ "Onglet_Deco";
 	public static inline var SHOP_BTN_TAB_INTERN:String = /*SHOP_PREFIX +*/ "Onglet_Interns";

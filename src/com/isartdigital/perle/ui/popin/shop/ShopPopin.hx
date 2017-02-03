@@ -37,8 +37,6 @@ class ShopPopin extends SmartPopinExtended {
 	private static var buttonTab:Array<Array<SmartButton>>;
 	
 	private var btnExit:SmartButton;
-	private var btnPurgatory:SmartButton;
-	private var btnInterns:SmartButton;
 	private var tabs:Map<ShopTab, SmartComponent>;
 	private var bars:Map<ShopBar, SmartComponent>;
 	private var carousselSpawner:UISprite;
@@ -88,14 +86,10 @@ class ShopPopin extends SmartPopinExtended {
 		lwoodtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
-		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_PURGATORY), SmartButton);
-		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_INTERNS), SmartButton);
 		
 		addButton();
 		
 		Interactive.addListenerClick(btnExit, onClickExit);
-		Interactive.addListenerClick(btnPurgatory, onClickPurgatory);
-		Interactive.addListenerClick(btnInterns, onClickInterns);
 		
 	}
 	
@@ -266,8 +260,6 @@ class ShopPopin extends SmartPopinExtended {
 	
 	override public function destroy():Void {
 		Interactive.removeListenerClick(btnExit, onClickExit);
-		Interactive.removeListenerClick(btnPurgatory, onClickPurgatory);
-		Interactive.removeListenerClick(btnInterns, onClickInterns);
 		
 		Interactive.removeListenerClick(buttonOpenBundle, onClickOpenBundle);
 		Interactive.removeListenerClick(buttonBuilding1, onClickOpenBuldings);
