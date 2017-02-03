@@ -106,6 +106,10 @@ class Intern
 		}
 	}
 	
+	/**
+	 * Incremente the 
+	 * @param	pAlignment
+	 */
 	public static function incrementeInternHouses(pAlignment:Alignment):Void{
 		numberInternHouses[pAlignment] += 1;
 	}
