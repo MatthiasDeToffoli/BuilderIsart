@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.building.VicesBuilding;
+import com.isartdigital.perle.game.sprites.building.VirtuesBuilding;
 import com.isartdigital.perle.game.sprites.building.heaven.CollectorHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.DecoHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.HouseHeaven;
@@ -16,6 +18,7 @@ import com.isartdigital.perle.game.sprites.FootPrintAsset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
+import com.isartdigital.perle.game.virtual.vBuilding.VVicesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VDecoHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VHouseHeaven;
@@ -353,7 +356,10 @@ class Main extends EventEmitter
 			InternHouseHeaven,
 			InternHouseHell,
 			VInternHouseHeaven,
-			VInternHouseHell			
+			VInternHouseHell,
+			VicesBuilding,
+			VirtuesBuilding,
+			VVicesBuilding,
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

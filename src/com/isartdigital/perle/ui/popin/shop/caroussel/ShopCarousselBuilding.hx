@@ -17,7 +17,6 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		BuildingName.STYX_VIRTUE_1,
 		BuildingName.STYX_VIRTUE_2,
 		BuildingName.STYX_VIRTUE_3,
-		BuildingName.STYX_MARKET,
 		
 		BuildingName.HEAVEN_HOUSE,
 		BuildingName.HEAVEN_HOUSE_INTERNS,

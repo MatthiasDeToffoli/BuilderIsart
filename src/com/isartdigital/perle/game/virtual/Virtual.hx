@@ -18,13 +18,12 @@ class Virtual {
 	
 	public static var BUILDING_NAME_TO_VCLASS(default, never):Map<String, String> = [
 		BuildingName.STYX_PURGATORY => "VTribunal",
-		BuildingName.STYX_VICE_1 => "VVirtuesBuilding",
-		BuildingName.STYX_VICE_2 => "VVirtuesBuilding",
-		BuildingName.STYX_VICE_3 => "VVirtuesBuilding",
+		BuildingName.STYX_VICE_1 => "VVicesBuilding",
+		BuildingName.STYX_VICE_2 => "VVicesBuilding",
+		BuildingName.STYX_VICE_3 => "VVicesBuilding",
 		BuildingName.STYX_VIRTUE_1 => "VVirtuesBuilding",
 		BuildingName.STYX_VIRTUE_2 => "VVirtuesBuilding",
 		BuildingName.STYX_VIRTUE_3 => "VVirtuesBuilding",
-		BuildingName.STYX_MARKET => "VHouseHell", //todo: mauvaise VClass
 		
 		
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",
@@ -36,7 +35,6 @@ class Virtual {
 		BuildingName.HEAVEN_DECO_CLOUD => "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_LAKE=> "VDecoHeaven",
 		BuildingName.HEAVEN_DECO_PARK=> "VDecoHeaven",
-		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => "VDecoHeaven",
 		
 		
 		BuildingName.HELL_HOUSE => "VHouseHell",
@@ -48,7 +46,6 @@ class Virtual {
 		BuildingName.HELL_DECO_DEAD_HEAD => "VDecoHell",
 		BuildingName.HELL_DECO_BONES => "VDecoHell",
 		BuildingName.HELL_DECO_LAVA_SOURCE => "VDecoHell",
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING => "VDecoHell"
 	];
 	
 	

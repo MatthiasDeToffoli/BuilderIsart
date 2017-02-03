@@ -12,7 +12,8 @@ class AssetName{
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL3:String = "Tribunal_3";
-	public static inline var BUILDING_STYX_VICE:String = "Bat_Altar_Vice";
+	public static inline var BUILDING_STYX_VICE1:String = "Bat_Altar_Vice";
+	public static inline var BUILDING_STYX_VICE2:String = "Bat_Altar_Vice_2";
 	public static inline var BUILDING_STYX_VIRTUE:String = "Bat_Altar_Virtue";
 	
 	// Building Heaven
@@ -37,11 +38,11 @@ class AssetName{
 	
 	
 	// Décoration Heaven
-	public static inline var DECO_HEAVEN_TREE_1:String = "HeavenPropTree01";
-	public static inline var DECO_HEAVEN_TREE_2:String = "HeavenPropTree02";
-	public static inline var DECO_HEAVEN_CLOUD:String = "HeavenCloud02";
-	public static inline var DECO_HEAVEN_LAKE:String = "HeavenNature01";
-	public static inline var DECO_HEAVEN_ROCK:String = "Paradis_Rocher_P";
+	public static inline var DECO_HEAVEN_TREE_1:String = "HeavenPropRedTree";
+	public static inline var DECO_HEAVEN_TREE_2:String = "HeavenPropTree";
+	public static inline var DECO_HEAVEN_CLOUD:String = "HeavenPropCloud";
+	public static inline var DECO_HEAVEN_LAKE:String = "HeavenPropLake";
+	public static inline var DECO_HEAVEN_PARK:String = "HeavenPropPark";
 	
 	// Décoration Hell
 	public static inline var DECO_HELL_BONES:String = "HellPropBones";

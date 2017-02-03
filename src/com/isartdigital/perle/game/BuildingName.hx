@@ -16,7 +16,6 @@ class BuildingName {
 	public static inline var STYX_VIRTUE_1:String = "Altar Virtue 1";
 	public static inline var STYX_VIRTUE_2:String = "Altar Virtue 2";
 	public static inline var STYX_VIRTUE_3:String = "Altar Virtue 3";
-	public static inline var STYX_MARKET:String = "Market";
 	public static inline var STYX_DECO_BUILDING:String = "Styx Nice Building";
 	public static inline var STYX_DECO_GORGEOUS_BUILDING:String = "Styx Gorgeous Building";
 	
@@ -30,7 +29,6 @@ class BuildingName {
 	public static inline var HEAVEN_DECO_CLOUD:String = "Cloud";
 	public static inline var HEAVEN_DECO_LAKE:String = "Lake";
 	public static inline var HEAVEN_DECO_PARK:String = "Park";
-	public static inline var HEAVEN_DECO_GORGEOUS_BUILDING:String = "Heaven Gorgeous Building";
 	
 	
 	public static inline var HELL_HOUSE:String = "Hell House";
@@ -42,7 +40,6 @@ class BuildingName {
 	public static inline var HELL_DECO_DEAD_HEAD:String = "Dead Head";
 	public static inline var HELL_DECO_BONES:String = "Bones";
 	public static inline var HELL_DECO_LAVA_SOURCE:String = "Lava Source";
-	public static inline var HELL_DECO_GORGEOUS_BUILDING:String = "Hell Gorgeous Building";
 	
 	
 	 
@@ -82,8 +79,7 @@ class BuildingName {
 		HEAVEN_DECO_BIGGER_TREE 		=> [AssetName.DECO_HEAVEN_TREE_2],
 		HEAVEN_DECO_CLOUD		 		=> [AssetName.DECO_HEAVEN_CLOUD],
 		HEAVEN_DECO_LAKE		 		=> [AssetName.DECO_HEAVEN_LAKE],
-		HEAVEN_DECO_PARK	 			=> [AssetName.BUILDING_HEAVEN_HOUSE],
-		HEAVEN_DECO_GORGEOUS_BUILDING 	=> [AssetName.BUILDING_HEAVEN_HOUSE],
+		HEAVEN_DECO_PARK	 			=> [AssetName.DECO_HEAVEN_PARK],
 		
 		HELL_HOUSE 						=> [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_HOUSE_LEVEL2, AssetName.BUILDING_HELL_HOUSE_LEVEL3],
 		HELL_HOUSE_INTERNS				=> [AssetName.BUILDING_INTERN_HELL_HOUSE],
@@ -94,15 +90,13 @@ class BuildingName {
 		HELL_DECO_DEAD_HEAD 			=> [AssetName.DECO_HELL_DEAD_HEAD],
 		HELL_DECO_BONES		 			=> [AssetName.DECO_HELL_BONES],
 		HELL_DECO_LAVA_SOURCE 			=> [AssetName.DECO_HELL_LAVA],
-		HELL_DECO_GORGEOUS_BUILDING 	=> [AssetName.BUILDING_HELL_HOUSE],
 		
 		STYX_PURGATORY					=> [AssetName.BUILDING_STYX_PURGATORY, AssetName.BUILDING_STYX_PURGATORY_LEVEL2, AssetName.BUILDING_STYX_PURGATORY_LEVEL3],
 		STYX_VICE_1 					=> [AssetName.BUILDING_STYX_VIRTUE],
 		STYX_VICE_2 					=> [AssetName.BUILDING_STYX_VIRTUE],
 		STYX_VICE_3 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VICE],
-		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VICE],
-		STYX_VIRTUE_3 					=> [AssetName.BUILDING_STYX_VICE],
-		STYX_MARKET 					=> [AssetName.BUILDING_HELL_HOUSE],
+		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VICE1],
+		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VICE2],
+		STYX_VIRTUE_3 					=> [AssetName.BUILDING_STYX_VICE1],
 	];
 }

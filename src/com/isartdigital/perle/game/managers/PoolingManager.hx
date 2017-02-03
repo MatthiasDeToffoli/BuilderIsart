@@ -28,8 +28,9 @@ class PoolingManager {
 		AssetName.BUILDING_STYX_PURGATORY => "Tribunal",
 		AssetName.BUILDING_STYX_PURGATORY_LEVEL2 => "Tribunal",
 		AssetName.BUILDING_STYX_PURGATORY_LEVEL3=> "Tribunal",
-		AssetName.BUILDING_STYX_VIRTUE => "Building",
-		AssetName.BUILDING_STYX_VICE => "Building",
+		AssetName.BUILDING_STYX_VIRTUE => "VirtuesBuilding",
+		AssetName.BUILDING_STYX_VICE1 => "VicesBuilding",
+		AssetName.BUILDING_STYX_VICE2 => "VicesBuilding",
 		
 		
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
@@ -53,7 +54,7 @@ class PoolingManager {
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_CLOUD => "DecoHeaven",
 		AssetName.DECO_HEAVEN_LAKE => "DecoHeaven",
-		AssetName.DECO_HEAVEN_ROCK => "DecoHeaven",
+		AssetName.DECO_HEAVEN_PARK=> "DecoHeaven",
 		
 		
 		AssetName.DECO_HELL_BONES => "DecoHell",
