@@ -21,7 +21,7 @@ enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; }
 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
-	var userId:String;
+	var ID:String;
 }
 
 /**
@@ -184,6 +184,11 @@ class ServerManager {
 	}
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
+		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
+			Debug.error("Player connexion failed");
+			return;
+		}
+		
 		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
 		DeltaDNAManager.listenToCloseGame();
 	}

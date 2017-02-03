@@ -18,8 +18,8 @@ class DeltaDNAManager{
 			Config.DELTA_DNA_KEY_LIVE,
 			Config.DELTA_DNA_URL_COLLECT,
 			Config.DELTA_DNA_URL_ENGAGE,
-			pEvent.userId,
-			pEvent.userId + "_" + Date.now().getTime()
+			pEvent.ID,
+			pEvent.ID + "_" + Date.now().getTime()
 		);
 		
 		if (pEvent.isNewPlayer)
@@ -38,7 +38,6 @@ class DeltaDNAManager{
 	}
 	
 	private static function onUnload ():Void {
-		Browser.window.alert("hello close");
 		DeltaDNA.addEvent(DeltaDNA.GAME_ENDED);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 	}

@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
+import com.isartdigital.perle.game.managers.CocoonJSManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.MarketingManager;
@@ -24,6 +25,7 @@ import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.system.DeviceCapabilities;
 import pixi.interaction.EventTarget;
 
 
@@ -46,6 +48,10 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+		
+		if (DeviceCapabilities.isCocoonJS)
+			CocoonJSManager.awake();
+		
 		MarketingManager.awake(); // always before VTile
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
