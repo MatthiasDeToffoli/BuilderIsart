@@ -65,6 +65,7 @@ class QuestsManager
 	 * @return	The quest's datas
 	 */
 	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
+		trace(pIdIntern);
 		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Int> = createRandomGapArray();
 		
@@ -137,11 +138,13 @@ class QuestsManager
 			
 			if (!isMaxStress(questInProgress.refIntern)){
 				TimeManager.nextStepQuest(questInProgress);
+				trace(Intern.getIntern(questInProgress.refIntern));
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
 			}
 			
 			else{
 				trace("dismiss");
+				MaxStressPopin.quest = questInProgress;
 				UIManager.getInstance().closeCurrentPopin;
 				GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 			}
@@ -181,13 +184,14 @@ class QuestsManager
 	public static function finishQuest(pQuest:TimeQuestDescription):Void{
 		if (isMaxStress(questInProgress.refIntern)){
 			MaxStressPopin.quest = pQuest;
-			trace(MaxStressPopin.quest);
+			//trace(MaxStressPopin.quest);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 		}
 		
-		else {		
+		else {
+			Intern.getIntern(pQuest.refIntern).status = Intern.STATE_RESTING;
 			UIManager.getInstance().closeCurrentPopin();
 			InternElementInQuest.canPushNewScreen = true;
 			UIManager.getInstance().openPopin(ListInternPopin.getInstance());

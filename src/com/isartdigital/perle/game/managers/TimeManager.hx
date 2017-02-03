@@ -329,6 +329,7 @@ class TimeManager {
 			}
 			
 			pElement.stepIndex++;
+			trace(pElement.refIntern);
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			eTimeQuest.emit(EVENT_CHOICE_DONE);
 		}

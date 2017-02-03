@@ -25,6 +25,8 @@ class Intern
 	public static inline var ALIGN = "hell";
 	public static inline var MAX_STRESS:Int = 100;
 	
+	public static var numberInternHouses:Map<Alignment, Int>;
+	
 	public static function getIntern(pId:Int):InternDescription{
 		var lIntern:InternDescription = null;
 		
@@ -38,6 +40,7 @@ class Intern
 	
 	public static function init(){
 		internsListArray = new Array<InternDescription>();
+		numberInternHouses = new Map < Alignment, Int>();
 		
 		internsMap = new Map<Alignment, Array<InternDescription>>();
 		internsMap.set(Alignment.hell, new Array<InternDescription>()); 
@@ -101,6 +104,10 @@ class Intern
 			
 			internsListArray.push(newIntern);
 		}
+	}
+	
+	public static function incrementeInternHouses(pAlignment:Alignment):Void{
+		numberInternHouses[pAlignment] += 1;
 	}
 	
 	public static function destroyIntern(pId:Int):Void{	

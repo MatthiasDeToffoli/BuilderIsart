@@ -14,7 +14,7 @@ import pixi.core.sprites.Sprite;
 
 //@:optional vous connaisiez ?
 
-enum GeneratorType {soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; }
+enum GeneratorType {soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise;}
 enum Alignment {neutral; hell; heaven; }
 
 
@@ -30,6 +30,7 @@ typedef TileDescription = {
 	@:optional var maxPopulation:Int;
 	@:optional var timeDesc:TimeDescription;
 	@:optional var isTribunal:Bool;
+	@:optional var intern:InternDescription;
 }
 
 typedef RegionDescription = {

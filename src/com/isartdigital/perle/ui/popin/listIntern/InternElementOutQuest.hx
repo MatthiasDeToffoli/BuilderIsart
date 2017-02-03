@@ -60,6 +60,7 @@ class InternElementOutQuest extends InternElement
 		
 		internDatas = pDesc;
 		idIntern = pDesc.id;
+		//trace(idIntern);
 		
 		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
 	}

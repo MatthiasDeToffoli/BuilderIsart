@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.contextual.HudContextual;
@@ -232,7 +233,6 @@ class Hud extends SmartScreen
 	private function onKeyDown(pEvent:KeyboardEvent){
 		if (pEvent.key != "i" && pEvent.key != "j") return;
 		if (pEvent.key == "i") ResourcesManager.levelUp();
-		if (pEvent.key == "j") UIManager.getInstance().openPopin(InternHousePopin.getInstance());
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {

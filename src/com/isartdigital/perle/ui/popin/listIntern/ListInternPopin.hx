@@ -80,6 +80,7 @@ class ListInternPopin extends SmartPopin
 	 * @param	 the descritpion of the intern
 	 */
 	private function spawnInternDescription(spawnerName:String, pDesc:InternDescription):Void{
+		//trace(pDesc);
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var blocDescription:InternElement = (pDesc.quest != null) ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
 		//var blocDescription:InternElement = new InternElementInQuest(spawner.position, pDesc);
