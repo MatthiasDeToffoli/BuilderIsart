@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.IdManager;
@@ -372,6 +373,8 @@ class Phantom extends Building {
 	 * @param	pRect
 	 */
 	private function canBuildHere():Bool {
+		
+		
 		setMapColRow(getRoundMapPos(position), Building.getSizeOnMap(buildingName));
 		regionMap = getRegionMap();
 		
@@ -396,12 +399,16 @@ class Phantom extends Building {
 		
 		
 		// between region or region don't exist
-		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding) {
+		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding || passBuildingLimit()) {
 			setExceedingToAll();
 			return false;
 		}
 		
 		return buildingOnGround() && buildingCollideOther();
+	}
+	
+	private function passBuildingLimit():Bool {
+		return !BuildingLimitManager.canIPastThisBuildingInThisRegion(regionMap.region.x, regionMap.region.y, buildingName) || !BuildingLimitManager.canIPastThisBuilding(buildingName);
 	}
 	
 	private function getRegionMap ():RegionMap {

@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
 import com.isartdigital.perle.game.managers.BoostManager;
+import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -164,6 +165,11 @@ class VAltar extends VBuilding
 		}
 		
 		
+	}
+	
+	override function incrementNumberBuilding():Void 
+	{
+		BuildingLimitManager.incrementMapNumbersBuilding(tileDesc.buildingName);
 	}
 	
 	private function calculTime():Void{

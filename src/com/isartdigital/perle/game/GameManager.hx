@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.BoostManager;
+import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
@@ -48,10 +49,13 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
+
 		
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
 		
+
+		BuildingLimitManager.awake();
 		MarketingManager.awake(); // always before VTile
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling

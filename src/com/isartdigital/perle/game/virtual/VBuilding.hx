@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.managers.BoostManager;
+import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -70,6 +71,7 @@ class VBuilding extends VTile {
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
 		
+		incrementNumberBuilding();
 		checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
@@ -95,7 +97,14 @@ class VBuilding extends VTile {
 		haveRecolter = true;
 	}
 	
-
+	private function incrementNumberBuilding():Void {
+		BuildingLimitManager.incrementMapNumbersBuildingPerRegion(tileDesc.regionX, tileDesc.regionY, tileDesc.buildingName);
+	}
+	
+	private function decrementNumberBuilding():Void {
+		BuildingLimitManager.decrementMapNumbersBuildingPerRegion(tileDesc.regionX, tileDesc.regionY, tileDesc.buildingName);
+	}
+	
 	override public function activate ():Void {
 		super.activate();
 		graphic = cast(Building.createBuilding(tileDesc), Container);
@@ -187,6 +196,7 @@ class VBuilding extends VTile {
 	
 	public function move (pRegionMap:RegionMap):Void {
 		checkIfIsOutAnAltarZone();
+		decrementNumberBuilding();
 		updateWorldMapPosition(pRegionMap);
 		activate();
 		// change bellow if possible to move building when constructing
@@ -277,6 +287,7 @@ class VBuilding extends VTile {
 	
 	override public function destroy():Void {
 		checkIfIsOutAnAltarZone();
+		decrementNumberBuilding();
 		BoostManager.boostAltarEvent.off(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 		if (currentState == VBuildingState.isMoving) {
 			throw ("Sure about destroying a moving VBuilding ?? not an error ? ask Ambroise");
