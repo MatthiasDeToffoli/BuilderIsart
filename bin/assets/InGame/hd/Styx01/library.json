@@ -9,26 +9,26 @@
       {
        "symbol": "styx_gauche",
        "origin": [
-        426.5,
-        477.5
+        424,
+        473
        ],
        "rect": [
         1,
         1,
-        853,
-        955
+        848,
+        946
        ]
       },
       {
-       "symbol": "styx_droit",
+       "symbol": "styx_drot",
        "origin": [
-        426.5,
+        423.5,
         472.5
        ],
        "rect": [
         1,
-        958,
-        853,
+        949,
+        847,
         945
        ]
       }
@@ -44,18 +44,18 @@
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        426.5,
-        477.5
-       ],
        "loc": [
-        -941.05,
-        732.3
+        -952.55,
+        732.15
        ],
+       "tweened": false,
+       "duration": 1,
        "index": 0,
        "ref": "styx_gauche",
-       "tweened": false
+       "pivot": [
+        424,
+        473
+       ]
       }
      ],
      "name": "Calque 1"
@@ -63,18 +63,18 @@
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        426.5,
-        472.5
-       ],
        "loc": [
-        -88.05,
-        480
+        -108.05,
+        468.1
        ],
+       "tweened": false,
+       "duration": 1,
        "index": 0,
-       "ref": "styx_droit",
-       "tweened": false
+       "ref": "styx_drot",
+       "pivot": [
+        423.5,
+        472.5
+       ]
       }
      ],
      "name": "Calque 2"
@@ -83,6 +83,6 @@
    "id": "Styx01"
   }
  ],
- "md5": "5c08404a24f76c65d343617a9f698531",
+ "md5": "716ee2fc92ac87c0cf5ea867c0d6a370",
  "frameRate": 60
 }

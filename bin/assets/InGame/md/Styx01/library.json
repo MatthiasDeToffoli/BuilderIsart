@@ -9,14 +9,14 @@
       {
        "symbol": "styx_gauche",
        "origin": [
-        319.9,
-        358.1
+        318,
+        354.75
        ],
        "rect": [
         1,
         1,
-        640,
-        717
+        636,
+        710
        ]
       }
      ]
@@ -25,15 +25,15 @@
      "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "styx_droit",
+       "symbol": "styx_drot",
        "origin": [
-        319.9,
+        317.6,
         354.4
        ],
        "rect": [
         1,
         1,
-        640,
+        636,
         709
        ]
       }
@@ -49,18 +49,18 @@
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        319.875,
-        358.125
-       ],
        "loc": [
-        -705.7875,
-        549.225
+        -714.4125,
+        549.1125
        ],
+       "tweened": false,
+       "duration": 1,
        "index": 0,
        "ref": "styx_gauche",
-       "tweened": false
+       "pivot": [
+        318,
+        354.75
+       ]
       }
      ],
      "name": "Calque 1"
@@ -68,18 +68,18 @@
     {
      "keyframes": [
       {
-       "duration": 1,
-       "pivot": [
-        319.875,
-        354.375
-       ],
        "loc": [
-        -66.0375,
-        360
+        -81.0375,
+        351.075
        ],
+       "tweened": false,
+       "duration": 1,
        "index": 0,
-       "ref": "styx_droit",
-       "tweened": false
+       "ref": "styx_drot",
+       "pivot": [
+        317.625,
+        354.375
+       ]
       }
      ],
      "name": "Calque 2"
@@ -88,6 +88,6 @@
    "id": "Styx01"
   }
  ],
- "md5": "5c08404a24f76c65d343617a9f698531",
+ "md5": "716ee2fc92ac87c0cf5ea867c0d6a370",
  "frameRate": 60
 }
