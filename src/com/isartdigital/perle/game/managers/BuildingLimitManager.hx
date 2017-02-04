@@ -29,7 +29,7 @@ class BuildingLimitManager
 		if (!mapNumbersBuildingPerRegion[regionX].exists(regionY)) mapNumbersBuildingPerRegion[regionX][regionY] = new Map<String,Int>();
 		if (!mapNumbersBuildingPerRegion[regionX][regionY].exists(pName)) mapNumbersBuildingPerRegion[regionX][regionY][pName] = 0;
 		
-		mapNumbersBuildingPerRegion[regionX][regionY][pName]++;
+		mapNumbersBuildingPerRegion[regionX][regionY][pName]+= 1;
 	}
 	
 	/**
@@ -57,7 +57,7 @@ class BuildingLimitManager
 	public static function incrementMapNumbersBuilding(pName:String):Void {
 		if (!mapNumbersBuilding.exists(pName)) mapNumbersBuilding[pName] = 0;
 		
-		mapNumbersBuilding[pName]++;
+		mapNumbersBuilding[pName]+= 1;
 	}
 	
 	/**

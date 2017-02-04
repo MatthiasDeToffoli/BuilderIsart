@@ -49,6 +49,33 @@ class Intern
 		getJson();
 	}
 	
+	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
+		//var lIntern:InternDescription;
+		//var lRandomIntern:Int = Math.round(Math.random() * internsMap[pAlignment].length);
+		
+		if (numberInternHouses[pAlignment] > internsListArray.length){
+			trace("ok for buying");
+			//lIntern = internsMap[pAlignment][lRandomIntern];
+			
+			//for (intern in internsListArray){
+				
+				//if (pIntern.id == intern.id) return false; //Verification, to avoid to buy the same intern
+				//else {
+					//internsListArray.push(pIntern);
+					//break;
+				//}
+			//}
+			
+			return true;
+		}
+		
+		else return false;
+	}
+	
+	public static function buy(pIntern:InternDescription):Void{
+		internsListArray.push(pIntern);
+	}
+	
 	/**
 	 * get all the interns in Interns table
 	 */
@@ -107,12 +134,19 @@ class Intern
 	}
 	
 	/**
-	 * Incremente the 
+	 * Incremente the number of intern houses avalaibles
 	 * @param	pAlignment
 	 */
 	public static function incrementeInternHouses(pAlignment:Alignment):Void{
 		numberInternHouses[pAlignment] += 1;
-		trace(numberInternHouses[pAlignment]);
+	}
+	
+	/**
+	 * Decremente the number of intern houses avalaibles 
+	 * @param	pAlignment
+	 */
+	public static function decrementeInternHouses(pAlignment:Alignment):Void{
+		numberInternHouses[pAlignment] -= 1;
 	}
 	
 	public static function destroyIntern(pId:Int):Void{	

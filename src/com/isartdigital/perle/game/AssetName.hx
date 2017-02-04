@@ -96,7 +96,6 @@ class AssetName{
 	// Shop caroussel
 	public static inline var CAROUSSEL_ARROW_LEFT:String = "Button_ArrowLeft";
 	public static inline var CAROUSSEL_ARROW_RIGHT:String = "Button_ArrowRight";
-	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";
 	
 	
 	// Shop caroussel card
@@ -120,7 +119,20 @@ class AssetName{
 	public static inline var CARD_PACK_ICON:String ="Pack_Content_Icon";
 	public static inline var CARD_PACK_NAME:String ="Pack_Content_txt";
 	public static inline var CARD_PACK_PICTURE:String ="Pack_Picture";
-	public static inline var CARD_PACK_BTN:String ="Bouton";
+	public static inline var CARD_PACK_BTN:String = "Bouton";
+	
+	//Shop caroussel Interns
+	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";
+	public static inline var CAROUSSEL_INTERN_HELL_CARD:String = "Intern_HellCard";
+	public static inline var CAROUSSEL_INTERN_HEAVEN_CARD:String = "Intern_HeavenCard";
+	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER:String = "InternHouseNumber";
+	
+	//Shop caroussel Interns cards
+	public static inline var CARD_NAME:String = "_internPortrait_Name";
+	public static inline var CARD_PORTRAIT:String = "_intern_portrait";
+	public static inline var CARD_GAUGE_EFFICIENCY:String = "_internCard_jauge_efficiency";
+	public static inline var CARD_GAUGE_SPEED:String = "_internCard_jauge_speed";
+	public static inline var CARD_GAUGE_STRESS:String = "_internCard_jauge_stress";
 	
 	// Popin Confirm Buy Building
 	/*public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";

@@ -25,6 +25,7 @@ import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.UIManager;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
@@ -83,6 +84,7 @@ class GameManager {
 		ClippingManager.update();
 		FootPrint.startClass();
 		ChoiceManager.init();
+		ShopCarousselInterns.initID();
 		
 		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();

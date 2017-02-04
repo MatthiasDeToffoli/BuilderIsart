@@ -20,4 +20,7 @@ class VInternHouseHeaven extends VInternHouse
 		
 	}
 	
+	override public function destroy(){
+		Intern.decrementeInternHouses(Alignment.heaven);
+	}
 }

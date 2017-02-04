@@ -42,6 +42,7 @@ import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.game.GameStageScale;
 import com.isartdigital.utils.game.StateGraphic;
 import com.isartdigital.utils.loader.GameLoader;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
@@ -70,6 +71,7 @@ class Main extends EventEmitter
 	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config" + JSON_EXTENSION;
 	public static inline var UI_FOLDER:String = "UI/";
 	public static inline var IN_GAME_FOLDER:String = "InGame/";
+	public static inline var JSON_LOCALIZATION:String = JSON_FOLDER + "localization/localization";
 	
 	public static inline var FRAME_INTERVAL:UInt = 16; // Math.floor(1000/60) milliseconds
 	
@@ -245,6 +247,9 @@ class Main extends EventEmitter
 		// BuyManager price
 		lLoader.addTxtFile(PRICE_JSON_NAME);
 		
+		//Localization 
+		lLoader.addTxtFile(JSON_LOCALIZATION + JSON_EXTENSION);
+		
 		// affiche l'écran de préchargement
 		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen
 		
@@ -281,6 +286,7 @@ class Main extends EventEmitter
 		DeviceCapabilities.displayFullScreenButton();
 		
 		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
+		Localisation.init(GameLoader.getContent(JSON_LOCALIZATION + JSON_EXTENSION));
 		GameManager.getInstance().start();
 	}
 	

@@ -58,6 +58,7 @@ class ListInternPopin extends SmartPopin
 			
 			for (i in 0...AssetName.internListSpawners.length){
 				if (i < Intern.internsListArray.length){
+					trace(Intern.internsListArray.length);
 					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
 				}
 				

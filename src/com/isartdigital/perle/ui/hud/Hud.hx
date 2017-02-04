@@ -78,8 +78,7 @@ class Hud extends SmartScreen
 	private var btnSoft:SmartButton;
 	private var btnHard:SmartButton;
 	private var containerEffect:Container;
-	private var movingBuilding:SmartComponent;
-	
+	private var movingBuilding:SmartComponent;	
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -284,6 +283,8 @@ class Hud extends SmartScreen
 	
 	private function onKeyDown(pEvent:KeyboardEvent){
 		//DialogueManager.registerIsADialogue = false;
+		if (pEvent.key != "g" && pEvent.key != "j") return;
+		if (pEvent.key == "g") ResourcesManager.levelUp();
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {
