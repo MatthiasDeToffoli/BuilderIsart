@@ -273,7 +273,7 @@ class Main extends EventEmitter
 		// transmet à MovieClipAnimFactory la description des planches de Sprites utilisées par les anim MovieClip des instances de StateGraphic
 		//MovieClipAnimFactory.addTextures(GameLoader.getContent("assets.json")); // on utilise flump maintenant.
 		// transmet au StateGraphic la description des boxes de collision utilisées par les instances de StateGraphic
-		//StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
+		StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
 		
 		// Ouvre la TitleClard
 		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
