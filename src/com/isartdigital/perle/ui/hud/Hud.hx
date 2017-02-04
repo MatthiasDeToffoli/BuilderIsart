@@ -68,7 +68,7 @@ class Hud extends SmartScreen
 	private var btnShop:SmartButton;
 	private var btnPurgatory:SmartButton;
 	private var btnInterns:SmartButton;
-	private var btnMissions:SmartButton;
+	//private var btnMissions:SmartButton; // todo 
 	private var btnIron:SmartButton;
 	private var btnWood:SmartButton;
 	private var btnSoft:SmartButton;
@@ -91,7 +91,7 @@ class Hud extends SmartScreen
 		super("HUD_Desktop");
 		modal = null;
 		containerBuildingHud = new Container();
-		BHHarvestHouse.getInstance().init();
+		//BHHarvestHouse.getInstance().init(); // todo
 		BHHarvest.getInstance().init();
 		BHConstruction.getInstance().init();
 		BHMoving.getInstance().init();
@@ -137,14 +137,15 @@ class Hud extends SmartScreen
 			{
 				case BuildingHudType.HARVEST: {
 					if (Std.is(BuildingHud.virtualBuilding, VHouse))
-						openHarvest(BHHarvestHouse.getInstance());
+						//openHarvest(BHHarvestHouse.getInstance()); // todo
+						trace("todo");
 					else openHarvest(BHHarvest.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION:
 					openConstruction(BHConstruction.getInstance());
 				case BuildingHudType.MOVING: 
 					BHHarvest.getInstance().removeListenerGameContainer();
-					BHHarvestHouse.getInstance().removeListenerGameContainer();
+					//BHHarvestHouse.getInstance().removeListenerGameContainer(); // todo
 					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
 				case BuildingHudType.NONE: 
 					
@@ -198,13 +199,13 @@ class Hud extends SmartScreen
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
-		btnMissions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton);
+		//btnMissions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton); // todo 
 		
 		Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.addListenerClick(btnInterns, onClickListIntern);
-		Interactive.addListenerClick(btnMissions, onClickMission);
+		//Interactive.addListenerClick(btnMissions, onClickMission); // todo 
 		
 		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
@@ -391,7 +392,7 @@ class Hud extends SmartScreen
 		Interactive.removeListenerClick(btnShop, onClickShop);
 		Interactive.removeListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.removeListenerClick(btnInterns, onClickListIntern);
-		Interactive.removeListenerClick(btnMissions, onClickMission);
+		//Interactive.removeListenerClick(btnMissions, onClickMission); // todo 
 		
 		Interactive.removeListenerClick(btnIron, onClickShopResource);
 		Interactive.removeListenerClick(btnWood, onClickShopResource);

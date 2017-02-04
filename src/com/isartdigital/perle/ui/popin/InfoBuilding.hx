@@ -274,7 +274,7 @@ class InfoBuilding extends SmartPopinExtended{
 		UIManager.getInstance().closeCurrentPopin();
 		
 		if (Std.is(virtualBuilding, VHouse)) {
-			BHHarvestHouse.getInstance().onClickDestroy();
+			//BHHarvestHouse.getInstance().onClickDestroy(); // todo
 		}
 		else BHHarvest.getInstance().onClickDestroy();	
 	}

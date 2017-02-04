@@ -40,8 +40,9 @@ class BHMoving extends BuildingHud{
 	
 	override private function addListeners ():Void {
 		// TODO : décommenté quand assetName à jour , qui ne fera plus bugué le jeu.
-		//btnCancel = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CANCEL), SmartButton);
-		//Interactive.addListenerClick(btnCancel, onClickCancel);
+		SmartCheck.traceChildrens(this);
+		btnCancel = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CANCEL), SmartButton);
+		Interactive.addListenerClick(btnCancel, onClickCancel);
 		
 		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP) {
 			btnConfirm = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CONFIRM), SmartButton);
