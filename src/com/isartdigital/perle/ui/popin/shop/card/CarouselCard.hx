@@ -27,9 +27,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	public function new(pAsset:String) {
 		super(pAsset);
-		
-		scale.x = TWEEN_START_SCALE;
-		scale.y = TWEEN_START_SCALE;
 	}
 	
 	/**
@@ -44,7 +41,7 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	override private function _mouseDown (pEvent:EventTarget = null): Void {
 		super._mouseDown(pEvent);
-		if (isInit) // i've tried using build funciton override, doesn't seem to work
+		if (isInit) // i've tried using build function override, doesn't seem to work
 			buildCard();
 	}
 	
@@ -65,7 +62,7 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	/**
 	 * Put scale to 1:1
 	 */
-	private function tweenPopin ():Void {
+	private function tweenPopin ():Void { // todo: trouver un autre transition ?
 		TweenMax.to(scale, TWEEN_DURATION, {
 			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
 			x:1,

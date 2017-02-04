@@ -16,6 +16,7 @@ class CarouselCardPack extends CarouselCard{
 	private var icon:UISprite;
 	private var textName:TextSprite;
 	private var picture:UISprite;
+	private var btn:SmartButton;// les gd l'ont construit bizarrement...
 	
 	public function new(pID:String=null) {
 		super(pID);
@@ -28,6 +29,7 @@ class CarouselCardPack extends CarouselCard{
 	
 	override private function buildCard():Void {
 		super.buildCard();
+		btn = cast(SmartCheck.getChildByName(this, "Button"), SmartButton);
 		price = cast(SmartCheck.getChildByName(btn, AssetName.CARD_PACK_PRICE), TextSprite);
 		icon = cast(SmartCheck.getChildByName(btn, AssetName.CARD_PACK_ICON), UISprite);
 		textName = cast(SmartCheck.getChildByName(btn, AssetName.CARD_PACK_NAME), TextSprite);

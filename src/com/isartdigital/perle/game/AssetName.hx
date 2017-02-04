@@ -107,6 +107,13 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "Shop_CurrencyPack";
 	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "Shop_RessourcePack";
 	
+	// Shop caroussel card building unlock and locked
+	public static inline var CARD_BACKGROUND_NEUTRAL_CONTAINER:String = "Bg";
+	public static inline var CARD_BACKGROUND_HEAVEN_UP:String = "_itemunlockedHEAVEN_bg";
+	public static inline var CARD_BACKGROUND_HEAVEN_DOWN:String = "_itemunlockedHEAVEN_down_bg";
+	public static inline var CARD_BACKGROUND_HELL_UP:String = "_itemunlockedHELL_bg";
+	public static inline var CARD_BACKGROUND_HELL_DOWN:String = "_itemunlockedHELL_down_bg";
+	
 	// Shop caroussel card pack
 	public static inline var CARD_PACK_PRICE:String ="Pack_Price";
 	public static inline var CARD_PACK_ICON:String ="Pack_Content_Icon";
