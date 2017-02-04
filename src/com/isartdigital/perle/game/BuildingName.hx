@@ -61,12 +61,12 @@ class BuildingName {
 	
 	// dans traduciton : assetNameNameToTrad à changer pr buildingNameToTrad
 	
-	public static function getAssetName (pBuildingName:String, pLevel:Int = 0):String {
+	public static function getAssetName (pBuildingName:String, pLevel:Int = 0,?suffix:String = ""):String {
 		if (BUILDING_NAME_TO_ASSETNAMES[pBuildingName] == null ||
 			BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel] == null)
 			Debug.error("AssetName for BuildingName : '"+pBuildingName+"' not found, for level : "+pLevel);
 		
-		return BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel];
+		return BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel] + suffix;
 	}
 	
 	

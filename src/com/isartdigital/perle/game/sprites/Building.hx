@@ -117,8 +117,11 @@ class Building extends Tile implements IZSortable
 	 * @param	pTileDesc
 	 * @return
 	 */
-	public static function createBuilding(pTileDesc:TileDescription):Building {
-		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level));
+	public static function createBuilding(pTileDesc:TileDescription, state:VBuildingState):Building {
+		
+		var suffix:String = state == VBuildingState.isBuilding && pTileDesc.buildingName == BuildingName.HEAVEN_HOUSE ? AssetName.CONSTRUCT:""; //@TODO : le test avec building va	 péter quand on les aura tous :)
+		
+		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level) + suffix);
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
@@ -135,8 +138,9 @@ class Building extends Tile implements IZSortable
 		list.push(lBuilding);
 		lBuilding.init();
 		container.addChild(lBuilding);
-		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
 		
+		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
+
 		return lBuilding;
 	}
 	

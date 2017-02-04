@@ -34,8 +34,12 @@ class PoolingManager {
 		
 		
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
-		AssetName.BUILDING_HELL_HOUSE_LEVEL2 => "HouseHeaven",
-		AssetName.BUILDING_HELL_HOUSE_LEVEL3 => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT => "HouseHeaven",
+
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 + AssetName.CONSTRUCT=> "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 + AssetName.CONSTRUCT=> "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "CollectorHeaven",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "CollectorHeaven",
@@ -44,8 +48,8 @@ class PoolingManager {
 		
 		
 		AssetName.BUILDING_HELL_HOUSE => "HouseHell",
-		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHell",
-		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHell",
+		AssetName.BUILDING_HELL_HOUSE_LEVEL2 => "HouseHell",
+		AssetName.BUILDING_HELL_HOUSE_LEVEL3 => "HouseHell",
 		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "CollectorHell",
 		AssetName.BUILDING_HELL_COLLECTOR_LEVEL2 => "CollectorHell",
 	    AssetName.BUILDING_INTERN_HELL_HOUSE => "InternHouseHell",

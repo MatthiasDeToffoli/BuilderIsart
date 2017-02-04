@@ -107,7 +107,7 @@ class VBuilding extends VTile {
 	
 	override public function activate ():Void {
 		super.activate();
-		graphic = cast(Building.createBuilding(tileDesc), Container);
+		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 
 		if(haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
@@ -281,6 +281,8 @@ class VBuilding extends VTile {
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		setState(VBuildingState.isBuilt);
+		desactivate();
+		activate();
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}
