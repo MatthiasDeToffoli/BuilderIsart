@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -65,7 +66,7 @@ class CameraManager
 	 * @param	pSpeed
 	 */
 	public static function move(pSpeedX:Float, pSpeedY:Float):Void {
-		if (Hud.isHide)
+		if (Hud.isHide && !Phantom.isSet())
 			return;
 		
 		var lRegionCenters = getRegionCenters();

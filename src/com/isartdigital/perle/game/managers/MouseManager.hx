@@ -99,11 +99,11 @@ class MouseManager {
 			position = touchGlobalPos;
 		
 		positionInGame = getLocalPos(GameStage.getInstance().getGameContainer());
-
+		
 		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
 			
-		if (testInstancePhantom()) {
+		if (Phantom.isSet()) {
 			CameraManager.scrollOnLimitsScreen(positionInGame);
 			updatePrecedentMousePos();
 		}
@@ -136,32 +136,21 @@ class MouseManager {
 	private function updatePrecedentMousePos():Void {
 		precedentMousePos.copy(getLocalPos(GameStage.getInstance().getGameContainer()));
 	}
-		
-	private function testInstancePhantom():Bool {
-		var lInstancePhantom:Phantom = Phantom.getInstancePhantom();
-		
-		return lInstancePhantom != null;
-	}
 	
 	// todo : n'agit pas si sur HUD
 	/*if (!Std.is(pEvent.target, Hud))m inutile ce truc :|
 	return; ?*/
 	private function onMouseDown(pEvent:Dynamic):Void {
-		//if (!Phantom.isMoving()) {
-			mouseTouchDown = true;
-			precedentMousePos.copy(positionInGame);
-		//}
+		mouseTouchDown = true;
+		precedentMousePos.copy(positionInGame);
 	}
 	
 	private function onTouchDown(pEvent:TouchEvent):Void {
-		
 		// don't rely only en TouchEvent.MOVE to get globalPos !
-		//if (!Phantom.isMoving()) {
-			touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
-			mouseTouchDown = true;
-			precedentMousePos.copy(positionInGame);
-			oneFrameHack = true;
-		//}
+		touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
+		mouseTouchDown = true;
+		precedentMousePos.copy(positionInGame);
+		oneFrameHack = true;
 	}
 	
 	private function onMouseTouchUp (): Void {

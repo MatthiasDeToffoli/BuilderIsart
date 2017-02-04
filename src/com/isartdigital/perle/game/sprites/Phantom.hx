@@ -120,6 +120,8 @@ class Phantom extends Building {
 	}
 	
 	public static function onClickConfirmMove ():Void {
+		if (instance == null)
+			Debug.error("instance is null in Phantom.hx, this has to be debug, @Vicktor : and not necessarely by doing 'if (instance != null)'");
 		if (instance != null) instance.confirmMove();
 	}
 	
@@ -639,8 +641,8 @@ class Phantom extends Building {
 	 * Return true if user is making a new build.
 	 * @return
 	 */
-	public static function isMoving():Bool {
-		return instance != null && instance.mouseDown;
+	public static function isSet ():Bool {
+		return instance != null;
 	}
 	
 	// Interation Manager being annoying becaus he has a unusable OnMouseDown function !
