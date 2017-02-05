@@ -42,26 +42,20 @@ typedef EventExceeding = {
 class Phantom extends Building {
 	
 	public static inline var EVENT_CANT_BUILD:String = "Phantom_Cant_Build";
-	
 	private static inline var FILTER_OPACITY:Float = 0.5;
 	private static inline var MAX_DURATION_FOR_CLICK:Int = 500;// milliseconds
 	
 	public static var eExceedingTiles:EventEmitter;
-	
 	private static var exceedingTile:Array<Index>;
-	
 	private static var colorMatrix:ColorMatrixFilter;
 	private static var instance:Phantom;
 	private static var container:Container;
 	private static var alignementBuilding:Alignment;
-	
 	public var buildingName:String;
-	
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
 	private var precedentBesMapPos:Point = new Point(0, 0);
 	private var vBuilding:VBuilding;
-	
 	private var mouseDownDuration:Int = 0;// milliseconds
 	private var touchUpdateNeeded:Bool;
 	
@@ -77,10 +71,6 @@ class Phantom extends Building {
 	public static function gameLoop():Void {
 		if (instance != null)
 			instance.doAction();
-	}
-	
-	public static function getInstancePhantom():Phantom {
-		return instance;
 	}
 	
 	public static function onClickShop (pBuildingName:String):Void {
@@ -125,6 +115,10 @@ class Phantom extends Building {
 		if (instance != null) instance.confirmMove();
 	}
 	
+	/**
+	 * Create a Building whitout any VBuilding that is used when moving building or creating a new building.
+	 * @param	pBuildingName
+	 */
 	private static function createPhantom (pBuildingName:String):Void {
 		if (instance != null && instance.assetName == BuildingName.getAssetName(pBuildingName))
 			return;
@@ -198,6 +192,9 @@ class Phantom extends Building {
 		touchUpdateNeeded = true;
 	}
 	
+	/**
+	 * Register the length of a click
+	 */
 	private function doActionClickBuild ():Void {
 		
 		if (mouseDown)
@@ -210,6 +207,9 @@ class Phantom extends Building {
 			mouseDownDuration = 0;
 	}
 	
+	/**
+	 * Validate the click to make a new build if the click is short enough
+	 */
 	private function validateClickBuild ():Void {
 		if (mouseDownDuration > 0 && 
 			mouseDownDuration <  MAX_DURATION_FOR_CLICK)
@@ -587,6 +587,9 @@ class Phantom extends Building {
 		return lExceeding;
 	}
 	
+	/**
+	 * The full space under the building is marked not valid to build.
+	 */
 	private function setExceedingToAll ():Void {
 		var lAllExceeding:Array<Index> = [];
 		
@@ -603,6 +606,7 @@ class Phantom extends Building {
 	}
 	
 	/**
+	 * Emit an array of Point corresponding to invalid tiles, that are blocking construction of the building.
 	 * Emitted one time at each mouseMove only.
 	 */
 	private function emitExceeding ():Void {

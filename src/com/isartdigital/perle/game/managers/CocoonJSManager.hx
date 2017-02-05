@@ -3,7 +3,8 @@ import com.isartdigital.utils.Config;
 import js.Browser;
 
 /**
- * ...
+ * Interface to CocoonJs API
+ * http://cocoonio.github.io/cocoon-canvasplus/dist/doc/js/Cocoon.App.html#toc18
  * @author ambroise
  */
 class CocoonJSManager{

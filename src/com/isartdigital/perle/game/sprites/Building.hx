@@ -33,38 +33,7 @@ typedef RegionMap = {
  */
 class Building extends Tile implements IZSortable
 {
-	/*public static var BUILDING_NAME_TO_MAPSIZE(default, never):Map<String, SizeOnMap> = [ //@TODO obtenir de bdd
-		BuildingName.STYX_PURGATORY => {width:3, height:3, footprint : 1},
-		BuildingName.STYX_VICE => {width:3, height:1, footprint : 1},
-		BuildingName.STYX_VIRTUE => {width:3, height:2, footprint : 1},
-		BuildingName.STYX_MARKET => { width:2, height:3, footprint : 1 },
-		
-		
-		BuildingName.HEAVEN_HOUSE => {width:2, height:2, footprint : 1},
-		BuildingName.HEAVEN_COLLECTOR => {width:2, height:3, footprint : 1},
-		BuildingName.HEAVEN_MARKETING_DEPARTMENT => {width:3, height:1, footprint : 1},
-		BuildingName.HEAVEN_DECO_GENERIC_TREE => {width:1, height:1, footprint : 1},
-		BuildingName.HEAVEN_DECO_BIGGER_TREE => {width:1, height:1, footprint : 1},
-		BuildingName.HEAVEN_DECO_PRETTY_TREE => {width:1, height:1, footprint : 1},
-		BuildingName.HEAVEN_DECO_AWESOME_TREE => {width:1, height:1, footprint : 1},
-		BuildingName.HEAVEN_DECO_BUILDING => {width:2, height:2, footprint : 1},
-		BuildingName.HEAVEN_DECO_GORGEOUS_BUILDING => { width:2, height:2, footprint : 1 },
-		
-		
-		BuildingName.HELL_HOUSE => {width:1, height:2, footprint : 1},
-		BuildingName.HELL_COLLECTOR => {width:3, height:2, footprint : 1},
-		BuildingName.HELL_FACTORY => {width:1, height:3, footprint : 1},
-		BuildingName.HELL_DECO_GENERIC_ROCK => {width:1, height:1, footprint : 1},
-		BuildingName.HELL_DECO_BIGGER_ROCK => {width:1, height:1, footprint : 1},
-		BuildingName.HELL_DECO_PRETTY_ROCK => {width:1, height:1, footprint : 1},
-		BuildingName.HELL_DECO_AWESOME_ROCK => {width:1, height:1, footprint : 1},
-		BuildingName.HELL_DECO_BUILDING => {width:2, height:2, footprint : 1},
-		BuildingName.HELL_DECO_GORGEOUS_BUILDING => { width:2, height:2, footprint : 1 },
-		
-		
-		BuildingName.HOUSE_INTERNS => {width:2, height:2, footprint : 1},
-	];*/
-	
+	public static var isClickable:Bool = true;
 	public static var list:Array<Building>;
 	
 	private static var container:Container;	
@@ -77,8 +46,6 @@ class Building extends Tile implements IZSortable
 	public var inFront:Array<IZSortable>;
 	private var numberFrame:Int;
 	private var animation:Movie;
-	
-	public static var isClickable:Bool = true;
 
 	
 	/**

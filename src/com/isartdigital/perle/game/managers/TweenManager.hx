@@ -9,7 +9,6 @@ import pixi.core.math.Point;
 /**
  * Every tween for juicyness gonna be here
  * @author ambroise
- * @author killian
  */
 class TweenManager {
 	
