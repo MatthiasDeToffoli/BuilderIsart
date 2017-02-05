@@ -13,6 +13,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector.ProductionPack;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
 
@@ -83,6 +84,7 @@ class TimeManager {
 	public static var listConstruction(default, null):Array<TimeDescription>;
 	public static var listProduction(default, null):Array < TimeCollectorProduction>;
 	public static var campaignTime(default, null):Float;
+	
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
@@ -314,6 +316,7 @@ class TimeManager {
 			updateConstruction(listConstruction[i], constructionEnded);
 		}		
 		deleteEndedConstruction(constructionEnded);
+		
 	}
 	
 	/**
@@ -455,6 +458,11 @@ class TimeManager {
 			}
 	}
 	
+	//public static function updateGauges(pElapsedTime:Float):Void{
+		//trace("here");
+		//ShopCarousselInterns.startTime += pElapsedTime;
+	//}
+	
 	/**
 	 * Get actual state of construction time
 	 * @param	pTileDesc
@@ -496,6 +504,16 @@ class TimeManager {
 	}
 	
 	/**
+	 * Get time with the reroll format
+	 * @param	pTime
+	 * @return
+	 */
+	public static function getTextTimeReroll(pTime:Float):String {
+		var txtLength:Int = Date.fromTime(pTime).toString().length;
+		return Date.fromTime(pTime).toString().substr(txtLength - 5, 5);
+	}
+	
+	/**
 	 * Decrease a construction time
 	 * @param	pVBuilding
 	 * @param	pBoostValue
@@ -520,10 +538,14 @@ class TimeManager {
 		return false;
 	}
 	
+	/**
+	 * Increase the quest's progress
+	 * @param	pQuest
+	 * @return  possibility to continue the progress or not
+	 */
 	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
-		//if(pQuest.progress != pQuest.end)
+		
 		if (pQuest.stepIndex < 3){
-			//pQuest.stepIndex++;
 			pQuest.progress = pQuest.steps[pQuest.stepIndex];
 			QuestsManager.choice(pQuest);
 			return true;
@@ -540,6 +562,16 @@ class TimeManager {
 	public static function getPourcentage(pTimeDesc:TimeDescription):Float {
 		var total = pTimeDesc.end - pTimeDesc.creationDate;
 		return pTimeDesc.progress / total;
+	}
+	
+	/**
+	 * Get the progress's percent of anything
+	 * @param	pTimeProgress
+	 * @param	pTimeTotal
+	 * @return the percent
+	 */
+	public static function getTimePourcentage(pTimeProgress:Float, pTimeTotal:Float):Float{
+		return pTimeProgress / pTimeTotal;
 	}
 	
 	public static function destroyTimeElement (pId:Int):Void {

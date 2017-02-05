@@ -17,6 +17,7 @@ class Intern
 {
 	private var desc:InternDescription;
 	public static var internsListArray:Array<InternDescription>;
+	public static var internsListAlignment:Map<Alignment, Array<InternDescription>>;
 	public static var internsMap:Map<Alignment, Array<InternDescription>>;
 
 	public static inline var STATE_RESTING:String = "resting";
@@ -40,6 +41,10 @@ class Intern
 	
 	public static function init(){
 		internsListArray = new Array<InternDescription>();
+		internsListAlignment = new Map<Alignment, Array<InternDescription>>();
+		internsListAlignment[Alignment.hell] = new Array<InternDescription>();
+		internsListAlignment[Alignment.heaven] = new Array<InternDescription>();
+
 		numberInternHouses = new Map < Alignment, Int>();
 		
 		internsMap = new Map<Alignment, Array<InternDescription>>();
@@ -50,30 +55,18 @@ class Intern
 	}
 	
 	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
-		//var lIntern:InternDescription;
-		//var lRandomIntern:Int = Math.round(Math.random() * internsMap[pAlignment].length);
 		
-		if (numberInternHouses[pAlignment] > internsListArray.length){
-			trace("ok for buying");
-			//lIntern = internsMap[pAlignment][lRandomIntern];
-			
-			//for (intern in internsListArray){
-				
-				//if (pIntern.id == intern.id) return false; //Verification, to avoid to buy the same intern
-				//else {
-					//internsListArray.push(pIntern);
-					//break;
-				//}
-			//}
-			
-			return true;
-		}
-		
+		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length) return true;	
 		else return false;
 	}
 	
 	public static function buy(pIntern:InternDescription):Void{
+		var pAlignment:Alignment = null;
 		internsListArray.push(pIntern);
+		trace(pIntern.aligment == "heaven");
+		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
+		trace(internsListAlignment[Alignment.heaven]);
+		//internsListAlignment[pIntern.aligment].push(pIntern);
 	}
 	
 	/**

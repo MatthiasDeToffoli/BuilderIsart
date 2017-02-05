@@ -39,6 +39,7 @@ class ShopPopin extends SmartPopinExtended {
 	private var bars:Map<ShopBar, SmartComponent>;
 	private var carousselSpawner:UISprite;
 	
+	public static var isSearching:Bool;
 	
 	private var carousselPos:Point;
 	private var caroussel:ShopCaroussel;
@@ -176,6 +177,10 @@ class ShopPopin extends SmartPopinExtended {
 		}
 	}
 	
+	public static function initSearch():Void{
+		isSearching = false;
+	}
+	
 	private function addCaroussel(pTab:ShopTab):Void {
 		if (caroussel != null)
 			caroussel.destroy();
@@ -219,7 +224,7 @@ class ShopPopin extends SmartPopinExtended {
 	
 	private function onClickOpenInterns () {
 		setButtons(2);
-		addCaroussel(ShopTab.Interns);	
+		isSearching ? onClickOpenInternsSearch() : addCaroussel(ShopTab.Interns);	
 	}
 	
 	private function onClickOpenInternsSearch () {

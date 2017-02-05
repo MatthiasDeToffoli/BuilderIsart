@@ -23,11 +23,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 
 	public static var internsNameList(default, never):Array<String> = [ // renommé et majuscules. mettre en bdd ?
 	];
-	
+		
 	private var btnReroll:SmartButton;
 	private var hellCard:SmartButton;
 	private var heavenCard:SmartButton;
-	private var houseNumber:SmartComponent;
 	
 	//Hell Card
 	private var hellPortrait:UISprite;
@@ -43,6 +42,11 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var heavenGaugeEfficency:SmartComponent;
 	private var heavenGaugeSpeed:SmartComponent;
 	
+	//Number of intern houses
+	private var houseNumber:SmartComponent;
+	private var numberHousesHeaven:TextSprite;
+	private var numberHousesHell:TextSprite;
+	
 	//ID for the interns to show
 	public static var actualHeavenID:Int;
 	public static var actualHellID:Int;
@@ -52,7 +56,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		super(AssetName.SHOP_CAROUSSEL_INTERN);
 		getComponents();
 		setValues();
-		addListeners();	
+		addListeners();
 	}
 
 	override public function init (pPos:Point, pTab:ShopTab):Void {
@@ -104,7 +108,11 @@ class ShopCarousselInterns extends ShopCaroussel{
 		btnReroll = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartButton);
 		hellCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_CARD), SmartButton);
 		heavenCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_CARD), SmartButton);
-		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartComponent);
+		
+		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
+		numberHousesHeaven = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
+		numberHousesHell = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HELL), TextSprite);
+		//numberHouses = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_TEXT), SmartComponent); 
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
@@ -137,6 +145,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
 		
+		setValuesNumberHousesHeaven();
+		setValuesNumberHousesHell();
+		
 		heavenCard.alpha = 1;
 		heavenCard.buttonMode = true;
 		heavenCard.interactive = true;
@@ -155,6 +166,28 @@ class ShopCarousselInterns extends ShopCaroussel{
 			heavenCard.buttonMode = false;
 			heavenCard.interactive = false;
 			heavenCard.alpha = 0.5;
+		}
+	}
+	
+	private function setValuesNumberHousesHeaven():Void{
+		if (Intern.numberInternHouses[Alignment.heaven] != null && Intern.internsListAlignment[Alignment.heaven] != null){
+			numberHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length + "";
+		}
+		
+		else {
+			if (Intern.numberInternHouses[Alignment.heaven] == null) numberHousesHeaven.text = 0 + "";
+			if (Intern.internsListAlignment[Alignment.heaven] == null) numberHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] + "";
+		}
+	}
+	
+	private function setValuesNumberHousesHell():Void{
+		if (Intern.numberInternHouses[Alignment.hell] != null && Intern.internsListAlignment[Alignment.hell] != null){
+			numberHousesHell.text = Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length + "";
+		}
+		
+		else {
+			if (Intern.numberInternHouses[Alignment.hell] == null) numberHousesHell.text = 0 + "";
+			if (Intern.internsListAlignment[Alignment.hell] == null) numberHousesHell.text = Intern.numberInternHouses[Alignment.hell] + "";
 		}
 	}
 	
@@ -184,8 +217,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		//Si achat possible
 		if (Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
-			usedID[Alignment.hell].push(actualHellID);
-			actualHellID = getNewID(Alignment.hell);
+			changeID(Alignment.hell);
 			closeShop();
 		}
 	}
@@ -193,8 +225,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function onClickHeaven():Void{
 		if (Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
 			Intern.buy(Intern.internsMap[Alignment.heaven][actualHeavenID]);
-			usedID[Alignment.heaven].push(actualHeavenID);
-			actualHeavenID = getNewID(Alignment.heaven);
+			changeID(Alignment.heaven);
 			closeShop();
 		}
 	}
@@ -204,6 +235,28 @@ class ShopCarousselInterns extends ShopCaroussel{
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
+	public static function changeID(?pAlignment:Alignment = null):Void{
+		if (pAlignment != null){
+			if (pAlignment == Alignment.heaven){
+			usedID[Alignment.heaven].push(actualHeavenID);
+			actualHeavenID = getNewID(Alignment.heaven);
+			}
+		
+			if (pAlignment == Alignment.hell){
+			usedID[Alignment.hell].push(actualHellID);
+			actualHellID = getNewID(Alignment.hell);
+			}
+		}
+		
+		else {
+			usedID[Alignment.heaven].push(actualHeavenID);
+			actualHeavenID = getNewID(Alignment.heaven);
+			
+			usedID[Alignment.hell].push(actualHellID);
+			actualHellID = getNewID(Alignment.hell);
+		}
+	}
+	
 	private function selectIntern(pAlignment:Alignment):InternDescription{
 		var lID:Int;
 		pAlignment == Alignment.hell ? lID = actualHellID : lID = actualHeavenID;
@@ -211,6 +264,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	}
 	
 	private function onClickReroll ():Void {
+		ShopCarousselInternsSearch.progress = 0;
+		ShopPopin.isSearching = true;
 		ShopPopin.getInstance().init(ShopTab.InternsSearch);
 	}
 	

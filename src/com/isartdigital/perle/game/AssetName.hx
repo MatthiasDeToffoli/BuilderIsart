@@ -126,6 +126,14 @@ class AssetName{
 	public static inline var CAROUSSEL_INTERN_HELL_CARD:String = "Intern_HellCard";
 	public static inline var CAROUSSEL_INTERN_HEAVEN_CARD:String = "Intern_HeavenCard";
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER:String = "InternHouseNumber";
+	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN:String = "_internHouseNumber";	
+	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HELL:String = "_internHouseNumber_actualValue";	
+	
+	//Shop Reroll
+	public static inline var REROLL_GAUGE:String = "JaugeTimer";
+	public static inline var REROLL_ACCELERATE_BUTTON:String = "Accelerate_button";
+	public static inline var REROLL_GAUGE_BAR:String = "Bar";
+	public static inline var REROLL_GAUGE_TEXT:String = "txt";
 	
 	//Shop caroussel Interns cards
 	public static inline var CARD_NAME:String = "_internPortrait_Name";
