@@ -7,35 +7,26 @@ import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Building;
-import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
-import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
-import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
-import com.isartdigital.perle.ui.popin.InternHousePopin;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
-import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.KeyboardEventType;
-import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
-import com.isartdigital.utils.system.DeviceCapabilities;
-import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
-import eventemitter3.EventEmitter;
+import com.isartdigital.utils.ui.UIPosition;
 import js.Browser;
 import js.html.KeyboardEvent;
 import pixi.core.display.Container;
@@ -147,15 +138,35 @@ class Hud extends SmartScreen
 					BHHarvest.getInstance().removeListenerGameContainer();
 					//BHHarvestHouse.getInstance().removeListenerGameContainer(); // todo
 					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
-				case BuildingHudType.NONE: 
+					UIPosition.setPositionInHud(
+						BHMoving.getInstance(),
+						UIPosition.BOTTOM,
+						0,
+						BHHarvest.getInstance().height/2
+					);
 					
+				case BuildingHudType.NONE: 
+				
 				default: throw("No BuildingHud found !");
 			}
 		}
 	}
+	
+	override public function onResize (pEvent:EventTarget = null):Void {
+		super.onResize(pEvent);
+		if (currentBuildingHud == BuildingHudType.MOVING) {
+			UIPosition.setPositionInHud(
+				BHMoving.getInstance(),
+				UIPosition.BOTTOM,
+				0,
+				BHHarvest.getInstance().height/2
+			);
+		}
+	}
+	
 	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...
 	private function addComponent(pComponent:BuildingHud):Void{
-
+		
 		var lLocalBounds:Rectangle = BuildingHud.virtualBuilding.graphic.getLocalBounds();
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			

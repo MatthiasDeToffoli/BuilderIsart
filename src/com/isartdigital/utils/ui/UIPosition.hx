@@ -1,5 +1,6 @@
 package com.isartdigital.utils.ui;
 import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
@@ -88,11 +89,33 @@ class UIPosition
 	 */
 	public static function setPositionContextualUI (pParent:Container, pTarget:DisplayObject, pPosition:String, pOffsetX:Float = 0, pOffsetY:Float = 0):Void {
 		
-		// todo : pourquoi getBound().width donne une width différentes sur le tribunal ??? (plus large)
+		// todo : pourquoi getBound().width donne une width différentes sur le tribunal ??? (plus large) (scale pas prit en compte ?)
 		moveTarget(
 			{
 				topLeft:new Point (0, 0),
-				bottomRight:new Point (0 + pParent.width, 0 + pParent.height)
+				bottomRight:new Point (pParent.width, pParent.height) // curieux, pas de correction d'anchor nécessaire ??
+			},
+			pTarget, pPosition, pOffsetX, pOffsetY
+		);
+	}
+	
+	/**
+	 * Hack (bricolage), because we didn't understood that UIPosition only work on Popin and HUD,
+	 * This method permit to position an element like if it was inside HUD wireframe whitout being inside HUD wireframe.
+	 * Used for FTUE and BHMoving.
+	 * @param	pTarget
+	 * @param	pPosition
+	 * @param	pOffsetX
+	 * @param	pOffsetY
+	 */
+	public static function setPositionInHud (pTarget:DisplayObject, pPosition:String, pOffsetX:Float = 0, pOffsetY:Float = 0):Void {
+		
+		var lAnchor:Rectangle = Hud.getInstance().getLocalBounds();
+		// possible problème de repère si pParent.position != Hud.getInstance().position 
+		moveTarget(
+			{
+				topLeft:new Point (0, 0),
+				bottomRight:new Point (lAnchor.x + Hud.getInstance().width, lAnchor.y + Hud.getInstance().height)
 			},
 			pTarget, pPosition, pOffsetX, pOffsetY
 		);

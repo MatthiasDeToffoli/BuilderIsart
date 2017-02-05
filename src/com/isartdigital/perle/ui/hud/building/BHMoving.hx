@@ -2,13 +2,13 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
-import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import haxe.Json;
 
 /**
  * ...
@@ -39,8 +39,6 @@ class BHMoving extends BuildingHud{
 	}
 	
 	override private function addListeners ():Void {
-		// TODO : décommenté quand assetName à jour , qui ne fera plus bugué le jeu.
-		SmartCheck.traceChildrens(this);
 		btnCancel = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CANCEL), SmartButton);
 		Interactive.addListenerClick(btnCancel, onClickCancel);
 		
