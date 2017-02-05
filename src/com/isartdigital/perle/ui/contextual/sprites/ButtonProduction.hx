@@ -1,20 +1,11 @@
 package com.isartdigital.perle.ui.contextual.sprites;
-import com.greensock.easing.Elastic;
-import com.greensock.TweenMax;
 import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.managers.ResourcesManager;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.events.EventType;
-import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.math.Point;
-import pixi.flump.Movie;
-import pixi.flump.Sprite;
-import pixi.interaction.EventTarget;
 
 
 
@@ -25,9 +16,6 @@ import pixi.interaction.EventTarget;
 
 class ButtonProduction extends SmartComponent // todo : si hérite de SmartButton il doit être un symbol btn ds le wireframe
 { 
-	private static inline var TWEEN_DURATION:Float = 1.3; // seconds
-	private static inline var TWEEN_ELASTIC_PARAM_1:Float = 1;
-	private static inline var TWEEN_ELASTIC_PARAM_2:Float = 0.75;
 	
 	private static var assetsName:Map<GeneratorType,String>;
 	
@@ -56,20 +44,12 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	}
 
 	private function onClick ():Void {
-		tweenToGoldIcon(applyResourceGain);
-	}
-	
-	private function tweenToGoldIcon (pCallBack:Void -> Void):Void {
-		var lNewPos:Point = Hud.getInstance().getContainerEffect().toLocal(position, this.parent);
-		Hud.getInstance().getContainerEffect().addChild(this);
-		position = lNewPos;
-		
-		TweenMax.to(this, TWEEN_DURATION, { 
-			onComplete:pCallBack,
-			ease: untyped Elastic.easeOut.config(TWEEN_ELASTIC_PARAM_1, TWEEN_ELASTIC_PARAM_2),
-			x:Hud.getInstance().getGoldIconPos().x,
-			y:Hud.getInstance().getGoldIconPos().y - height / 2
-		} );
+		TweenManager.positionElasticAttract(
+			this,
+			Hud.getInstance().getGoldIconPos(),
+			Hud.getInstance().getContainerEffect(),
+			applyResourceGain
+		);
 	}
 	
 	private function applyResourceGain():Void {}

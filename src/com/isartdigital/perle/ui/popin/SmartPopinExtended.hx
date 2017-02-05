@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.greensock.TweenMax;
+import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import dat.controllers.Controller;
@@ -13,10 +14,6 @@ import pixi.core.math.shapes.Rectangle;
  * @author ambroise
  */
 class SmartPopinExtended extends SmartPopin{
-
-	private static inline var TWEEN_DURATION:Float = 0.5;
-	private static inline var TWEEN_START_SCALE:Float = 0.8;
-	private static inline var TWEEN_BACK_PARAM_1:Float = 1.2;
 	
 	/**
 	 * Fit and create an image into pContainer
@@ -46,6 +43,13 @@ class SmartPopinExtended extends SmartPopin{
 		lImage.start();
 	}
 	
+	/**
+	 * Apply a scale to pChange.
+	 * So pChange width and height correspond to pToModel width and height
+	 * Doesn't change the ratio.
+	 * @param	pChange
+	 * @param	pToModel
+	 */
 	private static function reScaleImage(pChange:Container, pToModel:Container):Void {
 		var lRatio:Float;
 		if (pChange.width > pChange.height)
@@ -64,22 +68,10 @@ class SmartPopinExtended extends SmartPopin{
 	
 	override public function build(pFrame:Int = 0):Void {
 		super.build(pFrame);
-		tweenPopin();
+		TweenManager.scaleGrow(this);
 	}
 	
-	// todo : héritage onClickExit onClose, avec Hud show et hide
+	// todo : héritage : combiné => onClickExit && onClose, évité de répété Hud.show et Hud.hide
 	
-	/**
-	 * Put scale to 1:1
-	 */
-	private function tweenPopin ():Void {
-		scale.x = TWEEN_START_SCALE;
-		scale.y = TWEEN_START_SCALE;
-		
-		TweenMax.to(scale, TWEEN_DURATION, {
-			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
-			x:1,
-			y:1
-		} );
-	}
+
 }

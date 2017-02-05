@@ -1,6 +1,5 @@
 package com.isartdigital.perle.ui.popin.shop;
 
-import com.greensock.TweenMax;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -18,7 +17,6 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
-import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;

@@ -16,10 +16,6 @@ import pixi.interaction.EventTarget;
  * @author ambroise
  */
 class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
-
-	private static inline var TWEEN_DURATION:Float = 1;
-	private static inline var TWEEN_START_SCALE:Float = 0.8;
-	private static inline var TWEEN_BACK_PARAM_1:Float = 1.2;
 	
 	private var image:UISprite;
 	
@@ -36,7 +32,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	public function init (pName:String):Void {
 		isInit = true;
 		buildCard();
-		//tweenPopin();
 	}
 	
 	override private function _mouseDown (pEvent:EventTarget = null): Void {
@@ -58,17 +53,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	}
 	
 	private function buildCard ():Void {}
-	
-	/**
-	 * Put scale to 1:1
-	 */
-	private function tweenPopin ():Void { // todo: trouver un autre transition ?
-		TweenMax.to(scale, TWEEN_DURATION, {
-			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
-			x:1,
-			y:1
-		} );
-	}
 	
 	override public function destroy():Void {
 		if (parent != null)
