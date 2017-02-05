@@ -400,7 +400,7 @@ class Phantom extends Building {
 		// mais aussi faire une collision rect-rect
 		
 		
-		// between region or region don't exist
+		// between region/region don't exist OR wrong alignment OR can't have more of this building in this region
 		if (regionMap == null || RegionManager.worldMap[regionMap.region.x][regionMap.region.y].desc.type != alignementBuilding || passBuildingLimit()) {
 			setExceedingToAll();
 			return false;
