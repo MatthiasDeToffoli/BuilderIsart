@@ -1,18 +1,17 @@
 package com.isartdigital.perle.game.sprites.building.hell;
+import com.isartdigital.perle.game.sprites.Building;
 
-import com.isartdigital.perle.game.sprites.building.InternHouse;
 
 /**
  * ...
  * @author de Toffoli Matthias
  */
-class InternHouseHell extends InternHouse
+class InternHouseHell extends Building
 {
 
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		trace("internHouseHell");
 	}
 	
 }

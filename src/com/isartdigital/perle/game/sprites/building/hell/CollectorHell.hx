@@ -1,12 +1,11 @@
 package com.isartdigital.perle.game.sprites.building.hell;
-
-import com.isartdigital.perle.game.sprites.building.Collector;
+import com.isartdigital.perle.game.sprites.Building;
 
 /**
  * ...
  * @author de Toffoli Matthias
  */
-class CollectorHell extends Collector
+class CollectorHell extends Building
 {
 
 	public function new(?pAssetName:String) 
