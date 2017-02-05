@@ -102,11 +102,6 @@ class MouseManager {
 		
 		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
-			
-		if (Phantom.isSet()) {
-			CameraManager.scrollOnLimitsScreen(positionInGame);
-			updatePrecedentMousePos();
-		}
 	}
 	
 	/**
