@@ -10,7 +10,8 @@ class AssetName{
 
 	//building state
 	public static inline var CONSTRUCT:String = "_construction";
-	public static inline var CONSTRUCT_ANIM:String = CONSTRUCT + "_anim";
+	public static inline var ANIM:String = "_anim";
+	public static inline var ANIMATION:String = "animation";
 	// Building Neutral
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";

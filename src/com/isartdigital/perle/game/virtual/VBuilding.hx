@@ -105,14 +105,16 @@ class VBuilding extends VTile {
 		BuildingLimitManager.decrementMapNumbersBuildingPerRegion(tileDesc.regionX, tileDesc.regionY, tileDesc.buildingName);
 	}
 	
-	override public function activate ():Void {
+	override public function activate():Void {
 		super.activate();
-		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
-		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
-
+		createGraphic();
 		if(haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
 	}
 	
+	public function createGraphic(?playAnim:Bool = false):Void {
+		graphic = cast(Building.createBuilding(tileDesc,currentState,playAnim), Container);
+		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
+	}
 	/**
 	 * say if this building is in the altar zone
 	 * @param	pData data contain the region and the case to check
@@ -128,6 +130,11 @@ class VBuilding extends VTile {
 			 if (i == pData.casePos.x && j == pData.casePos.y) checkIfIsInAltarZone();
 			}	
 		}
+	}
+	
+	public function reView():Void {
+		desactivate();
+		activate();
 	}
 	
 	public function getVirtualContextualHud():VHudContextual{
@@ -280,9 +287,15 @@ class VBuilding extends VTile {
 	}
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
+		if (pElement.refTile != tileDesc.id) return;
+		
+		if (active) {
+			desactivate();
+			active = true;
+			createGraphic(true);	
+		}
+		
 		setState(VBuildingState.isBuilt);
-		desactivate();
-		activate();
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}

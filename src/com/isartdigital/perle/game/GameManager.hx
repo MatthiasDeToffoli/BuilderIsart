@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.AnimationManager;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.CameraManager;
@@ -54,7 +55,7 @@ class GameManager {
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
 		
-
+		AnimationManager.awake();
 		BuildingLimitManager.awake();
 		MarketingManager.awake(); // always before VTile
 		BoostManager.awake(); //always before pooling
@@ -102,6 +103,7 @@ class GameManager {
 		
 		MouseManager.getInstance().gameLoop(); // before Phantom
 		Phantom.gameLoop();
+		AnimationManager.gameLoop();
 	}
 	
 	/**

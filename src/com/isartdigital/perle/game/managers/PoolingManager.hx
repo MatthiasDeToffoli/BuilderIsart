@@ -35,11 +35,13 @@ class PoolingManager {
 		
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT => "HouseHeaven",
-
+		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT + AssetName.ANIM=> "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 => "HouseHeaven",
-		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 + AssetName.CONSTRUCT=> "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 + AssetName.CONSTRUCT => "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL2 + AssetName.CONSTRUCT + AssetName.ANIM=> "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 + AssetName.CONSTRUCT=> "HouseHeaven",
+		AssetName.BUILDING_HEAVEN_HOUSE_LEVEL3 + AssetName.CONSTRUCT + AssetName.ANIM=> "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_BRIDGE => "Building",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL1 => "CollectorHeaven",
 		AssetName.BUILDING_HEAVEN_COLLECTOR_LEVEL2 => "CollectorHeaven",
