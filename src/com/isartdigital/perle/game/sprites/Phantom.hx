@@ -179,18 +179,19 @@ class Phantom extends Building {
 		on(MouseEventType.MOUSE_UP, onMouseUp2);
 		on(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
 		
-		// touch event on GameStage.getInstance().getGameContainer() doesn't work :(
 		// TouchEventType.TAP doesn't work either
 		// and at last, don't add on(TouchEventType.TOUCH_START, onMouseDown2); 
-		// or you can build the building whitout
-		Browser.window.addEventListener(TouchEventType.TOUCH_START, onTouchStartGlobal);
+		// or you can build the building whitout confirmation (like on pc)
+		// Browser.window.addEventListener(TouchEventType.TOUCH_END, onTouchStartGlobal);
+		GameStage.getInstance().getGameContainer().interactive = true;
+		GameStage.getInstance().getGameContainer().on(TouchEventType.TAP, onTouchStartGlobal);
 	}
 	
 	private function removeBuildListeners():Void {
 		removeListener(MouseEventType.MOUSE_DOWN, onMouseDown2);
 		removeListener(MouseEventType.MOUSE_UP, onMouseUp2);
 		removeListener(MouseEventType.MOUSE_MOVE, movePhantomOnMouse);
-		Browser.window.removeEventListener(TouchEventType.TOUCH_START, onTouchStartGlobal);
+		GameStage.getInstance().getGameContainer().removeListener(TouchEventType.TAP, onTouchStartGlobal);
 	}
 	
 	private function onTouchStartGlobal (p:Dynamic):Void {
