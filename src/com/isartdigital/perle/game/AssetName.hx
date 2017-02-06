@@ -337,6 +337,9 @@ class AssetName{
 	public static inline var XP_GAUGE_HELL:String = "HUD_HellXP";
 	public static inline var XP_GAUGE_HEAVEN:String = "HUD_HeavenXP";
 	
+	
+	//contextual
+	public static inline var HOUSE_SOUL_COUNTER:String = "SoulsCounter_house";
 	// add background and any other assetName coming from DA
 	//bg
 	public static inline var BACKGROUND_HELL:String = "BG_Hell";

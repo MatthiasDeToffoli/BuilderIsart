@@ -16,7 +16,7 @@ class BHConstruction extends BuildingHud{
 	private static var instance:BHConstruction;
 	
 	private var btnMove:SmartButton;
-	private var buildingTimer:BuildingTimer;
+	//private var buildingTimer:BuildingTimer;
 	private var btnDestroy:SmartButton;
 	
 	public static function getInstance (): BHConstruction {
@@ -30,9 +30,9 @@ class BHConstruction extends BuildingHud{
 	
 	public function setOnSpawn():Void {
 		setGameListener();	
-		buildingTimer = new BuildingTimer();
+		/*buildingTimer = new BuildingTimer();
 		buildingTimer.spawn();
-		addChild(buildingTimer);
+		addChild(buildingTimer);*/
 	}
 	
 	private function setGameListener():Void {
@@ -47,7 +47,7 @@ class BHConstruction extends BuildingHud{
 	}
 	
 	private function onClickExit(pEvent:EventTarget):Void {
-		buildingTimer.destroy();
+		//buildingTimer.destroy();
 		removeGameListener();
 		Hud.getInstance().hideBuildingHud();
 	}
@@ -64,6 +64,9 @@ class BHConstruction extends BuildingHud{
 	}
 	
 	override public function destroy():Void {
+		instance = null;
+		//if(buildingTimer != null) buildingTimer.destroy();
+		removeGameListener();
 		super.destroy();
 	}
 	

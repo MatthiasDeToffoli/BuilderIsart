@@ -39,4 +39,10 @@ class BuildingHud extends SmartComponent {
 	
 	private function addListeners ():Void { }
 	
+	override public function destroy():Void 
+	{
+		if (parent != null) parent.removeChild(this);
+		super.destroy();
+	}
+	
 }

@@ -7,7 +7,9 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
+import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
 
@@ -78,7 +80,10 @@ class VTribunal extends VBuildingUpgrade
 		PurgatorySoulCounter.getInstance().setText({current:myGenerator.desc.quantity, max:myGenerator.desc.max});
 	}
 	
-	
+	override public function onClick(pPos:Point):Void 
+	{
+		Hud.getInstance().onClickTribunal();
+	}
 	
 	override function setHaveRecolter():Void 
 	{

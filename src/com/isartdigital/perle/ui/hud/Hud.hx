@@ -11,11 +11,14 @@ import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvest;
+import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
+import com.isartdigital.perle.ui.hud.building.SoulCounterHouse;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
@@ -49,9 +52,10 @@ class Hud extends SmartScreen
 	
 	public var buildingPosition:Point;
 	
-	private var currentBuildingHud:BuildingHudType;
+	private var currentBuildingHudType:BuildingHudType;
 	
 	private var containerBuildingHud:Container;
+	private var containerSoulCounter:Container;
 	
 	private var hellXPBar:SmartComponent;
 	private var heavenXPBar:SmartComponent;
@@ -83,11 +87,9 @@ class Hud extends SmartScreen
 		super("HUD_Desktop");
 		modal = null;
 		containerBuildingHud = new Container();
-		//BHHarvestHouse.getInstance().init(); // todo
-		BHHarvest.getInstance().init();
-		BHConstruction.getInstance().init();
-		BHMoving.getInstance().init();
+		containerSoulCounter = new Container();
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
+		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerSoulCounter);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
 		
@@ -112,33 +114,33 @@ class Hud extends SmartScreen
 	 * @param	pNewBuildingHud
 	 * @param	pVBuilding
 	 */
-	public function changeBuildingHud (pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
-
+	public function changeBuildingHud(pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
 		BuildingHud.linkVirtualBuilding(pVBuilding);
+
 		// todo : mettre en évidence quel building on sélectionne actuellement...
 		//containerBuildingHud = Building.getBuildingHud();
 
 		if (pVBuilding != null)
 			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
-		
-		if (currentBuildingHud != pNewBuildingHud) {
-			currentBuildingHud = pNewBuildingHud;
-			containerBuildingHud.removeChildren();
-			GameStage.getInstance().getHudContainer().removeChild(BHMoving.getInstance());
+
+		if (currentBuildingHudType != pNewBuildingHud) {
+
+			if(currentBuildingHudType != null) destroyBuildingHud(currentBuildingHudType);
+			
+			currentBuildingHudType = pNewBuildingHud;
 			
 			switch (pNewBuildingHud) 
 			{
 				case BuildingHudType.HARVEST: {
+	
 					if (Std.is(BuildingHud.virtualBuilding, VHouse))
-						//openHarvest(BHHarvestHouse.getInstance()); // todo
-						trace("todo");
+						openHarvest(BHHarvestHouse.getInstance()); // todo
 					else openHarvest(BHHarvest.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION:
 					openConstruction(BHConstruction.getInstance());
+					
 				case BuildingHudType.MOVING: 
-					BHHarvest.getInstance().removeListenerGameContainer();
-					//BHHarvestHouse.getInstance().removeListenerGameContainer(); // todo
 					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
 					UIPosition.setPositionInHud(
 						BHMoving.getInstance(),
@@ -147,6 +149,7 @@ class Hud extends SmartScreen
 						BHHarvest.getInstance().height/2
 					);
 					
+					
 				case BuildingHudType.NONE: 
 				
 				default: throw("No BuildingHud found !");
@@ -154,9 +157,27 @@ class Hud extends SmartScreen
 		}
 	}
 	
+	private function destroyBuildingHud(pType:BuildingHudType):Void {
+		switch(pType) {
+			case BuildingHudType.CONSTRUCTION:
+				BHConstruction.getInstance().destroy();
+				
+			case BuildingHudType.HARVEST:
+				BHHarvest.getInstance().destroy();
+				BHHarvestHouse.getInstance().destroy();
+				
+			case BuildingHudType.MOVING:
+				BHMoving.getInstance().destroy();
+				
+			case BuildingHudType.NONE:
+				
+				
+		}
+	}
+	
 	override public function onResize (pEvent:EventTarget = null):Void {
 		super.onResize(pEvent);
-		if (currentBuildingHud == BuildingHudType.MOVING) {
+		if (currentBuildingHudType == BuildingHudType.MOVING) {
 			UIPosition.setPositionInHud(
 				BHMoving.getInstance(),
 				UIPosition.BOTTOM,
@@ -169,23 +190,33 @@ class Hud extends SmartScreen
 	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...
 	private function addComponent(pComponent:BuildingHud):Void{
 		
+		placeAndAddComponent(pComponent, containerBuildingHud, UIPosition.BOTTOM_RIGHT);
+	}
+	
+	
+	public function addSoulCounter(pComponent:SoulCounterHouse):Void {
+		placeAndAddComponent(pComponent, containerSoulCounter, UIPosition.BOTTOM);
+	}
+	
+	private function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {
 		var lLocalBounds:Rectangle = BuildingHud.virtualBuilding.graphic.getLocalBounds();
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			
 		var lRect:Point = BuildingHud.virtualBuilding.graphic.position;
-		containerBuildingHud.position.x = lRect.x + lAnchor.x;
-		containerBuildingHud.position.y = lRect.y + lAnchor.y;
+		pContainer.position.x = lRect.x + lAnchor.x;
+		pContainer.position.y = lRect.y + lAnchor.y;
 		
 		UIPosition.setPositionContextualUI(
 			BuildingHud.virtualBuilding.graphic,
 			pComponent,
-			UIPosition.BOTTOM_CENTER,
+			pUIPos,
 			0,
 			0
 		);
 		
-		containerBuildingHud.addChild(pComponent);
+		pContainer.addChild(pComponent);
 	}
+	
 	
 	private function openHarvest(pHarvest:BHBuilt):Void{
 		addComponent(pHarvest);
@@ -357,7 +388,8 @@ class Hud extends SmartScreen
 		hide();
 	}
 	
-	private function onClickTribunal():Void {
+	public function onClickTribunal():Void {
+		if(currentBuildingHudType != null) destroyBuildingHud(currentBuildingHudType);
 		UIManager.getInstance().openPopin(TribunalPopin.getInstance());
 		hide();
 	}

@@ -34,6 +34,7 @@ class BHBuilt extends BuildingHud
 	public function new(pID:String=null) 
 	{
 		super(pID);
+		findElements();
 		
 	}
 	
@@ -95,13 +96,12 @@ class BHBuilt extends BuildingHud
 		btnDestroy.alpha = 1;
 	}
 	
-	override function addListeners():Void 
+	private function findElements():Void 
 	{
 		btnMove = cast(getChildByName("MoveButton"), SmartButton);
 		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
 		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
-		//btnDescription.on(MouseEventType.CLICK, onClickDescription);
 	}
 	
 	public function removeListenerGameContainer():Void {

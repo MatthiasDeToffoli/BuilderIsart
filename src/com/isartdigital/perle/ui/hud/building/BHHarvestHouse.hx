@@ -3,9 +3,12 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager.Population;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 
 	
 /**
@@ -19,9 +22,8 @@ class BHHarvestHouse extends BHBuilt
 	 * instance unique de la classe BHHarvestHouse
 	 */
 	private static var instance: BHHarvestHouse;
-	private var soulConters:TextSprite;
+	private var soulConter:SoulCounterHouse;
 	private var soulGraphic:UISprite;
-	private var spawner:UISprite;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -39,45 +41,14 @@ class BHHarvestHouse extends BHBuilt
 	{
 		super("BuiltContext_house");
 		
+		addSoulCounter();
 		
 	}
 	
-	override function addListeners():Void 
-	{
-		soulConters = cast(SmartCheck.getChildByName(SmartCheck.getChildByName(this, "SoulsCounter_House"), "_infos_house_txt"), TextSprite);
-		super.addListeners();
-	}
-	
-	override public function setOnSpawn():Void 
-	{
-		super.setOnSpawn();
-		var pPop:Population = cast(BuildingHud.virtualBuilding, VHouse).getPopulation();
-		soulConters.text = pPop.quantity + "/" + pPop.max;
-		
-		if( spawner == null) spawner = cast(
-				SmartCheck.getChildByName(
-					SmartCheck.getChildByName(this, "SoulsCounter_House"), 
-					"_infos_house_icon")
-		,UISprite);
-		
-		var aName:String = "";
-		
-		if (BuildingHud.virtualBuilding.alignementBuilding == Alignment.heaven) aName = AssetName.PROD_ICON_SOUL_HEAVEN_SMALL;
-		else aName = AssetName.PROD_ICON_SOUL_HELL_SMALL;
-		soulGraphic = new UISprite(aName);
-		soulGraphic.position = spawner.position;
-		addChild(soulGraphic);
-		
-		//Pardon j'ai commenter sinon il y avait un bug si on plaçais plusieurs maisons  Alexis
-		//if(spawner != null)
-		//spawner.parent.removeChild(spawner);
-	}
-	
-	override function removeButtonsChange():Void 
-	{
-		addChild(spawner);
-		removeChild(soulGraphic);
-		super.removeButtonsChange();
+	public function addSoulCounter():Void {
+		soulConter = new SoulCounterHouse();
+		Hud.getInstance().addSoulCounter(soulConter);
+		soulConter.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
 	}
 	
 	
@@ -86,7 +57,7 @@ class BHHarvestHouse extends BHBuilt
 	 */
 	override public function destroy (): Void {
 		instance = null;
-		
+		soulConter.destroy();
 		super.destroy();
 	}
 
