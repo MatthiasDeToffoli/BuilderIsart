@@ -29,7 +29,7 @@ class ShopCarousselCurrencies extends ShopCaroussel{
 		return new CarouselCardPackCurrency();
 	}
 	
-	override private function getCardToShow ():Array<String> {
+	override private function getCardToShowOverride ():Array<String> {
 		var result:Array<String> = new Array<String>();
 		
 		for (i in 0...GameConfig.getShopPack().length) {

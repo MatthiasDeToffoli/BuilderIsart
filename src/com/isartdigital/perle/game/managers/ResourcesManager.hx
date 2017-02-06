@@ -331,12 +331,16 @@ class ResourcesManager
 					if (lPopulation.max > lPopulation.quantity){
 						lPopulation.quantity++;
 						lGenerator.desc.quantity--;
-						populationChangementEvent.emit(POPULATION_CHANGEMENT_EVENT_NAME, lPopulation);
+						emitPopulationChangementEvent(lPopulation);
 						generatorEvent.emit(GENERATOR_EVENT_NAME, { id:lGenerator.desc.id } );
 						return;
 					}
-		
 	}
+	
+	public static function emitPopulationChangementEvent(pPopulation:Population):Void {
+		populationChangementEvent.emit(POPULATION_CHANGEMENT_EVENT_NAME, pPopulation);
+	}
+	
 	/**
 	 * actualise and save the data
 	 * @param pGenerator the generator we want save

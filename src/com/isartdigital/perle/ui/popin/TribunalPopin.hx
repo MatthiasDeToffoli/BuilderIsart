@@ -1,18 +1,21 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import js.Browser;
+import pixi.interaction.EventTarget;
 
 	
 /**
@@ -26,6 +29,7 @@ class TribunalPopin extends SmartPopinExtended
 	 * instance unique de la classe TribunalPopin
 	 */
 	private static var instance: TribunalPopin;
+	private static var counterForFtue:Int = 0;
 	private var btnClose:SmartButton;
 	private var btnShop:SmartButton;
 	private var btnIntern:SmartButton;
@@ -55,8 +59,9 @@ class TribunalPopin extends SmartPopinExtended
 	private function new(pID:String=null) 
 	{
 		super(AssetName.PURGATORY_POPIN);
-		
+		name = componentName;
 		var interMovieClip:Dynamic;
+		counterForFtue = 0;
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
 		btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
@@ -107,9 +112,20 @@ class TribunalPopin extends SmartPopinExtended
 		Interactive.addListenerClick(btnUpgrade, onUpgrade);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
+		on(EventType.ADDED, registerForFTUE);
+	}
+	
+	private function registerForFTUE (pEvent:EventTarget):Void {
+		for (i in 0...children.length) {
+			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i],true,true);
+		}
+		off(EventType.ADDED, registerForFTUE);
 	}
 	
 	private function onClose() {
+		if (DialogueManager.ftueClosePurgatory)
+			DialogueManager.endOfaDialogue(true);
+			
 		UIManager.getInstance().closeCurrentPopin();	
 		Hud.getInstance().show();
 	}
@@ -126,7 +142,11 @@ class TribunalPopin extends SmartPopinExtended
 		//UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
-	private function onHeaven(){
+	private function onHeaven() {
+		if (DialogueManager.ftueStepSlideCard) {
+			if (counterForFtue++ >= 1)
+			DialogueManager.endOfaDialogue();
+		}
 		ResourcesManager.judgePopulation(Alignment.heaven);
 		changeSoulTextInfo();
 	}

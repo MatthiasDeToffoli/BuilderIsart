@@ -250,7 +250,7 @@ class VBuilding extends VTile {
 		else if (alignementBuilding == Alignment.hell)
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
 		else if (alignementBuilding == Alignment.heaven)
-			ResourcesManager.takeXp(100, GeneratorType.goodXp);
+			ResourcesManager.takeXp(200, GeneratorType.goodXp);
 			
 	}
 	

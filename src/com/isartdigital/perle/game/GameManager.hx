@@ -64,7 +64,7 @@ class GameManager {
 		ServerManager.playerConnexion();
 		GameConfig.awake();
 		Intern.init(); //Always before RegionManager
-		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
+		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();
@@ -83,7 +83,7 @@ class GameManager {
 		FootPrint.startClass();
 		ChoiceManager.init();
 		
-		//DialogueManager.createFtue();
+		DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		

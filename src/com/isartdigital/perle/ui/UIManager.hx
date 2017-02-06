@@ -101,11 +101,11 @@ class UIManager
 		Hud.getInstance().close();
 	}
 	
-		/**
+	/**
 	 * Ajoute le hud dans le conteneur de Hud
 	 */
 	public function openFTUE (): Void {
-		GameStage.getInstance().getHudContainer().addChild(FocusManager.getInstance());
+		GameStage.getInstance().getFtueContainer().addChild(FocusManager.getInstance());
 		FocusManager.getInstance().open();
 	}
 	
@@ -113,7 +113,7 @@ class UIManager
 	 * Retire le hud du conteneur de Hud
 	 */
 	public function closeFTUE (): Void {
-		GameStage.getInstance().getHudContainer().removeChild(FocusManager.getInstance());
+		GameStage.getInstance().getFtueContainer().removeChild(FocusManager.getInstance());
 		FocusManager.getInstance().close();
 	}
 	

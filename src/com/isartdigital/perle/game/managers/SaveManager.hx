@@ -6,7 +6,6 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.hud.dialogue.DialogueUI;
 import haxe.Json;
 import js.Browser;
 import pixi.core.sprites.Sprite;

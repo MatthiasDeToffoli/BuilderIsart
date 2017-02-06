@@ -2,12 +2,15 @@ package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
 /**
@@ -26,6 +29,7 @@ class CCUBuilding extends CarouselCardUnlock{
 	
 	public function new() {
 		super(AssetName.CAROUSSEL_CARD_UNLOCKED);
+		name = componentName;
 	}
 	
 	private function setRessourcesPrice () {
@@ -82,6 +86,8 @@ class CCUBuilding extends CarouselCardUnlock{
 	
 	override function _click(pEvent:EventTarget = null):Void {
 		super._click(pEvent);
+		if (DialogueManager.ftueStepClickOnCard)
+			DialogueManager.endOfaDialogue();
 		
 		if (BuyManager.canBuy(buildingName)) {
 			Phantom.onClickShop(buildingName);

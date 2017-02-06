@@ -246,12 +246,17 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE:String = "Cost";
 	
 	//Ftue
-	public static inline var FTUE:String = "Window_NPC";
-	public static inline var FTUE_BUTTON:String = FTUE+"_ButtonNext";
-	public static inline var FTUE_HELL:String = FTUE+"_Hell";
-	public static inline var FTUE_HEAVEN:String = FTUE+"_Heaven";
-	public static inline var FTUE_NAME:String = FTUE+"_Name_TXT";
-	public static inline var FTUE_SPEACH:String = FTUE+"_Speech_TXT";
+	public static inline var FTUE_SCENARIO:String = "Window_NPC";
+	public static inline var FTUE_SCENARIO_WINDOW:String = "Window_Ftue_Scenario";
+	public static inline var FTUE_ACTION:String = "Window_Ftue_Action";
+	public static inline var FTUE_SCENARIO_BUTTON:String = FTUE_SCENARIO+"_ButtonNext";
+	public static inline var FTUE_SCENARIO_HELL:String = FTUE_SCENARIO+"_Hell";
+	public static inline var FTUE_ACTION_HELL:String = "_ftue_mascot_demona";
+	public static inline var FTUE_SCENARIO_HEAVEN:String = FTUE_SCENARIO+"_Heaven";
+	public static inline var FTUE_ACTION_HEAVEN:String = "_ftue_mascot_angela";
+	public static inline var FTUE_SCENARIO_NAME:String = FTUE_SCENARIO+"_Name_TXT";
+	public static inline var FTUE_SCENARIO_SPEACH:String = FTUE_SCENARIO+"_Speech_TXT";
+	public static inline var FTUE_ACTION_SPEACH:String = "_infobulle_text";
 	
 	// HUD
 	public static inline var HUD_PREFIX:String = "HUD_";

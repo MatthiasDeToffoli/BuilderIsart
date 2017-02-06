@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.levelUp;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
@@ -60,7 +61,6 @@ class LevelUpPoppin extends SmartPopinExtended
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
-		UnlockManager.unlockedItem.splice(0, 1);
 	}
 	
 	private static function closeAll():Void {
@@ -78,11 +78,14 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private static function onClickNext():Void {
+		UnlockManager.unlockedItem.splice(0, 1);
 		if (UnlockManager.unlockedItem.length != 0) {
 			img.removeChild(imgImage);
 			setPopin();
 		}
 		else {
+			if (DialogueManager.ftueCloseUnlockedItem)
+				DialogueManager.endOfaDialogue();
 			Hud.getInstance().show();
 			UIManager.getInstance().closeCurrentPopin();
 		}

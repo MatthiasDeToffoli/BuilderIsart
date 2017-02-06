@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
@@ -92,8 +93,9 @@ class Hud extends SmartScreen
 		
 		containerEffect = new Container();
 		addChild(containerEffect); // over everything
-		
 		addListeners();
+		
+		on(EventType.ADDED, registerForFTUE);
 	}
 	
 	public function getContainerEffect ():Container {
@@ -204,23 +206,31 @@ class Hud extends SmartScreen
 	
 
 	private function addListeners ():Void {
-		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		
+		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		btnResetData = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton);
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
 		//btnMissions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton); // todo 
 		
+		
+		
+		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
+		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
+		addListenersOnClick();
+	}
+	
+	private function addListenersOnClick() {
+		//FTUE : désolé j'ai du faire ça sinon impossible de recolter les golds
+		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory)
+			return;
+			
 		Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.addListenerClick(btnInterns, onClickListIntern);
 		//Interactive.addListenerClick(btnMissions, onClickMission); // todo 
-		
-		
-		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
-		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		var ironMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
@@ -237,7 +247,6 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnSoft, onClickShopCurrencies);
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
-		on(EventType.ADDED, registerForFTUE);
 		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
 		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, onKeyDown);
 	}
@@ -245,11 +254,12 @@ class Hud extends SmartScreen
 	private function onKeyDown(pEvent:KeyboardEvent){
 		if (pEvent.key != "g" && pEvent.key != "j") return;
 		if (pEvent.key == "g") ResourcesManager.levelUp();
+		//DialogueManager.registerIsADialogue = false;
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {
 		for (i in 0...children.length) {
-			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i]);
+			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i],true);
 		}
 		off(EventType.ADDED, registerForFTUE);
 	}
@@ -291,6 +301,22 @@ class Hud extends SmartScreen
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding, pPos:Point):Void {
 		var lBuidldingHudType:BuildingHudType = null;
 		
+		if (checkIfTribunal(pVBuilding)) {
+			if (DialogueManager.ftueStepOpenPurgatory)
+				DialogueManager.endOfaDialogue(true);
+				
+			UIManager.getInstance().openPopin(TribunalPopin.getInstance());
+			hide();
+			return;
+		}
+		
+		if (pCurrentState != VBuildingState.isBuilding)
+			if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding || DialogueManager.ftueStepOpenPurgatory)
+			return;
+			
+	/*	if (DialogueManager.ftueStepOpenPurgatory)
+		if(pVBuilding.alignementBuilding.getName() !=neutral*/
+		
 		if (pCurrentState == VBuildingState.isBuilt)
 			lBuidldingHudType = BuildingHudType.HARVEST;
 		else if (pCurrentState == VBuildingState.isBuilding)
@@ -304,7 +330,16 @@ class Hud extends SmartScreen
 		);
 	}
 	
+	private function checkIfTribunal(pVbuilding:VBuilding):Bool {
+		return (Std.is(pVbuilding.graphic, Tribunal));
+	}
+	
 	private function onClickShop ():Void {
+		if (DialogueManager.ftueStepClickShop) {
+			
+			//DialogueManager.removeDialogue();
+			DialogueManager.endOfaDialogue(true);
+		}
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 		ShopPopin.getInstance().init(ShopTab.Building);
 		hide();
@@ -381,7 +416,6 @@ class Hud extends SmartScreen
 			GameStage.getInstance().getHudContainer().removeChild(this);
 			isHide = true;
 		}
-
 	}
 	
 	/**
@@ -394,11 +428,7 @@ class Hud extends SmartScreen
 		}
 	}
 	
-	
-	/**
-	 * détruit l'instance unique et met sa référence interne à null
-	 */
-	override public function destroy (): Void {
+	private function removeListenersClick() {
 		Interactive.removeListenerClick(btnResetData, onClickResetData);
 		Interactive.removeListenerClick(btnShop, onClickShop);
 		Interactive.removeListenerClick(btnPurgatory, onClickTribunal);
@@ -409,7 +439,14 @@ class Hud extends SmartScreen
 		Interactive.removeListenerClick(btnWood, onClickShopResource);
 		Interactive.removeListenerClick(btnSoft, onClickShopCurrencies);
 		Interactive.removeListenerClick(btnHard, onClickShopCurrencies);
-		
+	}
+	
+	
+	/**
+	 * détruit l'instance unique et met sa référence interne à null
+	 */
+	override public function destroy (): Void {
+		removeListenersClick();
 		ResourcesManager.totalResourcesEvent.off(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		instance = null;
 		super.destroy();

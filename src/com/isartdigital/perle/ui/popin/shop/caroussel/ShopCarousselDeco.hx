@@ -27,7 +27,7 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 		super();
 	}
 	
-	override function getCardToShow():Array<String> {
+	override function getCardToShowOverride ():Array<String> {
 		return NAME_LIST;
 	}
 	

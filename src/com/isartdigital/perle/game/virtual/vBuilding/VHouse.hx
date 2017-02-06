@@ -44,7 +44,7 @@ class VHouse extends VBuildingUpgrade
 	
 	override function addGenerator():Void 
 	{
-		maxResources = [50, 225, 1200];
+		maxResources = [150, 225, 1200];
 		myMaxContains = maxResources[0]; 
 		myTime = TimesInfo.MIN / valuesWin[0];
 		

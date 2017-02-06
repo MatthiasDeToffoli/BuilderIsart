@@ -1,9 +1,14 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.perle.ui.popin.shop.card.CCUBuilding;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.events.EventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -37,6 +42,7 @@ class ShopCaroussel extends SmartComponent {
 	private var maxCardsVisible:Int;
 	private var cardsPositions:Array<Point>;
 	private var buildingListIndex:Int = 0;
+	private var myEnum:ShopTab;
 	
 	// used in UIBuilder.hx, Singleton ou pas ? nom plus précis, comme carousselBuilding etc
 	// todo réutiliser pour d'autre éléments type shoCaroussel ?
@@ -44,13 +50,14 @@ class ShopCaroussel extends SmartComponent {
 		super(pID);
 	}
 	
-	public function init (pPos:Point):Void {
+	public function init (pPos:Point, pTab:ShopTab):Void {
 		initArrows();
 		cardsToShow = getCardToShow();
 		cards = new Array<CarouselCard>();
 		cardsPositions = [];
 		
 		position = pPos;
+		myEnum = pTab;
 		
 		if (cardsToShow != null)
 			createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
@@ -164,8 +171,16 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	private function getCardToShow ():Array<String> {
-		return null;
-	}
+ 		if (DialogueManager.ftueStepClickOnCard) {
+			trace("rendjfnsfkvvsfifdlv,");
+ 			return DialogueManager.getCardToShow(myEnum);
+		}
+ 		return getCardToShowOverride();
+ 	}
+ 	
+ 	private function getCardToShowOverride ():Array<String> {
+ 		return new Array<String>();
+  	}
 	
 	private function destroyCards ():Void {
 		var lLength:UInt = cards.length;

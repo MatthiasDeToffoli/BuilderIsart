@@ -11,6 +11,10 @@ import pixi.core.math.Point;
 class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 
 	private static var NAME_LIST(default, never):Array<String> = [
+	
+		BuildingName.HELL_HOUSE,
+		BuildingName.HEAVEN_HOUSE,
+		
 		BuildingName.STYX_VICE_1,
 		BuildingName.STYX_VICE_2,
 		BuildingName.STYX_VICE_3,
@@ -18,12 +22,10 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		BuildingName.STYX_VIRTUE_2,
 		BuildingName.STYX_VIRTUE_3,
 		
-		BuildingName.HEAVEN_HOUSE,
 		BuildingName.HEAVEN_HOUSE_INTERNS,
 		BuildingName.HEAVEN_COLLECTOR,
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
 		
-		BuildingName.HELL_HOUSE,
 		BuildingName.HELL_COLLECTOR,
 		BuildingName.HELL_FACTORY,		
 		BuildingName.HELL_HOUSE_INTERNS,
@@ -33,7 +35,7 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		super();
 	}
 	
-	override function getCardToShow():Array<String> {
+	override function getCardToShowOverride ():Array<String> {
 		return NAME_LIST;
 	}
 }

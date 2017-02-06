@@ -23,8 +23,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 		btnReroll = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartButton);
 	}
 	
-	override public function init (pPos:Point):Void {
-		super.init(pPos);
+	override public function init (pPos:Point, pTab:ShopTab):Void {
+		super.init(pPos,myEnum);
 		Interactive.addListenerClick(btnReroll, onClickReroll);
 	}
 	

@@ -3,18 +3,22 @@ import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building.RegionMap;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
@@ -342,6 +346,8 @@ class Phantom extends Building {
 			vBuilding.activate();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
 			
+			if (DialogueManager.ftueStepPutBuilding)
+				DialogueManager.endOfaDialogue();
 			
 			vBuilding.addExp();
 			destroy();
@@ -365,6 +371,33 @@ class Phantom extends Building {
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 			
 	}*/
+	
+	public static function firstBuildForFtue():Void {
+		var newId = IdManager.newId();
+		var tTime:Float = Date.now().getTime();
+		var lBuilding:VBuilding;
+		var lBuildinName:String = "Hell House";
+		var tileDesc:TileDescription = {
+			buildingName:lBuildinName,
+			id:newId,
+			regionX:1,
+			regionY:0,
+			mapX:0,
+			mapY:0,
+			level:0,
+			timeDesc: { refTile:newId,  end: tTime + 0, progress: 0, creationDate: tTime }
+		};
+		
+		lBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[lBuildinName])), [tileDesc]);
+		
+		lBuilding.activate();
+		
+		
+		SaveManager.save();
+		Building.sortBuildings();
+		
+		cast(lBuilding, VHouseHell).addForFtue();
+	}
 	
 	private function applyChange ():Void {
 		SaveManager.save();

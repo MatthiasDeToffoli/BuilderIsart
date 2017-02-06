@@ -47,7 +47,7 @@ class FocusManager extends Screen
 	private function new(pID:String=null) 
 	{
 		super(pID);
-		modalImage = "assets/ftue_bg.png";
+		modalImage = "assets/FTUE_bg.png";
 		
 		shadow = new Container();
 	}
@@ -57,12 +57,16 @@ class FocusManager extends Screen
 	 * @param	pTarget objet ciblé
 	 * @param	pRotation rotation de la flèche qui pointe sur l'objet exprimé en degrés
 	 */
-	public function setFocus (pTarget:DisplayObject, ?pRotation:Float = 0): Void {
+	public function setFocus (?pTarget:DisplayObject, ?pRotation:Float = 0): Void {
 		if (target != null && target.parent == this) swap(shadow, target);
-		
-		target = pTarget;
-		swap(target, shadow);		
-		arrowRotation = pRotation;
+			//trace(pTarget);
+		if (pTarget != null) {
+			//trace(pTarget);
+			target = pTarget;
+			swap(target, shadow);
+		}	
+		if(pRotation !=null)
+			arrowRotation = pRotation;
 		onResize();
 	}
 	
@@ -98,24 +102,25 @@ class FocusManager extends Screen
 				}
 			}
 		}
-
 	}
 	
 	override function onResize(pEvent:EventTarget = null):Void 
 	{
-		
-		if (target == null) return;
-		if (arrow == null) { 
-			arrow = new Arrow();
-			addChild(arrow);
-			arrow.start();
-		}	
-		
-		target.position = toLocal(shadow.position, shadow.parent);
-		
-		arrow.rotation = arrowRotation * Pixi.DEG_TO_RAD;
-		arrow.position = target.position;
-		
+		if (target != null) {
+			if (arrowRotation != 0) {
+				if (arrow == null) { 
+					arrow = new Arrow();
+					addChild(arrow);
+					arrow.start();
+				}	
+			}
+			target.position = toLocal(shadow.position, shadow.parent);
+			
+			if (arrowRotation!= 0) {
+				arrow.rotation = arrowRotation * Pixi.DEG_TO_RAD;
+				arrow.position = target.position;
+			}
+		}
 		super.onResize(pEvent);
 		
 	}

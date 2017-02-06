@@ -68,7 +68,10 @@ class CameraManager
 	public static function move(pSpeedX:Float, pSpeedY:Float):Void {
 		if (Hud.isHide && !Phantom.isSet())
 			return;
-		
+		if (DialogueManager.cameraHaveToMove) {
+			DialogueManager.waitTime(3000);	
+			DialogueManager.cameraHaveToMove = false;
+		}
 		var lRegionCenters = getRegionCenters();
 		var lIndexRef:Int = 0;
 		

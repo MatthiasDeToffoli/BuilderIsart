@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -26,6 +27,13 @@ class VHouseHell extends VHouse
 		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE] = 5;
 		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE_LEVEL2] = 15;
 		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE_LEVEL3] = 40;
+	}
+	
+	public function addForFtue():Void {
+		myPopulation.quantity = myPopulation.max;	
+		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
+		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
+		myGenerator = {desc:ResourcesManager.getGenerator(tileDesc.id, myGeneratorType)};
 	}
 	
 	override function addGenerator():Void 

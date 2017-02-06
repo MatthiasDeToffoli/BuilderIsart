@@ -1,7 +1,9 @@
 package com.isartdigital.perle.ui.popin.shop.card;
 import com.greensock.easing.Back;
 import com.greensock.TweenMax;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -9,6 +11,7 @@ import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
+import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
 /**
@@ -53,6 +56,31 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	}
 	
 	private function buildCard ():Void {}
+	
+	/**
+	 * Put scale to 1:1
+	 */
+	private function tweenPopin ():Void {
+		/*TweenMax.to(scale, TWEEN_DURATION, {
+			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
+			x:1,
+			y:1
+		} );*/
+	}
+	
+	private function setImage (pAssetName:String):Void { // todo : finir
+		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
+		
+		lImage.init();
+		lImage.width = image.width;
+		lImage.height = image.height;
+		image.addChild(lImage);
+		lImage.x = 0;
+		lImage.y = 0;
+		lImage.start();
+		
+	}
+	
 	
 	override public function destroy():Void {
 		if (parent != null)

@@ -1,5 +1,8 @@
 package com.isartdigital.perle.ui.contextual.sprites;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -32,11 +35,12 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 		addChild(graphic);
 		interactive = true;
 		Interactive.addListenerClick(this, onClick);
+		Interactive.addListenerClick(this, DialogueManager.test);
+		//on(EventType.ADDED, registerForFTUE);
 	}
 	
 	public static function init(){
 		assetsName = new Map<GeneratorType,String>();
-		
 		assetsName[GeneratorType.soft] = AssetName.PROD_ICON_SOFT;
 		assetsName[GeneratorType.hard] = AssetName.PROD_ICON_HARD;
 		assetsName[GeneratorType.buildResourceFromParadise] = AssetName.PROD_ICON_WOOD;

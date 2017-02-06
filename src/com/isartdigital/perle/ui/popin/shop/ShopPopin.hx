@@ -182,7 +182,7 @@ class ShopPopin extends SmartPopinExtended {
 			default: Debug.error("Undefined caroussel class for ShopTab : " + pTab);
 		}
 		
-		caroussel.init(carousselPos);
+		caroussel.init(carousselPos, pTab);
 		addChild(caroussel);
 	}
 	

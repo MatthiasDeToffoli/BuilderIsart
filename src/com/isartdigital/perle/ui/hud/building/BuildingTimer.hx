@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -68,6 +69,10 @@ class BuildingTimer extends SmartComponent
 		trace("decrease time contruction: -5s");
 		var isFinish:Bool = TimeManager.increaseProgress(building, 20000);
 		if (isFinish) {
+			if (DialogueManager.ftueStepConstructBuilding) {
+				trace("Je passe la prochaine etape de FTUe, je le met en trace comme ça tout le monde le vois : Il faut rajouter la poppin skip timer pour que je puisse mettre la prochaine etape  bisous Alexis");
+				DialogueManager.endOfaDialogue();
+			}
 			timeText.text = "Finish";
 		}
 		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
