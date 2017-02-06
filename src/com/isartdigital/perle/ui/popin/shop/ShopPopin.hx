@@ -54,6 +54,8 @@ class ShopPopin extends SmartPopinExtended {
 	private var buttonCurrencies2:SmartButton;
 	private var buttonRessources1:SmartButton;
 	private var buttonRessources2:SmartButton;
+	private var buttonBundle1:SmartButton;
+	private var buttonBundle2:SmartButton;
 	
 	public static function getInstance (): ShopPopin {
 		if (instance == null) instance = new ShopPopin();
@@ -103,8 +105,8 @@ class ShopPopin extends SmartPopinExtended {
 		buttonTab[3] = [];
 		var tabRessources = cast(SmartCheck.getChildByName(this, "Onglet_Ressources"), SmartComponent);
 		buttonTab[4] = [];
-		buttonOpenBundle = cast(SmartCheck.getChildByName(this, "Bundles_Button"), SmartComponent);
-		Interactive.addListenerClick(buttonOpenBundle, onClickOpenBundle);
+		var tabBundle = cast(SmartCheck.getChildByName(this, "Bundles_Button"), SmartComponent);
+		buttonTab[5] = [];
 		
 		buttonBuilding1 = cast(SmartCheck.getChildByName(tabBuilding, "Current"), SmartButton);
 		Interactive.addListenerClick(buttonBuilding1, onClickOpenBuldings);
@@ -140,6 +142,13 @@ class ShopPopin extends SmartPopinExtended {
 		Interactive.addListenerClick(buttonRessources2, onClickOpenResource);
 		buttonTab[4].push(buttonRessources1);
 		buttonTab[4].push(buttonRessources2);
+		
+		buttonBundle1 = cast(SmartCheck.getChildByName(tabBundle, "Current"), SmartButton);
+		Interactive.addListenerClick(buttonBundle1, onClickOpenBundle);
+		buttonBundle2 = cast(SmartCheck.getChildByName(tabBundle, "Layer 1"), SmartButton);
+		Interactive.addListenerClick(buttonBundle2, onClickOpenBundle);
+		buttonTab[5].push(buttonBundle1);
+		buttonTab[5].push(buttonBundle2);
 	}
 	
 	private function switchButtons() {
