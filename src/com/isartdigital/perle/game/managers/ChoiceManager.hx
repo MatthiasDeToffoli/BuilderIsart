@@ -45,6 +45,15 @@ typedef EfficiencyStep = {
 	var xP:Int;
 }
 
+typedef EventRewardDesc = {
+	var gold:Int;
+	var karma:Int;
+	var wood:Int;
+	var iron:Int;
+	var soul:Int;
+	@:optional var xp:Int;
+}
+
 /**
  * ...
  * @author grenu
@@ -67,8 +76,6 @@ class ChoiceManager
 	public static function getJsons():Void {
 		allChoices = GameConfig.getChoices();
 		efficiencyBalance = GameConfig.getChoicesConfig();
-		
-		trace(allChoices[0]);
 	}
 	
 	public static function getNewChoiceID():Int {
@@ -86,6 +93,27 @@ class ChoiceManager
 	
 	public static function applyReward(pIntern:InternDescription, pReward:EventRewardDesc, pChoiceType:ChoiceType):Void {
 		var useChoice:ChoiceDescription = selectChoice();
+		var baseReward:EventRewardDesc;
+		
+		if (pChoiceType == ChoiceType.HELL) {
+			baseReward = {
+				gold : useChoice.goldHell,
+				karma : useChoice.karmaHell,
+				wood : useChoice.woodHell,
+				iron : useChoice.ironHell,
+				soul : useChoice.soulHell
+			};
+		}
+		else {
+			baseReward = {
+				gold : useChoice.goldHeaven,
+				karma : useChoice.karmaHeaven,
+				wood : useChoice.woodHeaven,
+				iron : useChoice.ironHeaven,
+				soul : useChoice.soulHeaven
+			};
+		}
+		
 		switch (pChoiceType) 
 		{
 			case ChoiceType.HEAVEN:

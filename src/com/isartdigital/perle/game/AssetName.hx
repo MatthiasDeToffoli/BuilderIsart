@@ -205,6 +205,11 @@ class AssetName{
 	public static inline var INTERN_EVENT_SPEED:String = "_intern_speed";
 	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
+	public static inline var INTERN_SPEED_JAUGE:String = "_jauge_speed";
+	public static inline var INTERN_EFF_JAUGE:String = "_jauge_efficiency";
+	
+	public static inline var SPEED_INDICATOR:String = "_jaugeSpeed_0";
+	public static inline var EFF_INDICATOR:String = "_jaugeEfficiency_0";
 	
 	//intern popin
 	public static inline var INTERN_POPIN:String = "Interns";

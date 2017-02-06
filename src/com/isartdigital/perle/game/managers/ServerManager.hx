@@ -97,13 +97,13 @@ class ServerManager {
 	 * @param	pIntern sometime you need an InternDescription
 	 * @return 	
 	 */
-	public static function InternAction(pAction:DbAction, ?pIntern:InternDescription=null):Void {
+	public static function InternAction(pAction:DbAction, ?internId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
 		switch (pAction) 
 		{
 			case DbAction.ADD:
-				
+				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
 			case DbAction.REM:
 			
 			case DbAction.UPDT:

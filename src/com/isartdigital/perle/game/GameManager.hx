@@ -79,7 +79,6 @@ class GameManager {
 		HudContextual.addContainer();
 		Phantom.initClass();
 		RegionManager.init();
-		//Choice.init(); //Todo: en attendant mieux
 		SaveManager.createFromSave();
 		//UnlockManager.setUnlockItem();
 		ClippingManager.update();

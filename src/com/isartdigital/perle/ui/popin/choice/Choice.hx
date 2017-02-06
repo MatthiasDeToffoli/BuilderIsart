@@ -22,15 +22,6 @@ import pixi.interaction.EventTarget;
 
 enum ChoiceType { HEAVEN; HELL; NONE; }
 
-typedef EventRewardDesc = {
-	var gold:Int;
-	var karma:Int;
-	var wood:Int;
-	var iron:Int;
-	var soul:Int;
-	var xp:Int;
-}
-
 /**
  * Choice popin
  * @author grenu
@@ -61,6 +52,8 @@ class Choice extends SmartPopinExtended
 	private var internSpeed:TextSprite;
 	private var internEfficiency:TextSprite;
 	private var stressBar:SmartComponent;
+	private var speedIndic:SmartComponent;
+	private var effIndic:SmartComponent;
 	
 
 	// card slide position properties
@@ -117,6 +110,8 @@ class Choice extends SmartPopinExtended
 		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
 		
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
+		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
+		effIndic = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {
@@ -141,15 +136,30 @@ class Choice extends SmartPopinExtended
 		internStress.text = Std.string(intern.stress);
 		internSpeed.text = Std.string(intern.speed);
 		internEfficiency.text = Std.string(intern.efficiency);
+		
+		// call matthieu !!!!!!!!
+		//SmartCheck.traceChildrens(effIndic);
+		var iEff:Int =  6 - intern.efficiency;
+		for (i in 1...iEff)
+			cast(effIndic.getChildAt(i), UISprite).visible = false;
+			
+		var iSpeed:Int = 6 - intern.speed;
+		for (i in 1...iSpeed)
+			cast(speedIndic.getChildAt(i), UISprite).visible = false;
+			
+		var iStress:Int = 6 - Math.floor(intern.stress / 10);
+		for (i in 1...iStress)
+			cast(stressBar.getChildAt(i), UISprite).visible = false;
 	}
 	
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {
 		var indexEff:Int = internDesc.efficiency - 1;
+		
 		reward = {
-			gold : /*newChoice.gold + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].gold,
-			karma :/* newChoice.karma + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].karma,
-			wood : /*newChoice.wood + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].wood,
-			iron : /*newChoice.iron + */internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].iron,
+			gold : internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].gold,
+			karma : internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].karma,
+			wood : internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].wood,
+			iron : internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].iron,
 			soul : internDesc.efficiency, 
 			xp : Std.int(internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].xP)
 		};

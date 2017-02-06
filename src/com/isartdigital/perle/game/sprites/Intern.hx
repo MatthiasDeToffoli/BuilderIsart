@@ -121,6 +121,8 @@ class Intern
 			
 			internsListArray.push(newIntern);
 		}
+		
+		ServerManager.InternAction(DbAction.ADD, 1);
 	}
 	
 	/**
