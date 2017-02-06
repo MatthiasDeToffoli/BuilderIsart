@@ -63,10 +63,7 @@ class Intern
 	public static function buy(pIntern:InternDescription):Void{
 		var pAlignment:Alignment = null;
 		internsListArray.push(pIntern);
-		trace(pIntern.aligment == "heaven");
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
-		trace(internsListAlignment[Alignment.heaven]);
-		//internsListAlignment[pIntern.aligment].push(pIntern);
 	}
 	
 	/**

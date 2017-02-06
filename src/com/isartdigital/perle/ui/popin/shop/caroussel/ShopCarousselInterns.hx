@@ -169,6 +169,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 	}
 	
+	private function getRandomInterns(pAlignment:Alignment)
 	private function setValuesNumberHousesHeaven():Void{
 		if (Intern.numberInternHouses[Alignment.heaven] != null && Intern.internsListAlignment[Alignment.heaven] != null){
 			numberHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length + "";
