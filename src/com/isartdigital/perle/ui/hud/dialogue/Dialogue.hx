@@ -67,13 +67,17 @@ class Dialogue extends SmartScreen
 	private function hideAllExpression() {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];
-			getChildByName(npc_left + lExpression).visible = false;
-			getChildByName(npc_right + lExpression).visible = false;
+			if(getChildByName(npc_left + lExpression)!=null)
+				getChildByName(npc_left + lExpression).visible = false;
+				
+			if(getChildByName(npc_right + lExpression)!=null)
+				getChildByName(npc_right + lExpression).visible = false;
 		}
 	}
 	
 	private function changeExpression(pExpression:String, pPicture:String) {
-		getChildByName(pPicture + pExpression).visible = true;
+		if(getChildByName(pPicture + pExpression)!=null)
+			getChildByName(pPicture + pExpression).visible = true;
 	}
 	
 	/**
@@ -83,15 +87,21 @@ class Dialogue extends SmartScreen
 	private function changeAlpha(pPicture:String,pExpression:String) {
 		switch(pPicture) {
 			case "left" : {
-				changeAlphaExpression(npc_left, 1);
-				changeExpression(pExpression,npc_left);
-				changeAlphaExpression(npc_right, 0.2);
+				if(getChildByName(npc_left)!=null)
+					changeAlphaExpression(npc_left, 1);
+				changeExpression(pExpression, npc_left);
+				
+				if(getChildByName(npc_right )!=null)
+					changeAlphaExpression(npc_right, 0.2);
 				changeExpression(NEUTRAL_EXPRESSION,npc_right);
 			}
 			case "right" : {
-				changeAlphaExpression(npc_left, 0.2);
-				changeExpression(NEUTRAL_EXPRESSION,npc_left);
-				changeAlphaExpression(npc_right, 1);
+				if(getChildByName(npc_left)!=null)
+					changeAlphaExpression(npc_left, 0.2);
+				changeExpression(NEUTRAL_EXPRESSION, npc_left);
+				
+				if(getChildByName(npc_right)!=null)
+					changeAlphaExpression(npc_right, 1);
 				changeExpression(pExpression,npc_right);
 			}
 		}
@@ -100,7 +110,8 @@ class Dialogue extends SmartScreen
 	private function changeAlphaExpression(pPicture:String, pAlpha:Float) {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];
-			getChildByName(pPicture + lExpression).alpha = pAlpha;
+			if(getChildByName(pPicture + lExpression)!=null)
+				getChildByName(pPicture + lExpression).alpha = pAlpha;
 		}
 	}
 
