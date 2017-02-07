@@ -35,7 +35,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 		addChild(graphic);
 		interactive = true;
 		Interactive.addListenerClick(this, onClick);
-		Interactive.addListenerClick(this, DialogueManager.test);
+		Interactive.addListenerClick(this, DialogueManager.recoltStepOver);
 		//on(EventType.ADDED, registerForFTUE);
 	}
 	

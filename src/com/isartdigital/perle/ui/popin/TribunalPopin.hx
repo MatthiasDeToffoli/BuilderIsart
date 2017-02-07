@@ -112,7 +112,9 @@ class TribunalPopin extends SmartPopinExtended
 		Interactive.addListenerClick(btnUpgrade, onUpgrade);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
-		on(EventType.ADDED, registerForFTUE);
+		
+		if (DialogueManager.ftueStepOpenPurgatory)
+			on(EventType.ADDED, registerForFTUE);
 	}
 	
 	private function registerForFTUE (pEvent:EventTarget):Void {

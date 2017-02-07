@@ -15,6 +15,8 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 class Dialogue extends SmartScreen
 { 
 	private static inline var NEUTRAL_EXPRESSION:String = "_Neutral";
+	private static inline var ON_ALPHA:Float = 1;
+	private static inline var OFF_ALPHA:Float = 0.2;
 	private var btnNext:SmartButton;
 	//private var npc_name:TextSprite;
 	private var npc_speach:TextSprite;
@@ -64,6 +66,9 @@ class Dialogue extends SmartScreen
 		changeAlpha(pPicture,pExpression);
 	}
 	
+	/**
+	 * function to hide All Expressions of the Npcs
+	 */
 	private function hideAllExpression() {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];
@@ -75,6 +80,11 @@ class Dialogue extends SmartScreen
 		}
 	}
 	
+	/**
+	 * Function to change expressiosn of NPCS
+	 * @param	pExpression
+	 * @param	pPicture of NPC
+	 */
 	private function changeExpression(pExpression:String, pPicture:String) {
 		if(getChildByName(pPicture + pExpression)!=null)
 			getChildByName(pPicture + pExpression).visible = true;
@@ -88,25 +98,30 @@ class Dialogue extends SmartScreen
 		switch(pPicture) {
 			case "left" : {
 				if(getChildByName(npc_left)!=null)
-					changeAlphaExpression(npc_left, 1);
+					changeAlphaExpression(npc_left, ON_ALPHA);
 				changeExpression(pExpression, npc_left);
 				
 				if(getChildByName(npc_right )!=null)
-					changeAlphaExpression(npc_right, 0.2);
+					changeAlphaExpression(npc_right, OFF_ALPHA);
 				changeExpression(NEUTRAL_EXPRESSION,npc_right);
 			}
 			case "right" : {
 				if(getChildByName(npc_left)!=null)
-					changeAlphaExpression(npc_left, 0.2);
+					changeAlphaExpression(npc_left, OFF_ALPHA);
 				changeExpression(NEUTRAL_EXPRESSION, npc_left);
 				
 				if(getChildByName(npc_right)!=null)
-					changeAlphaExpression(npc_right, 1);
+					changeAlphaExpression(npc_right, ON_ALPHA);
 				changeExpression(pExpression,npc_right);
 			}
 		}
 	}
 	
+	/**
+	 * Change alpha of the expression
+	 * @param	pPicture
+	 * @param	pAlpha
+	 */
 	private function changeAlphaExpression(pPicture:String, pAlpha:Float) {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];

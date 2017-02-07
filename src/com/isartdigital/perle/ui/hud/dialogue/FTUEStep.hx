@@ -36,6 +36,13 @@ typedef FTUEStep = {
 	@optional var karma:Int;
 	@optional var hellEXP:Int;
 	@optional var heavenEXP:Int;
+	//ends
+	@optional var endOfFtue:Bool;
+	@optional var endOfSpecial:Bool;
+	@optional var endOfCollectors:Bool;
+	@optional var endOfFactory:Bool;
+	@optional var endOfAltar:Bool;
+	@optional var endOfMarketing:Bool;
 	//In plus, out of the JSON
 	@optional var item:DisplayObject;
 }

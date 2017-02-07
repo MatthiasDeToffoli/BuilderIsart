@@ -42,6 +42,10 @@ class DialogueManager
 	public static var ftueClosePurgatory:Bool = false;
 	public static var ftueCloseUnlockedItem:Bool = false;
 	
+	/**
+	 * Init Ftue
+	 * @param	pFTUE
+	 */
 	public static function init (pFTUE: Dynamic): Void {
 		steps = pFTUE.steps;
 		setAllExpressions();
@@ -55,8 +59,13 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
+		/*dialogueSaved = 16;
+		SaveManager.save();*/
+		
+		var lSave:Int = SaveManager.currentSave.ftueProgress ;
 		//check if first time
-		if (SaveManager.currentSave.ftueProgress > steps.length-1) {
+		if(lSave!=null)
+		if (lSave > steps.length-1 || steps[lSave].endOfFtue || steps[lSave].endOfAltar || steps[lSave].endOfCollectors || steps[lSave].endOfFactory || steps[lSave].endOfMarketing || steps[lSave].endOfSpecial) {
 			//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 			return;
 		}
@@ -74,13 +83,24 @@ class DialogueManager
 		
 	}
 	
-	public static function test() {
+	/**
+	 * Function to stop recolt steps
+	 */
+	public static function recoltStepOver() {
 		if (ftueStepRecolt) {
 			ftueStepRecolt = false;
 			endOfaDialogue();
 		}
 	}
 	
+	/**
+	 * function to create a Dialogue
+	 * @param	pNumber Number of dialogue
+	 * @param	pNpc Npc who talk
+	 * @param	pHideHud Hide Hud ?
+	 * @param	pTypeOfDialogueIsAction Is dialogue an action or a scenario
+	 * @param	pBlocHud Hud Stuck ?
+	 */
 	public static function createTextDialogue(pNumber:Int, pNpc:String, pHideHud:Bool, pTypeOfDialogueIsAction:Bool, ?pBlocHud:Bool) {
 		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
 		
@@ -98,15 +118,19 @@ class DialogueManager
 				Hud.isHide = false;
 				UIManager.getInstance().closeFTUE();	
 			}
-			//GameStage.getInstance().getPopinsContainer().addChild(dialoguePoppin);
 			GameStage.getInstance().getFtueContainer().addChild(dialoguePoppin);
-			//GameStage.getInstance().addChild(dialoguePoppin);
 			dialoguePoppin.open();
-			//GameStage.getInstance().addChild(dialoguePoppin);
 		}	
 		dialoguePoppin.createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression);
 	}
 	
+	/**
+	 * Register items to create locked ftue
+	 * @param	pTarget
+	 * @param	pIsNotDialogue
+	 * @param	readyForNextStep
+	 * @param	pPosition
+	 */
 	public static function register (pTarget:DisplayObject, ?pIsNotDialogue:Bool, ?readyForNextStep:Bool, ?pPosition): Void {
 		if (dialogueSaved >= steps.length ) return;
 		for (i in 0...steps.length) {
@@ -119,12 +143,14 @@ class DialogueManager
 		}
 	}
 	
+	/**
+	 * Function to create next Step of dialogue
+	 * @param	pTarget
+	 */
 	public static function nextStep(pTarget:DisplayObject=null): Void {
 		if (dialogueSaved >= steps.length) return;
 		
 		//Effects : 
-		
-		
 		
 		//Actions
 		if (steps[dialogueSaved].isAction) {
@@ -188,7 +214,6 @@ class DialogueManager
 		else if (dialogueSaved == 0 || steps[dialogueSaved].npcWhoTalk != null) {
 			if (pTarget != null) return;
 			createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, false);
-			
 			UIManager.getInstance().openFTUE();
 			FocusManager.getInstance().setFocus(steps[dialogueSaved].item);
 		}
@@ -210,6 +235,10 @@ class DialogueManager
 			Timer.delay(giveHeavenExp, 500);
 	}
 	
+	/**
+	 * Function called if it's a end of a Dialogue
+	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
+	 */
 	public static function endOfaDialogue(?doNotNextStep:Bool):Void {
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
@@ -232,18 +261,27 @@ class DialogueManager
 		endOfStep(doNotNextStep);
 	}
 	
+	/**
+	 * Card to show in the shop for a step in Shop
+	 * @param	ShopTab
+	 * @return  array string
+	 */
 	public static function getCardToShow(ShopTab):Array<String> {
-		trace(steps[dialogueSaved].shopCarrousselCard);
 		var lCard:String = steps[dialogueSaved].shopCarrousselCard;
 		var arrayBuilding:Array<String> = [lCard];
 		return arrayBuilding;
 	}
 	
+	/**
+	 * Function called at the end of a Step
+	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
+	 */
 	private static function endOfStep (?doNotNextStep:Bool):Void {
 		setAllFalse();
 		
 		if (dialogueSaved >= steps.length)
 			return;
+			
 		if (steps[dialogueSaved + 1] != null) 
 			if (steps[dialogueSaved+1].arrowRotation != null && steps[dialogueSaved+1].npcWhoTalk != null)
 				removeDialogue();
@@ -266,14 +304,25 @@ class DialogueManager
 		if (steps[dialogueSaved-1].checkpoint)
 			SaveManager.save();
 		
+		if (steps[dialogueSaved - 1].endOfFtue || steps[dialogueSaved - 1].endOfAltar || steps[dialogueSaved - 1].endOfCollectors || steps[dialogueSaved - 1].endOfFactory || steps[dialogueSaved - 1].endOfMarketing || steps[dialogueSaved - 1].endOfSpecial) {
+			Hud.getInstance().alpha = 1;
+			removeDialogue();
+			return;
+		}
 		nextStep();
 	}
 	
+	/**
+	 * Set all expressions of NPCS
+	 */
 	private static function setAllExpressions():Void {
 		Dialogue.allExpressionsArray = [];
 		changeSpriteForExpression();
 	}
 	
+	/**
+	 * Change Sprite of Npc with the expression
+	 */
 	private static function changeSpriteForExpression():Void {
 		for (i in 0...steps.length) {
 			if (steps[i].expression != null)
@@ -281,6 +330,10 @@ class DialogueManager
 		}
 	}
 	
+	/**
+	 * Check if this expression is already in the array
+	 * @param	pExpression
+	 */
 	private static function checkIfAlreadyInArray(pExpression:String):Void {
 		for (i in 0...Dialogue.allExpressionsArray.length) {
 			if (Dialogue.allExpressionsArray[i] == pExpression)
@@ -289,18 +342,31 @@ class DialogueManager
 		Dialogue.allExpressionsArray.push(pExpression);
 	}
 	
+	/**
+	 * Create first House
+	 */
 	private static function createFirstHouse() {
 		Phantom.firstBuildForFtue();
 	}
 	
+	/**
+	 * Give EXP during FTUE
+	 */
 	private static function giveHeavenExp() {
 		ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);
 	}
 	
+	/**
+	 * Function to wait so time for special steps
+	 * @param	pTime in milliseconds
+	 */
 	public static function waitTime(pTime:Int) {
 		Timer.delay(waitTimeEndOfDialgue, pTime);
 	}
 	
+	/**
+	 * Time waited
+	 */
 	private static function waitTimeEndOfDialgue() {
 		endOfaDialogue();
 	}
@@ -329,6 +395,9 @@ class DialogueManager
 		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
 	}
 	
+	/**
+	 * Set all the flag var at false
+	 */
 	private static function setAllFalse():Void {
 		ftueStepClickShop = false;
 		ftueStepClickOnCard = false;
