@@ -15,15 +15,13 @@ import pixi.core.math.shapes.Rectangle;
  * ...
  * @author de Toffoli Matthias
  */
-class BHHarvestHouse extends BHBuilt 
+class BHHarvestHouse extends BHBuiltUpgrade 
 {
 	
 	/**
 	 * instance unique de la classe BHHarvestHouse
 	 */
 	private static var instance: BHHarvestHouse;
-	private var soulConter:SoulCounterHouse;
-	private var soulGraphic:UISprite;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -39,16 +37,8 @@ class BHHarvestHouse extends BHBuilt
 	 */
 	private function new() 
 	{
-		super("BuiltContext_house");
+		super(AssetName.CONTEXTUAL_HOUSE);
 		
-		addSoulCounter();
-		
-	}
-	
-	public function addSoulCounter():Void {
-		soulConter = new SoulCounterHouse();
-		Hud.getInstance().addSoulCounter(soulConter);
-		soulConter.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
 	}
 	
 	
@@ -57,7 +47,6 @@ class BHHarvestHouse extends BHBuilt
 	 */
 	override public function destroy (): Void {
 		instance = null;
-		soulConter.destroy();
 		super.destroy();
 	}
 

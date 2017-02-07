@@ -339,7 +339,14 @@ class AssetName{
 	
 	
 	//contextual
+	public static inline var CONTEXTUAL_NOT_UPGRADABLE:String = "BuiltContext_noUpgrade";
+	public static inline var CONTEXTUAL_IN_UPGRADING:String = "BuiltContext_InUpgrading";
+	public static inline var CONTEXTUAL_HOUSE:String = "BuiltContext_house";
+	public static inline var CONTEXTUAL_MARKETING:String = "BuiltContext_Marketing";
+	public static inline var CONTEXTUAL_COLLECTOR:String = "BuiltContext_Collector";
+	public static inline var CONTEXTUAL_COLLECTOR_NOT_UPRAFABLE:String = "BuiltContext_Collector2";
 	public static inline var HOUSE_SOUL_COUNTER:String = "SoulsCounter_house";
+	public static inline var CONTEXTUAL_BTN_CANCEL:String = "ButtonCancelUpgrade";
 	// add background and any other assetName coming from DA
 	//bg
 	public static inline var BACKGROUND_HELL:String = "BG_Hell";

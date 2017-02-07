@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -21,29 +22,19 @@ import pixi.flump.Movie;
  * 
  * @author Emeline Berenguier
  */
-class BHHarvest extends BHBuilt{
+class BHHarvestNoUpgrade extends BHBuilt{
 	
-	private static var instance:BHHarvest;
+	private static var instance:BHHarvestNoUpgrade;
  
  
  
-	public static function getInstance (): BHHarvest {
-		if (instance == null) instance = new BHHarvest();
+	public static function getInstance (): BHHarvestNoUpgrade {
+		if (instance == null) instance = new BHHarvestNoUpgrade();
 		return instance;
 	} 
 	 
 	private function new() {
-		super("BuiltContext");
-	}
-	 
-	override public function setMoveAndDestroy():Void 
-	{
-	  if(Std.is(BuildingHud.virtualBuilding,VTribunal)){
-	   btnMove.alpha = 0.5;
-	   btnDestroy.alpha = 0.5;
-	  } else{
-	  super.setMoveAndDestroy();
-		}
+		super(AssetName.CONTEXTUAL_NOT_UPGRADABLE);
 	}
 	 
 	 override public function destroy():Void {

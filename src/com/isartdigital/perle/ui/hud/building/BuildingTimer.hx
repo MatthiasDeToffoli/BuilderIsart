@@ -45,7 +45,7 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	private function progressTimeLoop():Void {
-		if (TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isBuilding) {
+		if (TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isBuilding || TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isUpgrading) {
 			timeText.text = TimeManager.getTextTime(building.tileDesc);
 			updateProgressBar();
 		} else {

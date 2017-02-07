@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
+import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
@@ -22,116 +23,43 @@ import pixi.core.math.Point;
  * ...
  * @author Alexis
  */
-class BHBuilt extends BuildingHud
+class BHBuilt extends BHBuiltUndestoyable
 {
-
-	private var btnMove:SmartButton;
-	private var btnDescription:SmartButton;
-	private var btnUpgrade:SmartButton;
+	
 	private var btnDestroy:SmartButton;
+	private var soulConter:SoulCounterHouse;
 
 	
 	public function new(pID:String=null) 
 	{
 		super(pID);
-		findElements();
-		
+		if (Std.is(BuildingHud.virtualBuilding, VHouse)) addSoulCounter();
 	}
 	
-	/**
-	 * function to set when the WF is openned
-	 */
-	public function setOnSpawn():Void {
-		
-		InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
-		GameStage.getInstance().getBuildContainer().interactive = true;
-		GameStage.getInstance().getBuildContainer().on(MouseEventType.MOUSE_DOWN, onClickExit);
-		setUpgradeButton();
-		setMoveAndDestroy();
-		setDescriptionButton();
-		
+	public function addSoulCounter():Void {
+		soulConter = new SoulCounterHouse();
+		Hud.getInstance().addSoulCounter(soulConter);
+		soulConter.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
 	}
 	
-	/**
-	 * listen click on destroy and move if building is not the tribunal
-	 */
-	public function setMoveAndDestroy():Void{
-		Interactive.addListenerClick(btnMove, onClickMove);
-		Interactive.addListenerClick(btnDestroy, onClickDestroy);
-		
-	}
-	
-	private function setDescriptionButton():Void {
-		//@HERE : pourquoi on bloque la description quand c'est pas upgradable ? Oo
-		//if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse)){
-		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade) || Std.is(BuildingHud.virtualBuilding, VTribunal) || Std.is(BuildingHud.virtualBuilding, VCollector)|| Std.is(BuildingHud.virtualBuilding, VMarketingHouse) || Std.is(BuildingHud.virtualBuilding, VInternHouse)){
-			btnDescription.alpha = 1;
-			Interactive.addListenerClick(btnDescription, onClickDescription);
-		}
-		else {
-			btnDescription.alpha = 0.5;
-			Interactive.removeListenerClick(btnDescription, onClickDescription);
-		}
-	}
-	
-	private function setUpgradeButton():Void {
-		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade)){
-				var myVBuilding:VBuildingUpgrade = cast(BuildingHud.virtualBuilding, VBuildingUpgrade);
-				if (myVBuilding.canUpgrade()) {
-					Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
-				}
-				else
-					btnUpgrade.alpha = 0.5;
-			}
-		else btnUpgrade.alpha = 0.5;
-	}
-	
-	private function removeButtonsChange():Void {
-		
-		Interactive.removeListenerClick(btnMove, onClickMove);
-		Interactive.removeListenerClick(btnDestroy, onClickDestroy);
-		btnUpgrade.removeAllListeners();
-		btnUpgrade.alpha = 1;
-		btnMove.alpha = 1;
-		btnDestroy.alpha = 1;
-	}
-	
-	private function findElements():Void 
+	override public function setMoveAndDestroy():Void 
 	{
-		btnMove = cast(getChildByName("MoveButton"), SmartButton);
-		btnDescription = cast(getChildByName("EnterButton"), SmartButton);
-		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		Interactive.addListenerClick(btnDestroy, onClickDestroy);
+		super.setMoveAndDestroy();
+	}
+	
+	
+	
+	override function removeButtonsChange():Void 
+	{
+		Interactive.removeListenerClick(btnDestroy, onClickDestroy);
+		super.removeButtonsChange();
+	}
+	
+	override function findElements():Void 
+	{
 		btnDestroy = cast(getChildByName("ButtonDestroyBuilding"), SmartButton);
-	}
-	
-	public function removeListenerGameContainer():Void {
-		GameStage.getInstance().getBuildContainer().interactive = false;
-		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
-	}
-	
-	private function onClickMove(): Void {
-		removeButtonsChange();
-		removeListenerGameContainer();
-		BuildingHud.virtualBuilding.onClickMove();
-		
-		Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING, BuildingHud.virtualBuilding);
-	}
-	
-	private function onClickDescription(): Void {
-		removeButtonsChange();
-		removeListenerGameContainer();
-		Hud.getInstance().hide();
-		
-		if (BuildingHud.virtualBuilding == null) return;
-		if (Std.is(BuildingHud.virtualBuilding, VTribunal)) UIManager.getInstance().openPopin(TribunalPopin.getInstance()); 
-		else if (Std.is(BuildingHud.virtualBuilding, VCollector)) UIManager.getInstance().openPopin(CollectorPopin.getInstance()); 
-		else if (Std.is(BuildingHud.virtualBuilding, VMarketingHouse)) UIManager.getInstance().openPopin(MarketingPopin.getInstance()); 
-		else if (Std.is(BuildingHud.virtualBuilding, VInternHouse)) UIManager.getInstance().openPopin(InternHousePopin.getInstance()); 
-		else {
-			InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
-			UIManager.getInstance().openPopin(InfoBuilding.getInstance());
-		}
-		onClickExit();
+		super.findElements();
 	}
 	
 	public function onClickDestroy(): Void {
@@ -140,27 +68,10 @@ class BHBuilt extends BuildingHud
 		removeListenerGameContainer();
 	}
 	
-	private function onClickUpgrade(): Void {
-		removeButtonsChange();
-		removeListenerGameContainer();
-		cast(BuildingHud.virtualBuilding, VBuildingUpgrade).onClickUpgrade();
-		Hud.getInstance().hideBuildingHud();
-	}
-	
-	private function onClickExit():Void {
-		removeButtonsChange();
-		GameStage.getInstance().getBuildContainer().interactive = false;
-		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
-		Hud.getInstance().hideBuildingHud();
-	}
-	
-	override public function destroy():Void {
-		Interactive.removeListenerClick(btnMove, onClickMove);
+	override public function destroy():Void 
+	{
 		Interactive.removeListenerClick(btnDestroy, onClickDestroy);
-		Interactive.removeListenerClick(btnDescription, onClickDescription);
-		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
-		
-		removeListenerGameContainer();
+		if (soulConter != null) soulConter.destroy();
 		super.destroy();
 	}
 	

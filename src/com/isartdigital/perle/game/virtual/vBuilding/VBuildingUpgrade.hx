@@ -39,7 +39,7 @@ class VBuildingUpgrade extends VBuilding
 		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
 		TimeManager.addConstructionTimer(tileDesc.timeDesc);
 		
-		if (currentState == VBuildingState.isBuilding) 
+		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
 		activate();

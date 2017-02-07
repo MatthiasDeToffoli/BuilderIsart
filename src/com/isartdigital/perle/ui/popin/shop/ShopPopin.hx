@@ -268,7 +268,7 @@ class ShopPopin extends SmartPopinExtended {
 	override public function destroy():Void {
 		Interactive.removeListenerClick(btnExit, onClickExit);
 		
-		Interactive.removeListenerClick(buttonOpenBundle, onClickOpenBundle);
+		//Interactive.removeListenerClick(buttonOpenBundle, onClickOpenBundle);
 		Interactive.removeListenerClick(buttonBuilding1, onClickOpenBuldings);
 		Interactive.removeListenerClick(buttonBuilding2, onClickOpenBuldings);
 		Interactive.removeListenerClick(buttonDeco1, onClickOpenDecorations);

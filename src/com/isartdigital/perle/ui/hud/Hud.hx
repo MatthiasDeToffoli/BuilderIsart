@@ -10,12 +10,16 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
+import com.isartdigital.perle.ui.hud.building.BHBuiltCollector;
+import com.isartdigital.perle.ui.hud.building.BHBuiltInUpgrading;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
-import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
+import com.isartdigital.perle.ui.hud.building.BHHarvestNoUpgrade;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.building.SoulCounterHouse;
@@ -38,7 +42,7 @@ import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
 import pixi.interaction.EventTarget;
 
-enum BuildingHudType { CONSTRUCTION; HARVEST; MOVING; NONE; }
+enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
 
 /**
  * @author Ambroise RABIER
@@ -53,6 +57,7 @@ class Hud extends SmartScreen
 	public var buildingPosition:Point;
 	
 	private var currentBuildingHudType:BuildingHudType;
+	private var currentBuildingHud:BuildingHud;
 	
 	private var containerBuildingHud:Container;
 	private var containerSoulCounter:Container;
@@ -125,7 +130,7 @@ class Hud extends SmartScreen
 
 		if (currentBuildingHudType != pNewBuildingHud) {
 
-			if(currentBuildingHudType != null) destroyBuildingHud(currentBuildingHudType);
+			closeCurrentBuildingHud();
 			
 			currentBuildingHudType = pNewBuildingHud;
 			
@@ -133,20 +138,26 @@ class Hud extends SmartScreen
 			{
 				case BuildingHudType.HARVEST: {
 	
-					if (Std.is(BuildingHud.virtualBuilding, VHouse))
-						openHarvest(BHHarvestHouse.getInstance()); // todo
-					else openHarvest(BHHarvest.getInstance());
+					if (Std.is(BuildingHud.virtualBuilding, VHouse) && cast(BuildingHud.virtualBuilding,VBuildingUpgrade).canUpgrade())
+						openContextual(BHHarvestHouse.getInstance()); // todo
+					else if (Std.is(BuildingHud.virtualBuilding, VCollector) && cast(BuildingHud.virtualBuilding, VBuildingUpgrade).canUpgrade())
+						openContextual(BHBuiltCollector.getInstance());
+					else openContextual(BHHarvestNoUpgrade.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION:
-					openConstruction(BHConstruction.getInstance());
+					openContextual(BHConstruction.getInstance());
+					
+				case BuildingHudType.UPGRADING:
+					openContextual(BHBuiltInUpgrading.getInstance());
 					
 				case BuildingHudType.MOVING: 
 					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
+					currentBuildingHud = BHMoving.getInstance();
 					UIPosition.setPositionInHud(
 						BHMoving.getInstance(),
 						UIPosition.BOTTOM,
 						0,
-						BHHarvest.getInstance().height/2
+						BHHarvestNoUpgrade.getInstance().height/2
 					);
 					
 					
@@ -157,24 +168,7 @@ class Hud extends SmartScreen
 		}
 	}
 	
-	private function destroyBuildingHud(pType:BuildingHudType):Void {
-		switch(pType) {
-			case BuildingHudType.CONSTRUCTION:
-				BHConstruction.getInstance().destroy();
-				
-			case BuildingHudType.HARVEST:
-				BHHarvest.getInstance().destroy();
-				BHHarvestHouse.getInstance().destroy();
-				
-			case BuildingHudType.MOVING:
-				BHMoving.getInstance().destroy();
-				
-			case BuildingHudType.NONE:
-				
-				
-		}
-	}
-	
+
 	override public function onResize (pEvent:EventTarget = null):Void {
 		super.onResize(pEvent);
 		if (currentBuildingHudType == BuildingHudType.MOVING) {
@@ -182,11 +176,15 @@ class Hud extends SmartScreen
 				BHMoving.getInstance(),
 				UIPosition.BOTTOM,
 				0,
-				BHHarvest.getInstance().height/2
+				BHHarvestNoUpgrade.getInstance().height/2
 			);
 		}
 	}
 	
+	public function closeCurrentBuildingHud():Void {
+		if (currentBuildingHud != null) currentBuildingHud.destroy();
+		currentBuildingHud = null;
+	}
 	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...
 	private function addComponent(pComponent:BuildingHud):Void{
 		
@@ -218,16 +216,11 @@ class Hud extends SmartScreen
 	}
 	
 	
-	private function openHarvest(pHarvest:BHBuilt):Void{
-		addComponent(pHarvest);
-		pHarvest.setOnSpawn();
-	}
-	
-	
-	
-	private function openConstruction(pConstruct:BHConstruction):Void {
-		addComponent(pConstruct);
-		pConstruct.setOnSpawn();
+	private function openContextual(pContextual:BuildingHud):Void{
+		addComponent(pContextual);
+		pContextual.setOnSpawn();
+		currentBuildingHud = pContextual;
+		
 	}
 	
 	// todo : called from any clic outside a building
@@ -279,12 +272,9 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
 		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
-		Browser.window.addEventListener(KeyboardEventType.KEY_DOWN, onKeyDown);
 	}
 	
 	private function onKeyDown(pEvent:KeyboardEvent){
-		if (pEvent.key != "g" && pEvent.key != "j") return;
-		if (pEvent.key == "g") ResourcesManager.levelUp();
 		//DialogueManager.registerIsADialogue = false;
 	}
 	
@@ -341,7 +331,7 @@ class Hud extends SmartScreen
 			return;
 		}
 		
-		if (pCurrentState != VBuildingState.isBuilding)
+		if (pCurrentState != VBuildingState.isBuilding && pCurrentState != VBuildingState.isUpgrading)
 			if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding || DialogueManager.ftueStepOpenPurgatory)
 			return;
 			
@@ -354,6 +344,8 @@ class Hud extends SmartScreen
 			lBuidldingHudType = BuildingHudType.CONSTRUCTION;
 		else if (pCurrentState == VBuildingState.isMoving)
 			lBuidldingHudType = BuildingHudType.MOVING;
+		else if (pCurrentState == VBuildingState.isUpgrading)
+			lBuidldingHudType = BuildingHudType.UPGRADING;
 			
 		changeBuildingHud(
 			lBuidldingHudType,
@@ -389,7 +381,7 @@ class Hud extends SmartScreen
 	}
 	
 	public function onClickTribunal():Void {
-		if(currentBuildingHudType != null) destroyBuildingHud(currentBuildingHudType);
+		closeCurrentBuildingHud();
 		UIManager.getInstance().openPopin(TribunalPopin.getInstance());
 		hide();
 	}

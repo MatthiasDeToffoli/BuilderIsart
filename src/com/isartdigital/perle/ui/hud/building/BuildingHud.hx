@@ -14,6 +14,7 @@ class BuildingHud extends SmartComponent {
 	public static var VBUILDING_STATE_TO_BH_TYPE(default, never):Map<VBuildingState, BuildingHudType> = [
 		VBuildingState.isBuilt => BuildingHudType.HARVEST,
 		VBuildingState.isBuilding => BuildingHudType.CONSTRUCTION,
+		VBuildingState.isUpgrading => BuildingHudType.UPGRADING,
 		VBuildingState.isMoving => BuildingHudType.MOVING
 	];
 	
@@ -35,6 +36,10 @@ class BuildingHud extends SmartComponent {
 
 	public function init ():Void {
 		addListeners();
+	}
+	
+	public function setOnSpawn():Void {
+		
 	}
 	
 	private function addListeners ():Void { }

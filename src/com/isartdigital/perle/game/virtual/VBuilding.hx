@@ -22,7 +22,7 @@ import com.isartdigital.perle.ui.popin.InfoBuilding;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 
-enum VBuildingState { isBuilt; isBuilding; isMoving; }
+enum VBuildingState { isBuilt; isBuilding; isUpgrading; isMoving; }
 
 /*extern class VBuildingClickEvent extends EventEmitter { // todo : mail Mathieu
 	override public function addListener(event:String, fn:VBuildingState -> VBuilding ->Void, ?context:Dynamic):Void {
@@ -66,7 +66,7 @@ class VBuilding extends VTile {
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		
 		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
-		if (currentState == VBuildingState.isBuilding) {
+		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) {
 			TimeManager.addConstructionTimer(pDescription.timeDesc);
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
@@ -75,6 +75,8 @@ class VBuilding extends VTile {
 		checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
+	
+	
 	
 	/**
 	 * add this reference to an altar
@@ -219,7 +221,7 @@ class VBuilding extends VTile {
 			if (pState == VBuildingState.isMoving)
 				setModeMove();
 				
-		} else if (currentState == VBuildingState.isBuilding) {
+		} else if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) {
 			
 			if (pState == VBuildingState.isMoving)
 				throw("can't move while building !");

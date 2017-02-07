@@ -12,7 +12,6 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
-import com.isartdigital.perle.ui.hud.building.BHHarvest;
 import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -273,10 +272,7 @@ class InfoBuilding extends SmartPopinExtended{
 	private function onClickSell():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		
-		if (Std.is(virtualBuilding, VHouse)) {
-			//BHHarvestHouse.getInstance().onClickDestroy(); // todo
-		}
-		else BHHarvest.getInstance().onClickDestroy();	
+		Hud.getInstance().closeCurrentBuildingHud();
 	}
 	
 	/**

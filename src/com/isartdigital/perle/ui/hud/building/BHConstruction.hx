@@ -28,7 +28,7 @@ class BHConstruction extends BuildingHud{
 		super("BuildingContext");	
 	}
 	
-	public function setOnSpawn():Void {
+	override public function setOnSpawn():Void {
 		setGameListener();	
 		/*buildingTimer = new BuildingTimer();
 		buildingTimer.spawn();

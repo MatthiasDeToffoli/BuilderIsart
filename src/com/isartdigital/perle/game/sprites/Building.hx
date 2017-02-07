@@ -90,11 +90,10 @@ class Building extends Tile implements IZSortable
 	 * @return
 	 */
 	public static function createBuilding(pTileDesc:TileDescription, state:VBuildingState, isAnim:Bool):Building {
-		
 		var suffix:String = "";
 		
 		if (pTileDesc.buildingName == BuildingName.HEAVEN_HOUSE) {//@TODO : le test avec buildingName va	 péter quand on les aura tous :)
-			suffix = state == VBuildingState.isBuilding ? AssetName.CONSTRUCT:""; 
+			suffix = state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading ? AssetName.CONSTRUCT:""; 
 			if (isAnim) suffix += AssetName.ANIM;
 		}
 		
