@@ -83,7 +83,7 @@ class GameManager {
 		FootPrint.startClass();
 		ChoiceManager.init();
 		
-		DialogueManager.createFtue();
+		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		
