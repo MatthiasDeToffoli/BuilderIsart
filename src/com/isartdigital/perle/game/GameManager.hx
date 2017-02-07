@@ -51,6 +51,7 @@ class GameManager {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
 
+		GodMode.awake(); //@TODO: comment that for livraison
 		
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
