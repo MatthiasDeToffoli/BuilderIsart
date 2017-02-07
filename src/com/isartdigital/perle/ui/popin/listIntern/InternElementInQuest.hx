@@ -45,7 +45,7 @@ class InternElementInQuest extends InternElement
 	private var timeEvent:TextSprite;
 	private var questGauge:SmartComponent;
 	private var questGaugeLenght:Float;
-	private var quest:TimeQuestDescription;
+	public var quest:TimeQuestDescription;
 	private var newEvent:Bool = false;
 	public var loop:Timer;
 	
@@ -102,35 +102,24 @@ class InternElementInQuest extends InternElement
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var lButton:SmartButton = null;
 		
-		//@todo: faire un switch
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING){
 			lButton = new AccelerateButton(spawner.position);
-			Interactive.addListenerClick(lButton, onAccelerate);	
+			cast(lButton, AccelerateButton).spawn(quest);
 		}
 		
-		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING){
+		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING){
 			lButton = new ResolveButton(spawner.position);
 			Interactive.addListenerClick(lButton, onResolve);	
 		}
 		
-		else trace ("just an else");
-		
 		lButton.position = spawner.position;
 		addChild(lButton);
-		
-		//destroySpawner(spawner); //@Todo: provisoire, en attente de mieux
 	}
 	
 	private function addListeners():Void{
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
-		//Interactive.addListenerClick(btnAccelerate, onAccelerate);
 		Interactive.addListenerClick(picture, onPicture);
-	}
-	
-	private function onAccelerate(){
-		ResourcesManager.spendTotal(GeneratorType.hard, 2);
-		if (!TimeManager.increaseQuestProgress(quest)) trace("quest end!");
 	}
 	
 	private function onResolve(){
@@ -138,6 +127,7 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function progressLoop():Void {
+		trace(quest);
 		
 		if (heroCursor.position != null){
 			updateEventCursors();
@@ -202,6 +192,7 @@ class InternElementInQuest extends InternElement
 	{
 		//Interactive.removeListenerClick(btnAccelerate, onAccelerate);
 		Interactive.removeListenerClick(picture, onPicture);
+		
 
 		super.destroy();
 	}

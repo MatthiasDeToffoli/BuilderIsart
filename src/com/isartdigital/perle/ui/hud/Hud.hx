@@ -281,12 +281,6 @@ class Hud extends SmartScreen
 		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
 	}
 	
-	private function onKeyDown(pEvent:KeyboardEvent){
-		//DialogueManager.registerIsADialogue = false;
-		if (pEvent.key != "g" && pEvent.key != "j") return;
-		if (pEvent.key == "g") ResourcesManager.levelUp();
-	}
-	
 	private function registerForFTUE (pEvent:EventTarget):Void {
 		for (i in 0...children.length) {
 			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i],true);
