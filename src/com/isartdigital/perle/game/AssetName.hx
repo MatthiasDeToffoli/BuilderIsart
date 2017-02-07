@@ -167,7 +167,7 @@ class AssetName{
 	public static inline var INTERN_LIST:String = "ListInterns";
 	public static inline var INTERN_LIST_LEFT:String = "_arrow_left";
 	public static inline var INTERN_LIST_RIGHT:String = "_arrow_right";
-	public static var internListSpawners:Array<String> = ["Intern01", "Intern02"];
+	public static var internListSpawners:Array<String> = ["Intern01", "Intern02", "Intern03"];
 	//public static inline var INTERN_LIST_SPAWNER1:String = "Intern02";
 	//public static inline var INTERN_LIST_SPAWNER2:String = "Intern03";
 	

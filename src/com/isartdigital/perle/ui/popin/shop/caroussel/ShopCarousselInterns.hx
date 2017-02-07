@@ -141,6 +141,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
 	}
 	
+	/**
+	 * Function to show the card's state (if you can buy or not) or the correct intern informations in the card
+	 */
 	private function setValues():Void{
 		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
@@ -168,8 +171,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 			heavenCard.alpha = 0.5;
 		}
 	}
-	
-	private function getRandomInterns(pAlignment:Alignment)
+
+	/**
+	 * Set the correct values of the heaven intern house
+	 */
 	private function setValuesNumberHousesHeaven():Void{
 		if (Intern.numberInternHouses[Alignment.heaven] != null && Intern.internsListAlignment[Alignment.heaven] != null){
 			numberHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length + "";
@@ -181,6 +186,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 	}
 	
+	/**
+	 * Set the correct values of the hell intern house
+	 */
 	private function setValuesNumberHousesHell():Void{
 		if (Intern.numberInternHouses[Alignment.hell] != null && Intern.internsListAlignment[Alignment.hell] != null){
 			numberHousesHell.text = Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length + "";
@@ -214,6 +222,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		];
 	}
 	
+	/**
+	 * Callback of the hell card's click. Verification if player can buy or not an intern
+	 */
 	private function onClickHell():Void{
 		//Si achat possible
 		if (Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
@@ -223,6 +234,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 	}
 	
+	/**
+	 * Callback of the heaven card's click. Verification if player can buy or not an intern
+	 */
 	private function onClickHeaven():Void{
 		if (Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
 			Intern.buy(Intern.internsMap[Alignment.heaven][actualHeavenID]);
@@ -236,6 +250,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
+	/**
+	 * System to avoid to have the same intern twice
+	 * @param	pAlignment Alignment of the intern
+	 */
 	public static function changeID(?pAlignment:Alignment = null):Void{
 		if (pAlignment != null){
 			if (pAlignment == Alignment.heaven){
@@ -258,12 +276,15 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 	}
 	
-	private function selectIntern(pAlignment:Alignment):InternDescription{
-		var lID:Int;
-		pAlignment == Alignment.hell ? lID = actualHellID : lID = actualHeavenID;
-		return Intern.internsMap[pAlignment][lID];
-	}
+	//private function selectIntern(pAlignment:Alignment):InternDescription{
+		//var lID:Int;
+		//pAlignment == Alignment.hell ? lID = actualHellID : lID = actualHeavenID;
+		//return Intern.internsMap[pAlignment][lID];
+	//}
 	
+	/**
+	 * Callback of the reroll. Reroll the search
+	 */
 	private function onClickReroll ():Void {
 		ShopCarousselInternsSearch.progress = 0;
 		ShopPopin.isSearching = true;

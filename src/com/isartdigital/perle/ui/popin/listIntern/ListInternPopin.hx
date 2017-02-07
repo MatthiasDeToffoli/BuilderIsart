@@ -63,11 +63,11 @@ class ListInternPopin extends SmartPopin
 			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
 			
 			//getSpawnersPosition();
-			
+			//Create empty places for quests in function of the player's level
 			for (i in 0...AssetName.internListSpawners.length){
 				
-				//if (i < Intern.internsListArray.length && i < getNumberPlaces()){
-				if (i < Intern.internsListArray.length){
+				if (i < Intern.internsListArray.length && i < getNumberPlaces()){
+				//if (i < Intern.internsListArray.length){
 					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
 				}
 				
@@ -79,16 +79,10 @@ class ListInternPopin extends SmartPopin
 		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
-	//private function getSpawnersPosition():Void{
-		//for (i in 0...AssetName.internListSpawners.length){
-			//var spawner:UISprite = cast(getChildByName(AssetName.internListSpawners[i]), UISprite);
-			//var lPoint:Point = new Point();
-			//
-			//lPoint.copy(spawner.position);
-			//internsPositions.push(lPoint);
-		//}
-	//}
-	
+	/**
+	 * Get the correct number of empty places availables
+	 * @return
+	 */
 	private function getNumberPlaces():Int{
 		var lNumberPlaces:Int = 0;
 		
@@ -106,13 +100,12 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	/**
-	 * create a bloc contain intern description
+	 * create a bloc contains intern description
 	 * @param	spawnerName the name of the spawner
 	 * @param	 the descritpion of the intern
 	 */
 	private function spawnInternDescription(spawnerName:String, pDesc:InternDescription):Void{
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, spawnerName), UISprite);
-		trace(SmartCheck.getChildByName(this, spawnerName));
 		var blocDescription:InternElement = (pDesc.quest != null) ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
 		addChild(blocDescription);
 		internDescriptionArray.push(blocDescription);
@@ -129,13 +122,16 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onLeft(){
-		scrollPrecedent();
+		//scrollPrecedent();
 	}
 	
 	private function onRight(){
-		scrollNext();
+		//scrollNext();
 	}
 	
+	/**
+	 * Function to go on the next page of the list
+	 */
 	public function scrollNext ():Void {
 		trace(internListIndex);
 		if ((internListIndex + MAX_PLACES) >= Intern.internsListArray.length)
@@ -151,6 +147,9 @@ class ListInternPopin extends SmartPopin
 		}
 	}
 	
+	/**
+	 * Function to go on the previous page of the list
+	 */
 	public function scrollPrecedent ():Void {
 		if ((internListIndex - MAX_PLACES) < 0)
 			internListIndex = Intern.internsListArray.length - (Intern.internsListArray.length % MAX_PLACES);
@@ -164,24 +163,6 @@ class ListInternPopin extends SmartPopin
 			
 		}
 	}
-	
-	//private function createCard (pPositions:Array<Point>):Void {
-		//if (cards.length != 0)
-			//destroyCards();
-		//
-		//for (i in 0...pPositions.length) {
-			//var j:Int = i + buildingListIndex;
-			//
-			//if (cardsToShow[j] == null)
-				//break;
-			//
-			//cards[i] = getNewCard(cardsToShow[j]);
-			//
-			//cards[i].position = pPositions[i];
-			//cards[i].init(cardsToShow[j]);
-			//addChild(cards[i]);
-		//}
-	//}
 	
 	public function onClose():Void {
 
