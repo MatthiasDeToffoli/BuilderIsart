@@ -16,7 +16,7 @@ class BHConstruction extends BuildingHud{
 	private static var instance:BHConstruction;
 	
 	private var btnMove:SmartButton;
-	//private var buildingTimer:BuildingTimer;
+	//private var buildingTimer:BuildingTimerConstruction;
 	private var btnDestroy:SmartButton;
 	
 	public static function getInstance (): BHConstruction {

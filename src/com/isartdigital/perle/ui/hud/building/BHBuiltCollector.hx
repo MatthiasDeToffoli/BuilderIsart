@@ -1,49 +1,38 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.popin.collector.CollectorPopin;
+import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.ui.smart.SmartButton;
 
-	
 /**
  * ...
  * @author de Toffoli Matthias
  */
-class BHBuiltCollector extends BHBuiltUpgrade 
+class BHBuiltCollector extends BHBuiltProductor
 {
-	
-	/**
-	 * instance unique de la classe BHBuiltCollector
-	 */
-	private static var instance: BHBuiltCollector;
-	
-	/**
-	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
-	 * @return instance unique
-	 */
-	public static function getInstance (): BHBuiltCollector {
-		if (instance == null) instance = new BHBuiltCollector();
-		return instance;
+
+	public function new(pID:String=null) 
+	{
+		super(pID);
+		
 	}
 	
-	/**
-	 * constructeur privé pour éviter qu'une instance soit créée directement
-	 */
-	private function new() 
+	override function testIfProduct():Bool 
 	{
-		super(AssetName.CONTEXTUAL_COLLECTOR);
-		
+		return cast(BuildingHud.virtualBuilding, VCollector).product;
+	}
+	override function createTimer():Void 
+	{
+		timer = new BuildingTimerCollector();
+		timer.spawn();
+		Hud.getInstance().addSecondaryComponent(timer);
 	}
 	
 	override function openInfoBuilding():Void 
 	{
 		UIManager.getInstance().openPopin(CollectorPopin.getInstance());
+		Hud.getInstance().hide();
 	}
 	
-	/**
-	 * détruit l'instance unique et met sa référence interne à null
-	 */
-	override public function destroy (): Void {
-		instance = null;
-		super.destroy();
-	}
-
 }

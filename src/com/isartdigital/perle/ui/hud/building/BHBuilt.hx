@@ -38,8 +38,7 @@ class BHBuilt extends BHBuiltUndestoyable
 	
 	public function addSoulCounter():Void {
 		soulConter = new SoulCounterHouse();
-		Hud.getInstance().addSoulCounter(soulConter);
-		soulConter.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
+		Hud.getInstance().addSecondaryComponent(soulConter);
 	}
 	
 	override public function setMoveAndDestroy():Void 

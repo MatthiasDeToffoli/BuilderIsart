@@ -14,9 +14,12 @@ import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
-import com.isartdigital.perle.ui.hud.building.BHBuiltCollector;
+import com.isartdigital.perle.ui.hud.building.BHBuiltCollectorNotUpgrade;
+import com.isartdigital.perle.ui.hud.building.BHBuiltCollectorUpgradable;
 import com.isartdigital.perle.ui.hud.building.BHBuiltInUpgrading;
+import com.isartdigital.perle.ui.hud.building.BHBuiltMarketing;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHHarvestNoUpgrade;
@@ -60,7 +63,7 @@ class Hud extends SmartScreen
 	private var currentBuildingHud:BuildingHud;
 	
 	private var containerBuildingHud:Container;
-	private var containerSoulCounter:Container;
+	private var containerBuildingHudSecondary:Container;
 	
 	private var hellXPBar:SmartComponent;
 	private var heavenXPBar:SmartComponent;
@@ -92,9 +95,9 @@ class Hud extends SmartScreen
 		super("HUD_Desktop");
 		modal = null;
 		containerBuildingHud = new Container();
-		containerSoulCounter = new Container();
+		containerBuildingHudSecondary = new Container();
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
-		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerSoulCounter);
+		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHudSecondary);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
 		
@@ -140,8 +143,12 @@ class Hud extends SmartScreen
 	
 					if (Std.is(BuildingHud.virtualBuilding, VHouse) && cast(BuildingHud.virtualBuilding,VBuildingUpgrade).canUpgrade())
 						openContextual(BHHarvestHouse.getInstance()); // todo
-					else if (Std.is(BuildingHud.virtualBuilding, VCollector) && cast(BuildingHud.virtualBuilding, VBuildingUpgrade).canUpgrade())
-						openContextual(BHBuiltCollector.getInstance());
+					else if (Std.is(BuildingHud.virtualBuilding, VCollector))
+						if(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).canUpgrade())
+							openContextual(BHBuiltCollectorUpgradable.getInstance());
+						else openContextual(BHBuiltCollectorNotUpgrade.getInstance());
+					else if (Std.is(BuildingHud.virtualBuilding, VMarketingHouse))
+						openContextual(BHBuiltMarketing.getInstance());
 					else openContextual(BHHarvestNoUpgrade.getInstance());
 				}
 				case BuildingHudType.CONSTRUCTION:
@@ -192,8 +199,9 @@ class Hud extends SmartScreen
 	}
 	
 	
-	public function addSoulCounter(pComponent:SoulCounterHouse):Void {
-		placeAndAddComponent(pComponent, containerSoulCounter, UIPosition.BOTTOM);
+	public function addSecondaryComponent(pComponent:SmartComponent):Void {
+		placeAndAddComponent(pComponent, containerBuildingHudSecondary, UIPosition.BOTTOM);
+		pComponent.position.x += BuildingHud.virtualBuilding.graphic.getBounds().width / 2;
 	}
 	
 	private function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {

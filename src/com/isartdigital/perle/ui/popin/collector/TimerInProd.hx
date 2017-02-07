@@ -23,11 +23,12 @@ class TimerInProd extends SmartComponent
 	private var progressBarTxt:TextSprite;
 	private var gain:TextSprite;
 	private var accelerateBtn:SmartButton;
+	private var ref:Int;
 
 	public function new(collector:VCollector) 
 	{
 		super(AssetName.COLLECTOR_TIME_IN_PROD);
-		
+		ref = collector.tileDesc.id;
 		accelerateBtn = cast(SmartCheck.getChildByName(this, AssetName.COLLECTOR_TIME_ACCELERATE_BUTTON));
 		Interactive.addListenerClick(accelerateBtn, onAccelerate);
 		
@@ -55,6 +56,9 @@ class TimerInProd extends SmartComponent
 	}
 	
 	private function rewrite(pTime:TimeCollectorProduction ){
+		
+		if (pTime.buildingRef != ref) return;
+		
 		var clock:Clock = TimesInfo.getClock(pTime.progress);
 		
 		progressBarTxt.text = clock.minute + ":" + clock.seconde;
