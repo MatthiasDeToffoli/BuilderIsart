@@ -35,11 +35,6 @@ class VCollector extends VBuildingUpgrade
 		haveRecolter = false;
 	}
 	
-	override function addGenerator():Void 
-	{
-		
-	}
-	
 	public function updateMyTime(pTime:TimeCollectorProduction):Void{
 		
 		if (pTime.buildingRef == tileDesc.id)

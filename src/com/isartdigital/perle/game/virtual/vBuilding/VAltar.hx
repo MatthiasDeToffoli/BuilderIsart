@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
@@ -173,8 +174,13 @@ class VAltar extends VBuilding
 	}
 	
 	private function calculTime():Void{
-		if (elementHeaven.length == 0 && elementHell.length == 0) myTime = 0;
-		else myTime = TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
+		myTime = calculTimeProd();
+	}
+	
+	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
+	{
+		if (elementHeaven.length == 0 && elementHell.length == 0) return 0;
+		else return TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
 	}
 	private function haveMoreBoost():Void{
 		calculTime();

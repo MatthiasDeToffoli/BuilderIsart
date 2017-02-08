@@ -54,7 +54,7 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
-		ServerManager.refreshConfig(); // todo : remplacer par cron ?
+		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		
 		
 		GodMode.awake(); //@TODO: comment that for livraison

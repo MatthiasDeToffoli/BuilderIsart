@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
@@ -91,9 +92,7 @@ class VTribunal extends VBuildingUpgrade
 	}
 
 	override function addGenerator():Void {
-		myTime = BASETIMEWITHOUTBOOST;
-		myGeneratorType = GeneratorType.soul;
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains, myTime, Alignment.neutral, true);
+		super.addGenerator();
 		
 	}
 	
@@ -102,8 +101,14 @@ class VTribunal extends VBuildingUpgrade
 	 * @param	denominator the number to divise the time
 	 */
 	public function updateGenerator(denominator:Float):Void {
-		myTime = BASETIMEWITHOUTBOOST / denominator;
-		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+		var  typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+		myTime = calculTimeProd(typeBuilding) / denominator;
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);
+	}
+	
+	override function getMaxContains(?pTypeBuilding:TableTypeBuilding):Int 
+	{
+		return pTypeBuilding.maxSoulsContained;
 	}
 	
 	/**

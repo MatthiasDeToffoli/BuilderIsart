@@ -377,6 +377,8 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 */
 	private static function updateResource (pElement:TimeElementResource, pElapsedTime:Float):Void {
+		if (pElement.desc.end == null) return;
+		
 		var lNumberTick:Int = 0;
 		var lFullTime:Float = pElapsedTime + pElement.desc.progress;
 		

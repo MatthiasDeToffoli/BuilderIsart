@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.virtual;
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.RegionManager;
@@ -13,8 +14,11 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
+import com.isartdigital.perle.game.virtual.vBuilding.VAltar;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -282,8 +286,24 @@ class VBuilding extends VTile {
 		checkIfIsInAltarZone();
 	}
 	
-	private function addGenerator ():Void {
-		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime);
+	private function addGenerator():Void {
+
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+		if ((typeBuilding.productionPerHour == null && !Std.is(this,VAltar)) || Std.is(this, VMarketingHouse)) return;
+
+		myTime = calculTimeProd(typeBuilding);
+		myGeneratorType = ServerManager.stringToEnum(typeBuilding.productionResource.toString());
+		myMaxContains = getMaxContains(typeBuilding);
+
+		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime,Std.is(this,VTribunal) ? Alignment.neutral:null, Std.is(this,VTribunal) ? true:false);
+	}
+	
+	private function getMaxContains(?pTypeBuilding:TableTypeBuilding):Int {
+		return pTypeBuilding.maxGoldContained;
+	}
+	
+	private function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float {
+		return TimesInfo.HOU / pTypeBuilding.productionPerHour;
 	}
 	
 	private function addHudContextual ():Void {

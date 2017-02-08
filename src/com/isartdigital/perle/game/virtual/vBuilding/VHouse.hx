@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.ResourcesManager.Population;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -22,6 +23,7 @@ class VHouse extends VBuildingUpgrade
 	
 	public function new(pDescription:TileDescription) 
 	{
+		
 		super(pDescription);
 		mapMaxPopulation = new Map < String,Int>();
 
@@ -29,27 +31,28 @@ class VHouse extends VBuildingUpgrade
 		
 	}
 	
+	override function addGenerator():Void 
+	{
+		addPopulation();
+		super.addGenerator();
+	}
 	/**
 	 * add a new population to this building
 	 * @param	pMax the max soul building can has
 	 */
-	private function addPopulation(pMax:Int):Void{
+	private function addPopulation():Void{
 		if (tileDesc.maxPopulation == null) {
 			tileDesc.currentPopulation = 0;
-			tileDesc.maxPopulation = pMax;
+			tileDesc.maxPopulation = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).maxSoulsContained;
 		}
 		
 		myPopulation = ResourcesManager.addPopulation(tileDesc.currentPopulation, tileDesc.maxPopulation, alignementBuilding, tileDesc.id);
 	}
 	
-	override function addGenerator():Void 
+	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
 	{
-		maxResources = [150, 225, 1200];
-		myMaxContains = maxResources[0]; 
-		myTime = TimesInfo.MIN / valuesWin[0];
-		
-
-		super.addGenerator();
+		if (myPopulation.quantity == 0) return null;
+		return super.calculTimeProd(pTypeBuilding)/myPopulation.quantity;
 	}
 	
 	/**
@@ -57,16 +60,15 @@ class VHouse extends VBuildingUpgrade
 	 * @param	pQuantity the new quantity of population
 	 * @param	pMax the new max of population
 	 */
-	public function updatePopulation(?pQuantity:Int, ?pMax:Int):Void{
+	public function updatePopulation(?pQuantity:Int):Void{
 		if (pQuantity != null){
 			tileDesc.currentPopulation = pQuantity;
 			myPopulation.quantity = pQuantity;
 		}
 		
-		if (pMax != null){
-			tileDesc.maxPopulation = pMax;
-			myPopulation.max = pMax;
-		}
+			var lMax:Int = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).maxSoulsContained;
+			tileDesc.maxPopulation = lMax;
+			myPopulation.max = lMax;
 		
 		ResourcesManager.updatePopulation(myPopulation,alignementBuilding);
 		
@@ -77,6 +79,10 @@ class VHouse extends VBuildingUpgrade
 		return myPopulation;
 	}
 	
+	override public function updateGeneratorInfo(?data:Dynamic) 
+	{
+		super.updateGeneratorInfo(data);
+	}
 	/**
 	 * catch the population when it change
 	 * @param	pPopulation the population changed
@@ -95,9 +101,7 @@ class VHouse extends VBuildingUpgrade
 	{
 		super.onClickUpgrade();
 		
-		updatePopulation(null, mapMaxPopulation[tileDesc.buildingName]);
-		myTime = TimesInfo.MIN / valuesWin[indexLevel];
-		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, maxResources[indexLevel], myTime); //@TODO : mettre de vrais valeur...
+		updatePopulation();
 		
 		SaveManager.save();
 	}

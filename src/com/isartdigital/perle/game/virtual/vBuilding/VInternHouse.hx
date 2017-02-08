@@ -15,4 +15,9 @@ class VInternHouse extends VBuilding
 		super(pDescription);	
 	}
 	
+	override function setHaveRecolter():Void 
+	{
+		haveRecolter = false;
+	}
+	
 }

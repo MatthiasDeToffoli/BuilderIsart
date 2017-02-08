@@ -364,7 +364,6 @@ class ResourcesManager
 	 * @return the generator added
 	 */
 	public static function addResourcesGenerator(pId:Int, pType:GeneratorType, pMax:Float, pTime:Float, ?pAlignment:Alignment, ?isTribunal:Bool):Generator{
-		
 		var myDesc:GeneratorDescription = getGenerator(pId, pType), myGenerator:Generator;
 
 		if (myDesc != null){

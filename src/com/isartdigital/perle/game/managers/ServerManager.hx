@@ -248,7 +248,13 @@ class ServerManager {
 	}
 	
 	public static function stringToEnum(pString:String):Dynamic {
+
 		switch (pString) {
+			case "soul" : 			return GeneratorType.soul;
+			case "soft" : 			return GeneratorType.soft;
+			case "wood" : 			return GeneratorType.buildResourceFromParadise;
+			case "stone" : 			return GeneratorType.buildResourceFromHell;
+			case "hard" : 			return GeneratorType.hard;
 			case "neutral" : 		return Alignment.neutral;
 			case "hell" : 			return Alignment.hell;
 			case "heaven" : 		return Alignment.heaven;

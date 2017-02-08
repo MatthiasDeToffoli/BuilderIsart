@@ -25,10 +25,6 @@ class VMarketingHouse extends VBuilding
 		haveRecolter = false;
 	}
 	
-	override function addGenerator():Void 
-	{
-	}
-	
 	override public function destroy():Void 
 	{
 		MarketingManager.decreaseNumberAdMen();

@@ -20,9 +20,4 @@ class VDeco extends VBuilding
 	{
 		haveRecolter = false;
 	}
-	
-	override function addGenerator():Void 
-	{
-		
-	}
 }

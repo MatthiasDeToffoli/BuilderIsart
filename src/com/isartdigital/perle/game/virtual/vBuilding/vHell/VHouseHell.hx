@@ -17,16 +17,6 @@ class VHouseHell extends VHouse
 	{
 		alignementBuilding = Alignment.hell;
 		super(pDescription);
-		
-		UpgradeAssetsList = [AssetName.BUILDING_HELL_HOUSE, AssetName.BUILDING_HELL_HOUSE_LEVEL2, AssetName.BUILDING_HELL_HOUSE_LEVEL3];
-		UpgradeGoldValuesList = ["600", "20 000"];
-		UpgradeMaterialsValuesList = ["200", "4000"];
-		
-		
-		addPopulation(5);
-		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE] = 5;
-		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE_LEVEL2] = 15;
-		mapMaxPopulation[AssetName.BUILDING_HELL_HOUSE_LEVEL3] = 40;
 	}
 	
 	public function addForFtue():Void {
@@ -34,12 +24,6 @@ class VHouseHell extends VHouse
 		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
 		myGenerator = {desc:ResourcesManager.getGenerator(tileDesc.id, myGeneratorType)};
-	}
-	
-	override function addGenerator():Void 
-	{
-		valuesWin = [1, 1.5, 3];
-		super.addGenerator();
 	}
 	
 }

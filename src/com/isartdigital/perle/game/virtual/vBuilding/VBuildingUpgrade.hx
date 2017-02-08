@@ -1,10 +1,12 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 
 /**
@@ -42,9 +44,18 @@ class VBuildingUpgrade extends VBuilding
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+			
+		if (typeBuilding.productionPerHour != null && !Std.is(this, VMarketingHouse)) {
+			
+			myTime = calculTimeProd(typeBuilding);
+			myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);	
+		}
+		
+		
+		
 		activate();
 		addExp();
-		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, 20, 8000); //@TODO : mettre de vrais valeur...
 		
 		SaveManager.save();	
 	}
