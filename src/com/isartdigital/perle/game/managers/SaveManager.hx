@@ -54,11 +54,10 @@ typedef TimeDescription = {
 
 typedef TimeQuestDescription = {
 	var refIntern:Int;
-	var progress:Float;
+	var progress:Int;
 	var steps:Array<Int>;
 	var stepIndex:Int;
-	var end:Float;
-	//var quest:Quest;
+	var end:Int;
 }
 
 //typedef AllTimeQuestDescription = {
@@ -89,7 +88,7 @@ typedef InternDescription = {
 	var speed:Int;
 	var efficiency:Int;
 	var unlockLevel:Int;
-	@:optional var idEvent:Int;
+	var idEvent:Int;
 }
 
 typedef ResourcesGeneratorDescription = {
@@ -324,7 +323,6 @@ class SaveManager {
 			IdManager.buildFromSave(currentSave);
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
-			QuestsManager.initWithoutSave();
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();
@@ -343,7 +341,6 @@ class SaveManager {
 		VTile.buildWhitoutSave();
 		TimeManager.startTimeLoop();
 		SaveManager.save();
-		QuestsManager.initWithoutSave();
 		Hud.getInstance().initGauges();
 	}
 	

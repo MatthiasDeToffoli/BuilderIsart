@@ -317,6 +317,7 @@ class TimeManager {
 		}		
 		deleteEndedConstruction(constructionEnded);
 		
+		ChoiceManager.refreshChoices();
 	}
 	
 	/**
@@ -401,13 +402,13 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 */
 	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {
-		var lPreviousProgress:Float = pElement.progress;
+		var lPreviousProgress:Int = pElement.progress;
 		
-		pElement.progress = Math.min(
+		pElement.progress = Std.int(Math.min(
 			pElement.progress + pElapsedTime,
 			//pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed), //@todo: à remettre après le save
 			pElement.steps[pElement.stepIndex]
-		);
+		));
 		
 		// progress has reached next step && just now
 		if (pElement.progress == pElement.steps[pElement.stepIndex] &&
@@ -415,7 +416,8 @@ class TimeManager {
 		{
 			// todo: éventuellement des paramètres à rajouter.
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
-			eTimeQuest.emit(EVENT_QUEST_STEP, pElement); 
+			eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
+			ServerManager.TimeQuestAction(DbAction.UPDT, pElement);
 		}
 	}
 	

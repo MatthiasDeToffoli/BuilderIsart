@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.GatchaPopin;
@@ -9,6 +10,7 @@ import com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.listIntern.MaxStressPopin;
 import eventemitter3.EventEmitter;
+import haxe.Json;
 //import com.isartdigital.perle.game.managers.TimeManager.TimeElementQuest;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
@@ -44,18 +46,29 @@ class QuestsManager
 	
 	//Todo:Not working! Don't touch
 	
-	public static function initWithoutSave():Void{
-		questsList = new Array<TimeQuestDescription>();
+	public static function init():Void{
+		questsList = new Array<TimeQuestDescription>();	
+		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
 		//eGoToNextStep = new EventEmitter();
 		//TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_STEP, choice);
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, endQuest);
 	}
 	
-	public static function initWithSave(pDatasSaved:Save):Void{
-		initWithoutSave();
-		var lLength:Int = pDatasSaved.timesQuest.length;
-		for (i in 0...lLength){
-			questsList.push(pDatasSaved.timesQuest[i]);
+	public static function getJson(object:Dynamic):Void{
+		var questArray:Array<Dynamic> = cast(Json.parse(object));
+		var lLength:Int = questArray.length;
+		
+		for (i in 0...lLength) {
+			var arraySteps:Array<Int> = [Std.int(questArray[i].Step1), Std.int(questArray[i].Step2), Std.int(questArray[i].Step3)];
+			var timeQuest:TimeQuestDescription = {
+				refIntern: Std.int(questArray[i].RefIntern),
+				progress: Std.int(questArray[i].Progress),
+				steps: arraySteps,
+				stepIndex: Std.int(questArray[i].StepIndex),
+				end: createEnd(arraySteps)
+			};
+			
+			questsList.push(timeQuest);
 		}
 	}
 	
@@ -78,6 +91,7 @@ class QuestsManager
 		}
 		
 		QuestsManager.questsList.push(lTimeQuestDescription);
+		ServerManager.TimeQuestAction(DbAction.ADD, lTimeQuestDescription);
 		
 		SaveManager.save();
 		
@@ -106,7 +120,7 @@ class QuestsManager
 	 * @param	pListEvents
 	 * @return	the total value
 	 */
-	private static function createEnd(pListEvents:Array<Int>):Float{
+	private static function createEnd(pListEvents:Array<Int>):Int{
 		var lEnd:Int = 0;
 		var lLength:Int = pListEvents.length - 1;
 		
@@ -120,7 +134,7 @@ class QuestsManager
 	 * @param	pQuest
 	 */
 	public static function choice(pQuest:TimeQuestDescription):Void{
-		trace("choice");
+		trace(pQuest);
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
 		Hud.getInstance().hide();
@@ -131,7 +145,6 @@ class QuestsManager
 	
 	public static function goToNextStep():Void{
 		trace("gotonextstep");
-		ChoiceManager.newChoice();
 		Choice.getInstance().hide();
 		
 		if (questInProgress.stepIndex != 2){
@@ -140,6 +153,7 @@ class QuestsManager
 				TimeManager.nextStepQuest(questInProgress);
 				trace(Intern.getIntern(questInProgress.refIntern));
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
+				
 			}
 			
 			else{
@@ -170,26 +184,20 @@ class QuestsManager
 		GameStage.getInstance().getPopinsContainer().addChild(GatchaPopin.getInstance());
 		//choice(pQuest); //Todo: gérer ça autrement, choice doit apporter le endQuest
 		
-		for (i in 0...Intern.internsListArray.length){
-			if (pQuest.refIntern == Intern.internsListArray[i].id){
-				////if (Intern.internsListArray[i].stress < Intern.internsListArray[i].stressLimit){
-				Intern.internsListArray[i].quest = null;
-			}
-		}
-		
 		//destroyQuest(pQuest.refIntern); //Stocker id intern
 		//TimeManager.destroyTimeElement(pQuest.refIntern);
 	}
 	
 	public static function finishQuest(pQuest:TimeQuestDescription):Void{
+		ServerManager.EventAction(DbAction.REM, pQuest.refIntern);
+		
 		if (isMaxStress(questInProgress.refIntern)){
 			MaxStressPopin.quest = pQuest;
 			//trace(MaxStressPopin.quest);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
-		}
-		
+		}		
 		else {
 			Intern.getIntern(pQuest.refIntern).status = Intern.STATE_RESTING;
 			UIManager.getInstance().closeCurrentPopin();

@@ -127,8 +127,6 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function progressLoop():Void {
-		trace(quest);
-		
 		if (heroCursor.position != null){
 			updateEventCursors();
 			timeEvent.text = TimeManager.getTextTimeQuest(quest.steps[quest.stepIndex] - quest.progress) + "s";

@@ -111,6 +111,7 @@ class GameConfig {
 	public static inline var INTERNS:String = "Interns";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var CONFIG_EVENT:String = "ConfigEvent";
+	public static inline var USED_CHOICES:String = "ChoicesUsed";
 	// todo : etc
 	
 	// todo : transformer les string en enum ? ou juste faire getName() sur nos enum ?

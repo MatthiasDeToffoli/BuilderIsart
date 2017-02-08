@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
+import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -68,13 +69,15 @@ class GameManager {
 		GameConfig.awake();
 		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
-		Intern.init(); //Always before RegionManager
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();
 		PoolingManager.init();
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		TimeManager.initClass();
+		QuestsManager.init();
+		Intern.init(); //Always before RegionManager
+		ChoiceManager.init();
 		VTile.initClass();
 		HudContextual.addContainer();
 		Phantom.initClass();
@@ -83,7 +86,6 @@ class GameManager {
 		//UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		FootPrint.startClass();
-		ChoiceManager.init();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
 		//DialogueManager.createFtue();

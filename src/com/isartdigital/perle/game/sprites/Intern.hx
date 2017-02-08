@@ -91,7 +91,8 @@ class Intern
 				stress: tmpInterns[i].stress,
 				speed: tmpInterns[i].speed,
 				efficiency: tmpInterns[i].efficiency,
-				unlockLevel: tmpInterns[i].unlockLevel
+				unlockLevel: tmpInterns[i].unlockLevel,
+				idEvent: 0
 			};
 			
 			if (align == Alignment.heaven) internsMap[Alignment.heaven].push(newIntern);
@@ -106,8 +107,7 @@ class Intern
 	 * @param	object
 	 */
 	public static function getPlayerInterns(object:Dynamic):Void {
-		var data:Dynamic = Json.parse(object);
-		
+		var data:Dynamic = Json.parse(object);	
 		if (data == null) return;
 		var lLength:Int = Std.int(data.length);
 		
@@ -117,13 +117,13 @@ class Intern
 				name : data[i].Name,
 				aligment :  data[i].Alignment,
 				status: STATE_RESTING,
-				quest : null,
+				quest : QuestsManager.getQuest(data[i].ID),
 				price : Std.int(data[i].Price),
 				stress: Std.int(data[i].Stress),
 				speed: Std.int(data[i].Speed),
 				efficiency: Std.int(data[i].Efficiency),
 				unlockLevel: Std.int(data[i].UnlockLevel),
-				idEvent: Std.int(data[i].idEvent)
+				idEvent: Std.int(data[i].IdEvent)
 			};
 			
 			internsListArray.push(newIntern);

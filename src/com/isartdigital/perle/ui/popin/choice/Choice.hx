@@ -119,7 +119,7 @@ class Choice extends SmartPopinExtended
 	public function setIntern(pIntern:InternDescription):Void {
 		intern = pIntern;
 		
-		var newChoice:ChoiceDescription = ChoiceManager.selectChoice(ChoiceManager.actualID);
+		var newChoice:ChoiceDescription = ChoiceManager.selectChoice(intern.idEvent);
 		createChoiceText(newChoice);
 		initReward(newChoice, intern);
 	}

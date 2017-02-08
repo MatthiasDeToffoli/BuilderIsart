@@ -148,7 +148,7 @@ class InternElementOutQuest extends InternElement
 		quest = QuestsManager.createQuest(internDatas.id);
 		
 		internDatas.quest = quest;
-		ChoiceManager.newChoice();
+		ChoiceManager.newChoice(internDatas.id);
 		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
 		TimeManager.createTimeQuest(quest);
 		

@@ -37,7 +37,7 @@ class ListInternPopin extends SmartPopin
 	private var btnRight:SmartButton;
 	public var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
 	private var unlockLevels:Array<Int> = [1, 11, 14, 20];
-	private var placesUnlock:Map<Int, Int> = [1 => 1, 11 => 2, 14 => 3, 20 => 4];
+	private var placesUnlock:Map<Int, Int> = [1 => 2, 11 => 2, 14 => 3, 20 => 4];
 	
 	private var internListIndex:Int = 0;
 	private static inline var MAX_PLACES:Int = 2;

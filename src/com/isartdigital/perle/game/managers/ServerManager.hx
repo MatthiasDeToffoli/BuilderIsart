@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
@@ -18,7 +19,7 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
-enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; }
+enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; REFRESH; }
 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
@@ -97,33 +98,66 @@ class ServerManager {
 	 * @param	pIntern sometime you need an InternDescription
 	 * @return 	
 	 */
-	public static function InternAction(pAction:DbAction, ?internId:Int=null):Void {
+	public static function InternAction(pAction:DbAction, ?internId:Int=null, ?eventId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
 		switch (pAction) {
 			case DbAction.ADD:
 				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
-			case DbAction.REM:
-			
 			case DbAction.UPDT_EVENT:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
 			case DbAction.GET_SPE_JSON:
-				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
-				
+				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);			
 			default: return;
 		}
 	}
 	
-	public static function EventAction(pAction:DbAction, ?pChoiceId:Int=null):Void {
+	public static function EventAction(pAction:DbAction, ?pId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
 		switch (pAction) {
 			case DbAction.ADD:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "id" => pChoiceId]);
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "idEvt" => pId]);
+			case DbAction.REM:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "idInt" => pId]);
 			case DbAction.USED_ID:
 				callPhpFile(ChoiceManager.getUsedIdJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
-				
+			case DbAction.CLOSE_QUEST:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "idEvt" => pId]);
+			case DbAction.REFRESH:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
 			default: return;	
+		}
+	}
+	
+	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null):Void {
+		var actionCall:String = Std.string(pAction);
+		
+		switch (pAction) {
+			case DbAction.ADD:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
+					"funct" => actionCall,
+					"idInt" => pTimeQuest.refIntern,
+					"prog" => pTimeQuest.progress,
+					"stepIndex" => pTimeQuest.stepIndex,
+					"step1" => pTimeQuest.steps[0],
+					"step2" => pTimeQuest.steps[1],
+					"step3" => pTimeQuest.steps[2]
+				]);
+			case DbAction.UPDT:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
+					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
+					"funct" => actionCall,
+					"idInt" => pTimeQuest.refIntern,
+					"prog" => pTimeQuest.progress,
+					"stepIndex" => pTimeQuest.stepIndex
+				]);
+			case DbAction.REM:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TIME_QUEST, "funct" => actionCall, "idInt" => pTimeQuest.refIntern]);
+			case DbAction.GET_SPE_JSON:
+				callPhpFile(QuestsManager.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TIME_QUEST, "funct" => actionCall]);
+			default: return;
 		}
 	}
 	
@@ -242,4 +276,5 @@ class ServerFile {
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";
+	public static inline var TIME_QUEST:String = "Quest";
 }
