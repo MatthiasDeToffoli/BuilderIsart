@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 
 /**
  * manage any limit building in the world map or in a region
@@ -16,6 +17,19 @@ class BuildingLimitManager
 		mapNumbersBuildingPerRegion = new Map<Int,Map<Int,Map<String,Int>>>();
 		mapNumbersBuilding = new Map<String,Int>();
 		limits = new Map<String,Int>();
+		
+		setLimits();
+	}
+	
+	private static function setLimits():Void {
+		var arrayTypeBuildings:Array<TableTypeBuilding> = GameConfig.getBuilding();
+		var typeBuilding:TableTypeBuilding;
+		
+		for (typeBuilding in arrayTypeBuildings) {
+			if (typeBuilding.limitPerRegion != null) {
+				limits[typeBuilding.name] = typeBuilding.limitPerRegion;
+			}
+		}
 	}
 	
 	/**

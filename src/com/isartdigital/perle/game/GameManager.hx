@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
@@ -53,11 +54,16 @@ class GameManager {
 	public function start (): Void {
 		// todo : deplacer les init class faisant rien de 
 		// plus que des new() ds le main
-
+		ServerManager.refreshConfig(); // todo : remplacer par cron ?
+		
+		
 		GodMode.awake(); //@TODO: comment that for livraison
 		
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
+		
+		ServerManager.playerConnexion();
+		GameConfig.awake();
 		
 		AnimationManager.awake();
 		BuildingLimitManager.awake();
@@ -65,9 +71,7 @@ class GameManager {
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager
-		ServerManager.playerConnexion();
-		GameConfig.awake();
-		ServerManager.refreshConfig(); // todo : remplacer par cron ?
+		Intern.init(); //Always before RegionManager
 		ResourcesManager.awake(); // akways befire all ui init
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();
@@ -76,7 +80,6 @@ class GameManager {
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		TimeManager.initClass();
 		QuestsManager.init();
-		Intern.init(); //Always before RegionManager
 		ChoiceManager.init();
 		VTile.initClass();
 		HudContextual.addContainer();
