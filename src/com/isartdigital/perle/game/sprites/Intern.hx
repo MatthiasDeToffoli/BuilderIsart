@@ -107,6 +107,7 @@ class Intern
 	 * @param	object
 	 */
 	public static function getPlayerInterns(object:Dynamic):Void {
+		if (object == null) return;
 		var data:Dynamic = Json.parse(object);	
 		if (data == null) return;
 		var lLength:Int = Std.int(data.length);

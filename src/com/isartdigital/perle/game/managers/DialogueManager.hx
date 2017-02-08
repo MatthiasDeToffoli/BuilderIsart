@@ -149,7 +149,7 @@ class DialogueManager
 	 */
 	public static function nextStep(pTarget:DisplayObject=null): Void {
 		if (dialogueSaved >= steps.length) return;
-		
+		if (steps[dialogueSaved] == null) return;
 		//Effects : 
 		
 		//Actions
