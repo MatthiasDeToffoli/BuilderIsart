@@ -12,6 +12,7 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
+import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.display.DisplayObject;
@@ -41,6 +42,9 @@ class ListInternPopin extends SmartPopin
 	private var internListIndex:Int = 0;
 	private static inline var MAX_PLACES:Int = 2;
 	private var internsPositions:Array<Point>;
+	
+	private var internsInQuestInfo:SmartComponent;
+	private var actualNbInternInQuest:TextSprite;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable

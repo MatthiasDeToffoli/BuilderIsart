@@ -188,6 +188,10 @@ class AssetName{
 	public static inline var INTERN_NAME_OUT_QUEST:String = "_intern03_name05";
 	public static inline var PORTRAIT_OUT_QUEST:String = "OutQuest_Portrait";
 	public static inline var SPAWNER_BUTTON_OUT_QUEST:String = "_spawner_buttonStress_accelerate";
+	public static inline var INTERN_OUT_EFF_TXT:String = "_txt_efficiency03";
+	public static inline var INTERN_OUT_SEND_COST:String = "sendCost";
+	public static inline var INTERN_OUT_IN_QUEST_CONTAINER:String = "InternInQuest_Value";
+	public static inline var INTERN_OUT_ACTUAL_INTERNS_IN_QUEST:String = "_internsInQuest_value";
 	
 	//inter event popin
 	public static inline var INTERN_EVENT:String = "Intern_Event";
@@ -201,12 +205,16 @@ class AssetName{
 	public static inline var INTERN_EVENT_NAME:String = "_intern_name";
 	public static inline var INTERN_EVENT_SIDE:String = "_intern_side";
 	public static inline var INTERN_EVENT_STATS:String = "InternsStatsInEvent";
-	public static inline var INTERN_EVENT_STRESS:String = "_interns_stress";
-	public static inline var INTERN_EVENT_SPEED:String = "_intern_speed";
 	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
+	
+	// intern info jauges
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
 	public static inline var INTERN_SPEED_JAUGE:String = "_jauge_speed";
 	public static inline var INTERN_EFF_JAUGE:String = "_jauge_efficiency";
+	
+	//global intern properties
+	public static inline var INTERN_STRESS_TXT:String = "_interns_stress";
+	public static inline var INTERN_SPEED_TXT:String = "_intern_speed";
 	
 	public static inline var SPEED_INDICATOR:String = "_jaugeSpeed_0";
 	public static inline var EFF_INDICATOR:String = "_jaugeEfficiency_0";
@@ -218,7 +226,6 @@ class AssetName{
 	public static inline var INTERN_POPIN_SEE_ALL_CONTAINER:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_POPIN_SEE_ALL:String = "Button";
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
-
 	
 	//Gatcha popin
 	public static inline var GATCHA_POPIN:String = "PopinGatcha";

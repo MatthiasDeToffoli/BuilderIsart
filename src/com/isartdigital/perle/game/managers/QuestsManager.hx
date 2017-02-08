@@ -78,7 +78,7 @@ class QuestsManager
 		}
 		
 		QuestsManager.questsList.push(lTimeQuestDescription);
-	
+		
 		SaveManager.save();
 		
 		return lTimeQuestDescription;
@@ -131,7 +131,7 @@ class QuestsManager
 	
 	public static function goToNextStep():Void{
 		trace("gotonextstep");
-		ChoiceManager.nextStep();
+		ChoiceManager.newChoice();
 		Choice.getInstance().hide();
 		
 		if (questInProgress.stepIndex != 2){

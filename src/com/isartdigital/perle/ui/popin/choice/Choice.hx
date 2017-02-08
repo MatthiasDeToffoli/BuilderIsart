@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
@@ -30,6 +31,7 @@ class Choice extends SmartPopinExtended
 {
 	private static var instance:Choice;
 	
+	private static inline var DOUBLE_DOT:String = " : ";
 	public static inline var EVENT_CHOICE_DONE:String = "Choice_Done";
 	// max distance for the card slide
 	private static inline var MOUSE_DIFF_MAX:Float = 200;
@@ -105,8 +107,8 @@ class Choice extends SmartPopinExtended
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
-		internStress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), TextSprite);
-		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_EVENT_SPEED), TextSprite);
+		internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
+		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
 		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
 		
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
@@ -117,7 +119,7 @@ class Choice extends SmartPopinExtended
 	public function setIntern(pIntern:InternDescription):Void {
 		intern = pIntern;
 		
-		var newChoice:ChoiceDescription = ChoiceManager.selectChoice();
+		var newChoice:ChoiceDescription = ChoiceManager.selectChoice(ChoiceManager.actualID);
 		createChoiceText(newChoice);
 		initReward(newChoice, intern);
 	}
@@ -133,9 +135,9 @@ class Choice extends SmartPopinExtended
 		
 		internName.text = intern.name;
 		internSide.text = intern.aligment;
-		internStress.text = Std.string(intern.stress);
-		internSpeed.text = Std.string(intern.speed);
-		internEfficiency.text = Std.string(intern.efficiency);
+		internStress.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.stress);
+		internSpeed.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.speed);
+		internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY + DOUBLE_DOT + intern.efficiency);
 		
 		// call matthieu !!!!!!!!
 		//SmartCheck.traceChildrens(effIndic);
@@ -147,7 +149,7 @@ class Choice extends SmartPopinExtended
 		for (i in 1...iSpeed)
 			cast(speedIndic.getChildAt(i), UISprite).visible = false;
 			
-		var iStress:Int = 6 - Math.floor(intern.stress / 10);
+		var iStress:Int = 6 - Math.round(intern.stress / 20);
 		for (i in 1...iStress)
 			cast(stressBar.getChildAt(i), UISprite).visible = false;
 	}

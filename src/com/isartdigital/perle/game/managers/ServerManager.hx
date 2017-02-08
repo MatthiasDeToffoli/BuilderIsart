@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
@@ -17,7 +18,7 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
-enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; }
+enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; }
 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
@@ -54,8 +55,7 @@ class ServerManager {
 	 */
 	public static function ContructionTimeAction(pConstructTimeDesc:TimeDescription, pAction:DbAction):Void {
 		var actionCall:String = Std.string(pAction);
-		switch (pAction) 
-		{
+		switch (pAction) {
 			case DbAction.ADD:
 				var creaTimeFloor:Int = Math.floor(pConstructTimeDesc.creationDate / SECOND);
 				var endTimeFloor:Int = Math.floor(pConstructTimeDesc.end / SECOND);
@@ -100,18 +100,30 @@ class ServerManager {
 	public static function InternAction(pAction:DbAction, ?internId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
-		switch (pAction) 
-		{
+		switch (pAction) {
 			case DbAction.ADD:
 				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
 			case DbAction.REM:
 			
-			case DbAction.UPDT:
-				
+			case DbAction.UPDT_EVENT:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
 			case DbAction.GET_SPE_JSON:
 				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
 				
 			default: return;
+		}
+	}
+	
+	public static function EventAction(pAction:DbAction, ?pChoiceId:Int=null):Void {
+		var actionCall:String = Std.string(pAction);
+		
+		switch (pAction) {
+			case DbAction.ADD:
+				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "id" => pChoiceId]);
+			case DbAction.USED_ID:
+				callPhpFile(ChoiceManager.getUsedIdJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
+				
+			default: return;	
 		}
 	}
 	

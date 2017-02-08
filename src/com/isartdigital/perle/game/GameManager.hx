@@ -66,9 +66,9 @@ class GameManager {
 		Tile.initClass();//always before pooling manager
 		ServerManager.playerConnexion();
 		GameConfig.awake();
-		Intern.init(); //Always before RegionManager
-		//ServerManager.refreshConfig(); // todo : remplacer par cron ?
+		ServerManager.refreshConfig(); // todo : remplacer par cron ?
 		ResourcesManager.awake(); // akways befire all ui init
+		Intern.init(); //Always before RegionManager
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();
 		PoolingManager.init();

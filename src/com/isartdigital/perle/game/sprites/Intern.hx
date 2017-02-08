@@ -20,6 +20,11 @@ class Intern
 	public static var internsListAlignment:Map<Alignment, Array<InternDescription>>;
 	public static var internsMap:Map<Alignment, Array<InternDescription>>;
 
+	// UI text
+	public static inline var TXT_STRESS:String = "Stress";
+	public static inline var TXT_SPEED:String = "Speed";
+	public static inline var TXT_EFFICIENCY:String = "Efficiency";
+	
 	public static inline var STATE_RESTING:String = "resting";
 	public static inline var STATE_WAITING:String = "waiting";
 	public static inline var STATE_MAX_STRESS:String = "stressing";
@@ -70,8 +75,7 @@ class Intern
 	 * get all the interns in Interns table
 	 */
 	public static function getJson():Void {		
-		var tmpInterns:Array<TableInterns> = new Array<TableInterns>();
-		tmpInterns = GameConfig.getInterns();
+		var tmpInterns:Array<TableInterns> = GameConfig.getInterns();
 		var lLength:Int = tmpInterns.length;
 		
 		for (i in 0...lLength) {
@@ -103,6 +107,8 @@ class Intern
 	 */
 	public static function getPlayerInterns(object:Dynamic):Void {
 		var data:Dynamic = Json.parse(object);
+		
+		if (data == null) return;
 		var lLength:Int = Std.int(data.length);
 		
 		for (i in 0...lLength) {
@@ -116,13 +122,16 @@ class Intern
 				stress: Std.int(data[i].Stress),
 				speed: Std.int(data[i].Speed),
 				efficiency: Std.int(data[i].Efficiency),
-				unlockLevel: Std.int(data[i].UnlockLevel)
+				unlockLevel: Std.int(data[i].UnlockLevel),
+				idEvent: Std.int(data[i].idEvent)
 			};
 			
 			internsListArray.push(newIntern);
 		}
-		
-		ServerManager.InternAction(DbAction.ADD, 1);
+	}
+	
+	public static function dbMajInternEvent(pInter:InternDescription):Void {
+		ServerManager.InternAction(DbAction.UPDT_EVENT, pInter.id);
 	}
 	
 	/**
@@ -139,6 +148,15 @@ class Intern
 	 */
 	public static function decrementeInternHouses(pAlignment:Alignment):Void{
 		numberInternHouses[pAlignment] -= 1;
+	}
+	
+	public static function countInternInQuest():Int {
+		var nb:Int = internsListArray.length - 1;
+		for (i in 0...nb) {
+			trace(internsListArray[i]);
+		}
+		
+		return 0;
 	}
 	
 	public static function destroyIntern(pId:Int):Void{	

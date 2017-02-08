@@ -32,7 +32,7 @@
       echo $e->getMessage();
     }
 
-    $req2 = "INSERT INTO PlayerInterns(IDPlayer, IDIntern, Stress) VALUES (:playerId, :internId, 0)";
+    $req2 = "INSERT INTO PlayerInterns(IDPlayer, IDIntern, Stress, IdEvent) VALUES (:playerId, :internId, 0, 0)";
 
     try {
       $reqPre = $db->prepare($req2);
@@ -64,12 +64,6 @@
         }
         $i++;
       }
-
-      /*$inc = $res->length;
-
-      for ($i=0; $i < $inc; $i++) {
-        $res[$i]["Stress"] += 5;
-      }*/
 
       echo json_encode($retour);
     }

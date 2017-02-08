@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
 import com.isartdigital.perle.game.managers.ChoiceManager.EfficiencyStep;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -90,6 +91,7 @@ typedef TableInterns = {
 	var speed:Int;
 	var efficiency:Int;
 	var unlockLevel:Int;
+	var idEvent:Int;
 }
 
 

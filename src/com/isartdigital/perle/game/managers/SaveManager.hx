@@ -89,6 +89,7 @@ typedef InternDescription = {
 	var speed:Int;
 	var efficiency:Int;
 	var unlockLevel:Int;
+	@:optional var idEvent:Int;
 }
 
 typedef ResourcesGeneratorDescription = {

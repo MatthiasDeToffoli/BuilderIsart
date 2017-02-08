@@ -2,12 +2,13 @@ package com.isartdigital.perle.game.managers;
 
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.ServerManager.DbAction;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import haxe.Json;
 
 typedef ChoiceDescription = {
-	var id:Int;
+	var iD:Int;
 	var text:String;
 	var hellAnswer:String;
 	var heavenAnswer:String;
@@ -59,7 +60,7 @@ typedef EventRewardDesc = {
  * @author grenu
  */
 class ChoiceManager
-{	
+{		
 	public static var allChoices:Array<ChoiceDescription> = new Array<ChoiceDescription>();
 	public static var efficiencyBalance:Array<EfficiencyStep> = new Array<EfficiencyStep>();
 	private static var usedID:Array<Int> = new Array<Int>();
@@ -68,32 +69,39 @@ class ChoiceManager
 	
 	public static function init():Void
 	{
-		getJsons();
-		actualID = 0;
-		actualID = getNewChoiceID();
+		actualID = 1;
+		askForJson();
 	}
 	
-	public static function getJsons():Void {
+	public static function askForJson():Void {
 		allChoices = GameConfig.getChoices();
+		ServerManager.EventAction(DbAction.USED_ID);
 		efficiencyBalance = GameConfig.getChoicesConfig();
 	}
 	
-	public static function getNewChoiceID():Int {
-		var lLength:Int = usedID.length;
-		
-		for (i in 0...lLength) {
-			if (actualID == usedID[i]) {
-				actualID++;
-				return actualID;
-			}
+	public static function getUsedIdJson(object:Dynamic):Void {
+		usedID = cast(Json.parse(object));
+		getNewChoiceID();
+	}
+	
+	public static function newChoice():Void {
+		ChoiceManager.getNewChoiceID();
+		ChoiceManager.newUsedChoice();
+	}
+	
+	public static function getNewChoiceID():Void {
+		if (choiceAlreadyUsed(actualID)) {
+			actualID++;
+			getNewChoiceID();
 		}
-		
-		return actualID;
+		else return;
 	}
 	
 	public static function applyReward(pIntern:InternDescription, pReward:EventRewardDesc, pChoiceType:ChoiceType):Void {
-		var useChoice:ChoiceDescription = selectChoice();
+		var useChoice:ChoiceDescription = selectChoice(ChoiceManager.actualID);
 		var baseReward:EventRewardDesc;
+		
+		
 		
 		if (pChoiceType == ChoiceType.HELL) {
 			baseReward = {
@@ -135,11 +143,26 @@ class ChoiceManager
 	}
 	
 	public static function nextStep():Void {
-		usedID.push(actualID);
-		actualID = getNewChoiceID();
+		getNewChoiceID();
 	}
 	
-	public static function selectChoice():ChoiceDescription {	
-		return allChoices[actualID];
+	public static function selectChoice(pId:Int):ChoiceDescription {
+		return allChoices[pId - 1];
+	}
+	
+	public static function newUsedChoice():Void {
+		usedID.push(actualID);
+		ServerManager.EventAction(DbAction.ADD, allChoices[actualID - 1].iD);
+	}
+	
+	public static function choiceAlreadyUsed(pId:Int):Bool {
+		var lLength:Int = usedID.length;
+		for (i in 0...lLength) {
+			if (pId == usedID[i]) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }
