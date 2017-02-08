@@ -62,7 +62,7 @@ class Building extends Tile implements IZSortable
 	}
 	
 	// todo : optimisé (réduire) l'appelle à la function GameConfig.getBuildingByName (à travers getSizeOnMap)
-	public static function getSizeOnMap (pBuildingName:String):SizeOnMap {
+	public static function getSizeOnMap (pBuildingName:String, ?plevel:Int = 0):SizeOnMap {
 		return {
 			width: GameConfig.getBuildingByName(pBuildingName).width,
 			height: GameConfig.getBuildingByName(pBuildingName).height,
@@ -109,7 +109,7 @@ class Building extends Tile implements IZSortable
 				x:pTileDesc.mapX + regionFirstTilePos.x, 
 				y:pTileDesc.mapY + regionFirstTilePos.y
 			},
-			Building.getSizeOnMap(pTileDesc.buildingName)
+			Building.getSizeOnMap(pTileDesc.buildingName,pTileDesc.level)
 		);
 		list.push(lBuilding);
 		lBuilding.init();

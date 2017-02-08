@@ -245,14 +245,17 @@ class VBuilding extends VTile {
 	
 	public function addExp():Void {
 		//todo pas une valeur en dur : 100
-		if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
-			ResourcesManager.takeXp(100, GeneratorType.badXp);
+		/*if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
+			ResourcesManager.takeXp(, GeneratorType.badXp);
 			ResourcesManager.takeXp(100, GeneratorType.goodXp);
 		}
 		else if (alignementBuilding == Alignment.hell)
 			ResourcesManager.takeXp(100, GeneratorType.badXp);
 		else if (alignementBuilding == Alignment.heaven)
-			ResourcesManager.takeXp(200, GeneratorType.goodXp);
+			ResourcesManager.takeXp(200, GeneratorType.goodXp);*/
+			
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHell,GeneratorType.badXp);
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHeaven, GeneratorType.goodXp);
 			
 	}
 	

@@ -529,6 +529,7 @@ class ResourcesManager
 	 * @param	pType the type of xp
 	 */
 	public static function takeXp(quantity:Float, pType:GeneratorType):Void{
+		
 		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
 		
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);

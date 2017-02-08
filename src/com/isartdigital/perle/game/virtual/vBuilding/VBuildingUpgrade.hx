@@ -49,6 +49,12 @@ class VBuildingUpgrade extends VBuilding
 		SaveManager.save();	
 	}
 	
+	override public function addExp():Void 
+	{
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName,getLevel() + 1).xPatCreationHell,GeneratorType.badXp);
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName, getLevel() + 1).xPatCreationHeaven, GeneratorType.goodXp);
+	}
+	
 	public function canUpgrade():Bool {
 		return tileDesc.level < BuildingName.BUILDING_NAME_TO_ASSETNAMES[tileDesc.buildingName].length - 1;
 	}
