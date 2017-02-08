@@ -154,10 +154,11 @@ class GameConfig {
 		return cast(config[CONFIG_EVENT]);
 	}
 	
-	public static function getBuildingByName (pName:String):TableTypeBuilding {
+	public static function getBuildingByName (pName:String, ?pLevel:Int):TableTypeBuilding {
+
 		for (i in 0...config[BUILDING].length)
 			if (config[BUILDING][i].name == pName)
-				return config[BUILDING][i];
+				if (pLevel == null || config[BUILDING][i].level == pLevel) return config[BUILDING][i];
 				
 		Debug.error("BuildingName '" + pName +"' missing.");
 		return null;
