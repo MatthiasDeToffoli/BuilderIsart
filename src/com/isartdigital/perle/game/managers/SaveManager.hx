@@ -127,7 +127,7 @@ typedef Save = {
 
 /**
  * ...
- * @author ambroise
+ * @author tout le monde
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
@@ -148,7 +148,7 @@ class SaveManager {
 		// factoriser
 		for (regionX in RegionManager.worldMap.keys()) {
 			for (regionY in RegionManager.worldMap[regionX].keys()) {
-					
+				
 				regionSave.push(RegionManager.worldMap[regionX][regionY].desc);
 				
 				for (x in RegionManager.worldMap[regionX][regionY].building.keys()) {
@@ -216,8 +216,14 @@ class SaveManager {
 		
 		return desc;
 		
-		
-		
+	}
+	
+	public static function saveNewBuilding (pDescription:TileDescription):Void {
+		ServerManager.addBuilding(pDescription);
+	}
+	
+	public static function saveMoveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
+		ServerManager.moveBuilding(pOldDescription, pDescription);
 	}
 	
 	private static function addGenerator(pArray:Array<GeneratorDescription>, pData:ResourcesData, pType:GeneratorType):Array<GeneratorDescription>{

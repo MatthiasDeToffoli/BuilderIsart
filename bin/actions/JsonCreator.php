@@ -27,7 +27,7 @@ class JsonCreator // fichier du même nom ?
     private static function getTable ($pTableName) {
         global $db;
         try {
-            $req = "SELECT * FROM ".$pTableName;
+            $req = "SELECT * FROM ".$pTableName." WHERE 1";
             $reqPre = $db->prepare($req);
             //$reqPre->bindParam(':tableName', $pTableName); marche pas ici :/
             $reqPre->execute();

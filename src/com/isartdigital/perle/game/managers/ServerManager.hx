@@ -1,8 +1,10 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
+import com.isartdigital.perle.game.managers.ErrorManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -26,6 +28,16 @@ typedef EventSuccessConnexion = {
 	var ID:String;
 }
 
+typedef EventSuccessAddBuilding = {
+	@:optionnal var errorID:Int;
+	@:optionnal var startConstruction:Int;
+	@:optionnal var endConstruction:Int;
+	var regionX:Int;
+	var regionY:Int;
+	var x:Int;
+	var y:Int;
+}
+
 /**
  * Interface whit the server
  * @author Vicktor Grenu et Ambroise Rabier
@@ -43,6 +55,21 @@ class ServerManager {
 	public static function playerConnexion():Void {
 		callPhpFile(onSuccessPlayerConnexion, onErrorPlayerConnexion, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOGIN]);
 	}
+	
+	private static function onSuccessPlayerConnexion (pObject:String):Void {
+		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
+			Debug.error("Player connexion failed");
+			return;
+		}
+		
+		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
+		DeltaDNAManager.listenToCloseGame();
+	}
+	
+	private static function onErrorPlayerConnexion (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
 	
 	public static function refreshConfig ():Void { // todo : remplacer par cron ?
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
@@ -182,6 +209,63 @@ class ServerManager {
 		);
 	}
 	
+	// todo : rename addBuildingToDataBase to addBuilding and for addRegion too ?
+	
+	public static function addBuilding (pDescription:TileDescription):Void {
+		callPhpFile(onSuccessAddBuilding, onErrorAddBuilding, ServerFile.MAIN_PHP, [
+			KEY_POST_FILE_NAME => ServerFile.BUILDING_ADD,
+			"IDTypeBuilding" => GameConfig.getBuildingByName(pDescription.buildingName).iD,
+			//"StartConstruction" => pDescription.timeDesc.creationDate, // définie par serv
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	private static function onErrorAddBuilding (pObject:Dynamic):Void {
+		Debug.error("Error php on addBuilding : " + pObject);
+	}
+	
+	
+	private static function onSuccessAddBuilding (pObject:Dynamic):Void {
+		if (pObject.charAt(0) == "{") {
+			var lEvent:EventSuccessAddBuilding = Json.parse(pObject);
+			
+			if (Reflect.hasField(lEvent, "errorID")) {
+				ErrorManager.openPopin(pObject.errorID);
+			} else {
+				//SynchroManager.syncID(); 
+				// si le joueur déplace le bat avant de recevoir l'id du serveur
+				// alors je n'ai pas d'id et je bloque. par conter c mieux pr recherche bdd :/
+				// ok non, j'utilise la position tt le temps etp uis voilà ;), pas opti mais simple
+				SynchroManager.syncTimeOfBuilding(lEvent);
+			}
+			
+		} else {
+			trace("Success php on addBuilding but event format is invalid ! : " + pObject);
+		}
+		
+	}
+	
+	public static function moveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
+		callPhpFile(onSuccessAddBuilding, onErrorAddBuilding, ServerFile.MAIN_PHP, [
+			KEY_POST_FILE_NAME => ServerFile.BUILDING_MOVE,
+			"OldRegionX" => pOldDescription.regionX,
+			"OldRegionY" => pOldDescription.regionY,
+			"OldX" => pOldDescription.mapX,
+			"OldY" => pOldDescription.mapY,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	public static function upgradeBuilding (pDescription:TileDescription):Void {
+		
+	}
+	
 	/**
 	 * call php file
 	 * @param	onData callBack function on success
@@ -229,20 +313,6 @@ class ServerManager {
 		Debug.error("Error php : " + object);
 	}
 	
-	private static function onSuccessPlayerConnexion (pObject:String):Void {
-		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
-			Debug.error("Player connexion failed");
-			return;
-		}
-		
-		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
-		DeltaDNAManager.listenToCloseGame();
-	}
-	
-	private static function onErrorPlayerConnexion (object:Dynamic):Void {
-		Debug.error("Error php : " + object);
-	}
-	
 	private function new() {
 		
 	}
@@ -278,7 +348,9 @@ class ServerFile {
 	public static inline var MAIN_PHP:String = "actions.php";
 	public static inline var LOGIN:String = "Login";
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
-	public static inline var REGIONS:String = "BuyRegions";
+	public static inline var REGIONS:String = "BuyRegions"; // todo : rename ADD_REGIONS ?
+	public static inline var BUILDING_ADD:String = "AddBuilding";
+	public static inline var BUILDING_MOVE:String = "MoveBuilding";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";

@@ -27,6 +27,7 @@ import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
+import haxe.Json;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -41,6 +42,7 @@ typedef EventExceeding = {
 
 /**
  * Only graphic class, doesn't have any logical part (no VPhantom)
+ * No Pooling on this class !
  * @author ambroise
  */
 class Phantom extends Building {
@@ -131,9 +133,7 @@ class Phantom extends Building {
 		
 		Hud.getInstance().hide();
 		Building.isClickable = false;
-		trace("createPhantom "+ Building.isClickable);
 		instance = new Phantom(BuildingName.getAssetName(pBuildingName));//PoolingManager.getFromPool(pAssetName, Phantom); assetName correspond à Building...
-		// todo : revoir Pooling ?s
 		instance.setBuildingName(pBuildingName);
 		instance.init();
 		container.addChild(instance);
@@ -312,11 +312,16 @@ class Phantom extends Building {
 	private function confirmMove ():Void {
 		if (canBuildHere()) {
 			
+			// deepCopy.
+			var lOldDesc:TileDescription = Json.parse(Json.stringify(vBuilding.tileDesc));
+			
 			vBuilding.move(regionMap);
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
 			trace("movePhantom " + Building.isClickable);
 			Building.isClickable = true;
 			destroy();
+			
+			SaveManager.saveMoveBuilding(lOldDesc, vBuilding.tileDesc);
 			applyChange();
 			
 		} else
@@ -352,7 +357,9 @@ class Phantom extends Building {
 			vBuilding.addExp();
 			destroy();
 			
-			applyChange();			
+			
+			SaveManager.saveNewBuilding(tileDesc);
+			applyChange();	
 		} else {
 			displayCantBuy();
 		}

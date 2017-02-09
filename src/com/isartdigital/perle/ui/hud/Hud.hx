@@ -193,6 +193,7 @@ class Hud extends SmartScreen
 		currentBuildingHud = null;
 	}
 	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...
+	// pas compris.
 	private function addComponent(pComponent:BuildingHud):Void{
 		
 		placeAndAddComponent(pComponent, containerBuildingHud, UIPosition.BOTTOM_RIGHT);

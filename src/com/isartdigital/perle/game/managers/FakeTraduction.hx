@@ -39,8 +39,9 @@ class FakeTraduction{
 			return pBuildingName;
 	}
 	
-	public function new() {
-		
+	public static function errorCodeToTrad (pString:String):String {
+		return pString;
 	}
+	
 	
 }
