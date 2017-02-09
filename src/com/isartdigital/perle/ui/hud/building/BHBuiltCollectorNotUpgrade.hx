@@ -38,6 +38,7 @@ class BHBuiltCollectorNotUpgrade extends BHBuiltCollector
 		return false;
 	}
 	
+	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */

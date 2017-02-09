@@ -387,7 +387,7 @@ class ResourcesManager
 		myResourcesData.generatorsMap[pType].push(myGenerator);
 		
 		SaveManager.save();
-		
+
 		TimeManager.createTimeResource(pTime, myGenerator);
 		
 		return myGenerator;

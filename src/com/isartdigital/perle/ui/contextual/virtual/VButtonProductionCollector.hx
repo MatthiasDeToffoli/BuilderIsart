@@ -27,7 +27,7 @@ class VButtonProductionCollector extends VButtonProduction
 	
 	private function onProdFine(pTimeProd:TimeCollectorProduction):Void{
 		
-		if (pTimeProd.buildingRef != refBuilding) return;
+		if (pTimeProd.desc.refTile != refBuilding) return;
 		
 		if (!generatorIsNotEmpty){
 			gain = pTimeProd.gain;

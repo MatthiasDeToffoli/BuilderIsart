@@ -37,7 +37,7 @@ class VCollector extends VBuildingUpgrade
 	
 	public function updateMyTime(pTime:TimeCollectorProduction):Void{
 		
-		if (pTime.buildingRef == tileDesc.id)
+		if (pTime.desc.refTile == tileDesc.id)
 			timeProd = pTime;
 			
 	}

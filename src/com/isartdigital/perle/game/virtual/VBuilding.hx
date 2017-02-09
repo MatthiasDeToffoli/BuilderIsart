@@ -81,6 +81,16 @@ class VBuilding extends VTile {
 	}
 	
 	
+	private function updateResources():Void {
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+			
+		if (typeBuilding.productionPerHour != null && !Std.is(this, VMarketingHouse)) {
+			
+			myTime = calculTimeProd(typeBuilding);
+			myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);	
+		}
+	}
+	
 	
 	/**
 	 * add this reference to an altar

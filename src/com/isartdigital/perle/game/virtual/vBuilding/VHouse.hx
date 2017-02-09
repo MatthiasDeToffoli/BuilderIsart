@@ -61,6 +61,7 @@ class VHouse extends VBuildingUpgrade
 	 * @param	pMax the new max of population
 	 */
 	public function updatePopulation(?pQuantity:Int):Void{
+
 		if (pQuantity != null){
 			tileDesc.currentPopulation = pQuantity;
 			myPopulation.quantity = pQuantity;
@@ -70,7 +71,9 @@ class VHouse extends VBuildingUpgrade
 			tileDesc.maxPopulation = lMax;
 			myPopulation.max = lMax;
 		
-		ResourcesManager.updatePopulation(myPopulation,alignementBuilding);
+		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
+		updateResources();
+		
 		
 		SaveManager.save();
 	}
@@ -93,7 +96,7 @@ class VHouse extends VBuildingUpgrade
 		myPopulation = pPopulation;
 		tileDesc.maxPopulation = pPopulation.max;
 		tileDesc.currentPopulation = pPopulation.quantity;
-		
+		updateResources();
 		SaveManager.save();
 	}
 	

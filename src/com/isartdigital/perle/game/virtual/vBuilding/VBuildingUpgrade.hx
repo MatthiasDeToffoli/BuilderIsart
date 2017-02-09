@@ -44,13 +44,7 @@ class VBuildingUpgrade extends VBuilding
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
-		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
-			
-		if (typeBuilding.productionPerHour != null && !Std.is(this, VMarketingHouse)) {
-			
-			myTime = calculTimeProd(typeBuilding);
-			myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);	
-		}
+		updateResources();
 		
 		
 		

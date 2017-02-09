@@ -57,13 +57,13 @@ class TimerInProd extends SmartComponent
 	
 	private function rewrite(pTime:TimeCollectorProduction ){
 		
-		if (pTime.buildingRef != ref) return;
+		if (pTime.desc.refTile != ref) return;
 		
-		var clock:Clock = TimesInfo.getClock(pTime.progress);
+		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.desc.end, pTime.desc.progress));
 		
 		progressBarTxt.text = clock.minute + ":" + clock.seconde;
 		
-		if (pTime.progress <= 0) destroyAccelBtn();
+		if (pTime.desc.progress <= 0) destroyAccelBtn();
 	}
 	
 	

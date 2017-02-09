@@ -67,7 +67,7 @@ class TimeManager {
 	/**
 	 * Update all timers and save every TIME_LOOP_DELAY.
 	 */
-	private static inline var TIME_LOOP_DELAY:Int = 5000;
+	private static inline var TIME_LOOP_DELAY:Int = 5 * TimesInfo.SEC;
 	private static inline var TIME_LOOP_DELAY_PROGRESSION:Int = 50;
 	
 	public static var eTimeGenerator:EventEmitter;
@@ -136,15 +136,14 @@ class TimeManager {
 	}
 	
 	public static function setCampaignTime(pTime:Float):Void {
-		campaignTime = pTime;
+		campaignTime = Date.now().getTime() + pTime;
 	}
 	
-	private static function updateCampaignTime(ElapsedTime:Float):Void {
-		campaignTime = Math.max(campaignTime - ElapsedTime, 0);
-		
-		if (campaignTime == 0){
+	private static function updateCampaignTime():Void {
+		if (Date.now().getTime() >= campaignTime){
 			MarketingManager.setCampaign(CampaignType.none);
 			eCampaign.emit(EVENT_CAMPAIGN_FINE);
+			campaignTime = 0;
 		} else {
 			eCampaign.emit(EVENT_CAMPAIGN, campaignTime);
 		}
@@ -161,13 +160,15 @@ class TimeManager {
 
 		var lTimeElement:TimeElementResource = {
 			desc: {
+				creationDate:Date.now().getTime(),
 				refTile:pGenerator.desc.id,
-				progress:0,
-				end:pEnd
+				progress:Date.now().getTime(),
+				end:pEnd == null ? pEnd : Date.now().getTime() + Date.fromTime(pEnd).getTime()
 			},
 			generator:pGenerator
 		};
 		listResource.push(lTimeElement);
+		
 		return lTimeElement;
 	}
 	
@@ -181,7 +182,9 @@ class TimeManager {
 		
 		for (lTimeElement in listResource)
 			if (lTimeElement.generator == pGenerator)
-				lTimeElement.desc.end = pEnd;
+				lTimeElement.desc.end = pEnd == null ? pEnd : lTimeElement.desc.creationDate + Date.fromTime(pEnd).getTime();
+				
+				
 	}
 	
 	/*
@@ -200,10 +203,15 @@ class TimeManager {
 	}
 	
 	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeCollectorProduction{
+		var lDesc:TimeDescription = {
+			refTile: ref,
+			progress: Date.now().getTime(),
+			end: Date.now().getTime() + Date.fromTime(pack.time).getTime() ,
+			creationDate: Date.now().getTime()
+		}
 		var myTime:TimeCollectorProduction = {
-			buildingRef: ref,
 			gain: pack.quantity,
-			progress: pack.time
+			desc: lDesc
 		}
 		
 		listProduction.push(myTime);
@@ -304,10 +312,16 @@ class TimeManager {
 		var constructionEnded:Array<Int> = new Array<Int>();
 		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruct:Int = listConstruction.length;
+		var lLengthProd:Int = listProduction.length;
 		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow);
 		
 		lastKnowTime = lTimeNow;
 		
+		if (campaignTime > 0) updateCampaignTime();
+		
+		for ( i in 0...lLengthProd)
+			updateProductionTime(listProduction[i]);
+			
 		for (j in 0...lLengthQuest) {
 			updateQuest(listQuest[j], lElapsedTime);
 		}
@@ -346,23 +360,11 @@ class TimeManager {
 	}
 	
 	private static function timeLoop ():Void {
-		var lTimeNow:Float = Date.now().getTime();
-		var lElapsedTime:Float = getElapsedTime(lastKnowTime, lTimeNow); // todo: moche ?
 		var lLength:Int = listResource.length;
-		var lLenghtProd:Int = listProduction.length;
-		
-		lastKnowTime = lTimeNow;
-		SaveManager.saveLastKnowTime(lastKnowTime);
-		//trace("length quest" + listQuest.length);
-		
-		if (campaignTime > 0) updateCampaignTime(lElapsedTime);
 		
 		for (i in 0...lLength) {
-			updateResource(listResource[i], lElapsedTime);
+			updateResource(listResource[i]);
 		}
-		
-		for ( i in 0...lLenghtProd)
-			updateProductionTime(listProduction[i], lElapsedTime);
 	}
 	
 	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
@@ -376,19 +378,20 @@ class TimeManager {
 	 * @param	pElement
 	 * @param	pElapsedTime
 	 */
-	private static function updateResource (pElement:TimeElementResource, pElapsedTime:Float):Void {
+	private static function updateResource (pElement:TimeElementResource):Void {
 		if (pElement.desc.end == null) return;
-		
+
 		var lNumberTick:Int = 0;
-		var lFullTime:Float = pElapsedTime + pElement.desc.progress;
+		var lFullTime:Float = Date.now().getTime();
 		
 		// get the number of time you find endTime inside
 		lNumberTick = cast((lFullTime - (lFullTime % pElement.desc.end)) / pElement.desc.end, Int);
 		// update the progress bar.
-		pElement.desc.progress = lFullTime % pElement.desc.end;
+		pElement.desc.progress = lFullTime;
 
 		// update resources !
-		if (lNumberTick > 0)
+		if (lNumberTick > 0) {
+			
 			eTimeGenerator.emit(
 				EVENT_RESOURCE_TICK,
 				{
@@ -396,6 +399,13 @@ class TimeManager {
 					tickNumber:lNumberTick
 				}
 			);
+			
+			var lEnd:Float = Date.now().getTime() + Date.fromTime(pElement.desc.end - pElement.desc.creationDate).getTime();
+			pElement.desc.end = lEnd;
+			pElement.desc.creationDate = Date.now().getTime();
+		}
+			
+			
 	}
 	
 	/**
@@ -443,10 +453,10 @@ class TimeManager {
 		}
 	}
 	
-	private static function updateProductionTime(pElement:TimeCollectorProduction, pEllapsedTime:Float):Void {
-		pElement.progress -= pEllapsedTime;
-		if (pElement.progress < 0){
-			pElement.progress = 0;
+	private static function updateProductionTime(pElement:TimeCollectorProduction):Void {
+		pElement.desc.progress = Date.now().getTime();
+		if (pElement.desc.progress > pElement.desc.end){
+			pElement.desc.progress = pElement.desc.end;
 			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE,pElement);
 		}
 		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
@@ -456,7 +466,7 @@ class TimeManager {
 	 	var i:Int, l:Int = listProduction.length;
 		
 		for (i in 0...l)
-			if (listProduction[i].buildingRef == ref) {
+			if (listProduction[i].desc.refTile == ref) {
 				listProduction.splice(i, 1);
 				eProduction.emit(EVENT_COLLECTOR_PRODUCTION_STOP, ref);
 			}
@@ -582,6 +592,7 @@ class TimeManager {
 		var lLength:Int = listResource.length;
 		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruction:Int = listConstruction.length;
+		
 		
 		for (i in 0...lLength) {
 			if (pId == listResource[i].desc.refTile){

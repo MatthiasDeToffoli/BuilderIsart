@@ -10,7 +10,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
  * ...
  * @author de Toffoli Matthias
  */
-class BHBuiltCollectorUpgradable extends BHBuiltUpgrade 
+class BHBuiltCollectorUpgradable extends BHBuiltCollector
 {
 	
 	/**

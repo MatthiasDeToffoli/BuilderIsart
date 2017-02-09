@@ -20,7 +20,7 @@ class BuildingTimerMarketing extends BuildingTimer
 	override function showTime(?pTime:Dynamic):Void 
 	{
 		if (pTime == null) pTime = MarketingManager.getCurrentCampaign().time;
-		var myClock:Clock = TimesInfo.getClock(pTime);		
+		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime, Date.now().getTime()));		
 		timeText.text = myClock.houre + ":" + myClock.minute + ":" + myClock.seconde;
 	}
 	
