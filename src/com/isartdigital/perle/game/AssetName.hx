@@ -128,6 +128,8 @@ class AssetName{
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER:String = "InternHouseNumber";
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN:String = "_internHouseNumber";	
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HELL:String = "_internHouseNumber_actualValue";	
+	public static inline var CAROUSSEL_INTERN_HEAVEN_PRICE:String = "_internPrice_heaven_txt";
+	public static inline var CAROUSSEL_INTERN_HELL_PRICE:String = "_internPrice_hell_txt";
 	
 	//Shop Reroll
 	public static inline var REROLL_GAUGE:String = "JaugeTimer";

@@ -15,32 +15,33 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
 /**
- * ...
+ * Shop of the interns
  * @author ambroise
  * @author Emeline Berenguier
  */
 class ShopCarousselInterns extends ShopCaroussel{
 
-	public static var internsNameList(default, never):Array<String> = [ // renommé et majuscules. mettre en bdd ?
-	];
+	public static var internsNameList(default, never):Array<String> = [];
 		
 	private var btnReroll:SmartButton;
-	private var hellCard:SmartButton;
-	private var heavenCard:SmartButton;
 	
 	//Hell Card
+	private var hellCard:SmartButton;
 	private var hellPortrait:UISprite;
 	private var hellName:TextSprite;
 	private var hellGaugeStress:SmartComponent;
 	private var hellGaugeEfficency:SmartComponent;
 	private var hellGaugeSpeed:SmartComponent;
+	private var hellPrice:TextSprite;
 	
 	//Heaven Card
+	private var heavenCard:SmartButton;
 	private var heavenPortrait:UISprite;
 	private var heavenName:TextSprite;
 	private var heavenGaugeStress:SmartComponent;
 	private var heavenGaugeEfficency:SmartComponent;
 	private var heavenGaugeSpeed:SmartComponent;
+	private var heavenPrice:TextSprite;
 	
 	//Number of intern houses
 	private var houseNumber:SmartComponent;
@@ -63,6 +64,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		super.init(pPos, myEnum);
 	}
 	
+	/**
+	 * Initialize the interns's ID to 
+	 */
 	public static function initID ():Void{
 		usedID = new Map<Alignment, Array<Int>>();
 		usedID[Alignment.heaven] = new Array<Int>();
@@ -105,6 +109,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	
 	
 	private function getComponents():Void{
+		SmartCheck.traceChildrens(this);
 		btnReroll = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartButton);
 		hellCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_CARD), SmartButton);
 		heavenCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_CARD), SmartButton);
@@ -119,23 +124,28 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellGaugeStress = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		hellGaugeSpeed = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
+		hellPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_PRICE), TextSprite);
 		
 		heavenPortrait = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_PORTRAIT), UISprite);
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		heavenGaugeStress = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
+		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite);
 		
-		//hellCard.alpha = 0.5;
-		//hellCard.interactive = false;
-		//hellCard.buttonMode = false;
 	}
 	
+	/**
+	 * Callback of the hoover button, to rewrite the values of the hell card
+	 */
 	private function setValuesHellButton():Void{
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
 		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;	
 	}
 	
+	/**
+	 * Callback of the hoover button, to rewrite the values of the heaven card
+	 */
 	private function setValuesHeavenButton():Void{
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
@@ -147,6 +157,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function setValues():Void{
 		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
+		
+		hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
+		heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
 		
 		setValuesNumberHousesHeaven();
 		setValuesNumberHousesHell();

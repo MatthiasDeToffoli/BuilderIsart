@@ -64,7 +64,6 @@ class GameManager {
 		
 		ServerManager.playerConnexion();
 		GameConfig.awake();
-		
 		AnimationManager.awake();
 		BuildingLimitManager.awake();
 		MarketingManager.awake(); // always before VTile
@@ -92,6 +91,7 @@ class GameManager {
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
 		//DialogueManager.createFtue();
+
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		

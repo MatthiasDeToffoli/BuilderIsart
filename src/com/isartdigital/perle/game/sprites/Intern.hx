@@ -3,7 +3,9 @@ import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.GameConfig.TableInterns;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -61,12 +63,16 @@ class Intern
 	
 	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
 		
-		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length) return true;	
+		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length){
+			if (ResourcesManager.getTotalForType(GeneratorType.soft) >= pIntern.price) return true;	
+			else return false;
+		}
 		else return false;
 	}
 	
 	public static function buy(pIntern:InternDescription):Void{
 		var pAlignment:Alignment = null;
+		ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
 	}

@@ -46,7 +46,7 @@ typedef TimeElementResource = {
 
 /**
  * Control every TimeBased Mechanic (working constantly like a server)
- * @author Vicktor Grenu
+ * @author Vicktor Grenu et ambroise rabier
  */
 class TimeManager {
 	
@@ -354,7 +354,6 @@ class TimeManager {
 			}
 			
 			pElement.stepIndex++;
-			trace(pElement.refIntern);
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			eTimeQuest.emit(EVENT_CHOICE_DONE);
 		}

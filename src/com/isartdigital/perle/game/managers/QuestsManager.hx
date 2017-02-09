@@ -29,7 +29,9 @@ class QuestsManager
 	
 	//The time's gap between two events will be vary between these constants
 	private static var MIN_TIMELINE(default, null):Int = 2000;
-	private static var MAX_TIMELINE(default, null):Int = 3000;
+	private static var MAX_TIMELINE(default, null):Int = 30000;
+	
+	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
@@ -37,20 +39,21 @@ class QuestsManager
 	private static var isFinish:Bool = false;
 	
 	public static inline var EVENT_CHOICE_DONE:String = "QuestsManager_Choice_Done";
-	//public static var eGoToNextStep:EventEmitter; //@todo: a voir avec victor si utile ou pas
 		
 	public function new() 
 	{
 		
 	}
 	
-	//Todo:Not working! Don't touch
-	
 	public static function init():Void{
 		questsList = new Array<TimeQuestDescription>();	
 		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
 		//eGoToNextStep = new EventEmitter();
 		//TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_STEP, choice);
+	}
+	
+	public static function initWithoutSave():Void{
+		questsList = new Array<TimeQuestDescription>();
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, endQuest);
 	}
 	
@@ -78,9 +81,8 @@ class QuestsManager
 	 * @return	The quest's datas
 	 */
 	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
-		trace(pIdIntern);
 		var lIdTimer = pIdIntern;
-		var lStepsArray:Array<Int> = createRandomGapArray();
+		var lStepsArray:Array<Int> = createRandomGapArray(Intern.getIntern(pIdIntern));
 		
 		var lTimeQuestDescription:TimeQuestDescription = {
 			refIntern: lIdTimer,
@@ -103,12 +105,13 @@ class QuestsManager
 	 * @param	pLength
 	 * @return A new array
 	 */
-	private static function createRandomGapArray():Array<Int>{
+	private static function createRandomGapArray(pIntern:InternDescription):Array<Int>{
 		var lListEvents:Array<Int> = new Array<Int>();
 		var lGap:Int = 0;
 		
 		for (i in 0...NUMBER_EVENTS){
-			lGap = Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap;
+			//lGap = Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap;
+			lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
 			lListEvents.push(lGap);
 		}
 		
@@ -167,7 +170,6 @@ class QuestsManager
 		else {
 			trace ("end");
 			endQuest(questInProgress);
-			//TimeManager.nextStepQuest(questInProgress);
 		}
 	}
 	
@@ -182,10 +184,12 @@ class QuestsManager
 		GatchaPopin.quest = pQuest;
 		UIManager.getInstance().openPopin(GatchaPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(GatchaPopin.getInstance());
-		//choice(pQuest); //Todo: gérer ça autrement, choice doit apporter le endQuest
 		
-		//destroyQuest(pQuest.refIntern); //Stocker id intern
-		//TimeManager.destroyTimeElement(pQuest.refIntern);
+		for (i in 0...Intern.internsListArray.length){
+			if (pQuest.refIntern == Intern.internsListArray[i].id){
+				Intern.internsListArray[i].quest = null;
+			}
+		}
 	}
 	
 	public static function finishQuest(pQuest:TimeQuestDescription):Void{
@@ -236,7 +240,6 @@ class QuestsManager
 	public static function destroyQuest(pQuestId:Int):Void{
 		for (i in 0...questsList.length){
 			if (questsList[i].refIntern == pQuestId){
-				trace("destroy done");
 				questsList.splice(i, 1);
 			}
 		}	

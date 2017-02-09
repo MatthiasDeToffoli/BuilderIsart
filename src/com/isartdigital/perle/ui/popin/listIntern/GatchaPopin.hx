@@ -66,7 +66,7 @@ class GatchaPopin extends SmartPopin
 	
 	private function addListeners():Void{
 		Interactive.addListenerClick(btnGift, onGift);
-		Interactive.addListenerClick(btnClose, onClose);
+		//Interactive.addListenerClick(btnClose, onClose);
 	}
 	
 	private function onGift():Void{
