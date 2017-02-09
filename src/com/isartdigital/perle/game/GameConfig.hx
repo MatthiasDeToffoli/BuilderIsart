@@ -98,6 +98,7 @@ typedef TableInterns = {
 /**
  * ...
  * @author ambroise
+ * @author autre
  */
 class GameConfig {
 
@@ -112,10 +113,6 @@ class GameConfig {
 	public static inline var CHOICES:String = "Choices";
 	public static inline var CONFIG_EVENT:String = "ConfigEvent";
 	public static inline var USED_CHOICES:String = "ChoicesUsed";
-	// todo : etc
-	
-	// todo : transformer les string en enum ? ou juste faire getName() sur nos enum ?
-	
 	
 	
 	public static function awake ():Void {
@@ -175,15 +172,6 @@ class GameConfig {
 				
 		Debug.error("ShopPack name '" + pName +"' missing.");
 		return null;
-	}
-	
-	private static function tableExist (pTable:String):Bool { // todo : à utiliser, j'pe pas test mon php ingore mes changements --'
-		if (config[pTable] == null) { // todo : vérif si cela marche ? parfois me semblait qu'il mettait false plutot que null
-			Debug.error("table named : " + pTable + " does not exist in database.");
-			return false;
-		}
-		
-		return true;
 	}
 	
 	private static function parseJson (pConfig:Map<String, Array<Dynamic>>, pContent:Dynamic):Void {

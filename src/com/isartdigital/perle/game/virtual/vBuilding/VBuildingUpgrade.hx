@@ -32,7 +32,7 @@ class VBuildingUpgrade extends VBuilding
 	public function onClickUpgrade():Void{
 		desactivate();
 		
-		if (tileDesc.level < BuildingName.BUILDING_NAME_TO_ASSETNAMES[tileDesc.buildingName].length-1){
+		if (tileDesc.level < BuildingName.getMaxLevelByName(tileDesc.buildingName)){
 			tileDesc.level++;
 		}
 		
@@ -61,7 +61,7 @@ class VBuildingUpgrade extends VBuilding
 	}
 	
 	public function canUpgrade():Bool {
-		return tileDesc.level < BuildingName.BUILDING_NAME_TO_ASSETNAMES[tileDesc.buildingName].length - 1;
+		return tileDesc.level < BuildingName.getMaxLevelByName(tileDesc.buildingName);
 	}
 	
 	public function getLevel():Int{

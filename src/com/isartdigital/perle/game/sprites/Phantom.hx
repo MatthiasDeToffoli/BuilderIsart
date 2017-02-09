@@ -337,7 +337,7 @@ class Phantom extends Building {
 				regionY:regionMap.region.y,
 				mapX:regionMap.map.x,
 				mapY:regionMap.map.y,
-				level:0,
+				level:1,
 				timeDesc: { refTile:newId,  end: tTime + 20000, progress: 0, creationDate: tTime }
 			};
 			

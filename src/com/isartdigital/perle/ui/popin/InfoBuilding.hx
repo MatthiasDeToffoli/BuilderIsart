@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager.Population;
@@ -108,7 +109,7 @@ class InfoBuilding extends SmartPopinExtended{
 	
 	private function fileInfosText():Void{
 		
-		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel() + 1);
+		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel());
 		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
@@ -116,7 +117,7 @@ class InfoBuilding extends SmartPopinExtended{
 		populationTxt.text = getPopulationText();
 		goldZoneTxt.text = getGoldText();
 			
-		if (cast(virtualBuilding, VBuildingUpgrade).getLevel() >= 2){
+		if (cast(virtualBuilding, VBuildingUpgrade).getLevel() >= BuildingName.getMaxLevelByName(virtualBuilding.tileDesc.buildingName)) {
 			btnUpgrade.parent.removeChild(btnUpgrade);
 			btnUpgrade.destroy();
 			upgradeInfos.parent.removeChild(upgradeInfos);

@@ -61,12 +61,16 @@ class BuildingName {
 	
 	// dans traduciton : assetNameNameToTrad à changer pr buildingNameToTrad
 	
-	public static function getAssetName (pBuildingName:String, pLevel:Int = 0,?suffix:String = ""):String {
+	public static function getAssetName (pBuildingName:String, pLevel:Int = 1,?suffix:String = ""):String {
 		if (BUILDING_NAME_TO_ASSETNAMES[pBuildingName] == null ||
-			BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel] == null)
+			BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel-1] == null)
 			Debug.error("AssetName for BuildingName : '"+pBuildingName+"' not found, for level : "+pLevel);
 		
-		return BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel] + suffix;
+		return BUILDING_NAME_TO_ASSETNAMES[pBuildingName][pLevel-1] + suffix;
+	}
+	
+	public static function getMaxLevelByName (pBuildingName:String):Int {
+		return BUILDING_NAME_TO_ASSETNAMES[pBuildingName].length;
 	}
 	
 	
