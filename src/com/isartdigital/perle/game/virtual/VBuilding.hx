@@ -273,6 +273,14 @@ class VBuilding extends VTile {
 			
 	}
 	
+	public function getGoldValue():String {
+		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).productionPerHour + "";
+	}
+	
+	public function getRessourceValue():String {
+		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).productionResource + "";
+	}
+	
 	/**
 	 * Will remove graphic until currentState != isMoving
 	 */
@@ -359,7 +367,6 @@ class VBuilding extends VTile {
 		if (Std.is(this, VBuildingUpgrade)){
 			ResourcesManager.removeGenerator(myGenerator);
 			myGenerator = null;
-			
 			ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		}
 		

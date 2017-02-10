@@ -269,7 +269,9 @@ class ResourcesManager
 		allPopulations[pType][allPopulations[pType].indexOf(pPopulation)] = pPopulation;
 	}
 	
-
+	public static function removePopulation(pType:Alignment,pPopulation:Population):Void {
+		allPopulations[pType].splice(allPopulations[pType].indexOf(pPopulation),1);
+	}
 	
 	/**
 	 * give the total of soul we have (and the total we can have
