@@ -31,14 +31,16 @@ class VAltar extends VBuilding
 		super(pDescription);
 		elementHeaven = new Array<Int>();
 		elementHell = new Array<Int>();
-		//BoostManager.boostEvent.on(BoostManager.BOOST_EVENT_NAME, haveMoreBoost);
+		
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName);
+		heavenBonus = typeBuilding.productionPerBuildingHeaven;
+		hellBonus = typeBuilding.productionPerBuildingHell;
 
 		elementHeaven = new Array<Int>();
 		elementHell = new Array<Int>();
 		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_ON_EVENT_NAME, onBuildingToAdd);
 		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_OFF_EVENT_NAME, onBuildingToRemove);
 		checkInZone();
-		myMaxContains = 20000;
 	}
 	
 	/**
@@ -114,6 +116,9 @@ class VAltar extends VBuilding
 	 * @param	pType the type of array we want
 	 */
 	private function addToCorrectArray(pRef:Int, pType:Alignment):Void {
+		
+		if (pType != Alignment.heaven && pType != Alignment.hell) return;
+		
 		var myArray:Array<Int> = pType == Alignment.heaven ? elementHeaven : elementHell;
 		
 		var currentRef:Int;
@@ -124,10 +129,10 @@ class VAltar extends VBuilding
 		
 		
 		if (pType == Alignment.heaven) elementHeaven = myArray;
-		else elementHell = myArray;
+		else if (pType == Alignment.hell) elementHell = myArray;
 		
 		calculTime();
-		
+
 		if (myTime > 0){
 			if (!haveRecolter){
 				haveRecolter = true;
@@ -156,11 +161,12 @@ class VAltar extends VBuilding
 				else elementHell = myArray;
 			}
 			
-		haveMoreBoost();
+		if(haveRecolter) haveMoreBoost();
 	}
 	
 	override function addGenerator():Void 
 	{
+
 		if (haveRecolter) {
 			super.addGenerator();
 		}
@@ -183,11 +189,13 @@ class VAltar extends VBuilding
 		else return TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
 	}
 	private function haveMoreBoost():Void{
+
 		calculTime();
-		
+
 		if (myTime <= 0){
 			myVContextualHud.destroy();
 			ResourcesManager.removeGenerator(myGenerator);
+			myGenerator = null;
 			haveRecolter = false;
 		}
 		else ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);

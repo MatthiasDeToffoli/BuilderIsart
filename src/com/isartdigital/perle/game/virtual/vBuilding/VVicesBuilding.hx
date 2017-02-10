@@ -14,8 +14,6 @@ class VVicesBuilding extends VAltar
 	public function new(pDescription:TileDescription) 
 	{
 		alignmentEffect = Alignment.hell;
-		hellBonus = 5;
-		heavenBonus = -1.5;
 		super(pDescription);
 		
 	}
