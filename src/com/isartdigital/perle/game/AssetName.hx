@@ -410,5 +410,14 @@ class AssetName{
 	public static inline var OPTION_POPPIN:String = "Options_Popin";
 	public static inline var OPTION_POPPIN_CLOSE:String = "ButtonClose";
 	public static inline var OPTION_POPPIN_RESETDATA:String = "ButtonDataReset";
+	public static inline var OPTION_POPPIN_SFX:String = "ButtonSFXGroup";
+	public static inline var OPTION_POPPIN_MUSIC:String = "ButtonMusicGroup";
+	public static inline var OPTION_POPPIN_FR:String = "ButtonFrench";
+	public static inline var OPTION_POPPIN_EN:String = "ButtonEnglish";
+	
+	//ResetPoppin
+	public static inline var RESET_POPPIN:String = "ConfirmDataReset_Popin";
+	public static inline var RESET_POPPIN_CONFIRM:String = "ButtonConfirmErase";
+	public static inline var RESET_POPPIN_CANCEL:String = "ButtonCancelErase";
 
 }
