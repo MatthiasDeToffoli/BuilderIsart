@@ -2,19 +2,21 @@ package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.GameConfig.TableInterns;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import haxe.Json;
 
 /**
  * Class of the interns
- * @author Emeline Berenguier
+ * @author victor grenu && Emeline Berenguier
  */
 class Intern
 {
@@ -78,6 +80,7 @@ class Intern
 			ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
+		ServerManager.InternAction(DbAction.ADD, pIntern.id);
 	}
 	
 	public static function numberInternsInQuest():Int{
@@ -138,7 +141,7 @@ class Intern
 				id : Std.int(data[i].ID),
 				name : data[i].Name,
 				aligment :  data[i].Alignment,
-				status: STATE_RESTING,
+				status: (Std.int(data[i].Stress) >= MAX_STRESS) ? STATE_MAX_STRESS : STATE_WAITING,
 				quest : QuestsManager.getQuest(data[i].ID),
 				price : Std.int(data[i].Price),
 				stress: Std.int(data[i].Stress),
@@ -148,8 +151,27 @@ class Intern
 				idEvent: Std.int(data[i].IdEvent)
 			};
 			
+			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.id)) {
+				var tmpProgress:Float = Date.now().getTime();
+				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];
+				else if (tmpProgress>= newIntern.quest.steps[1] && newIntern.quest.stepIndex == 1) tmpProgress = newIntern.quest.steps[1];
+				else if (tmpProgress >= newIntern.quest.steps[2] && newIntern.quest.stepIndex == 2) tmpProgress = newIntern.quest.steps[2];
+				else newIntern.quest.progress = tmpProgress;
+			}
+			
 			internsListArray.push(newIntern);
 		}
+	}
+	
+	public static function isIntravel(pIntern:InternDescription):Bool {
+		var lTimeDesc:TimeQuestDescription = pIntern.quest;
+		switch (lTimeDesc.stepIndex) {
+			case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
+			case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
+			case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true;
+			default: return false;
+		}
+		return false;
 	}
 	
 	public static function dbMajInternEvent(pInter:InternDescription):Void {

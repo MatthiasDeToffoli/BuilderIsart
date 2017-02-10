@@ -1,5 +1,7 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
+import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -18,6 +20,7 @@ class InternElement extends SmartComponent
 
 	private var internName:TextSprite;
 	private var picture:SmartButton;
+	public var quest:TimeQuestDescription;
 	
 	public function new(pID:String=null, pPos:Point) 
 	{
@@ -26,12 +29,10 @@ class InternElement extends SmartComponent
 		
 	}
 	
-	private function onPicture(){
+	private function onPicture():Void {
 		//@ToDo: doesn't work
 		trace("picture");
-		//UIManager.getInstance().closeCurrentPopin();
-		//UIManager.getInstance().openPopin(new InternPopin());
-		//
+		
 	}
 	
 	override public function destroy():Void 

@@ -55,10 +55,11 @@ typedef CampaignDescription = {
 
 typedef TimeQuestDescription = {
 	var refIntern:Int;
-	var progress:Int;
-	var steps:Array<Int>;
+	var progress:Float;
+	var steps:Array<Float>;
 	var stepIndex:Int;
-	var end:Int;
+	var creation:Float;
+	var end:Float;
 }
 
 //typedef AllTimeQuestDescription = {

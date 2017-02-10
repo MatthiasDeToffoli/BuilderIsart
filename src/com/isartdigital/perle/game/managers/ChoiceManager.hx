@@ -63,7 +63,7 @@ typedef TypeUseChoice = {
 
 /**
  * ...
- * @author grenu
+ * @author victor grenu
  */
 class ChoiceManager
 {		
@@ -85,8 +85,20 @@ class ChoiceManager
 		efficiencyBalance = GameConfig.getChoicesConfig();
 	}
 	
-	public static function getUsedIdJson(object:Dynamic):Void {
-		usedID = cast(Json.parse(object));
+	public static function getUsedIdJson(data:Dynamic):Void {
+		if (data == null) return;
+		var data:Dynamic = Json.parse(data);	
+		var lLength:Int = Std.int(data.length);
+			
+		for (i in 0...lLength) {
+			var newChoiceUsed:TypeUseChoice = {
+				idChoice: Std.int(data[i].IDChoice),
+				closed: Std.int(data[i].Closed)
+			};
+			
+			usedID.push(newChoiceUsed);
+		}
+		
 		getNewChoiceID();
 	}
 	
@@ -116,9 +128,6 @@ class ChoiceManager
 		var useChoice:ChoiceDescription = selectChoice(actualID);
 		var baseReward:EventRewardDesc;
 		
-		if (pIntern.quest.stepIndex != 2) ChoiceManager.newChoice(pIntern.id);
-		else ChoiceManager.newChoice(pIntern.id, true);
-		
 		if (pChoiceType == ChoiceType.HELL) {
 			baseReward = {
 				gold : useChoice.goldHell + pReward.gold,
@@ -138,28 +147,37 @@ class ChoiceManager
 			};
 		}
 		
-		switch (pChoiceType) 
-		{
-			case ChoiceType.HEAVEN:
-				ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
-				ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
-				ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
-				ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
-				ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
-				(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.heavenStress : pIntern.stress += useChoice.hellStress;
+		if (pIntern.stress < 100) {
+			switch (pChoiceType) 
+			{
+				case ChoiceType.HEAVEN:
+					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
+					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
+					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
+					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
+					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.heavenStress : pIntern.stress += useChoice.hellStress;
 				
-			case ChoiceType.HELL:
-				ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
-				ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
-				ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
-				ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
-				ResourcesManager.takeXp(baseReward.xp, GeneratorType.badXp);
-				(pIntern.aligment == "hell") ? pIntern.stress += useChoice.hellStress: pIntern.stress += useChoice.heavenStress;
+				case ChoiceType.HELL:
+					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
+					ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
+					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
+					ResourcesManager.takeXp(baseReward.xp, GeneratorType.badXp);
+					(pIntern.aligment == "hell") ? pIntern.stress += useChoice.hellStress: pIntern.stress += useChoice.heavenStress;
 				
-			default: return;
+				default: return;
+			}
+			
+			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
+			ServerManager.EventAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
+			
+			if (pIntern.quest.stepIndex != 2) ChoiceManager.newChoice(pIntern.id);
+			else ChoiceManager.newChoice(pIntern.id, true);
 		}
 		
-		ServerManager.EventAction(DbAction.CLOSE_QUEST, useChoice.iD);
+		TimeManager.destroyTimeQuest(pIntern.id);
+		QuestsManager.goToNextStep();
 	}
 	
 	public static function nextStep():Void {
@@ -180,6 +198,29 @@ class ChoiceManager
 		for (i in 0...lLength) {
 			if (pId == usedID[i].idChoice) {
 				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public static function isInQuest(pId:Int):Bool {
+		var lLength:Int = usedID.length;
+		for (i in 0...lLength) {
+			if (pId == usedID[i].idChoice && usedID[i].closed == 0) {
+				return true;
+			} 
+		}
+		
+		return false;
+	}
+	
+	public static function internIsInGatcha(pId:Int):Bool {
+		var llength:Int = usedID.length;
+		for (i in 0...llength) {
+			if (usedID[i].idChoice == pId) {
+				if (usedID[i].closed == 1) return true; 
+				else break;
 			}
 		}
 		

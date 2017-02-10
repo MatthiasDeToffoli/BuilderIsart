@@ -73,7 +73,6 @@ class GameManager {
 		BoostManager.awake(); //always before pooling
 		ButtonProduction.init(); //always before pooling
 		Tile.initClass();//always before pooling manager
-		Intern.init(); //Always before RegionManager
 		ResourcesManager.awake(); // akways befire all ui init
 		ExperienceManager.setExpToLevelUp();// always before SaveManager
 		UIManager.getInstance().startGame();
@@ -81,8 +80,9 @@ class GameManager {
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		TimeManager.initClass();
-		QuestsManager.init();
 		ChoiceManager.init();
+		QuestsManager.init();
+		Intern.init(); //Always before RegionManager
 		VTile.initClass();
 		HudContextual.addContainer();
 		Phantom.initClass();

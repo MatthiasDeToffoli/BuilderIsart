@@ -12,6 +12,8 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector.ProductionPack;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest;
+import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
@@ -52,6 +54,7 @@ class TimeManager {
 	public static inline var EVENT_RESOURCE_TICK:String = "TimeManager_Resource_Tick";
 	public static inline var EVENT_CHOICE_DONE:String = "TimeManager_Choice_Done";
 	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
+	public static inline var EVENT_GATCHA:String = "TimeManager_Gatcha_Step_Reached";
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
 	public static inline var EVENT_COLLECTOR_PRODUCTION:String = "Production_Time";
@@ -112,7 +115,6 @@ class TimeManager {
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
 		var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
 		var lLengthConstruction:Int = pSave.timesConstruction.length;
-		var lLengthQuest:Int = pSave.timesQuest.length;
 		
 		//trace(lLengthQuest);
 		for (i in 0...lLength) {
@@ -120,23 +122,7 @@ class TimeManager {
 				desc: pSave.timesResource[i]
 			});
 		}
-		
-		//Not working don't touch!
-		for (i in 0...lLengthQuest){
-			var lQuestDatas:TimeQuestDescription = {
-				refIntern: lQuestArraySaved[i].refIntern,
-				progress: lQuestArraySaved[i].progress,
-				steps: lQuestArraySaved[i].steps,
-				stepIndex: lQuestArraySaved[i].stepIndex,
-				end: lQuestArraySaved[i].end
-			};
-			
-			listQuest.push(lQuestDatas);
-		}
-		
-		MarketingManager.setCurrentCampaign(pSave.timesCampaign.type);
-		campaignTime = pSave.timesCampaign.end;
-		
+	
 		lastKnowTime = pSave.lastKnowTime;
 	}
 	
@@ -348,19 +334,14 @@ class TimeManager {
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
-		
-		if (pElement.progress == pElement.steps[pElement.stepIndex]) {
-			
-			if (pElement.stepIndex == pElement.steps.length - 1){
-				eTimeQuest.emit(EVENT_QUEST_END, pElement);
-			}
-			
+		if (pElement.progress >= pElement.steps[pElement.stepIndex]) {
 			pElement.stepIndex++;
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
-			eTimeQuest.emit(EVENT_CHOICE_DONE);
+			TimeManager.createTimeQuest(pElement);
+			eTimeQuest.emit(EVENT_CHOICE_DONE, pElement);
 		}
 		else
-			trace("nextStepQuest not ready yet !");
+			ServerManager.TimeQuestAction(DbAction.ADD, pElement);
 	}
 	
 	private static function getElapsedTime (pLastKnowTime:Float, pTimeNow:Float):Float {
@@ -421,23 +402,24 @@ class TimeManager {
 	 * @param	pElement
 	 * @param	pElapsedTime
 	 */
-	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {
-		var lPreviousProgress:Int = pElement.progress;
-		
-		pElement.progress = Std.int(Math.min(
-			pElement.progress + pElapsedTime,
-			//pElement.progress + (pElapsedTime * Intern.getIntern(pElement.refIntern).speed), //@todo: à remettre après le save
-			pElement.steps[pElement.stepIndex]
-		));
+	private static var delayUpdtTime:Int = 5;
+	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {	
+		if (pElement.progress < pElement.steps[pElement.stepIndex]) {
+			pElement.progress += pElapsedTime;
+			if (delayUpdtTime > 0) delayUpdtTime--;
+			else {
+				delayUpdtTime = 5;
+				ServerManager.TimeQuestAction(DbAction.UPDT, pElement);
+			}
+		}
 		
 		// progress has reached next step && just now
-		if (pElement.progress == pElement.steps[pElement.stepIndex] &&
-			pElement.progress != lPreviousProgress) 
+		if (pElement.progress >= pElement.steps[pElement.stepIndex] && Intern.getIntern(pElement.refIntern).status != Intern.STATE_WAITING) 
 		{
 			// todo: éventuellement des paramètres à rajouter.
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
 			eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
-			ServerManager.TimeQuestAction(DbAction.UPDT, pElement);
+			if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_GATCHA, pElement); 
 		}
 	}
 	
@@ -524,7 +506,7 @@ class TimeManager {
 	 */
 	public static function getTextTimeQuest(pTime:Float):String {
 		var txtLength:Int = Date.fromTime(pTime).toString().length;
-		return Date.fromTime(pTime).toString().substr(txtLength - 5, 5);
+		return Date.fromTime(pTime).toString().substr(txtLength - 8, 8);
 	}
 	
 	/**
@@ -568,10 +550,13 @@ class TimeManager {
 	 * @return  possibility to continue the progress or not
 	 */
 	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
-		
-		if (pQuest.stepIndex < 3){
-			pQuest.progress = pQuest.steps[pQuest.stepIndex];
-			QuestsManager.choice(pQuest);
+		if (pQuest.stepIndex != 3){
+			for (i in 0...listQuest.length) {
+				if (listQuest[i].refIntern == pQuest.refIntern) {
+					pQuest.progress = pQuest.steps[pQuest.stepIndex];
+					ServerManager.TimeQuestAction(DbAction.UPDT, pQuest);
+				}
+			}
 			return true;
 		}
 		
@@ -598,22 +583,25 @@ class TimeManager {
 		return pTimeProgress / pTimeTotal;
 	}
 	
+	public static function destroyTimeQuest(pId:Int):Void {
+		var lLengthQuest:Int = listQuest.length;
+		
+		for (i in 0...lLengthQuest) {
+			if (pId == listQuest[i].refIntern){
+				listQuest.splice(i, 1);
+				break;
+			}
+		}
+	}
+	
 	public static function destroyTimeElement (pId:Int):Void {
 		var lLength:Int = listResource.length;
-		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruction:Int = listConstruction.length;
 		
 		
 		for (i in 0...lLength) {
 			if (pId == listResource[i].desc.refTile){
 				listResource.splice(i, 1);
-				break;
-			}
-		}
-		
-		for (i in 0...lLengthQuest) {
-			if (pId == listQuest[i].refIntern){
-				listQuest.splice(i, 1);
 				break;
 			}
 		}

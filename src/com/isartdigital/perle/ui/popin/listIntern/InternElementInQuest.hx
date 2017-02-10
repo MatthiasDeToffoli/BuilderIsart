@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.TimesInfo;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -35,8 +37,6 @@ class InternElementInQuest extends InternElement
 		
 	public static var canPushNewScreen:Bool = false;
 	//private var progressIndex:Int = 0;
-	private var btnAccelerate:SmartButton;
-	private var btnResolve:SmartButton;
 	private var questTime:SmartComponent;
 	private var heroCursor:UISprite;
 	private var heroCursorStartPosition:Point;
@@ -46,7 +46,6 @@ class InternElementInQuest extends InternElement
 	private var timeEvent:TextSprite;
 	private var questGauge:SmartComponent;
 	private var questGaugeLenght:Float;
-	public var quest:TimeQuestDescription;
 	private var newEvent:Bool = false;
 	public var loop:Timer;
 	
@@ -83,43 +82,46 @@ class InternElementInQuest extends InternElement
 		questGauge = cast(getChildByName(AssetName.IN_QUEST_GAUGE), SmartComponent);
 	}
 	
-	private function setOnSpawn(pDesc:InternDescription):Void{
+	private function setOnSpawn(pDesc:InternDescription):Void {
 		loop = Timer.delay(progressLoop, 10);
 		loop.run = progressLoop;
 		
 		internName.text = pDesc.name;
-		quest = pDesc.quest;
+		quest = quest = QuestsManager.getQuest(pDesc.id);
 		
-		questGaugeLenght = (questGauge.position.x / 1.75) - heroCursorStartPosition.x;
+		questGaugeLenght = cast(questGauge.getChildByName("_listInQuest_progressionBarBG"), UISprite).width;
 		
-		for (i in 0...eventCursorsArray.length){
-			eventCursorsArray[i].position.x = ((questGaugeLenght * quest.steps[i]) / quest.end) + heroCursorStartPosition.x;
+		var prct:Array<Float> = QuestsManager.getCursorPosition(pDesc.id);
+		for (i in 0...eventCursorsArray.length) {
+			eventCursorsArray[i].position.x = heroCursorStartPosition.x + questGaugeLenght * prct[i];
 		}
 		
-		timeEvent.text = TimeManager.getTextTimeQuest(pDesc.quest.end) + "s";
+		timeEvent.text = getChrono();
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
-		var lButton:SmartButton = null;
+		var activeButton:SmartButton = null;
+		updateCursorPosition();
 		
-		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING){
-			lButton = new AccelerateButton(spawner.position);
-			cast(lButton, AccelerateButton).spawn(quest);
+		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING || Intern.isIntravel(Intern.getIntern(quest.refIntern))) {
+			activeButton = new AccelerateButton(spawner.position);
+			cast(activeButton, AccelerateButton).spawn(quest);
+			Interactive.addListenerClick(activeButton, onBoost);
+		}
+		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
+			activeButton = new ResolveButton(spawner.position);
+			Interactive.addListenerClick(activeButton, onResolve);	
 		}
 		
-		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING){
-			lButton = new ResolveButton(spawner.position);
-			Interactive.addListenerClick(lButton, onResolve);	
-		}
-		
-		lButton.position = spawner.position;
-		addChild(lButton);
+		activeButton.position = spawner.position;
+		addChild(activeButton);
 	}
 	
-	private function addListeners():Void{
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
+	private function addListeners():Void {
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_GATCHA, endQuest);
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, respawn);
+		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, respawn);
 		//Interactive.addListenerClick(picture, onPicture);
 	}
 	
@@ -129,20 +131,26 @@ class InternElementInQuest extends InternElement
 		QuestsManager.choice(quest);
 	}
 	
-	private function progressLoop():Void {
-		if (heroCursor.position != null){
-			updateEventCursors();
-			timeEvent.text = TimeManager.getTextTimeQuest(quest.steps[quest.stepIndex] - quest.progress) + "s";
-			updateCursorPosition();
-		}
-		
-		else {
-			loop.stop();
-		}
+	private function onBoost():Void {
+		spawnButton("Bouton_InternSend_Clip");
 	}
 	
-	private function updateEventCursors():Void{
+	private function progressLoop():Void {
+		quest = QuestsManager.getQuest(quest.refIntern);
+		if (heroCursor != null) {
+			updateEventCursors();
+			if (quest.steps[quest.stepIndex] <= quest.progress) timeEvent.text = "00:00";
+			else timeEvent.text = getChrono();
+			updateCursorPosition();	
+		}
 		
+	}
+	
+	private function getChrono():String {
+		return TimesInfo.getClock(quest.steps[quest.stepIndex] - quest.progress).minute + ":" + TimesInfo.getClock(quest.steps[quest.stepIndex] - quest.progress).seconde + "s";
+	}
+	
+	private function updateEventCursors():Void{	
 		for (i in 0...eventCursorsArray.length){
 			if (i != quest.stepIndex) eventCursorsArray[i].alpha = 0.5;
 			else eventCursorsArray[i].alpha = 1;
@@ -150,25 +158,20 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function updateCursorPosition():Void{
-		if (quest.stepIndex != 3) {
-			heroCursor.position.x = Math.min(((questGaugeLenght * quest.progress) / quest.end) + heroCursorStartPosition.x, ((questGaugeLenght * quest.steps[quest.stepIndex]) / quest.end) + heroCursorStartPosition.x);
-		}
-			
+		if (quest.progress < quest.end) {
+			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
+		}		
 		else {
 			eventCursor3.alpha = 1;
-			heroCursor.position.x = ((questGaugeLenght * quest.steps[2]) / quest.end) + heroCursorStartPosition.x;
-			timeEvent.text =  "00:00 s";
+			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
+			timeEvent.text =  "00:00";
 		}
 	}
 	
-	private function changeButtons(?pQuest:TimeQuestDescription):Void{
-		//if (quest.stepIndex != 2){
-			//For the actualisation of the switch buttonResolve/Acelerate/Stress
-			UIManager.getInstance().closeCurrentPopin();
-			InternElementInQuest.canPushNewScreen = true;
-			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-			GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
-		//}
+	private function respawn(pQuest:TimeQuestDescription):Void{
+		if (pQuest.refIntern == quest.refIntern) {
+			spawnButton("Bouton_InternSend_Clip");
+		}
 	}
 	
 	/**
@@ -176,7 +179,7 @@ class InternElementInQuest extends InternElement
 	 * @param	pQuest
 	 */
 	private function endQuest(pQuest:TimeQuestDescription):Void{
-		loop.stop();
+		if (pQuest.refIntern == quest.refIntern) loop.stop();
 	}
 	
 	
@@ -191,11 +194,11 @@ class InternElementInQuest extends InternElement
 	
 	override public function destroy():Void 
 	{
-		//Interactive.removeListenerClick(btnAccelerate, onAccelerate);
+		TimeManager.eTimeQuest.removeListener(TimeManager.EVENT_QUEST_STEP, respawn);
+		TimeManager.eTimeQuest.removeListener(TimeManager.EVENT_CHOICE_DONE, respawn);
 		//Interactive.removeListenerClick(picture, onPicture);
 		
-
-		super.destroy();
+		loop.stop();
 	}
 	
 }

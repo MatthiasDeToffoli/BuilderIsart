@@ -26,7 +26,7 @@ enum ChoiceType { HEAVEN; HELL; NONE; }
 
 /**
  * Choice popin
- * @author grenu
+ * @author victor grenu
  */
 class Choice extends SmartPopinExtended
 {

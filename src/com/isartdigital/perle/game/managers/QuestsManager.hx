@@ -28,11 +28,10 @@ class QuestsManager
 	private static inline var NUMBER_EVENTS:Int = 3;
 	
 	//The time's gap between two events will be vary between these constants
-	private static var MIN_TIMELINE(default, null):Int = 2000;
-	private static var MAX_TIMELINE(default, null):Int = 30000;
-	private static var FTUE_TIMELINE:Int = 2500;
-	
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
+	private static var MIN_TIMELINE(default, null):Int = 15 * 60 * 1000;
+	private static var MAX_TIMELINE(default, null):Int = 30 * 60 * 1000;
+
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
@@ -50,11 +49,6 @@ class QuestsManager
 		questsList = new Array<TimeQuestDescription>();	
 		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
 		//eGoToNextStep = new EventEmitter();
-		//TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_STEP, choice);
-	}
-	
-	public static function initWithoutSave():Void{
-		questsList = new Array<TimeQuestDescription>();
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, endQuest);
 	}
 	
@@ -63,15 +57,18 @@ class QuestsManager
 		var lLength:Int = questArray.length;
 		
 		for (i in 0...lLength) {
-			var arraySteps:Array<Int> = [Std.int(questArray[i].Step1), Std.int(questArray[i].Step2), Std.int(questArray[i].Step3)];
+			var arraySteps:Array<Float> = [Std.parseFloat(questArray[i].Step1), Std.parseFloat(questArray[i].Step2), Std.parseFloat(questArray[i].Step3)];
 			var timeQuest:TimeQuestDescription = {
 				refIntern: Std.int(questArray[i].RefIntern),
-				progress: Std.int(questArray[i].Progress),
+				progress: Std.parseFloat(questArray[i].Progress),
 				steps: arraySteps,
 				stepIndex: Std.int(questArray[i].StepIndex),
-				end: createEnd(arraySteps)
+				creation: Std.parseFloat(questArray[i].Creation),
+				end: Std.parseFloat(questArray[i].DateEnd)
 			};
 			
+			//ServerManager.TimeQuestAction(DbAction.UPDT, timeQuest);
+			TimeManager.createTimeQuest(timeQuest);
 			questsList.push(timeQuest);
 		}
 	}
@@ -86,13 +83,14 @@ class QuestsManager
 		var lStepsArray:Array<Int> = createRandomGapArray(Intern.getIntern(pIdIntern));
 		var lTimeQuestDescription:TimeQuestDescription = {
 			refIntern: lIdTimer,
-			progress: 0,
+			progress: Date.now().getTime(),
 			steps: lStepsArray,
 			stepIndex: 0,
+			creation: Date.now().getTime(),
 			end: createEnd(lStepsArray)
 		}
 		
-		QuestsManager.questsList.push(lTimeQuestDescription);
+		questsList.push(lTimeQuestDescription);
 		ServerManager.TimeQuestAction(DbAction.ADD, lTimeQuestDescription);
 		
 		SaveManager.save();
@@ -117,6 +115,9 @@ class QuestsManager
 			lListEvents.push(lGap);
 		}
 		
+		//lGap = cast(Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap);
+		//lListEvents.push(Date.now().getTime() + lGap);
+		
 		return lListEvents;
 	}
 	
@@ -125,8 +126,8 @@ class QuestsManager
 	 * @param	pListEvents
 	 * @return	the total value
 	 */
-	private static function createEnd(pListEvents:Array<Int>):Int{
-		var lEnd:Int = 0;
+	private static function createEnd(pListEvents:Array<Float>):Float{
+		var lEnd:Float = 0;
 		var lLength:Int = pListEvents.length - 1;
 		
 		lEnd = pListEvents[lLength];
@@ -139,7 +140,6 @@ class QuestsManager
 	 * @param	pQuest
 	 */
 	public static function choice(pQuest:TimeQuestDescription):Void{
-		trace(pQuest);
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
 		Hud.getInstance().hide();
@@ -152,23 +152,20 @@ class QuestsManager
 		trace("gotonextstep");
 		Choice.getInstance().hide();
 		
-		if (questInProgress.stepIndex != 2){
+		if (questInProgress.stepIndex < 2){
 			
 			if (!isMaxStress(questInProgress.refIntern)){
-				TimeManager.nextStepQuest(questInProgress);
-				trace(Intern.getIntern(questInProgress.refIntern));
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
-				
+				TimeManager.nextStepQuest(questInProgress);				
 			}
 			
 			else{
 				trace("dismiss");
-				MaxStressPopin.quest = questInProgress;
+				MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
 				UIManager.getInstance().closeCurrentPopin;
-				GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
+				UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			}
-		}
-		
+		}	
 		else {
 			trace ("end");
 			endQuest(questInProgress);
@@ -202,7 +199,7 @@ class QuestsManager
 		ServerManager.EventAction(DbAction.REM, pQuest.refIntern);
 		
 		if (isMaxStress(questInProgress.refIntern)){
-			MaxStressPopin.quest = pQuest;
+			MaxStressPopin.intern = Intern.getIntern(pQuest.refIntern);
 			//trace(MaxStressPopin.quest);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
@@ -235,6 +232,25 @@ class QuestsManager
 		}
 		
 		return lQuest;
+	}
+	
+	public static function getCursorPosition(pId:Int):Array<Float> {
+		var quest:TimeQuestDescription = getQuest(pId); 
+		var positions:Array<Float> = new Array<Float>();
+		
+		var globalLength = quest.end - quest.creation;
+		for (i in 0...3) {
+			var rLength:Float = quest.steps[i] - quest.creation;
+			positions.push((rLength / globalLength));
+		}
+		
+		return positions;
+	}
+	
+	public static function getPrctAvancment(pId:Int):Float {
+		var quest:TimeQuestDescription = getQuest(pId);
+		var globalLength = quest.end - quest.creation;
+		return (quest.progress - quest.creation) / globalLength;
 	}
 	
 	//A peut-être mettre dans Intern

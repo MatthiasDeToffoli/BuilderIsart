@@ -274,7 +274,6 @@ class AssetName{
 	public static inline var INTERN_POPIN:String = "Interns";
 	public static inline var INTERN_POPIN_SIDE:String = "_intern_side";
 	public static inline var INTERN_POPIN_NAME:String = "_intern_name";
-	public static inline var INTERN_POPIN_SEE_ALL_CONTAINER:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_POPIN_SEE_ALL:String = "Button";
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
 	

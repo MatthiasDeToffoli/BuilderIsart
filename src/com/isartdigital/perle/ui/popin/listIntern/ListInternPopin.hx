@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
@@ -238,9 +239,10 @@ class ListInternPopin extends SmartPopin
 		
 		var myInternDesc:InternDescription;
 		for (myInternDesc in internDescriptionArray){
-			myInternDesc.destroy();
 			internDescriptionArray.shift();
+			myInternDesc.destroy();
 		}
+		
 		instance = null;
 		
 		super.destroy();

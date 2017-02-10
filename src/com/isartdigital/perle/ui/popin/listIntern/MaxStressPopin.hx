@@ -2,7 +2,9 @@ package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -33,7 +35,7 @@ class MaxStressPopin extends SmartPopin
 	private var picture:UISprite;
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
-	public static var quest:TimeQuestDescription;
+	public static var intern:InternDescription;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -66,8 +68,8 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	public function setDatas():Void{
-		internName.text = Intern.getIntern(quest.refIntern).name;
-		aligment.text = Intern.getIntern(quest.refIntern).aligment;
+		internName.text = intern.name;
+		aligment.text = intern.aligment;
 		btnResetTextValue.text = "20"; //Todo, en attendant le balancing
 		
 	}
@@ -79,14 +81,15 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	private function onReset():Void{
-		Intern.getIntern(quest.refIntern).stress = 0;
-		Intern.getIntern(quest.refIntern).status = Intern.STATE_RESTING;
+		Intern.getIntern(intern.id).stress = 0;
+		Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
 		
 		updateQuestPopin();
+		ServerManager.InternAction(DbAction.UPDT, intern.id);
 	}
 	
 	private function onDismiss():Void{
-		Intern.destroyIntern(quest.refIntern);
+		Intern.destroyIntern(intern.id);
 		updateQuestPopin();
 		//QuestsManager.destroyQuest(quest.refIntern);
 		//TimeManager.destroyTimeElement(quest.refIntern);
@@ -101,13 +104,16 @@ class MaxStressPopin extends SmartPopin
 	private function updateQuestPopin():Void{
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 	}
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnDismiss, onDismiss);
+		Interactive.removeListenerClick(btnReset, onReset);
+		Interactive.removeListenerClick(btnClose, onClose);
+		
 		instance = null;
 	}
 

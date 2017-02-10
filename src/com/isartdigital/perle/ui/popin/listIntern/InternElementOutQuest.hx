@@ -34,7 +34,6 @@ class InternElementOutQuest extends InternElement
 	private var btnSend:SmartButton;
 	private var btnMaxStress:SmartButton;
 	private var internDatas:InternDescription;
-	private var quest:TimeQuestDescription;
 	
 	private var internSpeed:TextSprite;
 	private var internStress:TextSprite;
@@ -84,20 +83,19 @@ class InternElementOutQuest extends InternElement
 	
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
-		
-			if (Intern.getIntern(internDatas.id).status == Intern.STATE_MAX_STRESS) {
-				btnMaxStress = new StressButton(spawner.position);
-				btnMaxStress.position = spawner.position;
-				Interactive.addListenerClick(btnMaxStress, onStress);
-				addChild(btnMaxStress);
-			}
-			
-			else {
-				btnSend = new SendButton(spawner.position);
-				btnSend.position = spawner.position;
-				Interactive.addListenerClick(btnSend, onSend);
-				addChild(btnSend);
-			}
+
+		if (Intern.getIntern(internDatas.id).stress >= Intern.MAX_STRESS) {
+			btnMaxStress = new StressButton(spawner.position);
+			btnMaxStress.position = spawner.position;
+			Interactive.addListenerClick(btnMaxStress, onStress);
+			addChild(btnMaxStress);
+		}
+		else {
+			btnSend = new SendButton(spawner.position);
+			btnSend.position = spawner.position;
+			Interactive.addListenerClick(btnSend, onSend);
+			addChild(btnSend);
+		}
 		
 		var iEff:Int =  6 - internDatas.efficiency;
 		for (i in 1...iEff)
@@ -151,22 +149,25 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function onStress(){
+		var lQuest = QuestsManager.getQuest(internDatas.id);
+		
 		UIManager.getInstance().closeCurrentPopin();
+		MaxStressPopin.intern = internDatas;
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
-		GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 	}
 	
 	//For the HUD Popin actualisation
 	private function updateQuestHud(pQuest:TimeQuestDescription):Void{
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 	}
 
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(btnSend, onSend);
+		if (btnMaxStress != null) Interactive.addListenerClick(btnMaxStress, onStress);
+		if (btnSend != null) Interactive.removeListenerClick(btnSend, onSend);
 		//Interactive.removeListenerClick(picture, onPicture);
+		
 		super.destroy();
 	}
 }

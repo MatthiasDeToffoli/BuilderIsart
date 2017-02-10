@@ -156,6 +156,8 @@ class ServerManager {
 		switch (pAction) {
 			case DbAction.ADD:
 				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
+			case DbAction.UPDT:
+				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "str" => Intern.getIntern(internId).stress]);
 			case DbAction.UPDT_EVENT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
 			case DbAction.GET_SPE_JSON:
@@ -206,7 +208,9 @@ class ServerManager {
 					"stepIndex" => pTimeQuest.stepIndex,
 					"step1" => pTimeQuest.steps[0],
 					"step2" => pTimeQuest.steps[1],
-					"step3" => pTimeQuest.steps[2]
+					"step3" => pTimeQuest.steps[2],
+					"tEnd" => pTimeQuest.end,
+					"tCrea" => pTimeQuest.creation
 				]);
 			case DbAction.UPDT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [

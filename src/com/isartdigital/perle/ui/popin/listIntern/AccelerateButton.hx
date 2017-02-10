@@ -35,7 +35,7 @@ class AccelerateButton extends SmartButton
 		quest = pQuest;
 	}
 	
-	private function onAccelerate(){
+	private function onAccelerate():Void {
 		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, 2);
 		if (!TimeManager.increaseQuestProgress(quest)) return;
 	}
