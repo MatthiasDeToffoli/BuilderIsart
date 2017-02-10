@@ -27,7 +27,7 @@ class ProductionPanel extends SmartComponent
 		panels = new Array<PackPanel>();
 
 		for (i in 0...6)
-		if (i < 3 * (cast(BuildingHud.virtualBuilding,VBuildingUpgrade).getLevel() + 1)) spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), false,i);
+		if (i < 3 * (cast(BuildingHud.virtualBuilding,VBuildingUpgrade).getLevel())) spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), false,i);
 		else spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), true,i);
 		
 	}

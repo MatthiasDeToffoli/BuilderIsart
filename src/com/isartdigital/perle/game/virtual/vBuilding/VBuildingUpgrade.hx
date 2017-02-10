@@ -56,8 +56,8 @@ class VBuildingUpgrade extends VBuilding
 	
 	override public function addExp():Void 
 	{
-		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName,getLevel() + 1).xPatCreationHell,GeneratorType.badXp);
-		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName, getLevel() + 1).xPatCreationHeaven, GeneratorType.goodXp);
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName,getLevel()).xPatCreationHell,GeneratorType.badXp);
+		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName, getLevel()).xPatCreationHeaven, GeneratorType.goodXp);
 	}
 	
 	public function canUpgrade():Bool {
