@@ -48,10 +48,11 @@ echo json_encode($result);*/
 
 namespace actions;
 
-include("Utils.php");
-include("Send.php");
-include("ValidBuilding.php");
-include("FacebookUtils.php");
+include_once("Utils.php");
+include_once("Send.php");
+include_once("Logs.php");
+include_once("ValidBuilding.php");
+include_once("FacebookUtils.php");
 
 class AddBuilding
 {

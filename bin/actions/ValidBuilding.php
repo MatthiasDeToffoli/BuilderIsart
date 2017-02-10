@@ -7,8 +7,9 @@
 
 namespace actions;
 
+include_once("Utils.php");
+
 /**
- * include(Utils.php) is needed when using this class.
  * Class ValidBuilding
  * @package actions
  */
@@ -30,7 +31,7 @@ class ValidBuilding
     }
 
     private static function getConfigForBuilding ($pIdTypBuilding) {
-        // todo: récup que les champs nécessaire ?
+        // todo: opti -> récup que les champs nécessaire ?
         return Utils::getTableRowByID(static::TABLE_TYPE_BUILDING, $pIdTypBuilding);
     }
 
@@ -47,16 +48,24 @@ class ValidBuilding
     }
 
     private static function canBuild ($pInfo) {
-        if (!static::isInRegion($pInfo) || !static::hasNoCollision($pInfo)) {
-            Send::errorAddBuilding(ErrorManager::BUILDING_CANNOT_BUILD, $pInfo);
+        if (static::isOutsideRegion($pInfo) || static::hasCollision($pInfo) || static::cannotBuy($pInfo)) {
+            Send::refuseAddBuilding(Send::BUILDING_CANNOT_BUILD, $pInfo);
         }
     }
 
-    private static function isInRegion ($pInfo) {
-        return true;
+    private static function isOutsideRegion ($pInfo) {
+        return false;
+        //Send::refuseAddBuilding outside region
     }
 
-    private static function hasNoCollision ($pInfo) {
-        return true;
+    private static function hasCollision ($pInfo) {
+        return false;
+        //Send::refuseAddBuilding hasCollision
     }
+
+    private static function cannotBuy ($pInfo) {
+        return false;
+        //Send::refuseAddBuilding cannotBuy
+    }
+
 }

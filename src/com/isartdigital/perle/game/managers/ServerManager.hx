@@ -233,7 +233,7 @@ class ServerManager {
 			var lEvent:EventSuccessAddBuilding = Json.parse(pObject);
 			
 			if (Reflect.hasField(lEvent, "errorID")) {
-				ErrorManager.openPopin(pObject.errorID);
+				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
 			} else {
 				//SynchroManager.syncID(); 
 				// si le joueur déplace le bat avant de recevoir l'id du serveur
@@ -263,6 +263,10 @@ class ServerManager {
 	}
 	
 	public static function upgradeBuilding (pDescription:TileDescription):Void {
+		
+	}
+	
+	public static function sellBuilding (pDescription:TileDescription):Void {
 		
 	}
 	

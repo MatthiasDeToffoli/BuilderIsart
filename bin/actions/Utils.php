@@ -27,7 +27,7 @@ class Utils
     }
 
     private static function bindParamInsertInto ($pTable, $pAssocArray) {
-        $lValueArray = static::addApostropheToString(array_values($pAssocArray));
+        $lValueArray = static::addApostropheToStrings(array_values($pAssocArray));
 
         $lKeys = "(".implode(", ", array_keys($pAssocArray)).")";
         $lValues = "(".implode(", ", $lValueArray).")";
@@ -38,7 +38,7 @@ class Utils
         return $lSQLInsert.$lSQLValues;
     }
 
-    private static function addApostropheToString ($pArray) {
+    private static function addApostropheToStrings ($pArray) {
         return array_map(function ($lValue) {
             return is_string($lValue) ? "'".$lValue."'" : $lValue;
         }, $pArray);
