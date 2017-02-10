@@ -349,6 +349,8 @@ class AssetName{
 	public static inline var CAMPAIGN_TIMER:String = "TimeBar";
 	public static inline var CAMPAIGN_TIMER_BOOST_VALUE:String = "CampaignIncomingValue";
 	public static inline var CAMPAIGN_TIMER_TIME_VALUE:String = "CampaignIncomingTime";
+	public static inline var CANCEL_AD_VIDEO:String = "CancelVideo_Popin";
+	public static inline var CANCEL_AD_VIDEO_BTN_OK:String = "ButtonStopVideo";
 	
 	//LevelUpPoppin
 	public static inline var LEVELUP_POPPIN:String = "Popin_LevelUp";
@@ -364,6 +366,8 @@ class AssetName{
 	
 	//Destroy Poppin
 	public static inline var DESTROY_POPPIN:String = "Popin_DestroyBuilding";
+	
+	
 	
 	//XP Gauges
 	public static inline var XP_GAUGE_HELL:String = "HUD_HellXP";

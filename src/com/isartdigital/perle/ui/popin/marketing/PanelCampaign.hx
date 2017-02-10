@@ -117,7 +117,7 @@ class PanelCampaign extends SmartComponent
 	private function callBackAd (pData:Dynamic):Void {
 		if (pData == null) trace ("Erreur Service");
 		else if (pData.error != null) Debug.error(pData.error);
-		else if (pData.close == "cancel")  Debug.error("no boost !");
+		else if (pData.close == "cancel")  UIManager.getInstance().openPopin(Cancel_Video.getInstance());
 		else if(pData.close == "close") clickCampaign(CampaignType.ad);
 	}
 
