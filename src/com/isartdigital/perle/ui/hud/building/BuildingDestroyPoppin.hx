@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
@@ -58,9 +59,6 @@ class BuildingDestroyPoppin extends SmartPopin
 		if (BuildingHud.virtualBuilding != null) lVBuilding = BuildingHud.virtualBuilding;
 		else lVBuilding = InfoBuilding.getVirtualBuilding();
 		
-		trace(BuildingHud.virtualBuilding);
-		trace(InfoBuilding.getVirtualBuilding());
-		
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.tileDesc.buildingName);
 		
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade))
@@ -68,7 +66,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		else levelBuilding.text = "";
 		
 		setImage(lVBuilding.getAsset());
-		price.text = ""+ BuyManager.getSellPrice(lVBuilding.tileDesc.buildingName, true); // todo
+		price.text = ""+ BuyManager.getSellPrice(lVBuilding.tileDesc.buildingName, true).get(GeneratorType.soft); // todo
 	}
 	
 	private function setImage (pAssetName:String):Void { // todo : finir

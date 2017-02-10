@@ -241,7 +241,7 @@ class InfoBuilding extends SmartPopinExtended{
 	 */
 	private function getGoldValuesUpgradeText(pLevel:Int):String{
 		
-		var lGoldValuesText = cast(virtualBuilding, VBuildingUpgrade).UpgradeGoldValuesList[pLevel];
+		var lGoldValuesText = cast(virtualBuilding, VBuildingUpgrade).getGoldValue();
 		
 		return lGoldValuesText;
 	}
@@ -252,7 +252,7 @@ class InfoBuilding extends SmartPopinExtended{
 	 */
 	private function getMaterialsValuesUpgradeText(pLevel:Int):String{
 		
-		var lMaterialsValuesText = cast(virtualBuilding, VBuildingUpgrade).UpgradeMaterialsValuesList[pLevel];
+		var lMaterialsValuesText = cast(virtualBuilding, VBuildingUpgrade).getRessourceValue();
 		
 		return lMaterialsValuesText;
 	}

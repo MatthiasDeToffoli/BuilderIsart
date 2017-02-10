@@ -112,7 +112,10 @@ class VHouse extends VBuildingUpgrade
 	
 	override public function destroy():Void 
 	{
+		ResourcesManager.removePopulation(alignementBuilding, myPopulation);
 		ResourcesManager.populationChangementEvent.off(ResourcesManager.POPULATION_CHANGEMENT_EVENT_NAME, onPopulationChanged);
+		
+		
 		super.destroy();
 	}
 	
