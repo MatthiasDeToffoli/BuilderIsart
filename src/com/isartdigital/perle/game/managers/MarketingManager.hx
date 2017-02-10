@@ -73,6 +73,7 @@ class MarketingManager
 	public static function setCampaign(pType:CampaignType):Void {
 		currentCampaign = pType;
 		TimeManager.setCampaignTime(campaigns[currentCampaign].time.times);
+		ResourcesManager.spendTotal(GeneratorType.hard, campaigns[currentCampaign].price);
 		updateTribunal();
 	}
 	

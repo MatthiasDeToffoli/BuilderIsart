@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MarketingManager.Campaign;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.monetization.Ads;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -115,8 +116,9 @@ class PanelCampaign extends SmartComponent
 	
 	private function callBackAd (pData:Dynamic):Void {
 		if (pData == null) trace ("Erreur Service");
-		else if (pData.error != null) trace (pData.error);
-		else trace(pData);
+		else if (pData.error != null) Debug.error(pData.error);
+		else if (pData.close == "cancel")  Debug.error("no boost !");
+		else if(pData.close == "close") clickCampaign(CampaignType.ad);
 	}
 
 	override public function destroy():Void 
