@@ -167,7 +167,7 @@ class TimeManager {
 			},
 			generator:pGenerator
 		};
-		trace(Date.fromTime(lTimeElement.desc.end));
+
 		listResource.push(lTimeElement);
 		
 		return lTimeElement;
@@ -185,7 +185,6 @@ class TimeManager {
 			if (lTimeElement.generator == pGenerator){
 				
 				lTimeElement.desc.end = pEnd == null ? pEnd : lTimeElement.desc.creationDate + Date.fromTime(pEnd).getTime();
-				trace(Date.fromTime(lTimeElement.desc.creationDate), Date.fromTime(lTimeElement.desc.end));	
 			}
 				
 			

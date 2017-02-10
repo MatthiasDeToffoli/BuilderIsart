@@ -42,7 +42,7 @@ class TimerCampaign extends SmartComponent
 	private function rewriteTime(time:Float):Void {
 		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(time, Date.now().getTime()));
 
-		timerText.text = myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
+		timerText.text =myClock.day + ":" + myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
 	}
 	
 	override public function destroy():Void 

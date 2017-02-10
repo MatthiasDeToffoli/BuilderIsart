@@ -33,7 +33,6 @@ class TimesInfo
 	public static function getClock(pTime:TimesAndNumberDays):Clock {		
 		
 		var lDate:Date = Date.fromTime(pTime.times);
-		trace(lDate.getHours());
 	
 		return {
 			day: pTime.days + "",
@@ -57,8 +56,8 @@ class TimesInfo
 	 * @return the getTIme of the difference
 	 */
 	public static function calculDateDiff(pTime1:Float, pTime2:Float):TimesAndNumberDays {
-		var date1:Date = Date.fromTime(pTime1), date2:Date = Date.fromTime(pTime2), now:Date = Date.now();
-		trace(date1.getDate(), date2.getDate());
+		var date1:Date = Date.fromTime(pTime1), date2:Date = Date.fromTime(pTime2);
+
 		var lDays:Int = date1.getDate() - date2.getDate();
 		var hours:Int = date1.getHours() - date2.getHours();		
 		var minutes:Int = date1.getMinutes() - date2.getMinutes();
@@ -81,7 +80,7 @@ class TimesInfo
 		if (lDays < ZERO) {
 			lDays = THIRTYONE + lDays;
 		}
-		trace(lDays, hours, minutes, secondes);
+
 		return {
 			times:new Date(date1.getFullYear(), date1.getMonth(), date1.getDay(), hours, minutes, secondes).getTime(),
 			days: lDays

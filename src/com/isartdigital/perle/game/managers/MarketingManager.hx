@@ -1,13 +1,16 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.GameConfig.TableTypePack;
 import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 
 typedef Campaign = {
+	var price:Int;
 	var time:TimesAndNumberDays;
 	var boost:Int;
 }
 
-enum CampaignType {none; small; medium; large; }
+enum CampaignType {none; ad; small; medium; large; }
 /**
  * ...
  * @author de Toffoli Matthias
@@ -21,30 +24,40 @@ class MarketingManager
 	private static var campaigns:Map<CampaignType,Campaign>;
 	private static var currentCampaign:CampaignType;
 	private static inline var NUMBERADMENFACTOR:Int = 2;
+	private static var arrayCampaignType:Array<CampaignType> = [CampaignType.ad, CampaignType.small, CampaignType.medium, CampaignType.large];
 	
 	public static function awake():Void {
 		
 		numberAdMen = 0;
 		currentCampaign = CampaignType.none;
-		
-		/*campaigns = [
+		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(GeneratorType.soul);
+		campaigns = [
 			CampaignType.none => {
-				time:0,
+				price:0,
+				time:{
+					times:0,
+					days:0
+				},
 				boost:0
-			},
-			CampaignType.small => {
-				time:30 * TimesInfo.SEC,
-				boost:2
-			},
-			CampaignType.medium => {
-				time: TimesInfo.MIN,
-				boost:4
-			},
-			CampaignType.large => {
-				time: TimesInfo.MIN,
-				boost:6
 			}
-		];*/
+		];
+		
+		var i:Int, l:Int = arrayCampaignType.length;
+		var diff:TimesAndNumberDays;
+		
+		for (i in 0...l) {
+			
+			diff = TimesInfo.calculDateDiff(Date.fromString(lArray[i].time).getTime(), Date.fromTime(0).getTime());
+			
+			campaigns[arrayCampaignType[i]] = {
+				price:lArray[i].costKarma == null ? 0:lArray[i].costKarma,
+				time: {
+					times: TimesInfo.getTimeInMilliSecondFromTimeStamp(diff.times),
+					days:diff.days
+				},
+				boost:lArray[i].gainFluxSouls
+			}
+		}
 	}
 	
 	public static function increaseNumberAdMen():Void {
@@ -65,22 +78,7 @@ class MarketingManager
 	
 	public static function getCampaignByIndice(i:Int):Campaign {
 		
-		switch (i) {
-			case 0:
-				return campaigns[CampaignType.none];
-				
-			case 1:
-				return campaigns[CampaignType.small];
-				
-			case 2:
-				return campaigns[CampaignType.medium];
-				
-			case 3:
-				return campaigns[CampaignType.large];
-				
-			default :
-				return campaigns[CampaignType.none];
-		}
+		return campaigns[arrayCampaignType[i]];
 		
 
 	}

@@ -21,7 +21,7 @@ class BuildingTimerMarketing extends BuildingTimer
 	{
 		if (pTime == null) pTime = MarketingManager.getCurrentCampaign().time;
 		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime, Date.now().getTime()));		
-		timeText.text = myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
+		timeText.text = myClock.day + ":" + myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
 	}
 	
 }

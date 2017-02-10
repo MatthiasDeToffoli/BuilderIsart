@@ -59,13 +59,13 @@ class PanelCampaign extends SmartComponent
 		btnCampaigns.push(cast(SmartCheck.getChildByName(interMc, indice == 0 ? AssetName.VIDEO_BTN:AssetName.CAMPAIGN_BTN), SmartButton));
 		
 		var campaignWant:Campaign = MarketingManager.getCampaignByIndice(indice);
-		var myClock:Clock = TimesInfo.getClock(campaignWant.time);
+		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(campaignWant.time.times,Date.fromTime(0).getTime()));
 		
 		var txt:TextSprite = cast(SmartCheck.getChildByName(interMc, AssetName.CAMPAIGN_BOOST_VALUE), TextSprite);
 		txt.text = campaignWant.boost + "";
 		
 		txt = cast(SmartCheck.getChildByName(interMc, AssetName.CAMPAIGN_TIME_VALUE), TextSprite);
-		txt.text =  " /" + myClock.minute + ":" + myClock.seconde;
+		txt.text =  " /" + myClock.day + ":" + myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
 		
 	}
 	
@@ -110,7 +110,7 @@ class PanelCampaign extends SmartComponent
 	
 	private function rewriteBtnText(i:Int):Void {
 		var txt:TextSprite = cast(SmartCheck.getChildByName(btnCampaigns[i], "Text"), TextSprite);
-		txt.text = 0 + "";
+		txt.text = MarketingManager.getCampaignByIndice(i).price + "";
 	}
 	
 	private function callBackAd (pData:Dynamic):Void {
