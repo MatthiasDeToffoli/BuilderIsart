@@ -20,7 +20,7 @@ class SmartPopinExtended extends SmartPopin{
 	 * @param	pContainer
 	 * @param	pAssetName
 	 */
-	public static function setImage (pContainer:Container, pAssetName:String):Void {
+	public static function setImage (pContainer:Container, pAssetName:String):Void { // todo : prq static ici ? faire classe utilitaire ou hériatge ds les règles de l'art ?
 		var lImage:UIMovie = new UIMovie(pAssetName);
 		
 		reScaleImage(lImage, pContainer); // before adding anything inside or size will change

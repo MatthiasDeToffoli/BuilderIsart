@@ -53,9 +53,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static function setPopin():Void {
 		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
-		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
-		setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
-		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
+		SmartPopinExtended.setImage(img, BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
 		
 		nameUnlock.text = UnlockManager.unlockedItem[0].name;
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
@@ -66,15 +64,6 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static function closeAll():Void {
 		UnlockManager.unlockedItem = [];
 		onClickNext();
-	}
-	
-	private static function setImage (pAssetName:String):Void {
-		imgImage = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
-		imgImage.init();
-		imgImage.width = 250;
-		imgImage.height = 250;
-		img.addChild(imgImage);
-		imgImage.start();
 	}
 	
 	private static function onClickNext():Void {

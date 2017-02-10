@@ -155,7 +155,8 @@ class GameConfig {
 
 		for (i in 0...config[BUILDING].length)
 			if (config[BUILDING][i].name == pName)
-				if (pLevel == null || config[BUILDING][i].level == pLevel) return config[BUILDING][i];
+				if (pLevel == null || config[BUILDING][i].level == pLevel) 
+					return config[BUILDING][i];
 				
 		Debug.error("BuildingName '" + pName +"' missing.");
 		return null;
