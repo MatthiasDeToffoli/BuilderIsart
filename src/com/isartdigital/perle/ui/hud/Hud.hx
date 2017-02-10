@@ -27,6 +27,7 @@ import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.building.SoulCounterHouse;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.ui.popin.option.OptionPoppin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.utils.Interactive;
@@ -72,7 +73,7 @@ class Hud extends SmartScreen
 	private var btnShop:SmartButton;
 	private var btnPurgatory:SmartButton;
 	private var btnInterns:SmartButton;
-	//private var btnMissions:SmartButton; // todo 
+	private var btnOptions:SmartButton; // todo 
 	private var btnIron:SmartButton;
 	private var btnWood:SmartButton;
 	private var btnSoft:SmartButton;
@@ -243,7 +244,7 @@ class Hud extends SmartScreen
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
-		//btnMissions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_MISSIONS), SmartButton); // todo 
+		btnOptions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_OPTIONS), SmartButton);
 		
 		
 		
@@ -261,7 +262,7 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.addListenerClick(btnInterns, onClickListIntern);
-		//Interactive.addListenerClick(btnMissions, onClickMission); // todo 
+		Interactive.addListenerClick(btnOptions, onClickOptions); // todo 
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		var ironMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
@@ -394,8 +395,9 @@ class Hud extends SmartScreen
 		hide();
 	}
 	
-	private function onClickMission() {
-		Browser.alert("Work in progress : Special Feature");	
+	private function onClickOptions() {
+		UIManager.getInstance().openPopin(OptionPoppin.getInstance());
+		hide();
 	}
 	
 	/**

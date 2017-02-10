@@ -139,9 +139,8 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onIntern() {
-		Browser.alert("Work in progress : Special Feature");
-		//UIManager.getInstance().closeCurrentPopin();	
-		//UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		UIManager.getInstance().closeCurrentPopin();	
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	
 	private function onHeaven() {

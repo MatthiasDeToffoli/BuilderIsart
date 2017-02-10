@@ -297,7 +297,7 @@ class AssetName{
 	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
 	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
 	public static inline var HUD_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
-	public static inline var HUD_BTN_MISSIONS:String = "ButtonMissions_HUD";
+	public static inline var HUD_BTN_OPTIONS:String = "ButtonOptions";
 	public static inline var HUD_COUNTER_SOFT:String = HUD_PREFIX + "SoftCurrency";
 	public static inline var HUD_BTN_SOFT:String = /*HUD_PREFIX + */"ButtonPlusSC";
 	public static inline var HUD_COUNTER_HARD:String = HUD_PREFIX + "HardCurrency";
@@ -405,5 +405,10 @@ class AssetName{
 	//icone large
 	public static inline var PROD_ICON_WOOD_LARGE:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE_LARGE:String = "_stoneIcon_Large";
+	
+	//Option Poppin
+	public static inline var OPTION_POPPIN:String = "Options_Popin";
+	public static inline var OPTION_POPPIN_CLOSE:String = "ButtonClose";
+	public static inline var OPTION_POPPIN_RESETDATA:String = "ButtonDataReset";
 
 }
