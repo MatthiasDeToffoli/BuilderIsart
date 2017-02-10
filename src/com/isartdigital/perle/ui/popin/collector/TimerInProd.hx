@@ -61,7 +61,7 @@ class TimerInProd extends SmartComponent
 		
 		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.desc.end, pTime.desc.progress));
 		
-		progressBarTxt.text = clock.minute + ":" + clock.seconde;
+		progressBarTxt.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;
 		
 		if (pTime.desc.progress <= 0) destroyAccelBtn();
 	}

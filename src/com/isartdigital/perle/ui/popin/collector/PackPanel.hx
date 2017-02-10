@@ -40,9 +40,9 @@ class PackPanel extends SmartComponent
 		gainText = cast(SmartCheck.getChildByName(this, AssetName.PANEL_COLLECTOR_GAIN), TextSprite);
 		
 		pack = vBuildingLink.myPacks[i];
-		
-		var lClock:Clock = TimesInfo.getClock(pack.time);
-		timeText.text = lClock.minute + ":" + lClock.seconde;
+
+		var lClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pack.time.times,Date.fromTime(0).getTime()));
+		timeText.text = lClock.day + ":" + lClock.hour + ":" + lClock.minute + ":" + lClock.seconde;
 		
 		gainText.text = "" + pack.quantity;
 	}

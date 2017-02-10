@@ -1,8 +1,9 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 
 typedef Campaign = {
-	var time:Float;
+	var time:TimesAndNumberDays;
 	var boost:Int;
 }
 
@@ -22,10 +23,11 @@ class MarketingManager
 	private static inline var NUMBERADMENFACTOR:Int = 2;
 	
 	public static function awake():Void {
+		
 		numberAdMen = 0;
 		currentCampaign = CampaignType.none;
 		
-		campaigns = [
+		/*campaigns = [
 			CampaignType.none => {
 				time:0,
 				boost:0
@@ -42,7 +44,7 @@ class MarketingManager
 				time: TimesInfo.MIN,
 				boost:6
 			}
-		];
+		];*/
 	}
 	
 	public static function increaseNumberAdMen():Void {
@@ -57,7 +59,7 @@ class MarketingManager
 	
 	public static function setCampaign(pType:CampaignType):Void {
 		currentCampaign = pType;
-		TimeManager.setCampaignTime(campaigns[currentCampaign].time);
+		TimeManager.setCampaignTime(campaigns[currentCampaign].time.times);
 		updateTribunal();
 	}
 	

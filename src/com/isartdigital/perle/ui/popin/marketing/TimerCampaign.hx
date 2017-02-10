@@ -33,7 +33,7 @@ class TimerCampaign extends SmartComponent
 		
 		var TimeBar:SmartComponent = cast(SmartCheck.getChildByName(this, AssetName.CAMPAIGN_TIMER));
 		timerText = cast(SmartCheck.getChildByName(TimeBar, AssetName.TIME_GAUGE_TEXT), TextSprite);
-		rewriteTime(myCampaign.time);
+		rewriteTime(myCampaign.time.times);
 		TimeManager.eCampaign.on(TimeManager.EVENT_CAMPAIGN, rewriteTime);
 		//SmartCheck.traceChildrens(this);
 		
@@ -42,7 +42,7 @@ class TimerCampaign extends SmartComponent
 	private function rewriteTime(time:Float):Void {
 		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(time, Date.now().getTime()));
 
-		timerText.text = myClock.houre + ":" + myClock.minute + ":" + myClock.seconde;
+		timerText.text = myClock.hour + ":" + myClock.minute + ":" + myClock.seconde;
 	}
 	
 	override public function destroy():Void 

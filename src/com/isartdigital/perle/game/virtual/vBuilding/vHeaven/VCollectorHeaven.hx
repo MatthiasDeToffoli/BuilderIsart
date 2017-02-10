@@ -26,39 +26,6 @@ class VCollectorHeaven extends VCollector
 	{
 		myGeneratorType = GeneratorType.buildResourceFromParadise;
 		super.addGenerator();
-		
-		myPacks = [
-			{
-				cost:1,
-				time:30000,
-				quantity:3
-			},
-			{
-				cost:2,
-				time:35000,
-				quantity:10
-			},
-			{
-				cost:3,
-				time:40000,
-				quantity:100
-			},
-			{
-				cost:1,
-				time:30000,
-				quantity:3
-			},
-			{
-				cost:2,
-				time:35000,
-				quantity:10
-			},
-			{
-				cost:3,
-				time:40000,
-				quantity:100
-			}
-		];
 	}
 	
 }

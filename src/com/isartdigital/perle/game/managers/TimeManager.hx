@@ -167,6 +167,7 @@ class TimeManager {
 			},
 			generator:pGenerator
 		};
+		trace(Date.fromTime(lTimeElement.desc.end));
 		listResource.push(lTimeElement);
 		
 		return lTimeElement;
@@ -181,10 +182,13 @@ class TimeManager {
 		var lTimeElement:TimeElementResource;
 		
 		for (lTimeElement in listResource)
-			if (lTimeElement.generator == pGenerator)
+			if (lTimeElement.generator == pGenerator){
+				
 				lTimeElement.desc.end = pEnd == null ? pEnd : lTimeElement.desc.creationDate + Date.fromTime(pEnd).getTime();
+				trace(Date.fromTime(lTimeElement.desc.creationDate), Date.fromTime(lTimeElement.desc.end));	
+			}
 				
-				
+			
 	}
 	
 	/*
@@ -203,12 +207,16 @@ class TimeManager {
 	}
 	
 	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeCollectorProduction{
+		
+		var lDate:Date = Date.fromTime(Date.now().getTime() + Date.fromTime(pack.time.times).getTime());
+		
 		var lDesc:TimeDescription = {
 			refTile: ref,
 			progress: Date.now().getTime(),
-			end: Date.now().getTime() + Date.fromTime(pack.time).getTime() ,
+			end: new Date(lDate.getFullYear(), lDate.getMonth(), Date.now().getDate() + pack.time.days, lDate.getHours(), lDate.getMinutes(), lDate.getSeconds()).getTime() ,
 			creationDate: Date.now().getTime()
 		}
+		
 		var myTime:TimeCollectorProduction = {
 			gain: pack.quantity,
 			desc: lDesc

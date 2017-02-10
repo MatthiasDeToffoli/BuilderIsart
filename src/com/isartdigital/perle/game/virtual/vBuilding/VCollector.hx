@@ -1,5 +1,7 @@
 package com.isartdigital.perle.game.virtual.vBuilding;
 
+import com.isartdigital.perle.game.GameConfig.TableTypePack;
+import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -9,7 +11,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 
  typedef ProductionPack =  {
 	 var cost:Int;
-	 var time:Int;
+	 var time:TimesAndNumberDays;
 	 var quantity:Int;
  }
  
@@ -26,6 +28,26 @@ class VCollector extends VBuildingUpgrade
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		var i:Int;
+		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(myGeneratorType);
+		myPacks = new Array<ProductionPack>();
+		var lPack:ProductionPack;
+		
+		
+		for (i in 0...lArray.length) {
+			var diff:TimesAndNumberDays = TimesInfo.calculDateDiff(Date.fromString(lArray[i].time).getTime(), Date.fromTime(0).getTime());
+			lPack = {
+				cost:lArray[i].costGold,
+				quantity: myGeneratorType == GeneratorType.buildResourceFromHell ? lArray[i].gainIron:lArray[i].gainWood,
+				time: {
+					times: TimesInfo.getTimeInMilliSecondFromTimeStamp(diff.times),
+					days:diff.days
+				}
+			}
+			//lPack.time = TimesInfo.calculDateDiff(lPack.time, Date.fromTime(0).getTime());
+			myPacks.push(lPack);
+		}
+
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION, updateMyTime);
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION_STOP, stopProduction);
 	}

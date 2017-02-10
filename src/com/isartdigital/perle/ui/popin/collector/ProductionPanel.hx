@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.collector;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -24,9 +25,9 @@ class ProductionPanel extends SmartComponent
 		
 		
 		panels = new Array<PackPanel>();
-		
+
 		for (i in 0...6)
-		if (i < 3) spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), false,i);
+		if (i < 3 * (cast(BuildingHud.virtualBuilding,VBuildingUpgrade).getLevel() + 1)) spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), false,i);
 		else spawnPackPanel(AssetName.PANEL_COLLECTOR_SPAWNER + (i + 1), true,i);
 		
 	}

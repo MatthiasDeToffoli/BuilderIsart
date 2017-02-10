@@ -29,7 +29,7 @@ class BuildingTimerCollector extends BuildingTimer
 		
 		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.desc.end, pTime.desc.progress));
 
-		timeText.text = clock.minute + ":" + clock.seconde;
+		timeText.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;
 	}
 	
 	override public function destroy():Void 

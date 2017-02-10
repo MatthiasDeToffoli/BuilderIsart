@@ -1,8 +1,10 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.GameConfig.TableTypePack;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
 import com.isartdigital.perle.game.managers.ChoiceManager.EfficiencyStep;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.Debug;
@@ -59,11 +61,11 @@ typedef TableTypePack = {
 	var name:String; // varchar, mais pourrait être enum ?
 	var costGold:Int;
 	var costKarma:Int;
-	var time:String; // todo type Time ?
+	var time:String;
 	var gainWood:Int;
 	var gainIron:Int;
 	var gainFluxSouls:Int;
-	var productionResource:String; // enum
+	var productionResource:GeneratorType; // enum
 }
 
 typedef TableTypeIntern = {
@@ -149,6 +151,23 @@ class GameConfig {
 	
 	public static function getChoicesConfig():Array<EfficiencyStep> {
 		return cast(config[CONFIG_EVENT]);
+	}
+	
+	public static function getBuildingPack(pType:GeneratorType):Array<TableTypePack> {
+		
+		var lArray:Array<TableTypePack> = new Array<TableTypePack>();
+		var lTypePack:TableTypePack;
+		
+		for (lTypePack in config[BUILDING_PACK])
+			if (pType == lTypePack.productionResource) lArray.push(lTypePack);
+		lArray.sort(sortpackArrayById);
+		return lArray;
+	}
+	
+	private static function sortpackArrayById(pack1:TableTypePack, pack2:TableTypePack):Int {
+		if (pack1.iD < pack2.iD) return -1;
+		if (pack1.iD > pack2.iD) return 1;
+		return 0;
 	}
 	
 	public static function getBuildingByName (pName:String, ?pLevel:Int):TableTypeBuilding {
