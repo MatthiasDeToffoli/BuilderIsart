@@ -101,7 +101,7 @@ class VTribunal extends VBuildingUpgrade
 	 * @param	denominator the number to divise the time
 	 */
 	public function updateGenerator(denominator:Float):Void {
-		var  typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+		var  typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level);
 		myTime = calculTimeProd(typeBuilding) / denominator;
 		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);
 	}

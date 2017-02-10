@@ -82,7 +82,7 @@ class VBuilding extends VTile {
 	
 	
 	private function updateResources():Void {
-		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level);
 			
 		if (typeBuilding.productionPerHour != null && !Std.is(this, VMarketingHouse)) {
 			
@@ -298,7 +298,7 @@ class VBuilding extends VTile {
 	
 	private function addGenerator():Void {
 
-		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1);
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level);
 		if ((typeBuilding.productionPerHour == null && !Std.is(this,VAltar)) || Std.is(this, VMarketingHouse)) return;
 
 		myTime = calculTimeProd(typeBuilding);

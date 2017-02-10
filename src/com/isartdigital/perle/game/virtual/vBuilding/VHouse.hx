@@ -43,7 +43,7 @@ class VHouse extends VBuildingUpgrade
 	private function addPopulation():Void{
 		if (tileDesc.maxPopulation == null) {
 			tileDesc.currentPopulation = 0;
-			tileDesc.maxPopulation = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).maxSoulsContained;
+			tileDesc.maxPopulation = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).maxSoulsContained;
 		}
 		
 		myPopulation = ResourcesManager.addPopulation(tileDesc.currentPopulation, tileDesc.maxPopulation, alignementBuilding, tileDesc.id);
@@ -67,7 +67,7 @@ class VHouse extends VBuildingUpgrade
 			myPopulation.quantity = pQuantity;
 		}
 		
-			var lMax:Int = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).maxSoulsContained;
+			var lMax:Int = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).maxSoulsContained;
 			tileDesc.maxPopulation = lMax;
 			myPopulation.max = lMax;
 		
