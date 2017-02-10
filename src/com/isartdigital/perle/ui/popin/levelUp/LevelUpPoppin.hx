@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -31,8 +32,12 @@ class LevelUpPoppin extends SmartPopinExtended
 	
 	private static var level:TextSprite;
 	private static var typeUnlock:TextSprite;
+	private static var txtNew:TextSprite;
 	private static var nameUnlock:TextSprite;
 	private static var description:TextSprite;
+	private static var congrats:TextSprite;
+	private static var txtNext:TextSprite;
+	private static var txtSkip:TextSprite;
 	private static var img:UISprite;
 	private static var imgImage:FlumpStateGraphic;
 	private var btnNext:SmartButton;
@@ -53,7 +58,17 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static function setPopin():Void {
 		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
+		
 		SmartPopinExtended.setImage(img, BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
+		
+		txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
+		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
+		txtSkip.text = Localisation.allTraductions["LABEL_LEVEL_UP_SKIP"];
+		congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
+		
+		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
+		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
+		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
 		
 		nameUnlock.text = UnlockManager.unlockedItem[0].name;
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
@@ -103,12 +118,20 @@ class LevelUpPoppin extends SmartPopinExtended
 		description = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_DESCRIPTION), TextSprite);
 		typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
 		
+		congrats = cast(getChildByName(AssetName.LEVELUP_POPPIN_CONGRATS), TextSprite);
+		txtNew = cast(getChildByName(AssetName.LEVELUP_POPPIN_TEXT_NEW), TextSprite);
+		
 		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
 		
 		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
 		btnCloseAll = cast(getChildByName(AssetName.LEVELUP_POPPIN_PASSALL), SmartButton);
+		
+		txtNext = cast(SmartCheck.getChildByName(btnNext, AssetName.LEVELUP_POPPIN_NEXT_TEXT), TextSprite);
+		txtSkip = cast(SmartCheck.getChildByName(btnCloseAll, AssetName.LEVELUP_POPPIN_SKIP_TEXT), TextSprite);
 		Interactive.addListenerClick(btnNext, onClickNext);
 		Interactive.addListenerClick(btnCloseAll, closeAll);
+		SmartCheck.traceChildrens(btnNext);
+		SmartCheck.traceChildrens(btnCloseAll);
 	}
 	
 	/**

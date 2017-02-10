@@ -60,7 +60,6 @@ class OptionPoppin extends SmartPopinExtended
 	 * Set all the variables to the wireframe
 	 */
 	private function setWireframe():Void {
-		SmartCheck.traceChildrens(this);
 		btnClose = cast(getChildByName(AssetName.OPTION_POPPIN_CLOSE), SmartButton);
 		btnReset = cast(getChildByName(AssetName.OPTION_POPPIN_RESETDATA), SmartButton);
 		btnFR = cast(getChildByName(AssetName.OPTION_POPPIN_FR), SmartButton);

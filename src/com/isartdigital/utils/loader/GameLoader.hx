@@ -121,7 +121,6 @@ class GameLoader extends Loader
 		if (pResource.isJson) {
 			
 			txtLoaded[lUrl] = pResource.data;
-			
 			if(lUrl.substr(-12,12)=="library.json" && Reflect.hasField(pResource.data,"md5") && Reflect.hasField(pResource.data,"movies") && Reflect.hasField(pResource.data,"textureGroups") && Reflect.hasField(pResource.data,"frameRate")) {
 				Parser.parse(1,Config.cache)(pResource, pNext);
 				return;

@@ -44,7 +44,7 @@ class ResetDataPoppin extends SmartPopinExtended
 	 * Set all the variables to the wireframe
 	 */
 	private function setWireframe():Void {
-		SmartCheck.traceChildrens(this);
+		//SmartCheck.traceChildrens(this);
 		btnCancel = cast(getChildByName(AssetName.RESET_POPPIN_CANCEL), SmartButton);
 		btnConfirm = cast(getChildByName(AssetName.RESET_POPPIN_CONFIRM), SmartButton);
 		

@@ -54,7 +54,6 @@ class InternHousePopin extends SmartPopinExtended
 	private function new(pID:String=null) 
 	{
 		super(AssetName.INTERN_HOUSE_INFOS_POPIN);
-		SmartCheck.traceChildrens(this);
 		intern = Intern.internsListArray[0];
 		getComponents();
 		setValues();

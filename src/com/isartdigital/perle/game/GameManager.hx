@@ -31,6 +31,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import pixi.interaction.EventTarget;
 

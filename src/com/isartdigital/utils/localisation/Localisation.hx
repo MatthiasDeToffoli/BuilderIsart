@@ -3,7 +3,7 @@ import com.isartdigital.utils.loader.GameLoader;
 import haxe.xml.Fast;
 
 /**
- * Classe pour faire fonctionner les traductions
+ * Class for the traductions
  * @author Emeline Berenguier
  */
 class Localisation
@@ -35,7 +35,6 @@ class Localisation
 			var langage:Dynamic = Reflect.field(pLocalization, label);
 			allTraductions[label] = langage.en;
 		}
-		trace(allTraductions);
 	}
 	
 	/**
@@ -45,11 +44,11 @@ class Localisation
 	 * @author Emeline Berenguier
 	 */
 	
-	public function traduction(?pLangage:String = "en"):Void {
+	public static function traduction(?pLangage:String = "en"):Void {
 		for (label in Reflect.fields(localization)){
 			var langage:Dynamic = Reflect.field(localization, label);
-			trace(langage.pLangage);
-			allTraductions[label] = langage.pLangage;
+			if (pLangage == "fr") allTraductions[label] = langage.fr;
+			else allTraductions[label] = langage.en;
 		}
 		trace(allTraductions);
 	}

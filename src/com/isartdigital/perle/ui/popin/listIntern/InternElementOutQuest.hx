@@ -48,56 +48,13 @@ class InternElementOutQuest extends InternElement
 	{
 		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
 		
-		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
-		//
-		//sendCost = cast(getChildByName(AssetName.INTERN_OUT_SEND_COST), TextSprite);
-		//sendCost.text = Std.string(pDesc.price);
-		
-		//internStress = cast(getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		//internSpeed = cast(getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		//internEfficiency = cast(getChildByName(AssetName.INTERN_OUT_EFF_TXT), TextSprite);
-		
-		// to see with the gd - numeric or not ?
-		//internStress.text = Std.string(Intern.TXT_STRESS);
-		//internSpeed.text = Std.string(Intern.TXT_SPEED);
-		//internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY);
-		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
-		//
-		//sendCost = cast(getChildByName("sendCost"), TextSprite);
 		getComponents();
 		setValues(pDesc);
-		//sendCost.text = Std.string(pDesc.price);
-		
-		
-		//internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
-		//internName.text = pDesc.name;
-		
-		//stressJauge = cast(getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
-		//speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
-		//effJauge = cast(getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 		
 		internDatas = pDesc;
 		
 		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
 	}
-	
-	//private function spawnButton():Void{
-		//var spawner:UISprite = cast(getChildByName(AssetName.SPAWNER_BUTTON_OUT_QUEST), UISprite);
-		
-		//if (idIntern != null){ //Todo: faire un switch
-		//switch (Intern.getIntern(idIntern).status){
-			//case Intern.STATE_RESTING : {
-				//btnSend = new SendButton(spawner.position);
-				//btnSend.position = spawner.position;
-				//Interactive.addListenerClick(btnSend, onSend);
-				//addChild(btnSend);
-			//}
-			//if (Intern.getIntern(idIntern).status == Intern.STATE_RESTING){
-				//btnSend = new SendButton(spawner.position);
-				//btnSend.position = spawner.position;
-				//Interactive.addListenerClick(btnSend, onSend);
-				//addChild(btnSend);
-			//if (Intern.getIntern(internDatas.id).status == Intern.STATE_MAX_STRESS) {
 
 	private function getComponents():Void{
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
@@ -111,11 +68,6 @@ class InternElementOutQuest extends InternElement
 		speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 		
-		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
-		//sendCost = cast(getChildByName("sendCost"), TextSprite);
-		//internStress = cast(getChildByName("_interns_stress"), TextSprite);
-		//internSpeed = cast(getChildByName("_intern_speed"), TextSprite);
-		//internEfficiency = cast(getChildByName("_txt_efficiency03"), TextSprite);
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
 	}
 	
@@ -125,11 +77,7 @@ class InternElementOutQuest extends InternElement
 		internSpeed.text = Std.string(Intern.TXT_SPEED);
 		internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY);
 		
-		//internStress.text = Std.string(pDesc.stress);
-		//internSpeed.text = Std.string(pDesc.speed);
-		//internEfficiency.text = Std.string(pDesc.efficiency);
 		internName.text = pDesc.name;
-		//sendCost.text = Std.string(pDesc.price);
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
@@ -148,16 +96,6 @@ class InternElementOutQuest extends InternElement
 				Interactive.addListenerClick(btnSend, onSend);
 				addChild(btnSend);
 			}
-		//}
-		
-			//}
-		
-			//if (Intern.getIntern(idIntern).status == Intern.STATE_MAX_STRESS){
-				//btnMaxStress = new StressButton(spawner.position);
-				//btnMaxStress.position = spawner.position;
-				//Interactive.addListenerClick(btnMaxStress, onStress);
-				//addChild(btnMaxStress);
-			//}	
 		
 		var iEff:Int =  6 - internDatas.efficiency;
 		for (i in 1...iEff)

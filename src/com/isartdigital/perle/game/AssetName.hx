@@ -361,10 +361,14 @@ class AssetName{
 	public static inline var LEVELUP_POPPIN_LEVELBG:String = "_bg_level";
 	public static inline var LEVELUP_POPPIN_LEVEL:String = "level";
 	public static inline var LEVELUP_POPPIN_TYPE:String = "_txt_type";
+	public static inline var LEVELUP_POPPIN_TEXT_NEW:String = "_txt_new";
 	public static inline var LEVELUP_POPPIN_UNLOCK:String = "_unlock";
 	public static inline var LEVELUP_POPPIN_NAME:String = "_txt_name";
 	public static inline var LEVELUP_POPPIN_IMG:String = "Image";
 	public static inline var LEVELUP_POPPIN_DESCRIPTION:String = "Description";
+	public static inline var LEVELUP_POPPIN_CONGRATS:String = "_txt_congratulations";
+	public static inline var LEVELUP_POPPIN_SKIP_TEXT:String = "Text";
+	public static inline var LEVELUP_POPPIN_NEXT_TEXT:String = "_txt_continue";
 	
 	//Destroy Poppin
 	public static inline var DESTROY_POPPIN:String = "Popin_DestroyBuilding";

@@ -109,7 +109,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	
 	
 	private function getComponents():Void{
-		SmartCheck.traceChildrens(this);
 		btnReroll = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartButton);
 		hellCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_CARD), SmartButton);
 		heavenCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_CARD), SmartButton);

@@ -103,7 +103,7 @@ class Choice extends SmartPopinExtended
 		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
 		btnInterns = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
-		btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
+		//btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
@@ -169,7 +169,7 @@ class Choice extends SmartPopinExtended
 	
 	private function addListeners ():Void {
 		Interactive.addListenerClick(btnInterns, onSeeAll);
-		Interactive.addListenerClick(btnShare, shareEvent);
+		//Interactive.addListenerClick(btnShare, shareEvent);
 		Interactive.addListenerClick(btnClose, onClose);
 		choiceCard.interactive = true;
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
