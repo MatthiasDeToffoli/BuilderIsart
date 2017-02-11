@@ -245,6 +245,7 @@ class AssetName{
 	public static inline var INTERN_OUT_ACTUAL_INTERNS_IN_QUEST:String = "_internsInQuest_value";
 	
 	//inter event popin
+	public static inline var GLOBAL_INTERN_STATS:String = "InternStats";
 	public static inline var INTERN_EVENT:String = "Intern_Event";
 	public static inline var INTERN_EVENT_DESC:String = "_event_description";
 	public static inline var INTERN_EVENT_HEAVEN_CHOICE:String = "_heavenChoice_text";
@@ -300,7 +301,7 @@ class AssetName{
 	public static inline var MAXSTRESS_POPIN_CLOSE_BUTTON:String = "ButtonClose";
 	public static inline var MAXSTRESS_POPIN_RESET_BUTTON:String = "ButtonResetStress";
 	public static inline var MAXSTRESS_POPIN_DISMISS_BUTTON:String = "ButtonDismiss";
-	public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "_resetStress_value_text";
+	public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "Text";
 	public static inline var MAXSTRESS_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
 	public static inline var MAXSTRESS_POPIN_INTERN_NAME:String = "_intern_name";
 	public static inline var MAXSTRESS_POPIN_INTERN_SIDE:String = "_intern_side";

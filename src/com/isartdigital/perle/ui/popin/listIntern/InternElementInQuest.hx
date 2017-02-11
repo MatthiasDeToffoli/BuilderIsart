@@ -87,7 +87,7 @@ class InternElementInQuest extends InternElement
 		loop.run = progressLoop;
 		
 		internName.text = pDesc.name;
-		quest = quest = QuestsManager.getQuest(pDesc.id);
+		quest = QuestsManager.getQuest(pDesc.id);
 		
 		questGaugeLenght = cast(questGauge.getChildByName("_listInQuest_progressionBarBG"), UISprite).width;
 		
@@ -104,6 +104,8 @@ class InternElementInQuest extends InternElement
 		var activeButton:SmartButton = null;
 		updateCursorPosition();
 		
+		if (Intern.getIntern(quest.refIntern).stress >= Intern.MAX_STRESS) Intern.getIntern(quest.refIntern).status = Intern.STATE_MAX_STRESS; 
+		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING || Intern.isIntravel(Intern.getIntern(quest.refIntern))) {
 			activeButton = new AccelerateButton(spawner.position);
 			cast(activeButton, AccelerateButton).spawn(quest);
@@ -112,6 +114,11 @@ class InternElementInQuest extends InternElement
 		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
 			activeButton = new ResolveButton(spawner.position);
 			Interactive.addListenerClick(activeButton, onResolve);	
+		}
+		
+		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_MAX_STRESS) {
+			activeButton = new StressButton(spawner.position);
+			Interactive.addListenerClick(activeButton, onStress);
 		}
 		
 		activeButton.position = spawner.position;
@@ -125,12 +132,18 @@ class InternElementInQuest extends InternElement
 		//Interactive.addListenerClick(picture, onPicture);
 	}
 	
-	private function onResolve() {
+	private function onResolve():Void {
 		if (DialogueManager.ftueStepResolveIntern)
 			DialogueManager.endOfaDialogue();
 		QuestsManager.choice(quest);
 	}
 	
+	private function onStress():Void {
+		MaxStressPopin.intern = Intern.getIntern(quest.refIntern);
+		UIManager.getInstance().closeCurrentPopin;
+		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
+	}
+
 	private function onBoost():Void {
 		spawnButton("Bouton_InternSend_Clip");
 	}
@@ -147,7 +160,8 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function getChrono():String {
-		return TimesInfo.getClock(quest.steps[quest.stepIndex] - quest.progress).minute + ":" + TimesInfo.getClock(quest.steps[quest.stepIndex] - quest.progress).seconde + "s";
+		var duration:Float = quest.steps[quest.stepIndex] - quest.progress;
+		return TimesInfo.getClock({ days: 0, times: duration }).minute + ":" + TimesInfo.getClock({ days: 0, times: duration }).seconde + "s";
 	}
 	
 	private function updateEventCursors():Void{	

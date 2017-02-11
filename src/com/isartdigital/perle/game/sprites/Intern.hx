@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import haxe.Json;
 
@@ -151,7 +152,7 @@ class Intern
 				idEvent: Std.int(data[i].IdEvent)
 			};
 			
-			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.id)) {
+			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
 				var tmpProgress:Float = Date.now().getTime();
 				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];
 				else if (tmpProgress>= newIntern.quest.steps[1] && newIntern.quest.stepIndex == 1) tmpProgress = newIntern.quest.steps[1];
@@ -169,6 +170,34 @@ class Intern
 			case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
 			case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
 			case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true;
+			default: return false;
+		}
+		return false;
+	}
+	
+	public static function willBeStress(pIntern:InternDescription, pChoiceType:ChoiceType, pChoice:ChoiceDescription):Bool {
+		var lQuest:TimeQuestDescription = pIntern.quest;
+		switch (pChoiceType) {
+			case ChoiceType.HEAVEN: 
+				if (pIntern.aligment == "heaven") {
+					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					else return true;
+				}
+				else {
+					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					else return true;
+				}
+				
+			case ChoiceType.HELL:
+				if (pIntern.aligment == "hell") {
+					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					else return true;
+				}
+				else {
+					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					else return true;
+				}
+				
 			default: return false;
 		}
 		return false;
@@ -207,6 +236,7 @@ class Intern
 		for (i in 0...internsListArray.length){
 			if (pId == internsListArray[i].id){
 				internsListArray.splice(internsListArray.indexOf(internsListArray[i]), 1);
+				ServerManager.InternAction(DbAction.REM, pId);
 				break;
 			}
 		}

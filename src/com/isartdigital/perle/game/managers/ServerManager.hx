@@ -156,6 +156,8 @@ class ServerManager {
 		switch (pAction) {
 			case DbAction.ADD:
 				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
+			case DbAction.REM:
+				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
 			case DbAction.UPDT:
 				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "str" => Intern.getIntern(internId).stress]);
 			case DbAction.UPDT_EVENT:
@@ -166,7 +168,7 @@ class ServerManager {
 		}
 	}
 	
-	public static function EventAction(pAction:DbAction, ?pId:Int=null):Void {
+	public static function ChoicesAction(pAction:DbAction, ?pId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
 		switch (pAction) {

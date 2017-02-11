@@ -70,30 +70,21 @@ class ListInternPopin extends SmartPopin
 	{
 		super(AssetName.INTERN_LIST);
 		
-			btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
-			btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
-			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
+		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
+		btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
+		btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
 			
-			internsInQuestInfo = cast(getChildByName(AssetName.INTERN_IN_QUEST_VALUE), SmartComponent);
-			actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
-			internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
+		internsInQuestInfo = cast(getChildByName(AssetName.INTERN_IN_QUEST_VALUE), SmartComponent);
+		actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
+		internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
 			
-			internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
-			internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
-			internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
+		internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
+		internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
+		internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
 			
-			//Create empty places for quests in function of the player's level
-			for (i in 0...AssetName.internListSpawners.length){
-				
-				if (i < Intern.internsListArray.length && i < getNumberPlaces()){
-				//if (i < Intern.internsListArray.length){
-					spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
-				}
-				
-				else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));
-			}
 			
-		setValues();
+		setValues();		
+		spawnQuest();
 		
 		Interactive.addListenerClick(btnLeft, onLeft);
 		Interactive.addListenerClick(btnRight, onRight);
@@ -154,6 +145,15 @@ class ListInternPopin extends SmartPopin
 			}
 		}
 		return lNumberPlaces;
+	}
+	
+	public function spawnQuest():Void {	
+		for (i in 0...AssetName.internListSpawners.length){		
+			if (i < Intern.internsListArray.length && i < getNumberPlaces()){
+				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
+			}			
+			else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));
+		}
 	}
 	
 	/**

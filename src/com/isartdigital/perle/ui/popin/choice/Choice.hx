@@ -150,9 +150,9 @@ class Choice extends SmartPopinExtended
 		for (i in 1...iSpeed)
 			cast(speedIndic.getChildAt(i), UISprite).visible = false;
 			
-		var iStress:Int = 6 - Math.round(intern.stress / 20);
-		for (i in 1...iStress)
-			cast(stressBar.getChildAt(i), UISprite).visible = false;
+		//var iStress:Int = 6 - Math.round(intern.stress / 20);
+		//for (i in 1...iStress)
+			//cast(stressBar.getChildAt(i), UISprite).visible = false;
 	}
 	
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {

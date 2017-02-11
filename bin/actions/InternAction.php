@@ -8,7 +8,7 @@
   Include("FacebookUtils.php");
   switch ($functionExe) {
     case "ADD": buyIntern($IdIntern); break;
-    case "REM": removeIntern(); break;
+    case "REM": removeIntern($IdIntern); break;
     case "UPDT": addStress($IdIntern, $stress); break;
     case "UPDT_EVENT": updateEvent($IdEvent, $IdIntern); break;
     case "GET_SPE_JSON": getJson(); break;
@@ -46,6 +46,24 @@
     catch (Exception $e) {
       echo $e->getMessage();
     }
+  }
+
+  function removeIntern($IdIntern) {
+    global $db;
+
+    $ID = getId();
+    $req = "DELETE FROM PlayerInterns WHERE IDPlayer = :playerId AND IDIntern = :internId";
+
+    try {
+      $reqPre = $db->prepare($req);
+      $reqPre->bindParam(':playerId', $ID);
+      $reqPre->bindParam(':internId', $IdIntern);
+      $reqPre->execute();
+    }
+    catch (Exception $e) {
+      echo $e->getMessage();
+    }
+
   }
 
   function updateEvent($IdEvent, $IdIntern) {

@@ -44,39 +44,52 @@ class InternElementOutQuest extends InternElement
 	private var speedJauge:SmartComponent;
 	private var effJauge:SmartComponent;
 	
+	private var speedIndics:Array<UISprite>;
+	private var effIndics:Array<UISprite>;
+	
 	private var jaugeArray:Array<Array<UISprite>>;
 
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
 		super(AssetName.INTERN_INFO_OUT_QUEST, pPos);
+		internDatas = pDesc;
 		
 		getComponents();
 		setValues(pDesc);
-		
-		internDatas = pDesc;
 		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
 	}
 
 	private function getComponents():Void{
 		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		sendCost = cast(getChildByName(AssetName.INTERN_OUT_SEND_COST), TextSprite);
-		
-		//internStress = cast(getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		//internSpeed = cast(getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		//internEfficiency = cast(getChildByName(AssetName.INTERN_OUT_EFF_TXT), TextSprite);
-		
 		stressJauge = cast(getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
-		
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
+		
+		initStars();
+	}
+	
+	private function initStars():Void {
+		speedIndics = new Array<UISprite>();
+		effIndics = new Array<UISprite>();
+		
+		for (i in 1...6) {
+			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
+			effIndics.push(cast(effJauge.getChildByName("_jaugeEfficiency_0" + i), UISprite));
+		}
+		
+		for (i in 0...5) {
+			if (internDatas.efficiency <= i) speedIndics[i].visible = false;
+		}
+		
+		for (i in 0...5) {
+			if (internDatas.speed <= i) effIndics[i].visible = false;
+		}
 	}
 	
 	private function setValues(pDesc:InternDescription):Void{
 		sendCost.text = Std.string(pDesc.price);
-		//internStress.text = Std.string(Intern.TXT_STRESS);
-		//internSpeed.text = Std.string(Intern.TXT_SPEED);
-		//internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY);
 		
 		internName.text = pDesc.name;
 	}
@@ -96,18 +109,6 @@ class InternElementOutQuest extends InternElement
 			Interactive.addListenerClick(btnSend, onSend);
 			addChild(btnSend);
 		}
-		
-		var iEff:Int =  6 - internDatas.efficiency;
-		for (i in 1...iEff)
-			cast(effJauge.getChildAt(i), UISprite).visible = false;
-			
-		var iSpeed:Int = 6 - internDatas.speed;
-		for (i in 1...iSpeed)
-			cast(speedJauge.getChildAt(i), UISprite).visible = false;
-			
-		var iStress:Int = 6 - Math.floor(internDatas.stress / 20);
-		for (i in 1...iStress)
-			cast(stressJauge.getChildAt(i), UISprite).visible = false;
 	}
 	
 	private function addListerners():Void{
@@ -131,8 +132,9 @@ class InternElementOutQuest extends InternElement
 		
 		//var lLength:Int = QuestsManager.questsList.length;
 		quest = QuestsManager.createQuest(internDatas.id);
-		
 		internDatas.quest = quest;
+		Intern.getIntern(internDatas.id).quest = internDatas.quest;
+		
 		ChoiceManager.newChoice(internDatas.id);
 		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
 		TimeManager.createTimeQuest(quest);
@@ -167,7 +169,7 @@ class InternElementOutQuest extends InternElement
 		if (btnMaxStress != null) Interactive.addListenerClick(btnMaxStress, onStress);
 		if (btnSend != null) Interactive.removeListenerClick(btnSend, onSend);
 		//Interactive.removeListenerClick(picture, onPicture);
-		
+	
 		super.destroy();
 	}
 }

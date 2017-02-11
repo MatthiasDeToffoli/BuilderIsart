@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
@@ -11,6 +12,7 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -27,6 +29,14 @@ class MaxStressPopin extends SmartPopin
 	 * instance unique de la classe MaxStress
 	 */
 	private static var instance: MaxStressPopin;
+	
+	private var internStats:SmartComponent;
+	private var internStress:TextSprite;
+	private var internSpeed:TextSprite;
+	private var internEfficiency:TextSprite;
+	private var stressBar:SmartComponent;
+	private var speedIndic:SmartComponent;
+	private var effIndic:SmartComponent;
 	
 	private var btnClose:SmartButton;
 	private var btnResetTextValue:TextSprite;
@@ -65,13 +75,33 @@ class MaxStressPopin extends SmartPopin
 		picture = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_PORTRAIT), UISprite);
 		internName = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_NAME), TextSprite);
 		aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
+		
+		internStats = cast(getChildByName(AssetName.GLOBAL_INTERN_STATS), SmartComponent);
+		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
+		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
+		effIndic = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
+		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
+		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
 	}
 	
 	public function setDatas():Void{
 		internName.text = intern.name;
-		aligment.text = intern.aligment;
-		btnResetTextValue.text = "20"; //Todo, en attendant le balancing
+		aligment.text = intern.aligment;		
 		
+		btnResetTextValue.text = "20"; //Todo, en attendant le balancin
+		
+		var iEff:Int =  6 - intern.efficiency;
+		for (i in 1...iEff)
+			cast(effIndic.getChildAt(i), UISprite).visible = false;
+			
+		var iSpeed:Int = 6 - intern.speed;
+		for (i in 1...iSpeed)
+			cast(speedIndic.getChildAt(i), UISprite).visible = false;
+			
+		//var iStress:Int = 6 - Math.round(intern.stress / 20);
+		//for (i in 1...iStress)
+			//cast(stressBar.getChildAt(i), UISprite).visible = false;
 	}
 	
 	private function addListeners():Void{
@@ -82,7 +112,13 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onReset():Void{
 		Intern.getIntern(intern.id).stress = 0;
-		Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+		
+		if (ChoiceManager.isInQuest(intern.idEvent)) {
+			Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+			QuestsManager.chooseQuest(Intern.getIntern(intern.id).quest);
+			QuestsManager.goToNextStep();
+			TimeManager.nextStepQuest(QuestsManager.getQuest(intern.id));	
+		}
 		
 		updateQuestPopin();
 		ServerManager.InternAction(DbAction.UPDT, intern.id);
@@ -90,13 +126,14 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onDismiss():Void{
 		Intern.destroyIntern(intern.id);
+		TimeManager.destroyTimeQuest(intern.id);
 		updateQuestPopin();
-		//QuestsManager.destroyQuest(quest.refIntern);
-		//TimeManager.destroyTimeElement(quest.refIntern);
 	}
 	
 	private function onClose():Void{
+		updateQuestPopin();
 		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		Hud.getInstance().show();
 	}
 	

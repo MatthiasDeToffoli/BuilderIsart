@@ -26,12 +26,10 @@ class QuestsManager
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
 	private static inline var NUMBER_EVENTS:Int = 3;
+	private static var FTUE_TIMELINE:Int = 2500;
 	
 	//The time's gap between two events will be vary between these constants
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
-	private static var MIN_TIMELINE(default, null):Int = 15 * 60 * 1000;
-	private static var MAX_TIMELINE(default, null):Int = 30 * 60 * 1000;
-
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
@@ -80,7 +78,8 @@ class QuestsManager
 	 */
 	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
 		var lIdTimer = pIdIntern;
-		var lStepsArray:Array<Int> = createRandomGapArray(Intern.getIntern(pIdIntern));
+		var lStepsArray:Array<Float> = createRandomGapArray(Intern.getIntern(pIdIntern));
+		
 		var lTimeQuestDescription:TimeQuestDescription = {
 			refIntern: lIdTimer,
 			progress: Date.now().getTime(),
@@ -103,22 +102,22 @@ class QuestsManager
 	 * @param	pLength
 	 * @return A new array
 	 */
-	private static function createRandomGapArray(pIntern:InternDescription):Array<Int>{
-		var lListEvents:Array<Int> = new Array<Int>();
-		var lGap:Int = 0;
+	private static function createRandomGapArray(pIntern:InternDescription):Array<Float>{
+		var lListEvents:Array<Float> = new Array<Float>();
+		var lGap:Float = 0;
 		for (i in 0...NUMBER_EVENTS){
-			
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
-				lGap = FTUE_TIMELINE + lGap;
-			else lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
-				
-			lListEvents.push(lGap);
+				lGap = Date.now().getTime() + FTUE_TIMELINE + lGap;
+			else
+				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
+				lListEvents.push(Date.now().getTime() + lGap);
 		}
 		
-		//lGap = cast(Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap);
-		//lListEvents.push(Date.now().getTime() + lGap);
-		
 		return lListEvents;
+	}
+	
+	public static function chooseQuest(pQuest:TimeQuestDescription):Void {
+		questInProgress = pQuest;
 	}
 	
 	/**
@@ -153,7 +152,6 @@ class QuestsManager
 		Choice.getInstance().hide();
 		
 		if (questInProgress.stepIndex < 2){
-			
 			if (!isMaxStress(questInProgress.refIntern)){
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
 				TimeManager.nextStepQuest(questInProgress);				
@@ -181,6 +179,7 @@ class QuestsManager
 		trace("end");
 		if (DialogueManager.ftueStepMakeAllChoice)
 			DialogueManager.endOfaDialogue();
+			
 		UIManager.getInstance().closeCurrentPopin();
 		GatchaPopin.quest = pQuest;
 		UIManager.getInstance().openPopin(GatchaPopin.getInstance());
@@ -196,25 +195,22 @@ class QuestsManager
 	public static function finishQuest(pQuest:TimeQuestDescription):Void {
 		if (DialogueManager.ftueStepCloseGatcha)
 			DialogueManager.endOfaDialogue();
-		ServerManager.EventAction(DbAction.REM, pQuest.refIntern);
+		ServerManager.ChoicesAction(DbAction.REM, pQuest.refIntern);
 		
 		if (isMaxStress(questInProgress.refIntern)){
 			MaxStressPopin.intern = Intern.getIntern(pQuest.refIntern);
 			//trace(MaxStressPopin.quest);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
-			GameStage.getInstance().getPopinsContainer().addChild(MaxStressPopin.getInstance());
 		}		
 		else {
 			Intern.getIntern(pQuest.refIntern).status = Intern.STATE_RESTING;
 			UIManager.getInstance().closeCurrentPopin();
 			InternElementInQuest.canPushNewScreen = true;
 			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-			GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 		}
 		
 		destroyQuest(pQuest.refIntern);
-		TimeManager.destroyTimeElement(pQuest.refIntern);
 	}
 	
 	/**

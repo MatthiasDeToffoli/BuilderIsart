@@ -4,8 +4,10 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
+import com.isartdigital.perle.ui.popin.listIntern.MaxStressPopin;
 import haxe.Json;
 
 typedef ChoiceDescription = {
@@ -81,7 +83,7 @@ class ChoiceManager
 	
 	public static function askForJson():Void {
 		allChoices = GameConfig.getChoices();
-		ServerManager.EventAction(DbAction.USED_ID);
+		ServerManager.ChoicesAction(DbAction.USED_ID);
 		efficiencyBalance = GameConfig.getChoicesConfig();
 	}
 	
@@ -112,7 +114,7 @@ class ChoiceManager
 		else {
 			Intern.getIntern(pId).quest = null; 
 			ServerManager.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
-			ServerManager.EventAction(DbAction.CLOSE_QUEST, memId);
+			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, memId);
 		}
 	}
 	
@@ -170,14 +172,18 @@ class ChoiceManager
 			}
 			
 			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
-			ServerManager.EventAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
+			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
 			
 			if (pIntern.quest.stepIndex != 2) ChoiceManager.newChoice(pIntern.id);
 			else ChoiceManager.newChoice(pIntern.id, true);
+			
+			QuestsManager.goToNextStep();
+        }
+        else {
+            MaxStressPopin.intern = pIntern;
+            UIManager.getInstance().closeCurrentPopin;
+			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());	
 		}
-		
-		TimeManager.destroyTimeQuest(pIntern.id);
-		QuestsManager.goToNextStep();
 	}
 	
 	public static function nextStep():Void {
@@ -190,7 +196,7 @@ class ChoiceManager
 	
 	public static function newUsedChoice():Void {
 		usedID.push( { idChoice: actualID, closed: 0 } );
-		ServerManager.EventAction(DbAction.ADD, allChoices[actualID - 1].iD);
+		ServerManager.ChoicesAction(DbAction.ADD, allChoices[actualID - 1].iD);
 	}
 	
 	public static function choiceAlreadyUsed(pId:Int):Bool {
@@ -231,7 +237,7 @@ class ChoiceManager
 		if (usedID.length == allChoices.length) {
 			actualID = 1;
 			usedID = new Array<TypeUseChoice>();
-			ServerManager.EventAction(DbAction.REFRESH);
+			ServerManager.ChoicesAction(DbAction.REFRESH);
 			
 		}
 	}

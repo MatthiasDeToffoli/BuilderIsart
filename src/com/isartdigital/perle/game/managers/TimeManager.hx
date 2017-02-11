@@ -305,6 +305,7 @@ class TimeManager {
 	public static function timeLoopProgression():Void {
 		var lTimeNow:Float = Date.now().getTime();
 		var constructionEnded:Array<Int> = new Array<Int>();
+		var timeQuestEnded:Array<Int> = new Array<Int>();
 		var lLengthQuest:Int = listQuest.length;
 		var lLengthConstruct:Int = listConstruction.length;
 		var lLengthProd:Int = listProduction.length;
@@ -318,8 +319,9 @@ class TimeManager {
 			updateProductionTime(listProduction[i]);
 			
 		for (j in 0...lLengthQuest) {
-			updateQuest(listQuest[j], lElapsedTime);
+			updateQuest(listQuest[j], lElapsedTime, timeQuestEnded);
 		}
+		deleteEndedQuest(timeQuestEnded);
 		
 		for (i in 0...lLengthConstruct) {
 			updateConstruction(listConstruction[i], constructionEnded);
@@ -359,6 +361,11 @@ class TimeManager {
 	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
 		var lLength:Int = pEndedList.length;	
 		for (i in 0...lLength) { listConstruction.splice(pEndedList[i], 1); }
+	}
+	
+	private static function deleteEndedQuest(pEndedList:Array<Int>):Void {
+		var lLength:Int = pEndedList.length;	
+		for (i in 0...lLength) { listQuest.splice(pEndedList[i], 1); }
 	}
 	
 	/**
@@ -403,7 +410,7 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 */
 	private static var delayUpdtTime:Int = 5;
-	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float):Void {	
+	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float, ?pEndedList:Array<Int>=null):Void {	
 		if (pElement.progress < pElement.steps[pElement.stepIndex]) {
 			pElement.progress += pElapsedTime;
 			if (delayUpdtTime > 0) delayUpdtTime--;
@@ -414,12 +421,20 @@ class TimeManager {
 		}
 		
 		// progress has reached next step && just now
-		if (pElement.progress >= pElement.steps[pElement.stepIndex] && Intern.getIntern(pElement.refIntern).status != Intern.STATE_WAITING) 
+		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
 		{
-			// todo: éventuellement des paramètres à rajouter.
-			Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
-			eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
-			if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_GATCHA, pElement); 
+			if (Intern.getIntern(pElement.refIntern).stress < 100) {
+				Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
+				eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
+				if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_GATCHA, pElement);
+			}
+			else {
+				Intern.getIntern(pElement.refIntern).status = Intern.STATE_MAX_STRESS;
+				eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
+			}
+			
+			var index:Int = listQuest.indexOf(pElement);
+			pEndedList.push(index);
 		}
 	}
 	

@@ -30,7 +30,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var hellCard:SmartButton;
 	private var hellPortrait:UISprite;
 	private var hellName:TextSprite;
-	private var hellGaugeStress:SmartComponent;
 	private var hellGaugeEfficency:SmartComponent;
 	private var hellGaugeSpeed:SmartComponent;
 	private var hellPrice:TextSprite;
@@ -39,7 +38,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var heavenCard:SmartButton;
 	private var heavenPortrait:UISprite;
 	private var heavenName:TextSprite;
-	private var heavenGaugeStress:SmartComponent;
 	private var heavenGaugeEfficency:SmartComponent;
 	private var heavenGaugeSpeed:SmartComponent;
 	private var heavenPrice:TextSprite;
@@ -121,18 +119,15 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
-		//hellGaugeStress = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		hellGaugeSpeed = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		hellPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_PRICE), TextSprite);
 		
 		heavenPortrait = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_PORTRAIT), UISprite);
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
-		//heavenGaugeStress = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
-		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite);
-		
+		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite);	
 	}
 	
 	/**
@@ -140,7 +135,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 */
 	private function setValuesHellButton():Void{
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
-		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;	
+		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 	}
 	
 	/**
@@ -149,6 +144,24 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function setValuesHeavenButton():Void{
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
+	}
+	
+	private function initStars(pIntern:InternDescription, lEfficiency:SmartComponent, lSpeed:SmartComponent):Void {
+		var speedIndics:Array<UISprite> = new Array<UISprite>();
+		var effIndics:Array<UISprite> = new Array<UISprite>();
+		
+		for (i in 1...6) {
+			speedIndics.push(cast(lSpeed.getChildByName("_jaugeSpeed_0" + i), UISprite));
+			effIndics.push(cast(lEfficiency.getChildByName("_jaugeEfficiency_0" + i), UISprite));
+		}
+		
+		for (i in 0...5) {
+			if (pIntern.efficiency <= i) speedIndics[i].visible = false;
+		}
+		
+		for (i in 0...5) {
+			if (pIntern.speed <= i) effIndics[i].visible = false;
+		}
 	}
 	
 	/**

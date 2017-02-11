@@ -223,11 +223,7 @@ class Main extends EventEmitter
 		lLoader.addAssetFile(IN_GAME_FOLDER + DeviceCapabilities.textureType+"/placeholder_flump_sprite/library.json");
 		
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframes_ALL/library.json");
-		
-		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Intern_MaxStress/library.json");
-		
-		
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframes_ALL/library.json");	
 		
 		lLoader.addFontFile("fonts.css");
 		
