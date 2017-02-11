@@ -82,6 +82,7 @@ typedef TableTypeShopPack = {
 	var giveKarma:Int;
 	var giveIron:Int;
 	var giveWood:Int;
+	var iconLevel:Int;
 }
 
 typedef TableInterns = {

@@ -13,7 +13,7 @@ import pixi.core.sprites.Sprite;
 
 //@:optional vous connaisiez ?
 
-enum GeneratorType {soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise;}
+enum GeneratorType { soft; hard; goodXp; badXp; soul; soulGood; soulBad; intern; buildResourceFromHell; buildResourceFromParadise; isartPoint; }
 enum Alignment {neutral; hell; heaven; }
 
 

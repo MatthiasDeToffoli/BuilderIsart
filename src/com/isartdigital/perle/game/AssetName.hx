@@ -88,7 +88,7 @@ class AssetName{
 	public static inline var SHOP_RESSOURCE_CARD_NAME:String = /*SHOP_PREFIX +*/ "Item_Name";
 	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_CurrencyPrice";
 	public static inline var SHOP_CAROUSSEL_DECO_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
-	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "CurrenciesTab_List";
+	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "ResourcesTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN:String = SHOP_PREFIX + "InternsTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN_SEARCHING:String = SHOP_PREFIX + "InternsTab_Searching";
 	public static inline var SHOP_CAROUSSEL_RESOURCE:String = SHOP_PREFIX + "ResourcesTab_List";
@@ -105,8 +105,8 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
 	//public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBuyPack"; // outdated ?
 	public static inline var CAROUSSEL_CARD_PACK:String = "Shop_BuyablePack";
-	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "Shop_CurrencyPack";
-	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "Shop_RessourcePack";
+	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "ButtonBuyPack";
+	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "ButtonBuyPack_Ressource";
 	
 	// Shop caroussel card building unlock and locked
 	public static inline var CARD_BACKGROUND_NEUTRAL_CONTAINER:String = "Bg";
@@ -117,10 +117,27 @@ class AssetName{
 	
 	// Shop caroussel card pack
 	public static inline var CARD_PACK_PRICE:String ="Pack_Price";
-	public static inline var CARD_PACK_ICON:String ="Pack_Content_Icon";
-	public static inline var CARD_PACK_NAME:String ="Pack_Content_txt";
-	public static inline var CARD_PACK_PICTURE:String ="Pack_Picture";
-	public static inline var CARD_PACK_BTN:String = "Bouton";
+	public static inline var CARD_PACK_ICON_GAIN:String ="Pack_Content_Icon";
+	public static inline var CARD_PACK_ICON_PRICE:String ="Pack_Price_Icon";
+	public static inline var CARD_PACK_GAIN:String ="Pack_Content_txt";
+	public static inline var CARD_PACK_PICTURE:String = "Pack_Picture";
+		// Question : faire une boucle plutôt que de répéter le nombre de 1 à 5 ? un risque avec les GD !
+	public static inline var CARD_PACK_PICTURE_KARMA_1:String = "_karmaPack1_portrait";
+	public static inline var CARD_PACK_PICTURE_KARMA_2:String = "_karmaPack2_portrait";
+	public static inline var CARD_PACK_PICTURE_KARMA_3:String = "_karmaPack3_portrait";
+	public static inline var CARD_PACK_PICTURE_KARMA_4:String = "_karmaPack4_portrait";
+	public static inline var CARD_PACK_PICTURE_KARMA_5:String = "_karmaPack5_portrait";
+	public static inline var CARD_PACK_PICTURE_GOLD_1:String = "_goldPack1_portrait";
+	public static inline var CARD_PACK_PICTURE_GOLD_2:String = "_goldPack2_portrait";
+	public static inline var CARD_PACK_PICTURE_GOLD_3:String = "_goldPack3_portrait";
+	public static inline var CARD_PACK_PICTURE_GOLD_4:String = "_goldPack4_portrait";
+	public static inline var CARD_PACK_PICTURE_GOLD_5:String = "_goldPack5_portrait";
+	public static inline var CARD_PACK_PICTURE_WOOD_1:String = "_woodPack1_portrait";
+	public static inline var CARD_PACK_PICTURE_WOOD_2:String = "_woodPack2_portrait";
+	public static inline var CARD_PACK_PICTURE_WOOD_3:String = "_woodPack3_portrait";
+	public static inline var CARD_PACK_PICTURE_IRON_1:String = "_ironPack1_portrait";
+	public static inline var CARD_PACK_PICTURE_IRON_2:String = "_ironPack2_portrait";
+	public static inline var CARD_PACK_PICTURE_IRON_3:String = "_ironPack3_portrait";
 	
 	//Shop caroussel Interns
 	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";

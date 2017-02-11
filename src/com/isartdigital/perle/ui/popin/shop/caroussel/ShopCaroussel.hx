@@ -75,8 +75,10 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function scrollPrecedent ():Void {
+		var lCorrection:Int = (cardsToShow.length % maxCardsVisible) == 0 ? -maxCardsVisible : 0;
+		
 		if ((buildingListIndex - maxCardsVisible) < 0)
-			buildingListIndex = cardsToShow.length - cardsToShow.length % maxCardsVisible;
+			buildingListIndex = cardsToShow.length - (cardsToShow.length % maxCardsVisible) + lCorrection;
 		else
 			buildingListIndex -= maxCardsVisible;
 		

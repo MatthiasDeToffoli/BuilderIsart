@@ -21,7 +21,9 @@ class ShopCarousselCurrencies extends ShopCaroussel{
 			"Shop_Pack_1",
 			"Shop_Pack_2",
 			"Shop_Pack_3",
-			"Shop_Pack_4"
+			"Shop_Pack_4",
+			"Shop_Pack_5",
+			"Shop_Pack_6"
 		];
 	}
 	
