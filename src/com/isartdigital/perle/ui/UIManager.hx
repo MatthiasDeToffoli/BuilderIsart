@@ -73,6 +73,13 @@ class UIManager
 		pPopin.open();
 	}
 	
+	public function closePopin(pPopin: Popin):Void{
+		if (popins.length == 0) return;
+		pPopin.interactive = false;
+		popins.splice(popins.indexOf(pPopin), 1);
+		GameStage.getInstance().getPopinsContainer().removeChild(pPopin);
+		pPopin.close();
+	}
 	/**
 	 * Supprime le popin dans le conteneur de Screens
 	 */

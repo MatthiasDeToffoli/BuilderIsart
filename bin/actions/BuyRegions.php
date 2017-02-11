@@ -45,15 +45,28 @@
       exit;
     }
 
-    $nbRegion = getRegionQuantity($Id, $regionType);
+    $nbRegion = getRegionQuantity($Id, $Type);
 
-    if($X == 0) $price = 0;
+    if($X == 0){
+      $price = 0;
+      $xpHeaven = 0;
+      $xpHell = 0;
+    }
     else {
 
       $Config = getConfig();
 
        $price = $Config->PriceRegion * pow($Config->FactorRegionGrowth,$nbRegion);
-      if(abs($X) == 1) $price *= $Config->FactorRegionNearStyx;
+       $xp1 = $Config->RegionXpSameSide * pow($Config->FactorRegionGrowth,$nbRegion);
+       $xp2 = $Config->RegionXpOtherSide * pow($Config->FactorRegionGrowth,$nbRegion);
+      if(abs($X) == 1) {
+        $price *= $Config->FactorRegionNearStyx;
+        $xp1 *= $Config->FactorRegionNearStyx;
+        $xp2 *= $Config->FactorRegionNearStyx;
+      }
+
+      $xpHell = $X > 0 ? $xp1:$xp2;
+      $xpHeaven = $X < 0 ? $xp1:$xp2;
 
       $nbRegion++;
     }
@@ -71,7 +84,7 @@
     createRegion($Id,$Type,$X,$Y,$FTX,$FTY);
     updateResources($Id, "soft", $moneyRest);
 
-    $messageBack =  Array("flag" => true,"x" => $X, "y" => $Y, "type" => $Type, "ftx" => $FTX, "fty" => $FTY, "price" => $price);
+    $messageBack =  Array("flag" => true,"x" => $X, "y" => $Y, "type" => $Type, "ftx" => $FTX, "fty" => $FTY, "price" => $price, "xpHeaven" => $xpHeaven, "xpHell" => $xpHell);
 
 
     echo json_encode($messageBack);

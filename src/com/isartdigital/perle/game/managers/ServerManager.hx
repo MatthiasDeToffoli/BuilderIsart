@@ -40,6 +40,19 @@ typedef EventSuccessAddBuilding = {
 	var y:Int;
 }
 
+typedef EventSuccessAddRegion = {
+	var flag:Bool;
+	@:optional var message:String;
+	@:optional var x:Int;
+	@:optional var y:Int;
+	@:optional var type:String;
+	@:optional var ftx:Int;
+	@:optional var fty:Int;
+	@:optional var price:Float;
+	@:optional var xpHeaven:Float;
+	@:optional var xpHell:Float;
+}
+
 /**
  * Interface whit the server
  * @author Vicktor Grenu et Ambroise Rabier
@@ -302,14 +315,16 @@ class ServerManager {
 	 * @param	object a object return by database can contain an error message or region information
 	 */
 	private static function onDataRegionCallback(object:Dynamic):Void {
-		UIManager.getInstance().closeCurrentPopin();
-		var data:Dynamic = Json.parse(object);
-	
+		UIManager.getInstance().closePopin(ServerConnexionPopin.getInstance());
+		var data:EventSuccessAddRegion = Json.parse(object);
+
 		if (data.flag) {
 			if (currentButtonRegion != null) currentButtonRegion.destroy();
 			RegionManager.createRegion(stringToEnum(data.type), new Point(data.ftx, data.fty), {x:Std.int(data.x), y:Std.int(data.y)});
 			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(data.price));
 			currentButtonRegion = null;
+			ResourcesManager.gainResources(GeneratorType.goodXp, data.xpHeaven);
+			ResourcesManager.gainResources(GeneratorType.badXp, data.xpHell);
 			return;
 		}
 		
