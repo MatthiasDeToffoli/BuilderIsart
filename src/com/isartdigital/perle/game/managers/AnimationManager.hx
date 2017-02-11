@@ -36,7 +36,7 @@ class AnimationManager
 		var lElement:Building;
 		
 		for (lElement in buildingsToAnim) {
-			lElement.animationFine();
+			lElement.onAnimationEnd();
 		}
 
 	}

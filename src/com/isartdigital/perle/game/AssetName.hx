@@ -9,7 +9,7 @@ package com.isartdigital.perle.game;
 class AssetName{
 
 	//building state
-	public static inline var CONSTRUCT:String = "_construction";
+	public static inline var CONSTRUCT:String = "construction";
 	public static inline var ANIM:String = "_anim";
 	public static inline var ANIMATION:String = "animation";
 	// Building Neutral

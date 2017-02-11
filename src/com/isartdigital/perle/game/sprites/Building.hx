@@ -89,15 +89,10 @@ class Building extends Tile implements IZSortable
 	 * @param	pTileDesc
 	 * @return
 	 */
-	public static function createBuilding(pTileDesc:TileDescription, state:VBuildingState, isAnim:Bool):Building {
-		var suffix:String = "";
+	public static function createBuilding(pTileDesc:TileDescription, state:VBuildingState):Building {
 		
-		if (pTileDesc.buildingName == BuildingName.HEAVEN_HOUSE) {//@TODO : le test avec buildingName va	 péter quand on les aura tous :)
-			suffix = state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading ? AssetName.CONSTRUCT:""; 
-			if (isAnim) suffix += AssetName.ANIM;
-		}
 		
-		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level) + suffix);
+		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level));
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
@@ -116,22 +111,28 @@ class Building extends Tile implements IZSortable
 		container.addChild(lBuilding);
 		
 		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
-		if (isAnim && pTileDesc.buildingName == BuildingName.HEAVEN_HOUSE){
-			lBuilding.setAnimation();
-			AnimationManager.manage(lBuilding);
-		}
+		
+		if (state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading) lBuilding.setStateConstruction();
+
 		return lBuilding;
 	}
 	
+	public function setStateConstruction():Void {
+		setState(DEFAULT_STATE);
+	}
+	
+	public function setStateEndConstruction():Void {
+		setState(DEFAULT_STATE);
+	}
 	
 	public function new(?pAssetName:String) {
 		super(pAssetName);	
 	}
 	
-	public function animationFine():Void {
+	public function onAnimationEnd():Void {
 
 		if (animation.currentFrame == animation.totalFrames - 1) {
-			cast(linkedVirtualCell, VBuilding).reView();
+			cast(linkedVirtualCell, VBuilding).reShow();
 		}
 		
 	}

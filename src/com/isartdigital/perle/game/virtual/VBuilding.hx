@@ -123,14 +123,11 @@ class VBuilding extends VTile {
 	
 	override public function activate():Void {
 		super.activate();
-		createGraphic();
+		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
+		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		if(haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
 	}
 	
-	public function createGraphic(?playAnim:Bool = false):Void {
-		graphic = cast(Building.createBuilding(tileDesc,currentState,playAnim), Container);
-		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
-	}
 	/**
 	 * say if this building is in the altar zone
 	 * @param	pData data contain the region and the case to check
@@ -148,7 +145,7 @@ class VBuilding extends VTile {
 		}
 	}
 	
-	public function reView():Void {
+	public function reShow():Void {
 		desactivate();
 		activate();
 	}
@@ -332,11 +329,7 @@ class VBuilding extends VTile {
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		if (pElement.refTile != tileDesc.id) return;
 		
-		if (active) {
-			desactivate();
-			active = true;
-			createGraphic(true);	
-		}
+		if (active) cast(graphic, Building).setStateEndConstruction();
 		
 		setState(VBuildingState.isBuilt);
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
