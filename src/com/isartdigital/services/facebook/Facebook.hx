@@ -250,7 +250,6 @@ class Facebook
 			fb.ui (pParams, pCallBack);
 		}
 	}
-
 	
 }
 
