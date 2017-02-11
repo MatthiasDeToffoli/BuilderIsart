@@ -26,7 +26,7 @@ class GodMode
 		if (!isGod) {
 			if (pEvent.key == "g") {
 				isGod = true;
-				Browser.window.alert("God Mode Activate : \n tap 1 for levelup \n tap 2 for gain soft \n tap 3 for gain hard \n tap 4 for gain stone \n tap 5 for gain wood \n tap 6 to set langage in french \n tap 7 to set langage in english \n tap 8 to show this game to your friend");	
+				Browser.window.alert("God Mode Activate : \n tap 1 for levelup \n tap 2 for gain soft \n tap 3 for gain hard \n tap 4 for gain stone \n tap 5 for gain wood \n tap 6 to show this game to your friend");	
 			}
 		}
 		else {
@@ -39,9 +39,7 @@ class GodMode
 			else if (pEvent.key == '"' || pEvent.key == "3") ResourcesManager.gainResources(GeneratorType.hard, 20000);
 			else if (pEvent.key == "'" || pEvent.key == "4") ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 20000);
 			else if (pEvent.key == '(' || pEvent.key == "5") ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 20000);	
-			else if (pEvent.key == '-' || pEvent.key == "6") Localisation.traduction("fr");	
-			else if (pEvent.key == 'è' || pEvent.key == "7") Localisation.traduction("en");	
-			else if (pEvent.key == '_' || pEvent.key == "8"){
+			else if (pEvent.key == '-' || pEvent.key == "6"){
 				Facebook.ui({
 					method: 'share_open_graph',
 					action_type: 'og.shares',

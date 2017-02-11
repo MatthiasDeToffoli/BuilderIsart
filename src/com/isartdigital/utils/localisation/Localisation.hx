@@ -50,7 +50,6 @@ class Localisation
 			if (pLangage == "fr") allTraductions[label] = langage.fr;
 			else allTraductions[label] = langage.en;
 		}
-		trace(allTraductions);
 	}
 
 }

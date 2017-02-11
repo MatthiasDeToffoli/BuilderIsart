@@ -5,8 +5,10 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
+import com.isartdigital.utils.ui.smart.TextSprite;
 
 	
 /**
@@ -33,6 +35,17 @@ class OptionPoppin extends SmartPopinExtended
 	private static var btnFR:SmartButton;
 	private static var btnEN:SmartButton;
 	
+	private static var languageText:TextSprite;
+	private static var soundText:TextSprite;
+	private static var datasText:TextSprite;
+	
+	private static var sfx1Text:TextSprite;
+	private static var sfx2Text:TextSprite;
+	private static var music1Text:TextSprite;
+	private static var music2Text:TextSprite;
+	private static var btnResetText:TextSprite;
+	
+	
 	private static var buttonTab:Array<Array<SmartButton>>;
 	private static var musicOn:Bool = true;
 	private static var sfxOn:Bool = true;
@@ -52,8 +65,9 @@ class OptionPoppin extends SmartPopinExtended
 	 */
 	private function new() 
 	{
-		super(AssetName.OPTION_POPPIN);
+		super(AssetName.OPTION_POPPIN); 
 		setWireframe();
+		setValues();
 	}
 	
 	/**
@@ -64,10 +78,17 @@ class OptionPoppin extends SmartPopinExtended
 		btnReset = cast(getChildByName(AssetName.OPTION_POPPIN_RESETDATA), SmartButton);
 		btnFR = cast(getChildByName(AssetName.OPTION_POPPIN_FR), SmartButton);
 		btnEN = cast(getChildByName(AssetName.OPTION_POPPIN_EN), SmartButton);
+		
+		languageText = cast(getChildByName(AssetName.OPTION_POPPIN_LANGUAGE_TEXT), TextSprite);
+		soundText = cast(getChildByName(AssetName.OPTION_POPPIN_SOUND_TEXT), TextSprite);
+		datasText = cast(getChildByName(AssetName.OPTION_POPPIN_DATAS_TEXT), TextSprite);
+		
+		btnResetText = cast(SmartCheck.getChildByName(btnReset, AssetName.OPTION_POPPIN_DATAS_BTN_TEXT), TextSprite);
 		addButtonPoussoir();
 		
 		Interactive.addListenerClick(btnClose, onClickClose);
 		Interactive.addListenerClick(btnReset, resetData);
+		Interactive.addListenerRewrite(btnReset, setValuesBtnReset);
 		Interactive.addListenerClick(btnFR, onClickFr);
 		Interactive.addListenerClick(btnEN, onClickEn);
 	}
@@ -83,8 +104,11 @@ class OptionPoppin extends SmartPopinExtended
 		
 		sfx1 = cast(SmartCheck.getChildByName(sfxGroup, "On"), SmartButton);
 		Interactive.addListenerClick(sfx1, onClickSfx);
+		
 		sfx2 = cast(SmartCheck.getChildByName(sfxGroup, "Off"), SmartButton);
+		//sfx2Text = cast(SmartCheck.getChildByName(sfx2, AssetName.OPTION_POPPIN_SFX_OFF_TEXT), TextSprite);
 		Interactive.addListenerClick(sfx2, onClickSfx);
+		
 		buttonTab[0].push(sfx1);
 		buttonTab[0].push(sfx2);
 		
@@ -98,6 +122,19 @@ class OptionPoppin extends SmartPopinExtended
 	
 	private function setButtons(pNumber:Int):Void {
 		buttonTab[pNumber][0].visible? buttonTab[pNumber][0].visible = false: buttonTab[pNumber][0].visible = true;
+	}
+	
+	private function setValues():Void{
+		languageText.text =  Localisation.allTraductions["LABEL_OPTIONS_LANGAGE_TITLE"];
+		soundText.text =  Localisation.allTraductions["LABEL_LEVEL_OPTIONS_SOUND_TITLE"];
+		datasText.text =  Localisation.allTraductions["LABEL_OPTIONS_RESET_DATAS"];
+		
+		setValuesBtnReset();
+	}
+	
+	private function setValuesBtnReset():Void{
+		btnResetText = cast(SmartCheck.getChildByName(btnReset, AssetName.OPTION_POPPIN_DATAS_BTN_TEXT), TextSprite);
+		btnResetText.text = Localisation.allTraductions["LABEL_OPTIONS_RESET_DATAS"];
 	}
 	
 	private function onClickSfx():Void {
@@ -125,11 +162,13 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function onClickFr():Void {
-		trace("FR");
+		Localisation.traduction("fr");
+		actualizePopin();
 	}
 	
 	private function onClickEn():Void {
-		trace("EN");
+		Localisation.traduction("en");
+		actualizePopin();
 	}
 	
 	private function onClickClose():Void {
@@ -141,12 +180,18 @@ class OptionPoppin extends SmartPopinExtended
 		UIManager.getInstance().openPopin(ResetDataPoppin.getInstance());
 	}
 	
+	private static function actualizePopin():Void{
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(OptionPoppin.getInstance());
+	}
+	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnClose, onClickClose);
 		Interactive.removeListenerClick(btnReset, resetData);
+		Interactive.removeListenerRewrite(btnReset, setValuesBtnReset);
 		Interactive.removeListenerClick(sfx1, onClickSfx);
 		Interactive.removeListenerClick(sfx2, onClickSfx);
 		Interactive.removeListenerClick(music1, onClickMusic);
