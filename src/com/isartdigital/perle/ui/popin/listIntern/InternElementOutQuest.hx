@@ -140,7 +140,8 @@ class InternElementOutQuest extends InternElement
 		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
 		TimeManager.createTimeQuest(quest);
 		
-		ResourcesManager.spendTotal(GeneratorType.soft, internDatas.price);
+		if(!DialogueManager.ftueStepSendIntern || !DialogueManager.ftueStepMakeAllChoice || !DialogueManager.ftueStepMakeChoice)
+			ResourcesManager.spendTotal(GeneratorType.soft, internDatas.price);
 		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();

@@ -331,8 +331,9 @@ class Phantom extends Building {
 	// todo : creation a partir de building create en static ?
 	private function newBuild():Void {
 		
-		if (BuyManager.canBuy(buildingName)) {
-			BuyManager.buy(buildingName);
+		if (DialogueManager.ftueStepPutBuilding || BuyManager.canBuy(buildingName)) {
+			if (!DialogueManager.ftueStepPutBuilding)
+				BuyManager.buy(buildingName);
 			var newId = IdManager.newId();
 			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {

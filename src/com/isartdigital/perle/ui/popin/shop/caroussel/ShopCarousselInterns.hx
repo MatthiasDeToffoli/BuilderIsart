@@ -185,11 +185,12 @@ class ShopCarousselInterns extends ShopCaroussel{
 			hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 			hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
 			
-			if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
-				hellCard.buttonMode = false;
-				hellCard.interactive = false;
-				hellCard.alpha = 0.5;
-			}
+			if(!DialogueManager.ftueStepBuyIntern)
+				if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
+					hellCard.buttonMode = false;
+					hellCard.interactive = false;
+					hellCard.alpha = 0.5;
+				}
 		}
 		
 		else{
@@ -258,7 +259,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 */
 	private function onClickHell():Void{
 		//Si achat possible
-		if (Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
+		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])) {
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
 			changeID(Alignment.hell);
 			closeShop();

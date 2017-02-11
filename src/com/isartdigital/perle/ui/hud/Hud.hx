@@ -367,7 +367,10 @@ class Hud extends SmartScreen
 			DialogueManager.endOfaDialogue(true);
 		
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
-		ShopPopin.getInstance().init(ShopTab.Building);
+		if (DialogueManager.ftueStepOpenShopIntern || DialogueManager.ftueStepBuyIntern)
+			ShopPopin.getInstance().init(ShopTab.Interns);
+		else
+			ShopPopin.getInstance().init(ShopTab.Building);
 		hide();
 	}
 	

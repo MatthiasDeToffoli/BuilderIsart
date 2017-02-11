@@ -23,6 +23,7 @@ typedef FTUEStep = {
 	@optional var closePurgatory:Bool;
 	@optional var nextUnlocked:Bool;
 	@optional var closeUnlocked:Bool;
+	@optional var openShopIntern:Bool;
 	@optional var buyIntern:Bool;
 	@optional var openIntern:Bool;
 	@optional var sendIntern:Bool;

@@ -40,6 +40,7 @@ class DialogueManager
 	public static var ftueStepConstructBuilding:Bool = false;
 	public static var ftueStepOpenPurgatory:Bool = false;
 	public static var ftueStepSlideCard:Bool = false;
+	public static var ftueStepOpenShopIntern:Bool = false;
 	public static var ftueStepBuyIntern:Bool = false;
 	public static var ftueStepClickOnIntern:Bool = false;
 	public static var ftueStepSendIntern:Bool = false;
@@ -69,14 +70,13 @@ class DialogueManager
 	 */
 	public static function createFtue():Void {
 		/*dialogueSaved = 16;
-		SaveManager.save();*/
-		
+		SaveManager.save();
+		*/
 		var lSave:Int = SaveManager.currentSave.ftueProgress -1 ;
 		//check if first time
 		if(lSave!=null)
 		if (lSave > steps.length-1 || steps[lSave].endOfFtue || steps[lSave].endOfSpecial || steps[lSave].endOfAltar || steps[lSave].endOfCollectors || steps[lSave].endOfFactory || steps[lSave].endOfMarketing || steps[lSave].endOfSpecial) {
 			//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
-			trace("test");
 			return;
 		}
 		if (steps[lSave].haveToMakeAllChoice) {
@@ -148,7 +148,6 @@ class DialogueManager
 	public static function register (pTarget:DisplayObject, ?pIsNotDialogue:Bool, ?readyForNextStep:Bool, ?pPosition): Void {
 		if (dialogueSaved >= steps.length ) return;
 		for (i in 0...steps.length) {
-			trace(pTarget.name);
 			if (pTarget.name == steps[i].name) {
 				steps[i].item = pTarget;
 				if (readyForNextStep) nextStep();
@@ -183,6 +182,8 @@ class DialogueManager
 				ftueStepMakeAllChoice = true;
 			if (steps[dialogueSaved].closeGatcha)
 				ftueStepCloseGatcha = true;
+			if (steps[dialogueSaved].openShopIntern)
+				ftueStepOpenShopIntern = true;
 			
 			//Dialogue + Arrow
 			if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].arrowRotation != null) {
@@ -442,6 +443,7 @@ class DialogueManager
 		ftueStepMakeChoice = false;	
 		ftueStepMakeAllChoice = false;	
 		ftueStepCloseGatcha = false;	
+		ftueStepOpenShopIntern = false;	
 		ftueClosePurgatory = false;
 		ftueCloseUnlockedItem = false;	
 	}

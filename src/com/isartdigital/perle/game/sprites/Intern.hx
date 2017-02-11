@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.GameConfig.TableInterns;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.IdManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
@@ -72,7 +73,9 @@ class Intern
 	
 	public static function buy(pIntern:InternDescription):Void{
 		var pAlignment:Alignment = null;
-		ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
+		
+		if (!DialogueManager.ftueStepBuyIntern)	
+			ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
 	}

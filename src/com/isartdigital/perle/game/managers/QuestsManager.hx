@@ -30,6 +30,7 @@ class QuestsManager
 	//The time's gap between two events will be vary between these constants
 	private static var MIN_TIMELINE(default, null):Int = 2000;
 	private static var MAX_TIMELINE(default, null):Int = 30000;
+	private static var FTUE_TIMELINE:Int = 2500;
 	
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
 	
@@ -83,7 +84,6 @@ class QuestsManager
 	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
 		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Int> = createRandomGapArray(Intern.getIntern(pIdIntern));
-		
 		var lTimeQuestDescription:TimeQuestDescription = {
 			refIntern: lIdTimer,
 			progress: 0,
@@ -108,10 +108,12 @@ class QuestsManager
 	private static function createRandomGapArray(pIntern:InternDescription):Array<Int>{
 		var lListEvents:Array<Int> = new Array<Int>();
 		var lGap:Int = 0;
-		
 		for (i in 0...NUMBER_EVENTS){
 			//lGap = Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap;
-			lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
+			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
+				lGap = FTUE_TIMELINE + lGap;
+			else
+				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
 			lListEvents.push(lGap);
 		}
 		
