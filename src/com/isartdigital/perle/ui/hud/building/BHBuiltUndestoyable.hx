@@ -38,7 +38,10 @@ class BHBuiltUndestoyable extends BuildingHud
 	}
 	
 	private function setDescriptionButton():Void {
-		Interactive.addListenerClick(btnDescription, onClickDescription);
+		if (!Std.is(BuildingHud.virtualBuilding, VInternHouse)) {
+			Interactive.addListenerClick(btnDescription, onClickDescription);
+		}
+		else btnDescription.alpha = 0.5;
 	}
 	
 	private function removeButtonsChange():Void {
@@ -74,7 +77,7 @@ class BHBuiltUndestoyable extends BuildingHud
 		
 	private function openInfoBuilding():Void {
 		if (BuildingHud.virtualBuilding == null) return;
-		if (Std.is(BuildingHud.virtualBuilding, VInternHouse)) UIManager.getInstance().openPopin(InternHousePopin.getInstance()); 
+		//if (Std.is(BuildingHud.virtualBuilding, VInternHouse)) return; 
 		else {
 			InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 			UIManager.getInstance().openPopin(InfoBuilding.getInstance());

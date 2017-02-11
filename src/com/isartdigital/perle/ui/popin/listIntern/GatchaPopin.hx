@@ -3,6 +3,8 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -31,6 +33,11 @@ class GatchaPopin extends SmartPopin
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
 	public static var quest:TimeQuestDescription;
+	
+	private static inline var GOLD_WON:Int = 1000;
+	private static inline var HARD_WON:Int = 5;
+	private static inline var WOOD_WON:Int = 1000;
+	private static inline var STONE_WON:Int = 1000;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -71,7 +78,8 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	private function onGift():Void{
-		trace("gift");
+		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
+		ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
 		QuestsManager.finishQuest(quest);
 	}
 	

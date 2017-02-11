@@ -109,11 +109,11 @@ class QuestsManager
 		var lListEvents:Array<Int> = new Array<Int>();
 		var lGap:Int = 0;
 		for (i in 0...NUMBER_EVENTS){
-			//lGap = Math.floor(Math.random() * (MAX_TIMELINE - MIN_TIMELINE + 1)) + MIN_TIMELINE + lGap;
+			
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
 				lGap = FTUE_TIMELINE + lGap;
-			else
-				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
+			else lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
+				
 			lListEvents.push(lGap);
 		}
 		

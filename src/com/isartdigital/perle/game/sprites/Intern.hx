@@ -80,6 +80,18 @@ class Intern
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
 	}
 	
+	public static function numberInternsInQuest():Int{
+		var lNumber:Int = 0;
+		
+		for (i in 0...Intern.internsListArray.length){
+			if (internsListArray[i].quest != null){
+				lNumber++;
+			}
+		}
+		
+		return lNumber;
+	}
+	
 	/**
 	 * get all the interns in Interns table
 	 */
@@ -172,7 +184,6 @@ class Intern
 	public static function destroyIntern(pId:Int):Void{	
 		for (i in 0...internsListArray.length){
 			if (pId == internsListArray[i].id){
-				trace("intern" + internsListArray[i]);
 				internsListArray.splice(internsListArray.indexOf(internsListArray[i]), 1);
 				break;
 			}

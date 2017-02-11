@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -45,7 +46,12 @@ class ListInternPopin extends SmartPopin
 	private var internsPositions:Array<Point>;
 	
 	private var internsInQuestInfo:SmartComponent;
+	private var internsInQuestMax:TextSprite;
 	private var actualNbInternInQuest:TextSprite;
+	
+	private var internsHousesInfo:SmartComponent;
+	private var internsHousesHeaven:TextSprite;
+	private var internsHousesHell:TextSprite;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -67,7 +73,14 @@ class ListInternPopin extends SmartPopin
 			btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 			btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
 			
-			//getSpawnersPosition();
+			internsInQuestInfo = cast(getChildByName(AssetName.INTERN_IN_QUEST_VALUE), SmartComponent);
+			actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
+			internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
+			
+			internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
+			internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
+			internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
+			
 			//Create empty places for quests in function of the player's level
 			for (i in 0...AssetName.internListSpawners.length){
 				
@@ -78,10 +91,48 @@ class ListInternPopin extends SmartPopin
 				
 				else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));
 			}
+			
+		setValues();
 		
 		Interactive.addListenerClick(btnLeft, onLeft);
 		Interactive.addListenerClick(btnRight, onRight);
 		Interactive.addListenerClick(btnClose, onClose);
+	}
+	
+	private function setValues():Void{
+		actualNbInternInQuest.text = Intern.numberInternsInQuest() + "";
+		internsInQuestMax.text = getNumberPlaces() + "";
+		
+		setValuesNumberHousesHeaven();
+		setValuesNumberHousesHell();
+	}
+	
+	/**
+	 * Set the correct values of the heaven intern house
+	 */
+	private function setValuesNumberHousesHeaven():Void{
+		if (Intern.numberInternHouses[Alignment.heaven] != null && Intern.internsListAlignment[Alignment.heaven] != null){
+			internsHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length + "";
+		}
+		
+		else {
+			if (Intern.numberInternHouses[Alignment.heaven] == null) internsHousesHeaven.text = 0 + "";
+			if (Intern.internsListAlignment[Alignment.heaven] == null) internsHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] + "";
+		}
+	}
+	
+	/**
+	 * Set the correct values of the hell intern house
+	 */
+	private function setValuesNumberHousesHell():Void{
+		if (Intern.numberInternHouses[Alignment.hell] != null && Intern.internsListAlignment[Alignment.hell] != null){
+			internsHousesHell.text = Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length + "";
+		}
+		
+		else {
+			if (Intern.numberInternHouses[Alignment.hell] == null) internsHousesHell.text = 0 + "";
+			if (Intern.internsListAlignment[Alignment.hell] == null) internsHousesHell.text = Intern.numberInternHouses[Alignment.hell] + "";
+		}
 	}
 	
 	/**

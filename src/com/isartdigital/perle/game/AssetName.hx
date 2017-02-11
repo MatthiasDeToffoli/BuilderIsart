@@ -208,9 +208,16 @@ class AssetName{
 	public static inline var INTERN_LIST:String = "ListInterns";
 	public static inline var INTERN_LIST_LEFT:String = "_arrow_left";
 	public static inline var INTERN_LIST_RIGHT:String = "_arrow_right";
+	public static inline var INTERN_IN_QUEST_VALUE:String = "InternInQuest_Value";
+	public static inline var INTERN_IN_QUEST_VALUE_MAX:String = "_internsInQuest_TotalValue";
+	public static inline var INTERN_IN_QUEST_VALUE_ACTUAL:String = "_internsInQuest_value";
+	
+	public static inline var INTERN_HOUSE_NUMBER:String = "InternHouseNumber";
+	public static inline var INTERN_HOUSE_NUMBER_HEAVEN:String = "_internHouseNumber_actualValue";
+	public static inline var INTERN_HOUSE_NUMBER_HELL:String = "_internHouseNumber";
+	
 	public static var internListSpawners:Array<String> = ["Intern01", "Intern02", "Intern03"];
-	//public static inline var INTERN_LIST_SPAWNER1:String = "Intern02";
-	//public static inline var INTERN_LIST_SPAWNER2:String = "Intern03";
+	
 	
 	//in quest
 	public static inline var INTERN_INFO_IN_QUEST:String = "ListInQuest";

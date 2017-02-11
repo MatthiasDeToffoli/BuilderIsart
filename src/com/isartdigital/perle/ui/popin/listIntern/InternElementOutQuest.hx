@@ -55,7 +55,6 @@ class InternElementOutQuest extends InternElement
 		setValues(pDesc);
 		
 		internDatas = pDesc;
-		
 		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
 	}
 
