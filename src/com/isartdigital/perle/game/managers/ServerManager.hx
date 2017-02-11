@@ -53,6 +53,16 @@ typedef EventSuccessAddRegion = {
 	@:optional var xpHell:Float;
 }
 
+typedef TableRegion = {
+	var Id:Int;
+	var IdPlayer:Int;
+	var Type:String;
+	var PositionX:Int;
+	var PositionY:Int;
+	var FistTilePosX:Int;
+	var FistTilePosY:Int;
+}
+
 /**
  * Interface whit the server
  * @author Vicktor Grenu et Ambroise Rabier
@@ -170,6 +180,17 @@ class ServerManager {
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
 			default: return;	
 		}
+	}
+	
+	public static function loadRegion():Void {
+		callPhpFile(onRegionLoad, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOAD_REGION]);
+	}
+	
+	private static function onRegionLoad(pObject:Dynamic):Void {
+		var listRegionLoad:Array<TableRegion> = Json.parse(pObject);
+		
+		if (listRegionLoad.length == 0) RegionManager.buildWhitoutSave();
+		else RegionManager.load(listRegionLoad);		
 	}
 	
 	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null):Void {
@@ -377,4 +398,5 @@ class ServerFile {
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";
 	public static inline var TIME_QUEST:String = "Quest";
+	public static inline var LOAD_REGION:String = "LoadRegion";
 }

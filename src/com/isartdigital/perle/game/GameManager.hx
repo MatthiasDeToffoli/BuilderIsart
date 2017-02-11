@@ -64,6 +64,7 @@ class GameManager {
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
 		
+		//ServerManager.loadRegion();
 		ServerManager.playerConnexion();
 		GameConfig.awake();
 		AnimationManager.awake();

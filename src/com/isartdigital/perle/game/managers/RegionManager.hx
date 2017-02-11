@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
+import com.isartdigital.perle.game.managers.ServerManager.TableRegion;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
@@ -296,7 +297,7 @@ class RegionManager
 		createRegion(Alignment.hell, new Point(Ground.COL_X_STYX_LENGTH, 0), {x:1, y:0});
 		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
-		VTribunal.getInstance();
+		VTribunal.getInstance().activate();
 	}
 	
 	private static function createManyBgUnderInHell(startPos:Point, startMapPos:Index, numberX:Int, numberY:Int):Void {
@@ -362,6 +363,40 @@ class RegionManager
 				);
 		}		
 		
+	}
+	
+	public static function load(pSave:Array<TableRegion>):Void {
+		var l:UInt = pSave.length;
+		var desc:RegionDescription;
+		
+		for (i in 0...l){
+			desc = {
+				firstTilePos: {
+					x:Std.int(pSave[i].FistTilePosX),
+					y:Std.int(pSave[i].FistTilePosY)
+				},
+				x:Std.int(pSave[i].PositionX),
+				y:Std.int(pSave[i].PositionY),
+				type : ServerManager.stringToEnum(pSave[i].Type)
+			};
+
+			addToWorldMap(createRegionFromDesc(desc));
+		}
+		
+		for (i in 0...l) {		
+			if (ServerManager.stringToEnum(pSave[i].Type) != Alignment.neutral)
+				addButton(
+					new Point(
+						pSave[i].FistTilePosX,
+						pSave[i].FistTilePosY
+					),
+					new Point(
+						pSave[i].PositionX,
+						pSave[i].PositionY
+					),
+					0
+				);
+		}
 	}
 	
 	/**

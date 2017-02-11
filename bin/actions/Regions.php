@@ -76,6 +76,28 @@
   }
 
   /**
+  *get all region to this player
+  *@param $pId id of the player
+  *@return all region of this player
+  */
+
+  function getAllRegion($pId){
+    global $db;
+
+    $req = "SELECT * FROM `Region` WHERE IdPlayer = :id";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':id', $pId);
+
+    try {
+      $reqPre->execute();
+      return $reqPre->fetchAll(PDO::FETCH_OBJ);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+  }
+
+  /**
    * test if the client want to add a region on another region
    * @param $X the position X of the region in world map
    * @param $X the position Y of the region in world map
