@@ -86,10 +86,9 @@ class CCUBuilding extends CarouselCardUnlock{
 	
 	override function _click(pEvent:EventTarget = null):Void {
 		super._click(pEvent);
-		if (DialogueManager.ftueStepClickOnCard)
-			DialogueManager.endOfaDialogue();
-		
-		if (BuyManager.canBuy(buildingName)) {
+		if (DialogueManager.ftueStepClickOnCard || BuyManager.canBuy(buildingName)) {
+			if (DialogueManager.ftueStepClickOnCard)
+				DialogueManager.endOfaDialogue();
 			Phantom.onClickShop(buildingName);
 			Hud.getInstance().hideBuildingHud();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);

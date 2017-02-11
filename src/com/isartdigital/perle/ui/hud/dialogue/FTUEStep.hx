@@ -23,6 +23,13 @@ typedef FTUEStep = {
 	@optional var closePurgatory:Bool;
 	@optional var nextUnlocked:Bool;
 	@optional var closeUnlocked:Bool;
+	@optional var buyIntern:Bool;
+	@optional var openIntern:Bool;
+	@optional var sendIntern:Bool;
+	@optional var resolveIntern:Bool;
+	@optional var makeChoice:Bool;
+	@optional var haveToMakeAllChoice:Bool;
+	@optional var closeGatcha:Bool;
 	//dialogue
 	@optional var dialogueNumber:Int;
 	@optional var npcWhoTalk:String;

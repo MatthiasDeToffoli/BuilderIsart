@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -169,8 +170,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	public function onClose():Void {
-
-		if (Choice.isVisible())
+		if (Choice.isVisible() || DialogueManager.ftueStepSendIntern || DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice)
 			return;
 		
 		UIManager.getInstance().closeCurrentPopin();

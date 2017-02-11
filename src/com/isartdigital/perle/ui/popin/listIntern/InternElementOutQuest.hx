@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -11,6 +12,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.listIntern.SendButton;
 import com.isartdigital.perle.ui.popin.listIntern.StressButton;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.Popin;
@@ -19,6 +21,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
+import pixi.interaction.EventTarget;
 
 /**
  * the bloc when intern is not in quest
@@ -126,6 +129,9 @@ class InternElementOutQuest extends InternElement
 	
 	private function onSend(){
 		trace("send");
+		if (DialogueManager.ftueStepSendIntern)
+			DialogueManager.endOfaDialogue();
+		
 		//var lLength:Int = QuestsManager.questsList.length;
 		quest = QuestsManager.createQuest(internDatas.id);
 		

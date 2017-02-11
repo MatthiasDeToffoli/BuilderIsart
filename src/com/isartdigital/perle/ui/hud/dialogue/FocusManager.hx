@@ -59,9 +59,7 @@ class FocusManager extends Screen
 	 */
 	public function setFocus (?pTarget:DisplayObject, ?pRotation:Float = 0): Void {
 		if (target != null && target.parent == this) swap(shadow, target);
-			//trace(pTarget);
 		if (pTarget != null) {
-			//trace(pTarget);
 			target = pTarget;
 			swap(target, shadow);
 		}	

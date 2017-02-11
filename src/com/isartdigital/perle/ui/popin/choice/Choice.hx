@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.choice;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -240,7 +241,10 @@ class Choice extends SmartPopinExtended
 		if (choiceType != ChoiceType.NONE) {
 			ChoiceManager.applyReward(intern, reward, choiceType);
 			QuestsManager.goToNextStep();
-			onClose();
+			if (DialogueManager.ftueStepMakeChoice)
+				DialogueManager.endOfaDialogue();
+			destroy();
+			//onClose();
 		}
 	}
 	
@@ -249,6 +253,8 @@ class Choice extends SmartPopinExtended
 	 */
 	private function onClose():Void
 	{
+		if (DialogueManager.ftueStepMakeChoice || DialogueManager.ftueStepMakeAllChoice)
+			return;
 		Hud.getInstance().show();
 		destroy();
 	}
@@ -280,7 +286,7 @@ class Choice extends SmartPopinExtended
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnInterns, onSeeAll);
-		Interactive.removeListenerClick(btnShare, shareEvent);
+		//Interactive.removeListenerClick(btnShare, shareEvent);
 		Interactive.removeListenerClick(btnClose, onClose);
 		choiceCard.interactive = false;
 		choiceCard.off(MouseEventType.MOUSE_DOWN, startFollow);

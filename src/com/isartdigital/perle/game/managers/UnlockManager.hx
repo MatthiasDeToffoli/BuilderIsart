@@ -56,7 +56,7 @@ class UnlockManager
 	
 	public static function checkIfNeedToCreateDialogue() {
 		var lLevel = ResourcesManager.getLevel();
-		if (lLevel == LEVEL_UNLOCK_COLLECTORS || lLevel == LEVEL_UNLOCK_FACTORY || lLevel == LEVEL_UNLOCK_ALTAR || lLevel == LEVEL_UNLOCK_MARKETING)
+		if (lLevel == LEVEL_UNLOCK_SPECIAL || lLevel == LEVEL_UNLOCK_COLLECTORS || lLevel == LEVEL_UNLOCK_FACTORY || lLevel == LEVEL_UNLOCK_ALTAR || lLevel == LEVEL_UNLOCK_MARKETING)
 			DialogueManager.nextStep();
 		/*switch ResourcesManager.getLevel() {
 			case LEVEL_UNLOCK_SPECIAL : trace("Unlock Special");

@@ -363,11 +363,9 @@ class Hud extends SmartScreen
 	}
 	
 	private function onClickShop ():Void {
-		if (DialogueManager.ftueStepClickShop) {
-			
-			//DialogueManager.removeDialogue();
+		if (DialogueManager.ftueStepClickShop)
 			DialogueManager.endOfaDialogue(true);
-		}
+		
 		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 		ShopPopin.getInstance().init(ShopTab.Building);
 		hide();
@@ -391,9 +389,12 @@ class Hud extends SmartScreen
 		hide();
 	}
 	
-	private function onClickListIntern(){
+	private function onClickListIntern() {
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		hide();
+		if (DialogueManager.ftueStepClickOnIntern)
+			DialogueManager.endOfaDialogue(true);
+		
 	}
 	
 	private function onClickOptions() {

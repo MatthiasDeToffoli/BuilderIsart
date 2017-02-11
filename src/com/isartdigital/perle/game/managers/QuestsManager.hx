@@ -141,7 +141,7 @@ class QuestsManager
 		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
 		Hud.getInstance().hide();
-		UIManager.getInstance().closeCurrentPopin;
+		//UIManager.getInstance().closeCurrentPopin;
 		Choice.getInstance().setIntern(Intern.getIntern(pQuest.refIntern));
 		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
 	}
@@ -180,6 +180,8 @@ class QuestsManager
 	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeQuestDescription):Void{
 		trace("end");
+		if (DialogueManager.ftueStepMakeAllChoice)
+			DialogueManager.endOfaDialogue();
 		UIManager.getInstance().closeCurrentPopin();
 		GatchaPopin.quest = pQuest;
 		UIManager.getInstance().openPopin(GatchaPopin.getInstance());
@@ -192,7 +194,9 @@ class QuestsManager
 		}
 	}
 	
-	public static function finishQuest(pQuest:TimeQuestDescription):Void{
+	public static function finishQuest(pQuest:TimeQuestDescription):Void {
+		if (DialogueManager.ftueStepCloseGatcha)
+			DialogueManager.endOfaDialogue();
 		ServerManager.EventAction(DbAction.REM, pQuest.refIntern);
 		
 		if (isMaxStress(questInProgress.refIntern)){

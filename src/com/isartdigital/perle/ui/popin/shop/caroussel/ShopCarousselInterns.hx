@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -261,6 +262,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
 			changeID(Alignment.hell);
 			closeShop();
+			if (DialogueManager.ftueStepBuyIntern)
+				DialogueManager.endOfaDialogue();
 		}
 	}
 	

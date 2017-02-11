@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -74,7 +75,9 @@ class GatchaPopin extends SmartPopin
 		QuestsManager.finishQuest(quest);
 	}
 	
-	private function onClose():Void{
+	private function onClose():Void {
+		if (DialogueManager.ftueStepCloseGatcha)
+			return;
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
 	}

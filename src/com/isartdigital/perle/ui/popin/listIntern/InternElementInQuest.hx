@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -122,7 +123,9 @@ class InternElementInQuest extends InternElement
 		Interactive.addListenerClick(picture, onPicture);
 	}
 	
-	private function onResolve(){
+	private function onResolve() {
+		if (DialogueManager.ftueStepResolveIntern)
+			DialogueManager.endOfaDialogue();
 		QuestsManager.choice(quest);
 	}
 	

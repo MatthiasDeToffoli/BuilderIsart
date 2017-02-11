@@ -155,7 +155,7 @@ class ShopCaroussel extends SmartComponent {
 		for (i in 0...pPositions.length) {
 			var j:Int = i + buildingListIndex;
 			
-			if (cardsToShow[j] == null)
+			if (cardsToShow[j] == null || cardsToShow[j] == "null")
 				break;
 			
 			cards[i] = getNewCard(cardsToShow[j]);
@@ -172,7 +172,6 @@ class ShopCaroussel extends SmartComponent {
 	
 	private function getCardToShow ():Array<String> {
  		if (DialogueManager.ftueStepClickOnCard) {
-			trace("rendjfnsfkvvsfifdlv,");
  			return DialogueManager.getCardToShow(myEnum);
 		}
  		return getCardToShowOverride();

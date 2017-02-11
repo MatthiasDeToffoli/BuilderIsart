@@ -40,7 +40,7 @@ class VHouse extends VBuildingUpgrade
 	 * add a new population to this building
 	 * @param	pMax the max soul building can has
 	 */
-	private function addPopulation():Void{
+	private function addPopulation():Void {
 		if (tileDesc.maxPopulation == null) {
 			tileDesc.currentPopulation = 0;
 			tileDesc.maxPopulation = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).maxSoulsContained;
