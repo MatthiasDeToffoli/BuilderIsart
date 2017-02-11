@@ -4,6 +4,7 @@ package com.isartdigital.perle.game;
 /**
  * Constant for assetName, assetName can be wrong named
  * but not our constant ! ;)
+ * It's like a GD to GDP traduction system
  * @author ambroise
  */
 class AssetName{
@@ -62,10 +63,12 @@ class AssetName{
 	// Game
 	public static inline var BTN_PRODUCTION:String = "ProdDone";
 	
-	//element in many popin
+	// Element in many popin
 	public static inline var BTN_CLOSE:String = "ButtonClose";
 	public static inline var TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
 	public static inline var TEXT:String = "Text";
+	
+	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
 	public static inline var SHOP_BTN_CLOSE:String = SHOP_PREFIX +  "Close_Button";
@@ -103,8 +106,7 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_UNLOCKED:String = "ButtonBuyBuildingDeco";
 	public static inline var CAROUSSEL_CARD_UNLOCKED_BTN_INFO:String = "ButtonInfo";
 	public static inline var CAROUSSEL_CARD_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
-	//public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBuyPack"; // outdated ?
-	public static inline var CAROUSSEL_CARD_PACK:String = "Shop_BuyablePack";
+	public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBundle";
 	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "ButtonBuyPack";
 	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "ButtonBuyPack_Ressource";
 	
@@ -139,7 +141,26 @@ class AssetName{
 	public static inline var CARD_PACK_PICTURE_IRON_2:String = "_ironPack2_portrait";
 	public static inline var CARD_PACK_PICTURE_IRON_3:String = "_ironPack3_portrait";
 	
-	//Shop caroussel Interns
+	// Shop caroussel Bundle
+	public static inline var CARD_BUNDLE_PICTURE:String = "_bundle_portrait_spawn";
+	public static inline var CARD_BUNDLE_TEXT_NAME:String = "Title";
+	public static inline var CARD_BUNDLE_TEXT_COST_IP:String = "IPCost";
+	public static inline var CARD_BUNDLE_TEXT_GAIN_IRON:String = "StoneValue";
+	public static inline var CARD_BUNDLE_TEXT_GAIN_WOOD:String = "WoodValue";
+	public static inline var CARD_BUNDLE_TEXT_GAIN_SOFT:String = "SCValue";
+	public static inline var CARD_BUNDLE_TEXT_GAIN_HARD:String = "HCValue";
+	public static inline var CARD_BUNDLE_ICON_GAIN_IRON:String = "StoneIcon";
+	public static inline var CARD_BUNDLE_ICON_GAIN_WOOD:String = "WoodIcon";
+	public static inline var CARD_BUNDLE_ICON_GAIN_SOFT:String = "SCIcon";
+	public static inline var CARD_BUNDLE_ICON_GAIN_HARD:String = "HCIcon";
+	public static inline var CARD_BUNDLE_BACKGROUND:String = "BG"; // not used
+	public static inline var CARD_BUNDLE_ICON_COST_IP:String = "IPIcon"; // not used
+	public static inline var CARD_BUNDLE_PICTURE_1:String = "_bundle1_portrait";
+	public static inline var CARD_BUNDLE_PICTURE_2:String = "_bundle2_portrait";
+	public static inline var CARD_BUNDLE_PICTURE_3:String = "_bundle3_portrait";
+	public static inline var CARD_BUNDLE_PICTURE_4:String = "_bundle4_portrait";
+	
+	// Shop caroussel Interns
 	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";
 	public static inline var CAROUSSEL_INTERN_HELL_CARD:String = "Intern_HellCard";
 	public static inline var CAROUSSEL_INTERN_HEAVEN_CARD:String = "Intern_HeavenCard";
@@ -149,7 +170,7 @@ class AssetName{
 	public static inline var CAROUSSEL_INTERN_HEAVEN_PRICE:String = "_internPrice_heaven_txt";
 	public static inline var CAROUSSEL_INTERN_HELL_PRICE:String = "_internPrice_hell_txt";
 	
-	//Shop Reroll
+	// Shop Reroll
 	public static inline var REROLL_GAUGE:String = "JaugeTimer";
 	public static inline var REROLL_ACCELERATE_BUTTON:String = "Accelerate_button";
 	public static inline var REROLL_GAUGE_BAR:String = "Bar";

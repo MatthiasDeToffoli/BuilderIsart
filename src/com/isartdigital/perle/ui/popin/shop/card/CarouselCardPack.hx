@@ -6,7 +6,6 @@ import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.math.Point;
 
 /**
  * ...
@@ -14,6 +13,34 @@ import pixi.core.math.Point;
  */
 class CarouselCardPack extends CarouselCard{
 
+	private static var pictureSwitch(default, never):Map<GeneratorType, Map<Int,String>> = [
+		GeneratorType.soft => [
+			1 => AssetName.CARD_PACK_PICTURE_GOLD_1,
+			2 => AssetName.CARD_PACK_PICTURE_GOLD_2,
+			3 => AssetName.CARD_PACK_PICTURE_GOLD_3,
+			4 => AssetName.CARD_PACK_PICTURE_GOLD_4,
+			5 => AssetName.CARD_PACK_PICTURE_GOLD_5
+		],
+		GeneratorType.hard => [
+			1 => AssetName.CARD_PACK_PICTURE_KARMA_1,
+			2 => AssetName.CARD_PACK_PICTURE_KARMA_2,
+			3 => AssetName.CARD_PACK_PICTURE_KARMA_3,
+			4 => AssetName.CARD_PACK_PICTURE_KARMA_4,
+			5 => AssetName.CARD_PACK_PICTURE_KARMA_5
+		],
+		GeneratorType.buildResourceFromHell => [
+			1 => AssetName.CARD_PACK_PICTURE_IRON_1,
+			2 => AssetName.CARD_PACK_PICTURE_IRON_2,
+			3 => AssetName.CARD_PACK_PICTURE_IRON_3
+		],
+		GeneratorType.buildResourceFromParadise => [
+			1 => AssetName.CARD_PACK_PICTURE_WOOD_1,
+			2 => AssetName.CARD_PACK_PICTURE_WOOD_2,
+			3 => AssetName.CARD_PACK_PICTURE_WOOD_3
+		]
+	];
+	
+	private var myConfig:TableTypeShopPack;
 	private var cardName:String;
 	private var price:TextSprite;
 	private var iconGain:UISprite;
@@ -27,7 +54,13 @@ class CarouselCardPack extends CarouselCard{
 	}
 	
 	override public function init(pName:String):Void {
+		// note : i use the buildingName for the other tab to know which cards i need to show.
+		// cardName is not used, but if i want to use properly my parent methods, i need
+		// to give a unique name for my card.
+		// maybe i could use Std.string(iD) from dataBase instead.
+		
 		cardName = pName;
+		myConfig = GameConfig.getShopPackByName(cardName);
 		super.init(pName);
 	}
 	
@@ -40,15 +73,14 @@ class CarouselCardPack extends CarouselCard{
 		gain = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_GAIN), TextSprite);
 		picture = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_PICTURE), UISprite);
 		
-		var lConfig:TableTypeShopPack = GameConfig.getShopPackByName(cardName);
-		var lPriceType:GeneratorType = getPriceType(lConfig);
-		var lGainType:GeneratorType = getGainType(lConfig);
+		var lPriceType:GeneratorType = getPriceType(myConfig);
+		var lGainType:GeneratorType = getGainType(myConfig);
 		
-		setPrice(lConfig.priceIP == null ? lConfig.priceKarma : lConfig.priceIP);
+		setPrice(myConfig.priceIP == null ? myConfig.priceKarma : myConfig.priceIP);
 		setIconPrice(lPriceType);
 		setIconGain(lGainType);
-		setGain(getGainValue(lGainType, lConfig));
-		setPicture(lGainType, lConfig.iconLevel);
+		setGain(getGainValue(lGainType, myConfig));
+		setPicture(picture, lGainType, myConfig.iconLevel, pictureSwitch);
 		//setName(cardName); there is no name testSprite.
 	}
 	
@@ -92,10 +124,6 @@ class CarouselCardPack extends CarouselCard{
 		gain.text = addkToInt(cast(pInt, Float));
 	}
 	
-	private function addkToInt (pFloat:Float):String {
-		return pFloat > 1000 ? Std.string(pFloat / 1000) + "k" : Std.string(pFloat);
-	}
-	
 	private function setIconPrice (pGainType:GeneratorType):Void {
 		switch (pGainType) {
 			//case GeneratorType.isartPoint :; // do nothing, icon already set
@@ -114,67 +142,27 @@ class CarouselCardPack extends CarouselCard{
 		}
 	}
 	
-	private function changeIconSpawner (pSpriteName:String, pSpawner:UISprite):Void {
-		var lSprite:UISprite = new UISprite(pSpriteName);
-		lSprite.position = pSpawner.position;
-		addChild(lSprite);
-		removeChild(pSpawner);
-		pSpawner.destroy();
-		pSpawner = lSprite;
-	}
-	
-	/*private function setName (pString:String):Void {
-		textName.text = pString;
-	}*/
-	
 	/**
 	 * Set the picture for the card, level begin from 1, and goes max to 5
 	 * @param	pGainType
 	 * @param	pIconLevel
 	 */
-	private function setPicture (pGainType:GeneratorType, pIconLevel:Int):Void {
-		
-		if (pIconLevel < 1 || pIconLevel > 5)
-			Debug.error("pIconLevel level is not supported ! (must be between 1 and 5 included)");
-		
-		var lSwitch:Map<GeneratorType, Map<Int,String>> = [
-			GeneratorType.soft => [
-				1 => AssetName.CARD_PACK_PICTURE_GOLD_1,
-				2 => AssetName.CARD_PACK_PICTURE_GOLD_2,
-				3 => AssetName.CARD_PACK_PICTURE_GOLD_3,
-				4 => AssetName.CARD_PACK_PICTURE_GOLD_4,
-				5 => AssetName.CARD_PACK_PICTURE_GOLD_5
-			],
-			GeneratorType.hard => [
-				1 => AssetName.CARD_PACK_PICTURE_KARMA_1,
-				2 => AssetName.CARD_PACK_PICTURE_KARMA_2,
-				3 => AssetName.CARD_PACK_PICTURE_KARMA_3,
-				4 => AssetName.CARD_PACK_PICTURE_KARMA_4,
-				5 => AssetName.CARD_PACK_PICTURE_KARMA_5
-			],
-			GeneratorType.buildResourceFromHell => [
-				1 => AssetName.CARD_PACK_PICTURE_IRON_1,
-				2 => AssetName.CARD_PACK_PICTURE_IRON_2,
-				3 => AssetName.CARD_PACK_PICTURE_IRON_3
-			],
-			GeneratorType.buildResourceFromParadise => [
-				1 => AssetName.CARD_PACK_PICTURE_WOOD_1,
-				2 => AssetName.CARD_PACK_PICTURE_WOOD_2,
-				3 => AssetName.CARD_PACK_PICTURE_WOOD_3
-			]
-		];
-		
-		for (type in lSwitch.keys()) {
+	private function setPicture (pPicture:UISprite, pGainType:GeneratorType, pIconLevel:Int, lPictureSwitch:Map<GeneratorType, Map<Int,String>>):Void {
+		for (type in lPictureSwitch.keys()) {
 			if (type == pGainType) {
-				for (level in lSwitch[pGainType].keys()) {
+				for (level in lPictureSwitch[pGainType].keys()) {
 					if (level == pIconLevel) {
-						changeIconSpawner(lSwitch[pGainType][pIconLevel], picture);
+						changeIconSpawner(lPictureSwitch[pGainType][pIconLevel], pPicture);
 						return;
 					}
 				}
 			}
 		}
-		Debug.error("Could not find picture for CarouselCardPack");
+		Debug.error("Could not find picture for CarouselCardPack or CarouselCardbundle");
 	}
+	
+	/*private function setName (pString:String):Void {
+		textName.text = pString;
+	}*/
 	
 }

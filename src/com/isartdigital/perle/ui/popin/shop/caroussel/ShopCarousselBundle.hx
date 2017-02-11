@@ -2,6 +2,8 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCardBundle;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 
@@ -23,7 +25,11 @@ class ShopCarousselBundle extends ShopCaroussel{
 		];
 	}
 	
-	override private function getCardToShow ():Array<String> {
+	override private function getNewCard (pCardToShow:String):CarouselCard {
+		return new CarouselCardBundle();
+	}
+	
+	override private function getCardToShowOverride ():Array<String> {
 		var result:Array<String> = new Array<String>();
 		
 		for (i in 0...GameConfig.getShopPack().length) {

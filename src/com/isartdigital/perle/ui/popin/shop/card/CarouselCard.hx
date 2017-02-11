@@ -2,7 +2,9 @@ package com.isartdigital.perle.ui.popin.shop.card;
 import com.greensock.easing.Back;
 import com.greensock.TweenMax;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UIMovie;
@@ -68,7 +70,8 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		} );*/
 	}
 	
-	private function setImage (pAssetName:String):Void { // todo : finir
+	// inutile, si pas de problème compil, supprimer.
+	/*private function setImage (pAssetName:String):Void { // todo : finir
 		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
 		
 		lImage.init();
@@ -79,6 +82,19 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		lImage.y = 0;
 		lImage.start();
 		
+	}*/
+	
+	private function changeIconSpawner (pSpriteName:String, pSpawner:UISprite):Void {
+		var lSprite:UISprite = new UISprite(pSpriteName);
+		lSprite.position = pSpawner.position;
+		addChild(lSprite);
+		removeChild(pSpawner);
+		pSpawner.destroy();
+		pSpawner = lSprite;
+	}
+	
+	private function addkToInt (pFloat:Float):String {
+		return pFloat > 1000 ? Std.string(pFloat / 1000) + "k" : Std.string(pFloat);
 	}
 	
 	
