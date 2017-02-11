@@ -154,15 +154,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Function to show the card's state (if you can buy or not) or the correct intern informations in the card
 	 */
 	private function setValues():Void{
-		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
-		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
-		
-		hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
-		heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
-		
-		setValuesNumberHousesHeaven();
-		setValuesNumberHousesHell();
-		
 		heavenCard.alpha = 1;
 		heavenCard.buttonMode = true;
 		heavenCard.interactive = true;
@@ -171,17 +162,44 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard.buttonMode = true;
 		hellCard.interactive = true;
 		
-		if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
+		if (Intern.internsMap[Alignment.heaven][actualHeavenID] != null) {
+			heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
+			heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
+			
+			if (!Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
+				heavenCard.buttonMode = false;
+				heavenCard.interactive = false;
+				heavenCard.alpha = 0.5;
+			}
+		}
+		
+		else {
+			heavenName.text = "No more heaven intern!";
+			heavenCard.buttonMode = false;
+			heavenCard.interactive = false;
+			heavenCard.alpha = 0.5;
+		}
+		
+		if (Intern.internsMap[Alignment.hell][actualHellID] != null) {
+			hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
+			hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
+			
+			if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
+				hellCard.buttonMode = false;
+				hellCard.interactive = false;
+				hellCard.alpha = 0.5;
+			}
+		}
+		
+		else{
+			hellName.text = "No more hell intern!";
 			hellCard.buttonMode = false;
 			hellCard.interactive = false;
 			hellCard.alpha = 0.5;
 		}
 		
-		if (!Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
-			heavenCard.buttonMode = false;
-			heavenCard.interactive = false;
-			heavenCard.alpha = 0.5;
-		}
+		setValuesNumberHousesHeaven();
+		setValuesNumberHousesHell();
 	}
 
 	/**
@@ -299,7 +317,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 */
 	private function onClickReroll ():Void {
 		ShopCarousselInternsSearch.progress = 0;
-		ShopPopin.isSearching = true;
+		//ShopPopin.isSearching = true;
 		ShopPopin.getInstance().init(ShopTab.InternsSearch);
 	}
 	

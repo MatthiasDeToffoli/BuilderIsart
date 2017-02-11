@@ -107,9 +107,9 @@ class Choice extends SmartPopinExtended
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
-		internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
+		//internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
+		//internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
+		//internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
 		
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
@@ -135,9 +135,9 @@ class Choice extends SmartPopinExtended
 		
 		internName.text = intern.name;
 		internSide.text = intern.aligment;
-		internStress.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.stress);
-		internSpeed.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.speed);
-		internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY + DOUBLE_DOT + intern.efficiency);
+		//internStress.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.stress);
+		//internSpeed.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.speed);
+		//internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY + DOUBLE_DOT + intern.efficiency);
 		
 		// call matthieu !!!!!!!!
 		//SmartCheck.traceChildrens(effIndic);

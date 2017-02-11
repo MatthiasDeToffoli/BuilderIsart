@@ -25,6 +25,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_INTERN_SEARCHING);
+		
 		getComponents();
 		addListeners();
 		setValues();
@@ -53,8 +54,8 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	
 	private function progressTimeLoop():Void {
 		if (gaugeBar.scale.x != 1) {
-			progress+= 10;
-			gaugeTimer.text = TimeManager.getTextTimeReroll(100 - progress);
+			progress+= 1000;
+			gaugeTimer.text = TimeManager.getTextTimeReroll(10000 - progress);
 			updateProgressBar();
 		} else {
 			progress = 0;
@@ -69,7 +70,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	}
 	
 	private function updateProgressBar():Void{
-		gaugeBar.scale.x = Math.min(TimeManager.getTimePourcentage(progress, 1000), 1);
+		gaugeBar.scale.x = Math.min(TimeManager.getTimePourcentage(progress, 10000), 1);
 	}
 	
 	/** 
@@ -77,13 +78,13 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	 */
 	override function initArrows():Void { }
 
-	override private function getSpawnersAssetNames():Array<String> {
-		return [ // todo : constantes ? c'est des spawners..
-			"Intern_?_1",
-			"Intern_?_2",
-			"Intern_?_3"
-		];
-	}
+	//override private function getSpawnersAssetNames():Array<String> {
+		//return [ // todo : constantes ? c'est des spawners..
+			//"Intern_?_1",
+			//"Intern_?_2",
+			//"Intern_?_3"
+		//];
+	//}
 	
 	private function onAccelerate():Void{
 		trace("accelerate");

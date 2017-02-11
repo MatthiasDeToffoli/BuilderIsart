@@ -60,9 +60,9 @@ class InternElementOutQuest extends InternElement
 		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		sendCost = cast(getChildByName(AssetName.INTERN_OUT_SEND_COST), TextSprite);
 		
-		internStress = cast(getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		internSpeed = cast(getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		internEfficiency = cast(getChildByName(AssetName.INTERN_OUT_EFF_TXT), TextSprite);
+		//internStress = cast(getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
+		//internSpeed = cast(getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
+		//internEfficiency = cast(getChildByName(AssetName.INTERN_OUT_EFF_TXT), TextSprite);
 		
 		stressJauge = cast(getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
@@ -73,9 +73,9 @@ class InternElementOutQuest extends InternElement
 	
 	private function setValues(pDesc:InternDescription):Void{
 		sendCost.text = Std.string(pDesc.price);
-		internStress.text = Std.string(Intern.TXT_STRESS);
-		internSpeed.text = Std.string(Intern.TXT_SPEED);
-		internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY);
+		//internStress.text = Std.string(Intern.TXT_STRESS);
+		//internSpeed.text = Std.string(Intern.TXT_SPEED);
+		//internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY);
 		
 		internName.text = pDesc.name;
 	}
