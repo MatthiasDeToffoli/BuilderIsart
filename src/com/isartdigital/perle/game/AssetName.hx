@@ -12,6 +12,7 @@ class AssetName{
 	public static inline var CONSTRUCT:String = "construction";
 	public static inline var ANIM:String = "_anim";
 	public static inline var ANIMATION:String = "animation";
+	
 	// Building Neutral
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";
@@ -64,7 +65,7 @@ class AssetName{
 	//element in many popin
 	public static inline var BTN_CLOSE:String = "ButtonClose";
 	public static inline var TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
-	// Shop
+	public static inline var TEXT:String = "Text";
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";
 	public static inline var SHOP_BTN_CLOSE:String = SHOP_PREFIX +  "Close_Button";
@@ -228,6 +229,10 @@ class AssetName{
 	public static inline var INTERN_POPIN_SEE_ALL_CONTAINER:String = "Bouton_AllInterns_Clip";
 	public static inline var INTERN_POPIN_SEE_ALL:String = "Button";
 	public static inline var INTERN_POPIN_CANCEL:String = "ButtonCancel";
+	
+	
+	//Server Popin
+	public static inline var POPIN_SERVER:String = "ConnectionIssue";
 	
 	//Gatcha popin
 	public static inline var GATCHA_POPIN:String = "PopinGatcha";

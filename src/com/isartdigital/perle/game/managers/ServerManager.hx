@@ -9,7 +9,9 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
+import com.isartdigital.perle.ui.popin.server.ServerConnexionPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.services.facebook.Facebook;
@@ -196,6 +198,7 @@ class ServerManager {
 	 * @param	btnRegion the button we click for buy the region
 	 */
 	public static function addRegionToDataBase(typeName:String, mapPos:Index, firstTileMapPos:Index, ?btnRegion:ButtonRegion):Void {
+		UIManager.getInstance().openPopin(ServerConnexionPopin.getInstance());
 		currentButtonRegion = btnRegion;
 		callPhpFile(onDataRegionCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 			KEY_POST_FILE_NAME => ServerFile.REGIONS,
@@ -299,7 +302,7 @@ class ServerManager {
 	 * @param	object a object return by database can contain an error message or region information
 	 */
 	private static function onDataRegionCallback(object:Dynamic):Void {
-
+		UIManager.getInstance().closeCurrentPopin();
 		var data:Dynamic = Json.parse(object);
 	
 		if (data.flag) {
