@@ -238,10 +238,27 @@ class Intern
 	}
 	
 	public static function destroyIntern(pId:Int):Void{	
+		var lInternArrayHeaven:Array<InternDescription> = internsListAlignment[Alignment.heaven];
+		var lInternArrayHell:Array<InternDescription> = internsListAlignment[Alignment.hell];
+		
 		for (i in 0...internsListArray.length){
 			if (pId == internsListArray[i].id){
 				internsListArray.splice(internsListArray.indexOf(internsListArray[i]), 1);
 				ServerManager.InternAction(DbAction.REM, pId);
+				break;
+			}
+		}
+		
+		for (j in 0...internsListAlignment[Alignment.heaven].length){
+			if (pId == lInternArrayHeaven[j].id){
+				lInternArrayHeaven.splice(lInternArrayHeaven.indexOf(lInternArrayHeaven[j]), 1);
+				break;
+			}
+		}
+		
+		for (k in 0...internsListAlignment[Alignment.hell].length){
+			if (pId == lInternArrayHell[k].id){
+				lInternArrayHell.splice(lInternArrayHell.indexOf(lInternArrayHell[k]), 1);
 				break;
 			}
 		}
