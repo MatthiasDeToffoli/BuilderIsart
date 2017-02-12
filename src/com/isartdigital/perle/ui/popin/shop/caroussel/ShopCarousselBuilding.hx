@@ -14,19 +14,22 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 	
 		BuildingName.HELL_HOUSE,
 		BuildingName.HEAVEN_HOUSE,
-		
-		BuildingName.STYX_VICE_1,
-		BuildingName.STYX_VICE_2,
-		BuildingName.STYX_VIRTUE_1,
-		BuildingName.STYX_VIRTUE_2,
+		BuildingName.HELL_HOUSE_INTERNS,
 		
 		BuildingName.HEAVEN_HOUSE_INTERNS,
 		BuildingName.HEAVEN_COLLECTOR,
-		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
+		BuildingName.HELL_FACTORY,	
 		
-		BuildingName.HELL_COLLECTOR,
-		BuildingName.HELL_FACTORY,		
-		BuildingName.HELL_HOUSE_INTERNS,
+		BuildingName.HELL_COLLECTOR,	
+		BuildingName.STYX_VIRTUE_1,
+		BuildingName.STYX_VICE_1,
+		
+		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
+		BuildingName.STYX_VIRTUE_2,
+		BuildingName.STYX_VICE_2,
+		
+		//BuildingName.STYX_VICE_3,
+		//BuildingName.STYX_VIRTUE_3,
 	];
 	
 	public function new() {

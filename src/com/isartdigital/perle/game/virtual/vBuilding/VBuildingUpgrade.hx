@@ -31,7 +31,7 @@ class VBuildingUpgrade extends VBuilding
 	
 	public function onClickUpgrade():Void{
 		desactivate();
-		
+		trace(tileDesc.level);
 		if (tileDesc.level < BuildingName.getMaxLevelByName(tileDesc.buildingName)){
 			tileDesc.level++;
 		}

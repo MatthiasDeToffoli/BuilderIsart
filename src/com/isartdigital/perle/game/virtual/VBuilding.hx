@@ -271,11 +271,11 @@ class VBuilding extends VTile {
 	}
 	
 	public function getGoldValue():String {
-		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).productionPerHour + "";
+		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).productionPerHour + "";
 	}
 	
 	public function getRessourceValue():String {
-		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level + 1).productionResource + "";
+		return GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).productionResource + "";
 	}
 	
 	/**

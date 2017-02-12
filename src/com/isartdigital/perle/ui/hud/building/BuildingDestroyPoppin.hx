@@ -62,7 +62,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		nameBuilding.text = FakeTraduction.assetNameNameToTrad(BuildingHud.virtualBuilding.tileDesc.buildingName);
 		
 		if (Std.is(BuildingHud.virtualBuilding, VBuildingUpgrade))
-			levelBuilding.text = "Level : " + Std.string(cast(lVBuilding, VBuildingUpgrade).indexLevel);
+			levelBuilding.text = "Level : " + Std.string(cast(lVBuilding, VBuildingUpgrade).getLevel());
 		else levelBuilding.text = "";
 		
 		setImage(lVBuilding.getAsset());

@@ -24,10 +24,12 @@ class BHBuiltUpgrade extends BHBuilt
 	override function findElements():Void 
 	{
 		super.findElements();
-		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
-		if (!haveUpgradeBtn()) {
-			btnUpgrade.interactive = false;
-			btnUpgrade.alpha = 0.5;
+		if (getChildByName("ButtonUpgradeBuilding") != null) {
+			btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+			if (!haveUpgradeBtn()) {
+				btnUpgrade.interactive = false;
+				btnUpgrade.alpha = 0.5;
+			}
 		}
 	}
 	
@@ -61,7 +63,8 @@ class BHBuiltUpgrade extends BHBuilt
 	
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
+		if (getChildByName("ButtonUpgradeBuilding") != null)
+			Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
 		super.destroy();
 	}
 	
