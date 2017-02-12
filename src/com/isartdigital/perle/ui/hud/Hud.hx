@@ -31,6 +31,7 @@ import com.isartdigital.perle.ui.popin.option.OptionPoppin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -124,13 +125,7 @@ class Hud extends SmartScreen
 	 */
 	public function changeBuildingHud(pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
 		BuildingHud.linkVirtualBuilding(pVBuilding);
-
-		// todo : mettre en évidence quel building on sélectionne actuellement...
-		//containerBuildingHud = Building.getBuildingHud();
-
-		if (pVBuilding != null)
-			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
-
+		
 		if (currentBuildingHudType != pNewBuildingHud) {
 			
 			closeCurrentBuildingHud();
