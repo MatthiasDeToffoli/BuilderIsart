@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.managers.RegionManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.sprites.Tile;
@@ -50,7 +51,11 @@ class ButtonRegion extends Button
 	
 	override function _mouseDown(pEvent:EventTarget):Void {
 		super._mouseDown(pEvent);	
-		ServerManager.addRegionToDataBase(regionType.getName(), VTile.pointToIndex(worldMapPos), VTile.pointToIndex(firstCasePos), this);		
+		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
+			RegionManager.createRegion(regionType, firstCasePos, VTile.pointToIndex(worldMapPos));
+			destroy();
+		}
+		//ServerManager.addRegionToDataBase(regionType.getName(), VTile.pointToIndex(worldMapPos), VTile.pointToIndex(firstCasePos), this);		
 	}
 	
 	override public function destroy():Void 

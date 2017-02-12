@@ -429,7 +429,7 @@ class RegionManager
 		//VTile.buildInsideRegion(worldMap[pWorldPos.x][pWorldPos.y], true);
 		
 		SaveManager.save();
-		
+
 		if (Math.abs(pWorldPos.x) == 1) createStyxRegionIfDontExist(pWorldPos, Std.int(pFirstTilePos.y));
 
 		if(pType != Alignment.neutral) addButton(
@@ -494,8 +494,8 @@ class RegionManager
 		if (worldMap[0][pWorldPos.y] != null) return;
 			
 		var posWorld:Index = {x:0, y:pWorldPos.y};
-		ServerManager.addRegionToDataBase(Alignment.neutral.getName(), posWorld, {x:0, y:pPosY});
-		
+		//ServerManager.addRegionToDataBase(Alignment.neutral.getName(), posWorld, {x:0, y:pPosY});
+		createRegion(Alignment.neutral, new Point(0,pPosY), posWorld);
 		addRegionButtonByStyx(posWorld, pPosY);
 		
 	}
