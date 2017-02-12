@@ -125,7 +125,12 @@ class Hud extends SmartScreen
 	 */
 	public function changeBuildingHud(pNewBuildingHud:BuildingHudType, ?pVBuilding:VBuilding):Void {
 		BuildingHud.linkVirtualBuilding(pVBuilding);
-		
+		// todo : mettre en évidence quel building on sélectionne actuellement...
+		//containerBuildingHud = Building.getBuildingHud();
+
+		if (pVBuilding != null)
+			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
+
 		if (currentBuildingHudType != pNewBuildingHud) {
 			
 			closeCurrentBuildingHud();
@@ -253,7 +258,7 @@ class Hud extends SmartScreen
 		//FTUE : désolé j'ai du faire ça sinon impossible de recolter les golds
 		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory)
 			return;
-			
+		trace("open");
 		//Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
@@ -321,7 +326,6 @@ class Hud extends SmartScreen
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding, pPos:Point):Void {
 		var lBuidldingHudType:BuildingHudType = null;
-		
 		if (checkIfTribunal(pVBuilding)) {
 			if (DialogueManager.ftueStepOpenPurgatory)
 				DialogueManager.endOfaDialogue(true);
@@ -337,7 +341,7 @@ class Hud extends SmartScreen
 			
 	/*	if (DialogueManager.ftueStepOpenPurgatory)
 		if(pVBuilding.alignementBuilding.getName() !=neutral*/
-		
+		trace(pCurrentState);
 		if (pCurrentState == VBuildingState.isBuilt)
 			lBuidldingHudType = BuildingHudType.HARVEST;
 		else if (pCurrentState == VBuildingState.isBuilding)
@@ -443,6 +447,7 @@ class Hud extends SmartScreen
 	public function hide():Void { // todo : should still show phantom menu (accept or cancel build)
 		if (!isHide) {
 			GameStage.getInstance().getHudContainer().removeChild(this);
+			removeListenersClick();
 			isHide = true;
 		}
 	}
@@ -455,6 +460,8 @@ class Hud extends SmartScreen
 			GameStage.getInstance().getHudContainer().addChild(this);
 			isHide = false;
 		}
+		
+		addListenersOnClick();
 	}
 	
 	private function removeListenersClick() {

@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.hud.building;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;

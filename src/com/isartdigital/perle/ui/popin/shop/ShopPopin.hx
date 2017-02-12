@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -247,6 +248,8 @@ class ShopPopin extends SmartPopinExtended {
 	}
 	
 	private function onClickExit ():Void {
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			return;
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 	}

@@ -26,6 +26,8 @@ import pixi.core.display.DisplayObject;
  */
 class DialogueManager
 {
+	private static inline var ALPHA_ON:Float = 1;
+	private static inline var ALPHA_OFF:Float = 0.2;
 	private static var steps:Array<FTUEStep>;
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -51,6 +53,9 @@ class DialogueManager
 	
 	public static var ftueClosePurgatory:Bool = false;
 	public static var ftueCloseUnlockedItem:Bool = false;
+	
+	public static var ftuePlayerCanWait:Bool = false;
+	public static var boostBuilding:Bool = false;
 	
 	/**
 	 * Init Ftue
@@ -81,7 +86,6 @@ class DialogueManager
 				return;
 			}
 			
-			
 			if (steps[lSave].haveToMakeAllChoice) {
 				Hud.getInstance().hide();
 				UIManager.getInstance().openPopin(ListInternPopin.getInstance());
@@ -98,7 +102,6 @@ class DialogueManager
 		}
 		
 		nextStep();
-		
 	}
 	
 	/**
@@ -125,14 +128,14 @@ class DialogueManager
 		pTypeOfDialogueIsAction ? dialoguePoppin = new DialogueAction():dialoguePoppin = new DialogueScenario();
 		if (!closeDialoguePoppin) {
 			if (pHideHud) {
-				Hud.getInstance().alpha = 0.2;
+				Hud.getInstance().alpha = ALPHA_OFF;
 				if(pBlocHud !=null)
 					Hud.isHide = pBlocHud;
 				else
 					Hud.isHide = true;
 			}
 			else {
-				Hud.getInstance().alpha = 1;
+				Hud.getInstance().alpha = ALPHA_ON;
 				Hud.isHide = false;
 				UIManager.getInstance().closeFTUE();	
 			}
@@ -165,15 +168,18 @@ class DialogueManager
 	 * Function to create next Step of dialogue
 	 * @param	pTarget
 	 */
-	public static function nextStep(pTarget:DisplayObject=null): Void {
+	public static function nextStep(pTarget:DisplayObject = null): Void {
 		if (dialogueSaved >= steps.length) return;
 		if (steps[dialogueSaved] == null) return;
 		//Effects : 
 		
 		//Actions
 		if (steps[dialogueSaved].isAction) {
-			if (steps[dialogueSaved].clickOnShop)
+			//Flag vars
+			if (steps[dialogueSaved].clickOnShop) {
+				Hud.getInstance().show();
 				ftueStepClickShop = true;
+			}
 			if (steps[dialogueSaved].openIntern)
 				ftueStepClickOnIntern = true;
 			if (steps[dialogueSaved].sendIntern)
@@ -188,7 +194,11 @@ class DialogueManager
 				ftueStepCloseGatcha = true;
 			if (steps[dialogueSaved].openShopIntern)
 				ftueStepOpenShopIntern = true;
-			
+			if (steps[dialogueSaved].ifPlayerCanWait)
+				ftuePlayerCanWait = true;
+			if (steps[dialogueSaved].boostBuilding)
+				boostBuilding = true;
+				
 			//Dialogue + Arrow
 			if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].arrowRotation != null) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
@@ -204,6 +214,7 @@ class DialogueManager
 				FocusManager.getInstance().setFocus(null);
 			}
 			
+			//Dialogue + recolt
 			else if (steps[dialogueSaved].haveToRecolt != null) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepRecolt = true;
@@ -211,6 +222,7 @@ class DialogueManager
 				Hud.getInstance().show();
 			}
 			
+			//Dialogue + construc
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].haveToUpgradeBuilding) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepConstructBuilding = true;
@@ -218,6 +230,7 @@ class DialogueManager
 				Hud.getInstance().show();
 			}
 			
+			//Dialogue + open Purgatory
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].openPurgatory) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepOpenPurgatory = true;
@@ -225,6 +238,7 @@ class DialogueManager
 				Hud.getInstance().show();
 			}
 			
+			//Dialogue + click on card
 			else if (steps[dialogueSaved].npcWhoTalk != null) {
 				ftueStepClickOnCard = true;
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
@@ -450,6 +464,8 @@ class DialogueManager
 		ftueStepOpenShopIntern = false;	
 		ftueClosePurgatory = false;
 		ftueCloseUnlockedItem = false;	
+		ftuePlayerCanWait = false;	
+		boostBuilding = false;	
 	}
 	
 }

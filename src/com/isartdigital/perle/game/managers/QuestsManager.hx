@@ -106,7 +106,7 @@ class QuestsManager
 		var lGap:Float = 0;
 		for (i in 0...NUMBER_EVENTS){
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
-				lGap = Date.now().getTime() + FTUE_TIMELINE + lGap;
+				lGap = FTUE_TIMELINE + lGap;
 			else
 				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
 				lListEvents.push(Date.now().getTime() + lGap);

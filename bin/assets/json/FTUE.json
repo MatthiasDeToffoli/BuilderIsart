@@ -113,7 +113,16 @@
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
 				"haveToUpgradeBuilding":true,
+				"ifPlayerCanWait":true,
                 "karma":100,
+				"expression":"_Neutral",
+				"checkpoint": false
+			},
+            {
+				"dialogueNumber":13,
+				"npcWhoTalk":"Demona",
+				"npcWhoTalkPicture":"right",
+				"isAction":true,
 				"expression":"_Neutral",
 				"checkpoint": true
 			},
@@ -128,15 +137,12 @@
 			},
             {
 				"dialogueNumber":15,
-                "name":"HeavenButton",
-                "parentName":"Purgatory_Popin",
-                "arrowRotation": 45,
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"jugeSouls":true,
 				"expression":"_Neutral",
-				"checkpoint": true
+				"checkpoint": false
 			},
             {
 				"dialogueNumber":16,
@@ -218,6 +224,7 @@
 				"npcWhoTalkPicture":"left",
                 "arrowRotation": 245,
 				"isAction":true,
+				"boostBuilding":true,
 				"openShopIntern":true,
 				"expression":"_Neutral",
 				"clickOnShop":true,
@@ -230,6 +237,7 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
+				"boostBuilding":true,
 				"buyIntern":true,
 				"expression":"_Neutral",
 				"checkpoint": false
@@ -241,6 +249,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Happy",
+				"boostBuilding": true,
 				"checkpoint": true
 			},
             {

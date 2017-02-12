@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -78,6 +79,10 @@ class BHConstruction extends BuildingHud {
 	}
 	
 	private function onSpeedUp():Void {
+		if (DialogueManager.ftueStepConstructBuilding) {
+			DialogueManager.endOfaDialogue();
+		}
+		
 		UIManager.getInstance().closeCurrentPopin();
 		SpeedUpPopin.linkBuilding(BuildingHud.virtualBuilding);
 		UIManager.getInstance().openPopin(SpeedUpPopin.getInstance());

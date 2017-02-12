@@ -23,7 +23,7 @@ class UnlockManager
 	 * @param	pName of the item
 	 * @return true or false
 	 */
-	public static function checkIfUnlocked(pName:String,?pLevel:Int):Bool {
+	public static function checkIfUnlocked(pName:String, ?pLevel:Int):Bool {
 		if (ResourcesManager.getLevel() >= GameConfig.getBuildingByName(pName,pLevel).levelUnlocked)
 			return true;
 		

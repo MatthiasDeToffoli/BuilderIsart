@@ -22,6 +22,8 @@ class BuildingTimerConstruction extends BuildingTimer
 	{
 		loop = Timer.delay(progressTimeLoop, 100);
 		loop.run = progressTimeLoop;
+		if (DialogueManager.boostBuilding)
+			boost(300000, true);
 		super.spawn();
 	}
 	
@@ -34,13 +36,17 @@ class BuildingTimerConstruction extends BuildingTimer
 		updateProgressBar();
 	}
 	
-	public function boost(pValue:Float):Void {
-		var isFinish:Bool = TimeManager.increaseProgress(building, pValue);
+	public function boost(pValue:Float, ?pFinishForFtue:Bool):Void {
+		var isFinish:Bool;
+		
+		if (pFinishForFtue == null)
+			isFinish = TimeManager.increaseProgress(building, pValue);
+		else {
+			DialogueManager.endOfaDialogue();
+			isFinish = pFinishForFtue;
+		}
+			
 		if (isFinish) {
-			if (DialogueManager.ftueStepConstructBuilding) {
-				trace("Je passe la prochaine etape de FTUe, je le met en trace comme ça tout le monde le vois : Il faut rajouter la poppin skip timer pour que je puisse mettre la prochaine etape  bisous Alexis");
-				DialogueManager.endOfaDialogue();
-			}
 			timeText.text = "Finish";
 			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
 			destroy();
@@ -56,6 +62,10 @@ class BuildingTimerConstruction extends BuildingTimer
 			timeText.text = TimeManager.getTextTime(building.tileDesc);
 			updateProgressBar();
 		} else {
+			if (DialogueManager.ftuePlayerCanWait) {
+				DialogueManager.dialogueSaved += 1;
+				DialogueManager.endOfaDialogue();
+			}
 			progressBar.scale.x = 1;
 			timeText.text = "Finish";
 			loop.stop;

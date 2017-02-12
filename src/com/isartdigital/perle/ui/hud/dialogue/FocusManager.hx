@@ -86,11 +86,9 @@ class FocusManager extends Screen
 	 */
 	private function swap (pTarget:DisplayObject, pFTUE: DisplayObject): Void {
 		var lParent:Container = pTarget.parent;
-		
-		lParent.addChildAt(pFTUE,lParent.getChildIndex(pTarget));
+		lParent.addChildAt(pFTUE, lParent.getChildIndex(pTarget));
 		pFTUE.position = pTarget.position;
 		addChildAt(pTarget,0);
-		
 		if (Std.is (lParent, UIComponent)) {
 			var lPositionnables:Array<UIPositionable> = untyped lParent.positionables;
 			for (i in 0...lPositionnables.length) {
@@ -113,7 +111,6 @@ class FocusManager extends Screen
 				}	
 			}
 			target.position = toLocal(shadow.position, shadow.parent);
-			
 			if (arrowRotation!= 0) {
 				arrow.rotation = arrowRotation * Pixi.DEG_TO_RAD;
 				arrow.position = target.position;

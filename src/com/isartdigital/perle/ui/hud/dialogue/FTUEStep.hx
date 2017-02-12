@@ -53,4 +53,7 @@ typedef FTUEStep = {
 	@optional var endOfMarketing:Bool;
 	//In plus, out of the JSON
 	@optional var item:DisplayObject;
+	//To prevoid bugs
+	@optional var ifPlayerCanWait:Bool;
+	@optional var boostBuilding:Bool;
 }

@@ -503,7 +503,7 @@ class TimeManager {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;
 			if (pTileDesc.timeDesc.progress >= diff) return VBuildingState.isBuilt;
-			else if (pTileDesc.level == 0) return VBuildingState.isBuilding;
+			else if (pTileDesc.level == 1) return VBuildingState.isBuilding;
 			else return VBuildingState.isUpgrading;
 		}
 		return VBuildingState.isBuilt;	

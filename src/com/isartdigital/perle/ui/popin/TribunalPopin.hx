@@ -117,18 +117,22 @@ class TribunalPopin extends SmartPopinExtended
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
 		
-		if (DialogueManager.ftueStepOpenPurgatory)
-			on(EventType.ADDED, registerForFTUE);
+		if (DialogueManager.ftueStepOpenPurgatory) {
+			DialogueManager.dialogueSaved ++;
+			registerForFTUE();
+		}
 	}
 	
-	private function registerForFTUE (pEvent:EventTarget):Void {
+	private function registerForFTUE ():Void {
 		for (i in 0...children.length) {
 			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i],true,true);
 		}
-		off(EventType.ADDED, registerForFTUE);
 	}
 	
 	private function onClose() {
+		if (DialogueManager.ftueStepSlideCard)
+			return;
+			
 		if (DialogueManager.ftueClosePurgatory)
 			DialogueManager.endOfaDialogue(true);
 			
@@ -156,7 +160,9 @@ class TribunalPopin extends SmartPopinExtended
 		changeSoulTextInfo();
 	}
 	
-	private function onHell(){
+	private function onHell() {
+		if (DialogueManager.ftueStepSlideCard)
+			return;
 		ResourcesManager.judgePopulation(Alignment.hell);
 		changeSoulTextInfo();
 	}
@@ -176,7 +182,9 @@ class TribunalPopin extends SmartPopinExtended
 		changeSoulTextInfo();
 	}
 	
-	private function onUpgrade():Void{
+	private function onUpgrade():Void {
+		if (DialogueManager.ftueStepSlideCard)
+			return;
 		rewriteUpgradeTxt();
 		var tribunalConfig:TableTypeBuilding = GameConfig.getBuildingByName(VTribunal.getInstance().tileDesc.buildingName, VTribunal.getInstance().tileDesc.level + 1);
 		

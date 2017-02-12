@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -51,6 +52,10 @@ class BHMoving extends BuildingHud{
 	}
 	
 	private function onClickCancel ():Void {
+		
+		if (DialogueManager.ftueStepPutBuilding)
+			return;
+			
 		if (BuildingHud.virtualBuilding == null) {
 			Phantom.onClickCancelBuild();
 			Hud.getInstance().hideBuildingHud();

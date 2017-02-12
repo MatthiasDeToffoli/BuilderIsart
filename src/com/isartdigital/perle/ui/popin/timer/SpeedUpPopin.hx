@@ -1,6 +1,8 @@
 package com.isartdigital.perle.ui.popin.timer;
 
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
@@ -41,6 +43,7 @@ class SpeedUpPopin extends SmartPopinExtended
 	 */
 	private function new(pID:String=null) 
 	{
+		Hud.getInstance().hide();
 		super("Popin_SkipTime");	
 		
 		getComponents();
@@ -55,11 +58,15 @@ class SpeedUpPopin extends SmartPopinExtended
 	}
 	
 	private function onBoost():Void {
-		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000);
+		if (DialogueManager.ftuePlayerCanWait)
+			DialogueManager.endOfaDialogue();
+		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(3000000000,true);
 		destroy();
 	}
 	
 	private function onClose():Void {
+		if (DialogueManager.ftuePlayerCanWait)
+			return;
 		destroy();
 	}
 	

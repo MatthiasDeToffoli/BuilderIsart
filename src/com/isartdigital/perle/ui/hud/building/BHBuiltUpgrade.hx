@@ -26,7 +26,9 @@ class BHBuiltUpgrade extends BHBuilt
 	override function findElements():Void 
 	{
 		super.findElements();
-		if (vBuildingIsUpgradable) btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		if (vBuildingIsUpgradable && haveUpgradeBtn()) {
+			btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		}
 	}
 	
 	private function haveUpgradeBtn():Bool {
@@ -48,7 +50,7 @@ class BHBuiltUpgrade extends BHBuilt
 	
 	private function checkLevelPlayerToUpgrade():Bool {
 		var lBuidling:TileDescription = cast(BuildingHud.virtualBuilding, VBuildingUpgrade).getTileDesc();
-		return UnlockManager.checkIfUnlocked(lBuidling.buildingName, lBuidling.level);
+		return UnlockManager.checkIfUnlocked(lBuidling.buildingName, lBuidling.level + 1);
 	}
 	
 	private function onClickUpgrade(): Void {

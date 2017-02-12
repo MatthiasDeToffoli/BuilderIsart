@@ -95,7 +95,6 @@ class Dialogue extends SmartScreen
 	 * @param	pName of NPC
 	 */
 	private function changeAlpha(pPicture:String, pExpression:String) {
-		trace(pPicture, pExpression);
 		switch(pPicture) {
 			case "left" : {
 				if(getChildByName(npc_left)!=null)
@@ -126,10 +125,7 @@ class Dialogue extends SmartScreen
 	private function changeAlphaExpression(pPicture:String, pAlpha:Float) {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];
-			trace(lExpression);
-			trace(getChildByName(pPicture + lExpression));
 			if (getChildByName(pPicture + lExpression) != null) {
-				trace(pAlpha);
 				getChildByName(pPicture + lExpression).alpha = pAlpha;
 			}
 		}
