@@ -79,7 +79,7 @@ class InternElementInQuest extends InternElement
 		eventCursor3 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent03"), UISprite);
 		
 		timeEvent = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_EVENT_TIME), TextSprite);
-		picture = cast(getChildByName(AssetName.PORTRAIT_IN_QUEST), SmartButton);
+		//picture = cast(getChildByName(AssetName.PORTRAIT_IN_QUEST), SmartButton);
 		questGauge = cast(getChildByName(AssetName.IN_QUEST_GAUGE), SmartComponent);
 	}
 	
@@ -120,7 +120,7 @@ class InternElementInQuest extends InternElement
 	private function addListeners():Void{
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, changeButtons);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, changeButtons);
-		Interactive.addListenerClick(picture, onPicture);
+		//Interactive.addListenerClick(picture, onPicture);
 	}
 	
 	private function onResolve() {
@@ -192,7 +192,7 @@ class InternElementInQuest extends InternElement
 	override public function destroy():Void 
 	{
 		//Interactive.removeListenerClick(btnAccelerate, onAccelerate);
-		Interactive.removeListenerClick(picture, onPicture);
+		//Interactive.removeListenerClick(picture, onPicture);
 		
 
 		super.destroy();

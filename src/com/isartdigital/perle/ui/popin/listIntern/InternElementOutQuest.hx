@@ -59,7 +59,7 @@ class InternElementOutQuest extends InternElement
 	}
 
 	private function getComponents():Void{
-		picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
+		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
 		sendCost = cast(getChildByName(AssetName.INTERN_OUT_SEND_COST), TextSprite);
 		
 		//internStress = cast(getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
@@ -114,7 +114,7 @@ class InternElementOutQuest extends InternElement
 	
 	private function addListerners():Void{
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
-		Interactive.addListenerClick(picture, onPicture);
+		//Interactive.addListenerClick(picture, onPicture);
 	}
 	
 	/**
@@ -166,7 +166,7 @@ class InternElementOutQuest extends InternElement
 	override public function destroy():Void 
 	{
 		Interactive.removeListenerClick(btnSend, onSend);
-		Interactive.removeListenerClick(picture, onPicture);
+		//Interactive.removeListenerClick(picture, onPicture);
 		super.destroy();
 	}
 }

@@ -121,14 +121,14 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
-		hellGaugeStress = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
+		//hellGaugeStress = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		hellGaugeSpeed = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		hellPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_PRICE), TextSprite);
 		
 		heavenPortrait = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_PORTRAIT), UISprite);
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
-		heavenGaugeStress = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
+		//heavenGaugeStress = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_STRESS), SmartComponent);
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite);

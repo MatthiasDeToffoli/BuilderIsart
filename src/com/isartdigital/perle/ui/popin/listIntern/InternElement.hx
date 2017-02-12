@@ -36,7 +36,7 @@ class InternElement extends SmartComponent
 	
 	override public function destroy():Void 
 	{
-		Interactive.removeListenerClick(picture, onPicture);
+		//Interactive.removeListenerClick(picture, onPicture);
 		parent.removeChild(this);
 		super.destroy();
 	}

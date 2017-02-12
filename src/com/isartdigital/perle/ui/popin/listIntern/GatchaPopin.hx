@@ -34,11 +34,6 @@ class GatchaPopin extends SmartPopin
 	private var aligment:TextSprite;
 	public static var quest:TimeQuestDescription;
 	
-	private static inline var GOLD_WON:Int = 1000;
-	private static inline var HARD_WON:Int = 5;
-	private static inline var WOOD_WON:Int = 1000;
-	private static inline var STONE_WON:Int = 1000;
-	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -78,9 +73,9 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	private function onGift():Void{
-		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
-		ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
-		QuestsManager.finishQuest(quest);
+		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(RewardGatcha.getInstance());
+		RewardGatcha.spawn(quest);
 	}
 	
 	private function onClose():Void {

@@ -287,6 +287,12 @@ class AssetName{
 	public static inline var GATCHA_POPIN_INTERN_NAME:String = "_intern_name";
 	public static inline var GATCHA_POPIN_INTERN_SIDE:String = "_intern_side";
 	
+	//Reward Gatcha popin
+	public static inline var REWARD_GATCHA_POPIN:String = "RewardGatcha";
+	public static inline var REWARD_GATCHA_POPIN_BUTTON:String = "ButtonReward";
+	public static inline var REWARD_GATCHA_POPIN_VALUE:String = "_rewardGatcha_value";
+	public static inline var REWARD_GATCHA_POPIN_ICON:String = "_rewardGatcha_Icon";
+	
 	//Max Stress popin
 	public static inline var INTERN_EVENT_MAX_STRESS:String = "Popin_MaxStress";
 	public static inline var MAXSTRESS_POPIN_CLOSE_BUTTON:String = "ButtonClose";
