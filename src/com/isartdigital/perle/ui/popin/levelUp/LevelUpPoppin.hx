@@ -37,11 +37,9 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static var description:TextSprite;
 	private static var congrats:TextSprite;
 	private static var txtNext:TextSprite;
-	private static var txtSkip:TextSprite;
 	private static var img:UISprite;
 	private static var imgImage:FlumpStateGraphic;
 	private var btnNext:SmartButton;
-	private var btnCloseAll:SmartButton;
 	private var bgLvl:SmartComponent;
 	private var unlock:SmartComponent;
 	
@@ -63,7 +61,6 @@ class LevelUpPoppin extends SmartPopinExtended
 		
 		txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
 		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
-		txtSkip.text = Localisation.allTraductions["LABEL_LEVEL_UP_SKIP"];
 		congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
 		
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
@@ -74,11 +71,6 @@ class LevelUpPoppin extends SmartPopinExtended
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
-	}
-	
-	private static function closeAll():Void {
-		UnlockManager.unlockedItem = [];
-		onClickNext();
 	}
 	
 	private static function onClickNext():Void {
@@ -124,14 +116,10 @@ class LevelUpPoppin extends SmartPopinExtended
 		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
 		
 		btnNext = cast(getChildByName(AssetName.LEVELUP_POPPIN_BUTTON), SmartButton);
-		btnCloseAll = cast(getChildByName(AssetName.LEVELUP_POPPIN_PASSALL), SmartButton);
 		
 		txtNext = cast(SmartCheck.getChildByName(btnNext, AssetName.LEVELUP_POPPIN_NEXT_TEXT), TextSprite);
-		txtSkip = cast(SmartCheck.getChildByName(btnCloseAll, AssetName.LEVELUP_POPPIN_SKIP_TEXT), TextSprite);
 		Interactive.addListenerClick(btnNext, onClickNext);
-		Interactive.addListenerClick(btnCloseAll, closeAll);
-		SmartCheck.traceChildrens(btnNext);
-		SmartCheck.traceChildrens(btnCloseAll);
+		//SmartCheck.traceChildrens(btnNext);
 	}
 	
 	/**
@@ -139,7 +127,6 @@ class LevelUpPoppin extends SmartPopinExtended
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnNext, onClickNext);
-		Interactive.removeListenerClick(btnCloseAll, closeAll);
 		
 		instance = null;
 	}
