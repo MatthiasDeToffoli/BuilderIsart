@@ -310,10 +310,12 @@ class AssetName{
 	public static inline var MAXSTRESS_POPIN_CLOSE_BUTTON:String = "ButtonClose";
 	public static inline var MAXSTRESS_POPIN_RESET_BUTTON:String = "ButtonResetStress";
 	public static inline var MAXSTRESS_POPIN_DISMISS_BUTTON:String = "ButtonDismiss";
-	public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "Text";
+	//public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "Text";
+	public static inline var MAXSTRESS_POPIN_RESET_TEXT:String = "Value";
 	public static inline var MAXSTRESS_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
 	public static inline var MAXSTRESS_POPIN_INTERN_NAME:String = "_intern_name";
 	public static inline var MAXSTRESS_POPIN_INTERN_SIDE:String = "_intern_side";
+	public static inline var MAXSTRESS_POPIN_INTERN_STATS:String = "InternStats";
 	
 	//Intern House Popin
 	public static inline var INTERN_HOUSE_INFOS_POPIN:String = "Interns";

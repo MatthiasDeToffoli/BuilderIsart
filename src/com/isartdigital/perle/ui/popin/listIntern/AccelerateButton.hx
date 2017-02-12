@@ -28,6 +28,7 @@ class AccelerateButton extends SmartButton
 		accelerateValue = cast(SmartCheck.getChildByName(this, "_accelerate_cost"), TextSprite);
 		accelerateValue.text = SKIP_PRICE + "";
 		Interactive.addListenerClick(this, onAccelerate);
+		Interactive.addListenerRewrite(this, setValues);
 		
 	}
 	
@@ -40,9 +41,15 @@ class AccelerateButton extends SmartButton
 		if (!TimeManager.increaseQuestProgress(quest)) return;
 	}
 	
+	private function setValues():Void{
+		accelerateValue = cast(SmartCheck.getChildByName(this, "_accelerate_cost"), TextSprite);
+		accelerateValue.text = SKIP_PRICE + "";
+	}
+	
 	override public function destroy():Void {
 		removeAllListeners();
 		Interactive.removeListenerClick(this, onAccelerate);
+		Interactive.removeListenerRewrite(this, setValues);
 		if (parent != null) parent.removeChild(this);
 		super.destroy();
 	}

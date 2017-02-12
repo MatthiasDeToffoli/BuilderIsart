@@ -65,6 +65,11 @@ class Intern
 		getJson();
 	}
 	
+	public static function isMaxStress(pId:Int):Bool{
+		if (getIntern(pId).stress < MAX_STRESS) return false;
+		else return true;
+	}
+	
 	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
 		
 		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length){

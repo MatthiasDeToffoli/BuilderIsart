@@ -335,7 +335,7 @@ class TimeManager {
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
-		if (!QuestsManager.isMaxStress(pElement.refIntern)) {
+		if (!Intern.isMaxStress(pElement.refIntern)) {
 			pElement.stepIndex++;
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			TimeManager.createTimeQuest(pElement);

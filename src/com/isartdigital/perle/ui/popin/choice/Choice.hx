@@ -55,6 +55,8 @@ class Choice extends SmartPopinExtended
 	private var internSpeed:TextSprite;
 	private var internEfficiency:TextSprite;
 	private var stressBar:SmartComponent;
+	private var stressGaugeMask:UISprite;
+	private var stressGaugeBar:UISprite;
 	private var speedIndic:SmartComponent;
 	private var effIndic:SmartComponent;
 	
@@ -113,6 +115,8 @@ class Choice extends SmartPopinExtended
 		//internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
 		
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
+		stressGaugeMask = cast(SmartCheck.getChildByName(stressBar, "jaugeStress_masque"), UISprite);
+		stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
 		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effIndic = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 	}
@@ -142,6 +146,10 @@ class Choice extends SmartPopinExtended
 		
 		// call matthieu !!!!!!!!
 		//SmartCheck.traceChildrens(effIndic);
+		
+		stressGaugeMask.scale.x = 0;
+		stressGaugeBar.scale.x = 0;
+		
 		var iEff:Int =  6 - intern.efficiency;
 		for (i in 1...iEff)
 			cast(effIndic.getChildAt(i), UISprite).visible = false;
@@ -150,9 +158,8 @@ class Choice extends SmartPopinExtended
 		for (i in 1...iSpeed)
 			cast(speedIndic.getChildAt(i), UISprite).visible = false;
 			
-		//var iStress:Int = 6 - Math.round(intern.stress / 20);
-		//for (i in 1...iStress)
-			//cast(stressBar.getChildAt(i), UISprite).visible = false;
+		var iStress:Int = intern.stress;
+		stressGaugeBar.scale.x = Math.min(iStress/100, 1);
 	}
 	
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {

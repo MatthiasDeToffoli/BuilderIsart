@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
@@ -46,6 +48,13 @@ class MaxStressPopin extends SmartPopin
 	private var speedIndics:Array<UISprite>;
 	private var effIndics:Array<UISprite>;
 	
+	public static var quest:TimeQuestDescription;
+	private var internDatas:SmartComponent;
+	private var gaugeStress:SmartComponent;
+	private var gaugeStressMask:UISprite;
+	
+	private static inline var RESET_VALUE:Int = 20;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -80,11 +89,20 @@ class MaxStressPopin extends SmartPopin
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 	}
 	
+	//public function setDatas():Void{
+		//internName.text = intern.name;
+		//aligment.text = intern.aligment;		
+		//
+		//internDatas = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_STATS), SmartComponent);
+		//gaugeStress = cast(SmartCheck.getChildByName(internDatas, "_jauge_stress"), SmartComponent);
+		//gaugeStressMask = cast(SmartCheck.getChildByName(gaugeStress, "jaugeStress_masque"), UISprite);
+	//}
+	
 	public function setDatas():Void{
-		internName.text = intern.name;
-		aligment.text = intern.aligment;		
-		
-		btnResetTextValue.text = "20"; //Todo, en attendant le balancin
+		internName.text = Intern.getIntern(quest.refIntern).name;
+		aligment.text = Intern.getIntern(quest.refIntern).aligment;
+		gaugeStressMask.scale.x = 0;
+		btnResetTextValue.text = RESET_VALUE + "";
 		
 		initStars();
 	}
@@ -104,21 +122,34 @@ class MaxStressPopin extends SmartPopin
 	private function addListeners():Void{
 		Interactive.addListenerClick(btnDismiss, onDismiss);
 		Interactive.addListenerClick(btnReset, onReset);
+		Interactive.addListenerRewrite(btnReset, setValuesResetBtn);
 		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
+	private function setValuesResetBtn():Void{
+		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
+		btnResetTextValue.text = RESET_VALUE + ""; 
+	}
+	
 	private function onReset():Void{
-		Intern.getIntern(intern.id).stress = 0;
 		
-		if (ChoiceManager.isInQuest(intern.idEvent)) {
-			Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
-			QuestsManager.chooseQuest(Intern.getIntern(intern.id).quest);
-			QuestsManager.goToNextStep();
-			TimeManager.nextStepQuest(QuestsManager.getQuest(intern.id));	
-		}
+		if (ResourcesManager.getTotalForType(GeneratorType.hard) >= RESET_VALUE){
+			
+			if (ChoiceManager.isInQuest(intern.idEvent)) {
+				Intern.getIntern(quest.refIntern).stress = 0;
+				Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+				QuestsManager.chooseQuest(Intern.getIntern(intern.id).quest);
+				QuestsManager.goToNextStep();
+				TimeManager.nextStepQuest(QuestsManager.getQuest(intern.id));	
+			}
 		
 		updateQuestPopin();
 		ServerManager.InternAction(DbAction.UPDT, intern.id);
+			//Intern.getIntern(quest.refIntern).stress = 0;
+			//Intern.getIntern(quest.refIntern).status = Intern.STATE_RESTING;
+			//
+			//updateQuestPopin();
+		}
 	}
 	
 	private function onDismiss():Void{
@@ -149,6 +180,10 @@ class MaxStressPopin extends SmartPopin
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		instance = null;
+		Interactive.removeListenerRewrite(btnReset, setValuesResetBtn);
+		Interactive.removeListenerClick(btnDismiss, onDismiss);
+		Interactive.removeListenerClick(btnReset, onReset);
+		Interactive.removeListenerClick(btnClose, onClose);
 	}
 
 }

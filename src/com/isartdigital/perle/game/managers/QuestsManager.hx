@@ -138,7 +138,6 @@ class QuestsManager
 	 * @param	pQuest
 	 */
 	public static function choice(pQuest:TimeQuestDescription):Void{
-		//Todo: Possibilité ici de faire des interactions avec d'autres managers
 		questInProgress = pQuest;
 		Hud.getInstance().hide();
 		//UIManager.getInstance().closeCurrentPopin;
@@ -149,8 +148,9 @@ class QuestsManager
 	public static function goToNextStep():Void{
 		Choice.getInstance().hide();
 		
-		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {
-			if (!isMaxStress(questInProgress.refIntern)){
+		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {		
+			if (!Intern.isMaxStress(questInProgress.refIntern)){
+				TimeManager.nextStepQuest(questInProgress);
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
 				TimeManager.nextStepQuest(questInProgress);				
 			}			
@@ -192,8 +192,9 @@ class QuestsManager
 			DialogueManager.endOfaDialogue();
 		ServerManager.ChoicesAction(DbAction.REM, pQuest.refIntern);
 		
-		if (isMaxStress(questInProgress.refIntern)){
-			MaxStressPopin.intern = Intern.getIntern(pQuest.refIntern);
+
+		if (Intern.isMaxStress(questInProgress.refIntern)){
+			MaxStressPopin.quest = pQuest;
 			//trace(MaxStressPopin.quest);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
@@ -244,11 +245,10 @@ class QuestsManager
 		return (quest.progress - quest.creation) / globalLength;
 	}
 	
-	//A peut-être mettre dans Intern
-	public static function isMaxStress(pId:Int):Bool{
-		if (Intern.getIntern(pId).stress < Intern.MAX_STRESS) return false;
-		else return true;
-	}
+	//private static function isMaxStress(pId:Int):Bool{
+		//if (Intern.getIntern(pId).stress < Intern.MAX_STRESS) return false;
+		//else return true;
+	//}
 	
 	public static function destroyQuest(pQuestId:Int):Void{
 		for (i in 0...questsList.length){

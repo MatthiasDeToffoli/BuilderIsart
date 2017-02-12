@@ -227,19 +227,19 @@ class ShopCarousselInterns extends ShopCaroussel{
 		var iSpeed:Int = 6 - pIntern.speed;
 		
 		if (pIntern.aligment == "heaven"){
-			for (i in 1...iEff)
-			cast(heavenGaugeEfficency.getChildAt(i), UISprite).visible = false;
+			for (i in 1...iEff) 
+				cast(heavenGaugeEfficency.getChildAt(i), UISprite).visible = false;
 			
 			for (i in 1...iSpeed)
-			cast(heavenGaugeSpeed.getChildAt(i), UISprite).visible = false;
+				cast(heavenGaugeSpeed.getChildAt(i), UISprite).visible = false;
 		}
 		
 		else {
 			for (i in 1...iEff)
-			cast(hellGaugeEfficency.getChildAt(i), UISprite).visible = false;
+				cast(hellGaugeEfficency.getChildAt(i), UISprite).visible = false;
 			
 			for (i in 1...iSpeed)
-			cast(hellGaugeSpeed.getChildAt(i), UISprite).visible = false;
+				cast(hellGaugeSpeed.getChildAt(i), UISprite).visible = false;
 		}
 
 	}

@@ -43,11 +43,14 @@ class InternElementOutQuest extends InternElement
 	private var stressJauge:SmartComponent;
 	private var speedJauge:SmartComponent;
 	private var effJauge:SmartComponent;
+	private var stressGaugeMask:UISprite;
+	private var stressGaugeBar:UISprite;
 	
 	private var speedIndics:Array<UISprite>;
 	private var effIndics:Array<UISprite>;
 	
 	private var jaugeArray:Array<Array<UISprite>>;
+	private static inline var QUEST_PRICE:Int = 500;
 
 	public function new(pPos:Point, pDesc:InternDescription) 
 	{
@@ -65,6 +68,10 @@ class InternElementOutQuest extends InternElement
 		stressJauge = cast(getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		stressGaugeMask = cast(SmartCheck.getChildByName(stressJauge, "jaugeStress_masque"), UISprite);
+		stressGaugeBar = cast(SmartCheck.getChildByName(stressJauge, "_jaugeStres"), UISprite);
+		
 		internName = cast(getChildByName(AssetName.INTERN_NAME_OUT_QUEST), TextSprite);
 		
 		initStars();
@@ -88,27 +95,42 @@ class InternElementOutQuest extends InternElement
 		}
 	}
 	
-	private function setValues(pDesc:InternDescription):Void{
-		sendCost.text = Std.string(pDesc.price);
+	private function setValues(pDesc:InternDescription):Void{	
+		sendCost.text = Std.string(QUEST_PRICE);
+		stressGaugeMask.scale.x = 0;
+		stressGaugeBar.scale.x = 0;
 		
 		internName.text = pDesc.name;
 	}
 	
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
-
-		if (Intern.getIntern(internDatas.id).stress >= Intern.MAX_STRESS) {
+		
+		if (Intern.getIntern(internDatas.id).status == Intern.STATE_MAX_STRESS) {
 			btnMaxStress = new StressButton(spawner.position);
 			btnMaxStress.position = spawner.position;
 			Interactive.addListenerClick(btnMaxStress, onStress);
 			addChild(btnMaxStress);
 		}
+			
 		else {
 			btnSend = new SendButton(spawner.position);
 			btnSend.position = spawner.position;
 			Interactive.addListenerClick(btnSend, onSend);
 			addChild(btnSend);
 		}
+		
+		var iEff:Int =  6 - internDatas.efficiency;
+		for (i in 1...iEff)
+			cast(effJauge.getChildAt(i), UISprite).visible = false;
+			
+		var iSpeed:Int = 6 - internDatas.speed;
+		for (i in 1...iSpeed)
+			cast(speedJauge.getChildAt(i), UISprite).visible = false;
+
+			
+		var iStress:Int = internDatas.stress;
+		stressGaugeBar.scale.x = Math.min(iStress/100, 1);
 	}
 	
 	private function addListerners():Void{
@@ -140,7 +162,7 @@ class InternElementOutQuest extends InternElement
 		TimeManager.createTimeQuest(quest);
 		
 		if(!DialogueManager.ftueStepSendIntern || !DialogueManager.ftueStepMakeAllChoice || !DialogueManager.ftueStepMakeChoice)
-			ResourcesManager.spendTotal(GeneratorType.soft, internDatas.price);
+			ResourcesManager.spendTotal(GeneratorType.soft, QUEST_PRICE);
 		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();
