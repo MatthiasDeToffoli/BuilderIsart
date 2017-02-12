@@ -72,6 +72,10 @@ class AssetName{
 	public static inline var TEXT:String = "Text";
 	public static inline var TIME_ACCELERATE_BUTTON_TXT:String = "_accelerate_cost";
 	
+	//buyRegionButton
+	public static inline var BTN_BUY_REGION:String = "ButtonBuyRegion";
+	public static inline var BTN_BUY_REGION_PRICE:String = "Cost";
+	
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
 	public static inline var POPIN_SHOP:String = SHOP_PREFIX + "Building";

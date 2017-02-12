@@ -1,14 +1,19 @@
 package com.isartdigital.perle.ui.hud;
 
+import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.ui.Button;
+import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
@@ -20,7 +25,7 @@ import pixi.interaction.EventTarget;
  /**
   * button which add new region
   */
-class ButtonRegion extends Button
+class ButtonRegion extends SmartButton
 {
 
 	/**
@@ -41,16 +46,19 @@ class ButtonRegion extends Button
 	public function new(pPos:Point,pWorldPos:Point) 
 	{
 		
-		factory = new FlumpMovieAnimFactory();
-		assetName = "RegionButton";
-		super();
+		super(AssetName.BTN_BUY_REGION);
 		firstCasePos = pPos;
 		worldMapPos = pWorldPos;
 		regionType = (pPos.x < 0) ? Alignment.heaven: Alignment.hell;
+		Interactive.addListenerRewrite(this, rewriteTxt);
+		rewriteTxt();
+		RegionManager.eRegionCreate.on(RegionManager.REGION_CREATED, onRegionCreate);
 	}
 	
-	override function _mouseDown(pEvent:EventTarget):Void {
-		super._mouseDown(pEvent);	
+	override function _click(pEvent:EventTarget = null):Void 
+	{
+		super._click(pEvent);
+		rewriteTxt();
 		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
 			RegionManager.createRegion(regionType, firstCasePos, VTile.pointToIndex(worldMapPos));
 			destroy();
@@ -58,8 +66,22 @@ class ButtonRegion extends Button
 		//ServerManager.addRegionToDataBase(regionType.getName(), VTile.pointToIndex(worldMapPos), VTile.pointToIndex(firstCasePos), this);		
 	}
 	
+	private function rewriteTxt():Void {
+		var priceTxt:TextSprite = cast(getChildByName(AssetName.BTN_BUY_REGION_PRICE),TextSprite);
+		var config:TableConfig = GameConfig.getConfig();
+		var price:Float = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[regionType]);
+		if (Math.abs(worldMapPos.x) == 1) price *= config.factorRegionNearStyx;
+		priceTxt.text = price + "";
+	}
+	
+	private function onRegionCreate(pData:Dynamic):Void {
+		rewriteTxt();
+	}
+	
 	override public function destroy():Void 
 	{
+		RegionManager.eRegionCreate.off(RegionManager.REGION_CREATED, onRegionCreate);
+		Interactive.removeListenerRewrite(this, rewriteTxt);
 		RegionManager.getButtonContainer().removeChild(this);
 		super.destroy();
 	}

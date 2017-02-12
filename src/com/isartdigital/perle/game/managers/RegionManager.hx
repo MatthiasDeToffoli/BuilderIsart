@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -17,6 +18,7 @@ import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
+import eventemitter3.EventEmitter;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -98,13 +100,16 @@ class RegionManager
 	/**
 	 * the number of region by type(save it into bdd)
 	 */
-	private static var mapNumbersRegion:Map<Alignment,Int>;
+	public static var mapNumbersRegion:Map<Alignment,Int>;
 	
 	/**
 	 * use for know the xp gain
 	 */
 	private static inline var CURRENT_TYPE_REGION:String = "current";
 	private static inline var OTHER_TYPE_REGION:String = "other";
+	public static inline var REGION_CREATED:String = "region create";
+	
+	public static var eRegionCreate:EventEmitter;
 	
 	/**
 	 * factors for place button arrond a region
@@ -125,6 +130,7 @@ class RegionManager
 		buttonRegionContainer = new Container();
 		bgContainer = new Container();
 		bgUnderContainer = new Container();
+		eRegionCreate = new EventEmitter();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getBuildContainer().addChild(buttonRegionContainer);
 		GameStage.getInstance().getBuildContainer().addChildAt(bgContainer, 0);
@@ -230,6 +236,7 @@ class RegionManager
 		else if(pNewRegion.desc.type == Alignment.neutral)createManyBgUnderInStyx(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3},7);
 	
 		mapNumbersRegion[pNewRegion.desc.type] += 1;
+		eRegionCreate.emit(REGION_CREATED);
 		
 		if (worldMap[pNewRegion.desc.x] == null)
 			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
@@ -450,9 +457,11 @@ class RegionManager
 	 */
 	public static function haveMoneyForBuy(pWorldPos:Point, pType:Alignment):Bool {
 		
-		var basePrice:Float = Math.abs(pWorldPos.x) > 1 ? basePriceFarWater:basePriceNearWater;
+		var config:TableConfig = GameConfig.getConfig();
 		
-		if (mapNumbersRegion[pType] > 0) basePrice *= priceFactor * mapNumbersRegion[pType];
+		var basePrice:Float = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[pType]);
+
+		if (Math.abs(pWorldPos.x) == 1) basePrice *= config.factorRegionNearStyx;
 		
 		if (basePrice <= ResourcesManager.getTotalForType(GeneratorType.soft)){
 			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(basePrice));
