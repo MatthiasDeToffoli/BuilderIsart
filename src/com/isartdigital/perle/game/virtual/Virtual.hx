@@ -20,10 +20,8 @@ class Virtual {
 		BuildingName.STYX_PURGATORY => "VTribunal",
 		BuildingName.STYX_VICE_1 => "VVicesBuilding",
 		BuildingName.STYX_VICE_2 => "VVicesBuilding",
-		BuildingName.STYX_VICE_3 => "VVicesBuilding",
 		BuildingName.STYX_VIRTUE_1 => "VVirtuesBuilding",
 		BuildingName.STYX_VIRTUE_2 => "VVirtuesBuilding",
-		BuildingName.STYX_VIRTUE_3 => "VVirtuesBuilding",
 		
 		
 		BuildingName.HEAVEN_HOUSE => "VHouseHeaven",

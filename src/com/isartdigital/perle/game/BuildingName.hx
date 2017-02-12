@@ -12,10 +12,8 @@ class BuildingName {
 	public static inline var STYX_PURGATORY:String = "Purgatory";
 	public static inline var STYX_VICE_1:String = "Altar Vice 1";
 	public static inline var STYX_VICE_2:String = "Altar Vice 2";
-	public static inline var STYX_VICE_3:String = "Altar Vice 3";
 	public static inline var STYX_VIRTUE_1:String = "Altar Virtue 1";
 	public static inline var STYX_VIRTUE_2:String = "Altar Virtue 2";
-	public static inline var STYX_VIRTUE_3:String = "Altar Virtue 3";
 	public static inline var STYX_DECO_BUILDING:String = "Styx Nice Building";
 	public static inline var STYX_DECO_GORGEOUS_BUILDING:String = "Styx Gorgeous Building";
 	
@@ -78,11 +76,9 @@ class BuildingName {
 		HELL_DECO_LAVA_SOURCE 			=> [AssetName.DECO_HELL_LAVA],
 		
 		STYX_PURGATORY					=> [AssetName.BUILDING_STYX_PURGATORY, AssetName.BUILDING_STYX_PURGATORY_LEVEL2, AssetName.BUILDING_STYX_PURGATORY_LEVEL3],
-		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VIRTUE_3 					=> [AssetName.BUILDING_STYX_VIRTUE],
-		STYX_VICE_1 					=> [AssetName.BUILDING_STYX_VICE1],
-		STYX_VICE_2 					=> [AssetName.BUILDING_STYX_VICE2],
-		STYX_VICE_3 					=> [AssetName.BUILDING_STYX_VICE1],
+		STYX_VIRTUE_1 					=> [AssetName.BUILDING_STYX_VIRTUE_1],
+		STYX_VIRTUE_2 					=> [AssetName.BUILDING_STYX_VIRTUE_2],
+		STYX_VICE_1 					=> [AssetName.BUILDING_STYX_VICE_1],
+		STYX_VICE_2 					=> [AssetName.BUILDING_STYX_VICE_2],
 	];
 }

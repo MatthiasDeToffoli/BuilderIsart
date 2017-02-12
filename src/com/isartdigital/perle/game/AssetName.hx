@@ -5,6 +5,8 @@ package com.isartdigital.perle.game;
  * Constant for assetName, assetName can be wrong named
  * but not our constant ! ;)
  * It's like a GD to GDP traduction system
+ * or
+ * DA to GDP traduction
  * @author ambroise
  */
 class AssetName{
@@ -18,9 +20,10 @@ class AssetName{
 	public static inline var BUILDING_STYX_PURGATORY:String = "Tribunal";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL2:String = "Tribunal_2";
 	public static inline var BUILDING_STYX_PURGATORY_LEVEL3:String = "Tribunal_3";
-	public static inline var BUILDING_STYX_VICE1:String = "Bat_Altar_Vice";
-	public static inline var BUILDING_STYX_VICE2:String = "Bat_Altar_Vice_2";
-	public static inline var BUILDING_STYX_VIRTUE:String = "Bat_Altar_Virtue";
+	public static inline var BUILDING_STYX_VICE_1:String = "Bat_Altar_Vice_1";
+	public static inline var BUILDING_STYX_VICE_2:String = "Bat_Altar_Vice_2";
+	public static inline var BUILDING_STYX_VIRTUE_1:String = "Bat_Altar_Virtue_1";
+	public static inline var BUILDING_STYX_VIRTUE_2:String = "Bat_Altar_Virtue_2";
 	
 	// Building Heaven
 	public static inline var BUILDING_HEAVEN_HOUSE:String = "HeavenBuilding01";
