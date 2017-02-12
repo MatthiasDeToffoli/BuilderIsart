@@ -90,9 +90,6 @@ class AssetName{
 	public static inline var SHOP_RESSOURCE_PACK_BUTTON:String = /*SHOP_PREFIX +*/ "Button";
 	public static inline var SHOP_RESSOURCE_PACK_PRICE:String = /*SHOP_PREFIX +*/ "Pack_Content_txt";
 	public static inline var SHOP_RESSOURCE_PACK_CONTENT:String = /*SHOP_PREFIX +*/ "Pack_Price";
-	public static inline var SHOP_RESSOURCE_CARD_PICTURE:String = /*SHOP_PREFIX +*/ "Item_picture";
-	public static inline var SHOP_RESSOURCE_CARD_NAME:String = /*SHOP_PREFIX +*/ "Item_Name";
-	public static inline var SHOP_RESSOURCE_CARD_PRICE:String = /*SHOP_PREFIX +*/ "Item_CurrencyPrice";
 	public static inline var SHOP_CAROUSSEL_DECO_BUILDING:String = SHOP_PREFIX + "BuildingDeco_List";
 	public static inline var SHOP_CAROUSSEL_CURRENCIE:String = SHOP_PREFIX + "ResourcesTab_List";
 	public static inline var SHOP_CAROUSSEL_INTERN:String = SHOP_PREFIX + "InternsTab_List";
@@ -120,13 +117,23 @@ class AssetName{
 	public static inline var CARD_BACKGROUND_HELL_UP:String = "_itemunlockedHELL_bg";
 	public static inline var CARD_BACKGROUND_HELL_DOWN:String = "_itemunlockedHELL_down_bg";
 	
+	// Shop caroussel card building/deco
+	public static inline var CARD_BUILDING_PICTURE:String = "Item_picture";
+	public static inline var CARD_BUILDING_NAME:String = "Item_Name";
+	public static inline var CARD_BUILDING_PRICE_SOFT_HARD:String = "Item_CurrencyPrice";
+	public static inline var CARD_BUILDING_PRICE_WOOD:String = "Item_ResourcePrice";
+	public static inline var CARD_BUILDING_PRICE_IRON:String = "Item_ResourcePrice2";
+	public static inline var CARD_BUILDING_ICON_SOFT_HARD:String = "Currency_icon";
+	public static inline var CARD_BUILDING_ICON_WOOD:String = "Resource_icon";
+	public static inline var CARD_BUILDING_ICON_IRON:String = "Resource_icon2";
+	
 	// Shop caroussel card pack
 	public static inline var CARD_PACK_PRICE:String ="Pack_Price";
 	public static inline var CARD_PACK_ICON_GAIN:String ="Pack_Content_Icon";
 	public static inline var CARD_PACK_ICON_PRICE:String ="Pack_Price_Icon";
 	public static inline var CARD_PACK_GAIN:String ="Pack_Content_txt";
 	public static inline var CARD_PACK_PICTURE:String = "Pack_Picture";
-		// Question : faire une boucle plutôt que de répéter le nombre de 1 à 5 ? un risque avec les GD !
+		//// Question : faire une boucle plutôt que de répéter le nombre de 1 à 5 ? un risque avec les GD !
 	public static inline var CARD_PACK_PICTURE_KARMA_1:String = "_karmaPack1_portrait";
 	public static inline var CARD_PACK_PICTURE_KARMA_2:String = "_karmaPack2_portrait";
 	public static inline var CARD_PACK_PICTURE_KARMA_3:String = "_karmaPack3_portrait";
@@ -467,7 +474,7 @@ class AssetName{
 	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";
 	
 	//icone small
-	
+	public static inline var PROD_ICON_SOFT_SMALL:String = "_goldIcon_Small";
 	public static inline var PROD_ICON_SOUL_HEAVEN_SMALL:String = "_heavenSoulIcon_Small";
 	public static inline var PROD_ICON_SOUL_HELL_SMALL:String = "_hellSoulIcon_Small";
 	

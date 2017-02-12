@@ -19,7 +19,7 @@ import pixi.interaction.EventTarget;
  */
 class CCUBuilding extends CarouselCardUnlock{
 
-	private var text_name:TextSprite;
+	private var textName:TextSprite;
 	private var textPriceSoftHard:TextSprite;
 	private var textPriceWood:TextSprite;
 	private var textPriceIron:TextSprite;
@@ -32,56 +32,53 @@ class CCUBuilding extends CarouselCardUnlock{
 		name = componentName;
 	}
 	
-	private function setRessourcesPrice () {
-		textPriceSoftHard = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PRICE), TextSprite);
-		textPriceWood = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice"), TextSprite); // todo: contantes
-		textPriceIron = cast(SmartCheck.getChildByName(this, "Item_ResourcePrice2"), TextSprite);
-		iconSoftHard = cast(SmartCheck.getChildByName(this, "Currency_icon"), UISprite);
-		iconIron = cast(SmartCheck.getChildByName(this, "Resource_icon2"), UISprite);
-		iconWood = cast(SmartCheck.getChildByName(this, "Resource_icon"), UISprite);
-	}
-	
 	override function buildCard ():Void {
 		super.buildCard();
 		
-		image = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_PICTURE), UISprite);
-		text_name = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_CARD_NAME), TextSprite);
-		
-		setRessourcesPrice();
+		image = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_PICTURE), UISprite);
+		textName = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_NAME), TextSprite);
+		textPriceSoftHard = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_PRICE_SOFT_HARD), TextSprite);
+		textPriceWood = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_PRICE_WOOD), TextSprite);
+		textPriceIron = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_PRICE_IRON), TextSprite);
+		iconSoftHard = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_ICON_SOFT_HARD), UISprite);
+		iconWood = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_ICON_WOOD), UISprite);
+		iconIron = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_ICON_IRON), UISprite);
 		
 		SmartPopinExtended.setImage(image, BuildingName.getAssetName(buildingName));
-		setName(FakeTraduction.assetNameNameToTrad(buildingName));
+		textName.text = FakeTraduction.assetNameNameToTrad(buildingName);
 		setPrice(BuyManager.getPrice(buildingName));
-	}
-	
-	override function setName (pString:String):Void {
-		text_name.text = pString;
 	}
 	
 	private function setPrice (pPrices:Map<GeneratorType, Int>):Void {
 		
+		// hard currency is an alternative... not supported yet ! (only for altar)
 		textPriceSoftHard.text = Std.string(pPrices[GeneratorType.soft]);
-		
-		setWoodPrice(pPrices[GeneratorType.buildResourceFromParadise]);
-		setIronPrice(pPrices[GeneratorType.buildResourceFromHell]);
+		changeIconSpawner(AssetName.PROD_ICON_SOFT_SMALL, iconSoftHard);
+		setWoodIronPrice(
+			pPrices[GeneratorType.buildResourceFromParadise],
+			textPriceWood,
+			iconWood
+		);
+		setWoodIronPrice(
+			pPrices[GeneratorType.buildResourceFromHell],
+			textPriceIron,
+			iconIron
+		);
 	}
 	
-	private function setWoodPrice (pPrice:Int):Void {
+	private function setWoodIronPrice (pPrice:Int, pTextSprite:TextSprite, pIcon:UISprite):Void {
 		if (pPrice == null) {
-			removeChild(iconWood);
-			removeChild(textPriceWood);
+			removeChild(pIcon);
+			removeChild(pTextSprite);
+			pIcon.destroy();
+			pTextSprite.destroy();
+			// yeah the final step is missing :/, not that important anyway
+			//pIcon = null;
+			//pTextSprite = null;
 		}
-		else
-			textPriceWood.text = Std.string(pPrice);
-	}
-	
-	private function setIronPrice (pPrice:Int):Void {
-		if (pPrice == null) {
-			removeChild(iconIron);
-			removeChild(textPriceIron);
+		else {
+			pTextSprite.text = Std.string(addkToInt(pPrice)); 
 		}
-		else
-			textPriceIron.text = Std.string(pPrice);
 	}
 	
 	override function _click(pEvent:EventTarget = null):Void {
@@ -95,6 +92,7 @@ class CCUBuilding extends CarouselCardUnlock{
 		}
 		
 		// todo : il close le shop même si canBuy == false  :(
+		// @alexis : ce todo il est bon ? si oui supprime le.
 	}
 	
 }

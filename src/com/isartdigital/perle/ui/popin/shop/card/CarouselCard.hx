@@ -77,6 +77,7 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	private function changeIconSpawner (pSpriteName:String, pSpawner:UISprite):Void {
 		var lSprite:UISprite = new UISprite(pSpriteName);
 		lSprite.position = pSpawner.position;
+		lSprite.scale = pSpawner.scale;
 		addChild(lSprite);
 		removeChild(pSpawner);
 		pSpawner.destroy();
