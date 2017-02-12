@@ -1,0 +1,157 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "title_HD",
+       "origin": [
+        288.75,
+        228.4
+       ],
+       "rect": [
+        1,
+        1,
+        578,
+        457
+       ]
+      },
+      {
+       "symbol": "title_BG",
+       "origin": [
+        288,
+        228.4
+       ],
+       "rect": [
+        1,
+        460,
+        576,
+        457
+       ]
+      },
+      {
+       "symbol": "title_BD",
+       "origin": [
+        288,
+        228.4
+       ],
+       "rect": [
+        1,
+        919,
+        576,
+        457
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "title_HG",
+       "origin": [
+        288,
+        228.4
+       ],
+       "rect": [
+        1,
+        1,
+        576,
+        457
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        288.75,
+        228.375
+       ],
+       "loc": [
+        287.2875,
+        -229.4625
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_HD"
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        288,
+        228.375
+       ],
+       "loc": [
+        -288.1125,
+        -229.125
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_HG"
+      }
+     ],
+     "name": "Calque 3"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        288,
+        228.375
+       ],
+       "loc": [
+        -287.9625,
+        227.625
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_BG"
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        288,
+        228.375
+       ],
+       "loc": [
+        288.0375,
+        227.2875
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_BD"
+      }
+     ],
+     "name": "Calque 4"
+    }
+   ],
+   "id": "Title_card_bg"
+  }
+ ],
+ "md5": "764ae34b54c04f726e5972161dc9dbd1",
+ "frameRate": 24
+}
