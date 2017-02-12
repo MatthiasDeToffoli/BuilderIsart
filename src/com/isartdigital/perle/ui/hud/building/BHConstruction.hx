@@ -42,6 +42,7 @@ class BHConstruction extends BuildingHud{
 	
 	override private function addListeners():Void 
 	{
+		SmartCheck.traceChildrens(this);
 		btnMove = cast(getChildByName("ButtonMoveBuilding"), SmartButton);
 		btnDestroy = cast(getChildByName("ButtonCancelConstruction"), SmartButton);
 	}

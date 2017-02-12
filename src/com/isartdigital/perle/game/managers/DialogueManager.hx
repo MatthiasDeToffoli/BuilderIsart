@@ -72,16 +72,20 @@ class DialogueManager
 		/*dialogueSaved = 16;
 		SaveManager.save();
 		*/
-		var lSave:Int = SaveManager.currentSave.ftueProgress -1 ;
+		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
-		if(lSave!=null)
-		if (lSave > steps.length-1 || steps[lSave].endOfFtue || steps[lSave].endOfSpecial || steps[lSave].endOfAltar || steps[lSave].endOfCollectors || steps[lSave].endOfFactory || steps[lSave].endOfMarketing || steps[lSave].endOfSpecial) {
-			//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
-			return;
-		}
-		if (steps[lSave].haveToMakeAllChoice) {
-			Hud.getInstance().hide();
-			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+		if (lSave != null) {
+			lSave -= 1;
+			if (lSave > steps.length-1 || steps[lSave].endOfFtue || steps[lSave].endOfSpecial || steps[lSave].endOfAltar || steps[lSave].endOfCollectors || steps[lSave].endOfFactory || steps[lSave].endOfMarketing || steps[lSave].endOfSpecial) {
+				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
+				return;
+			}
+			
+			
+			if (steps[lSave].haveToMakeAllChoice) {
+				Hud.getInstance().hide();
+				UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+			}
 		}
 		dialogueSaved = 0;
 		

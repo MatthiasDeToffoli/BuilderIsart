@@ -58,13 +58,6 @@ class UnlockManager
 		var lLevel = ResourcesManager.getLevel();
 		if (lLevel == LEVEL_UNLOCK_SPECIAL || lLevel == LEVEL_UNLOCK_COLLECTORS || lLevel == LEVEL_UNLOCK_FACTORY || lLevel == LEVEL_UNLOCK_ALTAR || lLevel == LEVEL_UNLOCK_MARKETING)
 			DialogueManager.nextStep();
-		/*switch ResourcesManager.getLevel() {
-			case LEVEL_UNLOCK_SPECIAL : trace("Unlock Special");
-			case LEVEL_UNLOCK_COLLECTORS : DialogueManager.nextStep();
-			case LEVEL_UNLOCK_FACTORY : trace("Unlock Factory");
-			case LEVEL_UNLOCK_ALTAR : trace("Unlock Altar");
-			case LEVEL_UNLOCK_MARKETING : trace("Unlock Marketing");
-		}*/
 	}
 	
 	private static function oppenLevelUpPopin ():Void {

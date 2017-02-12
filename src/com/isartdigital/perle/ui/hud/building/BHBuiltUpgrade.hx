@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.hud.building;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -21,12 +22,14 @@ class BHBuiltUpgrade extends BHBuilt
 	override function findElements():Void 
 	{
 		super.findElements();
-		if(haveUpgradeBtn()) btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		if (haveUpgradeBtn()) btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		trace(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).getTileDesc());
 	}
 	
 	private function haveUpgradeBtn():Bool {
 		return true;
 	}
+	
 	override function removeButtonsChange():Void 
 	{
 		super.removeButtonsChange();
@@ -37,6 +40,10 @@ class BHBuiltUpgrade extends BHBuilt
 	{
 		if(haveUpgradeBtn()) Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
 		super.setOnSpawn();
+	}
+	
+	private function checkLevelPlayerToUpgrade() {
+		var lLevel:Float = ResourcesManager.getLevel();
 	}
 	
 	private function onClickUpgrade(): Void {

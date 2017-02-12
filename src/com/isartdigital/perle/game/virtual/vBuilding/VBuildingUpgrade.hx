@@ -54,6 +54,10 @@ class VBuildingUpgrade extends VBuilding
 		SaveManager.save();	
 	}
 	
+	public function getTileDesc():TileDescription {
+		return tileDesc;
+	}
+	
 	override public function addExp():Void 
 	{
 		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName,getLevel()).xPatCreationHell,GeneratorType.badXp);
