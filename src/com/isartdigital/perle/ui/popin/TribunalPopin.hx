@@ -35,8 +35,8 @@ class TribunalPopin extends SmartPopinExtended
 	private static var instance: TribunalPopin;
 	private static var counterForFtue:Int = 0;
 	private var btnClose:SmartButton;
-	private var btnShop:SmartButton;
-	private var btnIntern:SmartButton;
+	//private var btnShop:SmartButton;
+	//private var btnIntern:SmartButton;
 	private var btnHeaven:SmartButton;
 	private var btnHell:SmartButton;
 	private var btnUpgrade:SmartButton;
@@ -67,8 +67,8 @@ class TribunalPopin extends SmartPopinExtended
 		counterForFtue = 0;
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
-		btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
-		btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
+		//btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
+		//btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
 		btnHeaven = cast(getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_BUTTON), SmartButton);
 		btnHell = cast(getChildByName(AssetName.PURGATORY_POPIN_HELL_BUTTON), SmartButton);
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
@@ -112,8 +112,8 @@ class TribunalPopin extends SmartPopinExtended
 		Interactive.addListenerClick(btnClose, onClose);
 		Interactive.addListenerClick(btnHeaven, onHeaven);
 		Interactive.addListenerClick(btnHell, onHell);
-		Interactive.addListenerClick(btnShop, onShop);
-		Interactive.addListenerClick(btnIntern, onIntern);
+		//Interactive.addListenerClick(btnShop, onShop);
+		//Interactive.addListenerClick(btnIntern, onIntern);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
 		
