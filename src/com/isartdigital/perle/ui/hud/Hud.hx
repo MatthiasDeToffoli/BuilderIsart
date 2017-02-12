@@ -69,7 +69,7 @@ class Hud extends SmartScreen
 	private var hellXPBar:SmartComponent;
 	private var heavenXPBar:SmartComponent;
 	
-	private var btnResetData:SmartButton;
+	//private var btnResetData:SmartButton;
 	private var btnShop:SmartButton;
 	private var btnPurgatory:SmartButton;
 	private var btnInterns:SmartButton;
@@ -132,7 +132,7 @@ class Hud extends SmartScreen
 			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
 
 		if (currentBuildingHudType != pNewBuildingHud) {
-
+			
 			closeCurrentBuildingHud();
 			
 			currentBuildingHudType = pNewBuildingHud;
@@ -241,7 +241,7 @@ class Hud extends SmartScreen
 	private function addListeners ():Void {
 		
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
-		btnResetData = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton);
+		//btnResetData = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton);
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
@@ -259,7 +259,7 @@ class Hud extends SmartScreen
 		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory)
 			return;
 			
-		Interactive.addListenerClick(btnResetData, onClickResetData);
+		//Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.addListenerClick(btnInterns, onClickListIntern);
@@ -463,7 +463,7 @@ class Hud extends SmartScreen
 	}
 	
 	private function removeListenersClick() {
-		Interactive.removeListenerClick(btnResetData, onClickResetData);
+		//Interactive.removeListenerClick(btnResetData, onClickResetData);
 		Interactive.removeListenerClick(btnShop, onClickShop);
 		Interactive.removeListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.removeListenerClick(btnInterns, onClickListIntern);

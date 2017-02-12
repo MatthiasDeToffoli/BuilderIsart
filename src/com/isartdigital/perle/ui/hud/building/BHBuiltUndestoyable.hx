@@ -93,9 +93,9 @@ class BHBuiltUndestoyable extends BuildingHud
 	
 	private function onClickExit():Void {
 		removeButtonsChange();
+		Hud.getInstance().hideBuildingHud();
 		GameStage.getInstance().getBuildContainer().interactive = false;
 		GameStage.getInstance().getBuildContainer().off(MouseEventType.MOUSE_DOWN, onClickExit);
-		Hud.getInstance().hideBuildingHud();
 	}
 	
 	override public function destroy():Void {

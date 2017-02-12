@@ -1,5 +1,7 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -22,12 +24,15 @@ class BHBuiltUpgrade extends BHBuilt
 	override function findElements():Void 
 	{
 		super.findElements();
-		if (haveUpgradeBtn()) btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
-		trace(cast(BuildingHud.virtualBuilding, VBuildingUpgrade).getTileDesc());
+		btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
+		if (!haveUpgradeBtn()) {
+			btnUpgrade.interactive = false;
+			btnUpgrade.alpha = 0.5;
+		}
 	}
 	
 	private function haveUpgradeBtn():Bool {
-		return true;
+		return checkLevelPlayerToUpgrade();
 	}
 	
 	override function removeButtonsChange():Void 
@@ -42,8 +47,9 @@ class BHBuiltUpgrade extends BHBuilt
 		super.setOnSpawn();
 	}
 	
-	private function checkLevelPlayerToUpgrade() {
-		var lLevel:Float = ResourcesManager.getLevel();
+	private function checkLevelPlayerToUpgrade():Bool {
+		var lBuidling:TileDescription = cast(BuildingHud.virtualBuilding, VBuildingUpgrade).getTileDesc();
+		return UnlockManager.checkIfUnlocked(lBuidling.buildingName, lBuidling.level + 1);
 	}
 	
 	private function onClickUpgrade(): Void {
@@ -55,7 +61,7 @@ class BHBuiltUpgrade extends BHBuilt
 	
 	override public function destroy():Void 
 	{
-		if(haveUpgradeBtn()) Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
+		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
 		super.destroy();
 	}
 	
