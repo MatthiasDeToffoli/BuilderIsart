@@ -1,6 +1,6 @@
 package com.isartdigital.perle.ui.contextual.virtual;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProductionCollector;
@@ -25,9 +25,9 @@ class VButtonProductionCollector extends VButtonProduction
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION_STOP, onProdStop);
 	}
 	
-	private function onProdFine(pTimeProd:TimeCollectorProduction):Void{
+	private function onProdFine(pTimeProd:TimeDescription):Void{
 		
-		if (pTimeProd.desc.refTile != refBuilding) return;
+		if (pTimeProd.refTile != refBuilding) return;
 		
 		if (!generatorIsNotEmpty){
 			gain = pTimeProd.gain;

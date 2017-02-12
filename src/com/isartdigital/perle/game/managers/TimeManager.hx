@@ -4,7 +4,6 @@ import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ServerManager.DbAction;
@@ -82,7 +81,7 @@ class TimeManager {
 	public static var listResource(default, null):Array<TimeElementResource>;
 	public static var listQuest(default, null):Array<TimeQuestDescription>;
 	public static var listConstruction(default, null):Array<TimeDescription>;
-	public static var listProduction(default, null):Array < TimeCollectorProduction>;
+	public static var listProduction(default, null):Array < TimeDescription>;
 	public static var campaignTime(default, null):Float;
 	
 	
@@ -95,7 +94,7 @@ class TimeManager {
 		listResource = new Array<TimeElementResource>();
 		listQuest = new Array<TimeQuestDescription>();
 		listConstruction = new Array<TimeDescription>();
-		listProduction = new Array<TimeCollectorProduction>();
+		listProduction = new Array<TimeDescription>();
 		campaignTime = 0;
 	}
 	
@@ -106,6 +105,9 @@ class TimeManager {
 	
 	public static function buildFromSave (pSave:Save):Void {
 		var lLength:Int = pSave.timesResource.length;
+		
+		
+		listProduction = pSave.timesProduction;
 		
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
 		var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
@@ -131,6 +133,9 @@ class TimeManager {
 			
 			listQuest.push(lQuestDatas);
 		}
+		
+		MarketingManager.setCurrentCampaign(pSave.timesCampaign.type);
+		campaignTime = pSave.timesCampaign.end;
 		
 		lastKnowTime = pSave.lastKnowTime;
 	}
@@ -205,7 +210,7 @@ class TimeManager {
 			}
 	}
 	
-	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeCollectorProduction{
+	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeDescription{
 		
 		var lDate:Date = Date.fromTime(Date.now().getTime() + Date.fromTime(pack.time.times).getTime());
 		
@@ -213,17 +218,13 @@ class TimeManager {
 			refTile: ref,
 			progress: Date.now().getTime(),
 			end: new Date(lDate.getFullYear(), lDate.getMonth(), Date.now().getDate() + pack.time.days, lDate.getHours(), lDate.getMinutes(), lDate.getSeconds()).getTime() ,
-			creationDate: Date.now().getTime()
+			creationDate: Date.now().getTime(),
+			gain: pack.quantity
 		}
+
+		listProduction.push(lDesc);
 		
-		var myTime:TimeCollectorProduction = {
-			gain: pack.quantity,
-			desc: lDesc
-		}
-		
-		listProduction.push(myTime);
-		
-		return myTime;
+		return lDesc;
 	}
 	
 	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
@@ -459,10 +460,10 @@ class TimeManager {
 		}
 	}
 	
-	private static function updateProductionTime(pElement:TimeCollectorProduction):Void {
-		pElement.desc.progress = Date.now().getTime();
-		if (pElement.desc.progress > pElement.desc.end){
-			pElement.desc.progress = pElement.desc.end;
+	private static function updateProductionTime(pElement:TimeDescription):Void {
+		pElement.progress = Date.now().getTime();
+		if (pElement.progress > pElement.end){
+			pElement.progress = pElement.end;
 			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE,pElement);
 		}
 		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
@@ -472,7 +473,7 @@ class TimeManager {
 	 	var i:Int, l:Int = listProduction.length;
 		
 		for (i in 0...l)
-			if (listProduction[i].desc.refTile == ref) {
+			if (listProduction[i].refTile == ref) {
 				listProduction.splice(i, 1);
 				eProduction.emit(EVENT_COLLECTOR_PRODUCTION_STOP, ref);
 			}

@@ -39,16 +39,18 @@ typedef RegionDescription = {
 	var firstTilePos:Index;
 }
 
-typedef TimeCollectorProduction = {
-	var desc:TimeDescription;
-	var gain:Int;
-}
 typedef TimeDescription = {
 	var refTile:Int; // l'id du bâtiment auquel il est associé
 	var progress:Float; // stock date.now a chaque appelle de la loo
 	var end:Float; // date de fin de construction
 	@:optional var timeBoost:Float;
 	@:optional var creationDate:Float;
+	@:optional var gain:Int;
+}
+
+typedef CampaignDescription = {
+	var end:Float;
+	var type:String;
 }
 
 typedef TimeQuestDescription = {
@@ -119,6 +121,8 @@ typedef Save = {
 	var timesResource:Array<TimeDescription>;
 	var timesQuest:Array<TimeQuestDescription>;
 	var timesConstruction:Array<TimeDescription>;
+	var timesProduction:Array<TimeDescription>;
+	var timesCampaign:CampaignDescription;
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
@@ -131,7 +135,7 @@ typedef Save = {
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
-	private static inline var SAVE_VERSION:String = "1.0.9";
+	private static inline var SAVE_VERSION:String = "1.1.2";
 	public static var currentSave(default, null):Save;
 	
 	/**
@@ -171,6 +175,8 @@ class SaveManager {
 			timesResource: getTimesResource(),
 			timesQuest: getTimesQuest(),
 			timesConstruction: getTimesConstruction(),
+			timesProduction: TimeManager.listProduction,
+			timesCampaign: getCampaign(),
 			lastKnowTime:TimeManager.lastKnowTime,
 			stats: getStats(),
 			idHightest: IdManager.idHightest,
@@ -254,6 +260,7 @@ class SaveManager {
 		Browser.location.reload();
 	}
 	
+	
 	private static function getTimesResource ():Array<TimeDescription> { // todo : facotriser avec en bas
 		return TimeManager.listResource.map(function (pElement){
 			return pElement.desc;
@@ -270,6 +277,13 @@ class SaveManager {
 		return TimeManager.listConstruction.map(function (pElement) {
 			return pElement;
 		});
+	}
+	
+	private static function getCampaign():CampaignDescription {
+		return {
+			end: TimeManager.campaignTime,
+			type: MarketingManager.getCurrentCampaignType().getName()
+		};
 	}
 	
 	private static function getStats ():Stats {

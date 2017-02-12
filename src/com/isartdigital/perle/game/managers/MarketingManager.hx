@@ -60,6 +60,26 @@ class MarketingManager
 		}
 	}
 	
+	public static function setCurrentCampaign(pName:String):Void {
+		
+		switch(pName) {
+			case "ad" :
+				currentCampaign = CampaignType.ad;
+				
+			case "small" :
+				currentCampaign = CampaignType.small;
+				
+			case "medium" :
+				currentCampaign = CampaignType.medium;
+				
+			case "large" :
+				currentCampaign = CampaignType.large;
+				
+			default :
+				currentCampaign = CampaignType.none;
+		}
+	}
+	
 	public static function increaseNumberAdMen():Void {
 		numberAdMen++;
 		updateTribunal();
@@ -86,6 +106,10 @@ class MarketingManager
 	
 	public static function getCurrentCampaign():Campaign {
 		return campaigns[currentCampaign];
+	}
+	
+	public static function getCurrentCampaignType():CampaignType {
+		return currentCampaign;
 	}
 	
 	public static function isInCampaign():Bool {

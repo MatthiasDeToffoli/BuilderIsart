@@ -1,7 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.TimesInfo;
 import com.isartdigital.perle.game.TimesInfo.Clock;
-import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 
@@ -25,9 +24,9 @@ class BuildingTimerCollector extends BuildingTimer
 	{
 		
 		if (pTime == null) pTime = cast(BuildingHud.virtualBuilding, VCollector).timeProd;
-		if (pTime.desc.refTile != ref) return;
+		if (pTime.refTile != ref) return;
 		
-		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.desc.end, pTime.desc.progress));
+		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.end, pTime.progress));
 
 		timeText.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;
 	}

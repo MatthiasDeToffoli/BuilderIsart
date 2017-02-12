@@ -3,7 +3,7 @@ package com.isartdigital.perle.ui.popin.collector;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TimesInfo;
 import com.isartdigital.perle.game.TimesInfo.Clock;
-import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
@@ -55,15 +55,15 @@ class TimerInProd extends SmartComponent
 		
 	}
 	
-	private function rewrite(pTime:TimeCollectorProduction ){
+	private function rewrite(pTime:TimeDescription ){
 		
-		if (pTime.desc.refTile != ref) return;
+		if (pTime.refTile != ref) return;
 		
-		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.desc.end, pTime.desc.progress));
+		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.end, pTime.progress));
 		
 		progressBarTxt.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;
 		
-		if (pTime.desc.progress <= 0) destroyAccelBtn();
+		if (pTime.progress <= 0) destroyAccelBtn();
 	}
 	
 	

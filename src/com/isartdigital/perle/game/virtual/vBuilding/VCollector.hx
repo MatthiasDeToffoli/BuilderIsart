@@ -5,7 +5,7 @@ import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.SaveManager.TimeCollectorProduction;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
@@ -22,12 +22,13 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 class VCollector extends VBuildingUpgrade
 {
 	public var myPacks(default, null):Array<ProductionPack>;
-	public var timeProd:TimeCollectorProduction;
-	public var product:Bool = false;
+	public var timeProd:TimeDescription;
+	public var product:Bool;
 	
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		setProductInStart();
 		var i:Int;
 		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(myGeneratorType);
 		myPacks = new Array<ProductionPack>();
@@ -52,14 +53,27 @@ class VCollector extends VBuildingUpgrade
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION_STOP, stopProduction);
 	}
 	
+	private function setProductInStart():Void {
+		
+		for (ltimeDesc in TimeManager.listProduction) {
+			if (ltimeDesc.refTile == tileDesc.id) {
+				timeProd = ltimeDesc;
+				product = true;
+				return;
+			}
+		}
+		
+		product = false;
+	}
+	
 	override function setHaveRecolter():Void 
 	{
 		haveRecolter = false;
 	}
 	
-	public function updateMyTime(pTime:TimeCollectorProduction):Void{
+	public function updateMyTime(pTime:TimeDescription):Void{
 		
-		if (pTime.desc.refTile == tileDesc.id)
+		if (pTime.refTile == tileDesc.id)
 			timeProd = pTime;
 			
 	}
