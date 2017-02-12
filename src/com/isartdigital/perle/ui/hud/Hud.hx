@@ -200,7 +200,7 @@ class Hud extends SmartScreen
 		pComponent.position.x += BuildingHud.virtualBuilding.graphic.getBounds().width / 2;
 	}
 	
-	private function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {
+	public function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {
 		var lLocalBounds:Rectangle = BuildingHud.virtualBuilding.graphic.getLocalBounds();
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			

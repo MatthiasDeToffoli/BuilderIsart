@@ -7,6 +7,7 @@ import com.isartdigital.perle.ui.popin.timer.SpeedUpPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import pixi.core.display.Container;
@@ -41,7 +42,10 @@ class BHConstruction extends BuildingHud {
 		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();
 		buildingTimer.spawn();
 		listTimerConstruction.set(BuildingHud.virtualBuilding.tileDesc.id, buildingTimer);
-		timerContainer.addChild(buildingTimer);
+		var lContainer:Container = new Container();
+		Hud.getInstance().placeAndAddComponent(buildingTimer, lContainer, UIPosition.BOTTOM);
+		lContainer.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
+		timerContainer.addChild(lContainer);
 	}
 	
 	public static function getInstance (): BHConstruction {
