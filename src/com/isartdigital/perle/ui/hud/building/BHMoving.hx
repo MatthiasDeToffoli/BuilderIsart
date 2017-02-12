@@ -19,7 +19,7 @@ class BHMoving extends BuildingHud{
 	private static var instance:BHMoving;
 	
 	private var btnCancel:SmartButton;
-	//private var btnConfirm:SmartButton;
+	private var btnConfirm:SmartButton;
 	
 	
 	public static function getInstance (): BHMoving {
@@ -44,10 +44,10 @@ class BHMoving extends BuildingHud{
 		btnCancel = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CANCEL), SmartButton);
 		Interactive.addListenerClick(btnCancel, onClickCancel);
 		
-		/*if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP) {
+		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP) {
 			btnConfirm = cast(SmartCheck.getChildByName(this, AssetName.HUD_MOVNG_BUILDING_BTN_CONFIRM), SmartButton);
 			Interactive.addListenerClick(btnConfirm, onClickConfirm);
-		}*/
+		}
 	}
 	
 	private function onClickCancel ():Void {
@@ -59,20 +59,20 @@ class BHMoving extends BuildingHud{
 			BuildingHud.virtualBuilding.onClickCancel();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, BuildingHud.virtualBuilding);
 		}
-	
+		
 		Building.isClickable = true;
 	}
 	
-	/*private function onClickConfirm ():Void {
+	private function onClickConfirm ():Void {
 		if (BuildingHud.virtualBuilding == null)
 			Phantom.onClickConfirmBuild();
 		else
 			BuildingHud.virtualBuilding.onClickConfirm();
-	}*/
+	}
 	
 	override public function destroy():Void {
 		Interactive.removeListenerClick(btnCancel, onClickCancel);
-		//Interactive.removeListenerClick(btnConfirm, onClickConfirm);
+		Interactive.removeListenerClick(btnConfirm, onClickConfirm);
 		
 		instance = null;
 		super.destroy();
