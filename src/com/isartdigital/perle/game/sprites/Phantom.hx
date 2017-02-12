@@ -50,7 +50,6 @@ class Phantom extends Building {
 	
 	public static inline var EVENT_CANT_BUILD:String = "Phantom_Cant_Build";
 	private static inline var FILTER_OPACITY:Float = 0.5;
-	private static inline var MAX_DURATION_FOR_CLICK:Int = 500;// milliseconds
 	
 	public static var eExceedingTiles:EventEmitter;
 	private static var exceedingTile:Array<Index>;
@@ -217,7 +216,7 @@ class Phantom extends Building {
 	 */
 	private function validateClickBuild ():Void {
 		if (mouseDownDuration > 0 && 
-			mouseDownDuration <  MAX_DURATION_FOR_CLICK)
+			mouseDownDuration <  MouseManager.MAX_DURATION_FOR_SHORT_CLICK)
 			onClickConfirm();
 	}
 	

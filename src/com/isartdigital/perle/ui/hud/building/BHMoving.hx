@@ -72,7 +72,8 @@ class BHMoving extends BuildingHud{
 	
 	override public function destroy():Void {
 		Interactive.removeListenerClick(btnCancel, onClickCancel);
-		Interactive.removeListenerClick(btnConfirm, onClickConfirm);
+		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP)
+			Interactive.removeListenerClick(btnConfirm, onClickConfirm);
 		
 		instance = null;
 		super.destroy();

@@ -93,6 +93,9 @@ class MouseManager {
 	}
 	
 	public function gameLoop():Void {
+		
+		blockOpeningHUDBuilt();
+		
 		if (desktop)
 			position = getMouseGlobalPos();
 		else
@@ -102,6 +105,28 @@ class MouseManager {
 		
 		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
+	}
+	
+	public static inline var MAX_DURATION_FOR_SHORT_CLICK:Int = 500; // milliseconds
+	private var mouseDownDuration:Int = 0; // milliseconds
+	
+	/**
+	 * Bloc the opening of HudBuilt (contextual hud) on the buildings if the click is long enough.
+	 */
+	private function blockOpeningHUDBuilt ():Void {
+		
+		if (mouseTouchDown)
+			mouseDownDuration += Main.FRAME_INTERVAL;
+		else {
+			// if making no interference whit other code using isClickable then put to true
+			if (!Building.isClickable)
+				Building.isClickable = true;
+			mouseDownDuration = 0;
+		}
+		
+		// if long click (probably moving camera) and no interference then put to false
+		if (mouseDownDuration > MAX_DURATION_FOR_SHORT_CLICK && Building.isClickable)
+			Building.isClickable = false;
 	}
 	
 	/**
