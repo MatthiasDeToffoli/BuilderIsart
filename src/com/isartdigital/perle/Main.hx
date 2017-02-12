@@ -30,8 +30,11 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
+import com.isartdigital.perle.ui.GraphicLoader;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
+import com.isartdigital.perle.ui.screens.TitleCard;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Config;
@@ -172,6 +175,7 @@ class Main extends EventEmitter
 			DeviceCapabilities.init(1, 0.75, 0.5);
 		}
 		
+		
 		// initialise le GameStage et défini la taille de la safeZone
 		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true, true); // premier false => éviter le 0,0 au centre.
 		
@@ -181,18 +185,18 @@ class Main extends EventEmitter
 		// ajoute Main en tant qu'écouteur des évenements de redimensionnement
 		Browser.window.addEventListener(EventType.RESIZE, resize);
 		resize();
-		
 		// lance le chargement des assets graphiques du preloader
-		/*var lLoader:GameLoader = new GameLoader(); // #reopen
+		var lLoader:GameLoader = new GameLoader(); // #reopen
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/loading/library.json");
 		lLoader.once(LoadEventType.COMPLETE, loadAssets);
-		lLoader.load();*/
-		loadAssets(); // raccourci
+		lLoader.load();
+		//loadAssets(); // raccourci
 	}	
 	
 	/**
 	 * lance le chargement principal
 	 */
-	private function loadAssets (/*pLoader:GameLoader*/): Void {
+	private function loadAssets (pLoader:GameLoader): Void {
 		var lLoader:GameLoader = new GameLoader();
 				
 		lLoader.addTxtFile("boxes.json");
@@ -247,7 +251,7 @@ class Main extends EventEmitter
 		lLoader.addTxtFile(JSON_LOCALIZATION + JSON_EXTENSION);
 		
 		// affiche l'écran de préchargement
-		//UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen
+		UIManager.getInstance().openScreen(GraphicLoader.getInstance()); // #reopen
 		
 		//Browser.window.requestAnimationFrame(gameLoop);
 		Timer.delay(gameLoop, FRAME_INTERVAL);
@@ -261,7 +265,7 @@ class Main extends EventEmitter
 	 * @param	pEvent evenement de chargement
 	 */
 	private function onLoadProgress (pLoader:GameLoader): Void {
-		//GraphicLoader.getInstance().update(pLoader.progress/100); // #reopen
+		GraphicLoader.getInstance().update(pLoader.progress/100); // #reopen
 	}
 	
 	/**
@@ -276,11 +280,14 @@ class Main extends EventEmitter
 		StateGraphic.addBoxes(GameLoader.getContent("boxes.json"));
 		
 		// Ouvre la TitleClard
-		//UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
+		UIManager.getInstance().openScreen(TitleCard.getInstance()); // #reopen
 		
 		// affiche le bouton FullScreen quand c'est nécessaire
 		DeviceCapabilities.displayFullScreenButton();
 		
+	}
+	
+	public function startAfterTitleCard() {
 		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		Localisation.init(GameLoader.getContent(JSON_LOCALIZATION + JSON_EXTENSION));
 		GameManager.getInstance().start();

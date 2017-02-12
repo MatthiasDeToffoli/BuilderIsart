@@ -62,7 +62,7 @@ class Dialogue extends SmartScreen
 			npc_name.text = pNpc;*/
 		if(npc_speach!=null)
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
-		hideAllExpression();
+		//hideAllExpression();
 		changeAlpha(pPicture,pExpression);
 	}
 	
@@ -94,7 +94,8 @@ class Dialogue extends SmartScreen
 	 * function to change the alpha of the NPC who talk
 	 * @param	pName of NPC
 	 */
-	private function changeAlpha(pPicture:String,pExpression:String) {
+	private function changeAlpha(pPicture:String, pExpression:String) {
+		trace(pPicture, pExpression);
 		switch(pPicture) {
 			case "left" : {
 				if(getChildByName(npc_left)!=null)
@@ -125,8 +126,12 @@ class Dialogue extends SmartScreen
 	private function changeAlphaExpression(pPicture:String, pAlpha:Float) {
 		for (i in 0...allExpressionsArray.length) {
 			var lExpression:String = allExpressionsArray[i];
-			if(getChildByName(pPicture + lExpression)!=null)
+			trace(lExpression);
+			trace(getChildByName(pPicture + lExpression));
+			if (getChildByName(pPicture + lExpression) != null) {
+				trace(pAlpha);
 				getChildByName(pPicture + lExpression).alpha = pAlpha;
+			}
 		}
 	}
 

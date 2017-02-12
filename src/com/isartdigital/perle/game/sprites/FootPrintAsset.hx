@@ -5,7 +5,7 @@ import pixi.core.math.Point;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class FootPrintAsset extends Tile
 {
@@ -31,16 +31,16 @@ class FootPrintAsset extends Tile
 	
 	public function setStateCantBePut():Void {
 		setState(DEFAULT_STATE);
-		setState("red");
+		setState(FOOTPRINT_RED);
 	}
 	
 	public function setStateCanBePut():Void {
 		setState(DEFAULT_STATE);
-		setState("green");
+		setState(FOOTPRINT_GREEN);
 	}
 	
 	public function setStateAreaEffect():Void {
-		setState("yellow");
+		setState(FOOTPRINT_YELLOW);
 	}
 	
 	override public function init():Void {

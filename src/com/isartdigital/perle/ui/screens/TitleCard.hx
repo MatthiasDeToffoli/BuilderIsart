@@ -6,6 +6,8 @@ import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.Screen;
+import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartScreen;
 import pixi.core.sprites.Sprite;
 import pixi.core.textures.Texture;
 import pixi.interaction.EventTarget;
@@ -17,7 +19,8 @@ import pixi.interaction.EventTarget;
  */
 class TitleCard extends Screen 
 {
-	private var background:Sprite;
+	private var background:SmartScreen;
+	private var btnStart:SmartButton;
 	
 	/**
 	 * instance unique de la classe TitleCard
@@ -39,19 +42,17 @@ class TitleCard extends Screen
 	public function new() 
 	{
 		super();
-		background = new Sprite(Texture.fromImage(Config.url(Config.assetsPath+"TitleCard_bg.png")));
-		background.anchor.set(0.5, 0.5);
+		background = new SmartScreen("Title_card_bg");
+		btnStart = new SmartButton("ButtonPlay");
 		addChild(background);
-		interactive = true;
-		buttonMode = true;
+		addChild(btnStart);
 		
-		once(MouseEventType.CLICK,onClick);
-		once(TouchEventType.TAP,onClick);
+		btnStart.once(MouseEventType.CLICK,onClick);
+		btnStart.once(TouchEventType.TAP,onClick);
 	}
 	
 	private function onClick (pEvent:EventTarget): Void {
-		SoundManager.getSound("click").play();
-		UIManager.getInstance().openPopin(Confirm.getInstance());
+		Main.getInstance().startAfterTitleCard();
 	}
 	
 	/**
