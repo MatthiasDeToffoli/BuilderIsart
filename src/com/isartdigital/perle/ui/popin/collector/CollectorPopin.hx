@@ -66,6 +66,10 @@ class CollectorPopin extends SmartPopinExtended
 		addChild(prodPanel);
 	}
 	
+	public function getTimer():TimerInProd {
+		return timer;
+	}
+	
 	private function addTimer(pPos:Point, pCollector:VCollector):Void {
 		timer = new TimerInProd(pCollector);
 		timer.position = pPos;

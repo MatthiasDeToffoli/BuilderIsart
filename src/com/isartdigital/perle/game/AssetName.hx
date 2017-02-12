@@ -70,6 +70,7 @@ class AssetName{
 	public static inline var BTN_CLOSE:String = "ButtonClose";
 	public static inline var TIME_GAUGE_TEXT:String = "_Text_TimeSkipGaugeTime";
 	public static inline var TEXT:String = "Text";
+	public static inline var TIME_ACCELERATE_BUTTON_TXT:String = "_accelerate_cost";
 	
 	// Shop
 	public static inline var SHOP_PREFIX:String = "Shop_";
@@ -405,7 +406,12 @@ class AssetName{
 	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
 	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
 	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON:String = "AccelerateButton";
-	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON_TXT:String = "_accelerate_cost";
+	
+	//confirmation accelerate popin
+	public static inline var CONFIRMATION_ACCELERATE_POPIN:String = "Popin_SkipTime";
+	public static inline var CONFIRMATION_ACCELERATE_POPIN_TEXT_ACTION:String = "Verb";
+	public static inline var CONFIRMATION_ACCELERATE_POPIN_GAUGE:String = "Timebased Gauge";
+	public static inline var CONFIRMATION_ACCELERATE_POPIN_BTN:String = "Button_SkipTimeConfirm";
 	
 	//Marketing popin
 	public static inline var MARKETING_POPIN:String = "InfoMarketing";

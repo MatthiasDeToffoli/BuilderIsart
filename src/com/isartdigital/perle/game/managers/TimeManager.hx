@@ -467,6 +467,16 @@ class TimeManager {
 		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
 	}
 	
+	public static function setProductionFine(pRef:Int):Void {
+		var lProd:TimeDescription;
+		
+		for (lProd in listProduction)
+			if (lProd.refTile == pRef)
+				lProd.end = Date.now().getTime();
+				
+		SaveManager.save();
+	}
+	
 	public static function removeProductionTIme(ref:Int){
 	 	var i:Int, l:Int = listProduction.length;
 		

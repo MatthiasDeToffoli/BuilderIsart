@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VCollectorHeaven;
+import com.isartdigital.perle.ui.popin.accelerate.AcceleratePopinCollector;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -58,7 +59,7 @@ class TimerInProd extends SmartComponent
 	}
 	
 	private function rewriteBtn():Void {
-		var txt:TextSprite = cast(accelerateBtn.getChildByName(AssetName.COLLECTOR_TIME_ACCELERATE_BUTTON_TXT), TextSprite);
+		var txt:TextSprite = cast(accelerateBtn.getChildByName(AssetName.TIME_ACCELERATE_BUTTON_TXT), TextSprite);
 		txt.text = price + "";
 	}
 	
@@ -80,8 +81,20 @@ class TimerInProd extends SmartComponent
 	
 	
 	private function onAccelerate():Void{
-		SmartCheck.traceChildrens(accelerateBtn);
+		UIManager.getInstance().openPopin(AcceleratePopinCollector.getInstance());
 		rewriteBtn();
+	}
+	
+	public function getPrice():Int {
+		return price;
+	}
+	
+	public function getBarText():String {
+		return progressBarTxt.text;
+	}
+	
+	public function getRef():Int {
+		return ref;
 	}
 	
 	private function destroyAccelBtn():Void {
