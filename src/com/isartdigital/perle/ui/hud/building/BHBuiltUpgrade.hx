@@ -14,9 +14,11 @@ class BHBuiltUpgrade extends BHBuilt
 {
 	
 	private var btnUpgrade:SmartButton;
+	private var vBuildingIsUpgradable:Bool;
 
 	public function new(pID:String=null) 
 	{
+		vBuildingIsUpgradable = haveUpgradeBtn();
 		super(pID);
 		
 	}
@@ -24,13 +26,7 @@ class BHBuiltUpgrade extends BHBuilt
 	override function findElements():Void 
 	{
 		super.findElements();
-		if (getChildByName("ButtonUpgradeBuilding") != null) {
-			btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
-			if (!haveUpgradeBtn()) {
-				btnUpgrade.interactive = false;
-				btnUpgrade.alpha = 0.5;
-			}
-		}
+		if (vBuildingIsUpgradable) btnUpgrade = cast(getChildByName("ButtonUpgradeBuilding"), SmartButton);
 	}
 	
 	private function haveUpgradeBtn():Bool {
@@ -40,18 +36,19 @@ class BHBuiltUpgrade extends BHBuilt
 	override function removeButtonsChange():Void 
 	{
 		super.removeButtonsChange();
-		if(haveUpgradeBtn()) btnUpgrade.removeAllListeners();
+		if(vBuildingIsUpgradable) btnUpgrade.removeAllListeners();
 	}
 	
 	override public function setOnSpawn():Void 
 	{
-		if(haveUpgradeBtn()) Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
+		if (vBuildingIsUpgradable) Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
+
 		super.setOnSpawn();
 	}
 	
 	private function checkLevelPlayerToUpgrade():Bool {
 		var lBuidling:TileDescription = cast(BuildingHud.virtualBuilding, VBuildingUpgrade).getTileDesc();
-		return UnlockManager.checkIfUnlocked(lBuidling.buildingName, lBuidling.level + 1);
+		return UnlockManager.checkIfUnlocked(lBuidling.buildingName, lBuidling.level);
 	}
 	
 	private function onClickUpgrade(): Void {
@@ -63,7 +60,7 @@ class BHBuiltUpgrade extends BHBuilt
 	
 	override public function destroy():Void 
 	{
-		if (getChildByName("ButtonUpgradeBuilding") != null)
+		if (vBuildingIsUpgradable)
 			Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
 		super.destroy();
 	}
