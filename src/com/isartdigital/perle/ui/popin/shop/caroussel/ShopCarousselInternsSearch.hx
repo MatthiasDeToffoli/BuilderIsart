@@ -1,5 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop.caroussel;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
@@ -10,7 +12,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
 
 /**
- * ...
+ * Popin for the search of interns
  * @author Emeline Berenguier
  */
 class ShopCarousselInternsSearch extends ShopCaroussel{
@@ -18,10 +20,15 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	private var gauge:SmartComponent;
 	private var gaugeTimer:TextSprite;
 	private var gaugeBar:UISprite;
-	private var accelerateButton:SmartButton; //@Todo: faire le lien avec la classe AccelerateBtn
+	private var gaugeMask:UISprite;
+	private var accelerateButton:SmartButton;
 	
 	private var loop:Timer;
-	public static var progress:Float; //A enlever
+	public static var progress:Float; 
+	
+	private static inline var SKIP_PRICE:Int = 10;
+	private static inline var PROGRESS_VALUE:Int = 100;
+	private static inline var PROGRESS_TOTAL:Int = 10000;
 	
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_INTERN_SEARCHING);
@@ -37,6 +44,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 		gauge = cast(SmartCheck.getChildByName(this, AssetName.REROLL_GAUGE), SmartComponent);
 		gaugeBar = cast(SmartCheck.getChildByName(gauge, AssetName.REROLL_GAUGE_BAR), UISprite);
 		gaugeTimer = cast(SmartCheck.getChildByName(gauge, AssetName.REROLL_GAUGE_TEXT), TextSprite);
+		gaugeMask = cast(SmartCheck.getChildByName(gauge, AssetName.REROLL_GAUGE_MASK), UISprite);
 	}
 	
 	private function addListeners():Void{
@@ -44,6 +52,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	}
 	
 	private function setValues():Void{
+		gaugeMask.scale.x = 0;
 		gaugeBar.scale.x = 0;
 	}
 	
@@ -54,40 +63,42 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	
 	private function progressTimeLoop():Void {
 		if (gaugeBar.scale.x != 1) {
-			progress+= 1000;
-			gaugeTimer.text = TimeManager.getTextTimeReroll(10000 - progress);
+			progress+= PROGRESS_VALUE;
+			gaugeTimer.text = TimeManager.getTextTimeReroll(PROGRESS_TOTAL - progress);
 			updateProgressBar();
 		} else {
-			progress = 0;
-			ShopCarousselInterns.changeID();
-			ShopPopin.isSearching = false;
-			
-			UIManager.getInstance().closeCurrentPopin();
-			ShopPopin.getInstance().init(ShopTab.Interns);
-			UIManager.getInstance().openPopin(ShopPopin.getInstance());
-			loop.stop();
+			end();
 		}
 	}
 	
 	private function updateProgressBar():Void{
-		gaugeBar.scale.x = Math.min(TimeManager.getTimePourcentage(progress, 10000), 1);
+		gaugeBar.scale.x = Math.min(TimeManager.getTimePourcentage(progress, PROGRESS_TOTAL), 1);
+	}
+	
+	/**
+	 * Finish the search and go to the shop
+	 */
+	private function end():Void{
+		progress = 0;
+		ShopCarousselInterns.changeID();
+		ShopPopin.isSearching = false;
+			
+		UIManager.getInstance().closeCurrentPopin();
+		ShopPopin.getInstance().init(ShopTab.Interns);
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
+		loop.stop();
 	}
 	
 	/** 
 	 * Funciton disabled that function because there is no arrow for intern tab.
 	 */
 	override function initArrows():Void { }
-
-	//override private function getSpawnersAssetNames():Array<String> {
-		//return [ // todo : constantes ? c'est des spawners..
-			//"Intern_?_1",
-			//"Intern_?_2",
-			//"Intern_?_3"
-		//];
-	//}
 	
 	private function onAccelerate():Void{
-		trace("accelerate");
+		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)){
+			ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
+			end();
+		}
 	}
 	
 	override public function destroy():Void{

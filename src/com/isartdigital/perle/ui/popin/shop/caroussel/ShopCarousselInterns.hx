@@ -180,6 +180,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
 			heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
 			
+			setValuesStats(Intern.internsMap[Alignment.heaven][actualHeavenID]);
+			
 			if (!Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
 				heavenCard.buttonMode = false;
 				heavenCard.interactive = false;
@@ -198,6 +200,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 			hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
 			
+			setValuesStats(Intern.internsMap[Alignment.hell][actualHellID]);
+			
 			if(!DialogueManager.ftueStepBuyIntern)
 				if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
 					hellCard.buttonMode = false;
@@ -215,8 +219,31 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		setValuesNumberHousesHeaven();
 		setValuesNumberHousesHell();
+		
 	}
 
+	private function setValuesStats(pIntern:InternDescription):Void{
+		var iEff:Int =  6 - pIntern.efficiency;
+		var iSpeed:Int = 6 - pIntern.speed;
+		
+		if (pIntern.aligment == "heaven"){
+			for (i in 1...iEff)
+			cast(heavenGaugeEfficency.getChildAt(i), UISprite).visible = false;
+			
+			for (i in 1...iSpeed)
+			cast(heavenGaugeSpeed.getChildAt(i), UISprite).visible = false;
+		}
+		
+		else {
+			for (i in 1...iEff)
+			cast(hellGaugeEfficency.getChildAt(i), UISprite).visible = false;
+			
+			for (i in 1...iSpeed)
+			cast(hellGaugeSpeed.getChildAt(i), UISprite).visible = false;
+		}
+
+	}
+	
 	/**
 	 * Set the correct values of the heaven intern house
 	 */

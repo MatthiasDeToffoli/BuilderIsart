@@ -186,6 +186,7 @@ class AssetName{
 	public static inline var REROLL_ACCELERATE_BUTTON:String = "Accelerate_button";
 	public static inline var REROLL_GAUGE_BAR:String = "Bar";
 	public static inline var REROLL_GAUGE_TEXT:String = "txt";
+	public static inline var REROLL_GAUGE_MASK:String = "_jauge_searchingMasque";
 	
 	//Shop caroussel Interns cards
 	public static inline var CARD_NAME:String = "_internPortrait_Name";

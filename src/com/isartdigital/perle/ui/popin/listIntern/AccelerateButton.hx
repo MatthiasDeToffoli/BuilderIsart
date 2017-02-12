@@ -11,7 +11,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
 
 /**
- * ...
+ * Button for the acceleration/Time skip
  * @author Emeline Berenguier
  */
 class AccelerateButton extends SmartButton
@@ -35,8 +35,8 @@ class AccelerateButton extends SmartButton
 		quest = pQuest;
 	}
 	
-	private function onAccelerate():Void {
-		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, 2);
+	private function onAccelerate(){
+		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
 		if (!TimeManager.increaseQuestProgress(quest)) return;
 	}
 	
