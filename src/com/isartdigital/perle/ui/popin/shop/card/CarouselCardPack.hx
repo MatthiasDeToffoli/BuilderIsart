@@ -1,11 +1,13 @@
 package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import js.Browser;
+import pixi.interaction.EventTarget;
 
 /**
  * ...
@@ -47,7 +49,10 @@ class CarouselCardPack extends CarouselCard{
 	private var iconPrice:UISprite;
 	private var gain:TextSprite;
 	private var picture:UISprite;
-	private var btn:SmartButton;// les gd l'ont construit bizarrement...
+	
+	private var cantBuyFeedBack:Bool;
+	private var myPrice:Map<GeneratorType, Float>;
+	private var myGain:Map<GeneratorType, Int>;
 	
 	public function new(pID:String=null) {
 		super(pID);
@@ -61,27 +66,55 @@ class CarouselCardPack extends CarouselCard{
 		
 		cardName = pName;
 		myConfig = GameConfig.getShopPackByName(cardName);
+		
+		
+		myPrice = [
+			getPriceType(myConfig) => getPriceValue(getPriceType(myConfig), myConfig)
+		];
+		myGain = [
+			getGainType(myConfig) => getGainValue(getGainType(myConfig), myConfig)
+		];
+		cantBuyFeedBack = !BuyManager.canBuyShopPack(myPrice);
+		
 		super.init(pName);
 	}
 	
 	override private function buildCard():Void {
 		super.buildCard();
-		//btn = cast(SmartCheck.getChildByName(this, "Button"), SmartButton);
+		
+		// todo: un peu du bricolage ce alpha.
+		if (cantBuyFeedBack) 
+			alpha = 0.5;
+		
 		price = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_PRICE), TextSprite);
 		iconGain = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_ICON_GAIN), UISprite);
 		iconPrice = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_ICON_PRICE), UISprite);
 		gain = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_GAIN), TextSprite);
 		picture = cast(SmartCheck.getChildByName(this, AssetName.CARD_PACK_PICTURE), UISprite);
 		
+		// todo : répétitif
 		var lPriceType:GeneratorType = getPriceType(myConfig);
 		var lGainType:GeneratorType = getGainType(myConfig);
 		
-		setPrice(myConfig.priceIP == null ? myConfig.priceKarma : myConfig.priceIP);
+		setPrice(getPriceValue(lPriceType, myConfig));
 		setIconPrice(lPriceType);
 		setIconGain(lGainType);
 		setGain(getGainValue(lGainType, myConfig));
 		setPicture(picture, lGainType, myConfig.iconLevel, pictureSwitch);
 		//setName(cardName); there is no name testSprite.
+	}
+	
+	override function _click(pEvent:EventTarget = null):Void {
+		if (!BuyManager.canBuyShopPack(myPrice)) {
+			trace("You don't have the money for this ShopPack");
+			Browser.alert("You don't have the money for this ShopPack");
+			return;
+		}
+		
+		super._click(pEvent);
+		closeShop();
+		
+		BuyManager.buyShopPack(myPrice, myGain);
 	}
 	
 	private function getPriceType (pConfig:TableTypeShopPack):GeneratorType {
@@ -115,6 +148,16 @@ class CarouselCardPack extends CarouselCard{
 		return null;
 	}
 	
+	private function getPriceValue (pPriceType:GeneratorType, pConfig:TableTypeShopPack):Float {
+		switch (pPriceType) {
+			case GeneratorType.isartPoint : return pConfig.priceIP;
+			case GeneratorType.hard : return pConfig.priceKarma;
+			default : null;
+		}
+		
+		Debug.error("Price is unknow, error in database ?");
+		return null;
+	}
 	
 	private function setPrice (pFloat:Float):Void {
 		price.text = Std.string(pFloat);

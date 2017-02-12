@@ -3,10 +3,9 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
-import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.display.Container;
+import js.Browser;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
@@ -34,6 +33,7 @@ class CarouselCardUnlock extends CarouselCard implements ICardVariableBackground
 	
 	override function buildCard():Void {
 		super.buildCard();
+		// todo: à update avec le temps (gain de ressource auto ?), ou enlever
 		if (!BuyManager.canBuy(buildingName))
 			alpha = 0.5;
 			
@@ -50,8 +50,11 @@ class CarouselCardUnlock extends CarouselCard implements ICardVariableBackground
 	private function setName (pAssetName:String):Void {}
 	
 	override private function _click (pEvent:EventTarget = null):Void {
-		if (alpha == 0.5)
+		if (!BuyManager.canBuy(buildingName)) {
+			trace("You don't have the money for this building");
+			Browser.alert("You don't have the money for this building");
 			return;
+		}
 		super._click(pEvent);
 		closeShop();
 	}
@@ -90,12 +93,6 @@ class CarouselCardUnlock extends CarouselCard implements ICardVariableBackground
 		} else {
 			return pStateDown ? AssetName.CARD_BACKGROUND_HELL_DOWN : AssetName.CARD_BACKGROUND_HELL_UP;
 		}
-	}
-	
-	private function closeShop ():Void { // todo : dans la mauvaise class...
-		Hud.getInstance().show();
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().closeCurrentPopin();
 	}
 	
 	override public function destroy():Void {

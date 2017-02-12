@@ -2,10 +2,10 @@ package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.FakeTraduction;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.interaction.EventTarget;
 
 /**
  * ...
@@ -69,6 +69,11 @@ class CarouselCardBundle extends CarouselCard{
 		setGain(textGainSoft, iconGainSoft, myConfig.giveGold);
 		setGain(textGainHard, iconGainHard, myConfig.giveKarma);
 		
+	}
+	
+	override function _click(pEvent:EventTarget = null):Void {
+		super._click(pEvent);
+		// todo
 	}
 	
 	private function setPicture (pPicture:UISprite, pIconLevel:Int, lPictureSwitch:Map<Int,String>):Void {

@@ -4,6 +4,7 @@ import com.greensock.TweenMax;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -59,30 +60,19 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	private function buildCard ():Void {}
 	
-	/**
-	 * Put scale to 1:1
-	 */
-	private function tweenPopin ():Void {
-		/*TweenMax.to(scale, TWEEN_DURATION, {
+	// todo faire un tween sympa ?
+	/*private function tweenPopin ():Void {
+		TweenMax.to(scale, TWEEN_DURATION, {
 			ease: untyped Back.easeOut.config(TWEEN_BACK_PARAM_1),
 			x:1,
 			y:1
-		} );*/
-	}
-	
-	// inutile, si pas de problème compil, supprimer.
-	/*private function setImage (pAssetName:String):Void { // todo : finir
-		var lImage:FlumpStateGraphic = new FlumpStateGraphic(pAssetName); // todo :pooling à penser
-		
-		lImage.init();
-		lImage.width = image.width;
-		lImage.height = image.height;
-		image.addChild(lImage);
-		lImage.x = 0;
-		lImage.y = 0;
-		lImage.start();
-		
+		} );
 	}*/
+
+	private function closeShop ():Void {
+		Hud.getInstance().show();
+		UIManager.getInstance().closeCurrentPopin();
+	}
 	
 	private function changeIconSpawner (pSpriteName:String, pSpawner:UISprite):Void {
 		var lSprite:UISprite = new UISprite(pSpriteName);

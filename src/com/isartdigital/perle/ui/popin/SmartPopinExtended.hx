@@ -1,10 +1,8 @@
 package com.isartdigital.perle.ui.popin;
 
-import com.greensock.TweenMax;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UIMovie;
-import dat.controllers.Controller;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
