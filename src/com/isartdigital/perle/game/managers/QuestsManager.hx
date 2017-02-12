@@ -179,12 +179,12 @@ class QuestsManager
 		UIManager.getInstance().openPopin(GatchaPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(GatchaPopin.getInstance());
 		
-		//for (i in 0...Intern.internsListArray.length){
-			//if (pQuest.refIntern == Intern.internsListArray[i].id) {
-				//ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
-				//Intern.getIntern(pQuest.refIntern).quest = null;
-			//}
-		//}
+		for (i in 0...Intern.internsListArray.length){
+			if (pQuest.refIntern == Intern.internsListArray[i].id) {
+				ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
+				Intern.getIntern(pQuest.refIntern).quest = null;
+			}
+		}
 	}
 	
 	public static function finishQuest(pQuest:TimeQuestDescription):Void {
@@ -195,6 +195,7 @@ class QuestsManager
 
 		if (Intern.isMaxStress(questInProgress.refIntern)){
 			MaxStressPopin.quest = pQuest;
+			MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 		}		
@@ -205,12 +206,12 @@ class QuestsManager
 			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		}
 		
-		for (i in 0...Intern.internsListArray.length){
-			if (pQuest.refIntern == Intern.internsListArray[i].id) {
-				ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
-				Intern.getIntern(pQuest.refIntern).quest = null;
-			}
-		}
+		//for (i in 0...Intern.internsListArray.length){
+			//if (pQuest.refIntern == Intern.internsListArray[i].id) {
+				//ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
+				//Intern.getIntern(pQuest.refIntern).quest = null;
+			//}
+		//}
 		destroyQuest(pQuest.refIntern);
 	}
 	
@@ -246,14 +247,15 @@ class QuestsManager
 	
 	public static function getPrctAvancment(pId:Int):Float {
 		var quest:TimeQuestDescription = getQuest(pId);
-		var globalLength = quest.end - quest.creation;
-		return (quest.progress - quest.creation) / globalLength;
+		var baseValeur:Int = 1;
+		
+		if (quest != null){
+			var globalLength = quest.end - quest.creation;
+			return (quest.progress - quest.creation) / globalLength;
+		}
+		else return baseValeur;
 	}
 	
-	//private static function isMaxStress(pId:Int):Bool{
-		//if (Intern.getIntern(pId).stress < Intern.MAX_STRESS) return false;
-		//else return true;
-	//}
 	
 	public static function destroyQuest(pQuestId:Int):Void{
 		for (i in 0...questsList.length){

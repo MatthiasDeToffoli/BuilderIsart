@@ -150,12 +150,16 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function progressLoop():Void {
-		quest = QuestsManager.getQuest(quest.refIntern);
+		//if (quest != null) quest = QuestsManager.getQuest(quest.refIntern);
 		if (heroCursor != null) {
 			updateEventCursors();
 			if (quest.steps[quest.stepIndex] <= quest.progress) timeEvent.text = "00:00";
 			else timeEvent.text = getChrono();
 			updateCursorPosition();	
+		}
+		
+		else {
+			loop.stop();
 		}
 		
 	}
