@@ -56,6 +56,7 @@ class DialogueManager
 	
 	public static var ftuePlayerCanWait:Bool = false;
 	public static var boostBuilding:Bool = false;
+	public static var passFree:Bool = false;
 	
 	/**
 	 * Init Ftue
@@ -198,6 +199,8 @@ class DialogueManager
 				ftuePlayerCanWait = true;
 			if (steps[dialogueSaved].boostBuilding)
 				boostBuilding = true;
+			if (steps[dialogueSaved].passFreeConstruct)
+				passFree = true;
 				
 			//Dialogue + Arrow
 			if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].arrowRotation != null) {
@@ -466,6 +469,7 @@ class DialogueManager
 		ftueCloseUnlockedItem = false;	
 		ftuePlayerCanWait = false;	
 		boostBuilding = false;	
+		passFree = false;	
 	}
 	
 }

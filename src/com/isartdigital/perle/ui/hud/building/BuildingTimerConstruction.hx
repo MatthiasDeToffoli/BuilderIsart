@@ -36,14 +36,16 @@ class BuildingTimerConstruction extends BuildingTimer
 		updateProgressBar();
 	}
 	
-	public function boost(pValue:Float, ?pFinishForFtue:Bool):Void {
+	public function boost(pValue:Float, ?pFinish:Bool):Void {
 		var isFinish:Bool;
 		
-		if (pFinishForFtue == null)
+		if (pFinish == null)
 			isFinish = TimeManager.increaseProgress(building, pValue);
 		else {
-			DialogueManager.endOfaDialogue();
-			isFinish = pFinishForFtue;
+			if(DialogueManager.passFree)
+				DialogueManager.endOfaDialogue();
+				
+			isFinish = pFinish;
 		}
 			
 		if (isFinish) {
@@ -63,6 +65,7 @@ class BuildingTimerConstruction extends BuildingTimer
 			updateProgressBar();
 		} else {
 			if (DialogueManager.ftuePlayerCanWait) {
+				trace("testrjfdbhuhbuh");
 				DialogueManager.dialogueSaved += 1;
 				DialogueManager.endOfaDialogue();
 			}

@@ -31,6 +31,7 @@ typedef FTUEStep = {
 	@optional var makeChoice:Bool;
 	@optional var haveToMakeAllChoice:Bool;
 	@optional var closeGatcha:Bool;
+	@optional var passFreeConstruct:Bool;
 	//dialogue
 	@optional var dialogueNumber:Int;
 	@optional var npcWhoTalk:String;
