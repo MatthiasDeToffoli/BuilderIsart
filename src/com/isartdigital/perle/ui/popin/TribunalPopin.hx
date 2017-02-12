@@ -1,9 +1,13 @@
 package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
@@ -31,8 +35,8 @@ class TribunalPopin extends SmartPopinExtended
 	private static var instance: TribunalPopin;
 	private static var counterForFtue:Int = 0;
 	private var btnClose:SmartButton;
-	//private var btnShop:SmartButton;
-	//private var btnIntern:SmartButton;
+	private var btnShop:SmartButton;
+	private var btnIntern:SmartButton;
 	private var btnHeaven:SmartButton;
 	private var btnHell:SmartButton;
 	private var btnUpgrade:SmartButton;
@@ -40,7 +44,6 @@ class TribunalPopin extends SmartPopinExtended
 	private var timer:TextSprite;
 	private var fateName:TextSprite;
 	private var fateAdjective:TextSprite;
-	private var upgradePrice:TextSprite;
 	private var infoHeaven:TextSprite;
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
@@ -64,20 +67,16 @@ class TribunalPopin extends SmartPopinExtended
 		counterForFtue = 0;
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
-		//btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
-		//btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
+		btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
+		btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
 		btnHeaven = cast(getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_BUTTON), SmartButton);
 		btnHell = cast(getChildByName(AssetName.PURGATORY_POPIN_HELL_BUTTON), SmartButton);
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
-		/*SmartCheck.traceChildrens(btnUpgrade);
-		trace(AssetName.PURGATORY_POPIN_UPGRADE);
-		trace(AssetName.PURGATORY_POPIN_UPGRADE_PRICE);*/
+		//SmartCheck.traceChildrens(this);
 
-		//upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE), TextSprite);
-		//upgradePrice.text = 2000 + "$";
 		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
-		tribunalLevel.text = "LEVEL " + 1;
+		tribunalLevel.text = "LEVEL " + VTribunal.getInstance().tileDesc.level;
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_TIMER_CONTAINER);
 		timer = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_TIMER), TextSprite);
@@ -100,16 +99,21 @@ class TribunalPopin extends SmartPopinExtended
 		
 		changeSoulTextInfo();
 			
-		btnUpgrade.on(MouseEventType.MOUSE_OVER, rewriteUpgradeTxt);
-		btnUpgrade.on(MouseEventType.MOUSE_OUT, rewriteUpgradeTxt);
-		btnUpgrade.on(MouseEventType.MOUSE_DOWN, rewriteUpgradeTxt);
+		if (VTribunal.getInstance().canUpgrade()){
+			Interactive.addListenerRewrite(btnUpgrade, rewriteUpgradeTxt);
+			Interactive.addListenerClick(btnUpgrade, onUpgrade);
+			rewriteUpgradeTxt();
+		} else {
+			btnUpgrade.parent.removeChild(btnUpgrade);
+			btnUpgrade.destroy();
+		}
+		
 		
 		Interactive.addListenerClick(btnClose, onClose);
 		Interactive.addListenerClick(btnHeaven, onHeaven);
 		Interactive.addListenerClick(btnHell, onHell);
-		//Interactive.addListenerClick(btnShop, onShop);
-		//Interactive.addListenerClick(btnIntern, onIntern);
-		Interactive.addListenerClick(btnUpgrade, onUpgrade);
+		Interactive.addListenerClick(btnShop, onShop);
+		Interactive.addListenerClick(btnIntern, onIntern);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
 		
@@ -174,11 +178,29 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function onUpgrade():Void{
 		rewriteUpgradeTxt();
+		var tribunalConfig:TableTypeBuilding = GameConfig.getBuildingByName(VTribunal.getInstance().tileDesc.buildingName, VTribunal.getInstance().tileDesc.level + 1);
+		
+		if (ResourcesManager.getTotalForType(GeneratorType.soft) - tribunalConfig.costGold >= 0 &&
+		ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell) - tribunalConfig.costIron >= 0 &&
+		ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise) - tribunalConfig.costWood >= 0) {
+			ResourcesManager.spendTotal(GeneratorType.soft, tribunalConfig.costGold);	
+			ResourcesManager.spendTotal(GeneratorType.buildResourceFromHell, tribunalConfig.costIron);	
+			ResourcesManager.spendTotal(GeneratorType.buildResourceFromParadise, tribunalConfig.costWood);
+			VTribunal.getInstance().onClickUpgrade();
+			onClose();
+		}
 	}
 	
 	private function rewriteUpgradeTxt(){
-		upgradePrice = cast(btnUpgrade.getChildByName("Cost"), TextSprite);
-		upgradePrice.text = 2000 + "$";
+		var upgradePrice:TextSprite = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_SOFT), TextSprite);
+		var tribunalConfig:TableTypeBuilding = GameConfig.getBuildingByName(VTribunal.getInstance().tileDesc.buildingName, VTribunal.getInstance().tileDesc.level + 1); 
+		upgradePrice.text = tribunalConfig.costGold + "";
+		
+		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_STONE), TextSprite);
+		upgradePrice.text = tribunalConfig.costIron + "";
+		
+		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_WOOD), TextSprite);
+		upgradePrice.text = tribunalConfig.costWood + "";
 	}
 	
 	/**
@@ -191,7 +213,7 @@ class TribunalPopin extends SmartPopinExtended
 		Interactive.removeListenerClick(btnHell, onHell);
 		//Interactive.removeListenerClick(btnShop, onShop);
 		//Interactive.removeListenerClick(btnIntern, onIntern);
-		Interactive.removeListenerClick(btnUpgrade, onUpgrade);
+		if (VTribunal.getInstance().canUpgrade()) Interactive.removeListenerClick(btnUpgrade, onUpgrade);
 		
 		instance = null;
 		

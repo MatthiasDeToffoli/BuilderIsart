@@ -343,7 +343,9 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_ALL_SOULS_INFO:String = "SoulCounter";
 	public static inline var PURGATORY_POPIN_ALL_SOULS_NUMBER:String = "Value";
 	public static inline var PURGATORY_POPIN_UPGRADE:String = "ButtonUpgrade";
-	public static inline var PURGATORY_POPIN_UPGRADE_PRICE:String = "Cost";
+	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_SOFT:String = "_Upgrade_goldCost";
+	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_WOOD:String = "_Upgrade_woodCost";
+	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_STONE:String = "_Upgrade_stoneCost";
 	
 	//Ftue
 	public static inline var FTUE_SCENARIO:String = "Window_NPC";
