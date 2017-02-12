@@ -149,6 +149,7 @@ class TimeManager {
 			MarketingManager.setCampaign(CampaignType.none);
 			eCampaign.emit(EVENT_CAMPAIGN_FINE);
 			campaignTime = 0;
+			SaveManager.save();
 		} else {
 			eCampaign.emit(EVENT_CAMPAIGN, campaignTime);
 		}
@@ -477,6 +478,8 @@ class TimeManager {
 				listProduction.splice(i, 1);
 				eProduction.emit(EVENT_COLLECTOR_PRODUCTION_STOP, ref);
 			}
+			
+		SaveManager.save();
 	}
 	
 	//public static function updateGauges(pElapsedTime:Float):Void{
