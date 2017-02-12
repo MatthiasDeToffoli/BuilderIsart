@@ -24,6 +24,7 @@ class TimerInProd extends SmartComponent
 	private var gain:TextSprite;
 	private var accelerateBtn:SmartButton;
 	private var ref:Int;
+	private var price:Int = 9999999;
 
 	public function new(collector:VCollector) 
 	{
@@ -31,7 +32,8 @@ class TimerInProd extends SmartComponent
 		ref = collector.tileDesc.id;
 		accelerateBtn = cast(SmartCheck.getChildByName(this, AssetName.COLLECTOR_TIME_ACCELERATE_BUTTON));
 		Interactive.addListenerClick(accelerateBtn, onAccelerate);
-		
+		Interactive.addListenerRewrite(accelerateBtn, rewriteBtn);
+		rewriteBtn();
 		var progressBar:SmartComponent = cast(SmartCheck.getChildByName(this, AssetName.COLLECTOR_TIME_GAUGE), SmartComponent);
 		
 		progressBarTxt = cast(SmartCheck.getChildByName(progressBar, AssetName.TIME_GAUGE_TEXT), TextSprite);
@@ -55,20 +57,31 @@ class TimerInProd extends SmartComponent
 		
 	}
 	
+	private function rewriteBtn():Void {
+		var txt:TextSprite = cast(accelerateBtn.getChildByName(AssetName.COLLECTOR_TIME_ACCELERATE_BUTTON_TXT), TextSprite);
+		txt.text = price + "";
+	}
+	
 	private function rewrite(pTime:TimeDescription ){
 		
 		if (pTime.refTile != ref) return;
 		
-		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.end, pTime.progress));
+		var diff:TimesAndNumberDays = TimesInfo.calculDateDiff(pTime.end, pTime.progress);
+		
+		var clock:Clock = TimesInfo.getClock(diff);
 		
 		progressBarTxt.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;
 		
-		if (pTime.progress <= 0) destroyAccelBtn();
+		price = Math.floor((TimesInfo.getMinute(diff) / 10)+1);
+		if(accelerateBtn != null) rewriteBtn();
+
+		if (TimesInfo.timeIsFine(diff)) destroyAccelBtn();
 	}
 	
 	
 	private function onAccelerate():Void{
-		trace("accelerate");
+		SmartCheck.traceChildrens(accelerateBtn);
+		rewriteBtn();
 	}
 	
 	private function destroyAccelBtn():Void {
@@ -76,6 +89,7 @@ class TimerInProd extends SmartComponent
 		if (accelerateBtn == null) return;
 		
 		Interactive.removeListenerClick(accelerateBtn, onAccelerate);
+		Interactive.removeListenerRewrite(accelerateBtn, rewriteBtn);
 		accelerateBtn.parent.removeChild(accelerateBtn);
 		accelerateBtn.destroy();
 		accelerateBtn = null;

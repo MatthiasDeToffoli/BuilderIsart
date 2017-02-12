@@ -405,6 +405,7 @@ class AssetName{
 	public static inline var COLLECTOR_TIME_GAIN:String = "ProducingValue";
 	public static inline var COLLECTOR_TIME_ICON:String = "ProducingIcon";
 	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON:String = "AccelerateButton";
+	public static inline var COLLECTOR_TIME_ACCELERATE_BUTTON_TXT:String = "_accelerate_cost";
 	
 	//Marketing popin
 	public static inline var MARKETING_POPIN:String = "InfoMarketing";

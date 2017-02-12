@@ -42,6 +42,16 @@ class TimesInfo
 		}
 	}
 	
+	public static function getMinute(pTime:TimesAndNumberDays):Int {
+		return Date.fromTime(pTime.times).getMinutes() + Date.fromTime(pTime.times).getHours() * SIXTY;
+	}
+	
+	public static function timeIsFine(pTime:TimesAndNumberDays):Bool {
+		var lDate:Date = Date.fromTime(pTime.times);
+		
+		return pTime.days == 0 && lDate.getHours() == 0 && lDate.getMinutes() == 0 && lDate.getSeconds() == 0;
+	}
+	
 	public static function getTimeInMilliSecondFromTimeStamp(pTime:Float):Float {
 		return getTimeInMilliSecondFromDate(Date.fromTime(pTime));
 	}
