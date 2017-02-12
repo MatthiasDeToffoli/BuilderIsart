@@ -93,7 +93,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		DialogueManager.createFtue();
+		//DialogueManager.createFtue(); // temporaire, todo, car bug sur skip time batiment
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		
