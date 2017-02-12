@@ -54,7 +54,6 @@ class TimeManager {
 	public static inline var EVENT_RESOURCE_TICK:String = "TimeManager_Resource_Tick";
 	public static inline var EVENT_CHOICE_DONE:String = "TimeManager_Choice_Done";
 	public static inline var EVENT_QUEST_STEP:String = "TimeManager_Quest_Step_Reached";
-	public static inline var EVENT_GATCHA:String = "TimeManager_Gatcha_Step_Reached";
 	public static inline var EVENT_QUEST_END:String = "TimeManager_Resource_End_Reached";
 	public static inline var EVENT_CONSTRUCT_END:String = "TimeManager_Construction_End";
 	public static inline var EVENT_COLLECTOR_PRODUCTION:String = "Production_Time";
@@ -216,7 +215,7 @@ class TimeManager {
 	
 	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
 		var dateNow:Float = Date.now().getTime();		
-		if (dateNow >= pBuildingTimer.end) return;	
+		if (dateNow >= pBuildingTimer.end) return;
 		
 		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;
 		ServerManager.ContructionTimeAction(pBuildingTimer, DbAction.ADD);
@@ -336,7 +335,7 @@ class TimeManager {
 	 * @param	pElement
 	 */
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
-		if (pElement.progress >= pElement.steps[pElement.stepIndex]) {
+		if (!QuestsManager.isMaxStress(pElement.refIntern)) {
 			pElement.stepIndex++;
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			TimeManager.createTimeQuest(pElement);
@@ -420,13 +419,14 @@ class TimeManager {
 			}
 		}
 		
+		
 		// progress has reached next step && just now
 		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
 		{
 			if (Intern.getIntern(pElement.refIntern).stress < 100) {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
 				eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
-				if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_GATCHA, pElement);
+				if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
 			else {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_MAX_STRESS;

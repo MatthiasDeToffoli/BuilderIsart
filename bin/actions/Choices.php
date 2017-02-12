@@ -9,7 +9,7 @@
     case "ADD": addInUsedList($IdEvent); break;
     case "REM": resetInternEvent($IdIntern); break;
     case "CLOSE_QUEST" : closeQuest($IdEvent); break;
-    case "REFRESH" : refreshChoices(); break;
+    case "VOID" : deleteChoices(); break;
     case "USED_ID": getUsedId(); break;
     default: echo "No function"; break;
   }
@@ -71,7 +71,7 @@
     }
   }
 
-  function refreshChoices() {
+  function deleteChoices() {
     global $db;
 
     $req = "DELETE FROM ChoicesUsed WHERE IDPlayer = :playerId";

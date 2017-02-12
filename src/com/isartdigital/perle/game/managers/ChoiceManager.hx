@@ -71,7 +71,7 @@ class ChoiceManager
 {		
 	public static var allChoices:Array<ChoiceDescription> = new Array<ChoiceDescription>();
 	public static var efficiencyBalance:Array<EfficiencyStep> = new Array<EfficiencyStep>();
-	private static var usedID:Array<TypeUseChoice> = new Array<TypeUseChoice>();
+	public static var usedID:Array<TypeUseChoice> = new Array<TypeUseChoice>();
 	
 	public static var actualID:Int;
 	
@@ -105,17 +105,13 @@ class ChoiceManager
 	}
 	
 	public static function newChoice(pId:Int, ?isGatcha:Bool = false):Void {
-		var memId:Int = actualID;
+		var memId:Int = Intern.getIntern(pId).idEvent;
 		ChoiceManager.getNewChoiceID();
-		if (!isGatcha) ChoiceManager.newUsedChoice();
+		if (!isGatcha) ChoiceManager.newUsedChoice(memId);
 		Intern.getIntern(pId).idEvent = actualID;
 		var intern:InternDescription = Intern.getIntern(pId);
 		if (!isGatcha) ServerManager.InternAction(DbAction.UPDT_EVENT, intern.id, intern.idEvent);
-		else {
-			Intern.getIntern(pId).quest = null; 
-			ServerManager.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
-			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, memId);
-		}
+		else ServerManager.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
 	}
 	
 	public static function getNewChoiceID():Void {
@@ -169,12 +165,13 @@ class ChoiceManager
 					(pIntern.aligment == "hell") ? pIntern.stress += useChoice.hellStress: pIntern.stress += useChoice.heavenStress;
 				
 				default: return;
-			}
+			}	
 			
-			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
 			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
+			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
+			closeQuestStep(pIntern.idEvent);
 			
-			if (pIntern.quest.stepIndex != 2) ChoiceManager.newChoice(pIntern.id);
+			if (pIntern.quest.stepIndex < 2) ChoiceManager.newChoice(pIntern.id);
 			else ChoiceManager.newChoice(pIntern.id, true);
 			
 			QuestsManager.goToNextStep();
@@ -186,6 +183,11 @@ class ChoiceManager
 		}
 	}
 	
+	public static function noMoreQuest():Bool {
+		if (usedID.length == allChoices.length) return true; 
+		return false;
+	}
+	
 	public static function nextStep():Void {
 		getNewChoiceID();
 	}
@@ -194,9 +196,18 @@ class ChoiceManager
 		return allChoices[pId - 1];
 	}
 	
-	public static function newUsedChoice():Void {
+	public static function newUsedChoice(pIdEvent:Int):Void {
 		usedID.push( { idChoice: actualID, closed: 0 } );
 		ServerManager.ChoicesAction(DbAction.ADD, allChoices[actualID - 1].iD);
+	}
+	
+	public static function closeQuestStep(pIdEvent:Int):Void {
+		var lLength:Int = usedID.length;
+		for (i in 0...lLength) {
+			if (pIdEvent == usedID[i].idChoice) {
+				usedID[i].closed = 1;
+			} 
+		}
 	}
 	
 	public static function choiceAlreadyUsed(pId:Int):Bool {
@@ -224,12 +235,10 @@ class ChoiceManager
 	public static function internIsInGatcha(pId:Int):Bool {
 		var llength:Int = usedID.length;
 		for (i in 0...llength) {
-			if (usedID[i].idChoice == pId) {
-				if (usedID[i].closed == 1) return true; 
-				else break;
+			if (usedID[i].idChoice == pId && usedID[i].closed == 1) {
+				return true;
 			}
 		}
-		
 		return false;
 	}
 	
@@ -237,8 +246,7 @@ class ChoiceManager
 		if (usedID.length == allChoices.length) {
 			actualID = 1;
 			usedID = new Array<TypeUseChoice>();
-			ServerManager.ChoicesAction(DbAction.REFRESH);
-			
+			ServerManager.ChoicesAction(DbAction.VOID);		
 		}
 	}
 }

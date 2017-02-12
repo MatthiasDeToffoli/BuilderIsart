@@ -71,7 +71,7 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function initStars():Void {
-		speedIndics = new Array<UISprite>();
+		var speedIndics = new Array<UISprite>();
 		effIndics = new Array<UISprite>();
 		
 		for (i in 1...6) {

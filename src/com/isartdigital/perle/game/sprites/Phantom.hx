@@ -15,6 +15,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -351,6 +352,7 @@ class Phantom extends Building {
 			
 			vBuilding.activate();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
+			BHConstruction.newTimer();
 			
 			if (DialogueManager.ftueStepPutBuilding)
 				DialogueManager.endOfaDialogue();

@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.InternPopin;
@@ -126,7 +127,6 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function addListeners():Void {
-		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_GATCHA, endQuest);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_QUEST_STEP, respawn);
 		TimeManager.eTimeQuest.addListener(TimeManager.EVENT_CHOICE_DONE, respawn);
 		//Interactive.addListenerClick(picture, onPicture);
@@ -146,6 +146,7 @@ class InternElementInQuest extends InternElement
 
 	private function onBoost():Void {
 		spawnButton("Bouton_InternSend_Clip");
+		ServerManager.TimeQuestAction(DbAction.UPDT, quest);
 	}
 	
 	private function progressLoop():Void {

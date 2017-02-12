@@ -27,6 +27,7 @@ import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.UIManager;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.utils.events.EventType;
@@ -93,6 +94,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
+		BHConstruction.initTimerContainer();
 		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);

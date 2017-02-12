@@ -240,11 +240,9 @@ class Choice extends SmartPopinExtended
 		
 		if (choiceType != ChoiceType.NONE) {
 			ChoiceManager.applyReward(intern, reward, choiceType);
-			QuestsManager.goToNextStep();
 			if (DialogueManager.ftueStepMakeChoice)
 				DialogueManager.endOfaDialogue();
-			destroy();
-			//onClose();
+			onClose();
 		}
 	}
 	

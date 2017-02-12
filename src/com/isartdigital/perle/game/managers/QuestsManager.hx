@@ -47,7 +47,6 @@ class QuestsManager
 		questsList = new Array<TimeQuestDescription>();	
 		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
 		//eGoToNextStep = new EventEmitter();
-		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, endQuest);
 	}
 	
 	public static function getJson(object:Dynamic):Void{
@@ -148,28 +147,23 @@ class QuestsManager
 	}
 	
 	public static function goToNextStep():Void{
-		trace("gotonextstep");
 		Choice.getInstance().hide();
 		
-		if (questInProgress.stepIndex < 2){
+		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {
 			if (!isMaxStress(questInProgress.refIntern)){
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
 				TimeManager.nextStepQuest(questInProgress);				
-			}
-			
+			}			
 			else{
-				trace("dismiss");
 				MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
 				UIManager.getInstance().closeCurrentPopin;
 				UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			}
 		}	
 		else {
-			trace ("end");
 			endQuest(questInProgress);
 		}
-	}
-	
+	}	
 	/**
 	 * Callback of the quest's end event. Destroy the quest and its time Element
 	 * @param	pQuest
@@ -186,8 +180,9 @@ class QuestsManager
 		GameStage.getInstance().getPopinsContainer().addChild(GatchaPopin.getInstance());
 		
 		for (i in 0...Intern.internsListArray.length){
-			if (pQuest.refIntern == Intern.internsListArray[i].id){
-				Intern.internsListArray[i].quest = null;
+			if (pQuest.refIntern == Intern.internsListArray[i].id) {
+				ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
+				Intern.getIntern(pQuest.refIntern).quest = null;
 			}
 		}
 	}
@@ -250,7 +245,7 @@ class QuestsManager
 	}
 	
 	//A peut-être mettre dans Intern
-	private static function isMaxStress(pId:Int):Bool{
+	public static function isMaxStress(pId:Int):Bool{
 		if (Intern.getIntern(pId).stress < Intern.MAX_STRESS) return false;
 		else return true;
 	}

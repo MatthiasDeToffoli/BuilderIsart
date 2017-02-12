@@ -17,7 +17,7 @@ class BuildingTimerMarketing extends BuildingTimer
 		TimeManager.eCampaign.on(TimeManager.EVENT_CAMPAIGN, showTime);
 	}
 	
-	override function showTime(?pTime:Dynamic):Void 
+	override private function showTime(?pTime:Dynamic):Void 
 	{
 		if (pTime == null) pTime = MarketingManager.getCurrentCampaign().time;
 		var myClock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime, Date.now().getTime()));		

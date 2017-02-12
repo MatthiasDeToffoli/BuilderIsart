@@ -87,7 +87,6 @@ class GameStage extends Container
 		
 		ftueContainer = new Container();
 		addChild(ftueContainer);
-
 	}
 	
 	/**
@@ -227,6 +226,7 @@ class GameStage extends Container
 	public function getBuildContainer():Container {
 		return buildContainer;
 	}
+	
 	/**
 	 * accès en lecture au conteneur d'écrans
 	 * @return screensContainer

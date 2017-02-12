@@ -31,12 +31,8 @@ class MaxStressPopin extends SmartPopin
 	private static var instance: MaxStressPopin;
 	
 	private var internStats:SmartComponent;
-	private var internStress:TextSprite;
-	private var internSpeed:TextSprite;
-	private var internEfficiency:TextSprite;
-	private var stressBar:SmartComponent;
-	private var speedIndic:SmartComponent;
-	private var effIndic:SmartComponent;
+	private var speedJauge:SmartComponent;
+	private var effJauge:SmartComponent;
 	
 	private var btnClose:SmartButton;
 	private var btnResetTextValue:TextSprite;
@@ -46,6 +42,9 @@ class MaxStressPopin extends SmartPopin
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
 	public static var intern:InternDescription;
+	
+	private var speedIndics:Array<UISprite>;
+	private var effIndics:Array<UISprite>;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -77,12 +76,8 @@ class MaxStressPopin extends SmartPopin
 		aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
 		
 		internStats = cast(getChildByName(AssetName.GLOBAL_INTERN_STATS), SmartComponent);
-		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
-		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
-		effIndic = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
-		internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
+		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
+		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 	}
 	
 	public function setDatas():Void{
@@ -91,17 +86,19 @@ class MaxStressPopin extends SmartPopin
 		
 		btnResetTextValue.text = "20"; //Todo, en attendant le balancin
 		
-		var iEff:Int =  6 - intern.efficiency;
-		for (i in 1...iEff)
-			cast(effIndic.getChildAt(i), UISprite).visible = false;
-			
-		var iSpeed:Int = 6 - intern.speed;
-		for (i in 1...iSpeed)
-			cast(speedIndic.getChildAt(i), UISprite).visible = false;
-			
-		//var iStress:Int = 6 - Math.round(intern.stress / 20);
-		//for (i in 1...iStress)
-			//cast(stressBar.getChildAt(i), UISprite).visible = false;
+		initStars();
+	}
+	
+	private function initStars():Void {
+		speedIndics = new Array<UISprite>();
+		effIndics = new Array<UISprite>();
+		
+		for (i in 1...6) {
+			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
+			effIndics.push(cast(effJauge.getChildByName("_jaugeEfficiency_0" + i), UISprite));
+		}		
+		for (i in 0...5) { if (intern.efficiency <= i) speedIndics[i].visible = false; }
+		for (i in 0...5) { if (intern.speed <= i) effIndics[i].visible = false; }
 	}
 	
 	private function addListeners():Void{

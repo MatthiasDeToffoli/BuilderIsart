@@ -1,4 +1,9 @@
 package com.isartdigital.perle.ui.hud.building;
+import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import haxe.Timer;
 
 /**
  * ...
@@ -15,30 +20,30 @@ class BuildingTimerConstruction extends BuildingTimer
 	
 	override public function spawn():Void 
 	{
-		loop = Timer.delay(progressTimeLoop, 1000);
+		loop = Timer.delay(progressTimeLoop, 100);
 		loop.run = progressTimeLoop;
 		super.spawn();
 	}
 	
 	override private function updateProgressBar():Void {
 		progressBar.scale.x = TimeManager.getPourcentage(building.tileDesc.timeDesc);
-		progressBar.position.x = -progressBarWidth / 2 + progressBar.width / 2;
 	}
 	
-	override private function showTime():Void {
+	override private function showTime(?pTime:Dynamic):Void {
 		timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);		
 		updateProgressBar();
 	}
 	
-	override private function onClickSpeedup():Void {
-		trace("decrease time contruction: -5s");
-		var isFinish:Bool = TimeManager.increaseProgress(building, 20000);
+	public function boost(pValue:Float):Void {
+		var isFinish:Bool = TimeManager.increaseProgress(building, pValue);
 		if (isFinish) {
 			if (DialogueManager.ftueStepConstructBuilding) {
 				trace("Je passe la prochaine etape de FTUe, je le met en trace comme ça tout le monde le vois : Il faut rajouter la poppin skip timer pour que je puisse mettre la prochaine etape  bisous Alexis");
 				DialogueManager.endOfaDialogue();
 			}
 			timeText.text = "Finish";
+			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+			destroy();
 		}
 		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
 		

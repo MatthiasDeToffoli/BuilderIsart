@@ -23,7 +23,7 @@ import haxe.Json;
 import pixi.core.math.Point;
 
 	
-enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; REFRESH; }
+enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; VOID; }
 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
@@ -180,7 +180,7 @@ class ServerManager {
 				callPhpFile(ChoiceManager.getUsedIdJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
 			case DbAction.CLOSE_QUEST:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall, "idEvt" => pId]);
-			case DbAction.REFRESH:
+			case DbAction.VOID:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.CHOICES, "funct" => actionCall]);
 			default: return;	
 		}

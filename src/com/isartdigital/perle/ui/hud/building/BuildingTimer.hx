@@ -20,8 +20,8 @@ import haxe.Timer;
  */
 class BuildingTimer extends SmartComponent
 {	
+
 	private var progress:SmartComponent;
-	private var btnSpeedup:SmartButton;	
 	private var timeText:TextSprite;
 	private var progressBar:UISprite;
 	private var progressBarWidth:Float;
@@ -35,8 +35,6 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	public function spawn():Void {
-		
-		
 		building = BuildingHud.virtualBuilding;
 		
 		getComponents();
@@ -49,10 +47,6 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	private function showTime(?pTime:Dynamic):Void {
-		
-	}
-	
-	private function onClickSpeedup():Void {
 		
 	}
 	
