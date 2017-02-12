@@ -137,7 +137,7 @@ class BuyManager {
 				cast(pPrice[lGeneratorType], Int) // isartPoint is a float, but not karma, so no error.
 			);
 		}
-		trace(pGain);
+		
 		for (lGeneratorType in pGain.keys()) {
 			ResourcesManager.gainResources(
 				lGeneratorType,

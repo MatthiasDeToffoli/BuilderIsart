@@ -66,8 +66,6 @@ class CarouselCardPack extends CarouselCard{
 		
 		cardName = pName;
 		myConfig = GameConfig.getShopPackByName(cardName);
-		
-		
 		myPrice = [
 			getPriceType(myConfig) => getPriceValue(getPriceType(myConfig), myConfig)
 		];
@@ -112,8 +110,8 @@ class CarouselCardPack extends CarouselCard{
 		}
 		
 		super._click(pEvent);
-		closeShop();
 		
+		closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
 	}
 	
