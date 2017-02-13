@@ -43,7 +43,7 @@ class TimesInfo
 	}
 	
 	public static function getMinute(pTime:TimesAndNumberDays):Int {
-		return Date.fromTime(pTime.times).getMinutes() + Date.fromTime(pTime.times).getHours() * SIXTY;
+		return Date.fromTime(pTime.times).getMinutes() + Date.fromTime(pTime.times).getHours() * SIXTY + pTime.days * TWENTYFOUR * SIXTY;
 	}
 	
 	public static function timeIsFine(pTime:TimesAndNumberDays):Bool {

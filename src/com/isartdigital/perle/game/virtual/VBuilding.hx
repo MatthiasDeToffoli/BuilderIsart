@@ -21,6 +21,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import pixi.core.display.Container;
@@ -69,6 +70,7 @@ class VBuilding extends VTile {
 		
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		
+		timeDesc = pDescription.timeDesc;
 		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) {
 			TimeManager.addConstructionTimer(pDescription.timeDesc);
@@ -125,7 +127,12 @@ class VBuilding extends VTile {
 		super.activate();
 		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
-		if(haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
+		if (haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
+			
+		if (timeDesc != null) {
+			BuildingHud.linkVirtualBuilding(this);
+			BHConstruction.newTimer(timeDesc);
+		}
 	}
 	
 	/**

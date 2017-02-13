@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector.ProductionPack;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.listIntern.InternElementInQuest;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
@@ -83,7 +84,7 @@ class TimeManager {
 	public static var listResource(default, null):Array<TimeElementResource>;
 	public static var listQuest(default, null):Array<TimeQuestDescription>;
 	public static var listConstruction(default, null):Array<TimeDescription>;
-	public static var listProduction(default, null):Array < TimeDescription>;
+	public static var listProduction(default, null):Array <TimeDescription>;
 	public static var campaignTime(default, null):Float;
 	
 	
@@ -108,7 +109,6 @@ class TimeManager {
 	public static function buildFromSave (pSave:Save):Void {
 		var lLength:Int = pSave.timesResource.length;
 		
-		
 		listProduction = pSave.timesProduction;
 		
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
@@ -120,6 +120,10 @@ class TimeManager {
 			listResource.push({
 				desc: pSave.timesResource[i]
 			});
+		}
+		
+		for (j in 0...lLengthConstruction) {
+			trace(lConstructionArraySaved[j]);
 		}
 	
 		lastKnowTime = pSave.lastKnowTime;
@@ -217,7 +221,7 @@ class TimeManager {
 		if (dateNow >= pBuildingTimer.end) return;
 		
 		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;
-		ServerManager.ContructionTimeAction(pBuildingTimer, DbAction.ADD);
+		//ServerManager.ContructionTimeAction(pBuildingTimer, DbAction.ADD);
 		listConstruction.push(pBuildingTimer);
 	}
 	
@@ -354,6 +358,8 @@ class TimeManager {
 		for (i in 0...lLength) {
 			updateResource(listResource[i]);
 		}
+		
+		SaveManager.save();
 	}
 	
 	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
@@ -454,7 +460,7 @@ class TimeManager {
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
 			ServerManager.ContructionTimeAction(pElement, DbAction.REM);
 			pEndedList.push(index);
-		}
+		}		
 	}
 	
 	private static function updateProductionTime(pElement:TimeDescription):Void {
@@ -563,6 +569,8 @@ class TimeManager {
 		}	
 		deleteEndedConstruction(constructionEnded);
 		
+		SaveManager.save();
+		
 		var state:VBuildingState = getBuildingStateFromTime(pVBuilding.tileDesc);
 		if (state == VBuildingState.isBuilt) return true;
 		return false;
@@ -636,6 +644,8 @@ class TimeManager {
 				break;
 			}
 		}
+		
+		SaveManager.save();
 	}
 	
 	

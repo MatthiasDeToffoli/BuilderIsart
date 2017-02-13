@@ -49,14 +49,16 @@ class BuildingTimerConstruction extends BuildingTimer
 		}
 			
 		if (isFinish) {
-			timeText.text = "Finish";
+			TimeManager.increaseProgress(building, pValue);
 			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
 			destroy();
 		}
-		else timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
+		else {
+			timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
+			updateProgressBar();
+		}
 		
-		ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, DbAction.UPDT);
-		updateProgressBar();
+		//ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, DbAction.UPDT);
 	}
 	
 	private function progressTimeLoop():Void {
@@ -71,7 +73,8 @@ class BuildingTimerConstruction extends BuildingTimer
 			}
 			progressBar.scale.x = 1;
 			timeText.text = "Finish";
-			loop.stop;
+			BHConstruction.listTimerConstruction.remove(building.tileDesc.timeDesc.refTile);
+			destroy();
 		}
 	}
 	

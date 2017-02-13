@@ -19,6 +19,7 @@ class AcceleratePopin extends SmartPopinExtended
 	private var price:Int;
 	private var progressBarTxt:TextSprite;
 	private var btn:SmartButton;
+	private var btnClose:SmartButton;
 	private var ref:Int;
 	private var actionTxt:TextSprite;
 	
@@ -28,11 +29,13 @@ class AcceleratePopin extends SmartPopinExtended
 		super(AssetName.CONFIRMATION_ACCELERATE_POPIN);
 		actionTxt = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_TEXT_ACTION), TextSprite);
 		btn = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_BTN), SmartButton);
+		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 		var interMc:SmartComponent = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_GAUGE), SmartComponent);
 		progressBarTxt = cast(interMc.getChildByName(AssetName.TIME_GAUGE_TEXT), TextSprite);
 		
 		Interactive.addListenerClick(btn, onAccelerate);
 		Interactive.addListenerRewrite(btn, rewriteBtn);
+		Interactive.addListenerClick(btnClose, onClose);
 		
 		rewriteBtn();
 	}
@@ -53,11 +56,15 @@ class AcceleratePopin extends SmartPopinExtended
 		ResourcesManager.spendTotal(GeneratorType.hard, price);
 	}
 	
+	private function onClose():Void {
+		UIManager.getInstance().closeCurrentPopin();
+	}
+	
 	override public function destroy():Void 
 	{
 		Interactive.removeListenerClick(btn, onAccelerate);
 		Interactive.removeListenerRewrite(btn, rewriteBtn);
-		super.destroy();
+		Interactive.removeListenerRewrite(btnClose, onClose);
 	}
 	
 }

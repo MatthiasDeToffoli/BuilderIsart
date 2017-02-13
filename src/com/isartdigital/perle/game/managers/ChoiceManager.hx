@@ -37,6 +37,7 @@ typedef ChoiceDescription = {
 	var ironHell:Int;
 	var soulIndicatorHell:Int;
 	var soulHell:Int;
+	var card:String;
 }
 
 typedef EfficiencyStep = {

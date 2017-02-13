@@ -1,10 +1,11 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
-import com.isartdigital.perle.ui.popin.timer.SpeedUpPopin;
+import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -39,11 +40,12 @@ class BHConstruction extends BuildingHud {
 		return timerContainer;
 	}
 	
-	public static function newTimer():Void {
+	public static function newTimer(?pTimeDesc:TimeDescription=null):Void {
 		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();
 		buildingTimer.spawn();
-		listTimerConstruction.set(BuildingHud.virtualBuilding.tileDesc.id, buildingTimer);
-		var lContainer:Container = new Container();
+		if (pTimeDesc != null) listTimerConstruction.set(pTimeDesc.refTile, buildingTimer);
+		else listTimerConstruction.set(BuildingHud.virtualBuilding.tileDesc.id, buildingTimer);
+		var lContainer:Container = new Container();	
 		Hud.getInstance().placeAndAddComponent(buildingTimer, lContainer, UIPosition.BOTTOM);
 		lContainer.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
 		timerContainer.addChild(lContainer);
@@ -61,6 +63,7 @@ class BHConstruction extends BuildingHud {
 	override public function setOnSpawn():Void {
 		setGameListener();
 		addListeners();
+		TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 	}
 	
 	private function setGameListener():Void {
@@ -98,6 +101,10 @@ class BHConstruction extends BuildingHud {
 		removeGameListener();
 	}
 	
+	private function endOfConstruction(pElement:TimeDescription):Void {
+		listTimerConstruction[pElement.refTile].destroy();
+		listTimerConstruction.remove(pElement.refTile);
+	}
 	
 	private function removeGameListener():Void {
 		GameStage.getInstance().getGameContainer().off(MouseEventType.MOUSE_UP, onClickExit);

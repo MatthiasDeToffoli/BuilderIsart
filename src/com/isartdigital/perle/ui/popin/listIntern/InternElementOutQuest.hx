@@ -119,15 +119,6 @@ class InternElementOutQuest extends InternElement
 			Interactive.addListenerClick(btnSend, onSend);
 			addChild(btnSend);
 		}
-		
-		var iEff:Int =  6 - internDatas.efficiency;
-		for (i in 1...iEff)
-			cast(effJauge.getChildAt(i), UISprite).visible = false;
-			
-		var iSpeed:Int = 6 - internDatas.speed;
-		for (i in 1...iSpeed)
-			cast(speedJauge.getChildAt(i), UISprite).visible = false;
-
 			
 		var iStress:Int = internDatas.stress;
 		stressGaugeBar.scale.x = Math.min(iStress/100, 1);

@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin.timer;
+package com.isartdigital.perle.ui.popin.accelerate;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -13,17 +13,14 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
  * ...
  * @author grenu
  */
-class SpeedUpPopin extends SmartPopinExtended
+class SpeedUpPopin extends AcceleratePopin
 {
 	
 	/**
 	 * instance unique de la classe SpeedUpPopin
 	 */
 	private static var instance: SpeedUpPopin;
-	
 	private static var linkedBuilding:VBuilding;
-	private var btnClose:SmartButton;
-	private var btnSpeedUp:SmartComponent;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -41,42 +38,31 @@ class SpeedUpPopin extends SmartPopinExtended
 	/**
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
-	private function new(pID:String=null) 
+	private function new() 
 	{
-		Hud.getInstance().hide();
-		super("Popin_SkipTime");	
-		
-		getComponents();
+		super();	
 	}
 	
-	private function getComponents():Void {
-		btnClose = cast(getChildByName("ButtonClose"), SmartButton);
-		btnSpeedUp = cast(getChildByName("Button_SkipTimeConfirm"), SmartComponent);
-		
-		Interactive.addListenerClick(btnClose, onClose);
-		Interactive.addListenerClick(btnSpeedUp, onBoost);
-	}
-	
-	private function onBoost():Void {
+	override private function onAccelerate():Void {
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
-		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(3000000000,true);
-		destroy();
+		
+		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(3000000000, true);
+		onClose();
 	}
 	
-	private function onClose():Void {
+	override private function onClose():Void {
 		if (DialogueManager.ftuePlayerCanWait)
 			return;
-		destroy();
+		
+		super.onClose();
 	}
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		parent.removeChild(this);
 		instance = null;
-		
 		super.destroy();
 	}
 

@@ -18,7 +18,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
-import flump.library.Point;
+import pixi.core.math.Point;
 import pixi.interaction.EventEmitter;
 import pixi.interaction.EventTarget;
 
@@ -106,14 +106,10 @@ class Choice extends SmartPopinExtended
 		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
 		btnInterns = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
-		//btnShare = cast(getChildByName(AssetName.INTERN_EVENT_SHARE), SmartButton);
+		
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		
-		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);
-		//internStress = cast(internStats.getChildByName(AssetName.INTERN_STRESS_TXT), TextSprite);
-		//internSpeed = cast(internStats.getChildByName(AssetName.INTERN_SPEED_TXT), TextSprite);
-		//internEfficiency = cast(internStats.getChildByName(AssetName.INTERN_EVENT_EFFICIENCY), TextSprite);
-		
+		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);	
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		stressGaugeMask = cast(SmartCheck.getChildByName(stressBar, "jaugeStress_masque"), UISprite);
 		stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
@@ -140,12 +136,6 @@ class Choice extends SmartPopinExtended
 		
 		internName.text = intern.name;
 		internSide.text = intern.aligment;
-		//internStress.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.stress);
-		//internSpeed.text = Std.string(Intern.TXT_SPEED + DOUBLE_DOT + intern.speed);
-		//internEfficiency.text = Std.string(Intern.TXT_EFFICIENCY + DOUBLE_DOT + intern.efficiency);
-		
-		// call matthieu !!!!!!!!
-		//SmartCheck.traceChildrens(effIndic);
 		
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
@@ -159,7 +149,20 @@ class Choice extends SmartPopinExtended
 			cast(speedIndic.getChildAt(i), UISprite).visible = false;
 			
 		var iStress:Int = intern.stress;
-		stressGaugeBar.scale.x = Math.min(iStress/100, 1);
+		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
+		
+		createCard(newChoice);
+	}
+	
+	private function createCard(pChoice:ChoiceDescription):Void {
+		var pos:Point = choiceCard.position.clone();
+		removeChild(choiceCard);
+		choiceCard.destroy();
+		choiceCard = new UISprite(pChoice.card);
+		choiceCard.position = pos;
+		choiceCard.interactive = true;
+		addChild(choiceCard);
+		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 	}
 	
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {
@@ -179,8 +182,6 @@ class Choice extends SmartPopinExtended
 		Interactive.addListenerClick(btnInterns, onSeeAll);
 		//Interactive.addListenerClick(btnShare, shareEvent);
 		Interactive.addListenerClick(btnClose, onClose);
-		choiceCard.interactive = true;
-		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 	}
 	
 	private function showInternStats(internDesc:InternDescription):Void
