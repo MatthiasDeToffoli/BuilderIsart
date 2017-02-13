@@ -95,7 +95,8 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		//DialogueManager.createFtue();
+		BHConstruction.initTimerContainer();
+		DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		

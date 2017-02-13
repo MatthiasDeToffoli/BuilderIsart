@@ -130,6 +130,9 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onInviteSoul():Void {
+		if (DialogueManager.ftueStepSlideCard)
+			return;
+			
 		Facebook.ui ({
 			method: 'apprequests',
 			message:"Clique sur jouer, tu vas adorer :)"
