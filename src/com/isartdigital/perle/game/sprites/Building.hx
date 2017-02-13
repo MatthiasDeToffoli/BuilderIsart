@@ -15,7 +15,7 @@ import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.game.GameStage;
 import haxe.io.Float32Array.Float32ArrayData;
-import js.html.RequestCredentials;
+//import js.html.RequestCredentials;
 import pixi.core.display.Container;
 import pixi.core.graphics.Graphics;
 import pixi.core.math.Point;
