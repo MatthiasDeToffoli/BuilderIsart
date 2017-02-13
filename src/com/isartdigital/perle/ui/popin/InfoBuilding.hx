@@ -264,20 +264,11 @@ class InfoBuilding extends SmartPopinExtended{
 	 * Selling of the building
 	 * @return
 	 */
-	private function onClickSell():Void {
-		UIManager.getInstance().closeCurrentPopin();
-		
-		Hud.getInstance().closeCurrentBuildingHud();
-	}
-	
-	/**
-	 * Selling of the building
-	 * @return
-	 */
 	public function sell ():Void {
 		
-		BuildingHud.linkVirtualBuilding(virtualBuilding);
-		BuyManager.sell(virtualBuilding.tileDesc.buildingName, true); // todo : changer true par si le building se construit ou pas
+		BuildingHud.linkVirtualBuilding(virtualBuilding); // cette ligne me surprend un peu, link le buildinghud pr le détruire après ?
+		// todo @ambroise et @Victor: changer true par si le building se construit ou pas
+		BuyManager.sell(virtualBuilding.tileDesc.buildingName, true); 
 		UIManager.getInstance().closeCurrentPopin();
 		virtualBuilding.destroy();
 		Hud.getInstance().hideBuildingHud();
@@ -309,7 +300,6 @@ class InfoBuilding extends SmartPopinExtended{
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnUpgrade, onClickUpgrade);
 		Interactive.removeListenerClick(btnExit, onClickExit);
-		Interactive.removeListenerClick(btnSell, onClickSell);
 		
 		instance = null;
 	}

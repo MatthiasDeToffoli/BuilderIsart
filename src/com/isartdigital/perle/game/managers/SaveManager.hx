@@ -232,6 +232,14 @@ class SaveManager {
 		ServerManager.moveBuilding(pOldDescription, pDescription);
 	}
 	
+	public static function saveUpgradeBuilding (pDescription:TileDescription):Void {
+		
+	}
+	
+	public static function saveSellBuilding (pDescription:TileDescription):Void {
+		
+	}
+	
 	private static function addGenerator(pArray:Array<GeneratorDescription>, pData:ResourcesData, pType:GeneratorType):Array<GeneratorDescription>{
 		var i:Int;
 		
@@ -339,7 +347,7 @@ class SaveManager {
 		load();
 		if (currentSave != null) {
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
-			IdManager.buildFromSave(currentSave);
+			IdManager.buildFromSave(currentSave); 
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
 			RegionManager.buildFromSave(currentSave);

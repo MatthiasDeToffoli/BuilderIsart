@@ -8,11 +8,11 @@
 
 namespace actions;
 
-include_once("./utils/Utils.php");
-include_once("./utils/Send.php");
-include_once("./utils/Logs.php");
+include_once("utils/Utils.php");
+include_once("utils/Send.php");
+include_once("utils/Logs.php");
 include_once("ValidAddBuilding.php");
-include_once("./utils/FacebookUtils.php");
+include_once("utils/FacebookUtils.php");
 
 class AddBuilding
 {
@@ -43,7 +43,7 @@ class AddBuilding
     // todo : tenter d'envoyer des valeur mindfuck poru voir si je casse ou pas ?
     private static function getInfo () {
         return [
-            //static::ID_CLIENT_BUILDING => static::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
+            static::ID_CLIENT_BUILDING => static::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
             static::ID_TYPE_BUILDING => static::getSinglePostValueInt(static::ID_TYPE_BUILDING),
             static::ID_PLAYER => 55, //getId(), // todo : temporaire....
             static::LEVEL => 1,

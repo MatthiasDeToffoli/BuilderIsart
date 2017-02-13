@@ -7,8 +7,8 @@
 
 namespace actions;
 
-include_once("./Utils.php");
-include_once("./Logs.php");
+include_once("Utils.php");
+include_once("Logs.php");
 
 /**
  * Class that send info back to client, in case of a valid action of the player or
@@ -59,11 +59,11 @@ class Send
     // todo : will change (position is not a good identifier)
     private static function getBuildingIdentifier ($pInfo) {
         return [
-            //lcfirst(AddBuilding::ID_CLIENT_BUILDING) => $pInfo[AddBuilding::ID_CLIENT_BUILDING]
-            lcfirst(AddBuilding::REGION_X) => $pInfo[AddBuilding::REGION_X],
+            lcfirst(AddBuilding::ID_CLIENT_BUILDING) => $pInfo[AddBuilding::ID_CLIENT_BUILDING]
+            /*lcfirst(AddBuilding::REGION_X) => $pInfo[AddBuilding::REGION_X],
             lcfirst(AddBuilding::REGION_Y) => $pInfo[AddBuilding::REGION_Y],
             lcfirst(AddBuilding::X) => $pInfo[AddBuilding::X],
-            lcfirst(AddBuilding::Y) => $pInfo[AddBuilding::Y]
+            lcfirst(AddBuilding::Y) => $pInfo[AddBuilding::Y]*/
         ];
     }
 }

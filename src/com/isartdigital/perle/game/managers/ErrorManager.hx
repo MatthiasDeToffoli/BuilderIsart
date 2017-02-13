@@ -17,7 +17,6 @@ class ErrorManager{
 		// todo : si la traduction se base sur les données de la bdd, alros mieux vaut directement envoyé ce qui doit être affiché avec un code d'erreur.
 		trace("message in popin translated : " + FakeTraduction.errorCodeToTrad(ERROR_PREFIX + pErrorId));
 		
-		// TODO : faire le rollback !
 	}
 	
 }

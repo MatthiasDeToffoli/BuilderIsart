@@ -2,11 +2,14 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
+import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.utils.Debug;
 
 /**
- * Imitate a DataBase
+ * Imitate a DataBase ID
  * Each timer, Resource, building should have an unique ID !
  * Each of them can contains reference to the other by using his unique ID.
+ * It's used to identify the building in server callback (see SynchroManager)
  * @author ambroise
  */
 class IdManager{
@@ -18,6 +21,8 @@ class IdManager{
 		idHightest = 0;
 	}
 	
+	// todo : delete this and recreate an id for each building that come from server.
+	// sort of session id.
 	public static function buildFromSave (pSave:Save):Void {
 		idHightest = pSave.idHightest;
 	}
@@ -49,31 +54,41 @@ class IdManager{
 	}*/
 	
 	/**
-	 * Not used yet. (more for debug purpose)
+	 * not used, debug purpose only ?
 	 * @param	pId
 	 * @param	pSave
 	 * @return
 	 */
-	public static function searchById (pId:Int, pSave:Save):TileDescription {
-		var result:TileDescription = null;
-		var lLength:Int = pSave.building.length;
+	public static function searchById (pId:Int):Dynamic {
+		var result:Array<Dynamic> = [];
 		
-		for (i in 0... lLength) {
-			if (pSave.building[i].id == pId && result == null)
-				result = pSave.building[i];
-			else
-				throw("duplicated id : " + pId);
+		if (searchVBuildingById != null)
+			result.push(searchVBuildingById(pId));
+		
+		if (result.length > 1)
+			Debug.error("DUPLICATED id : "+pId+".");
+		
+		return result[0];
+	}
+	
+	/**
+	 * Used at server callback -> synchroManager
+	 * @param	pInt
+	 */
+	public static function searchVBuildingById (pId:Int):VBuilding {
+		// faire un tableau stockant id et référence ? folie de l'optimisation ?
+		for (regionX in RegionManager.worldMap.keys()) {
+			for (regionY in RegionManager.worldMap[regionX].keys()) {
+				for (x in RegionManager.worldMap[regionX][regionY].building.keys()) {
+					for (y in RegionManager.worldMap[regionX][regionY].building[x].keys()) {
+						if (RegionManager.worldMap[regionX][regionY].building[x][y].tileDesc.id == pId)
+							return RegionManager.worldMap[regionX][regionY].building[x][y];
+					}
+				}
+			}
 		}
-				
-		lLength = pSave.ground.length;
-		
-		for (i in 0...lLength)
-			if (pSave.ground[i].id == pId && result == null)
-				result = pSave.ground[i];
-			else
-				throw("duplicated id : " + pId);
-				
-		return result;
+		Debug.warn(pId + " id (client) not found in worldMap.");
+		return null;
 	}
 	
 	public function new() {

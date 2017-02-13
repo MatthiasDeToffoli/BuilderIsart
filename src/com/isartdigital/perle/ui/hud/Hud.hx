@@ -189,7 +189,8 @@ class Hud extends SmartScreen
 	}
 	
 	public function closeCurrentBuildingHud():Void {
-		if (currentBuildingHud != null) currentBuildingHud.destroy();
+		if (currentBuildingHud != null) 
+			currentBuildingHud.destroy();
 		currentBuildingHud = null;
 	}
 	//@Ambroise : impossible d'utiliser HudContextual directement car sinon les boutons ne marche plus vu que le clique sur le gameStage pour fermé le hud prend le dessus...

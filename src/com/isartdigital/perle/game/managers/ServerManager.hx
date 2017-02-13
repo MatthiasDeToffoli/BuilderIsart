@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.server.RollBackManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
@@ -27,12 +28,9 @@ typedef EventSuccessConnexion = {
 
 typedef EventSuccessAddBuilding = {
 	@:optionnal var errorID:Int;
-	@:optionnal var startConstruction:Int;
-	@:optionnal var endConstruction:Int;
-	var regionX:Int;
-	var regionY:Int;
-	var x:Int;
-	var y:Int;
+	@:optional var startConstruction:Int;
+	@:optional var endConstruction:Int;
+	var iDClientBuilding:Int;
 }
 
 typedef EventSuccessAddRegion = {
@@ -249,11 +247,17 @@ class ServerManager {
 	
 	// todo : rename addBuildingToDataBase to addBuilding and for addRegion too ?
 	
+	/**
+	 * Add a building in database.
+	 * IDClientBuilding is used to identify the building at server callback.
+	 * StartContruction and EndScontruction are defined by the server.
+	 * @param	pDescription
+	 */
 	public static function addBuilding (pDescription:TileDescription):Void {
 		callPhpFile(onSuccessAddBuilding, onErrorAddBuilding, ServerFile.MAIN_PHP, [
 			KEY_POST_FILE_NAME => ServerFile.BUILDING_ADD,
+			"IDClientBuilding" => pDescription.id,
 			"IDTypeBuilding" => GameConfig.getBuildingByName(pDescription.buildingName).iD,
-			//"StartConstruction" => pDescription.timeDesc.creationDate, // définie par serv
 			"RegionX" => pDescription.regionX,
 			"RegionY" => pDescription.regionY,
 			"X" => pDescription.mapX,
@@ -271,14 +275,11 @@ class ServerManager {
 			var lEvent:EventSuccessAddBuilding = Json.parse(pObject);
 			
 			if (Reflect.hasField(lEvent, "errorID")) {
+				RollBackManager.deleteBuilding(lEvent);
 				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
-			} else {
-				//SynchroManager.syncID(); 
-				// si le joueur déplace le bat avant de recevoir l'id du serveur
-				// alors je n'ai pas d'id et je bloque. par conter c mieux pr recherche bdd :/
-				// ok non, j'utilise la position tt le temps etp uis voilà ;), pas opti mais simple
-				SynchroManager.syncTimeOfBuilding(lEvent);
 			}
+			else
+				SynchroManager.syncTimeOfBuilding(lEvent);
 			
 		} else {
 			trace("Success php on addBuilding but event format is invalid ! : " + pObject);

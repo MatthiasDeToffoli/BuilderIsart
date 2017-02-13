@@ -8,7 +8,7 @@ $endValue = str_replace("/", "", $_POST["tEnd"]);
 $creation = str_replace("/", "", $_POST["tCrea"]);
 $progress = str_replace("/", "", $_POST["prog"]);
 
-include_once("./utils/FacebookUtils.php");
+include_once("utils/FacebookUtils.php");
 switch ($functionExe) {
   case "ADD": addQuest($creation, $IdIntern, $steps, $endValue); break;
   case "REM" : removeQuest($IdIntern); break;

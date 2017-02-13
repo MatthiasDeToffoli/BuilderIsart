@@ -25,8 +25,10 @@ class BuildingHud extends SmartComponent {
 	}
 	
 	public static function unlinkVirtualBuilding (pVBuilding:VBuilding):Void {
-		if (virtualBuilding.tileDesc.id == pVBuilding.tileDesc.id)
+		if (virtualBuilding.tileDesc.id == pVBuilding.tileDesc.id) {
+			Hud.getInstance().hideBuildingHud();
 			virtualBuilding = null;
+		}
 	}
 	
 	public function new(pID:String=null) {

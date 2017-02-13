@@ -30,7 +30,7 @@
 	 * @param	$FTY the position Y of the first tile of the region
 	 */
   function addToTable($Type, $X,$Y,$FTX,$FTY){
-    include_once("./utils/FacebookUtils.php");
+    include_once("utils/FacebookUtils.php");
     include_once("Regions.php");
     include_once("Player.php");
     include_once("Config.php");

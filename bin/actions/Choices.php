@@ -4,7 +4,7 @@
   $IdEvent = intval(str_replace("/", "", $_POST["idEvt"]));
   $IdIntern = intval(str_replace("/", "", $_POST["idInt"]));
 
-  include_once("./utils/FacebookUtils.php");
+  include_once("utils/FacebookUtils.php");
   switch ($functionExe) {
     case "ADD": addInUsedList($IdEvent); break;
     case "REM": resetInternEvent($IdIntern); break;

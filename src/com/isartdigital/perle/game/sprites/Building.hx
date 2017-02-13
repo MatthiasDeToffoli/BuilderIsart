@@ -95,7 +95,6 @@ class Building extends Tile implements IZSortable
 	 */
 	public static function createBuilding(pTileDesc:TileDescription, state:VBuildingState):Building {
 		
-		
 		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level));
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		

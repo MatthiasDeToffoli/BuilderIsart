@@ -5,7 +5,7 @@
   $IdEvent = intval(str_replace("/", "", $_POST["idEvent"]));
   $stress = intval(str_replace("/", "", $_POST["str"]));
 
-  include_once("./utils/FacebookUtils.php");
+  include_once("utils/FacebookUtils.php");
   switch ($functionExe) {
     case "ADD": buyIntern($IdIntern); break;
     case "REM": removeIntern($IdIntern); break;
