@@ -1,7 +1,6 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
-import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VTile.Index;

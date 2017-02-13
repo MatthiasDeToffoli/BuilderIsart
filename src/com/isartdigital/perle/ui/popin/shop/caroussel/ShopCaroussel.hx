@@ -2,13 +2,10 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
-import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
-import com.isartdigital.perle.ui.popin.shop.card.CCUBuilding;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.events.EventType;
-import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;

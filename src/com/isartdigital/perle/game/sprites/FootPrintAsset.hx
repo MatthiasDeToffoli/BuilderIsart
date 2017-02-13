@@ -1,7 +1,6 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import pixi.core.display.Container;
-import pixi.core.math.Point;
 
 /**
  * ...

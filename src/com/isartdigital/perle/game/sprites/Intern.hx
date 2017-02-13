@@ -1,9 +1,7 @@
 package com.isartdigital.perle.game.sprites;
-import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.GameConfig.TableInterns;
-import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ChoiceManager;
-import com.isartdigital.perle.game.managers.IdManager;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -12,7 +10,6 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
-import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import haxe.Json;
 
 /**

@@ -1,12 +1,4 @@
 package com.isartdigital.perle.ui.popin.shop.card;
-import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.managers.ResourcesManager;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
-import com.isartdigital.perle.ui.popin.shop.card.CarouselCardUnlock;
-import com.isartdigital.utils.ui.smart.TextSprite;
-import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.interaction.EventTarget;
 
 /**
  * ...

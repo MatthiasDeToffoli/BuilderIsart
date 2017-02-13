@@ -1,11 +1,8 @@
 package com.isartdigital.perle.game.sprites;
 import com.isartdigital.perle.game.iso.IsoManager;
-import com.isartdigital.perle.game.managers.PoolingManager;
-import com.isartdigital.perle.game.managers.PoolingObject;
 import com.isartdigital.perle.game.sprites.Phantom.EventExceeding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.game.GameStage;
-import haxe.Json;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 

@@ -2,7 +2,6 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
-import pixi.core.math.Point;
 
 /**
  * ...

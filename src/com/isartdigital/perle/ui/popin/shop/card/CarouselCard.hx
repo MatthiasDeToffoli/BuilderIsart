@@ -1,20 +1,7 @@
 package com.isartdigital.perle.ui.popin.shop.card;
-import com.greensock.easing.Back;
-import com.greensock.TweenMax;
-import com.isartdigital.perle.game.managers.DialogueManager;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
-import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
-import pixi.core.display.Container;
-import pixi.core.display.DisplayObject;
-import pixi.core.math.Point;
-import pixi.core.math.shapes.Rectangle;
-import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
 /**

@@ -14,14 +14,8 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.events.EventType;
-import com.isartdigital.utils.events.MouseEventType;
-import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
-import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
-import js.Browser;
-import pixi.interaction.EventTarget;
 
 	
 /**

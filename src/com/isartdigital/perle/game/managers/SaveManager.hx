@@ -3,12 +3,10 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
 import haxe.Json;
 import js.Browser;
-import pixi.core.sprites.Sprite;
 
 
 //@:optional vous connaisiez ?

@@ -1,6 +1,5 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.GameConfig.TableTypePack;
-import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ChoiceManager.ChoiceDescription;
 import com.isartdigital.perle.game.managers.ChoiceManager.EfficiencyStep;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -9,7 +8,6 @@ import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.loader.GameLoader;
-import haxe.Json;
 
 
 typedef TableConfig = {
