@@ -40,6 +40,12 @@ class GodMode
 			else if (pEvent.key == "'" || pEvent.key == "4") ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, 20000);
 			else if (pEvent.key == '(' || pEvent.key == "5") ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, 20000);	
 			else if (pEvent.key == '-' || pEvent.key == "6"){
+				// Actions FB.ui
+			//Facebook.ui({method: 'apprequests',
+						 //message: 'YOUR_MESSAGE_HERE'
+			//}, callBackApi);
+			
+
 				Facebook.ui({
 					method: 'share_open_graph',
 					action_type: 'og.shares',
@@ -54,6 +60,12 @@ class GodMode
 		}
 	}
 	
+	private static function callBackApi (pData:Dynamic):Void {
+		if (pData == null) trace ("Erreur Facebook.api");
+		else if (pData.error != null) trace (pData.error);
+		else trace(pData);
+	}
+			
 	private static function callBackUI(pCallBack:Dynamic):Void{
 		trace("callBack");
 	}
