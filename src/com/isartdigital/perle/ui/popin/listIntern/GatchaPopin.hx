@@ -16,7 +16,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 
 	
 /**
- * ...
+ * Popin for the gatcha
  * @author Emeline Berenguier
  */
 class GatchaPopin extends SmartPopin 
@@ -72,6 +72,9 @@ class GatchaPopin extends SmartPopin
 		//Interactive.addListenerClick(btnClose, onClose);
 	}
 	
+	/**
+	 * Opens the gift's popin
+	 */
 	private function onGift():Void{
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(RewardGatcha.getInstance());

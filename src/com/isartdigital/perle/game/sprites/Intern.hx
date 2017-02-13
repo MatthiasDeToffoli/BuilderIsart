@@ -65,11 +65,22 @@ class Intern
 		getJson();
 	}
 	
+	/**
+	 * Check if the intern can continue to work
+	 * @param	pId
+	 * @return
+	 */
 	public static function isMaxStress(pId:Int):Bool{
 		if (getIntern(pId).stress < MAX_STRESS) return false;
 		else return true;
 	}
 	
+	/**
+	 * Check if you have all the conditions to recruit an intern
+	 * @param	pAlignment Alignment of the intern
+	 * @param	pIntern Intern wanted to buy
+	 * @return
+	 */
 	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
 		
 		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length){
@@ -79,6 +90,10 @@ class Intern
 		else return false;
 	}
 	
+	/**
+	 * Buy an intern
+	 * @param	pIntern
+	 */
 	public static function buy(pIntern:InternDescription):Void{
 		var pAlignment:Alignment = null;
 		
@@ -89,6 +104,10 @@ class Intern
 		ServerManager.InternAction(DbAction.ADD, pIntern.id);
 	}
 	
+	/**
+	 * Get the number of interns in quest
+	 * @return
+	 */
 	public static function numberInternsInQuest():Int{
 		var lNumber:Int = 0;
 		

@@ -28,7 +28,7 @@ class QuestsManager
 	private static inline var NUMBER_EVENTS:Int = 3;
 	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
 	
-	//The time's gap between two events will be vary between these constants
+	//Array of the gaps depending the intern's speed
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
 	
 	//Reference of the quest in progress
@@ -97,7 +97,7 @@ class QuestsManager
 	}
 	
 	/**
-	 * Create an array of random gap values between two events
+	 * Create an array of gap depending of the intern's speed values between two events
 	 * @param	pLength
 	 * @return A new array
 	 */
@@ -115,6 +115,10 @@ class QuestsManager
 		return lListEvents;
 	}
 	
+	/**
+	 * Reference of the quest
+	 * @param	pQuest
+	 */
 	public static function chooseQuest(pQuest:TimeQuestDescription):Void {
 		questInProgress = pQuest;
 	}
@@ -145,6 +149,9 @@ class QuestsManager
 		GameStage.getInstance().getPopinsContainer().addChild(Choice.getInstance());
 	}
 	
+	/**
+	 * Go to the next quest if the intern isn't stressed
+	 */
 	public static function goToNextStep():Void{
 		Choice.getInstance().hide();
 		
@@ -169,7 +176,6 @@ class QuestsManager
 	 * Callback of the quest's end event. Destroy the quest and its time Element
 	 * @param	pQuest
 	 */
-	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeQuestDescription):Void{
 		if (DialogueManager.ftueStepMakeAllChoice)
 			DialogueManager.endOfaDialogue();
@@ -187,6 +193,11 @@ class QuestsManager
 		}
 	}
 	
+	/**
+	 * Function to finish the quest. Useful to avoid the block of the stressMax when you're at the end of the quest
+	 * or to let the gatcha popin appears
+	 * @param	pQuest
+	 */
 	public static function finishQuest(pQuest:TimeQuestDescription):Void {
 		if (DialogueManager.ftueStepCloseGatcha)
 			DialogueManager.endOfaDialogue();
@@ -256,7 +267,10 @@ class QuestsManager
 		else return baseValeur;
 	}
 	
-	
+	/**
+	 * Destroy a specific quest
+	 * @param	pQuestId
+	 */
 	public static function destroyQuest(pQuestId:Int):Void{
 		for (i in 0...questsList.length){
 			if (questsList[i].refIntern == pQuestId){

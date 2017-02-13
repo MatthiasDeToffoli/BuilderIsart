@@ -100,6 +100,10 @@ class InternElementInQuest extends InternElement
 		timeEvent.text = getChrono();
 	}
 	
+	/**
+	 * Spawn the correct button depending of the intern's state (resting, waiting)
+	 * @param	spawnerName
+	 */
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var activeButton:SmartButton = null;
@@ -132,12 +136,18 @@ class InternElementInQuest extends InternElement
 		//Interactive.addListenerClick(picture, onPicture);
 	}
 	
+	/**
+	 * Callback of the resolving of an event
+	 */
 	private function onResolve():Void {
 		if (DialogueManager.ftueStepResolveIntern)
 			DialogueManager.endOfaDialogue();
 		QuestsManager.choice(quest);
 	}
 	
+	/**
+	 * Callback when the intern is stressed
+	 */
 	private function onStress():Void {
 		MaxStressPopin.intern = Intern.getIntern(quest.refIntern);
 		UIManager.getInstance().closeCurrentPopin;
@@ -149,6 +159,9 @@ class InternElementInQuest extends InternElement
 		ServerManager.TimeQuestAction(DbAction.UPDT, quest);
 	}
 	
+	/**
+	 * Gameloop for the progress 
+	 */
 	private function progressLoop():Void {
 		//if (quest != null) quest = QuestsManager.getQuest(quest.refIntern);
 		if (heroCursor != null) {
@@ -169,6 +182,9 @@ class InternElementInQuest extends InternElement
 		return TimesInfo.getClock({ days: 0, times: duration }).minute + ":" + TimesInfo.getClock({ days: 0, times: duration }).seconde + "s";
 	}
 	
+	/**
+	 * Change the cursor depending on the current event
+	 */
 	private function updateEventCursors():Void{	
 		for (i in 0...eventCursorsArray.length){
 			if (i != quest.stepIndex) eventCursorsArray[i].alpha = 0.5;
@@ -176,6 +192,9 @@ class InternElementInQuest extends InternElement
 		}
 	}
 	
+	/**
+	 * Change the position of the cursor
+	 */
 	private function updateCursorPosition():Void{
 		if (quest.progress < quest.end) {
 			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
