@@ -12,6 +12,8 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -47,6 +49,7 @@ class TribunalPopin extends SmartPopinExtended
 	private var infoHeaven:TextSprite;
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
+	private var btnInviteSoul:SmartButton;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -74,6 +77,7 @@ class TribunalPopin extends SmartPopinExtended
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
 		//SmartCheck.traceChildrens(this);
 
+		btnInviteSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_INVITE_BUTTON), SmartButton);
 		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
 		tribunalLevel.text = "LEVEL " + VTribunal.getInstance().tileDesc.level;
@@ -84,9 +88,9 @@ class TribunalPopin extends SmartPopinExtended
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
-		fateName.text = "Children";
+		fateName.text = VTribunal.getInstance().soulToJudge.name;
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
-		fateAdjective.text = "not guilty";
+		fateAdjective.text = VTribunal.getInstance().soulToJudge.adjective;
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_INFO);
 		infoHeaven = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);
@@ -99,6 +103,8 @@ class TribunalPopin extends SmartPopinExtended
 		
 		changeSoulTextInfo();
 			
+		Interactive.addListenerClick(btnInviteSoul, onInviteSoul);
+		
 		if (VTribunal.getInstance().canUpgrade()){
 			Interactive.addListenerRewrite(btnUpgrade, rewriteUpgradeTxt);
 			Interactive.addListenerClick(btnUpgrade, onUpgrade);
@@ -121,6 +127,32 @@ class TribunalPopin extends SmartPopinExtended
 			DialogueManager.dialogueSaved ++;
 			registerForFTUE();
 		}
+	}
+	
+	private function onInviteSoul():Void {
+		Facebook.ui ({
+			method: 'apprequests',
+			message:"Clique sur jouer, tu vas adorer :)"
+		},onRequest);
+		//Facebook.api(Facebook.uid+"/permissions",onHavePermission);
+	}
+	
+	private function onRequest(pObject:Dynamic):Void {
+		
+		if (pObject == null) Debug.error("erreur facebook");
+		else if (pObject.error != null) Debug.error(pObject.error);
+		else {
+			Facebook.api(pObject.to[0], onFriendInfo);
+		}
+	}
+	
+	private function onFriendInfo(response:Dynamic):Void {
+		setTribunalSoulToJudge(response.name);
+	}
+	
+	private function setTribunalSoulToJudge(pName:String):Void {
+		VTribunal.getInstance().updateSoulToJudge(pName);
+		changeSoulText(true);
 	}
 	
 	private function registerForFTUE ():Void {
@@ -158,6 +190,7 @@ class TribunalPopin extends SmartPopinExtended
 		}
 		ResourcesManager.judgePopulation(Alignment.heaven);
 		changeSoulTextInfo();
+		changeSoulText();
 	}
 	
 	private function onHell() {
@@ -165,6 +198,14 @@ class TribunalPopin extends SmartPopinExtended
 			return;
 		ResourcesManager.judgePopulation(Alignment.hell);
 		changeSoulTextInfo();
+		changeSoulText();
+		
+	}
+	
+	private function changeSoulText(?pSoulNameFound:Bool):Void {
+		if(!pSoulNameFound ||pSoulNameFound == null) VTribunal.getInstance().findSoul();
+		fateName.text = VTribunal.getInstance().soulToJudge.name;
+		fateAdjective.text = VTribunal.getInstance().soulToJudge.adjective;
 	}
 	
 	private function changeSoulTextInfo():Void{

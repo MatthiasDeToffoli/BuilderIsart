@@ -338,6 +338,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_SHOP:String = "ShopButton";
 	public static inline var PURGATORY_POPIN_INTERN:String = "InternsButton";
 	public static inline var PURGATORY_POPIN_HEAVEN_BUTTON:String = "HeavenButton";
+	public static inline var PURGATORY_POPIN_INVITE_BUTTON:String = "InviteButton";
 	public static inline var PURGATORY_POPIN_HELL_BUTTON:String = "HellButton";
 	public static inline var PURGATORY_POPIN_LEVEL:String = "BuildingLevel";
 	public static inline var PURGATORY_POPIN_TIMER_CONTAINER:String = "UpgradeTimer";

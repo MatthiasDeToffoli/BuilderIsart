@@ -98,6 +98,11 @@ typedef TableInterns = {
 	var portrait:String;
 }
 
+typedef TableSoulText = {
+	var fr:String;
+	var en:String;
+	var id:Int;
+}
 
 /**
  * ...
@@ -117,6 +122,8 @@ class GameConfig {
 	public static inline var CHOICES:String = "Choices";
 	public static inline var CONFIG_EVENT:String = "ConfigEvent";
 	public static inline var USED_CHOICES:String = "ChoicesUsed";
+	public static inline var SOUL_NAME:String = "SoulName";
+	public static inline var SOUL_ADJ:String = "SoulAdjective";
 	
 	
 	public static function awake ():Void {
@@ -180,6 +187,22 @@ class GameConfig {
 				
 		Debug.error("BuildingName '" + pName +"' missing.");
 		return null;
+	}
+	
+	public static function countSoulName():Int {
+		return config[SOUL_NAME].length;
+	}
+	
+	public static function countSoulAdj():Int {
+		return config[SOUL_ADJ].length;
+	}
+	
+	public static function getSoulName(i:Int):TableSoulText {
+		return config[SOUL_NAME][i];
+	}
+	
+	public static function getSoulAdjective(i:Int):TableSoulText {
+		return config[SOUL_ADJ][i];
 	}
 	
 	public static function getShopPack ():Array<TableTypeShopPack> {

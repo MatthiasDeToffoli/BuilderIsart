@@ -14,6 +14,11 @@ import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
 
+
+typedef SoulDescription = {
+	var name:String;
+	var adjective:String;
+}
 	
 /**
  * a sigleton represanting the tribunal (non graphic)
@@ -26,7 +31,7 @@ class VTribunal extends VBuildingUpgrade
 	 * instance unique de la classe VTribunal
 	 */
 	private static var instance: VTribunal;
-	
+	public var soulToJudge:SoulDescription;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -66,8 +71,27 @@ class VTribunal extends VBuildingUpgrade
 		
 		super(lDesc);
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
+		findSoul();
 		
 		
+	}
+	
+	public function findSoul():Void {
+		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:""};
+		else {
+			var i:Int = Math.floor(Math.random() * GameConfig.countSoulName());
+			var j:Int = Math.floor(Math.random() * GameConfig.countSoulAdj());
+			
+			soulToJudge = {
+				name: GameConfig.getSoulName(i).en,
+				adjective: GameConfig.getSoulAdjective(j).en
+			}
+		}
+	}
+	
+	public function updateSoulToJudge(pName:String):Void {
+		soulToJudge.name = pName;
+		soulToJudge.adjective = "Friendly";
 	}
 	
 	override public function updateGeneratorInfo(?data:Dynamic) 
