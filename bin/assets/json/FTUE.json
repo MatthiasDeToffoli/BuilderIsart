@@ -120,11 +120,11 @@
 			},
             {
 				"dialogueNumber":13,
-				"npcWhoTalk":"Demona",
-				"npcWhoTalkPicture":"right",
+				"npcWhoTalk":"Angela",
+				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"passFreeConstruct":true,
-				"expression":"_Neutral",
+				"expression":"_Sad",
 				"checkpoint": true
 			},
             {
@@ -184,6 +184,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Happy",
+				"startOfSpecial":true,
 				"checkpoint": true
 			},
             {
@@ -343,6 +344,8 @@
 				"name":"Window_NPC_ButtonNext",
 				"parentName":"Window_Ftue_Scenario",
 				"npcWhoTalk":"Angela",
+                "startOfFactory":true,
+				"startOfCollectors":true,
 				"npcWhoTalkPicture":"left",
 				"expression":"_Happy",
 				"checkpoint": false
@@ -392,6 +395,7 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Happy",
+				"startOfAltar":true,
 				"checkpoint": false
 			},
             {
@@ -420,6 +424,7 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Neutral",
+				"startOfMarketing":true,
 				"checkpoint": false
 			},
             {

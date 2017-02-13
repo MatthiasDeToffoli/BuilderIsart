@@ -75,15 +75,9 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
-		/*dialogueSaved = 16;
-		SaveManager.save();
-		*/
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
-		//trace(lSave);
-		//trace(steps[lSave].endOfFtue$);
 		//check if first time
 		if (lSave != null) {
-			//lSave -= 1;
 			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing || steps[lSave-1].endOfSpecial) {
 				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 				return;

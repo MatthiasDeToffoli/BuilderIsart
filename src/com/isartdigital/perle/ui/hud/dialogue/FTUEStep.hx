@@ -52,6 +52,12 @@ typedef FTUEStep = {
 	@optional var endOfFactory:Bool;
 	@optional var endOfAltar:Bool;
 	@optional var endOfMarketing:Bool;
+	//starts
+	@optional var startOfSpecial:Bool;
+	@optional var startOfCollectors:Bool;
+	@optional var startOfFactory:Bool;
+	@optional var startOfAltar:Bool;
+	@optional var startOfMarketing:Bool;
 	//In plus, out of the JSON
 	@optional var item:DisplayObject;
 	//To prevoid bugs
