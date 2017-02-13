@@ -17,9 +17,11 @@ class Utils
 
         $req = static::bindParamInsertInto($pTable, $pAssocArray);
         $reqPre = $db->prepare($req);
-
+		
         try {
-            $reqPre->execute();
+			$db->beginTransaction();
+            $reqPre-> execute();
+			$db->commit();
         } catch (\Exception $e) {
             echo $e->getMessage();
             exit;

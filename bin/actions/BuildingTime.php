@@ -8,7 +8,7 @@ $endSeconds = intval(str_replace("/", "", $_POST["endSec"]));
 $boostVal = intval(str_replace("/", "", $_POST["boost"]));
 $functionExe = str_replace("/", "", $_POST["funct"]);
 
-Include("FacebookUtils.php");
+include_once("./utils/FacebookUtils.php");
 switch ($functionExe) {
   case "ADD": newConstructionTime($buildID, $crea, $creationSec, $endDate, $endSeconds); break;
   case "REM": removeConstructionTime($buildID); break;

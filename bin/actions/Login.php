@@ -3,7 +3,7 @@
  * User: Vicktor Grenu
  */
 
-include("FacebookUtils.php");
+include_once("./utils/FacebookUtils.php");
 include("Regions.php");
 include("Resources.php");
 

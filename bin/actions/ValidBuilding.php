@@ -7,7 +7,7 @@
 
 namespace actions;
 
-include_once("Utils.php");
+include_once("./utils/Utils.php");
 
 /**
  * Class ValidBuilding

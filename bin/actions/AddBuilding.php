@@ -4,55 +4,15 @@
  * Date: 01/02/2017
  * Time: 15:20
  */
-/*$req = "SELECT * FROM Choices";
-$reqPre = $db->prepare($req);
-$reqPre->execute();
-$res = $reqPre->fetchAll();
-try {
-    $req = "SELECT * FROM ";
-    $reqPre = $db->prepare($req);
-    //$reqPre->bindParam(':tableName', $pTableName); marche pas ici :/
-    $reqPre->execute();
 
-    //exec("START TRANSACTION");
-    //exec("SELECT ... FOR UPDATE");
-    //exec("COMMIT");
-    //$db->beginTransaction();
-    //$db->commit(); // je suis pas sûr de comprendre, c'est la meêm chose que prepare ? je crois pas
-} catch (\Exception $e) {
-    echo $e->getMessage();
-    exit;
-}
-
-while($row = $reqPre->fetch(\PDO::FETCH_ASSOC))
-{
-    $result[] = $row;
-}
-
-return $result;
-
-echo json_encode($result);*/
-
-/*typedef TileDescription = {
-    var buildingName:String; // sûr ? pose problème si on change l'assetName non ?
-    var id:Int;
-    var regionX:Int;
-    var regionY:Int;
-    var mapX:Int;
-    var mapY:Int;
-    var level:Int;
-    @:optional var currentPopulation:Int;
-	@:optional var maxPopulation:Int;
-	@:optional var timeDesc:TimeDescription;
-	@:optional var isTribunal:Bool;*/
 
 namespace actions;
 
-include_once("Utils.php");
+include_once("./utils/Utils.php");
 include_once("Send.php");
 include_once("Logs.php");
 include_once("ValidBuilding.php");
-include_once("FacebookUtils.php");
+include_once("./utils/FacebookUtils.php");
 
 class AddBuilding
 {
