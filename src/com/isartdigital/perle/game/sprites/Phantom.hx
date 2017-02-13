@@ -154,6 +154,10 @@ class Phantom extends Building {
 		initPosition();
 	}
 	
+	override function getBuildingName():String {
+		return buildingName;
+	}
+	
 	/**
 	 * put the building in the center of camera
 	 */

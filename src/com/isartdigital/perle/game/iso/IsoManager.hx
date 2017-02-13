@@ -63,7 +63,12 @@ class IsoManager
 			return null;
 		}
 		
-		if (!CollisionManager.hitTestObject(pA, pB)) return null;
+		if (untyped pA.isoBox != null && pB.isoBox != null) {	
+			if (untyped !CollisionManager.hitTestObject(pA.isoBox, pB.isoBox))
+				return null;
+		}
+		else if (!CollisionManager.hitTestObject(pA, pB))
+			return null;
 		
 		if (!Std.is(pA, IZSortable) || !Std.is(pB, IZSortable)) throw "Les objets passés en paramètre doivent implémenter IZSortable";
 		

@@ -11,8 +11,15 @@ import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.SmartCheck;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.BoxType;
+import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 import com.isartdigital.utils.game.GameStage;
+import haxe.io.Float32Array.Float32ArrayData;
+import js.html.RequestCredentials;
 import pixi.core.display.Container;
+import pixi.core.graphics.Graphics;
+import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 import pixi.flump.Movie;
 
 typedef SizeOnMap = {
@@ -44,6 +51,8 @@ class Building extends Tile implements IZSortable
 	public var rowMax:Int;
 	public var behind:Array<IZSortable>;
 	public var inFront:Array<IZSortable>;
+	public var isoBox:Graphics;
+	public var myDesc:TileDescription;
 	private var numberFrame:Int;
 	private var animation:Movie;
 
@@ -95,6 +104,7 @@ class Building extends Tile implements IZSortable
 		var lBuilding:Building = PoolingManager.getFromPool(BuildingName.getAssetName(pTileDesc.buildingName, pTileDesc.level));
 		var regionFirstTilePos:Index = RegionManager.worldMap[pTileDesc.regionX][pTileDesc.regionY].desc.firstTilePos;
 		
+		lBuilding.myDesc = pTileDesc;
 		lBuilding.positionTile( // todo : semblable a Ground.hx positionTile, factoriser ?
 			pTileDesc.mapX + regionFirstTilePos.x, 
 			pTileDesc.mapY + regionFirstTilePos.y
@@ -117,16 +127,61 @@ class Building extends Tile implements IZSortable
 		return lBuilding;
 	}
 	
+
+	
+	public function new(?pAssetName:String) {
+		super(pAssetName);	
+	}
+	
+	override public function init():Void {
+		super.init();
+		addIsoBox();
+	}
+	
+	// Merci François pour l'info ;), tellement plus simple de façon dynamique.
+	private function addIsoBox ():Void {
+		var lLocalBounds:Rectangle = getLocalBounds();
+		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
+		var myGraphic:Graphics = new Graphics();
+		var lLocalLeftFromModelToView:Float = -Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(getBuildingName()).height;
+		var lLocalRightFromModelToView:Float = Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(getBuildingName()).width;
+		
+		myGraphic.beginFill(0xFF00FF, 0);
+		
+		myGraphic.drawRect(
+			lLocalLeftFromModelToView,
+			lAnchor.y,
+			lLocalRightFromModelToView - lLocalLeftFromModelToView,
+			height
+		);
+		myGraphic.endFill();
+		
+		isoBox = myGraphic;
+		addChild(isoBox);
+	}
+	
+	private function getBuildingName():String {
+		return myDesc.buildingName;
+	}
+	
+	private function getIsoBoxWidth ():Float {
+		return GameConfig.getBuildingByName(myDesc.buildingName).width * Tile.TILE_WIDTH; // c en model pas en view !
+	}
+	
+	//private function getLeftCornerX ():Point {
+		//return new Point(
+			//return Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(myDesc.buildingName).height;/*,
+			//GameConfig.getBuildingByName(myDesc.buildingName).height * Tile.TILE_HEIGHT - Tile.TILE_HEIGHT / 2 
+		//);*/
+	//}
+	
+	
 	public function setStateConstruction():Void {
 		setState(DEFAULT_STATE);
 	}
 	
 	public function setStateEndConstruction():Void {
 		setState(DEFAULT_STATE);
-	}
-	
-	public function new(?pAssetName:String) {
-		super(pAssetName);	
 	}
 	
 	public function onAnimationEnd():Void {
