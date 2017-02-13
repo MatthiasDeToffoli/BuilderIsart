@@ -25,7 +25,6 @@ class BuildingTimerCollector extends BuildingTimer
 		
 		if (pTime == null) pTime = cast(BuildingHud.virtualBuilding, VCollector).timeProd;
 		if (pTime.refTile != ref) return;
-		
 		var clock:Clock = TimesInfo.getClock(TimesInfo.calculDateDiff(pTime.end, pTime.progress));
 
 		timeText.text = clock.day + ":" + clock.hour + ":" + clock.minute + ":" + clock.seconde;

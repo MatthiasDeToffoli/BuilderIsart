@@ -95,6 +95,7 @@ typedef TableInterns = {
 	var efficiency:Int;
 	var unlockLevel:Int;
 	var idEvent:Int;
+	var portrait:String;
 }
 
 

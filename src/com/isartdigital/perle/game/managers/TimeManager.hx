@@ -197,7 +197,6 @@ class TimeManager {
 	}
 	
 	public static function  createProductionTime(pack:ProductionPack, ref:Int):TimeDescription{
-		
 		var lDate:Date = Date.fromTime(Date.now().getTime() + Date.fromTime(pack.time.times).getTime());
 		
 		var lDesc:TimeDescription = {

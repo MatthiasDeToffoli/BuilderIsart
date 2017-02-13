@@ -29,7 +29,7 @@ class QuestsManager
 	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
 	
 	//The time's gap between two events will be vary between these constants
-	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
+	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [500000, 400000, 300000, 200000, 100000];
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;

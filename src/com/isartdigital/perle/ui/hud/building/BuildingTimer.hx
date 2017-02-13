@@ -47,7 +47,7 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	private function showTime(?pTime:Dynamic):Void {
-		
+
 	}
 	
 	private function getComponents():Void {

@@ -122,9 +122,9 @@ class Intern
 				speed: tmpInterns[i].speed,
 				efficiency: tmpInterns[i].efficiency,
 				unlockLevel: tmpInterns[i].unlockLevel,
-				idEvent: 0
+				idEvent: 0,
+				portrait: tmpInterns[i].portrait
 			};
-			
 			if (align == Alignment.heaven) internsMap[Alignment.heaven].push(newIntern);
 			else internsMap[Alignment.hell].push(newIntern);
 		}
@@ -154,7 +154,8 @@ class Intern
 				speed: Std.int(data[i].Speed),
 				efficiency: Std.int(data[i].Efficiency),
 				unlockLevel: Std.int(data[i].UnlockLevel),
-				idEvent: Std.int(data[i].IdEvent)
+				idEvent: Std.int(data[i].IdEvent),
+				portrait: Std.string(data[i].Portrait)
 			};
 			
 			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
@@ -164,7 +165,7 @@ class Intern
 				else if (tmpProgress >= newIntern.quest.steps[2] && newIntern.quest.stepIndex == 2) tmpProgress = newIntern.quest.steps[2];
 				else newIntern.quest.progress = tmpProgress;
 			}
-			
+			trace(newIntern);
 			internsListArray.push(newIntern);
 		}
 	}
