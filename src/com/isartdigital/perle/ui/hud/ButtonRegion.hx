@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -59,6 +60,9 @@ class ButtonRegion extends SmartButton
 	{
 		super._click(pEvent);
 		rewriteTxt();
+		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory) 
+			return;
+			
 		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
 			RegionManager.createRegion(regionType, firstCasePos, VTile.pointToIndex(worldMapPos));
 			destroy();

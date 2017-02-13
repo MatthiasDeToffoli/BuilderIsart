@@ -26,7 +26,7 @@ class QuestsManager
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
 	private static inline var NUMBER_EVENTS:Int = 3;
-	private static var FTUE_TIMELINE:Int = 2500;
+	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
 	
 	//The time's gap between two events will be vary between these constants
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
@@ -106,12 +106,12 @@ class QuestsManager
 		var lGap:Float = 0;
 		for (i in 0...NUMBER_EVENTS){
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
-				lGap = FTUE_TIMELINE + lGap;
+				lGap = FTUE_TIMELINE[pIntern.speed - 1] + lGap;
 			else
 				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
-				lListEvents.push(Date.now().getTime() + lGap);
+				
+			lListEvents.push(Date.now().getTime() + lGap);
 		}
-		
 		return lListEvents;
 	}
 	
@@ -170,7 +170,6 @@ class QuestsManager
 	 */
 	//Todo: enelver le timeElementQuest et tout remplacer par timeQuestDescription
 	private static function endQuest(pQuest:TimeQuestDescription):Void{
-		trace("end");
 		if (DialogueManager.ftueStepMakeAllChoice)
 			DialogueManager.endOfaDialogue();
 			

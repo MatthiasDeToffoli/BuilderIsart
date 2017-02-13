@@ -256,9 +256,20 @@ class Hud extends SmartScreen
 	
 	private function addListenersOnClick() {
 		//FTUE : désolé j'ai du faire ça sinon impossible de recolter les golds
-		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory)
+		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory) {
+			btnShop.interactive = false;
+			btnInterns.interactive = false;
+			btnOptions.interactive = false;
+			btnPurgatory.interactive = false;
 			return;
-		trace("open");
+		}
+		else {
+			btnShop.interactive = true;
+			btnInterns.interactive = true;
+			btnOptions.interactive = true;
+			btnPurgatory.interactive = true;	
+		}
+		
 		//Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);

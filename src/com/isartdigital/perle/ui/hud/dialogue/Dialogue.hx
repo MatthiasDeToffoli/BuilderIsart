@@ -96,25 +96,41 @@ class Dialogue extends SmartScreen
 	 */
 	private function changeAlpha(pPicture:String, pExpression:String) {
 		switch(pPicture) {
-			case "left" : {
-				if(getChildByName(npc_left)!=null)
+			case "right" : {
+				allNpcLeft(ON_ALPHA);
+				allNpcRight(OFF_ALPHA);
+				/*if(getChildByName(npc_left)!=null)
 					changeAlphaExpression(npc_left, ON_ALPHA);
 				changeExpression(pExpression, npc_left);
 				
 				if(getChildByName(npc_right )!=null)
 					changeAlphaExpression(npc_right, OFF_ALPHA);
-				changeExpression(NEUTRAL_EXPRESSION,npc_right);
+				changeExpression(NEUTRAL_EXPRESSION,npc_right);*/
 			}
-			case "right" : {
-				if(getChildByName(npc_left)!=null)
+			case "left" : {
+				allNpcLeft(OFF_ALPHA);
+				allNpcRight(ON_ALPHA);
+				/*if(getChildByName(npc_left)!=null)
 					changeAlphaExpression(npc_left, OFF_ALPHA);
 				changeExpression(NEUTRAL_EXPRESSION, npc_left);
 				
 				if(getChildByName(npc_right)!=null)
 					changeAlphaExpression(npc_right, ON_ALPHA);
-				changeExpression(pExpression,npc_right);
+				changeExpression(pExpression,npc_right);*/
 			}
 		}
+	}
+	
+	private function allNpcLeft(pAlpha:Float) {
+		getChildByName(npc_left + "_Neutral").alpha = pAlpha;
+		getChildByName(npc_left + "_Happy").alpha = pAlpha;
+		getChildByName(npc_left + "_Sad").alpha = pAlpha;
+	}
+	
+	private function allNpcRight(pAlpha:Float) {
+		getChildByName(npc_right + "_Neutral").alpha = pAlpha;
+		getChildByName(npc_right + "_Happy").alpha = pAlpha;
+		getChildByName(npc_right + "_Sad").alpha = pAlpha;
 	}
 	
 	/**

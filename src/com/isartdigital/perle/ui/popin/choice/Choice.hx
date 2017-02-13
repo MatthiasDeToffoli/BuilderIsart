@@ -249,7 +249,7 @@ class Choice extends SmartPopinExtended
 			ChoiceManager.applyReward(intern, reward, choiceType);
 			if (DialogueManager.ftueStepMakeChoice)
 				DialogueManager.endOfaDialogue();
-			onClose();
+			destroy();
 		}
 	}
 	

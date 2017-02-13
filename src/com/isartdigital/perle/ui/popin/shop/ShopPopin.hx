@@ -214,16 +214,23 @@ class ShopPopin extends SmartPopinExtended {
 	}
 	
 	private function onClickOpenBuldings () {
+		if (DialogueManager.ftueStepClickOnIntern)
+			return;
 		setButtons(0);
 		addCaroussel(ShopTab.Building);
 	}
 	
 	private function onClickOpenDecorations () {
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			return;
 		setButtons(1);
 		addCaroussel(ShopTab.Deco);
 	}
 	
 	private function onClickOpenInterns () {
+		/*if(!DialogueManager.ftueStepClickOnIntern)
+			if (DialogueManager.ftueStepClickOnCard)
+				return;*/
 		setButtons(2);
 		isSearching ? onClickOpenInternsSearch() : addCaroussel(ShopTab.Interns);	
 	}
@@ -233,16 +240,22 @@ class ShopPopin extends SmartPopinExtended {
 	}
 	
 	private function onClickOpenCurencies () {
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			return;
 		setButtons(3);
 		addCaroussel(ShopTab.Currencies);
 	}
 	
 	private function onClickOpenResource () {
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			return;
 		setButtons(4);
 		addCaroussel(ShopTab.Resources);
 	}
 	
 	private function onClickOpenBundle () {
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			return;
 		setButtons(0,true);
 		addCaroussel(ShopTab.Bundle);
 	}

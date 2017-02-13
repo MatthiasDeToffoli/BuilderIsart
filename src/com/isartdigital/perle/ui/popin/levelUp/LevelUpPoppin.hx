@@ -31,11 +31,11 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static var instance: LevelUpPoppin;
 	
 	private static var level:TextSprite;
-	private static var typeUnlock:TextSprite;
+	//private static var typeUnlock:TextSprite;
 	private static var txtNew:TextSprite;
 	private static var nameUnlock:TextSprite;
-	private static var description:TextSprite;
-	private static var congrats:TextSprite;
+	//private static var description:TextSprite;
+	//private static var congrats:TextSprite;
 	private static var txtNext:TextSprite;
 	private static var img:UISprite;
 	private static var imgImage:FlumpStateGraphic;
@@ -61,7 +61,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		
 		txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
 		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
-		congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
+		//congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
 		
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
@@ -76,7 +76,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	private static function onClickNext():Void {
 		UnlockManager.unlockedItem.splice(0, 1);
 		if (UnlockManager.unlockedItem.length != 0) {
-			img.removeChild(imgImage);
+				img.removeChild(img.children[1]);
 			setPopin();
 		}
 		else {
@@ -107,10 +107,10 @@ class LevelUpPoppin extends SmartPopinExtended
 		
 		level = cast(SmartCheck.getChildByName(bgLvl, AssetName.LEVELUP_POPPIN_LEVEL), TextSprite);
 		nameUnlock = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_NAME), TextSprite);
-		description = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_DESCRIPTION), TextSprite);
-		typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
+		//description = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_DESCRIPTION), TextSprite);
+		//typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
 		
-		congrats = cast(getChildByName(AssetName.LEVELUP_POPPIN_CONGRATS), TextSprite);
+		//congrats = cast(getChildByName(AssetName.LEVELUP_POPPIN_CONGRATS), TextSprite);
 		txtNew = cast(getChildByName(AssetName.LEVELUP_POPPIN_TEXT_NEW), TextSprite);
 		
 		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
