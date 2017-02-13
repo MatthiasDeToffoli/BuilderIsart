@@ -30,7 +30,6 @@ class QuestsManager
 	
 	//The time's gap between two events will be vary between these constants
 	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
-	//private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS];
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
