@@ -10,7 +10,7 @@
 	 * @return a string reprensenting the token
 	 */
 function getToken(){
-  include("vendor/autoload.php");
+  include("../../vendor/autoload.php");
 
   // app id number
   $fb = new Facebook\Facebook([
@@ -39,7 +39,7 @@ function getToken(){
  * @return th e Facebook id
  */
 function getFacebookId(){
-  include("vendor/autoload.php");
+  include("../../vendor/autoload.php");
 
   // app id number
   $fb = new Facebook\Facebook([

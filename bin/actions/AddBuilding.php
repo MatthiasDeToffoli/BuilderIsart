@@ -9,14 +9,15 @@
 namespace actions;
 
 include_once("./utils/Utils.php");
-include_once("Send.php");
-include_once("Logs.php");
-include_once("ValidBuilding.php");
+include_once("./utils/Send.php");
+include_once("./utils/Logs.php");
+include_once("ValidAddBuilding.php");
 include_once("./utils/FacebookUtils.php");
 
 class AddBuilding
 {
     const TABLE_BUILDING = "Building";
+    const ID_CLIENT_BUILDING = "IDClientBuilding";
     const ID_TYPE_BUILDING = "IDTypeBuilding";
     const ID_PLAYER = "IDPlayer";
     const START_CONTRUCTION = "StartConstruction";
@@ -34,7 +35,7 @@ class AddBuilding
         //ValidBuilding::setConfigForBuilding(); n'arrive pas à temps ,asynchrone :/
         Utils::insertInto(
             static::TABLE_BUILDING,
-            ValidBuilding::validate(static::getInfo())
+            ValidAddBuilding::validate(static::getInfo())
         );
 
     }
@@ -42,6 +43,7 @@ class AddBuilding
     // todo : tenter d'envoyer des valeur mindfuck poru voir si je casse ou pas ?
     private static function getInfo () {
         return [
+            //static::ID_CLIENT_BUILDING => static::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
             static::ID_TYPE_BUILDING => static::getSinglePostValueInt(static::ID_TYPE_BUILDING),
             static::ID_PLAYER => 55, //getId(), // todo : temporaire....
             static::LEVEL => 1,
@@ -52,7 +54,6 @@ class AddBuilding
             static::X => static::getSinglePostValueInt(static::X),
             static::Y => static::getSinglePostValueInt(static::Y),
         ];
-
     }
 
     private static function getSinglePostValue ($pKey) {

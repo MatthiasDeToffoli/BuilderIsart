@@ -13,7 +13,7 @@ include_once("./utils/Utils.php");
  * Class ValidBuilding
  * @package actions
  */
-class ValidBuilding
+class ValidAddBuilding
 {
     const TABLE_TYPE_BUILDING = "TypeBuilding";
     const COLUMN_CONSTRUCTION_TIME = "ConstructionTime";
@@ -24,9 +24,9 @@ class ValidBuilding
         static::$config = static::getConfigForBuilding($pInfo[AddBuilding::ID_TYPE_BUILDING]);
         $pInfo = static::addDateTimes($pInfo);
 
-        static::canBuild($pInfo);
-        Send::validAddBuilding($pInfo);
+        static::canBuild($pInfo); // exit if something wrong
 
+        Send::synchroniseBuildingTimer($pInfo);
         return $pInfo;
     }
 
