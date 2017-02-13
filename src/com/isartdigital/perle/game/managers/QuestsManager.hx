@@ -29,7 +29,8 @@ class QuestsManager
 	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
 	
 	//The time's gap between two events will be vary between these constants
-	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [500000, 400000, 300000, 200000, 100000];
+	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
+	//private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS, 99999 * CONVERT_FOR_HOURS];
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;
@@ -151,11 +152,12 @@ class QuestsManager
 		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {		
 			if (!Intern.isMaxStress(questInProgress.refIntern)){
 				TimeManager.nextStepQuest(questInProgress);
-				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;			
+				//Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;			
 			}			
 			else{
 				MaxStressPopin.quest = questInProgress;
 				MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
+				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
 				UIManager.getInstance().closeCurrentPopin;
 				UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			}

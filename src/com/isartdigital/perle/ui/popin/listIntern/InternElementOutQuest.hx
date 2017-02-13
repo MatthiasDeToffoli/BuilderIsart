@@ -156,6 +156,7 @@ class InternElementOutQuest extends InternElement
 		quest = QuestsManager.createQuest(internDatas.id);
 		internDatas.quest = quest;
 		Intern.getIntern(internDatas.id).quest = internDatas.quest;
+		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
 		
 		ChoiceManager.newChoice(internDatas.id);
 		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;

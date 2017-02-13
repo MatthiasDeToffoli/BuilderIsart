@@ -45,9 +45,9 @@ class GodMode
 					action_type: 'og.shares',
 					action_properties: Json.stringify({
 					object: {
-						'og:title': 'Un jeu incroyable !!!',
-						'og:description': 'Clique sur jouer, tu vas adorer :)',
-						'og:image': 'http://www.pixelstalk.net/wp-content/uploads/2016/04/Download-desktop-spongebob-wallpaper-HD-620x388.jpg'
+						'og:title': 'Un jeu diablement divin!',
+						'og:description': 'Viens juger les âmes pour aggrandir tes propriétés!',
+						'og:image': 'https://olivierdemeulenaere.files.wordpress.com/2014/11/enfer-ou-paradis.jpg'
 						}
 					})}, callBackUI);	
 			}
@@ -55,6 +55,6 @@ class GodMode
 	}
 	
 	private static function callBackUI(pCallBack:Dynamic):Void{
-		trace("such callBack");
+		trace("callBack");
 	}
 }

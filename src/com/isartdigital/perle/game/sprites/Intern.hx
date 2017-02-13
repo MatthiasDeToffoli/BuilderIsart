@@ -171,12 +171,17 @@ class Intern
 	}
 	
 	public static function isIntravel(pIntern:InternDescription):Bool {
-		var lTimeDesc:TimeQuestDescription = pIntern.quest;
-		switch (lTimeDesc.stepIndex) {
-			case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
-			case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
-			case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true;
-			default: return false;
+		if (pIntern != null){
+			var lTimeDesc:TimeQuestDescription = pIntern.quest;
+			if (lTimeDesc != null){
+				switch (lTimeDesc.stepIndex) {
+					case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
+					case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
+					case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true;
+					default: return false;
+				}
+			}
+
 		}
 		return false;
 	}

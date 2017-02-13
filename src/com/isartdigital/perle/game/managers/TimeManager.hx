@@ -420,7 +420,7 @@ class TimeManager {
 		
 		
 		// progress has reached next step && just now
-		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
+		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern)) && Intern.getIntern(pElement.refIntern) != null) 
 		{
 			if (Intern.getIntern(pElement.refIntern).stress < 100) {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;

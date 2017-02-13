@@ -104,7 +104,6 @@ class InternElementInQuest extends InternElement
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		var activeButton:SmartButton = null;
 		updateCursorPosition();
-		
 		if (Intern.getIntern(quest.refIntern).stress >= Intern.MAX_STRESS) Intern.getIntern(quest.refIntern).status = Intern.STATE_MAX_STRESS; 
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING || Intern.isIntravel(Intern.getIntern(quest.refIntern))) {
@@ -112,7 +111,8 @@ class InternElementInQuest extends InternElement
 			cast(activeButton, AccelerateButton).spawn(quest);
 			Interactive.addListenerClick(activeButton, onBoost);
 		}
-		else if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
+		
+		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
 			activeButton = new ResolveButton(spawner.position);
 			Interactive.addListenerClick(activeButton, onResolve);	
 		}
