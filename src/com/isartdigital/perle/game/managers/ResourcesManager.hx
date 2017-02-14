@@ -534,7 +534,7 @@ class ResourcesManager
 		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
 		
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
-		Hud.getInstance().setXpGauge(pType, quantity);
+		Hud.getInstance().setXpGauge();
 		testLevelUp();
 		SaveManager.save();
 	}

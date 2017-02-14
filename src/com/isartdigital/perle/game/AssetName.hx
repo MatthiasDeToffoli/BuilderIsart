@@ -392,6 +392,7 @@ class AssetName{
 	public static inline var HUD_MOVNG_BUILDING_DESKTOP:String = /*HUD_PREFIX + */"MoveBuilding_Desktop";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CANCEL:String = "Button_CancelMovement";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CONFIRM:String = "Button_ConfirmMovement";
+	public static inline var HUD_XP_GAUGE_MASK:String = "bgMask";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";

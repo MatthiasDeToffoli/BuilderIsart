@@ -41,6 +41,7 @@ import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.UIPosition;
 import js.Browser;
+import js.html.FilePropertyBag;
 import js.html.KeyboardEvent;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -81,6 +82,9 @@ class Hud extends SmartScreen
 	private var btnHard:SmartButton;
 	private var containerEffect:Container;
 	private var movingBuilding:SmartComponent;	
+	private var basePosXMasqueXpHell:Float;
+	private var basePosXMasqueXpHeaven:Float;
+	private var baseGaugeWidth:Float;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -303,33 +307,30 @@ class Hud extends SmartScreen
 	}
 	
 	public function initGauges():Void{
-		hellXPBar.getChildByName("movingGauge").scale.x = 0;
-		heavenXPBar.getChildByName("movingGauge").scale.x = 0;
+		
+		if (basePosXMasqueXpHeaven != null || basePosXMasqueXpHell != null) {
+			hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHell;
+			heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHeaven;
+			return;
+		}
+		
+		basePosXMasqueXpHeaven = heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x;
+		basePosXMasqueXpHell = hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x;
+		baseGaugeWidth = 370; //valeur représente quoi ? Oo les getbounds n'ont pas de rapport....
 	}
 	
 	public function initGaugesWithSave():Void{
-		hellXPBar.getChildByName("movingGauge").scale.x = ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp]/ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
-		heavenXPBar.getChildByName("movingGauge").scale.x = ResourcesManager.getResourcesData().totalsMap[GeneratorType.goodXp]/ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+		initGauges();
+		setXpGauge();
 	}
 	
-	public function setXpGauge(pType:GeneratorType, pQuantity:Float):Void{
-		var lNumberToPercent:Float = pQuantity / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
-		var lScaleHellXp:Float = hellXPBar.getChildByName("movingGauge").scale.x;
-		var lScaleHeavenXp:Float = heavenXPBar.getChildByName("movingGauge").scale.x;
+	public function setXpGauge():Void{
 		
-		if (lScaleHellXp != 1 && lScaleHeavenXp != 1){
-			if (pType.getName() == "badXp") {
-				lScaleHellXp += lNumberToPercent;
-				if (lScaleHellXp > 1) lScaleHellXp = 1;
-				hellXPBar.getChildByName("movingGauge").scale.x = lScaleHellXp;
-			}
-		
-			if (pType.getName() == "goodXp") {
-				lScaleHeavenXp += lNumberToPercent;
-				if (lScaleHeavenXp > 1) lScaleHeavenXp = 1;
-				heavenXPBar.getChildByName("movingGauge").scale.x = lScaleHeavenXp;
-			}
-		}
+		var percentXp:Float = ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+		hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHell + baseGaugeWidth  * percentXp;
+
+		percentXp = ResourcesManager.getResourcesData().totalsMap[GeneratorType.goodXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
+		heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHeaven - baseGaugeWidth * percentXp;
 	}
 	
 	public function onClickResetData(){
