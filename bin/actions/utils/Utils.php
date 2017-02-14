@@ -12,16 +12,39 @@ class Utils
 {
     const DATETIME_FORMAT = 'Y-m-d H:i:s';
 
+
+    // ##############################################################
+    // POST
+    // ##############################################################
+
+    public static function getSinglePostValue ($pKey) {
+        if(array_key_exists($pKey, $_POST)) {
+            return str_replace("/", "", $_POST[$pKey]);
+        } else {
+            echo "Value for key : ".$pKey." is missing in POST.";
+            exit;
+        }
+    }
+
+    public static function getSinglePostValueInt ($pKey) {
+        return intval(static::getSinglePostValue($pKey));
+    }
+
+
+    // ##############################################################
+    // DATABASE
+    // ##############################################################
+
     public static function insertInto ($pTable, $pAssocArray) {
         global $db;
 
         $req = static::bindParamInsertInto($pTable, $pAssocArray);
-        $reqPre = $db->prepare($req);
-		
+        $reqPre = $db->prepare($req); // can be outside try catch, it's ok
+
         try {
-			$db->beginTransaction();
+			//$db->beginTransaction(); not usefull because only one request and SQL is mono-thread so no conflict
             $reqPre-> execute();
-			$db->commit();
+			//$db->commit();
         } catch (\Exception $e) {
             echo $e->getMessage();
             exit;
@@ -29,7 +52,7 @@ class Utils
     }
 
     private static function bindParamInsertInto ($pTable, $pAssocArray) {
-        $lValueArray = static::addApostropheToStrings(array_values($pAssocArray));
+        $lValueArray = static::addApostropheToStringsArray(array_values($pAssocArray));
 
         $lKeys = "(".implode(", ", array_keys($pAssocArray)).")";
         $lValues = "(".implode(", ", $lValueArray).")";
@@ -40,17 +63,25 @@ class Utils
         return $lSQLInsert.$lSQLValues;
     }
 
-    private static function addApostropheToStrings ($pArray) {
+    // error if you put some " in string..., what is ->prepare for ??
+    private static function addApostropheToStringsArray ($pArray) {
         return array_map(function ($lValue) {
-            return is_string($lValue) ? "'".$lValue."'" : $lValue;
+            return static::addApostropheToStrings($lValue);
+
         }, $pArray);
     }
 
-    public static function getTable ($pTableName) {
+    private static function addApostropheToStrings ($pValue) {
+        return is_string($pValue) ? '"'.$pValue.'"' : $pValue;
+    }
+
+    public static function getTable ($pTableName, $pSQLWhere = "1") {
         global $db;
+
+        $req = "SELECT * FROM ".$pTableName." WHERE ".$pSQLWhere;
+        $reqPre = $db->prepare($req);
+
         try {
-            $req = "SELECT * FROM ".$pTableName." WHERE 1";
-            $reqPre = $db->prepare($req);
             $reqPre->execute();
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -75,7 +106,7 @@ class Utils
             echo $e->getMessage();
             exit;
         }
-        // todo : à quoi serventl es autres FETCH_*** ?
+
         while($row = $reqPre->fetch(\PDO::FETCH_ASSOC))
         {
             $result[] = $row;
@@ -83,6 +114,47 @@ class Utils
 
         return $result[0];
     }
+
+    /**
+     * exemple : UPDATE `perle_gold`.`Building` SET RegionX = 54, RegionY = 6, X=8, Y = 34 WHERE `Building`.`ID` = 25
+     * @param $pTable
+     * @param $pAssocArray
+     * @param $pSQLWhere
+     */
+    public static function updateSetWhere ($pTable, $pAssocArray, $pSQLWhere) {
+        global $db;
+
+        $req = static::bindParamUpdateSetWhere($pTable, $pAssocArray, $pSQLWhere);
+        $reqPre = $db->prepare($req);
+
+
+        try {
+            $reqPre->execute();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+            exit;
+        }
+    }
+
+    private static function bindParamUpdateSetWhere ($pTable, $pAssocArray, $pSQLWhere) {
+        $lSetParams = [];
+
+        foreach ($pAssocArray as $key=>$value) {
+            //exemple of push : "RegionY=6"
+            array_push($lSetParams, $key."=".static::addApostropheToStrings($value));
+        }
+
+        $lSQLUpdate = "UPDATE ".$pTable;
+        $lSQLSet = " SET ".implode(",",$lSetParams); // exemple : "RegionX=54, RegionY=6"
+        $pSQLWhere = " WHERE ".$pSQLWhere;
+
+        return $lSQLUpdate.$lSQLSet.$pSQLWhere;
+    }
+
+
+    // ##############################################################
+    // TIME
+    // ##############################################################
 
     /**
      * Convert a timestamp in a DateTime, exemple : timestamp to "2017-02-09 17:04:21"
@@ -129,6 +201,9 @@ class Utils
 
         return array_sum($lArray);
     }
+
+
+
 }
 
 ?>

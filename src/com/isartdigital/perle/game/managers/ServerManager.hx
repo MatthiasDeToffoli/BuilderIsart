@@ -33,6 +33,15 @@ typedef EventSuccessAddBuilding = {
 	var iDClientBuilding:Int;
 }
 
+typedef EventSuccessMoveBuilding = {
+	@:optionnal var errorID:Int;
+	@:optionnal var oldX:Int;
+	@:optionnal var oldY:Int;
+	@:optionnal var oldRegionX:Int;
+	@:optionnal var oldRegionY:Int;
+	var iDClientBuilding:Int;
+}
+
 typedef EventSuccessAddRegion = {
 	var flag:Bool;
 	@:optional var message:String;
@@ -275,21 +284,22 @@ class ServerManager {
 			var lEvent:EventSuccessAddBuilding = Json.parse(pObject);
 			
 			if (Reflect.hasField(lEvent, "errorID")) {
-				RollBackManager.deleteBuilding(lEvent);
+				RollBackManager.deleteBuilding(lEvent.iDClientBuilding);
 				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
 			}
 			else
 				SynchroManager.syncTimeOfBuilding(lEvent);
 			
 		} else {
-			trace("Success php on addBuilding but event format is invalid ! : " + pObject);
+			Debug.error("Success php on addBuilding but event format is invalid ! : " + pObject);
 		}
 		
 	}
 	
 	public static function moveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
-		callPhpFile(onSuccessAddBuilding, onErrorAddBuilding, ServerFile.MAIN_PHP, [
+		callPhpFile(onSuccessMoveBuilding, onErrorMoveBuilding, ServerFile.MAIN_PHP, [
 			KEY_POST_FILE_NAME => ServerFile.BUILDING_MOVE,
+			"IDClientBuilding" => pDescription.id,
 			"OldRegionX" => pOldDescription.regionX,
 			"OldRegionY" => pOldDescription.regionY,
 			"OldX" => pOldDescription.mapX,
@@ -299,6 +309,31 @@ class ServerManager {
 			"X" => pDescription.mapX,
 			"Y" => pDescription.mapY
 		]);
+	}
+	
+	private static function onErrorMoveBuilding (pObject:Dynamic):Void {
+		Debug.error("Error php on addBuilding : " + pObject);
+	}
+	
+	private static function onSuccessMoveBuilding (pObject:Dynamic):Void {
+		if (pObject.charAt(0) == "{") {
+			var lEvent:EventSuccessMoveBuilding = Json.parse(pObject);
+			var lFieldError:Int;
+			
+			if (Reflect.hasField(lEvent, "errorID")) {
+				lFieldError = Reflect.field(lEvent, "errorID");
+				if (lFieldError == ErrorManager.BUILDING_CANNOT_MOVE_DONT_EXIST)
+					RollBackManager.deleteBuilding(lEvent.iDClientBuilding);
+				else	
+					RollBackManager.cancelMoveBuilding(lEvent);
+				
+				ErrorManager.openPopin(lFieldError);
+			}
+			
+		} else {
+			Debug.error("Success php on addBuilding but event format is invalid ! : " + pObject);
+		}
+		
 	}
 	
 	public static function upgradeBuilding (pDescription:TileDescription):Void {

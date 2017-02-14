@@ -8,6 +8,7 @@
 namespace actions;
 
 include_once("utils/Utils.php");
+include_once("utils/Send.php");
 
 /**
  * Class ValidBuilding
@@ -49,7 +50,7 @@ class ValidAddBuilding
 
     private static function canBuild ($pInfo) {
         if (static::isOutsideRegion($pInfo) || static::hasCollision($pInfo) || static::cannotBuy($pInfo)) {
-            Send::refuseAddBuilding(Send::BUILDING_CANNOT_BUILD, $pInfo);
+            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_COLLISION); // todo :temp
         }
     }
 

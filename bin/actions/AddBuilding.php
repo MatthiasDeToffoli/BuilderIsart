@@ -9,7 +9,6 @@
 namespace actions;
 
 include_once("utils/Utils.php");
-include_once("utils/Send.php");
 include_once("utils/Logs.php");
 include_once("ValidAddBuilding.php");
 include_once("utils/FacebookUtils.php");
@@ -17,58 +16,56 @@ include_once("utils/FacebookUtils.php");
 class AddBuilding
 {
     const TABLE_BUILDING = "Building";
-    const ID_CLIENT_BUILDING = "IDClientBuilding";
-    const ID_TYPE_BUILDING = "IDTypeBuilding";
+
+    // from facebook
     const ID_PLAYER = "IDPlayer";
+
+    // defined by server
     const START_CONTRUCTION = "StartConstruction";
     const END_CONTRUCTION = "EndConstruction";
     const LEVEL = "Level";
     const NB_RESOURCE = "NbResource";
     const NB_SOUL = "NbSoul";
+
+    // from POST data
+    const ID_CLIENT_BUILDING = "IDClientBuilding";
+    const ID_TYPE_BUILDING = "IDTypeBuilding";
     const REGION_X = "RegionX";
     const REGION_Y = "RegionY";
     const X = "X";
     const Y = "Y";
 
 
-    public static function add () {
+    public static function doAction () {
         //ValidBuilding::setConfigForBuilding(); n'arrive pas à temps ,asynchrone :/
+        $lInfo = static::getInfo();
+        $lInfoWhitTime = ValidAddBuilding::validate($lInfo);
+        unset($lInfoWhitTime[static::ID_CLIENT_BUILDING]);
+
         Utils::insertInto(
             static::TABLE_BUILDING,
-            ValidAddBuilding::validate(static::getInfo())
+            $lInfoWhitTime
         );
-
+        // todo : $lInfo == lInfo unsetted ? (the more you have for log the better)
+        Logs::addBuilding($lInfo[static::ID_PLAYER], Logs::STATUS_ACCEPTED, null, $lInfo);
     }
 
     // todo : tenter d'envoyer des valeur mindfuck poru voir si je casse ou pas ?
     private static function getInfo () {
         return [
-            static::ID_CLIENT_BUILDING => static::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
-            static::ID_TYPE_BUILDING => static::getSinglePostValueInt(static::ID_TYPE_BUILDING),
+            static::ID_CLIENT_BUILDING => Utils::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
+            static::ID_TYPE_BUILDING => Utils::getSinglePostValueInt(static::ID_TYPE_BUILDING),
             static::ID_PLAYER => 55, //getId(), // todo : temporaire....
             static::LEVEL => 1,
             static::NB_RESOURCE => 0,
             static::NB_SOUL => 0,
-            static::REGION_X => static::getSinglePostValueInt(static::REGION_X),
-            static::REGION_Y => static::getSinglePostValueInt(static::REGION_Y),
-            static::X => static::getSinglePostValueInt(static::X),
-            static::Y => static::getSinglePostValueInt(static::Y),
+            static::REGION_X => Utils::getSinglePostValueInt(static::REGION_X),
+            static::REGION_Y => Utils::getSinglePostValueInt(static::REGION_Y),
+            static::X => Utils::getSinglePostValueInt(static::X),
+            static::Y => Utils::getSinglePostValueInt(static::Y),
         ];
-    }
-
-    private static function getSinglePostValue ($pKey) {
-        if(array_key_exists($pKey, $_POST)) {
-            return str_replace("/", "", $_POST[$pKey]);
-        } else {
-            echo "Value for key : ".$pKey." is missing in POST.";
-            exit;
-        }
-    }
-
-    private static function getSinglePostValueInt ($pKey) {
-        return intval(static::getSinglePostValue($pKey));
     }
 
 }
 
-AddBuilding::add();
+AddBuilding::doAction();

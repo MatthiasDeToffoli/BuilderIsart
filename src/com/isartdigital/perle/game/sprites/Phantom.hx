@@ -315,12 +315,12 @@ class Phantom extends Building {
 			var lOldDesc:TileDescription = Json.parse(Json.stringify(vBuilding.tileDesc));
 			
 			vBuilding.move(regionMap);
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding); 
-			trace("movePhantom " + Building.isClickable);
+			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
 			Building.isClickable = true;
+			SaveManager.saveMoveBuilding(lOldDesc, vBuilding.tileDesc);
 			destroy();
 			
-			SaveManager.saveMoveBuilding(lOldDesc, vBuilding.tileDesc);
+			
 			applyChange();
 			
 		} else
@@ -331,8 +331,6 @@ class Phantom extends Building {
 	private function newBuild():Void {
 		
 		if (DialogueManager.ftueStepPutBuilding || BuyManager.canBuy(buildingName)) {
-			if (!DialogueManager.ftueStepPutBuilding)
-				BuyManager.buy(buildingName);
 			var newId = IdManager.newId();
 			var tTime:Float = Date.now().getTime();
 			var tileDesc:TileDescription = {
@@ -355,6 +353,8 @@ class Phantom extends Building {
 			
 			if (DialogueManager.ftueStepPutBuilding)
 				DialogueManager.endOfaDialogue();
+			else
+				BuyManager.buy(buildingName);
 			
 			vBuilding.addExp();
 			destroy();

@@ -22,18 +22,25 @@ include_once("Logs.php");
  */
 class Send
 {
-    const BUILDING_CANNOT_BUILD = 0;
+    // constant here must be the same in ErrorManager.hx
+    // update errorCodeToMessage function in Logs.php after adding
+    const BUILDING_CANNOT_MOVE_COLLISION = 1;
+    const BUILDING_CANNOT_MOVE_DONT_EXIST = 2;
+    const BUILDING_CANNOT_BUILD_OUTSIDE_REGION = 3;
+    const BUILDING_CANNOT_BUILD_COLLISION = 4;
+    const BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY = 5;
 
-    // todo : tester , utiliser pour les erreurs de la bdd également après avoir changé error_reporting(0); ?
-    public static function refuseAddBuilding ($pErrorID, $pInfo) {
+    const ID_CLIENT_BUILDING = "IDClientBuilding";
+
+    public static function refuseAddBuilding ($pInfo, $pErrorCode) {
         echo json_encode(array_merge(
             [
-                "errorID" => $pErrorID,
+                "errorID" => $pErrorCode,
             ],
             static::getBuildingIdentifier($pInfo)
         ));
         // todo : mettre que les nécessaire ds le json_encode
-        Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pInfo);
+        Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pErrorCode, $pInfo);
         exit;
     }
 
@@ -46,24 +53,28 @@ class Send
             ],
             static::getBuildingIdentifier($pInfo)
         ));
-        // todo : mettre que les nécessaire ds le json_encode
-        Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_ACCEPTED, $pInfo);
     }
 
-    // voir commentaire à côté de la contatne STATuS_ERROR dans Logs
-    /*public static function errorAddBuilding ($pInfo) {
-        Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_ERROR, $pInfo);
-    }*/
+    public static function refuseMoveBuilding ($pInfo, $pErrorCode) {
+        echo json_encode(array_merge(
+            [
+                "errorID" => $pErrorCode,
+                lcfirst(MoveBuilding::OLD_X) => $pInfo[MoveBuilding::OLD_X],
+                lcfirst(MoveBuilding::OLD_Y) => $pInfo[MoveBuilding::OLD_Y],
+                lcfirst(MoveBuilding::OLD_REGION_X) => $pInfo[MoveBuilding::OLD_REGION_X],
+                lcfirst(MoveBuilding::OLD_REGION_Y) => $pInfo[MoveBuilding::OLD_REGION_Y]
+            ],
+            static::getBuildingIdentifier($pInfo)
+        ));
+        // todo : mettre que les infos nécessaire à la place de $pInfo
+        Logs::moveBuilding($pInfo[MoveBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pErrorCode, $pInfo);
+        exit;
+    }
 
 
-    // todo : will change (position is not a good identifier)
     private static function getBuildingIdentifier ($pInfo) {
         return [
-            lcfirst(AddBuilding::ID_CLIENT_BUILDING) => $pInfo[AddBuilding::ID_CLIENT_BUILDING]
-            /*lcfirst(AddBuilding::REGION_X) => $pInfo[AddBuilding::REGION_X],
-            lcfirst(AddBuilding::REGION_Y) => $pInfo[AddBuilding::REGION_Y],
-            lcfirst(AddBuilding::X) => $pInfo[AddBuilding::X],
-            lcfirst(AddBuilding::Y) => $pInfo[AddBuilding::Y]*/
+            lcfirst(static::ID_CLIENT_BUILDING) => $pInfo[static::ID_CLIENT_BUILDING]
         ];
     }
 }

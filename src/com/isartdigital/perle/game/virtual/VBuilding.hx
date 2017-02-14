@@ -225,7 +225,8 @@ class VBuilding extends VTile {
 		decrementNumberBuilding();
 		updateWorldMapPosition(pRegionMap);
 		activate();
-		// change bellow if possible to move building when constructing
+		// todo : change bellow if possible to move building when constructing
+		// gérer quand building en construction
 		setState(VBuildingState.isBuilt); 
 	}
 	
