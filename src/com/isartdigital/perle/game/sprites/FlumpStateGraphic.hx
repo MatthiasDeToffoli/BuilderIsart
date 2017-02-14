@@ -3,6 +3,7 @@ package com.isartdigital.perle.game.sprites;
 import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.StateGraphic;
 import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
+import pixi.core.graphics.Graphics;
 
 /**
  * ...
@@ -12,6 +13,8 @@ import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
 class FlumpStateGraphic extends StateGraphic
 {
 
+	public var isoBox:Graphics;
+	
 	public function new(?pAssetName:String) {
 		super();
 		if (pAssetName != null)

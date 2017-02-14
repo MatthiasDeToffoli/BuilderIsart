@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.Config;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
@@ -46,7 +47,6 @@ class Building extends Tile implements IZSortable
 	public var rowMax:Int;
 	public var behind:Array<IZSortable>;
 	public var inFront:Array<IZSortable>;
-	public var isoBox:Graphics;
 	public var myDesc:TileDescription;
 	private var numberFrame:Int;
 	private var animation:Movie;
@@ -140,7 +140,7 @@ class Building extends Tile implements IZSortable
 		var lLocalLeftFromModelToView:Float = -Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(getBuildingName()).height;
 		var lLocalRightFromModelToView:Float = Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(getBuildingName()).width;
 		
-		myGraphic.beginFill(0xFF00FF, 0);
+		myGraphic.beginFill(0xFF00FF, Config.debug && Config.data.boxAlpha != null ? Config.data.boxAlpha:0);
 		
 		myGraphic.drawRect(
 			lLocalLeftFromModelToView,
