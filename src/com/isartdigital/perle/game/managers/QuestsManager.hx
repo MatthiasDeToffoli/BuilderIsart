@@ -171,7 +171,7 @@ class QuestsManager
 				MaxStressPopin.quest = questInProgress;
 				MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
 				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;
-				UIManager.getInstance().closeCurrentPopin;
+				UIManager.getInstance().closeCurrentPopin();
 				UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 			}
 		}	

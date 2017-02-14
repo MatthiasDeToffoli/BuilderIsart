@@ -155,8 +155,6 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onClose():Void{
 		updateQuestPopin();
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		Hud.getInstance().show();
 	}
 	

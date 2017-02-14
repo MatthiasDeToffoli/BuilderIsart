@@ -69,7 +69,7 @@ class ListInternPopin extends SmartPopin
 	private function new() 
 	{
 		super(AssetName.INTERN_LIST);
-		
+		trace("new");
 		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 		btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 		btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
@@ -148,6 +148,7 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	public function spawnQuest():Void {	
+		trace(Intern.internsListArray.length);
 		for (i in 0...AssetName.internListSpawners.length){		
 			if (i < Intern.internsListArray.length && i < getNumberPlaces()){
 				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
