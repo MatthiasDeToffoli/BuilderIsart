@@ -32,7 +32,7 @@ class RewardGatcha extends SmartPopinExtended
 	private static var quest:TimeQuestDescription;
 	
 	private static inline var GOLD_WON:Int = 1000;
-	private static inline var HARD_WON:Int = 100;
+	private static inline var HARD_WON:Int = 10;
 	private static inline var WOOD_WON:Int = 600;
 	private static inline var STEEL_WON:Int = 750;
 	private static inline var SOUL_WON:Int = 20;

@@ -181,7 +181,6 @@ class Intern
 				else if (tmpProgress >= newIntern.quest.steps[2] && newIntern.quest.stepIndex == 2) tmpProgress = newIntern.quest.steps[2];
 				else newIntern.quest.progress = tmpProgress;
 			}
-			trace(newIntern);
 			internsListArray.push(newIntern);
 		}
 	}

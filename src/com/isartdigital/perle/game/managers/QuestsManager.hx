@@ -29,7 +29,14 @@ class QuestsManager
 	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
 	
 	//Array of the gaps depending the intern's speed
-	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [50000, 40000, 30000, 20000, 10000];
+	private static inline var TIME_GAP_LEVEL_1:Int = 2 * TimesInfo.HOU;
+	private static inline var TIME_GAP_LEVEL_2:Int = TimesInfo.HOU + 45 * TimesInfo.MIN;
+	private static inline var TIME_GAP_LEVEL_3:Int = TimesInfo.HOU + 30 * TimesInfo.MIN;
+	private static inline var TIME_GAP_LEVEL_4:Int = TimesInfo.HOU + 15 * TimesInfo.MIN;
+	private static inline var TIME_GAP_LEVEL_5:Int = TimesInfo.HOU;
+	
+	//Array of the gaps depending the intern's speed
+	private static var GAP_TIME_LEVELS_ARRAY:Array<Int> = [TIME_GAP_LEVEL_1, TIME_GAP_LEVEL_2, TIME_GAP_LEVEL_3, TIME_GAP_LEVEL_4, TIME_GAP_LEVEL_5];
 	
 	//Reference of the quest in progress
 	private static var questInProgress:TimeQuestDescription;

@@ -178,8 +178,8 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function getChrono():String {
-		var duration:Float = quest.steps[quest.stepIndex] - quest.progress;
-		return TimesInfo.getClock({ days: 0, times: duration }).minute + ":" + TimesInfo.getClock({ days: 0, times: duration }).seconde + "s";
+		var duration:Float = TimesInfo.calculDateDiff(quest.steps[quest.stepIndex], quest.progress).times;
+		return TimesInfo.getClock({ days: 0, times: duration }).hour + ":" + TimesInfo.getClock({ days: 0, times: duration }).minute + ":" + TimesInfo.getClock({ days: 0, times: duration }).seconde + "s";
 	}
 	
 	/**
