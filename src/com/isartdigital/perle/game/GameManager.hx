@@ -78,7 +78,6 @@ class GameManager {
 		PoolingManager.init();
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
-		BHConstruction.initTimerContainer();
 		TimeManager.initClass();
 		ChoiceManager.init();
 		QuestsManager.init();
@@ -93,9 +92,9 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		BHConstruction.initTimerContainer();
 		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
+		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		
 	}

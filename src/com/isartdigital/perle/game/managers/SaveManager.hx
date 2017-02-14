@@ -77,8 +77,6 @@ typedef GeneratorDescription = {
 typedef InternDescription = {
 	var id:Int; 		// for link with quest i think
 	var name:String;
-	//var isInQuest:Bool;
-	//var avatar: Sprite; //Todo: type à revoir
 	var aligment:String; //Todo:type à changer?
 	var status:String; //Depends of what he's doing
 	var quest:TimeQuestDescription;	//Linked quest Todo: à enlever peut-être
@@ -135,7 +133,7 @@ typedef Save = {
  */
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
-	private static inline var SAVE_VERSION:String = "1.1.3";
+	private static inline var SAVE_VERSION:String = "1.1.2";
 	public static var currentSave(default, null):Save;
 	
 	/**

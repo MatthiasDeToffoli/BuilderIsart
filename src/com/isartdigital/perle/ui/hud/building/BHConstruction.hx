@@ -31,9 +31,14 @@ class BHConstruction extends BuildingHud {
 	public static var listTimerConstruction:Map<Int, BuildingTimerConstruction> = new Map<Int, BuildingTimerConstruction>();
 	private static var timerContainer:Container;
 	
-	public static function initTimerContainer():Void {
+	public static function initTimer():Void {
 		timerContainer = new Container();
 		GameStage.getInstance().getGameContainer().addChild(timerContainer);
+		
+		for (i in 0...TimeManager.listConstruction.length) {
+			BuildingHud.linkVirtualBuilding(TimeManager.timeLinkToVBuilding[TimeManager.listConstruction[i].refTile]);
+			newTimer(TimeManager.listConstruction[i]);
+		}
 	}
 	
 	public static function getTimerContainer():Container {
@@ -51,19 +56,22 @@ class BHConstruction extends BuildingHud {
 		timerContainer.addChild(lContainer);
 	}
 	
+	public static function hideTimer(pTimeDesc:TimeDescription):Void {
+		trace("apres la correction des barres");
+	}
+	
 	public static function getInstance (): BHConstruction {
 		if (instance == null) instance = new BHConstruction();
 		return instance;
 	}
 	
 	private function new() {
-		super("BuildingContext");	
+		super("BuildingContext");
 	}
 	
 	override public function setOnSpawn():Void {
 		setGameListener();
 		addListeners();
-		TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 	}
 	
 	private function setGameListener():Void {
@@ -73,7 +81,7 @@ class BHConstruction extends BuildingHud {
 	
 	override private function addListeners():Void 
 	{
-		SmartCheck.traceChildrens(this);
+		//SmartCheck.traceChildrens(this);
 		btnMove = cast(getChildByName("ButtonMoveBuilding"), SmartButton);
 		btnDestroy = cast(getChildByName("ButtonCancelConstruction"), SmartButton);
 		btnSpeedUp = cast(getChildByName("ButtonAccelerate"), SmartButton);
@@ -99,11 +107,6 @@ class BHConstruction extends BuildingHud {
 	public function onClickDestroy(): Void {
 		UIManager.getInstance().openPopin(BuildingDestroyPoppin.getInstance());
 		removeGameListener();
-	}
-	
-	private function endOfConstruction(pElement:TimeDescription):Void {
-		listTimerConstruction[pElement.refTile].destroy();
-		listTimerConstruction.remove(pElement.refTile);
 	}
 	
 	private function removeGameListener():Void {

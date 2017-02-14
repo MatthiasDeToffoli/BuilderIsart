@@ -47,7 +47,7 @@ class SpeedUpPopin extends AcceleratePopin
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
 		
-		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(3000000000, true);
+		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000, true);
 		onClose();
 	}
 	

@@ -39,7 +39,7 @@ class VBuildingUpgrade extends VBuilding
 		var tTime:Float = Date.now().getTime();
 		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + 20000, progress: 0, creationDate: tTime };
 		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
-		TimeManager.addConstructionTimer(tileDesc.timeDesc);
+		TimeManager.addConstructionTimer(tileDesc.timeDesc, this);
 		
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);

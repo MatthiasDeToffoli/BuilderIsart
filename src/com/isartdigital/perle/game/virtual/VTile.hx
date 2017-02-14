@@ -143,7 +143,7 @@ class VTile extends Virtual{
 				)), [pSave.building[i]]);
 			}
 	}
-
+	
 		
 	public function new (pDescription:TileDescription) {
 		super();

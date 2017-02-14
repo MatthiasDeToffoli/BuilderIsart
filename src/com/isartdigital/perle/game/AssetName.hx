@@ -271,6 +271,12 @@ class AssetName{
 	public static inline var INTERN_EVENT_SIDE:String = "_intern_side";
 	public static inline var INTERN_EVENT_STATS:String = "InternsStatsInEvent";
 	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
+	public static inline var INTERN_EVENT_PORTRAIT:String = "_event_internPortrait";	
+	public static inline var INTERN_EVENT_HELL_STRESS:String = "_hellStressEffect";
+	public static inline var INTERN_EVENT_HEAVEN_STRESS:String = "_heavenStressEffect";
+	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";
+	public static inline var INTERN_EVENT_HEAVEN_CURRENCY:String = "RewardHeaven0";
+	public static inline var INTENSITY_MARKER:String = "IntenityMarker";
 	
 	// intern info jauges
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";

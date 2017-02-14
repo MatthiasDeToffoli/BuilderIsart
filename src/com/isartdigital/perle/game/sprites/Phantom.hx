@@ -343,14 +343,15 @@ class Phantom extends Building {
 				mapX:regionMap.map.x,
 				mapY:regionMap.map.y,
 				level:1,
-				timeDesc: { refTile:newId,  end: tTime + 30000, progress: 0, creationDate: tTime }
+				timeDesc: { refTile:newId,  end: tTime + Date.fromString(GameConfig.getBuildingByName(buildingName, 1).constructionTime).getTime(), progress: 0, creationDate: tTime }
 			};
 			
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
 			vBuilding.activate();
 			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
-			BHConstruction.newTimer();
+			BuildingHud.linkVirtualBuilding(vBuilding);
+			BHConstruction.newTimer(vBuilding.tileDesc.timeDesc);
 			
 			if (DialogueManager.ftueStepPutBuilding)
 				DialogueManager.endOfaDialogue();

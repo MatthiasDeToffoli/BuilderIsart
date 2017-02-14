@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
@@ -20,42 +21,44 @@ class BuildingTimerConstruction extends BuildingTimer
 	
 	override public function spawn():Void 
 	{
+		super.spawn();
+		
 		loop = Timer.delay(progressTimeLoop, 100);
 		loop.run = progressTimeLoop;
+		
 		if (DialogueManager.boostBuilding)
 			boost(300000, true);
-		super.spawn();
 	}
 	
 	override private function updateProgressBar():Void {
 		progressBar.scale.x = TimeManager.getPourcentage(building.tileDesc.timeDesc);
 	}
 	
-	override private function showTime(?pTime:Dynamic):Void {
-		timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);		
+	override private function showTime(?pTileDesc:TileDescription):Void {
+		timeText.text = TimeManager.getTextTime(pTileDesc);		
 		updateProgressBar();
 	}
 	
-	public function boost(pValue:Float, ?pFinish:Bool):Void {
+	public function boost(pValue:Float, ?pFinish:Bool=false):Void {
 		var isFinish:Bool;
 		
-		if (pFinish == null)
-			isFinish = TimeManager.increaseProgress(building, pValue);
+		if (!pFinish) {
+			isFinish = TimeManager.increaseConstruction(building, pValue);
+			
+			if (isFinish) {
+				BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+			}
+			else {
+				timeText.text = TimeManager.getTextTime(building.tileDesc);
+				updateProgressBar();
+			}
+		}
 		else {
 			if(DialogueManager.passFree)
 				DialogueManager.endOfaDialogue();
 				
-			isFinish = pFinish;
-		}
-			
-		if (isFinish) {
-			TimeManager.increaseProgress(building, pValue);
+			TimeManager.increaseConstruction(building, pValue, true);				
 			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
-			destroy();
-		}
-		else {
-			timeText.text = TimeManager.getTextTime(BuildingHud.virtualBuilding.tileDesc);
-			updateProgressBar();
 		}
 		
 		//ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, DbAction.UPDT);
@@ -67,13 +70,12 @@ class BuildingTimerConstruction extends BuildingTimer
 			updateProgressBar();
 		} else {
 			if (DialogueManager.ftuePlayerCanWait) {
-				trace("testrjfdbhuhbuh");
 				DialogueManager.dialogueSaved += 1;
 				DialogueManager.endOfaDialogue();
 			}
 			progressBar.scale.x = 1;
 			timeText.text = "Finish";
-			BHConstruction.listTimerConstruction.remove(building.tileDesc.timeDesc.refTile);
+			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
 			destroy();
 		}
 	}

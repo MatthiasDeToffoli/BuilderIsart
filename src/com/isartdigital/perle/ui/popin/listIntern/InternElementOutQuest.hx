@@ -79,7 +79,7 @@ class InternElementOutQuest extends InternElement
 	
 	private function initStars():Void {
 		var speedIndics = new Array<UISprite>();
-		effIndics = new Array<UISprite>();
+		var effIndics = new Array<UISprite>();
 		
 		for (i in 1...6) {
 			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
@@ -103,10 +103,6 @@ class InternElementOutQuest extends InternElement
 		internName.text = pDesc.name;
 	}
 	
-	/**
-	 * Spawn the corect button depending the intern's state
-	 * @param	spawnerName
-	 */
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
 		
@@ -142,9 +138,6 @@ class InternElementOutQuest extends InternElement
 		spawner.destroy();
 	}
 	
-	/**
-	 * Send an intern in quest
-	 */
 	private function onSend(){
 		trace("send");
 		if (DialogueManager.ftueStepSendIntern)
@@ -171,9 +164,6 @@ class InternElementOutQuest extends InternElement
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 	}
 	
-	/**
-	 * Callback when the intern is too much stressed
-	 */
 	private function onStress(){
 		var lQuest = QuestsManager.getQuest(internDatas.id);
 		

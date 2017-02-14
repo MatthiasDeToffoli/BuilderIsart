@@ -87,6 +87,7 @@ class TimeManager {
 	public static var listProduction(default, null):Array <TimeDescription>;
 	public static var campaignTime(default, null):Float;
 	
+	public static var timeLinkToVBuilding:Map<Int, VBuilding>;
 	
 	public static function initClass ():Void {
 		eTimeGenerator = new EventEmitter();
@@ -98,6 +99,7 @@ class TimeManager {
 		listQuest = new Array<TimeQuestDescription>();
 		listConstruction = new Array<TimeDescription>();
 		listProduction = new Array<TimeDescription>();
+		timeLinkToVBuilding = new Map<Int, VBuilding>();
 		campaignTime = 0;
 	}
 	
@@ -120,10 +122,6 @@ class TimeManager {
 			listResource.push({
 				desc: pSave.timesResource[i]
 			});
-		}
-		
-		for (j in 0...lLengthConstruction) {
-			trace(lConstructionArraySaved[j]);
 		}
 	
 		lastKnowTime = pSave.lastKnowTime;
@@ -216,9 +214,11 @@ class TimeManager {
 		return lDesc;
 	}
 	
-	public static function addConstructionTimer(pBuildingTimer:TimeDescription):Void {
-		var dateNow:Float = Date.now().getTime();		
+	public static function addConstructionTimer(pBuildingTimer:TimeDescription, pBuild:VBuilding):Void {
+		var dateNow:Float = Date.now().getTime();
 		if (dateNow >= pBuildingTimer.end) return;
+		
+		timeLinkToVBuilding.set(pBuildingTimer.refTile, pBuild);
 		
 		pBuildingTimer.progress = dateNow - pBuildingTimer.creationDate;
 		//ServerManager.ContructionTimeAction(pBuildingTimer, DbAction.ADD);
@@ -245,7 +245,6 @@ class TimeManager {
 	 */
 	public static function createTimeQuest (pDatasQuest:TimeQuestDescription):TimeQuestDescription { // todo : un peu inutile comme function ?
 		var lTimeElement:TimeQuestDescription = pDatasQuest;
-		
 		listQuest.push(lTimeElement);
 		return lTimeElement;
 	}
@@ -328,7 +327,7 @@ class TimeManager {
 		for (i in 0...lLengthConstruct) {
 			updateConstruction(listConstruction[i], constructionEnded);
 		}		
-		deleteEndedConstruction(constructionEnded);
+		if (constructionEnded.length > 0) deleteEndedConstruction(constructionEnded);
 		
 		ChoiceManager.refreshChoices();
 	}
@@ -364,7 +363,14 @@ class TimeManager {
 	
 	private static function deleteEndedConstruction(pEndedList:Array<Int>):Void {
 		var lLength:Int = pEndedList.length;	
-		for (i in 0...lLength) { listConstruction.splice(pEndedList[i], 1); }
+		var nbSup:Int = 0;
+		
+		for (i in 0...lLength) {
+			timeLinkToVBuilding[listConstruction.splice(pEndedList[i], 1)[0].refTile]; 
+			nbSup++;
+		}
+		
+		if (nbSup > 0) SaveManager.save();
 	}
 	
 	private static function deleteEndedQuest(pEndedList:Array<Int>):Void {
@@ -458,7 +464,7 @@ class TimeManager {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
-			ServerManager.ContructionTimeAction(pElement, DbAction.REM);
+			//ServerManager.ContructionTimeAction(pElement, DbAction.REM);
 			pEndedList.push(index);
 		}		
 	}
@@ -555,25 +561,30 @@ class TimeManager {
 	 * @param	pBoostValue
 	 * @return
 	 */
-	public static function increaseProgress(pVBuilding:VBuilding, pBoostValue:Float):Bool {
+	public static function increaseConstruction(pVBuilding:VBuilding, pBoostValue:Float, ?forceEnd:Bool=false):Bool {
 		var lLengthConstruct:Int = listConstruction.length;
 		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		for (i in 0...lLengthConstruct) {
-			if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
+			if (forceEnd) {
+				listConstruction[i].timeBoost = listConstruction[i].end - listConstruction[i].creationDate;
+				updateConstruction(listConstruction[i], constructionEnded);
+				break;
+			}
+			else if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
 				if (Reflect.hasField(listConstruction[i], TIME_DESC_REFLECT_BOOST)) listConstruction[i].timeBoost += pBoostValue;
 				else listConstruction[i].timeBoost = pBoostValue;
 				updateConstruction(listConstruction[i], constructionEnded);
 				break;
 			}
 		}	
-		deleteEndedConstruction(constructionEnded);
-		
-		SaveManager.save();
+		if (constructionEnded.length > 0) deleteEndedConstruction(constructionEnded);
 		
 		var state:VBuildingState = getBuildingStateFromTime(pVBuilding.tileDesc);
 		if (state == VBuildingState.isBuilt) return true;
 		return false;
+		
+		SaveManager.save();
 	}
 	
 	/**

@@ -48,7 +48,9 @@ class Choice extends SmartPopinExtended
 	private var evilChoice:TextSprite;
 	private var internName:TextSprite;
 	private var internSide:TextSprite;
+	
 	private var choiceCard:UISprite;
+	private var internPortrait:UISprite;
 		
 	private var internStats:SmartComponent;
 	private var internStress:TextSprite;
@@ -57,9 +59,16 @@ class Choice extends SmartPopinExtended
 	private var stressBar:SmartComponent;
 	private var stressGaugeMask:UISprite;
 	private var stressGaugeBar:UISprite;
-	private var speedIndic:SmartComponent;
-	private var effIndic:SmartComponent;
+	private var speedJauge:SmartComponent;
+	private var effJauge:SmartComponent;
 	
+	private var currencyHellSpawner:SmartComponent;
+	private var currencyHeavenSpawner:SmartComponent;
+	private var stressHellIndicators:Array<UISprite>;
+	private var stressHeavenIndicators:Array<UISprite>;
+	
+	private var hellSpawnerPos:Map<Int, Point>;
+	private var heavenSpawnerPos:Map<Int, Point>;
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -108,27 +117,47 @@ class Choice extends SmartPopinExtended
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
 		
 		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
+		internPortrait = cast(getChildByName(AssetName.INTERN_EVENT_PORTRAIT), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);	
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		stressGaugeMask = cast(SmartCheck.getChildByName(stressBar, "jaugeStress_masque"), UISprite);
 		stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
-		speedIndic = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
-		effIndic = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
+		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		//stressHellIndicators = new Array<UISprite>();
+		//stressHeavenIndicators = new Array<UISprite>();
+		hellSpawnerPos = new Map<Int, Point>();
+		heavenSpawnerPos = new Map<Int, Point>();
+		for (i in 1...4) {
+			var newSpawnerHell:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CURRENCY + i), UISprite);
+			var newSpawnerHeaven:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CURRENCY + i), UISprite);
+			
+			hellSpawnerPos.set(i, newSpawnerHell.position);
+			heavenSpawnerPos.set(i, newSpawnerHeaven.position);
+			
+			newSpawnerHell.visible = false;
+			newSpawnerHeaven.visible = false;
+			
+			//stressHellIndicators.push(cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+			//stressHeavenIndicators.push(cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+		}
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {
 		intern = pIntern;
 		
 		var newChoice:ChoiceDescription = ChoiceManager.selectChoice(intern.idEvent);
-		createChoiceText(newChoice);
+		createChoice(newChoice);
 		initReward(newChoice, intern);
+		showRewardIndicators(newChoice);
 	}
 	
 	/**
 	 * get new generated text
 	 */
-	private function createChoiceText(newChoice:ChoiceDescription):Void
+	private function createChoice(newChoice:ChoiceDescription):Void
 	{		
 		presentationChoice.text = newChoice.text;
 		heavenChoice.text = newChoice.heavenAnswer;
@@ -139,19 +168,13 @@ class Choice extends SmartPopinExtended
 		
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
-		
-		var iEff:Int =  6 - intern.efficiency;
-		for (i in 1...iEff)
-			cast(effIndic.getChildAt(i), UISprite).visible = false;
 			
-		var iSpeed:Int = 6 - intern.speed;
-		for (i in 1...iSpeed)
-			cast(speedIndic.getChildAt(i), UISprite).visible = false;
-			
-		var iStress:Int = intern.stress;
+		var iStress:Int = intern.stress;	
 		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
 		
 		createCard(newChoice);
+		createPortrait();
+		initStars();
 	}
 	
 	private function createCard(pChoice:ChoiceDescription):Void {
@@ -163,6 +186,44 @@ class Choice extends SmartPopinExtended
 		choiceCard.interactive = true;
 		addChild(choiceCard);
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+	}
+	
+	private function createPortrait():Void {
+		var pos:Point = internPortrait.position.clone();
+		removeChild(internPortrait);
+		internPortrait.destroy();
+		internPortrait = new UISprite(intern.portrait);
+		internPortrait.position = pos;
+		addChild(internPortrait);
+	}
+	
+	// TODO
+	private function showRewardIndicators(pChoice:ChoiceDescription):Void {
+		//var test:SmartComponent = new SmartComponent("RessourceIndicator");
+		var index:Int = 0;
+		//trace(pChoice);		
+		
+		if (pChoice.heavenStress > 20) index = 3;
+		else if (pChoice.heavenStress > 11) index = 2;
+		else index = 1;
+	}
+	
+	private function initStars():Void {
+		var speedIndics = new Array<UISprite>();
+		var effIndics = new Array<UISprite>();
+		
+		for (i in 1...6) {
+			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
+			effIndics.push(cast(effJauge.getChildByName("_jaugeEfficiency_0" + i), UISprite));
+		}
+		
+		for (i in 0...5) {
+			if (intern.efficiency <= i) speedIndics[i].visible = false;
+		}
+		
+		for (i in 0...5) {
+			if (intern.speed <= i) effIndics[i].visible = false;
+		}
 	}
 	
 	private function initReward(newChoice:ChoiceDescription, internDesc:InternDescription):Void {

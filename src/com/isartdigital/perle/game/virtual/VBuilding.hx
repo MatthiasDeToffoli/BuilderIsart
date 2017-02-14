@@ -73,7 +73,7 @@ class VBuilding extends VTile {
 		timeDesc = pDescription.timeDesc;
 		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) {
-			TimeManager.addConstructionTimer(pDescription.timeDesc);
+			TimeManager.addConstructionTimer(pDescription.timeDesc, this);
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
 		
@@ -128,11 +128,6 @@ class VBuilding extends VTile {
 		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		if (haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
-			
-		if (timeDesc != null) {
-			BuildingHud.linkVirtualBuilding(this);
-			BHConstruction.newTimer(timeDesc);
-		}
 	}
 	
 	/**
@@ -171,6 +166,10 @@ class VBuilding extends VTile {
 		
 		if (myVContextualHud != null)
 			myVContextualHud.desactivate();
+			
+		if (timeDesc != null) {
+			BHConstruction.hideTimer(timeDesc);
+		}
 	}
 	
 	public function unlinkContextualHud ():Void {
@@ -335,6 +334,7 @@ class VBuilding extends VTile {
 	
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		if (pElement.refTile != tileDesc.id) return;
+		timeDesc = null;
 		
 		if (active) cast(graphic, Building).setStateEndConstruction();
 		

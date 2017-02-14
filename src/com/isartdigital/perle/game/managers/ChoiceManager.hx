@@ -155,7 +155,8 @@ class ChoiceManager
 					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
-					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.heavenStress : pIntern.stress += useChoice.hellStress;
+					// todo hellStress -> natural choice // todo heavenStress -> unatural chocie
+					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.hellStress : pIntern.stress += useChoice.heavenStress;
 				
 				case ChoiceType.HELL:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);

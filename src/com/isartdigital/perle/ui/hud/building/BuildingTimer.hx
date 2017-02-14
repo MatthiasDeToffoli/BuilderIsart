@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.hud.building;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -38,7 +39,7 @@ class BuildingTimer extends SmartComponent
 		building = BuildingHud.virtualBuilding;
 		
 		getComponents();
-		showTime();
+		showTime(building.tileDesc);
 	}
 	
 	
@@ -46,7 +47,7 @@ class BuildingTimer extends SmartComponent
 		
 	}
 	
-	private function showTime(?pTime:Dynamic):Void {
+	private function showTime(?pTileDesc:TileDescription):Void {
 
 	}
 	

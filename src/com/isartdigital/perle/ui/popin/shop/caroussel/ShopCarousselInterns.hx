@@ -300,6 +300,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function onClickHell():Void{
 		//Si achat possible
 		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])) {
+			trace(Intern.internsMap[Alignment.hell][actualHellID]);
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
 			changeID(Alignment.hell);
 			closeShop();
