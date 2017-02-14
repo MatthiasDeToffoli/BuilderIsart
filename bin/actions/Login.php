@@ -3,9 +3,13 @@
  * User: Vicktor Grenu
  */
 
+use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Regions as Regions;
+use actions\utils\Resources as Resources;
+
 include_once("utils/FacebookUtils.php");
-include("Regions.php");
-include("Resources.php");
+include("utils/Regions.php");
+include("utils/Resources.php");
 
 $accessToken = getToken();
 $fbId = getFacebookId();
@@ -41,16 +45,16 @@ try {
 
         try {
             $reqInsPre->execute();
-            $id = getId();
-            createResources($id, 'soft', 20000);
-            createResources($id, 'hard', 0);
-            createResources($id, 'resourcesFromHell', 0);
-            createResources($id, 'resourcesFromHeaven', 0);
-            createResources($id, 'badXp', 0);
-            createResources($id, 'goodXP', 0);
-            createRegion($id,"heaven",-1,0,-12,0);
-            createRegion($id,"neutral",0,0,0,0);
-            createRegion($id,"hell",1,0,3,0);
+            $id = FacebookUtils::getId();
+            Resources::createResources($id, 'soft', 20000);
+            Resources::createResources($id, 'hard', 0);
+            Resources::createResources($id, 'resourcesFromHell', 0);
+            Resources::createResources($id, 'resourcesFromHeaven', 0);
+            Resources::createResources($id, 'badXp', 0);
+            Resources::createResources($id, 'goodXP', 0);
+            Regions::createRegion($id,"heaven",-1,0,-12,0);
+            Regions::createRegion($id,"neutral",0,0,0,0);
+            Regions::createRegion($id,"hell",1,0,3,0);
         } catch (Exception $e) {
             echo $e->getMessage();
             exit;

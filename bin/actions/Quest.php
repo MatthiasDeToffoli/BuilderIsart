@@ -1,5 +1,7 @@
 <?php
 
+ use actions\utils\FacebookUtils as FacebookUtils;
+ 
 $functionExe = str_replace("/", "", $_POST["funct"]);
 $IdIntern = intval(str_replace("/", "", $_POST["idInt"]));
 $stepIndex = intval(str_replace("/", "", $_POST["stepIndex"]));
@@ -20,7 +22,7 @@ switch ($functionExe) {
 function addQuest($creation, $IdIntern, $steps, $endValue) {
   global $db;
 
-  $ID = getId();
+  $ID = FacebookUtils::getId();
   $req = "INSERT INTO TimeQuest(IdPlayer, RefIntern, Creation, Step1, Step2, Step3, DateEnd, Progress, StepIndex) VALUES (:playerId, :internRef, :creation, :step1, :step2, :step3, :endDate, :prog, 0)";
 
   try {
@@ -45,7 +47,7 @@ function addQuest($creation, $IdIntern, $steps, $endValue) {
 function removeQuest($IdIntern) {
   global $db;
 
-  $ID = getId();
+  $ID = FacebookUtils::getId();
   $req = "DELETE FROM TimeQuest WHERE RefIntern = :internId AND IdPlayer = :playerId";
 
   try {
@@ -63,7 +65,7 @@ function removeQuest($IdIntern) {
 function updateQuestTime($IdIntern, $progress, $stepIndex) {
   global $db;
 
-  $ID = getId();
+  $ID = FacebookUtils::getId();
   $req= "UPDATE TimeQuest SET Progress = :prog, StepIndex = :indexStep WHERE RefIntern = :internId AND IdPlayer = :playerId";
 
   try {
@@ -83,7 +85,7 @@ function updateQuestTime($IdIntern, $progress, $stepIndex) {
 function getJson() {
   global $db;
 
-  $ID = getId();
+  $ID = FacebookUtils::getId();
   $req = "SELECT RefIntern,Creation,Step1,Step2,Step3,DateEnd,Progress,StepIndex FROM TimeQuest WHERE IdPlayer = :playerId";
 
   try {

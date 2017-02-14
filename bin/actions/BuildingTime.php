@@ -1,5 +1,7 @@
 <?php
 
+ use actions\utils\FacebookUtils as FacebookUtils;
+ 
 $buildID = str_replace("/", "", $_POST["buildId"]);
 $crea = intval(str_replace("/", "", $_POST["creationDate"]));
 $endDate = intval(str_replace("/", "", $_POST["endDate"]));
@@ -44,7 +46,7 @@ switch ($functionExe) {
 
     $req = "DELETE FROM TimeConstruction WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
     $reqPre = $db->prepare($req);
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $reqPre->bindParam(':idPlayer', $ID);
     $reqPre->bindParam(':idBuild', $buildID);
 
@@ -62,7 +64,7 @@ switch ($functionExe) {
 
     $req = "SELECT * FROM TimeConstruction WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
     $reqPre = $db->prepare($req);
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $reqPre->bindParam(':idPlayer', $ID);
     $reqPre->bindParam(':idBuild', $buildID);
 
@@ -83,7 +85,7 @@ switch ($functionExe) {
 
     $req = "SELECT Boost FROM TimeConstruction WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
     $reqPre = $db->prepare($req);
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $reqPre->bindParam(':idPlayer', $ID);
     $reqPre->bindParam(':idBuild', $buildID);
 
@@ -94,7 +96,7 @@ switch ($functionExe) {
 
     $req = "UPDATE TimeConstruction SET Boost = :boostVal WHERE IDPlayer = :idPlayer AND IDBuild = :idBuild";
     $reqPre = $db->prepare($req);
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $reqPre->bindParam(':idPlayer', $ID);
     $reqPre->bindParam(':idBuild', $buildID);
     $reqPre->bindParam(':boostVal', $boostBonus);

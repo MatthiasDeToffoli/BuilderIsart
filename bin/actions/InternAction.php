@@ -1,5 +1,7 @@
 <?php
 
+ use actions\utils\FacebookUtils as FacebookUtils;
+
   $functionExe = str_replace("/", "", $_POST["funct"]);
   $IdIntern = intval(str_replace("/", "", $_POST["idInt"]));
   $IdEvent = intval(str_replace("/", "", $_POST["idEvent"]));
@@ -17,7 +19,7 @@
 
   function buyIntern($IdIntern) {
     global $db;
-    $ID = getId();
+    $ID = FacebookUtils::getId();
 
     if (!isset($IdIntern)) die("No valid ID");
 
@@ -51,7 +53,7 @@
   function removeIntern($IdIntern) {
     global $db;
 
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $req = "DELETE FROM PlayerInterns WHERE IDPlayer = :playerId AND IDIntern = :internId";
 
     try {
@@ -69,7 +71,7 @@
   function updateEvent($IdEvent, $IdIntern) {
     global $db;
 
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $req = "UPDATE PlayerInterns SET IdEvent = :eventId WHERE IDPlayer = :playerId AND IDIntern = :internId";
 
     try {
@@ -88,7 +90,7 @@
   function addStress($IdIntern, $stress) {
     global $db;
 
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $req = "UPDATE PlayerInterns SET Stress = :stress WHERE IDPlayer = :playerId AND IDIntern = :internId";
 
     try {
@@ -107,7 +109,7 @@
     global $db;
 
     $i = 0;
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $req = "SELECT * FROM Interns WHERE ID IN (SELECT IDIntern FROM PlayerInterns WHERE IDPlayer = :playerId)";
     $req2 = "SELECT IdEvent, Stress FROM PlayerInterns WHERE IDPlayer = :playerId";
 

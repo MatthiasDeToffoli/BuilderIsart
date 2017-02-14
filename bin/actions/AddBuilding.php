@@ -8,6 +8,8 @@
 
 namespace actions;
 
+ use actions\utils\FacebookUtils as FacebookUtils;
+
 include_once("utils/Utils.php");
 include_once("utils/Logs.php");
 include_once("ValidAddBuilding.php");

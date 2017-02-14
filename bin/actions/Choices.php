@@ -1,5 +1,6 @@
 <?php
-
+ use actions\utils\FacebookUtils as FacebookUtils;
+ 
   $functionExe = str_replace("/", "", $_POST["funct"]);
   $IdEvent = intval(str_replace("/", "", $_POST["idEvt"]));
   $IdIntern = intval(str_replace("/", "", $_POST["idInt"]));
@@ -18,7 +19,7 @@
     global $db;
 
     if (!isset($IdEvent)) die("No valid ID");
-    $ID = getId();
+    $ID = FacebookUtils::getId();
 
     $req = "INSERT INTO ChoicesUsed(IDPlayer, IDChoice, Closed) VALUES (:playerId, :choiceId, 0)";
     $reqPre = $db->prepare($req);
@@ -38,7 +39,7 @@
   function resetInternEvent($IdIntern) {
     global $db;
 
-    $ID = getId();
+    $ID = FacebookUtils::getId();
     $req = "UPDATE PlayerInterns SET IdEvent = 0 WHERE IdIntern = :internId AND IDPlayer = :playerId";
 
     try {
@@ -57,7 +58,7 @@
     global $db;
 
     if (!isset($IdEvent)) die("No valid ID");
-    $ID = getId();
+    $ID = FacebookUtils::getId();
 
     $req = "UPDATE ChoicesUsed SET Closed = 1 WHERE IDChoice = :eventId";
 
@@ -78,7 +79,7 @@
 
     try {
       $reqPre = $db->prepare($req);
-      $ID = getId();
+      $ID = FacebookUtils::getId();
       $reqPre->bindParam(':playerId', $ID);
       $reqPre->execute();
     }
@@ -91,7 +92,7 @@
   function getUsedId() {
     global $db;
 
-    $ID = getId();
+    $ID = FacebookUtils::getId();
 
     $req = "SELECT IDChoice, Closed FROM ChoicesUsed WHERE IDPlayer = :playerId";
     $reqPre = $db->prepare($req);

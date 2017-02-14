@@ -1,6 +1,13 @@
 
 
 <?php
+
+use actions\utils\Config as Config;
+use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Player as Player;
+use actions\utils\Regions as Regions;
+use actions\utils\Resources as Resources;
+
 /**
 * @author: de Toffoli Matthias
 * check if the player can buy a region and buy it if he can.
@@ -31,21 +38,21 @@
 	 */
   function addToTable($Type, $X,$Y,$FTX,$FTY){
     include_once("utils/FacebookUtils.php");
-    include_once("Regions.php");
-    include_once("Player.php");
-    include_once("Config.php");
-    include_once("Resources.php");
+    include_once("utils/Regions.php");
+    include_once("utils/Player.php");
+    include_once("utils/Config.php");
+    include_once("utils/Resources.php");
 
     global $db;
 
-    $Id = getId();
-    $messageBack = testPosition($Id,$Type,$X,$Y);
+    $Id = FacebookUtils::getId();
+    $messageBack = Regions::testPosition($Id,$Type,$X,$Y);
     if(!$messageBack["flag"]){
       echo json_encode($messageBack);
       exit;
     }
 
-    $nbRegion = getRegionQuantity($Id, $Type);
+    $nbRegion = Player::getRegionQuantity($Id, $Type);
 
     if($X == 0){
       $price = 0;
@@ -54,7 +61,7 @@
     }
     else {
 
-      $Config = getConfig();
+      $Config = Config::getConfig();
 
        $price = $Config->PriceRegion * pow($Config->FactorRegionGrowth,$nbRegion);
        $xp1 = $Config->RegionXpSameSide * pow($Config->FactorRegionGrowth,$nbRegion);
@@ -71,7 +78,7 @@
       $nbRegion++;
     }
 
-    $moneyRest = getResource($Id, "soft") - $price;
+    $moneyRest = Resources::getResource($Id, "soft") - $price;
 
 
     if($moneyRest < 0) {
@@ -80,9 +87,9 @@
       exit;
     }
 
-    setRegionQuantity($Id,$Type,$nbRegion);
-    createRegion($Id,$Type,$X,$Y,$FTX,$FTY);
-    updateResources($Id, "soft", $moneyRest);
+    Player::setRegionQuantity($Id,$Type,$nbRegion);
+    Regions::createRegion($Id,$Type,$X,$Y,$FTX,$FTY);
+    Resources::updateResources($Id, "soft", $moneyRest);
 
     $messageBack =  Array("flag" => true,"x" => $X, "y" => $Y, "type" => $Type, "ftx" => $FTX, "fty" => $FTY, "price" => $price, "xpHeaven" => $xpHeaven, "xpHell" => $xpHell);
 
