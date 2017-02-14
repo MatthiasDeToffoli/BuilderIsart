@@ -183,7 +183,7 @@ class TribunalPopin extends SmartPopinExtended
 	private function onHeaven() {
 		if (DialogueManager.ftueStepSlideCard) {
 			if (counterForFtue++ >= 1)
-			DialogueManager.endOfaDialogue();
+			DialogueManager.endOfaDialogue(null,true);
 		}
 		ResourcesManager.judgePopulation(Alignment.heaven);
 		changeSoulTextInfo();

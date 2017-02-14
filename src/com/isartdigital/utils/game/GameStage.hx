@@ -50,6 +50,11 @@ class GameStage extends Container
 	private var hudContainer:Container;
 	
 	/**
+	 * conteneur de l ecran pour bloquer les actions
+	 */
+	private var actionsContainer:Container;
+	
+	/**
 	 * conteneur de la FTUE
 	 */
 	private var ftueContainer:Container;
@@ -85,6 +90,9 @@ class GameStage extends Container
 		popinsContainer = new Container();
 		addChild(popinsContainer);
 		
+		actionsContainer = new Container();
+		addChild(actionsContainer);
+		
 		ftueContainer = new Container();
 		addChild(ftueContainer);
 	}
@@ -99,7 +107,7 @@ class GameStage extends Container
 	 * @param	centerPopinContainer centrer ou pas le conteneur des Popins
 	 * @param	centerHudContainer centrer ou pas le conteneur
 	 */
-	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false):Void {
+	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false):Void {
 		
 		_safeZone = new Rectangle (0, 0, pSafeZoneWidth, pSafeZoneHeight);
 		
@@ -121,6 +129,11 @@ class GameStage extends Container
 		if (pCenterHudContainer) {
 			hudContainer.x = safeZone.width / 2;
 			hudContainer.y = safeZone.height / 2;
+		}
+		
+		if (pActionsContainer) {
+			actionsContainer.x = safeZone.width / 2;
+			actionsContainer.y = safeZone.height / 2;
 		}
 		
 		if (pCenterFtueContainer) {
@@ -241,6 +254,14 @@ class GameStage extends Container
 	 */
 	public function getHudContainer (): Container {
 		return hudContainer;
+	}
+	
+	/**
+	 * accès en lecture au conteneur d'action bloqué
+	 * @return ftueContainer
+	 */
+	public function getActionContainer (): Container {
+		return actionsContainer;
 	}
 	
 	/**

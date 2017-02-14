@@ -6,6 +6,9 @@ import pixi.core.display.DisplayObject;
  * @author Alexis
  */
 typedef FTUEStep = {
+	//Container
+	@optional var ftueContainer:Bool;
+	@optional var actionContainer:Bool;
 	//Step
 	@optional var name:String; 
 	@optional var parentName:String;
@@ -63,4 +66,5 @@ typedef FTUEStep = {
 	//To prevoid bugs
 	@optional var ifPlayerCanWait:Bool;
 	@optional var boostBuilding:Bool;
+	@optional var ifAlreadylevel2:Bool;
 }

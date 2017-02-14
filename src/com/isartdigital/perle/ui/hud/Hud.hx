@@ -399,7 +399,7 @@ class Hud extends SmartScreen
 	}
 	
 	public function onClickTribunal():Void {
-		if (DialogueManager.ftueStepRecolt)
+		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding)
 			return
 		closeCurrentBuildingHud();
 		UIManager.getInstance().openPopin(TribunalPopin.getInstance());

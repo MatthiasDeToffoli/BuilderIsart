@@ -60,7 +60,7 @@ class ButtonRegion extends SmartButton
 	{
 		super._click(pEvent);
 		rewriteTxt();
-		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory) 
+		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory ||  DialogueManager.ftueStepPutBuilding) 
 			return;
 			
 		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){

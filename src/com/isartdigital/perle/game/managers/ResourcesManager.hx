@@ -132,7 +132,7 @@ class ResourcesManager
 		pMapT[GeneratorType.soulBad] = 0;
 		
 		pMapG[GeneratorType.soft] = new Array<Generator>();
-		pMapT[GeneratorType.soft] = 20000;
+		pMapT[GeneratorType.soft] = 22000;
 
 		pMapG[GeneratorType.hard] = new Array<Generator>();
 		pMapT[GeneratorType.hard] = 100; //@ToDo Temporaire, juste pour avoir des ressources au début
@@ -458,10 +458,10 @@ class ResourcesManager
 	  */
 	private static function increaseResourcesWithPolation(pType:Alignment, data:EventResoucreTick):Bool{
 		var myPopulation:Population;
-
 		if (data.generator == null) return false;	
+		
 		for (myPopulation in allPopulations[pType])
-			if (myPopulation.buildingRef == data.generator.desc.id){
+			if (myPopulation.buildingRef == data.generator.desc.id) {	
 				increaseResources(data.generator, data.tickNumber * myPopulation.quantity);
 				return true;
 			}

@@ -28,6 +28,8 @@ class DialogueManager
 {
 	private static inline var ALPHA_ON:Float = 1;
 	private static inline var ALPHA_OFF:Float = 0.2;
+	private static inline var FTUE_SCENARIO:String = "assets/ftue2_bg.png";
+	private static inline var FTUE_ACTION:String = "assets/ftue_bg.png";
 	private static var steps:Array<FTUEStep>;
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -77,7 +79,7 @@ class DialogueManager
 	public static function createFtue():Void {
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
-		if (lSave != null) {
+		if (lSave != null && steps[lSave-1] !=null) {
 			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing || steps[lSave-1].endOfSpecial) {
 				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 				return;
@@ -98,6 +100,10 @@ class DialogueManager
 			createFirstHouse();
 		}
 		
+		if (lSave != null) 
+			if (steps[lSave].ifAlreadylevel2) 
+				dialogueSaved++;
+			
 		nextStep();
 	}
 	
@@ -134,7 +140,7 @@ class DialogueManager
 			else {
 				Hud.getInstance().alpha = ALPHA_ON;
 				Hud.isHide = false;
-				UIManager.getInstance().closeFTUE();	
+				//closeFtueLock();	
 			}
 			GameStage.getInstance().getFtueContainer().addChild(dialoguePoppin);
 			dialoguePoppin.open();
@@ -201,7 +207,7 @@ class DialogueManager
 			//Dialogue + Arrow
 			if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].arrowRotation != null) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
-				UIManager.getInstance().openFTUE();
+				openFtueLock();
 				FocusManager.getInstance().setFocus(steps[dialogueSaved].item, steps[dialogueSaved].arrowRotation);
 			}
 			
@@ -209,7 +215,7 @@ class DialogueManager
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].moveCamera) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				cameraHaveToMove = true;
-				UIManager.getInstance().openFTUE();
+				openFtueLock();
 				FocusManager.getInstance().setFocus(null);
 			}
 			
@@ -262,7 +268,7 @@ class DialogueManager
 		else if (dialogueSaved == 0 || steps[dialogueSaved].npcWhoTalk != null) {
 			if (pTarget != null) return;
 			createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, false);
-			UIManager.getInstance().openFTUE();
+			openFtueLock();
 			FocusManager.getInstance().setFocus(steps[dialogueSaved].item);
 		}
 		
@@ -283,15 +289,18 @@ class DialogueManager
 			Timer.delay(giveHeavenExp, 500);
 	}
 	
+	
+	
 	/**
 	 * Function called if it's a end of a Dialogue
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
-	public static function endOfaDialogue(?doNotNextStep:Bool):Void {
+	public static function endOfaDialogue(?doNotNextStep:Bool,?pCloseHud:Bool):Void {
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
 				closeDialoguePoppin = false;
-				Hud.getInstance().show();
+				if (!pCloseHud)
+					Hud.getInstance().show();
 			}
 			
 			if (steps[dialogueSaved + 1].npcWhoTalk != null) {
@@ -306,6 +315,7 @@ class DialogueManager
 			closeDialoguePoppin = true;
 			removeDialogue();
 		}
+			
 		endOfStep(doNotNextStep);
 	}
 	
@@ -335,7 +345,7 @@ class DialogueManager
 				removeDialogue();
 			
 		if (Std.is(steps[dialogueSaved].item, SmartButton)) {
-			cast(steps[dialogueSaved].item, SmartButton).off(MouseEventType.CLICK, endOfaDialogue);
+			//cast(steps[dialogueSaved].item, SmartButton).off(MouseEventType.CLICK, endOfaDialogue);
 			steps[dialogueSaved].item = null;
 		}
 		
@@ -346,7 +356,7 @@ class DialogueManager
 			trace ("fin d'etape " + dialogueSaved);
 		}
 		
-		UIManager.getInstance().closeFTUE();
+		closeFtueLock();
 		
 		dialogueSaved++;
 		if (steps[dialogueSaved-1].checkpoint)
@@ -435,11 +445,25 @@ class DialogueManager
 		}
 	}
 	
+	private static function openFtueLock():Void {
+		if (steps[dialogueSaved].ftueContainer) 	
+			UIManager.getInstance().openFTUEInFtue(FTUE_ACTION);
+		else if(steps[dialogueSaved].actionContainer) 
+			UIManager.getInstance().openFTUEInAction(FTUE_SCENARIO);
+	}
+	
+	private static function closeFtueLock():Void {
+		if (steps[dialogueSaved].ftueContainer) 	
+			UIManager.getInstance().closeFTUEInFtue();
+		else if(steps[dialogueSaved].actionContainer) 
+			UIManager.getInstance().closeFTUEInAction();
+	}
+	
 	/**
 	 * Remove Ftue
 	 */
 	public static function removeDialogue():Void {
-		Hud.getInstance().show();
+		//Hud.getInstance().show();
 		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
 	}
 	

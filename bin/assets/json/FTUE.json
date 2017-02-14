@@ -8,7 +8,8 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Neutral",
-				"checkpoint": false
+				"actionContainer": true,
+				"checkpoint": true
 			},
             {
 				"dialogueNumber":2,
@@ -17,6 +18,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Happy",
+				"actionContainer": true,
 				"checkpoint": false
 			},
             {
@@ -26,6 +28,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Neutral",
+				"actionContainer": true,
 				"checkpoint": true
 			},
 			{
@@ -36,6 +39,7 @@
 				"expression":"_Neutral",
 				"isAction":true,
 				"moveCamera":true,
+				"ftueContainer": true,
 				"checkpoint": true
 			},
 			{
@@ -45,8 +49,9 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Neutral",
+				"actionContainer": true,
 				"gold":100,
-				"checkpoint": false
+				"checkpoint": true
 			},
 			{
 				"dialogueNumber":6,
@@ -55,6 +60,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Sad",
+				"actionContainer": true,
 				"checkpoint": false
 			},
 			{
@@ -64,6 +70,7 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"expression":"_Neutral",
+				"actionContainer": true,
 				"checkpoint": true
 			},
             {
@@ -73,6 +80,7 @@
 				"expression":"_Happy",
 				"isAction":true,
 				"haveToRecolt":true,
+				"ftueContainer": true,
 				"checkpoint": true
 			},
             {
@@ -85,6 +93,7 @@
                 "hellEXP": 300,
 				"isAction":true,
 				"expression":"_Happy",
+				"ftueContainer": true,
 				"clickOnShop":true,
 				"checkpoint": false
 			},
@@ -96,6 +105,7 @@
 				"clickOnCard":true,
 				"shopCarrousselCard":"Heaven House",
 				"expression":"_Neutral",
+				"ftueContainer": true,
 				"checkpoint": false
 			},
             {
@@ -105,11 +115,13 @@
 				"isAction":true,
 				"haveToPutBuilding":true,
 				"expression":"_Neutral",
+				"ftueContainer": true,
 				"checkpoint": true
 			},
             {
 				"dialogueNumber":12,
 				"npcWhoTalk":"Demona",
+				"ftueContainer": true,
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
 				"haveToUpgradeBuilding":true,
@@ -121,6 +133,7 @@
             {
 				"dialogueNumber":13,
 				"npcWhoTalk":"Angela",
+				"ftueContainer": true,
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"passFreeConstruct":true,
@@ -130,6 +143,7 @@
             {
 				"dialogueNumber":14,
 				"npcWhoTalk":"Angela",
+				"ftueContainer": true,
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"openPurgatory":true,
@@ -139,6 +153,7 @@
             {
 				"dialogueNumber":15,
 				"npcWhoTalk":"Angela",
+				"ftueContainer": true,
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"jugeSouls":true,
@@ -148,6 +163,7 @@
             {
 				"dialogueNumber":16,
                 "name":"CloseButton",
+				"ftueContainer": true,
                 "parentName":"Purgatory_Popin",
                 "arrowRotation": 45,
                 "closePurgatory":true,
@@ -161,14 +177,17 @@
 				"dialogueNumber":17,
                 "heavenEXP": 100,
 				"npcWhoTalk":"Demona",
+				"ftueContainer": true,
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
+				"ifAlreadylevel2":true,
 				"closeUnlocked":true,
 				"expression":"_Happy",
-				"checkpoint": true
+				"checkpoint": false
 			},
             {
 				"dialogueNumber":18,
+				"actionContainer": true,
 				"name":"Window_NPC_ButtonNext",
 				"parentName":"Window_Ftue_Scenario",
 				"npcWhoTalk":"Angela",

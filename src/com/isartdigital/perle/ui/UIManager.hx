@@ -111,17 +111,35 @@ class UIManager
 	/**
 	 * Ajoute le hud dans le conteneur de Hud
 	 */
-	public function openFTUE (): Void {
-		GameStage.getInstance().getFtueContainer().addChild(FocusManager.getInstance());
+	public function openFTUEInAction (pAsset:String): Void {
+		GameStage.getInstance().getActionContainer().addChild(FocusManager.getInstance());
+		FocusManager.getInstance().setModal(pAsset);
 		FocusManager.getInstance().open();
 	}
 	
 	/**
 	 * Retire le hud du conteneur de Hud
 	 */
-	public function closeFTUE (): Void {
+	public function closeFTUEInAction (): Void {
+		GameStage.getInstance().getActionContainer().removeChild(FocusManager.getInstance());
+		FocusManager.getInstance().close();
+	}
+	
+	/**
+	 * Retire le hud du conteneur de Hud
+	 */
+	public function closeFTUEInFtue (): Void {
 		GameStage.getInstance().getFtueContainer().removeChild(FocusManager.getInstance());
 		FocusManager.getInstance().close();
+	}
+	
+	/**
+	 * Ajoute le hud dans le conteneur de Hud
+	 */
+	public function openFTUEInFtue (pAsset:String): Void {
+		GameStage.getInstance().getFtueContainer().addChild(FocusManager.getInstance());
+		FocusManager.getInstance().setModal(pAsset);
+		FocusManager.getInstance().open();
 	}
 	
 	/**

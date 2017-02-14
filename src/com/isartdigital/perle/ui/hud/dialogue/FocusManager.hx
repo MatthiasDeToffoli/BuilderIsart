@@ -47,9 +47,12 @@ class FocusManager extends Screen
 	private function new(pID:String=null) 
 	{
 		super(pID);
-		modalImage = "assets/FTUE_bg.png";
 		
 		shadow = new Container();
+	}
+	
+	public function setModal(pAsset:String) {
+		modalImage = pAsset;
 	}
 
 	/**

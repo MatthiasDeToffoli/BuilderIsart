@@ -400,11 +400,8 @@ class Phantom extends Building {
 		
 		lBuilding.activate();
 		
-		
-		SaveManager.save();
-		Building.sortBuildings();
-		
 		cast(lBuilding, VHouseHell).addForFtue();
+		Building.sortBuildings();
 	}
 	
 	private function applyChange ():Void {

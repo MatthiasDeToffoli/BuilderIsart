@@ -20,10 +20,9 @@ class VHouseHell extends VHouse
 	}
 	
 	public function addForFtue():Void {
-		myPopulation.quantity = myPopulation.max;	
-		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
-		myGenerator = {desc:ResourcesManager.getGenerator(tileDesc.id, myGeneratorType)};
+		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+		updatePopulation(myPopulation.max);
 	}
 	
 }
