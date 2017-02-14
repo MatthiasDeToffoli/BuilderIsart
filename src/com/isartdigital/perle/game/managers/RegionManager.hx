@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.managers.ServerManager.TableRegion;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.RegionBackGroundUnder;
 import com.isartdigital.perle.game.sprites.RegionBackground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
@@ -257,14 +258,23 @@ class RegionManager
 		if (!underMap.exists(pWorlPos.x)) underMap[pWorlPos.x] = new Map<Int,FlumpStateGraphic>();
 		else if (underMap[pWorlPos.x].exists(pWorlPos.y)) return;
 		
-		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:pWorlPos.x > 0 ? AssetName.BACKGROUND_UNDER_HELL:AssetName.BACKGROUND_UNDER_STYX); // for have anything in alpha
-			bgUnder.init();
-			bgUnder.start();
-			bgUnder.position = pPos;
-			bgUnderContainer.addChild(bgUnder);
+		var lAssetName:String = pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:pWorlPos.x > 0 ? AssetName.BACKGROUND_UNDER_HELL:AssetName.BACKGROUND_UNDER_STYX;
+		
+		
+		var bgUnder:RegionBackGroundUnder = new RegionBackGroundUnder(lAssetName,pPos,pWorlPos); // for have anything in alpha
+		bgUnder.init();
+		bgUnder.start();
+		bgUnderContainer.addChild(bgUnder);
 			
 		underMap[pWorlPos.x][pWorlPos.y] = bgUnder;
+		sortBgUnder();
+
 	}
+	
+	public static function sortBgUnder():Void {
+		bgUnderContainer.children = IsoManager.sortTiles(bgUnderContainer.children);
+	}
+	
 	/**
 	 * get the button container
 	 * @return Container
