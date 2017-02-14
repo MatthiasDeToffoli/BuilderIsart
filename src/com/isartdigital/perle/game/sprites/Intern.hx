@@ -206,21 +206,21 @@ class Intern
 		switch (pChoiceType) {
 			case ChoiceType.HEAVEN: 
 				if (pIntern.aligment == "heaven") {
-					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.unaturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				else {
-					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.naturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				
 			case ChoiceType.HELL:
 				if (pIntern.aligment == "hell") {
-					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.naturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				else {
-					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.unaturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				

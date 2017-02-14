@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.choice;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -178,23 +179,12 @@ class Choice extends SmartPopinExtended
 	}
 	
 	private function createCard(pChoice:ChoiceDescription):Void {
-		var pos:Point = choiceCard.position.clone();
-		removeChild(choiceCard);
-		choiceCard.destroy();
-		choiceCard = new UISprite(pChoice.card);
-		choiceCard.position = pos;
-		choiceCard.interactive = true;
-		addChild(choiceCard);
+		choiceCard = SpriteManager.createNewImage(choiceCard, pChoice.card, this, true);
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 	}
 	
 	private function createPortrait():Void {
-		var pos:Point = internPortrait.position.clone();
-		removeChild(internPortrait);
-		internPortrait.destroy();
-		internPortrait = new UISprite(intern.portrait);
-		internPortrait.position = pos;
-		addChild(internPortrait);
+		SpriteManager.createNewImage(internPortrait, intern.portrait, this);
 	}
 	
 	// TODO
@@ -203,8 +193,8 @@ class Choice extends SmartPopinExtended
 		var index:Int = 0;
 		//trace(pChoice);		
 		
-		if (pChoice.heavenStress > 20) index = 3;
-		else if (pChoice.heavenStress > 11) index = 2;
+		if (pChoice.unaturalStress > 20) index = 3;
+		else if (pChoice.unaturalStress > 11) index = 2;
 		else index = 1;
 	}
 	

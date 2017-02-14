@@ -16,8 +16,8 @@ typedef ChoiceDescription = {
 	var text:String;
 	var hellAnswer:String;
 	var heavenAnswer:String;
-	var hellStress:Int;
-	var heavenStress:Int;	
+	var naturalStress:Int;
+	var unaturalStress:Int;	
 	var goldIndicatorHeaven:Int;
 	var goldHeaven:Int;
 	var karmaIndicatorHeaven:Int;
@@ -156,8 +156,7 @@ class ChoiceManager
 					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
-					// todo hellStress -> natural choice // todo heavenStress -> unatural chocie
-					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.hellStress : pIntern.stress += useChoice.heavenStress;
+					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.naturalStress : pIntern.stress += useChoice.unaturalStress;
 				
 				case ChoiceType.HELL:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
@@ -165,7 +164,7 @@ class ChoiceManager
 					ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.badXp);
-					(pIntern.aligment == "hell") ? pIntern.stress += useChoice.hellStress: pIntern.stress += useChoice.heavenStress;
+					(pIntern.aligment == "hell") ? pIntern.stress += useChoice.naturalStress: pIntern.stress += useChoice.unaturalStress;
 				
 				default: return;
 			}	

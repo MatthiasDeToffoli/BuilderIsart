@@ -154,7 +154,7 @@ class ServerManager {
 			case DbAction.UPDT_EVENT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
 			case DbAction.GET_SPE_JSON:
-				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);			
+				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
 			default: return;
 		}
 	}
