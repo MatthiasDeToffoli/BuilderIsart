@@ -57,7 +57,7 @@ class BHConstruction extends BuildingHud {
 	}
 	
 	public static function hideTimer(pTimeDesc:TimeDescription):Void {
-		trace("apres la correction des barres");
+		//trace("apres la correction des barres");
 	}
 	
 	public static function getInstance (): BHConstruction {

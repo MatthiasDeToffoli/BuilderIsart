@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 
 
 /**
@@ -284,6 +285,7 @@ class AssetName{
 	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";
 	public static inline var INTERN_EVENT_HEAVEN_CURRENCY:String = "RewardHeaven0";
 	public static inline var INTENSITY_MARKER:String = "IntenityMarker";
+	public static inline var REWARD_CURRENCY_SPAWNER:String = "Event_RessourcesReward";
 	
 	// intern info jauges
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
@@ -503,6 +505,7 @@ class AssetName{
 	public static inline var PROD_ICON_HARD:String = "_hardCurrencyIcon_Large";
 	public static inline var PROD_ICON_WOOD:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";
+	public static inline var PROD_ICON_GOLD_LARGE:String = "_goldIcon_Large";
 	
 	//icone small
 	public static inline var PROD_ICON_SOFT_SMALL:String = "_goldIcon_Small";
@@ -512,6 +515,8 @@ class AssetName{
 	//icone large
 	public static inline var PROD_ICON_WOOD_LARGE:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE_LARGE:String = "_stoneIcon_Large";
+	public static inline var PROD_ICON_NEUTRAL_SOUL_LARGE:String = "_neutralSoulIcon_Large";
+	public static inline var PROD_ICON_GENERIC_LARGE:String = "_genericIcon_Large";
 	
 	//Option Poppin
 	public static inline var OPTION_POPPIN:String = "Options_Popin";
@@ -531,5 +536,13 @@ class AssetName{
 	public static inline var RESET_POPPIN:String = "ConfirmDataReset_Popin";
 	public static inline var RESET_POPPIN_CONFIRM:String = "ButtonConfirmErase";
 	public static inline var RESET_POPPIN_CANCEL:String = "ButtonCancelErase";
-
+	
+	public static function getCurrencyAssetName(reward:RewardType):String {
+		if (reward == RewardType.gold) return PROD_ICON_GOLD_LARGE;
+		if (reward == RewardType.karma) return PROD_ICON_HARD;
+		if (reward == RewardType.wood) return PROD_ICON_WOOD_LARGE;
+		if (reward == RewardType.iron) return PROD_ICON_STONE_LARGE;
+		if (reward == RewardType.soul) return PROD_ICON_NEUTRAL_SOUL_LARGE;
+		return "noName";
+	}
 }

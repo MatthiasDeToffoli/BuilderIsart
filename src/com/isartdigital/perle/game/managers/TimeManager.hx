@@ -433,7 +433,7 @@ class TimeManager {
 		
 		
 		// progress has reached next step && just now
-		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern)) && Intern.getIntern(pElement.refIntern) != null) 
+		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
 		{
 			if (Intern.getIntern(pElement.refIntern).stress < 100) {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
@@ -594,6 +594,7 @@ class TimeManager {
 	 * @return  possibility to continue the progress or not
 	 */
 	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
+		trace(pQuest.stepIndex);
 		if (pQuest.stepIndex != 3){
 			for (i in 0...listQuest.length) {
 				if (listQuest[i].refIntern == pQuest.refIntern) {

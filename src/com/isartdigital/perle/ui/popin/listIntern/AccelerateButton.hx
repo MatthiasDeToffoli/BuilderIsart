@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.game.GameStage;
@@ -39,6 +40,8 @@ class AccelerateButton extends SmartButton
 	private function onAccelerate(){
 		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
 		if (!TimeManager.increaseQuestProgress(quest)) return;
+		
+		ServerManager.TimeQuestAction(DbAction.UPDT, quest);
 	}
 	
 	private function setValues():Void{

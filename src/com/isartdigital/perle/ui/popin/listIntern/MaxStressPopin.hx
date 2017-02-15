@@ -86,7 +86,7 @@ class MaxStressPopin extends SmartPopin
 		
 		internStats = cast(getChildByName(AssetName.GLOBAL_INTERN_STATS), SmartComponent);
 		gaugeStress = cast(SmartCheck.getChildByName(internStats, "_jauge_stress"), SmartComponent);
-		SmartCheck.traceChildrens(gaugeStress);
+		//SmartCheck.traceChildrens(gaugeStress);
 		gaugeStressMask = cast(SmartCheck.getChildByName(gaugeStress, "jaugeStress_masque"), UISprite);
 		
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
@@ -94,8 +94,8 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	public function setDatas():Void{
-		internName.text = Intern.getIntern(quest.refIntern).name;
-		aligment.text = Intern.getIntern(quest.refIntern).aligment;
+		internName.text = intern.name;
+		aligment.text = intern.aligment;
 		gaugeStressMask.scale.x = 0;
 		btnResetTextValue.text = RESET_VALUE + "";
 		

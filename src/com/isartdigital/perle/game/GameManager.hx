@@ -63,6 +63,7 @@ class GameManager {
 		
 		
 		GodMode.awake(); //@TODO: comment that for livraison
+		//ServerManager.refreshConfig();
 		
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();

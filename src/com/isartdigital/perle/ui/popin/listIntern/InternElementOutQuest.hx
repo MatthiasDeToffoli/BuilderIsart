@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.listIntern.SendButton;
@@ -121,7 +122,8 @@ class InternElementOutQuest extends InternElement
 		}
 			
 		var iStress:Int = internDatas.stress;
-		stressGaugeBar.scale.x = Math.min(iStress/100, 1);
+		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
+		spawner.visible = false;
 	}
 	
 	private function addListerners():Void{
