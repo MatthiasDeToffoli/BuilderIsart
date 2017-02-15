@@ -1,4 +1,5 @@
 package com.isartdigital.perle.ui.popin.listIntern;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.TimesInfo;
@@ -10,6 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.InternPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;

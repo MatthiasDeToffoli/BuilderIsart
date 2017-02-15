@@ -19,13 +19,14 @@ class SpriteManager
 	/**
 	 * Replace a spawner with wanted object
 	 * @param	spawner
-	 * @param	spriteName sprite name of wanted component
-	 * @param	parentContainer 
-	 * @param	pCast 
-	 * @param	clickable 
+	 * @param	spriteName
+	 * @param	parentContainer
+	 * @param	pCast
+	 * @param	lastChildren
+	 * @param	clickable
 	 * @return
 	 */
-	public static function spawnComponent(spawner:UISprite, spriteName:String, parentContainer:GameObject, pCast:TypeSpawn, ?clickable:Bool=false):Dynamic {
+	public static function spawnComponent(spawner:UISprite, spriteName:String, parentContainer:GameObject, pCast:TypeSpawn, ?clickable:Bool = false, ?zIndex:Int = null):Dynamic {
 		var newComponent:Dynamic;
 		var basePos:Point;
 		
@@ -38,7 +39,8 @@ class SpriteManager
 		
 		newComponent.position = spawner.position.clone();
 		parentContainer.removeChild(spawner);
-		parentContainer.addChild(newComponent);
+		if (zIndex != null) parentContainer.addChildAt(newComponent, zIndex);
+		else parentContainer.addChild(newComponent);
 		spawner.destroy();
 		
 		if (clickable) newComponent.interactive = true;

@@ -284,7 +284,7 @@ class AssetName{
 	public static inline var INTERN_EVENT_HEAVEN_STRESS:String = "_heavenStressEffect";
 	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";
 	public static inline var INTERN_EVENT_HEAVEN_CURRENCY:String = "RewardHeaven0";
-	public static inline var INTENSITY_MARKER:String = "IntenityMarker";
+	public static inline var INTENSITY_MARKER:String = "IntensityMarker";
 	public static inline var REWARD_CURRENCY_SPAWNER:String = "Event_RessourcesReward";
 	
 	// intern info jauges
@@ -518,6 +518,13 @@ class AssetName{
 	public static inline var PROD_ICON_NEUTRAL_SOUL_LARGE:String = "_neutralSoulIcon_Large";
 	public static inline var PROD_ICON_GENERIC_LARGE:String = "_genericIcon_Large";
 	
+	//icone medium
+	public static inline var ICON_GOLD_MEDIUM:String = "_goldIcon_Medium";
+	public static inline var ICON_HARD_MEDIUM:String = "_hardCurrencyIcon_Medium";
+	public static inline var ICON_WOOD_MEDIUM:String = "_woodIcon_Medium";
+	public static inline var ICON_STONE_MEDIUM:String = "_stoneIcon_Medium";
+	public static inline var ICON_SOUL_MEDIUM:String = "_neutralSoulIcon_Medium";
+	
 	//Option Poppin
 	public static inline var OPTION_POPPIN:String = "Options_Popin";
 	public static inline var OPTION_POPPIN_CLOSE:String = "ButtonClose";
@@ -538,11 +545,11 @@ class AssetName{
 	public static inline var RESET_POPPIN_CANCEL:String = "ButtonCancelErase";
 	
 	public static function getCurrencyAssetName(reward:RewardType):String {
-		if (reward == RewardType.gold) return PROD_ICON_GOLD_LARGE;
-		if (reward == RewardType.karma) return PROD_ICON_HARD;
-		if (reward == RewardType.wood) return PROD_ICON_WOOD_LARGE;
-		if (reward == RewardType.iron) return PROD_ICON_STONE_LARGE;
-		if (reward == RewardType.soul) return PROD_ICON_NEUTRAL_SOUL_LARGE;
+		if (reward == RewardType.gold) return ICON_GOLD_MEDIUM;
+		if (reward == RewardType.karma) return ICON_HARD_MEDIUM;
+		if (reward == RewardType.wood) return ICON_WOOD_MEDIUM;
+		if (reward == RewardType.iron) return ICON_STONE_MEDIUM;
+		if (reward == RewardType.soul) return ICON_SOUL_MEDIUM;
 		return "noName";
 	}
 }

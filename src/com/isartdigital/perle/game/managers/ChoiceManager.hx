@@ -152,6 +152,7 @@ class ChoiceManager
 				case ChoiceType.HEAVEN:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
 					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
 					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
@@ -159,6 +160,7 @@ class ChoiceManager
 				
 				case ChoiceType.HELL:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
 					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
 					ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);

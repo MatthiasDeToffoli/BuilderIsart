@@ -174,7 +174,7 @@ class Intern
 				portrait: Std.string(data[i].Portrait)
 			};
 			
-			trace(newIntern);
+			//trace(newIntern);
 			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
 				var tmpProgress:Float = Date.now().getTime();
 				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];
@@ -253,7 +253,7 @@ class Intern
 	public static function countInternInQuest():Int {
 		var nb:Int = internsListArray.length - 1;
 		for (i in 0...nb) {
-			trace(internsListArray[i]);
+			//trace(internsListArray[i]);
 		}
 		
 		return 0;

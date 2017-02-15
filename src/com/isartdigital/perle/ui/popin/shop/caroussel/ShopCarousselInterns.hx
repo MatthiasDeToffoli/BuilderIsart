@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
+import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
@@ -184,7 +185,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
 			heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
 			
-			setValuesStats(Intern.internsMap[Alignment.heaven][actualHeavenID]);
+			initStars(Intern.internsMap[Alignment.heaven][actualHeavenID], heavenGaugeEfficency, heavenGaugeSpeed);
+			SpriteManager.spawnComponent(heavenPortrait, Intern.internsMap[Alignment.heaven][actualHeavenID].portrait, heavenCard, TypeSpawn.SPRITE, true);
 			
 			if (!Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
 				heavenCard.buttonMode = false;
@@ -204,7 +206,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
 			hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
 			
-			setValuesStats(Intern.internsMap[Alignment.hell][actualHellID]);
+			initStars(Intern.internsMap[Alignment.hell][actualHellID], hellGaugeEfficency, hellGaugeSpeed);
+			SpriteManager.spawnComponent(hellPortrait, Intern.internsMap[Alignment.hell][actualHellID].portrait, hellCard, TypeSpawn.SPRITE, true);
 			
 			if(!DialogueManager.ftueStepBuyIntern)
 				if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
@@ -224,28 +227,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 		setValuesNumberHousesHeaven();
 		setValuesNumberHousesHell();
 		
-	}
-
-	private function setValuesStats(pIntern:InternDescription):Void{
-		var iEff:Int =  6 - pIntern.efficiency;
-		var iSpeed:Int = 6 - pIntern.speed;
-		
-		if (pIntern.aligment == "heaven"){
-			for (i in 1...iEff) 
-				cast(heavenGaugeEfficency.getChildAt(i), UISprite).visible = false;
-			
-			for (i in 1...iSpeed)
-				cast(heavenGaugeSpeed.getChildAt(i), UISprite).visible = false;
-		}
-		
-		else {
-			for (i in 1...iEff)
-				cast(hellGaugeEfficency.getChildAt(i), UISprite).visible = false;
-			
-			for (i in 1...iSpeed)
-				cast(hellGaugeSpeed.getChildAt(i), UISprite).visible = false;
-		}
-
 	}
 	
 	/**
@@ -304,7 +285,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function onClickHell():Void{
 		//Si achat possible
 		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])) {
-			trace(Intern.internsMap[Alignment.hell][actualHellID]);
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
 			changeID(Alignment.hell);
 			closeShop();

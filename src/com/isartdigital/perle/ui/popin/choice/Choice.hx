@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.choice;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
@@ -46,19 +47,16 @@ class Choice extends SmartPopinExtended
 	private static inline var MOUSE_DIFF_MAX:Float = 200;
 	private static inline var DIFF_MAX:Float = 80;
 	private static inline var NB_GAIN_SPAWNER:Int = 4;
+	private static inline var NB_STRESS_INDICATOR:Int = 4;
 	
 	// elements
 	public var eChoiceDone:EventEmitter;
-	private var btnInterns:SmartButton;
 	private var btnClose:SmartButton;
-	private var btnShare:SmartButton;
-	private var presentationChoice:TextSprite;
 	private var heavenChoice:TextSprite;
 	private var evilChoice:TextSprite;
 	private var internName:TextSprite;
-	private var internSide:TextSprite;
 	
-	private var choiceCard:UISprite;
+	private var choiceCard:SmartComponent;
 	private var internPortrait:UISprite;
 		
 	private var internStats:SmartComponent;
@@ -73,8 +71,8 @@ class Choice extends SmartPopinExtended
 	
 	private var currencyHellSpawner:SmartComponent;
 	private var currencyHeavenSpawner:SmartComponent;
-	private var stressHellIndicators:Array<UISprite>;
-	private var stressHeavenIndicators:Array<UISprite>;
+	private var stressHellIndicators:Map<Int, UISprite>;
+	private var stressHeavenIndicators:Map<Int, UISprite>;
 	
 	private var hellSpawnerPos:Map<Int, Point>;
 	private var heavenSpawnerPos:Map<Int, Point>;
@@ -114,7 +112,6 @@ class Choice extends SmartPopinExtended
 		getComponents();
 		
 		choiceType = ChoiceType.NONE;
-		imgRot = choiceCard.rotation;
 		isOpen = true;
 		
 		addListeners();
@@ -125,16 +122,10 @@ class Choice extends SmartPopinExtended
 	 */
 	private function getComponents():Void
 	{
-		presentationChoice = cast(getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite);
 		heavenChoice = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CHOICE), TextSprite);
 		evilChoice = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CHOICE), TextSprite);
 		internName = cast(getChildByName(AssetName.INTERN_EVENT_NAME), TextSprite);
-		internSide = cast(getChildByName(AssetName.INTERN_EVENT_SIDE), TextSprite);
-		btnInterns = cast(getChildByName(AssetName.INTERN_EVENT_SEE_ALL), SmartButton);
 		btnClose = cast(getChildByName(AssetName.INTERN_EVENT_CLOSE), SmartButton);
-		
-		choiceCard = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
-		internPortrait = cast(getChildByName(AssetName.INTERN_EVENT_PORTRAIT), UISprite);
 		
 		internStats = cast(getChildByName(AssetName.INTERN_EVENT_STATS), SmartComponent);	
 		stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
@@ -142,9 +133,6 @@ class Choice extends SmartPopinExtended
 		stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
-		
-		//stressHellIndicators = new Array<UISprite>();
-		//stressHeavenIndicators = new Array<UISprite>();
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {
@@ -152,36 +140,35 @@ class Choice extends SmartPopinExtended
 		heavenRewardSpawners = new Map<Int, SmartComponent>();
 		activeHellReward = new Array<RewardType>();
 		activeHeavenReward = new Array<RewardType>();
+		stressHellIndicators = new Map<Int, UISprite>();
+		stressHeavenIndicators = new Map<Int, UISprite>();
 		
 		intern = pIntern;
 		
 		activeChoice = ChoiceManager.selectChoice(intern.idEvent);
-		createChoice(activeChoice);
+		createChoice();
 		var rewardCounter:RewardCounter = countRewards(activeChoice);
 		
 		for (i in 1...NB_GAIN_SPAWNER) {
 			var newSpawnerHell:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CURRENCY + i), UISprite);
 			var newSpawnerHeaven:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CURRENCY + i), UISprite);
 			
-			if (i <= rewardCounter.hellNumber) {						
-				//stressHellIndicators.push(cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));	
-				hellRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
-			}
-			else {
-				newSpawnerHell.visible = false;
-			}
+			if (i <= rewardCounter.hellNumber) hellRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+			else newSpawnerHell.visible = false;
 			
-			if (i <= rewardCounter.heavenNumber) {
-				//stressHeavenIndicators.push(cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
-				heavenRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHeaven, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
-			}
-			else {
-				newSpawnerHeaven.visible = false;
-			}
+			if (i <= rewardCounter.heavenNumber) heavenRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHeaven, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+			else newSpawnerHeaven.visible = false;
+		}
+		
+		var decrement:Int = 3;
+		for (i in 1...NB_STRESS_INDICATOR) {
+			stressHellIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+			stressHeavenIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+			decrement--;
 		}
 		
 		initReward(activeChoice, intern);
-		showRewardIndicators(activeChoice);
+		initStress();
 	}
 	
 	/**
@@ -211,44 +198,42 @@ class Choice extends SmartPopinExtended
 	/**
 	 * get new generated text
 	 */
-	private function createChoice(newChoice:ChoiceDescription):Void
+	private function createChoice():Void
 	{		
-		presentationChoice.text = newChoice.text;
-		heavenChoice.text = newChoice.heavenAnswer;
-		evilChoice.text = newChoice.hellAnswer;
+		heavenChoice.text = activeChoice.heavenAnswer;
+		evilChoice.text = activeChoice.hellAnswer;
 		
 		internName.text = intern.name;
-		internSide.text = intern.aligment;
 		
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
-			
+		
 		var iStress:Int = intern.stress;	
 		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
 		
-		createCard(newChoice);
-		createPortrait();
+		createCard(activeChoice);
+		createPortraitCard();
 		initStars();
 	}
 	
 	private function createCard(pChoice:ChoiceDescription):Void {
-		choiceCard = cast(SpriteManager.spawnComponent(choiceCard, pChoice.card, this, TypeSpawn.SPRITE, true));
+		var swipCard:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
+		choiceCard = cast(SpriteManager.spawnComponent(swipCard, pChoice.card, this, TypeSpawn.SMART_COMPONENT, true));
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+		imgRot = choiceCard.rotation;
+		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = activeChoice.text;
 	}
 	
-	private function createPortrait():Void {
-		SpriteManager.spawnComponent(internPortrait, intern.portrait, this, TypeSpawn.SPRITE);
-	}
-	
-	// TODO
-	private function showRewardIndicators(pChoice:ChoiceDescription):Void {
-		//var test:SmartComponent = new SmartComponent("RessourceIndicator");
-		var index:Int = 0;
-		//trace(pChoice);		
+	private function createPortraitCard():Void {
+		var bgName:String;
+		if (intern.aligment == Std.string(Alignment.heaven)) bgName = "_eventStress_CardBG_Hell";
+		else bgName = "_eventStress_CardBG_Heaven";
 		
-		if (pChoice.unaturalStress > 20) index = 3;
-		else if (pChoice.unaturalStress > 11) index = 2;
-		else index = 1;
+		var portrait:UISprite = cast(internStats.getChildByName("_internPortrait"), UISprite);
+		var background:UISprite = cast(internStats.getChildByName("BG"), UISprite);
+		
+		SpriteManager.spawnComponent(background, bgName, internStats, TypeSpawn.SPRITE, 0);
+		SpriteManager.spawnComponent(portrait, intern.portrait, internStats, TypeSpawn.SPRITE, 0);
 	}
 	
 	/**
@@ -272,6 +257,36 @@ class Choice extends SmartPopinExtended
 		}
 	}
 	
+	private function initStress():Void {
+		var natIndic:Int = 1;
+		var unatIndic:Int = 1;
+		
+		for (i in 0...NB_STRESS_INDICATOR) {
+			if (activeChoice.naturalStress <= 10) natIndic = 1;
+			else if (activeChoice.naturalStress > 10 && activeChoice.naturalStress <= 20) natIndic = 2;
+			else natIndic = 3;
+		}
+			
+		for (i in 0...NB_STRESS_INDICATOR) {
+			if (activeChoice.unaturalStress <= 10) unatIndic = 1;
+			else if (activeChoice.unaturalStress > 10 && activeChoice.unaturalStress <= 20) unatIndic = 2;
+			else unatIndic = 3;
+		}
+		
+		if (intern.aligment == Std.string(Alignment.hell)) {
+			for (j in 1...NB_STRESS_INDICATOR) {
+				if (j > natIndic) stressHellIndicators[j].visible = false;
+				if (j > unatIndic) stressHeavenIndicators[j].visible = false;
+			}
+		}
+		else {
+			for (j in 1...NB_STRESS_INDICATOR) {
+				if (j > natIndic) stressHeavenIndicators[j].visible = false;
+				if (j > unatIndic) stressHellIndicators[j].visible = false;
+			}
+		}
+	}
+	
 	/**
 	 * Reward initialisation
 	 * @param	newChoice 
@@ -288,8 +303,6 @@ class Choice extends SmartPopinExtended
 			soul : internDesc.efficiency, 
 			xp : Std.int(internDesc.efficiency * ChoiceManager.efficiencyBalance[indexEff].xP)
 		};
-		
-		trace(newChoice);
 		
 		showReward(ChoiceType.HELL, reward); 
 		showReward(ChoiceType.HEAVEN, reward);
@@ -366,7 +379,6 @@ class Choice extends SmartPopinExtended
 	}
 	
 	private function addListeners ():Void {
-		Interactive.addListenerClick(btnInterns, onSeeAll);
 		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
@@ -479,7 +491,6 @@ class Choice extends SmartPopinExtended
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		Interactive.removeListenerClick(btnInterns, onSeeAll);
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		choiceCard.interactive = false;
