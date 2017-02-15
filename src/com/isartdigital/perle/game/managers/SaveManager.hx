@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.Debug;
 import haxe.Json;
 import js.Browser;
 
@@ -127,6 +128,7 @@ typedef Save = {
 	var lastKnowTime:Float;
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
+	var idPackBundleBuyed:Array<Int>;
 	// add what you want to save.
 }
 
@@ -188,7 +190,8 @@ class SaveManager {
 			COL_X_LENGTH: Ground.COL_X_LENGTH,
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
-			ftueProgress : DialogueManager.dialogueSaved
+			ftueProgress : DialogueManager.dialogueSaved,
+			idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
 		};
 		setLocalStorage(currentSave);
 	}
@@ -223,6 +226,30 @@ class SaveManager {
 		
 		return desc;
 		
+	}
+	
+	public static function saveLockBundle (pIDBundleBlocked:Int):Void {
+		// see if the id can be blocked, i f yes block it by saving it.
+		for (i in 0...GameConfig.getShopPackOneTimeOffer().length) {
+			if (GameConfig.getShopPackOneTimeOffer()[i].iD == pIDBundleBlocked) {
+				if (currentSave.idPackBundleBuyed == null)
+					currentSave.idPackBundleBuyed = [];
+				
+				if (currentSave.idPackBundleBuyed.indexOf(pIDBundleBlocked) == -1) {
+					currentSave.idPackBundleBuyed.push(pIDBundleBlocked);
+					setLocalStorage(currentSave);
+				} else {
+					Debug.error("You just buyed a bundle that shouldn't be showing up !");
+				}
+			}
+		}
+	}
+	
+	public static function isBundleLocked (pIDBundleBlocked:Int):Bool {
+		if (currentSave.idPackBundleBuyed == null)
+			currentSave.idPackBundleBuyed = [];
+		
+		return SaveManager.currentSave.idPackBundleBuyed.indexOf(pIDBundleBlocked) != -1;
 	}
 	
 	public static function saveNewBuilding (pDescription:TileDescription):Void {
