@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessConnexion;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.utils.Config;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
 import js.html.Event;
@@ -14,6 +15,8 @@ import js.html.Event;
  */
 class DeltaDNAManager{
 
+	private static var isReady:Bool;
+	
 	// ##############################################################
     // INIT, GAME_STARTED, NEW_PLAYER, CLIENT_DEVICE, GAME_ENDED
     // ##############################################################
@@ -34,6 +37,8 @@ class DeltaDNAManager{
 		DeltaDNA.addEvent(DeltaDNA.GAME_STARTED);
 		DeltaDNA.addEvent(DeltaDNA.CLIENT_DEVICE);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+		
+		isReady = true;
 	}
 	
 	public static function listenToCloseGame ():Void {
@@ -57,6 +62,11 @@ class DeltaDNAManager{
 	private static var stepFTUETStartTimeStamp:Float=0;
 	
 	public static function sendStepFTUE (pStepIndex:Int):Void {
+		if (!isReady) {
+			Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
 		DeltaDNA.addEvent(DeltaDNAEventCustom.FTUE_STEP, {
 			index:pStepIndex,
 			timeSpent: Math.round(Date.now().getTime() - stepFTUETStartTimeStamp)
@@ -67,6 +77,11 @@ class DeltaDNAManager{
 	}
 	
 	public static function sendIsartPointExpense (pIdPack:Int, pPrice:Float):Void {
+		if (!isReady) {
+			Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
 		DeltaDNA.addEvent(DeltaDNAEventCustom.EXPENSE_ISART_POINT, {
 			packID:pIdPack,
 			playerLevel:ResourcesManager.getLevel(),
