@@ -11,8 +11,8 @@ include_once("utils/FacebookUtils.php");
 include("utils/Regions.php");
 include("utils/Resources.php");
 
-$accessToken = getToken();
-$fbId = getFacebookId();
+$accessToken = FacebookUtils::getToken();
+$fbId = FacebookUtils::getFacebookId();
 
 // __________________________________
 
