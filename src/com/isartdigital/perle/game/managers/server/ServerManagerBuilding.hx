@@ -2,7 +2,7 @@ package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessMoveBuilding;
-import com.isartdigital.perle.game.managers.server.ServerManager.ServerFile;
+import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
 
