@@ -105,6 +105,7 @@ class AssetName{
 	// Shop caroussel
 	public static inline var CAROUSSEL_ARROW_LEFT:String = "Button_ArrowLeft";
 	public static inline var CAROUSSEL_ARROW_RIGHT:String = "Button_ArrowRight";
+	public static inline var CAROUSSEL_ARROW_PAGE_NUMBER:String = "_navigArrows_counter_txt";
 	
 	
 	// Shop caroussel card
