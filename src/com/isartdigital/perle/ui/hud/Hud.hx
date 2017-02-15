@@ -40,12 +40,14 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.UIPosition;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import js.Browser;
 import js.html.FilePropertyBag;
 import js.html.KeyboardEvent;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
+import pixi.flump.Movie;
 import pixi.interaction.EventTarget;
 
 enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
@@ -246,7 +248,6 @@ class Hud extends SmartScreen
 	private function addListeners ():Void {
 		
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
-		//btnResetData = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_RESET_DATA), SmartButton);
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
@@ -307,16 +308,8 @@ class Hud extends SmartScreen
 	}
 	
 	public function initGauges():Void{
-		
-		if (basePosXMasqueXpHeaven != null || basePosXMasqueXpHell != null) {
-			hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHell;
-			heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHeaven;
-			return;
-		}
-		
-		basePosXMasqueXpHeaven = heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x;
-		basePosXMasqueXpHell = hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x;
-		baseGaugeWidth = 370; //valeur représente quoi ? Oo les getbounds n'ont pas de rapport....
+		cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie).pause();	
+		cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie).pause();	
 	}
 	
 	public function initGaugesWithSave():Void{
@@ -326,11 +319,7 @@ class Hud extends SmartScreen
 	
 	public function setXpGauge():Void{
 		
-		var percentXp:Float = ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
-		hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHell + baseGaugeWidth  * percentXp;
-
-		percentXp = ResourcesManager.getResourcesData().totalsMap[GeneratorType.goodXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int));
-		heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK).position.x = basePosXMasqueXpHeaven - baseGaugeWidth * percentXp;
+		
 	}
 	
 	public function onClickResetData(){
