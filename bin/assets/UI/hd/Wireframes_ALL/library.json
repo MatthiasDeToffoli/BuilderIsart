@@ -2508,6 +2508,99 @@
      "keyframes": [
       {
        "pivot": [
+        90,
+        0
+       ],
+       "ref": "_dragHand_up",
+       "duration": 9,
+       "index": 0,
+       "tweened": false
+      },
+      {
+       "pivot": [
+        90,
+        0
+       ],
+       "ref": "_dragHand_down",
+       "duration": 5,
+       "index": 9,
+       "tweened": false
+      },
+      {
+       "pivot": [
+        90,
+        0
+       ],
+       "ref": "_dragHand_down",
+       "duration": 25,
+       "index": 14
+      },
+      {
+       "pivot": [
+        90,
+        0
+       ],
+       "index": 39,
+       "loc": [
+        -223.85,
+        70.9
+       ],
+       "tweened": false,
+       "ref": "_dragHand_down",
+       "duration": 8,
+       "skew": [
+        -0.7854,
+        -0.7854
+       ]
+      },
+      {
+       "pivot": [
+        90,
+        154.3
+       ],
+       "index": 47,
+       "loc": [
+        -114.7457,
+        180.0043
+       ],
+       "tweened": false,
+       "ref": "_dragHand_up",
+       "duration": 7,
+       "skew": [
+        -0.7854,
+        -0.7854
+       ]
+      },
+      {
+       "pivot": [
+        90,
+        154.3
+       ],
+       "index": 54,
+       "loc": [
+        -114.7457,
+        180.0043
+       ],
+       "tweened": false,
+       "ref": "_dragHand_up",
+       "duration": 1,
+       "skew": [
+        -0.7854,
+        -0.7854
+       ]
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "id": "Ftue_DragHand"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
         373,
         43
        ],
@@ -19027,7 +19120,7 @@
    "id": "~_unlock"
   }
  ],
- "md5": "ebb1f23a8393cba3d56ee62bff9fb02b",
+ "md5": "ab1d5c8beec6cb65259b5e341485670f",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -19039,7 +19132,7 @@
         941,
         557.5
        ],
-       "symbol": "_mediumPopinBG",
+       "symbol": "_mediumPopinBG_alphaIM",
        "rect": [
         1,
         1,
@@ -19182,7 +19275,7 @@
         25,
         72
        ],
-       "symbol": "_listInQuest_nextEvent03",
+       "symbol": "_listInQuest_nextEvent02",
        "rect": [
         1992,
         1,
@@ -19195,7 +19288,7 @@
         25,
         72
        ],
-       "symbol": "_listInQuest_nextEvent02",
+       "symbol": "_listInQuest_nextEvent03",
        "rect": [
         1992,
         147,
@@ -19221,7 +19314,7 @@
         22.5,
         40
        ],
-       "symbol": "IntenityMarker2",
+       "symbol": "_emptyMarker",
        "rect": [
         1992,
         439,
@@ -19273,7 +19366,7 @@
         25,
         25
        ],
-       "symbol": "_stats_emptyStat",
+       "symbol": "_jaugeEfficiency_01",
        "rect": [
         1956,
         1997,
@@ -19297,21 +19390,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -92.45,
-        "text": "Construire un bâtiment paradis donne de l'Expérience Paradis EP ! Remplir les deux barres fait gagner un niveau.",
-        "x": -441.7,
-        "width": 883.4,
-        "font": "60px Pixel Operator",
+        "y": -42.25,
+        "text": "9999",
+        "x": -100.4,
+        "width": 200.75,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 184.9,
+        "height": 91.9,
         "wordWrap": 1,
-        "color": "#444444"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_infobulle_text",
+       "symbol": "_goldValue_DR_heaven",
        "rect": [
         1885,
         1033,
@@ -19347,21 +19440,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.25,
-        "text": "9999",
-        "x": -100.4,
-        "width": 200.75,
-        "font": "72px Pixel Operator",
-        "align": "center",
-        "height": 91.9,
-        "wordWrap": 1,
+        "y": -29.75,
+        "text": "FriendName",
+        "x": 0,
+        "width": 559.9,
+        "font": "62px Pixel Operator",
+        "align": "left",
+        "height": 79.7,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_karmaValue_DR_heaven",
+       "symbol": "_friendName_text",
        "rect": [
         1885,
         1039,
@@ -19372,21 +19465,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -23.8,
-        "text": "Building",
-        "x": -74.1,
-        "width": 148.25,
-        "font": "39px Pixel Operator",
+        "y": -46.6,
+        "text": "Your friend got this for you !",
+        "x": -385.25,
+        "width": 770.5,
+        "font": "65px Pixel Operator",
         "align": "center",
-        "height": 51.6,
-        "wordWrap": 0,
+        "height": 99.75,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_onglet_building_txt",
+       "symbol": "_friendInformation_text",
        "rect": [
         1885,
         1042,
@@ -19397,21 +19490,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px Pixel Operator",
+        "y": -36.2,
+        "text": "FRANÇAIS",
+        "x": -139.55,
+        "width": 279.15,
+        "font": "56px Pixel Operator",
         "align": "center",
-        "height": 121.2,
-        "wordWrap": 1,
-        "color": "#000000"
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_isCampaigning_Value",
+       "symbol": "_frenchChoice_button_txt",
        "rect": [
         1885,
         1045,
@@ -19422,21 +19515,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "/99mn",
-        "x": -159.65,
-        "width": 319.3,
-        "font": "96px Pixel Operator",
+        "y": -33.85,
+        "text": "GAME DESIGNER",
+        "x": -185.3,
+        "width": 370.6,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 121.2,
+        "height": 67.75,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#383838"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_isCampaigning_time",
+       "symbol": "_fateTitle_name",
        "rect": [
         1885,
         1048,
@@ -19447,21 +19540,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.2,
-        "text": "9999",
-        "x": -112.2,
-        "width": 224.45,
-        "font": "72px Pixel Operator",
+        "y": -33.85,
+        "text": "BAD-MANNERED",
+        "x": -186.55,
+        "width": 373.05,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 91.9,
+        "height": 67.75,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#383838"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_ironValue_DR_hell",
+       "symbol": "_fateTitle_adjective",
        "rect": [
         1885,
         1051,
@@ -19472,21 +19565,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.2,
-        "text": "9999",
-        "x": -83.15,
-        "width": 166.3,
-        "font": "72px Pixel Operator",
+        "y": -86,
+        "text": "*Buy more factories to unlock new decorations.",
+        "x": -376.9,
+        "width": 753.85,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 91.9,
+        "height": 172,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_ironValue_DR_heaven",
+       "symbol": "_factoryDescription_txt",
        "rect": [
         1885,
         1054,
@@ -19497,21 +19590,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -48.4,
-        "text": "99,99",
-        "x": -123.1,
-        "width": 246.25,
-        "font": "76px Pixel Operator",
+        "y": -60.6,
+        "text": "*Total factories : 99",
+        "x": -410.7,
+        "width": 821.45,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 96.75,
+        "height": 121.2,
         "wordWrap": 0,
-        "color": "#FFF0FF"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_IPCost_text",
+       "symbol": "_factoryCount_txt",
        "rect": [
         1885,
         1057,
@@ -19522,21 +19615,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -46.3,
-        "text": "9",
-        "x": -46.2,
-        "width": 92.35,
-        "font": "80px Pixel Operator",
+        "y": -83.5,
+        "text": "Name_XXX",
+        "x": -344.25,
+        "width": 688.5,
+        "font": "126px Pixel Operator",
         "align": "center",
-        "height": 101.65,
-        "wordWrap": 0,
+        "height": 166.7,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internsInQuest_value",
+       "symbol": "_pack_Name_txt",
        "rect": [
         1885,
         1060,
@@ -19547,13 +19640,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -46.3,
-        "text": "9",
-        "x": -46.2,
-        "width": 92.35,
-        "font": "80px Pixel Operator",
+        "y": -43.55,
+        "text": "Take",
+        "x": -108.6,
+        "width": 217.25,
+        "font": "75px Pixel Operator",
         "align": "center",
-        "height": 101.65,
+        "height": 95.55,
         "wordWrap": 0,
         "color": "#000000"
        },
@@ -19561,7 +19654,7 @@
         0,
         0
        ],
-       "symbol": "_internsInQuest_TotalValue",
+       "symbol": "_friendReward_ButtonText",
        "rect": [
         1885,
         1063,
@@ -19572,21 +19665,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -46.3,
-        "text": "/",
-        "x": -13.2,
-        "width": 37.8,
-        "font": "80px Pixel Operator",
+        "y": -29.55,
+        "text": "xxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxx</BR>",
+        "x": -150,
+        "width": 300.05,
+        "font": "46px Pixel Operator",
         "align": "center",
-        "height": 101.65,
-        "wordWrap": 0,
+        "height": 182.4,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internsInQuest_slash",
+       "symbol": "_event_description",
        "rect": [
         1885,
         1066,
@@ -19597,21 +19690,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -36.15,
-        "text": "9999",
-        "x": -83.5,
-        "width": 159,
+        "y": -36.2,
+        "text": "ENGLISH",
+        "x": -114.95,
+        "width": 229.85,
         "font": "56px Pixel Operator",
         "align": "center",
         "height": 72.35,
         "wordWrap": 0,
-        "color": "#250000"
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internPrice_hell_txt",
+       "symbol": "_englishChoice_button_txt",
        "rect": [
         1885,
         1069,
@@ -19622,21 +19715,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -36.15,
-        "text": "9999",
-        "x": -80.5,
-        "width": 159,
-        "font": "56px Pixel Operator",
+        "y": -47,
+        "text": "9/9",
+        "x": -52,
+        "width": 104,
+        "font": "76px Pixel Operator",
         "align": "center",
-        "height": 72.35,
+        "height": 94,
         "wordWrap": 0,
-        "color": "#250000"
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internPrice_heaven_txt",
+       "symbol": "_navigArrows_counter_txt",
        "rect": [
         1885,
         1072,
@@ -19672,21 +19765,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -36.15,
-        "text": "Name",
-        "x": -0.05,
-        "width": 320.35,
-        "font": "56px Pixel Operator",
-        "align": "left",
-        "height": 72.35,
+        "y": -47.5,
+        "text": "Resolve it to earn rewards !",
+        "x": -411,
+        "width": 822,
+        "font": "62px Pixel Operator",
+        "align": "center",
+        "height": 95,
         "wordWrap": 1,
-        "color": "#FFFFFF"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internPortrait_Name",
+       "symbol": "_description02_text",
        "rect": [
         1885,
         1078,
@@ -19697,13 +19790,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31,
-        "text": "Houses",
-        "x": -0.1,
-        "width": 140.25,
-        "font": "46px Pixel Operator",
-        "align": "left",
-        "height": 61.25,
+        "y": -78,
+        "text": "Your friend share with you an event !",
+        "x": -390.55,
+        "width": 781.15,
+        "font": "62px Pixel Operator",
+        "align": "center",
+        "height": 157.4,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -19711,7 +19804,7 @@
         0,
         0
        ],
-       "symbol": "_internHouseNumber_text",
+       "symbol": "_description01_text",
        "rect": [
         1885,
         1081,
@@ -19722,21 +19815,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -56.75,
-        "text": "9",
-        "x": 0,
-        "width": 49.25,
-        "font": "89px Pixel Operator",
-        "align": "left",
-        "height": 112.65,
-        "wordWrap": 0,
+        "y": -43.2,
+        "text": "9999",
+        "x": -112.2,
+        "width": 224.45,
+        "font": "72px Pixel Operator",
+        "align": "center",
+        "height": 91.9,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internHouseNumber_actualValue",
+       "symbol": "_goldValue_DR_hell",
        "rect": [
         1885,
         1084,
@@ -19747,21 +19840,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -56.4,
-        "text": "9",
-        "x": -0.05,
-        "width": 49.25,
-        "font": "89px Pixel Operator",
-        "align": "left",
-        "height": 112.65,
+        "y": -24.4,
+        "text": "9999",
+        "x": -52.45,
+        "width": 143,
+        "font": "42px Pixel Operator",
+        "align": "center",
+        "height": 55.3,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internHouseNumber",
+       "symbol": "_accelerate_text",
        "rect": [
         1885,
         1087,
@@ -19797,21 +19890,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -86,
-        "text": "*Houses one intern that can be sent on quests.",
-        "x": -351.55,
-        "width": 703.15,
-        "font": "68px Pixel Operator",
+        "y": -37.45,
+        "text": "99,99",
+        "x": -88,
+        "width": 176.05,
+        "font": "64px Pixel Operator",
         "align": "center",
-        "height": 172,
-        "wordWrap": 1,
-        "color": "#323228"
+        "height": 82.15,
+        "wordWrap": 0,
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_InternHouseDescription_txt",
+       "symbol": "_oldIpCost_txt",
        "rect": [
         1885,
         1093,
@@ -19822,21 +19915,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -38.6,
-        "text": "XXXX/XXXX",
-        "x": -145.75,
-        "width": 291.5,
-        "font": "72px Pixel Operator",
+        "y": -32.15,
+        "text": "9999",
+        "x": -73.75,
+        "width": 147.5,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 77.25,
+        "height": 67.75,
         "wordWrap": 0,
-        "color": "#323228"
+        "color": "#EBEBEB"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_purgatory_soulCounter_text",
+       "symbol": "_pack_content_txt",
        "rect": [
         1885,
         1096,
@@ -19848,20 +19941,20 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -60.6,
-        "text": "Name_XXXXXXX",
-        "x": -320.95,
-        "width": 641.9,
+        "text": "00:00:00",
+        "x": -219.95,
+        "width": 439.95,
         "font": "96px Pixel Operator",
         "align": "center",
         "height": 121.2,
         "wordWrap": 1,
-        "color": "#323228"
+        "color": "#F0F0FF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_InternHouseBuilding_Name_txt",
+       "symbol": "_gauge_collectorProd_txt",
        "rect": [
         1885,
         1099,
@@ -19872,21 +19965,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -49.95,
-        "text": "Dismiss",
-        "x": -131.2,
-        "width": 262.35,
-        "font": "72px Pixel Operator",
+        "y": -43.5,
+        "text": "DATA",
+        "x": -92.05,
+        "width": 184.05,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 99.85,
+        "height": 87,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_internDismiss_txt",
+       "symbol": "_dataOptions_text",
        "rect": [
         1885,
         1102,
@@ -19922,21 +20015,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -19.9,
-        "text": "Decoration",
-        "x": -80.15,
-        "width": 160.35,
-        "font": "32px Pixel Operator",
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.4,
+        "width": 154.85,
+        "font": "48px Pixel Operator",
         "align": "center",
-        "height": 43.05,
-        "wordWrap": 0,
+        "height": 62.8,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_onget_decorations_txt",
+       "symbol": "_currencyvalue02_text",
        "rect": [
         1885,
         1108,
@@ -19947,21 +20040,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -45.8,
-        "text": "Side",
-        "x": 0,
-        "width": 155.2,
-        "font": "70px Pixel Operator",
-        "align": "left",
-        "height": 91.6,
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.45,
+        "width": 154.85,
+        "font": "48px Pixel Operator",
+        "align": "center",
+        "height": 62.8,
         "wordWrap": 1,
-        "color": "#333333"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_intern_side",
+       "symbol": "_currencyvalue01_text",
        "rect": [
         1885,
         1111,
@@ -19972,21 +20065,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -44.7,
-        "text": "Name",
-        "x": -237.85,
-        "width": 468.95,
-        "font": "70px Pixel Operator",
+        "y": -60.6,
+        "text": "999",
+        "x": -91.2,
+        "width": 182.4,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 89.45,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_intern_name",
+       "symbol": "_heavenSoulsInAltar",
        "rect": [
         1885,
         1114,
@@ -20122,13 +20215,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -83.5,
-        "text": "Name_XXX",
-        "x": -344.25,
-        "width": 688.5,
-        "font": "126px Pixel Operator",
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.4,
+        "width": 154.85,
+        "font": "48px Pixel Operator",
         "align": "center",
-        "height": 166.7,
+        "height": 62.8,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -20136,7 +20229,7 @@
         0,
         0
        ],
-       "symbol": "_pack_Name_txt",
+       "symbol": "_ressourcevalue02_text",
        "rect": [
         2011,
         2040,
@@ -20147,60 +20240,10 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.2,
-        "text": "9999",
-        "x": -112.2,
-        "width": 224.45,
-        "font": "72px Pixel Operator",
-        "align": "center",
-        "height": 91.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_karmaValue_DR_hell",
-       "rect": [
-        2011,
-        2043,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -27.15,
-        "text": "XXXX",
-        "x": -70.4,
-        "width": 140.85,
-        "font": "62px Pixel Operator",
-        "align": "center",
-        "height": 62.1,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_infoBar_value",
-       "rect": [
-        2011,
-        2046,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.2,
-        "text": "XXXX_MAX",
-        "x": -244.9,
-        "width": 489.8,
+        "y": -45.95,
+        "text": "x9999",
+        "x": -95.75,
+        "width": 191.45,
         "font": "72px Pixel Operator",
         "align": "center",
         "height": 91.9,
@@ -20211,7 +20254,57 @@
         0,
         0
        ],
-       "symbol": "_houseWindow_Infos_txtPopulation",
+       "symbol": "_heavenValueChange_Altar",
+       "rect": [
+        2011,
+        2043,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -66.15,
+        "text": "*Missions",
+        "x": -249.9,
+        "width": 499.8,
+        "font": "96px Pixel Operator",
+        "align": "center",
+        "height": 132.25,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_mission_txt",
+       "rect": [
+        2011,
+        2046,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -34.6,
+        "text": "xxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxx",
+        "x": -0.15,
+        "width": 395.1,
+        "font": "46px Pixel Operator",
+        "align": "left",
+        "height": 107.7,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_hellChoice_text",
        "rect": [
         2014,
         2037,
@@ -20247,21 +20340,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -25.8,
-        "text": "XXXX",
-        "x": -66.1,
-        "width": 132.2,
-        "font": "43px Pixel Operator",
-        "align": "left",
-        "height": 56.5,
-        "wordWrap": 1,
+        "y": -21,
+        "text": "Interns",
+        "x": -52.8,
+        "width": 105.6,
+        "font": "34px Pixel Operator",
+        "align": "center",
+        "height": 45.5,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_reward_txt",
+       "symbol": "_onglet_interns_txt",
        "rect": [
         2014,
         2043,
@@ -20272,21 +20365,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -86,
-        "text": "*Houses souls and produces gold.",
-        "x": -265.7,
-        "width": 531.45,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 172,
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.55,
+        "width": 697.15,
+        "font": "54px Pixel Operator",
+        "align": "left",
+        "height": 273.6,
         "wordWrap": 1,
-        "color": "#323228"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_houseDescription_txt",
+       "symbol": "_mission_description_done_txt",
        "rect": [
         2014,
         2046,
@@ -20297,21 +20390,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "Name_XXXXXXX",
-        "x": -320.95,
-        "width": 641.9,
-        "font": "96px Pixel Operator",
-        "align": "center",
-        "height": 121.2,
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.6,
+        "width": 697.15,
+        "font": "54px Pixel Operator",
+        "align": "left",
+        "height": 273.6,
         "wordWrap": 1,
-        "color": "#323228"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_houseBuilding_Name_txt",
+       "symbol": "_mission_description",
        "rect": [
         2017,
         2037,
@@ -20322,21 +20415,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -41.25,
-        "text": "His choice",
-        "x": -142.85,
-        "width": 285.75,
-        "font": "52px Pixel Operator",
+        "y": -60.6,
+        "text": "999",
+        "x": -83.05,
+        "width": 166.1,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 82.5,
-        "wordWrap": 1,
+        "height": 121.2,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_hisChoice_text",
+       "symbol": "_hellSoulsInAltar",
        "rect": [
         2017,
         2040,
@@ -20422,6 +20515,156 @@
       {
        "baseClass": "TextSprite",
        "data": {
+        "y": -19.9,
+        "text": "Decoration",
+        "x": -80.15,
+        "width": 160.35,
+        "font": "32px Pixel Operator",
+        "align": "center",
+        "height": 43.05,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_onget_decorations_txt",
+       "rect": [
+        2020,
+        2040,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -28.6,
+        "text": "xxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxx",
+        "x": -0.6,
+        "width": 387.45,
+        "font": "46px Pixel Operator",
+        "align": "left",
+        "height": 118.3,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_heavenChoice_text",
+       "rect": [
+        2020,
+        2043,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -38.6,
+        "text": "XXXX/XXXX",
+        "x": -145.75,
+        "width": 291.5,
+        "font": "72px Pixel Operator",
+        "align": "center",
+        "height": 77.25,
+        "wordWrap": 0,
+        "color": "#323228"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_purgatory_soulCounter_text",
+       "rect": [
+        2020,
+        2046,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.2,
+        "text": "9999",
+        "x": -100.35,
+        "width": 200.75,
+        "font": "72px Pixel Operator",
+        "align": "center",
+        "height": 91.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_consumableValue_DR_heaven",
+       "rect": [
+        2023,
+        2037,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -45.95,
+        "text": "*RESET DATA",
+        "x": -188.7,
+        "width": 377.4,
+        "font": "68px Pixel Operator",
+        "align": "center",
+        "height": 91.9,
+        "wordWrap": 0,
+        "color": "#00000099"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_dataReset_button_txt",
+       "rect": [
+        2023,
+        2040,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.8,
+        "text": "XXXX",
+        "x": -66.1,
+        "width": 132.2,
+        "font": "43px Pixel Operator",
+        "align": "left",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_reward_txt",
+       "rect": [
+        2023,
+        2043,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
         "y": -45.95,
         "text": "x9999",
         "x": -95.7,
@@ -20437,156 +20680,6 @@
         0
        ],
        "symbol": "_hellValueChange_Altar",
-       "rect": [
-        2020,
-        2040,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px Pixel Operator",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_rewards_get_title",
-       "rect": [
-        2020,
-        2043,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px Pixel Operator",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_rewards_title",
-       "rect": [
-        2020,
-        2046,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -60.6,
-        "text": "999",
-        "x": -83.05,
-        "width": 166.1,
-        "font": "96px Pixel Operator",
-        "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_hellSoulsInAltar",
-       "rect": [
-        2023,
-        2037,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -43.5,
-        "text": "*Looking for new interns...",
-        "x": -414.2,
-        "width": 828.4,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 87,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_searchingInterns_text",
-       "rect": [
-        2023,
-        2040,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.05,
-        "text": "HEAVEN",
-        "x": -103.25,
-        "width": 206.45,
-        "font": "62px Pixel Operator HB SC",
-        "align": "center",
-        "height": 144.6,
-        "wordWrap": 1,
-        "color": "#1E1E8C"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_sendTo_Heaven_txt",
-       "rect": [
-        2023,
-        2043,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.05,
-        "text": "HELL",
-        "x": -91.7,
-        "width": 183.4,
-        "font": "62px Pixel Operator HB SC",
-        "align": "center",
-        "height": 73.3,
-        "wordWrap": 1,
-        "color": "#78281E"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_sendTo_Hell_txt",
        "rect": [
         2023,
         2046,
@@ -20622,21 +20715,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -37.45,
-        "text": "99,99",
-        "x": -88,
-        "width": 176.05,
-        "font": "64px Pixel Operator",
+        "y": -84.7,
+        "text": "Your intern can't continue his work for now. ",
+        "x": -357.3,
+        "width": 714.6,
+        "font": "62px Pixel Operator",
         "align": "center",
-        "height": 82.15,
-        "wordWrap": 0,
+        "height": 169.45,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_oldIpCost_txt",
+       "symbol": "_maxStreesReach_txt",
        "rect": [
         2026,
         2040,
@@ -20647,13 +20740,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -34.6,
-        "text": "xxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxx",
-        "x": -0.15,
-        "width": 395.1,
-        "font": "46px Pixel Operator",
-        "align": "left",
-        "height": 107.7,
+        "y": -41.25,
+        "text": "His choice",
+        "x": -142.85,
+        "width": 285.75,
+        "font": "52px Pixel Operator",
+        "align": "center",
+        "height": 82.5,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -20661,7 +20754,7 @@
         0,
         0
        ],
-       "symbol": "_hellChoice_text",
+       "symbol": "_hisChoice_text",
        "rect": [
         2026,
         2043,
@@ -20672,21 +20765,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -45.95,
-        "text": "x9999",
-        "x": -95.75,
-        "width": 191.45,
+        "y": -42.2,
+        "text": "9999",
+        "x": -83.15,
+        "width": 166.3,
         "font": "72px Pixel Operator",
         "align": "center",
         "height": 91.9,
-        "wordWrap": 0,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_heavenValueChange_Altar",
+       "symbol": "_ironValue_DR_heaven",
        "rect": [
         2026,
         2046,
@@ -20697,21 +20790,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "999",
-        "x": -91.2,
-        "width": 182.4,
-        "font": "96px Pixel Operator",
+        "y": -80.15,
+        "text": "9999",
+        "x": -133.35,
+        "width": 266.7,
+        "font": "128px Pixel Operator",
         "align": "center",
-        "height": 121.2,
+        "height": 160.3,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_heavenSoulsInAltar",
+       "symbol": "_collector_producingValue_txt",
        "rect": [
         2029,
         2037,
@@ -20722,21 +20815,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -44.05,
-        "text": "NameXXXX",
-        "x": 0.05,
-        "width": 257.5,
-        "font": "55px Pixel Operator",
-        "align": "left",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#000000"
+        "y": -60.6,
+        "text": "Name_XXXXXXX",
+        "x": -320.95,
+        "width": 641.9,
+        "font": "96px Pixel Operator",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 1,
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_listInQuest_name",
+       "symbol": "_houseBuilding_Name_txt",
        "rect": [
         2029,
         2040,
@@ -20747,21 +20840,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -28.6,
-        "text": "xxxxxxxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxxxxxxx",
-        "x": -0.6,
-        "width": 387.45,
-        "font": "46px Pixel Operator",
-        "align": "left",
-        "height": 118.3,
+        "y": -86,
+        "text": "*Marketing departments allow to welcome more souls.",
+        "x": -418.85,
+        "width": 837.75,
+        "font": "68px Pixel Operator",
+        "align": "center",
+        "height": 172,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_heavenChoice_text",
+       "symbol": "_marketingDescription_txt",
        "rect": [
         2029,
         2043,
@@ -20772,21 +20865,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -24.4,
-        "text": "9999",
-        "x": -52.45,
-        "width": 143,
-        "font": "42px Pixel Operator",
+        "y": -86,
+        "text": "*Houses souls and produces gold.",
+        "x": -265.7,
+        "width": 531.45,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 55.3,
-        "wordWrap": 0,
-        "color": "#FFFFFF"
+        "height": 172,
+        "wordWrap": 1,
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_accelerate_text",
+       "symbol": "_houseDescription_txt",
        "rect": [
         2029,
         2046,
@@ -20797,13 +20890,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.2,
-        "text": "9999",
-        "x": -112.2,
-        "width": 224.45,
-        "font": "72px Pixel Operator",
+        "y": -37.4,
+        "text": "*All progress will be erased.",
+        "x": -339.5,
+        "width": 679,
+        "font": "58px Pixel Operator",
         "align": "center",
-        "height": 91.9,
+        "height": 74.8,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -20811,7 +20904,7 @@
         0,
         0
        ],
-       "symbol": "_goldValue_DR_hell",
+       "symbol": "_cancelDataReset_txt",
        "rect": [
         2032,
         2037,
@@ -20822,13 +20915,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.25,
-        "text": "9999",
-        "x": -100.4,
-        "width": 200.75,
-        "font": "72px Pixel Operator",
+        "y": -31.3,
+        "text": "Watch Video",
+        "x": -128.7,
+        "width": 257.4,
+        "font": "48px Pixel Operator",
         "align": "center",
-        "height": 91.9,
+        "height": 62.6,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -20836,7 +20929,7 @@
         0,
         0
        ],
-       "symbol": "_goldValue_DR_heaven",
+       "symbol": "_campaignWatchVideo_txt",
        "rect": [
         2032,
         2040,
@@ -20855,13 +20948,13 @@
         "align": "center",
         "height": 121.2,
         "wordWrap": 1,
-        "color": "#F0F0FF"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_gauge_collectorProd_txt",
+       "symbol": "_campaignTimer_txt",
        "rect": [
         2032,
         2043,
@@ -20872,21 +20965,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.55,
-        "text": "Take",
-        "x": -108.6,
-        "width": 217.25,
-        "font": "75px Pixel Operator",
+        "y": -60.6,
+        "text": "9999",
+        "x": -113.85,
+        "width": 227.7,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 95.55,
-        "wordWrap": 0,
+        "height": 121.2,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_friendReward_ButtonText",
+       "symbol": "_campaignCost_txt",
        "rect": [
         2032,
         2046,
@@ -20897,13 +20990,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -29.75,
-        "text": "FriendName",
-        "x": 0,
-        "width": 559.9,
-        "font": "62px Pixel Operator",
-        "align": "left",
-        "height": 79.7,
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px Pixel Operator",
+        "align": "center",
+        "height": 121.2,
         "wordWrap": 0,
         "color": "#000000"
        },
@@ -20911,7 +21004,7 @@
         0,
         0
        ],
-       "symbol": "_friendName_text",
+       "symbol": "_campaign_SoulIncomingValue",
        "rect": [
         2035,
         2037,
@@ -20947,135 +21040,10 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -46.6,
-        "text": "Your friend got this for you !",
-        "x": -385.25,
-        "width": 770.5,
-        "font": "65px Pixel Operator",
-        "align": "center",
-        "height": 99.75,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_friendInformation_text",
-       "rect": [
-        2035,
-        2043,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.2,
-        "text": "FRANÇAIS",
-        "x": -139.55,
-        "width": 279.15,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#00000099"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_frenchChoice_button_txt",
-       "rect": [
-        2035,
-        2046,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.4,
-        "width": 154.85,
-        "font": "48px Pixel Operator",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_ressourcevalue02_text",
-       "rect": [
-        2038,
-        2037,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -86,
-        "text": "*Buy more factories to unlock new decorations.",
-        "x": -376.9,
-        "width": 753.85,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 172,
-        "wordWrap": 1,
-        "color": "#323228"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_factoryDescription_txt",
-       "rect": [
-        2041,
-        2037,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -43.5,
-        "text": "*LANGUAGE",
-        "x": -192.55,
-        "width": 385.1,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 87,
-        "wordWrap": 0,
-        "color": "#00000099"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_languageChoice_text",
-       "rect": [
-        2044,
-        2037,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
         "y": -60.6,
-        "text": "*Total factories : 99",
-        "x": -410.7,
-        "width": 821.45,
+        "text": "/99mn",
+        "x": -153.85,
+        "width": 307.7,
         "font": "96px Pixel Operator",
         "align": "center",
         "height": 121.2,
@@ -21086,34 +21054,9 @@
         0,
         0
        ],
-       "symbol": "_factoryCount_txt",
+       "symbol": "_campaign_SoulIncomingTime",
        "rect": [
-        2038,
-        2040,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -26.5,
-        "text": "Send",
-        "x": -108.6,
-        "width": 136.65,
-        "font": "61px Pixel Operator",
-        "align": "center",
-        "height": 78.5,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_listOutQuest_ButtonText",
-       "rect": [
-        2038,
+        2035,
         2043,
         1,
         1
@@ -21122,123 +21065,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -29.55,
-        "text": "xxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxx</BR>xxxxxxxxxxxxxx</BR>",
-        "x": -150,
-        "width": 300.05,
-        "font": "46px Pixel Operator",
+        "y": -56.3,
+        "text": "9999",
+        "x": -123,
+        "width": 245.95,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 182.4,
+        "height": 121.2,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_event_description",
+       "symbol": "_buyValue_text",
        "rect": [
-        2038,
-        2046,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.2,
-        "text": "ENGLISH",
-        "x": -114.95,
-        "width": 229.85,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#00000099"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_englishChoice_button_txt",
-       "rect": [
-        2041,
-        2040,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -47,
-        "text": "9/9",
-        "x": -52,
-        "width": 104,
-        "font": "76px Pixel Operator",
-        "align": "center",
-        "height": 94,
-        "wordWrap": 0,
-        "color": "#323228"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_navigArrows_counter_txt",
-       "rect": [
-        2044,
-        2040,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -47.5,
-        "text": "Resolve it to earn rewards !",
-        "x": -411,
-        "width": 822,
-        "font": "62px Pixel Operator",
-        "align": "center",
-        "height": 95,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_description02_text",
-       "rect": [
-        2041,
-        2043,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -78,
-        "text": "Your friend share with you an event !",
-        "x": -390.55,
-        "width": 781.15,
-        "font": "62px Pixel Operator",
-        "align": "center",
-        "height": 157.4,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_description01_text",
-       "rect": [
-        2041,
+        2035,
         2046,
         1,
         1
@@ -21248,22 +21091,122 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -45.95,
-        "text": "*RESET DATA",
-        "x": -188.7,
-        "width": 377.4,
-        "font": "68px Pixel Operator",
+        "text": "9999X",
+        "x": -114.05,
+        "width": 228.05,
+        "font": "72px Pixel Operator",
         "align": "center",
         "height": 91.9,
-        "wordWrap": 0,
-        "color": "#00000099"
+        "wordWrap": 1,
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_dataReset_button_txt",
+       "symbol": "_buyRegion_cost_txt",
+       "rect": [
+        2038,
+        2037,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.6,
+        "text": "99999",
+        "x": -110.3,
+        "width": 220.6,
+        "font": "78px Pixel Operator",
+        "align": "center",
+        "height": 99.2,
+        "wordWrap": 1,
+        "color": "#F0FFF0"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buy2Res_goldValue_txt",
+       "rect": [
+        2041,
+        2037,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.6,
+        "text": "99999",
+        "x": -110.3,
+        "width": 220.6,
+        "font": "78px Pixel Operator",
+        "align": "center",
+        "height": 99.2,
+        "wordWrap": 1,
+        "color": "#F0FFF0"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buy2Res_buildResValue_txt",
        "rect": [
         2044,
+        2037,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -85.05,
+        "text": "Yes",
+        "x": -219.1,
+        "width": 438.2,
+        "font": "150px Pixel Operator",
+        "align": "center",
+        "height": 187.1,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonYes_txt",
+       "rect": [
+        2038,
+        2040,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -74.5,
+        "text": "WATCH A VIDEO",
+        "x": -171,
+        "width": 341.95,
+        "font": "64px Pixel Operator",
+        "align": "center",
+        "height": 162.3,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonWatch_text",
+       "rect": [
+        2038,
         2043,
         1,
         1
@@ -21272,23 +21215,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -32.15,
+        "y": -33.7,
         "text": "9999",
-        "x": -73.75,
-        "width": 147.5,
-        "font": "68px Pixel Operator",
+        "x": -61.85,
+        "width": 123.75,
+        "font": "52px Pixel Operator",
         "align": "center",
-        "height": 67.75,
+        "height": 67.45,
         "wordWrap": 0,
-        "color": "#EBEBEB"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_pack_content_txt",
+       "symbol": "_buttonUpgradeRessource_text",
        "rect": [
-        2044,
+        2038,
         2046,
         1,
         1
@@ -21305,13 +21248,163 @@
         "align": "center",
         "height": 121.2,
         "wordWrap": 0,
-        "color": "#250000"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_level_txt",
+       "symbol": "_marketing_soulIncomingValue",
+       "rect": [
+        2041,
+        2040,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -33.75,
+        "text": "9999",
+        "x": -67.1,
+        "width": 134.2,
+        "font": "52px Pixel Operator",
+        "align": "center",
+        "height": 67.45,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_TXT",
+       "rect": [
+        2044,
+        2040,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -33.7,
+        "text": "9999",
+        "x": -71.35,
+        "width": 142.7,
+        "font": "52px Pixel Operator",
+        "align": "center",
+        "height": 67.45,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_stoneTxt",
+       "rect": [
+        2041,
+        2043,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.2,
+        "text": "XXXX",
+        "x": -109.5,
+        "width": 219,
+        "font": "64px Pixel Operator",
+        "align": "left",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_RessourceCost_TXT",
+       "rect": [
+        2041,
+        2046,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.2,
+        "text": "XXXX",
+        "x": -107.45,
+        "width": 214.9,
+        "font": "64px Pixel Operator",
+        "align": "left",
+        "height": 84.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonUpgrade_GoldCost_TXT",
+       "rect": [
+        2044,
+        2043,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -65.55,
+        "text": "*Close video",
+        "x": -87.1,
+        "width": 174.2,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 142.7,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonSkipVideo_txt",
+       "rect": [
+        2044,
+        2046,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -37.4,
+        "text": "OK",
+        "x": -92.75,
+        "width": 185.5,
+        "font": "58px Pixel Operator",
+        "align": "center",
+        "height": 74.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonSkipVideo_confirm_txt",
        "rect": [
         1992,
         685,
@@ -21322,13 +21415,38 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.45,
-        "width": 154.85,
+        "y": -60.6,
+        "text": "/99mn",
+        "x": -135.35,
+        "width": 270.7,
+        "font": "96px Pixel Operator",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_marketing_SoulIncomingTime",
+       "rect": [
+        1992,
+        688,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -28.8,
+        "text": "*Skip",
+        "x": -68.55,
+        "width": 137.15,
         "font": "48px Pixel Operator",
         "align": "center",
-        "height": 62.8,
+        "height": 62.6,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -21336,10 +21454,10 @@
         0,
         0
        ],
-       "symbol": "_currencyvalue01_text",
+       "symbol": "_buttonShowAllLvl_text",
        "rect": [
         1992,
-        688,
+        691,
         1,
         1
        ]
@@ -21364,31 +21482,6 @@
        "symbol": "_consumableValue_DR_hell",
        "rect": [
         1992,
-        691,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.1,
-        "text": "NameXXXXX",
-        "x": 0.3,
-        "width": 293.4,
-        "font": "56px Pixel Operator",
-        "align": "left",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_listOutQuest_name",
-       "rect": [
-        1992,
         694,
         1,
         1
@@ -21397,21 +21490,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -66.15,
-        "text": "*Missions",
-        "x": -249.9,
-        "width": 499.8,
-        "font": "96px Pixel Operator",
+        "y": -43.5,
+        "text": "ACTION_TO_ACCELERATE",
+        "x": -380.8,
+        "width": 761.55,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 132.25,
-        "wordWrap": 0,
-        "color": "#000000"
+        "height": 87,
+        "wordWrap": 1,
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_mission_txt",
+       "symbol": "_skipTimer_verb_txt",
        "rect": [
         1992,
         697,
@@ -21447,13 +21540,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -33.75,
-        "text": "*Connection Error",
-        "x": -213.1,
-        "width": 426.2,
-        "font": "52px Pixel Operator",
+        "y": -23.8,
+        "text": "Building",
+        "x": -74.1,
+        "width": 148.25,
+        "font": "39px Pixel Operator",
         "align": "center",
-        "height": 67.45,
+        "height": 51.6,
         "wordWrap": 0,
         "color": "#000000"
        },
@@ -21461,7 +21554,7 @@
         0,
         0
        ],
-       "symbol": "_connectionIssue_txt",
+       "symbol": "_onglet_building_txt",
        "rect": [
         1992,
         703,
@@ -21472,21 +21565,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -21,
-        "text": "Interns",
-        "x": -52.8,
-        "width": 105.6,
-        "font": "34px Pixel Operator",
+        "y": -45.95,
+        "text": "9999",
+        "x": -78,
+        "width": 155.95,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 45.5,
+        "height": 91.9,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#F0F0FF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_onglet_interns_txt",
+       "symbol": "_buttonProduce_GoldValue",
        "rect": [
         1992,
         706,
@@ -21497,21 +21590,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -86,
-        "text": "*Produces iron or wood to upgrade buildings.",
-        "x": -376.9,
-        "width": 753.85,
-        "font": "68px Pixel Operator",
+        "y": -41.1,
+        "text": "Lvl required : XX",
+        "x": -162.4,
+        "width": 324.8,
+        "font": "46px Pixel Operator",
         "align": "center",
-        "height": 172,
-        "wordWrap": 1,
-        "color": "#323228"
+        "height": 82.15,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_collectorDescription_txt",
+       "symbol": "_lvlUpgrade_txt",
        "rect": [
         1992,
         709,
@@ -21547,21 +21640,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -80.15,
-        "text": "9999",
-        "x": -133.35,
-        "width": 266.7,
-        "font": "128px Pixel Operator",
-        "align": "center",
-        "height": 160.3,
+        "y": -36.1,
+        "text": "NameXXXXX",
+        "x": 0.3,
+        "width": 293.4,
+        "font": "56px Pixel Operator",
+        "align": "left",
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#323228"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_collector_producingValue_txt",
+       "symbol": "_listOutQuest_name",
        "rect": [
         1995,
         688,
@@ -21572,21 +21665,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -37.4,
-        "text": "*All progress will be erased.",
-        "x": -339.5,
-        "width": 679,
-        "font": "58px Pixel Operator",
+        "y": -26.5,
+        "text": "Send",
+        "x": -108.6,
+        "width": 136.65,
+        "font": "61px Pixel Operator",
         "align": "center",
-        "height": 74.8,
-        "wordWrap": 1,
+        "height": 78.5,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_cancelDataReset_txt",
+       "symbol": "_listOutQuest_ButtonText",
        "rect": [
         1995,
         691,
@@ -21597,21 +21690,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.3,
-        "text": "Watch Video",
-        "x": -128.7,
-        "width": 257.4,
-        "font": "48px Pixel Operator",
+        "y": -42.2,
+        "text": "XXXX_MAX",
+        "x": -244.9,
+        "width": 489.8,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 62.6,
-        "wordWrap": 1,
+        "height": 91.9,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_campaignWatchVideo_txt",
+       "symbol": "_houseWindow_Infos_txtPopulation",
        "rect": [
         1995,
         694,
@@ -21647,13 +21740,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "00:00:00",
-        "x": -219.95,
-        "width": 439.95,
-        "font": "96px Pixel Operator",
+        "y": -41.5,
+        "text": "Stress",
+        "x": -102.45,
+        "width": 204.95,
+        "font": "62px Pixel Operator",
         "align": "center",
-        "height": 121.2,
+        "height": 83,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
@@ -21661,7 +21754,7 @@
         0,
         0
        ],
-       "symbol": "_campaignTimer_txt",
+       "symbol": "_buttonPopinStress_text",
        "rect": [
         1995,
         700,
@@ -21697,13 +21790,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "9999",
-        "x": -113.85,
-        "width": 227.7,
-        "font": "96px Pixel Operator",
-        "align": "center",
-        "height": 121.2,
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px Pixel Operator",
+        "align": "left",
+        "height": 69.9,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -21711,7 +21804,7 @@
         0,
         0
        ],
-       "symbol": "_campaignCost_txt",
+       "symbol": "_rewards_get_title",
        "rect": [
         1995,
         706,
@@ -21722,21 +21815,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -41.1,
-        "text": "Lvl required : XX",
-        "x": -162.4,
-        "width": 324.8,
-        "font": "46px Pixel Operator",
-        "align": "center",
-        "height": 82.15,
+        "y": -44.05,
+        "text": "NameXXXX",
+        "x": 0.05,
+        "width": 257.5,
+        "font": "55px Pixel Operator",
+        "align": "left",
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#FFFFFF"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_lvlUpgrade_txt",
+       "symbol": "_listInQuest_name",
        "rect": [
         1995,
         709,
@@ -21747,21 +21840,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px Pixel Operator",
-        "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px Pixel Operator",
+        "align": "left",
+        "height": 69.9,
+        "wordWrap": 1,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_campaign_SoulIncomingValue",
+       "symbol": "_rewards_title",
        "rect": [
         1998,
         685,
@@ -21772,21 +21865,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "/99mn",
-        "x": -153.85,
-        "width": 307.7,
-        "font": "96px Pixel Operator",
-        "align": "center",
-        "height": 121.2,
+        "y": -31,
+        "text": "99h99m99s",
+        "x": -117.55,
+        "width": 235.15,
+        "font": "49px Pixel Operator",
+        "align": "right",
+        "height": 63.8,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_campaign_SoulIncomingTime",
+       "symbol": "_listInQuest_eventTime",
        "rect": [
         1998,
         688,
@@ -21797,21 +21890,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "/99mn",
-        "x": -135.35,
-        "width": 270.7,
-        "font": "96px Pixel Operator",
+        "y": -27.15,
+        "text": "XXXX",
+        "x": -70.4,
+        "width": 140.85,
+        "font": "62px Pixel Operator",
         "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
-        "color": "#000000"
+        "height": 62.1,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_marketing_SoulIncomingTime",
+       "symbol": "_infoBar_value",
        "rect": [
         1998,
         691,
@@ -21822,21 +21915,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -56.3,
-        "text": "9999",
-        "x": -123,
-        "width": 245.95,
-        "font": "96px Pixel Operator",
+        "y": -36.2,
+        "text": "*SFX OFF",
+        "x": -114,
+        "width": 228,
+        "font": "56px Pixel Operator",
         "align": "center",
-        "height": 121.2,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buyValue_text",
+       "symbol": "_buttonSFX_off_txt",
        "rect": [
         1998,
         694,
@@ -21847,21 +21940,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -45.95,
-        "text": "9999X",
-        "x": -114.05,
-        "width": 228.05,
-        "font": "72px Pixel Operator",
+        "y": -92.45,
+        "text": "Construire un bâtiment paradis donne de l'Expérience Paradis EP ! Remplir les deux barres fait gagner un niveau.",
+        "x": -441.7,
+        "width": 883.4,
+        "font": "60px Pixel Operator",
         "align": "center",
-        "height": 91.9,
+        "height": 184.9,
         "wordWrap": 1,
-        "color": "#FFFFFF"
+        "color": "#444444"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buyRegion_cost_txt",
+       "symbol": "_infobulle_text",
        "rect": [
         1998,
         697,
@@ -21872,21 +21965,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -49.6,
-        "text": "99999",
-        "x": -110.3,
-        "width": 220.6,
-        "font": "78px Pixel Operator",
+        "y": -44.7,
+        "text": "Name",
+        "x": -237.85,
+        "width": 468.95,
+        "font": "70px Pixel Operator",
         "align": "center",
-        "height": 99.2,
+        "height": 89.45,
         "wordWrap": 1,
-        "color": "#F0FFF0"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buy2Res_goldValue_txt",
+       "symbol": "_intern_name",
        "rect": [
         1998,
         700,
@@ -22097,21 +22190,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -49.6,
-        "text": "99999",
-        "x": -110.3,
-        "width": 220.6,
-        "font": "78px Pixel Operator",
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 99.2,
-        "wordWrap": 1,
-        "color": "#F0FFF0"
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#250000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buy2Res_buildResValue_txt",
+       "symbol": "_level_txt",
        "rect": [
         2001,
         700,
@@ -22122,21 +22215,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -85.05,
-        "text": "Yes",
-        "x": -219.1,
-        "width": 438.2,
-        "font": "150px Pixel Operator",
-        "align": "center",
-        "height": 187.1,
-        "wordWrap": 0,
-        "color": "#000000"
+        "y": -45.8,
+        "text": "Side",
+        "x": 0,
+        "width": 155.2,
+        "font": "70px Pixel Operator",
+        "align": "left",
+        "height": 91.6,
+        "wordWrap": 1,
+        "color": "#333333"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonYes_txt",
+       "symbol": "_intern_side",
        "rect": [
         2001,
         703,
@@ -22147,21 +22240,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px Pixel Operator",
+        "y": -43.5,
+        "text": "*LANGUAGE",
+        "x": -192.55,
+        "width": 385.1,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 121.2,
+        "height": 87,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_marketing_soulIncomingValue",
+       "symbol": "_languageChoice_text",
        "rect": [
         2001,
         706,
@@ -22272,21 +22365,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -74.5,
-        "text": "WATCH A VIDEO",
-        "x": -171,
-        "width": 341.95,
-        "font": "64px Pixel Operator",
+        "y": -49.95,
+        "text": "Dismiss",
+        "x": -131.2,
+        "width": 262.35,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 162.3,
-        "wordWrap": 1,
+        "height": 99.85,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonWatch_text",
+       "symbol": "_internDismiss_txt",
        "rect": [
         2004,
         694,
@@ -22447,21 +22540,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -33.7,
-        "text": "9999",
-        "x": -61.85,
-        "width": 123.75,
-        "font": "52px Pixel Operator",
+        "y": -60.6,
+        "text": "Name_XXXXXXX",
+        "x": -320.95,
+        "width": 641.9,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 67.45,
-        "wordWrap": 0,
-        "color": "#FFFFFF"
+        "height": 121.2,
+        "wordWrap": 1,
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonUpgradeRessource_text",
+       "symbol": "_InternHouseBuilding_Name_txt",
        "rect": [
         2007,
         688,
@@ -22472,21 +22565,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -33.75,
-        "text": "9999",
-        "x": -67.1,
-        "width": 134.2,
-        "font": "52px Pixel Operator",
+        "y": -85.05,
+        "text": "No",
+        "x": -219.1,
+        "width": 438.2,
+        "font": "150px Pixel Operator",
         "align": "center",
-        "height": 67.45,
+        "height": 187.1,
         "wordWrap": 0,
-        "color": "#FFFFFF"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonUpgrade_TXT",
+       "symbol": "_buttonNo_txt",
        "rect": [
         2007,
         691,
@@ -22497,21 +22590,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -33.7,
-        "text": "9999",
-        "x": -71.35,
-        "width": 142.7,
-        "font": "52px Pixel Operator",
+        "y": -36.2,
+        "text": "*MUSIC ON",
+        "x": -135.5,
+        "width": 271,
+        "font": "56px Pixel Operator",
         "align": "center",
-        "height": 67.45,
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#FFFFFF"
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonUpgrade_stoneTxt",
+       "symbol": "_buttonMusic_on_txt",
        "rect": [
         2007,
         694,
@@ -22547,21 +22640,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.2,
-        "text": "XXXX",
-        "x": -109.5,
-        "width": 219,
-        "font": "64px Pixel Operator",
-        "align": "left",
-        "height": 84.45,
+        "y": -36.2,
+        "text": "*MUSIC OFF",
+        "x": -148.75,
+        "width": 297.5,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#00000099"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonUpgrade_RessourceCost_TXT",
+       "symbol": "_buttonMusic_off_txt",
        "rect": [
         2007,
         700,
@@ -22572,21 +22665,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.2,
-        "text": "XXXX",
-        "x": -107.45,
-        "width": 214.9,
-        "font": "64px Pixel Operator",
-        "align": "left",
-        "height": 84.45,
-        "wordWrap": 0,
-        "color": "#000000"
+        "y": -86,
+        "text": "*Houses one intern that can be sent on quests.",
+        "x": -351.55,
+        "width": 703.15,
+        "font": "68px Pixel Operator",
+        "align": "center",
+        "height": 172,
+        "wordWrap": 1,
+        "color": "#323228"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonUpgrade_GoldCost_TXT",
+       "symbol": "_InternHouseDescription_txt",
        "rect": [
         2007,
         703,
@@ -22622,21 +22715,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -65.55,
-        "text": "*Close video",
-        "x": -87.1,
-        "width": 174.2,
-        "font": "56px Pixel Operator",
+        "y": -25.45,
+        "text": "*INVITE SOUL",
+        "x": -143.8,
+        "width": 287.6,
+        "font": "42px Pixel Operator",
         "align": "center",
-        "height": 142.7,
+        "height": 55.3,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#FFFFFF"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonSkipVideo_txt",
+       "symbol": "_buttonInviteFriend_txt",
        "rect": [
         2007,
         709,
@@ -22647,13 +22740,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -37.4,
-        "text": "OK",
-        "x": -92.75,
-        "width": 185.5,
-        "font": "58px Pixel Operator",
+        "y": -43.2,
+        "text": "9999",
+        "x": -112.2,
+        "width": 224.45,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 74.8,
+        "height": 91.9,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -22661,7 +22754,7 @@
         0,
         0
        ],
-       "symbol": "_buttonSkipVideo_confirm_txt",
+       "symbol": "_karmaValue_DR_hell",
        "rect": [
         2010,
         685,
@@ -22672,13 +22765,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -28.8,
-        "text": "*Skip",
-        "x": -68.55,
-        "width": 137.15,
-        "font": "48px Pixel Operator",
+        "y": -42.25,
+        "text": "9999",
+        "x": -100.4,
+        "width": 200.75,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 62.6,
+        "height": 91.9,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -22686,7 +22779,7 @@
         0,
         0
        ],
-       "symbol": "_buttonShowAllLvl_text",
+       "symbol": "_karmaValue_DR_heaven",
        "rect": [
         2010,
         688,
@@ -22697,21 +22790,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -36.2,
-        "text": "*SFX OFF",
-        "x": -114,
-        "width": 228,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
+        "y": -56.4,
+        "text": "9",
+        "x": -0.05,
+        "width": 49.25,
+        "font": "89px Pixel Operator",
+        "align": "left",
+        "height": 112.65,
         "wordWrap": 0,
-        "color": "#00000099"
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonSFX_off_txt",
+       "symbol": "_internHouseNumber",
        "rect": [
         2010,
         691,
@@ -22722,13 +22815,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -38.85,
-        "text": "Reroll",
-        "x": -104.15,
-        "width": 208.25,
-        "font": "66px Pixel Operator",
-        "align": "center",
-        "height": 84.55,
+        "y": -56.75,
+        "text": "9",
+        "x": 0,
+        "width": 49.25,
+        "font": "89px Pixel Operator",
+        "align": "left",
+        "height": 112.65,
         "wordWrap": 0,
         "color": "#000000"
        },
@@ -22736,7 +22829,7 @@
         0,
         0
        ],
-       "symbol": "_buttonReroll_txt",
+       "symbol": "_internHouseNumber_actualValue",
        "rect": [
         2010,
         694,
@@ -22748,20 +22841,20 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -45.95,
-        "text": "9999",
-        "x": -78,
-        "width": 155.95,
+        "text": "*Sell",
+        "x": -81.85,
+        "width": 163.65,
         "font": "72px Pixel Operator",
         "align": "center",
         "height": 91.9,
-        "wordWrap": 0,
-        "color": "#F0F0FF"
+        "wordWrap": 1,
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_buttonProduce_GoldValue",
+       "symbol": "_buttonDestroy_text",
        "rect": [
         2010,
         697,
@@ -22822,231 +22915,6 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -41.5,
-        "text": "Stress",
-        "x": -102.45,
-        "width": 204.95,
-        "font": "62px Pixel Operator",
-        "align": "center",
-        "height": 83,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonPopinStress_text",
-       "rect": [
-        2010,
-        706,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -33.85,
-        "text": "GAME DESIGNER",
-        "x": -185.3,
-        "width": 370.6,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 67.75,
-        "wordWrap": 1,
-        "color": "#383838"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_fateTitle_name",
-       "rect": [
-        2010,
-        709,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -33.85,
-        "text": "BAD-MANNERED",
-        "x": -186.55,
-        "width": 373.05,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 67.75,
-        "wordWrap": 1,
-        "color": "#383838"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_fateTitle_adjective",
-       "rect": [
-        2013,
-        685,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31,
-        "text": "99h99m99s",
-        "x": -117.55,
-        "width": 235.15,
-        "font": "49px Pixel Operator",
-        "align": "right",
-        "height": 63.8,
-        "wordWrap": 0,
-        "color": "#FFFFFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_listInQuest_eventTime",
-       "rect": [
-        2013,
-        688,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -85.05,
-        "text": "No",
-        "x": -219.1,
-        "width": 438.2,
-        "font": "150px Pixel Operator",
-        "align": "center",
-        "height": 187.1,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonNo_txt",
-       "rect": [
-        2013,
-        691,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.2,
-        "text": "*MUSIC ON",
-        "x": -135.5,
-        "width": 271,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#00000099"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonMusic_on_txt",
-       "rect": [
-        2013,
-        694,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.2,
-        "text": "*MUSIC OFF",
-        "x": -148.75,
-        "width": 297.5,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#00000099"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonMusic_off_txt",
-       "rect": [
-        2013,
-        697,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -25.45,
-        "text": "*INVITE SOUL",
-        "x": -143.8,
-        "width": 287.6,
-        "font": "42px Pixel Operator",
-        "align": "center",
-        "height": 55.3,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonInviteFriend_txt",
-       "rect": [
-        2013,
-        700,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -45.95,
-        "text": "*Sell",
-        "x": -81.85,
-        "width": 163.65,
-        "font": "72px Pixel Operator",
-        "align": "center",
-        "height": 91.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonDestroy_text",
-       "rect": [
-        2013,
-        703,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
         "y": -37.4,
         "text": "*RESET",
         "x": -92.75,
@@ -23063,7 +22931,7 @@
        ],
        "symbol": "_buttonConfirmErase_text",
        "rect": [
-        2013,
+        2010,
         706,
         1,
         1
@@ -23087,6 +22955,231 @@
         0
        ],
        "symbol": "_buttonCancelErase_text",
+       "rect": [
+        2010,
+        709,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.6,
+        "text": "99999",
+        "x": -110.3,
+        "width": 220.6,
+        "font": "78px Pixel Operator",
+        "align": "center",
+        "height": 99.2,
+        "wordWrap": 1,
+        "color": "#F0FFF0"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy3Res_woodValue_text",
+       "rect": [
+        2013,
+        685,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.6,
+        "text": "99999",
+        "x": -110.3,
+        "width": 220.6,
+        "font": "78px Pixel Operator",
+        "align": "center",
+        "height": 99.2,
+        "wordWrap": 1,
+        "color": "#F0FFF0"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy3Res_stoneValue_text",
+       "rect": [
+        2013,
+        688,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -49.6,
+        "text": "99999",
+        "x": -110.3,
+        "width": 220.6,
+        "font": "78px Pixel Operator",
+        "align": "center",
+        "height": 99.2,
+        "wordWrap": 1,
+        "color": "#F0FFF0"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy3Res_goldValue_text",
+       "rect": [
+        2013,
+        691,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -38.3,
+        "text": "XXXX",
+        "x": -91.65,
+        "width": 183.3,
+        "font": "63px Pixel Operator",
+        "align": "center",
+        "height": 80.9,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonBuy_Cost_TXT",
+       "rect": [
+        2013,
+        694,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -33,
+        "text": "9999",
+        "x": -66.2,
+        "width": 132.4,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_bundleWoodValue_txt",
+       "rect": [
+        2013,
+        697,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31,
+        "text": "Houses",
+        "x": -0.1,
+        "width": 140.25,
+        "font": "46px Pixel Operator",
+        "align": "left",
+        "height": 61.25,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internHouseNumber_text",
+       "rect": [
+        2013,
+        700,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.15,
+        "text": "Name",
+        "x": -0.05,
+        "width": 320.35,
+        "font": "56px Pixel Operator",
+        "align": "left",
+        "height": 72.35,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internPortrait_Name",
+       "rect": [
+        2013,
+        703,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.15,
+        "text": "9999",
+        "x": -80.5,
+        "width": 159,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#250000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internPrice_heaven_txt",
+       "rect": [
+        2013,
+        706,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -33,
+        "text": "9999",
+        "x": -66.2,
+        "width": 132.4,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_bundleStoneValue_txt",
        "rect": [
         2013,
         709,
@@ -23147,156 +23240,6 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -49.6,
-        "text": "99999",
-        "x": -110.3,
-        "width": 220.6,
-        "font": "78px Pixel Operator",
-        "align": "center",
-        "height": 99.2,
-        "wordWrap": 1,
-        "color": "#F0FFF0"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonBuy3Res_woodValue_text",
-       "rect": [
-        2016,
-        691,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -49.6,
-        "text": "99999",
-        "x": -110.3,
-        "width": 220.6,
-        "font": "78px Pixel Operator",
-        "align": "center",
-        "height": 99.2,
-        "wordWrap": 1,
-        "color": "#F0FFF0"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonBuy3Res_stoneValue_text",
-       "rect": [
-        2016,
-        694,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -49.6,
-        "text": "99999",
-        "x": -110.3,
-        "width": 220.6,
-        "font": "78px Pixel Operator",
-        "align": "center",
-        "height": 99.2,
-        "wordWrap": 1,
-        "color": "#F0FFF0"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonBuy3Res_goldValue_text",
-       "rect": [
-        2016,
-        697,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -38.3,
-        "text": "XXXX",
-        "x": -91.65,
-        "width": 183.3,
-        "font": "63px Pixel Operator",
-        "align": "center",
-        "height": 80.9,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonBuy_Cost_TXT",
-       "rect": [
-        2016,
-        700,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -33,
-        "text": "9999",
-        "x": -66.2,
-        "width": 132.4,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_bundleWoodValue_txt",
-       "rect": [
-        2016,
-        703,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -33,
-        "text": "9999",
-        "x": -66.2,
-        "width": 132.4,
-        "font": "56px Pixel Operator",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_bundleStoneValue_txt",
-       "rect": [
-        2016,
-        706,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
         "y": -37.35,
         "text": "BUNDLE_NAME",
         "x": -185.45,
@@ -23314,7 +23257,7 @@
        "symbol": "_bundleName_txt",
        "rect": [
         2016,
-        709,
+        691,
         1,
         1
        ]
@@ -23338,8 +23281,8 @@
        ],
        "symbol": "_bundleKarmaValue_txt",
        "rect": [
-        2019,
-        685,
+        2016,
+        694,
         1,
         1
        ]
@@ -23363,8 +23306,108 @@
        ],
        "symbol": "_bundleGoldValue_txt",
        "rect": [
-        2019,
-        688,
+        2016,
+        697,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.15,
+        "text": "9999",
+        "x": -83.5,
+        "width": 159,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#250000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internPrice_hell_txt",
+       "rect": [
+        2016,
+        700,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "/",
+        "x": -13.2,
+        "width": 37.8,
+        "font": "80px Pixel Operator",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internsInQuest_slash",
+       "rect": [
+        2016,
+        703,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "9",
+        "x": -46.2,
+        "width": 92.35,
+        "font": "80px Pixel Operator",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internsInQuest_TotalValue",
+       "rect": [
+        2016,
+        706,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "9",
+        "x": -46.2,
+        "width": 92.35,
+        "font": "80px Pixel Operator",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_internsInQuest_value",
+       "rect": [
+        2016,
+        709,
         1,
         1
        ]
@@ -23389,7 +23432,7 @@
        "symbol": "_buildingName_text",
        "rect": [
         2019,
-        691,
+        685,
         1,
         1
        ]
@@ -23414,7 +23457,7 @@
        "symbol": "_buildingLevel_text",
        "rect": [
         2019,
-        694,
+        688,
         1,
         1
        ]
@@ -23439,32 +23482,7 @@
        "symbol": "_buildingdeco_price_txt",
        "rect": [
         2019,
-        697,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -86,
-        "text": "*Marketing departments allow to welcome more souls.",
-        "x": -418.85,
-        "width": 837.75,
-        "font": "68px Pixel Operator",
-        "align": "center",
-        "height": 172,
-        "wordWrap": 1,
-        "color": "#323228"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_marketingDescription_txt",
-       "rect": [
-        2019,
-        700,
+        691,
         1,
         1
        ]
@@ -23489,7 +23507,7 @@
        "symbol": "_buildingdeco_name_txt",
        "rect": [
         2019,
-        703,
+        694,
         1,
         1
        ]
@@ -23514,7 +23532,7 @@
        "symbol": "_buildingdeco_locked_reason_txt",
        "rect": [
         2019,
-        706,
+        697,
         1,
         1
        ]
@@ -23522,13 +23540,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -84.7,
-        "text": "Your intern can't continue his work for now. ",
-        "x": -357.3,
-        "width": 714.6,
-        "font": "62px Pixel Operator",
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px Pixel Operator",
         "align": "center",
-        "height": 169.45,
+        "height": 121.2,
         "wordWrap": 1,
         "color": "#000000"
        },
@@ -23536,60 +23554,10 @@
         0,
         0
        ],
-       "symbol": "_maxStreesReach_txt",
+       "symbol": "_isCampaigning_Value",
        "rect": [
         2019,
-        709,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.6,
-        "width": 697.15,
-        "font": "54px Pixel Operator",
-        "align": "left",
-        "height": 273.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_mission_description",
-       "rect": [
-        2022,
-        685,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.55,
-        "width": 697.15,
-        "font": "54px Pixel Operator",
-        "align": "left",
-        "height": 273.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_mission_description_done_txt",
-       "rect": [
-        2025,
-        685,
+        700,
         1,
         1
        ]
@@ -23613,8 +23581,8 @@
        ],
        "symbol": "_areYouSure_txt",
        "rect": [
-        2028,
-        685,
+        2019,
+        703,
         1,
         1
        ]
@@ -23637,6 +23605,131 @@
         0
        ],
        "symbol": "_AltarTotal",
+       "rect": [
+        2019,
+        706,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -60.6,
+        "text": "/99mn",
+        "x": -159.65,
+        "width": 319.3,
+        "font": "96px Pixel Operator",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_isCampaigning_time",
+       "rect": [
+        2019,
+        709,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -48.4,
+        "text": "99,99",
+        "x": -123.1,
+        "width": 246.25,
+        "font": "76px Pixel Operator",
+        "align": "center",
+        "height": 96.75,
+        "wordWrap": 0,
+        "color": "#FFF0FF"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_IPCost_text",
+       "rect": [
+        2022,
+        685,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -43.2,
+        "text": "9999",
+        "x": -112.2,
+        "width": 224.45,
+        "font": "72px Pixel Operator",
+        "align": "center",
+        "height": 91.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_ironValue_DR_hell",
+       "rect": [
+        2025,
+        685,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -106.55,
+        "text": "*Altars gain more or less gold depending on the type of souls in their area of effect.",
+        "x": -359.1,
+        "width": 718.2,
+        "font": "56px Pixel Operator",
+        "align": "center",
+        "height": 213.05,
+        "wordWrap": 1,
+        "color": "#323228"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_AltarDescription_txt",
+       "rect": [
+        2028,
+        685,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -38.85,
+        "text": "Reroll",
+        "x": -104.15,
+        "width": 208.25,
+        "font": "66px Pixel Operator",
+        "align": "center",
+        "height": 84.55,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_buttonReroll_txt",
        "rect": [
         2031,
         685,
@@ -23774,21 +23867,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -106.55,
-        "text": "*Altars gain more or less gold depending on the type of souls in their area of effect.",
-        "x": -359.1,
-        "width": 718.2,
-        "font": "56px Pixel Operator",
+        "y": -43.5,
+        "text": "*Looking for new interns...",
+        "x": -414.2,
+        "width": 828.4,
+        "font": "68px Pixel Operator",
         "align": "center",
-        "height": 213.05,
-        "wordWrap": 1,
-        "color": "#323228"
+        "height": 87,
+        "wordWrap": 0,
+        "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_AltarDescription_txt",
+       "symbol": "_searchingInterns_text",
        "rect": [
         2022,
         697,
@@ -23799,21 +23892,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -37.4,
-        "text": "00:00:00:00",
-        "x": -138.9,
-        "width": 283.6,
-        "font": "58px Pixel Operator",
-        "align": "left",
-        "height": 74.8,
-        "wordWrap": 0,
-        "color": "#323228"
+        "y": -31.05,
+        "text": "HEAVEN",
+        "x": -103.25,
+        "width": 206.45,
+        "font": "62px Pixel Operator HB SC",
+        "align": "center",
+        "height": 144.6,
+        "wordWrap": 1,
+        "color": "#1E1E8C"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_collectorPanel_timeValue",
+       "symbol": "_sendTo_Heaven_txt",
        "rect": [
         2022,
         700,
@@ -23824,21 +23917,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.5,
-        "text": "DATA",
-        "x": -92.05,
-        "width": 184.05,
-        "font": "68px Pixel Operator",
+        "y": -31.05,
+        "text": "HELL",
+        "x": -91.7,
+        "width": 183.4,
+        "font": "62px Pixel Operator HB SC",
         "align": "center",
-        "height": 87,
-        "wordWrap": 0,
-        "color": "#00000099"
+        "height": 73.3,
+        "wordWrap": 1,
+        "color": "#78281E"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_dataOptions_text",
+       "symbol": "_sendTo_Hell_txt",
        "rect": [
         2022,
         703,
@@ -23849,21 +23942,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.4,
-        "width": 154.85,
-        "font": "48px Pixel Operator",
+        "y": -45.95,
+        "text": "*Altar Name",
+        "x": -199.9,
+        "width": 399.8,
+        "font": "72px Pixel Operator",
         "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
+        "height": 91.9,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_currencyvalue02_text",
+       "symbol": "_altar_name_txt",
        "rect": [
         2022,
         706,
@@ -23874,21 +23967,21 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.2,
-        "text": "9999",
-        "x": -100.35,
-        "width": 200.75,
-        "font": "72px Pixel Operator",
+        "y": -33.75,
+        "text": "*Connection Error",
+        "x": -213.1,
+        "width": 426.2,
+        "font": "52px Pixel Operator",
         "align": "center",
-        "height": 91.9,
-        "wordWrap": 1,
+        "height": 67.45,
+        "wordWrap": 0,
         "color": "#000000"
        },
        "origin": [
         0,
         0
        ],
-       "symbol": "_consumableValue_DR_heaven",
+       "symbol": "_connectionIssue_txt",
        "rect": [
         2022,
         709,
@@ -23974,31 +24067,6 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -45.95,
-        "text": "*Altar Name",
-        "x": -199.9,
-        "width": 399.8,
-        "font": "72px Pixel Operator",
-        "align": "center",
-        "height": 91.9,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_altar_name_txt",
-       "rect": [
-        2034,
-        688,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
         "y": -52.05,
         "text": "9999",
         "x": -92.55,
@@ -24015,6 +24083,31 @@
        ],
        "symbol": "_accelerateQuest_text",
        "rect": [
+        2034,
+        688,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -37.4,
+        "text": "00:00:00:00",
+        "x": -138.9,
+        "width": 283.6,
+        "font": "58px Pixel Operator",
+        "align": "left",
+        "height": 74.8,
+        "wordWrap": 0,
+        "color": "#323228"
+       },
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "_collectorPanel_timeValue",
+       "rect": [
         2037,
         688,
         1,
@@ -24024,13 +24117,13 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.5,
-        "text": "ACTION_TO_ACCELERATE",
-        "x": -380.8,
-        "width": 761.55,
+        "y": -86,
+        "text": "*Produces iron or wood to upgrade buildings.",
+        "x": -376.9,
+        "width": 753.85,
         "font": "68px Pixel Operator",
         "align": "center",
-        "height": 87,
+        "height": 172,
         "wordWrap": 1,
         "color": "#323228"
        },
@@ -24038,7 +24131,7 @@
         0,
         0
        ],
-       "symbol": "_skipTimer_verb_txt",
+       "symbol": "_collectorDescription_txt",
        "rect": [
         2025,
         691,
@@ -24106,7 +24199,7 @@
         941,
         557.5
        ],
-       "symbol": "_mediumPopinBG_alphaIM",
+       "symbol": "_mediumPopinBG",
        "rect": [
         1,
         1,
@@ -24132,7 +24225,7 @@
         210,
         460
        ],
-       "symbol": "_buttonBundle_up",
+       "symbol": "_itemunlockedHELL_down_bg",
        "rect": [
         1613,
         1118,
@@ -24171,7 +24264,7 @@
         75,
         75
        ],
-       "symbol": "_buttonContextual_over",
+       "symbol": "_png_endDialog_down",
        "rect": [
         1885,
         478,
@@ -24184,7 +24277,7 @@
         75,
         75
        ],
-       "symbol": "_png_endDialog_down",
+       "symbol": "_buttonContextual_over",
        "rect": [
         1885,
         630,
@@ -24275,7 +24368,7 @@
         30.7,
         48
        ],
-       "symbol": "_heavenSoulIcon_Medium",
+       "symbol": "_hellSoulIcon_Medium",
        "rect": [
         1982,
         107,
@@ -24301,7 +24394,7 @@
         22.5,
         40
        ],
-       "symbol": "_emptyMarker",
+       "symbol": "IntenityMarker2",
        "rect": [
         1986,
         268,
@@ -24311,10 +24404,10 @@
       },
       {
        "origin": [
-        23,
+        23.05,
         36
        ],
-       "symbol": "_neutralSoulIcon_Small",
+       "symbol": "_hellSoulIcon_Small",
        "rect": [
         1986,
         350,
@@ -24327,7 +24420,7 @@
         25,
         25
        ],
-       "symbol": "_jaugeEfficiency_01",
+       "symbol": "_stats_emptyStat",
        "rect": [
         1986,
         424,
@@ -24392,7 +24485,7 @@
         20,
         20
        ],
-       "symbol": "_buttonPlusHardCurrency_over",
+       "symbol": "_buttonPlusHardCurrency_down",
        "rect": [
         1328,
         1998,
@@ -24405,7 +24498,7 @@
         20,
         20
        ],
-       "symbol": "_buttonPlusHardCurrency_down",
+       "symbol": "_buttonPlusHardCurrency_over",
        "rect": [
         1370,
         1998,
@@ -24540,7 +24633,7 @@
         64,
         64
        ],
-       "symbol": "_buildRessourceIcon_Large",
+       "symbol": "_goldIcon_Large",
        "rect": [
         1885,
         987,
@@ -24579,7 +24672,7 @@
         30.7,
         48
        ],
-       "symbol": "_hellSoulIcon_Medium",
+       "symbol": "_heavenSoulIcon_Medium",
        "rect": [
         1984,
         401,
@@ -24602,10 +24695,10 @@
       },
       {
        "origin": [
-        23.05,
+        23,
         36
        ],
-       "symbol": "_hellSoulIcon_Small",
+       "symbol": "_neutralSoulIcon_Small",
        "rect": [
         1984,
         564,
@@ -24673,9 +24766,9 @@
       {
        "origin": [
         0,
-        683
+        0
        ],
-       "symbol": "title_HD",
+       "symbol": "title_BD",
        "rect": [
         1,
         1201,
@@ -24711,19 +24804,6 @@
       },
       {
        "origin": [
-        457.5,
-        87.5
-       ],
-       "symbol": "_ftueIcon_spawner_small",
-       "rect": [
-        1028,
-        1866,
-        915,
-        175
-       ]
-      },
-      {
-       "origin": [
         130,
         210.7
        ],
@@ -24737,41 +24817,41 @@
       },
       {
        "origin": [
-        360,
-        70
+        795,
+        35
        ],
-       "symbol": "_cartoucheInfo_BG_01",
+       "symbol": "_shopBauble_buildingDeco",
        "rect": [
         1,
         1886,
-        720,
-        140
+        1590,
+        70
        ]
       },
       {
        "origin": [
-        150,
-        70.8
+        778.5,
+        35
        ],
-       "symbol": "_music_on_button_bg_down",
+       "symbol": "_shopBauble_currencies",
        "rect": [
-        723,
-        1886,
-        300,
-        142
+        1,
+        1958,
+        1557,
+        70
        ]
       },
       {
        "origin": [
-        47.5,
-        87.5
+        227,
+        90
        ],
-       "symbol": "_pngTopTab_off",
+       "symbol": "_buyRegion_hit",
        "rect": [
-        1945,
+        1593,
         1866,
-        95,
-        175
+        454,
+        180
        ]
       }
      ],
@@ -24810,7 +24890,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_01_card",
+       "symbol": "_eventCard_05_card",
        "rect": [
         1632,
         1103,
@@ -24820,10 +24900,10 @@
       },
       {
        "origin": [
-        196.8,
+        197,
         319
        ],
-       "symbol": "_event_FateCard",
+       "symbol": "_eventCard_06_card",
        "rect": [
         1653,
         1,
@@ -24945,7 +25025,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_06_card",
+       "symbol": "_eventCard_03_card",
        "rect": [
         1632,
         1103,
@@ -24958,7 +25038,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_03_card",
+       "symbol": "_eventCard_04_card",
        "rect": [
         1653,
         1,
@@ -25132,7 +25212,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_04_card",
+       "symbol": "_eventCard_08_card",
        "rect": [
         1653,
         1,
@@ -25155,15 +25235,28 @@
       },
       {
        "origin": [
-        180,
-        64
+        90,
+        0
        ],
-       "symbol": "_buttonConfirmLevelUp_over",
+       "symbol": "_dragHand_up",
        "rect": [
-        1653,
+        1835,
         963,
-        360,
-        128
+        180,
+        309
+       ]
+      },
+      {
+       "origin": [
+        90,
+        0
+       ],
+       "symbol": "_dragHand_down",
+       "rect": [
+        1835,
+        1274,
+        180,
+        309
        ]
       },
       {
@@ -25174,20 +25267,7 @@
        "symbol": "_closeButton_hit",
        "rect": [
         1835,
-        1093,
-        200,
-        200
-       ]
-      },
-      {
-       "origin": [
-        100,
-        100
-       ],
-       "symbol": "_ftue_mascot_angelaBG",
-       "rect": [
-        1835,
-        1295,
+        1585,
         200,
         200
        ]
@@ -25200,35 +25280,22 @@
        "symbol": "_ftue_mascot_demonaBG",
        "rect": [
         1835,
-        1497,
+        1787,
         200,
         200
        ]
       },
       {
        "origin": [
-        100,
-        100
+        67.5,
+        69
        ],
-       "symbol": "_buttonNext_over",
+       "symbol": "_karmaPack3_portrait",
        "rect": [
-        1835,
-        1699,
-        200,
-        200
-       ]
-      },
-      {
-       "origin": [
-        75,
-        71.5
-       ],
-       "symbol": "_karmaPack4_portrait",
-       "rect": [
-        1835,
-        1901,
-        150,
-        143
+        1653,
+        963,
+        135,
+        138
        ]
       }
      ],
@@ -25252,9 +25319,9 @@
       {
        "origin": [
         0,
-        0
+        683
        ],
-       "symbol": "title_BD",
+       "symbol": "title_HD",
        "rect": [
         1,
         1083,
@@ -25345,7 +25412,7 @@
         47.5,
         112.5
        ],
-       "symbol": "_arrow_right_down",
+       "symbol": "_arrow_right_up",
        "rect": [
         1950,
         1061,
@@ -25358,7 +25425,7 @@
         47.5,
         112.5
        ],
-       "symbol": "_arrow_right_up",
+       "symbol": "_arrow_right_down",
        "rect": [
         1950,
         1288,
@@ -25428,7 +25495,7 @@
         251,
         404.5
        ],
-       "symbol": "_internStressSwpaner_BG",
+       "symbol": "_eventStress_CardBG_Hell",
        "rect": [
         1503,
         1,
@@ -25441,7 +25508,7 @@
         251,
         404.5
        ],
-       "symbol": "_eventStress_CardBG_Hell",
+       "symbol": "_internStressSwpaner_BG",
        "rect": [
         1503,
         812,
@@ -25467,7 +25534,7 @@
         35,
         34.15
        ],
-       "symbol": "_currencyTabIcon_down",
+       "symbol": "_internTabIcon_down",
        "rect": [
         1975,
         1623,
@@ -25480,7 +25547,7 @@
         35,
         34.15
        ],
-       "symbol": "_resTabIcon_down",
+       "symbol": "_currencyTabIcon_down",
        "rect": [
         1975,
         1694,
@@ -25506,7 +25573,7 @@
         35,
         34.15
        ],
-       "symbol": "_internTabIcon_down",
+       "symbol": "_resTabIcon_down",
        "rect": [
         1975,
         1836,
@@ -25532,7 +25599,7 @@
         32,
         32
        ],
-       "symbol": "_currencyIcon_Small",
+       "symbol": "_buildRessourceIcon_Small",
        "rect": [
         1975,
         1974,
@@ -25612,10 +25679,10 @@
       },
       {
        "origin": [
-        450,
+        448,
         135
        ],
-       "symbol": "Window_NPC_BG",
+       "symbol": "_infobulle_bulle",
        "rect": [
         1,
         1681,
@@ -25638,14 +25705,14 @@
       },
       {
        "origin": [
-        795,
+        778.5,
         35
        ],
-       "symbol": "_shopBauble_buildingDeco",
+       "symbol": "_shopBauble_intern",
        "rect": [
         1,
         1953,
-        1590,
+        1557,
         70
        ]
       },
@@ -25680,7 +25747,7 @@
         55,
         55
        ],
-       "symbol": "_pack_content_icon",
+       "symbol": "_buttoninfo_down",
        "rect": [
         903,
         1839,
@@ -25880,7 +25947,7 @@
         44,
         41.25
        ],
-       "symbol": "_closeButton_up",
+       "symbol": "_closeButton_down",
        "rect": [
         1083,
         1239,
@@ -25898,7 +25965,7 @@
         685,
         167.5
        ],
-       "symbol": "_heaven_ftueBG_large",
+       "symbol": "_hell_ftueBG_large",
        "rect": [
         1,
         1,
@@ -25911,7 +25978,7 @@
         685,
         167.5
        ],
-       "symbol": "_hell_ftueBG_large",
+       "symbol": "_heaven_ftueBG_large",
        "rect": [
         1,
         338,
@@ -25950,7 +26017,7 @@
         210,
         460
        ],
-       "symbol": "_itemunlocked_bg",
+       "symbol": "_itemunlocked_bg_down",
        "rect": [
         1519,
         1,
@@ -25976,7 +26043,7 @@
         210,
         460
        ],
-       "symbol": "_itemunlockedHELL_bg",
+       "symbol": "_itemunlockedHEAVEN_bg",
        "rect": [
         724,
         976,
@@ -26002,7 +26069,7 @@
         170,
         272.7
        ],
-       "symbol": "_altar_counterLeft_bg",
+       "symbol": "_altar_counterRight_bg",
        "rect": [
         1146,
         976,
@@ -26012,15 +26079,15 @@
       },
       {
        "origin": [
-        -0.5,
-        41
+        360,
+        70
        ],
-       "symbol": "_shop_timer_bar",
+       "symbol": "_cartoucheInfo_BG_01",
        "rect": [
-        644,
-        1898,
-        1153,
-        82
+        1146,
+        1845,
+        720,
+        140
        ]
       },
       {
@@ -26038,41 +26105,28 @@
       },
       {
        "origin": [
-        112.15,
-        91.65
+        212.5,
+        60.4
        ],
-       "symbol": "_buttonMissions_HUD_down",
-       "rect": [
-        1799,
-        1845,
-        231,
-        202
-       ]
-      },
-      {
-       "origin": [
-        221.85,
-        38
-       ],
-       "symbol": "_purgatoryButton_down",
-       "rect": [
-        1146,
-        1807,
-        360,
-        76
-       ]
-      },
-      {
-       "origin": [
-        210,
-        31.15
-       ],
-       "symbol": "_purgatory_timer_bg",
+       "symbol": "_dataRest_button_bg_over",
        "rect": [
         644,
-        1982,
-        420,
-        63
+        1898,
+        425,
+        121
+       ]
+      },
+      {
+       "origin": [
+        81.2,
+        81.2
+       ],
+       "symbol": "_buttontab_hit",
+       "rect": [
+        1868,
+        1845,
+        163,
+        163
        ]
       },
       {
@@ -26142,13 +26196,26 @@
       },
       {
        "origin": [
+        47.5,
+        87.5
+       ],
+       "symbol": "_pngTopTab_off",
+       "rect": [
+        1941,
+        1,
+        95,
+        175
+       ]
+      },
+      {
+       "origin": [
         130.5,
         29.5
        ],
        "symbol": "_watchVideo_timeGauge",
        "rect": [
-        1066,
-        1982,
+        1071,
+        1987,
         261,
         59
        ]
@@ -26161,9 +26228,22 @@
        "symbol": "_internsInQuest_icon",
        "rect": [
         1941,
-        1,
+        178,
         94,
         156
+       ]
+      },
+      {
+       "origin": [
+        55,
+        55
+       ],
+       "symbol": "_pack_content_icon",
+       "rect": [
+        1404,
+        1701,
+        110,
+        110
        ]
       },
       {
@@ -26186,47 +26266,8 @@
        ],
        "symbol": "_evilIcon_Medium",
        "rect": [
-        1404,
-        1701,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_currencyIcon_Medium",
-       "rect": [
         1941,
-        159,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_genericConsumableIcon_Medium",
-       "rect": [
-        1941,
-        257,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_goldIcon_Medium",
-       "rect": [
-        1941,
-        355,
+        336,
         96,
         96
        ]
@@ -26239,59 +26280,7 @@
        "symbol": "_goodIcon_Medium",
        "rect": [
         1941,
-        453,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_hardCurrencyIcon_Medium",
-       "rect": [
-        1941,
-        551,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_soulIcon_Medium",
-       "rect": [
-        1941,
-        649,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_genericIcon_Medium",
-       "rect": [
-        1941,
-        747,
-        96,
-        96
-       ]
-      },
-      {
-       "origin": [
-        48,
-        48
-       ],
-       "symbol": "_buildRessourceIcon_Medium",
-       "rect": [
-        1941,
-        845,
+        434,
         96,
         96
        ]
@@ -26304,7 +26293,7 @@
        "symbol": "_alignIcon_Medium",
        "rect": [
         1941,
-        943,
+        532,
         96,
         96
        ]
@@ -26314,10 +26303,88 @@
         48,
         48
        ],
-       "symbol": "_stoneIcon_Medium",
+       "symbol": "_genericConsumableIcon_Medium",
        "rect": [
         1941,
-        1041,
+        630,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_genericIcon_Medium",
+       "rect": [
+        1941,
+        728,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_buildRessourceIcon_Medium",
+       "rect": [
+        1941,
+        826,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_goldIcon_Medium",
+       "rect": [
+        1941,
+        924,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_currencyIcon_Medium",
+       "rect": [
+        1941,
+        1022,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_hardCurrencyIcon_Medium",
+       "rect": [
+        1941,
+        1120,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_soulIcon_Medium",
+       "rect": [
+        1941,
+        1218,
         96,
         96
        ]
@@ -26330,7 +26397,20 @@
        "symbol": "_isartPointsIcon_Medium",
        "rect": [
         1941,
-        1139,
+        1316,
+        96,
+        96
+       ]
+      },
+      {
+       "origin": [
+        48,
+        48
+       ],
+       "symbol": "_stoneIcon_Medium",
+       "rect": [
+        1941,
+        1414,
         96,
         96
        ]
@@ -26343,7 +26423,7 @@
        "symbol": "_buttonEnterBuilding_png",
        "rect": [
         1941,
-        1237,
+        1512,
         90,
         95
        ]
@@ -26356,7 +26436,7 @@
        "symbol": "_woodIcon_Medium",
        "rect": [
         1941,
-        1334,
+        1609,
         96,
         87
        ]
@@ -26369,48 +26449,9 @@
        "symbol": "_timeIcon_Medium",
        "rect": [
         1941,
-        1423,
+        1698,
         91,
         91
-       ]
-      },
-      {
-       "origin": [
-        45,
-        45
-       ],
-       "symbol": "_buttonMoveBuilding_png",
-       "rect": [
-        1941,
-        1516,
-        90,
-        90
-       ]
-      },
-      {
-       "origin": [
-        46,
-        43.1
-       ],
-       "symbol": "_closeButton_over",
-       "rect": [
-        1941,
-        1608,
-        92,
-        87
-       ]
-      },
-      {
-       "origin": [
-        44,
-        44
-       ],
-       "symbol": "_souls_neutral_icon",
-       "rect": [
-        1941,
-        1697,
-        88,
-        88
        ]
       },
       {
@@ -26470,88 +26511,10 @@
         32,
         32
        ],
-       "symbol": "_goodIcon_Small",
-       "rect": [
-        1329,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
-       "symbol": "_goldIcon_Small",
-       "rect": [
-        1395,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
-       "symbol": "_genericIcon_Small",
-       "rect": [
-        1461,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
-       "symbol": "_evilIcon_Small",
-       "rect": [
-        1527,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
        "symbol": "_alignIcon_Small",
        "rect": [
-        1593,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
-       "symbol": "_buildRessourceIcon_Small",
-       "rect": [
-        1659,
-        1982,
-        64,
-        64
-       ]
-      },
-      {
-       "origin": [
-        32,
-        32
-       ],
-       "symbol": "_hardCurrencyIcon_Small",
-       "rect": [
-        1725,
-        1982,
+        1071,
+        1898,
         64,
         64
        ]
@@ -26566,47 +26529,47 @@
         210,
         460
        ],
+       "symbol": "_itemunlockedHEAVEN_down_bg",
+       "rect": [
+        1,
+        1,
+        420,
+        920
+       ]
+      },
+      {
+       "origin": [
+        210,
+        460
+       ],
+       "symbol": "_itemunlockedHELL_bg",
+       "rect": [
+        1,
+        923,
+        420,
+        920
+       ]
+      },
+      {
+       "origin": [
+        210,
+        460
+       ],
+       "symbol": "_buttonBundle_up",
+       "rect": [
+        423,
+        1,
+        420,
+        920
+       ]
+      },
+      {
+       "origin": [
+        210,
+        460
+       ],
        "symbol": "_buildingdeco_locked_bg",
        "rect": [
-        1,
-        1,
-        420,
-        920
-       ]
-      },
-      {
-       "origin": [
-        210,
-        460
-       ],
-       "symbol": "_itemunlockedHELL_down_bg",
-       "rect": [
-        1,
-        923,
-        420,
-        920
-       ]
-      },
-      {
-       "origin": [
-        210,
-        460
-       ],
-       "symbol": "_itemunlocked_bg_down",
-       "rect": [
-        423,
-        1,
-        420,
-        920
-       ]
-      },
-      {
-       "origin": [
-        210,
-        460
-       ],
-       "symbol": "_itemunlockedHEAVEN_bg",
-       "rect": [
         423,
         923,
         420,
@@ -26618,7 +26581,7 @@
         210,
         460
        ],
-       "symbol": "_itemunlockedHEAVEN_down_bg",
+       "symbol": "_itemunlocked_bg",
        "rect": [
         845,
         1,
@@ -26693,41 +26656,54 @@
       },
       {
        "origin": [
-        778.5,
-        35
+        248,
+        90
        ],
-       "symbol": "_shopBauble_intern",
-       "rect": [
-        1,
-        1977,
-        1557,
-        70
-       ]
-      },
-      {
-       "origin": [
-        373,
-        43
-       ],
-       "symbol": "_GaugeBG_CollectorTimeBackground",
+       "symbol": "_buttonGreatReward_down",
        "rect": [
         1,
         1845,
-        746,
-        86
+        503,
+        180
        ]
       },
       {
        "origin": [
-        81.2,
-        81.2
+        168.3,
+        91
        ],
-       "symbol": "_buttontab_hit",
+       "symbol": "_interntab_dice",
+       "rect": [
+        506,
+        1845,
+        337,
+        182
+       ]
+      },
+      {
+       "origin": [
+        210,
+        31.15
+       ],
+       "symbol": "_purgatory_timer_bg",
+       "rect": [
+        845,
+        1977,
+        420,
+        63
+       ]
+      },
+      {
+       "origin": [
+        75,
+        71.5
+       ],
+       "symbol": "_karmaPack4_portrait",
        "rect": [
         1850,
         623,
-        163,
-        163
+        150,
+        143
        ]
       },
       {
@@ -26759,25 +26735,12 @@
       {
        "origin": [
         67.5,
-        69
-       ],
-       "symbol": "_karmaPack3_portrait",
-       "rect": [
-        1889,
-        283,
-        135,
-        138
-       ]
-      },
-      {
-       "origin": [
-        67.5,
         66.5
        ],
        "symbol": "_karmaPack2_portrait",
        "rect": [
         1889,
-        423,
+        283,
         135,
         133
        ]
@@ -26789,8 +26752,8 @@
        ],
        "symbol": "_buttoninfo_over",
        "rect": [
-        1850,
-        788,
+        1889,
+        418,
         130,
         130
        ]
@@ -26800,10 +26763,10 @@
         64,
         64
        ],
-       "symbol": "_goldIcon_Large",
+       "symbol": "_goodIcon_Large",
        "rect": [
         1850,
-        920,
+        768,
         128,
         128
        ]
@@ -26813,10 +26776,10 @@
         64,
         64
        ],
-       "symbol": "_soulIcon_Large",
+       "symbol": "_currencyIcon_Large",
        "rect": [
         1850,
-        1050,
+        898,
         128,
         128
        ]
@@ -26826,25 +26789,51 @@
         64,
         64
        ],
-       "symbol": "_rewardGatcha_Icon",
+       "symbol": "_stoneIcon_Large",
        "rect": [
         1850,
-        1180,
+        1028,
         128,
         128
        ]
       },
       {
        "origin": [
-        89,
-        38
+        64,
+        64
        ],
-       "symbol": "_crossedPrice_icon",
+       "symbol": "_hardCurrencyIcon_Large",
        "rect": [
         1850,
-        1310,
-        178,
-        76
+        1158,
+        128,
+        128
+       ]
+      },
+      {
+       "origin": [
+        77.5,
+        51.7
+       ],
+       "symbol": "_buttonHeavenPlus_over",
+       "rect": [
+        1850,
+        1288,
+        155,
+        104
+       ]
+      },
+      {
+       "origin": [
+        44,
+        44
+       ],
+       "symbol": "_souls_neutral_icon",
+       "rect": [
+        1267,
+        623,
+        88,
+        88
        ]
       },
       {
@@ -26854,8 +26843,8 @@
        ],
        "symbol": "_buttonDestroyBuilding_png",
        "rect": [
-        749,
-        1845,
+        1267,
+        713,
         80,
         95
        ]
@@ -26865,38 +26854,12 @@
         44,
         41.25
        ],
-       "symbol": "_closeButton_down",
+       "symbol": "_closeButton_up",
        "rect": [
         1267,
-        623,
+        810,
         88,
         83
-       ]
-      },
-      {
-       "origin": [
-        41.8,
-        41.8
-       ],
-       "symbol": "_souls_icon_heaven",
-       "rect": [
-        1267,
-        708,
-        84,
-        84
-       ]
-      },
-      {
-       "origin": [
-        153,
-        88
-       ],
-       "symbol": "_souls_icon_hell",
-       "rect": [
-        1267,
-        794,
-        84,
-        84
        ]
       },
       {
@@ -26906,8 +26869,8 @@
        ],
        "symbol": "_bundleTabIcon_down",
        "rect": [
-        1560,
-        1977,
+        1889,
+        550,
         75,
         69
        ]
@@ -26917,10 +26880,23 @@
         32,
         32
        ],
-       "symbol": "_soulIcon_Small",
+       "symbol": "_currencyIcon_Small",
+       "rect": [
+        1966,
+        550,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_hardCurrencyIcon_Small",
        "rect": [
         1980,
-        920,
+        768,
         64,
         64
        ]
@@ -26932,8 +26908,73 @@
        ],
        "symbol": "_stoneIcon_Small",
        "rect": [
-        1982,
-        788,
+        1980,
+        834,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_goodIcon_Small",
+       "rect": [
+        1980,
+        900,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_goldIcon_Small",
+       "rect": [
+        1980,
+        966,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_evilIcon_Small",
+       "rect": [
+        1980,
+        1032,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_soulIcon_Small",
+       "rect": [
+        1980,
+        1098,
+        64,
+        64
+       ]
+      },
+      {
+       "origin": [
+        32,
+        32
+       ],
+       "symbol": "_genericIcon_Small",
+       "rect": [
+        1980,
+        1164,
         64,
         64
        ]
@@ -26974,7 +27015,7 @@
         210,
         450
        ],
-       "symbol": "_buttonWatch_hit",
+       "symbol": "_shop_bundleSpawner",
        "rect": [
         1341,
         1,
@@ -26987,7 +27028,7 @@
         210,
         450
        ],
-       "symbol": "_shop_bundleSpawner",
+       "symbol": "_buttonWatch_hit",
        "rect": [
         1341,
         903,
@@ -27026,7 +27067,7 @@
         0,
         0
        ],
-       "symbol": "topInternHolder",
+       "symbol": "botInternHolder",
        "rect": [
         1,
         1619,
@@ -27039,7 +27080,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_05_card",
+       "symbol": "_eventCard_07_card",
        "rect": [
         423,
         421,
@@ -27062,41 +27103,15 @@
       },
       {
        "origin": [
-        778.5,
-        35
+        245,
+        110
        ],
-       "symbol": "_shopBauble_currencies",
+       "symbol": "_buttonAccelerateLarge_over",
        "rect": [
-        1,
-        1886,
-        1557,
-        70
-       ]
-      },
-      {
-       "origin": [
-        576.5,
-        41
-       ],
-       "symbol": "_shop_gaugetimer_bg",
-       "rect": [
-        1,
-        1958,
         1153,
-        82
-       ]
-      },
-      {
-       "origin": [
-        227,
-        90
-       ],
-       "symbol": "_buyRegion_hit",
-       "rect": [
-        1560,
         1805,
-        454,
-        180
+        490,
+        220
        ]
       },
       {
@@ -27105,6 +27120,19 @@
         102.5
        ],
        "symbol": "_xp_bar_heaven_Mask",
+       "rect": [
+        1645,
+        1805,
+        375,
+        205
+       ]
+      },
+      {
+       "origin": [
+        375,
+        102.5
+       ],
+       "symbol": "_xp_barr_hell_Mask",
        "rect": [
         423,
         1061,
@@ -27130,7 +27158,7 @@
         134,
         129
        ],
-       "symbol": "_buttonPortraitListOutQuest_over",
+       "symbol": "_buttonPortraitListOutQuest_down",
        "rect": [
         1763,
         261,
@@ -27143,7 +27171,7 @@
         134,
         129
        ],
-       "symbol": "_buttonPortraitListOutQuest_up",
+       "symbol": "_buttonPortraitListInQuest_up",
        "rect": [
         1763,
         521,
@@ -27156,7 +27184,7 @@
         134,
         129
        ],
-       "symbol": "_buttonPortraitListInQuest_up",
+       "symbol": "_buttonPortraitListOutQuest_up",
        "rect": [
         1763,
         781,
@@ -27169,12 +27197,38 @@
         134,
         129
        ],
-       "symbol": "_buttonPortraitListOutQuest_down",
+       "symbol": "_buttonPortraitListOutQuest_over",
        "rect": [
         1763,
         1041,
         268,
         258
+       ]
+      },
+      {
+       "origin": [
+        215,
+        96
+       ],
+       "symbol": "_heavenChoice_BG",
+       "rect": [
+        1,
+        1886,
+        430,
+        158
+       ]
+      },
+      {
+       "origin": [
+        215,
+        94
+       ],
+       "symbol": "_hellChoice_BG",
+       "rect": [
+        433,
+        1886,
+        430,
+        156
        ]
       },
       {
@@ -27205,28 +27259,15 @@
       },
       {
        "origin": [
-        221,
-        37.5
+        143,
+        67
        ],
-       "symbol": "_purgatoryButton_over",
+       "symbol": "_arrow_down_down",
        "rect": [
-        1153,
-        1805,
-        359,
-        76
-       ]
-      },
-      {
-       "origin": [
-        221,
-        37.5
-       ],
-       "symbol": "_purgatoryButton_up",
-       "rect": [
-        1156,
-        1958,
-        359,
-        76
+        865,
+        1886,
+        286,
+        134
        ]
       },
       {
@@ -27234,7 +27275,7 @@
         64,
         64
        ],
-       "symbol": "_genericIcon_Large",
+       "symbol": "_soulIcon_Large",
        "rect": [
         1153,
         1619,
@@ -27247,7 +27288,7 @@
         64,
         64
        ],
-       "symbol": "_isartPointsIcon_Large",
+       "symbol": "_evilIcon_Large",
        "rect": [
         1203,
         1277,
@@ -27260,12 +27301,64 @@
         64,
         64
        ],
-       "symbol": "_stoneIcon_Large",
+       "symbol": "_rewardGatcha_Icon",
        "rect": [
         1203,
         1407,
         128,
         128
+       ]
+      },
+      {
+       "origin": [
+        45,
+        45
+       ],
+       "symbol": "_buttonMoveBuilding_png",
+       "rect": [
+        819,
+        421,
+        90,
+        90
+       ]
+      },
+      {
+       "origin": [
+        46,
+        43.1
+       ],
+       "symbol": "_closeButton_over",
+       "rect": [
+        819,
+        513,
+        92,
+        87
+       ]
+      },
+      {
+       "origin": [
+        153,
+        88
+       ],
+       "symbol": "_souls_icon_hell",
+       "rect": [
+        819,
+        602,
+        84,
+        84
+       ]
+      },
+      {
+       "origin": [
+        41.8,
+        41.8
+       ],
+       "symbol": "_souls_icon_heaven",
+       "rect": [
+        819,
+        688,
+        84,
+        84
        ]
       },
       {
@@ -27276,7 +27369,7 @@
        "symbol": "_stressIcon_Small",
        "rect": [
         819,
-        421,
+        774,
         82,
         82
        ]
@@ -27292,71 +27385,6 @@
         1537,
         80,
         80
-       ]
-      },
-      {
-       "origin": [
-        40,
-        39
-       ],
-       "symbol": "_internTabIcon_over",
-       "rect": [
-        819,
-        505,
-        80,
-        79
-       ]
-      },
-      {
-       "origin": [
-        40,
-        39.05
-       ],
-       "symbol": "_currencyTabIcon_over",
-       "rect": [
-        819,
-        586,
-        80,
-        79
-       ]
-      },
-      {
-       "origin": [
-        40,
-        39.05
-       ],
-       "symbol": "_resTabIcon_over",
-       "rect": [
-        819,
-        667,
-        80,
-        79
-       ]
-      },
-      {
-       "origin": [
-        41.5,
-        37.75
-       ],
-       "symbol": "_bundleTabIcon_over",
-       "rect": [
-        819,
-        748,
-        83,
-        76
-       ]
-      },
-      {
-       "origin": [
-        39.3,
-        39.3
-       ],
-       "symbol": "_txt_efficiency03",
-       "rect": [
-        819,
-        826,
-        79,
-        79
        ]
       }
      ],
@@ -27382,7 +27410,7 @@
         0,
         0
        ],
-       "symbol": "botInternHolder",
+       "symbol": "topInternHolder",
        "rect": [
         1,
         268,
@@ -27447,7 +27475,7 @@
         289.5,
         232
        ],
-       "symbol": "_buttonCampaignVideo_hit",
+       "symbol": "_buttonCampaignStart_hit",
        "rect": [
         604,
         807,
@@ -27460,7 +27488,7 @@
         289.5,
         232
        ],
-       "symbol": "_buttonCampaignStart_hit",
+       "symbol": "_buttonCampaignVideo_hit",
        "rect": [
         1,
         1260,
@@ -27486,7 +27514,7 @@
         197,
         319
        ],
-       "symbol": "_eventCard_07_card",
+       "symbol": "_eventCard_01_card",
        "rect": [
         582,
         1273,
@@ -27496,10 +27524,10 @@
       },
       {
        "origin": [
-        197,
+        196.8,
         319
        ],
-       "symbol": "_eventCard_08_card",
+       "symbol": "_event_FateCard",
        "rect": [
         1581,
         1034,
@@ -27509,10 +27537,10 @@
       },
       {
        "origin": [
-        448,
+        450,
         135
        ],
-       "symbol": "_infobulle_bulle",
+       "symbol": "Window_NPC_BG",
        "rect": [
         978,
         1674,
@@ -27525,7 +27553,7 @@
         170,
         272.7
        ],
-       "symbol": "_altar_counterRight_bg",
+       "symbol": "_altar_counterLeft_bg",
        "rect": [
         1707,
         1,
@@ -27587,6 +27615,19 @@
       },
       {
        "origin": [
+        100,
+        100
+       ],
+       "symbol": "_ftue_mascot_angelaBG",
+       "rect": [
+        978,
+        1273,
+        200,
+        200
+       ]
+      },
+      {
+       "origin": [
         172.5,
         49
        ],
@@ -27603,7 +27644,20 @@
         64,
         64
        ],
-       "symbol": "_alignIcon_Large",
+       "symbol": "_goldIcon__Large_Prod",
+       "rect": [
+        978,
+        1475,
+        128,
+        128
+       ]
+      },
+      {
+       "origin": [
+        64,
+        64
+       ],
+       "symbol": "_genericIcon_Large",
        "rect": [
         1880,
         1674,
@@ -27616,49 +27670,10 @@
         64,
         64
        ],
-       "symbol": "_hardCurrencyIcon_Large",
+       "symbol": "_buildRessourceIcon_Large",
        "rect": [
         1880,
         1804,
-        128,
-        128
-       ]
-      },
-      {
-       "origin": [
-        64,
-        64
-       ],
-       "symbol": "_goldIcon__Large_Prod",
-       "rect": [
-        978,
-        1273,
-        128,
-        128
-       ]
-      },
-      {
-       "origin": [
-        64,
-        64
-       ],
-       "symbol": "_evilIcon_Large",
-       "rect": [
-        978,
-        1403,
-        128,
-        128
-       ]
-      },
-      {
-       "origin": [
-        64,
-        64
-       ],
-       "symbol": "_goodIcon_Large",
-       "rect": [
-        978,
-        1533,
         128,
         128
        ]
@@ -27692,14 +27707,14 @@
       {
        "origin": [
         40,
-        39
+        39.05
        ],
-       "symbol": "_decoTabIcon_over",
+       "symbol": "_currencyTabIcon_over",
        "rect": [
         1966,
         1934,
         80,
-        78
+        79
        ]
       }
      ],
@@ -27712,7 +27727,7 @@
         507.35,
         113.7
        ],
-       "symbol": "_ftueIcon_spawner",
+       "symbol": "_ftueIcon_holder_5",
        "rect": [
         1,
         1,
@@ -27725,7 +27740,7 @@
         507.35,
         113.7
        ],
-       "symbol": "_ftueIcon_holder_5",
+       "symbol": "_ftueIcon_spawner",
        "rect": [
         1022,
         1,
@@ -27761,10 +27776,10 @@
       },
       {
        "origin": [
-        190,
-        285.65
+        189.95,
+        285.6
        ],
-       "symbol": "_ftue_mascot_angela",
+       "symbol": "Window_NPC_Hell",
        "rect": [
         1,
         640,
@@ -27774,10 +27789,10 @@
       },
       {
        "origin": [
-        189.95,
-        285.6
+        190,
+        285.65
        ],
-       "symbol": "Window_NPC_Hell",
+       "symbol": "_ftue_mascot_angela",
        "rect": [
         1,
         1214,
@@ -27855,23 +27870,10 @@
         210,
         210
        ],
-       "symbol": "Window_NPC_Heaven",
+       "symbol": "_ftue_mascot_demona",
        "rect": [
         915,
         1057,
-        420,
-        420
-       ]
-      },
-      {
-       "origin": [
-        210,
-        210
-       ],
-       "symbol": "_shop_buyablecurpack_bg",
-       "rect": [
-        383,
-        1067,
         420,
         420
        ]
@@ -27882,6 +27884,19 @@
         420
        ],
        "symbol": "_ftue_infoBulle_arrow",
+       "rect": [
+        383,
+        1067,
+        420,
+        420
+       ]
+      },
+      {
+       "origin": [
+        210,
+        210
+       ],
+       "symbol": "Window_NPC_Heaven",
        "rect": [
         1337,
         1124,
@@ -27894,7 +27909,7 @@
         210,
         210
        ],
-       "symbol": "_ftue_mascot_demona",
+       "symbol": "_shop_buyablecurpack_bg",
        "rect": [
         805,
         1479,
@@ -27920,7 +27935,7 @@
         200,
         220
        ],
-       "symbol": "_produce_bg",
+       "symbol": "_produce_bg_locked",
        "rect": [
         1227,
         1546,
@@ -27943,28 +27958,15 @@
       },
       {
        "origin": [
-        375,
-        102.5
+        -0.5,
+        41
        ],
-       "symbol": "_xp_barr_hell_Mask",
+       "symbol": "_shop_timer_bar",
        "rect": [
         1,
-        1788,
-        375,
-        205
-       ]
-      },
-      {
-       "origin": [
-        373,
-        43
-       ],
-       "symbol": "_GaugeBG_CampaignTimeBackground",
-       "rect": [
-        378,
         1911,
-        746,
-        86
+        1153,
+        82
        ]
       },
       {
@@ -27982,10 +27984,23 @@
       },
       {
        "origin": [
+        185,
+        60
+       ],
+       "symbol": "_purgatory_neutralSouls_bg",
+       "rect": [
+        1,
+        1788,
+        370,
+        120
+       ]
+      },
+      {
+       "origin": [
         143,
         67
        ],
-       "symbol": "_arrow_down_down",
+       "symbol": "_arrow_up_down",
        "rect": [
         1759,
         1406,
@@ -28009,12 +28024,77 @@
       {
        "origin": [
         40,
+        39
+       ],
+       "symbol": "_internTabIcon_over",
+       "rect": [
+        805,
+        1177,
+        80,
+        79
+       ]
+      },
+      {
+       "origin": [
+        40,
+        39.05
+       ],
+       "symbol": "_resTabIcon_over",
+       "rect": [
+        805,
+        1258,
+        80,
+        79
+       ]
+      },
+      {
+       "origin": [
+        41.5,
+        37.75
+       ],
+       "symbol": "_bundleTabIcon_over",
+       "rect": [
+        805,
+        1339,
+        83,
+        76
+       ]
+      },
+      {
+       "origin": [
+        39.3,
+        39.3
+       ],
+       "symbol": "_txt_efficiency03",
+       "rect": [
+        1938,
+        669,
+        79,
+        79
+       ]
+      },
+      {
+       "origin": [
+        40,
+        39
+       ],
+       "symbol": "_decoTabIcon_over",
+       "rect": [
+        1956,
+        226,
+        80,
+        78
+       ]
+      },
+      {
+       "origin": [
+        40,
         37
        ],
        "symbol": "_buildingTabIcon_over",
        "rect": [
-        1126,
-        1901,
+        1956,
+        306,
         80,
         74
        ]
@@ -28026,8 +28106,8 @@
        ],
        "symbol": "_woodIcon_Small",
        "rect": [
-        805,
-        1177,
+        1956,
+        382,
         80,
         72
        ]
@@ -28039,8 +28119,8 @@
        ],
        "symbol": "_bundleTabIcon_up",
        "rect": [
-        805,
-        1251,
+        1956,
+        456,
         79,
         72
        ]
@@ -28055,7 +28135,7 @@
         200,
         220
        ],
-       "symbol": "_produce_bg_locked",
+       "symbol": "_produce_bg",
        "rect": [
         1,
         1,
@@ -28107,7 +28187,7 @@
         245,
         170
        ],
-       "symbol": "_buttonUpgradeGWS_up",
+       "symbol": "_buttonUpgradeGWS_down",
        "rect": [
         1237,
         1,
@@ -28120,7 +28200,7 @@
         245,
         170
        ],
-       "symbol": "_buttonUpgradeGWS_down",
+       "symbol": "_buttonUpgradeGWS_up",
        "rect": [
         1237,
         343,
@@ -28133,7 +28213,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_08",
+       "symbol": "_internPortrait_02",
        "rect": [
         820,
         415,
@@ -28146,7 +28226,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_07",
+       "symbol": "_internPortrait_03",
        "rect": [
         1,
         792,
@@ -28159,7 +28239,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_06",
+       "symbol": "_internPortrait_04",
        "rect": [
         1235,
         685,
@@ -28172,7 +28252,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_05",
+       "symbol": "_internPortrait_01",
        "rect": [
         416,
         814,
@@ -28185,7 +28265,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_09",
+       "symbol": "_internPortrait_05",
        "rect": [
         1,
         1191,
@@ -28198,7 +28278,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_01",
+       "symbol": "_internPortrait_06",
        "rect": [
         1,
         1590,
@@ -28211,7 +28291,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_10",
+       "symbol": "_internPortrait_08",
        "rect": [
         831,
         1084,
@@ -28224,7 +28304,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_04",
+       "symbol": "_internPortrait_07",
        "rect": [
         416,
         1213,
@@ -28237,7 +28317,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_03",
+       "symbol": "_internPortrait_09",
        "rect": [
         831,
         1483,
@@ -28250,7 +28330,7 @@
         206.5,
         198.5
        ],
-       "symbol": "_internPortrait_02",
+       "symbol": "_internPortrait_10",
        "rect": [
         416,
         1612,
@@ -28302,7 +28382,7 @@
         186.5,
         97.5
        ],
-       "symbol": "_bundle1_portrait",
+       "symbol": "_bundle3_portrait",
        "rect": [
         831,
         814,
@@ -28328,7 +28408,7 @@
         186.5,
         97.5
        ],
-       "symbol": "_bundle3_portrait",
+       "symbol": "_bundle4_portrait",
        "rect": [
         1650,
         685,
@@ -28341,7 +28421,7 @@
         186.5,
         97.5
        ],
-       "symbol": "_bundle4_portrait",
+       "symbol": "_bundle1_portrait",
        "rect": [
         1650,
         882,
@@ -28445,7 +28525,7 @@
         180,
         70
        ],
-       "symbol": "_buttonWatch_over",
+       "symbol": "_buttonWatch_down",
        "rect": [
         831,
         1882,
@@ -28458,7 +28538,7 @@
         152.5,
         72.75
        ],
-       "symbol": "_languageChoice_button_bg_over",
+       "symbol": "_sfx_on_button_bg_over",
        "rect": [
         1729,
         517,
@@ -28554,7 +28634,7 @@
         220,
         140
        ],
-       "symbol": "gold&Res_buttonUpInfo_up",
+       "symbol": "house_buttonUpInfo_down",
        "rect": [
         1307,
         1,
@@ -28580,7 +28660,7 @@
         220,
         140
        ],
-       "symbol": "house_buttonUpInfo_down",
+       "symbol": "house_buttonUpInfo_up",
        "rect": [
         865,
         305,
@@ -28593,7 +28673,7 @@
         220,
         140
        ],
-       "symbol": "house_buttonUpInfo_up",
+       "symbol": "gold&Res_buttonUpInfo_up",
        "rect": [
         1307,
         565,
@@ -28645,7 +28725,7 @@
         210,
         140
        ],
-       "symbol": "_buttonUpgrade_down",
+       "symbol": "_buttonUpgrade_up",
        "rect": [
         853,
         867,
@@ -28658,7 +28738,7 @@
         210,
         140
        ],
-       "symbol": "_buttonUpgrade_up",
+       "symbol": "_buttonUpgrade_down",
        "rect": [
         1,
         604,
@@ -28681,26 +28761,13 @@
       },
       {
        "origin": [
-        245,
-        110
-       ],
-       "symbol": "_buttonAccelerateLarge_over",
-       "rect": [
-        1,
-        886,
-        490,
-        220
-       ]
-      },
-      {
-       "origin": [
         212.4,
         122.7
        ],
        "symbol": "_xp_bar_hell_BG",
        "rect": [
-        1,
-        1108,
+        423,
+        877,
         425,
         245
        ]
@@ -28712,10 +28779,23 @@
        ],
        "symbol": "_buttonAccelerateLarge_up",
        "rect": [
-        428,
-        1149,
+        1,
+        1124,
         490,
         210
+       ]
+      },
+      {
+       "origin": [
+        576.5,
+        41
+       ],
+       "symbol": "_shop_gaugetimer_bg",
+       "rect": [
+        1,
+        1336,
+        1153,
+        82
        ]
       },
       {
@@ -28725,21 +28805,8 @@
        ],
        "symbol": "_buttonGreatReward_over",
        "rect": [
-        920,
-        1349,
-        503,
-        180
-       ]
-      },
-      {
-       "origin": [
-        248,
-        90
-       ],
-       "symbol": "_buttonGreatReward_down",
-       "rect": [
-        1425,
-        1349,
+        493,
+        1149,
         503,
         180
        ]
@@ -28751,60 +28818,8 @@
        ],
        "symbol": "_buttonCampaignStart_down",
        "rect": [
-        1,
-        1361,
-        504,
-        172
-       ]
-      },
-      {
-       "origin": [
-        252,
-        86
-       ],
-       "symbol": "_buttonCampaignVideo_down",
-       "rect": [
-        507,
-        1531,
-        504,
-        172
-       ]
-      },
-      {
-       "origin": [
-        252,
-        86
-       ],
-       "symbol": "_buttonCampaignStart_up",
-       "rect": [
-        1,
-        1535,
-        504,
-        172
-       ]
-      },
-      {
-       "origin": [
-        252,
-        86
-       ],
-       "symbol": "_buttonCampaignVideo_over",
-       "rect": [
-        507,
-        1705,
-        504,
-        172
-       ]
-      },
-      {
-       "origin": [
-        252,
-        86
-       ],
-       "symbol": "_buttonCampaignStart_over",
-       "rect": [
-        1,
-        1709,
+        1156,
+        1349,
         504,
         172
        ]
@@ -28816,8 +28831,60 @@
        ],
        "symbol": "_buttonCampaignVideo_up",
        "rect": [
+        1,
+        1420,
+        504,
+        172
+       ]
+      },
+      {
+       "origin": [
+        252,
+        86
+       ],
+       "symbol": "_buttonCampaignStart_up",
+       "rect": [
+        507,
+        1420,
+        504,
+        172
+       ]
+      },
+      {
+       "origin": [
+        252,
+        86
+       ],
+       "symbol": "_buttonCampaignVideo_over",
+       "rect": [
         1013,
-        1531,
+        1523,
+        504,
+        172
+       ]
+      },
+      {
+       "origin": [
+        252,
+        86
+       ],
+       "symbol": "_buttonCampaignStart_over",
+       "rect": [
+        1519,
+        1523,
+        504,
+        172
+       ]
+      },
+      {
+       "origin": [
+        252,
+        86
+       ],
+       "symbol": "_buttonCampaignVideo_down",
+       "rect": [
+        1,
+        1594,
         504,
         172
        ]
@@ -28829,8 +28896,8 @@
        ],
        "symbol": "_buttonGreatReward_up",
        "rect": [
-        1519,
-        1531,
+        507,
+        1594,
         493,
         170
        ]
@@ -28842,36 +28909,10 @@
        ],
        "symbol": "_buttonReroll_over",
        "rect": [
-        1519,
-        1703,
+        1,
+        886,
         372,
         185
-       ]
-      },
-      {
-       "origin": [
-        215,
-        96
-       ],
-       "symbol": "_heavenChoice_BG",
-       "rect": [
-        507,
-        1879,
-        430,
-        158
-       ]
-      },
-      {
-       "origin": [
-        215,
-        94
-       ],
-       "symbol": "_hellChoice_BG",
-       "rect": [
-        1,
-        1883,
-        430,
-        156
        ]
       },
       {
@@ -28881,8 +28922,8 @@
        ],
        "symbol": "_xp_bar_heaven_Gauge",
        "rect": [
-        1013,
-        1705,
+        1002,
+        1697,
         360,
         185
        ]
@@ -28895,22 +28936,48 @@
        "symbol": "_buttonDestroyBuildingConfirm_up",
        "rect": [
         507,
-        1361,
+        1766,
         400,
         166
        ]
       },
       {
        "origin": [
-        177.5,
-        92.5
+        200,
+        83
        ],
-       "symbol": "_buyRegion_box",
+       "symbol": "_buttonDestroyBuildingConfirm_down",
        "rect": [
-        493,
-        877,
-        355,
-        185
+        1,
+        1768,
+        400,
+        166
+       ]
+      },
+      {
+       "origin": [
+        200,
+        83
+       ],
+       "symbol": "_buttonDestroyBuildingConfirm_over",
+       "rect": [
+        1364,
+        1697,
+        400,
+        166
+       ]
+      },
+      {
+       "origin": [
+        0,
+        90
+       ],
+       "symbol": "_xp_bar_hell_Gauge",
+       "rect": [
+        1364,
+        1865,
+        365,
+        180
        ]
       },
       {
@@ -28920,23 +28987,10 @@
        ],
        "symbol": "_listInQuest_progressionBarBG",
        "rect": [
-        939,
-        1892,
+        403,
+        1934,
         860,
         75
-       ]
-      },
-      {
-       "origin": [
-        174.75,
-        90
-       ],
-       "symbol": "_buttonReroll_down",
-       "rect": [
-        920,
-        1149,
-        350,
-        180
        ]
       },
       {
@@ -28959,8 +29013,8 @@
        ],
        "symbol": "_buttonMissions_HUD_over",
        "rect": [
-        1767,
-        1049,
+        1766,
+        1697,
         250,
         219
        ]
@@ -28972,8 +29026,8 @@
        ],
        "symbol": "_buttonMissions_HUD_up",
        "rect": [
-        1749,
-        1,
+        1767,
+        1049,
         250,
         219
        ]
@@ -28986,7 +29040,7 @@
        "symbol": "_buttonPopinReward_over",
        "rect": [
         1749,
-        222,
+        1,
         283,
         189
        ]
@@ -28999,7 +29053,7 @@
        "symbol": "_buttonListSend_over",
        "rect": [
         1749,
-        413,
+        192,
         283,
         189
        ]
@@ -29011,114 +29065,101 @@
        ],
        "symbol": "_shopButton_HUD_down",
        "rect": [
-        1749,
-        604,
+        1767,
+        1270,
         220,
         235
        ]
       },
       {
        "origin": [
-        329.1,
-        39
+        137.5,
+        92.5
        ],
-       "symbol": "_png_purgatoryTitle",
+       "symbol": "_spawner_buttonStress_accelerate",
        "rect": [
-        939,
-        1969,
-        659,
-        78
+        998,
+        1149,
+        275,
+        185
        ]
       },
       {
        "origin": [
-        115,
-        69
+        142.8,
+        86.6
        ],
-       "symbol": "_buttonShowAllLvl_hit",
+       "symbol": "_buttonInternDismiss_down",
        "rect": [
-        1801,
-        1890,
-        230,
-        138
+        1749,
+        383,
+        286,
+        174
        ]
       },
       {
        "origin": [
-        147.5,
-        40
+        142.85,
+        86.6
        ],
-       "symbol": "_buttonInviteFriend_down",
+       "symbol": "_buttonInternDismiss_over",
        "rect": [
-        493,
-        1064,
-        295,
-        80
+        1749,
+        559,
+        286,
+        174
        ]
       },
       {
        "origin": [
-        -515.5,
-        506.7
+        140.5,
+        64.5
        ],
-       "symbol": "BG_HardCurrency",
+       "symbol": "_arrow_up_up",
        "rect": [
-        1767,
-        1270,
-        255,
-        75
+        1731,
+        1918,
+        281,
+        129
        ]
       },
       {
        "origin": [
-        64,
-        64
+        177.5,
+        51
        ],
-       "symbol": "_currencyIcon_Large",
+       "symbol": "_rewardEvent",
        "rect": [
-        1375,
-        1705,
-        128,
-        128
+        1,
+        1936,
+        355,
+        102
        ]
       },
       {
        "origin": [
-        67,
-        60
+        145,
+        50.1
        ],
-       "symbol": "_internHouseNumber_HeavenBG",
+       "symbol": "_buttonReroll_hit",
        "rect": [
-        1893,
-        1703,
-        134,
-        121
+        1749,
+        735,
+        291,
+        101
        ]
       },
       {
        "origin": [
-        58.45,
-        58.45
+        70,
+        46.65
        ],
-       "symbol": "_timeIcon_Large",
+       "symbol": "_buttonHeavenPlus_down",
        "rect": [
-        1930,
-        1347,
-        117,
-        117
-       ]
-      },
-      {
-       "origin": [
-        87.5,
-        38
-       ],
-       "symbol": "_watchVideo_icon",
-       "rect": [
-        1600,
-        1969,
-        175,
-        76
+        1013,
+        1420,
+        140,
+        94
        ]
       }
      ],
@@ -29128,41 +29169,15 @@
      "textures": [
       {
        "origin": [
-        200,
-        83
+        177.5,
+        92.5
        ],
-       "symbol": "_buttonDestroyBuildingConfirm_over",
+       "symbol": "_buyRegion_box",
        "rect": [
         1,
         1,
-        400,
-        166
-       ]
-      },
-      {
-       "origin": [
-        200,
-        83
-       ],
-       "symbol": "_buttonDestroyBuildingConfirm_down",
-       "rect": [
-        403,
-        1,
-        400,
-        166
-       ]
-      },
-      {
-       "origin": [
-        0,
-        90
-       ],
-       "symbol": "_xp_bar_hell_Gauge",
-       "rect": [
-        805,
-        1,
-        365,
-        180
+        355,
+        185
        ]
       },
       {
@@ -29172,8 +29187,8 @@
        ],
        "symbol": "_buttonReroll_up",
        "rect": [
+        358,
         1,
-        169,
         363,
         180
        ]
@@ -29185,8 +29200,8 @@
        ],
        "symbol": "_buttonCancelConstructionConfirm_up",
        "rect": [
-        366,
-        169,
+        723,
+        1,
         360,
         180
        ]
@@ -29198,7 +29213,7 @@
        ],
        "symbol": "_buttonCancelConstructionConfirm_over",
        "rect": [
-        1172,
+        1085,
         1,
         360,
         180
@@ -29211,7 +29226,7 @@
        ],
        "symbol": "_buttonCancelConstructionConfirm_down",
        "rect": [
-        1534,
+        1447,
         1,
         360,
         180
@@ -29222,10 +29237,36 @@
         373,
         43
        ],
+       "symbol": "_GaugeBG_CampaignTimeBackground",
+       "rect": [
+        358,
+        183,
+        746,
+        86
+       ]
+      },
+      {
+       "origin": [
+        373,
+        43
+       ],
        "symbol": "_GaugeBG_TimeSkippedBackground",
        "rect": [
-        728,
+        1106,
         183,
+        746,
+        86
+       ]
+      },
+      {
+       "origin": [
+        373,
+        43
+       ],
+       "symbol": "_GaugeBG_CollectorTimeBackground",
+       "rect": [
+        1,
+        271,
         746,
         86
        ]
@@ -29235,9 +29276,9 @@
         372,
         43
        ],
-       "symbol": "_GaugeF_TimeSkippedFront",
+       "symbol": "_GaugeF_CampaignTimeFront",
        "rect": [
-        728,
+        749,
         271,
         744,
         86
@@ -29261,7 +29302,7 @@
         372,
         43
        ],
-       "symbol": "_GaugeF_CampaignTimeFront",
+       "symbol": "_GaugeF_TimeSkippedFront",
        "rect": [
         747,
         359,
@@ -29271,28 +29312,28 @@
       },
       {
        "origin": [
-        168.3,
-        91
+        174.75,
+        90
        ],
-       "symbol": "_interntab_dice",
+       "symbol": "_buttonReroll_down",
        "rect": [
         1493,
-        183,
-        337,
-        182
+        359,
+        350,
+        180
        ]
       },
       {
        "origin": [
-        212.5,
-        60.4
+        329.1,
+        39
        ],
-       "symbol": "_dataRest_button_bg_over",
+       "symbol": "_png_purgatoryTitle",
        "rect": [
-        1493,
-        367,
-        425,
-        121
+        1,
+        447,
+        659,
+        78
        ]
       },
       {
@@ -29302,23 +29343,10 @@
        ],
        "symbol": "infoBar_bg",
        "rect": [
-        1,
+        662,
         447,
         428,
         120
-       ]
-      },
-      {
-       "origin": [
-        137.5,
-        92.5
-       ],
-       "symbol": "_spawner_buttonStress_accelerate",
-       "rect": [
-        431,
-        447,
-        275,
-        185
        ]
       },
       {
@@ -29328,8 +29356,8 @@
        ],
        "symbol": "_levelup_title",
        "rect": [
-        708,
-        447,
+        1,
+        527,
         600,
         84
        ]
@@ -29339,10 +29367,10 @@
         180,
         70
        ],
-       "symbol": "_buttonWatch_down",
+       "symbol": "_buttonWatch_up",
        "rect": [
-        1,
-        569,
+        1092,
+        447,
         360,
         140
        ]
@@ -29352,10 +29380,10 @@
         180,
         70
        ],
-       "symbol": "_buttonWatch_up",
+       "symbol": "_buttonWatch_over",
        "rect": [
-        1310,
-        490,
+        603,
+        569,
         360,
         140
        ]
@@ -29367,8 +29395,8 @@
        ],
        "symbol": "_png_internships_title",
        "rect": [
-        708,
-        632,
+        965,
+        589,
         644,
         78
        ]
@@ -29378,36 +29406,10 @@
         142.8,
         86.6
        ],
-       "symbol": "_buttonInternDismiss_down",
-       "rect": [
-        363,
-        634,
-        286,
-        174
-       ]
-      },
-      {
-       "origin": [
-        142.8,
-        86.6
-       ],
        "symbol": "_buttonInternDismiss_up",
        "rect": [
-        1,
-        711,
-        286,
-        174
-       ]
-      },
-      {
-       "origin": [
-        142.85,
-        86.6
-       ],
-       "symbol": "_buttonInternDismiss_over",
-       "rect": [
-        1672,
-        490,
+        1611,
+        541,
         286,
         174
        ]
@@ -29419,8 +29421,8 @@
        ],
        "symbol": "_dataRest_button_bg_down",
        "rect": [
-        1354,
-        666,
+        1,
+        613,
         420,
         117
        ]
@@ -29432,8 +29434,8 @@
        ],
        "symbol": "_dataRest_button_bg",
        "rect": [
-        651,
-        712,
+        965,
+        669,
         420,
         117
        ]
@@ -29443,10 +29445,10 @@
         116.1,
         98.5
        ],
-       "symbol": "_buttonPurgatory_HUD_over",
+       "symbol": "_buttonPurgatory_HUD_up",
        "rect": [
-        1073,
-        712,
+        423,
+        711,
         237,
         207
        ]
@@ -29456,10 +29458,10 @@
         116.1,
         98.5
        ],
-       "symbol": "_buttonPurgatory_HUD_up",
+       "symbol": "_buttonPurgatory_HUD_over",
        "rect": [
-        1776,
-        666,
+        662,
+        711,
         237,
         207
        ]
@@ -29469,36 +29471,10 @@
         135,
         90
        ],
-       "symbol": "_buttonListSend_down",
-       "rect": [
-        289,
-        810,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "button_Resolve_over",
+       "symbol": "button_Resolve_down",
        "rect": [
         1,
-        887,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "_buttonPopinStress_up",
-       "rect": [
-        1312,
-        785,
+        732,
         270,
         180
        ]
@@ -29510,8 +29486,60 @@
        ],
        "symbol": "_buttonPopinStress_over",
        "rect": [
-        1584,
-        875,
+        1,
+        914,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonPopinReward_down",
+       "rect": [
+        1387,
+        717,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonPopinStress_up",
+       "rect": [
+        1659,
+        717,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonListSend_up",
+       "rect": [
+        901,
+        788,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonListSend_down",
+       "rect": [
+        273,
+        920,
         270,
         180
        ]
@@ -29523,8 +29551,47 @@
        ],
        "symbol": "button_Resolve_up",
        "rect": [
-        561,
-        831,
+        1,
+        1096,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonPopinReward_up",
+       "rect": [
+        545,
+        920,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonPopinStress_down",
+       "rect": [
+        1173,
+        899,
+        270,
+        180
+       ]
+      },
+      {
+       "origin": [
+        135,
+        90
+       ],
+       "symbol": "_buttonAccelerate_up",
+       "rect": [
+        817,
+        970,
         270,
         180
        ]
@@ -29537,7 +29604,7 @@
        "symbol": "_buttonAccelerate_down",
        "rect": [
         273,
-        992,
+        1102,
         270,
         180
        ]
@@ -29547,75 +29614,10 @@
         135,
         90
        ],
-       "symbol": "_buttonPopinReward_up",
+       "symbol": "button_Resolve_over",
        "rect": [
         1,
-        1069,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "_buttonPopinStress_down",
-       "rect": [
-        833,
-        921,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "_buttonPopinReward_down",
-       "rect": [
-        545,
-        1013,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "button_Resolve_down",
-       "rect": [
-        273,
-        1174,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "_buttonAccelerate_up",
-       "rect": [
-        1,
-        1251,
-        270,
-        180
-       ]
-      },
-      {
-       "origin": [
-        135,
-        90
-       ],
-       "symbol": "_buttonListSend_up",
-       "rect": [
-        1105,
-        967,
+        1278,
         270,
         180
        ]
@@ -29625,10 +29627,10 @@
         138,
         87.75
        ],
-       "symbol": "_buttonNo_over",
+       "symbol": "_buttonFriendReward_over",
        "rect": [
-        817,
-        1103,
+        1445,
+        899,
         276,
         176
        ]
@@ -29640,8 +29642,34 @@
        ],
        "symbol": "_buttonFriendReward_down",
        "rect": [
-        1377,
-        1057,
+        1723,
+        899,
+        276,
+        176
+       ]
+      },
+      {
+       "origin": [
+        138,
+        87.75
+       ],
+       "symbol": "_buttonYes_over",
+       "rect": [
+        1445,
+        1077,
+        276,
+        176
+       ]
+      },
+      {
+       "origin": [
+        138,
+        87.75
+       ],
+       "symbol": "_buttonNo_over",
+       "rect": [
+        1723,
+        1077,
         276,
         176
        ]
@@ -29653,21 +29681,8 @@
        ],
        "symbol": "_buttonNo_down",
        "rect": [
-        1095,
-        1149,
-        276,
-        176
-       ]
-      },
-      {
-       "origin": [
-        138,
-        87.75
-       ],
-       "symbol": "_buttonFriendReward_over",
-       "rect": [
-        1655,
-        1057,
+        1089,
+        1081,
         276,
         176
        ]
@@ -29680,20 +29695,7 @@
        "symbol": "_buttonYes_down",
        "rect": [
         545,
-        1281,
-        276,
-        176
-       ]
-      },
-      {
-       "origin": [
-        138,
-        87.75
-       ],
-       "symbol": "_buttonYes_over",
-       "rect": [
-        1,
-        1433,
+        1152,
         276,
         176
        ]
@@ -29705,8 +29707,8 @@
        ],
        "symbol": "_internButton_HUD_down",
        "rect": [
-        279,
-        1356,
+        273,
+        1284,
         235,
         205
        ]
@@ -29718,10 +29720,23 @@
        ],
        "symbol": "_collectorPanel_lockedIcon",
        "rect": [
-        1373,
-        1235,
+        1367,
+        1255,
         400,
         118
+       ]
+      },
+      {
+       "origin": [
+        112.15,
+        91.65
+       ],
+       "symbol": "_buttonMissions_HUD_down",
+       "rect": [
+        1,
+        1460,
+        231,
+        202
        ]
       },
       {
@@ -29731,8 +29746,8 @@
        ],
        "symbol": "_buttonFriendReward_up",
        "rect": [
-        1775,
-        1235,
+        1769,
+        1255,
         271,
         172
        ]
@@ -29742,10 +29757,10 @@
         180,
         64
        ],
-       "symbol": "_buttonConfirmLevelUp_up",
+       "symbol": "_buttonConfirmLevelUp_over",
        "rect": [
         823,
-        1327,
+        1259,
         360,
         128
        ]
@@ -29758,7 +29773,20 @@
        "symbol": "_buttonConfirmLevelUp_down",
        "rect": [
         1185,
-        1355,
+        1375,
+        360,
+        128
+       ]
+      },
+      {
+       "origin": [
+        180,
+        64
+       ],
+       "symbol": "_buttonConfirmLevelUp_up",
+       "rect": [
+        1547,
+        1429,
         360,
         128
        ]
@@ -29768,23 +29796,10 @@
         135,
         85
        ],
-       "symbol": "_buttonDestroy_over",
-       "rect": [
-        823,
-        1457,
-        270,
-        170
-       ]
-      },
-      {
-       "origin": [
-        135,
-        85
-       ],
        "symbol": "_buttonDestroy_down",
        "rect": [
-        516,
-        1459,
+        510,
+        1330,
         270,
         170
        ]
@@ -29796,8 +29811,21 @@
        ],
        "symbol": "_buttonDestroy_up",
        "rect": [
-        1,
-        1611,
+        234,
+        1491,
+        270,
+        170
+       ]
+      },
+      {
+       "origin": [
+        135,
+        85
+       ],
+       "symbol": "_buttonDestroy_over",
+       "rect": [
+        782,
+        1389,
         270,
         170
        ]
@@ -29807,10 +29835,10 @@
         152.5,
         72.75
        ],
-       "symbol": "_music_on_button_bg_over",
+       "symbol": "_languageChoice_button_bg_over",
        "rect": [
-        1547,
-        1409,
+        1054,
+        1505,
         305,
         146
        ]
@@ -29820,51 +29848,12 @@
         152.5,
         72.75
        ],
-       "symbol": "_sfx_on_button_bg_over",
+       "symbol": "_music_on_button_bg_over",
        "rect": [
-        1095,
-        1485,
+        506,
+        1561,
         305,
         146
-       ]
-      },
-      {
-       "origin": [
-        185,
-        60
-       ],
-       "symbol": "_purgatory_neutralSouls_bg",
-       "rect": [
-        1402,
-        1557,
-        370,
-        120
-       ]
-      },
-      {
-       "origin": [
-        166.5,
-        66
-       ],
-       "symbol": "_buttonSkipVideo_up",
-       "rect": [
-        273,
-        1631,
-        333,
-        132
-       ]
-      },
-      {
-       "origin": [
-        166.5,
-        66
-       ],
-       "symbol": "_buttonSkipVideo_hit",
-       "rect": [
-        608,
-        1631,
-        333,
-        132
        ]
       },
       {
@@ -29874,8 +29863,21 @@
        ],
        "symbol": "_buttonSkipVideo_over",
        "rect": [
-        943,
-        1633,
+        1,
+        1664,
+        333,
+        132
+       ]
+      },
+      {
+       "origin": [
+        166.5,
+        66
+       ],
+       "symbol": "_buttonSkipVideo_up",
+       "rect": [
+        1361,
+        1559,
         333,
         132
        ]
@@ -29887,8 +29889,21 @@
        ],
        "symbol": "_buttonSkipVideo_down",
        "rect": [
-        273,
-        1765,
+        1696,
+        1559,
+        333,
+        132
+       ]
+      },
+      {
+       "origin": [
+        166.5,
+        66
+       ],
+       "symbol": "_buttonSkipVideo_hit",
+       "rect": [
+        813,
+        1653,
         333,
         132
        ]
@@ -29898,10 +29913,10 @@
         152.5,
         71.95
        ],
-       "symbol": "_sfx_off_buttoff_bg_over",
+       "symbol": "_music_off_buttoff_bg_over",
        "rect": [
-        608,
-        1765,
+        336,
+        1709,
         305,
         144
        ]
@@ -29911,10 +29926,10 @@
         152.5,
         71.95
        ],
-       "symbol": "_music_off_buttoff_bg_over",
+       "symbol": "_sfx_off_buttoff_bg_over",
        "rect": [
         1,
-        1899,
+        1798,
         305,
         144
        ]
@@ -29926,8 +29941,8 @@
        ],
        "symbol": "_rewardWeekMark_spawner",
        "rect": [
-        1774,
-        1557,
+        1148,
+        1693,
         240,
         180
        ]
@@ -29937,10 +29952,23 @@
         150,
         70.8
        ],
-       "symbol": "_languageChoice_button_bg_down",
+       "symbol": "_sfx_on_button_bg",
        "rect": [
-        1278,
-        1679,
+        643,
+        1787,
+        300,
+        142
+       ]
+      },
+      {
+       "origin": [
+        150,
+        70.8
+       ],
+       "symbol": "_music_off_buttoff_bg_down",
+       "rect": [
+        308,
+        1855,
         300,
         142
        ]
@@ -29952,8 +29980,8 @@
        ],
        "symbol": "_sfx_off_buttoff_bg",
        "rect": [
-        915,
-        1767,
+        945,
+        1875,
         300,
         142
        ]
@@ -29963,10 +29991,10 @@
         150,
         70.8
        ],
-       "symbol": "_sfx_on_button_bg",
+       "symbol": "_languageChoice_button_bg",
        "rect": [
-        1580,
-        1739,
+        1247,
+        1875,
         300,
         142
        ]
@@ -29976,10 +30004,23 @@
         150,
         70.8
        ],
-       "symbol": "_sfx_on_button_bg_down",
+       "symbol": "_music_off_buttoff_bg",
        "rect": [
-        1217,
-        1823,
+        1390,
+        1693,
+        300,
+        142
+       ]
+      },
+      {
+       "origin": [
+        150,
+        70.8
+       ],
+       "symbol": "_languageChoice_button_bg_down",
+       "rect": [
+        1549,
+        1837,
         300,
         142
        ]
@@ -29991,75 +30032,75 @@
        ],
        "symbol": "_sfx_off_buttoff_bg_down",
        "rect": [
-        1519,
-        1883,
+        1692,
+        1693,
         300,
         142
        ]
       },
       {
        "origin": [
-        143,
-        67
+        117,
+        87.5
        ],
-       "symbol": "_arrow_up_down",
+       "symbol": "_pngTopTab_current",
        "rect": [
-        308,
-        1899,
-        286,
-        134
+        1809,
+        1,
+        234,
+        175
        ]
       },
       {
        "origin": [
-        142,
-        66
+        100,
+        100
        ],
-       "symbol": "_arrow_up_over",
+       "symbol": "_buttonNext_over",
        "rect": [
-        596,
-        1911,
-        284,
-        132
+        1845,
+        271,
+        200,
+        200
        ]
       },
       {
        "origin": [
-        142,
-        66
+        165,
+        52
        ],
-       "symbol": "_arrow_down_over",
+       "symbol": "_buttonbuypack_up",
        "rect": [
-        882,
-        1911,
-        284,
-        132
+        610,
+        1931,
+        330,
+        104
        ]
       },
       {
        "origin": [
-        170,
-        47.2
+        155,
+        42
        ],
-       "symbol": "_buttonConfirmErase_up",
+       "symbol": "_buttonInviteFriend_over",
        "rect": [
-        708,
-        533,
-        340,
-        95
+        1495,
+        271,
+        310,
+        85
        ]
       },
       {
        "origin": [
-        110,
-        64
+        147.5,
+        40
        ],
-       "symbol": "_buttonShowAllLvl_over",
+       "symbol": "_buttonInviteFriend_down",
        "rect": [
-        1821,
-        1883,
-        220,
-        128
+        1,
+        188,
+        295,
+        80
        ]
       },
       {
@@ -30069,8 +30110,8 @@
        ],
        "symbol": "_buttonInviteFriend_up",
        "rect": [
-        1168,
-        1967,
+        1,
+        1944,
         295,
         80
        ]
@@ -30082,8 +30123,8 @@
        ],
        "symbol": "_button_PlusHardCurrency_zone",
        "rect": [
-        545,
-        1195,
+        823,
+        1152,
         263,
         83
        ]
@@ -30095,10 +30136,49 @@
        ],
        "symbol": "_buttonSFX_on_txt",
        "rect": [
-        833,
-        831,
+        813,
+        1561,
         228,
         73
+       ]
+      },
+      {
+       "origin": [
+        64,
+        64
+       ],
+       "symbol": "_alignIcon_Large",
+       "rect": [
+        1909,
+        1429,
+        128,
+        128
+       ]
+      },
+      {
+       "origin": [
+        64,
+        64
+       ],
+       "symbol": "_isartPointsIcon_Large",
+       "rect": [
+        273,
+        732,
+        128,
+        128
+       ]
+      },
+      {
+       "origin": [
+        67,
+        60
+       ],
+       "symbol": "_internHouseNumber_HeavenBG",
+       "rect": [
+        1899,
+        473,
+        134,
+        121
        ]
       },
       {
@@ -30108,8 +30188,8 @@
        ],
        "symbol": "_internHouseNumber_HellBG",
        "rect": [
-        1882,
-        1739,
+        1851,
+        1837,
         134,
         121
        ]
@@ -30119,23 +30199,10 @@
         77.5,
         51.7
        ],
-       "symbol": "_buttonHeavenPlus_over",
-       "rect": [
-        1854,
-        1409,
-        155,
-        104
-       ]
-      },
-      {
-       "origin": [
-        77.5,
-        51.7
-       ],
        "symbol": "_buttonHellPlus_over",
        "rect": [
-        1,
-        1783,
+        1185,
+        1259,
         155,
         104
        ]
@@ -30147,8 +30214,8 @@
        ],
        "symbol": "_woodIcon_Large",
        "rect": [
-        1856,
-        875,
+        1899,
+        596,
         128,
         116
        ]
@@ -30160,62 +30227,36 @@
        ],
        "symbol": "_accelerateIcon_Large",
        "rect": [
-        1832,
-        183,
+        1173,
+        788,
         135,
         104
        ]
       },
       {
        "origin": [
-        58.95,
-        58.95
+        89,
+        38
        ],
-       "symbol": "_stressIcon_Medium",
+       "symbol": "_crossedPrice_icon",
        "rect": [
-        1920,
-        289,
-        118,
-        118
+        1851,
+        1960,
+        178,
+        76
        ]
       },
       {
        "origin": [
-        70,
-        46.7
+        87.5,
+        38
        ],
-       "symbol": "_buttonHellPlus_down",
+       "symbol": "_watchVideo_icon",
        "rect": [
-        1050,
-        533,
-        140,
-        94
-       ]
-      },
-      {
-       "origin": [
-        70,
-        46.65
-       ],
-       "symbol": "_buttonHeavenPlus_down",
-       "rect": [
-        1896,
-        1,
-        140,
-        94
-       ]
-      },
-      {
-       "origin": [
-        55,
-        55
-       ],
-       "symbol": "_buttoninfo_down",
-       "rect": [
-        158,
-        1783,
-        110,
-        110
+        423,
+        613,
+        175,
+        76
        ]
       },
       {
@@ -30225,8 +30266,8 @@
        ],
        "symbol": "_ironPack1_portrait",
        "rect": [
-        1584,
-        785,
+        945,
+        1787,
         135,
         85
        ]
@@ -30241,7 +30282,7 @@
         150,
         70.8
        ],
-       "symbol": "_languageChoice_button_bg",
+       "symbol": "_music_on_button_bg_down",
        "rect": [
         1,
         1,
@@ -30254,22 +30295,9 @@
         150,
         70.8
        ],
-       "symbol": "_music_off_buttoff_bg_down",
+       "symbol": "_sfx_on_button_bg_down",
        "rect": [
         303,
-        1,
-        300,
-        142
-       ]
-      },
-      {
-       "origin": [
-        150,
-        70.8
-       ],
-       "symbol": "_music_off_buttoff_bg",
-       "rect": [
-        605,
         1,
         300,
         142
@@ -30282,8 +30310,8 @@
        ],
        "symbol": "_music_on_button_bg",
        "rect": [
+        605,
         1,
-        145,
         300,
         142
        ]
@@ -30295,7 +30323,7 @@
        ],
        "symbol": "_buttonPurgatory_HUD_down",
        "rect": [
-        303,
+        1,
         145,
         217,
         189
@@ -30304,14 +30332,14 @@
       {
        "origin": [
         117,
-        87.5
+        82.5
        ],
-       "symbol": "_pngTopTab_current",
+       "symbol": "_buttonBuildingTab_up",
        "rect": [
-        1,
-        289,
+        220,
+        145,
         234,
-        175
+        165
        ]
       },
       {
@@ -30321,7 +30349,7 @@
        ],
        "symbol": "_pngGenericTab_up",
        "rect": [
-        522,
+        456,
         145,
         234,
         165
@@ -30334,7 +30362,7 @@
        ],
        "symbol": "_pngGenericTab_current",
        "rect": [
-        758,
+        692,
         145,
         234,
         165
@@ -30342,15 +30370,28 @@
       },
       {
        "origin": [
-        117,
-        82.5
+        142,
+        66
        ],
-       "symbol": "_buttonBuildingTab_up",
+       "symbol": "_arrow_down_over",
        "rect": [
-        522,
+        220,
         312,
-        234,
-        165
+        284,
+        132
+       ]
+      },
+      {
+       "origin": [
+        142,
+        66
+       ],
+       "symbol": "_arrow_up_over",
+       "rect": [
+        506,
+        312,
+        284,
+        132
        ]
       },
       {
@@ -30360,36 +30401,10 @@
        ],
        "symbol": "_arrow_down_up",
        "rect": [
-        237,
-        336,
-        281,
-        129
-       ]
-      },
-      {
-       "origin": [
-        140.5,
-        64.5
-       ],
-       "symbol": "_arrow_up_up",
-       "rect": [
         1,
-        467,
+        446,
         281,
         129
-       ]
-      },
-      {
-       "origin": [
-        177.5,
-        51
-       ],
-       "symbol": "_rewardEvent",
-       "rect": [
-        284,
-        479,
-        355,
-        102
        ]
       },
       {
@@ -30399,23 +30414,10 @@
        ],
        "symbol": "_infoBar_bg",
        "rect": [
-        641,
-        479,
+        284,
+        446,
         306,
         117
-       ]
-      },
-      {
-       "origin": [
-        165,
-        52
-       ],
-       "symbol": "_buttonbuypack_up",
-       "rect": [
-        284,
-        583,
-        330,
-        104
        ]
       },
       {
@@ -30425,8 +30427,8 @@
        ],
        "symbol": "_buttonbuypack_down",
        "rect": [
-        616,
-        598,
+        592,
+        446,
         330,
         103
        ]
@@ -30438,8 +30440,8 @@
        ],
        "symbol": "_buttonProduce_over",
        "rect": [
-        1,
-        689,
+        592,
+        551,
         328,
         100
        ]
@@ -30449,12 +30451,38 @@
         170,
         47.2
        ],
-       "symbol": "_buttonConfirmeErase_down",
+       "symbol": "_buttonConfirmErase_up",
        "rect": [
-        331,
-        703,
+        1,
+        577,
         340,
         95
+       ]
+      },
+      {
+       "origin": [
+        170,
+        47.2
+       ],
+       "symbol": "_buttonConfirmeErase_down",
+       "rect": [
+        343,
+        653,
+        340,
+        95
+       ]
+      },
+      {
+       "origin": [
+        115,
+        69
+       ],
+       "symbol": "_buttonShowAllLvl_hit",
+       "rect": [
+        1,
+        674,
+        230,
+        138
        ]
       },
       {
@@ -30464,8 +30492,8 @@
        ],
        "symbol": "_buttonProduce_down",
        "rect": [
-        1,
-        791,
+        685,
+        653,
         320,
         96
        ]
@@ -30477,8 +30505,8 @@
        ],
        "symbol": "_buttonProduce_up",
        "rect": [
-        673,
-        703,
+        233,
+        750,
         320,
         96
        ]
@@ -30488,10 +30516,23 @@
         167.5,
         45
        ],
+       "symbol": "_buyRegion_up",
+       "rect": [
+        555,
+        751,
+        335,
+        90
+       ]
+      },
+      {
+       "origin": [
+        167.5,
+        45
+       ],
        "symbol": "_buyRegion_over",
        "rect": [
-        323,
-        800,
+        555,
+        843,
         335,
         90
        ]
@@ -30503,21 +30544,8 @@
        ],
        "symbol": "_buyRegion_down",
        "rect": [
-        660,
-        801,
-        335,
-        90
-       ]
-      },
-      {
-       "origin": [
-        167.5,
-        45
-       ],
-       "symbol": "_buyRegion_up",
-       "rect": [
         1,
-        892,
+        848,
         335,
         90
        ]
@@ -30530,22 +30558,9 @@
        "symbol": "_buttonInviteFriend_hit",
        "rect": [
         338,
-        892,
+        935,
         320,
         92
-       ]
-      },
-      {
-       "origin": [
-        145,
-        50.1
-       ],
-       "symbol": "_buttonReroll_hit",
-       "rect": [
-        1,
-        984,
-        291,
-        101
        ]
       },
       {
@@ -30553,9 +30568,9 @@
         110,
         64
        ],
-       "symbol": "_buttonShowAllLvl_down",
+       "symbol": "_buttonShowAllLvl_over",
        "rect": [
-        758,
+        792,
         312,
         220,
         128
@@ -30568,23 +30583,62 @@
        ],
        "symbol": "_buttonShowAllLvl_up",
        "rect": [
-        660,
-        893,
+        1,
+        940,
         220,
         128
        ]
       },
       {
        "origin": [
-        180,
-        37
+        110,
+        64
        ],
-       "symbol": "_shopButton_down",
+       "symbol": "_buttonShowAllLvl_down",
        "rect": [
-        294,
-        986,
+        660,
+        935,
+        220,
+        128
+       ]
+      },
+      {
+       "origin": [
+        221.85,
+        38
+       ],
+       "symbol": "_purgatoryButton_down",
+       "rect": [
+        223,
+        1029,
+        360,
+        76
+       ]
+      },
+      {
+       "origin": [
+        221,
+        37.5
+       ],
+       "symbol": "_purgatoryButton_over",
+       "rect": [
+        585,
+        1065,
         359,
-        75
+        76
+       ]
+      },
+      {
+       "origin": [
+        221,
+        37.5
+       ],
+       "symbol": "_purgatoryButton_up",
+       "rect": [
+        1,
+        1107,
+        359,
+        76
        ]
       },
       {
@@ -30594,47 +30648,8 @@
        ],
        "symbol": "_internsButton_down",
        "rect": [
-        655,
-        1023,
-        359,
-        75
-       ]
-      },
-      {
-       "origin": [
-        180,
-        37
-       ],
-       "symbol": "_shopButton_over",
-       "rect": [
-        294,
-        1063,
-        359,
-        75
-       ]
-      },
-      {
-       "origin": [
-        180,
-        37
-       ],
-       "symbol": "_shopButton_up",
-       "rect": [
-        655,
-        1100,
-        359,
-        75
-       ]
-      },
-      {
-       "origin": [
-        180,
-        38
-       ],
-       "symbol": "_internsButton_over",
-       "rect": [
-        1,
-        1140,
+        362,
+        1143,
         359,
         75
        ]
@@ -30646,23 +30661,101 @@
        ],
        "symbol": "_internsButton_up",
        "rect": [
-        362,
-        1177,
+        1,
+        1185,
         359,
         75
        ]
       },
       {
        "origin": [
-        155,
-        42
+        180,
+        38
        ],
-       "symbol": "_buttonInviteFriend_over",
+       "symbol": "_internsButton_over",
+       "rect": [
+        362,
+        1220,
+        359,
+        75
+       ]
+      },
+      {
+       "origin": [
+        180,
+        37
+       ],
+       "symbol": "_shopButton_up",
        "rect": [
         1,
-        1217,
-        310,
-        85
+        1262,
+        359,
+        75
+       ]
+      },
+      {
+       "origin": [
+        180,
+        37
+       ],
+       "symbol": "_shopButton_down",
+       "rect": [
+        362,
+        1297,
+        359,
+        75
+       ]
+      },
+      {
+       "origin": [
+        180,
+        37
+       ],
+       "symbol": "_shopButton_over",
+       "rect": [
+        1,
+        1339,
+        359,
+        75
+       ]
+      },
+      {
+       "origin": [
+        -515.5,
+        506.7
+       ],
+       "symbol": "BG_HardCurrency",
+       "rect": [
+        723,
+        1143,
+        255,
+        75
+       ]
+      },
+      {
+       "origin": [
+        58.95,
+        58.95
+       ],
+       "symbol": "_stressIcon_Medium",
+       "rect": [
+        882,
+        935,
+        118,
+        118
+       ]
+      },
+      {
+       "origin": [
+        58.45,
+        58.45
+       ],
+       "symbol": "_timeIcon_Large",
+       "rect": [
+        892,
+        751,
+        117,
+        117
        ]
       },
       {
@@ -30672,8 +30765,21 @@
        ],
        "symbol": "_buttonHeavenPlus_up",
        "rect": [
-        882,
-        893,
+        1,
+        336,
+        140,
+        94
+       ]
+      },
+      {
+       "origin": [
+        70,
+        46.7
+       ],
+       "symbol": "_buttonHellPlus_down",
+       "rect": [
+        723,
+        1220,
         140,
         94
        ]
@@ -30685,8 +30791,8 @@
        ],
        "symbol": "_buttonHellPlus_up",
        "rect": [
-        723,
-        1177,
+        865,
+        1220,
         140,
         94
        ]
