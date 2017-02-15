@@ -1,10 +1,28 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessAddBuilding;
-import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessMoveBuilding;
 import com.isartdigital.perle.game.managers.server.ServerFile;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
+
+
+typedef EventSuccessAddBuilding = {
+	@:optionnal var errorID:Int;
+	@:optional var startConstruction:Int;
+	@:optional var endConstruction:Int;
+	var iDClientBuilding:Int;
+}
+
+typedef EventSuccessMoveBuilding = {
+	@:optionnal var errorID:Int;
+	@:optionnal var oldX:Int;
+	@:optionnal var oldY:Int;
+	@:optionnal var oldRegionX:Int;
+	@:optionnal var oldRegionY:Int;
+	var iDClientBuilding:Int;
+}
+
 
 /**
  * ...

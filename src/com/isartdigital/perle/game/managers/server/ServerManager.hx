@@ -25,22 +25,6 @@ typedef EventSuccessConnexion = {
 	var ID:String;
 }
 
-typedef EventSuccessAddBuilding = {
-	@:optionnal var errorID:Int;
-	@:optional var startConstruction:Int;
-	@:optional var endConstruction:Int;
-	var iDClientBuilding:Int;
-}
-
-typedef EventSuccessMoveBuilding = {
-	@:optionnal var errorID:Int;
-	@:optionnal var oldX:Int;
-	@:optionnal var oldY:Int;
-	@:optionnal var oldRegionX:Int;
-	@:optionnal var oldRegionY:Int;
-	var iDClientBuilding:Int;
-}
-
 typedef EventSuccessAddRegion = {
 	var flag:Bool;
 	@:optional var message:String;
