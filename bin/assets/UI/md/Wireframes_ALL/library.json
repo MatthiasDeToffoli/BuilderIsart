@@ -7284,17 +7284,21 @@
      "keyframes": [
       {
        "index": 0,
-       "tweened": false,
-       "loc": [
-        -0.0375,
-        -75.825
-       ],
-       "ref": "_levelUP_BG",
-       "duration": 1,
        "pivot": [
-        532.5,
-        508.2375
-       ]
+        0,
+        2.3625
+       ],
+       "loc": [
+        -2.2875,
+        -168.0535
+       ],
+       "ref": "Ui_anim_main",
+       "scale": [
+        3.1679,
+        3.1678
+       ],
+       "duration": 1,
+       "tweened": false
       }
      ]
     },
@@ -7305,8 +7309,8 @@
        "index": 0,
        "tweened": false,
        "loc": [
-        -10.4625,
-        -267.075
+        -10.5375,
+        -258.9375
        ],
        "ref": "_levelup_title",
        "duration": 1,
@@ -8194,36 +8198,6 @@
   },
   {
    "layers": [
-    {
-     "name": "HeavenButton",
-     "keyframes": [
-      {
-       "loc": [
-        -18.075,
-        -26.2875
-       ],
-       "ref": "~ButtonHeavenPlus",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "HellButton",
-     "keyframes": [
-      {
-       "loc": [
-        549.75,
-        -26.25
-       ],
-       "ref": "~ButtonHellPlus",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
     {
      "name": "UpgradeTimer",
      "keyframes": [
@@ -16376,112 +16350,6 @@
      "name": "Layer 1",
      "keyframes": [
       {
-       "ref": "_buttonHeavenPlus_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "pivot": [
-        52.5,
-        34.9875
-       ]
-      },
-      {
-       "ref": "_buttonHeavenPlus_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false,
-       "pivot": [
-        58.125,
-        38.775
-       ]
-      },
-      {
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonHeavenPlus_down",
-       "scale": [
-        0.9086,
-        0.9086
-       ],
-       "duration": 1,
-       "pivot": [
-        52.5,
-        34.9875
-       ]
-      },
-      {
-       "ref": "_buttonHeavenPlus_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false,
-       "pivot": [
-        52.5,
-        34.9875
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~ButtonHeavenPlus"
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "ref": "_buttonHellPlus_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false,
-       "pivot": [
-        52.5,
-        35.025
-       ]
-      },
-      {
-       "ref": "_buttonHellPlus_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false,
-       "pivot": [
-        58.125,
-        38.775
-       ]
-      },
-      {
-       "ref": "_buttonHellPlus_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false,
-       "pivot": [
-        52.5,
-        35.025
-       ]
-      },
-      {
-       "ref": "_buttonHellPlus_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false,
-       "pivot": [
-        52.5,
-        35.025
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~ButtonHellPlus"
-  },
-  {
-   "baseClass": "flash.display.SimpleButton",
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
        "ref": "_buttonInviteFriend_up",
        "duration": 1,
        "index": 0,
@@ -20902,7 +20770,7 @@
    "id": "~_unlock"
   }
  ],
- "md5": "c965ab10ecbf61a3fd5dc4720a97b21d",
+ "md5": "9ed4e86638bfee66925a4d7b23259ca6",
  "isNamespaced": false,
  "textureGroups": [
   {
