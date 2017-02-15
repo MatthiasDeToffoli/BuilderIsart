@@ -107,7 +107,7 @@ class MouseManager {
 			moveGameContainer(positionInGame);
 	}
 	
-	public static inline var MAX_DURATION_FOR_SHORT_CLICK:Int = 500; // milliseconds
+	public static inline var MAX_DURATION_FOR_SHORT_CLICK:Int = 420; // milliseconds
 	private var mouseDownDuration:Int = 0; // milliseconds
 	
 	/**
