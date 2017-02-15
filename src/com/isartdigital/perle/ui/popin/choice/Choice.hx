@@ -72,7 +72,7 @@ class Choice extends SmartPopinExtended
 
 	// card slide position properties
 	private var mousePos:Point;
-	private var imgPos:Point;
+	private var imgRot:Float;
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
@@ -97,7 +97,7 @@ class Choice extends SmartPopinExtended
 		getComponents();
 		
 		choiceType = ChoiceType.NONE;
-		imgPos = new Point(choiceCard.position.x, choiceCard.position.y);
+		imgRot = choiceCard.rotation;
 		isOpen = true;
 		
 		addListeners();
@@ -288,13 +288,13 @@ class Choice extends SmartPopinExtended
 		
 		// move fateCard && get choiceType
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
-			if (Math.abs(diff) > DIFF_MAX) choiceType = ChoiceType.HELL;
+			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
+			if (choiceCard.rotation > imgRot + Math.PI / 32) choiceType = ChoiceType.HELL;
 			else choiceType = ChoiceType.NONE;
 		}
 		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
-			if (Math.abs(diff) > DIFF_MAX) choiceType = ChoiceType.HEAVEN;
+			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
+			if (choiceCard.rotation < imgRot - Math.PI / 32) choiceType = ChoiceType.HEAVEN;
 			else choiceType = ChoiceType.NONE;
 		}
 	}
@@ -304,7 +304,7 @@ class Choice extends SmartPopinExtended
 	 */
 	private function replaceCard():Void
 	{	
-		choiceCard.position.set(imgPos.x, imgPos.y);
+		choiceCard.rotation = imgRot;
 		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
 		
 		if (choiceType != ChoiceType.NONE) {

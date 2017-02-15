@@ -350,6 +350,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_CANCEL:String = "CloseButton";
 	public static inline var PURGATORY_POPIN_SHOP:String = "ShopButton";
 	public static inline var PURGATORY_POPIN_INTERN:String = "InternsButton";
+	public static inline var PURGATORY_POPIN_CARD:String = "FateCard";
 	public static inline var PURGATORY_POPIN_HEAVEN_BUTTON:String = "HeavenButton";
 	public static inline var PURGATORY_POPIN_INVITE_BUTTON:String = "InviteButton";
 	public static inline var PURGATORY_POPIN_HELL_BUTTON:String = "HellButton";

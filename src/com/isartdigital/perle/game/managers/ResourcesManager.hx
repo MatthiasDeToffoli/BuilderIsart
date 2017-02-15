@@ -324,7 +324,7 @@ class ResourcesManager
 	 * place a soul in a house
 	 * @param	pType this help to choos where we want to place soul
 	 */
-	public static function judgePopulation(pType:Alignment):Void{
+	public static function judgePopulation(pType:Alignment):Bool{
 		var lPopulation:Population, lGenerator:Generator;
 		
 		for (lGenerator in myResourcesData.generatorsMap[GeneratorType.soul])
@@ -335,8 +335,10 @@ class ResourcesManager
 						lGenerator.desc.quantity--;
 						emitPopulationChangementEvent(lPopulation);
 						generatorEvent.emit(GENERATOR_EVENT_NAME, { id:lGenerator.desc.id } );
-						return;
+						return true;
 					}
+					
+		return false;
 	}
 	
 	public static function emitPopulationChangementEvent(pPopulation:Population):Void {
