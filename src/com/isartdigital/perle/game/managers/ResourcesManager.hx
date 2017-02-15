@@ -104,7 +104,7 @@ class ResourcesManager
 		totalResourcesInfoArray = [
 			{value: 1, isLevel: true},
 			{value: 20000, isLevel: false, type: GeneratorType.soft },
-			{value: 100, isLevel: false, type: GeneratorType.hard},
+			{value: 0, isLevel: false, type: GeneratorType.hard},
 			{value: 0, isLevel: false, type: GeneratorType.goodXp},
 			{value: 0, isLevel: false, type: GeneratorType.badXp},
 			{value: 0, isLevel: false, type: GeneratorType.soulGood},
@@ -135,7 +135,7 @@ class ResourcesManager
 		pMapT[GeneratorType.soft] = 22000;
 
 		pMapG[GeneratorType.hard] = new Array<Generator>();
-		pMapT[GeneratorType.hard] = 100; //@ToDo Temporaire, juste pour avoir des ressources au début
+		pMapT[GeneratorType.hard] = 0; //@ToDo Temporaire, juste pour avoir des ressources au début
 		
 		pMapG[GeneratorType.badXp] = new Array<Generator>();
 		pMapT[GeneratorType.badXp] = 0;

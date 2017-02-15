@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin.accelerate;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -25,7 +26,7 @@ class AcceleratePopin extends SmartPopinExtended
 	
 	public function new() 
 	{
-		
+		Hud.getInstance().hide();
 		super(AssetName.CONFIRMATION_ACCELERATE_POPIN);
 		actionTxt = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_TEXT_ACTION), TextSprite);
 		btn = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_BTN), SmartButton);

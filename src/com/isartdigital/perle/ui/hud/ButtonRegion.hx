@@ -50,7 +50,6 @@ class ButtonRegion extends SmartButton
 	
 	public function new(pPos:Point,pWorldPos:Point) 
 	{
-		
 		super(AssetName.BTN_BUY_REGION);
 		firstCasePos = pPos;
 		worldMapPos = pWorldPos;
@@ -58,6 +57,16 @@ class ButtonRegion extends SmartButton
 		Interactive.addListenerRewrite(this, rewriteTxt);
 		rewriteTxt();
 		RegionManager.eRegionCreate.on(RegionManager.REGION_CREATED, onRegionCreate);
+	}
+	
+	public function hide():Void {
+		alpha = 0.2;
+		interactive = false;
+	}
+
+	public function show():Void {
+		interactive = true;
+		alpha = 1;
 	}
 	
 	override function _click(pEvent:EventTarget = null):Void 

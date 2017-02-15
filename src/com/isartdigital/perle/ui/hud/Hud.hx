@@ -80,8 +80,10 @@ class Hud extends SmartScreen
 	private var btnOptions:SmartButton; // todo 
 	private var btnIron:SmartButton;
 	private var btnWood:SmartButton;
-	private var btnSoft:SmartButton;
-	private var btnHard:SmartButton;
+	public var btnSoft:SmartButton;
+	public var softMc:Dynamic;
+	public var btnHard:SmartButton;
+	public var hardMc:Dynamic;
 	private var containerEffect:Container;
 	private var movingBuilding:SmartComponent;	
 	private var basePosXMasqueXpHell:Float;
@@ -284,8 +286,8 @@ class Hud extends SmartScreen
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		var ironMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
-		var softMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
-		var hardMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
+		softMc = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_SOFT);
+		hardMc = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_HARD);
 		
 		btnIron = cast(SmartCheck.getChildByName(woodMc, AssetName.HUD_BTN_IRON), SmartButton);
 		btnWood = cast(SmartCheck.getChildByName(ironMc, AssetName.HUD_BTN_WOOD), SmartButton);
@@ -452,6 +454,7 @@ class Hud extends SmartScreen
 		if (!isHide) {
 			GameStage.getInstance().getHudContainer().removeChild(this);
 			removeListenersClick();
+			//ButtonRegion.hide();
 			isHide = true;
 		}
 	}
@@ -463,6 +466,7 @@ class Hud extends SmartScreen
 		if (isHide) {	
 			GameStage.getInstance().getHudContainer().addChild(this);
 			isHide = false;
+			//ButtonRegion.show();
 		}
 		
 		addListenersOnClick();

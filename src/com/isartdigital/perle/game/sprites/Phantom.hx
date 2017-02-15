@@ -383,7 +383,7 @@ class Phantom extends Building {
 			
 	}*/
 	
-	public static function firstBuildForFtue():Void {
+	public static function firstBuildForFtue():VBuilding {
 		var newId = IdManager.newId();
 		var tTime:Float = Date.now().getTime();
 		var lBuilding:VBuilding;
@@ -404,6 +404,8 @@ class Phantom extends Building {
 		
 		cast(lBuilding, VHouseHell).addForFtue();
 		Building.sortBuildings();
+		
+		return lBuilding;
 	}
 	
 	private function applyChange ():Void {

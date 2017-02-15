@@ -67,4 +67,9 @@ typedef FTUEStep = {
 	@optional var ifPlayerCanWait:Bool;
 	@optional var boostBuilding:Bool;
 	@optional var ifAlreadylevel2:Bool;
+	@optional var shouldBlockHud:Bool;
+	
+	//Juicy
+	@optional var putCenterRegionHeaven:Bool;
+	@optional var lightOn:Bool;
 }

@@ -2,6 +2,8 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.sprites.Phantom;
+import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.dialogue.Dialogue;
@@ -10,6 +12,7 @@ import com.isartdigital.perle.ui.hud.dialogue.DialogueScenario;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -19,6 +22,7 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
 import js.Browser;
 import pixi.core.display.DisplayObject;
+import pixi.core.math.Point;
 
 
 /**
@@ -31,7 +35,12 @@ class DialogueManager
 	private static inline var ALPHA_OFF:Float = 0.2;
 	private static inline var FTUE_SCENARIO:String = "assets/ftue2_bg.png";
 	private static inline var FTUE_ACTION:String = "assets/ftue_bg.png";
+	private static var firstBuilding:VBuilding;
+	private static var firstBatPoint:Point;
+	private static var purgatoryPoint:Point;
+	private static var heavenCenter:Point;
 	private static var steps:Array<FTUEStep>;
+	
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
@@ -89,6 +98,12 @@ class DialogueManager
 			if (steps[lSave].haveToMakeAllChoice) {
 				Hud.getInstance().hide();
 				UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+			}
+			
+			else if (steps[lSave].clickOnCard) {
+				Hud.getInstance().hide();
+				UIManager.getInstance().openPopin(ShopPopin.getInstance());
+				ShopPopin.getInstance().init(ShopTab.Building);
 			}
 		}
 		dialogueSaved = 0;
@@ -180,7 +195,6 @@ class DialogueManager
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
 		
 		//Effects : 
-		
 		//Actions
 		if (steps[dialogueSaved].isAction) {
 			//Flag vars
@@ -228,8 +242,10 @@ class DialogueManager
 			else if (steps[dialogueSaved].haveToRecolt != null) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepRecolt = true;
+				//CameraManager.placeCamera(firstBatPoint);
 				Hud.getInstance().hide();
 				Hud.getInstance().show();
+				Hud.isHide = true;
 			}
 			
 			//Dialogue + construc
@@ -244,8 +260,10 @@ class DialogueManager
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].openPurgatory) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepOpenPurgatory = true;
+				//CameraManager.placeCamera(purgatoryPoint);
 				Hud.getInstance().hide();
 				Hud.getInstance().show();
+				Hud.isHide = true;
 			}
 			
 			//Dialogue + click on card
@@ -254,10 +272,19 @@ class DialogueManager
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
 			}
 			
+			if (steps[dialogueSaved].putCenterRegionHeaven) {
+				//CameraManager.placeCamera(heavenCenter);
+				Hud.isHide = true;
+			}
+			
+			
 			if (steps[dialogueSaved].clickOnCard)
 				ftueStepClickOnCard = true;
-			else if (steps[dialogueSaved].haveToPutBuilding)
+			else if (steps[dialogueSaved].haveToPutBuilding) {
+				Hud.getInstance().show();
+				Hud.getInstance().hide();
 				ftueStepPutBuilding = true;
+			}
 			else if (steps[dialogueSaved].jugeSouls)
 				ftueStepSlideCard = true;
 			else if (steps[dialogueSaved].closePurgatory)
@@ -281,17 +308,27 @@ class DialogueManager
 		else if (steps[dialogueSaved].arrowRotation != null) FocusManager.getInstance().setFocus(steps[dialogueSaved].item, steps[dialogueSaved].arrowRotation);
 		
 		//GAINS : 
-		if (steps[dialogueSaved].gold !=null)
+		if (steps[dialogueSaved].gold != null) {
 			ResourcesManager.gainResources(GeneratorType.soft, steps[dialogueSaved].gold);
-			
-		if (steps[dialogueSaved].karma !=null)
+			Hud.getInstance().softMc.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().softMc);
+			Hud.getInstance().btnSoft.interactive = false;
+		}
+		
+		if (steps[dialogueSaved].karma != null && ResourcesManager.getTotalForType(GeneratorType.hard)==0) {
 			ResourcesManager.gainResources(GeneratorType.hard, steps[dialogueSaved].karma);	
+			Hud.getInstance().hardMc.alpha = 1;
+			Hud.getInstance().btnHard.interactive = false;
+		}
 			
 		if (steps[dialogueSaved].hellEXP !=null)
 			ResourcesManager.gainResources(GeneratorType.badXp, steps[dialogueSaved].hellEXP);	
 			
 		if (steps[dialogueSaved].heavenEXP !=null)
-			Timer.delay(giveHeavenExp, 500);
+			Timer.delay(giveHeavenExp, 200);
+			
+		if (steps[dialogueSaved].shouldBlockHud)
+			Hud.isHide = true;
 	}
 	
 	
@@ -300,7 +337,7 @@ class DialogueManager
 	 * Function called if it's a end of a Dialogue
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
-	public static function endOfaDialogue(?doNotNextStep:Bool,?pCloseHud:Bool):Void {
+	public static function endOfaDialogue(?doNotNextStep:Bool, ?pCloseHud:Bool):Void {
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
 				closeDialoguePoppin = false;
@@ -372,6 +409,7 @@ class DialogueManager
 			removeDialogue();
 			return;
 		}
+		
 		nextStep();
 	}
 	
@@ -409,7 +447,7 @@ class DialogueManager
 	 * Create first House
 	 */
 	private static function createFirstHouse() {
-		Phantom.firstBuildForFtue();
+		var lBuilding:VBuilding = Phantom.firstBuildForFtue();
 	}
 	
 	/**
