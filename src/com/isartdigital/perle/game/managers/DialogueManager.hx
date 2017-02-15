@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -174,6 +175,10 @@ class DialogueManager
 	public static function nextStep(pTarget:DisplayObject = null): Void {
 		if (dialogueSaved >= steps.length) return;
 		if (steps[dialogueSaved] == null) return;
+		
+		//DeltaDNA
+		DeltaDNAManager.sendStepFTUE(dialogueSaved);
+		
 		//Effects : 
 		
 		//Actions
