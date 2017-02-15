@@ -18,6 +18,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -34,6 +35,7 @@ import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
 

@@ -405,7 +405,8 @@ class AssetName{
 	public static inline var HUD_MOVNG_BUILDING_DESKTOP:String = /*HUD_PREFIX + */"MoveBuilding_Desktop";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CANCEL:String = "Button_CancelMovement";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CONFIRM:String = "Button_ConfirmMovement";
-	public static inline var HUD_XP_GAUGE_MASK:String = "bgMask";
+	public static inline var HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER:String = "HUD_Xp_Bar_Heaven";
+	public static inline var HUD_XP_GAUGE_MASK_HELL_CONTAINER:String = "HUD_Xp_Bar_Hell";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";
@@ -493,9 +494,7 @@ class AssetName{
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
-	public static inline var BACKGROUND_UNDER_HEAVEN = "BG_Under_heaven";
-	public static inline var BACKGROUND_UNDER_HELL = "hell_bg_free";
-	public static inline var BACKGROUND_UNDER_STYX = "BG_Under_Styx";
+	public static inline var BACKGROUND_UNDER:String = "BG_Galaxy";
 	
 	//button production assets
 	
