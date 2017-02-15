@@ -89,7 +89,7 @@ class UIBuilder
 				
 				Reflect.fields(lKeyFrame.data).map(function (p) {
 					if (p != "UIPosition_Desktop" && p != "UIPosition")
-						Debug.error("Syntax error in persistent data ? => \"" + p + "\"");
+						Debug.error("Syntax error in persistent data ? => \"" + p + "\"" + " in layer name: "+ lLayer.name +" in pId: "+ pId);
 				});
 				
 				if (Reflect.hasField(lKeyFrame.data,"UIPosition_"+DeviceCapabilities.system)) lUIPosition = Reflect.field(lKeyFrame.data,"UIPosition_"+DeviceCapabilities.system);
