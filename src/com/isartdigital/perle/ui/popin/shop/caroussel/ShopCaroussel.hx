@@ -60,6 +60,22 @@ class ShopCaroussel extends SmartComponent {
 			createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
 		else
 			Debug.error("No cards to show, it must be setted before super.init()");
+			
+		if (cardsToShow.length <= maxCardsVisible)
+			destroyArrows();
+	}
+	
+	private function destroyArrows ():Void {
+		var lArrowBG:UISprite = cast(SmartCheck.getChildByName(this, "NavigArrowBG"), UISprite);
+		
+		removeChild(lArrowBG);
+		removeChild(arrowRight);
+		removeChild(arrowLeft);
+		lArrowBG.destroy();
+		arrowRight.destroy();
+		arrowLeft.destroy();
+		arrowRight = null;
+		arrowLeft = null;
 	}
 	
 	public function scrollNext ():Void {

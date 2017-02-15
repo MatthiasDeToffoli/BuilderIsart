@@ -23,7 +23,7 @@ import pixi.core.math.Point;
 class ShopCarousselInterns extends ShopCaroussel{
 
 	public static var internsNameList(default, never):Array<String> = [];
-		
+	
 	private var btnReroll:SmartButton;
 	
 	//Hell Card
@@ -61,6 +61,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 
 	override public function init (pPos:Point, pTab:ShopTab):Void {
 		super.init(pPos, myEnum);
+	}
+	
+	override function destroyArrows():Void {
+		return null;
 	}
 	
 	/**
