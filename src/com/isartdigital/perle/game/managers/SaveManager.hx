@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -225,11 +226,11 @@ class SaveManager {
 	}
 	
 	public static function saveNewBuilding (pDescription:TileDescription):Void {
-		ServerManager.addBuilding(pDescription);
+		ServerManagerBuilding.addBuilding(pDescription);
 	}
 	
 	public static function saveMoveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
-		ServerManager.moveBuilding(pOldDescription, pDescription);
+		ServerManagerBuilding.moveBuilding(pOldDescription, pDescription);
 	}
 	
 	public static function saveUpgradeBuilding (pDescription:TileDescription):Void {
