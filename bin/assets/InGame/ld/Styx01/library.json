@@ -6,29 +6,29 @@
     {
      "textures": [
       {
-       "symbol": "Styx_gauche",
-       "rect": [
-        1,
-        1,
-        401,
-        643
-       ],
-       "origin": [
-        200.25,
-        321.5
-       ]
-      },
-      {
        "symbol": "Styx_droit",
        "rect": [
-        404,
         1,
-        366,
-        643
+        1,
+        409,
+        644
        ],
        "origin": [
         183,
         321.5
+       ]
+      },
+      {
+       "symbol": "Styx_gauche",
+       "rect": [
+        412,
+        1,
+        409,
+        644
+       ],
+       "origin": [
+        249.8,
+        298
        ]
       }
      ],
@@ -47,17 +47,17 @@
      "name": "Calque 1",
      "keyframes": [
       {
+       "pivot": [
+        249.775,
+        298
+       ],
        "duration": 1,
-       "tweened": false,
        "loc": [
         -405.275,
         289.325
        ],
+       "tweened": false,
        "index": 0,
-       "pivot": [
-        200.25,
-        321.5
-       ],
        "ref": "Styx_gauche"
       }
      ]
@@ -66,17 +66,17 @@
      "name": "Calque 2",
      "keyframes": [
       {
-       "duration": 1,
-       "tweened": false,
-       "loc": [
-        -22.025,
-        289.325
-       ],
-       "index": 0,
        "pivot": [
         183,
         321.5
        ],
+       "duration": 1,
+       "loc": [
+        -64.025,
+        313.325
+       ],
+       "tweened": false,
+       "index": 0,
        "ref": "Styx_droit"
       }
      ]
@@ -84,5 +84,5 @@
    ]
   }
  ],
- "md5": "8479ad12b46bd6c75e53e89817c64568"
+ "md5": "cfcf43dbfd93f8a2a0c866d81360e78a"
 }
