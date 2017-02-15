@@ -5,6 +5,7 @@ import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
+import js.html.Event;
 
 /**
  * ...
@@ -12,6 +13,9 @@ import js.Browser;
  */
 class DeltaDNAManager{
 
+	// ##############################################################
+    // INIT, GAME_STARTED, NEW_PLAYER, CLIENT_DEVICE, GAME_ENDED
+    // ##############################################################
 	
 	public static function sendConnexionEvents (pEvent:EventSuccessConnexion):Void {
 		DeltaDNA.init(
@@ -33,14 +37,42 @@ class DeltaDNAManager{
 	
 	public static function listenToCloseGame ():Void {
 		if (DeviceCapabilities.isCocoonJS)
-			untyped Browser.window.Cocoon.App.on("suspended", onUnload);
+			untyped Browser.window.Cocoon.App.on("suspended", onUnload); // todo : test.
 		else
-			Browser.window.onunload = onUnload;
+			Browser.window.onbeforeunload = onUnload;
 	}
 	
-	private static function onUnload ():Void {
+	private static function onUnload (pEvent:Event = null):String {
 		DeltaDNA.addEvent(DeltaDNA.GAME_ENDED);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+		return null;
 	}
+	
+	
+	// ##############################################################
+    // FTUE, 
+    // ##############################################################
+	
+	private static var stepFTUETStartTimeStamp:Float=0;
+	
+	public static function sendStepFTUE (pStepIndex:Int):Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.FTUE_STEP, {
+			index:pStepIndex,
+			timeSpent: Math.round(Date.now().getTime() - stepFTUETStartTimeStamp)
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+		
+		stepFTUETStartTimeStamp = Date.now().getTime();
+	}
+	
+	public static function sendIsartPointExpense (pIdPack:Int, pPrice:Float):Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.EXPENSE_ISART_POINT, {
+			packID:pIdPack,
+			playerLevel:ResourcesManager.getLevel(),
+			pricePaid:pPrice
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
 	
 }

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -102,6 +103,7 @@ class CarouselCardBundle extends CarouselCard{
 		
 		closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
+		DeltaDNAManager.sendIsartPointExpense(myConfig.iD, myConfig.priceIP);
 	}
 	
 	private function setPicture (pPicture:UISprite, pIconLevel:Int, lPictureSwitch:Map<Int,String>):Void {
