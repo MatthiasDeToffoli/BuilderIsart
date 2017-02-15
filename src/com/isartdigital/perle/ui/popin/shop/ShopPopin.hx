@@ -82,10 +82,10 @@ class ShopPopin extends SmartPopinExtended {
 		var lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		var lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		
-		lSCtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.soft));
-		lHCtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.hard));
-		lmarbretext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell));
-		lwoodtext.text = Std.string(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
+		lSCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.soft));
+		lHCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.hard));
+		lmarbretext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell));
+		lwoodtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		

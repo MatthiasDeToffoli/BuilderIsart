@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.BuyManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -162,7 +163,7 @@ class CarouselCardPack extends CarouselCard{
 	}
 
 	private function setGain (pInt:Int):Void {
-		gain.text = addkToInt(cast(pInt, Float));
+		gain.text = ResourcesManager.shortenValue(pInt);
 	}
 	
 	private function setIconPrice (pGainType:GeneratorType):Void {

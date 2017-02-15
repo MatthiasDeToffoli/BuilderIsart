@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -52,7 +53,7 @@ class CCUBuilding extends CarouselCardUnlock{
 	private function setPrice (pPrices:Map<GeneratorType, Int>):Void {
 		
 		// hard currency is an alternative... not supported yet ! (only for altar)
-		textPriceSoftHard.text = Std.string(pPrices[GeneratorType.soft]);
+		textPriceSoftHard.text = ResourcesManager.shortenValue(pPrices[GeneratorType.soft]);
 		changeIconSpawner(AssetName.PROD_ICON_SOFT_SMALL, iconSoftHard);
 		setWoodIronPrice(
 			pPrices[GeneratorType.buildResourceFromParadise],
@@ -77,7 +78,7 @@ class CCUBuilding extends CarouselCardUnlock{
 			//pTextSprite = null;
 		}
 		else {
-			pTextSprite.text = Std.string(addkToInt(pPrice)); 
+			pTextSprite.text = ResourcesManager.shortenValue(pPrice); 
 		}
 	}
 	

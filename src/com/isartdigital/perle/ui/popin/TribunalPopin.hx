@@ -240,13 +240,13 @@ class TribunalPopin extends SmartPopinExtended
 	private function rewriteUpgradeTxt(){
 		var upgradePrice:TextSprite = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_SOFT), TextSprite);
 		var tribunalConfig:TableTypeBuilding = GameConfig.getBuildingByName(VTribunal.getInstance().tileDesc.buildingName, VTribunal.getInstance().tileDesc.level + 1); 
-		upgradePrice.text = tribunalConfig.costGold + "";
+		upgradePrice.text = ResourcesManager.shortenValue(tribunalConfig.costGold);
 		
 		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_STONE), TextSprite);
-		upgradePrice.text = tribunalConfig.costIron + "";
+		upgradePrice.text = ResourcesManager.shortenValue(tribunalConfig.costIron);
 		
 		upgradePrice = cast(btnUpgrade.getChildByName(AssetName.PURGATORY_POPIN_UPGRADE_PRICE_WOOD), TextSprite);
-		upgradePrice.text = tribunalConfig.costWood + "";
+		upgradePrice.text = ResourcesManager.shortenValue(tribunalConfig.costWood);
 	}
 	
 	/**

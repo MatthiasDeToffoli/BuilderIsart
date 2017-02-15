@@ -501,6 +501,23 @@ class ResourcesManager
 	}
 	//} endregion
 	
+	public static function shortenValue (pFloat:Float):String {
+		var suffix:String = "";
+		if (pFloat >= 1000000) {
+			pFloat /= 100000;
+			pFloat = Math.floor(pFloat);
+			pFloat /=10;
+			suffix = "M";
+		}
+		else if (pFloat >= 10000) {
+			pFloat /= 100;
+			pFloat = Math.floor(pFloat);
+			pFloat /= 10;
+			suffix = "k";
+		}
+		return Std.string(pFloat + suffix);
+	}
+	
 	/**
 	 * add a generator's quantity to the total coresponding and reset the quantity at 0
 	 * @param pDesc the description of the generator target

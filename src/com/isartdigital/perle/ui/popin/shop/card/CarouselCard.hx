@@ -71,11 +71,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		pSpawner = lSprite;
 	}
 	
-	private function addkToInt (pFloat:Float):String {
-		return pFloat > 1000 ? Std.string(pFloat / 1000) + "k" : Std.string(pFloat);
-	}
-	
-	
 	override public function destroy():Void {
 		if (parent != null)
 			parent.removeChild(this);

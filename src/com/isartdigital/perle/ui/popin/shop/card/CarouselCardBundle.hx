@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -115,7 +116,7 @@ class CarouselCardBundle extends CarouselCard{
 	
 	private function setGain (pTextSprite:TextSprite, pIcon:UISprite, pValue:Int):Void {
 		if (pValue != null) {
-			pTextSprite.text = addkToInt(pValue);
+			pTextSprite.text = ResourcesManager.shortenValue(pValue);
 		} else {
 			removeChild(pTextSprite);
 			removeChild(pIcon);

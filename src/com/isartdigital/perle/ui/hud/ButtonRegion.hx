@@ -74,8 +74,8 @@ class ButtonRegion extends SmartButton
 		var priceTxt:TextSprite = cast(getChildByName(AssetName.BTN_BUY_REGION_PRICE),TextSprite);
 		var config:TableConfig = GameConfig.getConfig();
 		var price:Float = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[regionType]);
-		if (Math.abs(worldMapPos.x) == 1) price *= config.factorRegionNearStyx;
-		priceTxt.text = price + "";
+		
+		priceTxt.text = ResourcesManager.shortenValue(price);
 	}
 	
 	private function onRegionCreate(pData:Dynamic):Void {
