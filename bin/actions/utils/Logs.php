@@ -47,7 +47,7 @@ class Logs
             static::PLAYER_ID => $pPlayerID,
             static::MODULE => $_POST[KEY_POST_FILE_NAME].".php",
             static::STATUS => $pStatus,
-            static::MESSAGE => $pErrorCode != null ? static::errorCodeToMessage($pErrorCode) : null,
+            static::MESSAGE => $pErrorCode != null ? static::errorCodeToMessage($pErrorCode) : "-",
 			static::DATA => substr(static::jsonEncodeNoConflictSQLQuery($pData), 0, static::MAX_CHARACTER_FOR_DATA)
         ]);
     }
@@ -57,17 +57,19 @@ class Logs
             static::PLAYER_ID => $pPlayerID,
             static::MODULE => Utils::getSinglePostValue(KEY_POST_FILE_NAME).".php",
             static::STATUS => $pStatus,
-            static::MESSAGE => $pErrorCode != null ? static::errorCodeToMessage($pErrorCode) : null,
+            static::MESSAGE => $pErrorCode != null ? static::errorCodeToMessage($pErrorCode) : "-",
             static::DATA => substr(static::jsonEncodeNoConflictSQLQuery($pData), 0, static::MAX_CHARACTER_FOR_DATA)
         ]);
     }
 
     /**
-     * change the " in the text, or syntax error in sql :/
+     * remove the ' inside value
+     * change the " outside whit ', or syntax error in sql :/
      * todo : faire champs JSON en bdd ?
      */
     private static function jsonEncodeNoConflictSQLQuery ($pData) {
-        return str_replace('"', "'", json_encode($pData));
+        $lfirst = str_replace("'", "", json_encode($pData));
+        return str_replace('"', "'", $lfirst);
     }
 
     private static function errorCodeToMessage ($pErrorCode) {

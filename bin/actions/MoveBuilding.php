@@ -7,6 +7,8 @@
 
 namespace actions;
 
+use actions\utils\FacebookUtils as FacebookUtils;
+
 include_once("utils/Utils.php");
 include_once("utils/Logs.php");
 include_once("ValidMoveBuilding.php");
@@ -36,7 +38,7 @@ class MoveBuilding
 
         Utils::updateSetWhere(
             static::TABLE_BUILDING,
-            static::getFieldsToSET(ValideMoveBuilding::validate($lInfo)),
+            static::getFieldsToSET(ValidMoveBuilding::validate($lInfo)),
             static::getSQLWhereOldPos($lInfo)
         );
         // todo : $lInfo == lInfo unsetted ? (the more you have for log the better)
@@ -89,7 +91,7 @@ class MoveBuilding
     private static function getInfo () {
         return [
             static::ID_CLIENT_BUILDING => Utils::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
-            static::ID_PLAYER => 55, //getId(), // todo : temporaire....
+            static::ID_PLAYER => FacebookUtils::getId(),
             static::OLD_REGION_X => Utils::getSinglePostValueInt(static::OLD_REGION_X),
             static::OLD_REGION_Y => Utils::getSinglePostValueInt(static::OLD_REGION_Y),
             static::OLD_X => Utils::getSinglePostValueInt(static::OLD_X),

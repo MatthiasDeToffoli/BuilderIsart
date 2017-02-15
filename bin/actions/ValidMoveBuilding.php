@@ -10,7 +10,7 @@ namespace actions;
 include_once("utils/Utils.php");
 include_once("utils/Send.php");
 
-class ValideMoveBuilding
+class ValidMoveBuilding
 {
     const TABLE_BUILDING = "Building";
     const TABLE_BUILDING_ID_TYPE_BUILDING = "IDTypeBuilding";

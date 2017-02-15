@@ -8,7 +8,7 @@
 
 namespace actions;
 
- use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\FacebookUtils as FacebookUtils;
 
 include_once("utils/Utils.php");
 include_once("utils/Logs.php");
@@ -57,7 +57,7 @@ class AddBuilding
         return [
             static::ID_CLIENT_BUILDING => Utils::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
             static::ID_TYPE_BUILDING => Utils::getSinglePostValueInt(static::ID_TYPE_BUILDING),
-            static::ID_PLAYER => 55, //getId(), // todo : temporaire....
+            static::ID_PLAYER => FacebookUtils::getId(),
             static::LEVEL => 1,
             static::NB_RESOURCE => 0,
             static::NB_SOUL => 0,
