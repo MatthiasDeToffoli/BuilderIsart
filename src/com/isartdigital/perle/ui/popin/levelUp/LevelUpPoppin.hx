@@ -67,7 +67,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		
 		currentImage = SmartPopinExtended.setImage(img, BuildingName.getAssetName(pName, pLevel)); 
 		
-		txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
+		//txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
 		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
 		//congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
 		
@@ -126,7 +126,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		//typeUnlock = cast(getChildByName(AssetName.LEVELUP_POPPIN_TYPE), TextSprite);
 		
 		//congrats = cast(getChildByName(AssetName.LEVELUP_POPPIN_CONGRATS), TextSprite);
-		txtNew = cast(getChildByName(AssetName.LEVELUP_POPPIN_TEXT_NEW), TextSprite);
+		//txtNew = cast(getChildByName(AssetName.LEVELUP_POPPIN_TEXT_NEW), TextSprite);
 		
 		img = cast(SmartCheck.getChildByName(unlock, AssetName.LEVELUP_POPPIN_IMG), UISprite);
 		

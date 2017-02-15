@@ -22,6 +22,8 @@ class Intern
 	public static var internsListArray:Array<InternDescription>;
 	public static var internsListAlignment:Map<Alignment, Array<InternDescription>>;
 	public static var internsMap:Map<Alignment, Array<InternDescription>>;
+	public static var internsToUnlockHeaven:Map<Int, Array<InternDescription>>;
+	public static var internsToUnlockHell:Map<Int, Array<InternDescription>>;
 
 	// UI text
 	public static inline var TXT_STRESS:String = "Stress";
@@ -58,6 +60,9 @@ class Intern
 		internsMap = new Map<Alignment, Array<InternDescription>>();
 		internsMap.set(Alignment.hell, new Array<InternDescription>()); 
 		internsMap.set(Alignment.heaven, new Array<InternDescription>());
+		
+		internsToUnlockHeaven = new Map<Int, Array<InternDescription>>();
+		internsToUnlockHell = new Map<Int, Array<InternDescription>>();
 		
 		getJson();
 	}
@@ -142,11 +147,27 @@ class Intern
 				idEvent: 0,
 				portrait: tmpInterns[i].portrait
 			};
-			if (align == Alignment.heaven) internsMap[Alignment.heaven].push(newIntern);
-			else internsMap[Alignment.hell].push(newIntern);
+			if (align == Alignment.heaven){
+				internsMap[Alignment.heaven].push(newIntern);
+				setInternsArrayUnlockHeaven(newIntern);
+			}
+			else {
+				internsMap[Alignment.hell].push(newIntern);
+				setInternsArrayUnlockHell(newIntern);
+			}
 		}
 		
 		ServerManager.InternAction(DbAction.GET_SPE_JSON);
+	}
+	
+	private static function setInternsArrayUnlockHeaven(pIntern:InternDescription):Void{
+		if (internsToUnlockHeaven[pIntern.unlockLevel] == null) internsToUnlockHeaven[pIntern.unlockLevel] = new Array<InternDescription>();
+		internsToUnlockHeaven[pIntern.unlockLevel].push(pIntern);
+	}
+	
+	private static function setInternsArrayUnlockHell(pIntern:InternDescription):Void{
+		if (internsToUnlockHell[pIntern.unlockLevel] == null) internsToUnlockHell[pIntern.unlockLevel] = new Array<InternDescription>();
+		internsToUnlockHell[pIntern.unlockLevel].push(pIntern);
 	}
 	
 	/**

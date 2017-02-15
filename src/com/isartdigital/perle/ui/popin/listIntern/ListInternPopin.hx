@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.choice.Choice;
@@ -39,8 +40,6 @@ class ListInternPopin extends SmartPopin
 	private var btnLeft:SmartButton;
 	private var btnRight:SmartButton;
 	public var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
-	private var unlockLevels:Array<Int> = [1, 11, 14, 20];
-	private var placesUnlock:Map<Int, Int> = [1 => 1, 11 => 2, 14 => 3, 20 => 4];
 	
 	private var internListIndex:Int = 0;
 	private static inline var MAX_PLACES:Int = 2;
@@ -92,7 +91,7 @@ class ListInternPopin extends SmartPopin
 	
 	private function setValues():Void{
 		actualNbInternInQuest.text = Intern.numberInternsInQuest() + "";
-		internsInQuestMax.text = getNumberPlaces() + "";
+		internsInQuestMax.text = UnlockManager.getNumberPlaces() + "";
 		
 		setValuesNumberHousesHeaven();
 		setValuesNumberHousesHell();
@@ -126,29 +125,9 @@ class ListInternPopin extends SmartPopin
 		}
 	}
 	
-	/**
-	 * Get the correct number of empty places availables
-	 * @return
-	 */
-	private function getNumberPlaces():Int{
-		var lNumberPlaces:Int = 0;
-		
-		for (i in 0...unlockLevels.length){
-			if (unlockLevels[i] <= ResourcesManager.getLevel() && ResourcesManager.getLevel() < unlockLevels[i + 1]){
-				lNumberPlaces = placesUnlock[unlockLevels[i]];
-				return lNumberPlaces;
-			}
-			if (unlockLevels[unlockLevels.length - 1] <= ResourcesManager.getLevel()){
-				lNumberPlaces = placesUnlock[unlockLevels[unlockLevels.length - 1]];
-				return lNumberPlaces; 
-			}
-		}
-		return lNumberPlaces;
-	}
-	
 	public function spawnQuest():Void {	
 		for (i in 0...AssetName.internListSpawners.length){		
-			if (i < Intern.internsListArray.length && i < getNumberPlaces()){
+			if (i < Intern.internsListArray.length && i < UnlockManager.getNumberPlaces()){
 				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
 			}			
 			else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));

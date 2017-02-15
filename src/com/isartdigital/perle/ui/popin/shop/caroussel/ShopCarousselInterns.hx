@@ -2,9 +2,11 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
@@ -48,6 +50,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var numberHousesHeaven:TextSprite;
 	private var numberHousesHell:TextSprite;
 	
+	//Interns to show
+	private var hellIntern:InternDescription;
+	private var heavenIntern:InternDescription;
+	
 	//ID for the interns to show
 	public static var actualHeavenID:Int;
 	public static var actualHellID:Int;
@@ -56,8 +62,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_INTERN);
 		getComponents();
-		setValues();
 		addListeners();
+		chooseRandomIntern();
+		setValues();
 	}
 
 	override public function init (pPos:Point, pTab:ShopTab):Void {
@@ -69,48 +76,34 @@ class ShopCarousselInterns extends ShopCaroussel{
 	}
 	
 	/**
-	 * Initialize the interns's ID to 
+	 * Select 2 random interns depending of the player's level
 	 */
-	public static function initID ():Void{
-		usedID = new Map<Alignment, Array<Int>>();
-		usedID[Alignment.heaven] = new Array<Int>();
-		usedID[Alignment.hell] = new Array<Int>();
-		
-		actualHeavenID = 0;
-		actualHellID = 0;
-		actualHellID = getNewID(Alignment.hell);
-		actualHeavenID = getNewID(Alignment.heaven);
+	private function chooseRandomIntern():Void{
+		hellIntern = chooseRandomInternHell();
+		heavenIntern = chooseRandomInternHeaven();
 	}
 	
-	public static function getNewID(pAlignment:Alignment):Int {
-		var lLength:Int = usedID[pAlignment].length;
-		var lID:Int = 0;
+	/**
+	 * Selection of the random hell intern
+	 * @return
+	 */
+	private static function chooseRandomInternHell():InternDescription{
+		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHell[UnlockManager.getLevelUnlockHell()].length);
+		var lInternRandomHell:InternDescription = Intern.internsToUnlockHell[UnlockManager.getLevelUnlockHell()][lRandom];
 		
-		if (pAlignment == Alignment.heaven) {
-			
-			for (i in 0...lLength) {
-				if (actualHeavenID == usedID[pAlignment][i]) {
-					actualHeavenID++;
-					lID = actualHeavenID; 
-					return lID;
-				}
-			}
-		}
-		
-		if (pAlignment == Alignment.hell){
-			
-			for (i in 0...lLength) {
-				if (actualHellID == usedID[pAlignment][i]) {
-					actualHellID++;
-					lID = actualHellID; 
-					return lID;
-				}
-			}
-		}
-		
-		return lID;
+		return lInternRandomHell;
 	}
 	
+	/**
+	 * Selection of the random heaven intern
+	 * @return
+	 */
+	private static function chooseRandomInternHeaven():InternDescription{
+		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHeaven[UnlockManager.getLevelUnlockHeaven()].length);
+		var lInternRandomHeaven:InternDescription = Intern.internsToUnlockHeaven[UnlockManager.getLevelUnlockHeaven()][lRandom];
+		
+		return lInternRandomHeaven;
+	}	
 	
 	private function getComponents():Void{
 		btnReroll = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_BTN_REROLL), SmartButton);
@@ -139,19 +132,16 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Callback of the hoover button, to rewrite the values of the hell card
 	 */
 	private function setValuesHellButton():Void{
-		
-		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
-		
-		initStars(Intern.internsMap[Alignment.hell][actualHellID], hellGaugeEfficency, hellGaugeSpeed);
+		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
+		hellName.text = hellIntern.name;
 	}
 	
 	/**
 	 * Callback of the hoover button, to rewrite the values of the heaven card
 	 */
 	private function setValuesHeavenButton():Void{
-		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
-		
-		initStars(Intern.internsMap[Alignment.heaven][actualHeavenID], heavenGaugeEfficency, heavenGaugeSpeed);
+		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
+		heavenName.text = heavenIntern.name;
 	}
 	
 	private function initStars(pIntern:InternDescription, lEfficiency:SmartComponent, lSpeed:SmartComponent):Void {
@@ -171,7 +161,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 			if (pIntern.speed <= i) effIndics[i].visible = false;
 		}
 	}
-	
+
 	/**
 	 * Function to show the card's state (if you can buy or not) or the correct intern informations in the card
 	 */
@@ -184,39 +174,20 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard.buttonMode = true;
 		hellCard.interactive = true;
 		
-		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
-		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
+		setValuesHeavenCard();
+		setValuesHellCard();
 		
-		if (Intern.internsMap[Alignment.heaven][actualHeavenID] != null) {
-			heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
-			heavenPrice.text = Intern.internsMap[Alignment.heaven][actualHeavenID].price + "";
-			
-			initStars(Intern.internsMap[Alignment.heaven][actualHeavenID], heavenGaugeEfficency, heavenGaugeSpeed);
-			SpriteManager.spawnComponent(heavenPortrait, Intern.internsMap[Alignment.heaven][actualHeavenID].portrait, heavenCard, TypeSpawn.SPRITE, true);
-			
-			if (!Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
-				heavenCard.buttonMode = false;
-				heavenCard.interactive = false;
-				heavenCard.alpha = 0.5;
-			}
-		}
-		
-		else {
-			heavenName.text = "No more heaven intern!";
-			heavenCard.buttonMode = false;
-			heavenCard.interactive = false;
-			heavenCard.alpha = 0.5;
-		}
-		
-		if (Intern.internsMap[Alignment.hell][actualHellID] != null) {
-			hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
-			hellPrice.text = Intern.internsMap[Alignment.hell][actualHellID].price + "";
-			
-			initStars(Intern.internsMap[Alignment.hell][actualHellID], hellGaugeEfficency, hellGaugeSpeed);
-			SpriteManager.spawnComponent(hellPortrait, Intern.internsMap[Alignment.hell][actualHellID].portrait, hellCard, TypeSpawn.SPRITE, true);
+		setValuesNumberHousesHeaven();
+		setValuesNumberHousesHell();
+	}
+	
+	private function setValuesHellCard():Void{
+		if (hellIntern != null) {
+			hellName.text = hellIntern.name;
+			hellPrice.text = hellIntern.price + "";
 			
 			if(!DialogueManager.ftueStepBuyIntern)
-				if (!Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])){
+				if (!Intern.canBuy(Alignment.hell, hellIntern)){
 					hellCard.buttonMode = false;
 					hellCard.interactive = false;
 					hellCard.alpha = 0.5;
@@ -230,9 +201,31 @@ class ShopCarousselInterns extends ShopCaroussel{
 			hellCard.alpha = 0.5;
 		}
 		
-		setValuesNumberHousesHeaven();
-		setValuesNumberHousesHell();
+		initStars(hellIntern, hellGaugeEfficency, hellGaugeSpeed);
+	}
+
+	private function setValuesHeavenCard():Void{
+		if (heavenIntern != null) {
+			heavenName.text = heavenIntern.name;
+			heavenPrice.text = heavenIntern.price + "";
+			
+			//setValuesStats(Intern.internsMap[Alignment.heaven][actualHeavenID]);
+			
+			if (!Intern.canBuy(Alignment.heaven, heavenIntern)){
+				heavenCard.buttonMode = false;
+				heavenCard.interactive = false;
+				heavenCard.alpha = 0.5;
+			}
+		}
 		
+		else {
+			heavenName.text = "No more heaven intern!";
+			heavenCard.buttonMode = false;
+			heavenCard.interactive = false;
+			heavenCard.alpha = 0.5;
+		}
+		
+		initStars(heavenIntern, heavenGaugeEfficency, heavenGaugeSpeed);
 	}
 	
 	/**
@@ -277,22 +270,13 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 */
 	override function initArrows():Void {}
 	
-	override private function getSpawnersAssetNames():Array<String> {
-		return [ // todo : constantes ? c'est des spawners..
-			/*"Shop_Intern_1",
-			"Shop_Intern_2",
-			"Shop_Intern_3"*/
-		];
-	}
-	
 	/**
 	 * Callback of the hell card's click. Verification if player can buy or not an intern
 	 */
 	private function onClickHell():Void{
 		//Si achat possible
-		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, Intern.internsMap[Alignment.hell][actualHellID])) {
-			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
-			changeID(Alignment.hell);
+		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, hellIntern)) {
+			Intern.buy(hellIntern);
 			closeShop();
 			
 			if (DialogueManager.ftueStepBuyIntern)
@@ -304,9 +288,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Callback of the heaven card's click. Verification if player can buy or not an intern
 	 */
 	private function onClickHeaven():Void{
-		if (Intern.canBuy(Alignment.heaven, Intern.internsMap[Alignment.heaven][actualHeavenID])){
-			Intern.buy(Intern.internsMap[Alignment.heaven][actualHeavenID]);
-			changeID(Alignment.heaven);
+		if (Intern.canBuy(Alignment.heaven, heavenIntern)){
+			Intern.buy(heavenIntern);
 			closeShop();
 		}
 	}
@@ -317,38 +300,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 	}
 	
 	/**
-	 * System to avoid to have the same intern twice
-	 * @param	pAlignment Alignment of the intern
-	 */
-	public static function changeID(?pAlignment:Alignment = null):Void{
-		if (pAlignment != null){
-			if (pAlignment == Alignment.heaven){
-			usedID[Alignment.heaven].push(actualHeavenID);
-			actualHeavenID = getNewID(Alignment.heaven);
-			}
-		
-			if (pAlignment == Alignment.hell){
-			usedID[Alignment.hell].push(actualHellID);
-			actualHellID = getNewID(Alignment.hell);
-			}
-		}
-		
-		else {
-			usedID[Alignment.heaven].push(actualHeavenID);
-			actualHeavenID = getNewID(Alignment.heaven);
-			
-			usedID[Alignment.hell].push(actualHellID);
-			actualHellID = getNewID(Alignment.hell);
-		}
-	}
-	
-	//private function selectIntern(pAlignment:Alignment):InternDescription{
-		//var lID:Int;
-		//pAlignment == Alignment.hell ? lID = actualHellID : lID = actualHeavenID;
-		//return Intern.internsMap[pAlignment][lID];
-	//}
-	
-	/**
 	 * Callback of the reroll. Reroll the search
 	 */
 	private function onClickReroll ():Void {
@@ -357,8 +308,10 @@ class ShopCarousselInterns extends ShopCaroussel{
 		ShopPopin.getInstance().init(ShopTab.InternsSearch);
 	}
 	
-	override function getCardToShow():Array<String> {
-		return new Array<String>();
+	private static function actualize():Void{
+		UIManager.getInstance().closeCurrentPopin();
+		ShopPopin.getInstance().init(ShopTab.Interns);
+		UIManager.getInstance().openPopin(ShopPopin.getInstance());
 	}
 	
 	override public function destroy():Void {

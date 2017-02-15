@@ -99,7 +99,6 @@ class GameManager {
 		//UnlockManager.setUnlockItem();
 		ClippingManager.update();
 		FootPrint.startClass();
-		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
 		if(!DevelloperReconise.isDev())DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
