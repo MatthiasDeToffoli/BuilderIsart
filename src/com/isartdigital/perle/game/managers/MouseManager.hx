@@ -83,6 +83,7 @@ class MouseManager {
 		
 		//if (desktop) {
 			Browser.window.addEventListener(MouseEventType.MOUSE_UP, onMouseTouchUp);
+			Browser.window.addEventListener(MouseEventType.MOUSE_OUT, onMouseTouchUp);
 			Browser.window.addEventListener(MouseEventType.MOUSE_DOWN, onMouseDown);
 		/*}
 		else {*/
@@ -191,6 +192,13 @@ class MouseManager {
 		touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
 	}
 	
+	/*private function mouseOutGame():Bool {
+		var lLimitLeftL:Float = cameraCenter.x - Main.getInstance().renderer.width;
+		var lLimitRightR:Float = cameraCenter.x + Main.getInstance().renderer.width;
+		var lLimitTopT:Float = cameraCenter.y - Main.getInstance().renderer.height;
+		var lLimitBottomB:Float = cameraCenter.y + Main.getInstance().renderer.height;
+	}*/
+	
 	// todo : make it work whit pause !
 	// todo whit positionInGame too !
 	/*public function get_position():Point {
@@ -202,6 +210,7 @@ class MouseManager {
 	
 	public function destroy (): Void {
 		Browser.window.removeEventListener(MouseEventType.MOUSE_UP, onMouseTouchUp);
+		Browser.window.removeEventListener(MouseEventType.MOUSE_OUT, onMouseTouchUp);
 		Browser.window.removeEventListener(MouseEventType.MOUSE_DOWN, onMouseDown);
 		
 		Browser.window.removeEventListener(TouchEventType.TOUCH_END, onMouseTouchUp);
