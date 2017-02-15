@@ -1,4 +1,4 @@
-package com.isartdigital.perle.game.managers;
+package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.utils.Debug;
 
 /**

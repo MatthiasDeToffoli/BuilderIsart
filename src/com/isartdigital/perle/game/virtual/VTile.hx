@@ -1,7 +1,7 @@
 package com.isartdigital.perle.game.virtual;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
-import com.isartdigital.perle.game.managers.IdManager;
+import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.Save;

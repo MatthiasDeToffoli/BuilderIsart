@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.GameConfig.TableConfig;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
@@ -6,7 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
-import com.isartdigital.perle.game.managers.ServerManager.TableRegion;
+import com.isartdigital.perle.game.managers.server.ServerManager.TableRegion;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;

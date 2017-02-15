@@ -3,7 +3,7 @@ package com.isartdigital.perle;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
-import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.building.VicesBuilding;
 import com.isartdigital.perle.game.sprites.building.VirtuesBuilding;

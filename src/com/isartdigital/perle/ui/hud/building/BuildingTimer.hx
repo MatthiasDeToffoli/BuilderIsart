@@ -2,7 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;

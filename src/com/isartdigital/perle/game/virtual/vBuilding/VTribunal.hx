@@ -2,7 +2,7 @@ package com.isartdigital.perle.game.virtual.vBuilding;
 
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.CameraManager;
-import com.isartdigital.perle.game.managers.IdManager;
+import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;

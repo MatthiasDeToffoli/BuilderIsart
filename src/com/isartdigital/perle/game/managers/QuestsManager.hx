@@ -1,8 +1,9 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.ServerManager.DbAction;
+import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.GatchaPopin;

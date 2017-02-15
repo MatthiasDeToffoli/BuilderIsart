@@ -4,7 +4,7 @@ import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
-import com.isartdigital.perle.game.managers.IdManager;
+import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager;

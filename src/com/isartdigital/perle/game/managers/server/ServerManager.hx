@@ -1,5 +1,5 @@
-package com.isartdigital.perle.game.managers;
-import com.isartdigital.perle.game.managers.ErrorManager;
+package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.server.ErrorManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;

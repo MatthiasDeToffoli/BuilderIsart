@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 
 import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
@@ -6,7 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.ServerManager.DbAction;
+import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;

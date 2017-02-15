@@ -7,7 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;

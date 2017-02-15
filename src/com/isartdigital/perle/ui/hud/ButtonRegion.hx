@@ -6,7 +6,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
-import com.isartdigital.perle.game.managers.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.utils.Interactive;

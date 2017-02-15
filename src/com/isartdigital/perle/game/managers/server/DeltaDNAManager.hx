@@ -1,5 +1,6 @@
-package com.isartdigital.perle.game.managers;
-import com.isartdigital.perle.game.managers.ServerManager.EventSuccessConnexion;
+package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessConnexion;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.system.DeviceCapabilities;
