@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessConnexion;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
@@ -74,5 +75,35 @@ class DeltaDNAManager{
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 	}
 	
+	/*public static function sendTimeSkip (pTimeSkipped:Int, pKarmaSpent:Int):Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.TIME_SKIP, {
+			timeWaited:pTimeSkipped,
+			karmaSpent:pKarmaSpent
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}*/
+	
+	/*public static function sendKarmaResourceBuy (pTimeSkipped:Int, pKarmaSpent:Int):Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.TIME_SKIP, {
+			amount:pTimeSkipped,
+			skipKarmaSpent:pKarmaSpent
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}*/
+	/*
+	public static function sendGainXp (pType:GeneratorType, pAmount:Int):Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.GAIN_XP, {
+			type:pType.getName(),
+			amount:pAmount
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
+	public static function sendLevelUp ():Void {
+		DeltaDNA.addEvent(DeltaDNAEventCustom.LEVEL_UP, {
+			currentLevel:ResourcesManager.getLevel()
+		});
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}*/
 	
 }
