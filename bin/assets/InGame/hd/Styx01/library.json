@@ -4,85 +4,85 @@
   {
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "styx_gauche",
-       "origin": [
-        424,
-        473
-       ],
+       "symbol": "Styx_gauche",
        "rect": [
         1,
         1,
-        848,
-        946
+        801,
+        1286
+       ],
+       "origin": [
+        400.5,
+        643
        ]
       },
       {
-       "symbol": "styx_drot",
-       "origin": [
-        423.5,
-        472.5
-       ],
+       "symbol": "Styx_droit",
        "rect": [
+        804,
         1,
-        949,
-        847,
-        945
+        732,
+        1286
+       ],
+       "origin": [
+        366,
+        643
        ]
       }
-     ]
+     ],
+     "file": "atlas0.png"
     }
    ],
    "scaleFactor": 1
   }
  ],
+ "frameRate": 60,
  "movies": [
   {
+   "id": "Styx01",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "loc": [
-        -952.55,
-        736.65
-       ],
-       "tweened": false,
        "duration": 1,
+       "tweened": false,
+       "loc": [
+        -810.55,
+        578.65
+       ],
        "index": 0,
-       "ref": "styx_gauche",
        "pivot": [
-        424,
-        473
-       ]
+        400.5,
+        643
+       ],
+       "ref": "Styx_gauche"
       }
-     ],
-     "name": "Calque 1"
+     ]
     },
     {
+     "name": "Calque 2",
      "keyframes": [
       {
-       "loc": [
-        -108.05,
-        472.6
-       ],
-       "tweened": false,
        "duration": 1,
+       "tweened": false,
+       "loc": [
+        -44.05,
+        578.65
+       ],
        "index": 0,
-       "ref": "styx_drot",
        "pivot": [
-        423.5,
-        472.5
-       ]
+        366,
+        643
+       ],
+       "ref": "Styx_droit"
       }
-     ],
-     "name": "Calque 2"
+     ]
     }
-   ],
-   "id": "Styx01"
+   ]
   }
  ],
- "md5": "4a95e25409db10578005632c44083248",
- "frameRate": 60
+ "md5": "8479ad12b46bd6c75e53e89817c64568"
 }

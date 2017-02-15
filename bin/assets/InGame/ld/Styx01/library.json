@@ -4,85 +4,85 @@
   {
    "atlases": [
     {
-     "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "styx_drot",
-       "origin": [
-        211.75,
-        236.25
-       ],
+       "symbol": "Styx_gauche",
        "rect": [
         1,
         1,
-        424,
-        473
+        401,
+        643
+       ],
+       "origin": [
+        200.25,
+        321.5
        ]
       },
       {
-       "symbol": "styx_gauche",
-       "origin": [
-        212,
-        236.5
-       ],
+       "symbol": "Styx_droit",
        "rect": [
+        404,
         1,
-        476,
-        424,
-        473
+        366,
+        643
+       ],
+       "origin": [
+        183,
+        321.5
        ]
       }
-     ]
+     ],
+     "file": "atlas0.png"
     }
    ],
    "scaleFactor": 1
   }
  ],
+ "frameRate": 60,
  "movies": [
   {
+   "id": "Styx01",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "loc": [
-        -476.275,
-        368.325
-       ],
-       "tweened": false,
        "duration": 1,
+       "tweened": false,
+       "loc": [
+        -405.275,
+        289.325
+       ],
        "index": 0,
-       "ref": "styx_gauche",
        "pivot": [
-        212,
-        236.5
-       ]
+        200.25,
+        321.5
+       ],
+       "ref": "Styx_gauche"
       }
-     ],
-     "name": "Calque 1"
+     ]
     },
     {
+     "name": "Calque 2",
      "keyframes": [
       {
-       "loc": [
-        -54.025,
-        236.3
-       ],
-       "tweened": false,
        "duration": 1,
+       "tweened": false,
+       "loc": [
+        -22.025,
+        289.325
+       ],
        "index": 0,
-       "ref": "styx_drot",
        "pivot": [
-        211.75,
-        236.25
-       ]
+        183,
+        321.5
+       ],
+       "ref": "Styx_droit"
       }
-     ],
-     "name": "Calque 2"
+     ]
     }
-   ],
-   "id": "Styx01"
+   ]
   }
  ],
- "md5": "4a95e25409db10578005632c44083248",
- "frameRate": 60
+ "md5": "8479ad12b46bd6c75e53e89817c64568"
 }

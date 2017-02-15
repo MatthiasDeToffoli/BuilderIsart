@@ -1,0 +1,178 @@
+{
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "loading_barre",
+       "origin": [
+        150.8,
+        10.7
+       ],
+       "rect": [
+        1,
+        1,
+        302,
+        22
+       ]
+      },
+      {
+       "symbol": "loading_cadre",
+       "origin": [
+        112.5,
+        11.8
+       ],
+       "rect": [
+        1,
+        25,
+        226,
+        24
+       ]
+      },
+      {
+       "symbol": "loading_sablier",
+       "origin": [
+        28.3,
+        38.9
+       ],
+       "rect": [
+        305,
+        1,
+        57,
+        78
+       ]
+      },
+      {
+       "symbol": "loading_fond",
+       "origin": [
+        111,
+        10
+       ],
+       "rect": [
+        1,
+        51,
+        222,
+        20
+       ]
+      },
+      {
+       "symbol": "loading_masque",
+       "origin": [
+        0,
+        9.8
+       ],
+       "rect": [
+        1,
+        73,
+        221,
+        20
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        111,
+        9.975
+       ],
+       "tweened": false,
+       "loc": [
+        -0.3,
+        0.0375
+       ],
+       "index": 0,
+       "ref": "loading_fond",
+       "duration": 1
+      }
+     ],
+     "name": "loading_fond"
+    },
+    {
+     "mask": "masque",
+     "keyframes": [
+      {
+       "pivot": [
+        150.825,
+        10.725
+       ],
+       "tweened": false,
+       "loc": [
+        -0.1125,
+        -0.0375
+       ],
+       "scale": [
+        0.7354,
+        1
+       ],
+       "index": 0,
+       "ref": "loading_barre",
+       "duration": 1
+      }
+     ],
+     "name": "loading_barre"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        110.4,
+        9.7875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "loc": [
+        -221.1,
+        0.4125
+       ],
+       "scale": [
+        1,
+        1.0516
+       ],
+       "index": 0,
+       "ref": "loading_masque",
+       "skew": [
+        -3.1416,
+        3.1416
+       ]
+      }
+     ],
+     "name": "masque"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        112.5,
+        11.775
+       ],
+       "tweened": false,
+       "loc": [
+        0,
+        -0.0375
+       ],
+       "index": 0,
+       "ref": "loading_cadre",
+       "duration": 1
+      }
+     ],
+     "name": "loading_cadre"
+    }
+   ],
+   "id": "loading"
+  }
+ ],
+ "md5": "29e66e78fc3fd7c69bace7198cc4ea67",
+ "frameRate": 24
+}

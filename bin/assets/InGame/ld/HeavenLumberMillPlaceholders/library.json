@@ -154,7 +154,7 @@
         55.375,
         43.95
        ],
-       "ref": "~anim_lumbermill_scie_lvl1",
+       "ref": "anim_lumbermill_scie_lvl1",
        "index": 0,
        "duration": 75
       }
@@ -357,7 +357,7 @@
         19.25,
         -70.3
        ],
-       "ref": "~anim_lumbermill_orbe",
+       "ref": "anim_lumbermill_orbe",
        "index": 0,
        "tweened": false,
        "duration": 66
@@ -1532,159 +1532,7 @@
    ]
   },
   {
-   "baseClass": "Flipbook",
-   "layers": [
-    {
-     "flipbook": true,
-     "keyframes": [
-      {
-       "ref": "anim_scie_fx_flipbook_0",
-       "index": 0,
-       "pivot": [
-        11.25,
-        6.6
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_2",
-       "index": 2,
-       "pivot": [
-        38.375,
-        18.55
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_4",
-       "index": 4,
-       "pivot": [
-        44.25,
-        22.8
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_6",
-       "index": 6,
-       "pivot": [
-        53.15,
-        23.675
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_8",
-       "index": 8,
-       "pivot": [
-        38.375,
-        18.55
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_10",
-       "index": 10,
-       "pivot": [
-        44.25,
-        22.8
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_12",
-       "index": 12,
-       "pivot": [
-        53.15,
-        23.675
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_14",
-       "index": 14,
-       "pivot": [
-        38.375,
-        18.55
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_16",
-       "index": 16,
-       "pivot": [
-        44.25,
-        22.8
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_18",
-       "index": 18,
-       "pivot": [
-        53.15,
-        23.675
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_20",
-       "index": 20,
-       "pivot": [
-        38.375,
-        18.55
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_22",
-       "index": 22,
-       "pivot": [
-        42.625,
-        19.15
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_24",
-       "index": 24,
-       "pivot": [
-        42.75,
-        18.5
-       ],
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "ref": "anim_scie_fx_flipbook_26",
-       "index": 26,
-       "pivot": [
-        44.775,
-        18.475
-       ],
-       "tweened": false,
-       "duration": 2
-      }
-     ],
-     "name": "Calque 2"
-    }
-   ],
-   "id": "anim_scie_fx"
-  },
-  {
-   "id": "~anim_lumbermil_scie_reflet",
+   "id": "anim_lumbermil_scie_reflet",
    "layers": [
     {
      "keyframes": [
@@ -1730,7 +1578,7 @@
    ]
   },
   {
-   "id": "~anim_lumbermill_orbe",
+   "id": "anim_lumbermill_orbe",
    "layers": [
     {
      "keyframes": [
@@ -1883,7 +1731,7 @@
    ]
   },
   {
-   "id": "~anim_lumbermill_scie_lvl1",
+   "id": "anim_lumbermill_scie_lvl1",
    "layers": [
     {
      "keyframes": [
@@ -1915,7 +1763,7 @@
     {
      "keyframes": [
       {
-       "ref": "~anim_lumbermil_scie_reflet",
+       "ref": "anim_lumbermil_scie_reflet",
        "index": 0,
        "pivot": [
         5.875,
@@ -1925,7 +1773,7 @@
        "duration": 49
       },
       {
-       "ref": "~anim_lumbermil_scie_reflet",
+       "ref": "anim_lumbermil_scie_reflet",
        "index": 49,
        "pivot": [
         5.875,
@@ -1938,9 +1786,161 @@
      "name": "Calque 2"
     }
    ]
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "anim_scie_fx_flipbook_0",
+       "index": 0,
+       "pivot": [
+        11.25,
+        6.6
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_2",
+       "index": 2,
+       "pivot": [
+        38.375,
+        18.55
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_4",
+       "index": 4,
+       "pivot": [
+        44.25,
+        22.8
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_6",
+       "index": 6,
+       "pivot": [
+        53.15,
+        23.675
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_8",
+       "index": 8,
+       "pivot": [
+        38.375,
+        18.55
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_10",
+       "index": 10,
+       "pivot": [
+        44.25,
+        22.8
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_12",
+       "index": 12,
+       "pivot": [
+        53.15,
+        23.675
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_14",
+       "index": 14,
+       "pivot": [
+        38.375,
+        18.55
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_16",
+       "index": 16,
+       "pivot": [
+        44.25,
+        22.8
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_18",
+       "index": 18,
+       "pivot": [
+        53.15,
+        23.675
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_20",
+       "index": 20,
+       "pivot": [
+        38.375,
+        18.55
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_22",
+       "index": 22,
+       "pivot": [
+        42.625,
+        19.15
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_24",
+       "index": 24,
+       "pivot": [
+        42.75,
+        18.5
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "anim_scie_fx_flipbook_26",
+       "index": 26,
+       "pivot": [
+        44.775,
+        18.475
+       ],
+       "tweened": false,
+       "duration": 2
+      }
+     ],
+     "name": "Calque 2"
+    }
+   ],
+   "id": "anim_scie_fx"
   }
  ],
- "md5": "21d8eae068e512933e8e1f14295cff4d",
+ "md5": "bf865e9af0696751c6b8fe3f33aaeeac",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
