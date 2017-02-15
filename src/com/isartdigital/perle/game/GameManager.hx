@@ -15,6 +15,7 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.FootPrint;
@@ -26,6 +27,7 @@ import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
+import com.isartdigital.perle.ui.hud.building.valuesChange.ValueChange;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.UIManager;
@@ -64,6 +66,7 @@ class GameManager {
 			CocoonJSManager.awake();
 		
 		//ServerManager.loadRegion();
+		ValueChangeManager.awake();
 		ServerManager.playerConnexion();
 		GameConfig.awake();
 		AnimationManager.awake();
@@ -92,7 +95,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		DialogueManager.createFtue();
+		//DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);

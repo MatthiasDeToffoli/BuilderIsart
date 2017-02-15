@@ -6,6 +6,8 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
@@ -39,6 +41,8 @@ class ButtonRegion extends SmartButton
 	 */
 	private var worldMapPos:Point;
 	
+	private var price:Float;
+	
 	/**
 	 * the type of the region to add
 	 */
@@ -64,6 +68,7 @@ class ButtonRegion extends SmartButton
 			return;
 			
 		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
+			ValueChangeManager.addTextLostForRegion(position, GeneratorType.soft, price);
 			RegionManager.createRegion(regionType, firstCasePos, VTile.pointToIndex(worldMapPos));
 			destroy();
 		}
@@ -73,7 +78,7 @@ class ButtonRegion extends SmartButton
 	private function rewriteTxt():Void {
 		var priceTxt:TextSprite = cast(getChildByName(AssetName.BTN_BUY_REGION_PRICE),TextSprite);
 		var config:TableConfig = GameConfig.getConfig();
-		var price:Float = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[regionType]);
+		price = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[regionType]);
 		
 		priceTxt.text = ResourcesManager.shortenValue(price);
 	}

@@ -45,7 +45,7 @@ class TimerInProd extends SmartComponent
 		gain.text = collector.timeProd.gain +"";
 		
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, AssetName.COLLECTOR_TIME_ICON));
-		var icone:UISprite = new UISprite(Std.is(collector, VCollectorHeaven) ? AssetName.PROD_ICON_WOOD_LARGE:AssetName.PROD_ICON_STONE_LARGE);
+		var icone:UISprite = new UISprite(Std.is(collector, VCollectorHeaven) ? AssetName.PROD_ICON_WOOD:AssetName.PROD_ICON_STONE);
 		
 		icone.position = spawner.position;
 		

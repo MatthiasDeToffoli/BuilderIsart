@@ -60,6 +60,12 @@ class AssetName{
 	public static inline var DECO_HELL_CRYSTAL_BIG:String = "HellPropCrystal02";
 	public static inline var DECO_HELL_LAVA:String = "HellPropLake";
 	
+	//values change
+	public static inline var VALUES_GAIN:String = "ValueChange_Positive";
+	public static inline var VALUES_LOST:String = "ValueChange_Negative";
+	public static inline var VALUES_CHANGE_ICON:String = "icon";
+	public static inline var VALUES_CHANGE_TEXT:String = "value";
+	
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";
 	
