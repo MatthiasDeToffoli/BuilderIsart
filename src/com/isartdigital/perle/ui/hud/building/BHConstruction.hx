@@ -89,7 +89,7 @@ class BHConstruction extends BuildingHud {
 		Interactive.addListenerClick(btnSpeedUp, onSpeedUp);
 	}
 	
-	private function onSpeedUp():Void {
+	public function onSpeedUp():Void {
 		if (DialogueManager.ftueStepConstructBuilding) {
 			DialogueManager.endOfaDialogue();
 		}

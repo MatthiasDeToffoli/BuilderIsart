@@ -501,6 +501,12 @@ class ResourcesManager
 	}
 	//} endregion
 	
+	/**
+	 * To shorten any value given in parameter (ex: 10 000 > 10k or 100 000 000 > 100M)
+	 * @author COQUERELLE Killian
+	 * @param pFLoat the value you want to shorten
+	 * @return the value shortened
+	 */
 	public static function shortenValue (pFloat:Float):String {
 		var suffix:String = "";
 		if (pFloat >= 1000000) {

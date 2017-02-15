@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
 
@@ -16,6 +17,7 @@ class BHBuiltInUpgrading extends BHBuiltUndestoyable
 	 */
 	private static var instance: BHBuiltInUpgrading;
 	private var btnCancel:SmartButton;
+	private var btnSpeedUp:SmartButton;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -43,14 +45,22 @@ class BHBuiltInUpgrading extends BHBuiltUndestoyable
 	
 	override public function setOnSpawn():Void 
 	{
-		Interactive.addListenerClick(btnCancel, onClickCancel);
 		super.setOnSpawn();
+		addListeners();
 	}
 	
 	override function removeButtonsChange():Void 
 	{
 		Interactive.removeListenerClick(btnCancel, onClickCancel);
 		super.removeButtonsChange();
+	}
+	
+	override function addListeners():Void 
+	{		
+		super.addListeners();
+		btnSpeedUp = cast(getChildByName("ButtonSkip_SmallConstruction"), SmartButton);
+		Interactive.addListenerClick(btnSpeedUp, BHConstruction.getInstance().onSpeedUp);
+		Interactive.addListenerClick(btnCancel, onClickCancel);
 	}
 	
 	private function onClickCancel():Void {
@@ -61,6 +71,8 @@ class BHBuiltInUpgrading extends BHBuiltUndestoyable
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnCancel, onClickCancel);
+		Interactive.removeListenerClick(btnSpeedUp, BHConstruction.getInstance().onSpeedUp);
+		
 		instance = null;
 		super.destroy();
 	}

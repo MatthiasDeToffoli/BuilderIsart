@@ -48,6 +48,7 @@ class SpeedUpPopin extends AcceleratePopin
 			DialogueManager.endOfaDialogue();
 		
 		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000, true);
+		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, linkedBuilding);
 		onClose();
 	}
 	
