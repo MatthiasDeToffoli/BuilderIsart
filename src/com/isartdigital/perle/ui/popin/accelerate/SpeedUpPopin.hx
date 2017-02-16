@@ -58,6 +58,7 @@ class SpeedUpPopin extends AcceleratePopin
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		
 		linkedBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
+		Hud.getInstance().show();
 		onClose();
 	}
 	

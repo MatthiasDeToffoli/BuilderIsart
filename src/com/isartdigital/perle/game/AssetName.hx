@@ -44,7 +44,7 @@ class AssetName{
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL2:String = "HellQuarry2";
 	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "InternHouseHell"; 
-	public static inline var BUILDING_FACTORY:String = "Factory";
+	public static inline var BUILDING_FACTORY:String = "HellFactory";
 	
 	
 	// Décoration Heaven

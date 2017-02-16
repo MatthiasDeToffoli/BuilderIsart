@@ -14,7 +14,8 @@ class DevelloperReconise
 		// FaceBook.uid
 		devs = [
 			"10206357042724082", // matthias
-			"389913848025374" // ambroise
+			"389913848025374", // ambroise
+			"1348907731821283" // victor
 		];
 	}
 	
