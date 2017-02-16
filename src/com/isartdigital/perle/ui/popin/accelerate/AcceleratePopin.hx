@@ -58,7 +58,7 @@ class AcceleratePopin extends SmartPopinExtended
 	}
 	
 	private function onClose():Void {
-		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closePopin(this);
 	}
 	
 	override public function destroy():Void 
