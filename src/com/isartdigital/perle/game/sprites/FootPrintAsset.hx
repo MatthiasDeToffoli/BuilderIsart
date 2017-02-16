@@ -14,6 +14,10 @@ class FootPrintAsset extends Tile
 	private static inline var FOOTPRINT_GREEN:String = "green"; 
 	private static inline var FOOTPRINT_YELLOW:String = "yellow"; 
 	public static var footPrint:FootPrintAsset;
+	
+	/**
+	 * ATTENTION :  Y,X array
+	 */
 	public static var footPrintArray:Array<Array<FootPrintAsset>>;
 	public static var arrayContainerFootPrint:Array<Array<Container>>;
 	

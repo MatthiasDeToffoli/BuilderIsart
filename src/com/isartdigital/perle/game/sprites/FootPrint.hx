@@ -95,8 +95,8 @@ class FootPrint extends Tile
 		
 		for (i in 0...pEvent.exceedingTile.length) {
 			//trace("x: " + pEvent[i].x + " y: " + pEvent[i].y);
-			if (FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x+1] != null &&
-				FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].x+1][pEvent.exceedingTile[i].y+1] != null)
+			if (FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].y+1] != null &&
+				FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].y+1][pEvent.exceedingTile[i].x+1] != null)
 				FootPrintAsset.footPrintArray[pEvent.exceedingTile[i].y+1][pEvent.exceedingTile[i].x+1].setStateCantBePut();
 		}
 		

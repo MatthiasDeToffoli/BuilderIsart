@@ -432,7 +432,7 @@ class Phantom extends Building {
 		
 		if (alignementBuilding == null) {
 			Debug.error("should not be null in my opinion, i am right ? (this line should never happen, contact Ambroise)");
-			return buildingOnGround() && buildingCollideOther(); 
+			return buildingOnGround() && !buildingCollideOther(); 
 		}
 		
 		// todo: se concerter avec gd sur ce qu'on veut faire, car compte tenu
@@ -456,7 +456,7 @@ class Phantom extends Building {
 			return false;
 		}
 		
-		return buildingOnGround() && buildingCollideOther();
+		return buildingOnGround() && !buildingCollideOther();
 	}
 	
 	private function passBuildingLimit():Bool {
@@ -509,7 +509,10 @@ class Phantom extends Building {
 	 * @return
 	 */
 	private function buildingCollideOther():Bool {
-
+		// i need to test every building collision to make the tiles appear in red
+		// for more then one building collision. Better feedback for user.
+		var lCollision:Bool = false;  
+		
 		for (x in RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building.keys()) {
 			for (y in RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building[x].keys()) {
 				
@@ -521,11 +524,11 @@ class Phantom extends Building {
 					continue;
 				
 				if (collisionRectDesc(RegionManager.worldMap[regionMap.region.x][regionMap.region.y].building[x][y].tileDesc))
-					return false;
+					lCollision = true;
 			}
 		}
 		
-		return true;
+		return lCollision;
 	}
 	
 	/**
@@ -642,8 +645,8 @@ class Phantom extends Building {
 	private function setExceedingToAll ():Void {
 		var lAllExceeding:Array<Index> = [];
 		
-		for (lX in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).width+1) {
-			for (lY in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).height+1) {
+		for (lX in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).width + Building.getSizeOnMap(buildingName).footprint) {
+			for (lY in -Building.getSizeOnMap(buildingName).footprint...Building.getSizeOnMap(buildingName).height + Building.getSizeOnMap(buildingName).footprint) {
 				lAllExceeding.push({
 					x:lX,
 					y:lY
