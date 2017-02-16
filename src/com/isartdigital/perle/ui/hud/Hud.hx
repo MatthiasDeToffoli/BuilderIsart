@@ -470,7 +470,8 @@ class Hud extends SmartScreen
 	 */
 	public function hide():Void { // todo : should still show phantom menu (accept or cancel build)
 		if (!isHide) {
-			GameStage.getInstance().getHudContainer().removeChild(this);
+			visible = false;
+			// this line bellow is from Alexis for FTUE
 			removeListenersClick();
 			//ButtonRegion.hide();
 			isHide = true;
@@ -482,11 +483,12 @@ class Hud extends SmartScreen
 	 */
 	public function show():Void { // todo : should still show phantom menu (accept or cancel build)
 		if (isHide) {	
-			GameStage.getInstance().getHudContainer().addChild(this);
+			visible = true;
 			isHide = false;
 			//ButtonRegion.show();
 		}
-		
+		// Alexis : let this outside, for FTUE, (Ambroise: he don't know why)
+		// this line bellow is from Alexis for FTUE
 		addListenersOnClick();
 	}
 	
