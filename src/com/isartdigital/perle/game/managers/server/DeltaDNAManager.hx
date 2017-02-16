@@ -22,6 +22,11 @@ class DeltaDNAManager{
     // ##############################################################
 	
 	public static function sendConnexionEvents (pEvent:EventSuccessConnexion):Void {
+		if (!Config.deltaDNA) {
+			Debug.warn("DeltaDNA desatived.");
+			return;
+		}
+		
 		DeltaDNA.init(
 			Config.DELTA_DNA_KEY_DEV, 
 			Config.DELTA_DNA_KEY_LIVE,
