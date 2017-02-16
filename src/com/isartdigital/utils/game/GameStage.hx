@@ -61,6 +61,7 @@ class GameStage extends Container
 	 * conteneur de la FTUE
 	 */
 	private var ftueContainer:Container;
+	private var iconsContainer:Container;
 	
 	/**
 	 * conteneur des écrans d'interface
@@ -102,6 +103,8 @@ class GameStage extends Container
 		ftueContainer = new Container();
 		addChild(ftueContainer);
 		
+		iconsContainer = new Container();
+		addChild(iconsContainer);
 		
 	}
 	
@@ -115,7 +118,7 @@ class GameStage extends Container
 	 * @param	centerPopinContainer centrer ou pas le conteneur des Popins
 	 * @param	centerHudContainer centrer ou pas le conteneur
 	 */
-	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false):Void {
+	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false, ?pIconsContainer:Bool = false):Void {
 		
 		_safeZone = new Rectangle (0, 0, pSafeZoneWidth, pSafeZoneHeight);
 		
@@ -147,6 +150,11 @@ class GameStage extends Container
 		if (pCenterFtueContainer) {
 			ftueContainer.x = safeZone.width / 2;
 			ftueContainer.y = safeZone.height / 2;
+		}
+		
+		if (pIconsContainer) {
+			iconsContainer.x = safeZone.width / 2;
+			iconsContainer.y = safeZone.height / 2;
 		}
 		
 		_render = pRender;
@@ -282,6 +290,10 @@ class GameStage extends Container
 	 */
 	public function getFtueContainer (): Container {
 		return ftueContainer;
+	}
+	
+	public function getIconContainer (): Container {
+		return iconsContainer;
 	}
 	
 	/**

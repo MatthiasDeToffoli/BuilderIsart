@@ -135,7 +135,6 @@ class TribunalPopin extends SmartPopinExtended
 		//Interactive.addListenerClick(btnIntern, onIntern);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
-		trace(DialogueManager.dialogueSaved);
 		if (DialogueManager.ftueStepOpenPurgatory && !DialogueManager.ftueStepSlideCard) {
 			DialogueManager.dialogueSaved ++;
 			registerForFTUE();
@@ -240,7 +239,6 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function onHeaven() {
 		if (DialogueManager.ftueStepSlideCard) {
-			trace("test");
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}

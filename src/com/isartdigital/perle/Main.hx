@@ -31,6 +31,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VVicesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.ui.GraphicLoader;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
 import com.isartdigital.perle.ui.screens.TitleCard;
@@ -176,7 +177,7 @@ class Main extends EventEmitter
 		
 		
 		// initialise le GameStage et défini la taille de la safeZone
-		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true, true, true); // premier false => éviter le 0,0 au centre.
+		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true, true, true, true); // premier false => éviter le 0,0 au centre.
 		
 		// Ajoute le GameStage au stage
 		stage.addChild(GameStage.getInstance());

@@ -68,6 +68,8 @@ typedef FTUEStep = {
 	@optional var boostBuilding:Bool;
 	@optional var ifAlreadylevel2:Bool;
 	@optional var shouldBlockHud:Bool;
+	@optional var doNotBockBuildings:Bool;
+	@optional var doNotBockInterns:Bool;
 	
 	//Juicy
 	@optional var putCenterRegionHeaven:Bool;

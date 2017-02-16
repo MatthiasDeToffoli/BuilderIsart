@@ -21,8 +21,7 @@ class Dialogue extends SmartScreen
 	private static inline var OFF_ALPHA:Float = 0.2;
 	private static inline var DIALOGUE_ICON_5:Int = 5;
 	private var btnNext:SmartButton;
-	private static var icons:IconsDialogue;
-	private static var iconsName:String ="";
+	
 	//private var npc_name:TextSprite;
 	private var npc_speach:TextSprite;
 	private var npc_right:String;
@@ -68,7 +67,9 @@ class Dialogue extends SmartScreen
 			npc_name.text = pNpc;*/
 		if (npc_speach != null)
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
-		//createIndicatorIcons(pNumber - 1);
+		var lIcon:SmartComponent = IconsFtue.setIconOn(pNumber);
+		if(lIcon !=null)
+			lIcon.position = this.position;
 		//hideAllExpression();
 		//changeAlpha(pPicture,pExpression);
 	}
@@ -87,25 +88,12 @@ class Dialogue extends SmartScreen
 		}
 	}
 	
-		
-	private function createIndicatorIcons(pDialogue:Int) {
-		if (pDialogue != DIALOGUE_ICON_5)
-			return;
-		
-		switch(pDialogue) {
-			case 5 : iconsName = AssetName.FTUE_ICON_5;	
-		}
-		
-		icons = new IconsDialogue(iconsName);
-		addChild(icons);	
-	}
-	
-	private function removeIcons() {
+	/*private function removeIcons() {
 		if (iconsName != "" && iconsName != null) {
 			removeChild(icons);
 			iconsName = "";
 		}
-	}
+	}*/
 	
 	/**
 	 * Function to change expressiosn of NPCS

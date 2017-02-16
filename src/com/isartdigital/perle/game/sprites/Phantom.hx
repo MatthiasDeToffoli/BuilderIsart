@@ -366,6 +366,7 @@ class Phantom extends Building {
 				BuyManager.buy(buildingName);
 			
 			ValueChangeManager.addTextLost(vBuilding.graphic.position.clone(), vBuilding.alignementBuilding,buildingName);
+			//vBuilding.addExp();
 			destroy();
 			
 			

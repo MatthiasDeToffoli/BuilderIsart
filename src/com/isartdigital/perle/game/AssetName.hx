@@ -394,7 +394,14 @@ class AssetName{
 	public static inline var FTUE_SCENARIO_SPEACH:String = FTUE_SCENARIO+"_Speech_TXT";
 	public static inline var FTUE_ACTION_SPEACH:String = "_infobulle_text";
 	//FtueIcons
-	public static inline var FTUE_ICON_5:String = "_ftueIcon_holder_5";
+	public static inline var FTUE_ICONS:String = "IconHolder_Main";
+	public static inline var FTUE_ICON_TEXT1:String = "Window_NPC_Speech_TXT";
+	public static inline var FTUE_ICON_TEXT2:String = "_infobulle_text";
+	public static inline var FTUE_ICON_5:String = "_ftueIcon_holderFR_5";
+	public static inline var FTUE_ICON_6:String = "_ftueIcon_holderFR_6";
+	public static inline var FTUE_ICON_7:String = "_ftueIcon_holderFR_7";
+	public static inline var FTUE_ICON_8:String = "_ftueIcon_holderFR_8";
+	public static inline var FTUE_ICON_9:String = "_ftueIcon_holderFR_9";
 	
 	
 	// HUD

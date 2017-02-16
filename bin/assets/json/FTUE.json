@@ -113,9 +113,11 @@
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"clickOnCard":true,
+				"doNotBockBuildings":true,
+				"shouldBlockHud":true,
 				"shopCarrousselCard":"Heaven House",
 				"expression":"_Neutral",
-				"ftueContainer": true,
+				"actionContainer": true,
 				"checkpoint": false
 			},
             {
@@ -188,6 +190,7 @@
                 "parentName":"Purgatory_Popin",
                 "arrowRotation": 45,
                 "closePurgatory":true,
+                "shouldBlockHud":true,
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
@@ -226,7 +229,7 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Neutral",
-				"gold":1000,
+                "shouldBlockHud":true,
                 "endOfFtue":true,
 				"checkpoint": true
 			},
@@ -261,6 +264,7 @@
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
 				"clickOnCard":true,
+				"doNotBockBuildings":true,
 				"shopCarrousselCard":"Intern Building Hell",
 				"expression":"_Neutral",
 				"checkpoint": false
@@ -300,6 +304,7 @@
 				"isAction":true,
 				"boostBuilding":true,
 				"buyIntern":true,
+				"doNotBockInterns":true,
 				"expression":"_Happy",
 				"checkpoint": true
 			},
@@ -333,6 +338,7 @@
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
 				"resolveIntern":true,
+                "shouldBlockHud":true,
 				"expression":"_Happy",
 				"checkpoint": false
 			},

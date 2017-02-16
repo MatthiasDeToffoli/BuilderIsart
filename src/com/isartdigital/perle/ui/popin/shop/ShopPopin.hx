@@ -214,7 +214,7 @@ class ShopPopin extends SmartPopinExtended {
 	}
 	
 	private function onClickOpenBuldings () {
-		if (DialogueManager.ftueStepClickOnIntern)
+		if (DialogueManager.ftueStepClickOnIntern || DialogueManager.ftueStepBlocInterns)
 			return;
 		setButtons(0);
 		addCaroussel(ShopTab.Building);
@@ -228,9 +228,8 @@ class ShopPopin extends SmartPopinExtended {
 	}
 	
 	private function onClickOpenInterns () {
-		/*if(!DialogueManager.ftueStepClickOnIntern)
-			if (DialogueManager.ftueStepClickOnCard)
-				return;*/
+		if (DialogueManager.ftueStepBlocBuildings)
+				return;
 		setButtons(2);
 		isSearching ? onClickOpenInternsSearch() : addCaroussel(ShopTab.Interns);	
 	}

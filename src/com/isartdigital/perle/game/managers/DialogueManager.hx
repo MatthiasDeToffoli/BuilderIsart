@@ -12,6 +12,7 @@ import com.isartdigital.perle.ui.hud.dialogue.DialogueScenario;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
+import com.isartdigital.perle.ui.hud.dialogue.IconsFtue;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -66,6 +67,8 @@ class DialogueManager
 	public static var ftueStepMakeChoice:Bool = false;
 	public static var ftueStepMakeAllChoice:Bool = false;
 	public static var ftueStepCloseGatcha:Bool = false;
+	public static var ftueStepBlocBuildings:Bool = false;
+	public static var ftueStepBlocInterns:Bool = false;
 	
 	public static var ftueClosePurgatory:Bool = false;
 	public static var ftueCloseUnlockedItem:Bool = false;
@@ -92,8 +95,8 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
-		dialogueSaved = 21;
-		SaveManager.save();
+		//dialogueSaved = 21;
+		//SaveManager.save();
 		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
@@ -115,6 +118,9 @@ class DialogueManager
 			}
 		}
 		dialogueSaved = 0;
+		
+		var lIcons = new IconsFtue();
+		GameStage.getInstance().getIconContainer().addChild(lIcons);
 		
 		//check if FTUE wasn't over
 		if(SaveManager.currentSave.ftueProgress!=null)
@@ -342,11 +348,15 @@ class DialogueManager
 			
 		if (steps[dialogueSaved].shouldBlockHud)
 			Hud.isHide = true;
+		else if (steps[dialogueSaved].doNotBockBuildings)
+			ftueStepBlocBuildings = true;
+		else if (steps[dialogueSaved].doNotBockInterns)
+			ftueStepBlocInterns = true;
 			
-		if (steps[dialogueSaved].stress) {
+		/*if (steps[dialogueSaved].stress) {
 			trace("te");
 			//FocusManager.getInstance().setFocus(Choice.getInstance().stress);
-		}
+		}*/
 	}
 	
 	
@@ -431,6 +441,7 @@ class DialogueManager
 			return;
 		}
 		
+		IconsFtue.setAllFalse();
 		nextStep();
 	}
 	
@@ -568,6 +579,8 @@ class DialogueManager
 		ftuePlayerCanWait = false;	
 		boostBuilding = false;	
 		passFree = false;	
+		ftueStepBlocBuildings = false;	
+		ftueStepBlocInterns = false;	
 	}
 	
 }

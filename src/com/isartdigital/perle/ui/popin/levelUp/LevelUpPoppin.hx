@@ -95,7 +95,7 @@ class LevelUpPoppin extends SmartPopinExtended
 			if (DialogueManager.ftueCloseUnlockedItem)
 				DialogueManager.endOfaDialogue();
 			Hud.getInstance().show();
-			UIManager.getInstance().closeCurrentPopin();
+			UIManager.getInstance().closePopin(this);
 			UnlockManager.checkIfNeedToCreateDialogue();
 		}
 	}
