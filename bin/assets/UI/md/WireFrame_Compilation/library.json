@@ -1,3180 +1,19 @@
 {
- "movies": [
-  {
-   "layers": [
-    {
-     "name": "ButtonMoveBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -149.6625
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonAccelerate",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonSkip_SmallConstruction",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -44.6625
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonCancelConstruction",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -254.6625
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuildingContext"
-  },
-  {
-   "layers": [
-    {
-     "name": "Gauge",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~isBuilding_gauge",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        0,
-        -28.5
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuildingTimer"
-  },
-  {
-   "layers": [
-    {
-     "name": "ButtonUpgradeBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonUpgradeBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -45
-       ]
-      }
-     ]
-    },
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonDestroyBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -360
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -150
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonLastProd",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonLastProd",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        231.75,
-        -150
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_Collector"
-  },
-  {
-   "layers": [
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -150
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonDestroyBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -45
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonLastProd",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonLastProd",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        247.5,
-        -150
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_Collector2"
-  },
-  {
-   "layers": [
-    {
-     "name": "ButtonUpgradeBuilding",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonCancelUpgrade",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonCancelUpgradeBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -360
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonSkip_SmallConstruction",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonSkip_SmallConstruction",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -45
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -150
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_InUpgrading"
-  },
-  {
-   "layers": [
-    {
-     "name": "ButtonUpgradeBuilding",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -150
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonDestroyBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.875,
-        -45
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonLastProd",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonLastProd",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        231.75,
-        -150
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_Marketing"
-  },
-  {
-   "layers": [
-    {
-     "name": "ButtonUpgradeBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonUpgradeBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -45
-       ]
-      }
-     ]
-    },
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonDestroyBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -360
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -150
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_house"
-  },
-  {
-   "layers": [
-    {
-     "name": "ButtonUpgradeBuilding",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "EnterButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonEnterBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -150
-       ]
-      }
-     ]
-    },
-    {
-     "name": "ButtonDestroyBuilding",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonDestroyBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -255
-       ]
-      }
-     ]
-    },
-    {
-     "name": "MoveButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonMoveBuilding",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        70.5,
-        -45
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "BuiltContext_noUpgrade"
-  },
-  {
-   "layers": [
-    {
-     "name": "HUD_HeavenXP",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        -225,
-        -406.875
-       ],
-       "ref": "HUD_HeavenXP_Container",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_HellXP",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        241.575,
-        -405
-       ],
-       "ref": "HUD_HellXP_Container",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_Level",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        0,
-        -375
-       ],
-       "ref": "~HUD_Level",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_HardCurrency",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
-       },
-       "index": 0,
-       "loc": [
-        -566.85,
-        -412.125
-       ],
-       "ref": "~INFO_HardCurrency",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_SoftCurrency",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
-       },
-       "index": 0,
-       "loc": [
-        566.85,
-        -412.125
-       ],
-       "ref": "~INFO_SoftCurrency",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonShop_HUD",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
-       },
-       "index": 0,
-       "loc": [
-        643.7625,
-        398.3625
-       ],
-       "ref": "~ButtonShop_HUD",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonOptions",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -662.7,
-        52.5
-       ],
-       "ref": "~ButtonOptions",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_PurgatoryButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -648,
-        405
-       ],
-       "ref": "~ButtonPurgatory_HUD",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_InternsButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -659.025,
-        222.9375
-       ],
-       "ref": "~ButtonsInterns_HUD",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "HUD"
-  },
-  {
-   "layers": [
-    {
-     "name": "HUD_HeavenXP",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        -231.225,
-        -408.7125
-       ],
-       "ref": "HUD_HeavenXP_Container",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_HellXP",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        244.65,
-        -406.6875
-       ],
-       "ref": "HUD_HellXP_Container",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_Level",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
-       },
-       "index": 0,
-       "loc": [
-        4.3875,
-        -370.1625
-       ],
-       "ref": "~HUD_Level",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_BtnInfos",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "HUD_BtnNews",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "HUD_HardCurrency",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
-       },
-       "index": 0,
-       "loc": [
-        598.95,
-        -325.2
-       ],
-       "ref": "~INFO_HardCurrency",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_SoftCurrency",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
-       },
-       "index": 0,
-       "loc": [
-        598.95,
-        -441.8625
-       ],
-       "ref": "~INFO_SoftCurrency",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_Wood",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
-       },
-       "index": 0,
-       "loc": [
-        -567.3,
-        -333.8625
-       ],
-       "ref": "~INFO_Wood",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_Iron",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
-       },
-       "index": 0,
-       "loc": [
-        -571.05,
-        -441.8625
-       ],
-       "ref": "~INFO_Iron",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonShop_HUD",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
-       },
-       "index": 0,
-       "loc": [
-        661.6125,
-        397.5
-       ],
-       "ref": "~ButtonShop_HUD",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonMissions_HUD",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "HUD_PurgatoryButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -643.9875,
-        404.1375
-       ],
-       "ref": "~ButtonPurgatory_HUD",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "HUD_InternsButton",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -652.575,
-        222.075
-       ],
-       "ref": "~ButtonsInterns_HUD",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonOptions",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
-       },
-       "index": 0,
-       "loc": [
-        -648.9375,
-        52.5
-       ],
-       "ref": "~ButtonOptions",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "Layer 2",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    }
-   ],
-   "id": "HUD_Desktop"
-  },
-  {
-   "layers": [
-    {
-     "name": "HUD_Xp_Bar_Heaven",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~HUD_Xp_Bar_Heaven",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    }
-   ],
-   "id": "HUD_HeavenXP_Container"
-  },
-  {
-   "layers": [
-    {
-     "name": "HUD_Xp_Bar_Hell",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~HUD_Xp_Bar_Hell",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        -0.075,
-        -7.35
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "HUD_HellXP_Container"
-  },
-  {
-   "layers": [
-    {
-     "name": "Button_CancelMovement",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
-       },
-       "index": 0,
-       "loc": [
-        -0.075,
-        0.4125
-       ],
-       "ref": "~ButtonCancelMovement",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "MoveBuilding_Desktop"
-  },
-  {
-   "layers": [
-    {
-     "name": "Button_ConfirmMovement",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
-       },
-       "index": 0,
-       "loc": [
-        75,
-        0.375
-       ],
-       "ref": "~ButtonConfirmMovement",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "Button_CancelMovement",
-     "keyframes": [
-      {
-       "tweened": false,
-       "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
-       },
-       "index": 0,
-       "loc": [
-        -75,
-        0.1875
-       ],
-       "ref": "~ButtonCancelMovement",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "MovingBuilding"
-  },
-  {
-   "data": {
-    "UI": "",
-    "UIPosition": "top"
-   },
-   "layers": [
-    {
-     "name": "Bg",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "_currency",
-     "keyframes": [
-      {
-       "pivot": [
-        48,
-        48
-       ],
-       "index": 0,
-       "loc": [
-        0,
-        -0.5625
-       ],
-       "tweened": false,
-       "ref": "_genericIcon_Large",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "ProdDone"
-  },
-  {
-   "layers": [
-    {
-     "name": "Gauge",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~isProducing_gauge",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        -2.2875,
-        3.7125
-       ]
-      }
-     ]
-    },
-    {
-     "name": "Icon",
-     "keyframes": [
-      {
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    }
-   ],
-   "id": "ProducingTimer"
-  },
-  {
-   "layers": [
-    {
-     "name": "BG",
-     "keyframes": [
-      {
-       "pivot": [
-        75,
-        29.25
-       ],
-       "ref": "_infohouse_bg",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_infos_house_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infos_house_txt",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        0,
-        -0.0375
-       ]
-      }
-     ]
-    },
-    {
-     "name": "_infos_house_icon",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -93.4875,
-        0
-       ],
-       "tweened": false,
-       "ref": "_soulIcon_Medium",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "SoulsCounter_house"
-  },
-  {
-   "layers": [
-    {
-     "name": "BG",
-     "keyframes": [
-      {
-       "pivot": [
-        114.375,
-        20.625
-       ],
-       "index": 0,
-       "loc": [
-        -9.6375,
-        0
-       ],
-       "tweened": false,
-       "ref": "_infopurgatory_bg",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "_infos_purgatory_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infoPurgatory_txt",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        -13.2,
-        4.8
-       ]
-      }
-     ]
-    },
-    {
-     "name": "_infos_purgatory_icon",
-     "keyframes": [
-      {
-       "pivot": [
-        30.7125,
-        48
-       ],
-       "index": 0,
-       "loc": [
-        -137.475,
-        -14.8875
-       ],
-       "tweened": false,
-       "ref": "_neutralSoulIcon_Large",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "SoulsCounter_purgatory"
-  },
-  {
-   "data": {
-    "y": -48.35,
-    "text": "+999",
-    "color": "#000000",
-    "width": 191.75,
-    "font": "83px _sans",
-    "height": 96.75,
-    "wordWrap": 0,
-    "x": -95.85
-   },
-   "layers": [
-    {
-     "name": "value",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_valueChange_Negative_txt",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "icon",
-     "keyframes": [
-      {
-       "pivot": [
-        48,
-        48
-       ],
-       "index": 0,
-       "loc": [
-        136.1625,
-        0
-       ],
-       "tweened": false,
-       "ref": "_genericIcon_Large",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "ValueChange_Negative"
-  },
-  {
-   "data": {
-    "y": -48.35,
-    "text": "+999",
-    "color": "#000000",
-    "width": 191.75,
-    "font": "83px _sans",
-    "height": 96.75,
-    "wordWrap": 0,
-    "x": -95.85
-   },
-   "layers": [
-    {
-     "name": "value",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_valueChange_Positive_txt",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "icon",
-     "keyframes": [
-      {
-       "pivot": [
-        48,
-        48
-       ],
-       "index": 0,
-       "loc": [
-        136.1625,
-        0
-       ],
-       "tweened": false,
-       "ref": "_genericIcon_Large",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "id": "ValueChange_Positive"
-  },
-  {
-   "layers": [
-    {
-     "name": "Bg",
-     "keyframes": [
-      {
-       "pivot": [
-        71.025,
-        71.5125
-       ],
-       "ref": "_buttonCancelMovement_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        73.125,
-        73.425
-       ],
-       "index": 1,
-       "tweened": false,
-       "ref": "_buttonCancelMovement_over",
-       "duration": 1,
-       "tint": [
-        0.35,
-        "#640000"
-       ]
-      },
-      {
-       "pivot": [
-        69.375,
-        69.0375
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonCancelMovement_down",
-       "duration": 2,
-       "tint": [
-        0.35,
-        "#960000"
-       ]
-      }
-     ]
-    },
-    {
-     "name": "Icon",
-     "keyframes": [
-      {
-       "pivot": [
-        30,
-        28.0875
-       ],
-       "index": 0,
-       "loc": [
-        -2.85,
-        -0.6375
-       ],
-       "tweened": false,
-       "ref": "_buttonCancelMovement_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        28.0875
-       ],
-       "index": 1,
-       "loc": [
-        -2.4,
-        -0.6375
-       ],
-       "tweened": false,
-       "ref": "_buttonCancelMovement_png",
-       "duration": 1,
-       "tint": [
-        0.15,
-        "#FF0000"
-       ]
-      },
-      {
-       "pivot": [
-        30,
-        28.0875
-       ],
-       "index": 2,
-       "loc": [
-        -2.4,
-        -0.0375
-       ],
-       "tweened": false,
-       "ref": "_buttonCancelMovement_png",
-       "duration": 2,
-       "tint": [
-        0.6,
-        "#000000"
-       ]
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonCancelMovement"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "enter.png",
-     "keyframes": [
-      {
-       "pivot": [
-        30,
-        35.625
-       ],
-       "ref": "_buttonCancelUpgradeBuilding_png",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        30,
-        35.625
-       ],
-       "ref": "_buttonCancelUpgradeBuilding_png",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        30,
-        35.625
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonCancelUpgradeBuilding_png",
-       "scale": [
-        0.9524,
-        0.9524
-       ],
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        35.625
-       ],
-       "ref": "_buttonCancelUpgradeBuilding_png",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonCancelUpgradeBuilding"
-  },
-  {
-   "layers": [
-    {
-     "name": "Bg",
-     "keyframes": [
-      {
-       "pivot": [
-        71.025,
-        71.5125
-       ],
-       "ref": "_buttonCancelMovement_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        73.125,
-        73.425
-       ],
-       "index": 1,
-       "tweened": false,
-       "ref": "_buttonCancelMovement_over",
-       "duration": 1,
-       "tint": [
-        0.39,
-        "#66FF33"
-       ]
-      },
-      {
-       "pivot": [
-        69.375,
-        69.0375
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonCancelMovement_down",
-       "duration": 2,
-       "tint": [
-        0.39,
-        "#66FF33"
-       ]
-      }
-     ]
-    },
-    {
-     "name": "Icon",
-     "keyframes": [
-      {
-       "pivot": [
-        93.75,
-        93.75
-       ],
-       "index": 0,
-       "loc": [
-        0,
-        -0.375
-       ],
-       "tweened": false,
-       "ref": "_buttonConfirmMovement",
-       "duration": 2
-      },
-      {
-       "pivot": [
-        82.5,
-        82.5
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonConfirmMovement_down",
-       "duration": 2,
-       "tint": [
-        0.39,
-        "#66FF33"
-       ]
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonConfirmMovement"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "enter.png",
-     "keyframes": [
-      {
-       "pivot": [
-        25.275,
-        30.375
-       ],
-       "index": 0,
-       "loc": [
-        1.0125,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonDestroyBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        25.275,
-        30.375
-       ],
-       "index": 1,
-       "loc": [
-        0.975,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonDestroyBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        25.275,
-        30.375
-       ],
-       "index": 2,
-       "loc": [
-        0.975,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonDestroyBuilding_png",
-       "scale": [
-        0.9639,
-        0.9639
-       ],
-       "duration": 1
-      },
-      {
-       "pivot": [
-        25.275,
-        30.375
-       ],
-       "ref": "_buttonDestroyBuilding_png",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonDestroyBuilding"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "enter.png",
-     "keyframes": [
-      {
-       "pivot": [
-        27.6,
-        29.1375
-       ],
-       "index": 0,
-       "loc": [
-        -0.6,
-        -0.7875
-       ],
-       "tweened": false,
-       "ref": "_buttonEnterBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        27.6,
-        29.1375
-       ],
-       "index": 1,
-       "loc": [
-        -0.6,
-        -1.0125
-       ],
-       "tweened": false,
-       "ref": "_buttonEnterBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        27.6,
-        29.1375
-       ],
-       "index": 2,
-       "loc": [
-        -0.6,
-        -1.3125
-       ],
-       "tweened": false,
-       "ref": "_buttonEnterBuilding_png",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonEnterBuilding"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        108.1875,
-        151.4625
-       ],
-       "ref": "_buttonLargeContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        112.9875,
-        158.175
-       ],
-       "ref": "_buttonLargeContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        107.2125,
-        148.7625
-       ],
-       "ref": "_buttonLargeContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        97.5,
-        150
-       ],
-       "ref": "_buttonLargeContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_lastProd_cost",
-     "keyframes": [
-      {
-       "pivot": [
-        0,
-        -0.0375
-       ],
-       "index": 0,
-       "loc": [
-        -23.8875,
-        85.3875
-       ],
-       "tweened": false,
-       "ref": "_lastProd_cost",
-       "duration": 4
-      }
-     ]
-    },
-    {
-     "name": "_hardCurrencyIcon_Small",
-     "keyframes": [
-      {
-       "pivot": [
-        24,
-        24
-       ],
-       "index": 0,
-       "loc": [
-        41.4,
-        84.8625
-       ],
-       "tweened": false,
-       "ref": "_currencyIcon_Small",
-       "duration": 4
-      }
-     ]
-    },
-    {
-     "name": "_lastProd_time",
-     "keyframes": [
-      {
-       "pivot": [
-        -0.0375,
-        0
-       ],
-       "index": 0,
-       "loc": [
-        -23.475,
-        33.375
-       ],
-       "tweened": false,
-       "ref": "_lastProd_time",
-       "duration": 4
-      }
-     ]
-    },
-    {
-     "name": "_timeIcon_Small",
-     "keyframes": [
-      {
-       "pivot": [
-        23.5875,
-        23.5875
-       ],
-       "index": 0,
-       "loc": [
-        38.7,
-        32.3625
-       ],
-       "tweened": false,
-       "ref": "_timeIcon_Small",
-       "duration": 4
-      }
-     ]
-    },
-    {
-     "name": "_lastProd_production",
-     "keyframes": [
-      {
-       "pivot": [
-        -0.0375,
-        0
-       ],
-       "index": 0,
-       "loc": [
-        -3.525,
-        -94.3875
-       ],
-       "tweened": false,
-       "ref": "_lastProd_production",
-       "duration": 4
-      }
-     ]
-    },
-    {
-     "name": "_buildRessourceIcon_Medium",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -3,
-        -31.35
-       ],
-       "tweened": false,
-       "ref": "_buildRessourceIcon_Medium",
-       "duration": 4
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonLastProd"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "move-option.png",
-     "keyframes": [
-      {
-       "pivot": [
-        30,
-        30
-       ],
-       "index": 0,
-       "loc": [
-        -1.125,
-        -0.975
-       ],
-       "tweened": false,
-       "ref": "_buttonMoveBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        30
-       ],
-       "index": 1,
-       "loc": [
-        -1.125,
-        -1.0875
-       ],
-       "tweened": false,
-       "ref": "_buttonMoveBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        30
-       ],
-       "index": 2,
-       "loc": [
-        -0.3,
-        -1.6125
-       ],
-       "tweened": false,
-       "ref": "_buttonMoveBuilding_png",
-       "duration": 1
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonMoveBuilding"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        73.35,
-        75
-       ],
-       "ref": "_buttonOptions_sprite_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        75.15,
-        76.875
-       ],
-       "ref": "_buttonOptions_sprite_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        69.675,
-        71.25
-       ],
-       "ref": "_buttonOptions_sprite_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        73.35,
-        75
-       ],
-       "ref": "_buttonOptions_sprite_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonOptions"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        30.4125,
-        26.925
-       ],
-       "ref": "_buttonPlus_upp",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        32.175,
-        28.5
-       ],
-       "ref": "_buttonPlus_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        34.125,
-        30
-       ],
-       "index": 2,
-       "tweened": false,
-       "ref": "_buttonPlus_down",
-       "scale": [
-        0.8887,
-        0.8887
-       ],
-       "duration": 1
-      },
-      {
-       "pivot": [
-        386.0625,
-        45
-       ],
-       "ref": "_buttonPlus_hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPlus"
-  },
-  {
-   "layers": [
-    {
-     "name": "Button",
-     "keyframes": [
-      {
-       "pivot": [
-        88.05,
-        90
-       ],
-       "ref": "_buttonPurgatory_HUD_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        89.8875,
-        91.875
-       ],
-       "ref": "_buttonPurgatory_HUD_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        84.375,
-        86.25
-       ],
-       "index": 2,
-       "loc": [
-        0,
-        0.0375
-       ],
-       "tweened": false,
-       "ref": "_buttonPurgatory_HUD_down",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        88.05,
-        90
-       ],
-       "ref": "_buttonPurgatory_HUD_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonPurgatory_HUD"
-  },
-  {
-   "layers": [
-    {
-     "name": "Button",
-     "keyframes": [
-      {
-       "pivot": [
-        97.5,
-        96.675
-       ],
-       "ref": "_shopButton_HUD_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        100.2375,
-        99.375
-       ],
-       "ref": "_shopButton_HUD_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        93.75,
-        92.925
-       ],
-       "index": 2,
-       "loc": [
-        0.0375,
-        0
-       ],
-       "tweened": false,
-       "ref": "_shopButton_HUD_down",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        97.5,
-        96.675
-       ],
-       "ref": "_shopButton_HUD_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonShop_HUD"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "fast-foward-arrows.png",
-     "keyframes": [
-      {
-       "pivot": [
-        30,
-        24.375
-       ],
-       "index": 0,
-       "loc": [
-        -0.75,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonSkip_SmallConstruction_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        24.375
-       ],
-       "index": 1,
-       "loc": [
-        -0.75,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonSkip_SmallConstruction_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        24.375
-       ],
-       "index": 2,
-       "loc": [
-        -0.75,
-        0
-       ],
-       "tweened": false,
-       "ref": "_buttonSkip_SmallConstruction_png",
-       "scale": [
-        0.9468,
-        0.9468
-       ],
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30,
-        24.375
-       ],
-       "ref": "_buttonSkip_SmallConstruction_png",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "Icon_HardCurrency",
-     "keyframes": [
-      {
-       "duration": 4,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "Text_HardPrice",
-     "keyframes": [
-      {
-       "duration": 4,
-       "index": 0
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonSkip_SmallConstruction"
-  },
-  {
-   "layers": [
-    {
-     "name": "Layer 1",
-     "keyframes": [
-      {
-       "pivot": [
-        45.3,
-        44.925
-       ],
-       "ref": "_buttonContextual_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        46.5,
-        46.875
-       ],
-       "ref": "_buttonContextual_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        44.7375,
-        45
-       ],
-       "ref": "_buttonContextual_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        57.75,
-        57.75
-       ],
-       "ref": "_buttonContextt_Hit",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "enter.png",
-     "keyframes": [
-      {
-       "pivot": [
-        22.0875,
-        30
-       ],
-       "index": 0,
-       "loc": [
-        -0.75,
-        -0.9375
-       ],
-       "tweened": false,
-       "ref": "_buttonUpgradeBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        22.0875,
-        30
-       ],
-       "index": 1,
-       "loc": [
-        -0.7875,
-        -1.05
-       ],
-       "tweened": false,
-       "ref": "_buttonUpgradeBuilding_png",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        22.0875,
-        30
-       ],
-       "index": 2,
-       "loc": [
-        -0.7875,
-        -1.8375
-       ],
-       "tweened": false,
-       "ref": "_buttonUpgradeBuilding_png",
-       "scale": [
-        0.9524,
-        0.9524
-       ],
-       "duration": 1
-      },
-      {
-       "pivot": [
-        22.0875,
-        30
-       ],
-       "ref": "_buttonUpgradeBuilding_png",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonUpgradeBuilding"
-  },
-  {
-   "layers": [
-    {
-     "name": "Button",
-     "keyframes": [
-      {
-       "pivot": [
-        77.025,
-        78.75
-       ],
-       "ref": "_internButton_HUD_up",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        78.9,
-        80.625
-       ],
-       "ref": "_internButton_HUD_over",
-       "duration": 1,
-       "index": 1,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        73.3875,
-        75
-       ],
-       "index": 2,
-       "loc": [
-        0.075,
-        0.0375
-       ],
-       "tweened": false,
-       "ref": "_internButton_HUD_down",
-       "duration": 1
-      },
-      {
-       "pivot": [
-        77.025,
-        78.75
-       ],
-       "ref": "_internButton_HUD_up",
-       "duration": 1,
-       "index": 3,
-       "tweened": false
-      }
-     ]
-    }
-   ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonsInterns_HUD"
-  },
-  {
-   "layers": [
-    {
-     "name": "Sphere",
-     "keyframes": [
-      {
-       "pivot": [
-        82.5,
-        105.075
-       ],
-       "index": 0,
-       "loc": [
-        -0.3,
-        -0.0375
-       ],
-       "tweened": false,
-       "ref": "_level_sphere",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "_level_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_level_txt",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        0,
-        -11.8875
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~HUD_Level"
-  },
-  {
-   "layers": [
-    {
-     "name": "bgGauge",
-     "keyframes": [
-      {
-       "pivot": [
-        153.75,
-        90
-       ],
-       "ref": "_xp_bar_heaven_BG",
-       "duration": 100,
-       "index": 0,
-       "tweened": false
-      },
-      {
-       "pivot": [
-        153.75,
-        90
-       ],
-       "ref": "_xp_bar_heaven_BG",
-       "duration": 1,
-       "index": 100,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "mask": "bgMask",
-     "keyframes": [
-      {
-       "pivot": [
-        270,
-        69.375
-       ],
-       "index": 0,
-       "loc": [
-        142.9125,
-        9.225
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_heaven_Gauge",
-       "duration": 100
-      },
-      {
-       "pivot": [
-        270,
-        69.375
-       ],
-       "index": 100,
-       "loc": [
-        142.9125,
-        9.225
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_heaven_Gauge",
-       "duration": 1
-      }
-     ],
-     "name": "movingGauge"
-    },
-    {
-     "name": "bgMask",
-     "keyframes": [
-      {
-       "pivot": [
-        0,
-        81.4875
-       ],
-       "ref": "_xp_bar_heaven_Mask",
-       "duration": 100,
-       "index": 0,
-       "loc": [
-        142.9125,
-        16.725
-       ]
-      },
-      {
-       "pivot": [
-        0,
-        81.4875
-       ],
-       "ref": "_xp_bar_heaven_Mask",
-       "duration": 1,
-       "index": 100,
-       "loc": [
-        -130.7625,
-        4.6125
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~HUD_Xp_Bar_Heaven"
-  },
-  {
-   "layers": [
-    {
-     "name": "bgGauge",
-     "keyframes": [
-      {
-       "pivot": [
-        159.3,
-        92.025
-       ],
-       "index": 0,
-       "loc": [
-        0,
-        7.5
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_hell_BG",
-       "duration": 100
-      },
-      {
-       "pivot": [
-        159.3,
-        92.025
-       ],
-       "index": 100,
-       "loc": [
-        0,
-        7.5
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_hell_BG",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "mask": "bgMask",
-     "keyframes": [
-      {
-       "pivot": [
-        0,
-        67.5
-       ],
-       "index": 0,
-       "loc": [
-        -147.975,
-        9.225
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_hell_Gauge",
-       "duration": 100
-      },
-      {
-       "pivot": [
-        0,
-        67.5
-       ],
-       "index": 100,
-       "loc": [
-        -147.975,
-        9.225
-       ],
-       "tweened": false,
-       "ref": "_xp_bar_hell_Gauge",
-       "duration": 1
-      }
-     ],
-     "name": "movingGauge"
-    },
-    {
-     "name": "bgMask",
-     "keyframes": [
-      {
-       "pivot": [
-        281.25,
-        76.875
-       ],
-       "ref": "_xp_bar_hell_Mask",
-       "duration": 100,
-       "index": 0,
-       "loc": [
-        -147.975,
-        9.225
-       ]
-      },
-      {
-       "pivot": [
-        281.25,
-        76.875
-       ],
-       "ref": "_xp_bar_hell_Mask",
-       "duration": 1,
-       "index": 100,
-       "loc": [
-        129.7875,
-        9.225
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~HUD_Xp_Bar_Hell"
-  },
-  {
-   "layers": [
-    {
-     "name": "bar_bg",
-     "keyframes": [
-      {
-       "pivot": [
-        160.2375,
-        45
-       ],
-       "ref": "infoBar_bg",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "bar_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infoBar_value",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "_icon_hardcurrency",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -109.2375,
-        -0.9
-       ],
-       "tweened": false,
-       "ref": "_hardCurrencyIcon_Medium",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusHC",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonPlus",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        116.25,
-        0
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~INFO_HardCurrency"
-  },
-  {
-   "layers": [
-    {
-     "name": "bar_bg",
-     "keyframes": [
-      {
-       "pivot": [
-        160.2375,
-        45
-       ],
-       "ref": "infoBar_bg",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_icon_stone",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -110.7,
-        0
-       ],
-       "tweened": false,
-       "ref": "_stoneIcon_Medium",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "bar_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infoBar_value",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusIRON",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonPlus",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        116.25,
-        0
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~INFO_Iron"
-  },
-  {
-   "layers": [
-    {
-     "name": "bar_bg",
-     "keyframes": [
-      {
-       "pivot": [
-        160.2375,
-        45
-       ],
-       "ref": "infoBar_bg",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_icon_softcurrency",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -109.4625,
-        -1.575
-       ],
-       "tweened": false,
-       "ref": "_goldIcon_Medium",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "bar_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infoBar_value",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusSC",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonPlus",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        116.25,
-        0
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~INFO_SoftCurrency"
-  },
-  {
-   "layers": [
-    {
-     "name": "bar_bg",
-     "keyframes": [
-      {
-       "pivot": [
-        160.2375,
-        45
-       ],
-       "ref": "infoBar_bg",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_icon_wood",
-     "keyframes": [
-      {
-       "pivot": [
-        36,
-        36
-       ],
-       "index": 0,
-       "loc": [
-        -110.625,
-        -3.9
-       ],
-       "tweened": false,
-       "ref": "_woodIcon_Medium",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "bar_txt",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_infoBar_value",
-       "duration": 1,
-       "index": 0
-      }
-     ]
-    },
-    {
-     "name": "ButtonPlusWOOD",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "~ButtonPlus",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        116.25,
-        0
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~INFO_Wood"
-  },
-  {
-   "layers": [
-    {
-     "name": "_bg_gauge",
-     "keyframes": [
-      {
-       "pivot": [
-        90,
-        28.5
-       ],
-       "ref": "_bg_gauge",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_gauge",
-     "keyframes": [
-      {
-       "pivot": [
-        0,
-        28.5
-       ],
-       "index": 0,
-       "loc": [
-        -90,
-        0
-       ],
-       "tweened": false,
-       "ref": "_gauge_buildingTime",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "_time",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_time",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        1.6875,
-        0.825
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~isBuilding_gauge"
-  },
-  {
-   "layers": [
-    {
-     "name": "_bg_gauge",
-     "keyframes": [
-      {
-       "pivot": [
-        90,
-        28.5
-       ],
-       "ref": "_bg_gauge",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
-      }
-     ]
-    },
-    {
-     "name": "_gauge",
-     "keyframes": [
-      {
-       "pivot": [
-        0,
-        28.5
-       ],
-       "index": 0,
-       "loc": [
-        -90,
-        0
-       ],
-       "tweened": false,
-       "ref": "_gauge",
-       "duration": 1
-      }
-     ]
-    },
-    {
-     "name": "_time",
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "_time",
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        1.6875,
-        0.825
-       ]
-      }
-     ]
-    }
-   ],
-   "id": "~isProducing_gauge"
-  }
- ],
- "md5": "4656c8d02916bbf7102da92f51059924",
+ "md5": "ea90bd74851e5776f3b021c165496843",
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
+     "file": "atlas0.png",
      "textures": [
       {
+       "symbol": "_buttonLargeContextual_over",
        "origin": [
         113,
         158.2
        ],
-       "symbol": "_buttonLargeContextual_over",
        "rect": [
         1,
         1,
@@ -3183,11 +22,11 @@
        ]
       },
       {
+       "symbol": "_buttonLargeContextual_up",
        "origin": [
         108.2,
         151.45
        ],
-       "symbol": "_buttonLargeContextual_up",
        "rect": [
         229,
         1,
@@ -3196,11 +35,11 @@
        ]
       },
       {
+       "symbol": "_buttonLargeContextual_down",
        "origin": [
         107.2,
         148.75
        ],
-       "symbol": "_buttonLargeContextual_down",
        "rect": [
         447,
         1,
@@ -3209,11 +48,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_hell_BG",
        "origin": [
         159.3,
         92
        ],
-       "symbol": "_xp_bar_hell_BG",
        "rect": [
         664,
         1,
@@ -3222,11 +61,11 @@
        ]
       },
       {
+       "symbol": "_buttonLargeContextt_Hit",
        "origin": [
         97.5,
         150
        ],
-       "symbol": "_buttonLargeContextt_Hit",
        "rect": [
         664,
         187,
@@ -3235,11 +74,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_heaven_BG",
        "origin": [
         153.75,
         90
        ],
-       "symbol": "_xp_bar_heaven_BG",
        "rect": [
         229,
         305,
@@ -3248,11 +87,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_heaven_Mask",
        "origin": [
         0,
         81.5
        ],
-       "symbol": "_xp_bar_heaven_Mask",
        "rect": [
         1,
         487,
@@ -3261,11 +100,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_hell_Mask",
        "origin": [
         281.25,
         76.9
        ],
-       "symbol": "_xp_bar_hell_Mask",
        "rect": [
         285,
         487,
@@ -3274,11 +113,11 @@
        ]
       },
       {
+       "symbol": "_shopButton_HUD_over",
        "origin": [
         100.25,
         99.4
        ],
-       "symbol": "_shopButton_HUD_over",
        "rect": [
         569,
         489,
@@ -3287,11 +126,11 @@
        ]
       },
       {
+       "symbol": "_buttonPlus_hit",
        "origin": [
         386.05,
         45
        ],
-       "symbol": "_buttonPlus_hit",
        "rect": [
         1,
         643,
@@ -3300,11 +139,11 @@
        ]
       },
       {
+       "symbol": "_shopButton_HUD_up",
        "origin": [
         97.5,
         96.7
        ],
-       "symbol": "_shopButton_HUD_up",
        "rect": [
         772,
         489,
@@ -3313,11 +152,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_heaven_Gauge",
        "origin": [
         270,
         69.4
        ],
-       "symbol": "_xp_bar_heaven_Gauge",
        "rect": [
         438,
         690,
@@ -3326,11 +165,11 @@
        ]
       },
       {
+       "symbol": "_xp_bar_hell_Gauge",
        "origin": [
         0,
         67.5
        ],
-       "symbol": "_xp_bar_hell_Gauge",
        "rect": [
         710,
         690,
@@ -3339,11 +178,11 @@
        ]
       },
       {
+       "symbol": "_buttonConfirmMovement",
        "origin": [
         93.75,
         93.75
        ],
-       "symbol": "_buttonConfirmMovement",
        "rect": [
         710,
         827,
@@ -3352,11 +191,11 @@
        ]
       },
       {
+       "symbol": "_shopButton_HUD_down",
        "origin": [
         93.75,
         92.9
        ],
-       "symbol": "_shopButton_HUD_down",
        "rect": [
         1,
         735,
@@ -3365,50 +204,50 @@
        ]
       },
       {
-       "origin": [
-        82.5,
-        105.1
-       ],
-       "symbol": "_level_sphere",
-       "rect": [
-        191,
-        735,
-        165,
-        207
-       ]
-      },
-      {
+       "symbol": "_buttonPurgatory_HUD_over",
        "origin": [
         89.9,
         91.9
        ],
-       "symbol": "_buttonPurgatory_HUD_over",
        "rect": [
-        1,
-        923,
+        191,
+        735,
         180,
         184
        ]
       },
       {
+       "symbol": "_buttonPurgatory_HUD_up",
        "origin": [
         88.05,
         90
        ],
-       "symbol": "_buttonPurgatory_HUD_up",
        "rect": [
-        358,
+        373,
         831,
         177,
         180
        ]
       },
       {
+       "symbol": "_level_sphere",
+       "origin": [
+        82.5,
+        105.1
+       ],
+       "rect": [
+        191,
+        921,
+        165,
+        188
+       ]
+      },
+      {
+       "symbol": "_buttonMissions_HUD_over",
        "origin": [
         91.3,
         75
        ],
-       "symbol": "_buttonMissions_HUD_over",
        "rect": [
         1,
         318,
@@ -3417,76 +256,76 @@
        ]
       },
       {
+       "symbol": "_buttonMissions_HUD_up",
        "origin": [
         91.3,
         75
        ],
-       "symbol": "_buttonMissions_HUD_up",
        "rect": [
-        183,
-        1013,
+        1,
+        923,
         188,
         164
        ]
       },
       {
+       "symbol": "_buttonPurgatory_HUD_down",
        "origin": [
         84.4,
         86.25
        ],
-       "symbol": "_buttonPurgatory_HUD_down",
        "rect": [
         1,
-        1109,
+        1089,
         169,
         173
        ]
       },
       {
+       "symbol": "infoBar_bg",
        "origin": [
         160.25,
         45
        ],
-       "symbol": "infoBar_bg",
        "rect": [
-        373,
+        358,
         1013,
         321,
         90
        ]
       },
       {
+       "symbol": "_buttonConfirmMovement_down",
        "origin": [
         82.5,
         82.5
        ],
-       "symbol": "_buttonConfirmMovement_down",
        "rect": [
-        537,
-        831,
+        681,
+        1017,
         165,
         165
        ]
       },
       {
+       "symbol": "_buttonMissions_HUD_down",
        "origin": [
         84.1,
         68.75
        ],
-       "symbol": "_buttonMissions_HUD_down",
        "rect": [
-        696,
+        848,
         1017,
         173,
         152
        ]
       },
       {
+       "symbol": "_internButton_HUD_over",
        "origin": [
         78.9,
         80.6
        ],
-       "symbol": "_internButton_HUD_over",
        "rect": [
         861,
         187,
@@ -3495,115 +334,115 @@
        ]
       },
       {
+       "symbol": "_internButton_HUD_up",
        "origin": [
         77,
         78.75
        ],
-       "symbol": "_internButton_HUD_up",
        "rect": [
-        373,
-        1105,
+        552,
+        831,
         154,
         158
        ]
       },
       {
+       "symbol": "_buttonOptions_sprite_over",
        "origin": [
         75.2,
         76.9
        ],
-       "symbol": "_buttonOptions_sprite_over",
        "rect": [
-        172,
-        1179,
+        848,
+        1171,
         151,
         154
        ]
       },
       {
-       "origin": [
-        73.4,
-        75
-       ],
-       "symbol": "_internButton_HUD_down",
-       "rect": [
-        1,
-        1284,
-        147,
-        150
-       ]
-      },
-      {
-       "origin": [
-        73.4,
-        75
-       ],
        "symbol": "_buttonOptions_sprite_up",
+       "origin": [
+        73.4,
+        75
+       ],
        "rect": [
-        529,
+        358,
         1105,
         147,
         150
        ]
       },
       {
+       "symbol": "_internButton_HUD_down",
+       "origin": [
+        73.4,
+        75
+       ],
+       "rect": [
+        507,
+        1105,
+        147,
+        150
+       ]
+      },
+      {
+       "symbol": "_buttonCancelMovement_over",
        "origin": [
         73.1,
         73.4
        ],
-       "symbol": "_buttonCancelMovement_over",
        "rect": [
-        871,
-        1017,
+        656,
+        1184,
         147,
         147
        ]
       },
       {
+       "symbol": "_buttonCancelMovement_up",
        "origin": [
         71,
         71.5
        ],
-       "symbol": "_buttonCancelMovement_up",
        "rect": [
-        871,
-        1166,
+        805,
+        1327,
         143,
         143
        ]
       },
       {
+       "symbol": "_buttonOptions_sprite_down",
        "origin": [
         69.7,
         71.25
        ],
-       "symbol": "_buttonOptions_sprite_down",
        "rect": [
-        678,
-        1171,
+        172,
+        1111,
         140,
         143
        ]
       },
       {
+       "symbol": "_buttonCancelMovement_down",
        "origin": [
         69.4,
         69.05
        ],
-       "symbol": "_buttonCancelMovement_down",
        "rect": [
-        529,
-        1257,
+        172,
+        1256,
         138,
         138
        ]
       },
       {
+       "symbol": "_buttonReset_sprite_over",
        "origin": [
         72.65,
         58
        ],
-       "symbol": "_buttonReset_sprite_over",
        "rect": [
         861,
         351,
@@ -3612,37 +451,37 @@
        ]
       },
       {
-       "origin": [
-        72.65,
-        56.25
-       ],
        "symbol": "_buttonReset_sprite_down",
-       "rect": [
-        820,
-        1311,
-        146,
-        113
-       ]
-      },
-      {
        "origin": [
         72.65,
         56.25
        ],
-       "symbol": "_buttonReset_sprite_up",
        "rect": [
-        669,
-        1316,
+        1,
+        1264,
         146,
         113
        ]
       },
       {
+       "symbol": "_buttonReset_sprite_up",
+       "origin": [
+        72.65,
+        56.25
+       ],
+       "rect": [
+        1,
+        1379,
+        146,
+        113
+       ]
+      },
+      {
+       "symbol": "_buttonContextt_Hit",
        "origin": [
         57.75,
         57.75
        ],
-       "symbol": "_buttonContextt_Hit",
        "rect": [
         539,
         301,
@@ -3651,63 +490,63 @@
        ]
       },
       {
+       "symbol": "_gauge_buildingTime",
+       "origin": [
+        0,
+        28.5
+       ],
+       "rect": [
+        149,
+        1472,
+        180,
+        57
+       ]
+      },
+      {
+       "symbol": "_bg_gauge",
        "origin": [
         90,
         28.5
        ],
-       "symbol": "_bg_gauge",
        "rect": [
-        817,
-        1426,
+        331,
+        1472,
         180,
         57
        ]
       },
       {
-       "origin": [
-        0,
-        28.5
-       ],
        "symbol": "_gauge",
-       "rect": [
-        325,
-        1265,
-        180,
-        57
-       ]
-      },
-      {
        "origin": [
         0,
         28.5
        ],
-       "symbol": "_gauge_buildingTime",
        "rect": [
-        325,
-        1324,
+        513,
+        1472,
         180,
         57
        ]
       },
       {
+       "symbol": "_infopurgatory_bg",
        "origin": [
         114.4,
         20.6
        ],
-       "symbol": "_infopurgatory_bg",
        "rect": [
-        1,
-        1485,
+        695,
+        1472,
         229,
         42
        ]
       },
       {
+       "symbol": "_isBuilding_icon",
        "origin": [
         49.5,
         48
        ],
-       "symbol": "_isBuilding_icon",
        "rect": [
         900,
         827,
@@ -3716,50 +555,50 @@
        ]
       },
       {
+       "symbol": "_genericIcon_Large",
        "origin": [
         48,
         48
        ],
-       "symbol": "_genericIcon_Large",
        "rect": [
-        150,
-        1335,
+        312,
+        1333,
         96,
         96
        ]
       },
       {
+       "symbol": "_infohouse_bg",
        "origin": [
         75,
         29.25
        ],
-       "symbol": "_infohouse_bg",
        "rect": [
-        183,
-        944,
+        149,
+        1396,
         150,
         59
        ]
       },
       {
+       "symbol": "_buttonContextual_over",
        "origin": [
         46.5,
         46.9
        ],
-       "symbol": "_buttonContextual_over",
        "rect": [
-        248,
-        1383,
+        410,
+        1257,
         94,
         94
        ]
       },
       {
+       "symbol": "_buttonContextual_down",
        "origin": [
-        45.3,
-        44.9
+        44.75,
+        45
        ],
-       "symbol": "_buttonContextual_up",
        "rect": [
         900,
         925,
@@ -3768,115 +607,128 @@
        ]
       },
       {
+       "symbol": "_buttonContextual_up",
        "origin": [
-        44.75,
-        45
+        45.3,
+        44.9
        ],
-       "symbol": "_buttonContextual_down",
        "rect": [
-        344,
-        1383,
+        506,
+        1257,
         90,
         90
        ]
       },
       {
+       "symbol": "_neutralSoulIcon_Large",
        "origin": [
         30.7,
         48
        ],
-       "symbol": "_neutralSoulIcon_Large",
        "rect": [
-        436,
-        1383,
+        950,
+        1327,
         62,
         96
        ]
       },
       {
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         36,
         36
        ],
-       "symbol": "_goldIcon_Medium",
        "rect": [
-        358,
-        735,
+        312,
+        1257,
         72,
         72
        ]
       },
       {
-       "origin": [
-        36,
-        36
-       ],
-       "symbol": "_stoneIcon_Medium",
-       "rect": [
-        500,
-        1397,
-        72,
-        72
-       ]
-      },
-      {
-       "origin": [
-        36,
-        36
-       ],
-       "symbol": "_buildRessourceIcon_Medium",
-       "rect": [
-        574,
-        1397,
-        72,
-        72
-       ]
-      },
-      {
-       "origin": [
-        36,
-        36
-       ],
        "symbol": "_woodIcon_Medium",
-       "rect": [
-        648,
-        1431,
-        72,
-        72
-       ]
-      },
-      {
        "origin": [
         36,
         36
        ],
-       "symbol": "_soulIcon_Medium",
        "rect": [
-        722,
-        1431,
+        950,
+        1425,
         72,
         72
        ]
       },
       {
+       "symbol": "_soulIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        598,
+        1333,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_buildRessourceIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        506,
+        1349,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_stoneIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        410,
+        1353,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        672,
+        1333,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_buttonCancelUpgradeBuilding_png",
+       "origin": [
+        30,
+        35.6
+       ],
+       "rect": [
+        373,
+        735,
+        60,
+        72
+       ]
+      },
+      {
+       "symbol": "_buttonMoveBuilding_png",
        "origin": [
         30,
         30
        ],
-       "symbol": "_buttonMoveBuilding_png",
-       "rect": [
-        344,
-        1475,
-        60,
-        60
-       ]
-      },
-      {
-       "origin": [
-        34.1,
-        30
-       ],
-       "symbol": "_buttonPlus_down",
        "rect": [
         569,
         419,
@@ -3885,105 +737,118 @@
        ]
       },
       {
+       "symbol": "_buttonPlus_down",
+       "origin": [
+        34.1,
+        30
+       ],
+       "rect": [
+        580,
+        1407,
+        60,
+        60
+       ]
+      },
+      {
+       "symbol": "_buttonCancelMovement_png",
        "origin": [
         30,
         28.1
        ],
-       "symbol": "_buttonCancelMovement_png",
        "rect": [
-        500,
-        1471,
+        642,
+        1407,
         60,
         57
        ]
       },
       {
+       "symbol": "_buttonEnterBuilding_png",
        "origin": [
         27.6,
         29.15
        ],
-       "symbol": "_buttonEnterBuilding_png",
        "rect": [
-        562,
-        1471,
+        598,
+        1257,
         56,
         59
        ]
       },
       {
+       "symbol": "_buttonPlus_over",
+       "origin": [
+        32.2,
+        28.5
+       ],
+       "rect": [
+        704,
+        1407,
+        57,
+        57
+       ]
+      },
+      {
+       "symbol": "_buttonDestroyBuilding_png",
        "origin": [
         25.3,
         30.4
        ],
-       "symbol": "_buttonDestroyBuilding_png",
        "rect": [
-        968,
-        1311,
+        746,
+        1333,
         51,
         60
        ]
       },
       {
-       "origin": [
-        30,
-        24.4
-       ],
-       "symbol": "_buttonSkip_SmallConstruction_png",
-       "rect": [
-        150,
-        1433,
-        60,
-        49
-       ]
-      },
-      {
+       "symbol": "_buttonPlus_upp",
        "origin": [
         30.4,
         26.9
        ],
-       "symbol": "_buttonPlus_upp",
        "rect": [
-        406,
-        1481,
+        969,
+        469,
         54,
         54
        ]
       },
       {
+       "symbol": "_buttonUpgradeBuilding_png",
        "origin": [
         22.1,
         30
        ],
-       "symbol": "_buttonUpgradeBuilding_png",
        "rect": [
-        325,
-        1179,
+        969,
+        525,
         45,
         60
        ]
       },
       {
+       "symbol": "_currencyIcon_Small",
        "origin": [
         24,
         24
        ],
-       "symbol": "_currencyIcon_Small",
        "rect": [
-        968,
-        1373,
+        969,
+        587,
         48,
         48
        ]
       },
       {
+       "symbol": "_timeIcon_Small",
        "origin": [
         26.25,
         23.55
        ],
-       "symbol": "_timeIcon_Small",
        "rect": [
-        232,
-        1479,
+        969,
+        637,
         48,
         48
        ]
@@ -4001,14 +866,14 @@
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
+       "symbol": "_lastProd_production",
        "origin": [
         0,
         0
        ],
-       "symbol": "_lastProd_production",
        "rect": [
-        183,
-        923,
+        435,
+        735,
         1,
         1
        ]
@@ -4026,14 +891,14 @@
         "wordWrap": 0,
         "color": "#00CC00"
        },
+       "symbol": "_valueChange_Positive_txt",
        "origin": [
         0,
         0
        ],
-       "symbol": "_valueChange_Positive_txt",
        "rect": [
-        186,
-        923,
+        435,
+        738,
         1,
         1
        ]
@@ -4047,18 +912,18 @@
         "width": 222.35,
         "font": "48px _pixelOperator*",
         "align": "center",
-        "height": 55.3,
+        "height": 61.3,
         "wordWrap": 1,
         "color": "#F0F0FF"
        },
+       "symbol": "_time",
        "origin": [
         0,
         0
        ],
-       "symbol": "_time",
        "rect": [
-        183,
-        926,
+        435,
+        741,
         1,
         1
        ]
@@ -4076,14 +941,14 @@
         "wordWrap": 0,
         "color": "#250000"
        },
+       "symbol": "_level_txt",
        "origin": [
         0,
         0
        ],
-       "symbol": "_level_txt",
        "rect": [
-        186,
-        926,
+        435,
+        744,
         1,
         1
        ]
@@ -4101,14 +966,14 @@
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
+       "symbol": "_lastProd_time",
        "origin": [
         0,
         0
        ],
-       "symbol": "_lastProd_time",
        "rect": [
-        183,
-        929,
+        435,
+        747,
         1,
         1
        ]
@@ -4126,14 +991,14 @@
         "wordWrap": 0,
         "color": "#FF0000"
        },
+       "symbol": "_valueChange_Negative_txt",
        "origin": [
         0,
         0
        ],
-       "symbol": "_valueChange_Negative_txt",
        "rect": [
-        186,
-        929,
+        435,
+        750,
         1,
         1
        ]
@@ -4147,18 +1012,18 @@
         "width": 104,
         "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 62.55,
+        "height": 108.8,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
+       "symbol": "_lastProd_cost",
        "origin": [
         0,
         0
        ],
-       "symbol": "_lastProd_cost",
        "rect": [
-        183,
-        932,
+        435,
+        753,
         1,
         1
        ]
@@ -4176,14 +1041,14 @@
         "wordWrap": 1,
         "color": "#000000"
        },
+       "symbol": "_infos_house_txt",
        "origin": [
         0,
         0
        ],
-       "symbol": "_infos_house_txt",
        "rect": [
-        186,
-        932,
+        435,
+        756,
         1,
         1
        ]
@@ -4197,18 +1062,18 @@
         "width": 251.35,
         "font": "54px _pixelOperator*",
         "align": "center",
-        "height": 54.65,
+        "height": 64.35,
         "wordWrap": 1,
         "color": "#000000"
        },
+       "symbol": "_infoPurgatory_txt",
        "origin": [
         0,
         0
        ],
-       "symbol": "_infoPurgatory_txt",
        "rect": [
-        183,
-        935,
+        435,
+        759,
         1,
         1
        ]
@@ -4222,71 +1087,3206 @@
         "width": 140.85,
         "font": "62px _pixelOperator*",
         "align": "center",
-        "height": 62.1,
+        "height": 144.6,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
+       "symbol": "_infoBar_value",
        "origin": [
         0,
         0
        ],
-       "symbol": "_infoBar_value",
        "rect": [
-        186,
-        935,
+        435,
+        762,
         1,
         1
        ]
       }
-     ],
-     "file": "atlas0.png"
+     ]
     },
     {
+     "file": "atlas1.png",
      "textures": [
       {
-       "origin": [
-        36,
-        36
-       ],
-       "symbol": "_hardCurrencyIcon_Medium",
-       "rect": [
-        1,
-        1,
-        72,
-        72
-       ]
-      },
-      {
+       "symbol": "_buttonSkip_SmallConstruction_png",
        "origin": [
         30,
-        35.6
+        24.4
        ],
-       "symbol": "_buttonCancelUpgradeBuilding_png",
        "rect": [
         1,
-        75,
+        1,
         60,
-        72
+        49
        ]
-      },
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "movies": [
+  {
+   "layers": [
+    {
+     "keyframes": [
       {
-       "origin": [
-        32.2,
-        28.5
-       ],
-       "symbol": "_buttonPlus_over",
-       "rect": [
-        63,
-        75,
-        57,
-        57
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -149.6625
        ]
       }
      ],
-     "file": "atlas1.png"
+     "name": "ButtonMoveBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonSkip_SmallConstruction",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -44.6625
+       ]
+      }
+     ],
+     "name": "ButtonAccelerate"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -254.6625
+       ]
+      }
+     ],
+     "name": "ButtonCancelConstruction"
     }
    ],
-   "scaleFactor": 1
+   "id": "BuildingContext"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~isBuilding_gauge",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        -28.5
+       ]
+      }
+     ],
+     "name": "Gauge"
+    }
+   ],
+   "id": "BuildingTimer"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonUpgradeBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -45
+       ]
+      }
+     ],
+     "name": "ButtonUpgradeBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -255
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -360
+       ]
+      }
+     ],
+     "name": "ButtonDestroyBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -150
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonLastProd",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        231.75,
+        -150
+       ]
+      }
+     ],
+     "name": "ButtonLastProd"
+    }
+   ],
+   "id": "BuiltContext_Collector"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -150
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -255
+       ]
+      }
+     ],
+     "name": "ButtonDestroyBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -45
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonLastProd",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        247.5,
+        -150
+       ]
+      }
+     ],
+     "name": "ButtonLastProd"
+    }
+   ],
+   "id": "BuiltContext_Collector2"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "ButtonUpgradeBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -255
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonCancelUpgradeBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -360
+       ]
+      }
+     ],
+     "name": "ButtonCancelUpgrade"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonSkip_SmallConstruction",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -45
+       ]
+      }
+     ],
+     "name": "ButtonSkip_SmallConstruction"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -150
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    }
+   ],
+   "id": "BuiltContext_InUpgrading"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "ButtonUpgradeBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -150
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -255
+       ]
+      }
+     ],
+     "name": "ButtonDestroyBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.875,
+        -45
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonLastProd",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        231.75,
+        -150
+       ]
+      }
+     ],
+     "name": "ButtonLastProd"
+    }
+   ],
+   "id": "BuiltContext_Marketing"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonUpgradeBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -45
+       ]
+      }
+     ],
+     "name": "ButtonUpgradeBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -255
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -360
+       ]
+      }
+     ],
+     "name": "ButtonDestroyBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -150
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    }
+   ],
+   "id": "BuiltContext_house"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "ButtonUpgradeBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonEnterBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -150
+       ]
+      }
+     ],
+     "name": "EnterButton"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonDestroyBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -255
+       ]
+      }
+     ],
+     "name": "ButtonDestroyBuilding"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonMoveBuilding",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        70.5,
+        -45
+       ]
+      }
+     ],
+     "name": "MoveButton"
+    }
+   ],
+   "id": "BuiltContext_noUpgrade"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -225,
+        -406.875
+       ],
+       "ref": "HUD_HeavenXP_Container",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HeavenXP"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        241.575,
+        -405
+       ],
+       "ref": "HUD_HellXP_Container",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HellXP"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        0,
+        -375
+       ],
+       "ref": "~HUD_Level",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_Level"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -566.85,
+        -412.125
+       ],
+       "ref": "~INFO_HardCurrency",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "topRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HardCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        566.85,
+        -412.125
+       ],
+       "ref": "~INFO_SoftCurrency",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "topRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        643.7625,
+        398.3625
+       ],
+       "ref": "~ButtonShop_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomRight",
+        "UIPosition": "bottomRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "ButtonShop_HUD"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -662.7,
+        52.5
+       ],
+       "ref": "~ButtonOptions",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "ButtonOptions"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -648,
+        405
+       ],
+       "ref": "~ButtonPurgatory_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_PurgatoryButton"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -659.025,
+        222.9375
+       ],
+       "ref": "~ButtonsInterns_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_InternsButton"
+    }
+   ],
+   "id": "HUD"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -231.225,
+        -408.7125
+       ],
+       "ref": "HUD_HeavenXP_Container",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HeavenXP"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        244.65,
+        -406.6875
+       ],
+       "ref": "HUD_HellXP_Container",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HellXP"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        4.3875,
+        -370.1625
+       ],
+       "ref": "~HUD_Level",
+       "data": {
+        "UIPosition_Desktop": "top",
+        "UIPosition": "top"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_Level"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "HUD_BtnInfos"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "HUD_BtnNews"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        598.95,
+        -325.2
+       ],
+       "ref": "~INFO_HardCurrency",
+       "data": {
+        "UIPosition_Desktop": "topRight",
+        "UIPosition": "topRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_HardCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        598.95,
+        -441.8625
+       ],
+       "ref": "~INFO_SoftCurrency",
+       "data": {
+        "UIPosition_Desktop": "topRight",
+        "UIPosition": "topRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_SoftCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -567.3,
+        -333.8625
+       ],
+       "ref": "~INFO_Wood",
+       "data": {
+        "UIPosition_Desktop": "topLeft",
+        "UIPosition": "topLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_Wood"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -571.05,
+        -441.8625
+       ],
+       "ref": "~INFO_Iron",
+       "data": {
+        "UIPosition_Desktop": "topLeft",
+        "UIPosition": "topLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_Iron"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        661.6125,
+        397.5
+       ],
+       "ref": "~ButtonShop_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomRight",
+        "UIPosition": "bottomRight"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "ButtonShop_HUD"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "ButtonMissions_HUD"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -643.9875,
+        404.1375
+       ],
+       "ref": "~ButtonPurgatory_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_PurgatoryButton"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -652.575,
+        222.075
+       ],
+       "ref": "~ButtonsInterns_HUD",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_InternsButton"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -648.9375,
+        52.5
+       ],
+       "ref": "~ButtonOptions",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "ButtonOptions"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Layer 2"
+    }
+   ],
+   "id": "HUD_Desktop"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~HUD_Xp_Bar_Heaven",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "HUD_Xp_Bar_Heaven"
+    }
+   ],
+   "id": "HUD_HeavenXP_Container"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~HUD_Xp_Bar_Hell",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -0.075,
+        -7.35
+       ]
+      }
+     ],
+     "name": "HUD_Xp_Bar_Hell"
+    }
+   ],
+   "id": "HUD_HellXP_Container"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -0.075,
+        0.4125
+       ],
+       "ref": "~ButtonCancelMovement",
+       "data": {
+        "UIPosition_Desktop": "bottom",
+        "UIPosition": "bottom"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "Button_CancelMovement"
+    }
+   ],
+   "id": "MoveBuilding_Desktop"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        75,
+        0.375
+       ],
+       "ref": "~ButtonConfirmMovement",
+       "data": {
+        "UIPosition_Desktop": "bottom",
+        "UIPosition": "bottom"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "Button_ConfirmMovement"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        -75,
+        0.1875
+       ],
+       "ref": "~ButtonCancelMovement",
+       "data": {
+        "UIPosition_Desktop": "bottom",
+        "UIPosition": "bottom"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "Button_CancelMovement"
+    }
+   ],
+   "id": "MovingBuilding"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        48,
+        48
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -0.5625
+       ],
+       "ref": "_genericIcon_Large",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_currency"
+    }
+   ],
+   "data": {
+    "UI": "",
+    "UIPosition": "top"
+   },
+   "id": "ProdDone"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~isProducing_gauge",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -2.2875,
+        3.7125
+       ]
+      }
+     ],
+     "name": "Gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Icon"
+    }
+   ],
+   "id": "ProducingTimer"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_infohouse_bg",
+       "pivot": [
+        75,
+        29.25
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infos_house_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        -0.0375
+       ]
+      }
+     ],
+     "name": "_infos_house_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -93.4875,
+        0
+       ],
+       "ref": "_soulIcon_Medium",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_infos_house_icon"
+    }
+   ],
+   "id": "SoulsCounter_house"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        114.375,
+        20.625
+       ],
+       "index": 0,
+       "loc": [
+        -9.6375,
+        0
+       ],
+       "ref": "_infopurgatory_bg",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infoPurgatory_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -13.2,
+        4.8
+       ]
+      }
+     ],
+     "name": "_infos_purgatory_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30.7125,
+        48
+       ],
+       "index": 0,
+       "loc": [
+        -137.475,
+        -14.8875
+       ],
+       "ref": "_neutralSoulIcon_Large",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_infos_purgatory_icon"
+    }
+   ],
+   "id": "SoulsCounter_purgatory"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_valueChange_Negative_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "value"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        48,
+        48
+       ],
+       "index": 0,
+       "loc": [
+        136.1625,
+        0
+       ],
+       "ref": "_genericIcon_Large",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "icon"
+    }
+   ],
+   "data": {
+    "y": -48.35,
+    "text": "+999",
+    "color": "#000000",
+    "width": 191.75,
+    "font": "83px _sans",
+    "height": 96.75,
+    "wordWrap": 0,
+    "x": -95.85
+   },
+   "id": "ValueChange_Negative"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_valueChange_Positive_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "value"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        48,
+        48
+       ],
+       "index": 0,
+       "loc": [
+        136.1625,
+        0
+       ],
+       "ref": "_genericIcon_Large",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "icon"
+    }
+   ],
+   "data": {
+    "y": -48.35,
+    "text": "+999",
+    "color": "#000000",
+    "width": 191.75,
+    "font": "83px _sans",
+    "height": 96.75,
+    "wordWrap": 0,
+    "x": -95.85
+   },
+   "id": "ValueChange_Positive"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonCancelMovement_up",
+       "pivot": [
+        71.025,
+        71.5125
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.35,
+        "#640000"
+       ],
+       "index": 1,
+       "ref": "_buttonCancelMovement_over",
+       "pivot": [
+        73.125,
+        73.425
+       ],
+       "duration": 1
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.35,
+        "#960000"
+       ],
+       "index": 2,
+       "ref": "_buttonCancelMovement_down",
+       "pivot": [
+        69.375,
+        69.0375
+       ],
+       "duration": 2
+      }
+     ],
+     "name": "Bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30,
+        28.0875
+       ],
+       "index": 0,
+       "loc": [
+        -2.85,
+        -0.6375
+       ],
+       "ref": "_buttonCancelMovement_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        28.0875
+       ],
+       "tint": [
+        0.15,
+        "#FF0000"
+       ],
+       "index": 1,
+       "loc": [
+        -2.4,
+        -0.6375
+       ],
+       "ref": "_buttonCancelMovement_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        28.0875
+       ],
+       "tint": [
+        0.6,
+        "#000000"
+       ],
+       "index": 2,
+       "loc": [
+        -2.4,
+        -0.0375
+       ],
+       "ref": "_buttonCancelMovement_png",
+       "tweened": false,
+       "duration": 2
+      }
+     ],
+     "name": "Icon"
+    }
+   ],
+   "id": "~ButtonCancelMovement",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonCancelUpgradeBuilding_png",
+       "pivot": [
+        30,
+        35.625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonCancelUpgradeBuilding_png",
+       "pivot": [
+        30,
+        35.625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonCancelUpgradeBuilding_png",
+       "pivot": [
+        30,
+        35.625
+       ],
+       "scale": [
+        0.9524,
+        0.9524
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonCancelUpgradeBuilding_png",
+       "pivot": [
+        30,
+        35.625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "enter.png"
+    }
+   ],
+   "id": "~ButtonCancelUpgradeBuilding",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonCancelMovement_up",
+       "pivot": [
+        71.025,
+        71.5125
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.39,
+        "#66FF33"
+       ],
+       "index": 1,
+       "ref": "_buttonCancelMovement_over",
+       "pivot": [
+        73.125,
+        73.425
+       ],
+       "duration": 1
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.39,
+        "#66FF33"
+       ],
+       "index": 2,
+       "ref": "_buttonCancelMovement_down",
+       "pivot": [
+        69.375,
+        69.0375
+       ],
+       "duration": 2
+      }
+     ],
+     "name": "Bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        93.75,
+        93.75
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -0.375
+       ],
+       "ref": "_buttonConfirmMovement",
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "tweened": false,
+       "tint": [
+        0.39,
+        "#66FF33"
+       ],
+       "index": 2,
+       "ref": "_buttonConfirmMovement_down",
+       "pivot": [
+        82.5,
+        82.5
+       ],
+       "duration": 2
+      }
+     ],
+     "name": "Icon"
+    }
+   ],
+   "id": "~ButtonConfirmMovement",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        25.275,
+        30.375
+       ],
+       "index": 0,
+       "loc": [
+        1.0125,
+        0
+       ],
+       "ref": "_buttonDestroyBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        25.275,
+        30.375
+       ],
+       "index": 1,
+       "loc": [
+        0.975,
+        0
+       ],
+       "ref": "_buttonDestroyBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        25.275,
+        30.375
+       ],
+       "index": 2,
+       "loc": [
+        0.975,
+        0
+       ],
+       "ref": "_buttonDestroyBuilding_png",
+       "tweened": false,
+       "scale": [
+        0.9639,
+        0.9639
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonDestroyBuilding_png",
+       "pivot": [
+        25.275,
+        30.375
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "enter.png"
+    }
+   ],
+   "id": "~ButtonDestroyBuilding",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        27.6,
+        29.1375
+       ],
+       "index": 0,
+       "loc": [
+        -0.6,
+        -0.7875
+       ],
+       "ref": "_buttonEnterBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        27.6,
+        29.1375
+       ],
+       "index": 1,
+       "loc": [
+        -0.6,
+        -1.0125
+       ],
+       "ref": "_buttonEnterBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        27.6,
+        29.1375
+       ],
+       "index": 2,
+       "loc": [
+        -0.6,
+        -1.3125
+       ],
+       "ref": "_buttonEnterBuilding_png",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "enter.png"
+    }
+   ],
+   "id": "~ButtonEnterBuilding",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonLargeContextual_up",
+       "pivot": [
+        108.1875,
+        151.4625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonLargeContextual_over",
+       "pivot": [
+        112.9875,
+        158.175
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonLargeContextual_down",
+       "pivot": [
+        107.2125,
+        148.7625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonLargeContextt_Hit",
+       "pivot": [
+        97.5,
+        150
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        -0.0375
+       ],
+       "index": 0,
+       "loc": [
+        -23.8875,
+        85.3875
+       ],
+       "ref": "_lastProd_cost",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_lastProd_cost"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        24,
+        24
+       ],
+       "index": 0,
+       "loc": [
+        41.4,
+        84.8625
+       ],
+       "ref": "_currencyIcon_Small",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_hardCurrencyIcon_Small"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.0375,
+        0
+       ],
+       "index": 0,
+       "loc": [
+        -23.475,
+        33.375
+       ],
+       "ref": "_lastProd_time",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_lastProd_time"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        23.5875,
+        23.5875
+       ],
+       "index": 0,
+       "loc": [
+        38.7,
+        32.3625
+       ],
+       "ref": "_timeIcon_Small",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_timeIcon_Small"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.0375,
+        0
+       ],
+       "index": 0,
+       "loc": [
+        -3.525,
+        -94.3875
+       ],
+       "ref": "_lastProd_production",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_lastProd_production"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -3,
+        -31.35
+       ],
+       "ref": "_buildRessourceIcon_Medium",
+       "tweened": false,
+       "duration": 4
+      }
+     ],
+     "name": "_buildRessourceIcon_Medium"
+    }
+   ],
+   "id": "~ButtonLastProd",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30,
+        30
+       ],
+       "index": 0,
+       "loc": [
+        -1.125,
+        -0.975
+       ],
+       "ref": "_buttonMoveBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        30
+       ],
+       "index": 1,
+       "loc": [
+        -1.125,
+        -1.0875
+       ],
+       "ref": "_buttonMoveBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        30
+       ],
+       "index": 2,
+       "loc": [
+        -0.3,
+        -1.6125
+       ],
+       "ref": "_buttonMoveBuilding_png",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "move-option.png"
+    }
+   ],
+   "id": "~ButtonMoveBuilding",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonOptions_sprite_up",
+       "pivot": [
+        73.35,
+        75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonOptions_sprite_over",
+       "pivot": [
+        75.15,
+        76.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonOptions_sprite_down",
+       "pivot": [
+        69.675,
+        71.25
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonOptions_sprite_up",
+       "pivot": [
+        73.35,
+        75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "id": "~ButtonOptions",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonPlus_upp",
+       "pivot": [
+        30.4125,
+        26.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonPlus_over",
+       "pivot": [
+        32.175,
+        28.5
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "tweened": false,
+       "index": 2,
+       "ref": "_buttonPlus_down",
+       "pivot": [
+        34.125,
+        30
+       ],
+       "scale": [
+        0.8887,
+        0.8887
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonPlus_hit",
+       "pivot": [
+        386.0625,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    }
+   ],
+   "id": "~ButtonPlus",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonPurgatory_HUD_up",
+       "pivot": [
+        88.05,
+        90
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonPurgatory_HUD_over",
+       "pivot": [
+        89.8875,
+        91.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "pivot": [
+        84.375,
+        86.25
+       ],
+       "index": 2,
+       "loc": [
+        0,
+        0.0375
+       ],
+       "ref": "_buttonPurgatory_HUD_down",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "_buttonPurgatory_HUD_up",
+       "pivot": [
+        88.05,
+        90
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Button"
+    }
+   ],
+   "id": "~ButtonPurgatory_HUD",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_shopButton_HUD_up",
+       "pivot": [
+        97.5,
+        96.675
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_shopButton_HUD_over",
+       "pivot": [
+        100.2375,
+        99.375
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "pivot": [
+        93.75,
+        92.925
+       ],
+       "index": 2,
+       "loc": [
+        0.0375,
+        0
+       ],
+       "ref": "_shopButton_HUD_down",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "_shopButton_HUD_up",
+       "pivot": [
+        97.5,
+        96.675
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Button"
+    }
+   ],
+   "id": "~ButtonShop_HUD",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30,
+        24.375
+       ],
+       "index": 0,
+       "loc": [
+        -0.75,
+        0
+       ],
+       "ref": "_buttonSkip_SmallConstruction_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        24.375
+       ],
+       "index": 1,
+       "loc": [
+        -0.75,
+        0
+       ],
+       "ref": "_buttonSkip_SmallConstruction_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        30,
+        24.375
+       ],
+       "index": 2,
+       "loc": [
+        -0.75,
+        0
+       ],
+       "ref": "_buttonSkip_SmallConstruction_png",
+       "tweened": false,
+       "scale": [
+        0.9468,
+        0.9468
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonSkip_SmallConstruction_png",
+       "pivot": [
+        30,
+        24.375
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "fast-foward-arrows.png"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0
+      }
+     ],
+     "name": "Icon_HardCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 4,
+       "index": 0
+      }
+     ],
+     "name": "Text_HardPrice"
+    }
+   ],
+   "id": "~ButtonSkip_SmallConstruction",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_buttonContextual_up",
+       "pivot": [
+        45.3,
+        44.925
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_buttonContextual_over",
+       "pivot": [
+        46.5,
+        46.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_buttonContextual_down",
+       "pivot": [
+        44.7375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
+      },
+      {
+       "ref": "_buttonContextt_Hit",
+       "pivot": [
+        57.75,
+        57.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Layer 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        22.0875,
+        30
+       ],
+       "index": 0,
+       "loc": [
+        -0.75,
+        -0.9375
+       ],
+       "ref": "_buttonUpgradeBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        22.0875,
+        30
+       ],
+       "index": 1,
+       "loc": [
+        -0.7875,
+        -1.05
+       ],
+       "ref": "_buttonUpgradeBuilding_png",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        22.0875,
+        30
+       ],
+       "index": 2,
+       "loc": [
+        -0.7875,
+        -1.8375
+       ],
+       "ref": "_buttonUpgradeBuilding_png",
+       "tweened": false,
+       "scale": [
+        0.9524,
+        0.9524
+       ],
+       "duration": 1
+      },
+      {
+       "ref": "_buttonUpgradeBuilding_png",
+       "pivot": [
+        22.0875,
+        30
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "enter.png"
+    }
+   ],
+   "id": "~ButtonUpgradeBuilding",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_internButton_HUD_up",
+       "pivot": [
+        77.025,
+        78.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_internButton_HUD_over",
+       "pivot": [
+        78.9,
+        80.625
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "pivot": [
+        73.3875,
+        75
+       ],
+       "index": 2,
+       "loc": [
+        0.075,
+        0.0375
+       ],
+       "ref": "_internButton_HUD_down",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "_internButton_HUD_up",
+       "pivot": [
+        77.025,
+        78.75
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
+      }
+     ],
+     "name": "Button"
+    }
+   ],
+   "id": "~ButtonsInterns_HUD",
+   "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        82.5,
+        105.075
+       ],
+       "index": 0,
+       "loc": [
+        -0.3,
+        -0.0375
+       ],
+       "ref": "_level_sphere",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Sphere"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_level_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        -11.8875
+       ]
+      }
+     ],
+     "name": "_level_txt"
+    }
+   ],
+   "id": "~HUD_Level"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_xp_bar_heaven_BG",
+       "pivot": [
+        153.75,
+        90
+       ],
+       "tweened": false,
+       "duration": 100,
+       "index": 0
+      },
+      {
+       "ref": "_xp_bar_heaven_BG",
+       "pivot": [
+        153.75,
+        90
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 100
+      }
+     ],
+     "name": "bgGauge"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        270,
+        69.375
+       ],
+       "index": 0,
+       "loc": [
+        142.9125,
+        9.225
+       ],
+       "ref": "_xp_bar_heaven_Gauge",
+       "tweened": false,
+       "duration": 100
+      },
+      {
+       "pivot": [
+        270,
+        69.375
+       ],
+       "index": 100,
+       "loc": [
+        142.9125,
+        9.225
+       ],
+       "ref": "_xp_bar_heaven_Gauge",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "mask": "bgMask",
+     "name": "movingGauge"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_xp_bar_heaven_Mask",
+       "pivot": [
+        0,
+        81.4875
+       ],
+       "duration": 100,
+       "index": 0,
+       "loc": [
+        142.9125,
+        16.725
+       ]
+      },
+      {
+       "ref": "_xp_bar_heaven_Mask",
+       "pivot": [
+        0,
+        81.4875
+       ],
+       "duration": 1,
+       "index": 100,
+       "loc": [
+        -130.7625,
+        4.6125
+       ]
+      }
+     ],
+     "name": "bgMask"
+    }
+   ],
+   "id": "~HUD_Xp_Bar_Heaven"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        159.3,
+        92.025
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        7.5
+       ],
+       "ref": "_xp_bar_hell_BG",
+       "tweened": false,
+       "duration": 100
+      },
+      {
+       "pivot": [
+        159.3,
+        92.025
+       ],
+       "index": 100,
+       "loc": [
+        0,
+        7.5
+       ],
+       "ref": "_xp_bar_hell_BG",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "bgGauge"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        67.5
+       ],
+       "index": 0,
+       "loc": [
+        -147.975,
+        9.225
+       ],
+       "ref": "_xp_bar_hell_Gauge",
+       "tweened": false,
+       "duration": 100
+      },
+      {
+       "pivot": [
+        0,
+        67.5
+       ],
+       "index": 100,
+       "loc": [
+        -147.975,
+        9.225
+       ],
+       "ref": "_xp_bar_hell_Gauge",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "mask": "bgMask",
+     "name": "movingGauge"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_xp_bar_hell_Mask",
+       "pivot": [
+        281.25,
+        76.875
+       ],
+       "duration": 100,
+       "index": 0,
+       "loc": [
+        -147.975,
+        9.225
+       ]
+      },
+      {
+       "ref": "_xp_bar_hell_Mask",
+       "pivot": [
+        281.25,
+        76.875
+       ],
+       "duration": 1,
+       "index": 100,
+       "loc": [
+        129.7875,
+        9.225
+       ]
+      }
+     ],
+     "name": "bgMask"
+    }
+   ],
+   "id": "~HUD_Xp_Bar_Hell"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "infoBar_bg",
+       "pivot": [
+        160.2375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -109.2375,
+        -0.9
+       ],
+       "ref": "_hardCurrencyIcon_Medium",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_icon_hardcurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonPlus",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        116.25,
+        0
+       ]
+      }
+     ],
+     "name": "ButtonPlusHC"
+    }
+   ],
+   "id": "~INFO_HardCurrency"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "infoBar_bg",
+       "pivot": [
+        160.2375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -110.7,
+        0
+       ],
+       "ref": "_stoneIcon_Medium",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_icon_stone"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonPlus",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        116.25,
+        0
+       ]
+      }
+     ],
+     "name": "ButtonPlusIRON"
+    }
+   ],
+   "id": "~INFO_Iron"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "infoBar_bg",
+       "pivot": [
+        160.2375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -109.4625,
+        -1.575
+       ],
+       "ref": "_goldIcon_Medium",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_icon_softcurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonPlus",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        116.25,
+        0
+       ]
+      }
+     ],
+     "name": "ButtonPlusSC"
+    }
+   ],
+   "id": "~INFO_SoftCurrency"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "infoBar_bg",
+       "pivot": [
+        160.2375,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36,
+        36
+       ],
+       "index": 0,
+       "loc": [
+        -110.625,
+        -3.9
+       ],
+       "ref": "_woodIcon_Medium",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_icon_wood"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_infoBar_value",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "bar_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonPlus",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        116.25,
+        0
+       ]
+      }
+     ],
+     "name": "ButtonPlusWOOD"
+    }
+   ],
+   "id": "~INFO_Wood"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_bg_gauge",
+       "pivot": [
+        90,
+        28.5
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_bg_gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        28.5
+       ],
+       "index": 0,
+       "loc": [
+        -90,
+        0
+       ],
+       "ref": "_gauge_buildingTime",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_time",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        1.6875,
+        0.825
+       ]
+      }
+     ],
+     "name": "_time"
+    }
+   ],
+   "id": "~isBuilding_gauge"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_bg_gauge",
+       "pivot": [
+        90,
+        28.5
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_bg_gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        28.5
+       ],
+       "index": 0,
+       "loc": [
+        -90,
+        0
+       ],
+       "ref": "_gauge",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_gauge"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_time",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        1.6875,
+        0.825
+       ]
+      }
+     ],
+     "name": "_time"
+    }
+   ],
+   "id": "~isProducing_gauge"
   }
  ],
  "frameRate": 24
