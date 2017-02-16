@@ -87,6 +87,9 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
+		dialogueSaved = 21;
+		SaveManager.save();
+		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {

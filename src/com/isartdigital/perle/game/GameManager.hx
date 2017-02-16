@@ -98,7 +98,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		//DialogueManager.createFtue();
+		DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);

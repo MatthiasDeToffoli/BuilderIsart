@@ -61,7 +61,6 @@ class Dialogue extends SmartScreen
 		/*if(npc_name!=null)
 			npc_name.text = pNpc;*/
 		if (npc_speach != null)
-		trace(DialogueManager.npc_dialogue_ftue[pNumber - 1][0][0]);
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
 		//hideAllExpression();
 		changeAlpha(pPicture,pExpression);
