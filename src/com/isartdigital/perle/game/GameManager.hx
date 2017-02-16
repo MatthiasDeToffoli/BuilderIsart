@@ -70,7 +70,6 @@ class GameManager {
 		
 		//ServerManager.loadRegion();
 		ValueChangeManager.awake();
-		ServerManager.playerConnexion();
 		GameConfig.awake();
 		AnimationManager.awake();
 		BuildingLimitManager.awake();
