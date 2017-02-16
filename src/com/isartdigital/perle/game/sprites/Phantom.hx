@@ -316,7 +316,8 @@ class Phantom extends Building {
 			var lOldDesc:TileDescription = Json.parse(Json.stringify(vBuilding.tileDesc));
 			
 			vBuilding.move(regionMap);
-			Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
+			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => vBuilding];
+			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 			Building.isClickable = true;
 			SaveManager.saveMoveBuilding(lOldDesc, vBuilding.tileDesc);
 			destroy();
@@ -348,7 +349,8 @@ class Phantom extends Building {
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
 			vBuilding.activate();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
+			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.CONSTRUCTION, "building" => vBuilding];
+			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 			BuildingHud.linkVirtualBuilding(vBuilding);
 			BHConstruction.newTimer(vBuilding.tileDesc.timeDesc);
 			

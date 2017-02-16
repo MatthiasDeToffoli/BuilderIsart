@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import haxe.Timer;
 
 /**
@@ -75,6 +76,8 @@ class BuildingTimerConstruction extends BuildingTimer
 			}
 			progressBar.scale.x = 1;
 			timeText.text = "Finish";
+			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => building];
+			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
 			destroy();
 		}

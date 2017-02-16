@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -49,6 +50,7 @@ import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
 import pixi.flump.Movie;
 import pixi.interaction.EventTarget;
+import eventemitter3.EventEmitter;
 
 enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
 
@@ -58,6 +60,9 @@ enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
 */
 class Hud extends SmartScreen 
 {	
+	public static inline var EVENT_CHANGE_BUIDINGHUD:String = "Hud_Change_BuildingHud";
+	
+	public static var eChangeBH:EventEmitter;
 	
 	private static var instance: Hud;
 	public static var isHide:Bool = false;
@@ -107,10 +112,13 @@ class Hud extends SmartScreen
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHudSecondary);
 		buildingPosition = new Point(containerBuildingHud.x / 2, containerBuildingHud.y / 2);
 		name = componentName;
+		eChangeBH = new EventEmitter();
 		
 		containerEffect = new Container();
 		addChild(containerEffect); // over everything
 		addListeners();
+		
+		
 		
 		on(EventType.ADDED, registerForFTUE);
 	}
@@ -119,8 +127,16 @@ class Hud extends SmartScreen
 		return containerEffect;
 	}
 	
+	/*public function initClass():Void {
+		eChangeBH = new EventEmitter();
+	}*/
+	
 	public function getGoldIconPos ():Point {
 		return containerEffect.toLocal(SmartCheck.getChildByName(btnSoft.parent, "_icon_softcurrency").position, btnSoft.parent);
+	}
+	
+	private function needToChangeBH(pInfos:Map<String, Dynamic>):Void {
+		changeBuildingHud(pInfos["type"], pInfos["building"]);
 	}
 	
 	/**
@@ -258,6 +274,8 @@ class Hud extends SmartScreen
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		addListenersOnClick();
+		
+		eChangeBH.addListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
 	}
 	
 	private function addListenersOnClick() {
@@ -487,6 +505,7 @@ class Hud extends SmartScreen
 	 */
 	override public function destroy (): Void {
 		removeListenersClick();
+		eChangeBH.removeListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
 		ResourcesManager.totalResourcesEvent.off(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		instance = null;
 		super.destroy();
