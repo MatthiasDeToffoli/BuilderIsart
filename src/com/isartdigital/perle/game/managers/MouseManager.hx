@@ -84,10 +84,12 @@ class MouseManager {
 		//if (desktop) {
 			Browser.window.addEventListener(MouseEventType.MOUSE_UP, onMouseTouchUp);
 			Browser.window.addEventListener(MouseEventType.MOUSE_OUT, onMouseTouchUp);
+			Browser.window.addEventListener(MouseEventType.MOUSE_UP_OUTSIDE, onMouseTouchUp);
 			Browser.window.addEventListener(MouseEventType.MOUSE_DOWN, onMouseDown);
 		/*}
 		else {*/
 			Browser.window.addEventListener(TouchEventType.TOUCH_END, onMouseTouchUp);
+			Browser.window.addEventListener(TouchEventType.TOUCH_END_OUTSIDE, onMouseTouchUp);
 			Browser.window.addEventListener(TouchEventType.TOUCH_START, onTouchDown);
 			Browser.window.addEventListener(TouchEventType.TOUCH_MOVE, onTouchMove);
 		//}
