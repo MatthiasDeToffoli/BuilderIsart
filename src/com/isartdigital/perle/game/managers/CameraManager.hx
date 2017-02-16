@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.sprites.BackgroundUnder;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -11,6 +12,7 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.CollisionManager;
 import com.isartdigital.utils.game.GameStage;
 import haxe.Timer;
+import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 /**
@@ -60,9 +62,8 @@ class CameraManager
 		target.x -= IsoManager.modelToIsoView(pPos).x;
 		target.y -= IsoManager.modelToIsoView(pPos).y;
 		
-		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(AssetName.BACKGROUND_UNDER);
-		bgUnder.init();
-		GameStage.getInstance().getUnderBackgroundContainer().addChild(bgUnder);
+		BackgroundUnder.getInstance().init();
+		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());
 
 	}
 	
