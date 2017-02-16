@@ -14,9 +14,11 @@ import pixi.interaction.EventTarget;
 class DialogueScenario extends Dialogue
 {
 
-	public function new() 
+	public function new(pNpc:String) 
 	{
-		super(AssetName.FTUE_SCENARIO_WINDOW);
+		var lName:String;
+		pNpc == "Demona" ? lName = AssetName.FTUE_SCENARIO_WINDOW_HELL : lName = AssetName.FTUE_SCENARIO_WINDOW_HEAVEN;
+		super(lName);
 		name = componentName;
 	}
 	

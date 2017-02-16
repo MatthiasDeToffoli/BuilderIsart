@@ -69,6 +69,7 @@ class TribunalPopin extends SmartPopinExtended
 	 */
 	private function new(pID:String=null) 
 	{
+		trace("test");
 		super(AssetName.PURGATORY_POPIN);
 		canMoovCard = false;
 		name = componentName;
@@ -134,11 +135,15 @@ class TribunalPopin extends SmartPopinExtended
 		//Interactive.addListenerClick(btnIntern, onIntern);
 		
 		ResourcesManager.soulArrivedEvent.on(ResourcesManager.SOUL_ARRIVED_EVENT_NAME, onSoulArrivedEvent);
-		
-		if (DialogueManager.ftueStepOpenPurgatory) {
+		trace(DialogueManager.dialogueSaved);
+		if (DialogueManager.ftueStepOpenPurgatory && !DialogueManager.ftueStepSlideCard) {
 			DialogueManager.dialogueSaved ++;
 			registerForFTUE();
 		}
+	}
+	
+	public function getCardPos():Point {
+		return cardSoul.position;
 	}
 	
 	private function onMouseDownOnCard(mouseEvent:EventTarget):Void {
@@ -235,8 +240,9 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function onHeaven() {
 		if (DialogueManager.ftueStepSlideCard) {
+			trace("test");
 			if (counterForFtue++ >= 1)
-			DialogueManager.endOfaDialogue(null,true);
+			DialogueManager.endOfaDialogue(null, true);
 		}
 		if(!ResourcesManager.judgePopulation(Alignment.heaven)) return;
 		changeSoulTextInfo();

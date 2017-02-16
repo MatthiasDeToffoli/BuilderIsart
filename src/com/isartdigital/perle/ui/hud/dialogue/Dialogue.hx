@@ -1,8 +1,10 @@
 package com.isartdigital.perle.ui.hud.dialogue;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -17,11 +19,15 @@ class Dialogue extends SmartScreen
 	private static inline var NEUTRAL_EXPRESSION:String = "_Neutral";
 	private static inline var ON_ALPHA:Float = 1;
 	private static inline var OFF_ALPHA:Float = 0.2;
+	private static inline var DIALOGUE_ICON_5:Int = 5;
 	private var btnNext:SmartButton;
+	private static var icons:IconsDialogue;
+	private static var iconsName:String ="";
 	//private var npc_name:TextSprite;
 	private var npc_speach:TextSprite;
 	private var npc_right:String;
 	private var npc_left:String;
+	
 	public static var numberOfDialogue:Int;
 	public static var firstToSpeak:String;
 	
@@ -62,8 +68,9 @@ class Dialogue extends SmartScreen
 			npc_name.text = pNpc;*/
 		if (npc_speach != null)
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
+		//createIndicatorIcons(pNumber - 1);
 		//hideAllExpression();
-		changeAlpha(pPicture,pExpression);
+		//changeAlpha(pPicture,pExpression);
 	}
 	
 	/**
@@ -77,6 +84,26 @@ class Dialogue extends SmartScreen
 				
 			if(getChildByName(npc_right + lExpression)!=null)
 				getChildByName(npc_right + lExpression).visible = false;
+		}
+	}
+	
+		
+	private function createIndicatorIcons(pDialogue:Int) {
+		if (pDialogue != DIALOGUE_ICON_5)
+			return;
+		
+		switch(pDialogue) {
+			case 5 : iconsName = AssetName.FTUE_ICON_5;	
+		}
+		
+		icons = new IconsDialogue(iconsName);
+		addChild(icons);	
+	}
+	
+	private function removeIcons() {
+		if (iconsName != "" && iconsName != null) {
+			removeChild(icons);
+			iconsName = "";
 		}
 	}
 	

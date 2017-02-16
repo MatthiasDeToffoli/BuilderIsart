@@ -10,7 +10,9 @@ import com.isartdigital.perle.ui.hud.dialogue.Dialogue;
 import com.isartdigital.perle.ui.hud.dialogue.DialogueAction;
 import com.isartdigital.perle.ui.hud.dialogue.DialogueScenario;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
+import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
+import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -40,6 +42,7 @@ class DialogueManager
 	private static var purgatoryPoint:Point;
 	private static var heavenCenter:Point;
 	private static var steps:Array<FTUEStep>;
+	private static var finger:FingerAnim;
 	
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -70,6 +73,7 @@ class DialogueManager
 	public static var boostBuilding:Bool = false;
 	public static var passFree:Bool = false;
 	
+	
 	/**
 	 * Init Ftue
 	 * @param	pFTUE
@@ -87,8 +91,8 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
-		dialogueSaved = 21;
-		SaveManager.save();
+		/*dialogueSaved = 21;
+		SaveManager.save();*/
 		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
@@ -147,7 +151,7 @@ class DialogueManager
 	public static function createTextDialogue(pNumber:Int, pNpc:String, pHideHud:Bool, pTypeOfDialogueIsAction:Bool, ?pBlocHud:Bool) {
 		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
 		
-		pTypeOfDialogueIsAction ? dialoguePoppin = new DialogueAction():dialoguePoppin = new DialogueScenario();
+		pTypeOfDialogueIsAction ? dialoguePoppin = new DialogueAction(pNpc):dialoguePoppin = new DialogueScenario(pNpc);
 		if (!closeDialoguePoppin) {
 			if (pHideHud) {
 				Hud.getInstance().alpha = ALPHA_OFF;
@@ -237,6 +241,7 @@ class DialogueManager
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].moveCamera) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				cameraHaveToMove = true;
+				createFingerAnim(new Point(0,0));
 				openFtueLock();
 				FocusManager.getInstance().setFocus(null);
 			}
@@ -248,7 +253,7 @@ class DialogueManager
 				//CameraManager.placeCamera(firstBatPoint);
 				Hud.getInstance().hide();
 				Hud.getInstance().show();
-				Hud.isHide = true;
+				//Hud.isHide = true;
 			}
 			
 			//Dialogue + construc
@@ -266,7 +271,7 @@ class DialogueManager
 				//CameraManager.placeCamera(purgatoryPoint);
 				Hud.getInstance().hide();
 				Hud.getInstance().show();
-				Hud.isHide = true;
+				//Hud.isHide = true;
 			}
 			
 			//Dialogue + click on card
@@ -275,10 +280,10 @@ class DialogueManager
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
 			}
 			
-			if (steps[dialogueSaved].putCenterRegionHeaven) {
+			/*if (steps[dialogueSaved].putCenterRegionHeaven) {
 				//CameraManager.placeCamera(heavenCenter);
-				Hud.isHide = true;
-			}
+				//Hud.isHide = true;
+			}*/
 			
 			
 			if (steps[dialogueSaved].clickOnCard)
@@ -288,8 +293,10 @@ class DialogueManager
 				Hud.getInstance().hide();
 				ftueStepPutBuilding = true;
 			}
-			else if (steps[dialogueSaved].jugeSouls)
+			else if (steps[dialogueSaved].jugeSouls) {
 				ftueStepSlideCard = true;
+				createFingerAnim(null,true);
+			}
 			else if (steps[dialogueSaved].closePurgatory)
 				ftueClosePurgatory = true;
 			else if (steps[dialogueSaved].closeUnlocked)
@@ -380,6 +387,9 @@ class DialogueManager
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
 	private static function endOfStep (?doNotNextStep:Bool):Void {
+		if (finger != null) 
+			GameStage.getInstance().getActionContainer().removeChild(finger);
+		
 		setAllFalse();
 		
 		if (dialogueSaved >= steps.length)
@@ -414,6 +424,20 @@ class DialogueManager
 		}
 		
 		nextStep();
+	}
+	
+	private static function createFingerAnim(pPos:Point, ?isCard:Bool):Void {
+		finger = new FingerAnim();
+		GameStage.getInstance().getActionContainer().addChild(finger);
+		
+		
+		if (isCard) {
+			var lPoint:Point = TribunalPopin.getInstance().getCardPos();
+			pPos = new Point(lPoint.x, lPoint.y - finger.height / 2);
+		}
+		
+		finger.position = pPos;
+		finger.start();	
 	}
 	
 	/**

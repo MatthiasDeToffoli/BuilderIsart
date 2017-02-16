@@ -9,9 +9,11 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 class DialogueAction extends Dialogue
 {
 
-	public function new() 
+	public function new(pNpc:String) 
 	{
-		super(AssetName.FTUE_ACTION);
+		var lName:String;
+		pNpc == "Demona" ? lName = AssetName.FTUE_ACTION_HELL : lName = AssetName.FTUE_ACTION_HEAVEN;
+		super(lName);
 		name = componentName;
 	}
 	
