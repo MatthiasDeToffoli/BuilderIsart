@@ -89,6 +89,8 @@ class ButtonRegion extends SmartButton
 		var config:TableConfig = GameConfig.getConfig();
 		price = config.priceRegion * Math.pow(config.factorRegionGrowth, RegionManager.mapNumbersRegion[regionType]);
 		
+		if (Math.abs(worldMapPos.x) == 1) price *= config.factorRegionNearStyx;
+		
 		priceTxt.text = ResourcesManager.shortenValue(price);
 	}
 	
