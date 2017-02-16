@@ -68,7 +68,8 @@ class DeltaDNAManager{
 	
 	public static function sendStepFTUE (pStepIndex:Int):Void {
 		if (!isReady) {
-			Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
 		
@@ -83,7 +84,8 @@ class DeltaDNAManager{
 	
 	public static function sendIsartPointExpense (pIdPack:Int, pPrice:Float):Void {
 		if (!isReady) {
-			Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
 		
