@@ -1,21 +1,24 @@
 {
+ "md5": "75a7354f0453189f091ca1f525a33c14",
+ "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
       {
-       "symbol": "Styx_droit",
        "rect": [
         1,
         1,
-        613,
-        966
+        634,
+        973
        ],
+       "symbol": "Styx_droit",
        "origin": [
-        274.5,
-        482.25
+        316.9,
+        486.4
        ]
       }
      ],
@@ -24,46 +27,43 @@
     {
      "textures": [
       {
-       "symbol": "Styx_gauche",
        "rect": [
         1,
         1,
-        613,
-        966
+        628,
+        973
        ],
+       "symbol": "Styx_gauche",
        "origin": [
-        374.65,
-        447
+        313.9,
+        486.4
        ]
       }
      ],
      "file": "atlas1.png"
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ],
- "frameRate": 60,
  "movies": [
   {
-   "id": "Styx01",
    "layers": [
     {
      "name": "Calque 1",
      "keyframes": [
       {
-       "pivot": [
-        374.6625,
-        447
-       ],
+       "ref": "Styx_gauche",
        "duration": 1,
-       "loc": [
-        -607.9125,
-        433.9875
-       ],
        "tweened": false,
-       "index": 0,
-       "ref": "Styx_gauche"
+       "loc": [
+        -708.1125,
+        476.8125
+       ],
+       "pivot": [
+        313.875,
+        486.375
+       ],
+       "index": 0
       }
      ]
     },
@@ -71,23 +71,23 @@
      "name": "Calque 2",
      "keyframes": [
       {
-       "pivot": [
-        274.5,
-        482.25
-       ],
+       "ref": "Styx_droit",
        "duration": 1,
-       "loc": [
-        -96.0375,
-        469.9875
-       ],
        "tweened": false,
-       "index": 0,
-       "ref": "Styx_droit"
+       "loc": [
+        -77.3625,
+        476.8125
+       ],
+       "pivot": [
+        316.875,
+        486.375
+       ],
+       "index": 0
       }
      ]
     }
-   ]
+   ],
+   "id": "Styx01"
   }
- ],
- "md5": "cfcf43dbfd93f8a2a0c866d81360e78a"
+ ]
 }
