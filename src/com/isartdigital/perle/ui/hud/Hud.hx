@@ -338,10 +338,10 @@ class Hud extends SmartScreen
 	
 	public function setXpGauge():Void{
 		var percentXp:Int = Std.int(100 * ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int)));
-		cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie).goToAndStop(percentXp - 1);
-		trace(percentXp);
+		cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie).goToAndStop(percentXp);
+		
 		percentXp = Std.int(100*ResourcesManager.getResourcesData().totalsMap[GeneratorType.goodXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int)));
-		cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie).goToAndStop(percentXp - 1);
+		cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie).goToAndStop(percentXp);
 	}
 	
 	public function onClickResetData(){
