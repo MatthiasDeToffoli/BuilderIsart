@@ -32,6 +32,7 @@ import com.isartdigital.perle.ui.hud.building.valuesChange.ValueChange;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.UIManager;
+import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
@@ -56,14 +57,17 @@ class GameManager {
 	}
 	
 	public function start (): Void {
+		DevelloperReconise.awake();
+
 		// todo : deplacer les nom de fonction initClass faisant rien de 
 		// plus que des awake dans unity par le nom awake()
 		// ci-dessous met à jour game_config.json, temporaire.
 		//ServerManager.refreshConfig(); // todo : remplacer par cron
 		
-		
 		GodMode.awake(); //@TODO: comment that for livraison
-		ServerManager.refreshConfig();
+
+		if(DevelloperReconise.isDev()) GodMode.awake(); //@TODO: comment that for livraison
+		//ServerManager.refreshConfig();
 		
 		if (DeviceCapabilities.isCocoonJS)
 			CocoonJSManager.awake();
@@ -97,7 +101,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopCarousselInterns.initID();
 		ShopPopin.initSearch();
-		DialogueManager.createFtue();
+		if(!DevelloperReconise.isDev())DialogueManager.createFtue();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
