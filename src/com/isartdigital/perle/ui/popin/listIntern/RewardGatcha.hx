@@ -1,7 +1,6 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.game.TextGenerator.QuestDictionnary;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;

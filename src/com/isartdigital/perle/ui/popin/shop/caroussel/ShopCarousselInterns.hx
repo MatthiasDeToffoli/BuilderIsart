@@ -186,6 +186,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 			effIndics.push(cast(lEfficiency.getChildByName("_jaugeEfficiency_0" + i), UISprite));
 		}
 		
+		trace(speedIndics.length);
+		
 		for (i in 0...5) {
 			if (pIntern.efficiency <= i) speedIndics[i].visible = false;
 		}
