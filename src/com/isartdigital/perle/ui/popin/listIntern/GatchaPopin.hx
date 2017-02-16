@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -32,6 +33,8 @@ class GatchaPopin extends SmartPopin
 	private var picture:UISprite;
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
+	private var gatchaText:TextSprite;
+	
 	public static var quest:TimeQuestDescription;
 	
 	/**
@@ -55,6 +58,7 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	private function getComponents():Void{
+		gatchaText = cast(getChildByName(AssetName.GATCHA_POPIN_TITLE), TextSprite);
 		btnClose = cast(getChildByName(AssetName.GATCHA_POPIN_CLOSE_BUTTON), SmartButton);
 		btnGift = cast(getChildByName(AssetName.GATCHA_POPIN_GATCHA_BAG), SmartButton);
 		picture = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_PORTRAIT), UISprite);
@@ -63,6 +67,7 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	public function setDatas():Void{
+		gatchaText.text = Localisation.allTraductions["LABEL_GACHA_CONGRATULATION"];
 		internName.text = Intern.getIntern(quest.refIntern).name;
 		aligment.text = Intern.getIntern(quest.refIntern).aligment;
 	}

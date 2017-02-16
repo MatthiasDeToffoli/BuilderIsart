@@ -185,9 +185,11 @@ class AssetName{
 	
 	// Shop caroussel Interns
 	public static inline var CAROUSSEL_INTERN_BTN_REROLL:String = "Reroll_button";
+	public static inline var CAROUSSEL_INTERN_BTN_REROLL_TXT:String = "Txt";
 	public static inline var CAROUSSEL_INTERN_HELL_CARD:String = "Intern_HellCard";
 	public static inline var CAROUSSEL_INTERN_HEAVEN_CARD:String = "Intern_HeavenCard";
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER:String = "InternHouseNumber";
+	public static inline var CAROUSSEL_INTERN_HOUSE_TEXT:String = "_internHouseNumber_text";
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN:String = "_internHouseNumber";	
 	public static inline var CAROUSSEL_INTERN_HOUSE_NUMBER_HELL:String = "_internHouseNumber_actualValue";	
 	public static inline var CAROUSSEL_INTERN_HEAVEN_PRICE:String = "_internPrice_heaven_txt";
@@ -195,6 +197,7 @@ class AssetName{
 	
 	// Shop Reroll
 	public static inline var REROLL_GAUGE:String = "JaugeTimer";
+	public static inline var REROLL_GAUGE_TITLE:String = "_searchingInterns_text";
 	public static inline var REROLL_ACCELERATE_BUTTON:String = "Accelerate_button";
 	public static inline var REROLL_GAUGE_BAR:String = "Bar";
 	public static inline var REROLL_GAUGE_TEXT:String = "txt";
@@ -312,6 +315,7 @@ class AssetName{
 	
 	//Gatcha popin
 	public static inline var GATCHA_POPIN:String = "PopinGatcha";
+	public static inline var GATCHA_POPIN_TITLE:String = "_popinGatcha_text";
 	public static inline var GATCHA_POPIN_CLOSE_BUTTON:String = "ButtonClose";
 	public static inline var GATCHA_POPIN_GATCHA_BAG:String = "GatchaBag";
 	public static inline var GATCHA_POPIN_INTERN_PORTRAIT:String = "_internPortrait";
@@ -537,6 +541,7 @@ class AssetName{
 	public static inline var OPTION_POPPIN_CLOSE:String = "ButtonClose";
 	public static inline var OPTION_POPPIN_RESETDATA:String = "ButtonDataReset";
 	public static inline var OPTION_POPPIN_SFX:String = "ButtonSFXGroup";
+	public static inline var OPTION_POPPIN_SFX_ON:String = "_buttonSFX_on_txt";
 	public static inline var OPTION_POPPIN_MUSIC:String = "ButtonMusicGroup";
 	public static inline var OPTION_POPPIN_FR:String = "ButtonFrench";
 	public static inline var OPTION_POPPIN_EN:String = "ButtonEnglish";
@@ -550,6 +555,9 @@ class AssetName{
 	public static inline var RESET_POPPIN:String = "ConfirmDataReset_Popin";
 	public static inline var RESET_POPPIN_CONFIRM:String = "ButtonConfirmErase";
 	public static inline var RESET_POPPIN_CANCEL:String = "ButtonCancelErase";
+	public static inline var RESET_POPPIN_TEXT:String = "_confirmDataReset_txt";
+	public static inline var RESET_POPPIN_CANCEL_TEXT:String = "_buttonCancelErase_text";
+	public static inline var RESET_POPPIN_CONFIRM_TEXT:String = "_buttonConfirmErase_text";
 	
 	public static function getCurrencyAssetName(reward:RewardType):String {
 		if (reward == RewardType.gold) return ICON_GOLD_MEDIUM;

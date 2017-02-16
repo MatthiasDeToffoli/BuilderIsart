@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -22,6 +23,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	private var gaugeBar:UISprite;
 	private var gaugeMask:UISprite;
 	private var accelerateButton:SmartButton;
+	private var searchText:TextSprite;
 	
 	private var loop:Timer;
 	public static var progress:Float; 
@@ -40,7 +42,9 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	}
 	
 	private function getComponents():Void{
-		accelerateButton =cast(SmartCheck.getChildByName(this, AssetName.REROLL_ACCELERATE_BUTTON), SmartButton);
+		accelerateButton = cast(SmartCheck.getChildByName(this, AssetName.REROLL_ACCELERATE_BUTTON), SmartButton);
+		searchText = cast(SmartCheck.getChildByName(this, AssetName.REROLL_GAUGE_TITLE), TextSprite);
+		
 		gauge = cast(SmartCheck.getChildByName(this, AssetName.REROLL_GAUGE), SmartComponent);
 		gaugeBar = cast(SmartCheck.getChildByName(gauge, AssetName.REROLL_GAUGE_BAR), UISprite);
 		gaugeTimer = cast(SmartCheck.getChildByName(gauge, AssetName.REROLL_GAUGE_TEXT), TextSprite);
@@ -54,6 +58,8 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	private function setValues():Void{
 		gaugeMask.scale.x = 0;
 		gaugeBar.scale.x = 0;
+		
+		searchText.text = Localisation.allTraductions["LABEL_SHOPINTERN_SEARCHINGFORINTERNS"];
 	}
 	
 	private function spawn():Void{
@@ -80,7 +86,6 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	 */
 	private function end():Void{
 		progress = 0;
-		//ShopCarousselInterns.changeID();
 		ShopPopin.isSearching = false;
 			
 		UIManager.getInstance().closeCurrentPopin();

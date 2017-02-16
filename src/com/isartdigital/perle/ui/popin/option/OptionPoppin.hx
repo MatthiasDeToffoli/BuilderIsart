@@ -39,7 +39,7 @@ class OptionPoppin extends SmartPopinExtended
 	private static var soundText:TextSprite;
 	private static var datasText:TextSprite;
 	
-	private static var sfx1Text:TextSprite;
+	private static var sfx1Text:Dynamic;
 	private static var sfx2Text:TextSprite;
 	private static var music1Text:TextSprite;
 	private static var music2Text:TextSprite;
@@ -103,6 +103,8 @@ class OptionPoppin extends SmartPopinExtended
 		buttonTab[1] = [];
 		
 		sfx1 = cast(SmartCheck.getChildByName(sfxGroup, "On"), SmartButton);
+		sfx1Text = SmartCheck.getChildByName(sfx1, AssetName.OPTION_POPPIN_SFX_ON);
+		
 		Interactive.addListenerClick(sfx1, onClickSfx);
 		
 		sfx2 = cast(SmartCheck.getChildByName(sfxGroup, "Off"), SmartButton);

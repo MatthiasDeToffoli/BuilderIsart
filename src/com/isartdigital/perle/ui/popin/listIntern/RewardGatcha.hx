@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
+import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -28,6 +29,7 @@ class RewardGatcha extends SmartPopinExtended
 	private var rewardIcon:UISprite;
 	private var btnReward:SmartButton;
 	private var rewardValue:TextSprite;
+	private var rewardTitle:TextSprite;
 	
 	private static var quest:TimeQuestDescription;
 	
@@ -83,28 +85,28 @@ class RewardGatcha extends SmartPopinExtended
 		var lRandom:Float = Math.random() * 10;
 		
 		if (lRandom <= 1) {
-			rewardIcon.addChild(new UISprite(AssetName.PROD_ICON_HARD));
+			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.karma)));
 			ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
 			rewardValue.text = HARD_WON + "";
 		}
 		else if (1 < lRandom && lRandom <= 3){
-			rewardIcon.addChild(new UISprite(AssetName.PROD_ICON_SOFT));
+			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.gold)));
 			ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
 			rewardValue.text = GOLD_WON + "";
 		}
 		else if (3 < lRandom && lRandom <= 5){
-			rewardIcon.addChild(new UISprite(AssetName.PROD_ICON_SOUL_HEAVEN_SMALL)); //Provisoire
+			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.soul)));
 			ResourcesManager.gainResources(GeneratorType.soul, SOUL_WON);
 			rewardValue.text = SOUL_WON + "";
 		}
 		else if (5 < lRandom && lRandom <= 7.5){
-			rewardIcon.addChild(new UISprite(AssetName.PROD_ICON_STONE));
+			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.iron)));
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, STEEL_WON);
 			rewardValue.text = STEEL_WON + "";
 		}
 		
 		else{
-			rewardIcon.addChild(new UISprite(AssetName.PROD_ICON_WOOD));
+			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.wood)));
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, WOOD_WON);
 			rewardValue.text = WOOD_WON + "";
 		}

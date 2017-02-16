@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -28,6 +29,7 @@ class BuildingDestroyPoppin extends SmartPopin
 	private var price:TextSprite;
 	private var btnClose:SmartButton;
 	private var btnSell:SmartButton;
+	private var btnSellText:TextSprite;
 	
 	/**
 	 * instance unique de la classe BuildingDestroyPoppin
@@ -85,7 +87,8 @@ class BuildingDestroyPoppin extends SmartPopin
 		price = cast(SmartCheck.getChildByName(this, "_text_destroyBuildPayment"), TextSprite); 
 		btnClose = cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, "Button_DestroyBuildingConfirm"), SmartButton);
-		
+		btnSellText = cast(SmartCheck.getChildByName(btnSell, "Text_ConfirmCancelConstruction"), TextSprite);
+		btnSellText.text = Localisation.allTraductions["LABEL_DESTROYBUILDING_BUTTON"];
 		Interactive.addListenerClick(btnClose, closePoppin);
 		Interactive.addListenerClick(btnSell, sellBuilding);
 	}
