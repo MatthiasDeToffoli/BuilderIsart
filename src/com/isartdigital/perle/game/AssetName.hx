@@ -283,6 +283,7 @@ class AssetName{
 	public static inline var INTERN_EVENT_STATS:String = "InternsStatsInEvent";
 	public static inline var INTERN_EVENT_EFFICIENCY:String = "_txt_efficiency";
 	public static inline var INTERN_EVENT_PORTRAIT:String = "_event_internPortrait";	
+	public static inline var INTERN_EVENT_STRESS:String = "_interns_stress";	
 	public static inline var INTERN_EVENT_HELL_STRESS:String = "_hellStressEffect";
 	public static inline var INTERN_EVENT_HEAVEN_STRESS:String = "_heavenStressEffect";
 	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";

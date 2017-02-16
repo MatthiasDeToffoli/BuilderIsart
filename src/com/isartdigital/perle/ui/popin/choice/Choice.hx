@@ -63,7 +63,7 @@ class Choice extends SmartPopinExtended
 	private var internStress:TextSprite;
 	private var internSpeed:TextSprite;
 	private var internEfficiency:TextSprite;
-	private var stressBar:SmartComponent;
+	public var stressBar:SmartComponent;
 	private var stressGaugeMask:UISprite;
 	private var stressGaugeBar:UISprite;
 	private var speedJauge:SmartComponent;
@@ -80,6 +80,9 @@ class Choice extends SmartPopinExtended
 	private var heavenRewardSpawners:Map<Int, SmartComponent>;
 	private var activeHellReward:Array<RewardType>;
 	private var activeHeavenReward:Array<RewardType>;
+	
+	
+	public var stress:UISprite;
 	
 
 	// card slide position properties
@@ -133,6 +136,8 @@ class Choice extends SmartPopinExtended
 		stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		stress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), UISprite);
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {

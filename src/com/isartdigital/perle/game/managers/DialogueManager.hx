@@ -13,6 +13,7 @@ import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
+import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -91,8 +92,8 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
-		/*dialogueSaved = 21;
-		SaveManager.save();*/
+		dialogueSaved = 21;
+		SaveManager.save();
 		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
@@ -286,6 +287,8 @@ class DialogueManager
 			}*/
 			
 			
+			
+			
 			if (steps[dialogueSaved].clickOnCard)
 				ftueStepClickOnCard = true;
 			else if (steps[dialogueSaved].haveToPutBuilding) {
@@ -339,6 +342,11 @@ class DialogueManager
 			
 		if (steps[dialogueSaved].shouldBlockHud)
 			Hud.isHide = true;
+			
+		if (steps[dialogueSaved].stress) {
+			trace("te");
+			//FocusManager.getInstance().setFocus(Choice.getInstance().stress);
+		}
 	}
 	
 	

@@ -72,4 +72,7 @@ typedef FTUEStep = {
 	//Juicy
 	@optional var putCenterRegionHeaven:Bool;
 	@optional var lightOn:Bool;
+	@optional var stress:Bool;
+	@optional var efficiency:Bool;
+	@optional var speed:Bool;
 }
