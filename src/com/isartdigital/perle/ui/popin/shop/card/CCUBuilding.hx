@@ -89,7 +89,9 @@ class CCUBuilding extends CarouselCardUnlock{
 				DialogueManager.endOfaDialogue();
 			Phantom.onClickShop(buildingName);
 			Hud.getInstance().hideBuildingHud();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+			//Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.MOVING, "building" => null];
+			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		}
 		
 		// todo : il close le shop même si canBuy == false  :(
