@@ -63,12 +63,7 @@ class VBuilding extends VTile {
 	public function new(pDescription:TileDescription) {
 		super(pDescription);
 		
-		setHaveRecolter();
-		RegionManager.addToRegionBuilding(this);
-		addGenerator();
-		addHudContextual();
-		
-		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+		RegionManager.addToRegionBuilding(this);	
 		
 		timeDesc = pDescription.timeDesc;
 		currentState = TimeManager.getBuildingStateFromTime(pDescription);	
@@ -76,8 +71,15 @@ class VBuilding extends VTile {
 			TimeManager.addConstructionTimer(pDescription.timeDesc, this);
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		}
+		else {
+			setHaveRecolter();
+			addGenerator();
+			ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+		}
 		
+		addHudContextual();
 		incrementNumberBuilding();
+		
 		checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
@@ -127,7 +129,8 @@ class VBuilding extends VTile {
 		super.activate();
 		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
-		if (haveRecolter || Std.is(this, VCollector)) myVContextualHud.activate();
+		if (haveRecolter || Std.is(this, VCollector) && currentState != VBuildingState.isUpgrading && currentState != VBuildingState.isBuilding) 
+			myVContextualHud.activate();
 	}
 	
 	/**
@@ -340,6 +343,12 @@ class VBuilding extends VTile {
 		if (active) cast(graphic, Building).setStateEndConstruction();
 		
 		setState(VBuildingState.isBuilt);
+		
+		setHaveRecolter();
+		addGenerator();
+		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+		myVContextualHud.activate();
+		
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}

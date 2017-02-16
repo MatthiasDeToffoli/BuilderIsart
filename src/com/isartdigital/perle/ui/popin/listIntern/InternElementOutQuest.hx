@@ -141,11 +141,11 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function onSend(){
-		trace("send");
-		if (DialogueManager.ftueStepSendIntern)
+		if (DialogueManager.ftueStepSendIntern) {
+			Intern.getIntern(internDatas.id).stress = 0;
 			DialogueManager.endOfaDialogue();
-		
-		//var lLength:Int = QuestsManager.questsList.length;
+		}
+
 		quest = QuestsManager.createQuest(internDatas.id);
 		internDatas.quest = quest;
 		Intern.getIntern(internDatas.id).quest = internDatas.quest;
@@ -170,6 +170,7 @@ class InternElementOutQuest extends InternElement
 		var lQuest = QuestsManager.getQuest(internDatas.id);
 		
 		UIManager.getInstance().closeCurrentPopin();
+		MaxStressPopin.quest = lQuest;
 		MaxStressPopin.intern = internDatas;
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 	}

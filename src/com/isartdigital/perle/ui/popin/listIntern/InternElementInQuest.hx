@@ -93,7 +93,7 @@ class InternElementInQuest extends InternElement
 		
 		questGaugeLenght = cast(questGauge.getChildByName("_listInQuest_progressionBarBG"), UISprite).width;
 		
-		var prct:Array<Float> = QuestsManager.getCursorPosition(pDesc.id);
+		var prct:Array<Float> = QuestsManager.getCursorPosition(quest);
 		for (i in 0...eventCursorsArray.length) {
 			eventCursorsArray[i].position.x = heroCursorStartPosition.x + questGaugeLenght * prct[i];
 		}
@@ -107,7 +107,7 @@ class InternElementInQuest extends InternElement
 	 */
 	private function spawnButton(spawnerName:String):Void{
 		var spawner:UISprite = cast(getChildByName(spawnerName), UISprite);
-		var activeButton:SmartButton = null;
+		var activeButton:SmartButton = null;		
 		updateCursorPosition();
 		
 		if (Intern.isIntravel(Intern.getIntern(quest.refIntern))) Intern.getIntern(quest.refIntern).status = Intern.STATE_RESTING;
@@ -152,8 +152,9 @@ class InternElementInQuest extends InternElement
 	 * Callback when the intern is stressed
 	 */
 	private function onStress():Void {
-		MaxStressPopin.intern = Intern.getIntern(quest.refIntern);
 		UIManager.getInstance().closeCurrentPopin;
+		MaxStressPopin.quest = quest;
+		MaxStressPopin.intern = Intern.getIntern(quest.refIntern);
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
 	}
 

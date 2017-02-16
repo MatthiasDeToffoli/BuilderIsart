@@ -103,7 +103,7 @@ class ResourcesManager
 		soulArrivedEvent = new EventEmitter();
 		totalResourcesInfoArray = [
 			{value: 1, isLevel: true},
-			{value: 20000, isLevel: false, type: GeneratorType.soft },
+			{value: 0, isLevel: false, type: GeneratorType.soft },
 			{value: 0, isLevel: false, type: GeneratorType.hard},
 			{value: 0, isLevel: false, type: GeneratorType.goodXp},
 			{value: 0, isLevel: false, type: GeneratorType.badXp},
@@ -132,7 +132,7 @@ class ResourcesManager
 		pMapT[GeneratorType.soulBad] = 0;
 		
 		pMapG[GeneratorType.soft] = new Array<Generator>();
-		pMapT[GeneratorType.soft] = 22000;
+		pMapT[GeneratorType.soft] = 0;
 
 		pMapG[GeneratorType.hard] = new Array<Generator>();
 		pMapT[GeneratorType.hard] = 0; //@ToDo Temporaire, juste pour avoir des ressources au début

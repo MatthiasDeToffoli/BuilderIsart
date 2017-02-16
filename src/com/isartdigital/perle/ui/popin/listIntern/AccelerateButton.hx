@@ -39,9 +39,7 @@ class AccelerateButton extends SmartButton
 	
 	private function onAccelerate(){
 		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
-		if (!TimeManager.increaseQuestProgress(quest)) return;
-		
-		ServerManager.TimeQuestAction(DbAction.UPDT, quest);
+		TimeManager.increaseQuestProgress(quest);
 	}
 	
 	private function setValues():Void{

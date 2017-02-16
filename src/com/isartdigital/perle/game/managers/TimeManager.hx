@@ -594,17 +594,16 @@ class TimeManager {
 	 * @return  possibility to continue the progress or not
 	 */
 	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
-		trace(pQuest.stepIndex);
 		if (pQuest.stepIndex != 3){
 			for (i in 0...listQuest.length) {
 				if (listQuest[i].refIntern == pQuest.refIntern) {
 					pQuest.progress = pQuest.steps[pQuest.stepIndex];
 					ServerManager.TimeQuestAction(DbAction.UPDT, pQuest);
+					return false;
 				}
 			}
 			return true;
 		}
-		
 		else return false;
 	}
 	

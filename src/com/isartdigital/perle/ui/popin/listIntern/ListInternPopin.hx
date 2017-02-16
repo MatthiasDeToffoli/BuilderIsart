@@ -236,8 +236,6 @@ class ListInternPopin extends SmartPopin
 		Interactive.removeListenerClick(btnRight, onRight);
 		Interactive.removeListenerClick(btnClose, onClose);
 		
-		trace("destruction");
-		
 		var myInternDesc:InternDescription;
 		for (myInternDesc in internDescriptionArray){
 			internDescriptionArray.shift();

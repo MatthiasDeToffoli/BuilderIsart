@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
@@ -348,8 +349,14 @@ class Phantom extends Building {
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
 			vBuilding.activate();
-			Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
 			BuildingHud.linkVirtualBuilding(vBuilding);
+			
+			var stateBuild:VBuildingState = TimeManager.getBuildingStateFromTime(tileDesc);
+			if (stateBuild == VBuildingState.isBuilding || stateBuild == VBuildingState.isUpgrading) 
+				Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
+			else 
+				Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
+			
 			BHConstruction.newTimer(vBuilding.tileDesc.timeDesc);
 			
 			if (DialogueManager.ftueStepPutBuilding)

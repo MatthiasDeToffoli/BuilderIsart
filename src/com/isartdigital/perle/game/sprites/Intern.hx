@@ -174,7 +174,6 @@ class Intern
 				portrait: Std.string(data[i].Portrait)
 			};
 			
-			//trace(newIntern);
 			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
 				var tmpProgress:Float = Date.now().getTime();
 				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];

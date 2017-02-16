@@ -163,6 +163,8 @@ class QuestsManager
 	public static function goToNextStep():Void{
 		Choice.getInstance().hide();
 		
+		ServerManager.TimeQuestAction(DbAction.UPDT, questInProgress);
+		
 		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {		
 			if (!Intern.isMaxStress(questInProgress.refIntern)){
 				TimeManager.nextStepQuest(questInProgress);
@@ -251,8 +253,7 @@ class QuestsManager
 		return lQuest;
 	}
 	
-	public static function getCursorPosition(pId:Int):Array<Float> {
-		var quest:TimeQuestDescription = getQuest(pId); 
+	public static function getCursorPosition(quest:TimeQuestDescription):Array<Float> {
 		var positions:Array<Float> = new Array<Float>();
 		
 		var globalLength = quest.end - quest.creation;
@@ -266,7 +267,7 @@ class QuestsManager
 	
 	public static function getPrctAvancment(pId:Int):Float {
 		var quest:TimeQuestDescription = getQuest(pId);
-		var baseValeur:Int = 1;
+		var baseValeur:Int = 0;
 		
 		if (quest != null){
 			var globalLength = quest.end - quest.creation;

@@ -128,22 +128,17 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onReset():Void{
 		
-		if (ResourcesManager.getTotalForType(GeneratorType.hard) >= RESET_VALUE){
+		if (ResourcesManager.getTotalForType(GeneratorType.hard) >= RESET_VALUE) {			
+			Intern.getIntern(intern.id).stress = 0;
+			Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
 			
-			if (ChoiceManager.isInQuest(intern.idEvent)) {
-				Intern.getIntern(quest.refIntern).stress = 0;
-				Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+			if (quest != null) {
 				QuestsManager.chooseQuest(Intern.getIntern(intern.id).quest);
 				QuestsManager.goToNextStep();
-				TimeManager.nextStepQuest(QuestsManager.getQuest(intern.id));	
 			}
-		
-		updateQuestPopin();
-		ServerManager.InternAction(DbAction.UPDT, intern.id);
-			//Intern.getIntern(quest.refIntern).stress = 0;
-			//Intern.getIntern(quest.refIntern).status = Intern.STATE_RESTING;
-			//
-			//updateQuestPopin();
+			
+			updateQuestPopin();
+			ServerManager.InternAction(DbAction.UPDT, intern.id);
 		}
 	}
 	
