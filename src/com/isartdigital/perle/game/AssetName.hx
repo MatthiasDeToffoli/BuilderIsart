@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 
 
 /**
@@ -60,6 +61,12 @@ class AssetName{
 	public static inline var DECO_HELL_CRYSTAL_BIG:String = "HellPropCrystal02";
 	public static inline var DECO_HELL_LAVA:String = "HellPropLake";
 	
+	//values change
+	public static inline var VALUES_GAIN:String = "ValueChange_Positive";
+	public static inline var VALUES_LOST:String = "ValueChange_Negative";
+	public static inline var VALUES_CHANGE_ICON:String = "icon";
+	public static inline var VALUES_CHANGE_TEXT:String = "value";
+	
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";
 	
@@ -105,6 +112,7 @@ class AssetName{
 	// Shop caroussel
 	public static inline var CAROUSSEL_ARROW_LEFT:String = "Button_ArrowLeft";
 	public static inline var CAROUSSEL_ARROW_RIGHT:String = "Button_ArrowRight";
+	public static inline var CAROUSSEL_ARROW_PAGE_NUMBER:String = "_navigArrows_counter_txt";
 	
 	
 	// Shop caroussel card
@@ -276,7 +284,8 @@ class AssetName{
 	public static inline var INTERN_EVENT_HEAVEN_STRESS:String = "_heavenStressEffect";
 	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";
 	public static inline var INTERN_EVENT_HEAVEN_CURRENCY:String = "RewardHeaven0";
-	public static inline var INTENSITY_MARKER:String = "IntenityMarker";
+	public static inline var INTENSITY_MARKER:String = "IntensityMarker";
+	public static inline var REWARD_CURRENCY_SPAWNER:String = "Event_RessourcesReward";
 	
 	// intern info jauges
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
@@ -343,6 +352,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_CANCEL:String = "CloseButton";
 	public static inline var PURGATORY_POPIN_SHOP:String = "ShopButton";
 	public static inline var PURGATORY_POPIN_INTERN:String = "InternsButton";
+	public static inline var PURGATORY_POPIN_CARD:String = "FateCard";
 	public static inline var PURGATORY_POPIN_HEAVEN_BUTTON:String = "HeavenButton";
 	public static inline var PURGATORY_POPIN_INVITE_BUTTON:String = "InviteButton";
 	public static inline var PURGATORY_POPIN_HELL_BUTTON:String = "HellButton";
@@ -398,7 +408,8 @@ class AssetName{
 	public static inline var HUD_MOVNG_BUILDING_DESKTOP:String = /*HUD_PREFIX + */"MoveBuilding_Desktop";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CANCEL:String = "Button_CancelMovement";
 	public static inline var HUD_MOVNG_BUILDING_BTN_CONFIRM:String = "Button_ConfirmMovement";
-	public static inline var HUD_XP_GAUGE_MASK:String = "bgMask";
+	public static inline var HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER:String = "HUD_Xp_Bar_Heaven";
+	public static inline var HUD_XP_GAUGE_MASK_HELL_CONTAINER:String = "HUD_Xp_Bar_Hell";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";
@@ -486,9 +497,7 @@ class AssetName{
 	public static inline var BACKGROUND_HEAVEN:String = "BG_Heaven";
 	public static inline var BACKGROUND_STYX:String = "Styx01";
 	
-	public static inline var BACKGROUND_UNDER_HEAVEN = "BG_Under_heaven";
-	public static inline var BACKGROUND_UNDER_HELL = "hell_bg_free";
-	public static inline var BACKGROUND_UNDER_STYX = "BG_Under_Styx";
+	public static inline var BACKGROUND_UNDER:String = "BG_Galaxy";
 	
 	//button production assets
 	
@@ -496,6 +505,7 @@ class AssetName{
 	public static inline var PROD_ICON_HARD:String = "_hardCurrencyIcon_Large";
 	public static inline var PROD_ICON_WOOD:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";
+	public static inline var PROD_ICON_GOLD_LARGE:String = "_goldIcon_Large";
 	
 	//icone small
 	public static inline var PROD_ICON_SOFT_SMALL:String = "_goldIcon_Small";
@@ -505,6 +515,15 @@ class AssetName{
 	//icone large
 	public static inline var PROD_ICON_WOOD_LARGE:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE_LARGE:String = "_stoneIcon_Large";
+	public static inline var PROD_ICON_NEUTRAL_SOUL_LARGE:String = "_neutralSoulIcon_Large";
+	public static inline var PROD_ICON_GENERIC_LARGE:String = "_genericIcon_Large";
+	
+	//icone medium
+	public static inline var ICON_GOLD_MEDIUM:String = "_goldIcon_Medium";
+	public static inline var ICON_HARD_MEDIUM:String = "_hardCurrencyIcon_Medium";
+	public static inline var ICON_WOOD_MEDIUM:String = "_woodIcon_Medium";
+	public static inline var ICON_STONE_MEDIUM:String = "_stoneIcon_Medium";
+	public static inline var ICON_SOUL_MEDIUM:String = "_neutralSoulIcon_Medium";
 	
 	//Option Poppin
 	public static inline var OPTION_POPPIN:String = "Options_Popin";
@@ -524,5 +543,13 @@ class AssetName{
 	public static inline var RESET_POPPIN:String = "ConfirmDataReset_Popin";
 	public static inline var RESET_POPPIN_CONFIRM:String = "ButtonConfirmErase";
 	public static inline var RESET_POPPIN_CANCEL:String = "ButtonCancelErase";
-
+	
+	public static function getCurrencyAssetName(reward:RewardType):String {
+		if (reward == RewardType.gold) return ICON_GOLD_MEDIUM;
+		if (reward == RewardType.karma) return ICON_HARD_MEDIUM;
+		if (reward == RewardType.wood) return ICON_WOOD_MEDIUM;
+		if (reward == RewardType.iron) return ICON_STONE_MEDIUM;
+		if (reward == RewardType.soul) return ICON_SOUL_MEDIUM;
+		return "noName";
+	}
 }

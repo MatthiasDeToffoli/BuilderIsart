@@ -14,8 +14,13 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
+import pixi.interaction.EventTarget;
 
 	
 /**
@@ -33,8 +38,8 @@ class TribunalPopin extends SmartPopinExtended
 	private var btnClose:SmartButton;
 	//private var btnShop:SmartButton;
 	//private var btnIntern:SmartButton;
-	private var btnHeaven:SmartButton;
-	private var btnHell:SmartButton;
+	//private var btnHeaven:SmartButton;
+	//private var btnHell:SmartButton;
 	private var btnUpgrade:SmartButton;
 	private var tribunalLevel:TextSprite;
 	private var timer:TextSprite;
@@ -44,6 +49,12 @@ class TribunalPopin extends SmartPopinExtended
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
 	private var btnInviteSoul:SmartButton;
+	private var cardSoul:UISprite;
+	private var canMoovCard:Bool;
+	private var baseCardRot:Float;
+	private var baseMousePos:Point;
+	private  var MOUSE_DIFF_MAX(null,never):Int = 200;
+	private var DIFF_MAX(null,never):Int = 80;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -59,6 +70,7 @@ class TribunalPopin extends SmartPopinExtended
 	private function new(pID:String=null) 
 	{
 		super(AssetName.PURGATORY_POPIN);
+		canMoovCard = false;
 		name = componentName;
 		var interMovieClip:Dynamic;
 		counterForFtue = 0;
@@ -66,8 +78,6 @@ class TribunalPopin extends SmartPopinExtended
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
 		//btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
 		//btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
-		btnHeaven = cast(getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_BUTTON), SmartButton);
-		btnHell = cast(getChildByName(AssetName.PURGATORY_POPIN_HELL_BUTTON), SmartButton);
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
 		//SmartCheck.traceChildrens(this);
 
@@ -80,11 +90,21 @@ class TribunalPopin extends SmartPopinExtended
 		timer = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_TIMER), TextSprite);
 		timer.text = "0" + 0 + "h" + "0" + 0 + "m" + "0" + 0 + "s";
 		
-		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO);
+		interMovieClip = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO),SmartComponent);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
 		fateName.text = VTribunal.getInstance().soulToJudge.name;
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
 		fateAdjective.text = VTribunal.getInstance().soulToJudge.adjective;
+		
+		cardSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
+		baseCardRot = cardSoul.rotation;
+		cardSoul.interactive = true;
+		cardSoul.buttonMode = true;
+
+		cardSoul.on(MouseEventType.MOUSE_DOWN, onMouseDownOnCard);
+		cardSoul.on(MouseEventType.MOUSE_MOVE, onFollowMouse);
+		cardSoul.on(MouseEventType.MOUSE_UP_OUTSIDE, onMouseUpOnCard);
+		cardSoul.on(MouseEventType.MOUSE_UP, onMouseUpOnCard);
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_INFO);
 		infoHeaven = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);
@@ -110,8 +130,6 @@ class TribunalPopin extends SmartPopinExtended
 		
 		
 		Interactive.addListenerClick(btnClose, onClose);
-		Interactive.addListenerClick(btnHeaven, onHeaven);
-		Interactive.addListenerClick(btnHell, onHell);
 		//Interactive.addListenerClick(btnShop, onShop);
 		//Interactive.addListenerClick(btnIntern, onIntern);
 		
@@ -120,6 +138,41 @@ class TribunalPopin extends SmartPopinExtended
 		if (DialogueManager.ftueStepOpenPurgatory) {
 			DialogueManager.dialogueSaved ++;
 			registerForFTUE();
+		}
+	}
+	
+	private function onMouseDownOnCard(mouseEvent:EventTarget):Void {
+		canMoovCard = true;
+		baseMousePos = mouseEvent.data.global.clone();
+	}
+	
+	private  function onMouseUpOnCard(mouseEvent:EventTarget):Void {
+		canMoovCard = false;
+		
+		
+		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
+		
+		if (diff > 0) {
+			if (cardSoul.rotation > baseCardRot + Math.PI / 32) onHell();
+		}
+		else if (diff < 0) {
+			if (cardSoul.rotation < baseCardRot - Math.PI / 32) onHeaven();
+		}
+		
+		cardSoul.rotation = baseCardRot;
+	}
+	
+	private function onFollowMouse(mouseEvent:EventTarget):Void {
+		if (!canMoovCard) return;
+		
+		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
+		
+		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
+			cardSoul.rotation = baseCardRot + diff / DIFF_MAX * Math.PI / 32;
+			
+		}
+		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
+			cardSoul.rotation = baseCardRot + diff / DIFF_MAX * Math.PI / 32;
 		}
 	}
 	
@@ -185,7 +238,7 @@ class TribunalPopin extends SmartPopinExtended
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null,true);
 		}
-		ResourcesManager.judgePopulation(Alignment.heaven);
+		if(!ResourcesManager.judgePopulation(Alignment.heaven)) return;
 		changeSoulTextInfo();
 		changeSoulText();
 	}
@@ -193,7 +246,7 @@ class TribunalPopin extends SmartPopinExtended
 	private function onHell() {
 		if (DialogueManager.ftueStepSlideCard)
 			return;
-		ResourcesManager.judgePopulation(Alignment.hell);
+		if(!ResourcesManager.judgePopulation(Alignment.hell)) return;
 		changeSoulTextInfo();
 		changeSoulText();
 		
@@ -255,8 +308,6 @@ class TribunalPopin extends SmartPopinExtended
 	override public function destroy (): Void {
 		
 		Interactive.removeListenerClick(btnClose, onClose);
-		Interactive.removeListenerClick(btnHeaven, onHeaven);
-		Interactive.removeListenerClick(btnHell, onHell);
 		//Interactive.removeListenerClick(btnShop, onShop);
 		//Interactive.removeListenerClick(btnIntern, onIntern);
 		if (VTribunal.getInstance().canUpgrade()) Interactive.removeListenerClick(btnUpgrade, onUpgrade);

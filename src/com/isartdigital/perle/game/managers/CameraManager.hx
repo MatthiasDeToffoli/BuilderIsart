@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.CollisionManager;
+import com.isartdigital.utils.game.GameStage;
 import haxe.Timer;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -58,6 +59,10 @@ class CameraManager
 		
 		target.x -= IsoManager.modelToIsoView(pPos).x;
 		target.y -= IsoManager.modelToIsoView(pPos).y;
+		
+		var bgUnder:FlumpStateGraphic = new FlumpStateGraphic(AssetName.BACKGROUND_UNDER);
+		bgUnder.init();
+		GameStage.getInstance().getUnderBackgroundContainer().addChild(bgUnder);
 
 	}
 	

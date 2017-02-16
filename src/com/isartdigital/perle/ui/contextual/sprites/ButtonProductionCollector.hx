@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.contextual.sprites;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 
 /**
  * ...
@@ -22,6 +23,11 @@ class ButtonProductionCollector extends ButtonProduction
 		ref = pRef;
 	}
 	
+	override function onClick():Void 
+	{
+		ValueChangeManager.addTextGain(position, type, valueToAdd);
+		super.onClick();
+	}
 	override function applyResourceGain():Void {
 		ResourcesManager.gainResources(type, valueToAdd);
 		TimeManager.removeProductionTIme(ref);

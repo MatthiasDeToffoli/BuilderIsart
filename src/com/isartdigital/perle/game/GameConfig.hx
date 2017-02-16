@@ -74,13 +74,14 @@ typedef TableTypeShopPack = {
 	var iD:Int;
 	var tab:ShopTab;
 	var packName:String;
-	var priceKarma:Int;
-	var priceIP:Float;
-	var giveGold:Int;
-	var giveKarma:Int;
-	var giveIron:Int;
-	var giveWood:Int;
 	var iconLevel:Int;
+	@:optional var priceKarma:Int;
+	@:optional var priceIP:Float;
+	@:optional var giveGold:Int;
+	@:optional var giveKarma:Int;
+	@:optional var giveIron:Int;
+	@:optional var giveWood:Int;
+	@:optional var oneTimeOffer:Bool;
 }
 
 typedef TableInterns = {
@@ -205,6 +206,13 @@ class GameConfig {
 	
 	public static function getShopPack ():Array<TableTypeShopPack> {
 		return cast(config[SHOP_PACK]);
+	}
+	
+	public static function getShopPackOneTimeOffer ():Array<TableTypeShopPack> {
+		var lArray:Array<TableTypeShopPack> = cast(config[SHOP_PACK]);
+		return lArray.filter(function (p:TableTypeShopPack) {
+			return p.oneTimeOffer;
+		});
 	}
 	
 	public static function getShopPackByName (pName:String):TableTypeShopPack {

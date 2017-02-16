@@ -174,6 +174,7 @@ class Intern
 				portrait: Std.string(data[i].Portrait)
 			};
 			
+			//trace(newIntern);
 			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
 				var tmpProgress:Float = Date.now().getTime();
 				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];
@@ -206,21 +207,21 @@ class Intern
 		switch (pChoiceType) {
 			case ChoiceType.HEAVEN: 
 				if (pIntern.aligment == "heaven") {
-					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.unaturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				else {
-					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.naturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				
 			case ChoiceType.HELL:
 				if (pIntern.aligment == "hell") {
-					if (pIntern.stress + pChoice.hellStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.naturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				else {
-					if (pIntern.stress + pChoice.heavenStress < MAX_STRESS) return false;
+					if (pIntern.stress + pChoice.unaturalStress < MAX_STRESS) return false;
 					else return true;
 				}
 				
@@ -252,7 +253,7 @@ class Intern
 	public static function countInternInQuest():Int {
 		var nb:Int = internsListArray.length - 1;
 		for (i in 0...nb) {
-			trace(internsListArray[i]);
+			//trace(internsListArray[i]);
 		}
 		
 		return 0;

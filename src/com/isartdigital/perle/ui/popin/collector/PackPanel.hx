@@ -28,7 +28,7 @@ class PackPanel extends SmartComponent
 		vBuildingLink = cast(BuildingHud.virtualBuilding, VCollector);
 		
 		var spawner:UISprite = cast (SmartCheck.getChildByName(this, AssetName.PANEL_COLLECTOR_SPAWNER_ICON), UISprite);
-		var icon:UISprite = new UISprite(Std.is(vBuildingLink, VCollectorHeaven) ? AssetName.PROD_ICON_WOOD_LARGE:AssetName.PROD_ICON_STONE_LARGE);
+		var icon:UISprite = new UISprite(Std.is(vBuildingLink, VCollectorHeaven) ? AssetName.PROD_ICON_WOOD:AssetName.PROD_ICON_STONE);
 		
 		icon.position = spawner.position;
 		

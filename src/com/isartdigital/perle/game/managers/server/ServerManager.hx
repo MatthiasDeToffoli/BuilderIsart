@@ -67,10 +67,16 @@ class ServerManager {
 	}
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
+		
+		// TODO :  remporaire pour les playtest
+		DeltaDNAManager.sendConnexionEvents({ isNewPlayer:true, ID:Std.string(Math.round(Math.random() *1000000)) });
+		DeltaDNAManager.listenToCloseGame();
+		Debug.warn("Fake Connexion for playtest (DeltaDNA)");
 		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
 			Debug.error("Player connexion failed");
 			return;
 		}
+		return; //todo enlever
 		
 		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
 		DeltaDNAManager.listenToCloseGame();
@@ -148,7 +154,7 @@ class ServerManager {
 			case DbAction.UPDT_EVENT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
 			case DbAction.GET_SPE_JSON:
-				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);			
+				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
 			default: return;
 		}
 	}

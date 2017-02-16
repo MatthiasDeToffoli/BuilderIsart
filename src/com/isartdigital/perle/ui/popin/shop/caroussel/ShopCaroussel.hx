@@ -8,6 +8,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
+import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
@@ -36,6 +37,7 @@ class ShopCaroussel extends SmartComponent {
 	private var cards:Array<CarouselCard>;
 	private var arrowRight:SmartButton;
 	private var arrowLeft:SmartButton;
+	private var textPageNumber:TextSprite;
 	private var maxCardsVisible:Int;
 	private var cardsPositions:Array<Point>;
 	private var buildingListIndex:Int = 0;
@@ -60,6 +62,27 @@ class ShopCaroussel extends SmartComponent {
 			createCard(getSpawnersPosition(getSpawners(getSpawnersAssetNames())));
 		else
 			Debug.error("No cards to show, it must be setted before super.init()");
+		
+		setPageNumber();
+		
+		if (cardsToShow.length <= maxCardsVisible)
+			destroyArrows();
+	}
+	
+	private function destroyArrows ():Void {
+		var lArrowBG:UISprite = cast(SmartCheck.getChildByName(this, "NavigArrowBG"), UISprite);
+		
+		removeChild(lArrowBG);
+		removeChild(arrowRight);
+		removeChild(arrowLeft);
+		removeChild(textPageNumber);
+		lArrowBG.destroy();
+		arrowRight.destroy();
+		arrowLeft.destroy();
+		textPageNumber.destroy();
+		arrowRight = null;
+		arrowLeft = null;
+		textPageNumber = null;
 	}
 	
 	public function scrollNext ():Void {
@@ -69,6 +92,7 @@ class ShopCaroussel extends SmartComponent {
 			buildingListIndex += maxCardsVisible;
 			
 		createCard(cardsPositions);
+		setPageNumber();
 	}
 	
 	public function scrollPrecedent ():Void {
@@ -80,11 +104,29 @@ class ShopCaroussel extends SmartComponent {
 			buildingListIndex -= maxCardsVisible;
 		
 		createCard(cardsPositions);
+		setPageNumber();
 	}
+	
+	private function setPageNumber ():Void {
+		// is not inter tab and had more then one page.
+		if (textPageNumber != null && cardsToShow.length > maxCardsVisible) {
+			// when no rest on the division, there is gonna be one page more whitout correction
+			var lCorrection:Int = (cardsToShow.length % maxCardsVisible) == 0 ? 0 : 1;
+			var lCurrentPage:Float = 1 + (buildingListIndex - (buildingListIndex % maxCardsVisible)) / maxCardsVisible;
+			var lMaxPage:Float =  lCorrection + (cardsToShow.length - (cardsToShow.length % maxCardsVisible)) / maxCardsVisible;
+			
+			textPageNumber.text = lCurrentPage + "/" + lMaxPage;
+		}
+	}
+	
+	/*private function getExceedent (pInt1:Int, pMax:Int):Int {
+		return (pInt1 % pMax) == pInt1 ? 
+	}*/
 	
 	private function initArrows ():Void {
 		arrowLeft = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_ARROW_LEFT), SmartButton);
 		arrowRight = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_ARROW_RIGHT), SmartButton);
+		textPageNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_ARROW_PAGE_NUMBER), TextSprite);
 		Interactive.addListenerClick(arrowLeft, onClickArrowLeft);
 		Interactive.addListenerClick(arrowRight, onClickArrowRight);
 	}

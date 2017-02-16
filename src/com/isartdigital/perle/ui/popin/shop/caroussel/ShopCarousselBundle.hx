@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin.shop.caroussel;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
+import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCardBundle;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
@@ -33,7 +34,7 @@ class ShopCarousselBundle extends ShopCaroussel{
 		var result:Array<String> = new Array<String>();
 		
 		for (i in 0...GameConfig.getShopPack().length) {
-			if (GameConfig.getShopPack()[i].tab == ShopTab.Bundle)
+			if (GameConfig.getShopPack()[i].tab == ShopTab.Bundle && !SaveManager.isBundleLocked(GameConfig.getShopPack()[i].iD))
 				result.push(GameConfig.getShopPack()[i].packName);
 		}
 		

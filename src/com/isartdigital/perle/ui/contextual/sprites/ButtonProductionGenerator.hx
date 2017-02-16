@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.contextual.sprites;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 import pixi.core.math.Point;
 
 /**
@@ -24,6 +25,12 @@ class ButtonProductionGenerator extends ButtonProduction
 	
 	override function applyResourceGain():Void {
 		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
+	}
+	
+	override function onClick():Void 
+	{
+		ValueChangeManager.addTextGain(position, myGeneratorDesc.type, myGeneratorDesc.quantity);
+		super.onClick();
 	}
 	
 	/**

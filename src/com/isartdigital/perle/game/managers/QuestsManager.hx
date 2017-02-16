@@ -166,7 +166,7 @@ class QuestsManager
 		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {		
 			if (!Intern.isMaxStress(questInProgress.refIntern)){
 				TimeManager.nextStepQuest(questInProgress);
-				//Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_MAX_STRESS;			
+				Intern.getIntern(questInProgress.refIntern).status = Intern.STATE_RESTING;			
 			}			
 			else{
 				MaxStressPopin.quest = questInProgress;

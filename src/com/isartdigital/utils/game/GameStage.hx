@@ -1,5 +1,7 @@
 package com.isartdigital.utils.game;
 
+import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import pixi.core.display.Container;
@@ -49,6 +51,7 @@ class GameStage extends Container
 	 */
 	private var hudContainer:Container;
 	
+	private var underBackground:Container;
 	/**
 	 * conteneur de l ecran pour bloquer les actions
 	 */
@@ -74,8 +77,11 @@ class GameStage extends Container
 	public function new() 
 	{
 		super();
-				
-		gameContainer = new Container();		
+			
+		underBackground = new Container();
+		addChild(underBackground);
+		
+		gameContainer = new Container();
 		addChild(gameContainer);
 		
 		buildContainer = new Container();
@@ -95,6 +101,8 @@ class GameStage extends Container
 		
 		ftueContainer = new Container();
 		addChild(ftueContainer);
+		
+		
 	}
 	
 	/**
@@ -234,6 +242,10 @@ class GameStage extends Container
 	 */
 	public function getGameContainer (): Container {
 		return gameContainer;
+	}
+	
+	public function getUnderBackgroundContainer():Container {
+		return underBackground;
 	}
 	
 	public function getBuildContainer():Container {

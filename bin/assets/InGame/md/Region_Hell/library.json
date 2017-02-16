@@ -1,93 +1,167 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "_bg_Hell_02",
-       "origin": [
-        460.5,
-        613.5
-       ],
-       "rect": [
-        1,
-        1,
-        921,
-        1227
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas1.png",
-     "textures": [
-      {
-       "symbol": "_bg_Hell_01",
-       "origin": [
-        460.5,
-        608.6
-       ],
-       "rect": [
-        1,
-        1,
-        921,
-        1218
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
+   "id": "BG_Hell",
    "layers": [
     {
      "keyframes": [
       {
-       "loc": [
-        450.375,
-        609.375
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_bg_Hell_02",
        "pivot": [
-        460.5,
-        613.5
-       ]
+        526.875,
+        442.6125
+       ],
+       "loc": [
+        526.725,
+        1327.8375
+       ],
+       "ref": "Region_Hell_4_2",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
       }
      ],
-     "name": "Layer 1"
+     "name": "Region_Hell_4_2"
     },
     {
      "keyframes": [
       {
-       "loc": [
-        -470.625,
-        604.5
-       ],
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "ref": "_bg_Hell_01",
        "pivot": [
-        460.5,
-        608.625
-       ]
+        475.8375,
+        442.6125
+       ],
+       "loc": [
+        475.8,
+        442.6125
+       ],
+       "ref": "Region_Hell_2_2",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
       }
      ],
-     "name": "Layer 2"
+     "name": "Region_Hell_2_2"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        452.7,
+        443.775
+       ],
+       "loc": [
+        -452.7,
+        1331.3625
+       ],
+       "ref": "Region_Hell_3_2",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Region_Hell_3_2"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        498.375,
+        443.775
+       ],
+       "loc": [
+        -498.4125,
+        443.775
+       ],
+       "ref": "Region_Hell_1_2",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Region_Hell_1_2"
     }
-   ],
-   "id": "BG_Hell"
+   ]
   }
  ],
- "md5": "e884738dc16e2f7e23df3cf2c98f64b6",
- "frameRate": 24
+ "md5": "d88f873fc9e308ff1e510ee59127bd94",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1054,
+        886
+       ],
+       "origin": [
+        526.9,
+        442.6
+       ],
+       "symbol": "Region_Hell_4_2"
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        997,
+        888
+       ],
+       "origin": [
+        498.4,
+        443.8
+       ],
+       "symbol": "Region_Hell_1_2"
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        952,
+        886
+       ],
+       "origin": [
+        475.85,
+        442.6
+       ],
+       "symbol": "Region_Hell_2_2"
+      }
+     ],
+     "file": "atlas2.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        906,
+        888
+       ],
+       "origin": [
+        452.7,
+        443.8
+       ],
+       "symbol": "Region_Hell_3_2"
+      }
+     ],
+     "file": "atlas3.png"
+    }
+   ]
+  }
+ ]
 }

@@ -40,7 +40,7 @@ class ListInternPopin extends SmartPopin
 	private var btnRight:SmartButton;
 	public var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
 	private var unlockLevels:Array<Int> = [1, 11, 14, 20];
-	private var placesUnlock:Map<Int, Int> = [1 => 2, 11 => 2, 14 => 3, 20 => 4];
+	private var placesUnlock:Map<Int, Int> = [1 => 1, 11 => 2, 14 => 3, 20 => 4];
 	
 	private var internListIndex:Int = 0;
 	private static inline var MAX_PLACES:Int = 2;
@@ -69,7 +69,6 @@ class ListInternPopin extends SmartPopin
 	private function new() 
 	{
 		super(AssetName.INTERN_LIST);
-		trace("new");
 		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 		btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 		btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
@@ -148,7 +147,6 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	public function spawnQuest():Void {	
-		trace(Intern.internsListArray.length);
 		for (i in 0...AssetName.internListSpawners.length){		
 			if (i < Intern.internsListArray.length && i < getNumberPlaces()){
 				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
@@ -191,7 +189,7 @@ class ListInternPopin extends SmartPopin
 	 * Function to go on the next page of the list
 	 */
 	public function scrollNext ():Void {
-		trace(internListIndex);
+		//trace(internListIndex);
 		if ((internListIndex + MAX_PLACES) >= Intern.internsListArray.length)
 			internListIndex = 0;
 		else
@@ -237,6 +235,8 @@ class ListInternPopin extends SmartPopin
 		Interactive.removeListenerClick(btnLeft, onLeft);
 		Interactive.removeListenerClick(btnRight, onRight);
 		Interactive.removeListenerClick(btnClose, onClose);
+		
+		trace("destruction");
 		
 		var myInternDesc:InternDescription;
 		for (myInternDesc in internDescriptionArray){

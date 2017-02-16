@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TweenManager;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -54,6 +55,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 			Hud.getInstance().getContainerEffect(),
 			applyResourceGain
 		);
+		
 	}
 	
 	private function applyResourceGain():Void {}

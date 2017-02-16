@@ -11,7 +11,6 @@ import com.isartdigital.perle.game.managers.server.ServerManager.TableRegion;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.sprites.RegionBackGroundUnder;
 import com.isartdigital.perle.game.sprites.RegionBackground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
@@ -25,6 +24,7 @@ import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
+import pixi.flump.Sprite;
 
 typedef Region = {
 	var desc:RegionDescription;
@@ -66,11 +66,6 @@ class RegionManager
 	 * container of all background
 	 */
 	public static var bgContainer(default, null):Container;
-	
-	/**
-	 * container of all beckground under region
-	 */
-	public static var bgUnderContainer(default, null):Container;
 	
 	/**
 	 * typedef which contain all data resources
@@ -131,12 +126,10 @@ class RegionManager
 	public static function init():Void {
 		buttonRegionContainer = new Container();
 		bgContainer = new Container();
-		bgUnderContainer = new Container();
 		eRegionCreate = new EventEmitter();
 		// todo : gérer HUD contextuel et l'add au container hudcontextuel.
 		GameStage.getInstance().getBuildContainer().addChild(buttonRegionContainer);
 		GameStage.getInstance().getBuildContainer().addChildAt(bgContainer, 0);
-		GameStage.getInstance().getBuildContainer().addChildAt(bgUnderContainer, 0);
 		worldMap = new Map<Int,Map<Int,Region>>();
 		buttonMap = new Map<Int,Map<Int,ButtonRegion>>();
 		underMap = new Map<Int,Map<Int,FlumpStateGraphic>>();
@@ -154,6 +147,8 @@ class RegionManager
 		mapNumbersRegion[Alignment.heaven] = -1;
 		mapNumbersRegion[Alignment.hell] = -1;
 		mapNumbersRegion[Alignment.neutral] = 0;
+		
+		
 	}
 	
 
@@ -232,11 +227,6 @@ class RegionManager
 	 */
 	private static function addToWorldMap (pNewRegion:Region):Void {
 		
-		
-		if(pNewRegion.desc.type == Alignment.hell )createManyBgUnderInHell(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3}, 5,7);
-		else if(pNewRegion.desc.type == Alignment.heaven)createManyBgUnderInHeaven(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3}, 5,7);
-		else if(pNewRegion.desc.type == Alignment.neutral)createManyBgUnderInStyx(new Point(pNewRegion.desc.firstTilePos.x, pNewRegion.desc.firstTilePos.y - 3 * Ground.ROW_Y_LENGTH), {x:pNewRegion.desc.x, y:pNewRegion.desc.y-3},7);
-	
 		mapNumbersRegion[pNewRegion.desc.type] += 1;
 		eRegionCreate.emit(REGION_CREATED);
 		
@@ -255,27 +245,6 @@ class RegionManager
 	}
 
 	
-	public static function addBgUnder(pPos:Point, pWorlPos:Index):Void{
-		if (!underMap.exists(pWorlPos.x)) underMap[pWorlPos.x] = new Map<Int,FlumpStateGraphic>();
-		else if (underMap[pWorlPos.x].exists(pWorlPos.y)) return;
-		
-		var lAssetName:String = pWorlPos.x < 0 ? AssetName.BACKGROUND_UNDER_HEAVEN:pWorlPos.x > 0 ? AssetName.BACKGROUND_UNDER_HELL:AssetName.BACKGROUND_UNDER_STYX;
-		
-		
-		var bgUnder:RegionBackGroundUnder = new RegionBackGroundUnder(lAssetName,pPos,pWorlPos); // for have anything in alpha
-		bgUnder.init();
-		bgUnder.start();
-		bgUnderContainer.addChild(bgUnder);
-			
-		underMap[pWorlPos.x][pWorlPos.y] = bgUnder;
-		sortBgUnder();
-
-	}
-	
-	public static function sortBgUnder():Void {
-		bgUnderContainer.children = IsoManager.sortTiles(bgUnderContainer.children);
-	}
-	
 	/**
 	 * get the button container
 	 * @return Container
@@ -291,8 +260,6 @@ class RegionManager
 		worldMap[0] = new Map<Int,Region>();
 		
 		var origin:Index = {x:0, y:0};
-		
-		createManyBgUnderInStyx(new Point(origin.x, origin.y - 3 * Ground.ROW_Y_LENGTH), {x:origin.x, y:origin.y - 3}, 7);
 		
 		worldMap[origin.x][origin.y] = createRegionFromDesc({
 			x:origin.x,
@@ -316,41 +283,6 @@ class RegionManager
 		createRegion(Alignment.heaven, new Point( -Ground.COL_X_LENGTH, 0), {x: -1, y:0});
 		
 		VTribunal.getInstance().activate();
-	}
-	
-	private static function createManyBgUnderInHell(startPos:Point, startMapPos:Index, numberX:Int, numberY:Int):Void {
-		var i:Int, j:Int;
-		
-		for (j in 0...numberY) {
-			for (i in 0...numberX) {
-				var lPos:Point = new Point(startPos.x + i * Ground.COL_X_LENGTH, startPos.y + j * Ground.ROW_Y_LENGTH);
-				var lMapPos:Index = {x:startMapPos.x + i, y:startMapPos.y + j};
-				addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
-			}
-		}
-	}
-	
-	private static function createManyBgUnderInHeaven(startPos:Point, startMapPos:Index, numberX:Int, numberY:Int):Void {
-		var i:Int, j:Int;
-		
-		for (j in 0...numberY) {
-			for (i in 0...numberX) {
-				var lPos:Point = new Point(startPos.x - i * Ground.COL_X_LENGTH, startPos.y + j * Ground.ROW_Y_LENGTH);
-				var lMapPos:Index = {x:startMapPos.x - i, y:startMapPos.y + j};
-				addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
-			}
-		}
-	}
-	
-	private static function createManyBgUnderInStyx(startPos:Point, startMapPos:Index, numberY:Int):Void {
-		var i:Int, j:Int;
-		
-		for (j in 0...numberY) {
-			var lPos:Point = new Point(startPos.x + 1, startPos.y + j * (Ground.ROW_Y_LENGTH -1));
-			var lMapPos:Index = {x:startMapPos.x, y:startMapPos.y + j};
-			addBgUnder(IsoManager.modelToIsoView(lPos), lMapPos);
-			
-		}
 	}
 	
 	

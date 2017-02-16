@@ -40,7 +40,8 @@ class SpeedUpPopin extends AcceleratePopin
 	 */
 	private function new() 
 	{
-		super();	
+		price = 10;
+		super();
 	}
 	
 	override private function onAccelerate():Void {

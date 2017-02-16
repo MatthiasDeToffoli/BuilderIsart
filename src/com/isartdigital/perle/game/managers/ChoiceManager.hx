@@ -16,8 +16,8 @@ typedef ChoiceDescription = {
 	var text:String;
 	var hellAnswer:String;
 	var heavenAnswer:String;
-	var hellStress:Int;
-	var heavenStress:Int;	
+	var naturalStress:Int;
+	var unaturalStress:Int;	
 	var goldIndicatorHeaven:Int;
 	var goldHeaven:Int;
 	var karmaIndicatorHeaven:Int;
@@ -124,8 +124,7 @@ class ChoiceManager
 		else return;
 	}
 	
-	public static function applyReward(pIntern:InternDescription, pReward:EventRewardDesc, pChoiceType:ChoiceType):Void {
-		var useChoice:ChoiceDescription = selectChoice(actualID);
+	public static function applyReward(pIntern:InternDescription, pReward:EventRewardDesc, pChoiceType:ChoiceType, useChoice:ChoiceDescription):Void {
 		var baseReward:EventRewardDesc;
 		
 		if (pChoiceType == ChoiceType.HELL) {
@@ -153,22 +152,23 @@ class ChoiceManager
 				case ChoiceType.HEAVEN:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
 					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
 					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
-					// todo hellStress -> natural choice // todo heavenStress -> unatural chocie
-					(pIntern.aligment == "heaven") ? pIntern.stress += useChoice.hellStress : pIntern.stress += useChoice.heavenStress;
+					(pIntern.aligment == "heaven") ? pIntern.stress += 10 : pIntern.stress += 30;
 				
 				case ChoiceType.HELL:
 					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
+					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
 					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
 					ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
 					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
 					ResourcesManager.takeXp(baseReward.xp, GeneratorType.badXp);
-					(pIntern.aligment == "hell") ? pIntern.stress += useChoice.hellStress: pIntern.stress += useChoice.heavenStress;
+					(pIntern.aligment == "hell") ? pIntern.stress += 10: pIntern.stress += 30;
 				
 				default: return;
-			}	
+			}
 			
 			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
 			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
@@ -180,6 +180,7 @@ class ChoiceManager
 			QuestsManager.goToNextStep();
         }
         else {
+			MaxStressPopin.quest = QuestsManager.getQuest(pIntern.idEvent);
             MaxStressPopin.intern = pIntern;
             UIManager.getInstance().closeCurrentPopin;
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());	
