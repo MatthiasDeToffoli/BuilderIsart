@@ -6,14 +6,23 @@
     {
      "keyframes": [
       {
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
        "tweened": false,
        "loc": [
-        619.725,
-        289.025
+        1750,
+        1500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy8",
        "index": 0,
@@ -27,14 +36,14 @@
       {
        "tweened": false,
        "loc": [
-        316.725,
-        289.025
+        1250,
+        1500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
-       "ref": "BG_Galaxy7",
+       "ref": "BG_Galaxy8",
        "index": 0,
        "duration": 1
       }
@@ -46,12 +55,12 @@
       {
        "tweened": false,
        "loc": [
-        13.725,
-        289.025
+        750,
+        1500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy6",
        "index": 0,
@@ -65,12 +74,12 @@
       {
        "tweened": false,
        "loc": [
-        -289.275,
-        289.025
+        250,
+        1500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy5",
        "index": 0,
@@ -84,12 +93,12 @@
       {
        "tweened": false,
        "loc": [
-        619.725,
-        -94.975
+        1750,
+        500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy4",
        "index": 0,
@@ -103,12 +112,12 @@
       {
        "tweened": false,
        "loc": [
-        316.725,
-        -94.975
+        1250,
+        500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy3",
        "index": 0,
@@ -122,12 +131,12 @@
       {
        "tweened": false,
        "loc": [
-        13.725,
-        -94.975
+        750,
+        500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy2",
        "index": 0,
@@ -141,12 +150,12 @@
       {
        "tweened": false,
        "loc": [
-        -289.275,
-        -94.975
+        250,
+        500
        ],
        "pivot": [
-        151.5,
-        192
+        250,
+        500
        ],
        "ref": "BG_Galaxy1",
        "index": 0,
@@ -158,12 +167,11 @@
    ]
   }
  ],
- "md5": "74df6be39bb01724e0a9799b35d55d85",
+ "md5": "a2f66b3febca562e3ad3ea52b35e6e46",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
@@ -171,79 +179,27 @@
        "rect": [
         1,
         1,
-        303,
-        384
+        500,
+        1000
        ],
        "origin": [
-        151.5,
-        192
+        250,
+        500
        ],
        "symbol": "BG_Galaxy5"
       },
       {
        "rect": [
+        503,
         1,
-        387,
-        303,
-        384
+        500,
+        1000
        ],
        "origin": [
-        151.5,
-        192
+        250,
+        500
        ],
        "symbol": "BG_Galaxy2"
-      },
-      {
-       "rect": [
-        306,
-        1,
-        303,
-        384
-       ],
-       "origin": [
-        151.5,
-        192
-       ],
-       "symbol": "BG_Galaxy3"
-      },
-      {
-       "rect": [
-        611,
-        1,
-        303,
-        384
-       ],
-       "origin": [
-        151.5,
-        192
-       ],
-       "symbol": "BG_Galaxy4"
-      },
-      {
-       "rect": [
-        306,
-        387,
-        303,
-        384
-       ],
-       "origin": [
-        151.5,
-        192
-       ],
-       "symbol": "BG_Galaxy1"
-      },
-      {
-       "rect": [
-        611,
-        387,
-        303,
-        384
-       ],
-       "origin": [
-        151.5,
-        192
-       ],
-       "symbol": "BG_Galaxy6"
       }
      ],
      "file": "atlas0.png"
@@ -254,32 +210,95 @@
        "rect": [
         1,
         1,
-        303,
-        384
+        500,
+        1000
        ],
        "origin": [
-        151.5,
-        192
+        250,
+        500
        ],
-       "symbol": "BG_Galaxy7"
+       "symbol": "BG_Galaxy3"
       },
       {
        "rect": [
+        503,
         1,
-        387,
-        303,
-        384
+        500,
+        1000
        ],
        "origin": [
-        151.5,
-        192
+        250,
+        500
+       ],
+       "symbol": "BG_Galaxy4"
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        500,
+        1000
+       ],
+       "origin": [
+        250,
+        500
+       ],
+       "symbol": "BG_Galaxy1"
+      },
+      {
+       "rect": [
+        503,
+        1,
+        500,
+        1000
+       ],
+       "origin": [
+        250,
+        500
+       ],
+       "symbol": "BG_Galaxy6"
+      }
+     ],
+     "file": "atlas2.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        500,
+        1000
+       ],
+       "origin": [
+        250,
+        500
+       ],
+       "symbol": "BG_Galaxy8"
+      },
+      {
+       "rect": [
+        503,
+        1,
+        500,
+        1000
+       ],
+       "origin": [
+        250,
+        500
        ],
        "symbol": "BG_Galaxy8"
       }
      ],
-     "file": "atlas1.png"
+     "file": "atlas3.png"
     }
-   ]
+   ],
+   "scaleFactor": 1
   }
  ]
 }
