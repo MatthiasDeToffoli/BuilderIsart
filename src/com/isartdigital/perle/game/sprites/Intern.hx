@@ -96,6 +96,7 @@ class Intern
 		
 		if (!DialogueManager.ftueStepBuyIntern)	
 			ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
+			
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
 		ServerManager.InternAction(DbAction.ADD, pIntern.id);

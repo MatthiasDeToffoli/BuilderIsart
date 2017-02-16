@@ -139,16 +139,19 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Callback of the hoover button, to rewrite the values of the hell card
 	 */
 	private function setValuesHellButton():Void{
-		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
+		
 		hellName.text = Intern.internsMap[Alignment.hell][actualHellID].name;
+		
+		initStars(Intern.internsMap[Alignment.hell][actualHellID], hellGaugeEfficency, hellGaugeSpeed);
 	}
 	
 	/**
 	 * Callback of the hoover button, to rewrite the values of the heaven card
 	 */
 	private function setValuesHeavenButton():Void{
-		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
+		
+		initStars(Intern.internsMap[Alignment.heaven][actualHeavenID], heavenGaugeEfficency, heavenGaugeSpeed);
 	}
 	
 	private function initStars(pIntern:InternDescription, lEfficiency:SmartComponent, lSpeed:SmartComponent):Void {
@@ -180,6 +183,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard.alpha = 1;
 		hellCard.buttonMode = true;
 		hellCard.interactive = true;
+		
+		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
+		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		
 		if (Intern.internsMap[Alignment.heaven][actualHeavenID] != null) {
 			heavenName.text = Intern.internsMap[Alignment.heaven][actualHeavenID].name;
@@ -288,6 +294,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 			Intern.buy(Intern.internsMap[Alignment.hell][actualHellID]);
 			changeID(Alignment.hell);
 			closeShop();
+			
 			if (DialogueManager.ftueStepBuyIntern)
 				DialogueManager.endOfaDialogue();
 		}

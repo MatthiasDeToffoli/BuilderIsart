@@ -348,7 +348,9 @@ class VBuilding extends VTile {
 		addGenerator();
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		myVContextualHud.activate();
+		addExp();
 		
+		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this);
 		TimeManager.eConstruct.off(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		SaveManager.save();
 	}

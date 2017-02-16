@@ -49,8 +49,10 @@ class SpeedUpPopin extends AcceleratePopin
 			DialogueManager.endOfaDialogue();
 		
 		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000, true);
+		
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
+		
 		onClose();
 	}
 	

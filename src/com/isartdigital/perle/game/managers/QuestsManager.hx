@@ -215,7 +215,7 @@ class QuestsManager
 		
 
 		if (Intern.isMaxStress(questInProgress.refIntern)){
-			MaxStressPopin.quest = pQuest;
+			MaxStressPopin.quest = null;
 			MaxStressPopin.intern = Intern.getIntern(questInProgress.refIntern);
 			UIManager.getInstance().closeCurrentPopin();
 			UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
@@ -227,12 +227,6 @@ class QuestsManager
 			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		}
 		
-		//for (i in 0...Intern.internsListArray.length){
-			//if (pQuest.refIntern == Intern.internsListArray[i].id) {
-				//ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
-				//Intern.getIntern(pQuest.refIntern).quest = null;
-			//}
-		//}
 		destroyQuest(pQuest.refIntern);
 	}
 	

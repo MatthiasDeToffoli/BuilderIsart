@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
+import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 
 /**
@@ -37,19 +38,18 @@ class VBuildingUpgrade extends VBuilding
 		}
 		
 		var tTime:Float = Date.now().getTime();
-		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + 20000, progress: 0, creationDate: tTime };
+		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + tTime + Date.fromString(GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).constructionTime).getTime(), progress: 0, creationDate: tTime };
 		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
-		TimeManager.addConstructionTimer(tileDesc.timeDesc, this);
 		
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
-		updateResources();
-		
-		
+		updateResources();		
 		
 		activate();
-		addExp();
+		
+		BHConstruction.newTimer();
+		TimeManager.addConstructionTimer(tileDesc.timeDesc, this);
 		
 		SaveManager.save();	
 	}

@@ -465,7 +465,6 @@ class TimeManager {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
-			//ServerManager.ContructionTimeAction(pElement, DbAction.REM);
 			pEndedList.push(index);
 		}		
 	}
@@ -598,7 +597,7 @@ class TimeManager {
 			for (i in 0...listQuest.length) {
 				if (listQuest[i].refIntern == pQuest.refIntern) {
 					pQuest.progress = pQuest.steps[pQuest.stepIndex];
-					ServerManager.TimeQuestAction(DbAction.UPDT, pQuest);
+					ServerManager.TimeQuestAction(DbAction.UPDT, listQuest[i]);
 					return false;
 				}
 			}

@@ -59,6 +59,7 @@ class BHBuiltUpgrade extends BHBuilt
 	private function onClickUpgrade(): Void {
 		removeButtonsChange();
 		removeListenerGameContainer();
+		
 		cast(BuildingHud.virtualBuilding, VBuildingUpgrade).onClickUpgrade();
 		building = BuildingHud.virtualBuilding;
 		BHConstruction.newTimer(building.tileDesc.timeDesc);
