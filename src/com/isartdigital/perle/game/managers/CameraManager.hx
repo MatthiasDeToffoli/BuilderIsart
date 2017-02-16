@@ -61,9 +61,6 @@ class CameraManager
 		
 		target.x -= IsoManager.modelToIsoView(pPos).x;
 		target.y -= IsoManager.modelToIsoView(pPos).y;
-		
-		BackgroundUnder.getInstance().init();
-		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());
 
 	}
 	

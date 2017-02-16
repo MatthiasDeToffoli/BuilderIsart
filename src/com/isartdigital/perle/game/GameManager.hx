@@ -18,6 +18,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.sprites.BackgroundUnder;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -105,7 +106,8 @@ class GameManager {
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
-		
+		BackgroundUnder.getInstance().init();
+		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());
 	}
 	
 	/**
