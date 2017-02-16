@@ -194,6 +194,7 @@ class VBuilding extends VTile {
 	public function onClickMove ():Void {	
 		Phantom.onClickMove(
 			BuildingHud.virtualBuilding.tileDesc.buildingName,
+			BuildingHud.virtualBuilding.tileDesc.level,
 			this
 		);
 		

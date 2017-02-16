@@ -86,8 +86,8 @@ class Phantom extends Building {
 	 * @param	pAssetName
 	 * @param	pVBuilding
 	 */
-	public static function onClickMove (pBuildingName:String, pVBuilding:VBuilding):Void {
-		alignementBuilding = GameConfig.getBuildingByName(pBuildingName).alignment;//Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
+	public static function onClickMove (pBuildingName:String, pLevel:Int, pVBuilding:VBuilding):Void {
+		alignementBuilding = GameConfig.getBuildingByName(pBuildingName, pLevel).alignment;//Virtual.BUILDING_NAME_TO_ALIGNEMENT[pBuildingName];
 		createPhantom(pBuildingName);
 		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
