@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.BuildingName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
@@ -15,6 +16,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 
 	
@@ -42,7 +44,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	private var btnNext:SmartButton;
 	private var bgLvl:SmartComponent;
 	private var unlock:SmartComponent;
-	
+	private var currentImage:UIMovie;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -53,11 +55,17 @@ class LevelUpPoppin extends SmartPopinExtended
 		return instance;
 	}
 	
-	private static function setPopin():Void {
+	private function setPopin(pName:String, pLevel:Int):Void {
+		
+		if (currentImage != null) {
+			currentImage.parent.removeChild(currentImage);
+			currentImage.destroy();
+		}
+		
 		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
 		
-		SmartPopinExtended.setImage(img, BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
+		currentImage = SmartPopinExtended.setImage(img, BuildingName.getAssetName(pName, pLevel)); 
 		
 		txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
 		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
@@ -67,17 +75,21 @@ class LevelUpPoppin extends SmartPopinExtended
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
 		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
 		
-		nameUnlock.text = UnlockManager.unlockedItem[0].name;
+		nameUnlock.text = pName;
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 		
 	}
 	
-	private static function onClickNext():Void {
-		UnlockManager.unlockedItem.splice(0, 1);
-		if (UnlockManager.unlockedItem.length != 0) {
-				img.removeChild(img.children[1]);
-			setPopin();
+	private function onClickNext():Void {
+		
+		if (UnlockManager.unlockedItem.length > 0) {
+			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
+			
+			setPopin(
+				FakeTraduction.assetNameNameToTrad(lUnlockedItem.name),
+				lUnlockedItem.level
+			);
 		}
 		else {
 			if (DialogueManager.ftueCloseUnlockedItem)
@@ -95,7 +107,10 @@ class LevelUpPoppin extends SmartPopinExtended
 	{
 		super(AssetName.LEVELUP_POPPIN);
 		setWireframe();
-		setPopin();
+		setPopin(
+			FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
+			UnlockManager.unlockedItem[0].level
+		);
 	}
 	
 	/**
