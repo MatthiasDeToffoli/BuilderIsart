@@ -1,11 +1,71 @@
 {
- "movies": [],
- "md5": "7c716c2835ae5ff86529b35a92e7bd3a",
+ "movies": [
+  {
+   "id": "Tribunal",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        164,
+        161.75
+       ],
+       "ref": "tribu_1",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "Tribunal_2",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        180.75,
+        179.75
+       ],
+       "ref": "tribu_2",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "Tribunal_3",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        182.75,
+        193
+       ],
+       "ref": "tribu_3",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  }
+ ],
+ "md5": "a71fabae4d2b803d52d88883c7d27dbf",
  "frameRate": 60,
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
@@ -20,7 +80,7 @@
         182.75,
         193
        ],
-       "symbol": "Tribunal_3"
+       "symbol": "tribu_3"
       },
       {
        "rect": [
@@ -33,7 +93,7 @@
         180.75,
         179.75
        ],
-       "symbol": "Tribunal_2"
+       "symbol": "tribu_2"
       },
       {
        "rect": [
@@ -46,12 +106,13 @@
         164,
         161.75
        ],
-       "symbol": "Tribunal"
+       "symbol": "tribu_1"
       }
      ],
      "file": "atlas0.png"
     }
-   ]
+   ],
+   "scaleFactor": 1
   }
  ]
 }
