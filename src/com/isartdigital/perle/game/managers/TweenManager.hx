@@ -46,14 +46,14 @@ class TweenManager {
 	public static function upperToRealPos (pDisplayObject:DisplayObject):Void {
 		var lPos:Point = pDisplayObject.position;
 		var uperPos:Point;
-		uperPos = new Point(lPos.x, -GameStage.getInstance().getFtueContainer().toLocal(new Point(0,0), GameStage.getInstance()).y/6);
-		pDisplayObject.position = uperPos;
+		uperPos = new Point(lPos.x, -GameStage.getInstance().getFtueContainer().toLocal(new Point(0,0), GameStage.getInstance()).y);
+		//pDisplayObject.position = uperPos;
 		
-		TweenMax.to(pDisplayObject.position, POS_UP_DURATION, {
+		/*TweenMax.to(pDisplayObject.position, POS_UP_DURATION, {
 			ease: untyped Back.easeOut.config(POS_UP_PARAM),
 			x:lPos.x,
 			y:lPos.y
-		} );
+		} );*/
 	}
 	
 	/**

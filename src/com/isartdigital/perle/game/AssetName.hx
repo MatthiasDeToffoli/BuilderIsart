@@ -386,7 +386,7 @@ class AssetName{
 	public static inline var FTUE_ACTION:String = "Window_Ftue_Action";
 	public static inline var FTUE_ACTION_HELL:String = "Window_Ftue_Demon_Action";
 	public static inline var FTUE_ACTION_HEAVEN:String = "Window_Ftue_Angel_Action";
-	public static inline var FTUE_SCENARIO_BUTTON:String = FTUE_SCENARIO+"_ButtonNext";
+	public static inline var FTUE_SCENARIO_BUTTON:String = "ButtonNext";
 	public static inline var FTUE_SCENARIO_BUTTON_END:String = "ButtonEndDialog";
 	public static inline var FTUE_SCENARIO_HELL:String = "Window_NPC_Hell";
 	//public static inline var FTUE_ACTION_HELL:String = "_ftue_mascot_demona";

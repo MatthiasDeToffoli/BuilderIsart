@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.hud.dialogue;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.TweenManager;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
@@ -19,7 +20,6 @@ class DialoguePoppin extends SmartScreen
 	private static inline var HELL_NPC:String = "Demona";
 	private static inline var ON_ALPHA:Float = 1;
 	private static inline var OFF_ALPHA:Float = 0.2;
-	private var btnNext:SmartButton;
 	
 	private var scenarioAngel:SmartComponent;
 	private var scenarioHell:SmartComponent;
@@ -27,6 +27,8 @@ class DialoguePoppin extends SmartScreen
 	private var actionHell:SmartComponent;
 	private var icon5:SmartComponent;
 	private var icon6:SmartComponent;
+	private var btnNext:SmartButton;
+	private var btnEnd:SmartButton;
 	private static var windowOpened:SmartComponent;
 	
 	//private var npc_name:TextSprite;
@@ -84,7 +86,16 @@ class DialoguePoppin extends SmartScreen
 		actionHell = cast(getChildByName(AssetName.FTUE_ACTION_HELL), SmartComponent);
 		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);
 		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);
+		
+		btnNext = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON), SmartButton);
+		Interactive.addListenerClick(btnNext, nextStep);
+		btnEnd = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON_END), SmartButton);
+		Interactive.addListenerClick(btnEnd, nextStep);
 		setAllFalse();
+	}
+	
+	private function nextStep():Void{
+		DialogueManager.endOfaDialogue();
 	}
 	
 	/**
@@ -109,11 +120,11 @@ class DialoguePoppin extends SmartScreen
 				lPanel = actionAngel;
 		}
 		else {
-			
 			if (pNpc == HELL_NPC)
 				lPanel = scenarioHell;
 			else
 				lPanel = scenarioAngel;
+			btnNext.visible = true;
 		}
 		lPanel.visible = true;
 		setTextWf(isAction, lPanel);
@@ -154,12 +165,16 @@ class DialoguePoppin extends SmartScreen
 		actionHell.visible = false;
 		icon5.visible = false;
 		icon6.visible = false;
+		btnNext.visible = false;
+		btnEnd.visible = false;
 	}
 	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		Interactive.removeListenerClick(btnNext, nextStep);
+		Interactive.removeListenerClick(btnEnd, nextStep);
 		instance = null;
 	}
 

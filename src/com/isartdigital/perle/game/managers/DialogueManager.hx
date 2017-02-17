@@ -451,7 +451,7 @@ class DialogueManager
 		
 		if (isCard) {
 			var lPoint:Point = TribunalPopin.getInstance().getCardPos();
-			pPos = new Point(lPoint.x, lPoint.y - finger.height / 2);
+			pPos = new Point(lPoint.x, lPoint.y-500);
 		}
 		
 		finger.position = pPos;
