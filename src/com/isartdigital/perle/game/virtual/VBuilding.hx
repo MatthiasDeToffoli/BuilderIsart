@@ -377,7 +377,7 @@ class VBuilding extends VTile {
 		RegionManager.worldMap[tileDesc.regionX][tileDesc.regionY].building[tileDesc.mapX].remove(tileDesc.mapY);
 		TimeManager.destroyTimeElement(tileDesc.id);	
 		
-		if (Std.is(this, VBuildingUpgrade)){
+		if (myGenerator != null){
 			ResourcesManager.removeGenerator(myGenerator);
 			myGenerator = null;
 			ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
