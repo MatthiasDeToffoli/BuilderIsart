@@ -42,8 +42,8 @@ class ListInternPopin extends SmartPopin
 	public var internDescriptionArray:Array<InternElement> = new Array<InternElement>();
 	
 	private var internListIndex:Int = 0;
-	private static inline var MAX_PLACES:Int = 2;
-	private var internsPositions:Array<Point>;
+	private static inline var MAX_PLACES:Int = 3;
+	private var spawnersPositions:Array<Point> = new Array<Point>();
 	
 	private var internsInQuestInfo:SmartComponent;
 	private var internsInQuestMax:TextSprite;
@@ -80,7 +80,7 @@ class ListInternPopin extends SmartPopin
 		internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
 		internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
 			
-			
+		setSpawners();
 		setValues();		
 		spawnQuest();
 		
@@ -125,12 +125,22 @@ class ListInternPopin extends SmartPopin
 		}
 	}
 	
+	/**
+	 * Get the spawners positions and display them
+	 */
+	private function setSpawners():Void{
+		var lSpawner:UISprite;
+		
+		for (i in 0...AssetName.internListSpawners.length){
+			lSpawner = cast(SmartCheck.getChildByName(this, AssetName.internListSpawners[i]), UISprite);
+			spawnersPositions.push(lSpawner.position.clone());
+			destroySpawner(lSpawner);
+		}
+	}
+	
 	public function spawnQuest():Void {	
 		for (i in 0...AssetName.internListSpawners.length){		
-			if (i < Intern.internsListArray.length && i < UnlockManager.getNumberPlaces()){
-				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i]);
-			}			
-			else destroySpawner(cast(getChildByName(AssetName.internListSpawners[i]), UISprite));
+			if (i < Intern.internsListArray.length) spawnInternDescription(spawnersPositions[i], Intern.internsListArray[i]);		
 		}
 	}
 	
@@ -139,12 +149,11 @@ class ListInternPopin extends SmartPopin
 	 * @param	spawnerName the name of the spawner
 	 * @param	 the descritpion of the intern
 	 */
-	private function spawnInternDescription(spawnerName:String, pDesc:InternDescription):Void{
-		var spawner:UISprite = cast(SmartCheck.getChildByName(this, spawnerName), UISprite);
-		var blocDescription:InternElement = (pDesc.quest != null) ? new InternElementInQuest(spawner.position, pDesc): new InternElementOutQuest(spawner.position, pDesc);
+	//private function spawnInternDescription(spawnerName:String, pDesc:InternDescription):Void{
+	private function spawnInternDescription(spawnerPosition:Point, pDesc:InternDescription):Void{
+		var blocDescription:InternElement = (pDesc.quest != null) ? new InternElementInQuest(spawnerPosition, pDesc): new InternElementOutQuest(spawnerPosition, pDesc);
 		addChild(blocDescription);
 		internDescriptionArray.push(blocDescription);
-		destroySpawner(spawner);
 	}
 	
 	/**
@@ -157,11 +166,11 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onLeft(){
-		//scrollPrecedent();
+		scrollPrecedent();
 	}
 	
 	private function onRight(){
-		//scrollNext();
+		scrollNext();
 	}
 	
 	/**
@@ -174,11 +183,13 @@ class ListInternPopin extends SmartPopin
 		else
 			internListIndex += MAX_PLACES;
 		
-		for (i in 0...AssetName.internListSpawners.length){
-			if (i < Intern.internsListArray.length){
-				spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[i + internListIndex]);
+		if (internListIndex != 0){
+			for (i in 0...MAX_PLACES){
+				if (Intern.internsListArray[i + internListIndex] != null) spawnInternDescription(spawnersPositions[i], Intern.internsListArray[i + internListIndex]);
+				else {
+					if(internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)] != null) internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)].parent.removeChild(internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)]);	
+				}
 			}
-			
 		}
 	}
 	
@@ -190,12 +201,11 @@ class ListInternPopin extends SmartPopin
 			internListIndex = Intern.internsListArray.length - (Intern.internsListArray.length % MAX_PLACES);
 		else
 			internListIndex -= MAX_PLACES;
-		
-		for (i in 0...AssetName.internListSpawners.length){
-			if (i < Intern.internsListArray.length){
-			spawnInternDescription(AssetName.internListSpawners[i], Intern.internsListArray[internListIndex - i]);
-			}
 			
+		if (internListIndex != 0){
+			for (i in 0...MAX_PLACES){
+				if (Intern.internsListArray[i + internListIndex] != null) spawnInternDescription(spawnersPositions[i], Intern.internsListArray[i + internListIndex]);
+			}
 		}
 	}
 	
@@ -207,6 +217,16 @@ class ListInternPopin extends SmartPopin
 		Hud.getInstance().show();
 	}
 	
+	private function destroyInternElements():Void {
+		var lLength:UInt = internDescriptionArray.length;
+		var j:UInt;
+        for (i in 1...lLength +1) {
+			j = lLength - i;
+			internDescriptionArray[j].destroy();
+			internDescriptionArray.splice(j, 1);
+        }
+	}
+	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
@@ -215,12 +235,7 @@ class ListInternPopin extends SmartPopin
 		Interactive.removeListenerClick(btnRight, onRight);
 		Interactive.removeListenerClick(btnClose, onClose);
 		
-		var myInternDesc:InternDescription;
-		for (myInternDesc in internDescriptionArray){
-			internDescriptionArray.shift();
-			myInternDesc.destroy();
-		}
-		
+		destroyInternElements();
 		instance = null;
 		
 		super.destroy();

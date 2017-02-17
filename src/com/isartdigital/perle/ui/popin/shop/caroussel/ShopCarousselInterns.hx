@@ -54,8 +54,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var houseText:TextSprite;
 	
 	//Interns to show
-	private var hellIntern:InternDescription;
-	private var heavenIntern:InternDescription;
+	private static var hellIntern:InternDescription;
+	private static var heavenIntern:InternDescription;
 	
 	//ID for the interns to show
 	public static var actualHeavenID:Int;
@@ -65,8 +65,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_INTERN);
 		getComponents();
-		addListeners();
 		chooseRandomIntern();
+		addListeners();
 		setValues();
 	}
 
@@ -91,7 +91,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * @return
 	 */
 	private static function chooseRandomInternHell():InternDescription{
-		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHell[UnlockManager.getLevelUnlockHell()].length);
+		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHell[UnlockManager.getLevelUnlockHell()].length) - 1;
+		if (lRandom < 0) lRandom = 0;
 		var lInternRandomHell:InternDescription = Intern.internsToUnlockHell[UnlockManager.getLevelUnlockHell()][lRandom];
 		
 		return lInternRandomHell;
@@ -102,7 +103,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * @return
 	 */
 	private static function chooseRandomInternHeaven():InternDescription{
-		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHeaven[UnlockManager.getLevelUnlockHeaven()].length);
+		var lRandom:Int = Math.round(Math.random() * Intern.internsToUnlockHeaven[UnlockManager.getLevelUnlockHeaven()].length) - 1;
+		if (lRandom < 0) lRandom = 0;
 		var lInternRandomHeaven:InternDescription = Intern.internsToUnlockHeaven[UnlockManager.getLevelUnlockHeaven()][lRandom];
 		
 		return lInternRandomHeaven;
@@ -143,6 +145,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		hellGaugeSpeed = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		initStars(hellIntern, hellGaugeEfficency, hellGaugeSpeed);
+		
+		//hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
+		//SpriteManager.spawnComponent(hellPortrait, hellIntern.portrait, hellCard, TypeSpawn.SPRITE, true);
 	}
 	
 	/**
@@ -155,6 +160,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		initStars(heavenIntern, heavenGaugeEfficency, heavenGaugeSpeed);
+		
+		//heavenPortrait = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_PORTRAIT), UISprite);
+		//SpriteManager.spawnComponent(heavenPortrait, heavenIntern.portrait, heavenCard, TypeSpawn.SPRITE, true);
 	}
 	
 	private function initStars(pIntern:InternDescription, lEfficiency:SmartComponent, lSpeed:SmartComponent):Void {
@@ -218,6 +226,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 		
 		initStars(hellIntern, hellGaugeEfficency, hellGaugeSpeed);
+		SpriteManager.spawnComponent(heavenPortrait, heavenIntern.portrait, heavenCard, TypeSpawn.SPRITE, true);
 	}
 
 	private function setValuesHeavenCard():Void{
@@ -240,6 +249,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 		
 		initStars(heavenIntern, heavenGaugeEfficency, heavenGaugeSpeed);
+		SpriteManager.spawnComponent(hellPortrait, hellIntern.portrait, hellCard, TypeSpawn.SPRITE, true);
 	}
 	
 	/**
