@@ -30,9 +30,8 @@ try {
 
     // if player is in db -> return profil info
     if (!empty($res)) {
-        foreach ($res as $key => $value) {
-          $retour[$key] = $res[0];
-        }
+
+        $retour['ID'] = $res['ID'];
         $retour['isNewPlayer'] = false;
     }
     // else -> put it in db
@@ -55,6 +54,7 @@ try {
             Regions::createRegion($id,"heaven",-1,0,-12,0);
             Regions::createRegion($id,"neutral",0,0,0,0);
             Regions::createRegion($id,"hell",1,0,3,0);
+            $retour['ID'] = FacebookUtils::getId();
         } catch (Exception $e) {
             echo $e->getMessage();
             exit;
