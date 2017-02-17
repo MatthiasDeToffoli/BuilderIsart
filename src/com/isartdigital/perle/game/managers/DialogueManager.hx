@@ -21,6 +21,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
+import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
@@ -117,10 +118,11 @@ class DialogueManager
 				ShopPopin.getInstance().init(ShopTab.Building);
 			}
 		}
+		Dialogue.wasAction = true;
 		dialogueSaved = 0;
 		
-		var lIcons = new IconsFtue();
-		GameStage.getInstance().getIconContainer().addChild(lIcons);
+		//var lIcons = new IconsFtue();
+		//GameStage.getInstance().getIconContainer().addChild(lIcons);
 		
 		//check if FTUE wasn't over
 		if(SaveManager.currentSave.ftueProgress!=null)
@@ -175,7 +177,7 @@ class DialogueManager
 			GameStage.getInstance().getFtueContainer().addChild(dialoguePoppin);
 			dialoguePoppin.open();
 		}	
-		dialoguePoppin.createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression);
+		dialoguePoppin.createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction);
 	}
 	
 	/**
@@ -441,7 +443,7 @@ class DialogueManager
 			return;
 		}
 		
-		IconsFtue.setAllFalse();
+		//IconsFtue.setAllFalse();
 		nextStep();
 	}
 	

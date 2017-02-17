@@ -2,6 +2,9 @@ package com.isartdigital.perle.game.managers;
 import com.greensock.easing.Back;
 import com.greensock.easing.Elastic;
 import com.greensock.TweenMax;
+import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.system.DeviceCapabilities;
+import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
@@ -15,6 +18,9 @@ class TweenManager {
 	private static inline var SCALE_GROW_DURATION:Float = 0.5;
 	private static inline var SCALE_GROW_START_SCALE:Float = 0.8;
 	private static inline var SCALE_GROW_BACK_PARAM_1:Float = 1.2;
+	
+	private static inline var POS_UP_DURATION:Float = 2;
+	private static inline var POS_UP_PARAM:Float = 0.1;
 	
 	private static inline var POSITION_ELASTIC_ATTRACT_DURATION:Float = 1.3; // seconds
 	private static inline var POSITION_ELASTIC_ATTRACT_PARAM_1:Float = 1;
@@ -31,6 +37,38 @@ class TweenManager {
 			ease: untyped Back.easeOut.config(SCALE_GROW_BACK_PARAM_1),
 			x:1,
 			y:1
+		} );
+	}
+	
+	/**
+	 * Start from a lower pos then put pos to 0:0 of the object
+	 */
+	public static function upperToRealPos (pDisplayObject:DisplayObject):Void {
+		var lPos:Point = pDisplayObject.position;
+		var uperPos:Point;
+		uperPos = new Point(lPos.x, -GameStage.getInstance().getFtueContainer().toLocal(new Point(0,0), GameStage.getInstance()).y/6);
+		pDisplayObject.position = uperPos;
+		
+		TweenMax.to(pDisplayObject.position, POS_UP_DURATION, {
+			ease: untyped Back.easeOut.config(POS_UP_PARAM),
+			x:lPos.x,
+			y:lPos.y
+		} );
+	}
+	
+	/**
+	 * Start from the right or left pos then put pos to 0:0 of the object
+	 */
+	public static function rigthLeftToRealPos (pDisplayObject:DisplayObject, ?pRight:Bool):Void {
+		var lPos:Point = pDisplayObject.position;
+		var rightFalsePos:Point;
+		pRight ? rightFalsePos = new Point(-Browser.window.innerWidth, lPos.y) : rightFalsePos = new Point(Browser.window.innerWidth, lPos.y);
+		pDisplayObject.position = rightFalsePos;
+		
+		TweenMax.to(pDisplayObject.position, POS_UP_DURATION, {
+			ease: untyped Back.easeOut.config(POS_UP_PARAM),
+			x:lPos.x,
+			y:lPos.y
 		} );
 	}
 	

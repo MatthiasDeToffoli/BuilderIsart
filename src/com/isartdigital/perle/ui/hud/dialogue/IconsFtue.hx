@@ -26,11 +26,11 @@ class IconsFtue extends SmartComponent
 		iconsArray =  [];
 		iconsArray = [5, 6, 7, 8, 9];
 	
-		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);	
+		/*icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);	
 		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);	
 		icon7 = cast(getChildByName(AssetName.FTUE_ICON_7), SmartComponent);	
 		icon8 = cast(getChildByName(AssetName.FTUE_ICON_8), SmartComponent);	
-		icon9 = cast(getChildByName(AssetName.FTUE_ICON_9), SmartComponent);	
+		icon9 = cast(getChildByName(AssetName.FTUE_ICON_9), SmartComponent);*/	
 		setAllFalse();
 	}
 	

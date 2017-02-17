@@ -386,6 +386,7 @@ class AssetName{
 	public static inline var FTUE_ACTION_HELL:String = "Window_Ftue_Demon_Action";
 	public static inline var FTUE_ACTION_HEAVEN:String = "Window_Ftue_Angel_Action";
 	public static inline var FTUE_SCENARIO_BUTTON:String = FTUE_SCENARIO+"_ButtonNext";
+	public static inline var FTUE_SCENARIO_BUTTON_END:String = "ButtonEndDialog";
 	public static inline var FTUE_SCENARIO_HELL:String = "Window_NPC_Hell";
 	//public static inline var FTUE_ACTION_HELL:String = "_ftue_mascot_demona";
 	public static inline var FTUE_SCENARIO_HEAVEN:String = "Window_NPC_Heaven";
@@ -397,11 +398,9 @@ class AssetName{
 	public static inline var FTUE_ICONS:String = "IconHolder_Main";
 	public static inline var FTUE_ICON_TEXT1:String = "Window_NPC_Speech_TXT";
 	public static inline var FTUE_ICON_TEXT2:String = "_infobulle_text";
-	public static inline var FTUE_ICON_5:String = "_ftueIcon_holderFR_5";
-	public static inline var FTUE_ICON_6:String = "_ftueIcon_holderFR_6";
-	public static inline var FTUE_ICON_7:String = "_ftueIcon_holderFR_7";
-	public static inline var FTUE_ICON_8:String = "_ftueIcon_holderFR_8";
-	public static inline var FTUE_ICON_9:String = "_ftueIcon_holderFR_9";
+	public static inline var FTUE_ICON_3:String = "_ftue_dialog_3";
+	public static inline var FTUE_ICON_2:String = "_ftue_dialog_2";
+	public static inline var FTUE_ICON_1:String = "_ftue_dialog_1";
 	
 	
 	// HUD
