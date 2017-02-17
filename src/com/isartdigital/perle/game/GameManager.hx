@@ -10,16 +10,16 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MouseManager;
+import com.isartdigital.perle.game.managers.ParallaxManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
-import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.BackgroundUnder;
-import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
+import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.sprites.FootPrint;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.sprites.Phantom;
@@ -29,7 +29,6 @@ import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
-import com.isartdigital.perle.ui.hud.building.valuesChange.ValueChange;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.UIManager;
@@ -37,7 +36,7 @@ import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
-import pixi.core.math.Point;
+import js.Browser;
 import pixi.interaction.EventTarget;
 
 
@@ -65,6 +64,7 @@ class GameManager {
 		// ci-dessous met à jour game_config.json, temporaire.
 		//ServerManager.refreshConfig(); // todo : remplacer par cron
 		
+		ParallaxManager.getInstance().init();
 		GodMode.awake(); //@TODO: comment that for livraison
 
 		if(DevelloperReconise.isDev()) GodMode.awake(); //@TODO: comment that for livraison

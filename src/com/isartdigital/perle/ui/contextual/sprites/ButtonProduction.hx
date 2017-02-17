@@ -62,6 +62,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	
 	override public function destroy():Void {
 		Interactive.removeListenerClick(this, onClick);
+		Interactive.removeListenerClick(this, DialogueManager.recoltStepOver);
 		removeAllListeners();
 		if (parent != null)
 			parent.removeChild(this);

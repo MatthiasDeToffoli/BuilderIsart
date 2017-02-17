@@ -18,9 +18,11 @@
 			overflow:hidden;
 		}
 	</style>
+
 	<script src="cordova.js"></script>
 	<script src="lib/cocoon.js"></script>	
-	<script src="lib/eventemitter3.js"></script>	
+	<script src="lib/eventemitter3.js"></script>
+	<script src="lib/parallax.js"></script>
 	<script src="lib/pixi.min.js"></script>
 	<script src="lib/pixiPatch.js"></script>
 	<script src="lib/howler.core.js"></script>
@@ -29,6 +31,64 @@
 	<script src="lib/TweenMax.min.js"></script>
 </head>
 <body>
+	<ul id="scene" class="scene" style="display: none;">
+		<li class="layer" data-depth="1.00" data-index="0" ></li>
+		<li class="layer" data-depth="0.80" data-index="1" ></li>
+		<li class="layer" data-depth="0.60" data-index="2" ></li>
+		<li class="layer" data-depth="0.40" data-index="3" ></li>
+		<li class="layer" data-depth="0.20" data-index="4" ></li>
+		<li class="layer" data-depth="0.00" data-index="5" ></li>
+	</ul>
+	<script>
+		// Override some parallax method that modify css
+		// and add an event
+		(function () {
+			var scene = document.getElementById('scene');
+			var parallax = new Parallax(scene);
+
+			if (window.eventParallax != null)
+				console.warn("window.eventParallax already set :(");
+			window.eventParallax = new EventEmitter();
+
+			parallax.setPosition = function (element, x, y) {
+				window.eventParallax.emit(
+						"parallax",
+						{
+							x:x,
+							y:y,
+							index:this.data(element,"index")
+						}
+				);
+				// this is the super()
+				//Parallax.prototype.setPosition.apply(this, [element, x, y]);
+			};
+			parallax.accelerate = function () {};
+			parallax.updateDimensions = function () {
+				this.ww = window.innerWidth;
+				this.wh = window.innerHeight;
+				this.wcx = this.ww * this.originX;
+				this.wcy = this.wh * this.originY;
+				this.wrx = Math.max(this.wcx, this.ww - this.wcx);
+				this.wry = Math.max(this.wcy, this.wh - this.wcy);
+			};
+
+			parallax.updateBounds = function () {
+				// using safeZone, position in center of screen.
+				this.ex = window.innerWidth /2 - 2048/2;
+				this.ey = window.innerHeight /2 - 1366/2;
+				this.ew = 2048;
+				this.eh = 1366;
+				this.ecx = this.ew * this.originX;
+				this.ecy = this.eh * this.originY;
+				this.erx = Math.max(this.ecx, this.ew - this.ecx);
+				this.ery = Math.max(this.ecy, this.eh - this.ecy);
+			};
+
+			// comment initialize in parralax.js
+			parallax.initialise();
+
+		})();
+	</script>
 	<script src="Builder.js"></script>
 </body>
 </html>
