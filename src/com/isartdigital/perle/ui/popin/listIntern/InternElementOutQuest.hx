@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.listIntern.SendButton;
 import com.isartdigital.perle.ui.popin.listIntern.StressButton;
@@ -146,14 +147,17 @@ class InternElementOutQuest extends InternElement
 			DialogueManager.endOfaDialogue();
 		}
 
-		quest = QuestsManager.createQuest(internDatas.id);
-		internDatas.quest = quest;
-		Intern.getIntern(internDatas.id).quest = internDatas.quest;
-		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
-		
-		ChoiceManager.newChoice(internDatas.id);
-		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
-		TimeManager.createTimeQuest(quest);
+		if (Intern.numberInternsInQuest() <= UnlockManager.getNumberPlaces()){
+			//quest = QuestsManager.createQuest(internDatas.id);
+			//internDatas.quest = quest;
+			//Intern.getIntern(internDatas.id).quest = internDatas.quest;
+			//Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
+		//
+			//ChoiceManager.newChoice(internDatas.id);
+			//internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
+			//TimeManager.createTimeQuest(quest);
+			sendInternInQuest();
+		}
 		
 		if(!DialogueManager.ftueStepSendIntern || !DialogueManager.ftueStepMakeAllChoice || !DialogueManager.ftueStepMakeChoice)
 			ResourcesManager.spendTotal(GeneratorType.soft, QUEST_PRICE);
@@ -173,6 +177,17 @@ class InternElementOutQuest extends InternElement
 		MaxStressPopin.quest = lQuest;
 		MaxStressPopin.intern = internDatas;
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
+	}
+	
+	private function sendInternInQuest():Void{
+		quest = QuestsManager.createQuest(internDatas.id);
+		internDatas.quest = quest;
+		Intern.getIntern(internDatas.id).quest = internDatas.quest;
+		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
+		
+		ChoiceManager.newChoice(internDatas.id);
+		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
+		TimeManager.createTimeQuest(quest);
 	}
 	
 	//For the HUD Popin actualisation

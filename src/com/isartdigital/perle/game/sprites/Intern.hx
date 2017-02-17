@@ -65,6 +65,7 @@ class Intern
 		internsToUnlockHell = new Map<Int, Array<InternDescription>>();
 		
 		getJson();
+		
 	}
 	
 	/**
