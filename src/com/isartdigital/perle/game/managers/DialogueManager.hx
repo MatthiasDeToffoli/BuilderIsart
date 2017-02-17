@@ -6,9 +6,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.perle.ui.hud.dialogue.Dialogue;
-import com.isartdigital.perle.ui.hud.dialogue.DialogueAction;
-import com.isartdigital.perle.ui.hud.dialogue.DialogueScenario;
+import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
@@ -50,7 +48,6 @@ class DialogueManager
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
-	public static var dialoguePoppin:Dialogue;
 	public static var registerIsADialogue:Bool;
 	public static var cameraHaveToMove:Bool;
 	public static var ftueStepRecolt:Bool = false;
@@ -88,8 +85,11 @@ class DialogueManager
 		setAllExpressions();
 		npc_dialogue_ftue = [];
 		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json
-		Dialogue.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
-		Dialogue.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
+		DialoguePoppin.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
+		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
+		
+		
+		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 	}
 	
 	/**
@@ -118,7 +118,7 @@ class DialogueManager
 				ShopPopin.getInstance().init(ShopTab.Building);
 			}
 		}
-		Dialogue.wasAction = true;
+		DialoguePoppin.wasAction = true;
 		dialogueSaved = 0;
 		
 		//var lIcons = new IconsFtue();
@@ -158,9 +158,7 @@ class DialogueManager
 	 * @param	pBlocHud Hud Stuck ?
 	 */
 	public static function createTextDialogue(pNumber:Int, pNpc:String, pHideHud:Bool, pTypeOfDialogueIsAction:Bool, ?pBlocHud:Bool) {
-		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
 		
-		pTypeOfDialogueIsAction ? dialoguePoppin = new DialogueAction(pNpc):dialoguePoppin = new DialogueScenario(pNpc);
 		if (!closeDialoguePoppin) {
 			if (pHideHud) {
 				Hud.getInstance().alpha = ALPHA_OFF;
@@ -174,10 +172,8 @@ class DialogueManager
 				Hud.isHide = false;
 				//closeFtueLock();	
 			}
-			GameStage.getInstance().getFtueContainer().addChild(dialoguePoppin);
-			dialoguePoppin.open();
 		}	
-		dialoguePoppin.createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction);
+		DialoguePoppin.getInstance().createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction);
 	}
 	
 	/**
@@ -465,7 +461,7 @@ class DialogueManager
 	 * Set all expressions of NPCS
 	 */
 	private static function setAllExpressions():Void {
-		Dialogue.allExpressionsArray = [];
+		DialoguePoppin.allExpressionsArray = [];
 		changeSpriteForExpression();
 	}
 	
@@ -484,11 +480,11 @@ class DialogueManager
 	 * @param	pExpression
 	 */
 	private static function checkIfAlreadyInArray(pExpression:String):Void {
-		for (i in 0...Dialogue.allExpressionsArray.length) {
-			if (Dialogue.allExpressionsArray[i] == pExpression)
+		for (i in 0...DialoguePoppin.allExpressionsArray.length) {
+			if (DialoguePoppin.allExpressionsArray[i] == pExpression)
 				return;
 		}
-		Dialogue.allExpressionsArray.push(pExpression);
+		DialoguePoppin.allExpressionsArray.push(pExpression);
 	}
 	
 	/**
@@ -555,7 +551,7 @@ class DialogueManager
 	 */
 	public static function removeDialogue():Void {
 		//Hud.getInstance().show();
-		GameStage.getInstance().getFtueContainer().removeChild(dialoguePoppin);	
+		GameStage.getInstance().getFtueContainer().removeChild(DialoguePoppin.getInstance());	
 	}
 	
 	/**

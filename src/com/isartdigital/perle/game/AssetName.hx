@@ -378,6 +378,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_STONE:String = "_Upgrade_stoneCost";
 	
 	//Ftue
+	public static inline var FTUE:String = "Window_FTUE";
 	public static inline var FTUE_SCENARIO:String = "Window_NPC";
 	public static inline var FTUE_SCENARIO_WINDOW:String = "Window_Ftue_Scenario";
 	public static inline var FTUE_SCENARIO_WINDOW_HEAVEN:String = "Window_Ftue_Angel_Scenario";
