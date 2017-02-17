@@ -48,7 +48,9 @@ class TitleCard extends Screen
 		addChild(btnStart);
 		
 		btnStart.once(MouseEventType.CLICK,onClick);
-		btnStart.once(TouchEventType.TAP,onClick);
+		btnStart.once(TouchEventType.TAP, onClick);
+		
+		SoundManager.getSound("MUSIC_MAIN").play();
 	}
 	
 	private function onClick (pEvent:EventTarget): Void {
