@@ -226,7 +226,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 		
 		initStars(hellIntern, hellGaugeEfficency, hellGaugeSpeed);
-		SpriteManager.spawnComponent(heavenPortrait, heavenIntern.portrait, heavenCard, TypeSpawn.SPRITE, true);
+		SpriteManager.spawnComponent(hellPortrait, hellIntern.portrait, hellCard, TypeSpawn.SPRITE, true);
 	}
 
 	private function setValuesHeavenCard():Void{
@@ -249,7 +249,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		}
 		
 		initStars(heavenIntern, heavenGaugeEfficency, heavenGaugeSpeed);
-		SpriteManager.spawnComponent(hellPortrait, hellIntern.portrait, hellCard, TypeSpawn.SPRITE, true);
+		SpriteManager.spawnComponent(heavenPortrait, heavenIntern.portrait, heavenCard, TypeSpawn.SPRITE, true);
 	}
 	
 	/**
