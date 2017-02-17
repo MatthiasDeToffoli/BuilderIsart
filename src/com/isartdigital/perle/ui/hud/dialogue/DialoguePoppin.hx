@@ -16,6 +16,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 class DialoguePoppin extends SmartScreen 
 {
 	private static inline var NEUTRAL_EXPRESSION:String = "_Neutral";
+	private static inline var HELL_NPC:String = "Demona";
 	private static inline var ON_ALPHA:Float = 1;
 	private static inline var OFF_ALPHA:Float = 0.2;
 	private var btnNext:SmartButton;
@@ -24,6 +25,8 @@ class DialoguePoppin extends SmartScreen
 	private var scenarioHell:SmartComponent;
 	private var actionAngel:SmartComponent;
 	private var actionHell:SmartComponent;
+	private var icon5:SmartComponent;
+	private var icon6:SmartComponent;
 	private static var windowOpened:SmartComponent;
 	
 	//private var npc_name:TextSprite;
@@ -39,9 +42,6 @@ class DialoguePoppin extends SmartScreen
 	public static var lNpc_dialogue_ftue:Array<Array<Array<String>>>;
 	
 	public static var allExpressionsArray:Array<String>;
-	
-	private static inline var ICON_D3:Int = 3;
-	private static inline var ICON_D5:Int = 5;
 	
 	/**
 	 * instance unique de la classe DialoguePoppin
@@ -82,6 +82,8 @@ class DialoguePoppin extends SmartScreen
 		scenarioHell = cast(getChildByName(AssetName.FTUE_SCENARIO_WINDOW_HELL), SmartComponent);
 		actionAngel = cast(getChildByName(AssetName.FTUE_ACTION_HEAVEN), SmartComponent);
 		actionHell = cast(getChildByName(AssetName.FTUE_ACTION_HELL), SmartComponent);
+		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);
+		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);
 		setAllFalse();
 	}
 	
@@ -92,32 +94,29 @@ class DialoguePoppin extends SmartScreen
 		setAllFalse();
 		checkIfVisible(pNpc, pExpression, isAction);
 		addEffectToDialogueSpawn(isAction,pNpc,pNumber);
-		/*if(npc_name!=null)
-			npc_name.text = pNpc;*/
+		checkIfIcons(pNumber);
+		
 		if (npc_speach != null)
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
-		checkIfIcons(pNumber);
-		//var lIcon:SmartComponent = IconsFtue.setIconOn(pNumber);
-		//if(lIcon !=null)
-		//	lIcon.position = this.position;
-		//hideAllExpression();
-		//changeAlpha(pPicture,pExpression);
 	}
 	
 	private function checkIfVisible(pNpc:String, pExpression:String, isAction:Bool):Void {
+		var lPanel:SmartComponent;
 		if (isAction) {
-			if (pNpc == "Demona")
-				actionHell.visible = true;
+			if (pNpc == HELL_NPC)
+				lPanel = actionHell;
 			else
-				actionAngel.visible = true;
+				lPanel = actionAngel;
 		}
 		else {
 			
-			if (pNpc == "Demona")
-				scenarioHell.visible = true;
+			if (pNpc == HELL_NPC)
+				lPanel = scenarioHell;
 			else
-				scenarioAngel.visible = true;
+				lPanel = scenarioAngel;
 		}
+		lPanel.visible = true;
+		setTextWf(isAction, lPanel);
 	}
 	
 	private function addEffectToDialogueSpawn(pTypeOfDialogueIsAction:Bool, pNpc:String, pNumberOfDialogue:Int) {
@@ -127,7 +126,7 @@ class DialoguePoppin extends SmartScreen
 			TweenManager.upperToRealPos(this);
 		}
 		else if(wasAction) {
-			if (pNpc == "Demona")
+			if (pNpc == HELL_NPC)
 				TweenManager.rigthLeftToRealPos(this, false);
 			else
 				TweenManager.rigthLeftToRealPos(this, true);
@@ -137,10 +136,14 @@ class DialoguePoppin extends SmartScreen
 		}
 	}
 	
+	private function setTextWf(isAction:Bool,pPanel:SmartComponent) {
+		npc_speach = cast(SmartCheck.getChildByName(pPanel, AssetName.FTUE_SCENARIO_SPEACH), TextSprite);
+	}
+	
 	private function checkIfIcons(pDialogueNumber:Int) {
 		switch(pDialogueNumber) {
-			case ICON_D3 : trace("test");
-			case ICON_D5 : trace("test");
+			case 5 : icon5.visible = true;
+			case 6 : icon6.visible = true;
 		}
 	}
 	
@@ -149,6 +152,8 @@ class DialoguePoppin extends SmartScreen
 		scenarioHell.visible = false;
 		actionAngel.visible = false;
 		actionHell.visible = false;
+		icon5.visible = false;
+		icon6.visible = false;
 	}
 	
 	/**

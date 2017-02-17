@@ -364,6 +364,7 @@ class DialogueManager
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
 	public static function endOfaDialogue(?doNotNextStep:Bool, ?pCloseHud:Bool):Void {
+		trace("test");
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
 				closeDialoguePoppin = false;

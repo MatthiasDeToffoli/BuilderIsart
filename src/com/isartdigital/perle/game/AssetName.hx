@@ -393,15 +393,14 @@ class AssetName{
 	public static inline var FTUE_SCENARIO_HEAVEN:String = "Window_NPC_Heaven";
 	//public static inline var FTUE_ACTION_HEAVEN:String = "_ftue_mascot_angela";
 	public static inline var FTUE_SCENARIO_NAME:String = FTUE_SCENARIO+"_Name_TXT";
-	public static inline var FTUE_SCENARIO_SPEACH:String = FTUE_SCENARIO+"_Speech_TXT";
+	public static inline var FTUE_SCENARIO_SPEACH:String = "_ftue_txt";
+	public static inline var FTUE_SCENARIO_SPEACH_SCENARIO:String = "_ftue_txt_scenario";
+	public static inline var FTUE_SCENARIO_SPEACH_ACTION:String = "_ftue_txt_action";
 	public static inline var FTUE_ACTION_SPEACH:String = "_infobulle_text";
 	//FtueIcons
 	public static inline var FTUE_ICONS:String = "IconHolder_Main";
-	public static inline var FTUE_ICON_TEXT1:String = "Window_NPC_Speech_TXT";
-	public static inline var FTUE_ICON_TEXT2:String = "_infobulle_text";
-	public static inline var FTUE_ICON_3:String = "_ftue_dialog_3";
-	public static inline var FTUE_ICON_2:String = "_ftue_dialog_2";
-	public static inline var FTUE_ICON_1:String = "_ftue_dialog_1";
+	public static inline var FTUE_ICON_5:String = "_ftue_dialogFR_5";
+	public static inline var FTUE_ICON_6:String = "_ftue_dialogFR_6";
 	
 	
 	// HUD
