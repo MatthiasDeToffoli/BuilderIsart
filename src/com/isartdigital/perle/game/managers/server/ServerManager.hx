@@ -67,7 +67,7 @@ class ServerManager {
 	}
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
-		callPhpFile(debug, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.DEBUG]);
+		
 		// TODO :  remporaire pour les playtest
 		DeltaDNAManager.sendConnexionEvents({ isNewPlayer:true, ID:Std.string(Math.round(Math.random() *1000000)) });
 		DeltaDNAManager.listenToCloseGame();
@@ -82,6 +82,10 @@ class ServerManager {
 		DeltaDNAManager.listenToCloseGame();
 		
 		
+	}
+	
+	private static function callDevugFille():Void {
+		callPhpFile(debug, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.DEBUG]);
 	}
 	
 	private static function debug(object:Dynamic):Void {

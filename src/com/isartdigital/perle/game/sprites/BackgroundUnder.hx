@@ -34,7 +34,7 @@ class BackgroundUnder extends FlumpStateGraphic
 	override public function init():Void 
 	{
 		super.init();
-		trace(width);
+
 		position.x -= width / 5;
 		position.y -= height / 5;
 	}
