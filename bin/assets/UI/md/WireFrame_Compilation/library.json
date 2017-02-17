@@ -1,5 +1,5 @@
 {
- "md5": "cdd280bc7dcf3f07e588df92c204fa1c",
+ "md5": "280e9a061c6d7d9afd253e77b80503dc",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -620,28 +620,28 @@
        ]
       },
       {
+       "symbol": "_woodIcon_Medium",
+       "origin": [
+        36,
+        28.75
+       ],
+       "rect": [
+        362,
+        1019,
+        72,
+        65
+       ]
+      },
+      {
        "symbol": "_png_decoIcon",
        "origin": [
         30.75,
         29.95
        ],
        "rect": [
-        362,
-        1019,
-        62,
-        60
-       ]
-      },
-      {
-       "symbol": "_buttonMoveBuilding_png",
-       "origin": [
-        30,
-        30
-       ],
-       "rect": [
         463,
         829,
-        60,
+        62,
         60
        ]
       },
@@ -758,7 +758,7 @@
         "width": 137.35,
         "font": "56px _pixelOperator*",
         "align": "center",
-        "height": 57.7,
+        "height": 131.1,
         "wordWrap": 1,
         "color": "#250000"
        },
@@ -885,7 +885,7 @@
         "align": "center",
         "height": 121.2,
         "wordWrap": 0,
-        "color": "#250000"
+        "color": "#3E311A"
        },
        "symbol": "_level_txt",
        "origin": [
@@ -908,7 +908,7 @@
         "width": 222.35,
         "font": "48px _pixelOperator*",
         "align": "center",
-        "height": 61.3,
+        "height": 113.2,
         "wordWrap": 1,
         "color": "#F0F0FF"
        },
@@ -1008,7 +1008,7 @@
         "width": 123.75,
         "font": "80px _pixelOperator_title*",
         "align": "center",
-        "height": 83.7,
+        "height": 93.35,
         "wordWrap": 1,
         "color": "#280000"
        },
@@ -1033,7 +1033,7 @@
         "width": 344.45,
         "font": "62px _pixelOperator*",
         "align": "center",
-        "height": 122.2,
+        "height": 144.6,
         "wordWrap": 1,
         "color": "#280000"
        },
@@ -1146,7 +1146,7 @@
        ]
       },
       {
-       "symbol": "_woodIcon_Medium",
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         36,
         36
@@ -1172,29 +1172,29 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Medium",
-       "origin": [
-        36,
-        36
-       ],
-       "rect": [
-        1,
-        397,
-        72,
-        72
-       ]
-      },
-      {
        "symbol": "_buttonCancelUpgradeBuilding_png",
        "origin": [
         30,
         35.6
        ],
        "rect": [
-        75,
-        397,
+        189,
+        158,
         60,
         72
+       ]
+      },
+      {
+       "symbol": "_buttonMoveBuilding_png",
+       "origin": [
+        30,
+        30
+       ],
+       "rect": [
+        189,
+        232,
+        60,
+        60
        ]
       },
       {
@@ -1204,8 +1204,8 @@
         30
        ],
        "rect": [
-        137,
-        416,
+        1,
+        397,
         60,
         60
        ]
@@ -1729,8 +1729,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1748,8 +1748,8 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1767,8 +1767,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1786,8 +1786,8 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1805,8 +1805,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1824,8 +1824,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -1843,8 +1843,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -1862,8 +1862,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -1881,8 +1881,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -1900,8 +1900,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -1924,8 +1924,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1943,8 +1943,8 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1962,8 +1962,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1999,8 +1999,8 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
@@ -2018,8 +2018,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
@@ -2037,8 +2037,8 @@
        ],
        "ref": "~INFO_Wood",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2056,8 +2056,8 @@
        ],
        "ref": "~INFO_Iron",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2075,8 +2075,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -2103,8 +2103,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2122,8 +2122,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -2141,8 +2141,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2160,8 +2160,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2229,8 +2229,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2253,8 +2253,8 @@
        ],
        "ref": "~ButtonConfirmMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2272,8 +2272,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2315,8 +2315,8 @@
     }
    ],
    "data": {
-    "UI": "",
-    "UIPosition": "top"
+    "UIPosition": "top",
+    "UI": ""
    },
    "id": "ProdDone"
   },
@@ -4277,7 +4277,7 @@
       {
        "pivot": [
         36,
-        36
+        28.7625
        ],
        "index": 0,
        "loc": [
