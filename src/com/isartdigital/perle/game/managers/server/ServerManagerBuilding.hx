@@ -118,4 +118,12 @@ class ServerManagerBuilding{
 		
 	}
 	
+	public static function updatePopulation(pDescription:TileDescription):Void {
+		
+	}
+	
+	public static function updateGenerator(pDescription:TileDescription):Void {
+		
+	}
+	
 }
