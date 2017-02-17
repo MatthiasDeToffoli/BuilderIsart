@@ -68,20 +68,14 @@ class ServerManager {
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
 		var currentPlayer:EventSuccessConnexion = Json.parse(pObject);
-		// TODO :  remporaire pour les playtest
-		//DeltaDNAManager.sendConnexionEvents({ isNewPlayer:true, ID:Std.string(Math.round(Math.random() *1000000)) });
-		//DeltaDNAManager.listenToCloseGame();
 		
 		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
 			Debug.error("Player connexion failed");
 			return;
 		}
-		return; //todo enlever
 		
 		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
 		DeltaDNAManager.listenToCloseGame();
-		
-		
 	}
 	
 	private static function callDevugFille():Void {
