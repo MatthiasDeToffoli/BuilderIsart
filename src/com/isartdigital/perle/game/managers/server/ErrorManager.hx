@@ -1,4 +1,6 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.ui.popin.server.ServerPopinRollback;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.Debug;
 
 /**
@@ -18,9 +20,12 @@ class ErrorManager{
 	
 	public static function openPopin (pErrorId:Int):Void {
 		Debug.warn("Server returned an custom error: " + ERROR_PREFIX + pErrorId);
-		// todo : si la traduction se base sur les données de la bdd, alros mieux vaut directement envoyé ce qui doit être affiché avec un code d'erreur.
-		trace("message in popin translated : " + FakeTraduction.errorCodeToTrad(ERROR_PREFIX + pErrorId));
 		
+		var lPopin:ServerPopinRollback = new ServerPopinRollback();
+		lPopin.setText(FakeTraduction.assetNameNameToTrad("Server returned an custom error."), pErrorId);
+		
+		UIManager.getInstance().openPopin(lPopin);
+		lPopin.init();
 	}
 	
 }
