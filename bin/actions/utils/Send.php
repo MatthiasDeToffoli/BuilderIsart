@@ -29,6 +29,7 @@ class Send
     const BUILDING_CANNOT_BUILD_OUTSIDE_REGION = 3;
     const BUILDING_CANNOT_BUILD_COLLISION = 4;
     const BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY = 5;
+    const BUILDING_CANNOT_SELL_DONT_EXIST = 6;
 
     const ID_CLIENT_BUILDING = "IDClientBuilding";
 
@@ -39,7 +40,7 @@ class Send
             ],
             static::getBuildingIdentifier($pInfo)
         ));
-        // todo : mettre que les nécessaire ds le json_encode
+        // (todo) : mettre que les nécessaire ds le json_encode
         Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pErrorCode, $pInfo);
         exit;
     }
@@ -66,8 +67,20 @@ class Send
             ],
             static::getBuildingIdentifier($pInfo)
         ));
-        // todo : mettre que les infos nécessaire à la place de $pInfo
+        // (todo) : mettre que les infos nécessaire à la place de $pInfo
         Logs::moveBuilding($pInfo[MoveBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pErrorCode, $pInfo);
+        exit;
+    }
+
+    public static function refuseSellBuilding ($pInfo, $pErrorCode) {
+        echo json_encode(array_merge(
+            [
+                "errorID" => $pErrorCode,
+            ]
+        ));
+        // todo : logs
+        // todo : synchronise ressources.
+        // soit c côté client qui demande à synchroniser ses ressources, soit c'est en callback ici.
         exit;
     }
 

@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager.Population;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
@@ -269,6 +270,7 @@ class InfoBuilding extends SmartPopinExtended{
 		BuildingHud.linkVirtualBuilding(virtualBuilding); // cette ligne me surprend un peu, link le buildinghud pr le détruire après ?
 		// todo @ambroise et @Victor: changer true par si le building se construit ou pas
 		BuyManager.sell(virtualBuilding.tileDesc.buildingName, true); 
+		ServerManagerBuilding.sellBuilding(virtualBuilding.tileDesc);
 		UIManager.getInstance().closeCurrentPopin();
 		virtualBuilding.destroy();
 		Hud.getInstance().hideBuildingHud();

@@ -23,6 +23,9 @@ typedef EventSuccessMoveBuilding = {
 	var iDClientBuilding:Int;
 }
 
+typedef EventSuccessSellBuilding ={
+	@:optionnal var errorID:Int;	
+}
 
 /**
  * ...
@@ -86,7 +89,7 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorMoveBuilding (pObject:Dynamic):Void {
-		Debug.error("Error php on addBuilding : " + pObject);
+		Debug.error("Error php on moveBuilding : " + pObject);
 	}
 	
 	private static function onSuccessMoveBuilding (pObject:Dynamic):Void {
@@ -105,7 +108,7 @@ class ServerManagerBuilding{
 			}
 			
 		} else {
-			Debug.error("Success php on addBuilding but event format is invalid ! : " + pObject);
+			Debug.error("Success php on moveBuilding but event format is invalid ! : " + pObject);
 		}
 		
 	}
@@ -115,7 +118,36 @@ class ServerManagerBuilding{
 	}
 	
 	public static function sellBuilding (pDescription:TileDescription):Void {
-		
+		ServerManager.callPhpFile(onSuccessSellBuilding, onErrorSellBuilding, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.BUILDING_SELL,
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	private static function onErrorSellBuilding (pObject:Dynamic):Void {
+		Debug.error("Error php on sellBuilding : " + pObject);
+	}
+	
+	private static function onSuccessSellBuilding (pObject:Dynamic):Void {
+		if (pObject.charAt(0) == "{") {
+			var lEvent:EventSuccessSellBuilding = Json.parse(pObject);
+			var lFieldError:Int;
+			
+			if (Reflect.hasField(lEvent, "errorID")) {
+				lFieldError = Reflect.field(lEvent, "errorID");
+				//if (lFieldError == ErrorManager.BUILDING_CANNOT_SELL_DONT_EXIST)
+					// todo : synchronisation. // soit faire ajax pr synchro, soit dans callback ici
+				
+				ErrorManager.openPopin(lFieldError);
+			}
+			
+		} /*else {
+			Debug.error("Success php on sellBuilding but event format is invalid ! : " + pObject);
+		}*/ // return nothing if success right now.
 	}
 	
 	public static function updatePopulation(pDescription:TileDescription):Void {

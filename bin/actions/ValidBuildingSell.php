@@ -1,0 +1,36 @@
+<?php
+/**
+ * User: RABIERAmbroise
+ * Date: 17/02/2017
+ * Time: 15:30
+ */
+
+namespace actions;
+
+include_once("utils/Utils.php");
+include_once("utils/Send.php");
+include_once("BuildingSell.php");
+
+class ValidBuildingSell
+{
+    const TABLE_BUILDING = "Building";
+
+    public static function validate ($pInfo) {
+        $lBuildingInDB = static::getBuildingInDB($pInfo);
+        static::buildingExist($pInfo, $lBuildingInDB);
+        return $pInfo;
+    }
+
+    private static function buildingExist ($pInfo, $pBuildingInDB) {
+        if (!isset($pBuildingInDB) || empty($pBuildingInDB))
+            Send::refuseSellBuilding($pInfo, Send::BUILDING_CANNOT_SELL_DONT_EXIST);
+    }
+
+    private static function getBuildingInDB ($pInfo) {
+        return Utils::getTable(
+            static::TABLE_BUILDING,
+            BuildingSell::getSQLSetWherePos($pInfo)
+        );
+    }
+
+}

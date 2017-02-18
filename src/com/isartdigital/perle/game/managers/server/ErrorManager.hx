@@ -14,6 +14,7 @@ class ErrorManager{
 	public static inline var BUILDING_CANNOT_BUILD_OUTSIDE_REGION:Int = 3;
 	public static inline var BUILDING_CANNOT_BUILD_COLLISION:Int = 4;
 	public static inline var BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY:Int = 5;
+	public static inline var BUILDING_CANNOT_SELL_DONT_EXIST:Int = 6;
 	private static inline var ERROR_PREFIX:String = "ErrorID_";
 	
 	// todo : ID ci-dessus relié à un élément de traduction pour ensuite afficher une popin d'erreur.

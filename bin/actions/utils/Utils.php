@@ -151,6 +151,20 @@ class Utils
         return $lSQLUpdate.$lSQLSet.$pSQLWhere;
     }
 
+    public static function delete ($pTableName, $pSQLWhere) {
+        global $db;
+
+        $req = "DELETE FROM ".$pTableName." WHERE ".$pSQLWhere;
+        $reqPre = $db->prepare($req);
+
+        try {
+            $reqPre->execute();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+            exit;
+        }
+    }
+
 
     // ##############################################################
     // TIME
