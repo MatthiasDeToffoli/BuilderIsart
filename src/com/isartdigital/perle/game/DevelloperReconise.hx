@@ -11,8 +11,10 @@ class DevelloperReconise
 	private static var devs:Array<String>;
 	
 	public static function awake():Void {
+		// FaceBook.uid
 		devs = [
-			"10206357042724082"
+			"10206357042724082", // matthias
+			"389913848025374" // ambroise
 		];
 	}
 	

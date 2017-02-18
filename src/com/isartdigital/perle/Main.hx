@@ -146,7 +146,6 @@ class Main extends EventEmitter
 	
 	private function onLogin():Void{
 		ServerManager.playerConnexion();
-		trace("facebook on");
 	}
  
 	/**
