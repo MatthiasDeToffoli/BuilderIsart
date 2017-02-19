@@ -10,6 +10,7 @@ namespace actions;
 use actions\utils\FacebookUtils as FacebookUtils;
 
 include_once("utils/Utils.php");
+include_once("utils/Send.php");
 include_once("utils/FacebookUtils.php");
 include_once("ValidBuildingUpgrade.php");
 include_once("BuildingCommonCode.php");
@@ -44,12 +45,13 @@ class BuildingUpgrade
         $lNewConfig = static::getNextLevelTypeBuilding($lConfig);
 
         ValidBuildingUpgrade::validate($lInfo, $lBuildingInDB, $lConfig, $lNewConfig);
-
+        $lInfo = BuildingCommonCode::addDateTimes($lInfo, $lNewConfig);
         Utils::updateSetWhere(
             static::TABLE_BUILDING,
-            static::getFieldsToSET($lNewConfig),
+            static::getFieldsToSET($lNewConfig, $lInfo),
             static::getSQLSetWherePos($lInfo)
         );
+        Send::synchroniseBuildingTimer($lInfo);
         // todo : logs
     }
 
@@ -99,11 +101,13 @@ class BuildingUpgrade
     }
 
 
-    private static function getFieldsToSET ($pNewConfig) {
+    private static function getFieldsToSET ($pNewConfig, $pInfo) {
         // todo : make a common method file for building querys.
-        return BuildingCommonCode::addDateTimes([
-            static::ID_TYPE_BUILDING => intval($pNewConfig[static::COLUMN_ID])
-        ], $pNewConfig);
+        return [
+            static::ID_TYPE_BUILDING => intval($pNewConfig[static::COLUMN_ID]),
+            BuildingCommonCode::START_CONTRUCTION => $pInfo[BuildingCommonCode::START_CONTRUCTION],
+            BuildingCommonCode::END_CONTRUCTION => $pInfo[BuildingCommonCode::END_CONTRUCTION],
+        ];
     }
 
 

@@ -9,6 +9,7 @@ namespace actions;
 
 include_once("Utils.php");
 include_once("Logs.php");
+include_once("../BuildingCommonCode.php");
 
 /**
  * Class that send info back to client, in case of a valid action of the player or
@@ -49,8 +50,8 @@ class Send
     public static function synchroniseBuildingTimer ($pInfo) {
         echo json_encode(array_merge(
             [
-                lcfirst(AddBuilding::START_CONTRUCTION) => Utils::timeStampToJavascript(Utils::dateTimeToTimeStamp($pInfo[AddBuilding::START_CONTRUCTION])),
-                lcfirst(AddBuilding::END_CONTRUCTION) => Utils::timeStampToJavascript(Utils::dateTimeToTimeStamp($pInfo[AddBuilding::END_CONTRUCTION]))
+                lcfirst(BuildingCommonCode::START_CONTRUCTION) => Utils::timeStampToJavascript(Utils::dateTimeToTimeStamp($pInfo[BuildingCommonCode::START_CONTRUCTION])),
+                lcfirst(BuildingCommonCode::END_CONTRUCTION) => Utils::timeStampToJavascript(Utils::dateTimeToTimeStamp($pInfo[BuildingCommonCode::END_CONTRUCTION]))
             ],
             static::getBuildingIdentifier($pInfo)
         ));

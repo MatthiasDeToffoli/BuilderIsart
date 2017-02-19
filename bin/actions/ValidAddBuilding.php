@@ -26,7 +26,6 @@ class ValidAddBuilding
 
         static::canBuild($pInfo, $lConfig); // exit if something wrong
 
-        Send::synchroniseBuildingTimer($pInfo);
         return $pInfo;
     }
 

@@ -42,12 +42,14 @@ class AddBuilding
         //ValidBuilding::setConfigForBuilding(); n'arrive pas à temps ,asynchrone :/
         $lInfo = static::getInfo();
         $lInfoWhitTime = ValidAddBuilding::validate($lInfo);
+        Send::synchroniseBuildingTimer($lInfoWhitTime);
         unset($lInfoWhitTime[static::ID_CLIENT_BUILDING]);
 
         Utils::insertInto(
             static::TABLE_BUILDING,
             $lInfoWhitTime
         );
+
         // todo : $lInfo == lInfo unsetted ? (the more you have for log the better)
         Logs::addBuilding($lInfo[static::ID_PLAYER], Logs::STATUS_ACCEPTED, null, $lInfo);
     }
