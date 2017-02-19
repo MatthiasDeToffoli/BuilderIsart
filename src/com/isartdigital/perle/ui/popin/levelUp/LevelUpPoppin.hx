@@ -6,11 +6,14 @@ import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -46,6 +49,8 @@ class LevelUpPoppin extends SmartPopinExtended
 	private var unlock:SmartComponent;
 	private var currentImage:UIMovie;
 	
+	private static var imgArray:Array<UIMovie>;
+	private var shopGraphic:UISprite;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -57,16 +62,11 @@ class LevelUpPoppin extends SmartPopinExtended
 	
 	private function setPopin(pName:String, pLevel:Int):Void {
 		
-		if (currentImage != null) {
-			currentImage.parent.removeChild(currentImage);
-			currentImage.destroy();
-		}
-		
 		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
 		
 		currentImage = SmartPopinExtended.setImage(img, BuildingName.getAssetName(pName, pLevel)); 
-		
+		imgArray.push(currentImage);
 		//txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
 		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
 		//congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
@@ -78,11 +78,11 @@ class LevelUpPoppin extends SmartPopinExtended
 		nameUnlock.text = pName;
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
-		
 	}
 	
 	private function onClickNext():Void {
-		
+		shopGraphic.visible = true;
+		juicyEffect();
 		if (UnlockManager.unlockedItem.length > 0) {
 			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
 			
@@ -91,12 +91,35 @@ class LevelUpPoppin extends SmartPopinExtended
 				lUnlockedItem.level
 			);
 		}
-		else {
-			if (DialogueManager.ftueCloseUnlockedItem)
-				DialogueManager.endOfaDialogue();
-			Hud.getInstance().show();
-			UIManager.getInstance().closePopin(this);
-			UnlockManager.checkIfNeedToCreateDialogue();
+	}
+	
+	private function closeLevelUpPoppin() {
+		if (DialogueManager.ftueCloseUnlockedItem)
+			DialogueManager.endOfaDialogue();
+		Hud.getInstance().btnShop.interactive = true;
+		Hud.getInstance().show();
+		UIManager.getInstance().closePopin(this);
+		UnlockManager.checkIfNeedToCreateDialogue();
+	}
+	
+	private function juicyEffect():Void {
+		TweenManager.positionAndRescal(
+			currentImage,
+			shopGraphic.position,
+			this,
+			destroyAfterEffect,
+			shopGraphic
+		);
+	}
+	
+	private function destroyAfterEffect():Void {
+		if (imgArray.length != 0) {
+			var lImg:UIMovie = imgArray[0];
+			imgArray.splice(0, 1);
+			lImg.parent.removeChild(lImg);
+			lImg.destroy();
+			if (imgArray.length == 0)
+				closeLevelUpPoppin();
 		}
 	}
 	
@@ -107,10 +130,16 @@ class LevelUpPoppin extends SmartPopinExtended
 	{
 		super(AssetName.LEVELUP_POPPIN);
 		setWireframe();
+		imgArray = [];
 		setPopin(
 			FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
 			UnlockManager.unlockedItem[0].level
 		);
+		
+		shopGraphic = new UISprite("_shopButton_HUD_up");
+		shopGraphic.position = Hud.getInstance().getShopIconPos();
+		addChild(shopGraphic);
+		shopGraphic.visible = false;
 	}
 	
 	/**

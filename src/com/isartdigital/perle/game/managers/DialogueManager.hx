@@ -10,7 +10,7 @@ import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
-import com.isartdigital.perle.ui.hud.dialogue.IconsFtue;
+import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -37,7 +37,7 @@ class DialogueManager
 	private static inline var ALPHA_ON:Float = 1;
 	private static inline var ALPHA_OFF:Float = 0.2;
 	private static inline var FTUE_SCENARIO:String = "assets/ftue2_bg.png";
-	private static inline var FTUE_ACTION:String = "assets/ftue_bg.png";
+	public static inline var FTUE_ACTION:String = "assets/ftue_bg.png";
 	private static var firstBuilding:VBuilding;
 	private static var firstBatPoint:Point;
 	private static var purgatoryPoint:Point;
@@ -67,6 +67,8 @@ class DialogueManager
 	public static var ftueStepCloseGatcha:Bool = false;
 	public static var ftueStepBlocBuildings:Bool = false;
 	public static var ftueStepBlocInterns:Bool = false;
+	private static var doNotGiveGold:Bool = false;
+	private static var doNotGiveKarma:Bool = false;
 	
 	public static var ftueClosePurgatory:Bool = false;
 	public static var ftueCloseUnlockedItem:Bool = false;
@@ -74,6 +76,10 @@ class DialogueManager
 	public static var ftuePlayerCanWait:Bool = false;
 	public static var boostBuilding:Bool = false;
 	public static var passFree:Bool = false;
+	
+	private static var addedJuicy:Bool = false;
+	private static var numberOfGolds:Int = 5;
+	private static var numberOfGoldsCreated:Int = 0;
 	
 	
 	/**
@@ -84,11 +90,10 @@ class DialogueManager
 		steps = pFTUE.steps;
 		setAllExpressions();
 		npc_dialogue_ftue = [];
+		GoldEffect.goldJuicy = [];
 		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json
 		DialoguePoppin.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
-		
-		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 	}
 	
@@ -99,6 +104,8 @@ class DialogueManager
 		//dialogueSaved = 21;
 		//SaveManager.save();
 		
+		
+		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
@@ -106,6 +113,11 @@ class DialogueManager
 				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 				return;
 			}
+			
+			if (steps[lSave].gold !=null)
+				doNotGiveGold = true;
+			else if (steps[lSave].karma !=null)
+				doNotGiveKarma = true;
 			
 			if (steps[lSave].haveToMakeAllChoice) {
 				Hud.getInstance().hide();
@@ -118,6 +130,8 @@ class DialogueManager
 				ShopPopin.getInstance().init(ShopTab.Building);
 			}
 		}
+		
+		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 		DialoguePoppin.wasAction = true;
 		dialogueSaved = 0;
 		
@@ -158,7 +172,6 @@ class DialogueManager
 	 * @param	pBlocHud Hud Stuck ?
 	 */
 	public static function createTextDialogue(pNumber:Int, pNpc:String, pHideHud:Bool, pTypeOfDialogueIsAction:Bool, ?pBlocHud:Bool) {
-		
 		if (!closeDialoguePoppin) {
 			if (pHideHud) {
 				Hud.getInstance().alpha = ALPHA_OFF;
@@ -172,7 +185,7 @@ class DialogueManager
 				Hud.isHide = false;
 				//closeFtueLock();	
 			}
-		}	
+		}
 		DialoguePoppin.getInstance().createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction);
 	}
 	
@@ -326,23 +339,35 @@ class DialogueManager
 		
 		//GAINS : 
 		if (steps[dialogueSaved].gold != null) {
-			ResourcesManager.gainResources(GeneratorType.soft, steps[dialogueSaved].gold);
+			if (!doNotGiveGold) {
+				createGoldEffectJuicy();
+				ResourcesManager.gainResources(GeneratorType.soft, steps[dialogueSaved].gold);
+			}
 			Hud.getInstance().softMc.alpha = 1;
 			FocusManager.getInstance().setFocus(Hud.getInstance().softMc);
 			Hud.getInstance().btnSoft.interactive = false;
 		}
 		
-		if (steps[dialogueSaved].karma != null && ResourcesManager.getTotalForType(GeneratorType.hard)==0) {
-			ResourcesManager.gainResources(GeneratorType.hard, steps[dialogueSaved].karma);	
+		if (steps[dialogueSaved].karma != null) {
+			if (!doNotGiveKarma) 
+				ResourcesManager.gainResources(GeneratorType.hard, steps[dialogueSaved].karma);	
 			Hud.getInstance().hardMc.alpha = 1;
 			Hud.getInstance().btnHard.interactive = false;
 		}
 			
-		if (steps[dialogueSaved].hellEXP !=null)
+		if (steps[dialogueSaved].hellEXP != null) {
 			ResourcesManager.gainResources(GeneratorType.badXp, steps[dialogueSaved].hellEXP);	
+			Hud.getInstance().hellXPBar.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().hellXPBar);
+		}
 			
-		if (steps[dialogueSaved].heavenEXP !=null)
+		if (steps[dialogueSaved].heavenEXP != null) {
+			/*Hud.getInstance().heavenXPBar.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);
+			Hud.getInstance().hellXPBar.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().hellXPBar);*/
 			Timer.delay(giveHeavenExp, 200);
+		}
 			
 		if (steps[dialogueSaved].shouldBlockHud)
 			Hud.isHide = true;
@@ -364,10 +389,9 @@ class DialogueManager
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
 	public static function endOfaDialogue(?doNotNextStep:Bool, ?pCloseHud:Bool):Void {
-		trace("test");
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
-				closeDialoguePoppin = false;
+				//closeDialoguePoppin = false;
 				if (!pCloseHud)
 					Hud.getInstance().show();
 			}
@@ -412,9 +436,9 @@ class DialogueManager
 		if (dialogueSaved >= steps.length)
 			return;
 			
-		if (steps[dialogueSaved + 1] != null) 
+		/*if (steps[dialogueSaved + 1] != null) 
 			if (steps[dialogueSaved+1].arrowRotation != null && steps[dialogueSaved+1].npcWhoTalk != null)
-				removeDialogue();
+				removeDialogue();*/
 			
 		if (Std.is(steps[dialogueSaved].item, SmartButton)) {
 			//cast(steps[dialogueSaved].item, SmartButton).off(MouseEventType.CLICK, endOfaDialogue);
@@ -474,6 +498,17 @@ class DialogueManager
 			if (steps[i].expression != null)
 				checkIfAlreadyInArray(steps[i].expression);
 		}
+	}
+	
+	private static function createGoldEffectJuicy():Void {
+		addedJuicy = true;
+		if (numberOfGoldsCreated >= numberOfGolds)
+			return;
+		
+		numberOfGoldsCreated++;
+		var lGold:GoldEffect = new GoldEffect();
+		//lGold.effect();
+		Timer.delay(createGoldEffectJuicy, 200);
 	}
 	
 	/**
@@ -536,8 +571,12 @@ class DialogueManager
 	private static function openFtueLock():Void {
 		if (steps[dialogueSaved].ftueContainer) 	
 			UIManager.getInstance().openFTUEInFtue(FTUE_ACTION);
-		else if(steps[dialogueSaved].actionContainer) 
-			UIManager.getInstance().openFTUEInAction(FTUE_SCENARIO);
+		else if (steps[dialogueSaved].actionContainer) {
+			if (steps[dialogueSaved].efficiency || steps[dialogueSaved].stress || steps[dialogueSaved].speed)
+				UIManager.getInstance().openFTUEInAction(FTUE_ACTION);
+			else
+				UIManager.getInstance().openFTUEInAction(FTUE_SCENARIO);
+		}
 	}
 	
 	private static function closeFtueLock():Void {
@@ -579,7 +618,23 @@ class DialogueManager
 		boostBuilding = false;	
 		passFree = false;	
 		ftueStepBlocBuildings = false;	
-		ftueStepBlocInterns = false;	
+		ftueStepBlocInterns = false;
+		doNotGiveGold = false;
+		doNotGiveKarma = false;
+		
+		//if (addedJuicy)
+		//	removeGolds();
+	}
+	
+	private static function removeGolds() {
+		if (GoldEffect.goldJuicy.length != 0)
+		for (i in 0...GoldEffect.goldJuicy.length) {
+			var lGold:UISprite = GoldEffect.goldJuicy[i];
+			GoldEffect.goldJuicy.splice(i, 1);
+			GameStage.getInstance().getIconContainer().removeChild(lGold);
+			lGold.destroy();
+		}
+		addedJuicy = false;
 	}
 	
 }

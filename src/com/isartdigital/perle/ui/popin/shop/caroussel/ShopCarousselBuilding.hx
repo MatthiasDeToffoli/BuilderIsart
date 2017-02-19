@@ -20,8 +20,8 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		BuildingName.HELL_FACTORY,	
 		
 		BuildingName.HELL_COLLECTOR,	
-		BuildingName.STYX_VIRTUE_1,
 		BuildingName.STYX_VICE_1,
+		BuildingName.STYX_VIRTUE_1,
 		
 		BuildingName.HEAVEN_MARKETING_DEPARTMENT,
 		BuildingName.STYX_VIRTUE_2,

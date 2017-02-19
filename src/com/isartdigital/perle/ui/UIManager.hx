@@ -109,7 +109,7 @@ class UIManager
 	}
 	
 	/**
-	 * Ajoute le hud dans le conteneur de Hud
+	 * Ajoute la FTUE dans le conteneur de ACTION
 	 */
 	public function openFTUEInAction (pAsset:String): Void {
 		GameStage.getInstance().getActionContainer().addChild(FocusManager.getInstance());
@@ -118,7 +118,7 @@ class UIManager
 	}
 	
 	/**
-	 * Retire le hud du conteneur de Hud
+	 * Retire la FTUE du conteneur de ACTION
 	 */
 	public function closeFTUEInAction (): Void {
 		GameStage.getInstance().getActionContainer().removeChild(FocusManager.getInstance());
@@ -126,7 +126,7 @@ class UIManager
 	}
 	
 	/**
-	 * Retire le hud du conteneur de Hud
+	 * Retire la FTUE du conteneur de SCENRARIO
 	 */
 	public function closeFTUEInFtue (): Void {
 		GameStage.getInstance().getFtueContainer().removeChild(FocusManager.getInstance());
@@ -134,10 +134,27 @@ class UIManager
 	}
 	
 	/**
-	 * Ajoute le hud dans le conteneur de Hud
+	 * Ajoute le FTUE dans le conteneur de SCENRARIO
 	 */
 	public function openFTUEInFtue (pAsset:String): Void {
 		GameStage.getInstance().getFtueContainer().addChild(FocusManager.getInstance());
+		FocusManager.getInstance().setModal(pAsset);
+		FocusManager.getInstance().open();
+	}
+	
+	/**
+	 * Retire le FTUE du conteneur de POPPIN
+	 */
+	public function closeFTUEInPoppin (): Void {
+		GameStage.getInstance().getPopinsContainer().removeChild(FocusManager.getInstance());
+		FocusManager.getInstance().close();
+	}
+	
+	/**
+	 * Ajoute le FTUE dans le conteneur de POPPIN
+	 */
+	public function openFTUEInPoppin (pAsset:String): Void {
+		GameStage.getInstance().getPopinsContainer().addChild(FocusManager.getInstance());
 		FocusManager.getInstance().setModal(pAsset);
 		FocusManager.getInstance().open();
 	}

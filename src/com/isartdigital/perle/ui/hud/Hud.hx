@@ -75,11 +75,11 @@ class Hud extends SmartScreen
 	private var containerBuildingHud:Container;
 	private var containerBuildingHudSecondary:Container;
 	
-	private var hellXPBar:SmartComponent;
-	private var heavenXPBar:SmartComponent;
+	public var hellXPBar:SmartComponent;
+	public var heavenXPBar:SmartComponent;
 	
 	//private var btnResetData:SmartButton;
-	private var btnShop:SmartButton;
+	public var btnShop:SmartButton;
 	private var btnPurgatory:SmartButton;
 	private var btnInterns:SmartButton;
 	private var btnOptions:SmartButton; // todo 
@@ -135,6 +135,10 @@ class Hud extends SmartScreen
 	
 	public function getGoldIconPos ():Point {
 		return containerEffect.toLocal(SmartCheck.getChildByName(btnSoft.parent, "_icon_softcurrency").position, btnSoft.parent);
+	}
+	
+	public function getShopIconPos ():Point {
+		return containerEffect.toLocal(SmartCheck.getChildByName(this, "ButtonShop_HUD").position, btnShop.parent);
 	}
 	
 	private function needToChangeBH(pInfos:Map<String, Dynamic>):Void {

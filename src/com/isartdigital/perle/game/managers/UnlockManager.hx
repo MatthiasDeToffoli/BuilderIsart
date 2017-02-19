@@ -4,7 +4,9 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
 import com.isartdigital.perle.ui.popin.levelUp.LevelUpPoppin;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
 
 /**
@@ -61,8 +63,11 @@ class UnlockManager
 	
 	public static function checkIfNeedToCreateDialogue() {
 		var lLevel = ResourcesManager.getLevel();
-		if (lLevel == LEVEL_UNLOCK_SPECIAL || lLevel == LEVEL_UNLOCK_COLLECTORS || lLevel == LEVEL_UNLOCK_FACTORY || lLevel == LEVEL_UNLOCK_ALTAR || lLevel == LEVEL_UNLOCK_MARKETING)
+		if (lLevel == LEVEL_UNLOCK_SPECIAL || lLevel == LEVEL_UNLOCK_COLLECTORS || lLevel == LEVEL_UNLOCK_FACTORY || lLevel == LEVEL_UNLOCK_ALTAR || lLevel == LEVEL_UNLOCK_MARKETING) {
+			
+			GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 			DialogueManager.nextStep();
+		}
 	}
 	
 	/**

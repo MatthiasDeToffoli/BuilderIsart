@@ -4,10 +4,13 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
 
 	
 /**
@@ -104,11 +107,11 @@ class DialoguePoppin extends SmartScreen
 	public function createText(pNumber:Int, pNpc:String, pPicture:String, pExpression:String, isAction:Bool):Void {
 		setAllFalse();
 		checkIfVisible(pNpc, pExpression, isAction);
-		addEffectToDialogueSpawn(isAction,pNpc,pNumber);
 		checkIfIcons(pNumber);
 		
 		if (npc_speach != null)
 		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
+		addEffectToDialogueSpawn(isAction,pNpc,pNumber);
 	}
 	
 	private function checkIfVisible(pNpc:String, pExpression:String, isAction:Bool):Void {
@@ -136,14 +139,9 @@ class DialoguePoppin extends SmartScreen
 			wasAction = true;
 			TweenManager.upperToRealPos(this);
 		}
-		else if(wasAction) {
-			if (pNpc == HELL_NPC)
-				TweenManager.rigthLeftToRealPos(this, false);
-			else
-				TweenManager.rigthLeftToRealPos(this, true);
-			
-			if(pNumberOfDialogue != 1)
-				wasAction = false;
+		else if (wasAction) {
+			TweenManager.scaleGrow(this,true);
+			wasAction = false;
 		}
 	}
 	
@@ -156,6 +154,12 @@ class DialoguePoppin extends SmartScreen
 			case 5 : icon5.visible = true;
 			case 6 : icon6.visible = true;
 		}
+	}
+	
+	public function getNpcHeavenPos():Point {
+		var lNpc:UISprite = cast(SmartCheck.getChildByName(scenarioAngel, "Window_NPC_Heaven_Neutral"), UISprite);
+		var lPos:Point = GameStage.getInstance().getFtueContainer().toLocal(lNpc.position);
+		return lPos;
 	}
 	
 	private function setAllFalse():Void {
