@@ -6,10 +6,12 @@
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\Regions as Regions;
 use actions\utils\Resources as Resources;
+use actions\utils\BuildingUtils as BuildingUtils;
 
 include_once("utils/FacebookUtils.php");
 include("utils/Regions.php");
 include("utils/Resources.php");
+include("utils/BuildingUtils.php");
 
 $accessToken = FacebookUtils::getToken();
 $fbId = FacebookUtils::getFacebookId();
@@ -54,6 +56,7 @@ try {
             Regions::createRegion($id,"heaven",-1,0,-12,0);
             Regions::createRegion($id,"neutral",0,0,0,0);
             Regions::createRegion($id,"hell",1,0,3,0);
+            BuildingUtils::addPurgatoryToDatabase();
             $retour['ID'] = FacebookUtils::getId();
         } catch (Exception $e) {
             echo $e->getMessage();

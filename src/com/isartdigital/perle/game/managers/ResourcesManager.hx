@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.ResourcesGeneratorDescription;
 import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
 import eventemitter3.EventEmitter;
 
@@ -393,7 +394,7 @@ class ResourcesManager
 		SaveManager.save();
 
 		TimeManager.createTimeResource(pTime, myGenerator);
-		
+		ServerManagerBuilding.createGenerator(pId);
 		return myGenerator;
 		
 	}

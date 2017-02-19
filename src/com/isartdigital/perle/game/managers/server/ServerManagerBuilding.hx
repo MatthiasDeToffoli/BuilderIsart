@@ -1,4 +1,6 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
@@ -66,13 +68,14 @@ class ServerManagerBuilding{
 	private static function onSuccessAddBuilding (pObject:Dynamic):Void {
 		if (pObject.charAt(0) == "{") {
 			var lEvent:EventSuccessAddBuilding = Json.parse(pObject);
-			
+
 			if (Reflect.hasField(lEvent, "errorID")) {
 				RollBackManager.deleteBuilding(lEvent.iDClientBuilding);
 				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
 			}
-			else
+			else 
 				SynchroManager.syncTimeOfBuilding(lEvent);
+			
 			
 		} else {
 			Debug.error("Success php on addBuilding but event format is invalid ! : " + pObject);
@@ -194,7 +197,34 @@ class ServerManagerBuilding{
 		
 	}
 	
-	public static function updateGenerator(pDescription:TileDescription):Void {
+	public static function createGenerator(pId:Int):Void {
+		var lDescription:TileDescription = IdManager.searchVBuildingById(pId).tileDesc;
+		trace(lDescription);
+		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_GENERATOR,
+			"X" => lDescription.mapX,
+			"Y" => lDescription.mapY,
+			"RegionX" => lDescription.regionX,
+			"RegionY" => lDescription.regionY
+		]);
+	}
+	
+	public static function updateGenerator(pEnd:Float, pGenerator:GeneratorDescription):Void {
+		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_GENERATOR,
+			"ID" => 70,
+			"TypeProduction" => pGenerator.type.getName(),
+			"NbResource" => pGenerator.quantity,
+			"EndForNextProduction" => pEnd
+		]);
+	}
+	
+	//use this with security for know if we always have the building....
+	private static function onSuccessUpdateGenerator(pObject:Dynamic):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorUpdateGenerator(pObject:Dynamic):Void {
 		
 	}
 	
