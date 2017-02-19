@@ -68,10 +68,14 @@ class BuildingUpgrade
 
 
     private static function getBuildingInDB ($pInfo) {
-        return Utils::getTable(
+        $lBuilding =  Utils::getTable(
             static::TABLE_BUILDING,
             static::getSQLSetWherePos($pInfo)
         )[0];
+
+        ValidBuildingUpgrade::buildingExist($lBuilding);
+
+        return $lBuilding;
     }
 
 

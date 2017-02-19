@@ -25,4 +25,13 @@ class ValidBuildingUpgrade
             exit;
         }
     }
+
+    public static function buildingExist ($pBuilding) {
+        if (!isset($pBuilding) || empty($pBuilding)) {
+            // todo : send
+            // todo : rollback
+            echo "Building don't exist in database.";
+            exit;
+        }
+    }
 }
