@@ -59,8 +59,7 @@ class VTribunal extends VBuildingUpgrade
 				regionX:0,
 				regionY:0,
 				mapX:0,
-				//center to the styx - the size of tribunal
-				mapY: Math.floor((Ground.ROW_Y_STYX_LENGTH / 2) - 3),
+				mapY: Math.floor((Ground.ROW_Y_STYX_LENGTH / 2) - 1),
 				level:1,
 				isTribunal: true
 			};
