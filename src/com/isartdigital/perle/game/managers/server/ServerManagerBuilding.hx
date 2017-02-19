@@ -8,23 +8,30 @@ import haxe.Json;
 
 
 typedef EventSuccessAddBuilding = {
-	@:optionnal var errorID:Int;
+	@:optional var errorID:Int;
 	@:optional var startConstruction:Int;
 	@:optional var endConstruction:Int;
 	var iDClientBuilding:Int;
 }
 
 typedef EventSuccessMoveBuilding = {
-	@:optionnal var errorID:Int;
-	@:optionnal var oldX:Int;
-	@:optionnal var oldY:Int;
-	@:optionnal var oldRegionX:Int;
-	@:optionnal var oldRegionY:Int;
+	@:optional var errorID:Int;
+	@:optional var oldX:Int;
+	@:optional var oldY:Int;
+	@:optional var oldRegionX:Int;
+	@:optional var oldRegionY:Int;
 	var iDClientBuilding:Int;
 }
 
-typedef EventSuccessSellBuilding ={
-	@:optionnal var errorID:Int;	
+typedef EventSuccessSellBuilding = {
+	@:optional var errorID:Int;
+}
+
+typedef EventSuccessUpgradeBuilding = {
+	@:optional var errorID:Int;
+	@:optional var startConstruction:Int;
+	@:optional var endConstruction:Int;
+	var iDClientBuilding:Int;
 }
 
 /**
@@ -114,7 +121,40 @@ class ServerManagerBuilding{
 	}
 	
 	public static function upgradeBuilding (pDescription:TileDescription):Void {
-		
+		trace("id:" + pDescription.id);
+		ServerManager.callPhpFile(onSuccessUpgradeBuilding, onErrorUpgradeBuilding, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.BUILDING_UPGRADE,
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	// todo : enlever tout les "building" ds les noms des fc
+	private static function onErrorUpgradeBuilding (pObject:Dynamic):Void { 
+		Debug.error("Error php on upgradeBuilding : " + pObject);
+	}
+	
+	private static function onSuccessUpgradeBuilding (pObject:Dynamic):Void {
+		if (pObject.charAt(0) == "{") {
+			var lEvent:EventSuccessUpgradeBuilding = Json.parse(pObject);
+			var lFieldError:Int;
+			
+			if (Reflect.hasField(lEvent, "errorID")) {
+				lFieldError = Reflect.field(lEvent, "errorID");
+				//if (lFieldError == ErrorManager.BUILDING_CANNOT_SELL_DONT_EXIST) // todo
+					// todo : synchronisation. // soit faire ajax pr synchro, soit dans callback ici
+				
+				ErrorManager.openPopin(lFieldError);
+			}
+			else
+				SynchroManager.syncTimeOfBuilding(lEvent);
+			
+		} 
+		else
+			Debug.error("Success php on sellBuilding but event format is invalid ! : " + pObject);
 	}
 	
 	public static function sellBuilding (pDescription:TileDescription):Void {

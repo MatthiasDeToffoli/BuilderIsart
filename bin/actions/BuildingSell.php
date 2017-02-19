@@ -22,7 +22,6 @@ class BuildingSell
 
     // from POST data
     const ID_CLIENT_BUILDING = "IDClientBuilding";
-    const ID_TYPE_BUILDING = "IDTypeBuilding";
     const REGION_X = "RegionX";
     const REGION_Y = "RegionY";
     const X = "X";

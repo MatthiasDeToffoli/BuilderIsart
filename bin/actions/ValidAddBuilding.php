@@ -9,6 +9,7 @@ namespace actions;
 
 include_once("utils/Utils.php");
 include_once("utils/Send.php");
+include_once("BuildingCommonCode.php");
 
 /**
  * Class ValidBuilding
@@ -17,56 +18,49 @@ include_once("utils/Send.php");
 class ValidAddBuilding
 {
     const TABLE_TYPE_BUILDING = "TypeBuilding";
-    const COLUMN_CONSTRUCTION_TIME = "ConstructionTime";
 
-    private static $config;
 
     public static function validate ($pInfo) {
-        static::$config = static::getConfigForBuilding($pInfo[AddBuilding::ID_TYPE_BUILDING]);
-        $pInfo = static::addDateTimes($pInfo);
+        $lConfig = static::getConfigForBuilding($pInfo[AddBuilding::ID_TYPE_BUILDING]);
+        $pInfo = BuildingCommonCode::addDateTimes($pInfo, $lConfig);
 
-        static::canBuild($pInfo); // exit if something wrong
+        static::canBuild($pInfo, $lConfig); // exit if something wrong
 
         Send::synchroniseBuildingTimer($pInfo);
         return $pInfo;
     }
 
-    private static function getConfigForBuilding ($pIdTypBuilding) {
-        // todo: opti -> récup que les champs nécessaire ?
+
+    public static function getConfigForBuilding ($pIdTypBuilding) {
         return Utils::getTableRowByID(static::TABLE_TYPE_BUILDING, $pIdTypBuilding);
     }
 
-    private static function addDateTimes ($pInfo) {
-        $date = new \DateTime();
-        $dateNow = $date->getTimestamp(); // seconds
-        $pInfo[AddBuilding::START_CONTRUCTION] = Utils::timeStampToDateTime($dateNow);
-        $pInfo[AddBuilding::END_CONTRUCTION] = Utils::timeStampToDateTime(static::getEndConstruction($dateNow));
-        return $pInfo;
-    }
 
-    private static function getEndConstruction ($pStartConstruction) {
-        return Utils::timeToTimeStamp(static::$config[static::COLUMN_CONSTRUCTION_TIME]) + $pStartConstruction;
-    }
-
-    private static function canBuild ($pInfo) {
-        if (static::isOutsideRegion($pInfo) || static::hasCollision($pInfo) || static::cannotBuy($pInfo)) {
-            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_COLLISION); // todo :temp
+    private static function canBuild ($pInfo, $pConfig) {
+        if (static::isOutsideRegion($pInfo, $pConfig) ||
+            static::hasCollision($pInfo, $pConfig) ||
+            static::cannotBuy($pInfo, $pConfig)) {
+            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_COLLISION); // todo : will be removed
         }
     }
 
-    private static function isOutsideRegion ($pInfo) {
+
+    private static function isOutsideRegion ($pInfo, $pConfig) {
         return false;
         //Send::refuseAddBuilding outside region
     }
 
-    private static function hasCollision ($pInfo) {
+
+    private static function hasCollision ($pInfo, $pConfig) {
         return false;
         //Send::refuseAddBuilding hasCollision
     }
 
-    private static function cannotBuy ($pInfo) {
+
+    private static function cannotBuy ($pInfo, $pConfig) {
         return false;
         //Send::refuseAddBuilding cannotBuy
     }
+
 
 }

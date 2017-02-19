@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
@@ -13,6 +14,8 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 /**
  * Class for the building'upgrade
  * @author Emeline Berenguier
+ * @author Victor Grenu
+ * @author Matthias DeTefolli
  */
 class VBuildingUpgrade extends VBuilding
 {
@@ -32,19 +35,27 @@ class VBuildingUpgrade extends VBuilding
 	
 	public function onClickUpgrade():Void{
 		desactivate();
-		trace(tileDesc.level);
+		
 		if (tileDesc.level < BuildingName.getMaxLevelByName(tileDesc.buildingName)){
 			tileDesc.level++;
 		}
 		
 		var tTime:Float = Date.now().getTime();
-		tileDesc.timeDesc = { refTile:tileDesc.id,  end: tTime + tTime + Date.fromString(GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).constructionTime).getTime(), progress: 0, creationDate: tTime };
+		tileDesc.timeDesc = { 
+			refTile:tileDesc.id,
+			// todo : tTime + tTime seem very suspicious !
+			end: tTime + tTime + Date.fromString(GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).constructionTime).getTime(),
+			progress: 0,
+			creationDate: tTime 
+		};
 		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
 		
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
 		
-		updateResources();		
+		ServerManagerBuilding.upgradeBuilding(tileDesc);
+		
+		updateResources();
 		
 		activate();
 		

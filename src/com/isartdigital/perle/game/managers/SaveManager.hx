@@ -18,8 +18,8 @@ enum Alignment {neutral; hell; heaven; }
 
 
 typedef TileDescription = {
-	var buildingName:String; // sûr ? pose problème si on change l'assetName non ?
-	var id:Int;
+	var buildingName:String;
+	var id:Int; // this is NOT a database id.
 	var regionX:Int;
 	var regionY:Int;
 	var mapX:Int;

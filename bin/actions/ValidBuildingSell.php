@@ -30,7 +30,7 @@ class ValidBuildingSell
         return Utils::getTable(
             static::TABLE_BUILDING,
             BuildingSell::getSQLSetWherePos($pInfo)
-        );
+        )[0];
     }
 
 }
