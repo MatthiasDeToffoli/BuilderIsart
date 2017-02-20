@@ -42,7 +42,7 @@ class DialogueManager
 	private static var firstBatPoint:Point;
 	private static var purgatoryPoint:Point;
 	private static var heavenCenter:Point;
-	private static var steps:Array<FTUEStep>;
+	public static var steps:Array<FTUEStep>;
 	private static var finger:FingerAnim;
 	
 	public static var closeDialoguePoppin:Bool = false;
@@ -81,6 +81,16 @@ class DialogueManager
 	private static var numberOfGolds:Int = 5;
 	private static var numberOfGoldsCreated:Int = 0;
 	
+	//Var for Other Stories
+	private static inline var DIALOGUE_11_SOULS:Int = 21;
+	private static inline var EXPRESSION_11_SOULS:String = "_Neutral";
+	private static inline var DIALOGUE_20_SOULS:Int = 17;
+	private static inline var EXPRESSION_20_SOULS:String = "_Angry";
+	private static inline var EXPRESSION_20_SOULS2:String = "_Neutral";
+	private static inline var DIALOGUE_02_SOULS:Int = 19;
+	private static inline var EXPRESSION_02_SOULS:String = "_Happy";
+	private static inline var DIALOGUE_AFTER_STORIE:Int = 19;
+	public static var counterForFtueHeaven:Int = 0;
 	
 	/**
 	 * Init Ftue
@@ -149,6 +159,9 @@ class DialogueManager
 		if (lSave != null) 
 			if (steps[lSave].ifAlreadylevel2) 
 				dialogueSaved++;
+				
+			else if (steps[lSave].isInPurgatory)
+				dialogueSaved = DIALOGUE_AFTER_STORIE;
 			
 		nextStep();
 	}
@@ -186,7 +199,7 @@ class DialogueManager
 				//closeFtueLock();	
 			}
 		}
-		DialoguePoppin.getInstance().createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction);
+		DialoguePoppin.getInstance().createText(pNumber,pNpc,steps[dialogueSaved].npcWhoTalkPicture, steps[dialogueSaved].expression, steps[dialogueSaved].isAction, dialogueSaved);
 	}
 	
 	/**
@@ -216,6 +229,8 @@ class DialogueManager
 		if (dialogueSaved >= steps.length) return;
 		if (steps[dialogueSaved] == null) return;
 		
+		if(steps[dialogueSaved].otherStorieDialogue)
+			checkForOtherStories();
 		//DeltaDNA
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
 		
@@ -356,17 +371,17 @@ class DialogueManager
 		}
 			
 		if (steps[dialogueSaved].hellEXP != null) {
-			ResourcesManager.gainResources(GeneratorType.badXp, steps[dialogueSaved].hellEXP);	
-			Hud.getInstance().hellXPBar.alpha = 1;
-			FocusManager.getInstance().setFocus(Hud.getInstance().hellXPBar);
+			Timer.delay(giveHellExp, 200);
 		}
 			
 		if (steps[dialogueSaved].heavenEXP != null) {
-			/*Hud.getInstance().heavenXPBar.alpha = 1;
+			ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);	
+			Hud.getInstance().heavenXPBar.alpha = 1;
 			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);
-			Hud.getInstance().hellXPBar.alpha = 1;
-			FocusManager.getInstance().setFocus(Hud.getInstance().hellXPBar);*/
-			Timer.delay(giveHeavenExp, 200);
+		}
+		if (steps[dialogueSaved].hidHud) {
+			Hud.isHide = false;
+			Hud.getInstance().hide();
 		}
 			
 		if (steps[dialogueSaved].shouldBlockHud)
@@ -375,7 +390,7 @@ class DialogueManager
 			ftueStepBlocBuildings = true;
 		else if (steps[dialogueSaved].doNotBockInterns)
 			ftueStepBlocInterns = true;
-			
+		
 		/*if (steps[dialogueSaved].stress) {
 			trace("te");
 			//FocusManager.getInstance().setFocus(Choice.getInstance().stress);
@@ -400,13 +415,13 @@ class DialogueManager
 				closeDialoguePoppin = false;
 			}
 			else {
-				closeDialoguePoppin = true;
-				removeDialogue();
+				//closeDialoguePoppin = true;
+				DialoguePoppin.getInstance().setAllFalse();
 			}
 		}
 		else {
-			closeDialoguePoppin = true;
-			removeDialogue();
+			//closeDialoguePoppin = true;
+			DialoguePoppin.getInstance().setAllFalse();
 		}
 			
 		endOfStep(doNotNextStep);
@@ -460,9 +475,14 @@ class DialogueManager
 		
 		if (steps[dialogueSaved - 1].endOfFtue || steps[dialogueSaved - 1].endOfAltar || steps[dialogueSaved - 1].endOfCollectors || steps[dialogueSaved - 1].endOfFactory || steps[dialogueSaved - 1].endOfMarketing || steps[dialogueSaved - 1].endOfSpecial) {
 			Hud.getInstance().alpha = 1;
+			Hud.isHide = true;
+			Hud.getInstance().show();
 			removeDialogue();
 			return;
 		}
+		
+		if (steps[dialogueSaved-1].endOfOtherStories)
+			dialogueSaved = DIALOGUE_AFTER_STORIE;
 		
 		//IconsFtue.setAllFalse();
 		nextStep();
@@ -533,8 +553,8 @@ class DialogueManager
 	/**
 	 * Give EXP during FTUE
 	 */
-	private static function giveHeavenExp() {
-		ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);
+	private static function giveHellExp() {
+		ResourcesManager.gainResources(GeneratorType.badXp, steps[dialogueSaved].hellEXP);
 	}
 	
 	/**
@@ -584,6 +604,42 @@ class DialogueManager
 			UIManager.getInstance().closeFTUEInFtue();
 		else if(steps[dialogueSaved].actionContainer) 
 			UIManager.getInstance().closeFTUEInAction();
+	}
+	
+	private static function checkForOtherStories():Void {
+		var lDialogue:Int = 0;
+		var lExpression:String = "null";
+		var lExpression2:String = "null";
+	
+		switch(counterForFtueHeaven) {
+			case 0: {
+				lDialogue = DIALOGUE_02_SOULS;
+				lExpression = EXPRESSION_02_SOULS;
+			}
+			case 1: {
+				lDialogue = DIALOGUE_11_SOULS;
+				lExpression = EXPRESSION_11_SOULS;
+			}
+			case 2: {
+				lDialogue = DIALOGUE_20_SOULS;
+				lExpression = EXPRESSION_20_SOULS;	
+				lExpression2 = EXPRESSION_20_SOULS2;	
+			}
+		}
+		
+		steps[dialogueSaved].dialogueNumber = lDialogue;
+		steps[dialogueSaved+1].dialogueNumber = lDialogue+1;
+		steps[dialogueSaved].expression = lExpression;
+		steps[dialogueSaved + 1].expression = lExpression;
+		
+		if(lExpression2 !="null")
+			steps[dialogueSaved+1].expression = lExpression2;
+		
+		counterForFtueHeaven = 0;
+	}
+	
+	private static function setAfterStories() {
+		
 	}
 	
 	/**

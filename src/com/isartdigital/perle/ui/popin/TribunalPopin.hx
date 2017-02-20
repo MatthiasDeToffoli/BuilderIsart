@@ -35,7 +35,10 @@ class TribunalPopin extends SmartPopinExtended
 	 * instance unique de la classe TribunalPopin
 	 */
 	private static var instance: TribunalPopin;
+	//FTUE
 	private static var counterForFtue:Int = 0;
+	
+	//Tribunal
 	private var btnClose:SmartButton;
 	//private var btnShop:SmartButton;
 	//private var btnIntern:SmartButton;
@@ -69,7 +72,8 @@ class TribunalPopin extends SmartPopinExtended
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
 	private function new(pID:String=null) 
-	{
+		Hud.isHide = false;
+		Hud.getInstance().hide();
 		super(AssetName.PURGATORY_POPIN);
 		canMoovCard = false;
 		name = componentName;
@@ -244,6 +248,7 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function onHeaven() {
 		if (DialogueManager.ftueStepSlideCard) {
+			DialogueManager.counterForFtueHeaven ++;
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}
@@ -255,11 +260,19 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onHell() {
+<<<<<<< 1915aab1d5265eb9c634a8798f8baf315ed07b4f
 		if (DialogueManager.ftueStepSlideCard)
 			return;
 		if (!ResourcesManager.judgePopulation(Alignment.hell)) return;
 		
 		SoundManager.getSound("SOUND_CHOICE_HELL").play();
+=======
+		if (DialogueManager.ftueStepSlideCard) {
+			if (counterForFtue++ >= 1)
+			DialogueManager.endOfaDialogue(null, true);
+		}
+		if(!ResourcesManager.judgePopulation(Alignment.hell)) return;
+>>>>>>> added new FTUE
 		changeSoulTextInfo();
 		changeSoulText();
 		

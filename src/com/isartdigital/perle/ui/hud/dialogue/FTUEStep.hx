@@ -70,6 +70,8 @@ typedef FTUEStep = {
 	@optional var shouldBlockHud:Bool;
 	@optional var doNotBockBuildings:Bool;
 	@optional var doNotBockInterns:Bool;
+	@optional var isInPurgatory:Bool;
+	@optional var hidHud:Bool;
 	
 	//Juicy
 	@optional var putCenterRegionHeaven:Bool;
@@ -77,4 +79,7 @@ typedef FTUEStep = {
 	@optional var stress:Bool;
 	@optional var efficiency:Bool;
 	@optional var speed:Bool;
+	@optional var otherStorieDialogue:Bool;
+	@optional var otherStorieExpression:Bool;
+	@optional var endOfOtherStories:Bool;
 }

@@ -71,6 +71,16 @@ class SmartPopinExtended extends SmartPopin{
 		TweenManager.scaleGrow(this);
 	}
 	
+	/*override public function close():Void 
+	{
+		TweenManager.scaleReduce(this,closeAfterTween);
+		
+	}
+	
+	private function closeAfterTween():Void {
+		super.close();
+	}*/
+	
 	// todo : héritage : combiné => onClickExit && onClose, évité de répété Hud.show et Hud.hide
 	
 

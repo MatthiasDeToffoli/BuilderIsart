@@ -66,6 +66,8 @@ class ShopPopin extends SmartPopinExtended {
 	}	
 	
 	private function new() {
+		Hud.isHide = false;
+		Hud.getInstance().hide();
 		modal = false;
 		super(AssetName.POPIN_SHOP);
 		tabs = new Map<ShopTab, SmartComponent>();

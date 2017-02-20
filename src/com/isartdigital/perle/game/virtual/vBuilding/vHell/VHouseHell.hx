@@ -22,7 +22,7 @@ class VHouseHell extends VHouse
 	public function addForFtue():Void {
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
 		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
-		updatePopulation(myPopulation.max);
+		updatePopulation(3);
 	}
 	
 }

@@ -65,6 +65,15 @@ class TweenManager {
 		} );
 	}
 	
+	public static function scaleReduce (pDisplayObject:DisplayObject,?pCallBack:Void -> Void):Void {
+		TweenMax.to(pDisplayObject.scale, SCALE_GROW_DURATION, {
+			onComplete:pCallBack,
+			ease: untyped Back.easeOut.config(SCALE_GROW_BACK_PARAM_1),
+			x:SCALE_GROW_START_SCALE,
+			y:SCALE_GROW_START_SCALE
+		} );
+	}
+	
 	/**
 	 * Start from a lower pos then put pos to 0:0 of the object
 	 */
