@@ -1,4 +1,6 @@
 package com.isartdigital.perle.game.iso;
+import pixi.core.display.Container;
+import pixi.core.graphics.Graphics;
 
 /**
  * Interface des objets à "z sorter"
@@ -6,22 +8,39 @@ package com.isartdigital.perle.game.iso;
  */
 interface IZSortable 
 {
+	/**
+	 * retourne la zone de hit de l'objet (sous forme d'un getter)
+	 */
+	//public var hitBox(get, null):Container;
+	public var isoBox:Graphics;
 	
-	// colonne minimum
+	/**
+	 * colonne minimum
+	 */ 
 	public var colMin:Int;
 	
-	// colonne maximum
+	/**
+	 * colonne maximum
+	 */ 
 	public var colMax:Int;
 	
-	// ligne minimum
+	/**
+	 * ligne minimum
+	 */ 
 	public var rowMin:Int;
 	
-	// ligne maximum
+	/**
+	 * ligne maximum
+	 */ 
 	public var rowMax:Int;
 	
-	// tableau des élements placés derrière
+	/**
+	 * tableau des élements placés derrière
+	 */ 
 	public var behind:Array<IZSortable>;
 	
-	// tableau des éléments placés devant
+	/**
+	 * tableau des éléments placés devant
+	 */ 
 	public var inFront:Array<IZSortable>;
 }

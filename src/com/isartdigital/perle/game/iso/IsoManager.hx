@@ -1,14 +1,15 @@
 package com.isartdigital.perle.game.iso;
+
 import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.game.BoxType;
 import com.isartdigital.utils.game.CollisionManager;
-import com.isartdigital.utils.game.StateGraphic;
+import js.Lib;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
 
 /**
  * Manager Iso
  * @author Mathieu Anthoine
+ * @version 0.3.0
  */
 class IsoManager
 {	
@@ -58,28 +59,18 @@ class IsoManager
 	 */
 	public static function isInFrontOf (pA:DisplayObject, pB:DisplayObject):DisplayObject {
 		
-		if ((Std.is(pA, StateGraphic) && untyped pA.boxType == BoxType.NONE) || (Std.is(pB, StateGraphic) && untyped pB.boxType == BoxType.NONE)) {
-			throw "IsoManager.isFrontOf :: la propriété boxType des StateGraphic ne doit pas être définie à NONE";
-			return null;
-		}
-		
-		if (untyped pA.isoBox != null && pB.isoBox != null) {	
-			if (untyped !CollisionManager.hitTestObject(pA.isoBox, pB.isoBox))
-				return null;
-		}
-		else if (!CollisionManager.hitTestObject(pA, pB))
-			return null;
-		
 		if (!Std.is(pA, IZSortable) || !Std.is(pB, IZSortable)) throw "Les objets passés en paramètre doivent implémenter IZSortable";
 		
 		var lA:IZSortable = cast (pA, IZSortable);
 		var lB:IZSortable = cast (pB, IZSortable);
 		
-		if (lA.rowMax <= lB.rowMin) return pB; 
-		else if (lB.rowMax <= lA.rowMin) return pA;
+		if (!CollisionManager.hitTestObject(lA.isoBox, lB.isoBox)) return null;
 		
-		if (lA.colMax <= lB.colMin) return pB; 
-		else if (lB.colMax <= lA.colMin) return pA;
+		if (lA.rowMax < lB.rowMin) return pB; 
+		else if (lB.rowMax < lA.rowMin) return pA;
+		
+		if (lA.colMax < lB.colMin) return pB; 
+		else if (lB.colMax < lA.colMin) return pA;
 		
 		return null;
 	}
@@ -120,7 +111,7 @@ class IsoManager
 					}
 				}
 			}
-		}
+		}	
 		
 		var lToDraw:Array<IZSortable> = [];
 
@@ -133,8 +124,9 @@ class IsoManager
 		var lFrontTile:IZSortable;
 		
 		while (lToDraw.length > 0) {
+
 			lTile = lToDraw.pop();
-			lTilesDrawn.push(cast(lTile,DisplayObject));
+			lTilesDrawn.push(cast(lTile, DisplayObject));
 			
 			for (j in 0...lTile.inFront.length) {
 				lFrontTile = lTile.inFront[j];
@@ -144,8 +136,11 @@ class IsoManager
 		}
 		
 		if (pTiles.length != lTilesDrawn.length)
-			Debug.error("Probable error whit colMax/colMin/rowMax/rowMin assignment ! " + "entering container length : " + pTiles.length + " . returning container length : " + lTilesDrawn.length);
-			
+			Debug.error("Probable error whit colMax/colMin/rowMax/rowMin assignment ! " + "entering container length : " + pTiles.length + " . returning container length : " + lTilesDrawn.length);	
+		
+		if (lTilesDrawn.length < pTiles.length) Lib.debug();
+		
+		
 		return lTilesDrawn;
 	};
 	

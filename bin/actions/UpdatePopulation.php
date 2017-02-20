@@ -1,5 +1,5 @@
 <?php
-use actions\Utils as Utils;
+use actions\utils\Utils as Utils;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\BuildingUtils as BuildingUtils;
 
