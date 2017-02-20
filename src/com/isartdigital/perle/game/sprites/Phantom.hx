@@ -16,10 +16,12 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDeco;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -371,6 +373,10 @@ class Phantom extends Building {
 				DialogueManager.endOfaDialogue();
 			else
 				BuyManager.buy(buildingName);
+			
+			if(HudMissionButton.getMissionOn())
+				if(ShopCarousselDeco.isInArray(vBuilding.tileDesc.buildingName))
+					HudMissionButton.addDecoCreated();
 			
 			ValueChangeManager.addTextLost(vBuilding.graphic.position.clone(), vBuilding.alignementBuilding,buildingName);
 			//vBuilding.addExp();

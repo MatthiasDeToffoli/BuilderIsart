@@ -23,6 +23,13 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 		BuildingName.HELL_DECO_LAVA_SOURCE,
 	];
 	
+	public static function isInArray(pAssetName:String):Bool {
+		for (i in 0...NAME_LIST.length)
+			if (pAssetName == NAME_LIST[i])
+				return true;
+		return false;
+	}
+	
 	public function new() {
 		super();
 	}

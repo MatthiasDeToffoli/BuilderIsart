@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
@@ -129,6 +130,7 @@ typedef Save = {
 	var resourcesData:ResourcesGeneratorDescription;
 	var ftueProgress:Int;
 	var idPackBundleBuyed:Array<Int>;
+	var missionDecoration:Int;
 	// add what you want to save.
 }
 
@@ -191,7 +193,8 @@ class SaveManager {
 			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
 			version: SAVE_VERSION,
 			ftueProgress : DialogueManager.dialogueSaved,
-			idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
+			idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
+			missionDecoration: HudMissionButton.numberOfDecorationCreated
 		};
 		setLocalStorage(currentSave);
 	}
@@ -448,6 +451,7 @@ class SaveManager {
 			TimeManager.startTimeLoop();
 			Hud.getInstance().initGaugesWithSave();
 			DialogueManager.dialogueSaved = currentSave.ftueProgress;
+			HudMissionButton.numberOfDecorationCreated = currentSave.missionDecoration;
 		}
 		else
 			createWhitoutSave();

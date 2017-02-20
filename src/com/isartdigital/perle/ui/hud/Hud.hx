@@ -78,8 +78,10 @@ class Hud extends SmartScreen
 	
 	public var hellXPBar:SmartComponent;
 	public var heavenXPBar:SmartComponent;
-	public var hudGlowHeaven:UISprite;
-	public var hudGlowHell:UISprite;
+	public var lBarHeaven:UIMovie;
+	public var lBarHell:UIMovie;
+	
+	public var buttonMissionDeco:SmartButton;
 	
 	//private var btnResetData:SmartButton;
 	public var btnShop:SmartButton;
@@ -279,24 +281,30 @@ class Hud extends SmartScreen
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
 		btnOptions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_OPTIONS), SmartButton);
 		
-		
+		buttonMissionDeco = cast(SmartCheck.getChildByName(this, AssetName.HUD_MISSION_DECO), SmartButton);
 		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
 		
-		var lBarHeaven = cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie);
-		var lBarHell = cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie);
-		SmartCheck.traceChildrens(lBarHeaven);
-	//	hudGlowHell = cast(SmartCheck.getChildByName(lBarHell, AssetName.HUD_XP_GAUGE_GLOW), UISprite);
-		//hudGlowHeaven = cast(SmartCheck.getChildByName(lBarHeaven, AssetName.HUD_XP_GAUGE_GLOW), UISprite);
+		lBarHeaven = cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie);
+		lBarHell = cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie);
+		
+		
 		addListenersOnClick();
 		setGlowFalse();
 		eChangeBH.addListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
 	}
 	
-	public function setGlowFalse() {
-		/*hudGlowHell.visible = false;
-		hudGlowHeaven.visible = false;*/
+	public function setGlowFalse():Void{
+		var lGlowHell:Dynamic = lBarHell.children[0];
+		var lGlowHeaven:Dynamic = lBarHeaven.children[0];
+		SmartCheck.getChildByName(lGlowHell, "ftueGlow").visible = false;
+		SmartCheck.getChildByName(lGlowHeaven, "ftueGlow").visible = false;
+	}
+	
+	public function setGlowTrue(pBar:UIMovie):Void {
+		var lGlow:Dynamic = pBar.children[0];
+		SmartCheck.getChildByName(lGlow, "ftueGlow").visible = true;
 	}
 	
 	private function addListenersOnClick() {
@@ -306,6 +314,7 @@ class Hud extends SmartScreen
 			btnInterns.interactive = false;
 			btnOptions.interactive = false;
 			btnPurgatory.interactive = false;
+			buttonMissionDeco.interactive = false;
 			return;
 		}
 		else {
@@ -313,6 +322,7 @@ class Hud extends SmartScreen
 			btnInterns.interactive = true;
 			btnOptions.interactive = true;
 			btnPurgatory.interactive = true;	
+			buttonMissionDeco.interactive = true;	
 		}
 		
 		//Interactive.addListenerClick(btnResetData, onClickResetData);
@@ -320,6 +330,7 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnPurgatory, onClickTribunal);
 		Interactive.addListenerClick(btnInterns, onClickListIntern);
 		Interactive.addListenerClick(btnOptions, onClickOptions); // todo 
+		Interactive.addListenerRewrite(buttonMissionDeco, rewriteBtn); // todo 
 		
 		var woodMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HELL);
 		var ironMc:Dynamic = SmartCheck.getChildByName(this, AssetName.HUD_COUNTER_MATERIAL_HEAVEN);
@@ -339,6 +350,10 @@ class Hud extends SmartScreen
 		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
 	}
 	
+	private function rewriteBtn():Void {
+		HudMissionButton.updateHud();
+	}
+	
 	private function registerForFTUE (pEvent:EventTarget):Void {
 		for (i in 0...children.length) {
 			if (Std.is(children[i],SmartButton)) DialogueManager.register(children[i],true);
@@ -346,7 +361,7 @@ class Hud extends SmartScreen
 		off(EventType.ADDED, registerForFTUE);
 	}
 	
-	public function initGauges():Void{
+	public function initGauges():Void {
 		cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie).goToAndStop(0);		
 		cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie).goToAndStop(0);	
 	}

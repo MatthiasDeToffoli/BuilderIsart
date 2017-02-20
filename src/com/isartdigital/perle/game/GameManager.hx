@@ -26,6 +26,7 @@ import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.CheatPanel;
+import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.contextual.HudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
@@ -101,6 +102,7 @@ class GameManager {
 		FootPrint.startClass();
 		ShopPopin.initSearch();
 		if(!DevelloperReconise.isDev())DialogueManager.createFtue();
+		HudMissionButton.initFromLoad();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);

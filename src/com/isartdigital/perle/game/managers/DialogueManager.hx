@@ -371,12 +371,12 @@ class DialogueManager
 		}
 			
 		if (steps[dialogueSaved].hellEXP != null) {
-			//Hud.getInstance().hudGlowHell.visible = true;
+			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHell);
 			Timer.delay(giveHellExp, 200);
 		}
 			
 		if (steps[dialogueSaved].heavenEXP != null) {
-			//Hud.getInstance().hudGlowHeaven.visible = true;
+			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHeaven);
 			ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);	
 			Hud.getInstance().heavenXPBar.alpha = 1;
 			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);

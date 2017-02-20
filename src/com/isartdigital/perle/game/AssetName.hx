@@ -439,6 +439,8 @@ class AssetName{
 	public static inline var HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER:String = "HUD_Xp_Bar_Heaven";
 	public static inline var HUD_XP_GAUGE_MASK_HELL_CONTAINER:String = "HUD_Xp_Bar_Hell";
 	public static inline var HUD_XP_GAUGE_GLOW:String = "ftueGlow";
+	public static inline var HUD_MISSION_DECO:String = "MissionIndicator";
+	public static inline var HUD_MISSION_DECO_TEXT:String = "_missionObjectiveCounter";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";

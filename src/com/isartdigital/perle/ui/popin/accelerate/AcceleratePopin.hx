@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.accelerate;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -62,6 +63,9 @@ class AcceleratePopin extends SmartPopinExtended
 	}
 	
 	private function onClose():Void {
+		if (DialogueManager.passFree)
+			return;
+		
 		UIManager.getInstance().closePopin(this);
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}

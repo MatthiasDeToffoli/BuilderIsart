@@ -52,6 +52,7 @@
 				"expression":"_Happy",
 				"actionContainer": true,
 				"gold":160,
+				"shouldBlockHud":true,
 				"checkpoint": true
 			},
             {
@@ -206,6 +207,7 @@
             {
 				"dialogueNumber":1,
 				"expression":"_Neutral",
+				"shouldBlockHud":true,
 				"isInPurgatory": true,
 				"actionContainer": true,
 				"name":"Window_NPC_ButtonNext",
@@ -237,6 +239,7 @@
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
+				"shouldBlockHud":true,
 				"expression":"_Neutral",
 				"checkpoint": false
 			},
@@ -248,6 +251,7 @@
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
+				"shouldBlockHud":true,
 				"expression":"_Happy",
 				"checkpoint": false
 			},
@@ -257,6 +261,7 @@
 				"name":"Window_NPC_ButtonNext",
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Demona",
+				"shouldBlockHud":true,
 				"npcWhoTalkPicture":"right",
 				"expression":"_Happy",
                 "endOfFtue":true,
