@@ -1,147 +1,18 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "ui_base",
-       "origin": [
-        168.1,
-        127.7
-       ],
-       "rect": [
-        1,
-        1,
-        337,
-        256
-       ]
-      },
-      {
-       "symbol": "main_front",
-       "origin": [
-        35.5,
-        34.6
-       ],
-       "rect": [
-        340,
-        1,
-        71,
-        70
-       ]
-      },
-      {
-       "symbol": "main_back",
-       "origin": [
-        39.85,
-        38.6
-       ],
-       "rect": [
-        413,
-        1,
-        64,
-        73
-       ]
-      },
-      {
-       "symbol": "firework1",
-       "origin": [
-        5.2,
-        5.2
-       ],
-       "rect": [
-        479,
-        1,
-        11,
-        11
-       ]
-      },
-      {
-       "symbol": "firework3",
-       "origin": [
-        5.2,
-        5.2
-       ],
-       "rect": [
-        492,
-        1,
-        11,
-        11
-       ]
-      },
-      {
-       "symbol": "firework2",
-       "origin": [
-        5.2,
-        5.2
-       ],
-       "rect": [
-        479,
-        14,
-        11,
-        11
-       ]
-      },
-      {
-       "symbol": "firework4",
-       "origin": [
-        5.2,
-        5.2
-       ],
-       "rect": [
-        492,
-        14,
-        11,
-        11
-       ]
-      },
-      {
-       "symbol": "firework5",
-       "origin": [
-        5.2,
-        5.2
-       ],
-       "rect": [
-        479,
-        27,
-        11,
-        11
-       ]
-      },
-      {
-       "symbol": "fx_clap",
-       "origin": [
-        4.45,
-        4.45
-       ],
-       "rect": [
-        492,
-        27,
-        9,
-        9
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
+   "id": "Ui_anim_main",
    "layers": [
     {
      "keyframes": [
       {
-       "tweened": false,
        "loc": [
         -130.875,
         -16.5375
        ],
-       "index": 0,
        "ref": "fx_master_fireworks",
+       "index": 0,
+       "tweened": false,
        "duration": 55
       }
      ],
@@ -163,8 +34,8 @@
         -157.0125,
         19.2375
        ],
-       "index": 7,
        "ref": "fx_master_fireworks",
+       "index": 7,
        "duration": 56
       }
      ],
@@ -186,8 +57,8 @@
         -157.0125,
         54.3375
        ],
-       "index": 15,
        "ref": "fx_master_fireworks",
+       "index": 15,
        "duration": 56
       }
      ],
@@ -205,8 +76,8 @@
         130.6125,
         -16.5375
        ],
-       "index": 0,
        "ref": "fx_master_fireworks",
+       "index": 0,
        "duration": 55
       }
      ],
@@ -228,8 +99,8 @@
         156.75,
         19.2375
        ],
-       "index": 7,
        "ref": "fx_master_fireworks",
+       "index": 7,
        "duration": 55
       }
      ],
@@ -251,8 +122,8 @@
         156.75,
         54.3375
        ],
-       "index": 15,
        "ref": "fx_master_fireworks",
+       "index": 15,
        "duration": 56
       }
      ],
@@ -261,7 +132,6 @@
     {
      "keyframes": [
       {
-       "duration": 100,
        "pivot": [
         168.075,
         127.725
@@ -270,9 +140,10 @@
         0,
         3.75
        ],
-       "index": 0,
        "ref": "ui_base",
-       "tweened": false
+       "index": 0,
+       "tweened": false,
+       "duration": 100
       }
      ],
      "name": "aaa.png"
@@ -280,55 +151,55 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "loc": [
         0.1125,
         -87.4875
        ],
-       "index": 0,
        "ref": "anim_main",
+       "index": 0,
+       "tweened": false,
        "duration": 100
       }
      ],
      "name": "a.png"
     }
-   ],
-   "id": "Ui_anim_main"
+   ]
   },
   {
+   "id": "anim_fx_clap",
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "fx_clap",
+       "index": 0,
        "pivot": [
         4.4625,
         4.4625
        ],
-       "index": 0,
-       "ref": "fx_clap",
        "duration": 7
       },
       {
-       "duration": 1,
-       "pivot": [
-        4.4625,
-        4.4625
-       ],
        "scale": [
         2.1147,
         2.1147
        ],
-       "index": 7,
+       "pivot": [
+        4.4625,
+        4.4625
+       ],
+       "duration": 1,
        "ref": "fx_clap",
+       "index": 7,
        "alpha": 0
       }
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "anim_fx_clap"
+   ]
   },
   {
+   "id": "anim_main",
    "layers": [
     {
      "keyframes": [
@@ -342,8 +213,8 @@
         -35.7375,
         23.925
        ],
-       "index": 0,
        "ref": "main_back",
+       "index": 0,
        "duration": 9
       },
       {
@@ -356,21 +227,21 @@
         -35.7375,
         15.825
        ],
-       "index": 9,
        "ref": "main_back",
+       "index": 9,
        "duration": 10
       },
       {
-       "pivot": [
-        8.475,
-        60.15
-       ],
        "loc": [
         -35.7375,
         23.925
        ],
-       "index": 19,
        "ref": "main_back",
+       "index": 19,
+       "pivot": [
+        8.475,
+        60.15
+       ],
        "duration": 1
       }
      ],
@@ -388,8 +259,8 @@
         0.525,
         -3.1875
        ],
-       "index": 0,
        "ref": "anim_fx_clap",
+       "index": 0,
        "duration": 8
       }
      ],
@@ -407,8 +278,8 @@
         31.425,
         17.475
        ],
-       "index": 0,
        "ref": "main_front",
+       "index": 0,
        "duration": 9
       },
       {
@@ -421,30 +292,30 @@
         31.425,
         25.95
        ],
-       "index": 9,
        "ref": "main_front",
+       "index": 9,
        "duration": 10
       },
       {
-       "pivot": [
-        63.225,
-        56.775
-       ],
        "loc": [
         31.425,
         17.475
        ],
-       "index": 19,
        "ref": "main_front",
+       "index": 19,
+       "pivot": [
+        63.225,
+        56.775
+       ],
        "duration": 1
       }
      ],
      "name": "a.png"
     }
-   ],
-   "id": "anim_main"
+   ]
   },
   {
+   "id": "fx_fireworks",
    "layers": [
     {
      "keyframes": [
@@ -462,8 +333,8 @@
         0.0375,
         0.7875
        ],
-       "index": 0,
        "ref": "firework5",
+       "index": 0,
        "duration": 3
       },
       {
@@ -483,8 +354,8 @@
         -1.575,
         -32.2875
        ],
-       "index": 3,
        "ref": "firework5",
+       "index": 3,
        "duration": 4
       },
       {
@@ -504,8 +375,8 @@
         -10.5,
         -76.4625
        ],
-       "index": 7,
        "ref": "firework5",
+       "index": 7,
        "duration": 4
       },
       {
@@ -525,8 +396,8 @@
         -32.175,
         -110.625
        ],
-       "index": 11,
        "ref": "firework5",
+       "index": 11,
        "duration": 3
       },
       {
@@ -546,12 +417,11 @@
         -49.9875,
         -126.525
        ],
-       "index": 14,
        "ref": "firework5",
+       "index": 14,
        "duration": 3
       },
       {
-       "alpha": 0.1797,
        "scale": [
         0.6968,
         0.6968
@@ -564,16 +434,16 @@
         18.4557,
         18.4557
        ],
+       "alpha": 0.1797,
        "loc": [
         -62.175,
         -135.375
        ],
-       "index": 17,
        "ref": "firework5",
+       "index": 17,
        "duration": 2
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -586,12 +456,13 @@
         18.8496,
         18.8496
        ],
+       "alpha": 0,
        "loc": [
         -65.0625,
         -137.25
        ],
-       "index": 19,
        "ref": "firework5",
+       "index": 19,
        "duration": 1
       }
      ],
@@ -604,7 +475,6 @@
        "duration": 3
       },
       {
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -621,8 +491,9 @@
         0.0375,
         0.7875
        ],
-       "index": 3,
        "ref": "firework4",
+       "index": 3,
+       "ease": -1,
        "duration": 4
       },
       {
@@ -642,8 +513,8 @@
         -4.3875,
         -43.0125
        ],
-       "index": 7,
        "ref": "firework4",
+       "index": 7,
        "duration": 4
       },
       {
@@ -663,8 +534,8 @@
         -16.4625,
         -84.7875
        ],
-       "index": 11,
        "ref": "firework4",
+       "index": 11,
        "duration": 3
       },
       {
@@ -684,8 +555,8 @@
         -33.9375,
         -108.1875
        ],
-       "index": 14,
        "ref": "firework4",
+       "index": 14,
        "duration": 3
       },
       {
@@ -705,12 +576,11 @@
         -51.7125,
         -123.6
        ],
-       "index": 17,
        "ref": "firework4",
+       "index": 17,
        "duration": 3
       },
       {
-       "alpha": 0.1797,
        "scale": [
         0.6968,
         0.6968
@@ -723,16 +593,16 @@
         18.4603,
         18.4603
        ],
+       "alpha": 0.1797,
        "loc": [
         -63.975,
         -132.1125
        ],
-       "index": 20,
        "ref": "firework4",
+       "index": 20,
        "duration": 2
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -745,12 +615,13 @@
         18.8551,
         18.8551
        ],
+       "alpha": 0,
        "loc": [
         -66.6375,
         -133.9125
        ],
-       "index": 22,
        "ref": "firework4",
+       "index": 22,
        "duration": 1
       }
      ],
@@ -763,7 +634,6 @@
        "duration": 7
       },
       {
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -780,8 +650,9 @@
         -0.15,
         0.75
        ],
-       "index": 7,
        "ref": "firework2",
+       "index": 7,
+       "ease": -1,
        "duration": 4
       },
       {
@@ -801,8 +672,8 @@
         1.05,
         -43.2
        ],
-       "index": 11,
        "ref": "firework2",
+       "index": 11,
        "duration": 3
       },
       {
@@ -822,8 +693,8 @@
         -2.625,
         -76.05
        ],
-       "index": 14,
        "ref": "firework2",
+       "index": 14,
        "duration": 3
       },
       {
@@ -843,8 +714,8 @@
         -14.475,
         -104.2125
        ],
-       "index": 17,
        "ref": "firework2",
+       "index": 17,
        "duration": 4
       },
       {
@@ -864,12 +735,11 @@
         -35.4,
         -129.2625
        ],
-       "index": 21,
        "ref": "firework2",
+       "index": 21,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -882,12 +752,13 @@
         18.9847,
         18.9847
        ],
+       "alpha": 0,
        "loc": [
         -48.8625,
         -141.4125
        ],
-       "index": 26,
        "ref": "firework2",
+       "index": 26,
        "duration": 1
       }
      ],
@@ -900,7 +771,6 @@
        "duration": 11
       },
       {
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -917,8 +787,9 @@
         -0.075,
         0.7875
        ],
-       "index": 11,
        "ref": "firework2",
+       "index": 11,
+       "ease": -1,
        "duration": 3
       },
       {
@@ -938,8 +809,8 @@
         -0.6375,
         -30.4125
        ],
-       "index": 14,
        "ref": "firework2",
+       "index": 14,
        "duration": 3
       },
       {
@@ -959,8 +830,8 @@
         -5.475,
         -62.325
        ],
-       "index": 17,
        "ref": "firework2",
+       "index": 17,
        "duration": 3
       },
       {
@@ -980,8 +851,8 @@
         -14.55,
         -91.05
        ],
-       "index": 20,
        "ref": "firework2",
+       "index": 20,
        "duration": 5
       },
       {
@@ -1001,12 +872,11 @@
         -40.425,
         -122.325
        ],
-       "index": 25,
        "ref": "firework2",
+       "index": 25,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -1019,12 +889,13 @@
         19.049,
         19.049
        ],
+       "alpha": 0,
        "loc": [
         -61.1625,
         -138.6375
        ],
-       "index": 30,
        "ref": "firework2",
+       "index": 30,
        "duration": 1
       }
      ],
@@ -1037,7 +908,6 @@
        "duration": 15
       },
       {
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -1054,8 +924,9 @@
         0,
         0.675
        ],
-       "index": 15,
        "ref": "firework1",
+       "index": 15,
+       "ease": -1,
        "duration": 5
       },
       {
@@ -1075,8 +946,8 @@
         4.6125,
         -52.05
        ],
-       "index": 20,
        "ref": "firework1",
+       "index": 20,
        "duration": 5
       },
       {
@@ -1096,8 +967,8 @@
         -4.0875,
         -101.025
        ],
-       "index": 25,
        "ref": "firework1",
+       "index": 25,
        "duration": 4
       },
       {
@@ -1117,12 +988,11 @@
         -21.1875,
         -127.125
        ],
-       "index": 29,
        "ref": "firework1",
+       "index": 29,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -1135,21 +1005,22 @@
         19.2013,
         19.2013
        ],
+       "alpha": 0,
        "loc": [
         -39.1875,
         -146.4
        ],
-       "index": 34,
        "ref": "firework1",
+       "index": 34,
        "duration": 1
       }
      ],
      "name": "Calque 10"
     }
-   ],
-   "id": "fx_fireworks"
+   ]
   },
   {
+   "id": "fx_fireworks2",
    "layers": [
     {
      "keyframes": [
@@ -1167,8 +1038,8 @@
         0.0375,
         0.7875
        ],
-       "index": 0,
        "ref": "firework1",
+       "index": 0,
        "duration": 3
       },
       {
@@ -1188,8 +1059,8 @@
         -1.575,
         -32.2875
        ],
-       "index": 3,
        "ref": "firework1",
+       "index": 3,
        "duration": 4
       },
       {
@@ -1209,8 +1080,8 @@
         -10.5,
         -76.4625
        ],
-       "index": 7,
        "ref": "firework1",
+       "index": 7,
        "duration": 4
       },
       {
@@ -1230,8 +1101,8 @@
         -32.175,
         -110.625
        ],
-       "index": 11,
        "ref": "firework1",
+       "index": 11,
        "duration": 3
       },
       {
@@ -1251,12 +1122,11 @@
         -49.9875,
         -126.525
        ],
-       "index": 14,
        "ref": "firework1",
+       "index": 14,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -1269,12 +1139,13 @@
         18.8496,
         18.8496
        ],
+       "alpha": 0,
        "loc": [
         -65.0625,
         -137.25
        ],
-       "index": 19,
        "ref": "firework1",
+       "index": 19,
        "duration": 1
       }
      ],
@@ -1287,7 +1158,6 @@
        "duration": 3
       },
       {
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1304,8 +1174,9 @@
         0,
         0.7875
        ],
-       "index": 3,
        "ref": "firework2",
+       "index": 3,
+       "ease": -1,
        "duration": 4
       },
       {
@@ -1325,8 +1196,8 @@
         -3.5625,
         -43.125
        ],
-       "index": 7,
        "ref": "firework2",
+       "index": 7,
        "duration": 4
       },
       {
@@ -1346,8 +1217,8 @@
         -14.775,
         -85.1625
        ],
-       "index": 11,
        "ref": "firework2",
+       "index": 11,
        "duration": 3
       },
       {
@@ -1367,8 +1238,8 @@
         -31.725,
         -108.9375
        ],
-       "index": 14,
        "ref": "firework2",
+       "index": 14,
        "duration": 3
       },
       {
@@ -1388,12 +1259,11 @@
         -49.2,
         -124.6125
        ],
-       "index": 17,
        "ref": "firework2",
+       "index": 17,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6979,
         0.6979
@@ -1406,12 +1276,13 @@
         18.8754,
         18.8754
        ],
+       "alpha": 0,
        "loc": [
         -63.9,
         -135.2625
        ],
-       "index": 22,
        "ref": "firework2",
+       "index": 22,
        "duration": 1
       }
      ],
@@ -1424,7 +1295,6 @@
        "duration": 7
       },
       {
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -1441,8 +1311,9 @@
         -0.1125,
         0.5625
        ],
-       "index": 7,
        "ref": "firework3",
+       "index": 7,
+       "ease": -1,
        "duration": 4
       },
       {
@@ -1462,8 +1333,8 @@
         2.7,
         -43.3875
        ],
-       "index": 11,
        "ref": "firework3",
+       "index": 11,
        "duration": 3
       },
       {
@@ -1483,8 +1354,8 @@
         0.1875,
         -76.3125
        ],
-       "index": 14,
        "ref": "firework3",
+       "index": 14,
        "duration": 4
       },
       {
@@ -1504,8 +1375,8 @@
         -15.75,
         -112.65
        ],
-       "index": 18,
        "ref": "firework3",
+       "index": 18,
        "duration": 3
       },
       {
@@ -1525,12 +1396,11 @@
         -30.7875,
         -130.6125
        ],
-       "index": 21,
        "ref": "firework3",
+       "index": 21,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -1543,12 +1413,13 @@
         19.0197,
         19.0197
        ],
+       "alpha": 0,
        "loc": [
         -43.8,
         -143.2125
        ],
-       "index": 26,
        "ref": "firework3",
+       "index": 26,
        "duration": 1
       }
      ],
@@ -1561,7 +1432,6 @@
        "duration": 11
       },
       {
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1578,8 +1448,9 @@
         -0.1875,
         0.9
        ],
-       "index": 11,
        "ref": "firework4",
+       "index": 11,
+       "ease": -1,
        "duration": 3
       },
       {
@@ -1599,8 +1470,8 @@
         5.5125,
         -29.7375
        ],
-       "index": 14,
        "ref": "firework4",
+       "index": 14,
        "duration": 5
       },
       {
@@ -1620,8 +1491,8 @@
         6.3,
         -82.3875
        ],
-       "index": 19,
        "ref": "firework4",
+       "index": 19,
        "duration": 6
       },
       {
@@ -1641,12 +1512,11 @@
         -15.0375,
         -127.8
        ],
-       "index": 25,
        "ref": "firework4",
+       "index": 25,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6979,
         0.6979
@@ -1659,12 +1529,13 @@
         19.2505,
         19.2505
        ],
+       "alpha": 0,
        "loc": [
         -32.1,
         -147.9375
        ],
-       "index": 30,
        "ref": "firework4",
+       "index": 30,
        "duration": 1
       }
      ],
@@ -1677,7 +1548,6 @@
        "duration": 15
       },
       {
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1694,8 +1564,9 @@
         -0.3375,
         0.5625
        ],
-       "index": 15,
        "ref": "firework5",
+       "index": 15,
+       "ease": -1,
        "duration": 4
       },
       {
@@ -1715,8 +1586,8 @@
         9.375,
         -40.4625
        ],
-       "index": 19,
        "ref": "firework5",
+       "index": 19,
        "duration": 4
       },
       {
@@ -1736,8 +1607,8 @@
         12.225,
         -82.0875
        ],
-       "index": 23,
        "ref": "firework5",
+       "index": 23,
        "duration": 6
       },
       {
@@ -1757,12 +1628,11 @@
         -5.7,
         -128.85
        ],
-       "index": 29,
        "ref": "firework5",
+       "index": 29,
        "duration": 5
       },
       {
-       "alpha": 0,
        "scale": [
         0.6978,
         0.6978
@@ -1775,32 +1645,33 @@
         19.3241,
         19.3241
        ],
+       "alpha": 0,
        "loc": [
         -21.1875,
         -150.1875
        ],
-       "index": 34,
        "ref": "firework5",
+       "index": 34,
        "duration": 1
       }
      ],
      "name": "Calque 10"
     }
-   ],
-   "id": "fx_fireworks2"
+   ]
   },
   {
+   "id": "fx_master_fireworks",
    "layers": [
     {
      "keyframes": [
       {
-       "tweened": false,
        "loc": [
         -0.4125,
         -1.3875
        ],
-       "index": 0,
        "ref": "fx_fireworks",
+       "index": 0,
+       "tweened": false,
        "duration": 35
       }
      ],
@@ -1822,8 +1693,8 @@
         2.475,
         -1.3875
        ],
-       "index": 3,
        "ref": "fx_fireworks2",
+       "index": 3,
        "duration": 36
       }
      ],
@@ -1845,8 +1716,8 @@
         1.95,
         -1.3875
        ],
-       "index": 7,
        "ref": "fx_fireworks",
+       "index": 7,
        "duration": 36
       }
      ],
@@ -1868,8 +1739,8 @@
         -2.3625,
         -1.275
        ],
-       "index": 11,
        "ref": "fx_fireworks2",
+       "index": 11,
        "duration": 36
       }
      ],
@@ -1891,8 +1762,8 @@
         1.95,
         -1.3875
        ],
-       "index": 15,
        "ref": "fx_fireworks",
+       "index": 15,
        "duration": 36
       }
      ],
@@ -1914,17 +1785,146 @@
         -2.3625,
         -1.275
        ],
-       "index": 19,
        "ref": "fx_fireworks2",
+       "index": 19,
        "duration": 36
       }
      ],
      "name": "Calque 14"
     }
-   ],
-   "id": "fx_master_fireworks"
+   ]
   }
  ],
- "md5": "93b5955cadf0ba1e9cf2106480eb6bf9",
- "frameRate": 24
+ "md5": "f7d7915efbc3e1e009b74269f5dc4879",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        337,
+        256
+       ],
+       "origin": [
+        168.1,
+        127.7
+       ],
+       "symbol": "ui_base"
+      },
+      {
+       "rect": [
+        340,
+        1,
+        71,
+        70
+       ],
+       "origin": [
+        35.5,
+        34.6
+       ],
+       "symbol": "main_front"
+      },
+      {
+       "rect": [
+        413,
+        1,
+        64,
+        73
+       ],
+       "origin": [
+        39.85,
+        38.6
+       ],
+       "symbol": "main_back"
+      },
+      {
+       "rect": [
+        479,
+        1,
+        11,
+        11
+       ],
+       "origin": [
+        5.2,
+        5.2
+       ],
+       "symbol": "firework1"
+      },
+      {
+       "rect": [
+        492,
+        1,
+        11,
+        11
+       ],
+       "origin": [
+        5.2,
+        5.2
+       ],
+       "symbol": "firework3"
+      },
+      {
+       "rect": [
+        479,
+        14,
+        11,
+        11
+       ],
+       "origin": [
+        5.2,
+        5.2
+       ],
+       "symbol": "firework2"
+      },
+      {
+       "rect": [
+        492,
+        14,
+        11,
+        11
+       ],
+       "origin": [
+        5.2,
+        5.2
+       ],
+       "symbol": "firework4"
+      },
+      {
+       "rect": [
+        479,
+        27,
+        11,
+        11
+       ],
+       "origin": [
+        5.2,
+        5.2
+       ],
+       "symbol": "firework5"
+      },
+      {
+       "rect": [
+        492,
+        27,
+        9,
+        9
+       ],
+       "origin": [
+        4.45,
+        4.45
+       ],
+       "symbol": "fx_clap"
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ]
+  }
+ ]
 }

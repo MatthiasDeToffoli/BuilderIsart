@@ -1,26 +1,94 @@
 {
  "movies": [
   {
-   "id": "HellPropBones",
+   "id": "HellObstacleRock",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
+       "duration": 1,
+       "ref": "_hell_obstacle_rock",
+       "index": 0,
        "pivot": [
-        33.25,
-        24.5
+        46,
+        51.5
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellObstacleRock02",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        83.25,
+        63.75
+       ],
+       "loc": [
+        -19.675,
+        10.1
+       ],
+       "duration": 1,
+       "ref": "_hell_obstacle_rock02",
+       "index": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellObstacleTree",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        30.5,
+        49
        ],
        "loc": [
         0,
-        15.025
+        -15.8
        ],
-       "ref": "_hell_prop_bones",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
+       "duration": 1,
+       "ref": "_hell_obstacle_tree",
+       "index": 0
       }
-     ],
-     "name": "Layer 1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellPropBones",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        77.1,
+        64.75
+       ],
+       "loc": [
+        -0.625,
+        17.45
+       ],
+       "duration": 1,
+       "ref": "_hell_prop_bones",
+       "index": 0
+      }
+     ]
     }
    ]
   },
@@ -28,23 +96,23 @@
    "id": "HellPropBones02",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "pivot": [
-        34.5,
-        22.5
+        50.625,
+        54.125
        ],
        "loc": [
-        1.875,
-        21.875
+        6.925,
+        21.325
        ],
+       "duration": 1,
        "ref": "_hell_prop_bones02",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
+       "index": 0
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -52,23 +120,23 @@
    "id": "HellPropCrystal",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "pivot": [
-        30,
-        27.25
+        34,
+        33
        ],
        "loc": [
-        0.625,
-        -3.75
+        -0.625,
+        10.35
        ],
+       "duration": 1,
        "ref": "_hell_prop_crystal",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
+       "index": 0
       }
-     ],
-     "name": "Layer 1"
+     ]
     }
    ]
   },
@@ -76,23 +144,47 @@
    "id": "HellPropCrystal02",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "pivot": [
-        32.5,
-        34.25
+        73.45,
+        65.375
        ],
        "loc": [
-        1.875,
-        0.65
+        0,
+        24.5
        ],
+       "duration": 1,
        "ref": "_hell_prop_crystal02",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
+       "index": 0
       }
-     ],
-     "name": "Layer 1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellPropFountain",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        50,
+        60.25
+       ],
+       "loc": [
+        0,
+        11.05
+       ],
+       "duration": 1,
+       "ref": "_hell_prop_fountain",
+       "index": 0
+      }
+     ]
     }
    ]
   },
@@ -100,33 +192,80 @@
    "id": "HellPropLake",
    "layers": [
     {
+     "name": "Layer 1",
      "keyframes": [
       {
+       "tweened": false,
        "pivot": [
-        43.75,
-        25.75
+        79.925,
+        63.5
        ],
        "loc": [
         -0.625,
-        20.675
+        26.55
        ],
+       "duration": 1,
        "ref": "_hell_prop_lake",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
+       "index": 0
       }
-     ],
-     "name": "Layer 1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellPropTree",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        39.75,
+        52.75
+       ],
+       "loc": [
+        0,
+        -7.6
+       ],
+       "duration": 1,
+       "ref": "_hell_prop_tree",
+       "index": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HellPropTree02",
+   "layers": [
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        45.25,
+        60.75
+       ],
+       "loc": [
+        8.85,
+        -20.225
+       ],
+       "duration": 1,
+       "ref": "_hell_prop_tree02",
+       "index": 0
+      }
+     ]
     }
    ]
   }
  ],
- "md5": "395b06f8c0ce684458718f37ac078cea",
+ "md5": "e3a94b0e2bd4f475a795707d42c11f83",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
-   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
@@ -134,32 +273,149 @@
        "rect": [
         1,
         1,
-        88,
-        52
+        167,
+        128
        ],
        "origin": [
-        43.75,
-        25.75
+        83.25,
+        63.75
+       ],
+       "symbol": "_hell_obstacle_rock02"
+      },
+      {
+       "rect": [
+        170,
+        1,
+        161,
+        120
+       ],
+       "origin": [
+        79.9,
+        63.5
        ],
        "symbol": "_hell_prop_lake"
       },
       {
        "rect": [
-        91,
+        333,
         1,
-        65,
-        69
+        155,
+        120
        ],
        "origin": [
-        32.5,
-        34.25
+        77.1,
+        64.75
+       ],
+       "symbol": "_hell_prop_bones"
+      },
+      {
+       "rect": [
+        170,
+        123,
+        145,
+        125
+       ],
+       "origin": [
+        73.45,
+        65.4
        ],
        "symbol": "_hell_prop_crystal02"
       },
       {
        "rect": [
-        158,
         1,
+        131,
+        100,
+        121
+       ],
+       "origin": [
+        50,
+        60.25
+       ],
+       "symbol": "_hell_prop_fountain"
+      },
+      {
+       "rect": [
+        317,
+        123,
+        91,
+        122
+       ],
+       "origin": [
+        45.25,
+        60.75
+       ],
+       "symbol": "_hell_prop_tree02"
+      },
+      {
+       "rect": [
+        410,
+        123,
+        100,
+        100
+       ],
+       "origin": [
+        50.6,
+        54.1
+       ],
+       "symbol": "_hell_prop_bones02"
+      },
+      {
+       "rect": [
+        410,
+        225,
+        92,
+        103
+       ],
+       "origin": [
+        46,
+        51.5
+       ],
+       "symbol": "_hell_obstacle_rock"
+      },
+      {
+       "rect": [
+        317,
+        247,
+        80,
+        106
+       ],
+       "origin": [
+        39.75,
+        52.75
+       ],
+       "symbol": "_hell_prop_tree"
+      },
+      {
+       "rect": [
+        399,
+        330,
+        61,
+        98
+       ],
+       "origin": [
+        30.5,
+        49
+       ],
+       "symbol": "_hell_obstacle_tree"
+      },
+      {
+       "rect": [
+        1,
+        430,
+        68,
+        61
+       ],
+       "origin": [
+        34,
+        33
+       ],
+       "symbol": "_hell_prop_crystal"
+      },
+      {
+       "rect": [
+        1,
+        355,
         90,
         45
        ],
@@ -168,50 +424,12 @@
         0
        ],
        "symbol": "_ground"
-      },
-      {
-       "rect": [
-        1,
-        55,
-        60,
-        55
-       ],
-       "origin": [
-        30,
-        27.25
-       ],
-       "symbol": "_hell_prop_crystal"
-      },
-      {
-       "rect": [
-        158,
-        48,
-        67,
-        49
-       ],
-       "origin": [
-        33.25,
-        24.5
-       ],
-       "symbol": "_hell_prop_bones"
-      },
-      {
-       "rect": [
-        63,
-        72,
-        69,
-        45
-       ],
-       "origin": [
-        34.5,
-        22.5
-       ],
-       "symbol": "_hell_prop_bones02"
       }
      ],
      "file": "atlas0.png"
     }
-   ]
+   ],
+   "scaleFactor": 1
   }
  ]
 }

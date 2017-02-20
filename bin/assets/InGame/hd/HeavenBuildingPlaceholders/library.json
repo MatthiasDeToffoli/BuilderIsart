@@ -63,7 +63,7 @@
         -8.55,
         50.15
        ],
-       "ref": "Heaven_house_lvl1",
+       "ref": "~house_lvl1/Heaven_house_lvl1",
        "index": 0,
        "duration": 1
       }
@@ -461,98 +461,6 @@
       }
      ],
      "name": "Calque 1"
-    }
-   ]
-  },
-  {
-   "id": "Heaven_house_lvl1",
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        233,
-        133.5
-       ],
-       "loc": [
-        2.75,
-        53.25
-       ],
-       "ref": "heaven_house_lvl1_sol",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "sol"
-    },
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        183,
-        171.5
-       ],
-       "loc": [
-        2.65,
-        -10.5
-       ],
-       "ref": "heaven_house_lvl1_house",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "bat"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        147.95,
-        -20.35
-       ],
-       "ref": "anim_arbre",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "arbre"
-    },
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        216.5,
-        109
-       ],
-       "loc": [
-        -10.9,
-        62.1
-       ],
-       "ref": "heaven_house_lvl1_details",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "details"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -0.05,
-        -111.45
-       ],
-       "ref": "anim_orbe",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "orbe"
     }
    ]
   },
@@ -1341,6 +1249,21 @@
     {
      "keyframes": [
       {
+       "loc": [
+        -12.4,
+        -169.15
+       ],
+       "ref": "~house_lvl2/anim_Lwing",
+       "index": 0,
+       "tweened": false,
+       "duration": 120
+      }
+     ],
+     "name": "Calque 3"
+    },
+    {
+     "keyframes": [
+      {
        "pivot": [
         183,
         171.5
@@ -1432,7 +1355,7 @@
         -0.05,
         -111.45
        ],
-       "ref": "anim_orbe",
+       "ref": "~house_lvl1/anim_orbe",
        "index": 0,
        "tweened": false,
        "duration": 120
@@ -1454,6 +1377,21 @@
       }
      ],
      "name": "R_wing"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        90.55,
+        -135.6
+       ],
+       "ref": "anim_Rwing",
+       "index": 0,
+       "tweened": false,
+       "duration": 120
+      }
+     ],
+     "name": "Calque 2"
     },
     {
      "keyframes": [
@@ -2265,107 +2203,456 @@
     {
      "keyframes": [
       {
-       "loc": [
-        20.35,
-        65.85
-       ],
-       "ref": "L_backqing",
-       "index": 0,
        "pivot": [
-        91.45,
-        220.8
+        42.85,
+        65.7
        ],
-       "duration": 45
+       "ease": -1,
+       "loc": [
+        -28.25,
+        -6.9
+       ],
+       "ref": "Symb20",
+       "index": 0,
+       "duration": 18
       },
       {
        "pivot": [
-        91.45,
-        220.75
+        42.7,
+        65.65
        ],
        "skew": [
-        -0.9638,
-        -0.9638
+        -0.6299,
+        -0.6299
        ],
        "loc": [
-        20.329,
-        65.8438
+        -57.3261,
+        32.849
        ],
-       "ref": "L_backqing",
-       "index": 45,
-       "duration": 34
+       "ref": "Symb20",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
       },
       {
-       "loc": [
-        20.35,
-        65.85
+       "scale": [
+        0.9991,
+        0.9991
        ],
-       "ref": "L_backqing",
-       "index": 79,
        "pivot": [
-        91.45,
-        220.8
+        42.65,
+        65.65
        ],
+       "skew": [
+        -0.2674,
+        -0.2674
+       ],
+       "loc": [
+        -40.7734,
+        10.2045
+       ],
+       "ref": "Symb20",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        42.85,
+        65.7
+       ],
+       "loc": [
+        -28.25,
+        -6.9
+       ],
+       "ref": "Symb20",
+       "index": 64,
+       "tweened": false,
        "duration": 1
       }
      ],
-     "name": "Calque 2"
+     "name": "Symbole 20"
     },
     {
      "keyframes": [
       {
        "pivot": [
-        67.55,
-        162.45
+        19.6,
+        59.65
        ],
-       "skew": [
-        -0.0527,
-        -0.0527
-       ],
+       "ease": -1,
        "loc": [
-        30.0366,
-        77.4101
+        20.9,
+        -47.5
        ],
-       "ref": "heaven_house_lvl2_R_wing",
+       "ref": "Symb21",
        "index": 0,
-       "duration": 39
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        19.6,
+        59.35
+       ],
+       "skew": [
+        -0.8581,
+        -0.8581
+       ],
+       "loc": [
+        -59.2582,
+        -16.3122
+       ],
+       "ref": "Symb21",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9988,
+        0.9988
+       ],
+       "pivot": [
+        19.6,
+        59.35
+       ],
+       "skew": [
+        -0.3672,
+        -0.3672
+       ],
+       "loc": [
+        -13.5219,
+        -34.1913
+       ],
+       "ref": "Symb21",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
       },
       {
        "pivot": [
-        67.6,
-        162.45
-       ],
-       "skew": [
-        -1.1407,
-        -1.1407
+        19.6,
+        59.65
        ],
        "loc": [
-        30.0462,
-        77.338
+        20.9,
+        -47.5
        ],
-       "ref": "heaven_house_lvl2_R_wing",
-       "index": 39,
-       "duration": 30
-      },
-      {
-       "pivot": [
-        67.55,
-        162.45
-       ],
-       "skew": [
-        -0.0527,
-        -0.0527
-       ],
-       "loc": [
-        30.0366,
-        77.4101
-       ],
-       "ref": "heaven_house_lvl2_R_wing",
-       "index": 69,
+       "ref": "Symb21",
+       "index": 64,
        "tweened": false,
-       "duration": 11
+       "duration": 1
       }
      ],
-     "name": "Calque 1"
+     "name": "Symbole 21"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        10.4,
+        47.4
+       ],
+       "ease": -1,
+       "loc": [
+        -34.3,
+        -65.1
+       ],
+       "ref": "Symb22",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        10.3,
+        47.2
+       ],
+       "skew": [
+        -0.7549,
+        -0.7549
+       ],
+       "loc": [
+        -103.9454,
+        3.2948
+       ],
+       "ref": "Symb22",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9989,
+        0.9989
+       ],
+       "pivot": [
+        10.25,
+        47.15
+       ],
+       "skew": [
+        -0.3234,
+        -0.3234
+       ],
+       "loc": [
+        -64.2942,
+        -35.8703
+       ],
+       "ref": "Symb22",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        10.4,
+        47.4
+       ],
+       "loc": [
+        -34.3,
+        -65.1
+       ],
+       "ref": "Symb22",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 22"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        54.5,
+        50.55
+       ],
+       "ease": -1,
+       "loc": [
+        -16.6,
+        76.5
+       ],
+       "ref": "Symb19",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "pivot": [
+        54.45,
+        50.6
+       ],
+       "skew": [
+        -0.4994,
+        -0.4994
+       ],
+       "loc": [
+        -2.5195,
+        90.0943
+       ],
+       "ref": "Symb19",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9993,
+        0.9993
+       ],
+       "pivot": [
+        54.45,
+        50.65
+       ],
+       "skew": [
+        -0.214,
+        -0.214
+       ],
+       "loc": [
+        -10.5823,
+        82.4513
+       ],
+       "ref": "Symb19",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        54.5,
+        50.55
+       ],
+       "loc": [
+        -16.6,
+        76.5
+       ],
+       "ref": "Symb19",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 19"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        52.2,
+        74.95
+       ],
+       "ease": -1,
+       "loc": [
+        -14.35,
+        -3.6
+       ],
+       "ref": "Symb18",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        52.1,
+        74.9
+       ],
+       "skew": [
+        -0.6774,
+        -0.6774
+       ],
+       "loc": [
+        -45.6645,
+        30.5087
+       ],
+       "ref": "Symb18",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.999,
+        0.999
+       ],
+       "pivot": [
+        52.1,
+        74.85
+       ],
+       "skew": [
+        -0.2888,
+        -0.2888
+       ],
+       "loc": [
+        -27.8567,
+        11.005
+       ],
+       "ref": "Symb18",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        52.2,
+        74.95
+       ],
+       "loc": [
+        -14.35,
+        -3.6
+       ],
+       "ref": "Symb18",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 18"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        29.3,
+        111.9
+       ],
+       "ease": -1,
+       "loc": [
+        8.85,
+        -43.05
+       ],
+       "ref": "Symb17",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        29.3,
+        111.6
+       ],
+       "skew": [
+        -0.8149,
+        -0.8149
+       ],
+       "loc": [
+        -60.7075,
+        -7.1564
+       ],
+       "ref": "Symb17",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9989,
+        0.9989
+       ],
+       "pivot": [
+        29.25,
+        111.55
+       ],
+       "skew": [
+        -0.3495,
+        -0.3495
+       ],
+       "loc": [
+        -21.0764,
+        -27.765
+       ],
+       "ref": "Symb17",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        29.3,
+        111.9
+       ],
+       "loc": [
+        8.85,
+        -43.05
+       ],
+       "ref": "Symb17",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 17"
     }
    ]
   },
@@ -2375,134 +2662,374 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -40.55,
-        63.75
+       "pivot": [
+        0,
+        34.9
        ],
-       "ref": "heaven_house_lvl2_L_wing",
+       "ease": -1,
+       "loc": [
+        -4.8,
+        35.1
+       ],
+       "ref": "Symb3",
        "index": 0,
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "duration": 4
+       "duration": 18
       },
       {
        "scale": [
-        0.9987,
-        0.9987
+        1.0031,
+        1
        ],
        "pivot": [
-        42.45,
-        133.75
+        0.15,
+        34.95
        ],
        "skew": [
-        0.4373,
-        0.4373
+        0.3212,
+        0.4008
        ],
        "loc": [
-        -40.551,
-        63.7287
+        -3.2959,
+        46.02
        ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 4,
-       "duration": 30
+       "ref": "Symb3",
+       "index": 18,
+       "ease": 1,
+       "duration": 21
       },
       {
        "scale": [
-        0.9989,
-        0.9989
-       ],
-       "pivot": [
-        42.45,
-        133.8
-       ],
-       "skew": [
-        1.2257,
-        1.2257
-       ],
-       "loc": [
-        -40.5751,
-        63.7448
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 34,
-       "duration": 5
-      },
-      {
-       "pivot": [
-        42.45,
-        133.7
-       ],
-       "skew": [
-        1.2511,
-        1.2511
-       ],
-       "loc": [
-        -40.5666,
-        63.7274
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 39,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9988,
-        0.9988
-       ],
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "skew": [
-        1.1636,
-        1.1636
-       ],
-       "loc": [
-        -40.5566,
-        63.7811
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 44,
-       "duration": 20
-      },
-      {
-       "scale": [
-        0.9995,
+        1.0009,
         0.9995
        ],
        "pivot": [
-        42.45,
-        133.75
+        0.2,
+        34.95
        ],
        "skew": [
-        0.1146,
-        0.1146
+        0.158,
+        0.1975
        ],
        "loc": [
-        -40.5481,
-        63.7674
+        -3.9514,
+        40.5854
        ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 64,
-       "duration": 5
+       "ref": "Symb3",
+       "index": 39,
+       "ease": -1,
+       "duration": 25
       },
       {
        "loc": [
-        -40.55,
-        63.75
+        -4.8,
+        35.1
        ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 69,
+       "ref": "Symb3",
+       "index": 64,
        "pivot": [
-        42.45,
-        133.75
+        0,
+        34.9
        ],
        "duration": 1
       }
      ],
-     "name": "Calque 1"
+     "name": "Symbole 3"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        34.35,
+        78.15
+       ],
+       "ease": -1,
+       "loc": [
+        3.75,
+        8.15
+       ],
+       "ref": "Symb5",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "pivot": [
+        34.65,
+        78.25
+       ],
+       "skew": [
+        0.6113,
+        0.6113
+       ],
+       "loc": [
+        11.8178,
+        28.1123
+       ],
+       "ref": "Symb5",
+       "index": 18,
+       "ease": 1,
+       "duration": 21
+      },
+      {
+       "scale": [
+        0.999,
+        0.999
+       ],
+       "pivot": [
+        34.75,
+        78.25
+       ],
+       "skew": [
+        0.3058,
+        0.3058
+       ],
+       "loc": [
+        7.8726,
+        18.1968
+       ],
+       "ref": "Symb5",
+       "index": 39,
+       "ease": -1,
+       "duration": 25
+      },
+      {
+       "loc": [
+        3.75,
+        8.15
+       ],
+       "ref": "Symb5",
+       "index": 64,
+       "pivot": [
+        34.35,
+        78.15
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 5"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        31.7,
+        82.2
+       ],
+       "ease": -1,
+       "loc": [
+        -20.25,
+        12.2
+       ],
+       "ref": "Symb4",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        1.0079,
+        0.9923
+       ],
+       "pivot": [
+        31.85,
+        82.4
+       ],
+       "skew": [
+        0.5078,
+        0.5307
+       ],
+       "loc": [
+        -10.6751,
+        26.9447
+       ],
+       "ref": "Symb4",
+       "index": 18,
+       "ease": 1,
+       "duration": 21
+      },
+      {
+       "scale": [
+        1.0031,
+        0.9953
+       ],
+       "pivot": [
+        31.9,
+        82.45
+       ],
+       "skew": [
+        0.2535,
+        0.2629
+       ],
+       "loc": [
+        -15.3818,
+        19.6586
+       ],
+       "ref": "Symb4",
+       "index": 39,
+       "ease": -1,
+       "duration": 25
+      },
+      {
+       "loc": [
+        -20.25,
+        12.2
+       ],
+       "ref": "Symb4",
+       "index": 64,
+       "pivot": [
+        31.7,
+        82.2
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 4"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        19.35,
+        45.15
+       ],
+       "ease": -1,
+       "loc": [
+        -16.25,
+        27.25
+       ],
+       "ref": "Symb2",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        1.0049,
+        1
+       ],
+       "pivot": [
+        19.45,
+        45.2
+       ],
+       "skew": [
+        0.3212,
+        0.42
+       ],
+       "loc": [
+        -12.3243,
+        36.7557
+       ],
+       "ref": "Symb2",
+       "index": 18,
+       "ease": 1,
+       "duration": 21
+      },
+      {
+       "scale": [
+        1.0017,
+        0.9995
+       ],
+       "pivot": [
+        19.45,
+        45.25
+       ],
+       "skew": [
+        0.158,
+        0.2097
+       ],
+       "loc": [
+        -14.2612,
+        32.0679
+       ],
+       "ref": "Symb2",
+       "index": 39,
+       "ease": -1,
+       "duration": 25
+      },
+      {
+       "loc": [
+        -16.25,
+        27.25
+       ],
+       "ref": "Symb2",
+       "index": 64,
+       "pivot": [
+        19.35,
+        45.15
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 2"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        22.1,
+        24.25
+       ],
+       "ease": -1,
+       "loc": [
+        -38.85,
+        45.7
+       ],
+       "ref": "Symb1",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "pivot": [
+        22.1,
+        24.35
+       ],
+       "skew": [
+        0.2435,
+        0.2435
+       ],
+       "loc": [
+        -38.8223,
+        45.8091
+       ],
+       "ref": "Symb1",
+       "index": 18,
+       "ease": 1,
+       "duration": 21
+      },
+      {
+       "scale": [
+        0.9996,
+        0.9996
+       ],
+       "pivot": [
+        22.2,
+        24.35
+       ],
+       "skew": [
+        0.1188,
+        0.1188
+       ],
+       "loc": [
+        -38.8018,
+        45.799
+       ],
+       "ref": "Symb1",
+       "index": 39,
+       "ease": -1,
+       "duration": 25
+      },
+      {
+       "loc": [
+        -38.85,
+        45.7
+       ],
+       "ref": "Symb1",
+       "index": 64,
+       "pivot": [
+        22.1,
+        24.25
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 1"
     }
    ]
   },
@@ -2513,184 +3040,35 @@
      "keyframes": [
       {
        "pivot": [
-        -13.1,
-        185.35
+        51.5,
+        25.15
        ],
-       "skew": [
-        -0.0259,
-        -0.0259
-       ],
+       "ease": -1,
        "loc": [
-        -42.3011,
-        63.4839
+        21.85,
+        63.5
        ],
-       "ref": "rbackwing",
+       "ref": "Symb13",
        "index": 0,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9989,
-        0.9989
-       ],
-       "pivot": [
-        -13.15,
-        185.35
-       ],
-       "skew": [
-        0.3453,
-        0.3453
-       ],
-       "loc": [
-        -42.3586,
-        63.4621
-       ],
-       "ref": "rbackwing",
-       "index": 5,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9978,
-        0.9978
-       ],
-       "pivot": [
-        -13.2,
-        185.3
-       ],
-       "skew": [
-        0.529,
-        0.529
-       ],
-       "loc": [
-        -42.4205,
-        63.4571
-       ],
-       "ref": "rbackwing",
-       "index": 10,
-       "duration": 23
-      },
-      {
-       "scale": [
-        0.9965,
-        0.9965
-       ],
-       "pivot": [
-        -13.2,
-        185.25
-       ],
-       "skew": [
-        0.8746,
-        0.8746
-       ],
-       "loc": [
-        -42.3421,
-        63.5031
-       ],
-       "ref": "rbackwing",
-       "index": 33,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9982,
-        0.9982
-       ],
-       "pivot": [
-        -13.2,
-        185.3
-       ],
-       "skew": [
-        0.9186,
-        0.9186
-       ],
-       "loc": [
-        -42.3222,
-        63.5595
-       ],
-       "ref": "rbackwing",
-       "index": 38,
-       "duration": 5
+       "duration": 18
       },
       {
        "pivot": [
-        -13.1,
-        185.4
+        51.45,
+        25.2
        ],
        "skew": [
-        0.9555,
-        0.9555
+        0.1605,
+        0.1605
        ],
        "loc": [
-        -42.3823,
-        63.5433
+        18.1485,
+        71.3076
        ],
-       "ref": "rbackwing",
-       "index": 43,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9983,
-        0.9983
-       ],
-       "pivot": [
-        -13.1,
-        185.45
-       ],
-       "skew": [
-        0.893,
-        0.893
-       ],
-       "loc": [
-        -42.4571,
-        63.5026
-       ],
-       "ref": "rbackwing",
-       "index": 48,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9968,
-        0.9968
-       ],
-       "pivot": [
-        -13.05,
-        185.45
-       ],
-       "skew": [
-        0.8011,
-        0.8011
-       ],
-       "loc": [
-        -42.481,
-        63.5063
-       ],
-       "ref": "rbackwing",
-       "index": 53,
-       "duration": 16
-      },
-      {
-       "scale": [
-        0.9993,
-        0.9993
-       ],
-       "pivot": [
-        -13.1,
-        185.45
-       ],
-       "skew": [
-        0.1707,
-        0.1707
-       ],
-       "loc": [
-        -42.3518,
-        63.4839
-       ],
-       "ref": "rbackwing",
-       "index": 69,
-       "duration": 5
+       "ref": "Symb13",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
       },
       {
        "scale": [
@@ -2698,219 +3076,72 @@
         0.9998
        ],
        "pivot": [
-        -13.1,
-        185.4
+        51.4,
+        25.2
        ],
        "skew": [
-        -0.0527,
-        -0.0527
+        0.0663,
+        0.0663
        ],
        "loc": [
-        -42.2975,
-        63.4755
+        20.2624,
+        66.8456
        ],
-       "ref": "rbackwing",
-       "index": 74,
-       "duration": 5
+       "ref": "Symb13",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
       },
       {
        "pivot": [
-        -13.1,
-        185.35
-       ],
-       "skew": [
-        -0.1216,
-        -0.1216
+        51.5,
+        25.15
        ],
        "loc": [
-        -42.276,
-        63.504
+        21.85,
+        63.5
        ],
-       "ref": "rbackwing",
-       "index": 79,
+       "ref": "Symb13",
+       "index": 64,
+       "tweened": false,
        "duration": 1
       }
      ],
-     "name": "Calque 2"
+     "name": "Symbole 13"
     },
     {
      "keyframes": [
       {
-       "loc": [
-        -40.55,
-        63.75
+       "pivot": [
+        69.1,
+        34.85
        ],
-       "ref": "heaven_house_lvl2_L_wing",
+       "ease": -1,
+       "loc": [
+        60.15,
+        -4.85
+       ],
+       "ref": "Symb14",
        "index": 0,
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.9989,
-        0.9989
-       ],
-       "pivot": [
-        42.45,
-        133.8
-       ],
-       "skew": [
-        0.3587,
-        0.3587
-       ],
-       "loc": [
-        -40.5539,
-        63.7524
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 4,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9978,
-        0.9978
-       ],
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "skew": [
-        0.5775,
-        0.5775
-       ],
-       "loc": [
-        -40.5253,
-        63.7512
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 9,
-       "duration": 20
-      },
-      {
-       "scale": [
-        0.9968,
-        0.9968
-       ],
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "skew": [
-        0.9675,
-        0.9675
-       ],
-       "loc": [
-        -40.5092,
-        63.7205
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 29,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9984,
-        0.9984
-       ],
-       "pivot": [
-        42.45,
-        133.75
-       ],
-       "skew": [
-        1.007,
-        1.007
-       ],
-       "loc": [
-        -40.4815,
-        63.7457
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 34,
-       "duration": 5
+       "duration": 18
       },
       {
        "pivot": [
-        42.45,
-        133.7
+        69.25,
+        34.75
        ],
        "skew": [
-        1.0287,
-        1.0287
+        0.4523,
+        0.4523
        ],
        "loc": [
-        -40.5378,
-        63.7301
+        68.9499,
+        36.2172
        ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 39,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9984,
-        0.9984
-       ],
-       "pivot": [
-        42.5,
-        133.65
-       ],
-       "skew": [
-        0.9543,
-        0.9543
-       ],
-       "loc": [
-        -40.4813,
-        63.7031
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 44,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.997,
-        0.997
-       ],
-       "pivot": [
-        42.5,
-        133.65
-       ],
-       "skew": [
-        0.8362,
-        0.8362
-       ],
-       "loc": [
-        -40.4555,
-        63.6697
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 49,
-       "duration": 10
-      },
-      {
-       "scale": [
-        0.9973,
-        0.9973
-       ],
-       "pivot": [
-        42.5,
-        133.6
-       ],
-       "skew": [
-        0.3845,
-        0.3845
-       ],
-       "loc": [
-        -40.4312,
-        63.6955
-       ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 59,
-       "duration": 5
+       "ref": "Symb14",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
       },
       {
        "scale": [
@@ -2918,37 +3149,415 @@
         0.9993
        ],
        "pivot": [
-        42.5,
-        133.65
+        69.25,
+        34.65
        ],
        "skew": [
-        0.0961,
-        0.0961
+        0.1926,
+        0.1926
        ],
        "loc": [
-        -40.5413,
-        63.7293
+        63.9964,
+        12.8318
        ],
-       "ref": "heaven_house_lvl2_L_wing",
+       "ref": "Symb14",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        69.1,
+        34.85
+       ],
+       "loc": [
+        60.15,
+        -4.85
+       ],
+       "ref": "Symb14",
        "index": 64,
-       "duration": 5
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 14"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        76,
+        45.3
+       ],
+       "ease": -1,
+       "loc": [
+        48.6,
+        -48.55
+       ],
+       "ref": "Symb15",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        1.025,
+        0.976
+       ],
+       "pivot": [
+        76,
+        45.1
+       ],
+       "skew": [
+        0.5084,
+        0.5385
+       ],
+       "loc": [
+        79.1086,
+        1.6503
+       ],
+       "ref": "Symb15",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        1.0099,
+        0.989
+       ],
+       "pivot": [
+        76,
+        45.1
+       ],
+       "skew": [
+        0.215,
+        0.228
+       ],
+       "loc": [
+        61.6702,
+        -27.1016
+       ],
+       "ref": "Symb15",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        76,
+        45.3
+       ],
+       "loc": [
+        48.6,
+        -48.55
+       ],
+       "ref": "Symb15",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 15"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        42.45,
+        41.5
+       ],
+       "ease": -1,
+       "loc": [
+        26.95,
+        -53.85
+       ],
+       "ref": "Symb16",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        1.025,
+        0.976
+       ],
+       "pivot": [
+        42.45,
+        41.35
+       ],
+       "skew": [
+        0.5728,
+        0.6029
+       ],
+       "loc": [
+        64.3689,
+        -9.7348
+       ],
+       "ref": "Symb16",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        1.0098,
+        0.9889
+       ],
+       "pivot": [
+        42.45,
+        41.3
+       ],
+       "skew": [
+        0.2448,
+        0.2579
+       ],
+       "loc": [
+        42.9974,
+        -35.0422
+       ],
+       "ref": "Symb16",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
       },
       {
        "pivot": [
         42.45,
-        133.75
+        41.5
        ],
        "loc": [
-        -40.55,
-        63.75
+        26.95,
+        -53.85
        ],
-       "ref": "heaven_house_lvl2_L_wing",
-       "index": 69,
+       "ref": "Symb16",
+       "index": 64,
        "tweened": false,
-       "duration": 11
+       "duration": 1
       }
      ],
-     "name": "Calque 1"
+     "name": "Symbole 16"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        74.35,
+        73.55
+       ],
+       "ease": -1,
+       "loc": [
+        44.05,
+        -52.45
+       ],
+       "ref": "Symb10",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        1.025,
+        0.976
+       ],
+       "pivot": [
+        74.45,
+        73.25
+       ],
+       "skew": [
+        0.5474,
+        0.5776
+       ],
+       "loc": [
+        77.9079,
+        -0.086
+       ],
+       "ref": "Symb10",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        1.0099,
+        0.9889
+       ],
+       "pivot": [
+        74.45,
+        73.2
+       ],
+       "skew": [
+        0.2323,
+        0.2453
+       ],
+       "loc": [
+        58.6177,
+        -30.0695
+       ],
+       "ref": "Symb10",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        74.35,
+        73.55
+       ],
+       "loc": [
+        44.05,
+        -52.45
+       ],
+       "ref": "Symb10",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 10"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        76.3,
+        45.85
+       ],
+       "ease": -1,
+       "loc": [
+        50.5,
+        -21.3
+       ],
+       "ref": "Symb11",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "pivot": [
+        76.4,
+        45.7
+       ],
+       "skew": [
+        0.495,
+        0.495
+       ],
+       "loc": [
+        67.916,
+        20.6609
+       ],
+       "ref": "Symb11",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9993,
+        0.9993
+       ],
+       "pivot": [
+        76.3,
+        45.7
+       ],
+       "skew": [
+        0.2103,
+        0.2103
+       ],
+       "loc": [
+        57.9867,
+        -3.3227
+       ],
+       "ref": "Symb11",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        76.3,
+        45.85
+       ],
+       "loc": [
+        50.5,
+        -21.3
+       ],
+       "ref": "Symb11",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 11"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        73.9,
+        12.8
+       ],
+       "ease": -1,
+       "loc": [
+        43.8,
+        40.7
+       ],
+       "ref": "Symb12",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "pivot": [
+        73.9,
+        12.9
+       ],
+       "skew": [
+        0.3299,
+        0.3299
+       ],
+       "loc": [
+        38.7834,
+        63.2457
+       ],
+       "ref": "Symb12",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9995,
+        0.9995
+       ],
+       "pivot": [
+        73.9,
+        12.95
+       ],
+       "skew": [
+        0.1402,
+        0.1402
+       ],
+       "loc": [
+        41.7306,
+        50.4355
+       ],
+       "ref": "Symb12",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        73.9,
+        12.8
+       ],
+       "loc": [
+        43.8,
+        40.7
+       ],
+       "ref": "Symb12",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Symbole 12"
     }
    ]
   },
@@ -2958,180 +3567,66 @@
     {
      "keyframes": [
       {
-       "pivot": [
-        47.6,
-        139.9
-       ],
-       "skew": [
-        -0.069,
-        -0.069
-       ],
-       "loc": [
-        -5.8917,
-        51.3845
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 0,
-       "duration": 4
-      },
-      {
        "scale": [
-        0.9998,
-        0.9998
-       ],
-       "pivot": [
-        47.6,
-        139.95
-       ],
-       "skew": [
-        -0.066,
-        -0.066
-       ],
-       "loc": [
-        -5.8438,
-        51.4173
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 4,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9996,
-        0.9996
+        1,
+        1.0004
        ],
        "pivot": [
         47.55,
-        139.9
+        139.85
        ],
        "skew": [
-        -0.0616,
-        -0.0616
+        -0.0982,
+        -0.069
        ],
        "loc": [
-        -5.8749,
-        51.3983
+        -5.5969,
+        51.3338
        ],
        "ref": "heaven_house_lvl1_arbre",
-       "index": 9,
+       "index": 0,
+       "duration": 49
+      },
+      {
+       "scale": [
+        0.9997,
+        1.0011
+       ],
+       "pivot": [
+        47.55,
+        139.75
+       ],
+       "skew": [
+        -0.0122,
+        -0.0664
+       ],
+       "loc": [
+        -2.5106,
+        51.1445
+       ],
+       "ref": "heaven_house_lvl1_arbre",
+       "index": 49,
        "duration": 50
       },
       {
        "scale": [
-        0.9997,
-        0.9997
+        1,
+        1.0004
        ],
        "pivot": [
         47.55,
-        139.9
+        139.85
        ],
        "skew": [
-        0.0744,
-        0.0744
-       ],
-       "loc": [
-        -5.8998,
-        51.4012
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 59,
-       "duration": 5
-      },
-      {
-       "pivot": [
-        47.55,
-        139.9
-       ],
-       "skew": [
-        0.0775,
-        0.0775
-       ],
-       "loc": [
-        -5.914,
-        51.3846
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 64,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.9997,
-        0.9997
-       ],
-       "pivot": [
-        47.55,
-        139.9
-       ],
-       "skew": [
-        0.0746,
-        0.0746
-       ],
-       "loc": [
-        -5.9101,
-        51.4008
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 69,
-       "duration": 51
-      },
-      {
-       "scale": [
-        0.9996,
-        0.9996
-       ],
-       "pivot": [
-        47.55,
-        139.9
-       ],
-       "skew": [
-        -0.0612,
-        -0.0612
-       ],
-       "loc": [
-        -5.8931,
-        51.3978
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 120,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.9998,
-        0.9998
-       ],
-       "pivot": [
-        47.55,
-        139.9
-       ],
-       "skew": [
-        -0.0655,
-        -0.0655
-       ],
-       "loc": [
-        -5.923,
-        51.4193
-       ],
-       "ref": "heaven_house_lvl1_arbre",
-       "index": 124,
-       "duration": 6
-      },
-      {
-       "pivot": [
-        47.6,
-        139.9
-       ],
-       "skew": [
-        -0.069,
+        -0.0982,
         -0.069
        ],
        "loc": [
-        -5.8917,
-        51.3845
+        -5.5969,
+        51.3338
        ],
        "ref": "heaven_house_lvl1_arbre",
-       "index": 130,
+       "index": 99,
        "duration": 1
       }
      ],
@@ -3151,122 +3646,60 @@
         47,
         47
        ],
-       "duration": 4
+       "ease": 1,
+       "duration": 25
       },
       {
+       "pivot": [
+        47,
+        47
+       ],
+       "ease": -1,
        "loc": [
         0,
-        -0.55
+        -13.3
        ],
        "ref": "heavenhouselvl3_big_orbe",
-       "index": 4,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        0,
-        -2.9
-       ],
-       "ref": "heavenhouselvl3_big_orbe",
-       "index": 9,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 45
-      },
-      {
-       "loc": [
-        0,
-        -54.95
-       ],
-       "ref": "heavenhouselvl3_big_orbe",
-       "index": 54,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 5
+       "index": 25,
+       "duration": 26
       },
       {
        "pivot": [
         47,
         47
        ],
+       "ease": 1,
        "loc": [
         0,
         -55.65
        ],
        "ref": "heavenhouselvl3_big_orbe",
-       "index": 59,
-       "tweened": false,
-       "duration": 20
+       "index": 51,
+       "duration": 26
       },
       {
-       "loc": [
-        0,
-        -55.65
-       ],
-       "ref": "heavenhouselvl3_big_orbe",
-       "index": 79,
        "pivot": [
         47,
         47
        ],
-       "duration": 5
-      },
-      {
+       "ease": -1,
        "loc": [
         0,
-        -54.8
+        -27.8
        ],
        "ref": "heavenhouselvl3_big_orbe",
-       "index": 84,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 45
-      },
-      {
-       "loc": [
-        0,
-        -2.75
-       ],
-       "ref": "heavenhouselvl3_big_orbe",
-       "index": 129,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        0,
-        -0.65
-       ],
-       "ref": "heavenhouselvl3_big_orbe",
-       "index": 134,
-       "pivot": [
-        47,
-        47
-       ],
-       "duration": 5
+       "index": 77,
+       "duration": 26
       },
       {
        "ref": "heavenhouselvl3_big_orbe",
-       "index": 139,
+       "index": 103,
        "pivot": [
         47,
         47
        ],
        "tweened": false,
-       "duration": 21
+       "duration": 1
       }
      ],
      "name": "Calque 1"
@@ -7119,159 +7552,6 @@
    ]
   },
   {
-   "id": "anim_orbe",
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -6.85,
-        -6.1
-       ],
-       "ref": "Orbe",
-       "index": 0,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 4
-      },
-      {
-       "loc": [
-        -6.85,
-        -8.25
-       ],
-       "ref": "Orbe",
-       "index": 4,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -11.85
-       ],
-       "ref": "Orbe",
-       "index": 9,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 30
-      },
-      {
-       "loc": [
-        -6.85,
-        -36.4
-       ],
-       "ref": "Orbe",
-       "index": 39,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -39.55
-       ],
-       "ref": "Orbe",
-       "index": 44,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -41.65
-       ],
-       "ref": "Orbe",
-       "index": 49,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -38.9
-       ],
-       "ref": "Orbe",
-       "index": 54,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -35.25
-       ],
-       "ref": "Orbe",
-       "index": 59,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 30
-      },
-      {
-       "loc": [
-        -6.85,
-        -11.2
-       ],
-       "ref": "Orbe",
-       "index": 89,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -8.15
-       ],
-       "ref": "Orbe",
-       "index": 94,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 5
-      },
-      {
-       "loc": [
-        -6.85,
-        -6.1
-       ],
-       "ref": "Orbe",
-       "index": 99,
-       "pivot": [
-        38.5,
-        38.5
-       ],
-       "duration": 1
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ]
-  },
-  {
    "id": "anim_portail_ame",
    "layers": [
     {
@@ -9033,30 +9313,60 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        57,
+        35.5
+       ],
+       "ease": 1,
        "loc": [
         0,
         19.75
        ],
        "ref": "heavenhouse_lvl3_stuff",
        "index": 0,
+       "duration": 27
+      },
+      {
        "pivot": [
         57,
         35.5
        ],
-       "duration": 79
+       "ease": -1,
+       "loc": [
+        -1.45,
+        -11.5
+       ],
+       "ref": "heavenhouse_lvl3_stuff",
+       "index": 27,
+       "duration": 28
       },
       {
+       "pivot": [
+        57,
+        35.5
+       ],
+       "ease": 1,
        "loc": [
         -2.95,
         -44
        ],
        "ref": "heavenhouse_lvl3_stuff",
-       "index": 79,
+       "index": 55,
+       "duration": 28
+      },
+      {
        "pivot": [
         57,
         35.5
        ],
-       "duration": 80
+       "ease": -1,
+       "loc": [
+        -1.5,
+        -12.1
+       ],
+       "ref": "heavenhouse_lvl3_stuff",
+       "index": 83,
+       "duration": 28
       },
       {
        "loc": [
@@ -9064,7 +9374,7 @@
         19.75
        ],
        "ref": "heavenhouse_lvl3_stuff",
-       "index": 159,
+       "index": 111,
        "pivot": [
         57,
         35.5
@@ -13414,6 +13724,177 @@
    ]
   },
   {
+   "id": "~house_lvl1/Heaven_house_lvl1",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        233,
+        133.5
+       ],
+       "loc": [
+        2.75,
+        53.25
+       ],
+       "ref": "heaven_house_lvl1_sol",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "sol"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        183,
+        171.5
+       ],
+       "loc": [
+        2.65,
+        -10.5
+       ],
+       "ref": "heaven_house_lvl1_house",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "bat"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        147.95,
+        -20.35
+       ],
+       "ref": "anim_arbre",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "arbre"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        216.5,
+        109
+       ],
+       "loc": [
+        -10.9,
+        62.1
+       ],
+       "ref": "heaven_house_lvl1_details",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "details"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -0.05,
+        -111.45
+       ],
+       "ref": "~house_lvl1/anim_orbe",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "orbe"
+    }
+   ]
+  },
+  {
+   "id": "~house_lvl1/anim_orbe",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        38.5,
+        38.5
+       ],
+       "ease": 1,
+       "loc": [
+        -6.85,
+        -6.1
+       ],
+       "ref": "Orbe",
+       "index": 0,
+       "duration": 24
+      },
+      {
+       "pivot": [
+        38.5,
+        38.5
+       ],
+       "ease": -1,
+       "loc": [
+        -6.85,
+        -21.4
+       ],
+       "ref": "Orbe",
+       "index": 24,
+       "duration": 25
+      },
+      {
+       "pivot": [
+        38.5,
+        38.5
+       ],
+       "ease": 1,
+       "loc": [
+        -6.85,
+        -41.65
+       ],
+       "ref": "Orbe",
+       "index": 49,
+       "duration": 25
+      },
+      {
+       "pivot": [
+        38.5,
+        38.5
+       ],
+       "ease": -1,
+       "loc": [
+        -6.85,
+        -26.1
+       ],
+       "ref": "Orbe",
+       "index": 74,
+       "duration": 25
+      },
+      {
+       "loc": [
+        -6.85,
+        -6.1
+       ],
+       "ref": "Orbe",
+       "index": 99,
+       "pivot": [
+        38.5,
+        38.5
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
    "id": "~house_lvl2/Heaven_house_lvl2",
    "layers": [
     {
@@ -13529,7 +14010,7 @@
         -0.05,
         -111.45
        ],
-       "ref": "anim_orbe",
+       "ref": "~house_lvl1/anim_orbe",
        "index": 0,
        "tweened": false,
        "duration": 1
@@ -13546,62 +14027,346 @@
      "keyframes": [
       {
        "pivot": [
-        67.55,
-        162.45
+        37.95,
+        10.35
        ],
        "skew": [
-        -0.0527,
-        -0.0527
+        -0.2087,
+        -0.2087
        ],
        "loc": [
-        30.0366,
-        77.4101
+        -7.6435,
+        53.3058
        ],
-       "ref": "heaven_house_lvl2_R_wing",
+       "ref": "Symb9",
        "index": 0,
-       "duration": 39
+       "ease": -1,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        37.8,
+        10.3
+       ],
+       "skew": [
+        -0.5538,
+        -0.5538
+       ],
+       "loc": [
+        -10.6748,
+        64.487
+       ],
+       "ref": "Symb9",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.999,
+        0.999
+       ],
+       "pivot": [
+        37.8,
+        10.35
+       ],
+       "skew": [
+        -0.2887,
+        -0.2887
+       ],
+       "loc": [
+        -7.1987,
+        55.8049
+       ],
+       "ref": "Symb9",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
       },
       {
        "pivot": [
-        67.6,
-        162.45
+        37.95,
+        10.35
        ],
        "skew": [
-        -1.1407,
-        -1.1407
+        -0.0915,
+        -0.0915
        ],
        "loc": [
-        30.0462,
-        77.338
+        -4.4565,
+        49.0995
        ],
-       "ref": "heaven_house_lvl2_R_wing",
-       "index": 39,
-       "duration": 30
-      },
-      {
-       "pivot": [
-        67.55,
-        162.45
-       ],
-       "skew": [
-        -0.0527,
-        -0.0527
-       ],
-       "loc": [
-        30.0366,
-        77.4101
-       ],
-       "ref": "heaven_house_lvl2_R_wing",
-       "index": 69,
+       "ref": "Symb9",
+       "index": 64,
+       "tweened": false,
        "duration": 1
       }
      ],
-     "name": "Calque 1"
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        36.55,
+        36.15
+       ],
+       "skew": [
+        -0.2087,
+        -0.2087
+       ],
+       "loc": [
+        -6.5539,
+        46.2925
+       ],
+       "ref": "Symb8",
+       "index": 0,
+       "ease": -1,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        36.55,
+        36.1
+       ],
+       "skew": [
+        -0.6976,
+        -0.6976
+       ],
+       "loc": [
+        -14.6014,
+        65.986
+       ],
+       "ref": "Symb8",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9989,
+        0.9989
+       ],
+       "pivot": [
+        36.5,
+        36.2
+       ],
+       "skew": [
+        -0.35,
+        -0.35
+       ],
+       "loc": [
+        -7.7033,
+        52.5656
+       ],
+       "ref": "Symb8",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        36.6,
+        36.15
+       ],
+       "skew": [
+        -0.0915,
+        -0.0915
+       ],
+       "loc": [
+        -2.5011,
+        42.2558
+       ],
+       "ref": "Symb8",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 5"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        31.05,
+        67.45
+       ],
+       "skew": [
+        -0.2087,
+        -0.2087
+       ],
+       "loc": [
+        -7.9411,
+        13.1567
+       ],
+       "ref": "Symb7",
+       "index": 0,
+       "ease": -1,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        30.9,
+        67.55
+       ],
+       "skew": [
+        -0.7752,
+        -0.7752
+       ],
+       "loc": [
+        -32.7967,
+        43.4789
+       ],
+       "ref": "Symb7",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9988,
+        0.9988
+       ],
+       "pivot": [
+        30.9,
+        67.45
+       ],
+       "skew": [
+        -0.3846,
+        -0.3846
+       ],
+       "loc": [
+        -14.1432,
+        23.8848
+       ],
+       "ref": "Symb7",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        31.1,
+        67.45
+       ],
+       "skew": [
+        -0.0915,
+        -0.0915
+       ],
+       "loc": [
+        0.0125,
+        9.1282
+       ],
+       "ref": "Symb7",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 4"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        21.3,
+        81.4
+       ],
+       "skew": [
+        -0.2087,
+        -0.2087
+       ],
+       "loc": [
+        -0.8667,
+        -2.1004
+       ],
+       "ref": "Symb6",
+       "index": 0,
+       "ease": -1,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.9999,
+        0.9999
+       ],
+       "pivot": [
+        21.35,
+        81.3
+       ],
+       "skew": [
+        -0.827,
+        -0.827
+       ],
+       "loc": [
+        -38.5664,
+        28.9034
+       ],
+       "ref": "Symb6",
+       "index": 18,
+       "ease": 1,
+       "duration": 24
+      },
+      {
+       "scale": [
+        0.9987,
+        0.9987
+       ],
+       "pivot": [
+        21.3,
+        81.3
+       ],
+       "skew": [
+        -0.4065,
+        -0.4065
+       ],
+       "loc": [
+        -11.6458,
+        9.4752
+       ],
+       "ref": "Symb6",
+       "index": 42,
+       "ease": -1,
+       "duration": 22
+      },
+      {
+       "pivot": [
+        21.3,
+        81.45
+       ],
+       "skew": [
+        -0.0915,
+        -0.0915
+       ],
+       "loc": [
+        8.787,
+        -5.1282
+       ],
+       "ref": "Symb6",
+       "index": 64,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
     }
    ]
   }
  ],
- "md5": "5c8ec23a3276d2a1097ee655817577da",
+ "md5": "15beb4595e154e1b1af93f27bb6c47f5",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
@@ -13725,7 +14490,7 @@
         186.3,
         195.65
        ],
-       "symbol": "_heaven_marketing_place"
+       "symbol": "Market_base"
       },
       {
        "rect": [
@@ -13738,7 +14503,7 @@
         186.3,
         195.65
        ],
-       "symbol": "Market_base"
+       "symbol": "_heaven_marketing_place"
       },
       {
        "rect": [
@@ -13991,6 +14756,19 @@
        "rect": [
         1429,
         1861,
+        147,
+        148
+       ],
+       "origin": [
+        -0.1,
+        0
+       ],
+       "symbol": "Symb10"
+      },
+      {
+       "rect": [
+        1578,
+        1861,
         107,
         177
        ],
@@ -14004,6 +14782,19 @@
        "rect": [
         463,
         963,
+        151,
+        115
+       ],
+       "origin": [
+        -2.9,
+        -32.4
+       ],
+       "symbol": "Symb15"
+      },
+      {
+       "rect": [
+        798,
+        1866,
         179,
         90
        ],
@@ -14028,34 +14819,34 @@
       },
       {
        "rect": [
-        1538,
-        1861,
-        119,
-        110
+        979,
+        1866,
+        156,
+        94
        ],
        "origin": [
-        64.5,
-        48.45
+        -1.4,
+        -1.75
        ],
-       "symbol": "intern_portail_particule"
-      },
-      {
-       "rect": [
-        1972,
-        1417,
-        75,
-        170
-       ],
-       "origin": [
-        37.5,
-        85
-       ],
-       "symbol": "heaven_house_lvl2_R_wing"
+       "symbol": "Symb11"
       },
       {
        "rect": [
         1988,
-        1589,
+        1417,
+        59,
+        224
+       ],
+       "origin": [
+        0.3,
+        0
+       ],
+       "symbol": "Symb17"
+      },
+      {
+       "rect": [
+        1988,
+        1643,
         51,
         224
        ],
@@ -14068,33 +14859,20 @@
       {
        "rect": [
         798,
-        1866,
-        94,
-        99
+        1958,
+        139,
+        72
        ],
        "origin": [
-        44.3,
-        49.15
+        0,
+        0
        ],
-       "symbol": "market_orbe2"
+       "symbol": "Symb14"
       },
       {
        "rect": [
-        894,
-        1866,
-        94,
-        94
-       ],
-       "origin": [
-        47,
-        47
-       ],
-       "symbol": "heavenhouselvl3_big_orbe"
-      },
-      {
-       "rect": [
-        1538,
-        1973,
+        939,
+        1962,
         114,
         71
        ],
@@ -14106,8 +14884,8 @@
       },
       {
        "rect": [
-        894,
-        1962,
+        1,
+        1963,
         96,
         76
        ],
@@ -14119,8 +14897,86 @@
       },
       {
        "rect": [
-        798,
-        1967,
+        1996,
+        1,
+        43,
+        159
+       ],
+       "origin": [
+        0.45,
+        4
+       ],
+       "symbol": "Symb6"
+      },
+      {
+       "rect": [
+        1454,
+        1533,
+        119,
+        57
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb2"
+      },
+      {
+       "rect": [
+        1996,
+        162,
+        48,
+        138
+       ],
+       "origin": [
+        -26.4,
+        -42.45
+       ],
+       "symbol": "Symb22"
+      },
+      {
+       "rect": [
+        99,
+        1963,
+        109,
+        59
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb19"
+      },
+      {
+       "rect": [
+        369,
+        1401,
+        88,
+        70
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb3"
+      },
+      {
+       "rect": [
+        631,
+        661,
+        37,
+        162
+       ],
+       "origin": [
+        2.65,
+        -47.8
+       ],
+       "symbol": "Symb21"
+      },
+      {
+       "rect": [
+        1055,
+        1962,
         77,
         77
        ],
@@ -14132,21 +14988,60 @@
       },
       {
        "rect": [
-        369,
-        1401,
-        65,
-        61
+        1303,
+        1992,
+        118,
+        49
        ],
        "origin": [
-        32.5,
-        30.5
+        0,
+        0
        ],
-       "symbol": "market_orbe3"
+       "symbol": "Symb1"
       },
       {
        "rect": [
-        1988,
-        1815,
+        210,
+        1963,
+        74,
+        73
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb8"
+      },
+      {
+       "rect": [
+        286,
+        1963,
+        104,
+        50
+       ],
+       "origin": [
+        0,
+        0.85
+       ],
+       "symbol": "Symb13"
+      },
+      {
+       "rect": [
+        286,
+        2015,
+        127,
+        30
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb12"
+      },
+      {
+       "rect": [
+        1423,
+        2011,
         58,
         28
        ],
@@ -14186,6 +15081,162 @@
         99.5
        ],
        "symbol": "market_cache"
+      },
+      {
+       "rect": [
+        1,
+        202,
+        95,
+        150
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb18"
+      },
+      {
+       "rect": [
+        1,
+        354,
+        119,
+        110
+       ],
+       "origin": [
+        64.5,
+        48.45
+       ],
+       "symbol": "intern_portail_particule"
+      },
+      {
+       "rect": [
+        94,
+        1,
+        75,
+        170
+       ],
+       "origin": [
+        37.5,
+        85
+       ],
+       "symbol": "heaven_house_lvl2_R_wing"
+      },
+      {
+       "rect": [
+        98,
+        173,
+        130,
+        98
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb4"
+      },
+      {
+       "rect": [
+        171,
+        1,
+        86,
+        134
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb20"
+      },
+      {
+       "rect": [
+        122,
+        273,
+        114,
+        98
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb5"
+      },
+      {
+       "rect": [
+        230,
+        137,
+        92,
+        104
+       ],
+       "origin": [
+        -18.5,
+        -29.9
+       ],
+       "symbol": "Symb16"
+      },
+      {
+       "rect": [
+        259,
+        1,
+        94,
+        99
+       ],
+       "origin": [
+        44.3,
+        49.15
+       ],
+       "symbol": "market_orbe2"
+      },
+      {
+       "rect": [
+        122,
+        373,
+        94,
+        94
+       ],
+       "origin": [
+        47,
+        47
+       ],
+       "symbol": "heavenhouselvl3_big_orbe"
+      },
+      {
+       "rect": [
+        218,
+        373,
+        63,
+        135
+       ],
+       "origin": [
+        0,
+        0.2
+       ],
+       "symbol": "Symb7"
+      },
+      {
+       "rect": [
+        238,
+        243,
+        78,
+        54
+       ],
+       "origin": [
+        -1.7,
+        -32.45
+       ],
+       "symbol": "Symb9"
+      },
+      {
+       "rect": [
+        238,
+        299,
+        65,
+        61
+       ],
+       "origin": [
+        32.5,
+        30.5
+       ],
+       "symbol": "market_orbe3"
       }
      ],
      "file": "atlas1.png"
