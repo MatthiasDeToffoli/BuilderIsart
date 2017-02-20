@@ -59,11 +59,10 @@ typedef CampaignDescription = {
 
 typedef TimeQuestDescription = {
 	var refIntern:Int;
-	var progress:Float;
+	var startTime:Float;
 	var steps:Array<Float>;
 	var stepIndex:Int;
-	var creation:Float;
-	var end:Float;
+	var progress:Float;
 }
 
 //typedef AllTimeQuestDescription = {
@@ -120,7 +119,6 @@ typedef Save = {
 	var ground:Array<TileDescription>;
 	var building:Array<TileDescription>;
 	var timesResource:Array<TimeDescription>;
-	var timesQuest:Array<TimeQuestDescription>;
 	var timesConstruction:Array<TimeDescription>;
 	var timesProduction:Array<TimeDescription>;
 	var timesCampaign:CampaignDescription;
@@ -185,7 +183,6 @@ class SaveManager {
 		// todo : dans le même ordre que les variables !
 		currentSave = {
 			timesResource: getTimesResource(),
-			timesQuest: getTimesQuest(),
 			timesConstruction: getTimesConstruction(),
 			timesProduction: TimeManager.listProduction,
 			timesCampaign: getCampaign(),

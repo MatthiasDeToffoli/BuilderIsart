@@ -188,7 +188,7 @@ class ServerManager {
 		else RegionManager.load(listRegionLoad);		
 	}
 	
-	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null):Void {
+	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null, ?pBoosted:Int):Void {
 		var actionCall:String = Std.string(pAction);
 		
 		switch (pAction) {
@@ -197,21 +197,17 @@ class ServerManager {
 					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
 					"funct" => actionCall,
 					"idInt" => pTimeQuest.refIntern,
-					"prog" => pTimeQuest.progress,
-					"stepIndex" => pTimeQuest.stepIndex,
 					"step1" => pTimeQuest.steps[0],
 					"step2" => pTimeQuest.steps[1],
-					"step3" => pTimeQuest.steps[2],
-					"tEnd" => pTimeQuest.end,
-					"tCrea" => pTimeQuest.creation
+					"step3" => pTimeQuest.steps[2]
 				]);
 			case DbAction.UPDT:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
 					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
 					"funct" => actionCall,
 					"idInt" => pTimeQuest.refIntern,
-					"prog" => pTimeQuest.progress,
-					"stepIndex" => pTimeQuest.stepIndex
+					"stepIndex" => pTimeQuest.stepIndex,
+					"boost" => pBoosted
 				]);
 			case DbAction.REM:
 				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TIME_QUEST, "funct" => actionCall, "idInt" => pTimeQuest.refIntern]);

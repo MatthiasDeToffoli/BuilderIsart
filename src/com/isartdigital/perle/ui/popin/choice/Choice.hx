@@ -93,6 +93,7 @@ class Choice extends SmartPopinExtended
 	// card slide position properties
 	private var mousePos:Point;
 	private var imgRot:Float;
+	private var imgPos:Point;
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
@@ -258,13 +259,14 @@ class Choice extends SmartPopinExtended
 		choiceCard = cast(SpriteManager.spawnComponent(swipCard, pChoice.card, this, TypeSpawn.SMART_COMPONENT, true));
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
 		imgRot = choiceCard.rotation;
+		imgPos = choiceCard.position.clone();
 		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = activeChoice.text;
 	}
 	
 	private function createPortraitCard():Void {
 		var bgName:String;
-		if (intern.aligment == Std.string(Alignment.heaven)) bgName = "_eventStress_CardBG_Hell";
-		else bgName = "_eventStress_CardBG_Heaven";
+		if (intern.aligment == Std.string(Alignment.heaven)) bgName = "_eventStress_CardBG_Heaven";
+		else bgName = "_eventStress_CardBG_Hell";
 		
 		var portrait:UISprite = cast(internStats.getChildByName("_internPortrait"), UISprite);
 		var background:UISprite = cast(internStats.getChildByName("BG"), UISprite);
@@ -313,7 +315,7 @@ class Choice extends SmartPopinExtended
 		if (intern.aligment == Std.string(Alignment.hell)) {
 			for (j in 1...NB_STRESS_INDICATOR) {
 				if (j > natIndic) stressHellIndicators[j].visible = false;
-				if (j > unatIndic) stressHeavenIndicators[j].visible = false;
+				if (j > unatIndic) stressHeavenIndicators[j].visible = false;	
 			}
 		}
 		else {
@@ -462,12 +464,14 @@ class Choice extends SmartPopinExtended
 		
 		// move fateCard && get choiceType
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
+			choiceCard.rotation = imgRot + diff / 50 * Math.PI / 32;
+			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
 			if (choiceCard.rotation > imgRot + Math.PI / 32) choiceType = ChoiceType.HELL;
 			else choiceType = ChoiceType.NONE;
 		}
 		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
+			choiceCard.rotation = imgRot + diff / 50 * Math.PI / 32;
+			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
 			if (choiceCard.rotation < imgRot - Math.PI / 32) choiceType = ChoiceType.HEAVEN;
 			else choiceType = ChoiceType.NONE;
 		}
