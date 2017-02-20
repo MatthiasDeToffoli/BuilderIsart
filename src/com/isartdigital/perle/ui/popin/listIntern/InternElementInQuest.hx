@@ -85,7 +85,7 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function setOnSpawn(pDesc:InternDescription):Void {
-		loop = Timer.delay(progressLoop, 10);
+		loop = Timer.delay(progressLoop, 1000);
 		loop.run = progressLoop;
 		
 		internName.text = pDesc.name;
@@ -146,6 +146,8 @@ class InternElementInQuest extends InternElement
 	private function onResolve():Void {
 		if (DialogueManager.ftueStepResolveIntern)
 			DialogueManager.endOfaDialogue();
+		
+		TimeManager.increaseQuestProgress(quest);
 		QuestsManager.choice(quest);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
@@ -172,11 +174,10 @@ class InternElementInQuest extends InternElement
 		//if (quest != null) quest = QuestsManager.getQuest(quest.refIntern);
 		if (heroCursor != null) {
 			updateEventCursors();
-			if (quest.steps[quest.stepIndex] <= quest.progress) timeEvent.text = "00:00";
+			if (quest.steps[quest.stepIndex] + quest.startTime <= quest.progress) timeEvent.text = "00:00";
 			else timeEvent.text = getChrono();
 			updateCursorPosition();	
-		}
-		
+		}	
 		else {
 			loop.stop();
 		}
@@ -184,7 +185,7 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function getChrono():String {
-		var duration:Float = TimesInfo.calculDateDiff(quest.steps[quest.stepIndex], quest.progress).times;
+		var duration:Float = TimesInfo.calculDateDiff(quest.startTime + quest.steps[quest.stepIndex], quest.progress).times;
 		return TimesInfo.getClock({ days: 0, times: duration }).hour + ":" + TimesInfo.getClock({ days: 0, times: duration }).minute + ":" + TimesInfo.getClock({ days: 0, times: duration }).seconde + "s";
 	}
 	
@@ -202,7 +203,7 @@ class InternElementInQuest extends InternElement
 	 * Change the position of the cursor
 	 */
 	private function updateCursorPosition():Void{
-		if (quest.progress < quest.end) {
+		if (quest.progress < quest.startTime + quest.steps[quest.stepIndex]) {
 			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
 		}		
 		else {

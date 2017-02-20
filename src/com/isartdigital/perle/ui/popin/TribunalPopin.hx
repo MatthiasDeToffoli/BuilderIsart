@@ -57,6 +57,7 @@ class TribunalPopin extends SmartPopinExtended
 	private var canMoovCard:Bool;
 	private var baseCardRot:Float;
 	private var baseMousePos:Point;
+	private var baseCardPos:Point;
 	private  var MOUSE_DIFF_MAX(null,never):Int = 200;
 	private var DIFF_MAX(null,never):Int = 80;
 	/**
@@ -154,6 +155,7 @@ class TribunalPopin extends SmartPopinExtended
 	private function onMouseDownOnCard(mouseEvent:EventTarget):Void {
 		canMoovCard = true;
 		baseMousePos = mouseEvent.data.global.clone();
+		baseCardPos = cardSoul.position.clone();
 	}
 	
 	private  function onMouseUpOnCard(mouseEvent:EventTarget):Void {
@@ -170,6 +172,7 @@ class TribunalPopin extends SmartPopinExtended
 		}
 		
 		cardSoul.rotation = baseCardRot;
+		cardSoul.position = baseCardPos;
 	}
 	
 	private function onFollowMouse(mouseEvent:EventTarget):Void {
@@ -179,10 +182,12 @@ class TribunalPopin extends SmartPopinExtended
 		
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
 			cardSoul.rotation = baseCardRot + diff / DIFF_MAX * Math.PI / 32;
+			cardSoul.position.set(baseCardPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), baseCardPos.y);
 			
 		}
 		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
 			cardSoul.rotation = baseCardRot + diff / DIFF_MAX * Math.PI / 32;
+			cardSoul.position.set(baseCardPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), baseCardPos.y);
 		}
 	}
 	

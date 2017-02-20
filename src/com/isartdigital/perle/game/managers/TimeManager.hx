@@ -1,5 +1,8 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.utils.Debug;
+import js.Lib;
 
 import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
@@ -114,11 +117,9 @@ class TimeManager {
 		
 		listProduction = pSave.timesProduction;
 		
-		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
 		var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
 		var lLengthConstruction:Int = pSave.timesConstruction.length;
 		
-		//trace(lLengthQuest);
 		for (i in 0...lLength) {
 			listResource.push({
 				desc: pSave.timesResource[i]
@@ -340,12 +341,13 @@ class TimeManager {
 	public static function nextStepQuest (pElement:TimeQuestDescription):Void {
 		if (!Intern.isMaxStress(pElement.refIntern)) {
 			pElement.stepIndex++;
+			pElement.startTime = Date.now().getTime();
+			pElement.progress = Date.now().getTime();
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			TimeManager.createTimeQuest(pElement);
+			ServerManager.TimeQuestAction(DbAction.UPDT, pElement, 0);
 			eTimeQuest.emit(EVENT_CHOICE_DONE, pElement);
 		}
-		else
-			ServerManager.TimeQuestAction(DbAction.ADD, pElement);
 	}
 	
 	private static function getElapsedTime (pLastKnowTime:Float, pTimeNow:Float):Float {
@@ -420,25 +422,19 @@ class TimeManager {
 	 * @param	pElement
 	 * @param	pElapsedTime
 	 */
-	private static var delayUpdtTime:Int = 5;
-	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float, ?pEndedList:Array<Int>=null):Void {	
-		if (pElement.progress < pElement.steps[pElement.stepIndex]) {
-			pElement.progress += pElapsedTime;
-			if (delayUpdtTime > 0) delayUpdtTime--;
-			else {
-				delayUpdtTime = 5;
-				ServerManager.TimeQuestAction(DbAction.UPDT, pElement);
-			}
+	private static function updateQuest (pElement:TimeQuestDescription, pElapsedTime:Float, ?pEndedList:Array<Int> = null):Void {	
+		if (pElement.progress < pElement.steps[pElement.stepIndex] + pElement.startTime) {
+			pElement.progress = Date.now().getTime();
 		}
 		
 		
 		// progress has reached next step && just now
 		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
-		{
+		{		
 			if (Intern.getIntern(pElement.refIntern).stress < 100) {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_WAITING;
 				eTimeQuest.emit(EVENT_QUEST_STEP, pElement);
-				if (pElement.progress >= pElement.end) eTimeQuest.emit(EVENT_QUEST_END, pElement);
+				if (pElement.progress >= pElement.startTime + pElement.steps[pElement.stepIndex]) eTimeQuest.emit(EVENT_QUEST_END, pElement);
 			}
 			else {
 				Intern.getIntern(pElement.refIntern).status = Intern.STATE_MAX_STRESS;
@@ -593,17 +589,14 @@ class TimeManager {
 	 * @return  possibility to continue the progress or not
 	 */
 	public static function increaseQuestProgress(pQuest:TimeQuestDescription):Bool{
-		if (pQuest.stepIndex != 3){
-			for (i in 0...listQuest.length) {
-				if (listQuest[i].refIntern == pQuest.refIntern) {
-					pQuest.progress = pQuest.steps[pQuest.stepIndex];
-					ServerManager.TimeQuestAction(DbAction.UPDT, listQuest[i]);
-					return false;
-				}
+		for (i in 0...listQuest.length) {
+			if (listQuest[i].refIntern == pQuest.refIntern) {
+				pQuest.progress = pQuest.steps[pQuest.stepIndex] + pQuest.startTime;
+				ServerManager.TimeQuestAction(DbAction.UPDT, pQuest, 1);
+				return false;
 			}
-			return true;
 		}
-		else return false;
+		return true;
 	}
 	
 	/**

@@ -197,13 +197,6 @@ class Intern
 				portrait: Std.string(data[i].Portrait)
 			};
 			
-			if (newIntern.quest != null && ChoiceManager.isInQuest(newIntern.idEvent)) {
-				var tmpProgress:Float = Date.now().getTime();
-				if (tmpProgress >= newIntern.quest.steps[0] && newIntern.quest.stepIndex == 0) tmpProgress = newIntern.quest.steps[0];
-				else if (tmpProgress>= newIntern.quest.steps[1] && newIntern.quest.stepIndex == 1) tmpProgress = newIntern.quest.steps[1];
-				else if (tmpProgress >= newIntern.quest.steps[2] && newIntern.quest.stepIndex == 2) tmpProgress = newIntern.quest.steps[2];
-				else newIntern.quest.progress = tmpProgress;
-			}
 			internsListArray.push(newIntern);
 		}
 	}
@@ -213,9 +206,9 @@ class Intern
 			var lTimeDesc:TimeQuestDescription = pIntern.quest;
 			if (lTimeDesc != null){
 				switch (lTimeDesc.stepIndex) {
-					case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
-					case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true; 
-					case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex]) return true;
+					case 0: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex] + lTimeDesc.startTime) return true; 
+					case 1: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex] + lTimeDesc.startTime) return true; 
+					case 2: if (lTimeDesc.progress < lTimeDesc.steps[lTimeDesc.stepIndex] + lTimeDesc.startTime) return true;
 					default: return false;
 				}
 			}

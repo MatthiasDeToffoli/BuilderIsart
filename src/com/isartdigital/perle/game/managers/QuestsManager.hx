@@ -54,7 +54,6 @@ class QuestsManager
 	public static function init():Void{
 		questsList = new Array<TimeQuestDescription>();	
 		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
-		//eGoToNextStep = new EventEmitter();
 	}
 	
 	public static function getJson(object:Dynamic):Void{
@@ -62,19 +61,19 @@ class QuestsManager
 		var lLength:Int = questArray.length;
 		
 		for (i in 0...lLength) {
-			var arraySteps:Array<Float> = [Std.parseFloat(questArray[i].Step1), Std.parseFloat(questArray[i].Step2), Std.parseFloat(questArray[i].Step3)];
+			var arraySteps:Array<Float> = [Std.int(questArray[i].Step1), Std.int(questArray[i].Step2), Std.int(questArray[i].Step3)];
 			var timeQuest:TimeQuestDescription = {
-				refIntern: Std.int(questArray[i].RefIntern),
-				progress: Std.parseFloat(questArray[i].Progress),
+				refIntern: Std.int(questArray[i].IDIntern),
+				progress: Date.now().getTime(),
 				steps: arraySteps,
 				stepIndex: Std.int(questArray[i].StepIndex),
-				creation: Std.parseFloat(questArray[i].Creation),
-				end: Std.parseFloat(questArray[i].DateEnd)
+				startTime: Date.fromString(questArray[i].StartTime).getTime() + 3600000
 			};
 			
-			//ServerManager.TimeQuestAction(DbAction.UPDT, timeQuest);
-			TimeManager.createTimeQuest(timeQuest);
+			if (Std.int(questArray[i].Boosted) != 0) timeQuest.progress = timeQuest.startTime + timeQuest.steps[timeQuest.stepIndex];
+			
 			questsList.push(timeQuest);
+			TimeManager.createTimeQuest(timeQuest);
 		}
 	}
 	
@@ -83,7 +82,7 @@ class QuestsManager
 	 * @param	pNumberEvents Number of events contained in a quest
 	 * @return	The quest's datas
 	 */
-	public static function createQuest(pIdIntern:Int):TimeQuestDescription{
+	public static function createQuest(pIdIntern:Int):TimeQuestDescription {
 		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Float> = createRandomGapArray(Intern.getIntern(pIdIntern));
 		
@@ -92,14 +91,11 @@ class QuestsManager
 			progress: Date.now().getTime(),
 			steps: lStepsArray,
 			stepIndex: 0,
-			creation: Date.now().getTime(),
-			end: createEnd(lStepsArray)
+			startTime: Date.now().getTime()
 		}
 		
 		questsList.push(lTimeQuestDescription);
 		ServerManager.TimeQuestAction(DbAction.ADD, lTimeQuestDescription);
-		
-		SaveManager.save();
 		
 		return lTimeQuestDescription;
 	}
@@ -111,14 +107,14 @@ class QuestsManager
 	 */
 	private static function createRandomGapArray(pIntern:InternDescription):Array<Float>{
 		var lListEvents:Array<Float> = new Array<Float>();
-		var lGap:Float = 0;
+		var lGap:Int = 0;
 		for (i in 0...NUMBER_EVENTS){
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
 				lGap = FTUE_TIMELINE[pIntern.speed - 1] + lGap;
 			else
-				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1] + lGap;
+				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1];
 				
-			lListEvents.push(Date.now().getTime() + lGap);
+			lListEvents.push(lGap);
 		}
 		return lListEvents;
 	}
@@ -136,8 +132,8 @@ class QuestsManager
 	 * @param	pListEvents
 	 * @return	the total value
 	 */
-	private static function createEnd(pListEvents:Array<Float>):Float{
-		var lEnd:Float = 0;
+	private static function createEnd(pListEvents:Array<Int>):Int{
+		var lEnd:Int = 0;
 		var lLength:Int = pListEvents.length - 1;
 		
 		lEnd = pListEvents[lLength];
@@ -162,8 +158,6 @@ class QuestsManager
 	 */
 	public static function goToNextStep():Void{
 		Choice.getInstance().hide();
-		
-		ServerManager.TimeQuestAction(DbAction.UPDT, questInProgress);
 		
 		if (Intern.getIntern(questInProgress.refIntern).quest.stepIndex < 2) {		
 			if (!Intern.isMaxStress(questInProgress.refIntern)){
@@ -249,23 +243,28 @@ class QuestsManager
 	
 	public static function getCursorPosition(quest:TimeQuestDescription):Array<Float> {
 		var positions:Array<Float> = new Array<Float>();
+		var globalLength:Float = (quest.steps[0] + quest.steps[1] + quest.steps[2]) * 1.05;
 		
-		var globalLength = quest.end - quest.creation;
+		var rLength:Float = 0;
 		for (i in 0...3) {
-			var rLength:Float = quest.steps[i] - quest.creation;
+			rLength+= quest.steps[i];
 			positions.push((rLength / globalLength));
 		}
-		
 		return positions;
 	}
 	
 	public static function getPrctAvancment(pId:Int):Float {
 		var quest:TimeQuestDescription = getQuest(pId);
-		var baseValeur:Int = 0;
+		var globalLength:Float = (quest.steps[0] + quest.steps[1] + quest.steps[2]) * 1.05;
+		var baseValeur:Int = 0;  
+		var currentTime:Float = 0;
 		
-		if (quest != null){
-			var globalLength = quest.end - quest.creation;
-			return (quest.progress - quest.creation) / globalLength;
+		for (i in 0...quest.stepIndex) {
+			currentTime += quest.steps[i];
+		}
+		
+		if (quest != null) {
+			return (quest.progress + currentTime - quest.startTime) / globalLength;
 		}
 		else return baseValeur;
 	}
