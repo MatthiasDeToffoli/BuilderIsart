@@ -1,5 +1,5 @@
 {
- "md5": "b66986f16450bb38ddb54776ade355c0",
+ "md5": "126309a1a67882126580fca36b5e4e47",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -1400,7 +1400,7 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -99.65,
-        "text": "Remplissez cet objectif OB et nous gagneront encore de l'expérience !",
+        "text": "Ha ! Cette Maison ne sert à rien sans âmes SO à l'intérieur !",
         "x": -516.95,
         "width": 1033.9,
         "font": "68px _pixelOperator*",
@@ -3505,7 +3505,7 @@
         "width": 931.9,
         "font": "60px _pixelOperator*",
         "align": "center",
-        "height": 209,
+        "height": 235,
         "wordWrap": 1,
         "color": "#3C3232"
        },
@@ -4774,9 +4774,8 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "UIPosition": "topRight",
         "y": -24.35,
-        "UIPosition_Desktop": "top",
+        "UIPosition": "topRight",
         "text": "XXXX",
         "color": "#000000",
         "width": 119.75,
@@ -4784,6 +4783,7 @@
         "align": "center",
         "height": 52.85,
         "wordWrap": 0,
+        "UIPosition_Desktop": "top",
         "x": -59.85
        },
        "symbol": "Text_HardCurrencyStock",
@@ -5708,15 +5708,15 @@
        ]
       },
       {
-       "symbol": "title_BD",
+       "symbol": "title_HG",
        "origin": [
-        0,
-        0
+        768,
+        512.25
        ],
        "rect": [
         1,
         902,
-        769,
+        768,
         513
        ]
       },
@@ -5727,7 +5727,7 @@
         248.6
        ],
        "rect": [
-        772,
+        771,
         902,
         762,
         498
@@ -6500,15 +6500,15 @@
        ]
       },
       {
-       "symbol": "title_HD",
+       "symbol": "title_BG",
        "origin": [
-        0,
-        512.25
+        768,
+        0
        ],
        "rect": [
         1,
         748,
-        769,
+        768,
         513
        ]
       },
@@ -6519,7 +6519,7 @@
         225
        ],
        "rect": [
-        772,
+        771,
         748,
         690,
         450
@@ -6662,7 +6662,7 @@
         380
        ],
        "rect": [
-        772,
+        771,
         1200,
         192,
         57
@@ -6708,14 +6708,66 @@
        ]
       },
       {
+       "symbol": "_goodIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        1463,
+        711,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        1463,
+        785,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_internTabIcon_up",
+       "origin": [
+        36,
+        35.1
+       ],
+       "rect": [
+        1463,
+        859,
+        72,
+        71
+       ]
+      },
+      {
+       "symbol": "_decoTabIcon_up",
+       "origin": [
+        36,
+        35.1
+       ],
+       "rect": [
+        1463,
+        932,
+        72,
+        71
+       ]
+      },
+      {
        "symbol": "_currencyTabIcon_down",
        "origin": [
         33.75,
         32.9
        ],
        "rect": [
-        1464,
-        711,
+        1463,
+        1005,
         71,
         71
        ]
@@ -6727,62 +6779,10 @@
         34.6
        ],
        "rect": [
-        1464,
-        784,
+        1463,
+        1078,
         71,
         70
-       ]
-      },
-      {
-       "symbol": "_buttonEnterBuilding_png",
-       "origin": [
-        33.75,
-        35.6
-       ],
-       "rect": [
-        1464,
-        856,
-        68,
-        72
-       ]
-      },
-      {
-       "symbol": "main_back",
-       "origin": [
-        39.85,
-        38.6
-       ],
-       "rect": [
-        1464,
-        930,
-        64,
-        73
-       ]
-      },
-      {
-       "symbol": "_timeIcon_Medium",
-       "origin": [
-        37.95,
-        34
-       ],
-       "rect": [
-        1464,
-        1005,
-        68,
-        68
-       ]
-      },
-      {
-       "symbol": "_buttonMoveBuilding_png",
-       "origin": [
-        33.75,
-        33.75
-       ],
-       "rect": [
-        1464,
-        1075,
-        68,
-        68
        ]
       },
       {
@@ -6792,23 +6792,23 @@
         30
        ],
        "rect": [
-        966,
+        965,
         1200,
         60,
         60
        ]
       },
       {
-       "symbol": "_isartPointsIcon_Small",
+       "symbol": "_timeIcon_Small",
        "origin": [
-        29.4,
-        24.15
+        26.25,
+        23.55
        ],
        "rect": [
-        1464,
-        1145,
-        59,
-        53
+        1463,
+        1150,
+        48,
+        48
        ]
       }
      ]
@@ -6817,10 +6817,10 @@
      "file": "atlas9.png",
      "textures": [
       {
-       "symbol": "title_HG",
+       "symbol": "title_BD",
        "origin": [
-        768,
-        512.25
+        0,
+        0
        ],
        "rect": [
         1,
@@ -6830,10 +6830,10 @@
        ]
       },
       {
-       "symbol": "title_BG",
+       "symbol": "title_HD",
        "origin": [
-        768,
-        0
+        0,
+        512.25
        ],
        "rect": [
         1,
@@ -6960,16 +6960,16 @@
        ]
       },
       {
-       "symbol": "_goodIcon_Medium",
+       "symbol": "_resTabIcon_down",
        "origin": [
-        36,
-        36
+        33.75,
+        32.9
        ],
        "rect": [
         1460,
         1454,
-        72,
-        72
+        75,
+        68
        ]
       }
      ]
@@ -7355,6 +7355,19 @@
        ]
       },
       {
+       "symbol": "_isartPointsIcon_Small",
+       "origin": [
+        29.4,
+        24.15
+       ],
+       "rect": [
+        1472,
+        966,
+        59,
+        53
+       ]
+      },
+      {
        "symbol": "_buttonSkip_SmallConstruction_png",
        "origin": [
         30,
@@ -7362,7 +7375,7 @@
        ],
        "rect": [
         1472,
-        966,
+        1021,
         60,
         49
        ]
@@ -7375,7 +7388,7 @@
        ],
        "rect": [
         1472,
-        1017,
+        1072,
         54,
         54
        ]
@@ -7388,22 +7401,9 @@
        ],
        "rect": [
         1472,
-        1073,
+        1128,
         54,
         54
-       ]
-      },
-      {
-       "symbol": "_timeIcon_Small",
-       "origin": [
-        26.25,
-        23.55
-       ],
-       "rect": [
-        1472,
-        1129,
-        48,
-        48
        ]
       }
      ]
@@ -8605,16 +8605,29 @@
        ]
       },
       {
-       "symbol": "_internTabIcon_down",
+       "symbol": "_buttonEnterBuilding_png",
        "origin": [
         33.75,
-        32.9
+        35.6
        ],
        "rect": [
         1466,
         295,
         68,
-        66
+        72
+       ]
+      },
+      {
+       "symbol": "main_back",
+       "origin": [
+        39.85,
+        38.6
+       ],
+       "rect": [
+        1050,
+        417,
+        64,
+        73
        ]
       },
       {
@@ -8625,7 +8638,7 @@
        ],
        "rect": [
         1050,
-        417,
+        492,
         66,
         66
        ]
@@ -8638,22 +8651,9 @@
        ],
        "rect": [
         1050,
-        485,
+        560,
         66,
         65
-       ]
-      },
-      {
-       "symbol": "_buildingTabIcon_down",
-       "origin": [
-        33.75,
-        31.25
-       ],
-       "rect": [
-        1036,
-        613,
-        68,
-        63
        ]
       }
      ]
@@ -9894,55 +9894,55 @@
        ]
       },
       {
-       "symbol": "_goldIcon_Medium",
+       "symbol": "_bundleTabIcon_up",
        "origin": [
-        36,
-        36
+        36.75,
+        33.4
        ],
        "rect": [
         842,
         1228,
-        72,
-        72
+        74,
+        67
        ]
       },
       {
-       "symbol": "_internTabIcon_up",
+       "symbol": "_buildingTabIcon_up",
        "origin": [
         36,
-        35.1
+        33.3
        ],
        "rect": [
         842,
-        1302,
+        1297,
         72,
-        71
+        67
        ]
       },
       {
-       "symbol": "_decoTabIcon_up",
+       "symbol": "_woodIcon_Medium",
        "origin": [
         36,
-        35.1
+        32.4
        ],
        "rect": [
         842,
-        1375,
+        1366,
         72,
-        71
+        65
        ]
       },
       {
-       "symbol": "_bundleTabIcon_down",
+       "symbol": "_buildingTabIcon_down",
        "origin": [
         33.75,
-        30.7
+        31.25
        ],
        "rect": [
         1114,
         1472,
         68,
-        62
+        63
        ]
       }
      ]
@@ -10445,55 +10445,68 @@
        ]
       },
       {
-       "symbol": "_resTabIcon_down",
+       "symbol": "_timeIcon_Medium",
+       "origin": [
+        37.95,
+        34
+       ],
+       "rect": [
+        1068,
+        905,
+        68,
+        68
+       ]
+      },
+      {
+       "symbol": "_buttonMoveBuilding_png",
+       "origin": [
+        33.75,
+        33.75
+       ],
+       "rect": [
+        1068,
+        975,
+        68,
+        68
+       ]
+      },
+      {
+       "symbol": "_internTabIcon_down",
        "origin": [
         33.75,
         32.9
        ],
        "rect": [
-        1068,
-        905,
-        75,
-        68
-       ]
-      },
-      {
-       "symbol": "_bundleTabIcon_up",
-       "origin": [
-        36.75,
-        33.4
-       ],
-       "rect": [
-        1068,
-        975,
-        74,
-        67
-       ]
-      },
-      {
-       "symbol": "_buildingTabIcon_up",
-       "origin": [
-        36,
-        33.3
-       ],
-       "rect": [
         1382,
         1404,
-        72,
-        67
+        68,
+        66
        ]
       },
       {
-       "symbol": "_woodIcon_Medium",
+       "symbol": "_closeButton_over",
        "origin": [
-        36,
-        32.4
+        34.5,
+        32.3
        ],
        "rect": [
-        1456,
+        1452,
         1404,
-        72,
+        69,
         65
+       ]
+      },
+      {
+       "symbol": "_bundleTabIcon_down",
+       "origin": [
+        33.75,
+        30.7
+       ],
+       "rect": [
+        1452,
+        1471,
+        68,
+        62
        ]
       },
       {
@@ -10503,21 +10516,8 @@
         30.95
        ],
        "rect": [
-        1456,
-        1471,
-        66,
-        62
-       ]
-      },
-      {
-       "symbol": "_closeButton_down",
-       "origin": [
-        33,
-        30.95
-       ],
-       "rect": [
         1382,
-        1473,
+        1472,
         66,
         62
        ]
@@ -11321,16 +11321,16 @@
        ]
       },
       {
-       "symbol": "_closeButton_over",
+       "symbol": "_closeButton_down",
        "origin": [
-        34.5,
-        32.3
+        33,
+        30.95
        ],
        "rect": [
         191,
         748,
-        69,
-        65
+        66,
+        62
        ]
       }
      ]
@@ -14956,8 +14956,8 @@
     }
    ],
    "data": {
-    "UIPosition_Desktop": "top",
-    "UIPosition": "topRight"
+    "UIPosition": "topRight",
+    "UIPosition_Desktop": "top"
    },
    "id": "HardCurrencyStock"
   },
@@ -22315,6 +22315,15 @@
       }
      ],
      "name": "title_BD"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Layer 1"
     }
    ],
    "id": "Title_card_bg"
@@ -22642,8 +22651,8 @@
        ],
        "ref": "~_ftue_dialogFR_6",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22656,8 +22665,8 @@
        "ref": "Window_Ftue_Angel_Action",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -22674,7 +22683,7 @@
        "index": 0,
        "loc": [
         119.25,
-        339
+        358.5
        ]
       }
      ],
@@ -22686,8 +22695,8 @@
        "ref": "Window_Ftue_Angel_Scenario",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -22702,12 +22711,12 @@
        "index": 0,
        "loc": [
         247.5,
-        220.5
+        250.5
        ],
        "ref": "~_ftue_dialogFR_25",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22725,8 +22734,8 @@
        ],
        "ref": "~_ftue_dialogFR_24",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22740,12 +22749,12 @@
        "index": 0,
        "loc": [
         53.25,
-        220.5
+        249
        ],
        "ref": "~_ftue_dialogFR_15",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22763,8 +22772,8 @@
        ],
        "ref": "~_ftue_dialogFR_12",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22782,8 +22791,8 @@
        ],
        "ref": "~_ftue_dialogFR_5",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22796,8 +22805,8 @@
        "ref": "Window_Ftue_Demon_Scenario",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -22816,8 +22825,8 @@
        ],
        "ref": "~_ftue_dialogFR_22",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22835,8 +22844,8 @@
        ],
        "ref": "~_ftue_dialogFR_20",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22854,8 +22863,8 @@
        ],
        "ref": "~_ftue_dialogFR_18",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22873,8 +22882,8 @@
        ],
        "ref": "~_ftue_dialogFR_17",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22888,12 +22897,12 @@
        "index": 0,
        "loc": [
         -171,
-        266.25
+        292.5
        ],
        "ref": "~_ftue_dialogFR_13",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22911,8 +22920,8 @@
        ],
        "ref": "ButtonEndDialog",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22930,8 +22939,8 @@
        ],
        "ref": "~ButtonNext",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -22951,8 +22960,8 @@
         75
        ],
        "data": {
-        "UIPosition_desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -22974,8 +22983,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23001,8 +23010,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23028,8 +23037,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23055,8 +23064,8 @@
         75
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23078,8 +23087,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23105,8 +23114,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23132,8 +23141,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23159,8 +23168,8 @@
         101.25
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23185,8 +23194,8 @@
        ],
        "ref": "_infobulle_text",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -23206,8 +23215,8 @@
         110.025
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23229,8 +23238,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23252,8 +23261,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23275,8 +23284,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23301,8 +23310,8 @@
        ],
        "ref": "_ftue_txt_action",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -23360,8 +23369,8 @@
         293.1375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23402,8 +23411,8 @@
         -0.0375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23430,8 +23439,8 @@
         110.025
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23453,8 +23462,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23476,8 +23485,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23499,8 +23508,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23542,8 +23551,8 @@
         125.625
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23565,8 +23574,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23588,8 +23597,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23611,8 +23620,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23634,8 +23643,8 @@
         -0.0375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23662,8 +23671,8 @@
         101.25
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23685,8 +23694,8 @@
         214.2
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23708,8 +23717,8 @@
         214.2
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23731,8 +23740,8 @@
         214.2
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23754,8 +23763,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23777,8 +23786,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23800,8 +23809,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -23826,8 +23835,8 @@
        ],
        "ref": "Window_NPC_Speech_TXT",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -23863,8 +23872,8 @@
        ],
        "ref": "~ButtonNext",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -32417,7 +32426,7 @@
        "index": 0
       }
      ],
-     "name": "Layer 1"
+     "name": "_hardCurrencyIcon_Small"
     }
    ],
    "id": "~_ftue_dialogFR_11"
