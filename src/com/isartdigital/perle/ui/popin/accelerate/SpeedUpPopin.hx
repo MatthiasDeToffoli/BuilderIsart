@@ -66,6 +66,7 @@ class SpeedUpPopin extends AcceleratePopin
 			return;
 			
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
+		Hud.getInstance().show();
 		super.onClose();
 	}
 	
