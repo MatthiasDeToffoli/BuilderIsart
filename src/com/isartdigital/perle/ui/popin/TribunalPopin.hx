@@ -71,7 +71,7 @@ class TribunalPopin extends SmartPopinExtended
 	/**
 	 * constructeur privé pour éviter qu'une instance soit créée directement
 	 */
-	private function new(pID:String=null) 
+	private function new(pID:String=null){
 		Hud.isHide = false;
 		Hud.getInstance().hide();
 		super(AssetName.PURGATORY_POPIN);
@@ -260,19 +260,12 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onHell() {
-<<<<<<< 1915aab1d5265eb9c634a8798f8baf315ed07b4f
-		if (DialogueManager.ftueStepSlideCard)
-			return;
-		if (!ResourcesManager.judgePopulation(Alignment.hell)) return;
-		
-		SoundManager.getSound("SOUND_CHOICE_HELL").play();
-=======
 		if (DialogueManager.ftueStepSlideCard) {
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}
-		if(!ResourcesManager.judgePopulation(Alignment.hell)) return;
->>>>>>> added new FTUE
+		if (!ResourcesManager.judgePopulation(Alignment.hell)) return;
+		SoundManager.getSound("SOUND_CHOICE_HELL").play();
 		changeSoulTextInfo();
 		changeSoulText();
 		

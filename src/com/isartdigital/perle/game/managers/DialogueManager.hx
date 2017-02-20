@@ -371,10 +371,12 @@ class DialogueManager
 		}
 			
 		if (steps[dialogueSaved].hellEXP != null) {
+			//Hud.getInstance().hudGlowHell.visible = true;
 			Timer.delay(giveHellExp, 200);
 		}
 			
 		if (steps[dialogueSaved].heavenEXP != null) {
+			//Hud.getInstance().hudGlowHeaven.visible = true;
 			ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);	
 			Hud.getInstance().heavenXPBar.alpha = 1;
 			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);
@@ -638,10 +640,6 @@ class DialogueManager
 		counterForFtueHeaven = 0;
 	}
 	
-	private static function setAfterStories() {
-		
-	}
-	
 	/**
 	 * Remove Ftue
 	 */
@@ -678,6 +676,7 @@ class DialogueManager
 		doNotGiveGold = false;
 		doNotGiveKarma = false;
 		
+		Hud.getInstance().setGlowFalse();
 		//if (addedJuicy)
 		//	removeGolds();
 	}

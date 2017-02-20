@@ -42,6 +42,7 @@ import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.UIMovie;
+import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import js.html.FilePropertyBag;
 import js.html.KeyboardEvent;
@@ -77,6 +78,8 @@ class Hud extends SmartScreen
 	
 	public var hellXPBar:SmartComponent;
 	public var heavenXPBar:SmartComponent;
+	public var hudGlowHeaven:UISprite;
+	public var hudGlowHell:UISprite;
 	
 	//private var btnResetData:SmartButton;
 	public var btnShop:SmartButton;
@@ -94,6 +97,7 @@ class Hud extends SmartScreen
 	private var basePosXMasqueXpHell:Float;
 	private var basePosXMasqueXpHeaven:Float;
 	private var baseGaugeWidth:Float;
+	
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -279,9 +283,20 @@ class Hud extends SmartScreen
 		
 		hellXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HELL), SmartComponent);
 		heavenXPBar = cast(SmartCheck.getChildByName(this, AssetName.XP_GAUGE_HEAVEN), SmartComponent);
-		addListenersOnClick();
 		
+		var lBarHeaven = cast(heavenXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER), UIMovie);
+		var lBarHell = cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie);
+		SmartCheck.traceChildrens(lBarHeaven);
+	//	hudGlowHell = cast(SmartCheck.getChildByName(lBarHell, AssetName.HUD_XP_GAUGE_GLOW), UISprite);
+		//hudGlowHeaven = cast(SmartCheck.getChildByName(lBarHeaven, AssetName.HUD_XP_GAUGE_GLOW), UISprite);
+		addListenersOnClick();
+		setGlowFalse();
 		eChangeBH.addListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
+	}
+	
+	public function setGlowFalse() {
+		/*hudGlowHell.visible = false;
+		hudGlowHeaven.visible = false;*/
 	}
 	
 	private function addListenersOnClick() {

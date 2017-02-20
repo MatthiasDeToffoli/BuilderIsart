@@ -401,6 +401,16 @@ class AssetName{
 	public static inline var FTUE_ICONS:String = "IconHolder_Main";
 	public static inline var FTUE_ICON_5:String = "_ftue_dialogFR_5";
 	public static inline var FTUE_ICON_6:String = "_ftue_dialogFR_6";
+	public static inline var FTUE_ICON_11:String = "_ftue_dialogFR_11";
+	public static inline var FTUE_ICON_12:String = "_ftue_dialogFR_12";
+	public static inline var FTUE_ICON_13:String = "_ftue_dialogFR_13";
+	public static inline var FTUE_ICON_15:String = "_ftue_dialogFR_15";
+	public static inline var FTUE_ICON_17:String = "_ftue_dialogFR_17";
+	public static inline var FTUE_ICON_18:String = "_ftue_dialogFR_18";
+	public static inline var FTUE_ICON_20:String = "_ftue_dialogFR_20";
+	public static inline var FTUE_ICON_22:String = "_ftue_dialogFR_22";
+	public static inline var FTUE_ICON_24:String = "_ftue_dialogFR_24";
+	public static inline var FTUE_ICON_25:String = "_ftue_dialogFR_25";
 	
 	
 	// HUD
@@ -428,6 +438,7 @@ class AssetName{
 	public static inline var HUD_MOVNG_BUILDING_BTN_CONFIRM:String = "Button_ConfirmMovement";
 	public static inline var HUD_XP_GAUGE_MASK_HEAVEN_CONTAINER:String = "HUD_Xp_Bar_Heaven";
 	public static inline var HUD_XP_GAUGE_MASK_HELL_CONTAINER:String = "HUD_Xp_Bar_Hell";
+	public static inline var HUD_XP_GAUGE_GLOW:String = "ftueGlow";
 	
 	
 	public static inline var COUNTER_TXT_XP:String = "Hud_xp_txt";

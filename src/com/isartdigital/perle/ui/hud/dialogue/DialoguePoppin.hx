@@ -28,8 +28,6 @@ class DialoguePoppin extends SmartScreen
 	private var scenarioHell:SmartComponent;
 	private var actionAngel:SmartComponent;
 	private var actionHell:SmartComponent;
-	private var icon5:SmartComponent;
-	private var icon6:SmartComponent;
 	private var btnNext:SmartButton;
 	private var btnEnd:SmartButton;
 	private static var windowOpened:SmartComponent;
@@ -42,6 +40,20 @@ class DialoguePoppin extends SmartScreen
 	
 	public static var numberOfDialogue:Int;
 	public static var firstToSpeak:String;
+	
+	//icons
+	private var icon5:SmartComponent;
+	private var icon6:SmartComponent;
+	private var icon11:SmartComponent;
+	private var icon12:SmartComponent;
+	private var icon13:SmartComponent;
+	private var icon15:SmartComponent;
+	private var icon17:SmartComponent;
+	private var icon18:SmartComponent;
+	private var icon20:SmartComponent;
+	private var icon22:SmartComponent;
+	private var icon24:SmartComponent;
+	private var icon25:SmartComponent;
 	
 	//Array of the dialogue
 	public static var lNpc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -89,6 +101,16 @@ class DialoguePoppin extends SmartScreen
 		actionHell = cast(getChildByName(AssetName.FTUE_ACTION_HELL), SmartComponent);
 		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);
 		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);
+		icon11= cast(getChildByName(AssetName.FTUE_ICON_11), SmartComponent);
+		icon12 = cast(getChildByName(AssetName.FTUE_ICON_12), SmartComponent);
+		icon13 = cast(getChildByName(AssetName.FTUE_ICON_13), SmartComponent);
+		icon15 = cast(getChildByName(AssetName.FTUE_ICON_15), SmartComponent);
+		icon17 = cast(getChildByName(AssetName.FTUE_ICON_17), SmartComponent);
+		icon18 = cast(getChildByName(AssetName.FTUE_ICON_18), SmartComponent);
+		icon20 = cast(getChildByName(AssetName.FTUE_ICON_20), SmartComponent);
+		icon22 = cast(getChildByName(AssetName.FTUE_ICON_22), SmartComponent);
+		icon24 = cast(getChildByName(AssetName.FTUE_ICON_24), SmartComponent);
+		icon25 = cast(getChildByName(AssetName.FTUE_ICON_25), SmartComponent);
 		
 		btnNext = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON), SmartButton);
 		Interactive.addListenerClick(btnNext, nextStep);
@@ -161,6 +183,16 @@ class DialoguePoppin extends SmartScreen
 		switch(pDialogueNumber) {
 			case 5 : icon5.visible = true;
 			case 6 : icon6.visible = true;
+			case 11 : icon11.visible = true;
+			case 12 : icon12.visible = true;
+			case 13 : icon13.visible = true;
+			case 15 : icon15.visible = true;
+			case 17 : icon17.visible = true;
+			case 18 : icon18.visible = true;
+			case 20 : icon20.visible = true;
+			case 22 : icon22.visible = true;
+			case 24 : icon24.visible = true;
+			case 25 : icon25.visible = true;
 		}
 	}
 	
@@ -175,10 +207,21 @@ class DialoguePoppin extends SmartScreen
 		scenarioHell.visible = false;
 		actionAngel.visible = false;
 		actionHell.visible = false;
-		icon5.visible = false;
-		icon6.visible = false;
 		btnNext.visible = false;
 		btnEnd.visible = false;
+		
+		icon5.visible = false;
+		icon6.visible = false;
+		icon11.visible = false;
+		icon12.visible = false;
+		icon13.visible = false;
+		icon15.visible = false;
+		icon17.visible = false;
+		icon18.visible = false;
+		icon20.visible = false;
+		icon22.visible = false;
+		icon24.visible = false;
+		icon25.visible = false;
 	}
 	
 	/**
