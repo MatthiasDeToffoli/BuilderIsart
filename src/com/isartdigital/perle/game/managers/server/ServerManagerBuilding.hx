@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
 
@@ -193,15 +194,40 @@ class ServerManagerBuilding{
 		}*/ // return nothing if success right now.
 	}
 	
-	public static function updatePopulation(pDescription:TileDescription):Void {
+	public static function updatePopulation(pDescription:TileDescription, quantity:Int):Void {
+		trace(quantity);
+		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_POPULATION,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"NbSoul" => quantity,
+			"tribuX" => VTribunal.getInstance().tileDesc.mapX,
+			"tribuY" => VTribunal.getInstance().tileDesc.mapY,
+			"tribuRegionX" => VTribunal.getInstance().tileDesc.regionX,
+			"tribuRegionY" => VTribunal.getInstance().tileDesc.regionY
+			
+		]);
+	}
+	
+	private static function onSuccessupdatePopulation(pObject:Dynamic):Void {
+		trace(pObject);
+		
+		var data:Dynamic = Json.parse(pObject);
+		
+		if (data.error) Debug.error(data.message);
+	}
+	
+	private static function onErrorupdatePopulation(pObject:Dynamic):Void {
 		
 	}
 	
 	public static function createGenerator(pId:Int):Void {
 		var lDescription:TileDescription = IdManager.searchVBuildingById(pId).tileDesc;
-		trace(lDescription);
-		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
-			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_GENERATOR,
+
+		ServerManager.callPhpFile(onSuccessCreateGenerator, onErrorCreateGenerator, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.CREATE_GENERATOR,
 			"X" => lDescription.mapX,
 			"Y" => lDescription.mapY,
 			"RegionX" => lDescription.regionX,
@@ -209,14 +235,23 @@ class ServerManagerBuilding{
 		]);
 	}
 	
+	//use this with security for know if we always have the building....
+	private static function onSuccessCreateGenerator(pObject:Dynamic):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorCreateGenerator(pObject:Dynamic):Void {
+		
+	}
+	
 	public static function updateGenerator(pEnd:Float, pGenerator:GeneratorDescription):Void {
-		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+		/*ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_GENERATOR,
 			"ID" => 70,
 			"TypeProduction" => pGenerator.type.getName(),
 			"NbResource" => pGenerator.quantity,
 			"EndForNextProduction" => pEnd
-		]);
+		]);*/
 	}
 	
 	//use this with security for know if we always have the building....

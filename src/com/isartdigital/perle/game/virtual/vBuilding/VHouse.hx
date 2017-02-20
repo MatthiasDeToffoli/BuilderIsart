@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
 /**
@@ -61,7 +62,7 @@ class VHouse extends VBuildingUpgrade
 	 * @param	pMax the new max of population
 	 */
 	public function updatePopulation(?pQuantity:Int):Void{
-
+		trace(pQuantity);
 		if (pQuantity != null){
 			tileDesc.currentPopulation = pQuantity;
 			myPopulation.quantity = pQuantity;
@@ -73,7 +74,6 @@ class VHouse extends VBuildingUpgrade
 		
 		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
 		updateResources();
-		
 		
 		SaveManager.save();
 	}
@@ -93,6 +93,7 @@ class VHouse extends VBuildingUpgrade
 	public function onPopulationChanged(pPopulation:Dynamic):Void{
 		if (pPopulation.buildingRef != tileDesc.id) return;
 		
+		ServerManagerBuilding.updatePopulation(tileDesc, Std.int(pPopulation.quantity-tileDesc.currentPopulation));
 		myPopulation = pPopulation;
 		tileDesc.maxPopulation = pPopulation.max;
 		tileDesc.currentPopulation = pPopulation.quantity;

@@ -12,7 +12,8 @@ class ServerFile{
 	public static inline var REGIONS:String = "BuyRegions"; // todo : rename ADD_REGIONS ?
 	public static inline var BUILDING_ADD:String = "AddBuilding";
 	public static inline var BUILDING_MOVE:String = "MoveBuilding";
-	public static inline var UPDATE_GENERATOR:String = "CreateGenerator";
+	public static inline var CREATE_GENERATOR:String = "CreateGenerator";
+	public static inline var UPDATE_POPULATION:String = "UpdatePopulation";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";
