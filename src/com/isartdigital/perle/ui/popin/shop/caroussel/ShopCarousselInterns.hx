@@ -17,6 +17,7 @@ import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 
@@ -49,7 +50,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var heavenPrice:TextSprite;
 	
 	//Number of intern houses
-	private var houseNumber:SmartComponent;
+	private var houseNumber:UIMovie;
 	private var numberHousesHeaven:TextSprite;
 	private var numberHousesHell:TextSprite;
 	private var houseText:TextSprite;
@@ -118,10 +119,20 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_CARD), SmartButton);
 		heavenCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_CARD), SmartButton);
 		
-		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
-		numberHousesHeaven = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
-		numberHousesHell = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HELL), TextSprite);
-		houseText = cast(SmartCheck.getChildByName(houseNumber, AssetName.CAROUSSEL_INTERN_HOUSE_TEXT), TextSprite);
+		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), UIMovie);
+		
+		//var lHouseNumbers:Dynamic = houseNumber.children[0];
+		//for(i in 0...lHouseNumbers.children.length)
+		//trace(lHouseNumbers.children[i]);
+		//SmartCheck.getChildByName(lGlowHell, "ftueGlow").visible = false;
+		//SmartCheck.getChildByName(lGlowHeaven, "ftueGlow").visible = false;
+		//numberHousesHeaven = cast(SmartCheck.getChildByName(lHouseNumbers, "_internHouseNumber"),TextSprite);
+		//numberHousesHell = cast(SmartCheck.getChildByName(lHouseNumbers, "_internHouseNumber_actualValue"),TextSprite);
+		//numberHousesHell = lHouseNumbers[3];
+		//houseText = lHouseNumbers[3];
+		/*numberHousesHeaven = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
+		numberHousesHell = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HELL), TextSprite);
+		houseText = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_TEXT), TextSprite);*/
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
@@ -197,13 +208,13 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard.interactive = true;
 		
 		btnRerollTxt.text = Localisation.allTraductions["LABEL_SHOPINTERN_INTERN_REROLL_BUTTON"];
-		houseText.text =  Localisation.allTraductions["LABEL_SHOPINTERN_INTERNHOUSE_NUMBER_TXT"];
+		//houseText.text =  Localisation.allTraductions["LABEL_SHOPINTERN_INTERNHOUSE_NUMBER_TXT"];
 		
 		setValuesHeavenCard();
 		setValuesHellCard();
 		
-		setValuesNumberHousesHeaven();
-		setValuesNumberHousesHell();
+		//setValuesNumberHousesHeaven();
+		//setValuesNumberHousesHell();
 	}
 	
 	private function setValuesHellCard():Void{

@@ -21,6 +21,7 @@ import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
 import js.Browser;
@@ -38,6 +39,8 @@ class DialogueManager
 	private static inline var ALPHA_OFF:Float = 0.2;
 	private static inline var FTUE_SCENARIO:String = "assets/ftue2_bg.png";
 	public static inline var FTUE_ACTION:String = "assets/ftue_bg.png";
+	private static inline var FTUE_POS_MOVED:Float = 200;
+	private static inline var FTUE_TIME_BEFORE_EVENT:Float = 200;
 	private static var firstBuilding:VBuilding;
 	private static var firstBatPoint:Point;
 	private static var purgatoryPoint:Point;
@@ -45,6 +48,7 @@ class DialogueManager
 	public static var steps:Array<FTUEStep>;
 	private static var finger:FingerAnim;
 	
+	public static var dialoguePoppinPos:Point;
 	public static var closeDialoguePoppin:Bool = false;
 	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
@@ -105,6 +109,7 @@ class DialogueManager
 		DialoguePoppin.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
+		dialoguePoppinPos = DialoguePoppin.getInstance().position;
 	}
 	
 	/**
@@ -233,6 +238,8 @@ class DialogueManager
 			checkForOtherStories();
 		//DeltaDNA
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
+		
+		DialoguePoppin.getInstance().position = dialoguePoppinPos;
 		
 		//Effects : 
 		//Actions
@@ -372,7 +379,7 @@ class DialogueManager
 			
 		if (steps[dialogueSaved].hellEXP != null) {
 			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHell);
-			Timer.delay(giveHellExp, 200);
+			Timer.delay(giveHellExp, FTUE_TIME_BEFORE_EVENT);
 		}
 			
 		if (steps[dialogueSaved].heavenEXP != null) {
@@ -393,10 +400,16 @@ class DialogueManager
 		else if (steps[dialogueSaved].doNotBockInterns)
 			ftueStepBlocInterns = true;
 		
-		/*if (steps[dialogueSaved].stress) {
-			trace("te");
-			//FocusManager.getInstance().setFocus(Choice.getInstance().stress);
-		}*/
+		if (steps[dialogueSaved].speed || steps[dialogueSaved].efficiency) {
+			DialoguePoppin.getInstance().position.y -= FTUE_POS_MOVED;
+			Choice.getInstance().setGlowVisible();
+		}
+			
+		if (steps[dialogueSaved].removeGlowIntern)
+			Choice.getInstance().setGlowFalse();
+			
+		if (steps[dialogueSaved].changeDialoguePos)
+			DialoguePoppin.getInstance().position.y += FTUE_POS_MOVED;
 	}
 	
 	
@@ -406,6 +419,7 @@ class DialogueManager
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
 	public static function endOfaDialogue(?doNotNextStep:Bool, ?pCloseHud:Bool):Void {
+		DialoguePoppin.getInstance().position = dialoguePoppinPos;
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
 				//closeDialoguePoppin = false;
@@ -677,6 +691,9 @@ class DialogueManager
 		doNotGiveKarma = false;
 		
 		Hud.getInstance().setGlowFalse();
+		
+		//if(Choice.getInstance().isOn)
+		//	Choice.getInstance().setGlowFalse();
 		//if (addedJuicy)
 		//	removeGolds();
 	}

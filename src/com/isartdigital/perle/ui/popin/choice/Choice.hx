@@ -70,6 +70,10 @@ class Choice extends SmartPopinExtended
 	private var speedJauge:SmartComponent;
 	private var effJauge:SmartComponent;
 	
+	public var glowSpeed:UISprite;
+	public var glowStress:UISprite;
+	public var glowEfficiency:UISprite;
+	
 	private var currencyHellSpawner:SmartComponent;
 	private var currencyHeavenSpawner:SmartComponent;
 	private var stressHellIndicators:Map<Int, UISprite>;
@@ -140,7 +144,32 @@ class Choice extends SmartPopinExtended
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 		
+		glowStress = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UISprite);
+		glowEfficiency = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UISprite);
+		glowSpeed = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UISprite);
+		
 		stress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), UISprite);
+		setGlowFalse();
+		
+		if(DialogueManager.steps[DialogueManager.dialogueSaved].stress)
+			setGlowVisible();
+	}
+	
+	public function setGlowVisible():Void {
+		setGlowFalse();
+		
+		if (DialogueManager.steps[DialogueManager.dialogueSaved].stress) 
+			glowStress.visible = true;
+		else if (DialogueManager.steps[DialogueManager.dialogueSaved].efficiency) 
+			glowEfficiency.visible = true;
+		else if (DialogueManager.steps[DialogueManager.dialogueSaved].speed) 
+			glowSpeed.visible = true;
+	}
+	
+	public function setGlowFalse():Void {
+		glowStress.visible = false;
+		glowEfficiency.visible = false;
+		glowSpeed.visible = false;
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {

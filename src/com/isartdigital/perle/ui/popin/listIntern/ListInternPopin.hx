@@ -80,9 +80,9 @@ class ListInternPopin extends SmartPopin
 		actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
 		internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
 			
-		internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
-		internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
-		internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
+		//internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
+		//internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
+		//internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
 			
 		setSpawners();
 		setValues();		
@@ -97,8 +97,8 @@ class ListInternPopin extends SmartPopin
 		actualNbInternInQuest.text = Intern.numberInternsInQuest() + "";
 		internsInQuestMax.text = UnlockManager.getNumberPlaces() + "";
 		
-		setValuesNumberHousesHeaven();
-		setValuesNumberHousesHell();
+		//setValuesNumberHousesHeaven();
+		//setValuesNumberHousesHell();
 	}
 	
 	/**

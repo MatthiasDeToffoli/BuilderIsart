@@ -82,4 +82,6 @@ typedef FTUEStep = {
 	@optional var otherStorieDialogue:Bool;
 	@optional var otherStorieExpression:Bool;
 	@optional var endOfOtherStories:Bool;
+	@optional var removeGlowIntern:Bool;
+	@optional var changeDialoguePos:Bool;
 }
