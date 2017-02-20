@@ -138,14 +138,14 @@ class Main extends EventEmitter
 		configPath += "?" + Date.now().getTime();
 		lConfig.add(configPath);
 		lConfig.once(LoadEventType.COMPLETE, preloadAssets);
-		configLoader = lConfig;
+		//configLoader = lConfig;
 		
-		//lConfig.load(); // todo : temporary, because need FB to use getId in backend
+		lConfig.load(); // todo : temporary, because need FB to use getId in backend
 		Facebook.onLogin = onLogin;
 		Facebook.load(FACEBOOK_APP_ID);
 	}
 	
-	public var configLoader:Loader;
+	//public var configLoader:Loader;
 	
 	private function onLogin():Void{
 		ServerManager.playerConnexion();

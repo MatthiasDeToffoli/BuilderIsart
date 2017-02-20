@@ -358,7 +358,7 @@ class SaveManager {
 			
 			// untyped because i'm not filling all required fields
 			// will be merge whit localStorage, so don't panic
-			untyped currentSave = { 
+			/*untyped currentSave = { 
 				//timesResource: getTimesResource(),
 				//timesQuest: getTimesQuest(),
 				//timesConstruction: getTimesConstruction(),
@@ -387,9 +387,13 @@ class SaveManager {
 					Browser.getLocalStorage().getItem(SAVE_NAME)
 				),
 				currentSave
+			);*/
+			
+			currentSave = Json.parse(
+				Browser.getLocalStorage().getItem(SAVE_NAME)
 			);
 			
-			/*if (currentSave != null) {
+			if (currentSave != null) {
 				
 				if (currentSave.version != SAVE_VERSION) {
 					destroy();
@@ -398,7 +402,7 @@ class SaveManager {
 				else if  (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
 					currentSave.ROW_Y_LENGTH != Ground.ROW_Y_LENGTH)
 					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy() in this function)");
-			}*/
+			}
 		}
 		
 		return currentSave;
