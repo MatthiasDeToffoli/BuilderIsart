@@ -127,12 +127,6 @@ class GameConfig {
 	
 	public static function awake ():Void {
 		config = new Map<String, Array<Dynamic>>();
-		
-		/*config[BUILDING] = new Array<TableTypeBuilding>();
-		config[INTERN] = new Array<TableTypeIntern>();
-		
-		config[BUILDING][0].ID*/
-		
 		parseJson(config, GameLoader.getContent(Main.GAME_CONFIG));
 		
 		/*trace(config);
@@ -268,9 +262,10 @@ class GameConfig {
 					);
 					var lNewValue:Dynamic = null;
 					
-					
 					if (ServerManager.stringToEnum(lValue) != null)
 						lNewValue = ServerManager.stringToEnum(lValue);
+					else if (Type.typeof(lValue).getName() == "TInt") // is already an init whitout ""
+						lNewValue = lValue;
 					else if (isInt(lValue))
 						lNewValue = Std.parseInt(lValue);
 					else if (isFloat(lValue))

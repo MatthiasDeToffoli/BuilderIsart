@@ -87,7 +87,6 @@ class BuildingUtils
     Utils::insertInto(static::BUILDINGTABLE, [
       static::IDTYPEBUILDING => $typeTribu->ID,
       static::IDPLAYER => FacebookUtils::getId(),
-      static::LEVEL => 1,
       static::REGIONX => 0,
       static::REGIONY => 0,
       static::X => 0,

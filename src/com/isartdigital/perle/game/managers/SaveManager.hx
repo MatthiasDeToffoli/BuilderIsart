@@ -424,6 +424,10 @@ class SaveManager {
 				currentPopulation: lBuilding[i].nbSoul,
 				maxPopulation: lGameConfig.maxSoulsContained,
 				/*intern: ,*/ // todo : fill @Emeline, @Victor
+				// todo ci-dessous :
+				// nbResource
+				// endForNextProduction
+				// nbSoul
 			});
 			if (lGameConfig.name == "Purgatory")
 				result[0].isTribunal = true;

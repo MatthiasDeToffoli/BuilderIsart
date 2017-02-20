@@ -7,8 +7,9 @@ typedef TableBuilding = {
 	var iDTypeBuilding:Int;
 	var startConstruction:Int; // timestamp
 	var endConstruction:Int; // timestamp
-	var nbResource:Int;
-	var nbSoul:Int;
+	@:optional var nbResource:Int;
+	@:optional var endForNextProduction:Int; // timestamp
+	@:optional var nbSoul:Int;
 	var regionX:Int;
 	var regionY:Int;
 	var x:Int;
