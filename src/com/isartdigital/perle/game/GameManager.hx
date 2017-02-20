@@ -74,7 +74,7 @@ class GameManager {
 		
 		//ServerManager.loadRegion();
 		ValueChangeManager.awake();
-		GameConfig.awake();
+		GameConfig.awake(); // before SaveManager.createFromSave()
 		AnimationManager.awake();
 		BuildingLimitManager.awake();
 		MarketingManager.awake(); // always before VTile

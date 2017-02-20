@@ -1,9 +1,11 @@
 package com.isartdigital.perle.game.managers;
 
+import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -349,13 +351,42 @@ class SaveManager {
 	 * @return
 	 */
 	private static function load():Save {
-		//destroy(); // here if save reset needed (constantly)
 		if (currentSave == null) {
-			currentSave = Json.parse(
-				Browser.getLocalStorage().getItem(SAVE_NAME)
+			
+			// untyped because i'm not filling all required fields
+			// will be merge whit localStorage, so don't panic
+			untyped currentSave = { 
+				//timesResource: getTimesResource(),
+				//timesQuest: getTimesQuest(),
+				//timesConstruction: getTimesConstruction(),
+				//timesProduction: TimeManager.listProduction,
+				//timesCampaign: getCampaign(),
+				//lastKnowTime:TimeManager.lastKnowTime,
+				//stats: getStats(),
+				//idHightest: IdManager.idHightest,
+				//region: regionSave,
+				//ground: groundSave,
+				building: loadBuilding(),
+				//resourcesData: saveResources(),
+				COL_X_LENGTH: Ground.COL_X_LENGTH, // todo, c'est fixé plus besoin de save..
+				ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
+				//version: SAVE_VERSION,
+				//ftueProgress : DialogueManager.dialogueSaved,
+				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
+			};
+			
+			ServerManagerLoad.deleteServerSave();
+			
+			//todo : temporary, it's fill's the missing value from localSave
+			// game should be tested whitout later, to be sure everything is saved in server.
+			currentSave = untyped Object.assign(
+				Json.parse(
+					Browser.getLocalStorage().getItem(SAVE_NAME)
+				),
+				currentSave
 			);
 			
-			if (currentSave != null) {
+			/*if (currentSave != null) {
 				
 				if (currentSave.version != SAVE_VERSION) {
 					destroy();
@@ -364,16 +395,52 @@ class SaveManager {
 				else if  (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
 					currentSave.ROW_Y_LENGTH != Ground.ROW_Y_LENGTH)
 					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy() in this function)");
-			}
+			}*/
 		}
+		
 		return currentSave;
 	}
 	
+	private static function loadBuilding ():Array<TileDescription> {
+		var result:Array<TileDescription> = [];
+		var lBuilding:Array<TableBuilding> = ServerManagerLoad.getBuilding();
+		
+		if (lBuilding == null)
+			Debug.error("No Building saved on server !");
+		
+		for (i in 0...lBuilding.length) {
+			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(lBuilding[i].iDTypeBuilding);
+			result.unshift({ 
+				buildingName: lGameConfig.name,
+				id: IdManager.newId(),
+				regionX: lBuilding[i].regionX,
+				regionY: lBuilding[i].regionY,
+				mapX: lBuilding[i].x,
+				mapY: lBuilding[i].y,
+				level: lGameConfig.level,
+				currentPopulation: lBuilding[i].nbSoul,
+				maxPopulation: lGameConfig.maxSoulsContained,
+				/*intern: ,*/ // todo : fill @Emeline, @Victor
+			});
+			if (lGameConfig.name == "Purgatory")
+				result[0].isTribunal = true;
+			if (lBuilding[i].endConstruction > Date.now().getTime())
+				result[0].timeDesc = { 
+					refTile: result[0].id,
+					progress: Date.now().getTime(),
+					end: lBuilding[i].endConstruction
+					//creationDate: lBuilding[i].startConstruction // marche pas trop
+				};
+				
+		}
+		return result;
+	}
+	
 	public static function createFromSave():Void {
-		load();
-		if (currentSave != null) {
+		if (Browser.getLocalStorage().getItem(SAVE_NAME) != null) {
+			load();
+			
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
-			IdManager.buildFromSave(currentSave); 
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
 			RegionManager.buildFromSave(currentSave);
@@ -388,7 +455,6 @@ class SaveManager {
 	
 	private static function createWhitoutSave():Void {
 		TimeManager.buildWhitoutSave(); // always begore ResourcesManager
-		IdManager.buildWhitoutSave();
 		ResourcesManager.initWithoutSave();
 		RegionManager.buildWhitoutSave();
 		VTile.buildWhitoutSave();

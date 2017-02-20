@@ -22,5 +22,6 @@ class ServerFile{
 	public static inline var DEBUG:String = "Debug";
 	public static inline var BUILDING_SELL:String = "BuildingSell";
 	public static inline var BUILDING_UPGRADE:String = "BuildingUpgrade";
+	public static inline var LOADING:String = "Loading";
 	
 }

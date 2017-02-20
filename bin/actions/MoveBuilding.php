@@ -8,6 +8,7 @@
 namespace actions;
 
 use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Utils as Utils;
 
 include_once("utils/Utils.php");
 include_once("utils/Logs.php");

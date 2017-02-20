@@ -1,11 +1,8 @@
 package com.isartdigital.perle.game.managers.server;
-import com.isartdigital.perle.game.managers.server.ErrorManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
-import com.isartdigital.perle.game.managers.server.RollBackManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
@@ -73,9 +70,13 @@ class ServerManager {
 			Debug.error("Player connexion failed");
 			return;
 		}
-		
+		ServerManagerLoad.load(); // todo : temporary (maybe)
 		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
 		DeltaDNAManager.listenToCloseGame();
+	}
+	
+	private static function onErrorPlayerConnexion (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
 	}
 	
 	private static function callDevugFille():Void {
@@ -85,12 +86,7 @@ class ServerManager {
 	private static function debug(object:Dynamic):Void {
 		trace(object);
 	}
-	
-	private static function onErrorPlayerConnexion (object:Dynamic):Void {
-		Debug.error("Error php : " + object);
-	}
-	
-	
+
 	public static function refreshConfig ():Void { // todo : remplacer par cron ?
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
 	}

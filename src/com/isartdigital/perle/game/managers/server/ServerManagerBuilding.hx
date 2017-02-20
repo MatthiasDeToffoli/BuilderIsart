@@ -225,7 +225,6 @@ class ServerManagerBuilding{
 	
 	public static function createGenerator(pId:Int):Void {
 		var lDescription:TileDescription = IdManager.searchVBuildingById(pId).tileDesc;
-
 		ServerManager.callPhpFile(onSuccessCreateGenerator, onErrorCreateGenerator, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.CREATE_GENERATOR,
 			"X" => lDescription.mapX,
@@ -256,7 +255,7 @@ class ServerManagerBuilding{
 	
 	//use this with security for know if we always have the building....
 	private static function onSuccessUpdateGenerator(pObject:Dynamic):Void {
-		trace(pObject);
+		//trace(pObject);
 	}
 	
 	private static function onErrorUpdateGenerator(pObject:Dynamic):Void {

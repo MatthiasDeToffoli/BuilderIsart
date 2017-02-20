@@ -9,9 +9,12 @@
 namespace actions;
 
 use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Send as Send;
+use actions\utils\Utils as Utils;
 
 include_once("utils/Utils.php");
 include_once("utils/Logs.php");
+include_once("utils/Send.php");
 include_once("ValidAddBuilding.php");
 include_once("utils/FacebookUtils.php");
 
@@ -60,9 +63,6 @@ class AddBuilding
             static::ID_CLIENT_BUILDING => Utils::getSinglePostValueInt(static::ID_CLIENT_BUILDING),
             static::ID_TYPE_BUILDING => Utils::getSinglePostValueInt(static::ID_TYPE_BUILDING),
             static::ID_PLAYER => FacebookUtils::getId(),
-            static::LEVEL => 1,
-            static::NB_RESOURCE => 0,
-            static::NB_SOUL => 0,
             static::REGION_X => Utils::getSinglePostValueInt(static::REGION_X),
             static::REGION_Y => Utils::getSinglePostValueInt(static::REGION_Y),
             static::X => Utils::getSinglePostValueInt(static::X),

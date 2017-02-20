@@ -7,9 +7,12 @@
 
 namespace actions;
 
+use actions\utils\Send as Send;
+use actions\utils\Utils as Utils;
+
 include_once("utils/Utils.php");
 include_once("utils/Send.php");
-include_once("BuildingCommonCode.php");
+include_once("utils/BuildingCommonCode.php");
 
 /**
  * Class ValidBuilding

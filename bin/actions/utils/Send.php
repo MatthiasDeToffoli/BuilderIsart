@@ -5,11 +5,11 @@
  * Time: 19:30
  */
 
-namespace actions;
+namespace actions\utils;
 
-include_once("Utils.php");
+use actions\BuildingCommonCode as BuildingCommonCode;
 include_once("Logs.php");
-include_once("../BuildingCommonCode.php");
+include_once("BuildingCommonCode.php");
 
 /**
  * Class that send info back to client, in case of a valid action of the player or

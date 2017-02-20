@@ -188,6 +188,15 @@ class GameConfig {
 		return null;
 	}
 	
+	public static function getBuildingByID (pID:Int):TableTypeBuilding {
+		for (i in 0...config[BUILDING].length)
+			if (config[BUILDING][i].iD == pID)
+				return config[BUILDING][i];
+				
+		Debug.error("BuildingID '" + pID +"' missing.");
+		return null;
+	}
+	
 	public static function countSoulName():Int {
 		return config[SOUL_NAME].length;
 	}
@@ -224,7 +233,7 @@ class GameConfig {
 		return null;
 	}
 	
-	private static function parseJson (pConfig:Map<String, Array<Dynamic>>, pContent:Dynamic):Void {
+	public static function parseJson (pConfig:Map<String, Array<Dynamic>>, pContent:Dynamic):Void {
 		
 		var fields:Array<String> = Reflect.fields(pContent);
 		for (i in 0...fields.length) {
@@ -239,6 +248,7 @@ class GameConfig {
 					anotherFields[j]
 				);*/
 				
+				// j'aurais très pu utiliser lcFirst() côté server je pense.
 				// c'est vrai cela, pourquoi en cours ils mettents des majuscule en bdd les profs ??
 				var typedefFields:Array<String> = Reflect.fields(Reflect.field(
 					Reflect.field(pContent, fields[i]),

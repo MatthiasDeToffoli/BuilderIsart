@@ -2,7 +2,7 @@
 namespace actions\utils;
 
 use PDO as PDO;
-use actions\Utils as Utils;
+use actions\utils\Utils as Utils;
 use actions\utils\FacebookUtils as FacebookUtils;
 
 include_once("Utils.php");

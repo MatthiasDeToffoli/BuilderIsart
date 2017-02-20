@@ -14,21 +14,10 @@ import com.isartdigital.utils.Debug;
  */
 class IdManager{
 
-	public static var idHightest(default, null):Int;
-	
-	
-	public static function buildWhitoutSave ():Void {
-		idHightest = 0;
-	}
-	
-	// todo : delete this and recreate an id for each building that come from server.
-	// sort of session id.
-	public static function buildFromSave (pSave:Save):Void {
-		idHightest = pSave.idHightest;
-	}
+	public static var idHightest(default, null):Int = 0;
 	
 	public static function newId ():Int {
-		return ++idHightest;
+		return idHightest++;
 	}
 	
 	/**
@@ -89,10 +78,6 @@ class IdManager{
 		}
 		Debug.warn(pId + " id (client) not found in worldMap.");
 		return null;
-	}
-	
-	public function new() {
-		
 	}
 	
 }

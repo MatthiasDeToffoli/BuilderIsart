@@ -8,12 +8,14 @@
 namespace actions;
 
 use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Send as Send;
+use actions\utils\Utils as Utils;
 
 include_once("utils/Utils.php");
 include_once("utils/Send.php");
 include_once("utils/FacebookUtils.php");
 include_once("ValidBuildingUpgrade.php");
-include_once("BuildingCommonCode.php");
+include_once("utils/BuildingCommonCode.php");
 //include_once("ValidAddBuilding.php"); do not use that or à doAction() for AddBuilding may be called.
 
 class BuildingUpgrade
