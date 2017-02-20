@@ -24,6 +24,7 @@ import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
 import haxe.Json;
@@ -91,6 +92,8 @@ class Phantom extends Building {
 		createPhantom(pBuildingName);
 		instance.vBuilding = pVBuilding;
 		instance.position = pVBuilding.graphic.position;
+		
+		SoundManager.getSound("SOUND_MOVE_BUILDING").play();
 	}
 	
 	public static function onClickCancelBuild ():Void {
@@ -321,6 +324,8 @@ class Phantom extends Building {
 			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 			Building.isClickable = true;
 			SaveManager.saveMoveBuilding(lOldDesc, vBuilding.tileDesc);
+			
+			alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 			destroy();
 			
 			
@@ -359,6 +364,8 @@ class Phantom extends Building {
 				Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
 			
 			BHConstruction.newTimer(vBuilding.tileDesc.timeDesc);
+			
+			vBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_CONSTRUCT_HEAVEN").play() : SoundManager.getSound("SOUND_CONSTRUCT_HELL").play();
 			
 			if (DialogueManager.ftueStepPutBuilding)
 				DialogueManager.endOfaDialogue();

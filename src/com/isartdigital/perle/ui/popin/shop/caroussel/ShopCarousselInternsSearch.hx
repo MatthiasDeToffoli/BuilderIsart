@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -97,11 +98,14 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	/** 
 	 * Funciton disabled that function because there is no arrow for intern tab.
 	 */
-	override function initArrows():Void { }
+	override function initArrows():Void { 
+		return null;
+	}
 	
 	private function onAccelerate():Void{
 		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)){
 			ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
+			SoundManager.getSound("SOUND_KARMA").play();
 			end();
 		}
 	}

@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.sounds.SoundManager;
 import eventemitter3.EventEmitter;
 
  
@@ -558,6 +559,8 @@ class ResourcesManager
 	public static function takeXp(quantity:Float, pType:GeneratorType):Void{
 		
 		myResourcesData.totalsMap[pType] = Math.min(myResourcesData.totalsMap[pType] + quantity, maxExp);
+		
+		SoundManager.getSound("SOUND_XP").play();
 		
 		Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
 		Hud.getInstance().setXpGauge();

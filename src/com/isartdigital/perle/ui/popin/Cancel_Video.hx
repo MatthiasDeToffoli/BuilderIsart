@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.popin;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 
@@ -34,10 +35,12 @@ class Cancel_Video extends SmartPopinExtended
 	{
 		super(AssetName.CANCEL_AD_VIDEO);
 		ok = cast(getChildByName(AssetName.CANCEL_AD_VIDEO_BTN_OK), SmartButton);
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		Interactive.addListenerClick(ok, onClickOk);
 	}
 	
 	private static function onClickOk():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	

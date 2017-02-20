@@ -20,6 +20,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameObject;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.UIComponent;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -116,7 +117,7 @@ class InternElementInQuest extends InternElement
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING) {
 			activeButton = new AccelerateButton(spawner.position);
 			cast(activeButton, AccelerateButton).spawn(quest);
-			Interactive.addListenerClick(activeButton, onBoost);
+			//Interactive.addListenerClick(activeButton, onBoost);
 		}
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
@@ -146,6 +147,7 @@ class InternElementInQuest extends InternElement
 		if (DialogueManager.ftueStepResolveIntern)
 			DialogueManager.endOfaDialogue();
 		QuestsManager.choice(quest);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	/**
@@ -156,11 +158,12 @@ class InternElementInQuest extends InternElement
 		MaxStressPopin.quest = quest;
 		MaxStressPopin.intern = Intern.getIntern(quest.refIntern);
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 
-	private function onBoost():Void {
-		spawnButton("Bouton_InternSend_Clip");
-	}
+	//private function onBoost():Void {
+		//spawnButton("Bouton_InternSend_Clip");
+	//}
 	
 	/**
 	 * Gameloop for the progress 

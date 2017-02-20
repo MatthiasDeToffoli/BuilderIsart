@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.MarketingManager.Campaign;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.monetization.Ads;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -23,6 +24,8 @@ class PanelCampaign extends SmartComponent
 	public function new() 
 	{
 		super(AssetName.MARKETING_PANEL_CAMPAIGN);
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		
 		btnCampaigns = new Array<SmartButton>();
 		
@@ -71,28 +74,33 @@ class PanelCampaign extends SmartComponent
 	}
 	
 	private function onClickVideo():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		Ads.getMovie(callBackAd);
 	}
 	
 	private function onCLickSmall():Void {
 		rewriteSmall();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		clickCampaign(CampaignType.small);
 		
 	}
 	
 	private function onClickMedium():Void {
 		rewriteMedium();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		clickCampaign(CampaignType.medium);
 		
 	}
 	
 	private function onClickLarge():Void {
 		rewriteLarge();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		clickCampaign(CampaignType.large);
 		
 	}
 	
 	private function clickCampaign(pType:CampaignType):Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		MarketingManager.setCampaign(pType);
 		MarketingPopin.getInstance().switchPanel();
 	}

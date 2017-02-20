@@ -55,6 +55,7 @@ class TitleCard extends Screen
 	
 	private function onClick (pEvent:EventTarget): Void {
 		Main.getInstance().startAfterTitleCard();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	/**

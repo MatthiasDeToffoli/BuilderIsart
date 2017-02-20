@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -51,6 +52,8 @@ class MarketingPopin extends SmartPopinExtended
 		spawner.parent.removeChild(spawner);
 		spawner.destroy();
 		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
+		
 		TimeManager.eCampaign.on(TimeManager.EVENT_CAMPAIGN_FINE, switchPanel);
 		Interactive.addListenerClick(btnClose,onClose);
 	}
@@ -70,6 +73,7 @@ class MarketingPopin extends SmartPopinExtended
 	private function onClose():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
 	public function switchPanel(?data:Dynamic):Void {

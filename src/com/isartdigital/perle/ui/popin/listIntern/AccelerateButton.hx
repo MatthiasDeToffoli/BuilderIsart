@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import pixi.core.math.Point;
@@ -38,8 +39,11 @@ class AccelerateButton extends SmartButton
 	}
 	
 	private function onAccelerate(){
-		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
-		TimeManager.increaseQuestProgress(quest);
+		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
+			ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
+			TimeManager.increaseQuestProgress(quest);
+			SoundManager.getSound("SOUND_KARMA").play();
+		}
 	}
 	
 	private function setValues():Void{

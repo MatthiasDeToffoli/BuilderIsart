@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -87,10 +88,10 @@ class InfoBuilding extends SmartPopinExtended{
 			fileInfosText();
 		}
 		
-		setImage(virtualBuilding.getAsset());
-		
+		setImage(virtualBuilding.getAsset());	
 
 		setButtonsAndAddListeners();
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		
 	}
 
@@ -257,6 +258,7 @@ class InfoBuilding extends SmartPopinExtended{
 	 * @return
 	 */
 	private function onClickExit ():Void {
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
 	}
@@ -289,6 +291,8 @@ class InfoBuilding extends SmartPopinExtended{
 		else lVBuilding = BuildingHud.virtualBuilding;
 		
 		var lBuildingUpgrade:VBuildingUpgrade = cast(lVBuilding, VBuildingUpgrade);
+		
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		
 		UIManager.getInstance().closeCurrentPopin(); //always before lBuildingUpgrade else bug when popin levels up appears
 		lBuildingUpgrade.onClickUpgrade();

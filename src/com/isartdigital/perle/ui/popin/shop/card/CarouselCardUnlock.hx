@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;

@@ -13,6 +13,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -73,6 +74,7 @@ class MaxStressPopin extends SmartPopin
 		getComponents();
 		setDatas();
 		addListeners();
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 	}
 	
 	private function getComponents():Void{
@@ -131,6 +133,7 @@ class MaxStressPopin extends SmartPopin
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) >= RESET_VALUE) {			
 			Intern.getIntern(intern.id).stress = 0;
 			Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+			SoundManager.getSound("SOUND_KARMA").play();
 			
 			if (quest != null) {
 				QuestsManager.chooseQuest(Intern.getIntern(intern.id).quest);
@@ -146,11 +149,13 @@ class MaxStressPopin extends SmartPopin
 		Intern.destroyIntern(intern.id);
 		TimeManager.destroyTimeQuest(intern.id);
 		updateQuestPopin();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClose():Void{
 		updateQuestPopin();
 		Hud.getInstance().show();
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
 		//For the HUD Popin actualisation

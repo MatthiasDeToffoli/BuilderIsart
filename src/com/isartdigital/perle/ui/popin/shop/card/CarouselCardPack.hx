@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
@@ -111,7 +112,7 @@ class CarouselCardPack extends CarouselCard{
 		}
 		
 		super._click(pEvent);
-		
+		SoundManager.getSound("SOUND_SPEND").play();
 		closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
 	}

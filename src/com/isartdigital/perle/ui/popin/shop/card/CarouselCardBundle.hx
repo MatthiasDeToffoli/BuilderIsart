@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
@@ -102,6 +103,7 @@ class CarouselCardBundle extends CarouselCard{
 		
 		super._click(pEvent);
 		
+		SoundManager.getSound("SOUND_SPEND").play();
 		closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
 		DeltaDNAManager.sendIsartPointExpense(myConfig.iD, myConfig.priceIP);

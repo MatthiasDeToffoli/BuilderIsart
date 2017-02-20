@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.TimesInfo.Clock;
 import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MarketingManager.Campaign;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -21,6 +22,8 @@ class TimerCampaign extends SmartComponent
 	public function new() 
 	{
 		super(AssetName.CAMPAIGN_PANEL_TIMER);
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		
 		var myCampaign:Campaign = MarketingManager.getCurrentCampaign();
 		var myClock:Clock = TimesInfo.getClock(myCampaign.time);

@@ -1,10 +1,12 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
+import com.isartdigital.utils.sounds.SoundManager;
 import haxe.Timer;
 
 /**
@@ -48,6 +50,7 @@ class BuildingTimerConstruction extends BuildingTimer
 			
 			if (isFinish) {
 				BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+				building.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 			}
 			else {
 				timeText.text = TimeManager.getTextTime(building.tileDesc);

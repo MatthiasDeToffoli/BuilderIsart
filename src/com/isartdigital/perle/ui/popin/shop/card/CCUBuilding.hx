@@ -5,10 +5,12 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
@@ -89,7 +91,9 @@ class CCUBuilding extends CarouselCardUnlock{
 				DialogueManager.endOfaDialogue();
 			Phantom.onClickShop(buildingName);
 			Hud.getInstance().hideBuildingHud();
+			//SoundManager.getSound("SOUND_SPEND").play();
 			//Hud.getInstance().changeBuildingHud(BuildingHudType.MOVING);
+			SoundManager.getSound("SOUND_NEUTRAL").play();
 			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.MOVING, "building" => null];
 			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		}

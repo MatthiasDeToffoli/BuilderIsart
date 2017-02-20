@@ -6,6 +6,7 @@ import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -70,22 +71,33 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	private function destroyArrows ():Void {
-		var lArrowBG:UISprite = cast(SmartCheck.getChildByName(this, "NavigArrowBG"), UISprite);
+		if (SmartCheck.getChildByName(this, "NavigArrowBG") != null) {
+			var lArrowBG:UISprite = cast(SmartCheck.getChildByName(this, "NavigArrowBG"), UISprite);
+			removeChild(lArrowBG);
+			lArrowBG.destroy();
+		}
 		
-		removeChild(lArrowBG);
-		removeChild(arrowRight);
-		removeChild(arrowLeft);
-		removeChild(textPageNumber);
-		lArrowBG.destroy();
-		arrowRight.destroy();
-		arrowLeft.destroy();
-		textPageNumber.destroy();
-		arrowRight = null;
-		arrowLeft = null;
-		textPageNumber = null;
+		if (arrowRight != null) {
+			removeChild(arrowRight);
+			arrowRight.destroy();
+			arrowRight = null;
+		}
+		
+		if (arrowLeft != null) {
+			removeChild(arrowLeft);
+			arrowLeft.destroy();
+			arrowLeft = null;
+		}
+		
+		if (textPageNumber != null){
+			removeChild(textPageNumber);
+			textPageNumber.destroy();
+			textPageNumber = null;
+		}
 	}
 	
 	public function scrollNext ():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		if ((buildingListIndex + maxCardsVisible) >= cardsToShow.length)
 			buildingListIndex = 0;
 		else
@@ -96,6 +108,7 @@ class ShopCaroussel extends SmartComponent {
 	}
 	
 	public function scrollPrecedent ():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		var lCorrection:Int = (cardsToShow.length % maxCardsVisible) == 0 ? -maxCardsVisible : 0;
 		
 		if ((buildingListIndex - maxCardsVisible) < 0)

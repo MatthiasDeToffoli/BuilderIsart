@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -116,6 +117,8 @@ class Choice extends SmartPopinExtended
 		
 		choiceType = ChoiceType.NONE;
 		isOpen = true;
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		
 		addListeners();
 	}
@@ -467,6 +470,7 @@ class Choice extends SmartPopinExtended
 		if (DialogueManager.ftueStepMakeChoice || DialogueManager.ftueStepMakeAllChoice)
 			return;
 		Hud.getInstance().show();
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		destroy();
 	}
 	

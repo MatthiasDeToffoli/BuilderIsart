@@ -6,6 +6,7 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -68,6 +69,7 @@ class OptionPoppin extends SmartPopinExtended
 		super(AssetName.OPTION_POPPIN); 
 		setWireframe();
 		setValues();
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 	}
 	
 	/**
@@ -140,12 +142,14 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function onClickSfx():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		setButtons(0);
 		sfxOn = checkOnOff(sfxOn);
 		checkSfx(sfxOn);
 	}
 	
 	private function onClickMusic():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		setButtons(1);
 		musicOn = checkOnOff(musicOn);
 		checkMusic(musicOn);
@@ -164,21 +168,25 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function onClickFr():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		Localisation.traduction("fr");
 		actualizePopin();
 	}
 	
 	private function onClickEn():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		Localisation.traduction("en");
 		actualizePopin();
 	}
 	
 	private function onClickClose():Void {
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
 	private function resetData():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		UIManager.getInstance().openPopin(ResetDataPoppin.getInstance());
 	}
 	

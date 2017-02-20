@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
+import com.isartdigital.utils.sounds.SoundManager;
 
 /**
  * ...
@@ -26,10 +27,13 @@ class ButtonProductionCollector extends ButtonProduction
 	override function onClick():Void 
 	{
 		ValueChangeManager.addTextGain(position, type, valueToAdd);
+		
+		type == GeneratorType.buildResourceFromHell ? SoundManager.getSound("SOUND_IRON").play() : SoundManager.getSound("SOUND_WOOD").play();
 		super.onClick();
 	}
 	override function applyResourceGain():Void {
 		ResourcesManager.gainResources(type, valueToAdd);
+		
 		TimeManager.removeProductionTIme(ref);
 	}
 	

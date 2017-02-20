@@ -17,6 +17,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.Popin;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -148,14 +149,7 @@ class InternElementOutQuest extends InternElement
 		}
 
 		if (Intern.numberInternsInQuest() <= UnlockManager.getNumberPlaces()){
-			//quest = QuestsManager.createQuest(internDatas.id);
-			//internDatas.quest = quest;
-			//Intern.getIntern(internDatas.id).quest = internDatas.quest;
-			//Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
-		//
-			//ChoiceManager.newChoice(internDatas.id);
-			//internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
-			//TimeManager.createTimeQuest(quest);
+			SoundManager.getSound("SOUND_SEND_INTERN").play();
 			sendInternInQuest();
 		}
 		
@@ -177,6 +171,7 @@ class InternElementOutQuest extends InternElement
 		MaxStressPopin.quest = lQuest;
 		MaxStressPopin.intern = internDatas;
 		UIManager.getInstance().openPopin(MaxStressPopin.getInstance());
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function sendInternInQuest():Void{

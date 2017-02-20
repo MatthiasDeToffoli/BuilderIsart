@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -54,6 +55,8 @@ class CollectorPopin extends SmartPopinExtended
 		if (myCollector.product) addTimer(spawner.position,myCollector);
 		else addPanel(spawner.position);
 		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
+		
 		spawner.parent.removeChild(spawner);
 		Interactive.addListenerClick(btnClose, onClose);
 		
@@ -92,6 +95,7 @@ class CollectorPopin extends SmartPopinExtended
 	public function onClose(){
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		
 	}
 	/**

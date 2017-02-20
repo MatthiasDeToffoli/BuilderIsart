@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.utils.sounds.SoundManager;
 
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
@@ -135,6 +136,8 @@ class ChoiceManager
 				iron : useChoice.ironHell + pReward.iron,
 				soul : useChoice.soulHell + pReward.soul
 			};
+			
+			SoundManager.getSound("SOUND_CHOICE_HELL").play();
 		}
 		else {
 			baseReward = {
@@ -144,6 +147,8 @@ class ChoiceManager
 				iron : useChoice.ironHeaven + pReward.iron,
 				soul : useChoice.soulHeaven + pReward.soul
 			};
+			
+			SoundManager.getSound("SOUND_CHOICE_HEAVEN").play();
 		}
 		
 		if (pIntern.stress < 100) {

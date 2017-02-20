@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -34,6 +35,7 @@ class PackPanelUnlock extends PackPanel
 	
 	private function onClick(){
 		rewrite();
+		SoundManager.getSound("SOUND_WOOD_PROD").play();
 		vBuildingLink.startProduction(pack);
 		CollectorPopin.getInstance().switchPanel();
 	}

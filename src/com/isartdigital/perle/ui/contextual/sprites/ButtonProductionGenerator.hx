@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
+import com.isartdigital.utils.sounds.SoundManager;
 import pixi.core.math.Point;
 
 /**
@@ -30,6 +31,8 @@ class ButtonProductionGenerator extends ButtonProduction
 	override function onClick():Void 
 	{
 		ValueChangeManager.addTextGain(position, myGeneratorDesc.type, myGeneratorDesc.quantity);
+		SoundManager.getSound("SOUND_GOLD").play(); //The Generator button generates only gold
+		
 		super.onClick();
 	}
 	

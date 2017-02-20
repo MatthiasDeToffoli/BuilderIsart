@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.collector.CollectorPopin;
 import com.isartdigital.perle.ui.popin.collector.TimerInProd;
+import com.isartdigital.utils.sounds.SoundManager;
 
 	
 /**
@@ -36,10 +37,13 @@ class AcceleratePopinCollector extends AcceleratePopin
 		super();
 		actionTxt.text = "Accelerate collector production";
 		TimeManager.eProduction.on(TimeManager.EVENT_COLLECTOR_PRODUCTION, rewrite);
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 	}
 	
 	override function onAccelerate():Void 
 	{
+		SoundManager.getSound("SOUND_KARMA").play();
 		Hud.getInstance().show();
 		super.onAccelerate();
 		UIManager.getInstance().closePopin(CollectorPopin.getInstance());

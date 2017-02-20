@@ -15,6 +15,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -69,12 +70,13 @@ class TribunalPopin extends SmartPopinExtended
 	 */
 	private function new(pID:String=null) 
 	{
-		trace("test");
 		super(AssetName.PURGATORY_POPIN);
 		canMoovCard = false;
 		name = componentName;
 		var interMovieClip:Dynamic;
 		counterForFtue = 0;
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_PURG").play();
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
 		//btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
@@ -187,7 +189,9 @@ class TribunalPopin extends SmartPopinExtended
 		Facebook.ui ({
 			method: 'apprequests',
 			message:"Clique sur jouer, tu vas adorer :)"
-		},onRequest);
+		}, onRequest);
+		
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		//Facebook.api(Facebook.uid+"/permissions",onHavePermission);
 	}
 	
@@ -222,6 +226,7 @@ class TribunalPopin extends SmartPopinExtended
 		if (DialogueManager.ftueClosePurgatory)
 			DialogueManager.endOfaDialogue(true);
 			
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		UIManager.getInstance().closeCurrentPopin();	
 		Hud.getInstance().show();
 	}
@@ -242,7 +247,9 @@ class TribunalPopin extends SmartPopinExtended
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}
-		if(!ResourcesManager.judgePopulation(Alignment.heaven)) return;
+		if (!ResourcesManager.judgePopulation(Alignment.heaven)) return;
+		
+		SoundManager.getSound("SOUND_CHOICE_HEAVEN").play();
 		changeSoulTextInfo();
 		changeSoulText();
 	}
@@ -250,7 +257,9 @@ class TribunalPopin extends SmartPopinExtended
 	private function onHell() {
 		if (DialogueManager.ftueStepSlideCard)
 			return;
-		if(!ResourcesManager.judgePopulation(Alignment.hell)) return;
+		if (!ResourcesManager.judgePopulation(Alignment.hell)) return;
+		
+		SoundManager.getSound("SOUND_CHOICE_HELL").play();
 		changeSoulTextInfo();
 		changeSoulText();
 		
@@ -291,6 +300,8 @@ class TribunalPopin extends SmartPopinExtended
 			ResourcesManager.spendTotal(GeneratorType.buildResourceFromParadise, tribunalConfig.costWood);
 			VTribunal.getInstance().onClickUpgrade();
 			onClose();
+			
+			SoundManager.getSound("SOUND_NEUTRAL").play();
 		}
 	}
 	

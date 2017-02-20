@@ -1,11 +1,13 @@
 package com.isartdigital.perle.ui.popin.accelerate;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 	
@@ -41,10 +43,12 @@ class SpeedUpPopin extends AcceleratePopin
 	private function new() 
 	{
 		price = 10;
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		super();
 	}
 	
 	override private function onAccelerate():Void {
+		SoundManager.getSound("SOUND_KARMA").play();
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
 		
@@ -53,13 +57,15 @@ class SpeedUpPopin extends AcceleratePopin
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		
+		linkedBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 		onClose();
 	}
 	
 	override private function onClose():Void {
 		if (DialogueManager.ftuePlayerCanWait)
 			return;
-		
+			
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		super.onClose();
 	}
 	

@@ -15,6 +15,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -76,6 +77,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
 		
 		nameUnlock.text = pName;
+		
 		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 	}
@@ -121,6 +123,8 @@ class LevelUpPoppin extends SmartPopinExtended
 			if (imgArray.length == 0)
 				closeLevelUpPoppin();
 		}
+		
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	/**
@@ -140,6 +144,8 @@ class LevelUpPoppin extends SmartPopinExtended
 		shopGraphic.position = Hud.getInstance().getShopIconPos();
 		addChild(shopGraphic);
 		shopGraphic.visible = false;
+		
+		SoundManager.getSound("SOUND_LEVELUP").play();
 	}
 	
 	/**

@@ -13,6 +13,7 @@ import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
@@ -68,6 +69,9 @@ class ListInternPopin extends SmartPopin
 	private function new() 
 	{
 		super(AssetName.INTERN_LIST);
+		
+		SoundManager.getSound("SOUND_OPEN_MENU_INTERN").play();
+		
 		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 		btnLeft = cast(getChildByName(AssetName.INTERN_LIST_LEFT), SmartButton);
 		btnRight = cast(getChildByName(AssetName.INTERN_LIST_RIGHT), SmartButton);
@@ -166,10 +170,12 @@ class ListInternPopin extends SmartPopin
 	}
 	
 	private function onLeft(){
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		scrollPrecedent();
 	}
 	
 	private function onRight(){
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		scrollNext();
 	}
 	
@@ -213,6 +219,7 @@ class ListInternPopin extends SmartPopin
 		if (Choice.isVisible() || DialogueManager.ftueStepSendIntern || DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice)
 			return;
 		
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
 	}

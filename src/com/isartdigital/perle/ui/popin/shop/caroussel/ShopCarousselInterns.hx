@@ -13,6 +13,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -292,7 +293,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 	/**
 	 * Funciton disabled that function because there is no arrow for intern tab.
 	 */
-	override function initArrows():Void {}
+	override function initArrows():Void {
+		return null;
+	}
 	
 	/**
 	 * Callback of the hell card's click. Verification if player can buy or not an intern
@@ -300,6 +303,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function onClickHell():Void{
 		//Si achat possible
 		if (DialogueManager.ftueStepBuyIntern || Intern.canBuy(Alignment.hell, hellIntern)) {
+			SoundManager.getSound("SOUND_SPEND").play();
 			Intern.buy(hellIntern);
 			closeShop();
 			
@@ -313,6 +317,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 */
 	private function onClickHeaven():Void{
 		if (Intern.canBuy(Alignment.heaven, heavenIntern)){
+			SoundManager.getSound("SOUND_SPEND").play();
 			Intern.buy(heavenIntern);
 			closeShop();
 		}

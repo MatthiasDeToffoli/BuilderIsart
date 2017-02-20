@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -77,6 +78,7 @@ class ResetDataPoppin extends SmartPopinExtended
 	}
 	
 	private function confirm():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		SaveManager.reinit();
 	}
 	
@@ -88,6 +90,7 @@ class ResetDataPoppin extends SmartPopinExtended
 	}
 	
 	private function cancel():Void {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	

@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -38,6 +39,8 @@ class AcceleratePopin extends SmartPopinExtended
 		Interactive.addListenerRewrite(btn, rewriteBtn);
 		Interactive.addListenerClick(btnClose, onClose);
 		
+		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
+		
 		rewriteBtn();
 	}
 	
@@ -55,10 +58,12 @@ class AcceleratePopin extends SmartPopinExtended
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
 		
 		ResourcesManager.spendTotal(GeneratorType.hard, price);
+		SoundManager.getSound("SOUND_KARMA").play();
 	}
 	
 	private function onClose():Void {
 		UIManager.getInstance().closePopin(this);
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
 	override public function destroy():Void 

@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -52,6 +53,7 @@ class GatchaPopin extends SmartPopin
 	private function new(pID:String=null) 
 	{
 		super(AssetName.GATCHA_POPIN);
+		SoundManager.getSound("SOUND_GATCHA").play();
 		getComponents();
 		addListeners();	
 		setDatas();
@@ -84,6 +86,7 @@ class GatchaPopin extends SmartPopin
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(RewardGatcha.getInstance());
 		RewardGatcha.spawn(quest);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClose():Void {
@@ -91,6 +94,7 @@ class GatchaPopin extends SmartPopin
 			return;
 		UIManager.getInstance().closeCurrentPopin();
 		Hud.getInstance().show();
+		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
 	/**

@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -71,6 +72,7 @@ class ShopPopin extends SmartPopinExtended {
 		bars = new Map<ShopBar, SmartComponent>();
 		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
 		
+		SoundManager.getSound("SOUND_OPEN_MENU_SHOP").play();
 		
 		var lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
 		var lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
@@ -218,6 +220,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(0);
 		addCaroussel(ShopTab.Building);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickOpenDecorations () {
@@ -225,16 +228,22 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(1);
 		addCaroussel(ShopTab.Deco);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickOpenInterns () {
 		if (DialogueManager.ftueStepBlocBuildings)
 				return;
+		/*if(!DialogueManager.ftueStepClickOnIntern)
+			if (DialogueManager.ftueStepClickOnCard)
+				return;*/
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		setButtons(2);
 		isSearching ? onClickOpenInternsSearch() : addCaroussel(ShopTab.Interns);	
 	}
 	
 	private function onClickOpenInternsSearch () {
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		addCaroussel(ShopTab.InternsSearch);
 	}
 	
@@ -243,6 +252,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(3);
 		addCaroussel(ShopTab.Currencies);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickOpenResource () {
@@ -250,6 +260,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(4);
 		addCaroussel(ShopTab.Resources);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickOpenBundle () {
@@ -257,6 +268,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(0,true);
 		addCaroussel(ShopTab.Bundle);
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickExit ():Void {
@@ -264,11 +276,13 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		Hud.getInstance().show();
 		UIManager.getInstance().closeCurrentPopin();
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickPurgatory ():Void {
 		UIManager.getInstance().closeCurrentPopin();
 		UIManager.getInstance().openPopin(TribunalPopin.getInstance());
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClickInterns ():Void {
