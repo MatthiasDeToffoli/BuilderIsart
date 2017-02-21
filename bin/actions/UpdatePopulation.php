@@ -39,7 +39,7 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
 if($typeBuilding->Name != 'Hell House' && $typeBuilding->Name != 'Heaven House') {
   echo json_encode([
     "error" => true,
-    "message" => "wrong building"
+    "message" => $typeBuilding->Name." is wrong building"
   ]);
 
   exit;
@@ -68,7 +68,7 @@ if($quantity > $typeBuilding->MaxSoulsContained){
 }
 
 echo $typeBuilding->NbSoul."\n\n".Utils::getSinglePostValueInt(QUANTITY);
-$time = time() +  ((60*60)/$typeBuilding->ProductionPerHour)/$quantity + 3600;
+$time = time() +  ((60*60)/$typeBuilding->ProductionPerHour)/$quantity;
 $where = 'ID = '.$typeTribu->ID." AND ".PLAYER_ID.'='.FacebookUtils::getId();
 Utils::updateSetWhere(TABLE,[NBRESOURCES => $rest], $where);
 

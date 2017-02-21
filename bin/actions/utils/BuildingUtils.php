@@ -48,9 +48,10 @@ class BuildingUtils
   {
     global $db;
 
-    $req = "SELECT * FROM `TypeBuilding` JOIN Building ON Building.IDTypeBuilding = TypeBuilding.ID WHERE Building.ID = :ID";
+    $req = "SELECT * FROM `TypeBuilding` JOIN Building ON Building.IDTypeBuilding = TypeBuilding.ID WHERE Building.ID = :ID AND Building.IDPlayer = :PID" ;
     $reqPre = $db->prepare($req);
     $reqPre->bindParam(':ID', $BuildingId);
+    $reqPre->bindParam(':PID', FacebookUtils::getId());
 
     try {
       $reqPre->execute();
@@ -65,12 +66,13 @@ class BuildingUtils
   {
     global $db;
 
-    $req = "SELECT * FROM `TypeBuilding` JOIN Building ON Building.IDTypeBuilding = TypeBuilding.ID AND Building.Level = TypeBuilding.Level WHERE Building.X = :X AND Building.Y = :Y AND Building.RegionX = :RX AND Building.RegionY = :RY";
+    $req = "SELECT * FROM `TypeBuilding` JOIN Building ON Building.IDTypeBuilding = TypeBuilding.ID WHERE Building.IDPlayer = :PID AND Building.X = :X AND Building.Y = :Y AND Building.RegionX = :RX AND Building.RegionY = :RY";
     $reqPre = $db->prepare($req);
     $reqPre->bindParam(':X', $posX);
     $reqPre->bindParam(':Y', $posY);
     $reqPre->bindParam(':RX', $regionX);
     $reqPre->bindParam(':RY', $regionY);
+    $reqPre->bindParam(':PID', FacebookUtils::getId());
 
     try {
       $reqPre->execute();

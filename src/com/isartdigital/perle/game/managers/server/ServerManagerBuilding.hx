@@ -242,19 +242,20 @@ class ServerManagerBuilding{
 		
 	}
 	
-	public static function updateGenerator(pEnd:Float, pGenerator:GeneratorDescription):Void {
-		/*ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+	public static function updateGenerator(pDescription:TileDescription):Void {
+		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_GENERATOR,
-			"ID" => 70,
-			"TypeProduction" => pGenerator.type.getName(),
-			"NbResource" => pGenerator.quantity,
-			"EndForNextProduction" => pEnd
-		]);*/
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
 	}
 	
 	//use this with security for know if we always have the building....
 	private static function onSuccessUpdateGenerator(pObject:Dynamic):Void {
-		//trace(pObject);
+		trace(pObject);
 	}
 	
 	private static function onErrorUpdateGenerator(pObject:Dynamic):Void {
