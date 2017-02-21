@@ -255,8 +255,10 @@ class DialogueManager
 				ftueStepSendIntern = true;
 			if (steps[dialogueSaved].resolveIntern)
 				ftueStepResolveIntern = true;
-			if (steps[dialogueSaved].makeChoice)
+			if (steps[dialogueSaved].makeChoice) {
+				Timer.delay(createFingerAnimAfterDelay, FTUE_TIME_BEFORE_EVENT);
 				ftueStepMakeChoice = true;
+			}
 			if (steps[dialogueSaved].haveToMakeAllChoice)
 				ftueStepMakeAllChoice = true;
 			if (steps[dialogueSaved].closeGatcha)
@@ -324,9 +326,6 @@ class DialogueManager
 				//CameraManager.placeCamera(heavenCenter);
 				//Hud.isHide = true;
 			}*/
-			
-			
-			
 			
 			if (steps[dialogueSaved].clickOnCard)
 				ftueStepClickOnCard = true;
@@ -504,6 +503,10 @@ class DialogueManager
 		nextStep();
 	}
 	
+	private static function createFingerAnimAfterDelay():Void {
+		createFingerAnim(Choice.getInstance().getCardPos());
+	}
+	
 	private static function createFingerAnim(pPos:Point, ?isCard:Bool):Void {
 		finger = new FingerAnim();
 		GameStage.getInstance().getActionContainer().addChild(finger);
@@ -542,7 +545,7 @@ class DialogueManager
 			return;
 		
 		numberOfGoldsCreated++;
-		var lGold:GoldEffect = new GoldEffect();
+		var lGold:GoldEffect = new GoldEffect(AssetName.PROD_ICON_SOFT);
 		//lGold.effect();
 		Timer.delay(createGoldEffectJuicy, 200);
 	}

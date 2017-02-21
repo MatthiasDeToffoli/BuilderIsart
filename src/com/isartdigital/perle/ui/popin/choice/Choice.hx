@@ -87,7 +87,6 @@ class Choice extends SmartPopinExtended
 	private var activeHellReward:Array<RewardType>;
 	private var activeHeavenReward:Array<RewardType>;
 	
-	
 	public var stress:UISprite;
 	
 
@@ -266,6 +265,11 @@ class Choice extends SmartPopinExtended
 		imgRot = choiceCard.rotation;
 		imgPos = choiceCard.position.clone();
 		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = activeChoice.text;
+	}
+	
+	
+	public function getCardPos():Point {
+		return choiceCard.position;
 	}
 	
 	private function createPortraitCard():Void {

@@ -7,7 +7,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 
 /**
  * ...
- * @author Rafired
+ * @author Alexis
  */
 class HudMissionButton
 {
@@ -24,8 +24,8 @@ class HudMissionButton
 			Hud.getInstance().buttonMissionDeco.visible = false;
 			missionIsOn = false;
 			if (pCanLvlUp) {
-				ResourcesManager.gainResources(GeneratorType.goodXp,EXP_HEAVEN);
-				ResourcesManager.gainResources(GeneratorType.badXp,EXP_HELL);
+				ResourcesManager.takeXp(EXP_HELL,GeneratorType.badXp);
+				ResourcesManager.takeXp(EXP_HEAVEN, GeneratorType.goodXp);
 			}
 		}
 	}

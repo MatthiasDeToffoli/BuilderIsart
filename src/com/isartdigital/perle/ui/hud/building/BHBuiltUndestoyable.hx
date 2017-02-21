@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import com.isartdigital.perle.ui.popin.InternHousePopin;
+import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -38,10 +39,10 @@ class BHBuiltUndestoyable extends BuildingHud
 	}
 	
 	private function setDescriptionButton():Void {
-		if (!Std.is(BuildingHud.virtualBuilding, VInternHouse)) {
+		//if (!Std.is(BuildingHud.virtualBuilding, VInternHouse)) {
 			Interactive.addListenerClick(btnDescription, onClickDescription);
-		}
-		else btnDescription.alpha = 0.5;
+		//}
+		//else btnDescription.alpha = 0.5;
 	}
 	
 	private function removeButtonsChange():Void {
@@ -78,6 +79,11 @@ class BHBuiltUndestoyable extends BuildingHud
 	private function openInfoBuilding():Void {
 		if (BuildingHud.virtualBuilding == null) return;
 		//if (Std.is(BuildingHud.virtualBuilding, VInternHouse)) return; 
+		
+		else if (Hud.getInstance().checkIfInternHouseHeaven(BuildingHud.virtualBuilding) || Hud.getInstance().checkIfInternHouseHell(BuildingHud.virtualBuilding)) {
+			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+			Hud.getInstance().hide();
+		}
 		else {
 			InfoBuilding.virtualBuilding = BuildingHud.virtualBuilding;
 			UIManager.getInstance().openPopin(InfoBuilding.getInstance());

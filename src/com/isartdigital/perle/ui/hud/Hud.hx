@@ -10,10 +10,13 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tribunal;
+import com.isartdigital.perle.game.sprites.building.heaven.InternHouseHeaven;
+import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuilt;
@@ -384,6 +387,8 @@ class Hud extends SmartScreen
 	
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding, pPos:Point):Void {
 		var lBuidldingHudType:BuildingHudType = null;
+		
+		
 		if (checkIfTribunal(pVBuilding)) {
 				
 			if (DialogueManager.ftueStepOpenPurgatory)
@@ -417,6 +422,14 @@ class Hud extends SmartScreen
 	
 	private function checkIfTribunal(pVbuilding:VBuilding):Bool {
 		return (Std.is(pVbuilding.graphic, Tribunal));
+	}
+	
+	public function checkIfInternHouseHell(pVbuilding:VBuilding):Bool {
+		return (Std.is(pVbuilding.graphic, InternHouseHell));
+	}
+	
+	public function checkIfInternHouseHeaven(pVbuilding:VBuilding):Bool {
+		return (Std.is(pVbuilding.graphic, InternHouseHeaven));
 	}
 	
 	private function onClickShop ():Void {

@@ -55,7 +55,7 @@ class FootPrint extends Tile
 			deplacementFootprint = 0;
 		else 
 			deplacementFootprint = DEPLACEMENT_FOOTPRINT_CONST;
-		trace(Building.getSizeOnMap(lInstance.buildingName));
+			
 		var lX:Int = Building.getSizeOnMap(lInstance.buildingName).width + Building.getSizeOnMap(lInstance.buildingName).footprint * 2;
 		var lY:Int = Building.getSizeOnMap(lInstance.buildingName).height + Building.getSizeOnMap(lInstance.buildingName).footprint * 2;
 		

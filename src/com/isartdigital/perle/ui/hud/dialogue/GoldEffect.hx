@@ -15,10 +15,10 @@ class GoldEffect extends SmartComponent
 	
 	public static var goldJuicy:Array<UISprite>;
 	
-	public function new() 
+	public function new(pAsset:String) 
 	{
 		super(AssetName.BTN_PRODUCTION);
-		var graphic:UISprite = new UISprite(AssetName.PROD_ICON_SOFT);
+		var graphic:UISprite = new UISprite(pAsset);
 		graphic.position = GameStage.getInstance().getActionContainer().toGlobal(DialoguePoppin.getInstance().getNpcHeavenPos());
 		GameStage.getInstance().getIconContainer().addChild(graphic);
 		goldJuicy.push(graphic);
