@@ -1,5 +1,5 @@
 {
- "md5": "ce6e49801ef31f6cba9453f718b41eb2",
+ "md5": "e36d81c5f44c9adae9210e0c7c8cff8a",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -126,10 +126,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_heaven_Mask",
+       "symbol": "_xp_bar_hell_Mask",
        "origin": [
-        0,
-        54.3
+        187.5,
+        51.25
        ],
        "rect": [
         688,
@@ -139,10 +139,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_hell_Mask",
+       "symbol": "_xp_bar_heaven_Mask",
        "origin": [
-        187.5,
-        51.25
+        0,
+        54.3
        ],
        "rect": [
         481,
@@ -464,14 +464,40 @@
        ]
       },
       {
+       "symbol": "_missionIndicator_bg_small",
+       "origin": [
+        26.25,
+        81.25
+       ],
+       "rect": [
+        96,
+        800,
+        53,
+        163
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_left",
+       "origin": [
+        26.25,
+        81.25
+       ],
+       "rect": [
+        1,
+        859,
+        53,
+        163
+       ]
+      },
+      {
        "symbol": "_buttonCancelMovement_down",
        "origin": [
         46.25,
         46
        ],
        "rect": [
-        96,
-        800,
+        536,
+        653,
         92,
         92
        ]
@@ -483,8 +509,8 @@
         38.7
        ],
        "rect": [
-        536,
-        653,
+        433,
+        737,
         97,
         78
        ]
@@ -496,7 +522,7 @@
         37.5
        ],
        "rect": [
-        635,
+        630,
         653,
         97,
         75
@@ -509,23 +535,10 @@
         37.5
        ],
        "rect": [
-        734,
+        729,
         682,
         97,
         75
-       ]
-      },
-      {
-       "symbol": "_missionIndicator_bg_small",
-       "origin": [
-        22,
-        81.25
-       ],
-       "rect": [
-        1,
-        859,
-        44,
-        163
        ]
       },
       {
@@ -535,10 +548,23 @@
         38.5
        ],
        "rect": [
-        635,
+        630,
         730,
         77,
         77
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_middle",
+       "origin": [
+        20,
+        67.5
+       ],
+       "rect": [
+        980,
+        387,
+        40,
+        135
        ]
       },
       {
@@ -548,8 +574,8 @@
         19
        ],
        "rect": [
-        878,
-        387,
+        245,
+        464,
         120,
         38
        ]
@@ -561,8 +587,8 @@
         19
        ],
        "rect": [
-        245,
-        464,
+        709,
+        759,
         120,
         38
        ]
@@ -574,8 +600,8 @@
         19
        ],
        "rect": [
-        714,
-        759,
+        831,
+        784,
         120,
         38
        ]
@@ -626,8 +652,8 @@
         31.25
        ],
        "rect": [
-        536,
-        733,
+        151,
+        800,
         63,
         63
        ]
@@ -639,8 +665,8 @@
         29.95
        ],
        "rect": [
-        433,
-        737,
+        953,
+        784,
         60,
         60
        ]
@@ -652,10 +678,23 @@
         30
        ],
        "rect": [
-        495,
-        798,
+        532,
+        747,
         60,
         60
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_right",
+       "origin": [
+        12.5,
+        67.5
+       ],
+       "rect": [
+        56,
+        859,
+        25,
+        135
        ]
       },
       {
@@ -665,8 +704,8 @@
         17.5
        ],
        "rect": [
-        836,
-        784,
+        878,
+        387,
         95,
         35
        ]
@@ -685,7 +724,7 @@
        ]
       },
       {
-       "symbol": "_buildRessourceIcon_Medium",
+       "symbol": "_goldIcon_Medium",
        "origin": [
         24,
         24
@@ -698,27 +737,27 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Medium",
+       "symbol": "_buildRessourceIcon_Medium",
        "origin": [
         24,
         24
        ],
        "rect": [
-        433,
+        709,
         799,
         48,
         48
        ]
       },
       {
-       "symbol": "_goldIcon_Medium",
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         24,
         24
        ],
        "rect": [
-        557,
-        798,
+        759,
+        799,
         48,
         48
        ]
@@ -730,8 +769,8 @@
         24
        ],
        "rect": [
-        933,
-        784,
+        809,
+        824,
         48,
         48
        ]
@@ -743,8 +782,8 @@
         24
        ],
        "rect": [
-        714,
-        799,
+        859,
+        824,
         48,
         48
        ]
@@ -756,8 +795,8 @@
         19.2
        ],
        "rect": [
-        764,
-        799,
+        909,
+        846,
         48,
         44
        ]
@@ -776,27 +815,14 @@
        ]
       },
       {
-       "symbol": "_missionIndicator_icon",
-       "origin": [
-        20.5,
-        20.5
-       ],
-       "rect": [
-        688,
-        263,
-        41,
-        41
-       ]
-      },
-      {
        "symbol": "_png_decoIcon",
        "origin": [
         20.5,
         20
        ],
        "rect": [
-        579,
-        532,
+        688,
+        263,
         41,
         40
        ]
@@ -822,7 +848,7 @@
        ],
        "rect": [
         579,
-        574,
+        532,
         40,
         40
        ]
@@ -834,9 +860,22 @@
         18.75
        ],
        "rect": [
-        980,
-        427,
+        579,
+        574,
         40,
+        38
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_icon",
+       "origin": [
+        18.75,
+        18.75
+       ],
+       "rect": [
+        959,
+        846,
+        38,
         38
        ]
       },
@@ -847,8 +886,8 @@
         19
        ],
        "rect": [
-        495,
-        737,
+        959,
+        886,
         38,
         38
        ]
@@ -860,8 +899,8 @@
         19.4
        ],
        "rect": [
-        980,
-        467,
+        532,
+        809,
         37,
         39
        ]
@@ -873,8 +912,8 @@
         20.25
        ],
        "rect": [
-        980,
-        508,
+        828,
+        682,
         34,
         40
        ]
@@ -886,8 +925,8 @@
         16.25
        ],
        "rect": [
-        579,
-        616,
+        980,
+        524,
         40,
         33
        ]
@@ -899,8 +938,8 @@
         17.95
        ],
        "rect": [
-        47,
-        859,
+        579,
+        614,
         36,
         36
        ]
@@ -912,8 +951,8 @@
         20
        ],
        "rect": [
-        601,
-        733,
+        831,
+        724,
         30,
         40
        ]
@@ -925,8 +964,8 @@
         16
        ],
        "rect": [
-        190,
-        800,
+        594,
+        747,
         32,
         32
        ]
@@ -938,8 +977,8 @@
         15.7
        ],
        "rect": [
-        983,
-        784,
+        594,
+        781,
         32,
         32
        ]
@@ -963,8 +1002,8 @@
         0
        ],
        "rect": [
-        228,
-        591,
+        532,
+        737,
         1,
         1
        ]
@@ -988,8 +1027,8 @@
         0
        ],
        "rect": [
-        231,
-        591,
+        532,
+        740,
         1,
         1
        ]
@@ -1013,8 +1052,8 @@
         0
        ],
        "rect": [
-        234,
-        591,
+        532,
+        743,
         1,
         1
        ]
@@ -1038,7 +1077,7 @@
         0
        ],
        "rect": [
-        237,
+        228,
         591,
         1,
         1
@@ -1047,23 +1086,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.3,
-        "text": "9999",
-        "x": -52,
-        "width": 104,
+        "y": -30.05,
+        "text": "99:99",
+        "x": -63.4,
+        "width": 126.75,
         "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 108.8,
+        "height": 60.15,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_lastProd_cost",
+       "symbol": "_lastProd_time",
        "origin": [
         0,
         0
        ],
        "rect": [
-        240,
+        231,
         591,
         1,
         1
@@ -1088,8 +1127,8 @@
         0
        ],
        "rect": [
-        433,
-        699,
+        234,
+        591,
         1,
         1
        ]
@@ -1113,8 +1152,8 @@
         0
        ],
        "rect": [
-        433,
-        702,
+        237,
+        591,
         1,
         1
        ]
@@ -1138,33 +1177,8 @@
         0
        ],
        "rect": [
-        433,
-        705,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px _pixelOperator_title*",
-        "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
-        "color": "#3E311A"
-       },
-       "symbol": "_level_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        433,
-        708,
+        240,
+        591,
         1,
         1
        ]
@@ -1188,8 +1202,8 @@
         0
        ],
        "rect": [
-        433,
-        711,
+        828,
+        724,
         1,
         1
        ]
@@ -1197,24 +1211,24 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -30.05,
-        "text": "99:99",
-        "x": -63.4,
-        "width": 126.75,
+        "y": -31.3,
+        "text": "9999",
+        "x": -52,
+        "width": 104,
         "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 60.15,
+        "height": 108.8,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_lastProd_time",
+       "symbol": "_lastProd_cost",
        "origin": [
         0,
         0
        ],
        "rect": [
-        433,
-        714,
+        828,
+        727,
         1,
         1
        ]
@@ -1238,8 +1252,33 @@
         0
        ],
        "rect": [
-        433,
-        717,
+        828,
+        730,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px _pixelOperator_title*",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#3E311A"
+       },
+       "symbol": "_level_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        828,
+        733,
         1,
         1
        ]
@@ -2336,8 +2375,8 @@
     }
    ],
    "data": {
-    "UI": "",
-    "UIPosition": "top"
+    "UIPosition": "top",
+    "UI": ""
    },
    "id": "ProdDone"
   },
@@ -4386,7 +4425,7 @@
       {
        "ref": "_missionIndicator_bg_small",
        "pivot": [
-        22,
+        26.25,
         81.25
        ],
        "tweened": false,
@@ -4394,23 +4433,15 @@
        "index": 0
       },
       {
-       "pivot": [
-        92.5,
-        81.25
-       ],
-       "index": 1,
-       "loc": [
-        -44.25,
-        0
-       ],
-       "ref": "_missionIndicator_bg",
+       "ref": "~_missionIndicator_Anim",
        "tweened": false,
-       "duration": 2
+       "duration": 2,
+       "index": 1
       },
       {
        "ref": "_missionIndicator_bg_small",
        "pivot": [
-        22,
+        26.25,
         81.25
        ],
        "tweened": false,
@@ -4477,39 +4508,6 @@
       {
        "pivot": [
         20.5,
-        20.5
-       ],
-       "index": 0,
-       "loc": [
-        0,
-        -70
-       ],
-       "ref": "_missionIndicator_icon",
-       "tweened": false,
-       "duration": 1
-      },
-      {
-       "pivot": [
-        20.5,
-        20.5
-       ],
-       "index": 1,
-       "loc": [
-        -111,
-        -67.5
-       ],
-       "ref": "_missionIndicator_icon",
-       "tweened": false,
-       "duration": 2
-      }
-     ],
-     "name": "_missionIndicator_icon"
-    },
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        20.5,
         19.975
        ],
        "index": 0,
@@ -4541,6 +4539,201 @@
    ],
    "id": "~MissionIndicator",
    "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_left",
+       "pivot": [
+        26.25,
+        81.25
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_missionIndicator_left",
+       "pivot": [
+        26.25,
+        81.25
+       ],
+       "tweened": false,
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "pivot": [
+        26.25,
+        81.25
+       ],
+       "index": 9,
+       "loc": [
+        -64.75,
+        0
+       ],
+       "ref": "_missionIndicator_left",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_left"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        20,
+        67.5
+       ],
+       "index": 0,
+       "loc": [
+        6.25,
+        13.75
+       ],
+       "ref": "_missionIndicator_middle",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "pivot": [
+        20,
+        67.5
+       ],
+       "index": 9,
+       "loc": [
+        -18.55,
+        13.75
+       ],
+       "ref": "_missionIndicator_middle",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_middle"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        12.5,
+        67.5
+       ],
+       "index": 0,
+       "loc": [
+        13.75,
+        13.75
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        12.5,
+        67.5
+       ],
+       "index": 1,
+       "loc": [
+        13.75,
+        13.75
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 8
+      },
+      {
+       "pivot": [
+        12.5,
+        67.5
+       ],
+       "index": 9,
+       "loc": [
+        13.75,
+        13.75
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_right"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_bg_small",
+       "pivot": [
+        26.25,
+        81.25
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "duration": 1,
+       "index": 9
+      }
+     ],
+     "name": "_missionIndicator_bg_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        18.75,
+        18.75
+       ],
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        -73.2
+       ]
+      },
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        18.75,
+        18.75
+       ],
+       "duration": 8,
+       "index": 1,
+       "loc": [
+        0,
+        -73.2
+       ]
+      },
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        18.75,
+        18.75
+       ],
+       "duration": 1,
+       "index": 9,
+       "loc": [
+        -65,
+        -72.5
+       ]
+      }
+     ],
+     "name": "_missionIndicator_icon"
+    }
+   ],
+   "id": "~_missionIndicator_Anim"
   },
   {
    "layers": [

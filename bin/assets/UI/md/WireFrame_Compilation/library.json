@@ -1,5 +1,5 @@
 {
- "md5": "ce6e49801ef31f6cba9453f718b41eb2",
+ "md5": "e36d81c5f44c9adae9210e0c7c8cff8a",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -126,10 +126,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_heaven_Mask",
+       "symbol": "_xp_bar_hell_Mask",
        "origin": [
-        0,
-        81.5
+        281.25,
+        76.9
        ],
        "rect": [
         519,
@@ -139,10 +139,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_hell_Mask",
+       "symbol": "_xp_bar_heaven_Mask",
        "origin": [
-        281.25,
-        76.9
+        0,
+        81.5
        ],
        "rect": [
         1,
@@ -282,7 +282,7 @@
        ]
       },
       {
-       "symbol": "_buttonMissions_HUD_over",
+       "symbol": "_buttonMissions_HUD_up",
        "origin": [
         91.3,
         75
@@ -295,7 +295,7 @@
        ]
       },
       {
-       "symbol": "_buttonMissions_HUD_up",
+       "symbol": "_buttonMissions_HUD_over",
        "origin": [
         91.3,
         75
@@ -347,16 +347,29 @@
        ]
       },
       {
-       "symbol": "_buttonCancelMovement_down",
+       "symbol": "_missionIndicator_bg_small",
        "origin": [
-        69.4,
-        69.05
+        39.4,
+        121.9
+       ],
+       "rect": [
+        941,
+        1185,
+        79,
+        244
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_left",
+       "origin": [
+        39.4,
+        121.9
        ],
        "rect": [
         885,
         544,
-        138,
-        138
+        79,
+        244
        ]
       },
       {
@@ -386,29 +399,16 @@
        ]
       },
       {
-       "symbol": "_missionIndicator_bg_small",
+       "symbol": "_missionIndicator_middle",
        "origin": [
-        33,
-        121.9
+        30,
+        101.25
        ],
        "rect": [
         947,
         279,
-        66,
-        244
-       ]
-      },
-      {
-       "symbol": "_buttonContextt_Hit",
-       "origin": [
-        57.75,
-        57.75
-       ],
-       "rect": [
-        885,
-        684,
-        116,
-        116
+        60,
+        203
        ]
       },
       {
@@ -464,16 +464,16 @@
        ]
       },
       {
-       "symbol": "_buttonContextual_down",
+       "symbol": "_missionIndicator_right",
        "origin": [
-        44.75,
-        45
+        18.75,
+        101.25
        ],
        "rect": [
-        933,
-        1185,
-        90,
-        90
+        966,
+        484,
+        38,
+        203
        ]
       },
       {
@@ -497,35 +497,9 @@
        ],
        "rect": [
         941,
-        1277,
+        1431,
         62,
         96
-       ]
-      },
-      {
-       "symbol": "_buildRessourceIcon_Medium",
-       "origin": [
-        36,
-        36
-       ],
-       "rect": [
-        941,
-        1375,
-        72,
-        72
-       ]
-      },
-      {
-       "symbol": "_hardCurrencyIcon_Medium",
-       "origin": [
-        36,
-        36
-       ],
-       "rect": [
-        941,
-        1449,
-        72,
-        72
        ]
       },
       {
@@ -542,7 +516,7 @@
        ]
       },
       {
-       "symbol": "_stoneIcon_Medium",
+       "symbol": "_buildRessourceIcon_Medium",
        "origin": [
         36,
         36
@@ -561,10 +535,23 @@
         29.15
        ],
        "rect": [
-        693,
-        1373,
+        966,
+        689,
         56,
         59
+       ]
+      },
+      {
+       "symbol": "_buttonPlus_over",
+       "origin": [
+        32.2,
+        28.5
+       ],
+       "rect": [
+        966,
+        750,
+        57,
+        57
        ]
       },
       {
@@ -587,8 +574,8 @@
         24.4
        ],
        "rect": [
-        322,
-        560,
+        885,
+        790,
         60,
         49
        ]
@@ -601,9 +588,22 @@
        ],
        "rect": [
         693,
-        1434,
+        1373,
         54,
         54
+       ]
+      },
+      {
+       "symbol": "_buttonUpgradeBuilding_png",
+       "origin": [
+        22.1,
+        30
+       ],
+       "rect": [
+        693,
+        1429,
+        45,
+        60
        ]
       },
       {
@@ -613,7 +613,20 @@
         24
        ],
        "rect": [
-        384,
+        322,
+        560,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_timeIcon_Small",
+       "origin": [
+        26.25,
+        23.55
+       ],
+       "rect": [
+        372,
         560,
         48,
         48
@@ -638,7 +651,7 @@
         0
        ],
        "rect": [
-        384,
+        322,
         610,
         1,
         1
@@ -663,8 +676,8 @@
         0
        ],
        "rect": [
-        322,
-        611,
+        325,
+        610,
         1,
         1
        ]
@@ -688,8 +701,8 @@
         0
        ],
        "rect": [
-        325,
-        611,
+        328,
+        610,
         1,
         1
        ]
@@ -713,8 +726,8 @@
         0
        ],
        "rect": [
-        328,
-        611,
+        331,
+        610,
         1,
         1
        ]
@@ -722,24 +735,24 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.3,
-        "text": "9999",
-        "x": -52,
-        "width": 104,
+        "y": -30.05,
+        "text": "99:99",
+        "x": -63.4,
+        "width": 126.75,
         "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 108.8,
+        "height": 60.15,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_lastProd_cost",
+       "symbol": "_lastProd_time",
        "origin": [
         0,
         0
        ],
        "rect": [
-        331,
-        611,
+        334,
+        610,
         1,
         1
        ]
@@ -763,8 +776,8 @@
         0
        ],
        "rect": [
-        334,
-        611,
+        337,
+        610,
         1,
         1
        ]
@@ -788,8 +801,8 @@
         0
        ],
        "rect": [
-        337,
-        611,
+        340,
+        610,
         1,
         1
        ]
@@ -813,33 +826,8 @@
         0
        ],
        "rect": [
-        340,
-        611,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px _pixelOperator_title*",
-        "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
-        "color": "#3E311A"
-       },
-       "symbol": "_level_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
         343,
-        611,
+        610,
         1,
         1
        ]
@@ -864,7 +852,7 @@
        ],
        "rect": [
         346,
-        611,
+        610,
         1,
         1
        ]
@@ -872,24 +860,24 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -30.05,
-        "text": "99:99",
-        "x": -63.4,
-        "width": 126.75,
+        "y": -31.3,
+        "text": "9999",
+        "x": -52,
+        "width": 104,
         "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 60.15,
+        "height": 108.8,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_lastProd_time",
+       "symbol": "_lastProd_cost",
        "origin": [
         0,
         0
        ],
        "rect": [
         349,
-        611,
+        610,
         1,
         1
        ]
@@ -914,7 +902,32 @@
        ],
        "rect": [
         352,
-        611,
+        610,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px _pixelOperator_title*",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#3E311A"
+       },
+       "symbol": "_level_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        355,
+        610,
         1,
         1
        ]
@@ -1042,16 +1055,42 @@
        ]
       },
       {
+       "symbol": "_buttonCancelMovement_down",
+       "origin": [
+        69.4,
+        69.05
+       ],
+       "rect": [
+        143,
+        471,
+        138,
+        138
+       ]
+      },
+      {
        "symbol": "_buttonReset_sprite_down",
        "origin": [
         72.65,
         56.25
        ],
        "rect": [
-        143,
-        471,
+        283,
+        473,
         146,
         113
+       ]
+      },
+      {
+       "symbol": "_buttonContextt_Hit",
+       "origin": [
+        57.75,
+        57.75
+       ],
+       "rect": [
+        1,
+        473,
+        116,
+        116
        ]
       },
       {
@@ -1061,8 +1100,8 @@
         28.5
        ],
        "rect": [
-        291,
-        473,
+        283,
+        588,
         180,
         57
        ]
@@ -1075,7 +1114,7 @@
        ],
        "rect": [
         1,
-        473,
+        591,
         99,
         96
        ]
@@ -1087,8 +1126,8 @@
         48
        ],
        "rect": [
-        1,
-        571,
+        102,
+        611,
         96,
         96
        ]
@@ -1100,10 +1139,49 @@
         46.9
        ],
        "rect": [
-        291,
-        532,
+        1,
+        689,
         94,
         94
+       ]
+      },
+      {
+       "symbol": "_buttonContextual_down",
+       "origin": [
+        44.75,
+        45
+       ],
+       "rect": [
+        200,
+        647,
+        90,
+        90
+       ]
+      },
+      {
+       "symbol": "_hardCurrencyIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        431,
+        473,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_stoneIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        97,
+        709,
+        72,
+        72
        ]
       },
       {
@@ -1113,8 +1191,8 @@
         36
        ],
        "rect": [
-        387,
-        532,
+        292,
+        647,
         72,
         72
        ]
@@ -1126,8 +1204,8 @@
         28.75
        ],
        "rect": [
-        387,
-        606,
+        366,
+        647,
         72,
         65
        ]
@@ -1139,23 +1217,10 @@
         35.6
        ],
        "rect": [
-        99,
-        586,
+        440,
+        647,
         60,
         72
-       ]
-      },
-      {
-       "symbol": "_missionIndicator_icon",
-       "origin": [
-        30.75,
-        30.75
-       ],
-       "rect": [
-        161,
-        586,
-        62,
-        62
        ]
       },
       {
@@ -1165,8 +1230,8 @@
         29.95
        ],
        "rect": [
-        225,
-        586,
+        366,
+        714,
         62,
         60
        ]
@@ -1178,8 +1243,8 @@
         30
        ],
        "rect": [
-        289,
-        628,
+        292,
+        721,
         60,
         60
        ]
@@ -1191,8 +1256,8 @@
         30
        ],
        "rect": [
-        225,
-        648,
+        430,
+        721,
         60,
         60
        ]
@@ -1204,49 +1269,23 @@
         28.1
        ],
        "rect": [
-        161,
-        650,
+        354,
+        776,
         60,
         57
        ]
       },
       {
-       "symbol": "_buttonPlus_over",
+       "symbol": "_missionIndicator_icon",
        "origin": [
-        32.2,
-        28.5
+        28.1,
+        28.1
        ],
        "rect": [
-        99,
-        660,
+        416,
+        783,
         57,
         57
-       ]
-      },
-      {
-       "symbol": "_buttonUpgradeBuilding_png",
-       "origin": [
-        22.1,
-        30
-       ],
-       "rect": [
-        299,
-        322,
-        45,
-        60
-       ]
-      },
-      {
-       "symbol": "_timeIcon_Small",
-       "origin": [
-        26.25,
-        23.55
-       ],
-       "rect": [
-        158,
-        709,
-        48,
-        48
        ]
       }
      ]
@@ -2341,8 +2380,8 @@
     }
    ],
    "data": {
-    "UI": "",
-    "UIPosition": "top"
+    "UIPosition": "top",
+    "UI": ""
    },
    "id": "ProdDone"
   },
@@ -4391,7 +4430,7 @@
       {
        "ref": "_missionIndicator_bg_small",
        "pivot": [
-        33,
+        39.375,
         121.875
        ],
        "tweened": false,
@@ -4399,23 +4438,15 @@
        "index": 0
       },
       {
-       "pivot": [
-        138.75,
-        121.875
-       ],
-       "index": 1,
-       "loc": [
-        -66.375,
-        0
-       ],
-       "ref": "_missionIndicator_bg",
+       "ref": "~_missionIndicator_Anim",
        "tweened": false,
-       "duration": 2
+       "duration": 2,
+       "index": 1
       },
       {
        "ref": "_missionIndicator_bg_small",
        "pivot": [
-        33,
+        39.375,
         121.875
        ],
        "tweened": false,
@@ -4482,39 +4513,6 @@
       {
        "pivot": [
         30.75,
-        30.75
-       ],
-       "index": 0,
-       "loc": [
-        0,
-        -105
-       ],
-       "ref": "_missionIndicator_icon",
-       "tweened": false,
-       "duration": 1
-      },
-      {
-       "pivot": [
-        30.75,
-        30.75
-       ],
-       "index": 1,
-       "loc": [
-        -166.5,
-        -101.25
-       ],
-       "ref": "_missionIndicator_icon",
-       "tweened": false,
-       "duration": 2
-      }
-     ],
-     "name": "_missionIndicator_icon"
-    },
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        30.75,
         29.9625
        ],
        "index": 0,
@@ -4546,6 +4544,201 @@
    ],
    "id": "~MissionIndicator",
    "baseClass": "flash.display.SimpleButton"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_left",
+       "pivot": [
+        39.375,
+        121.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "ref": "_missionIndicator_left",
+       "pivot": [
+        39.375,
+        121.875
+       ],
+       "tweened": false,
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "pivot": [
+        39.375,
+        121.875
+       ],
+       "index": 9,
+       "loc": [
+        -97.125,
+        0
+       ],
+       "ref": "_missionIndicator_left",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_left"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        30,
+        101.25
+       ],
+       "index": 0,
+       "loc": [
+        9.375,
+        20.625
+       ],
+       "ref": "_missionIndicator_middle",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "pivot": [
+        30,
+        101.25
+       ],
+       "index": 9,
+       "loc": [
+        -27.825,
+        20.625
+       ],
+       "ref": "_missionIndicator_middle",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_middle"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        18.75,
+        101.25
+       ],
+       "index": 0,
+       "loc": [
+        20.625,
+        20.625
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        18.75,
+        101.25
+       ],
+       "index": 1,
+       "loc": [
+        20.625,
+        20.625
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 8
+      },
+      {
+       "pivot": [
+        18.75,
+        101.25
+       ],
+       "index": 9,
+       "loc": [
+        20.625,
+        20.625
+       ],
+       "ref": "_missionIndicator_right",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_missionIndicator_right"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_bg_small",
+       "pivot": [
+        39.375,
+        121.875
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "duration": 8,
+       "index": 1
+      },
+      {
+       "duration": 1,
+       "index": 9
+      }
+     ],
+     "name": "_missionIndicator_bg_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        28.125,
+        28.125
+       ],
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        -109.8
+       ]
+      },
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        28.125,
+        28.125
+       ],
+       "duration": 8,
+       "index": 1,
+       "loc": [
+        0,
+        -109.8
+       ]
+      },
+      {
+       "ref": "_missionIndicator_icon",
+       "pivot": [
+        28.125,
+        28.125
+       ],
+       "duration": 1,
+       "index": 9,
+       "loc": [
+        -97.5,
+        -108.75
+       ]
+      }
+     ],
+     "name": "_missionIndicator_icon"
+    }
+   ],
+   "id": "~_missionIndicator_Anim"
   },
   {
    "layers": [

@@ -1,5 +1,5 @@
 {
- "md5": "126309a1a67882126580fca36b5e4e47",
+ "md5": "962c69423df738db95e7928927928566",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -3589,7 +3589,7 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -88.35,
-        "text": "Cela coûte du Karma KA mais, cette fois seulement, la dépense sera à mes frais. ",
+        "text": "Quoi ? Pas de SO pour moi ? Comment vous pouvez me faire ça ?",
         "x": -465.95,
         "width": 931.9,
         "font": "60px _pixelOperator*",
@@ -3639,7 +3639,7 @@
        "baseClass": "TextSprite",
        "data": {
         "y": -99.65,
-        "text": "Ha ! Cette Maison ne sert à rien sans âmes SO à l'intérieur !",
+        "text": "Quoi ? Pas de SO pour moi ? Comment vous pouvez me faire ça ?",
         "x": -516.95,
         "width": 1033.9,
         "font": "68px _pixelOperator*",
@@ -4813,16 +4813,16 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -24.35,
-        "UIPosition": "topRight",
-        "text": "XXXX",
         "color": "#000000",
+        "y": -24.35,
+        "text": "XXXX",
+        "UIPosition_Desktop": "top",
         "width": 119.75,
         "font": "40px _pixelOperator*",
         "align": "center",
         "height": 52.85,
         "wordWrap": 0,
-        "UIPosition_Desktop": "top",
+        "UIPosition": "topRight",
         "x": -59.85
        },
        "symbol": "Text_HardCurrencyStock",
@@ -22641,6 +22641,25 @@
        "tweened": false,
        "index": 0,
        "loc": [
+        -90,
+        244
+       ],
+       "ref": "~_ftue_dialogFR_17",
+       "data": {
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "_ftue_dialogFR_17"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
         -164,
         284
        ],
@@ -22854,7 +22873,7 @@
        "index": 0,
        "loc": [
         -26.5,
-        181.5
+        180.5
        ],
        "ref": "~_ftue_dialogFR_18",
        "data": {
@@ -22865,25 +22884,6 @@
       }
      ],
      "name": "_ftue_dialogFR_18"
-    },
-    {
-     "keyframes": [
-      {
-       "tweened": false,
-       "index": 0,
-       "loc": [
-        -104.5,
-        148
-       ],
-       "ref": "~_ftue_dialogFR_17",
-       "data": {
-        "UIPosition": "bottom",
-        "UIPosition_Desktop": "bottom"
-       },
-       "duration": 1
-      }
-     ],
-     "name": "_ftue_dialogFR_17"
     },
     {
      "keyframes": [
@@ -22955,8 +22955,8 @@
         50
        ],
        "data": {
-        "UIPosition": "bottom",
-        "UIPosition_desktop": "bottom"
+        "UIPosition_desktop": "bottom",
+        "UIPosition": "bottom"
        },
        "index": 0,
        "loc": [
