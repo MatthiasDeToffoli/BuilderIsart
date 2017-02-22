@@ -1,7 +1,9 @@
 package com.isartdigital.perle.ui.popin.accelerate;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
+import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
@@ -51,6 +53,8 @@ class SpeedUpPopin extends AcceleratePopin
 		SoundManager.getSound("SOUND_KARMA").play();
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
+		
+		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
 		
 		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000, true);
 		

@@ -21,7 +21,7 @@ class AccelerateButton extends SmartButton
 	private var accelerateValue:TextSprite;
 	private var quest:TimeQuestDescription;
 	
-	private static inline var SKIP_PRICE:Int = 2;
+	private static inline var SKIP_PRICE:Int = 5;
 
 	public function new(pPos:Point, pID:String=null) 
 	{
