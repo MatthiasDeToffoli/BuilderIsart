@@ -212,6 +212,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		setValuesHeavenCard();
 		setValuesHellCard();
+		
+		//setValuesNumberHousesHeaven();
+		//setValuesNumberHousesHell();
 	}
 	
 	private function setValuesHellCard():Void{

@@ -12,7 +12,8 @@ class SoundManager
 	/**
 	 * liste de tous les sons du jeu
 	 */
-	private static var list (default,null):Map<String,Howl>;
+	private static var list (default, null):Map<String,Howl>;
+	public static var isMute:Bool = false;
 	
 	private function new() {
 	}
@@ -33,7 +34,11 @@ class SoundManager
 	 * @return le son
 	 */
 	public static function getSound(pName:String): Howl {
-		return list[pName];
+		if (isMute || list[pName] == null) {
+			pName != "MUSIC_MAIN" ? return list["SOUND_SILENT"] : return list[pName];
+		}
+		
+		else return list[pName];	
 	}
 
 }

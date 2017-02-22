@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
@@ -206,16 +207,24 @@ class DialoguePoppin extends SmartScreen
 	private function checkIfVisible(pNpc:String, pExpression:String, isAction:Bool, dialogueSaved:Int):Void {
 		var lPanel:SmartComponent;
 		if (isAction) {
-			if (pNpc == HELL_NPC)
+			if (pNpc == HELL_NPC){
+				SoundManager.getSound("SOUND_DIALOG_DEMON").play();
 				lPanel = actionHell;
-			else
+			}
+			else{
+				SoundManager.getSound("SOUND_DIALOG_ANGEL").play();
 				lPanel = actionAngel;
+			}
 		}
 		else {
-			if (pNpc == HELL_NPC)
+			if (pNpc == HELL_NPC){
+				SoundManager.getSound("SOUND_DIALOG_DEMON").play();
 				lPanel = scenarioHell;
-			else
+			}
+			else{
+				SoundManager.getSound("SOUND_DIALOG_ANGEL").play();
 				lPanel = scenarioAngel;
+			}
 			checkWichButton(dialogueSaved);
 		}
 		lPanel.visible = true;

@@ -161,11 +161,11 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function checkSfx(pSfx):Void {
-		pSfx? trace("SFX ON"): trace("SFX OFF");
+		pSfx? SoundManager.isMute = false : SoundManager.isMute = true;
 	}
 	
 	private function checkMusic(pMusic):Void {
-		pMusic? trace("MUSIC ON"): trace("MUSIC OFF");
+		pMusic? SoundManager.getSound("MUSIC_MAIN").play() : SoundManager.getSound("MUSIC_MAIN").stop();
 	}
 	
 	private function onClickFr():Void {
