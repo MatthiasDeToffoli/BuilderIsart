@@ -284,8 +284,8 @@
 				"actionContainer": true,
 				"name":"ButtonShop_HUD",
 				"parentName":"HUD_Desktop",
-				"npcWhoTalk":"Angela",
-				"npcWhoTalkPicture":"left",
+				"npcWhoTalk":"Demona",
+				"npcWhoTalkPicture":"right",
                 "arrowRotation": 245,
 				"isAction":true,
 				"expression":"_Neutral",
@@ -295,13 +295,13 @@
             {
 				"dialogueNumber":29,
 				"ftueContainer": true,
-				"npcWhoTalk":"Angela",
-				"npcWhoTalkPicture":"left",
+				"npcWhoTalk":"Demona",
+				"npcWhoTalkPicture":"right",
 				"isAction":true,
 				"clickOnCard":true,
 				"doNotBockBuildings":true,
 				"shopCarrousselCard":"Intern Building Hell",
-				"expression":"_Neutral",
+				"expression":"_Happy",
 				"checkpoint": false
 			},
             {
@@ -312,7 +312,7 @@
 				"isAction":true,
 				"haveToPutBuilding":true,
 				"boostBuilding":true,
-				"expression":"_Sad",
+				"expression":"_Neutral",
 				"checkpoint": true
 			},
             {
@@ -332,7 +332,7 @@
 				"checkpoint": false
 			},
             {
-				"dialogueNumber":31,
+				"dialogueNumber":32,
 				"ftueContainer": true,
 				"clickOnCard":true,
                 "shopCarrousselCard":"null",
@@ -346,27 +346,17 @@
 				"checkpoint": true
 			},
             {
-				"dialogueNumber":32,
+				"dialogueNumber":33,
 				"ftueContainer": true,
 				"name":"HUD_InternsButton",
 				"parentName":"HUD_Desktop",
-				"npcWhoTalk":"Angela",
-				"npcWhoTalkPicture":"left",
+				"npcWhoTalk":"Demona",
+				"npcWhoTalkPicture":"right",
                 "arrowRotation": 45,
 				"isAction":true,
 				"openIntern":true,
-				"expression":"_Neutral",
+				"expression":"_Angry",
 				"checkpoint": false
-			},
-            {
-				"dialogueNumber":33,
-				"ftueContainer": true,
-				"npcWhoTalk":"Demona",
-				"npcWhoTalkPicture":"right",
-				"isAction":true,
-				"sendIntern":true,
-				"expression":"_Neutral",
-				"checkpoint": true
 			},
             {
 				"dialogueNumber":34,
@@ -374,20 +364,20 @@
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
 				"isAction":true,
-				"resolveIntern":true,
-                "shouldBlockHud":true,
+				"sendIntern":true,
 				"expression":"_Happy",
-				"checkpoint": false
+				"checkpoint": true
 			},
             {
 				"dialogueNumber":35,
 				"ftueContainer": true,
-				"npcWhoTalk":"Demona",
-				"npcWhoTalkPicture":"right",
+				"npcWhoTalk":"Angela",
+				"npcWhoTalkPicture":"left",
 				"isAction":true,
-				"makeChoice":true,
+				"resolveIntern":true,
+                "shouldBlockHud":true,
 				"expression":"_Happy",
-				"checkpoint": true
+				"checkpoint": false
 			},
             {
 				"dialogueNumber":36,
@@ -395,23 +385,20 @@
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"isAction":true,
-				"resolveIntern":true,
-				"haveToMakeAllChoice":true,
+				"makeChoice":true,
 				"expression":"_Neutral",
-				"shouldBlockHud": true,
 				"checkpoint": true
 			},
             {
 				"dialogueNumber":37,
-				"actionContainer": true,
-				"name":"Window_NPC_ButtonNext",
-				"parentName":"Window_FTUE",
-				"npcWhoTalk":"Demona",
-				"npcWhoTalkPicture":"right",
-				"expression":"_Neutral",
+				"ftueContainer": true,
+				"npcWhoTalk":"Angela",
+				"npcWhoTalkPicture":"left",
+				"isAction":true,
+				"resolveIntern":true,
+				"haveToMakeAllChoice":true,
+				"expression":"_Happy",
 				"shouldBlockHud": true,
-				"stress": true,
-				"changeDialoguePos": true,
 				"checkpoint": true
 			},
             {
@@ -421,9 +408,9 @@
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Demona",
 				"npcWhoTalkPicture":"right",
-				"expression":"_Neutral",
+				"expression":"_Angry",
 				"shouldBlockHud": true,
-				"efficiency": true,
+				"stress": true,
 				"changeDialoguePos": true,
 				"checkpoint": true
 			},
@@ -436,12 +423,25 @@
 				"npcWhoTalkPicture":"right",
 				"expression":"_Neutral",
 				"shouldBlockHud": true,
-				"speed": true,
+				"efficiency": true,
 				"changeDialoguePos": true,
 				"checkpoint": true
 			},
             {
 				"dialogueNumber":40,
+				"actionContainer": true,
+				"name":"Window_NPC_ButtonNext",
+				"parentName":"Window_FTUE",
+				"npcWhoTalk":"Demona",
+				"npcWhoTalkPicture":"right",
+				"expression":"_Neutral",
+				"shouldBlockHud": true,
+				"speed": true,
+				"changeDialoguePos": true,
+				"checkpoint": true
+			},
+            {
+				"dialogueNumber":41,
 				"ftueContainer": true,
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
@@ -453,23 +453,13 @@
 				"checkpoint": true
 			},
             {
-				"dialogueNumber":41,
-				"actionContainer": true,
-				"name":"Window_NPC_ButtonNext",
-				"parentName":"Window_FTUE",
-				"npcWhoTalk":"Angela",
-				"npcWhoTalkPicture":"left",
-				"expression":"_Neutral",
-				"checkpoint": false
-			},
-            {
 				"dialogueNumber":42,
 				"actionContainer": true,
 				"name":"Window_NPC_ButtonNext",
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
-				"expression":"_Neutral",
+				"expression":"_Happy",
 				"checkpoint": false
 			},
             {
@@ -478,16 +468,6 @@
 				"name":"Window_NPC_ButtonNext",
 				"parentName":"Window_FTUE",
 				"npcWhoTalk":"Demona",
-				"npcWhoTalkPicture":"right",
-				"expression":"_Neutral",
-				"checkpoint": true
-			},
-            {
-				"dialogueNumber":44,
-				"actionContainer": true,
-				"name":"Window_NPC_ButtonNext",
-				"parentName":"Window_FTUE",
-				"npcWhoTalk":"Angela",
 				"npcWhoTalkPicture":"left",
 				"expression":"_Happy",
                 "endOfSpecial":true,

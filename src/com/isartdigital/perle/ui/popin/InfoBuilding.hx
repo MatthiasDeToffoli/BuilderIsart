@@ -106,12 +106,10 @@ class InfoBuilding extends SmartPopinExtended{
 	private function fileInfosText():Void{
 		
 		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel());
-		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
-		btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 		populationTxt.text = getPopulationText();
 		goldZoneTxt.text = getGoldText();
+		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		setUpgradeBtn();
 			
 		if (cast(virtualBuilding, VBuildingUpgrade).getLevel() >= BuildingName.getMaxLevelByName(virtualBuilding.tileDesc.buildingName)) {
 			btnUpgrade.parent.removeChild(btnUpgrade);
@@ -119,6 +117,12 @@ class InfoBuilding extends SmartPopinExtended{
 			upgradeInfos.parent.removeChild(upgradeInfos);
 			upgradeInfos.destroy();
 		}
+	}
+	
+	private function setUpgradeBtn():Void {
+		upgradeInfosTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		upgradeInfosMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
+		btnUpgradeMaterialsTxt.text = getMaterialsValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
 	}
 	
 	private function setGlobalInfos():Void{
@@ -202,6 +206,7 @@ class InfoBuilding extends SmartPopinExtended{
 		//@ToDo: bug with the upgrade/destroy via the button
 		//Interactive.addListenerClick(btnUpgrade, onClickUpgrade);
 		Interactive.addListenerClick(btnExit, onClickExit);
+		//Interactive.addListenerRewrite(btnUpgrade,setUpgradeBtn);
 		//Interactive.addListenerClick(btnSell, onClickSell);
 	}
 	

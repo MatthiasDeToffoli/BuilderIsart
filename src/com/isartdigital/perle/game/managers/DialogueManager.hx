@@ -478,9 +478,9 @@ class DialogueManager
 		if (dialogueSaved == steps.length - 1)
 			Hud.getInstance().alpha = 1;
 			
-		else {
+		/*else {
 			trace ("fin d'etape " + dialogueSaved);
-		}
+		}*/
 		
 		closeFtueLock();
 		
