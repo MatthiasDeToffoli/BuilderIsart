@@ -354,7 +354,7 @@ class Phantom extends Building {
 				timeDesc: {
 					refTile:newId,
 					end: tTime + Date.fromString(GameConfig.getBuildingByName(buildingName, 1).constructionTime).getTime(),
-					progress: 0,
+					progress: tTime,
 					creationDate: tTime
 				}
 			};

@@ -117,7 +117,6 @@ class InternElementInQuest extends InternElement
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING) {
 			activeButton = new AccelerateButton(spawner.position);
 			cast(activeButton, AccelerateButton).spawn(quest);
-			//Interactive.addListenerClick(activeButton, onBoost);
 		}
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {

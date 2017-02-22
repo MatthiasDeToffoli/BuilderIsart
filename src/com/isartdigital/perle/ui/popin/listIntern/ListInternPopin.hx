@@ -50,10 +50,6 @@ class ListInternPopin extends SmartPopin
 	private var internsInQuestMax:TextSprite;
 	private var actualNbInternInQuest:TextSprite;
 	
-	private var internsHousesInfo:SmartComponent;
-	private var internsHousesHeaven:TextSprite;
-	private var internsHousesHell:TextSprite;
-	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -79,11 +75,7 @@ class ListInternPopin extends SmartPopin
 		internsInQuestInfo = cast(getChildByName(AssetName.INTERN_IN_QUEST_VALUE), SmartComponent);
 		actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
 		internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
-			
-		//internsHousesInfo = cast(getChildByName(AssetName.INTERN_HOUSE_NUMBER), SmartComponent);
-		//internsHousesHeaven = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
-		//internsHousesHell = cast(SmartCheck.getChildByName(internsHousesInfo, AssetName.INTERN_HOUSE_NUMBER_HELL), TextSprite);
-			
+		
 		setSpawners();
 		setValues();		
 		spawnQuest();
@@ -96,37 +88,6 @@ class ListInternPopin extends SmartPopin
 	private function setValues():Void{
 		actualNbInternInQuest.text = Intern.numberInternsInQuest() + "";
 		internsInQuestMax.text = UnlockManager.getNumberPlaces() + "";
-		
-		//setValuesNumberHousesHeaven();
-		//setValuesNumberHousesHell();
-	}
-	
-	/**
-	 * Set the correct values of the heaven intern house
-	 */
-	private function setValuesNumberHousesHeaven():Void{
-		if (Intern.numberInternHouses[Alignment.heaven] != null && Intern.internsListAlignment[Alignment.heaven] != null){
-			internsHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length + "";
-		}
-		
-		else {
-			if (Intern.numberInternHouses[Alignment.heaven] == null) internsHousesHeaven.text = 0 + "";
-			if (Intern.internsListAlignment[Alignment.heaven] == null) internsHousesHeaven.text = Intern.numberInternHouses[Alignment.heaven] + "";
-		}
-	}
-	
-	/**
-	 * Set the correct values of the hell intern house
-	 */
-	private function setValuesNumberHousesHell():Void{
-		if (Intern.numberInternHouses[Alignment.hell] != null && Intern.internsListAlignment[Alignment.hell] != null){
-			internsHousesHell.text = Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length + "";
-		}
-		
-		else {
-			if (Intern.numberInternHouses[Alignment.hell] == null) internsHousesHell.text = 0 + "";
-			if (Intern.internsListAlignment[Alignment.hell] == null) internsHousesHell.text = Intern.numberInternHouses[Alignment.hell] + "";
-		}
 	}
 	
 	/**

@@ -34,7 +34,7 @@ class BuildingTimerConstruction extends BuildingTimer
 	}
 	
 	override private function updateProgressBar():Void {
-		progressBar.scale.x = TimeManager.getPourcentage(building.tileDesc.timeDesc);
+		progressBar.scale.x = TimeManager.getPourcentage(building.tileDesc);
 	}
 	
 	override private function showTime(?pTileDesc:TileDescription):Void {
@@ -53,7 +53,6 @@ class BuildingTimerConstruction extends BuildingTimer
 				building.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 			}
 			else {
-				timeText.text = TimeManager.getTextTime(building.tileDesc);
 				updateProgressBar();
 			}
 		}

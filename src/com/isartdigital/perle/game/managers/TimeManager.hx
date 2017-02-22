@@ -454,11 +454,9 @@ class TimeManager {
 	 * @param	pIndex
 	 */
 	private static function updateConstruction(pElement:TimeDescription, ?pEndedList:Array<Int>=null):Void {
-		pElement.progress = Date.now().getTime() - pElement.creationDate;
-		if (Reflect.hasField(pElement, TIME_DESC_REFLECT_BOOST)) pElement.progress += pElement.timeBoost;
-		var diff:Float = pElement.end - pElement.creationDate;
+		pElement.progress = Date.now().getTime();
 		
-		if (pElement.progress >= diff) {
+		if (pElement.progress >= pElement.end) {
 			trace("construction : id => " + pElement.refTile + " terminée");
 			var index:Int = listConstruction.indexOf(pElement);
 			eConstruct.emit(EVENT_CONSTRUCT_END, pElement);
@@ -509,8 +507,7 @@ class TimeManager {
 	 */
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
-			var diff:Float = pTileDesc.timeDesc.end - pTileDesc.timeDesc.creationDate;
-			if (pTileDesc.timeDesc.progress >= diff) return VBuildingState.isBuilt;
+			if (pTileDesc.timeDesc.progress >= pTileDesc.timeDesc.end) return VBuildingState.isBuilt;
 			else if (pTileDesc.level == 1) return VBuildingState.isBuilding;
 			else return VBuildingState.isUpgrading;
 		}
@@ -522,10 +519,10 @@ class TimeManager {
 		
 		for (i in 0...lLengthConstruct) {
 			if (listConstruction[i].refTile == pTileDesc.id) {
-				var txtLength:Int = Date.fromTime(listConstruction[i].progress).toString().length;
-				var totalTimer:Float = listConstruction[i].end - listConstruction[i].creationDate;
-				var diff:Float = totalTimer - listConstruction[i].progress;
-				return Date.fromTime(diff).toString().substr(txtLength - 5, 5);
+				var creationDate:Float = listConstruction[i].end - Date.fromString(GameConfig.getBuildingByName(pTileDesc.buildingName, pTileDesc.level).constructionTime).getTime();
+				var totalTimer:Float = listConstruction[i].end - creationDate;
+				var diff:Float = totalTimer - (listConstruction[i].progress - creationDate);
+				return Date.fromTime(diff).toString().substr(Date.fromTime(diff).toString().length - 5, 5);
 			}
 		}	
 		return "Finish";
@@ -605,9 +602,10 @@ class TimeManager {
 	 * @param	pTimeDesc
 	 * @return
 	 */
-	public static function getPourcentage(pTimeDesc:TimeDescription):Float {
-		var total = pTimeDesc.end - pTimeDesc.creationDate;
-		return pTimeDesc.progress / total;
+	public static function getPourcentage(pTileDesc:TileDescription):Float {
+		var timeCreation:Float = pTileDesc.timeDesc.end - Date.fromString(GameConfig.getBuildingByName(pTileDesc.buildingName, pTileDesc.level).constructionTime).getTime();
+		var total:Float = pTileDesc.timeDesc.end - timeCreation;
+		return (pTileDesc.timeDesc.progress - timeCreation) / total;
 	}
 	
 	/**
