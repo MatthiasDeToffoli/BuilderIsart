@@ -39,6 +39,7 @@ class AccelerateButton extends SmartButton
 	}
 	
 	private function onAccelerate(){
+		setValues();
 		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
 			ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
 			TimeManager.increaseQuestProgress(quest);

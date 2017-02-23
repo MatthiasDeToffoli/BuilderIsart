@@ -186,8 +186,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 			effIndics.push(cast(lEfficiency.getChildByName("_jaugeEfficiency_0" + i), UISprite));
 		}
 		
-		trace(speedIndics.length);
-		
 		for (i in 0...5) {
 			if (pIntern.efficiency <= i) speedIndics[i].visible = false;
 		}
@@ -214,9 +212,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		setValuesHeavenCard();
 		setValuesHellCard();
-		
-		//setValuesNumberHousesHeaven();
-		//setValuesNumberHousesHell();
 	}
 	
 	private function setValuesHellCard():Void{
