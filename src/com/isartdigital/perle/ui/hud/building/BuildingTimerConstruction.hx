@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.ui.hud.Hud.BuildingHudType;
 import com.isartdigital.utils.sounds.SoundManager;
@@ -30,7 +31,7 @@ class BuildingTimerConstruction extends BuildingTimer
 		loop.run = progressTimeLoop;
 		
 		if (DialogueManager.boostBuilding)
-			boost(300000, true);
+			boost();
 	}
 	
 	override private function updateProgressBar():Void {
@@ -42,29 +43,13 @@ class BuildingTimerConstruction extends BuildingTimer
 		updateProgressBar();
 	}
 	
-	public function boost(pValue:Float, ?pFinish:Bool=false):Void {
-		var isFinish:Bool;
+	public function boost():Void {
+		TimeManager.increaseConstruction(building);
+		BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+		building.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 		
-		if (!pFinish) {
-			isFinish = TimeManager.increaseConstruction(building, pValue);
-			
-			if (isFinish) {
-				BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
-				building.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
-			}
-			else {
-				updateProgressBar();
-			}
-		}
-		else {
-			if(DialogueManager.passFree)
-				DialogueManager.endOfaDialogue();
-				
-			TimeManager.increaseConstruction(building, pValue, true);				
-			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
-		}
-		
-		//ServerManager.ContructionTimeAction(BuildingHud.virtualBuilding.tileDesc.timeDesc, DbAction.UPDT);
+		if(DialogueManager.passFree)
+			DialogueManager.endOfaDialogue();
 	}
 	
 	private function progressTimeLoop():Void {

@@ -18,6 +18,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.perle.game.sprites.BackgroundUnder;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.sprites.FootPrint;
@@ -89,9 +90,7 @@ class GameManager {
 		HudContextual.initClass();
 		CameraManager.setTarget(GameStage.getInstance().getGameContainer());
 		TimeManager.initClass();
-		ChoiceManager.init();
-		QuestsManager.init();
-		Intern.init(); //Always before RegionManager
+		ServerManagerSpecial.startLoad();
 		VTile.initClass();
 		HudContextual.addContainer();
 		Phantom.initClass();

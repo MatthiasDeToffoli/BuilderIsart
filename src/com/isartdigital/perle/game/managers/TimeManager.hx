@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.utils.Debug;
 import js.Lib;
 
@@ -322,10 +323,12 @@ class TimeManager {
 		for ( i in 0...lLengthProd)
 			updateProductionTime(listProduction[i]);
 			
-		for (j in 0...lLengthQuest) {
-			updateQuest(listQuest[j], lElapsedTime, timeQuestEnded);
+		if (ServerManagerSpecial.specialFeatureLoadState == SpeLoadState.complete) {
+			for (j in 0...lLengthQuest) {
+				updateQuest(listQuest[j], lElapsedTime, timeQuestEnded);
+			}
+			deleteEndedQuest(timeQuestEnded);
 		}
-		deleteEndedQuest(timeQuestEnded);
 		
 		for (i in 0...lLengthConstruct) {
 			updateConstruction(listConstruction[i], constructionEnded);
@@ -428,7 +431,6 @@ class TimeManager {
 			pElement.progress = Date.now().getTime();
 		}
 		
-		
 		// progress has reached next step && just now
 		if (!Intern.isIntravel(Intern.getIntern(pElement.refIntern))) 
 		{		
@@ -453,8 +455,9 @@ class TimeManager {
 	 * @param	pElapsedTime
 	 * @param	pIndex
 	 */
-	private static function updateConstruction(pElement:TimeDescription, ?pEndedList:Array<Int>=null):Void {
-		pElement.progress = Date.now().getTime();
+	private static function updateConstruction(pElement:TimeDescription, ?pEndedList:Array<Int>=null, ?forceEnd:Bool = false):Void {
+		if (!forceEnd) pElement.progress = Date.now().getTime();
+		else pElement.progress = pElement.end;
 		
 		if (pElement.progress >= pElement.end) {
 			trace("construction : id => " + pElement.refTile + " terminée");
@@ -555,20 +558,13 @@ class TimeManager {
 	 * @param	pBoostValue
 	 * @return
 	 */
-	public static function increaseConstruction(pVBuilding:VBuilding, pBoostValue:Float, ?forceEnd:Bool=false):Bool {
+	public static function increaseConstruction(pVBuilding:VBuilding):Bool {
 		var lLengthConstruct:Int = listConstruction.length;
 		var constructionEnded:Array<Int> = new Array<Int>();
 		
 		for (i in 0...lLengthConstruct) {
-			if (forceEnd) {
-				listConstruction[i].timeBoost = listConstruction[i].end - listConstruction[i].creationDate;
-				updateConstruction(listConstruction[i], constructionEnded);
-				break;
-			}
-			else if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
-				if (Reflect.hasField(listConstruction[i], TIME_DESC_REFLECT_BOOST)) listConstruction[i].timeBoost += pBoostValue;
-				else listConstruction[i].timeBoost = pBoostValue;
-				updateConstruction(listConstruction[i], constructionEnded);
+			if (listConstruction[i].refTile == pVBuilding.tileDesc.id) {
+				updateConstruction(listConstruction[i], constructionEnded, true);
 				break;
 			}
 		}	

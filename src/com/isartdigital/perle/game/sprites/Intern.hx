@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import haxe.Json;
 
@@ -199,6 +200,8 @@ class Intern
 			
 			internsListArray.push(newIntern);
 		}
+		
+		ServerManagerSpecial.finishLoading();
 	}
 	
 	public static function isIntravel(pIntern:InternDescription):Bool {

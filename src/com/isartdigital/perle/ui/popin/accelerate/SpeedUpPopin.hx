@@ -50,13 +50,14 @@ class SpeedUpPopin extends AcceleratePopin
 	}
 	
 	override private function onAccelerate():Void {
+		rewriteBtn();
 		SoundManager.getSound("SOUND_KARMA").play();
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
 		
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
 		
-		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost(300000, true);
+		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost();
 		
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);

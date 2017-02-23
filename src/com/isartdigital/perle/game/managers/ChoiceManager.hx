@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.utils.sounds.SoundManager;
 
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -86,7 +87,6 @@ class ChoiceManager
 	
 	public static function askForJson():Void {
 		allChoices = GameConfig.getChoices();
-		ServerManager.ChoicesAction(DbAction.USED_ID);
 		efficiencyBalance = GameConfig.getChoicesConfig();
 	}
 	
@@ -105,6 +105,7 @@ class ChoiceManager
 		}
 		
 		getNewChoiceID();
+		ServerManagerSpecial.loadQuests();
 	}
 	
 	public static function newChoice(pId:Int, ?isGatcha:Bool = false):Void {

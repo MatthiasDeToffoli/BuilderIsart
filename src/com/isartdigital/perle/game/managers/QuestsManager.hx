@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
+import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.GatchaPopin;
@@ -53,7 +54,6 @@ class QuestsManager
 	
 	public static function init():Void{
 		questsList = new Array<TimeQuestDescription>();	
-		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
 	}
 	
 	public static function getJson(object:Dynamic):Void{
@@ -75,6 +75,8 @@ class QuestsManager
 			questsList.push(timeQuest);
 			TimeManager.createTimeQuest(timeQuest);
 		}
+		
+		ServerManagerSpecial.loadInterns();
 	}
 	
 	/**
