@@ -17,7 +17,8 @@ class Loading
 {
     const TABLE_BUILDING = "Building";
     const TABLE_RESOURCES = "Resources";
-    const TABLE_TO_LOAD = "Building,Resources";
+    const TABLE_PLAYER = "Player";
+    const TABLE_TO_LOAD = "Building,Resources,Player";
     const COLUMN_ID = "ID";
     const COLUMN_ID_PLAYER = "IDPlayer";
     const COLUMN_START_CONSTRUCTION = "StartConstruction";

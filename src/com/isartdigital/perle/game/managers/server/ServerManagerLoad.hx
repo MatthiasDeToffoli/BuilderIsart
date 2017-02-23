@@ -22,6 +22,16 @@ typedef TableResources = {
 	var quantity:Int;
 }
 
+typedef TablePlayer = {
+	var dateInscription:String;
+	var dateLastConnexion:String;
+	var email:String;
+	var numberRegionHell:Int;
+	var numberRegionHeaven:Int;
+	var ftueProgress:Int;
+	var level:Int;
+}
+
 /**
  * ...
  * @author ambroise
@@ -30,6 +40,7 @@ class ServerManagerLoad {
 	
 	private static inline var TABLE_BUILDING:String = "Building";
 	private static inline var TABLE_RESOURCES:String = "Resources";
+	private static inline var TABLE_PLAYER:String = "Player";
 	
 	private static var serverSave:Map<String, Array<Dynamic>>;
 
@@ -59,6 +70,10 @@ class ServerManagerLoad {
 	
 	public static function getResources ():Array<TableResources> {
 		return cast(serverSave[TABLE_RESOURCES]);
+	}
+	
+	public static function getPlayer ():TablePlayer {
+		return cast(serverSave[TABLE_PLAYER]);
 	}
 	
 	/**

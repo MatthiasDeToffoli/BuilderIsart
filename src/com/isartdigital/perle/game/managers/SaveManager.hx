@@ -331,6 +331,7 @@ class SaveManager {
 			
 			var lBuildings:Array<TileDescription> = loadBuilding();
 			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
+			var lPlayer:TablePlayer = 
 			
 			untyped currentSave = { 
 				//timesResource: getTimesResource(),
@@ -370,7 +371,7 @@ class SaveManager {
 		var desc:ResourcesGeneratorDescription = {
 			arrayGenerator:new Array<GeneratorDescription>(),
 			totals:new Map<GeneratorType, Float>(),
-			level:1 //data.level // todo : will be in Player table soon
+			level:ServerManagerLoad.getPlayer().level
 		};
 		var lTotals:Array<TableResources> = ServerManagerLoad.getResources();
 		
@@ -381,6 +382,7 @@ class SaveManager {
 				lGameConfig,
 				config
 			));
+			
 		}
 		
 		for (i in 0...lTotals.length) {
@@ -443,15 +445,6 @@ class SaveManager {
 			alignment: pGameConfig.alignment
 		};
 	}
-	
-	/*private static function buildingLoadPopulation (pTileDesc:TileDescription, pGameConfig:TableTypeBuilding, pServerData:TableBuilding):Void {
-		ResourcesManager.addPopulation(
-			pServerData.nbSoul,
-			pGameConfig.maxSoulsContained,
-			pGameConfig.alignment,
-			pTileDesc.id
-		);
-	}*/
 	
 	public static function createFromSave():Void {
 		if (Browser.getLocalStorage().getItem(SAVE_NAME) != null) {
