@@ -67,6 +67,7 @@ class Main extends EventEmitter
 	private static inline var JSON_FOLDER:String = "json/";
 	private static inline var JSON_EXTENSION:String = ".json";
 	public static inline var DIALOGUE_FTUE_JSON_NAME:String = JSON_FOLDER + "dialogue_ftue";
+	public static inline var DIALOGUE_FTUE_JSON_NAME_EN:String = JSON_FOLDER + "dialogue_ftue_en";
 	public static inline var FTUE_JSON_NAME:String = JSON_FOLDER + "FTUE"+ JSON_EXTENSION;
 	public static inline var EXPERIENCE_JSON_NAME:String = JSON_FOLDER + "experience";
 	public static inline var CHOICE_LIST_JSON:String = JSON_FOLDER + "choices" + JSON_EXTENSION;
@@ -236,6 +237,7 @@ class Main extends EventEmitter
 		
 		//dialogue FTUE
 		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME + ".json");
+		lLoader.addTxtFile(DIALOGUE_FTUE_JSON_NAME_EN + ".json");
 		lLoader.addTxtFile(FTUE_JSON_NAME);
 		
 		//Experience and Unlocks

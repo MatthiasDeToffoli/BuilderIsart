@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.option;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
@@ -168,12 +169,16 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function onClickFr():Void {
+		DialogueManager.isFR = true;
+		DialogueManager.changeLanguage();
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		Localisation.traduction("fr");
 		actualizePopin();
 	}
 	
 	private function onClickEn():Void {
+		DialogueManager.isFR = false;
+		DialogueManager.changeLanguage();
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		Localisation.traduction("en");
 		actualizePopin();

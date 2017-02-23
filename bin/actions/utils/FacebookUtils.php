@@ -68,7 +68,8 @@ include_once("vendor/autoload.php");
 
      $req = "SELECT ID FROM Player WHERE IDFacebook = :FbId";
      $reqPre = $db->prepare($req);
-     $reqPre->bindParam(':FbId', FacebookUtils::getFacebookId());
+     $fbId = FacebookUtils::getFacebookId();
+     $reqPre->bindParam(':FbId',$fbId);
 
      try {
        $reqPre->execute();

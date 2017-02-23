@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
 
 /**
  * ...
@@ -15,20 +16,20 @@ class GoldEffect extends SmartComponent
 	
 	public static var goldJuicy:Array<UISprite>;
 	
-	public function new(pAsset:String) 
+	public function new(pAsset:String,pPos:Point, pPosAfterEffect:Point) 
 	{
 		super(AssetName.BTN_PRODUCTION);
 		var graphic:UISprite = new UISprite(pAsset);
-		graphic.position = GameStage.getInstance().getActionContainer().toGlobal(DialoguePoppin.getInstance().getNpcHeavenPos());
+		graphic.position = pPos;
 		GameStage.getInstance().getIconContainer().addChild(graphic);
 		goldJuicy.push(graphic);
-		effect(graphic);
+		effect(graphic,pPosAfterEffect);
 	}
 	
-	public function effect(pGraphic:UISprite) {
+	public function effect(pGraphic:UISprite, pPosAfterEffect:Point) {
 		TweenManager.positionElasticAttract(
 			pGraphic,
-			Hud.getInstance().getGoldIconPos(),
+			pPosAfterEffect,
 			null,
 			destroyAfterEffect
 		);

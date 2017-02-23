@@ -104,10 +104,11 @@ class CarouselCardBundle extends CarouselCard{
 		super._click(pEvent);
 		
 		SoundManager.getSound("SOUND_SPEND").play();
-		closeShop();
+		//closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
 		DeltaDNAManager.sendIsartPointExpense(myConfig.iD, myConfig.priceIP);
 		SaveManager.saveLockBundle(myConfig.iD);
+		ShopPopin.getInstance().setCurrenciesNumber();
 	}
 	
 	private function setPicture (pPicture:UISprite, pIconLevel:Int, lPictureSwitch:Map<Int,String>):Void {

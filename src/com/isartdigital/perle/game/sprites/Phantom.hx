@@ -13,6 +13,8 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.sprites.Building.RegionMap;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VAltar;
+import com.isartdigital.perle.game.virtual.vBuilding.VVicesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.VTile.Index;
@@ -28,12 +30,14 @@ import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import com.isartdigital.utils.ui.smart.UISprite;
 import eventemitter3.EventEmitter;
 import haxe.Json;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
+import pixi.flump.Movie;
 
 
 typedef EventExceeding = {
@@ -57,6 +61,7 @@ class Phantom extends Building {
 	private static var instance:Phantom;
 	private static var container:Container;
 	private static var alignementBuilding:Alignment;
+	private static var altarEffectZone:Movie;
 	public var buildingName:String;
 	private var mouseDown:Bool;
 	private var regionMap:RegionMap;
@@ -140,6 +145,13 @@ class Phantom extends Building {
 		instance.init();
 		container.addChild(instance);
 		FootPrint.createShadow(instance);
+		
+		if ( Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVicesBuilding" || Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVirtuesBuilding") {
+			altarEffectZone = new Movie("effect_zone");
+			//altarEffectZone.position = pPos;
+			container.addChild(altarEffectZone);
+		}
+		
 		instance.start();
 	}
 	
@@ -273,6 +285,9 @@ class Phantom extends Building {
 			bestMapPos.x,
 			bestMapPos.y
 		));
+		
+		if (altarEffectZone != null)
+			altarEffectZone.position = buildingGroundCenter;
 		
 		// optimization to make less call to canBuiltHere();
 		if (precedentBesMapPos.x != bestMapPos.x ||
@@ -773,6 +788,8 @@ class Phantom extends Building {
 	}*/
 	
 	override public function destroy():Void {
+		if (altarEffectZone != null)
+			altarEffectZone.destroy();
 		Hud.getInstance().show();
 		FootPrint.removeShadow();
 		vBuilding = null;

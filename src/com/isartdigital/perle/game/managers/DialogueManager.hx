@@ -47,10 +47,13 @@ class DialogueManager
 	private static var heavenCenter:Point;
 	public static var steps:Array<FTUEStep>;
 	private static var finger:FingerAnim;
+	private static var npc_dialogue_ftue:Array<Array<Array<String>>>;
+	private static var npc_dialogue_ftue_en:Array<Array<Array<String>>>;
 	
+	public static var isFR:Bool;
+	public static var actual_npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialoguePoppinPos:Point;
 	public static var closeDialoguePoppin:Bool = false;
-	public static var npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialogueSaved:Int;
 	public static var registerIsADialogue:Bool;
 	public static var cameraHaveToMove:Bool;
@@ -104,12 +107,21 @@ class DialogueManager
 		steps = pFTUE.steps;
 		setAllExpressions();
 		npc_dialogue_ftue = [];
+		actual_npc_dialogue_ftue = [];
+		npc_dialogue_ftue_en = [];
 		GoldEffect.goldJuicy = [];
-		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json
+		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME); //json fr
+		parseJsonFtue(Main.DIALOGUE_FTUE_JSON_NAME_EN, true); //json en
 		DialoguePoppin.numberOfDialogue = npc_dialogue_ftue.length; //set length of the dialogue
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
+		
+		//todo : check de dialogue via langue FB
+		isFR = false;
+		changeLanguage();
+		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 		dialoguePoppinPos = DialoguePoppin.getInstance().position;
+		
 	}
 	
 	/**
@@ -118,8 +130,6 @@ class DialogueManager
 	public static function createFtue():Void {
 		//dialogueSaved = 21;
 		//SaveManager.save();
-		
-		
 		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
@@ -545,7 +555,7 @@ class DialogueManager
 			return;
 		
 		numberOfGoldsCreated++;
-		var lGold:GoldEffect = new GoldEffect(AssetName.PROD_ICON_SOFT);
+		var lGold:GoldEffect = new GoldEffect(AssetName.PROD_ICON_SOFT,GameStage.getInstance().getActionContainer().toGlobal(DialoguePoppin.getInstance().getNpcHeavenPos()), Hud.getInstance().getGoldIconPos());
 		//lGold.effect();
 		Timer.delay(createGoldEffectJuicy, 200);
 	}
@@ -595,14 +605,22 @@ class DialogueManager
 	 * Parse of the json to set an array
 	 * @param	pJsonName
 	 */
-	private static function parseJsonFtue(pJsonName:String):Void {
+	private static function parseJsonFtue(pJsonName:String,?pEn:Bool):Void {
 		var jsonFtue:Dynamic = GameLoader.getContent(pJsonName + ".json");
 		var i:Int = 0;
 		for (dialogue in Reflect.fields(jsonFtue)) {
-			npc_dialogue_ftue[i] = [];
+			if (pEn)
+				npc_dialogue_ftue_en[i] = [];
+			else
+				npc_dialogue_ftue[i] = [];
+				
 			var ldialogue = Reflect.field(jsonFtue, dialogue);
 			var lArray:Array<String> = ldialogue;
-			npc_dialogue_ftue[i].push(lArray);
+			if (pEn)
+				npc_dialogue_ftue_en[i].push(lArray);
+			else
+				npc_dialogue_ftue[i].push(lArray);
+				
 			i++;
 		}
 	}
@@ -699,6 +717,15 @@ class DialogueManager
 		//	Choice.getInstance().setGlowFalse();
 		//if (addedJuicy)
 		//	removeGolds();
+	}
+	
+	public static function changeLanguage() {
+		actual_npc_dialogue_ftue = [];
+		
+		if (isFR)
+			actual_npc_dialogue_ftue = npc_dialogue_ftue;
+		else
+			actual_npc_dialogue_ftue = npc_dialogue_ftue_en;
 	}
 	
 	private static function removeGolds() {

@@ -41,6 +41,21 @@ class ShopPopin extends SmartPopinExtended {
 	private var bars:Map<ShopBar, SmartComponent>;
 	private var carousselSpawner:UISprite;
 	
+	public var lSC:SmartComponent;
+	public var lHC:SmartComponent;
+	public var lmarbre:SmartComponent;
+	public var lwood:SmartComponent;
+	
+	public var shopTabSCIcon:UISprite;
+	public var shopTabHCIcon:UISprite;
+	public var shopTabWoodIcon:UISprite;
+	public var shopTabIronIcon:UISprite;
+	
+	private var lSCtext:TextSprite;
+	private var lHCtext:TextSprite;
+	private var lmarbretext:TextSprite;
+	private var lwoodtext:TextSprite;
+	
 	public static var isSearching:Bool;
 	
 	private var carousselPos:Point;
@@ -76,20 +91,21 @@ class ShopPopin extends SmartPopinExtended {
 		
 		SoundManager.getSound("SOUND_OPEN_MENU_SHOP").play();
 		
-		var lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
-		var lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
-		var lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);
-		var lwood = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_BOIS), SmartComponent);
+		lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
+		shopTabSCIcon = cast(SmartCheck.getChildByName(lSC, "_icon_softcurrency"), UISprite);
+		lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
+		shopTabHCIcon = cast(SmartCheck.getChildByName(lHC, "_icon_hardcurrency"), UISprite);
+		lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);
+		shopTabWoodIcon = cast(SmartCheck.getChildByName(lmarbre, "_icon_wood"), UISprite);
+		lwood = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_BOIS), SmartComponent);
+		shopTabIronIcon = cast(SmartCheck.getChildByName(lwood, "_icon_wood"), UISprite);
 		
-		var lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		var lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		var lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
-		var lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
+		lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		
-		lSCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.soft));
-		lHCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.hard));
-		lmarbretext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell));
-		lwoodtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
+		setCurrenciesNumber();
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		
@@ -97,6 +113,17 @@ class ShopPopin extends SmartPopinExtended {
 		
 		Interactive.addListenerClick(btnExit, onClickExit);
 		
+	}
+	
+	public function getIconSFPos():Point{
+		return lSC.position;
+	}
+	
+	public function setCurrenciesNumber():Void {
+		lSCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.soft));
+		lHCtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.hard));
+		lmarbretext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell));
+		lwoodtext.text = ResourcesManager.shortenValue(ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise));
 	}
 	
 	private function addButton() {

@@ -4,10 +4,13 @@ import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import haxe.Timer;
 import js.Browser;
 import pixi.interaction.EventTarget;
 
@@ -75,7 +78,6 @@ class CarouselCardPack extends CarouselCard{
 			getGainType(myConfig) => getGainValue(getGainType(myConfig), myConfig)
 		];
 		cantBuyFeedBack = !BuyManager.canBuyShopPack(myPrice);
-		
 		super.init(pName);
 	}
 	
@@ -113,9 +115,11 @@ class CarouselCardPack extends CarouselCard{
 		
 		super._click(pEvent);
 		SoundManager.getSound("SOUND_SPEND").play();
-		closeShop();
+		//closeShop();
 		BuyManager.buyShopPack(myPrice, myGain);
+		ShopPopin.getInstance().setCurrenciesNumber();
 	}
+	
 	
 	private function getPriceType (pConfig:TableTypeShopPack):GeneratorType {
 		if (pConfig.priceIP != null) return GeneratorType.isartPoint;

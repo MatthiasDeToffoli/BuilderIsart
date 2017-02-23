@@ -106,7 +106,7 @@ class FootPrint extends Tile
 		
 		for (k in 0...FootPrintAsset.footPrintArray.length) {
 			for (l in 0...FootPrintAsset.footPrintArray[k].length) {
-				var lPoint:Point = new Point(l-1, k-1);
+				var lPoint:Point = new Point(l- Building.getSizeOnMap(lInstance.buildingName).footprint , k-Building.getSizeOnMap(lInstance.buildingName).footprint);
 				lPoint = IsoManager.modelToIsoView(lPoint);
 				
 				lPoint = new Point(lPoint.x + pInstancePosition.x, lPoint.y + pInstancePosition.y);

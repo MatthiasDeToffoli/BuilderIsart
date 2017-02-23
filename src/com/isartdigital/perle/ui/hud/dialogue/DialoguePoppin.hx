@@ -54,6 +54,11 @@ class DialoguePoppin extends SmartScreen
 	private var icon22:SmartComponent;
 	private var icon24:SmartComponent;
 	private var icon25:SmartComponent;
+	private var icon32:SmartComponent;
+	private var icon34:SmartComponent;
+	private var icon38:SmartComponent;
+	private var icon39:SmartComponent;
+	private var icon40:SmartComponent;
 	
 	//Array of the dialogue
 	public static var lNpc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -111,6 +116,11 @@ class DialoguePoppin extends SmartScreen
 		icon22 = cast(getChildByName(AssetName.FTUE_ICON_22), SmartComponent);
 		icon24 = cast(getChildByName(AssetName.FTUE_ICON_24), SmartComponent);
 		icon25 = cast(getChildByName(AssetName.FTUE_ICON_25), SmartComponent);
+		icon32 = cast(getChildByName(AssetName.FTUE_ICON_32), SmartComponent);
+		icon34 = cast(getChildByName(AssetName.FTUE_ICON_34), SmartComponent);
+		icon38 = cast(getChildByName(AssetName.FTUE_ICON_38), SmartComponent);
+		icon39 = cast(getChildByName(AssetName.FTUE_ICON_39), SmartComponent);
+		icon40 = cast(getChildByName(AssetName.FTUE_ICON_40), SmartComponent);
 		
 		btnNext = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON), SmartButton);
 		Interactive.addListenerClick(btnNext, nextStep);
@@ -132,7 +142,7 @@ class DialoguePoppin extends SmartScreen
 		checkIfIcons(pNumber);
 		
 		if (npc_speach != null)
-		npc_speach.text = DialogueManager.npc_dialogue_ftue[pNumber - 1][0][1];
+		npc_speach.text = DialogueManager.actual_npc_dialogue_ftue[pNumber - 1][0][1];
 		addEffectToDialogueSpawn(isAction,pNpc,pNumber);
 	}
 	
@@ -193,6 +203,11 @@ class DialoguePoppin extends SmartScreen
 			case 22 : icon22.visible = true;
 			case 24 : icon24.visible = true;
 			case 25 : icon25.visible = true;
+			case 32 : icon32.visible = true;
+			case 34 : icon34.visible = true;
+			case 38 : icon38.visible = true;
+			case 39 : icon39.visible = true;
+			case 40 : icon40.visible = true;
 		}
 	}
 	
@@ -222,6 +237,11 @@ class DialoguePoppin extends SmartScreen
 		icon22.visible = false;
 		icon24.visible = false;
 		icon25.visible = false;
+		icon32.visible = false;
+		icon34.visible = false;
+		icon38.visible = false;
+		icon39.visible = false;
+		icon40.visible = false;
 	}
 	
 	/**
