@@ -1,13 +1,20 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessConnexion;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
+import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import js.Browser;
 import js.html.Event;
+
+
+enum TransactionType { boughtBuilding; skippedTimer; shopPackBought; hiredIntern; internshipStarted; choiceMade; 
+extendedRegions; soldBuilding; boughtDecoration; internStressReset; gachaAttained; }
 
 /**
  * ...
@@ -66,6 +73,7 @@ class DeltaDNAManager{
 	
 	private static var stepFTUETStartTimeStamp:Float=0;
 	
+	// todo : s'arranger pr que ce soit rdy au début de la FTUE, sinon décalage emb^tant
 	public static function sendStepFTUE (pStepIndex:Int):Void {
 		if (!isReady) {
 			if (Config.deltaDNA)
@@ -82,6 +90,7 @@ class DeltaDNAManager{
 		stepFTUETStartTimeStamp = Date.now().getTime();
 	}
 	
+	// todo : enlever
 	public static function sendIsartPointExpense (pIdPack:Int, pPrice:Float):Void {
 		if (!isReady) {
 			if (Config.deltaDNA)
@@ -95,6 +104,44 @@ class DeltaDNAManager{
 			pricePaid:pPrice
 		});
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
+	public static function sendTransaction (pTransactionType:TransactionType, pIdPack:Int, pTypePrice:GeneratorType, pPrice:Float):Void {
+		if (!isReady) {
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
+		
+		DeltaDNA.addEvent(DeltaDNAEventCustom.TRANSACTION, untyped Object.assign(getBaseEvent(), {
+			transactionID: Facebook.uid + "_" + Date.now().toString() + "_" + Std.string(Math.random() * 100000),
+			transactionType: pTransactionType,
+			productReceived: pIdPack,
+			productReceivedAmount: 1,
+			productSpend: pTypePrice.getName(),
+			productSpendAmount: Std.string(pPrice)
+		}));
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+		
+	}
+	
+	private static function getBaseEvent ():Dynamic {
+		return {
+			playerLevel: ResourcesManager.getLevel(),
+			playerXPHell: ResourcesManager.getTotalForType(GeneratorType.badXp),
+			playerXPHeaven: ResourcesManager.getTotalForType(GeneratorType.goodXp),
+			playerGold: ResourcesManager.getTotalForType(GeneratorType.soft),
+			playerKarma: ResourcesManager.getTotalForType(GeneratorType.hard),
+			playerWood: ResourcesManager.getTotalForType(GeneratorType.buildResourceFromParadise),
+			playerIron: ResourcesManager.getTotalForType(GeneratorType.buildResourceFromHell),
+			playerInterns: Intern.internsListArray.map(function(p:InternDescription) {
+				return p.id;
+			}).join(","),
+			playerNeutralSouls: ResourcesManager.getTotalForType(GeneratorType.soul),
+			playerHellSouls: ResourcesManager.getTotalForType(GeneratorType.soulBad),
+			playerHeavenSouls: ResourcesManager.getTotalForType(GeneratorType.soulGood)
+		};
 	}
 	
 	/*public static function sendTimeSkip (pTimeSkipped:Int, pKarmaSpent:Int):Void {

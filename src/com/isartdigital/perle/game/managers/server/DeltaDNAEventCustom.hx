@@ -7,6 +7,7 @@ package com.isartdigital.perle.game.managers.server;
 class DeltaDNAEventCustom{
 
 	public static inline var FTUE_STEP:String = "ftueStep";
-	public static inline var EXPENSE_ISART_POINT:String = "playerRmExpense"; // todo
+	public static inline var EXPENSE_ISART_POINT:String = "playerRmExpense"; // todo: supprimer
+	public static inline var TRANSACTION:String = "transaction";
 	
 }
