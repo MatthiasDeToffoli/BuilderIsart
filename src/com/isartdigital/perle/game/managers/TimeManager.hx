@@ -118,9 +118,7 @@ class TimeManager {
 		
 		//listProduction = pSave.timesProduction; // server save used now, delete if work
 		
-		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
-		//var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
-		//var lLengthConstruction:Int = pSave.timesConstruction.length;
+		var lLengthConstruction:Int = pSave.timesConstruction.length;
 		
 		for (i in 0...lLength) {
 			listResource.push({

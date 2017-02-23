@@ -1,10 +1,13 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
+import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
@@ -19,7 +22,6 @@ class SendButton extends SmartButton
 	{
 		super("ButtonSend");
 		position = pPos;
-		
 	}
 	
 	override public function destroy():Void { // todo : destroy fonctionnel ?

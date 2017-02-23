@@ -39,8 +39,7 @@ class BuildingTimerConstruction extends BuildingTimer
 	}
 	
 	override private function showTime(?pTileDesc:TileDescription):Void {
-		timeText.text = TimeManager.getTextTime(pTileDesc);		
-		updateProgressBar();
+		timeText.text = TimeManager.getTextTime(pTileDesc);	
 	}
 	
 	public function boost():Void {

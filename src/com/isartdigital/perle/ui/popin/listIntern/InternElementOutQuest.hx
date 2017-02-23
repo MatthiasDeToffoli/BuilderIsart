@@ -61,13 +61,12 @@ class InternElementOutQuest extends InternElement
 		internDatas = pDesc;
 		
 		getComponents();
-		setValues(pDesc);
 		spawnButton(AssetName.SPAWNER_BUTTON_OUT_QUEST);
+		setValues(pDesc);
 	}
 
 	private function getComponents():Void{
 		//picture = cast(getChildByName(AssetName.PORTRAIT_OUT_QUEST), SmartButton);
-		sendCost = cast(getChildByName(AssetName.INTERN_OUT_SEND_COST), TextSprite);
 		stressJauge = cast(getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
 		speedJauge = cast(getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
@@ -98,7 +97,8 @@ class InternElementOutQuest extends InternElement
 		}
 	}
 	
-	private function setValues(pDesc:InternDescription):Void{	
+	private function setValues(pDesc:InternDescription):Void {	
+		sendCost = cast(SmartCheck.getChildByName(btnSend, AssetName.INTERN_OUT_SEND_COST), TextSprite);
 		sendCost.text = Std.string(QUEST_PRICE);
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
@@ -114,18 +114,23 @@ class InternElementOutQuest extends InternElement
 			btnMaxStress.position = spawner.position;
 			Interactive.addListenerClick(btnMaxStress, onStress);
 			addChild(btnMaxStress);
-		}
-			
+		}		
 		else {
 			btnSend = new SendButton(spawner.position);
 			btnSend.position = spawner.position;
 			Interactive.addListenerClick(btnSend, onSend);
 			addChild(btnSend);
+			sendCost = cast(SmartCheck.getChildByName(btnSend, AssetName.INTERN_OUT_SEND_COST), TextSprite);
+			Interactive.addListenerRewrite(btnSend, onHover);
 		}
 			
 		var iStress:Int = internDatas.stress;
 		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
 		spawner.visible = false;
+	}
+	
+	public function onHover():Void {
+		setValues(internDatas);
 	}
 	
 	private function addListerners():Void{
@@ -159,6 +164,8 @@ class InternElementOutQuest extends InternElement
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();
 		InternElementInQuest.canPushNewScreen = true;
+		
+		Interactive.removeListenerRewrite(btnSend, onHover);
 		
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());

@@ -264,7 +264,7 @@ class AssetName{
 	public static inline var PORTRAIT_OUT_QUEST:String = "OutQuest_Portrait";
 	public static inline var SPAWNER_BUTTON_OUT_QUEST:String = "_spawner_buttonStress_accelerate";
 	public static inline var INTERN_OUT_EFF_TXT:String = "_txt_efficiency03";
-	public static inline var INTERN_OUT_SEND_COST:String = "sendCost";
+	public static inline var INTERN_OUT_SEND_COST:String = "sendCost ";
 	public static inline var INTERN_OUT_IN_QUEST_CONTAINER:String = "InternInQuest_Value";
 	public static inline var INTERN_OUT_ACTUAL_INTERNS_IN_QUEST:String = "_internsInQuest_value";
 	

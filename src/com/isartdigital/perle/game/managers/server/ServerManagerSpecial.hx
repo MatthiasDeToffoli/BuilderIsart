@@ -31,4 +31,6 @@ class ServerManagerSpecial
 	public static function finishLoading():Void {
 		specialFeatureLoadState = SpeLoadState.complete;
 	}
+	
+	
 }
