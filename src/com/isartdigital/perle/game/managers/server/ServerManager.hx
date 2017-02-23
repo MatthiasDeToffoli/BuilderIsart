@@ -304,6 +304,10 @@ class ServerManager {
 			case "soft" : 			return GeneratorType.soft;
 			case "wood" : 			return GeneratorType.buildResourceFromParadise;
 			case "stone" : 			return GeneratorType.buildResourceFromHell;
+			case "resourcesFromHeaven" : return GeneratorType.buildResourceFromParadise;
+			case "resourcesFromHell" : return GeneratorType.buildResourceFromHell;
+			case "badXp" : 			return GeneratorType.badXp;
+			case "goodXP" :			return GeneratorType.goodXp;
 			case "hard" : 			return GeneratorType.hard;
 			case "neutral" : 		return Alignment.neutral;
 			case "hell" : 			return Alignment.hell;

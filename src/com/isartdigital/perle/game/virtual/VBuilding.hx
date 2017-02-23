@@ -318,7 +318,7 @@ class VBuilding extends VTile {
 		if ((typeBuilding.productionPerHour == null && !Std.is(this,VAltar)) || Std.is(this, VMarketingHouse)) return;
 
 		myTime = calculTimeProd(typeBuilding);
-		myGeneratorType = ServerManager.stringToEnum(typeBuilding.productionResource.toString());
+		myGeneratorType = typeBuilding.productionResource;
 		myMaxContains = getMaxContains(typeBuilding);
 
 		myGenerator = ResourcesManager.addResourcesGenerator(tileDesc.id, myGeneratorType, myMaxContains,myTime,Std.is(this,VTribunal) ? Alignment.neutral:null, Std.is(this,VTribunal) ? true:false);

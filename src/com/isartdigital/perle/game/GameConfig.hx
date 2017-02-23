@@ -33,9 +33,9 @@ typedef TableTypeBuilding = {
 	@:optional var costIron:Int;
 	@:optional var costKarma:Int;
 	var constructionTime:String; // HH:MM:SS or HHH:MM:SS
-	@:optional var productionType:String; // enum
+	@:optional var productionType:String; // enum : Real Time ou je sais plus quoi, voir bdd
 	@:optional var productionPerHour:Int;
-	@:optional var productionResource:String; // enum
+	@:optional var productionResource:GeneratorType; // enum
 	@:optional var productionPerBuildingHeaven:Int;
 	@:optional var productionPerBuildingHell:Int;
 	var xPatCreationHeaven:Int;

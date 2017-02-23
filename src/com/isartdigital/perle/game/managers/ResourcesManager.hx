@@ -7,8 +7,10 @@ import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.sounds.SoundManager;
 import eventemitter3.EventEmitter;
+import haxe.Json;
 
  
  /**
@@ -172,49 +174,54 @@ class ResourcesManager
 	/**
 	 * load all element of the resources data
 	 * @param resourcesDescriptionLoad the resources description which is load
+	 * @author Ambroise && Matthias
 	 */
 	public static function initWithLoad(resourcesDescriptionLoad:ResourcesGeneratorDescription):Void{
-
+		for (key in resourcesDescriptionLoad.totals.keys()) {
+			if (Std.is(key, String)) {
+				Debug.error("This value should be an Enum (update stringToEnum please) : " + key);
+			}
+		}
+		for (i in 0...resourcesDescriptionLoad.arrayGenerator.length) {
+			if (Std.is(resourcesDescriptionLoad.arrayGenerator[i].alignment, String) ||
+				Std.is(resourcesDescriptionLoad.arrayGenerator[i].type, String)) {
+				Debug.error(
+					"This value should be an Enum (update stringToEnum please) : " + 
+					resourcesDescriptionLoad.arrayGenerator[i].alignment + " " +
+					resourcesDescriptionLoad.arrayGenerator[i].type
+				);
+			}
+		}
+		
 		initWithoutSave();
 		
 		var myDesc:GeneratorDescription;
 		var myGenerator:Generator;
 		
-		for (myDesc in resourcesDescriptionLoad.arrayGenerator){
-			myDesc.type = SaveManager.translateArrayToEnum(myDesc.type);
-			myDesc.alignment = SaveManager.translateArrayToEnum(myDesc.alignment);
+		
+		for (myDesc in resourcesDescriptionLoad.arrayGenerator) {
 			myGenerator = {desc:myDesc};
 			myResourcesData.generatorsMap[myDesc.type].push(myGenerator);
 			TimeManager.addGenerator(myGenerator);
 		}
-		
-		var totals:Array<Float> = resourcesDescriptionLoad.totals;
 		myResourcesData.level = resourcesDescriptionLoad.level;
-		myResourcesData.totalsMap[GeneratorType.soft] = totals[0];
-		myResourcesData.totalsMap[GeneratorType.hard] = totals[1];
-		myResourcesData.totalsMap[GeneratorType.goodXp] = totals[2];
-		myResourcesData.totalsMap[GeneratorType.badXp] = totals[3];
-		myResourcesData.totalsMap[GeneratorType.soulGood] = totals[4];
-		myResourcesData.totalsMap[GeneratorType.soulBad] = totals[5];
-		myResourcesData.totalsMap[GeneratorType.intern] = totals[6];
-		myResourcesData.totalsMap[GeneratorType.buildResourceFromHell] = totals[7];
-		myResourcesData.totalsMap[GeneratorType.buildResourceFromParadise] = totals[8];
-		
+		myResourcesData.totalsMap = resourcesDescriptionLoad.totals;
 		maxExp = ExperienceManager.getMaxExp(resourcesDescriptionLoad.level);
 		
+		// setting level
+		totalResourcesInfoArray[0].value = resourcesDescriptionLoad.level;
+		
 		var i:Int;
-
-		for (i in 0...totalResourcesInfoArray.length){
-			if (i == 0) totalResourcesInfoArray[i].value = resourcesDescriptionLoad.level;
-			else if (i < 7) totalResourcesInfoArray[i].value = totals[i - 1];
-			else totalResourcesInfoArray[i].value = totals[i];
+		for (i in 1...totalResourcesInfoArray.length) {
+			totalResourcesInfoArray[i].value = myResourcesData.totalsMap[totalResourcesInfoArray[i].type];
 			
-			if (i == 3 || i == 4) totalResourcesInfoArray[i].max = maxExp;
+			// adding maxExp field to GeneratorType.goodXp and GeneratorType.badXp
+			if (i == 3 || i == 4) 
+				totalResourcesInfoArray[i].max = maxExp;
 		}
 		
 		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 	}
-	
 	
 	/**
 	 * say if the generator give is not empty

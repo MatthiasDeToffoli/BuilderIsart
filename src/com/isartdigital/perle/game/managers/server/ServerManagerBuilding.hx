@@ -125,7 +125,6 @@ class ServerManagerBuilding{
 	}
 	
 	public static function upgradeBuilding (pDescription:TileDescription):Void {
-		trace("id:" + pDescription.id);
 		ServerManager.callPhpFile(onSuccessUpgradeBuilding, onErrorUpgradeBuilding, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.BUILDING_UPGRADE,
 			"IDClientBuilding" => pDescription.id,

@@ -112,11 +112,11 @@ class TimeManager {
 	public static function buildFromSave (pSave:Save):Void {
 		var lLength:Int = pSave.timesResource.length;
 		
-		listProduction = pSave.timesProduction;
+		//listProduction = pSave.timesProduction; // server save used now, delete if work
 		
 		var lQuestArraySaved:Array<TimeQuestDescription> = pSave.timesQuest;
-		var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
-		var lLengthConstruction:Int = pSave.timesConstruction.length;
+		//var lConstructionArraySaved:Array<TimeDescription> = pSave.timesConstruction;
+		//var lLengthConstruction:Int = pSave.timesConstruction.length;
 		
 		//trace(lLengthQuest);
 		for (i in 0...lLength) {

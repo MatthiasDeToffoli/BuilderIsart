@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
+import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.server.IdManager;
@@ -97,7 +98,7 @@ typedef InternDescription = {
 
 typedef ResourcesGeneratorDescription = {
 	var arrayGenerator:Array<GeneratorDescription>;
-	var totals:Array<Float>;
+	var totals:Map<GeneratorType, Float>;
 	var level:Int;
 }
 typedef ResourceDescription = {
@@ -113,9 +114,6 @@ typedef Stats = {
 
 // On save des TileDescription, pas des Virtual !
 typedef Save = {
-	var version:String;
-	var COL_X_LENGTH:Int;
-	var ROW_Y_LENGTH:Int;
 	var stats:Stats;
 	var idHightest:Int;
 	var region:Array<RegionDescription>;
@@ -142,6 +140,15 @@ class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
 	private static inline var SAVE_VERSION:String = "1.1.2";
 	public static var currentSave(default, null):Save;
+	
+	/**
+	 * Usefull to keep the good serverBuilding index whit the good TileDesc
+	 * when calling loadBuilding()
+	 * Avoid me from making loadBuilding() return a Map<TableBuilding, TileDescription>
+	 * destroyed after loading
+	 */
+	private static var serverBuildingToTileDesc:Map<TableBuilding, TileDescription>;
+	
 	
 	/**
 	 * Save the buildings and grounds in a Json in local storage.
@@ -188,47 +195,12 @@ class SaveManager {
 			region: regionSave,
 			ground: groundSave,
 			building: buildingSave,
-			resourcesData: saveResources(),
-			COL_X_LENGTH: Ground.COL_X_LENGTH,
-			ROW_Y_LENGTH: Ground.ROW_Y_LENGTH,
-			version: SAVE_VERSION,
+			resourcesData: null, // now is server only
 			ftueProgress : DialogueManager.dialogueSaved,
 			idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
 			missionDecoration: HudMissionButton.numberOfDecorationCreated
 		};
 		setLocalStorage(currentSave);
-	}
-	
-	private static function saveResources(): ResourcesGeneratorDescription{
-		var data:ResourcesData = ResourcesManager.getResourcesData();
-		var desc:ResourcesGeneratorDescription = {
-			arrayGenerator:new Array<GeneratorDescription>(),
-			totals:new Array<Float>(),
-			level:data.level
-		};
-		
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.soft);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.hard);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.goodXp);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.badXp);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.soul);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.intern);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.buildResourceFromHell);
-		desc.arrayGenerator = addGenerator(desc.arrayGenerator, data, GeneratorType.buildResourceFromParadise);
-		
-		//this order is verry importer if you find more clean tell me please ^^'
-		desc.totals.push(data.totalsMap[GeneratorType.soft]);
-		desc.totals.push(data.totalsMap[GeneratorType.hard]);
-		desc.totals.push(data.totalsMap[GeneratorType.goodXp]);
-		desc.totals.push(data.totalsMap[GeneratorType.badXp]);
-		desc.totals.push(data.totalsMap[GeneratorType.soulGood]);
-		desc.totals.push(data.totalsMap[GeneratorType.soulBad]);
-		desc.totals.push(data.totalsMap[GeneratorType.intern]);
-		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromHell]);
-		desc.totals.push(data.totalsMap[GeneratorType.buildResourceFromParadise]);
-		
-		return desc;
-		
 	}
 	
 	public static function saveLockBundle (pIDBundleBlocked:Int):Void {
@@ -358,6 +330,11 @@ class SaveManager {
 			
 			// untyped because i'm not filling all required fields
 			// will be merge whit localStorage, so don't panic
+			serverBuildingToTileDesc = new Map<TableBuilding, TileDescription>();
+			
+			var lBuildings:Array<TileDescription> = loadBuilding();
+			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
+			
 			untyped currentSave = { 
 				//timesResource: getTimesResource(),
 				//timesQuest: getTimesQuest(),
@@ -366,19 +343,18 @@ class SaveManager {
 				//timesCampaign: getCampaign(),
 				//lastKnowTime:TimeManager.lastKnowTime,
 				//stats: getStats(),
-				//idHightest: IdManager.idHightest,
+				//idHightest: IdManager.idHightest, // n'est plus utilisé
 				//region: regionSave,
 				//ground: groundSave,
-				building: loadBuilding(),
-				//resourcesData: saveResources(),
-				COL_X_LENGTH: Ground.COL_X_LENGTH, // todo, c'est fixé plus besoin de save..
-				ROW_Y_LENGTH: Ground.ROW_Y_LENGTH
+				building: lBuildings,
+				resourcesData: lResources,
 				//version: SAVE_VERSION,
 				//ftueProgress : DialogueManager.dialogueSaved,
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
 			};
 			
 			ServerManagerLoad.deleteServerSave();
+			serverBuildingToTileDesc = null;
 			
 			//todo : temporary, it's fill's the missing value from localSave
 			// game should be tested whitout later, to be sure everything is saved in server.
@@ -388,21 +364,35 @@ class SaveManager {
 				),
 				currentSave
 			);
-			
-			/*if (currentSave != null) {
-				
-				if (currentSave.version != SAVE_VERSION) {
-					destroy();
-					currentSave = null;
-				}
-				else if  (currentSave.COL_X_LENGTH != Ground.COL_X_LENGTH ||
-					currentSave.ROW_Y_LENGTH != Ground.ROW_Y_LENGTH)
-					throw("DIFFERENT VALUE Ground.COL_X_LENGTH or Ground.ROW_Y_LENGTH !! (use destroy() in this function)");
-			}*/
 		}
 		
 		return currentSave;
 	}
+	
+	private static function loadResources (pBuildings:Map<TableBuilding, TileDescription>):ResourcesGeneratorDescription {
+		var desc:ResourcesGeneratorDescription = {
+			arrayGenerator:new Array<GeneratorDescription>(),
+			totals:new Map<GeneratorType, Float>(),
+			level:1 //data.level // todo : will be in Player table soon
+		};
+		var lTotals:Array<TableResources> = ServerManagerLoad.getResources();
+		
+		for (config in pBuildings.keys()) {
+			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
+			desc.arrayGenerator.push(buildingLoadGenerator(
+				pBuildings[config],
+				lGameConfig,
+				config
+			));
+		}
+		
+		for (i in 0...lTotals.length) {
+			desc.totals[lTotals[i].type] = lTotals[i].quantity;
+		}
+		
+		return desc;
+	}
+
 	
 	private static function loadBuilding ():Array<TileDescription> {
 		var result:Array<TileDescription> = [];
@@ -410,6 +400,7 @@ class SaveManager {
 		
 		if (lBuilding == null)
 			Debug.error("No Building saved on server !");
+		
 		
 		for (i in 0...lBuilding.length) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(lBuilding[i].iDTypeBuilding);
@@ -422,7 +413,7 @@ class SaveManager {
 				mapY: lBuilding[i].y,
 				level: lGameConfig.level,
 				currentPopulation: lBuilding[i].nbSoul,
-				maxPopulation: lGameConfig.maxSoulsContained,
+				maxPopulation: lGameConfig.maxSoulsContained
 				/*intern: ,*/ // todo : fill @Emeline, @Victor
 				// todo ci-dessous :
 				// nbResource
@@ -435,13 +426,35 @@ class SaveManager {
 				result[0].timeDesc = { 
 					refTile: result[0].id,
 					progress: Date.now().getTime(),
-					end: lBuilding[i].endConstruction
-					//creationDate: lBuilding[i].startConstruction // marche pas trop
-				};
+					end: lBuilding[i].endConstruction,
+					creationDate: lBuilding[i].startConstruction 
+				}; // marche pas trop car code WTF
 				
+			serverBuildingToTileDesc[lBuilding[i]] = result[0];
+			
 		}
 		return result;
 	}
+	
+	private static function buildingLoadGenerator (pTileDesc:TileDescription, pGameConfig:TableTypeBuilding, pServerData:TableBuilding):GeneratorDescription {
+		return {
+			id: pTileDesc.id,
+			type: pGameConfig.productionResource,
+			quantity: pServerData.nbResource,
+			max: pGameConfig.maxGoldContained,
+			//pServerData.endForNextProduction, // keep that in mind
+			alignment: pGameConfig.alignment
+		};
+	}
+	
+	/*private static function buildingLoadPopulation (pTileDesc:TileDescription, pGameConfig:TableTypeBuilding, pServerData:TableBuilding):Void {
+		ResourcesManager.addPopulation(
+			pServerData.nbSoul,
+			pGameConfig.maxSoulsContained,
+			pGameConfig.alignment,
+			pTileDesc.id
+		);
+	}*/
 	
 	public static function createFromSave():Void {
 		if (Browser.getLocalStorage().getItem(SAVE_NAME) != null) {
@@ -450,6 +463,7 @@ class SaveManager {
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
+			//ResourcesManager.initWithoutSave(); // Méthode expérimenter avec Matthias confusion faites avec awake. du coup je dois le mettre avant le load du serv
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();
@@ -477,6 +491,7 @@ class SaveManager {
 	 * @return Dynamic (the good enum)
 	 */
 	 //When you save a enum please refresh this function
+	 // todo : delete this function and the one bellow stringToEum when Region is loaded from server
 	public static function translateArrayToEnum(pArray:Dynamic):Dynamic{
 		
 		if (pArray == null) return null;
@@ -484,7 +499,7 @@ class SaveManager {
 		return stringToEnum(cast(pArray[0], String));
 	}
 	
-	public static function stringToEnum (pString:String):Dynamic {
+	private static function stringToEnum (pString:String):Dynamic {
 		switch pString {
 			case "soft":
 				return GeneratorType.soft;

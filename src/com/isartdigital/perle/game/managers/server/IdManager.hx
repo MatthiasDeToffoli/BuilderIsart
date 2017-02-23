@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.utils.Debug;
@@ -77,6 +78,17 @@ class IdManager{
 			}
 		}
 		Debug.warn(pId + " id (client) not found in worldMap.");
+		return null;
+	}
+	
+	public static function searchTimeBuildingProductionById (pId:Int):TimeDescription {
+		var lLength:Int = TimeManager.listProduction.length;
+		for (i in 0...lLength) {
+			if (TimeManager.listProduction[i].refTile == pId)
+				return TimeManager.listProduction[i];
+		}
+		
+		Debug.warn(pId + " id (client) not found in TimeManager.listProduction.");
 		return null;
 	}
 	
