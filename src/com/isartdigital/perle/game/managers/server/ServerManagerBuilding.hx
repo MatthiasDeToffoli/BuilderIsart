@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
@@ -194,8 +195,7 @@ class ServerManagerBuilding{
 	}
 	
 	public static function updatePopulation(pDescription:TileDescription, quantity:Int):Void {
-		trace(quantity);
-		ServerManager.callPhpFile(onSuccessUpdateGenerator, onErrorUpdateGenerator, ServerFile.MAIN_PHP, [
+		ServerManager.callPhpFile(onSuccessUpdatePopulation, onErrorUpdatePopulation, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPDATE_POPULATION,
 			"X" => pDescription.mapX,
 			"Y" => pDescription.mapY,
@@ -205,21 +205,33 @@ class ServerManagerBuilding{
 			"tribuX" => VTribunal.getInstance().tileDesc.mapX,
 			"tribuY" => VTribunal.getInstance().tileDesc.mapY,
 			"tribuRegionX" => VTribunal.getInstance().tileDesc.regionX,
-			"tribuRegionY" => VTribunal.getInstance().tileDesc.regionY
+			"tribuRegionY" => VTribunal.getInstance().tileDesc.regionY,
+			"IdClient" => pDescription.id
 			
 		]);
 	}
 	
-	private static function onSuccessupdatePopulation(pObject:Dynamic):Void {
-		trace(pObject);
-		
-		var data:Dynamic = Json.parse(pObject);
-		
-		if (data.error) Debug.error(data.message);
+	private static function onSuccessUpdatePopulation(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				trace('good' + Date.fromTime(data.EndForNextProduction),data.EndForNextProduction );
+				var lGenerator:Generator = IdManager.searchVBuildingById(data.IdClient).getGenerator();
+				ResourcesManager.UpdateResourcesGenerator(lGenerator, lGenerator.desc.max, data.EndForNextProduction);
+				cast(IdManager.searchVBuildingById(data.IdClient), VHouse).updatePopulation(data.NbSoul);
+				VTribunal.getInstance().myGenerator.desc.quantity = data.NbResource;
+				ResourcesManager.replaceResourcesGenerator(VTribunal.getInstance().myGenerator);
+			}
+		}
 	}
 	
-	private static function onErrorupdatePopulation(pObject:Dynamic):Void {
-		
+	private static function onErrorUpdatePopulation(pObject:Dynamic):Void {
+		Debug.error(pObject);
 	}
 	
 	public static function createGenerator(pId:Int):Void {
@@ -239,7 +251,7 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorCreateGenerator(pObject:Dynamic):Void {
-		
+		Debug.error(pObject);
 	}
 	
 	public static function updateGenerator(pDescription:TileDescription):Void {
@@ -255,11 +267,23 @@ class ServerManagerBuilding{
 	
 	//use this with security for know if we always have the building....
 	private static function onSuccessUpdateGenerator(pObject:Dynamic):Void {
-		trace(pObject);
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				var lGenerator:Generator = IdManager.searchVBuildingById(data.IDClientBuilding).getGenerator();
+				lGenerator.desc.quantity = data.nbResource;
+				IdManager.searchVBuildingById(data.IDClientBuilding).myGenerator = ResourcesManager.UpdateResourcesGenerator(lGenerator, data.max, data.end);
+			}
+		}
 	}
 	
 	private static function onErrorUpdateGenerator(pObject:Dynamic):Void {
-		
+		Debug.error(pObject);
 	}
 	
 }

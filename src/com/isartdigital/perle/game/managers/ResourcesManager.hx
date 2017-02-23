@@ -280,8 +280,15 @@ class ResourcesManager
 	 * @param	pPopulation the population we want update
 	 * @param	pType the type of building
 	 */
-	public static function updatePopulation(pPopulation:Population,pType:Alignment):Void{
-		allPopulations[pType][allPopulations[pType].indexOf(pPopulation)] = pPopulation;
+	public static function updatePopulation(pPopulation:Population, pType:Alignment):Void{
+		var i:Int, l:Int = allPopulations[pType].length;
+		
+		for (i in 0...l) {
+			if (allPopulations[pType][i].buildingRef == pPopulation.buildingRef){
+				allPopulations[pType][i] = pPopulation;
+				return;
+			}
+		}
 	}
 	
 	public static function removePopulation(pType:Alignment,pPopulation:Population):Void {
@@ -419,11 +426,29 @@ class ResourcesManager
 	 * @param	pMax the capacity of the generator
 	 * @return the generator which is update
 	 */
-	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float,pEnd:Float):Generator{
+	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float, pEnd:Float):Generator{
 		pGenerator.desc.max = pMax;
 		myResourcesData.generatorsMap[pGenerator.desc.type][myResourcesData.generatorsMap[pGenerator.desc.type].indexOf(pGenerator)] = pGenerator;
 		TimeManager.updateTimeResource(pEnd, pGenerator);
 		return pGenerator;
+	}
+	
+	/**
+	 * replace a resourcesGenerator
+	 * @param	pGenerator the generator to add
+	 * @return the generator which is update
+	 */
+	public static function replaceResourcesGenerator(pGenerator:Generator):Void{
+		var myArray:Array<Generator> = myResourcesData.generatorsMap[pGenerator.desc.type];
+		var i:Int, l:Int = myArray.length;
+		
+			
+		for (i in 0...l) {
+			if (myArray[i].desc.id == pGenerator.desc.id){
+				myResourcesData.generatorsMap[pGenerator.desc.type][i] = pGenerator;
+				return;
+			}
+		}
 	}
 	
 	/**

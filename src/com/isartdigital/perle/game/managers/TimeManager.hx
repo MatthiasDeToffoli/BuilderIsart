@@ -176,11 +176,10 @@ class TimeManager {
 	 */
 	public static function updateTimeResource(pEnd:Float, pGenerator:Generator):Void{
 		var lTimeElement:TimeElementResource;
-		
+
 		for (lTimeElement in listResource)
-			if (lTimeElement.generator == pGenerator){
-				
-				lTimeElement.desc.end = pEnd == null ? pEnd : lTimeElement.desc.creationDate + Date.fromTime(pEnd).getTime();
+			if (lTimeElement.generator.desc.id == pGenerator.desc.id){
+				lTimeElement.desc.end = pEnd;
 			}
 				
 			
@@ -393,28 +392,10 @@ class TimeManager {
 	private static function updateResource (pElement:TimeElementResource):Void {
 		if (pElement.desc.end == null) return;
 
-		var lNumberTick:Int = 0;
-		var lFullTime:Float = Date.now().getTime();
-		
-		// get the number of time you find endTime inside
-		lNumberTick = cast((lFullTime - (lFullTime % pElement.desc.end)) / pElement.desc.end, Int);
-		// update the progress bar.
-		pElement.desc.progress = lFullTime;
-
 		// update resources !
-		if (lNumberTick > 0) {
+		if (Date.now().getTime() > pElement.desc.end) {
 			ServerManagerBuilding.updateGenerator(IdManager.searchVBuildingById(pElement.desc.refTile).tileDesc);
-			eTimeGenerator.emit(
-				EVENT_RESOURCE_TICK,
-				{
-					generator:pElement.generator,
-					tickNumber:lNumberTick
-				}
-			);
-			
-			var lEnd:Float = Date.now().getTime() + Date.fromTime(pElement.desc.end - pElement.desc.creationDate).getTime();
-			pElement.desc.end = lEnd;
-			pElement.desc.creationDate = Date.now().getTime();
+		
 		}
 			
 			

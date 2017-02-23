@@ -72,7 +72,7 @@ class VHouse extends VBuildingUpgrade
 			myPopulation.max = lMax;
 		
 		ResourcesManager.updatePopulation(myPopulation, alignementBuilding);
-		updateResources();
+		//updateResources();
 		
 		SaveManager.save();
 	}
@@ -96,7 +96,7 @@ class VHouse extends VBuildingUpgrade
 		myPopulation = pPopulation;
 		tileDesc.maxPopulation = pPopulation.max;
 		tileDesc.currentPopulation = pPopulation.quantity;
-		updateResources();
+		//updateResources();
 		SaveManager.save();
 	}
 	

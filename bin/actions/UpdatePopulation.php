@@ -21,6 +21,7 @@ const QUANTITY ='NbSoul';
 const NBRESOURCES = 'NbResource';
 const PLAYER_ID ='IDPlayer';
 const END ='EndForNextProduction';
+const CLIENTID = 'IdClient';
 
 $typeTribu = BuildingUtils::getTypeBuildingWithPosition(
   Utils::getSinglePostValue(TRIBUMAPX),
@@ -67,7 +68,6 @@ if($quantity > $typeBuilding->MaxSoulsContained){
     exit;
 }
 
-echo $typeBuilding->NbSoul."\n\n".Utils::getSinglePostValueInt(QUANTITY);
 $time = time() +  ((60*60)/$typeBuilding->ProductionPerHour)/$quantity;
 $where = 'ID = '.$typeTribu->ID." AND ".PLAYER_ID.'='.FacebookUtils::getId();
 Utils::updateSetWhere(TABLE,[NBRESOURCES => $rest], $where);
@@ -79,6 +79,10 @@ Utils::updateSetWhere(TABLE,[
 ], $where);
 
 echo json_encode([
-  "error" => false
+  "error" => false,
+  CLIENTID => Utils::getSinglePostValueInt(CLIENTID),
+  END => Utils::timeStampToJavascript($time),
+  QUANTITY => $quantity,
+  NBRESOURCES => $rest
 ]);
 ?>

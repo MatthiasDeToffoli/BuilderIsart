@@ -10,6 +10,7 @@ include_once("utils/BuildingUtils.php");
 const TABLE = 'Building';
 const MAPX ='X';
 const MAPY ='Y';
+const IDCLIENT ='IDClientBuilding';
 const REGIONX ='RegionX';
 const REGIONY ='RegionY';
 const PLAYER_ID ='IDPlayer';
@@ -25,9 +26,7 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
   Utils::getSinglePostValue(REGIONY)
 );
 
-echo $typeBuilding->Name;
 if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House') {
-  if($typeBuilding->NbResource >= $typeBuilding->MaxGoldContained)exit;
   $results = calculGain(
       Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
       ((60*60)/$typeBuilding->ProductionPerHour)/$typeBuilding->NbSoul,
@@ -35,8 +34,14 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
       $typeBuilding->MaxGoldContained
     );
 } else if($typeBuilding->Name == 'Purgatory') {
-  if($typeBuilding->NbResource >= $typeBuilding->MaxSoulsContained)exit;
+  $results = calculGain(
+      Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
+      ((60*60)/$typeBuilding->ProductionPerHour),
+      $typeBuilding->NbResource,
+      $typeBuilding->MaxSoulsContained
+    );
 } else {
+  echo json_encode(["error" => true, "message"=>"this building doesn't have generator"]);
   exit;
 }
 
@@ -47,23 +52,18 @@ Utils::updateSetWhere('Building',
   ],
   'ID = '.$typeBuilding->ID.' AND IDPlayer = '.FacebookUtils::getId()
 );
-
+$results->end = Utils::timeStampToJavascript($results->end);
 echo json_encode($results);
 
 function calculGain($pEnd,$pCalcul,$pResource, $pMax){
   $currentTime = time();
   if($currentTime > $pEnd) {
-    $newResource = $pResource + 1;
+    if($newResource < $pMax) $newResource = $pResource + 1;
     $end = $pEnd + $pCalcul;
-    echo "\n";
-    echo "end ".$pEnd;
-    if($newResource >= $pMax) {
-      return (object) array("nbResource" => $pMax, "end" => $end);
-    } else {
-      return calculGain($end,$pCalcul,$newResource,$pMax);
-    }
+
+    return calculGain($end,$pCalcul,$newResource,$pMax);
   }
 
-  return (object) array("nbResource" => $pResource, "end" => $pEnd);
+  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
 }
 ?>
