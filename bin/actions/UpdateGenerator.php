@@ -24,7 +24,7 @@ const PLAYER_ID ='IDPlayer';
 const END ='EndForNextProduction';
 
 $Player = Player::getPlayerById(FacebookUtils::getId());
-if($Player->ID != 0)$BoostPack = PackUtils::getPackById($Player->IdCampaign);
+if($Player->IdCampaign != 0)$BoostPack = PackUtils::getPackById($Player->IdCampaign);
 
 $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
   Utils::getSinglePostValue(MAPX),
@@ -42,7 +42,7 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
     );
 } else if($typeBuilding->Name == 'Purgatory') {
   $calculTimePurgatory = $typeBuilding->ProductionPerHour + $Player->NumberMarketigHouse * 2;
-  if($Player->ID == 0) {
+  if($Player->IdCampaign == 0) {
     $results = calculGain(
         Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
         ((60*60)/$calculTimePurgatory),
@@ -118,7 +118,7 @@ function calculGainWithBoost($pEnd,$pCalcul,$pResource, $pMax,$pEndBoost,$pGainB
         else $finalCalcul = $pCalcul;
         $end = $pEnd + $finalCalcul;
 
-      return calculGain($end,$pCalcul,$newResource,$pMax);
+      return calculGainWithBoost($end,$pCalcul,$newResource,$pMax,$pEndBoost,$pGainBoost);
     }
 
 
