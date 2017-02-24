@@ -188,6 +188,8 @@ class ServerManagerBuilding{
 					// todo : synchronisation. // soit faire ajax pr synchro, soit dans callback ici
 				
 				ErrorManager.openPopin(lFieldError);
+			} emse {
+				checkNumberMarketingHouse();
 			}
 			
 		} /*else {
@@ -315,6 +317,28 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorCheckForIncreaseAltarNbBuilding(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
+	public static function checkNumberMarketingHouse():Void {
+		ServerManager.callPhpFile( onSuccessCheckNumberMarketingHouse, onErrorCheckNumberMarketingHouse, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.CHECK_MARKETING_HOUSE
+			]);
+	}
+	
+	private static function onSuccessCheckNumberMarketingHouse(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			}
+		}
+	}
+	
+	private static function onErrorCheckNumberMarketingHouse(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
 	

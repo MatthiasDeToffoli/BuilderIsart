@@ -16,6 +16,7 @@ class ServerFile{
 	public static inline var UPDATE_GENERATOR:String = "UpdateGenerator";
 	public static inline var UPDATE_POPULATION:String = "UpdatePopulation";
 	public static inline var CHECK_ALTAR_ZONE:String = "CheckAltarZone";
+	public static inline var CHECK_MARKETING_HOUSE:String = "CheckNumberMarketingHouse";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";

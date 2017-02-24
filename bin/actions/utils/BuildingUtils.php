@@ -62,6 +62,22 @@ class BuildingUtils
     }
   }
 
+public static function getAllBuildingByName($pName) {
+  global $db;
+
+  $req = "SELECT * FROM `Building` JOIN TypeBuilding ON Building.IDTypeBuilding = TypeBuilding.ID WHERE TypeBuilding.Name = :Name";
+  $reqPre = $db->prepare($req);
+  $reqPre->bindParam(':Name', $pName);
+
+  try {
+    $reqPre->execute();
+    return $reqPre->fetch(PDO::FETCH_OBJ);
+  } catch (Exception $e) {
+    echo $e->getMessage();
+    exit;
+  }
+}
+
   public static function getTypeBuildingWithPosition($posX,$posY,$regionX,$regionY)
   {
     global $db;
