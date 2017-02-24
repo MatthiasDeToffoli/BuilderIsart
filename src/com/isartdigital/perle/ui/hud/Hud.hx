@@ -376,7 +376,6 @@ class Hud extends SmartScreen
 	public function onClickBuilding (pCurrentState:VBuildingState, pVBuilding:VBuilding, pPos:Point):Void {
 		var lBuidldingHudType:BuildingHudType = null;
 		
-		
 		if (checkIfTribunal(pVBuilding)) {
 				
 			if (DialogueManager.ftueStepOpenPurgatory)
@@ -389,8 +388,9 @@ class Hud extends SmartScreen
 		
 		if (pCurrentState != VBuildingState.isBuilding && pCurrentState != VBuildingState.isUpgrading)
 			if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding || DialogueManager.ftueStepOpenPurgatory)
-			return;
+				return;
 			
+		//trace(pCurrentState);
 	/*	if (DialogueManager.ftueStepOpenPurgatory)
 		if(pVBuilding.alignementBuilding.getName() !=neutral*/
 		if (pCurrentState == VBuildingState.isBuilt)
