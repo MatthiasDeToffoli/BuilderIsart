@@ -346,7 +346,6 @@ class ServerManagerBuilding{
 	}
 	
 	public static function startCampaign(pName:String):Void {
-		trace(pName);
 		ServerManager.callPhpFile( onSuccessStartCampaign, onErrorStartCampaign, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.START_CAMPAIGN,
 			"Name" => pName
@@ -371,6 +370,38 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorStartCampaign(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
+	public static function startCollectorProd(pDescription:TileDescription, pName:String):Void {
+		ServerManager.callPhpFile( onSuccessStartCollectorProd, onErrorStartCollectorProd, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.START_COLLECTOR_PROD,
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY,
+			"Name" => pName
+		]);
+	}
+	
+	private static function onSuccessStartCollectorProd(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				TimeManager.synchroProductionTime(data.IDClientBuilding,data.time);
+			}
+			
+			ResourcesManager.updateTotal(GeneratorType.soft, data.soft);
+		}
+	}
+	
+	private static function onErrorStartCollectorProd(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
 	

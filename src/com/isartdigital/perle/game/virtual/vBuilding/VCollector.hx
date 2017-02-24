@@ -7,9 +7,11 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
  typedef ProductionPack =  {
+	 var name:String;
 	 var cost:Int;
 	 var time:TimesAndNumberDays;
 	 var quantity:Int;
@@ -28,16 +30,21 @@ class VCollector extends VBuildingUpgrade
 	public function new(pDescription:TileDescription) 
 	{
 		super(pDescription);
+		
+		myGeneratorType = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).productionResource;
+		
 		setProductInStart();
 		var i:Int;
 		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(myGeneratorType);
 		myPacks = new Array<ProductionPack>();
 		var lPack:ProductionPack;
-		
+		trace(lArray.length);
 		
 		for (i in 0...lArray.length) {
+			
 			var diff:TimesAndNumberDays = TimesInfo.calculDateDiff(Date.fromString(lArray[i].time).getTime(), Date.fromTime(0).getTime());
 			lPack = {
+				name:lArray[i].name,
 				cost:lArray[i].costGold,
 				quantity: myGeneratorType == GeneratorType.buildResourceFromHell ? lArray[i].gainIron:lArray[i].gainWood,
 				time: {
@@ -88,6 +95,7 @@ class VCollector extends VBuildingUpgrade
 	public function startProduction(pack:ProductionPack):Void{
 		timeProd = TimeManager.createProductionTime(pack, tileDesc.id);
 		product = true;
+		ServerManagerBuilding.startCollectorProd(tileDesc, pack.name);
 		ResourcesManager.spendTotal(GeneratorType.soft, pack.cost);
 	}
 	

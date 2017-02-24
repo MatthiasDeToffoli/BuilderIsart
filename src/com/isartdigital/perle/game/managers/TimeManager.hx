@@ -220,6 +220,16 @@ class TimeManager {
 		return lDesc;
 	}
 	
+	public static function synchroProductionTime(pId:Int, pEnd:Float):Void {
+		var lProduction:TimeDescription;
+		
+		for (lProduction in listProduction) {
+			if (lProduction.refTile == pId) {
+				lProduction.end = pEnd;
+			}
+		}
+	}
+	
 	public static function addConstructionTimer(pBuildingTimer:TimeDescription, pBuild:VBuilding):Void {
 		var dateNow:Float = Date.now().getTime();
 		if (dateNow >= pBuildingTimer.end) return;
