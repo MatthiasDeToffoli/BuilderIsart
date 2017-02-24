@@ -174,17 +174,17 @@ class CarouselCardPack extends CarouselCard{
 	private function setIconPrice (pGainType:GeneratorType):Void {
 		switch (pGainType) {
 			//case GeneratorType.isartPoint :; // do nothing, icon already set
-			case GeneratorType.hard : changeIconSpawner(AssetName.PROD_ICON_HARD, iconPrice);
+			case GeneratorType.hard : changeIconSpawner(AssetName.PROD_ICON_HARD_SMALL, iconPrice);
 			default : null;
 		}
 	}
 	
 	private function setIconGain (pGainType:GeneratorType):Void {
 		switch (pGainType) {
-			case GeneratorType.soft : changeIconSpawner(AssetName.PROD_ICON_SOFT, iconGain);
-			case GeneratorType.hard : changeIconSpawner(AssetName.PROD_ICON_HARD, iconGain);
-			case GeneratorType.buildResourceFromHell : changeIconSpawner(AssetName.PROD_ICON_STONE, iconGain);
-			case GeneratorType.buildResourceFromParadise : changeIconSpawner(AssetName.PROD_ICON_WOOD, iconGain);
+			case GeneratorType.soft : changeIconSpawner(AssetName.PROD_ICON_SOFT_SMALL, iconGain);
+			case GeneratorType.hard : changeIconSpawner(AssetName.PROD_ICON_HARD_SMALL, iconGain);
+			case GeneratorType.buildResourceFromHell : changeIconSpawner(AssetName.PROD_ICON_STONE_SMALL, iconGain);
+			case GeneratorType.buildResourceFromParadise : changeIconSpawner(AssetName.PROD_ICON_WOOD_SMALL, iconGain);
 			default : null;
 		}
 	}

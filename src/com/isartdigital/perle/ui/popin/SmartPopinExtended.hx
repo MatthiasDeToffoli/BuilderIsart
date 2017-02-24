@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.UIMovie;
+import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -39,6 +40,31 @@ class SmartPopinExtended extends SmartPopin{
 		lImage.y -= trueCenter.y;
 		
 		lImage.start();
+		
+		return lImage;
+	}
+	
+	public static function setImageUiSprite(pContainer:Container, pAssetName:String):UISprite {
+		var lImage:UISprite = new UISprite(pAssetName);
+		
+		reScaleImage(lImage, pContainer); // before adding anything inside or size will change
+		pContainer.addChild(lImage); // needed before getLocalBounds
+		
+		var lLocalBounds:Rectangle = lImage.getLocalBounds();
+		var topLeft:Point = new Point(
+			lLocalBounds.x,
+			lLocalBounds.y
+		);
+		var trueCenter:Point = new Point(
+			topLeft.x + lLocalBounds.width / 2,
+			topLeft.y + lLocalBounds.height / 2
+		);
+		trueCenter = pContainer.toLocal(trueCenter, lImage);
+		
+		lImage.x -= trueCenter.x-50;
+		lImage.y -= trueCenter.y;
+		
+		//lImage.start();
 		
 		return lImage;
 	}

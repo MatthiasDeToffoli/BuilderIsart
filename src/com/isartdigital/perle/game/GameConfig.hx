@@ -103,6 +103,13 @@ typedef TableSoulText = {
 	var id:Int;
 }
 
+typedef TableLevelRewards = {
+	var iD:Int;
+	var gold:Int;
+	@:optional var wood:Int;
+	@:optional var iron:Int;
+}
+
 /**
  * ...
  * @author ambroise
@@ -118,6 +125,7 @@ class GameConfig {
 	public static inline var SHOP_PACK:String = "TypeShopPack";
 	public static inline var CONFIG:String = "Config";
 	public static inline var INTERNS:String = "Interns";
+	public static inline var LEVELREWARD:String = "LevelReward";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var CONFIG_EVENT:String = "ConfigEvent";
 	public static inline var USED_CHOICES:String = "ChoicesUsed";
@@ -128,11 +136,10 @@ class GameConfig {
 	public static function awake ():Void {
 		config = new Map<String, Array<Dynamic>>();
 		parseJson(config, GameLoader.getContent(Main.GAME_CONFIG));
-		
 		/*trace(config);
-		trace(config[BUILDING]);
-		trace(config[BUILDING][0]);
-		trace(config[BUILDING][0].ID);*/
+		trace(config[LEVELREWARD]);
+		trace(config[LEVELREWARD][0]);
+		trace(config[LEVELREWARD][0].gold);*/
 	}
 	
 	public static function getConfig ():TableConfig {
@@ -153,6 +160,10 @@ class GameConfig {
 	
 	public static function getChoicesConfig():Array<EfficiencyStep> {
 		return cast(config[CONFIG_EVENT]);
+	}
+	
+	public static function getLevelRewardsConfig():Array<TableLevelRewards> {
+		return cast(config[LEVELREWARD]);
 	}
 	
 	public static function getBuildingPack(pType:GeneratorType):Array<TableTypePack> {

@@ -411,7 +411,6 @@ class AssetName{
 	public static inline var FTUE_ICON_22:String = "_ftue_dialogFR_22";
 	public static inline var FTUE_ICON_24:String = "_ftue_dialogFR_24";
 	public static inline var FTUE_ICON_25:String = "_ftue_dialogFR_25";
-	public static inline var FTUE_ICON_32:String = "_ftue_dialogFR_32";
 	public static inline var FTUE_ICON_34:String = "_ftue_dialogFR_34";
 	public static inline var FTUE_ICON_38:String = "_ftue_dialogFR_38";
 	public static inline var FTUE_ICON_39:String = "_ftue_dialogFR_39";
@@ -545,6 +544,9 @@ class AssetName{
 	
 	//icone small
 	public static inline var PROD_ICON_SOFT_SMALL:String = "_goldIcon_Small";
+	public static inline var PROD_ICON_HARD_SMALL:String = "_hardCurrencyIcon_Small";
+	public static inline var PROD_ICON_WOOD_SMALL:String = "_woodIcon_Small";
+	public static inline var PROD_ICON_STONE_SMALL:String = "_stoneIcon_Small";
 	public static inline var PROD_ICON_SOUL_HEAVEN_SMALL:String = "_heavenSoulIcon_Small";
 	public static inline var PROD_ICON_SOUL_HELL_SMALL:String = "_hellSoulIcon_Small";
 	

@@ -22,6 +22,8 @@ import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
+import haxe.Timer;
+import pixi.core.math.Point;
 
 	
 /**
@@ -52,6 +54,9 @@ class LevelUpPoppin extends SmartPopinExtended
 	
 	private static var imgArray:Array<UIMovie>;
 	private var shopGraphic:UISprite;
+	
+	private var allRewardsTook:Bool = false;
+	private var canDoJuicyWithTheseElement:Bool = false;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -62,7 +67,6 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private function setPopin(pName:String, pLevel:Int):Void {
-		
 		//todo : rajouter la description, level type du batiment
 		level.text = "" + ResourcesManager.getLevel();
 		
@@ -77,22 +81,45 @@ class LevelUpPoppin extends SmartPopinExtended
 		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
 		
 		nameUnlock.text = pName;
-		
-		//typeUnlock.text = UnlockManager.itemUnlockedForPoppin[0][0][3];
+		canDoJuicyWithTheseElement = true;
+		//typeUnlock.text = "";
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 	}
 	
+	public function getImgCenter():Point {
+		return img.position;
+	}
+	
 	private function onClickNext():Void {
-		shopGraphic.visible = true;
 		juicyEffect();
-		if (UnlockManager.unlockedItem.length > 0) {
+		shopGraphic.visible = true;
+		if (UnlockManager.unlockedItem.length != 0) {
 			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
-			
+				
 			setPopin(
 				FakeTraduction.assetNameNameToTrad(lUnlockedItem.name),
 				lUnlockedItem.level
 			);
 		}
+		else if (!allRewardsTook) {
+			shopGraphic.visible = false;
+			setGoldsIcon();
+		}
+		else
+			closeLevelUpPoppin();
+	}
+	
+	private function setGoldsIcon() {
+		allRewardsTook = true;
+		
+		canDoJuicyWithTheseElement = false;
+		level.text = "" + ResourcesManager.getLevel();
+		var lLevel:Float = ResourcesManager.getLevel();
+		var level:Int = cast(lLevel - 2, Int);
+		//destroyAfterEffect();
+		var lSprite:UISprite = SmartPopinExtended.setImageUiSprite(img, "_goldPack5_portrait"); 
+		nameUnlock.text = "" + GameConfig.getLevelRewardsConfig()[level].gold;
+		UnlockManager.giveLevelReward();
 	}
 	
 	private function closeLevelUpPoppin() {
@@ -105,6 +132,8 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private function juicyEffect():Void {
+		if (!canDoJuicyWithTheseElement)
+			return;
 		TweenManager.positionAndRescal(
 			currentImage,
 			shopGraphic.position,
@@ -115,14 +144,13 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private function destroyAfterEffect():Void {
-		if (imgArray.length != 0) {
+	/*	if (imgArray.length != 0) {
 			var lImg:UIMovie = imgArray[0];
 			imgArray.splice(0, 1);
 			lImg.parent.removeChild(lImg);
 			lImg.destroy();
-			if (imgArray.length == 0)
-				closeLevelUpPoppin();
-		}
+			//if (imgArray.length == 0)
+		}*/
 		
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
@@ -135,16 +163,25 @@ class LevelUpPoppin extends SmartPopinExtended
 		super(AssetName.LEVELUP_POPPIN);
 		setWireframe();
 		imgArray = [];
-		setPopin(
-			FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
-			UnlockManager.unlockedItem[0].level
-		);
+		if (UnlockManager.unlockedItem[0] != null) {
+			
+			canDoJuicyWithTheseElement = true;
+			setPopin(
+				FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
+				UnlockManager.unlockedItem[0].level
+			);
+			UnlockManager.unlockedItem.splice(0,1);	
+		}
+		else {
+			allRewardsTook = true;
+			setGoldsIcon();
+		}
 		
 		shopGraphic = new UISprite("_shopButton_HUD_up");
 		shopGraphic.position = Hud.getInstance().getShopIconPos();
 		addChild(shopGraphic);
 		shopGraphic.visible = false;
-		
+		allRewardsTook = false;
 		SoundManager.getSound("SOUND_LEVELUP").play();
 	}
 	

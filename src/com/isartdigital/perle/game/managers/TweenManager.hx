@@ -134,6 +134,7 @@ class TweenManager {
 			pDisplayObject.position = lNewPos;
 		}
 		
+		if (pDisplayObject != null)
 		TweenMax.to(pDisplayObject, lDuration, { 
 			onComplete:pCallBack,
 			ease: untyped Elastic.easeOut.config(lParam1, lParam2),

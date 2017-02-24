@@ -1,13 +1,16 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
+import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
 import com.isartdigital.perle.ui.popin.levelUp.LevelUpPoppin;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
+import haxe.Timer;
 
 /**
  * ...
@@ -21,9 +24,14 @@ class UnlockManager
 	private static inline var LEVEL_UNLOCK_FACTORY:Float = 6;
 	private static inline var LEVEL_UNLOCK_ALTAR:Float = 9;
 	private static inline var LEVEL_UNLOCK_MARKETING:Float = 10;
+	private static inline var NUMBER_OF_ICONS:Int = 5;
+	private static inline var LEVEL_MAX:Int = 20;
 	
 	private static var UNLOCK_LEVELS:Array<Int> = [1, 11, 14, 20];
 	private static var UNLOCK_PLACES:Map<Int, Int> = [1 => 2, 11 => 2, 14 => 3, 20 => 4];
+	
+	
+	private static var numberOfGoldsCreated:Int = 0;
 	
 	/**
 	 * Check if this item is unlocked
@@ -57,7 +65,7 @@ class UnlockManager
 				unlockedItem.push(GameConfig.getBuilding()[i]);
 		}
 		
-		if(unlockedItem[0] !=null)
+		if(ResourcesManager.getLevel()<=LEVEL_MAX)
 			oppenLevelUpPopin();
 	}
 	
@@ -103,6 +111,34 @@ class UnlockManager
 		
 		return lLevel;
 	}
+	
+	public static function giveLevelReward():Void {
+		var lLevel:Float = ResourcesManager.getLevel();
+		var level:Int = cast(lLevel - 2, Int);
+		if (GameConfig.getLevelRewardsConfig()[level] == null)
+			return;
+		
+		var goldReward:Int = GameConfig.getLevelRewardsConfig()[level].gold;
+		var woodReward:Int = GameConfig.getLevelRewardsConfig()[level].wood;
+		var ironReward:Int = GameConfig.getLevelRewardsConfig()[level].iron;
+		
+		//createGoldEffectJuicy();
+		ResourcesManager.gainResources(GeneratorType.soft, goldReward);
+		if (woodReward != null)
+			ResourcesManager.gainResources(GeneratorType.soft, woodReward);
+		if(ironReward !=null)
+			ResourcesManager.gainResources(GeneratorType.soft, ironReward);
+	}
+	
+	/*private static function createGoldEffectJuicy():Void {
+		if (numberOfGoldsCreated >= NUMBER_OF_ICONS)
+			return;
+		
+		numberOfGoldsCreated++;
+		var lGold:GoldEffect = new GoldEffect(AssetName.PROD_ICON_SOFT,LevelUpPoppin.getInstance().getImgCenter(), Hud.getInstance().getGoldIconPos());
+		//lGold.effect();
+		Timer.delay(createGoldEffectJuicy, 200);
+	}*/
 	
 	/**
 	 * Return the level of the unlock hell interns 
