@@ -2,10 +2,14 @@
 use actions\utils\Utils as Utils;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\BuildingUtils as BuildingUtils;
+use actions\utils\Player as Player;
+use actions\utils\PackUtils as PackUtils;
 
 include_once("utils/Utils.php");
 include_once("utils/FacebookUtils.php");
 include_once("utils/BuildingUtils.php");
+include_once("utils/Player.php");
+include_once("utils/PackUtils.php");
 
 const TABLE = 'Building';
 const MAPX ='X';
@@ -18,6 +22,9 @@ const QUANTITY ='NbSoul';
 const NBRESOURCES = 'NbResource';
 const PLAYER_ID ='IDPlayer';
 const END ='EndForNextProduction';
+
+$Player = Player::getPlayerById(FacebookUtils::getId());
+if($Player->ID != 0)$BoostPack = PackUtils::getPackById($Player->IdCampaign);
 
 $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
   Utils::getSinglePostValue(MAPX),
@@ -34,12 +41,24 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
       $typeBuilding->MaxGoldContained
     );
 } else if($typeBuilding->Name == 'Purgatory') {
-  $results = calculGain(
-      Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-      ((60*60)/$typeBuilding->ProductionPerHour),
-      $typeBuilding->NbResource,
-      $typeBuilding->MaxSoulsContained
-    );
+  $calculTimePurgatory = $typeBuilding->ProductionPerHour + $Player->NumberMarketigHouse * 2;
+  if($Player->ID == 0) {
+    $results = calculGain(
+        Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
+        ((60*60)/$calculTimePurgatory),
+        $typeBuilding->NbResource,
+        $typeBuilding->MaxSoulsContained
+      );
+  } else {
+    $results = calculGainWithBoost(
+        Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
+        ((60*60)/$calculTimePurgatory),
+        $typeBuilding->NbResource,
+        $typeBuilding->MaxSoulsContained,
+        Utils::dateTimeToTimeStamp($Player->EndOfCampaign),
+        $BoostPack->GainFluxSouls
+      );
+  }
 }
 else if($typeBuilding->NbBuildingHeaven > 0 || $typeBuilding->NbBuildingHell > 0) {
   $calcul1 = $typeBuilding->NbBuildingHell * $typeBuilding->ProductionPerBuildingHell;
@@ -74,7 +93,7 @@ function calculGain($pEnd,$pCalcul,$pResource, $pMax){
   if($pEnd !== null){
     $currentTime = time();
     if($currentTime > $pEnd) {
-      if($newResource < $pMax) $newResource = $pResource + 1;
+      if($pResource < $pMax) $newResource = $pResource + 1;
 
       if($pCalcul === null) {
         $end = $pCalcul;
@@ -86,6 +105,21 @@ function calculGain($pEnd,$pCalcul,$pResource, $pMax){
       return calculGain($end,$pCalcul,$newResource,$pMax);
     }
   }
+
+
+  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
+}
+
+function calculGainWithBoost($pEnd,$pCalcul,$pResource, $pMax,$pEndBoost,$pGainBoost){
+    $currentTime = time();
+    if($currentTime > $pEnd) {
+      if($pResource < $pMax) $newResource = $pResource + 1;
+        if($pEnd < $pEndBoost) $finalCalcul = $pCalcul/$pGainBoost;
+        else $finalCalcul = $pCalcul;
+        $end = $pEnd + $finalCalcul;
+
+      return calculGain($end,$pCalcul,$newResource,$pMax);
+    }
 
 
   return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
