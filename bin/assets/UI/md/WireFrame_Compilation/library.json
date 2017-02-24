@@ -1,5 +1,5 @@
 {
- "md5": "fd1e3b0fd0045380a6f00a9e0c19b120",
+ "md5": "d4dec54edaaca7cab9e245a3f08a31e2",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -126,10 +126,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_hell_Mask",
+       "symbol": "_xp_bar_heaven_Mask",
        "origin": [
-        281.25,
-        76.9
+        0,
+        81.5
        ],
        "rect": [
         519,
@@ -139,10 +139,10 @@
        ]
       },
       {
-       "symbol": "_xp_bar_heaven_Mask",
+       "symbol": "_xp_bar_hell_Mask",
        "origin": [
-        0,
-        81.5
+        281.25,
+        76.9
        ],
        "rect": [
         1,
@@ -230,13 +230,26 @@
        ]
       },
       {
+       "symbol": "Karma_sprite",
+       "origin": [
+        93.75,
+        93.75
+       ],
+       "rect": [
+        561,
+        1185,
+        188,
+        188
+       ]
+      },
+      {
        "symbol": "_shopButton_HUD_down",
        "origin": [
         93.75,
         92.9
        ],
        "rect": [
-        561,
+        751,
         1185,
         188,
         186
@@ -249,8 +262,8 @@
         91.9
        ],
        "rect": [
-        751,
-        1185,
+        191,
+        1233,
         180,
         184
        ]
@@ -262,8 +275,8 @@
         90
        ],
        "rect": [
-        191,
-        1233,
+        1,
+        1314,
         177,
         180
        ]
@@ -275,36 +288,10 @@
         105.1
        ],
        "rect": [
-        1,
-        1314,
+        373,
+        1233,
         165,
         188
-       ]
-      },
-      {
-       "symbol": "_buttonMissions_HUD_up",
-       "origin": [
-        91.3,
-        75
-       ],
-       "rect": [
-        751,
-        1371,
-        188,
-        164
-       ]
-      },
-      {
-       "symbol": "_buttonMissions_HUD_over",
-       "origin": [
-        91.3,
-        75
-       ],
-       "rect": [
-        370,
-        1233,
-        188,
-        164
        ]
       },
       {
@@ -314,10 +301,23 @@
         45
        ],
        "rect": [
-        370,
-        1399,
+        540,
+        1375,
         321,
         90
+       ]
+      },
+      {
+       "symbol": "_internButton_HUD_over",
+       "origin": [
+        78.9,
+        80.6
+       ],
+       "rect": [
+        863,
+        1373,
+        158,
+        162
        ]
       },
       {
@@ -344,19 +344,6 @@
         615,
         143,
         143
-       ]
-      },
-      {
-       "symbol": "_missionIndicator_bg_small",
-       "origin": [
-        39.4,
-        121.9
-       ],
-       "rect": [
-        941,
-        1185,
-        79,
-        244
        ]
       },
       {
@@ -392,8 +379,8 @@
         56.25
        ],
        "rect": [
-        168,
-        1415,
+        180,
+        1419,
         146,
         113
        ]
@@ -431,10 +418,23 @@
         20.6
        ],
        "rect": [
-        316,
-        1491,
+        328,
+        1467,
         229,
         42
+       ]
+      },
+      {
+       "symbol": "_gauge",
+       "origin": [
+        0,
+        22.5
+       ],
+       "rect": [
+        311,
+        917,
+        188,
+        45
        ]
       },
       {
@@ -444,8 +444,8 @@
         22.5
        ],
        "rect": [
-        311,
-        917,
+        559,
+        1467,
         188,
         45
        ]
@@ -497,13 +497,26 @@
        ],
        "rect": [
         941,
-        1431,
+        1185,
         62,
         96
        ]
       },
       {
        "symbol": "_goldIcon_Medium",
+       "origin": [
+        36,
+        36
+       ],
+       "rect": [
+        941,
+        1283,
+        72,
+        72
+       ]
+      },
+      {
+       "symbol": "_buildRessourceIcon_Medium",
        "origin": [
         36,
         36
@@ -516,7 +529,7 @@
        ]
       },
       {
-       "symbol": "_buildRessourceIcon_Medium",
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         36,
         36
@@ -526,6 +539,19 @@
         1096,
         72,
         72
+       ]
+      },
+      {
+       "symbol": "_woodIcon_Medium",
+       "origin": [
+        36,
+        28.75
+       ],
+       "rect": [
+        749,
+        1467,
+        72,
+        65
        ]
       },
       {
@@ -555,19 +581,6 @@
        ]
       },
       {
-       "symbol": "_buttonDestroyBuilding_png",
-       "origin": [
-        25.3,
-        30.4
-       ],
-       "rect": [
-        316,
-        1415,
-        51,
-        60
-       ]
-      },
-      {
        "symbol": "_buttonSkip_SmallConstruction_png",
        "origin": [
         30,
@@ -578,32 +591,6 @@
         790,
         60,
         49
-       ]
-      },
-      {
-       "symbol": "_buttonPlus_upp",
-       "origin": [
-        30.4,
-        26.9
-       ],
-       "rect": [
-        693,
-        1373,
-        54,
-        54
-       ]
-      },
-      {
-       "symbol": "_buttonUpgradeBuilding_png",
-       "origin": [
-        22.1,
-        30
-       ],
-       "rect": [
-        693,
-        1429,
-        45,
-        60
        ]
       },
       {
@@ -633,53 +620,16 @@
        ]
       },
       {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -27.65,
-        "text": "99h99m99s",
-        "x": -111.2,
-        "width": 222.35,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 49.65,
-        "wordWrap": 1,
-        "color": "#000046"
-       },
-       "symbol": "_time",
+       "symbol": "Eclat1",
        "origin": [
-        0,
-        0
+        14.9,
+        16
        ],
        "rect": [
-        941,
-        1529,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -30.7,
-        "text": "0/3",
-        "x": -45.6,
-        "width": 91.25,
-        "font": "60px _pixelOperator_title*",
-        "align": "center",
-        "height": 61.4,
-        "wordWrap": 1,
-        "color": "#280000"
-       },
-       "symbol": "_missionObjectiveCounter",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        941,
-        1532,
-        1,
-        1
+        328,
+        1419,
+        30,
+        34
        ]
       },
       {
@@ -701,8 +651,8 @@
         0
        ],
        "rect": [
-        944,
-        1529,
+        360,
+        1419,
         1,
         1
        ]
@@ -726,183 +676,8 @@
         0
        ],
        "rect": [
-        944,
-        1532,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -30.05,
-        "text": "99:99",
-        "x": -63.4,
-        "width": 126.75,
-        "font": "46px _pixelOperator*",
-        "align": "center",
-        "height": 60.15,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_lastProd_time",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        947,
-        1529,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -59.25,
-        "text": "Construire 3 décorations",
-        "x": -172.25,
-        "width": 344.45,
-        "font": "60px _pixelOperator*",
-        "align": "center",
-        "height": 118.5,
-        "wordWrap": 1,
-        "color": "#280000"
-       },
-       "symbol": "_missionObjective_description",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        947,
-        1532,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.05,
-        "text": "XXXX",
-        "x": -70.4,
-        "width": 140.85,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 67.1,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_infoBar_value",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        950,
-        1529,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -37.75,
-        "text": "999/999",
-        "x": -125.7,
-        "width": 251.35,
-        "font": "54px _pixelOperator*",
-        "align": "center",
-        "height": 64.35,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_infoPurgatory_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        950,
-        1532,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -28.85,
-        "text": "99/99",
-        "x": -68.7,
-        "width": 137.35,
-        "font": "56px _pixelOperator*",
-        "align": "center",
-        "height": 131.1,
-        "wordWrap": 1,
-        "color": "#250000"
-       },
-       "symbol": "_infos_house_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        953,
-        1529,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.3,
-        "text": "9999",
-        "x": -52,
-        "width": 104,
-        "font": "46px _pixelOperator*",
-        "align": "center",
-        "height": 108.8,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_lastProd_cost",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        953,
-        1532,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -39.85,
-        "text": "9999",
-        "x": -89.05,
-        "width": 178.05,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 79.7,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_lastProd_production",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        956,
-        1529,
+        363,
+        1419,
         1,
         1
        ]
@@ -926,8 +701,258 @@
         0
        ],
        "rect": [
-        956,
-        1532,
+        366,
+        1419,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.3,
+        "text": "9999",
+        "x": -52,
+        "width": 104,
+        "font": "46px _pixelOperator*",
+        "align": "center",
+        "height": 108.8,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_lastProd_cost",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        369,
+        1419,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -27.65,
+        "text": "99h99m99s",
+        "x": -111.2,
+        "width": 222.35,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 49.65,
+        "wordWrap": 1,
+        "color": "#000046"
+       },
+       "symbol": "_time",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        360,
+        1422,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -39.85,
+        "text": "9999",
+        "x": -89.05,
+        "width": 178.05,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 79.7,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_lastProd_production",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        363,
+        1422,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -26.4,
+        "text": "Level 3",
+        "x": -70.35,
+        "width": 140.7,
+        "font": "52px _pixelOperator*",
+        "align": "center",
+        "height": 52.75,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_internsLevelRequired_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        366,
+        1422,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -28.85,
+        "text": "99/99",
+        "x": -68.7,
+        "width": 137.35,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 131.1,
+        "wordWrap": 1,
+        "color": "#250000"
+       },
+       "symbol": "_infos_house_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        369,
+        1422,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -37.75,
+        "text": "999/999",
+        "x": -125.7,
+        "width": 251.35,
+        "font": "54px _pixelOperator*",
+        "align": "center",
+        "height": 64.35,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_infoPurgatory_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        664,
+        615,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -30.7,
+        "text": "0/3",
+        "x": -45.6,
+        "width": 91.25,
+        "font": "60px _pixelOperator_title*",
+        "align": "center",
+        "height": 61.4,
+        "wordWrap": 1,
+        "color": "#280000"
+       },
+       "symbol": "_missionObjectiveCounter",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        664,
+        618,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -30.05,
+        "text": "99:99",
+        "x": -63.4,
+        "width": 126.75,
+        "font": "46px _pixelOperator*",
+        "align": "center",
+        "height": 60.15,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_lastProd_time",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        664,
+        621,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -59.25,
+        "text": "Construire 3 décorations",
+        "x": -172.25,
+        "width": 344.45,
+        "font": "60px _pixelOperator*",
+        "align": "center",
+        "height": 118.5,
+        "wordWrap": 1,
+        "color": "#280000"
+       },
+       "symbol": "_missionObjective_description",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        664,
+        624,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.05,
+        "text": "XXXX",
+        "x": -70.4,
+        "width": 140.85,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 67.1,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_infoBar_value",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        664,
+        627,
         1,
         1
        ]
@@ -938,6 +963,32 @@
      "file": "atlas1.png",
      "textures": [
       {
+       "symbol": "_buttonMissions_HUD_over",
+       "origin": [
+        91.3,
+        75
+       ],
+       "rect": [
+        1,
+        1,
+        188,
+        164
+       ]
+      },
+      {
+       "symbol": "_buttonMissions_HUD_up",
+       "origin": [
+        91.3,
+        75
+       ],
+       "rect": [
+        191,
+        1,
+        188,
+        164
+       ]
+      },
+      {
        "symbol": "_buttonPurgatory_HUD_down",
        "origin": [
         84.4,
@@ -945,7 +996,7 @@
        ],
        "rect": [
         1,
-        1,
+        167,
         169,
         173
        ]
@@ -958,7 +1009,7 @@
        ],
        "rect": [
         172,
-        1,
+        167,
         165,
         165
        ]
@@ -971,22 +1022,22 @@
        ],
        "rect": [
         172,
-        168,
+        334,
         173,
         152
        ]
       },
       {
-       "symbol": "_internButton_HUD_over",
+       "symbol": "HUD_internsLocked",
        "origin": [
-        78.9,
-        80.6
+        78.75,
+        78.75
        ],
        "rect": [
         339,
-        1,
+        167,
         158,
-        162
+        158
        ]
       },
       {
@@ -997,22 +1048,9 @@
        ],
        "rect": [
         347,
-        165,
+        327,
         151,
         154
-       ]
-      },
-      {
-       "symbol": "_internButton_HUD_down",
-       "origin": [
-        73.4,
-        75
-       ],
-       "rect": [
-        347,
-        321,
-        147,
-        150
        ]
       },
       {
@@ -1022,8 +1060,21 @@
         75
        ],
        "rect": [
+        347,
+        483,
+        147,
+        150
+       ]
+      },
+      {
+       "symbol": "_internButton_HUD_down",
+       "origin": [
+        73.4,
+        75
+       ],
+       "rect": [
         1,
-        176,
+        342,
         147,
         150
        ]
@@ -1036,7 +1087,7 @@
        ],
        "rect": [
         150,
-        322,
+        488,
         147,
         147
        ]
@@ -1049,9 +1100,22 @@
        ],
        "rect": [
         1,
-        328,
+        494,
         140,
         143
+       ]
+      },
+      {
+       "symbol": "_missionIndicator_bg_small",
+       "origin": [
+        39.4,
+        121.9
+       ],
+       "rect": [
+        299,
+        635,
+        79,
+        244
        ]
       },
       {
@@ -1062,7 +1126,7 @@
        ],
        "rect": [
         143,
-        471,
+        637,
         138,
         138
        ]
@@ -1074,8 +1138,8 @@
         56.25
        ],
        "rect": [
-        283,
-        473,
+        1,
+        881,
         146,
         113
        ]
@@ -1087,8 +1151,8 @@
         57.75
        ],
        "rect": [
+        381,
         1,
-        473,
         116,
         116
        ]
@@ -1101,7 +1165,7 @@
        ],
        "rect": [
         1,
-        591,
+        777,
         99,
         96
        ]
@@ -1113,8 +1177,8 @@
         48
        ],
        "rect": [
-        283,
-        588,
+        1,
+        639,
         96,
         96
        ]
@@ -1126,23 +1190,10 @@
         46.9
        ],
        "rect": [
-        381,
-        588,
+        102,
+        777,
         94,
         94
-       ]
-      },
-      {
-       "symbol": "_gauge",
-       "origin": [
-        0,
-        22.5
-       ],
-       "rect": [
-        102,
-        686,
-        188,
-        45
        ]
       },
       {
@@ -1152,21 +1203,21 @@
         45
        ],
        "rect": [
-        1,
-        689,
+        149,
+        873,
         90,
         90
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Medium",
+       "symbol": "_soulIcon_Medium",
        "origin": [
         36,
         36
        ],
        "rect": [
-        431,
-        473,
+        198,
+        777,
         72,
         72
        ]
@@ -1178,36 +1229,10 @@
         36
        ],
        "rect": [
-        102,
-        611,
+        241,
+        881,
         72,
         72
-       ]
-      },
-      {
-       "symbol": "_soulIcon_Medium",
-       "origin": [
-        36,
-        36
-       ],
-       "rect": [
-        176,
-        611,
-        72,
-        72
-       ]
-      },
-      {
-       "symbol": "_woodIcon_Medium",
-       "origin": [
-        36,
-        28.75
-       ],
-       "rect": [
-        381,
-        684,
-        72,
-        65
        ]
       },
       {
@@ -1217,8 +1242,8 @@
         35.6
        ],
        "rect": [
-        292,
-        686,
+        315,
+        881,
         60,
         72
        ]
@@ -1230,8 +1255,8 @@
         29.95
        ],
        "rect": [
-        354,
-        751,
+        241,
+        955,
         62,
         60
        ]
@@ -1243,8 +1268,8 @@
         30
        ],
        "rect": [
-        418,
-        751,
+        305,
+        955,
         60,
         60
        ]
@@ -1256,8 +1281,8 @@
         30
        ],
        "rect": [
-        93,
-        733,
+        367,
+        955,
         60,
         60
        ]
@@ -1269,8 +1294,8 @@
         28.1
        ],
        "rect": [
-        1,
-        781,
+        149,
+        965,
         60,
         57
        ]
@@ -1282,10 +1307,49 @@
         28.1
        ],
        "rect": [
-        155,
-        733,
+        377,
+        881,
         57,
         57
+       ]
+      },
+      {
+       "symbol": "_buttonDestroyBuilding_png",
+       "origin": [
+        25.3,
+        30.4
+       ],
+       "rect": [
+        429,
+        940,
+        51,
+        60
+       ]
+      },
+      {
+       "symbol": "_buttonPlus_upp",
+       "origin": [
+        30.4,
+        26.9
+       ],
+       "rect": [
+        436,
+        635,
+        54,
+        54
+       ]
+      },
+      {
+       "symbol": "_buttonUpgradeBuilding_png",
+       "origin": [
+        22.1,
+        30
+       ],
+       "rect": [
+        299,
+        488,
+        45,
+        60
        ]
       }
      ]
@@ -1972,6 +2036,15 @@
       }
      ],
      "name": "HUD_InternsButton"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "HUD_internsLocked"
     }
    ],
    "id": "HUD"
@@ -2220,6 +2293,25 @@
        "tweened": false,
        "index": 0,
        "loc": [
+        -655.3875,
+        222.675
+       ],
+       "ref": "~HUD_internsLockedMC",
+       "data": {
+        "UIPosition_Desktop": "bottomLeft",
+        "UIPosition": "bottomLeft"
+       },
+       "duration": 1
+      }
+     ],
+     "name": "HUD_internsLockedMC"
+    },
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
         -653.5875,
         52.5
        ],
@@ -2280,6 +2372,54 @@
     }
    ],
    "id": "HUD_HellXP_Container"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        11.25,
+        3.1875
+       ],
+       "ref": "~Anmation_karma",
+       "scale": [
+        0.512,
+        0.5118
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Karma_anim_Large"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "tweened": false,
+       "index": 0,
+       "loc": [
+        8.4,
+        2.3625
+       ],
+       "ref": "~Anmation_karma",
+       "scale": [
+        0.3839,
+        0.3838
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "Karma_anim_Medium"
   },
   {
    "layers": [
@@ -2615,6 +2755,142 @@
     "x": -95.85
    },
    "id": "ValueChange_Positive"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        93.75,
+        93.75
+       ],
+       "index": 0,
+       "loc": [
+        -21.9375,
+        -2.625
+       ],
+       "ref": "Karma_sprite",
+       "tweened": false,
+       "duration": 75
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        14.8125,
+        16.575
+       ],
+       "index": 0,
+       "loc": [
+        -61.46,
+        -58.6703
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        2.9661,
+        2.9661
+       ],
+       "duration": 35
+      },
+      {
+       "pivot": [
+        14.775,
+        16.575
+       ],
+       "index": 35,
+       "loc": [
+        -61.453,
+        -58.7377
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        0.9163,
+        0.9163
+       ],
+       "duration": 39
+      },
+      {
+       "pivot": [
+        14.8125,
+        16.575
+       ],
+       "index": 74,
+       "loc": [
+        -61.46,
+        -58.6703
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        2.9661,
+        2.9661
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 6"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        14.775,
+        16.5375
+       ],
+       "index": 0,
+       "loc": [
+        34.1268,
+        33.6284
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        0.6504,
+        0.6504
+       ],
+       "duration": 38
+      },
+      {
+       "pivot": [
+        14.8125,
+        16.575
+       ],
+       "index": 38,
+       "loc": [
+        34.1171,
+        33.7007
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        2.1053,
+        2.1053
+       ],
+       "duration": 36
+      },
+      {
+       "pivot": [
+        14.775,
+        16.5375
+       ],
+       "index": 74,
+       "loc": [
+        34.1268,
+        33.6284
+       ],
+       "ref": "Eclat1",
+       "scale": [
+        0.6504,
+        0.6504
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 7"
+    }
+   ],
+   "id": "~Anmation_karma"
   },
   {
    "layers": [
@@ -4168,6 +4444,49 @@
     {
      "keyframes": [
       {
+       "tweened": false,
+       "index": 0,
+       "ref": "HUD_internsLocked",
+       "pivot": [
+        78.75,
+        78.75
+       ],
+       "scale": [
+        1.0244,
+        1.0244
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "HUD_internsLocked"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        -0.0375
+       ],
+       "index": 0,
+       "loc": [
+        -4.425,
+        -39.975
+       ],
+       "ref": "_internsLevelRequired_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_internsLevelRequired_txt"
+    }
+   ],
+   "id": "~HUD_internsLockedMC"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
        "ref": "infoBar_bg",
        "pivot": [
         160.2375,
@@ -4195,15 +4514,15 @@
      "keyframes": [
       {
        "pivot": [
-        36,
-        36
+        -0.0375,
+        -0.8625
        ],
        "index": 0,
        "loc": [
-        -109.2375,
-        -0.9
+        -109.575,
+        0
        ],
-       "ref": "_hardCurrencyIcon_Medium",
+       "ref": "Karma_anim_Medium",
        "tweened": false,
        "duration": 1
       }
