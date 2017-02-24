@@ -26,7 +26,7 @@ for($h = 0; $h < count($hellBuildings); $h++) {
 }
 
 for($h = 0; $h < count($heavenBuildings); $h++) {
-  $countHeaven = checkIfIsZoneHell($countHeaven,$hellBuildings[$h]);
+  $countHeaven = checkIfIsZoneHeaven($countHeaven,$heavenBuildings[$h]);
 }
 
 $altar = BuildingUtils::getTypeBuildingWithPosition(
@@ -41,6 +41,8 @@ else $time = 3600/(($countHell * $altar->ProductionPerBuildingHell) + ($countHea
 if($time <= 0) $timeToInsert = 'NULL';
 else $timeToInsert =  Utils::timeStampToDateTime(time() + $time);
 
+echo $countHell;
+echo $countHeaven;
 Utils::updateSetWhere(
   TABLE,
   [
@@ -125,11 +127,17 @@ function checkIfIsZoneHeaven($pNbBuilding, $Building) {
           $regionY = $altarRegionY - 1;
           $posY += 12;
         }
+        echo "regionXAltar".(Utils::getSinglePostValueInt(REGIONX) - 1);
+        echo "\n";
+         echo "regionXBuilding".$Building->RegionX;
+         echo "\n";
+         echo $Building->Name;
+         echo "\n";
 
         if(
           (Utils::getSinglePostValueInt(REGIONX) - 1) == $Building->RegionX &&
           $regionY == $Building->RegionY &&
-          11 - $j == $Building->X &&
+          11 - $j == ($Building->X + $Building->Width) &&
           $posY == $i
         ) {
           return $pNbBuilding + 1;
@@ -141,6 +149,8 @@ function checkIfIsZoneHeaven($pNbBuilding, $Building) {
           $regionY = $altarRegionY - 1;
           $posY -= 13;
         }
+
+
 
         if(
           (Utils::getSinglePostValueInt(REGIONX) - 1) == $Building->RegionX &&
