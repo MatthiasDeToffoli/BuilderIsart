@@ -174,11 +174,11 @@ class TimeManager {
 	 * @param	pEnd the new time for increase resources
 	 * @param	pGenerator the generator link to the timeManager
 	 */
-	public static function updateTimeResource(pEnd:Float, pGenerator:Generator):Void{
+	public static function updateTimeResource(pEnd:Float, pId:Int):Void{
 		var lTimeElement:TimeElementResource;
 
 		for (lTimeElement in listResource)
-			if (lTimeElement.generator.desc.id == pGenerator.desc.id){
+			if (lTimeElement.generator.desc.id == pId){
 				lTimeElement.desc.end = pEnd;
 			}
 				

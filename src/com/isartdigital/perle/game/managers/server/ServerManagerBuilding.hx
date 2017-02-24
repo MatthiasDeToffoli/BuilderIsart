@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.BoostManager.BoostInfo;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -283,6 +284,37 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorUpdateGenerator(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
+	public static function checkForIncreaseAltarNbBuilding(pDescription:TileDescription):Void {
+		
+		ServerManager.callPhpFile( onSuccessCheckForIncreaseUpdateAltarNbBuilding, onErrorCheckForIncreaseAltarNbBuilding, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.CHECK_ALTAR_ZONE,
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	//use this with security for know if we always have the building....
+	private static function onSuccessCheckForIncreaseUpdateAltarNbBuilding(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				TimeManager.updateTimeResource(data.EndForNextProduction, data.IDClientBuilding);
+			}
+		}
+	}
+	
+	private static function onErrorCheckForIncreaseAltarNbBuilding(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
 	

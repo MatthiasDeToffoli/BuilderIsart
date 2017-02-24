@@ -80,7 +80,7 @@ class VBuilding extends VTile {
 		addHudContextual();
 		incrementNumberBuilding();
 		
-		checkIfIsInAltarZone();
+		if(currentState != VBuildingState.isBuilding) checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
 	}
 	
@@ -309,7 +309,7 @@ class VBuilding extends VTile {
 		tileDesc.mapY = pRegionMap.map.y;
 		
 		RegionManager.addToRegionBuilding(this); // todo : FACTORISER addToRegionBuilding
-		checkIfIsInAltarZone();
+		if(currentState != VBuildingState.isBuilding) checkIfIsInAltarZone();
 	}
 	
 	private function addGenerator():Void {
@@ -343,10 +343,12 @@ class VBuilding extends VTile {
 		
 		if (active) cast(graphic, Building).setStateEndConstruction();
 		
+		checkIfIsInAltarZone();
 		setState(VBuildingState.isBuilt);
 		
 		setHaveRecolter();
 		addGenerator();
+	
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		if(myVContextualHud != null) myVContextualHud.activate();
 		addExp();

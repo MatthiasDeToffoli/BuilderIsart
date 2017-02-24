@@ -83,6 +83,24 @@ class BuildingUtils
     }
   }
 
+  public static function getAllBuildings($X)
+  {
+    global $db;
+
+    $req = "SELECT * FROM `TypeBuilding` JOIN Building ON Building.IDTypeBuilding = TypeBuilding.ID WHERE Building.IDPlayer = :PID AND Building.RegionX = :X";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':PID', FacebookUtils::getId());
+    $reqPre->bindParam(':X', $X);
+
+    try {
+      $reqPre->execute();
+      return $reqPre->fetchAll(PDO::FETCH_OBJ);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+  }
+
   public static function addPurgatoryToDatabase() {
     $typeTribu = static::getTypeBuilding('Purgatory',1);
 

@@ -429,7 +429,7 @@ class ResourcesManager
 	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float, pEnd:Float):Generator{
 		pGenerator.desc.max = pMax;
 		myResourcesData.generatorsMap[pGenerator.desc.type][myResourcesData.generatorsMap[pGenerator.desc.type].indexOf(pGenerator)] = pGenerator;
-		TimeManager.updateTimeResource(pEnd, pGenerator);
+		TimeManager.updateTimeResource(pEnd, pGenerator.desc.id);
 		return pGenerator;
 	}
 	

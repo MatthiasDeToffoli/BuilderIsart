@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -74,10 +75,6 @@ class VAltar extends VBuilding
 		}
 	}
 	
-	override function addHudContextual():Void 
-	{
-		if(haveRecolter) super.addHudContextual();
-	}
 	
 	/**
 	 * add a building ref to his array
@@ -96,13 +93,13 @@ class VAltar extends VBuilding
 				posX = pData.type == Alignment.heaven ? Ground.COL_X_LENGTH - 1 - i:i;
 				
 				if (pData.casePos.x == posX && (pData.casePos.y == Ground.ROW_Y_LENGTH +tileDesc.mapY + 1 - j || pData.casePos.y == tileDesc.mapY - j)){
-					addToCorrectArray(pData.buildingRef, pData.type);
+					ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
 					return;
 				}
 				
 				
 				if (pData.casePos.x == posX && (pData.casePos.y == tileDesc.mapY + j - (Ground.ROW_Y_LENGTH) || pData.casePos.y == tileDesc.mapY + 1 + j)){
-					addToCorrectArray(pData.buildingRef, pData.type);
+					ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
 					return;
 				}
 			
@@ -110,69 +107,14 @@ class VAltar extends VBuilding
 		}
 	}
 	
-	/**
-	 * add an element to the good array
-	 * @param	pRef the building ref
-	 * @param	pType the type of array we want
-	 */
-	private function addToCorrectArray(pRef:Int, pType:Alignment):Void {
-		
-		if (pType != Alignment.heaven && pType != Alignment.hell) return;
-		
-		var myArray:Array<Int> = pType == Alignment.heaven ? elementHeaven : elementHell;
-		
-		var currentRef:Int;
-		
-		for (currentRef in myArray) if (currentRef == pRef) return;
-		
-		myArray.push(pRef);
-		
-		
-		if (pType == Alignment.heaven) elementHeaven = myArray;
-		else if (pType == Alignment.hell) elementHell = myArray;
-		
-		calculTime();
 
-		if (myTime > 0){
-			if (!haveRecolter){
-				haveRecolter = true;
-				addGenerator();
-				addHudContextual();
-			} else haveMoreBoost();	
-		}
-		
-	}
 	
-	override function setHaveRecolter():Void 
-	{
-		haveRecolter = false;
-	}
 	private function onBuildingToRemove(pData:BoostInfo):Void {
 		if (pData.regionPos.y > tileDesc.regionY + 1 || pData.regionPos.y < tileDesc.regionY - 1) return;
 		
-		var myArray:Array<Int> = pData.type == Alignment.heaven ? elementHeaven : elementHell;
-		
-		var i:Int, l:Int = myArray.length;
-		
-		for (i in 0...l) 
-			if (myArray[i] == pData.buildingRef) {
-				myArray.splice(i, 1);
-				if (pData.type == Alignment.heaven) elementHeaven = myArray;
-				else elementHell = myArray;
-			}
-			
-		if(haveRecolter) haveMoreBoost();
+		ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
 	}
 	
-	override function addGenerator():Void 
-	{
-
-		if (haveRecolter) {
-			super.addGenerator();
-		}
-		
-		
-	}
 	
 	override function incrementNumberBuilding():Void 
 	{
@@ -180,25 +122,20 @@ class VAltar extends VBuilding
 	}
 	
 	private function calculTime():Void{
-		myTime = calculTimeProd();
+		var lTime:Float = calculTimeProd();
+		myTime = lTime <= 0 ? null:lTime;
 	}
 	
 	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
 	{
-		if (elementHeaven.length == 0 && elementHell.length == 0) return 0;
+		if (elementHeaven.length == 0 && elementHell.length == 0) return null;
 		else return TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
 	}
 	private function haveMoreBoost():Void{
 
 		calculTime();
 
-		if (myTime <= 0){
-			myVContextualHud.destroy();
-			ResourcesManager.removeGenerator(myGenerator);
-			myGenerator = null;
-			haveRecolter = false;
-		}
-		else ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
 	}
 	
 	override public function destroy():Void 
