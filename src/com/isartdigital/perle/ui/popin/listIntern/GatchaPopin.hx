@@ -69,7 +69,7 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	public function setDatas():Void{
-		gatchaText.text = Localisation.allTraductions["LABEL_GACHA_CONGRATULATION"];
+		gatchaText.text = Localisation.getText("LABEL_GACHA_CONGRATULATION");
 		internName.text = Intern.getIntern(quest.refIntern).name;
 		aligment.text = Intern.getIntern(quest.refIntern).aligment;
 	}

@@ -130,16 +130,16 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function setValues():Void{
-		languageText.text =  Localisation.allTraductions["LABEL_OPTIONS_LANGAGE_TITLE"];
-		soundText.text =  Localisation.allTraductions["LABEL_LEVEL_OPTIONS_SOUND_TITLE"];
-		datasText.text =  Localisation.allTraductions["LABEL_OPTIONS_RESET_DATA"];
+		languageText.text =  Localisation.getText("LABEL_OPTIONS_LANGAGE_TITLE");
+		soundText.text =  Localisation.getText("LABEL_LEVEL_OPTIONS_SOUND_TITLE");
+		datasText.text =  Localisation.getText("LABEL_OPTIONS_RESET_DATA");
 		
 		setValuesBtnReset();
 	}
 	
 	private function setValuesBtnReset():Void{
 		btnResetText = cast(SmartCheck.getChildByName(btnReset, AssetName.OPTION_POPPIN_DATAS_BTN_TEXT), TextSprite);
-		btnResetText.text = Localisation.allTraductions["LABEL_OPTIONS_RESET_DATA"];
+		btnResetText.text = Localisation.getText("LABEL_OPTIONS_RESET_DATA");
 	}
 	
 	private function onClickSfx():Void {

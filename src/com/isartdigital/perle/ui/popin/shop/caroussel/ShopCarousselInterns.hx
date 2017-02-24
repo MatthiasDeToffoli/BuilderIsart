@@ -207,7 +207,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard.buttonMode = true;
 		hellCard.interactive = true;
 		
-		btnRerollTxt.text = Localisation.allTraductions["LABEL_SHOPINTERN_INTERN_REROLL_BUTTON"];
+		btnRerollTxt.text = Localisation.getText("LABEL_SHOPINTERN_INTERN_REROLL_BUTTON");
 		//houseText.text =  Localisation.allTraductions["LABEL_SHOPINTERN_INTERNHOUSE_NUMBER_TXT"];
 		
 		setValuesHeavenCard();

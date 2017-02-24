@@ -12,7 +12,7 @@ class Localisation
 	
 	private static var localization:Dynamic;
 	
-	public static var allTraductions:Map<String, String> = new Map<String, String>();	//Tableau associatif pour stocker toutes les traductions
+	private static var allTraductions:Map<String, String> = new Map<String, String>();	//Tableau associatif pour stocker toutes les traductions
 
 	 /**
      * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -38,10 +38,21 @@ class Localisation
 	}
 	
 	/**
-	 * Fonction appellé lors du click sur un bouton.
-	 * Fonction qui ouvre l'écran sélectionné et ferme l'écran actuel.
+	 * Return the values for the label asked
+	 * @param	pLabel
+	 * @return the french or english translation
+	 */
+	public static function getText(pLabel:String):String{
+		if (allTraductions[pLabel] == null) {
+			Debug.error("This label doesn't exist!");
+			return "null";
+		}
+		else return allTraductions[pLabel];
+	}
+	
+	/**
+	 * Function whitch switchs the langage
 	 * @param pLangage: la langue qu'on souhaite avoir
-	 * @author Emeline Berenguier
 	 */
 	
 	public static function traduction(?pLangage:String = "en"):Void {

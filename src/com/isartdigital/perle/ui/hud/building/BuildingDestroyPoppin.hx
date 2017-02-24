@@ -88,7 +88,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		btnClose = cast(SmartCheck.getChildByName(this, "ButtonClose"), SmartButton);
 		btnSell = cast(SmartCheck.getChildByName(this, "Button_DestroyBuildingConfirm"), SmartButton);
 		btnSellText = cast(SmartCheck.getChildByName(btnSell, "Text_ConfirmCancelConstruction"), TextSprite);
-		btnSellText.text = Localisation.allTraductions["LABEL_DESTROYBUILDING_BUTTON"];
+		btnSellText.text = Localisation.getText("LABEL_DESTROYBUILDING_BUTTON");
 		Interactive.addListenerClick(btnClose, closePoppin);
 		Interactive.addListenerClick(btnSell, sellBuilding);
 	}

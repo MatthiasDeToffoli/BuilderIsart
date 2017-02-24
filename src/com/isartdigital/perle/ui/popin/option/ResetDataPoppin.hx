@@ -62,19 +62,19 @@ class ResetDataPoppin extends SmartPopinExtended
 	}
 	
 	private function setValues():Void{
-		resetText.text = Localisation.allTraductions["LABEL_CONFIRMEDATARESET_RESET_TEXT"];
-		btnCancelText.text = Localisation.allTraductions["LABEL_CONFIRMEDATARESET_CANCEL_RESET"];
-		btnConfirmText.text = Localisation.allTraductions["LABEL_CONFIRMEDATARESET_CONFIRM_RESET"];
+		resetText.text = Localisation.getText("LABEL_CONFIRMEDATARESET_RESET_TEXT");
+		btnCancelText.text = Localisation.getText("LABEL_CONFIRMEDATARESET_CANCEL_RESET");
+		btnConfirmText.text = Localisation.getText("LABEL_CONFIRMEDATARESET_CONFIRM_RESET");
 	}
 	
 	private function setValuesCancelBtn():Void{
 		btnCancelText = cast(SmartCheck.getChildByName(btnCancel, AssetName.RESET_POPPIN_CANCEL_TEXT), TextSprite);
-		btnCancelText.text = Localisation.allTraductions["LABEL_CONFIRMEDATARESET_CANCEL_RESET"];
+		btnCancelText.text = Localisation.getText("LABEL_CONFIRMEDATARESET_CANCEL_RESET");
 	}
 	
 	private function setValuesConfirmBtn():Void{
 		btnConfirmText = cast(SmartCheck.getChildByName(btnConfirm, AssetName.RESET_POPPIN_CONFIRM_TEXT), TextSprite);
-		btnConfirmText.text = Localisation.allTraductions["LABEL_CONFIRMEDATARESET_CONFIRM_RESET"];
+		btnConfirmText.text = Localisation.getText("LABEL_CONFIRMEDATARESET_CONFIRM_RESET");
 	}
 	
 	private function confirm():Void {

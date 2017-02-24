@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -48,7 +49,8 @@ class CCUBuilding extends CarouselCardUnlock{
 		iconIron = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUILDING_ICON_IRON), UISprite);
 		
 		SmartPopinExtended.setImage(image, BuildingName.getAssetName(buildingName));
-		textName.text = FakeTraduction.assetNameNameToTrad(buildingName);
+		//textName.text = FakeTraduction.assetNameNameToTrad(buildingName);
+		textName.text = Localisation.getText(buildingName);
 		setPrice(BuyManager.getPrice(buildingName));
 	}
 	

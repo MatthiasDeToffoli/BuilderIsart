@@ -60,7 +60,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 		gaugeMask.scale.x = 0;
 		gaugeBar.scale.x = 0;
 		
-		searchText.text = Localisation.allTraductions["LABEL_SHOPINTERN_SEARCHINGFORINTERNS"];
+		searchText.text = Localisation.getText("LABEL_SHOPINTERN_SEARCHINGFORINTERNS");
 	}
 	
 	private function spawn():Void{

@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -71,7 +72,6 @@ class CarouselCardBundle extends CarouselCard{
 		// todo: un peu du bricolage ce alpha.
 		if (cantBuyFeedBack) 
 			alpha = 0.5;
-		
 		picture = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUNDLE_PICTURE), UISprite);
 		textName = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUNDLE_TEXT_NAME), TextSprite);
 		textCostIP = cast(SmartCheck.getChildByName(this, AssetName.CARD_BUNDLE_TEXT_COST_IP), TextSprite);
@@ -86,7 +86,8 @@ class CarouselCardBundle extends CarouselCard{
 		
 		
 		setPicture(picture, myConfig.iconLevel, pictureSwitch);
-		textName.text = FakeTraduction.assetNameNameToTrad(cardName);
+		//textName.text = FakeTraduction.assetNameNameToTrad(cardName);
+		textName.text = Localisation.getText(cardName);
 		textCostIP.text = Std.string(myConfig.priceIP);
 		setGain(textGainIron, iconGainIron, myConfig.giveIron);
 		setGain(textGainWood, iconGainWood, myConfig.giveWood);

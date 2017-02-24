@@ -73,16 +73,15 @@ class LevelUpPoppin extends SmartPopinExtended
 		currentImage = SmartPopinExtended.setImage(img, BuildingName.getAssetName(pName, pLevel)); 
 		imgArray.push(currentImage);
 		//txtNew.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEW"];
-		txtNext.text = Localisation.allTraductions["LABEL_LEVEL_UP_NEXT"];
+		txtNext.text = Localisation.getText("LABEL_LEVEL_UP_NEXT");
 		//congrats.text = Localisation.allTraductions["LABEL_LEVEL_UP_CONGRATS"];
 		
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name, UnlockManager.unlockedItem[0].level)); 
 		//setImage(BuildingName.getAssetName(UnlockManager.unlockedItem[0].name)); 
-		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)
+		//todo @Ambroise : setImage en fonction du level comme la ligne 56 commentée (elle ne marche pas car elle detecte les decoration au level 1)		
 		
-		nameUnlock.text = pName;
 		canDoJuicyWithTheseElement = true;
-		//typeUnlock.text = "";
+		nameUnlock.text = Localisation.getText(pName);
 		//description.text = UnlockManager.itemUnlockedForPoppin[0][0][4];
 	}
 	
