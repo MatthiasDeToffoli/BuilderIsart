@@ -350,7 +350,6 @@ class SaveManager {
 				//ftueProgress : DialogueManager.dialogueSaved,
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
 			};
-			
 			ServerManagerLoad.deleteServerSave();
 			serverBuildingToTileDesc = null;
 			
@@ -453,7 +452,6 @@ class SaveManager {
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
-			//ResourcesManager.initWithoutSave(); // Méthode expérimenter avec Matthias confusion faites avec awake. du coup je dois le mettre avant le load du serv
 			RegionManager.buildFromSave(currentSave);
 			VTile.buildFromSave(currentSave);
 			TimeManager.startTimeLoop();

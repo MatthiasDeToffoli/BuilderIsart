@@ -73,7 +73,7 @@ class ServerManagerLoad {
 	}
 	
 	public static function getPlayer ():TablePlayer {
-		return cast(serverSave[TABLE_PLAYER]);
+		return cast(serverSave[TABLE_PLAYER][0]);
 	}
 	
 	/**

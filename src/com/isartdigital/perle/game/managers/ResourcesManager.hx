@@ -3,9 +3,8 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.ResourcesGeneratorDescription;
-import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
-import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.managers.TimeManager.EventResoucreTick;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.sounds.SoundManager;
@@ -200,10 +199,11 @@ class ResourcesManager
 		
 		
 		for (myDesc in resourcesDescriptionLoad.arrayGenerator) {
-			myGenerator = {desc:myDesc};
+			myGenerator = { desc:myDesc };
 			myResourcesData.generatorsMap[myDesc.type].push(myGenerator);
 			TimeManager.addGenerator(myGenerator);
 		}
+		
 		myResourcesData.level = resourcesDescriptionLoad.level;
 		myResourcesData.totalsMap = resourcesDescriptionLoad.totals;
 		maxExp = ExperienceManager.getMaxExp(resourcesDescriptionLoad.level);
@@ -213,13 +213,19 @@ class ResourcesManager
 		
 		var i:Int;
 		for (i in 1...totalResourcesInfoArray.length) {
+			// avoid putting null instead of 0 in value field
+			// avoid having cast error
+			// those fields are to be removed (said @MatthiasDeToffoli)
+			if (totalResourcesInfoArray[i].type == GeneratorType.soulBad ||
+				totalResourcesInfoArray[i].type == GeneratorType.soulGood)
+				continue;
+				
 			totalResourcesInfoArray[i].value = myResourcesData.totalsMap[totalResourcesInfoArray[i].type];
 			
 			// adding maxExp field to GeneratorType.goodXp and GeneratorType.badXp
 			if (i == 3 || i == 4) 
 				totalResourcesInfoArray[i].max = maxExp;
 		}
-		
 		totalResourcesEvent.emit(TOTAL_RESOURCES_EVENT_NAME, totalResourcesInfoArray);
 	}
 	
@@ -346,7 +352,7 @@ class ResourcesManager
 						generatorEvent.emit(GENERATOR_EVENT_NAME, { id:lGenerator.desc.id } );
 						return true;
 					}
-					
+		
 		return false;
 	}
 	

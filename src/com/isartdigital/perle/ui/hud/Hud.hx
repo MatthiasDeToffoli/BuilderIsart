@@ -7,19 +7,15 @@ import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
-import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
-import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.sprites.building.heaven.InternHouseHeaven;
 import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
+import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
-import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
-import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
-import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
-import com.isartdigital.perle.ui.hud.building.BHBuilt;
+import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuiltCollectorNotUpgrade;
 import com.isartdigital.perle.ui.hud.building.BHBuiltCollectorUpgradable;
 import com.isartdigital.perle.ui.hud.building.BHBuiltInUpgrading;
@@ -29,32 +25,24 @@ import com.isartdigital.perle.ui.hud.building.BHHarvestHouse;
 import com.isartdigital.perle.ui.hud.building.BHHarvestNoUpgrade;
 import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
-import com.isartdigital.perle.ui.hud.building.SoulCounterHouse;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.option.OptionPoppin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.perle.utils.Interactive;
-import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
-import com.isartdigital.utils.events.KeyboardEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
-import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.UIMovie;
-import com.isartdigital.utils.ui.smart.UISprite;
-import js.Browser;
-import js.html.FilePropertyBag;
-import js.html.KeyboardEvent;
+import com.isartdigital.utils.ui.UIPosition;
+import eventemitter3.EventEmitter;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
-import pixi.flump.Movie;
 import pixi.interaction.EventTarget;
-import eventemitter3.EventEmitter;
 
 enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
 
@@ -373,7 +361,7 @@ class Hud extends SmartScreen
 		setXpGauge();
 	}
 	
-	public function setXpGauge():Void{
+	public function setXpGauge():Void {
 		var percentXp:Int = Std.int(100 * ResourcesManager.getResourcesData().totalsMap[GeneratorType.badXp] / ExperienceManager.getMaxExp(cast(ResourcesManager.getLevel(), Int)));
 		cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie).goToAndStop(percentXp);
 		

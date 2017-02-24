@@ -29,7 +29,10 @@ class Loading
         $lLength = count($lTable);
         $result = [];
         for ($i = 0; $i < $lLength; $i++) {
-            $result[$lTable[$i]] = Utils::getTable($lTable[$i], "IDPlayer=".strval(FacebookUtils::getId()));
+            if ($lTable[$i] == static::TABLE_PLAYER)
+                $result[$lTable[$i]] = Utils::getTable($lTable[$i], "ID=".strval(FacebookUtils::getId()));
+            else
+                $result[$lTable[$i]] = Utils::getTable($lTable[$i], "IDPlayer=".strval(FacebookUtils::getId()));
 
             $lLength2 = count($result[$lTable[$i]]);
             $result[$lTable[$i]] = static::unsetPrivateFields($result[$lTable[$i]], $lLength2);
