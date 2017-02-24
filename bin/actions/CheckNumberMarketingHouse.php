@@ -11,5 +11,5 @@ Utils::updateSetWhere('Player', [
   'NumberMarketigHouse' => count(BuildingUtils::getAllBuildingByName('Marketing Department'))
 ], 'ID = '.FacebookUtils::getId());
 
-
+echo count(BuildingUtils::getAllBuildingByName('Marketing Department'));
 ?>

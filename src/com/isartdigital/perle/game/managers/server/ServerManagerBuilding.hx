@@ -178,6 +178,10 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onSuccessSellBuilding (pObject:Dynamic):Void {
+		
+		checkNumberMarketingHouse();
+		BoostManager.boostBuildingEvent.emit(BoostManager.BUILDING_OFF_EVENT_NAME);
+		trace("?? Oo");		
 		if (pObject.charAt(0) == "{") {
 			var lEvent:EventSuccessSellBuilding = Json.parse(pObject);
 			var lFieldError:Int;
@@ -188,8 +192,6 @@ class ServerManagerBuilding{
 					// todo : synchronisation. // soit faire ajax pr synchro, soit dans callback ici
 				
 				ErrorManager.openPopin(lFieldError);
-			} emse {
-				checkNumberMarketingHouse();
 			}
 			
 		} /*else {

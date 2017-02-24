@@ -109,8 +109,8 @@ class VAltar extends VBuilding
 	
 
 	
-	private function onBuildingToRemove(pData:BoostInfo):Void {
-		if (pData.regionPos.y > tileDesc.regionY + 1 || pData.regionPos.y < tileDesc.regionY - 1) return;
+	private function onBuildingToRemove(?pData:BoostInfo):Void {
+		if (pData != null && (pData.regionPos.y > tileDesc.regionY + 1 || pData.regionPos.y < tileDesc.regionY - 1)) return;
 		
 		ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
 	}

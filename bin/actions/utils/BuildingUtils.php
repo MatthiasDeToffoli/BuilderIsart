@@ -71,7 +71,7 @@ public static function getAllBuildingByName($pName) {
 
   try {
     $reqPre->execute();
-    return $reqPre->fetch(PDO::FETCH_OBJ);
+    return $reqPre->fetchAll(PDO::FETCH_OBJ);
   } catch (Exception $e) {
     echo $e->getMessage();
     exit;
