@@ -41,7 +41,7 @@ class SpriteManager
 		parentContainer.removeChild(spawner);
 		if (zIndex != null) parentContainer.addChildAt(newComponent, zIndex);
 		else parentContainer.addChild(newComponent);
-		spawner.destroy();
+		spawner.visible = false;
 		
 		if (clickable) newComponent.interactive = true;
 		

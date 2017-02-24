@@ -48,7 +48,7 @@ class Choice extends SmartPopinExtended
 	private static inline var MOUSE_DIFF_MAX:Float = 200;
 	private static inline var DIFF_MAX:Float = 80;
 	private static inline var NB_GAIN_SPAWNER:Int = 4;
-	private static inline var NB_STRESS_INDICATOR:Int = 4;
+	private static inline var NB_INDICATOR_BAR:Int = 4;
 	
 	// elements
 	public var eChoiceDone:EventEmitter;
@@ -82,10 +82,13 @@ class Choice extends SmartPopinExtended
 	
 	private var hellSpawnerPos:Map<Int, Point>;
 	private var heavenSpawnerPos:Map<Int, Point>;
-	private var hellRewardSpawners:Map<Int, SmartComponent>;
-	private var heavenRewardSpawners:Map<Int, SmartComponent>;
 	private var activeHellReward:Array<RewardType>;
 	private var activeHeavenReward:Array<RewardType>;
+	
+	private var hellRewardValue:Map<Int, SmartComponent>;
+	private var heavenRewardValue:Map<Int, SmartComponent>;
+	private var hellRewardIndicator:Map<Int, SmartComponent>;
+	private var heavenRewardIndicator:Map<Int, SmartComponent>;
 	
 	public var stress:UISprite;
 	
@@ -153,8 +156,8 @@ class Choice extends SmartPopinExtended
 		stress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), UISprite);
 		setGlowFalse();
 		
-		if(DialogueManager.steps[DialogueManager.dialogueSaved].stress)
-			setGlowVisible();
+		//if(DialogueManager.steps[DialogueManager.dialogueSaved].stress)
+			//setGlowVisible();
 	}
 	
 	public function setGlowVisible():Void {
@@ -178,8 +181,10 @@ class Choice extends SmartPopinExtended
 	}
 	
 	public function setIntern(pIntern:InternDescription):Void {
-		hellRewardSpawners = new Map<Int, SmartComponent>();
-		heavenRewardSpawners = new Map<Int, SmartComponent>();
+		hellRewardValue = new Map<Int, SmartComponent>();
+		heavenRewardValue = new Map<Int, SmartComponent>();
+		hellRewardIndicator = new Map<Int, SmartComponent>();
+		heavenRewardIndicator = new Map<Int, SmartComponent>();
 		activeHellReward = new Array<RewardType>();
 		activeHeavenReward = new Array<RewardType>();
 		stressHellIndicators = new Map<Int, UISprite>();
@@ -195,15 +200,23 @@ class Choice extends SmartPopinExtended
 			var newSpawnerHell:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HELL_CURRENCY + i), UISprite);
 			var newSpawnerHeaven:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_CURRENCY + i), UISprite);
 			
-			if (i <= rewardCounter.hellNumber) hellRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+			if (i <= rewardCounter.hellNumber) {
+				hellRewardValue.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_VALUE_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+				hellRewardIndicator.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_INDICATOR_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+				hellRewardValue[i].visible = false;
+			}
 			else newSpawnerHell.visible = false;
 			
-			if (i <= rewardCounter.heavenNumber) heavenRewardSpawners.set(i, cast(SpriteManager.spawnComponent(newSpawnerHeaven, AssetName.REWARD_CURRENCY_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+			if (i <= rewardCounter.heavenNumber) {
+				heavenRewardValue.set(i, cast(SpriteManager.spawnComponent(newSpawnerHeaven, AssetName.REWARD_CURRENCY_VALUE_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+				heavenRewardIndicator.set(i, cast(SpriteManager.spawnComponent(newSpawnerHeaven, AssetName.REWARD_CURRENCY_INDICATOR_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+				heavenRewardValue[i].visible = false;
+			}
 			else newSpawnerHeaven.visible = false;
 		}
 		
 		var decrement:Int = 3;
-		for (i in 1...NB_STRESS_INDICATOR) {
+		for (i in 1...NB_INDICATOR_BAR) {
 			stressHellIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
 			stressHeavenIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
 			decrement--;
@@ -309,26 +322,26 @@ class Choice extends SmartPopinExtended
 		var natIndic:Int = 1;
 		var unatIndic:Int = 1;
 		
-		for (i in 0...NB_STRESS_INDICATOR) {
+		for (i in 0...NB_INDICATOR_BAR) {
 			if (activeChoice.naturalStress <= 10) natIndic = 1;
 			else if (activeChoice.naturalStress > 10 && activeChoice.naturalStress <= 20) natIndic = 2;
 			else natIndic = 3;
 		}
 			
-		for (i in 0...NB_STRESS_INDICATOR) {
+		for (i in 0...NB_INDICATOR_BAR) {
 			if (activeChoice.unaturalStress <= 10) unatIndic = 1;
 			else if (activeChoice.unaturalStress > 10 && activeChoice.unaturalStress <= 20) unatIndic = 2;
 			else unatIndic = 3;
 		}
 		
 		if (intern.aligment == Std.string(Alignment.hell)) {
-			for (j in 1...NB_STRESS_INDICATOR) {
+			for (j in 1...NB_INDICATOR_BAR) {
 				if (j > natIndic) stressHellIndicators[j].visible = false;
 				if (j > unatIndic) stressHeavenIndicators[j].visible = false;	
 			}
 		}
 		else {
-			for (j in 1...NB_STRESS_INDICATOR) {
+			for (j in 1...NB_INDICATOR_BAR) {
 				if (j > natIndic) stressHeavenIndicators[j].visible = false;
 				if (j > unatIndic) stressHellIndicators[j].visible = false;
 			}
@@ -390,23 +403,59 @@ class Choice extends SmartPopinExtended
 	private function showSpecificReward(rewardType:RewardType, pChoiceType:ChoiceType, pReward:Int, testCurrency:Int):Void {
 		if (pChoiceType == ChoiceType.HELL) {
 			if (!alreadyShow(rewardType, pChoiceType) && testCurrency > 0) {
-				var txt:TextSprite = cast(hellRewardSpawners[indexHellCurrency].getChildByName("ressourceEvent_text"), TextSprite);
-				var icon:UISprite = cast(hellRewardSpawners[indexHellCurrency].getChildByName(AssetName.PROD_ICON_GENERIC_LARGE), UISprite);
-				SpriteManager.spawnComponent(icon, AssetName.getCurrencyAssetName(rewardType), hellRewardSpawners[indexHellCurrency], TypeSpawn.SPRITE);
+				var txt:TextSprite = cast(hellRewardValue[indexHellCurrency].getChildByName("ressourceEvent_text"), TextSprite);
+				var icon:UISprite = cast(hellRewardValue[indexHellCurrency].getChildByName(AssetName.PROD_ICON_GENERIC_LARGE), UISprite);
+				SpriteManager.spawnComponent(icon, AssetName.getCurrencyAssetName(rewardType), hellRewardValue[indexHellCurrency], TypeSpawn.SPRITE);
 				txt.text = cast(pReward + testCurrency);
-				activeHellReward.push(rewardType);
+				
+				var iconIndic:UISprite = cast(hellRewardIndicator[indexHellCurrency].getChildByName("Icon"), UISprite);
+				SpriteManager.spawnComponent(iconIndic, AssetName.getCurrencyAssetName(rewardType), hellRewardIndicator[indexHellCurrency], TypeSpawn.SPRITE);
+				
+				initIndicator(hellRewardIndicator[indexHellCurrency], rewardType, pChoiceType);
+				
+				activeHellReward.push(rewardType);			
 				indexHellCurrency++;
 			}
 		}
 		else {
 			if (!alreadyShow(rewardType, pChoiceType) && testCurrency > 0) {
-				var txt:TextSprite = cast(heavenRewardSpawners[indexHeavenCurrency].getChildByName("ressourceEvent_text"), TextSprite);
-				var icon:UISprite = cast(heavenRewardSpawners[indexHeavenCurrency].getChildByName(AssetName.PROD_ICON_GENERIC_LARGE), UISprite);
-				SpriteManager.spawnComponent(icon, AssetName.getCurrencyAssetName(rewardType), heavenRewardSpawners[indexHeavenCurrency], TypeSpawn.SPRITE);
+				var txt:TextSprite = cast(heavenRewardValue[indexHeavenCurrency].getChildByName("ressourceEvent_text"), TextSprite);
+				var icon:UISprite = cast(heavenRewardValue[indexHeavenCurrency].getChildByName(AssetName.PROD_ICON_GENERIC_LARGE), UISprite);
+				SpriteManager.spawnComponent(icon, AssetName.getCurrencyAssetName(rewardType), heavenRewardValue[indexHeavenCurrency], TypeSpawn.SPRITE);
 				txt.text = cast(pReward + testCurrency);
+				
+				var iconIndic:UISprite = cast(heavenRewardIndicator[indexHeavenCurrency].getChildByName("Icon"), UISprite);
+				SpriteManager.spawnComponent(iconIndic, AssetName.getCurrencyAssetName(rewardType), heavenRewardIndicator[indexHeavenCurrency], TypeSpawn.SPRITE);
+				
+				initIndicator(heavenRewardIndicator[indexHeavenCurrency], rewardType, pChoiceType);
+				
 				activeHeavenReward.push(rewardType);
 				indexHeavenCurrency++;
 			}
+		}
+	}
+	
+	private function initIndicator(component:SmartComponent, pRewardType:RewardType, pChoiceType:ChoiceType):Void {
+		var rewardIndicators:Map<Int, UISprite> = new Map<Int, UISprite>();
+		
+		var nbIndicator:Int = 1;
+		switch (pRewardType) {
+			case RewardType.gold: (pChoiceType == ChoiceType.HELL) ? nbIndicator = activeChoice.goldIndicatorHell : nbIndicator = activeChoice.goldIndicatorHeaven;
+			case RewardType.karma: (pChoiceType == ChoiceType.HELL) ? nbIndicator = activeChoice.karmaIndicatorHell : nbIndicator = activeChoice.karmaIndicatorHeaven;
+			case RewardType.iron: (pChoiceType == ChoiceType.HELL) ? nbIndicator = activeChoice.ironIndicatorHell : nbIndicator = activeChoice.ironIndicatorHeaven;
+			case RewardType.wood: (pChoiceType == ChoiceType.HELL) ? nbIndicator = activeChoice.woodIndicatorHell : nbIndicator = activeChoice.woodIndicatorHeaven;
+			case RewardType.soul: (pChoiceType == ChoiceType.HELL) ? nbIndicator = activeChoice.soulIndicatorHell : nbIndicator = activeChoice.soulIndicatorHeaven;
+			default: return;
+		}
+		
+		var decrement:Int = 3;
+		for (i in 1...NB_INDICATOR_BAR) {
+			rewardIndicators.set(decrement, cast(component.getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+			decrement--;
+		}
+		
+		for (i in 1...NB_INDICATOR_BAR) {
+			if (i > nbIndicator) rewardIndicators[i].visible = false;
 		}
 	}
 	
@@ -455,7 +504,7 @@ class Choice extends SmartPopinExtended
 		// update choiceType
 		choiceType = ChoiceType.NONE;
 		// click mouse pos
-		mousePos = new Point(mEvent.data.global.x, mEvent.data.global.y);
+		mousePos = mEvent.data.global.clone();
 		// add listener needed to follow mouse
 		choiceCard.on(MouseEventType.MOUSE_MOVE, followMouse);
 		choiceCard.on(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
@@ -470,16 +519,15 @@ class Choice extends SmartPopinExtended
 	{
 		// get difference with previous mouse pos
 		var diff:Float = mEvent.data.global.x - mousePos.x;
-		
 		// move fateCard && get choiceType
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.rotation = imgRot + diff / 50 * Math.PI / 32;
+			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
 			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
 			if (choiceCard.rotation > imgRot + Math.PI / 32) choiceType = ChoiceType.HELL;
 			else choiceType = ChoiceType.NONE;
 		}
 		else if (diff < 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {
-			choiceCard.rotation = imgRot + diff / 50 * Math.PI / 32;
+			choiceCard.rotation = imgRot + diff / DIFF_MAX * Math.PI / 32;
 			choiceCard.position.set(imgPos.x + DIFF_MAX * (diff / MOUSE_DIFF_MAX), imgPos.y);
 			if (choiceCard.rotation < imgRot - Math.PI / 32) choiceType = ChoiceType.HEAVEN;
 			else choiceType = ChoiceType.NONE;
@@ -492,6 +540,7 @@ class Choice extends SmartPopinExtended
 	private function valideSwip():Void
 	{	
 		choiceCard.rotation = imgRot;
+		choiceCard.position = imgPos;
 		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
 		choiceCard.on(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
 		choiceCard.on(MouseEventType.MOUSE_UP, valideSwip);

@@ -289,7 +289,8 @@ class AssetName{
 	public static inline var INTERN_EVENT_HELL_CURRENCY:String = "RewardHell0";
 	public static inline var INTERN_EVENT_HEAVEN_CURRENCY:String = "RewardHeaven0";
 	public static inline var INTENSITY_MARKER:String = "IntensityMarker";
-	public static inline var REWARD_CURRENCY_SPAWNER:String = "Event_RessourcesReward";
+	public static inline var REWARD_CURRENCY_INDICATOR_SPAWNER:String = "RessourceIndicator";
+	public static inline var REWARD_CURRENCY_VALUE_SPAWNER:String = "Event_RessourcesReward";
 	
 	// intern info jauges
 	public static inline var INTERN_STRESS_JAUGE:String = "_jauge_stress";
