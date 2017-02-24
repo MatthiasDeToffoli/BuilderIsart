@@ -134,6 +134,10 @@ class TimeManager {
 		campaignTime = Date.now().getTime() + pTime;
 	}
 	
+	public static function synchroCampaignTime(pTime:Float):Void {
+		campaignTime = pTime;
+	}
+	
 	private static function updateCampaignTime():Void {
 		if (Date.now().getTime() >= campaignTime){
 			MarketingManager.setCampaign(CampaignType.none);

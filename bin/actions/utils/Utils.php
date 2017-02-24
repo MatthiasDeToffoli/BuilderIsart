@@ -77,7 +77,7 @@ class Utils
 
     public static function getTable ($pTableName, $pSQLWhere = "1") {
         global $db;
-
+        
         $req = "SELECT * FROM ".$pTableName." WHERE ".$pSQLWhere;
         $reqPre = $db->prepare($req);
 

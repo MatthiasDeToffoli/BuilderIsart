@@ -2,6 +2,8 @@
 
 namespace actions\utils;
 
+use PDO as PDO;
+
 /**
 * @author: de Toffoli Matthias
 * Include this when you want to use the table Resources
@@ -72,7 +74,7 @@ class Resources {
 
     try {
         $reqPre->execute();
-        return $reqPre->fetch()[0];
+        return $reqPre->fetch(PDO::FETCH_OBJ);
     } catch (Exception $e) {
         echo $e->getMessage();
 

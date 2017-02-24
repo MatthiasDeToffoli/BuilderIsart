@@ -2,9 +2,11 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypePack;
 import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 
 typedef Campaign = {
+	var name:String;
 	var price:Int;
 	var time:TimesAndNumberDays;
 	var boost:Int;
@@ -33,6 +35,7 @@ class MarketingManager
 		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(GeneratorType.soul);
 		campaigns = [
 			CampaignType.none => {
+				name:"",
 				price:0,
 				time:{
 					times:0,
@@ -46,10 +49,10 @@ class MarketingManager
 		var diff:TimesAndNumberDays;
 		
 		for (i in 0...l) {
-			
 			diff = TimesInfo.calculDateDiff(Date.fromString(lArray[i].time).getTime(), Date.fromTime(0).getTime());
 			
 			campaigns[arrayCampaignType[i]] = {
+				name:lArray[i].name,
 				price:lArray[i].costKarma == null ? 0:lArray[i].costKarma,
 				time: {
 					times: TimesInfo.getTimeInMilliSecondFromTimeStamp(diff.times),
@@ -94,6 +97,7 @@ class MarketingManager
 		currentCampaign = pType;
 		TimeManager.setCampaignTime(campaigns[currentCampaign].time.times);
 		ResourcesManager.spendTotal(GeneratorType.hard, campaigns[currentCampaign].price);
+		if (currentCampaign != CampaignType.none) ServerManagerBuilding.startCampaign(campaigns[currentCampaign].name);
 		updateTribunal();
 	}
 	

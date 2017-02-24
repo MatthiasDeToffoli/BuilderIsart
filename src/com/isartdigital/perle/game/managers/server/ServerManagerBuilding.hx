@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.BoostManager.BoostInfo;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
@@ -181,7 +182,7 @@ class ServerManagerBuilding{
 		
 		checkNumberMarketingHouse();
 		BoostManager.boostBuildingEvent.emit(BoostManager.BUILDING_OFF_EVENT_NAME);
-		trace("?? Oo");		
+
 		if (pObject.charAt(0) == "{") {
 			var lEvent:EventSuccessSellBuilding = Json.parse(pObject);
 			var lFieldError:Int;
@@ -341,6 +342,35 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorCheckNumberMarketingHouse(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
+	public static function startCampaign(pName:String):Void {
+		trace(pName);
+		ServerManager.callPhpFile( onSuccessStartCampaign, onErrorStartCampaign, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.START_CAMPAIGN,
+			"Name" => pName
+		]);
+	}
+	
+	private static function onSuccessStartCampaign(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				trace(Date.fromTime(data.time));
+				TimeManager.synchroCampaignTime(data.time);
+			}
+			
+			ResourcesManager.updateTotal(GeneratorType.hard, data.hard);
+		}
+	}
+	
+	private static function onErrorStartCampaign(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
 	

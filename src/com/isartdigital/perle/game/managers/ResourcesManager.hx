@@ -627,6 +627,18 @@ class ResourcesManager
 		SaveManager.save();
 	}
 	
+	public static function updateTotal(pType:GeneratorType, pQuantity:Float):Void {
+		myResourcesData.totalsMap[pType] = pQuantity;
+		
+		if (pType == GeneratorType.goodXp || pType == GeneratorType.badXp){
+			myResourcesData.totalsMap[pType]  = Math.min(myResourcesData.totalsMap[pType], maxExp);
+			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+			testLevelUp();
+		} else {
+			 Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType);
+		}
+	}
+	
 	/**
 	 * test if we level up
 	 */

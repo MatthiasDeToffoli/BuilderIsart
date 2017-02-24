@@ -1,11 +1,18 @@
 <?php
 namespace actions\utils;
+
+use actions\utils\Utils as Utils;
+include_once("Utils.php");
+
 /**
 * @author: de Toffoli Matthias
 * Include this when you want to use the table Player
 */
 class Player
 {
+
+  const TABLE = 'Player';
+  const ID = 'ID';
   /**
    * give the number of a type of region the player has
    * @param $pId the player id
@@ -50,6 +57,26 @@ class Player
       echo $e->getMessage();
       exit;
     }
+  }
+
+  public static function getPlayerById($pId) {
+    global $db;
+
+    $req = "SELECT * FROM ".static::TABLE."  WHERE ".static::ID." = :Id";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':Id', $pId);
+
+    try {
+      $reqPre->execute();
+      return $reqPre->fetch(PDO::FETCH_OBJ);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
+  }
+
+  public static function update($pId,$pAssocArray) {
+    Utils::updateSetWhere(static::TABLE,$pAssocArray,'ID = '.$pId);
   }
 }
 
