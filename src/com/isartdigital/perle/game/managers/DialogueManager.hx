@@ -116,7 +116,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = false;
+		isFR = true;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());

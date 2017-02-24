@@ -62,7 +62,6 @@ class VHouse extends VBuildingUpgrade
 	 * @param	pMax the new max of population
 	 */
 	public function updatePopulation(?pQuantity:Int):Void{
-		trace(pQuantity);
 		if (pQuantity != null){
 			tileDesc.currentPopulation = pQuantity;
 			myPopulation.quantity = pQuantity;

@@ -415,6 +415,11 @@ class AssetName{
 	public static inline var FTUE_ICON_38:String = "_ftue_dialogFR_38";
 	public static inline var FTUE_ICON_39:String = "_ftue_dialogFR_39";
 	public static inline var FTUE_ICON_40:String = "_ftue_dialogFR_40";
+	public static inline var FTUE_ICON_44:String = "_ftue_dialogFR_44";
+	public static inline var FTUE_ICON_45:String = "_ftue_dialogFR_45";
+	public static inline var FTUE_ICON_49:String = "_ftue_dialogFR_49";
+	public static inline var FTUE_ICON_52:String = "_ftue_dialogFR_52";
+	public static inline var FTUE_ICON_54:String = "_ftue_dialogFR_54";
 	
 	
 	// HUD

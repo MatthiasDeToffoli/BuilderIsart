@@ -58,6 +58,11 @@ class DialoguePoppin extends SmartScreen
 	private var icon38:SmartComponent;
 	private var icon39:SmartComponent;
 	private var icon40:SmartComponent;
+	private var icon44:SmartComponent;
+	private var icon45:SmartComponent;
+	private var icon49:SmartComponent;
+	private var icon52:SmartComponent;
+	private var icon54:SmartComponent;
 	
 	//Array of the dialogue
 	public static var lNpc_dialogue_ftue:Array<Array<Array<String>>>;
@@ -119,6 +124,11 @@ class DialoguePoppin extends SmartScreen
 		icon38 = cast(getChildByName(AssetName.FTUE_ICON_38), SmartComponent);
 		icon39 = cast(getChildByName(AssetName.FTUE_ICON_39), SmartComponent);
 		icon40 = cast(getChildByName(AssetName.FTUE_ICON_40), SmartComponent);
+		icon44 = cast(getChildByName(AssetName.FTUE_ICON_44), SmartComponent);
+		icon45 = cast(getChildByName(AssetName.FTUE_ICON_45), SmartComponent);
+		icon49 = cast(getChildByName(AssetName.FTUE_ICON_49), SmartComponent);
+		icon52 = cast(getChildByName(AssetName.FTUE_ICON_52), SmartComponent);
+		icon54 = cast(getChildByName(AssetName.FTUE_ICON_54), SmartComponent);
 		
 		btnNext = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON), SmartButton);
 		Interactive.addListenerClick(btnNext, nextStep);
@@ -205,6 +215,11 @@ class DialoguePoppin extends SmartScreen
 			case 38 : icon38.visible = true;
 			case 39 : icon39.visible = true;
 			case 40 : icon40.visible = true;
+			case 44 : icon44.visible = true;
+			case 45 : icon45.visible = true;
+			case 49 : icon49.visible = true;
+			case 52 : icon52.visible = true;
+			case 54 : icon54.visible = true;
 		}
 	}
 	
@@ -238,6 +253,11 @@ class DialoguePoppin extends SmartScreen
 		icon38.visible = false;
 		icon39.visible = false;
 		icon40.visible = false;
+		icon44.visible = false;
+		icon45.visible = false;
+		icon49.visible = false;
+		icon52.visible = false;
+		icon54.visible = false;
 	}
 	
 	/**

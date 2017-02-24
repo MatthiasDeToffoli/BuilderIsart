@@ -13,6 +13,8 @@ import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
  */
 class VHouseHell extends VHouse
 {
+	
+	private static inline var FTUE_SOUL_INHOUSE:Int = 3;
 	public function new(pDescription:TileDescription) 
 	{
 		alignementBuilding = Alignment.hell;
@@ -20,9 +22,10 @@ class VHouseHell extends VHouse
 	}
 	
 	public function addForFtue():Void {
+		//addGenerator();
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
 		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
-		updatePopulation(3);
+		updatePopulation(FTUE_SOUL_INHOUSE);
 	}
 	
 }

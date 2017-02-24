@@ -228,6 +228,7 @@ class Main extends EventEmitter
 		
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/WireFrame_Compilation/library.json");
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframes_ALL/library.json");	
+		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframe_FTUE/library.json");	
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/Wireframe_Interns/library.json");	
 		
 		lLoader.addFontFile("fonts.css");
