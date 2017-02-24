@@ -38,6 +38,7 @@ import com.isartdigital.utils.ui.smart.SmartScreen;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.UIPosition;
+import com.isartdigital.utils.ui.smart.UISprite;
 import eventemitter3.EventEmitter;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -53,6 +54,7 @@ enum BuildingHudType { CONSTRUCTION; UPGRADING; HARVEST; MOVING; NONE; }
 class Hud extends SmartScreen 
 {	
 	public static inline var EVENT_CHANGE_BUIDINGHUD:String = "Hud_Change_BuildingHud";
+	public static inline var LEVEL_UNLOCK_INTERNS:Int = 3;
 	
 	public static var eChangeBH:EventEmitter;
 	
@@ -90,6 +92,7 @@ class Hud extends SmartScreen
 	private var basePosXMasqueXpHell:Float;
 	private var basePosXMasqueXpHeaven:Float;
 	private var baseGaugeWidth:Float;
+	private var btnInternBloc:UISprite;
 	
 	
 	/**
@@ -270,6 +273,7 @@ class Hud extends SmartScreen
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
+		btnInternBloc = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS_LOCK), UISprite);
 		btnOptions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_OPTIONS), SmartButton);
 		
 		buttonMissionDeco = cast(SmartCheck.getChildByName(this, AssetName.HUD_MISSION_DECO), SmartButton);
@@ -314,6 +318,15 @@ class Hud extends SmartScreen
 			btnOptions.interactive = true;
 			btnPurgatory.interactive = true;	
 			buttonMissionDeco.interactive = true;	
+		}
+		
+		if (ResourcesManager.getLevel() >= LEVEL_UNLOCK_INTERNS) {
+			btnInterns.interactive = true;
+			btnInternBloc.visible = false;
+		}
+		else {
+			btnInternBloc.visible = true;
+			btnInterns.interactive = false;	
 		}
 		
 		//Interactive.addListenerClick(btnResetData, onClickResetData);

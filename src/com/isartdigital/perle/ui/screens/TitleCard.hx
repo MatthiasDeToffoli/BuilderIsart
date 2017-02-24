@@ -42,7 +42,7 @@ class TitleCard extends Screen
 	public function new() 
 	{
 		super();
-		background = new SmartScreen("Title_card_bg");
+		background = new SmartScreen("Title_card_bg_test");
 		btnStart = new SmartButton("ButtonPlay");
 		addChild(background);
 		addChild(btnStart);

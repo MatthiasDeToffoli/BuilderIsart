@@ -162,7 +162,7 @@ class DialoguePoppin extends SmartScreen
 		iconEn15 = cast(getChildByName(AssetName.FTUE_ICON_EN_15), SmartComponent);
 		iconEn17 = cast(getChildByName(AssetName.FTUE_ICON_EN_17), SmartComponent);
 		iconEn18 = cast(getChildByName(AssetName.FTUE_ICON_EN_18), SmartComponent);
-		//iconEn20 = cast(getChildByName(AssetName.FTUE_ICON_EN_20), SmartComponent);
+		iconEn20 = cast(getChildByName(AssetName.FTUE_ICON_EN_20), SmartComponent);
 		iconEn22 = cast(getChildByName(AssetName.FTUE_ICON_EN_22), SmartComponent);
 		iconEn24 = cast(getChildByName(AssetName.FTUE_ICON_EN_24), SmartComponent);
 		iconEn25 = cast(getChildByName(AssetName.FTUE_ICON_EN_25), SmartComponent);
@@ -291,7 +291,7 @@ class DialoguePoppin extends SmartScreen
 			case 15 : iconEn15.visible = true;
 			case 17 : iconEn17.visible = true;
 			case 18 : iconEn18.visible = true;
-			//case 20 : iconEn20.visible = true;
+			case 20 : iconEn20.visible = true;
 			case 22 : iconEn22.visible = true;
 			case 24 : iconEn24.visible = true;
 			case 25 : iconEn25.visible = true;
@@ -352,7 +352,7 @@ class DialoguePoppin extends SmartScreen
 		iconEn15.visible = false;
 		iconEn17.visible = false;
 		iconEn18.visible = false;
-		//iconEn20.visible = false;
+		iconEn20.visible = false;
 		iconEn22.visible = false;
 		iconEn24.visible = false;
 		iconEn25.visible = false;

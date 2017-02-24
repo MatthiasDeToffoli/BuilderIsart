@@ -454,6 +454,7 @@ class AssetName{
 	public static inline var HUD_BTN_PURGATORY:String = HUD_PREFIX + "PurgatoryButton";
 	public static inline var HUD_CONTAINER_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
 	public static inline var HUD_BTN_INTERNS:String = HUD_PREFIX + "InternsButton";
+	public static inline var HUD_BTN_INTERNS_LOCK:String = "HUD_internsLockedMC";
 	public static inline var HUD_BTN_OPTIONS:String = "ButtonOptions";
 	public static inline var HUD_COUNTER_SOFT:String = HUD_PREFIX + "SoftCurrency";
 	public static inline var HUD_BTN_SOFT:String = /*HUD_PREFIX + */"ButtonPlusSC";
