@@ -40,7 +40,22 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
       $typeBuilding->NbResource,
       $typeBuilding->MaxSoulsContained
     );
-} else {
+}
+else if($typeBuilding->NbBuildingHeaven > 0 || $typeBuilding->NbBuildingHell > 0) {
+  $calcul1 = $typeBuilding->NbBuildingHell * $typeBuilding->ProductionPerBuildingHell;
+  $calcul2 = $typeBuilding->NbBuildingHeaven*$typeBuilding->ProductionPerBuildingHeaven;
+  $calculTotal = 3600/($calcul1 + $calcul2);
+
+  if($calculTotal <= 0) $calculTotal = null;
+
+  $results = calculGain(
+      Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
+      $calculTotal,
+      $typeBuilding->NbResource,
+      $typeBuilding->MaxGoldContained
+    );
+}
+else {
   echo json_encode(["error" => true, "message"=>"this building doesn't have generator"]);
   exit;
 }
@@ -56,13 +71,22 @@ $results->end = Utils::timeStampToJavascript($results->end);
 echo json_encode($results);
 
 function calculGain($pEnd,$pCalcul,$pResource, $pMax){
-  $currentTime = time();
-  if($currentTime > $pEnd) {
-    if($newResource < $pMax) $newResource = $pResource + 1;
-    $end = $pEnd + $pCalcul;
+  if($pEnd !== null){
+    $currentTime = time();
+    if($currentTime > $pEnd) {
+      if($newResource < $pMax) $newResource = $pResource + 1;
 
-    return calculGain($end,$pCalcul,$newResource,$pMax);
+      if($pCalcul === null) {
+        $end = $pCalcul;
+      }
+      else {
+        $end = $pEnd + $pCalcul;
+      }
+
+      return calculGain($end,$pCalcul,$newResource,$pMax);
+    }
   }
+
 
   return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
 }

@@ -36,7 +36,7 @@ $altar = BuildingUtils::getTypeBuildingWithPosition(
     Utils::getSinglePostValueInt(REGIONY)
 );
 if($countHell == 0 && $countHeaven == 0) $time = 0;
-else $time = 60/(($countHell * $altar->ProductionPerBuildingHell) + ($countHeaven*$altar->ProductionPerBuildingHeaven));
+else $time = 3600/(($countHell * $altar->ProductionPerBuildingHell) + ($countHeaven*$altar->ProductionPerBuildingHeaven));
 
 if($time <= 0) $timeToInsert = 'NULL';
 else $timeToInsert =  Utils::timeStampToDateTime(time() + $time);
