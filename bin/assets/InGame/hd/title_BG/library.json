@@ -7,55 +7,178 @@
      "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "title_HD",
+       "symbol": "title_card_6",
        "origin": [
-        385,
-        304.5
+        512,
+        683
        ],
        "rect": [
         1,
         1,
-        770,
-        609
+        1024,
+        1366
        ]
-      },
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
       {
-       "symbol": "title_BG",
+       "symbol": "title_2",
        "origin": [
-        384,
-        304.5
+        512,
+        683
        ],
        "rect": [
-        773,
         1,
-        768,
-        609
+        1,
+        1024,
+        1366
        ]
-      },
+      }
+     ]
+    },
+    {
+     "file": "atlas2.png",
+     "textures": [
       {
-       "symbol": "title_BD",
+       "symbol": "title_card_3",
        "origin": [
-        384,
-        304.5
+        512,
+        683
        ],
        "rect": [
         1,
-        612,
-        768,
-        609
+        1,
+        1024,
+        1366
        ]
-      },
+      }
+     ]
+    },
+    {
+     "file": "atlas3.png",
+     "textures": [
       {
-       "symbol": "title_HG",
+       "symbol": "title_card_4",
        "origin": [
-        384,
-        304.5
+        512,
+        683
        ],
        "rect": [
         1,
-        1223,
-        768,
-        609
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas4.png",
+     "textures": [
+      {
+       "symbol": "title_card_5",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas5.png",
+     "textures": [
+      {
+       "symbol": "title_1",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas6.png",
+     "textures": [
+      {
+       "symbol": "title_card_7",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas7.png",
+     "textures": [
+      {
+       "symbol": "title_card_8",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas8.png",
+     "textures": [
+      {
+       "symbol": "title3",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas9.png",
+     "textures": [
+      {
+       "symbol": "title4",
+       "origin": [
+        512,
+        683
+       ],
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
        ]
       }
      ]
@@ -68,85 +191,170 @@
   {
    "layers": [
     {
+     "name": "title_BG",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        385,
-        304.5
+        512,
+        683
        ],
        "loc": [
-        383.05,
-        -305.95
+        -1534,
+        682.75
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_HD"
+       "ref": "title_card_5"
       }
-     ],
-     "name": "Calque 1"
+     ]
     },
     {
+     "name": "title_BG_2",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        384,
-        304.5
+        512,
+        683
        ],
        "loc": [
-        -384.15,
-        -305.5
+        -510.25,
+        681.55
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_HG"
+       "ref": "title_card_6"
       }
-     ],
-     "name": "Calque 3"
+     ]
     },
     {
+     "name": "title_HG",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        384,
-        304.5
+        512,
+        683
        ],
        "loc": [
-        -383.95,
-        303.5
+        -1534.35,
+        -683.95
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_BG"
+       "ref": "title_1"
       }
-     ],
-     "name": "Calque 2"
+     ]
     },
     {
+     "name": "title_HG_2",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        384,
-        304.5
+        512,
+        683
        ],
        "loc": [
-        384.05,
-        303.05
+        -511.7,
+        -684
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_BD"
+       "ref": "title_2"
       }
-     ],
-     "name": "Calque 4"
+     ]
+    },
+    {
+     "name": "title_HD",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        512,
+        683
+       ],
+       "loc": [
+        510.9,
+        -683.35
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_3"
+      }
+     ]
+    },
+    {
+     "name": "title_HD2",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        512,
+        683
+       ],
+       "loc": [
+        1534,
+        -684
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_4"
+      }
+     ]
+    },
+    {
+     "name": "title_BD",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        512,
+        683
+       ],
+       "loc": [
+        513,
+        682
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_7"
+      }
+     ]
+    },
+    {
+     "name": "title_BD_2",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        512,
+        683
+       ],
+       "loc": [
+        1536.3,
+        682.15
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_8"
+      }
+     ]
+    },
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
     }
    ],
    "id": "Title_card_bg"
   }
  ],
- "md5": "764ae34b54c04f726e5972161dc9dbd1",
+ "md5": "b7acbadd44cbda1e394175071f66704d",
  "frameRate": 24
 }

@@ -1,30 +1,6 @@
 {
  "movies": [
   {
-   "id": "HeavenAltarVirtue",
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        230,
-        228.5
-       ],
-       "loc": [
-        -16.9,
-        -36.4
-       ],
-       "ref": "_heaven_alta_virtue",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "Layer 1"
-    }
-   ]
-  },
-  {
    "id": "HeavenBuild0",
    "layers": [
     {
@@ -63,7 +39,7 @@
         -8.55,
         50.15
        ],
-       "ref": "~house_lvl1/Heaven_house_lvl1",
+       "ref": "~Build01/Heaven_house_lvl1",
        "index": 0,
        "duration": 1
       }
@@ -93,6 +69,25 @@
       }
      ],
      "name": "sol"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.7197,
+        0.3582
+       ],
+       "tweened": false,
+       "loc": [
+        -1.35,
+        89.2
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "heavenbuilding_rune_anim"
     }
    ]
   },
@@ -135,36 +130,12 @@
         -22.85,
         25.85
        ],
-       "ref": "~house_lvl2/Heaven_house_lvl2",
+       "ref": "~build02/Heaven_house_lvl2",
        "index": 0,
        "duration": 1
       }
      ],
      "name": "anim"
-    }
-   ]
-  },
-  {
-   "id": "HeavenBuilding02_construction",
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        233,
-        133.5
-       ],
-       "loc": [
-        -5.8,
-        103.4
-       ],
-       "ref": "heaven_house_lvl1_sol",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "sol"
     }
    ]
   },
@@ -213,30 +184,6 @@
       }
      ],
      "name": "anim"
-    }
-   ]
-  },
-  {
-   "id": "HeavenBuilding03_construction",
-   "layers": [
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        233,
-        133.5
-       ],
-       "loc": [
-        -5.9,
-        103.4
-       ],
-       "ref": "heaven_house_lvl1_sol",
-       "index": 0,
-       "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "sol"
     }
    ]
   },
@@ -1253,7 +1200,7 @@
         -12.4,
         -169.15
        ],
-       "ref": "~house_lvl2/anim_Lwing",
+       "ref": "~build02/anim_Lwing",
        "index": 0,
        "tweened": false,
        "duration": 120
@@ -1355,7 +1302,7 @@
         -0.05,
         -111.45
        ],
-       "ref": "~house_lvl1/anim_orbe",
+       "ref": "~Build01/anim_orbe",
        "index": 0,
        "tweened": false,
        "duration": 120
@@ -13006,7 +12953,7 @@
        "ref": "portail_portail",
        "index": 0,
        "tweened": false,
-       "duration": 291
+       "duration": 286
       }
      ],
      "name": "sous_portail"
@@ -13015,7 +12962,7 @@
      "keyframes": [
       {
        "index": 0,
-       "duration": 42
+       "duration": 37
       },
       {
        "scale": [
@@ -13035,38 +12982,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 42,
+       "index": 37,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 44,
-       "duration": 2
-      },
-      {
-       "scale": [
-        0.3105,
-        0.7196
-       ],
-       "pivot": [
-        0.2,
-        0.05
-       ],
-       "skew": [
-        0,
-        -0.4636
-       ],
-       "loc": [
-        -0.5945,
-        11.0582
-       ],
-       "ref": "anim_intern_portail",
-       "index": 46,
-       "tweened": false,
-       "duration": 2
-      },
-      {
-       "index": 48,
+       "index": 39,
        "duration": 2
       },
       {
@@ -13087,13 +13008,65 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 50,
+       "index": 41,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 52,
+       "index": 43,
        "duration": 2
+      },
+      {
+       "scale": [
+        0.3105,
+        0.7196
+       ],
+       "pivot": [
+        0.2,
+        0.05
+       ],
+       "skew": [
+        0,
+        -0.4636
+       ],
+       "loc": [
+        -0.5945,
+        11.0582
+       ],
+       "ref": "anim_intern_portail",
+       "index": 45,
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "index": 47,
+       "duration": 2
+      },
+      {
+       "scale": [
+        0.3105,
+        0.7196
+       ],
+       "pivot": [
+        0.2,
+        0.05
+       ],
+       "skew": [
+        0,
+        -0.4636
+       ],
+       "loc": [
+        -0.5945,
+        11.0582
+       ],
+       "ref": "anim_intern_portail",
+       "index": 49,
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "index": 51,
+       "duration": 3
       },
       {
        "scale": [
@@ -13119,7 +13092,7 @@
       },
       {
        "index": 56,
-       "duration": 3
+       "duration": 5
       },
       {
        "scale": [
@@ -13139,38 +13112,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 59,
-       "tweened": false,
-       "duration": 2
-      },
-      {
        "index": 61,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.3105,
-        0.7196
-       ],
-       "pivot": [
-        0.2,
-        0.05
-       ],
-       "skew": [
-        0,
-        -0.4636
-       ],
-       "loc": [
-        -0.5945,
-        11.0582
-       ],
-       "ref": "anim_intern_portail",
-       "index": 66,
        "tweened": false,
        "duration": 3
       },
       {
-       "index": 69,
+       "index": 64,
        "duration": 5
       },
       {
@@ -13191,12 +13138,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 74,
+       "index": 69,
        "tweened": false,
        "duration": 174
       },
       {
-       "index": 248,
+       "index": 243,
        "duration": 5
       },
       {
@@ -13217,12 +13164,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 253,
+       "index": 248,
        "tweened": false,
        "duration": 3
       },
       {
-       "index": 256,
+       "index": 251,
        "duration": 5
       },
       {
@@ -13243,12 +13190,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 261,
+       "index": 256,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 263,
+       "index": 258,
        "duration": 2
       },
       {
@@ -13269,12 +13216,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 265,
+       "index": 260,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 267,
+       "index": 262,
        "duration": 2
       },
       {
@@ -13295,12 +13242,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 269,
+       "index": 264,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 271,
+       "index": 266,
        "duration": 2
       },
       {
@@ -13321,12 +13268,12 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 273,
+       "index": 268,
        "tweened": false,
        "duration": 2
       },
       {
-       "index": 275,
+       "index": 270,
        "duration": 2
       },
       {
@@ -13347,7 +13294,7 @@
         11.0582
        ],
        "ref": "anim_intern_portail",
-       "index": 277,
+       "index": 272,
        "tweened": false,
        "duration": 3
       }
@@ -13368,7 +13315,7 @@
        "ref": "portail_right_door",
        "index": 0,
        "tweened": false,
-       "duration": 14
+       "duration": 9
       },
       {
        "pivot": [
@@ -13381,7 +13328,7 @@
         -1.7
        ],
        "ref": "portail_right_door",
-       "index": 14,
+       "index": 9,
        "duration": 2
       },
       {
@@ -13402,7 +13349,7 @@
         4.8998
        ],
        "ref": "portail_right_door",
-       "index": 16,
+       "index": 11,
        "duration": 3
       },
       {
@@ -13423,7 +13370,7 @@
         11.1498
        ],
        "ref": "portail_right_door",
-       "index": 19,
+       "index": 14,
        "duration": 3
       },
       {
@@ -13444,7 +13391,7 @@
         4.8998
        ],
        "ref": "portail_right_door",
-       "index": 22,
+       "index": 17,
        "duration": 2
       },
       {
@@ -13465,7 +13412,7 @@
         6.9998
        ],
        "ref": "portail_right_door",
-       "index": 24,
+       "index": 19,
        "duration": 2
       },
       {
@@ -13486,7 +13433,7 @@
         4.8998
        ],
        "ref": "portail_right_door",
-       "index": 26,
+       "index": 21,
        "tweened": false,
        "duration": 262
       },
@@ -13508,7 +13455,7 @@
         4.8998
        ],
        "ref": "portail_right_door",
-       "index": 288,
+       "index": 283,
        "ease": 1,
        "duration": 2
       },
@@ -13518,7 +13465,7 @@
         -1.7
        ],
        "ref": "portail_right_door",
-       "index": 290,
+       "index": 285,
        "pivot": [
         25.1,
         111.8
@@ -13532,7 +13479,7 @@
      "keyframes": [
       {
        "index": 0,
-       "duration": 102
+       "duration": 97
       },
       {
        "loc": [
@@ -13540,7 +13487,7 @@
         -3.15
        ],
        "ref": "anim_portail_ame",
-       "index": 102,
+       "index": 97,
        "tweened": false,
        "duration": 115
       }
@@ -13561,7 +13508,7 @@
        "ref": "portail_left_door",
        "index": 0,
        "tweened": false,
-       "duration": 14
+       "duration": 9
       },
       {
        "pivot": [
@@ -13574,7 +13521,7 @@
         7.45
        ],
        "ref": "portail_left_door",
-       "index": 14,
+       "index": 9,
        "duration": 2
       },
       {
@@ -13595,7 +13542,7 @@
         32.35
        ],
        "ref": "portail_left_door",
-       "index": 16,
+       "index": 11,
        "duration": 3
       },
       {
@@ -13616,7 +13563,7 @@
         33.6353
        ],
        "ref": "portail_left_door",
-       "index": 19,
+       "index": 14,
        "duration": 3
       },
       {
@@ -13637,7 +13584,7 @@
         32.35
        ],
        "ref": "portail_left_door",
-       "index": 22,
+       "index": 17,
        "duration": 2
       },
       {
@@ -13658,7 +13605,7 @@
         32.738
        ],
        "ref": "portail_left_door",
-       "index": 24,
+       "index": 19,
        "duration": 2
       },
       {
@@ -13679,7 +13626,7 @@
         32.35
        ],
        "ref": "portail_left_door",
-       "index": 26,
+       "index": 21,
        "tweened": false,
        "duration": 262
       },
@@ -13701,7 +13648,7 @@
         32.35
        ],
        "ref": "portail_left_door",
-       "index": 288,
+       "index": 283,
        "ease": 1,
        "duration": 2
       },
@@ -13711,7 +13658,7 @@
         7.45
        ],
        "ref": "portail_left_door",
-       "index": 290,
+       "index": 285,
        "pivot": [
         34.5,
         106
@@ -13724,7 +13671,7 @@
    ]
   },
   {
-   "id": "~house_lvl1/Heaven_house_lvl1",
+   "id": "~Build01/Heaven_house_lvl1",
    "layers": [
     {
      "keyframes": [
@@ -13805,7 +13752,7 @@
         -0.05,
         -111.45
        ],
-       "ref": "~house_lvl1/anim_orbe",
+       "ref": "~Build01/anim_orbe",
        "index": 0,
        "tweened": false,
        "duration": 1
@@ -13816,7 +13763,7 @@
    ]
   },
   {
-   "id": "~house_lvl1/anim_orbe",
+   "id": "~Build01/anim_orbe",
    "layers": [
     {
      "keyframes": [
@@ -13895,7 +13842,7 @@
    ]
   },
   {
-   "id": "~house_lvl2/Heaven_house_lvl2",
+   "id": "~build02/Heaven_house_lvl2",
    "layers": [
     {
      "keyframes": [
@@ -13961,7 +13908,7 @@
         -12.4,
         -169.15
        ],
-       "ref": "~house_lvl2/anim_Lwing",
+       "ref": "~build02/anim_Lwing",
        "index": 0,
        "tweened": false,
        "duration": 1
@@ -14010,7 +13957,7 @@
         -0.05,
         -111.45
        ],
-       "ref": "~house_lvl1/anim_orbe",
+       "ref": "~Build01/anim_orbe",
        "index": 0,
        "tweened": false,
        "duration": 1
@@ -14021,7 +13968,7 @@
    ]
   },
   {
-   "id": "~house_lvl2/anim_Lwing",
+   "id": "~build02/anim_Lwing",
    "layers": [
     {
      "keyframes": [
@@ -14364,9 +14311,644 @@
      "name": "Calque 3"
     }
    ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim0",
+       "index": 0,
+       "tweened": false,
+       "scale": [
+        2.3692,
+        2.3692
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "heavenbuilding_rune_anim1"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim2",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "rune_heaven1.png"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "rune_heaven2.png"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.365,
+        0.365
+       ],
+       "tweened": false,
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim3",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "heavenbuilding_rune_anim3"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim_spe",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "heavenbuilding_rune_anim1"
+    }
+   ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim0",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "Heavenbuilding_rune1",
+       "index": 0,
+       "pivot": [
+        131.05,
+        119.05
+       ],
+       "duration": 499
+      },
+      {
+       "ref": "Heavenbuilding_rune1",
+       "index": 499,
+       "pivot": [
+        131.05,
+        119.05
+       ],
+       "skew": [
+        6.2832,
+        6.2832
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim1",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "Heavenbuilding_rune1",
+       "index": 0,
+       "pivot": [
+        131.05,
+        119.05
+       ],
+       "duration": 399
+      },
+      {
+       "ref": "Heavenbuilding_rune1",
+       "index": 399,
+       "pivot": [
+        131.05,
+        119.05
+       ],
+       "skew": [
+        6.2832,
+        6.2832
+       ],
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim2",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        0.05
+       ],
+       "ref": "Heavenbuilding_rune2",
+       "index": 0,
+       "pivot": [
+        213.5,
+        214.55
+       ],
+       "duration": 449
+      },
+      {
+       "pivot": [
+        213.5,
+        214.55
+       ],
+       "skew": [
+        -6.2832,
+        -6.2832
+       ],
+       "loc": [
+        0,
+        0.05
+       ],
+       "ref": "Heavenbuilding_rune2",
+       "index": 449,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim3",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        0,
+        0.05
+       ],
+       "ref": "Heavenbuilding_rune2",
+       "index": 0,
+       "pivot": [
+        213.5,
+        214.55
+       ],
+       "duration": 349
+      },
+      {
+       "pivot": [
+        213.5,
+        214.55
+       ],
+       "skew": [
+        -6.2832,
+        -6.2832
+       ],
+       "loc": [
+        0,
+        0.05
+       ],
+       "ref": "Heavenbuilding_rune2",
+       "index": 349,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
+  },
+  {
+   "id": "~fx/heavenbuilding_rune_anim_spe",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 0,
+       "duration": 4
+      },
+      {
+       "loc": [
+        0,
+        -5.8
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 4,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -22.7
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 9,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -71.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 19,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -306.3
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 59,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -355.2
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 69,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -373.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 74,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -381.25
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 79,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -372.9
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 84,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -354.95
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 89,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -306.15
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 99,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -73.65
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 139,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -25.6
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 149,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -8.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 154,
+       "duration": 5
+      },
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 159,
+       "tweened": false,
+       "duration": 41
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 0,
+       "tweened": false,
+       "duration": 19
+      },
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 19,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -8.5
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 24,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -26.8
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 29,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -76.4
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 39,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -308.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 79,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -355.85
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 89,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -373.25
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 94,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -381.25
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 99,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -372.75
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 104,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -354.45
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 109,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -304.85
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 119,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -69.6
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 159,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -22
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 169,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -5.55
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 174,
+       "duration": 5
+      },
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 179,
+       "tweened": false,
+       "duration": 21
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 0,
+       "tweened": false,
+       "duration": 39
+      },
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 39,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -8.5
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 44,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -26.8
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 49,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -76.4
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 59,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -308.05
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 99,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -355.85
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 109,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -373.25
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 114,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -381.25
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 119,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -373.1
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 124,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -355.45
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 129,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -307.5
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 139,
+       "duration": 40
+      },
+      {
+       "loc": [
+        0,
+        -77.6
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 179,
+       "duration": 10
+      },
+      {
+       "loc": [
+        0,
+        -29.15
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 189,
+       "duration": 5
+      },
+      {
+       "loc": [
+        0,
+        -10.75
+       ],
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 194,
+       "duration": 5
+      },
+      {
+       "ref": "~fx/heavenbuilding_rune_anim1",
+       "index": 199,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
+    }
+   ]
   }
  ],
- "md5": "15beb4595e154e1b1af93f27bb6c47f5",
+ "md5": "a741411039c77eb36dfaf8c4226ec97a",
  "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
@@ -14410,9 +14992,9 @@
        ],
        "origin": [
         346.15,
-        198.1
+        198.05
        ],
-       "symbol": "halo_front"
+       "symbol": "halo_back"
       },
       {
        "rect": [
@@ -14423,9 +15005,9 @@
        ],
        "origin": [
         346.15,
-        198.05
+        198.1
        ],
-       "symbol": "halo_back"
+       "symbol": "halo_front"
       },
       {
        "rect": [
@@ -14457,6 +15039,19 @@
        "rect": [
         1183,
         799,
+        427,
+        429
+       ],
+       "origin": [
+        213.5,
+        214.55
+       ],
+       "symbol": "Heavenbuilding_rune2"
+      },
+      {
+       "rect": [
+        1612,
+        799,
         412,
         406
        ],
@@ -14468,8 +15063,8 @@
       },
       {
        "rect": [
-        1597,
-        799,
+        1612,
+        1207,
         413,
         401
        ],
@@ -14481,8 +15076,8 @@
       },
       {
        "rect": [
-        1597,
-        1202,
+        463,
+        1080,
         373,
         392
        ],
@@ -14494,8 +15089,8 @@
       },
       {
        "rect": [
-        463,
-        1080,
+        1,
+        1120,
         373,
         392
        ],
@@ -14520,8 +15115,8 @@
       },
       {
        "rect": [
-        1172,
-        1207,
+        376,
+        1474,
         404,
         324
        ],
@@ -14534,7 +15129,7 @@
       {
        "rect": [
         1,
-        1120,
+        1514,
         366,
         343
        ],
@@ -14546,8 +15141,8 @@
       },
       {
        "rect": [
-        1,
-        1474,
+        782,
+        1482,
         466,
         267
        ],
@@ -14559,8 +15154,8 @@
       },
       {
        "rect": [
-        469,
-        1474,
+        1250,
+        1230,
         350,
         350
        ],
@@ -14572,8 +15167,8 @@
       },
       {
        "rect": [
-        821,
-        1482,
+        1250,
+        1582,
         318,
         382
        ],
@@ -14585,8 +15180,8 @@
       },
       {
        "rect": [
-        1,
-        1743,
+        782,
+        1751,
         433,
         218
        ],
@@ -14598,8 +15193,8 @@
       },
       {
        "rect": [
-        1141,
-        1533,
+        1570,
+        1610,
         311,
         276
        ],
@@ -14611,8 +15206,8 @@
       },
       {
        "rect": [
-        436,
-        1826,
+        369,
+        1800,
         360,
         205
        ],
@@ -14621,19 +15216,6 @@
         102.5
        ],
        "symbol": "hevean_house_3_petitebranche"
-      },
-      {
-       "rect": [
-        1454,
-        1596,
-        260,
-        263
-       ],
-       "origin": [
-        130.05,
-        11.7
-       ],
-       "symbol": "_heaven_Bridge"
       },
       {
        "rect": [
@@ -14650,8 +15232,8 @@
       },
       {
        "rect": [
-        1716,
-        1596,
+        1883,
+        1610,
         159,
         250
        ],
@@ -14660,32 +15242,6 @@
         125
        ],
        "symbol": "heaven_house3_brancheback"
-      },
-      {
-       "rect": [
-        1141,
-        1811,
-        160,
-        211
-       ],
-       "origin": [
-        80,
-        105.5
-       ],
-       "symbol": "rbackwing"
-      },
-      {
-       "rect": [
-        1877,
-        1596,
-        109,
-        282
-       ],
-       "origin": [
-        54.5,
-        141
-       ],
-       "symbol": "L_backqing"
       },
       {
        "rect": [
@@ -14702,8 +15258,8 @@
       },
       {
        "rect": [
-        1716,
-        1848,
+        1883,
+        1862,
         157,
         150
        ],
@@ -14715,7 +15271,7 @@
       },
       {
        "rect": [
-        369,
+        376,
         1120,
         84,
         279
@@ -14728,8 +15284,8 @@
       },
       {
        "rect": [
-        1875,
-        1880,
+        1570,
+        1888,
         166,
         140
        ],
@@ -14741,8 +15297,8 @@
       },
       {
        "rect": [
-        1303,
-        1811,
+        1,
+        1859,
         124,
         179
        ],
@@ -14754,8 +15310,8 @@
       },
       {
        "rect": [
-        1429,
-        1861,
+        127,
+        1859,
         147,
         148
        ],
@@ -14764,19 +15320,6 @@
         0
        ],
        "symbol": "Symb10"
-      },
-      {
-       "rect": [
-        1578,
-        1861,
-        107,
-        177
-       ],
-       "origin": [
-        53.5,
-        88.5
-       ],
-       "symbol": "heaven_house_lvl1_arbre"
       },
       {
        "rect": [
@@ -14793,21 +15336,8 @@
       },
       {
        "rect": [
-        798,
-        1866,
-        179,
-        90
-       ],
-       "origin": [
-        89.35,
-        0
-       ],
-       "symbol": "_ground"
-      },
-      {
-       "rect": [
-        1972,
-        1202,
+        1172,
+        1230,
         70,
         213
        ],
@@ -14819,34 +15349,34 @@
       },
       {
        "rect": [
-        979,
-        1866,
-        156,
-        94
+        1738,
+        1888,
+        95,
+        150
        ],
        "origin": [
-        -1.4,
-        -1.75
-       ],
-       "symbol": "Symb11"
-      },
-      {
-       "rect": [
-        1988,
-        1417,
-        59,
-        224
-       ],
-       "origin": [
-        0.3,
+        0,
         0
        ],
-       "symbol": "Symb17"
+       "symbol": "Symb18"
       },
       {
        "rect": [
-        1988,
-        1643,
+        276,
+        1859,
+        75,
+        170
+       ],
+       "origin": [
+        37.5,
+        85
+       ],
+       "symbol": "heaven_house_lvl2_R_wing"
+      },
+      {
+       "rect": [
+        1996,
+        1,
         51,
         224
        ],
@@ -14858,8 +15388,8 @@
       },
       {
        "rect": [
-        798,
-        1958,
+        1217,
+        1966,
         139,
         72
        ],
@@ -14871,8 +15401,8 @@
       },
       {
        "rect": [
-        939,
-        1962,
+        1358,
+        1966,
         114,
         71
        ],
@@ -14884,8 +15414,8 @@
       },
       {
        "rect": [
-        1,
-        1963,
+        731,
+        1971,
         96,
         76
        ],
@@ -14897,8 +15427,8 @@
       },
       {
        "rect": [
-        1996,
-        1,
+        1835,
+        1888,
         43,
         159
        ],
@@ -14910,8 +15440,8 @@
       },
       {
        "rect": [
-        1454,
-        1533,
+        829,
+        1971,
         119,
         57
        ],
@@ -14923,8 +15453,8 @@
       },
       {
        "rect": [
-        1996,
-        162,
+        731,
+        1800,
         48,
         138
        ],
@@ -14936,8 +15466,8 @@
       },
       {
        "rect": [
-        99,
-        1963,
+        950,
+        1971,
         109,
         59
        ],
@@ -14949,8 +15479,8 @@
       },
       {
        "rect": [
-        369,
-        1401,
+        1474,
+        1966,
         88,
         70
        ],
@@ -14975,21 +15505,8 @@
       },
       {
        "rect": [
-        1055,
-        1962,
-        77,
-        77
-       ],
-       "origin": [
-        38.5,
-        38.5
-       ],
-       "symbol": "Orbe"
-      },
-      {
-       "rect": [
-        1303,
-        1992,
+        1061,
+        1971,
         118,
         49
        ],
@@ -15001,34 +15518,21 @@
       },
       {
        "rect": [
-        210,
-        1963,
-        74,
-        73
+        376,
+        1401,
+        78,
+        54
        ],
        "origin": [
-        0,
-        0
+        -1.7,
+        -32.45
        ],
-       "symbol": "Symb8"
+       "symbol": "Symb9"
       },
       {
        "rect": [
-        286,
-        1963,
-        104,
-        50
-       ],
-       "origin": [
-        0,
-        0.85
-       ],
-       "symbol": "Symb13"
-      },
-      {
-       "rect": [
-        286,
-        2015,
+        1880,
+        2014,
         127,
         30
        ],
@@ -15040,8 +15544,8 @@
       },
       {
        "rect": [
-        1423,
-        2011,
+        1172,
+        1445,
         58,
         28
        ],
@@ -15053,8 +15557,8 @@
       },
       {
        "rect": [
-        1141,
-        1482,
+        2009,
+        2014,
         24,
         28
        ],
@@ -15073,6 +15577,71 @@
        "rect": [
         1,
         1,
+        260,
+        263
+       ],
+       "origin": [
+        130.05,
+        11.7
+       ],
+       "symbol": "_heaven_Bridge"
+      },
+      {
+       "rect": [
+        1,
+        266,
+        262,
+        238
+       ],
+       "origin": [
+        131.05,
+        119.05
+       ],
+       "symbol": "Heavenbuilding_rune1"
+      },
+      {
+       "rect": [
+        263,
+        1,
+        160,
+        211
+       ],
+       "origin": [
+        80,
+        105.5
+       ],
+       "symbol": "rbackwing"
+      },
+      {
+       "rect": [
+        265,
+        214,
+        109,
+        282
+       ],
+       "origin": [
+        54.5,
+        141
+       ],
+       "symbol": "L_backqing"
+      },
+      {
+       "rect": [
+        376,
+        214,
+        107,
+        177
+       ],
+       "origin": [
+        53.5,
+        88.5
+       ],
+       "symbol": "heaven_house_lvl1_arbre"
+      },
+      {
+       "rect": [
+        376,
+        393,
         91,
         199
        ],
@@ -15085,20 +15654,46 @@
       {
        "rect": [
         1,
-        202,
-        95,
-        150
+        506,
+        179,
+        90
        ],
        "origin": [
-        0,
+        89.35,
         0
        ],
-       "symbol": "Symb18"
+       "symbol": "_ground"
+      },
+      {
+       "rect": [
+        182,
+        506,
+        156,
+        94
+       ],
+       "origin": [
+        -1.4,
+        -1.75
+       ],
+       "symbol": "Symb11"
+      },
+      {
+       "rect": [
+        340,
+        594,
+        59,
+        224
+       ],
+       "origin": [
+        0.3,
+        0
+       ],
+       "symbol": "Symb17"
       },
       {
        "rect": [
         1,
-        354,
+        598,
         119,
         110
        ],
@@ -15110,21 +15705,8 @@
       },
       {
        "rect": [
-        94,
-        1,
-        75,
-        170
-       ],
-       "origin": [
-        37.5,
-        85
-       ],
-       "symbol": "heaven_house_lvl2_R_wing"
-      },
-      {
-       "rect": [
-        98,
-        173,
+        122,
+        602,
         130,
         98
        ],
@@ -15136,7 +15718,7 @@
       },
       {
        "rect": [
-        171,
+        425,
         1,
         86,
         134
@@ -15150,7 +15732,7 @@
       {
        "rect": [
         122,
-        273,
+        702,
         114,
         98
        ],
@@ -15162,8 +15744,8 @@
       },
       {
        "rect": [
-        230,
-        137,
+        238,
+        702,
         92,
         104
        ],
@@ -15175,8 +15757,8 @@
       },
       {
        "rect": [
-        259,
         1,
+        710,
         94,
         99
        ],
@@ -15188,8 +15770,8 @@
       },
       {
        "rect": [
-        122,
-        373,
+        97,
+        802,
         94,
         94
        ],
@@ -15201,8 +15783,8 @@
       },
       {
        "rect": [
-        218,
-        373,
+        1,
+        811,
         63,
         135
        ],
@@ -15214,21 +15796,47 @@
       },
       {
        "rect": [
-        238,
-        243,
-        78,
-        54
+        254,
+        602,
+        77,
+        77
        ],
        "origin": [
-        -1.7,
-        -32.45
+        38.5,
+        38.5
        ],
-       "symbol": "Symb9"
+       "symbol": "Orbe"
       },
       {
        "rect": [
-        238,
-        299,
+        425,
+        137,
+        74,
+        73
+       ],
+       "origin": [
+        0,
+        0
+       ],
+       "symbol": "Symb8"
+      },
+      {
+       "rect": [
+        193,
+        808,
+        104,
+        50
+       ],
+       "origin": [
+        0,
+        0.85
+       ],
+       "symbol": "Symb13"
+      },
+      {
+       "rect": [
+        1,
+        948,
         65,
         61
        ],

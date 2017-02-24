@@ -1,11 +1,190 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_bg_heaven_02",
+       "origin": [
+        37.5,
+        63.55
+       ],
+       "rect": [
+        1,
+        1,
+        1357,
+        1466
+       ]
+      },
+      {
+       "symbol": "HR_rock2",
+       "origin": [
+        54.5,
+        78.5
+       ],
+       "rect": [
+        1,
+        1469,
+        109,
+        157
+       ]
+      },
+      {
+       "symbol": "HR_nuage4",
+       "origin": [
+        52.5,
+        41
+       ],
+       "rect": [
+        1,
+        1628,
+        105,
+        82
+       ]
+      },
+      {
+       "symbol": "HR_nuage2",
+       "origin": [
+        46.5,
+        41
+       ],
+       "rect": [
+        1,
+        1712,
+        93,
+        82
+       ]
+      },
+      {
+       "symbol": "HR_rock4",
+       "origin": [
+        40.5,
+        45.5
+       ],
+       "rect": [
+        1,
+        1796,
+        81,
+        91
+       ]
+      },
+      {
+       "symbol": "HR_rock3",
+       "origin": [
+        30,
+        0
+       ],
+       "rect": [
+        1,
+        1889,
+        60,
+        101
+       ]
+      },
+      {
+       "symbol": "HR_nuage3",
+       "origin": [
+        37.5,
+        32
+       ],
+       "rect": [
+        63,
+        1889,
+        75,
+        64
+       ]
+      },
+      {
+       "symbol": "HR_nuage1",
+       "origin": [
+        32,
+        37
+       ],
+       "rect": [
+        84,
+        1796,
+        64,
+        74
+       ]
+      },
+      {
+       "symbol": "HR_rock1",
+       "origin": [
+        24.5,
+        47
+       ],
+       "rect": [
+        108,
+        1628,
+        49,
+        94
+       ]
+      },
+      {
+       "symbol": "HR_nuage5",
+       "origin": [
+        37.5,
+        30
+       ],
+       "rect": [
+        96,
+        1724,
+        75,
+        60
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "HR_part1",
+       "origin": [
+        642,
+        733
+       ],
+       "rect": [
+        1,
+        1,
+        1284,
+        1466
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas2.png",
+     "textures": [
+      {
+       "symbol": "_bg_heaven01",
+       "origin": [
+        1317.1,
+        58.25
+       ],
+       "rect": [
+        1,
+        1,
+        1284,
+        1466
+       ]
+      }
+     ]
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "movies": [
   {
-   "id": "BG_Heaven",
    "layers": [
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
         682.1,
         727.75
@@ -14,10 +193,9 @@
         -597.15,
         703.2
        ],
-       "tweened": false,
-       "ref": "_bg_heaven01",
        "index": 0,
-       "duration": 1
+       "ref": "_bg_heaven01",
+       "tweened": false
       }
      ],
      "name": "Calque 1"
@@ -25,69 +203,419 @@
     {
      "keyframes": [
       {
+       "duration": 1,
        "pivot": [
-        598.85,
+        672.5,
         733.05
        ],
        "loc": [
         603.6,
         708.8
        ],
-       "tweened": false,
-       "ref": "_bg_heaven_02",
        "index": 0,
-       "duration": 1
+       "ref": "_bg_heaven_02",
+       "tweened": false
       }
      ],
      "name": "Calque 2"
     }
-   ]
+   ],
+   "id": "BG_Heaven"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.9987,
+        1
+       ],
+       "skew": [
+        0,
+        0.4636
+       ],
+       "loc": [
+        5.1,
+        -8.1
+       ],
+       "index": 0,
+       "ref": "~HR_anim_nuage3",
+       "duration": 930
+      },
+      {
+       "scale": [
+        0.9914,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        771.45,
+        375.8
+       ],
+       "index": 930,
+       "ref": "~HR_anim_nuage3",
+       "duration": 29
+      },
+      {
+       "scale": [
+        0.9925,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        793.1,
+        390.4
+       ],
+       "index": 959,
+       "ref": "~HR_anim_nuage3",
+       "duration": 40
+      },
+      {
+       "scale": [
+        0.9936,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        818.55,
+        418.55
+       ],
+       "index": 999,
+       "ref": "~HR_anim_nuage3",
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.9948,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        832.75,
+        443.3
+       ],
+       "index": 1029,
+       "ref": "~HR_anim_nuage3",
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.9961,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        842.8,
+        470.1
+       ],
+       "index": 1059,
+       "ref": "~HR_anim_nuage3",
+       "duration": 40
+      },
+      {
+       "scale": [
+        0.9974,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        850.6,
+        507.45
+       ],
+       "index": 1099,
+       "ref": "~HR_anim_nuage3",
+       "duration": 33
+      },
+      {
+       "scale": [
+        0.9987,
+        1
+       ],
+       "skew": [
+        0,
+        0.4636
+       ],
+       "loc": [
+        853.3,
+        538.8
+       ],
+       "index": 1132,
+       "ref": "~HR_anim_nuage3",
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.9987,
+        1
+       ],
+       "skew": [
+        0,
+        0.4636
+       ],
+       "loc": [
+        -303.15,
+        -55.4
+       ],
+       "index": 1133,
+       "ref": "~HR_anim_nuage3",
+       "duration": 26
+      },
+      {
+       "scale": [
+        0.9974,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        -294.8,
+        -79.35
+       ],
+       "index": 1159,
+       "ref": "~HR_anim_nuage3",
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.9962,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        -280.3,
+        -104.95
+       ],
+       "index": 1189,
+       "ref": "~HR_anim_nuage3",
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.9951,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        -258.7,
+        -124.5
+       ],
+       "index": 1219,
+       "ref": "~HR_anim_nuage3",
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.9942,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        -229.45,
+        -122.5
+       ],
+       "index": 1249,
+       "ref": "~HR_anim_nuage3",
+       "duration": 250
+      },
+      {
+       "scale": [
+        0.9987,
+        1
+       ],
+       "skew": [
+        0,
+        0.4636
+       ],
+       "loc": [
+        5.1,
+        -8.1
+       ],
+       "index": 1499,
+       "ref": "~HR_anim_nuage3",
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
+    }
+   ],
+   "id": "HR_anim_move_nuage3_2"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "index": 0,
+       "ref": "HR_nuage3",
+       "duration": 9
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -0.8
+       ],
+       "index": 9,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -3.3
+       ],
+       "index": 19,
+       "ref": "HR_nuage3",
+       "duration": 60
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -34.4
+       ],
+       "index": 79,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -38
+       ],
+       "index": 89,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -39.4
+       ],
+       "index": 99,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -38.45
+       ],
+       "index": 109,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -35.85
+       ],
+       "index": 119,
+       "ref": "HR_nuage3",
+       "duration": 60
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -4.9
+       ],
+       "index": 179,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "loc": [
+        0,
+        -1.4
+       ],
+       "index": 189,
+       "ref": "HR_nuage3",
+       "duration": 10
+      },
+      {
+       "pivot": [
+        37.5,
+        32
+       ],
+       "index": 199,
+       "ref": "HR_nuage3",
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "~HR_anim_nuage3"
   }
  ],
- "md5": "691e9cae6e144c33f063f8dc9af96a9f",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1284,
-        1466
-       ],
-       "origin": [
-        1317.1,
-        58.25
-       ],
-       "symbol": "_bg_heaven01"
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        1283,
-        1466
-       ],
-       "origin": [
-        -36.15,
-        63.55
-       ],
-       "symbol": "_bg_heaven_02"
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ]
-  }
- ]
+ "md5": "9919b3520b91905411ecfd557f65a8ae",
+ "frameRate": 24
 }

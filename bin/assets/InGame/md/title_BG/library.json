@@ -7,42 +7,16 @@
      "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "title_HD",
+       "symbol": "title_card_6",
        "origin": [
-        288.75,
-        228.4
+        384,
+        512.25
        ],
        "rect": [
         1,
         1,
-        578,
-        457
-       ]
-      },
-      {
-       "symbol": "title_BG",
-       "origin": [
-        288,
-        228.4
-       ],
-       "rect": [
-        1,
-        460,
-        576,
-        457
-       ]
-      },
-      {
-       "symbol": "title_BD",
-       "origin": [
-        288,
-        228.4
-       ],
-       "rect": [
-        1,
-        919,
-        576,
-        457
+        768,
+        1025
        ]
       }
      ]
@@ -51,16 +25,160 @@
      "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "title_HG",
+       "symbol": "title_2",
        "origin": [
-        288,
-        228.4
+        384,
+        512.25
        ],
        "rect": [
         1,
         1,
-        576,
-        457
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas2.png",
+     "textures": [
+      {
+       "symbol": "title_card_3",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas3.png",
+     "textures": [
+      {
+       "symbol": "title_card_4",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas4.png",
+     "textures": [
+      {
+       "symbol": "title_card_5",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas5.png",
+     "textures": [
+      {
+       "symbol": "title_1",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas6.png",
+     "textures": [
+      {
+       "symbol": "title_card_7",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas7.png",
+     "textures": [
+      {
+       "symbol": "title_card_8",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas8.png",
+     "textures": [
+      {
+       "symbol": "title3",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas9.png",
+     "textures": [
+      {
+       "symbol": "title4",
+       "origin": [
+        384,
+        512.25
+       ],
+       "rect": [
+        1,
+        1,
+        768,
+        1025
        ]
       }
      ]
@@ -73,85 +191,170 @@
   {
    "layers": [
     {
+     "name": "title_BG",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        288.75,
-        228.375
+        384,
+        512.25
        ],
        "loc": [
-        287.2875,
-        -229.4625
+        -1150.5,
+        512.0625
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_HD"
+       "ref": "title_card_5"
       }
-     ],
-     "name": "Calque 1"
+     ]
     },
     {
+     "name": "title_BG_2",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        288,
-        228.375
+        384,
+        512.25
        ],
        "loc": [
-        -288.1125,
-        -229.125
+        -382.6875,
+        511.1625
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_HG"
+       "ref": "title_card_6"
       }
-     ],
-     "name": "Calque 3"
+     ]
     },
     {
+     "name": "title_HG",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        288,
-        228.375
+        384,
+        512.25
        ],
        "loc": [
-        -287.9625,
-        227.625
+        -1150.7625,
+        -512.9625
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_BG"
+       "ref": "title_1"
       }
-     ],
-     "name": "Calque 2"
+     ]
     },
     {
+     "name": "title_HG_2",
      "keyframes": [
       {
        "tweened": false,
        "pivot": [
-        288,
-        228.375
+        384,
+        512.25
        ],
        "loc": [
-        288.0375,
-        227.2875
+        -383.775,
+        -513
        ],
        "duration": 1,
        "index": 0,
-       "ref": "title_BD"
+       "ref": "title_2"
       }
-     ],
-     "name": "Calque 4"
+     ]
+    },
+    {
+     "name": "title_HD",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        384,
+        512.25
+       ],
+       "loc": [
+        383.175,
+        -512.5125
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_3"
+      }
+     ]
+    },
+    {
+     "name": "title_HD2",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        384,
+        512.25
+       ],
+       "loc": [
+        1150.5,
+        -513
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_4"
+      }
+     ]
+    },
+    {
+     "name": "title_BD",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        384,
+        512.25
+       ],
+       "loc": [
+        384.75,
+        511.5
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_7"
+      }
+     ]
+    },
+    {
+     "name": "title_BD_2",
+     "keyframes": [
+      {
+       "tweened": false,
+       "pivot": [
+        384,
+        512.25
+       ],
+       "loc": [
+        1152.225,
+        511.6125
+       ],
+       "duration": 1,
+       "index": 0,
+       "ref": "title_card_8"
+      }
+     ]
+    },
+    {
+     "name": "Layer 1",
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 1
+      }
+     ]
     }
    ],
    "id": "Title_card_bg"
   }
  ],
- "md5": "764ae34b54c04f726e5972161dc9dbd1",
+ "md5": "b7acbadd44cbda1e394175071f66704d",
  "frameRate": 24
 }
