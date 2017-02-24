@@ -10,10 +10,10 @@ import com.isartdigital.utils.game.factory.FlumpMovieAnimFactory;
  */
 class FingerAnim extends FlumpStateGraphic
 {
-
-	public function new(pAsset:String=null) 
+	
+	public function new(pAsset:String) 
 	{
-		super("Ftue_DragHand");
+		super(pAsset);
 		
 	}
 	

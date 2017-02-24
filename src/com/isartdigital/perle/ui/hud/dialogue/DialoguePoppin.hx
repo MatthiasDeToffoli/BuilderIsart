@@ -64,6 +64,29 @@ class DialoguePoppin extends SmartScreen
 	private var icon52:SmartComponent;
 	private var icon54:SmartComponent;
 	
+	//iconsEN
+	private var iconEn5:SmartComponent;
+	private var iconEn6:SmartComponent;
+	private var iconEn11:SmartComponent;
+	private var iconEn12:SmartComponent;
+	private var iconEn13:SmartComponent;
+	private var iconEn15:SmartComponent;
+	private var iconEn17:SmartComponent;
+	private var iconEn18:SmartComponent;
+	private var iconEn20:SmartComponent;
+	private var iconEn22:SmartComponent;
+	private var iconEn24:SmartComponent;
+	private var iconEn25:SmartComponent;
+	private var iconEn34:SmartComponent;
+	private var iconEn38:SmartComponent;
+	private var iconEn39:SmartComponent;
+	private var iconEn40:SmartComponent;
+	private var iconEn44:SmartComponent;
+	private var iconEn45:SmartComponent;
+	private var iconEn49:SmartComponent;
+	private var iconEn52:SmartComponent;
+	private var iconEn54:SmartComponent;
+	
 	//Array of the dialogue
 	public static var lNpc_dialogue_ftue:Array<Array<Array<String>>>;
 	
@@ -130,6 +153,28 @@ class DialoguePoppin extends SmartScreen
 		icon52 = cast(getChildByName(AssetName.FTUE_ICON_52), SmartComponent);
 		icon54 = cast(getChildByName(AssetName.FTUE_ICON_54), SmartComponent);
 		
+		iconEn5 = cast(getChildByName(AssetName.FTUE_ICON_EN_5), SmartComponent);
+		iconEn6 = cast(getChildByName(AssetName.FTUE_ICON_EN_6), SmartComponent);
+		iconEn11= cast(getChildByName(AssetName.FTUE_ICON_EN_11), SmartComponent);
+		iconEn12 = cast(getChildByName(AssetName.FTUE_ICON_EN_12), SmartComponent);
+		iconEn13 = cast(getChildByName(AssetName.FTUE_ICON_EN_13), SmartComponent);
+		iconEn15 = cast(getChildByName(AssetName.FTUE_ICON_EN_15), SmartComponent);
+		iconEn17 = cast(getChildByName(AssetName.FTUE_ICON_EN_17), SmartComponent);
+		iconEn18 = cast(getChildByName(AssetName.FTUE_ICON_EN_18), SmartComponent);
+		//iconEn20 = cast(getChildByName(AssetName.FTUE_ICON_EN_20), SmartComponent);
+		iconEn22 = cast(getChildByName(AssetName.FTUE_ICON_EN_22), SmartComponent);
+		iconEn24 = cast(getChildByName(AssetName.FTUE_ICON_EN_24), SmartComponent);
+		iconEn25 = cast(getChildByName(AssetName.FTUE_ICON_EN_25), SmartComponent);
+		iconEn34 = cast(getChildByName(AssetName.FTUE_ICON_EN_34), SmartComponent);
+		iconEn38 = cast(getChildByName(AssetName.FTUE_ICON_EN_38), SmartComponent);
+		iconEn39 = cast(getChildByName(AssetName.FTUE_ICON_EN_39), SmartComponent);
+		iconEn40 = cast(getChildByName(AssetName.FTUE_ICON_EN_40), SmartComponent);
+		iconEn44 = cast(getChildByName(AssetName.FTUE_ICON_EN_44), SmartComponent);
+		iconEn45 = cast(getChildByName(AssetName.FTUE_ICON_EN_45), SmartComponent);
+		iconEn49 = cast(getChildByName(AssetName.FTUE_ICON_EN_49), SmartComponent);
+		iconEn52 = cast(getChildByName(AssetName.FTUE_ICON_EN_52), SmartComponent);
+		iconEn54 = cast(getChildByName(AssetName.FTUE_ICON_EN_54), SmartComponent);
+		
 		btnNext = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON), SmartButton);
 		Interactive.addListenerClick(btnNext, nextStep);
 		btnEnd = cast(getChildByName(AssetName.FTUE_SCENARIO_BUTTON_END), SmartButton);
@@ -146,8 +191,12 @@ class DialoguePoppin extends SmartScreen
 	 */
 	public function createText(pNumber:Int, pNpc:String, pPicture:String, pExpression:String, isAction:Bool, dialogueSaved:Int):Void {
 		setAllFalse();
-		checkIfVisible(pNpc, pExpression, isAction,dialogueSaved);
-		checkIfIcons(pNumber);
+		checkIfVisible(pNpc, pExpression, isAction, dialogueSaved);
+		
+		if(DialogueManager.isFR)
+			checkIfIconsFr(pNumber);
+		else
+			checkIfIconsEn(pNumber);
 		
 		if (npc_speach != null)
 		npc_speach.text = DialogueManager.actual_npc_dialogue_ftue[pNumber - 1][0][1];
@@ -197,7 +246,7 @@ class DialoguePoppin extends SmartScreen
 		npc_speach = cast(SmartCheck.getChildByName(pPanel, AssetName.FTUE_SCENARIO_SPEACH), TextSprite);
 	}
 	
-	private function checkIfIcons(pDialogueNumber:Int) {
+	private function checkIfIconsFr(pDialogueNumber:Int) {
 		switch(pDialogueNumber) {
 			case 5 : icon5.visible = true;
 			case 6 : icon6.visible = true;
@@ -222,6 +271,33 @@ class DialoguePoppin extends SmartScreen
 			case 54 : icon54.visible = true;
 		}
 	}
+	
+	private function checkIfIconsEn(pDialogueNumber:Int) {
+		switch(pDialogueNumber) {
+			case 5 : iconEn5.visible = true;
+			case 6 : iconEn6.visible = true;
+			case 11 : iconEn11.visible = true;
+			case 12 : iconEn12.visible = true;
+			case 13 : iconEn13.visible = true;
+			case 15 : iconEn15.visible = true;
+			case 17 : iconEn17.visible = true;
+			case 18 : iconEn18.visible = true;
+			//case 20 : iconEn20.visible = true;
+			case 22 : iconEn22.visible = true;
+			case 24 : iconEn24.visible = true;
+			case 25 : iconEn25.visible = true;
+			case 34 : iconEn34.visible = true;
+			case 38 : iconEn38.visible = true;
+			case 39 : iconEn39.visible = true;
+			case 40 : iconEn40.visible = true;
+			case 44 : iconEn44.visible = true;
+			case 45 : iconEn45.visible = true;
+			case 49 : iconEn49.visible = true;
+			case 52 : iconEn52.visible = true;
+			case 54 : iconEn54.visible = true;
+		}
+	}
+	
 	
 	public function getNpcHeavenPos():Point {
 		var lNpc:UISprite = cast(SmartCheck.getChildByName(scenarioAngel, "Window_NPC_Heaven_Neutral"), UISprite);
@@ -258,6 +334,28 @@ class DialoguePoppin extends SmartScreen
 		icon49.visible = false;
 		icon52.visible = false;
 		icon54.visible = false;
+		
+		iconEn5.visible = false;
+		iconEn6.visible = false;
+		iconEn11.visible = false;
+		iconEn12.visible = false;
+		iconEn13.visible = false;
+		iconEn15.visible = false;
+		iconEn17.visible = false;
+		iconEn18.visible = false;
+		//iconEn20.visible = false;
+		iconEn22.visible = false;
+		iconEn24.visible = false;
+		iconEn25.visible = false;
+		iconEn34.visible = false;
+		iconEn38.visible = false;
+		iconEn39.visible = false;
+		iconEn40.visible = false;
+		iconEn44.visible = false;
+		iconEn45.visible = false;
+		iconEn49.visible = false;
+		iconEn52.visible = false;
+		iconEn54.visible = false;
 	}
 	
 	/**

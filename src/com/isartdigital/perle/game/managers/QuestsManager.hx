@@ -112,7 +112,7 @@ class QuestsManager
 		var lGap:Int = 0;
 		for (i in 0...NUMBER_EVENTS){
 			if (DialogueManager.ftueStepResolveIntern || DialogueManager.ftueStepMakeAllChoice || DialogueManager.ftueStepMakeChoice)
-				lGap = FTUE_TIMELINE[pIntern.speed - 1] + lGap;
+				lGap = FTUE_TIMELINE[pIntern.speed - 1];
 			else
 				lGap = GAP_TIME_LEVELS_ARRAY[pIntern.speed - 1];
 				

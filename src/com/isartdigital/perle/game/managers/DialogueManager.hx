@@ -116,7 +116,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = true;
+		isFR = false;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
@@ -128,7 +128,7 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
-		//dialogueSaved = 21;
+		//dialogueSaved = 12;
 		//SaveManager.save();
 		
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
@@ -180,7 +180,7 @@ class DialogueManager
 			
 		nextStep();
 	}
-	
+
 	/**
 	 * Function to stop recolt steps
 	 */
@@ -293,7 +293,7 @@ class DialogueManager
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].moveCamera) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				cameraHaveToMove = true;
-				createFingerAnim(new Point(0,0));
+				createFingerAnim(AssetName.FTUE_DRAG, new Point(0,0));
 				openFtueLock();
 				FocusManager.getInstance().setFocus(null);
 			}
@@ -346,7 +346,7 @@ class DialogueManager
 			}
 			else if (steps[dialogueSaved].jugeSouls) {
 				ftueStepSlideCard = true;
-				createFingerAnim(null,true);
+				createFingerAnim(AssetName.FTUE_DRAG_MOVE, null,true);
 			}
 			else if (steps[dialogueSaved].closePurgatory)
 				ftueClosePurgatory = true;
@@ -514,11 +514,11 @@ class DialogueManager
 	}
 	
 	private static function createFingerAnimAfterDelay():Void {
-		createFingerAnim(Choice.getInstance().getCardPos());
+		createFingerAnim(AssetName.FTUE_DRAG_MOVE,Choice.getInstance().getCardPos());
 	}
 	
-	private static function createFingerAnim(pPos:Point, ?isCard:Bool):Void {
-		finger = new FingerAnim();
+	private static function createFingerAnim(pAsset:String, pPos:Point, ?isCard:Bool):Void {
+		finger = new FingerAnim(pAsset);
 		GameStage.getInstance().getActionContainer().addChild(finger);
 		
 		

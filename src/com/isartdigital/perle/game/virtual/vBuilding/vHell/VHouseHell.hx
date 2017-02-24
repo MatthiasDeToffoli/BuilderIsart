@@ -22,7 +22,6 @@ class VHouseHell extends VHouse
 	}
 	
 	public function addForFtue():Void {
-		//addGenerator();
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
 		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
 		updatePopulation(FTUE_SOUL_INHOUSE);

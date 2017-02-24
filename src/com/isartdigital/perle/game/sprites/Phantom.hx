@@ -437,15 +437,20 @@ class Phantom extends Building {
 			mapX:6,
 			mapY:6,
 			level:1,
-			timeDesc: { refTile:newId,  end: tTime + 0, progress: 0, creationDate: tTime }
+			timeDesc: {
+					refTile:newId,
+					end: 0,
+					progress: tTime,
+					creationDate: tTime
+				}
 		};
 		lBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[lBuildinName])), [tileDesc]);
 		
 		lBuilding.activate();
-		
-		SaveManager.saveNewBuilding(tileDesc);
+		//Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, lBuilding);
 		
 		cast(lBuilding, VHouseHell).addForFtue();
+		SaveManager.saveNewBuilding(tileDesc);
 		Building.sortBuildings();
 		
 		return lBuilding;

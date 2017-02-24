@@ -397,6 +397,9 @@ class AssetName{
 	public static inline var FTUE_SCENARIO_SPEACH_SCENARIO:String = "_ftue_txt_scenario";
 	public static inline var FTUE_SCENARIO_SPEACH_ACTION:String = "_ftue_txt_action";
 	public static inline var FTUE_ACTION_SPEACH:String = "_infobulle_text";
+	//FTUE HAND ICON
+	public static inline var FTUE_DRAG:String = "Ftue_DragHand";
+	public static inline var FTUE_DRAG_MOVE:String = "Ftue_DragHandPurgatory";
 	//FtueIcons
 	public static inline var FTUE_ICONS:String = "IconHolder_Main";
 	public static inline var FTUE_ICON_5:String = "_ftue_dialogFR_5";
@@ -420,6 +423,28 @@ class AssetName{
 	public static inline var FTUE_ICON_49:String = "_ftue_dialogFR_49";
 	public static inline var FTUE_ICON_52:String = "_ftue_dialogFR_52";
 	public static inline var FTUE_ICON_54:String = "_ftue_dialogFR_54";
+	
+	public static inline var FTUE_ICON_EN_5:String = "_ftue_dialogEN_5";
+	public static inline var FTUE_ICON_EN_6:String = "_ftue_dialogEN_6";
+	public static inline var FTUE_ICON_EN_11:String = "_ftue_dialogEN_11";
+	public static inline var FTUE_ICON_EN_12:String = "_ftue_dialogEN_12";
+	public static inline var FTUE_ICON_EN_13:String = "_ftue_dialogEN_13";
+	public static inline var FTUE_ICON_EN_15:String = "_ftue_dialogEN_15";
+	public static inline var FTUE_ICON_EN_17:String = "_ftue_dialogEN_17";
+	public static inline var FTUE_ICON_EN_18:String = "_ftue_dialogEN_18";
+	public static inline var FTUE_ICON_EN_20:String = "_ftue_dialogEN_20";
+	public static inline var FTUE_ICON_EN_22:String = "_ftue_dialogEN_22";
+	public static inline var FTUE_ICON_EN_24:String = "_ftue_dialogEN_24";
+	public static inline var FTUE_ICON_EN_25:String = "_ftue_dialogEN_25";
+	public static inline var FTUE_ICON_EN_34:String = "_ftue_dialogEN_34";
+	public static inline var FTUE_ICON_EN_38:String = "_ftue_dialogEN_38";
+	public static inline var FTUE_ICON_EN_39:String = "_ftue_dialogEN_39";
+	public static inline var FTUE_ICON_EN_40:String = "_ftue_dialogEN_40";
+	public static inline var FTUE_ICON_EN_44:String = "_ftue_dialogEN_44";
+	public static inline var FTUE_ICON_EN_45:String = "_ftue_dialogEN_45";
+	public static inline var FTUE_ICON_EN_49:String = "_ftue_dialogEN_49";
+	public static inline var FTUE_ICON_EN_52:String = "_ftue_dialogEN_52";
+	public static inline var FTUE_ICON_EN_54:String = "_ftue_dialogEN_54";
 	
 	
 	// HUD
