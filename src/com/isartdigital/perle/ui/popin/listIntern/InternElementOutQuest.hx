@@ -103,6 +103,9 @@ class InternElementOutQuest extends InternElement
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
 		
+		var iStress:Int = pDesc.stress;	
+		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
+		
 		internName.text = pDesc.name;
 	}
 	

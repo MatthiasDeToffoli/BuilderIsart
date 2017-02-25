@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;

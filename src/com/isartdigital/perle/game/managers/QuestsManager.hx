@@ -28,7 +28,7 @@ class QuestsManager
 	public static var questsList(default, null):Array<TimeQuestDescription>;
 	
 	private static inline var NUMBER_EVENTS:Int = 3;
-	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500];
+	private static var FTUE_TIMELINE:Array<Int> = [2500, 2500, 2500, 2500, 2500];
 	
 	//Array of the gaps depending the intern's speed
 	private static inline var TIME_GAP_LEVEL_1:Int = 2 * TimesInfo.HOU;

@@ -82,13 +82,12 @@ class MaxStressPopin extends SmartPopin
 		btnDismiss = cast(getChildByName(AssetName.MAXSTRESS_POPIN_DISMISS_BUTTON), SmartButton);
 		btnReset = cast(getChildByName(AssetName.MAXSTRESS_POPIN_RESET_BUTTON), SmartButton);
 		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
-		picture = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_PORTRAIT), UISprite);
+		//picture = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_PORTRAIT), UISprite);
 		internName = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_NAME), TextSprite);
-		aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
+		//aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
 		
-		internStats = cast(getChildByName(AssetName.GLOBAL_INTERN_STATS), SmartComponent);
+		internStats = cast(getChildByName("_internPortrait"), SmartComponent);
 		gaugeStress = cast(SmartCheck.getChildByName(internStats, "_jauge_stress"), SmartComponent);
-		//SmartCheck.traceChildrens(gaugeStress);
 		gaugeStressMask = cast(SmartCheck.getChildByName(gaugeStress, "jaugeStress_masque"), UISprite);
 		
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
@@ -97,7 +96,6 @@ class MaxStressPopin extends SmartPopin
 	
 	public function setDatas():Void{
 		internName.text = intern.name;
-		aligment.text = intern.aligment;
 		gaugeStressMask.scale.x = 0;
 		btnResetTextValue.text = RESET_VALUE + "";
 		
@@ -146,21 +144,23 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	private function onDismiss():Void{
-		Intern.destroyIntern(intern.id);
 		TimeManager.destroyTimeQuest(intern.id);
+		Intern.destroyIntern(intern.id);
+		ServerManager.TimeQuestAction(DbAction.REM, intern.quest);
 		updateQuestPopin();
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
 	private function onClose():Void{
-		updateQuestPopin();
+		UIManager.getInstance().closePopin(this);
 		Hud.getInstance().show();
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
 		//For the HUD Popin actualisation
 	private function updateQuestPopin():Void{
-		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closePopin(this);
+		UIManager.getInstance().closePopin(ListInternPopin.getInstance());
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 	

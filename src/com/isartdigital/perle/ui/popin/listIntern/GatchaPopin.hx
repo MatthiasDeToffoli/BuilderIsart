@@ -31,7 +31,7 @@ class GatchaPopin extends SmartPopin
 	private static var instance: GatchaPopin;
 	
 	private var btnClose:SmartButton;
-	private var btnGift:UIMovie;
+	private var btnGift:SmartButton;
 	private var picture:UISprite;
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
@@ -63,16 +63,14 @@ class GatchaPopin extends SmartPopin
 	private function getComponents():Void{
 		gatchaText = cast(getChildByName(AssetName.GATCHA_POPIN_TITLE), TextSprite);
 		btnClose = cast(getChildByName(AssetName.GATCHA_POPIN_CLOSE_BUTTON), SmartButton);
-		btnGift = cast(getChildByName(AssetName.GATCHA_POPIN_GATCHA_BAG), UIMovie);
-		picture = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_PORTRAIT), UISprite);
+		btnGift = cast(getChildByName(AssetName.GATCHA_POPIN_GATCHA_BAG), SmartButton);
+		//picture = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_PORTRAIT), UISprite);
 		internName = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_NAME), TextSprite);
-		aligment = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_SIDE), TextSprite);
 	}
 	
 	public function setDatas():Void{
 		gatchaText.text = Localisation.getText("LABEL_GACHA_CONGRATULATION");
 		internName.text = Intern.getIntern(quest.refIntern).name;
-		aligment.text = Intern.getIntern(quest.refIntern).aligment;
 	}
 	
 	private function addListeners():Void{

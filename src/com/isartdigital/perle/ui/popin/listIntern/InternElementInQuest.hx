@@ -88,7 +88,7 @@ class InternElementInQuest extends InternElement
 	}
 	
 	private function setOnSpawn(pDesc:InternDescription):Void {
-		loop = Timer.delay(progressLoop, 1000);
+		loop = Timer.delay(progressLoop, 100);
 		loop.run = progressLoop;
 		
 		internName.text = pDesc.name;
@@ -131,6 +131,7 @@ class InternElementInQuest extends InternElement
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_MAX_STRESS) {
 			activeButton = new StressButton(spawner.position);
+			heroCursor.goToAndStop(5);
 			Interactive.addListenerClick(activeButton, onStress);
 		}
 		

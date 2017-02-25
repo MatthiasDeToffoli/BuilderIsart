@@ -142,7 +142,7 @@ class Intern
 				status: STATE_RESTING,
 				quest : null,
 				price : tmpInterns[i].price,
-				stress: tmpInterns[i].stress,
+				stress: 0,
 				speed: tmpInterns[i].speed,
 				efficiency: tmpInterns[i].efficiency,
 				unlockLevel: tmpInterns[i].unlockLevel,
@@ -179,7 +179,10 @@ class Intern
 	public static function getPlayerInterns(object:Dynamic):Void {
 		if (object == null) return;
 		var data:Dynamic = Json.parse(object);	
-		if (data == null) return;
+		if (data == null) {
+			ServerManagerSpecial.finishLoading();
+			return;
+		}
 		var lLength:Int = Std.int(data.length);
 		
 		for (i in 0...lLength) {

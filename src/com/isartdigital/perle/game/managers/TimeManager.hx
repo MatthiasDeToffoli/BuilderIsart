@@ -613,7 +613,8 @@ class TimeManager {
 		
 		for (i in 0...lLengthQuest) {
 			if (pId == listQuest[i].refIntern){
-				listQuest.splice(i, 1);
+				var endQuest:TimeQuestDescription = listQuest.splice(i, 1)[0];
+				ServerManager.TimeQuestAction(DbAction.REM, endQuest);
 				break;
 			}
 		}

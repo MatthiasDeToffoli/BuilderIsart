@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 import com.isartdigital.perle.utils.Interactive;
@@ -87,31 +88,30 @@ class RewardGatcha extends SmartPopinExtended
 		var lRandom:Float = Math.random() * 10;
 		
 		if (lRandom <= 1) {
-			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.karma)));
+			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.karma), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
 			SoundManager.getSound("SOUND_KARMA").play();
 			rewardValue.text = HARD_WON + "";
 		}
 		else if (1 < lRandom && lRandom <= 3){
-			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.gold)));
+			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.gold), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
 			SoundManager.getSound("SOUND_GOLD").play();
 			rewardValue.text = GOLD_WON + "";
 		}
 		else if (3 < lRandom && lRandom <= 5){
-			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.soul)));
+			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.soul), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.soul, SOUL_WON);
 			rewardValue.text = SOUL_WON + "";
 		}
 		else if (5 < lRandom && lRandom <= 7.5){
-			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.iron)));
+			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.iron), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, STEEL_WON);
 			SoundManager.getSound("SOUND_IRON").play();
 			rewardValue.text = STEEL_WON + "";
 		}
-		
 		else{
-			rewardIcon.addChild(new UISprite(AssetName.getCurrencyAssetName(RewardType.wood)));
+			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.wood), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, WOOD_WON);
 			SoundManager.getSound("SOUND_WOOD").play();
 			rewardValue.text = WOOD_WON + "";
