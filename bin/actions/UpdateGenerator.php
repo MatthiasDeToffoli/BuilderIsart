@@ -75,7 +75,7 @@ else if($typeBuilding->NbBuildingHeaven > 0 || $typeBuilding->NbBuildingHell > 0
     );
 }
 else {
-  echo json_encode(["error" => true, "message"=>"this building doesn't have generator"]);
+  echo json_encode(["error" => true, "message"=>$typeBuilding->Name." doesn't have generator"]);
   exit;
 }
 

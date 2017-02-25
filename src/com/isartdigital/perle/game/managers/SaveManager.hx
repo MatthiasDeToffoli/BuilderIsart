@@ -375,11 +375,16 @@ class SaveManager {
 		
 		for (config in pBuildings.keys()) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
-			desc.arrayGenerator.push(buildingLoadGenerator(
-				pBuildings[config],
-				lGameConfig,
-				config
-			));
+			
+			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
+			&& (lGameConfig.name != 'Hell Collector Iron Mines' || lGameConfig.name != 'Heaven Collector Lumber Mill')) {
+				desc.arrayGenerator.push(buildingLoadGenerator(
+					pBuildings[config],
+					lGameConfig,
+					config
+				));	
+			}
+			
 			
 		}
 		
@@ -409,8 +414,8 @@ class SaveManager {
 				mapX: lBuilding[i].x,
 				mapY: lBuilding[i].y,
 				level: lGameConfig.level,
-				currentPopulation: lBuilding[i].nbSoul,
-				maxPopulation: lGameConfig.maxSoulsContained
+				currentPopulation: (lGameConfig.name == 'Hell House' ||lGameConfig.name == 'Heaven House') ? lBuilding[i].nbSoul:null,
+				maxPopulation: (lGameConfig.name == 'Hell House' ||lGameConfig.name == 'Heaven House') ? lGameConfig.maxSoulsContained:null
 				/*intern: ,*/ // todo : fill @Emeline, @Victor
 				// todo ci-dessous :
 				// nbResource
@@ -438,7 +443,7 @@ class SaveManager {
 			id: pTileDesc.id,
 			type: pGameConfig.productionResource,
 			quantity: pServerData.nbResource,
-			max: pGameConfig.maxGoldContained,
+			max: pGameConfig.name == 'Purgatory' ? pGameConfig.maxSoulsContained:pGameConfig.maxGoldContained,
 			//pServerData.endForNextProduction, // keep that in mind
 			alignment: pGameConfig.alignment
 		};
