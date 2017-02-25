@@ -370,6 +370,11 @@ class VBuilding extends VTile {
 		myVContextualHud.destroy();
 		myVContextualHud = null;
 		
+		if (BHConstruction.listTimerConstruction[tileDesc.id] != null) {
+			BHConstruction.listTimerConstruction[tileDesc.id].destroy();
+			BHConstruction.listTimerConstruction.remove(tileDesc.id);
+		}
+		
 		var lVBuilding:VBuilding;
 		
 		if (this != null) lVBuilding = this;

@@ -20,7 +20,7 @@ class ErrorManager{
 	// todo : ID ci-dessus relié à un élément de traduction pour ensuite afficher une popin d'erreur.
 	
 	public static function openPopin (pErrorId:Int):Void {
-		Debug.warn("Server returned an custom error: " + ERROR_PREFIX + pErrorId);
+		Debug.warn("Server returned an error: " + ERROR_PREFIX + pErrorId);
 		
 		var lPopin:ServerPopinRollback = new ServerPopinRollback();
 		lPopin.setText(FakeTraduction.assetNameNameToTrad("Server returned an custom error."), pErrorId);

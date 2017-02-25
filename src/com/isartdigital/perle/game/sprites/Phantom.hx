@@ -368,6 +368,8 @@ class Phantom extends Building {
 				level:1,
 				timeDesc: {
 					refTile:newId,
+					// Date.fromString(GameConfig.getBuildingByName(buildingName, 1).constructionTime).getTime()
+					// give 600000ms for 10min
 					end: tTime + Date.fromString(GameConfig.getBuildingByName(buildingName, 1).constructionTime).getTime(),
 					progress: tTime,
 					creationDate: tTime
@@ -424,6 +426,10 @@ class Phantom extends Building {
 			
 	}*/
 	
+	/**
+	 * @author Alexis
+	 * @return
+	 */
 	public static function firstBuildForFtue():VBuilding {
 		var newId = IdManager.newId();
 		var tTime:Float = Date.now().getTime();

@@ -346,7 +346,6 @@ class SaveManager {
 				//ground: groundSave,
 				building: lBuildings,
 				resourcesData: lResources,
-				//version: SAVE_VERSION,
 				//ftueProgress : DialogueManager.dialogueSaved,
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
 			};
