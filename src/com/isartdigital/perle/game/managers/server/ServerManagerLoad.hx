@@ -31,6 +31,8 @@ typedef TablePlayer = {
 	var numberRegionHeaven:Int;
 	var ftueProgress:Int;
 	var level:Int;
+	var endOfCampaign:Float;
+	var idCampaign:Int;
 }
 
 /**

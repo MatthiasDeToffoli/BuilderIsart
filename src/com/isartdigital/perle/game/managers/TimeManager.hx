@@ -118,7 +118,9 @@ class TimeManager {
 		var lLength:Int = pSave.timesResource.length;
 		
 		listProduction = pSave.timesProduction; // server save used now, delete if work
-		
+		campaignTime = pSave.timesCampaign.end;
+
+		MarketingManager.setCurrentCampaign(pSave.timesCampaign.type);
 		var lLengthConstruction:Int = pSave.timesConstruction.length;
 		
 		for (i in 0...lLength) {

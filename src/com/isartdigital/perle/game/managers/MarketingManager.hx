@@ -63,8 +63,17 @@ class MarketingManager
 		}
 	}
 	
-	public static function setCurrentCampaign(pName:String):Void {
+	public static function getCampaignByName(pName:String):String {
+		var i:Int, l:Int = arrayCampaignType.length;
 		
+		for (i in 0...l)	
+			if (campaigns[arrayCampaignType[i]].name == pName)
+				return arrayCampaignType[i].getName();
+			
+		return CampaignType.none.getName();
+	}
+	
+	public static function setCurrentCampaign(pName:String):Void {
 		switch(pName) {
 			case "ad" :
 				currentCampaign = CampaignType.ad;
@@ -121,7 +130,6 @@ class MarketingManager
 	}
 	
 	private static function updateTribunal():Void {
-		//trace(1 + (NUMBERADMENFACTOR + campaigns[currentCampaign].boost) * numberAdMen);
 		VTribunal.getInstance().updateGenerator(1 + (NUMBERADMENFACTOR + campaigns[currentCampaign].boost) * numberAdMen); 
 	}
 	

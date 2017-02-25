@@ -24,6 +24,7 @@ class Loading
     const COLUMN_START_CONSTRUCTION = "StartConstruction";
     const COLUMN_END_CONSTRUCTION = "EndConstruction";
     const COLUMN_END_FOR_NEXT_PRODUCTION = "EndForNextProduction";
+    const COLUMN_END_OF_CAMPAIGN = "EndOfCampaign";
 
     public static function doAction () {
         $lTable = explode(",", static::TABLE_TO_LOAD);
@@ -41,6 +42,8 @@ class Loading
             $lLength2 = count($result[$lTable[$i]]);
             if ($lTable[$i] == static::TABLE_BUILDING)
                 $result[static::TABLE_BUILDING] = static::convertDateTimes($result[static::TABLE_BUILDING], $lLength2);
+            else if($lTable[$i] == static::TABLE_PLAYER)
+              $result[static::TABLE_PLAYER] = static::convertDateTimesPlayer($result[static::TABLE_PLAYER], $lLength2);
         }
 
         return $result;
@@ -69,6 +72,18 @@ class Loading
                             $pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION]
                         )
                     );
+        }
+        return $pTable;
+    }
+
+    private static function convertDateTimesPlayer ($pTable, $pLength2) {
+        for ($j = 0; $j < $pLength2; $j++) {
+            if (array_key_exists(static::COLUMN_END_OF_CAMPAIGN, $pTable[$j]))
+                $pTable[$j][static::COLUMN_END_OF_CAMPAIGN] = Utils::timeStampToJavascript(
+                    Utils::dateTimeToTimeStamp(
+                        $pTable[$j][static::COLUMN_END_OF_CAMPAIGN]
+                    )
+                );
         }
         return $pTable;
     }

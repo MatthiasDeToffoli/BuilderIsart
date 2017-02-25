@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
+import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
@@ -333,14 +334,23 @@ class SaveManager {
 			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
 			var lTimeResources:Array<TimeDescription> = loadTimeResources(serverBuildingToTileDesc);
 			var lTimeResourcesProd:Array<TimeDescription> = loadTimeResourcesProd(serverBuildingToTileDesc);
-			var lPlayer:TablePlayer = 
+			var lTimeCampaign:CampaignDescription;
+			var lPlayer:TablePlayer = ServerManagerLoad.getPlayer(); 
+			if(lPlayer.idCampaign > 0) lTimeCampaign = {
+				end:ServerManagerLoad.getPlayer().endOfCampaign,
+				type:MarketingManager.getCampaignByName(GameConfig.getBuildingPackById(lPlayer.idCampaign).name)
+			};
+			else lTimeCampaign = {
+				end:0,
+				type:CampaignType.none.getName()
+			};
 			
 			untyped currentSave = { 
 				timesResource: lTimeResources,
 				//timesQuest: getTimesQuest(),
 				//timesConstruction: getTimesConstruction(),
 				timesProduction: lTimeResourcesProd,
-				//timesCampaign: getCampaign(),
+				timesCampaign: lTimeCampaign,
 				//lastKnowTime:TimeManager.lastKnowTime,
 				//stats: getStats(),
 				//idHightest: IdManager.idHightest, // n'est plus utilisé
