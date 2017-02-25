@@ -94,7 +94,7 @@ function calculGain($pEnd,$pCalcul,$pResource, $pMax){
     $currentTime = time();
     if($currentTime > $pEnd) {
       if($pResource < $pMax) $newResource = $pResource + 1;
-
+      else $newResource = $pResource;
       if($pCalcul === null) {
         $end = $pCalcul;
       }
@@ -114,6 +114,7 @@ function calculGainWithBoost($pEnd,$pCalcul,$pResource, $pMax,$pEndBoost,$pGainB
     $currentTime = time();
     if($currentTime > $pEnd) {
       if($pResource < $pMax) $newResource = $pResource + 1;
+      else $newResource = $pResource;
         if($pEnd < $pEndBoost) $finalCalcul = $pCalcul/$pGainBoost;
         else $finalCalcul = $pCalcul;
         $end = $pEnd + $finalCalcul;
