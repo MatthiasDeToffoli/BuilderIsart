@@ -1,5 +1,5 @@
 {
- "md5": "ebb31a23f4c5624bcf709dafe8da89eb",
+ "md5": "2eb95b687665bd4aa406a9a5ece14d98",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -22,7 +22,7 @@
        ]
       },
       {
-       "symbol": "_hell_npg_large",
+       "symbol": "_hell_npg_large_Sad",
        "origin": [
         255,
         255
@@ -35,6 +35,32 @@
        ]
       },
       {
+       "symbol": "_hell_npg_large_Happy",
+       "origin": [
+        255,
+        255
+       ],
+       "rect": [
+        1,
+        317,
+        510,
+        510
+       ]
+      },
+      {
+       "symbol": "_hell_npg_large",
+       "origin": [
+        255,
+        255
+       ],
+       "rect": [
+        513,
+        513,
+        510,
+        510
+       ]
+      },
+      {
        "symbol": "_heaven_ftueBG_large",
        "origin": [
         513.75,
@@ -42,7 +68,7 @@
        ],
        "rect": [
         1,
-        513,
+        1025,
         1028,
         252
        ]
@@ -55,13 +81,13 @@
        ],
        "rect": [
         1,
-        767,
+        1279,
         1028,
         252
        ]
       },
       {
-       "symbol": "_heaven_npg_large",
+       "symbol": "_heaven_npg_large_Happy",
        "origin": [
         195,
         293.15
@@ -69,60 +95,21 @@
        "rect": [
         1031,
         513,
-        390,
+        403,
         587
        ]
       },
       {
-       "symbol": "_hell_ftueBG_small",
-       "origin": [
-        450,
-        110
-       ],
-       "rect": [
-        1,
-        1021,
-        900,
-        221
-       ]
-      },
-      {
-       "symbol": "_heaven_ftueBG_small",
-       "origin": [
-        449.95,
-        110
-       ],
-       "rect": [
-        1,
-        1244,
-        900,
-        221
-       ]
-      },
-      {
-       "symbol": "_ftue_mascot_angela",
+       "symbol": "_ftue_mascot_angela_Happy",
        "origin": [
         142.5,
         214.25
        ],
        "rect": [
-        903,
+        1031,
         1102,
         285,
         429
-       ]
-      },
-      {
-       "symbol": "_ftue_infoBulle_arrow",
-       "origin": [
-        0,
-        315
-       ],
-       "rect": [
-        1190,
-        1102,
-        315,
-        315
        ]
       },
       {
@@ -132,23 +119,23 @@
         93.75
        ],
        "rect": [
-        1,
+        513,
         317,
         188,
         188
        ]
       },
       {
-       "symbol": "_buttonNext_over",
+       "symbol": "_dragHand_up",
        "origin": [
-        75,
-        75
+        67.5,
+        0
        ],
        "rect": [
-        191,
-        317,
-        150,
-        150
+        1318,
+        1102,
+        135,
+        232
        ]
       },
       {
@@ -158,8 +145,21 @@
         75
        ],
        "rect": [
-        343,
+        703,
         317,
+        150,
+        150
+       ]
+      },
+      {
+       "symbol": "_buttonNext_over",
+       "origin": [
+        75,
+        75
+       ],
+       "rect": [
+        1318,
+        1336,
         150,
         150
        ]
@@ -171,8 +171,8 @@
         67.5
        ],
        "rect": [
-        495,
-        317,
+        1,
+        829,
         135,
         135
        ]
@@ -184,10 +184,23 @@
         67.5
        ],
        "rect": [
-        632,
-        317,
+        138,
+        829,
         135,
         135
+       ]
+      },
+      {
+       "symbol": "_buttonNext_down",
+       "origin": [
+        61.9,
+        61.9
+       ],
+       "rect": [
+        275,
+        829,
+        124,
+        124
        ]
       },
       {
@@ -204,40 +217,14 @@
        ]
       },
       {
-       "symbol": "_buttonNext_down",
-       "origin": [
-        61.9,
-        61.9
-       ],
-       "rect": [
-        1405,
-        127,
-        124,
-        124
-       ]
-      },
-      {
-       "symbol": "_hellSoulIcon_Large",
-       "origin": [
-        41.5,
-        48
-       ],
-       "rect": [
-        769,
-        317,
-        83,
-        96
-       ]
-      },
-      {
        "symbol": "_heavenSoulIcon_Large",
        "origin": [
         41.5,
         48
        ],
        "rect": [
-        769,
-        415,
+        401,
+        829,
         83,
         96
        ]
@@ -249,8 +236,21 @@
         48
        ],
        "rect": [
+        401,
+        927,
+        83,
+        96
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Large",
+       "origin": [
+        41.5,
+        48
+       ],
+       "rect": [
         1405,
-        253,
+        127,
         83,
         96
        ]
@@ -262,8 +262,8 @@
         36
        ],
        "rect": [
-        903,
-        1021,
+        1405,
+        225,
         63,
         72
        ]
@@ -276,7 +276,7 @@
        ],
        "rect": [
         1405,
-        351,
+        299,
         63,
         72
        ]
@@ -289,7 +289,7 @@
        ],
        "rect": [
         1405,
-        425,
+        373,
         63,
         72
        ]
@@ -301,8 +301,8 @@
         30.7
        ],
        "rect": [
-        1190,
-        1419,
+        1405,
+        447,
         62,
         62
        ]
@@ -314,8 +314,8 @@
         30
        ],
        "rect": [
-        968,
-        1021,
+        275,
+        955,
         60,
         54
        ]
@@ -327,21 +327,21 @@
         25.9
        ],
        "rect": [
-        495,
-        454,
+        337,
+        955,
         52,
         52
        ]
       },
       {
-       "symbol": "_goldIcon_Small",
+       "symbol": "_objIcon_FTUE",
        "origin": [
         24,
         24
        ],
        "rect": [
-        549,
-        454,
+        1,
+        966,
         48,
         48
        ]
@@ -353,8 +353,21 @@
         24
        ],
        "rect": [
-        599,
-        454,
+        51,
+        966,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Small",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        101,
+        966,
         48,
         48
        ]
@@ -366,21 +379,8 @@
         24
        ],
        "rect": [
-        649,
-        454,
-        48,
-        48
-       ]
-      },
-      {
-       "symbol": "_objIcon_FTUE",
-       "origin": [
-        24,
-        24
-       ],
-       "rect": [
-        699,
-        454,
+        151,
+        966,
         48,
         48
        ]
@@ -392,8 +392,8 @@
         21.75
        ],
        "rect": [
-        1190,
-        1483,
+        201,
+        966,
         52,
         44
        ]
@@ -405,8 +405,8 @@
         23.4
        ],
        "rect": [
-        1244,
-        1483,
+        1318,
+        1488,
         48,
         47
        ]
@@ -418,23 +418,10 @@
         24.05
        ],
        "rect": [
-        1254,
-        1419,
+        1436,
+        511,
         42,
         49
-       ]
-      },
-      {
-       "symbol": "_heavenSoulIcon_Small",
-       "origin": [
-        20.75,
-        24
-       ],
-       "rect": [
-        1294,
-        1470,
-        42,
-        48
        ]
       },
       {
@@ -444,23 +431,23 @@
         24
        ],
        "rect": [
-        1298,
-        1419,
+        1469,
+        447,
         42,
         48
        ]
       },
       {
-       "symbol": "_heavenXP_Small",
+       "symbol": "_heavenSoulIcon_Small",
        "origin": [
-        24,
-        16.3
+        20.75,
+        24
        ],
        "rect": [
-        191,
-        469,
-        48,
-        33
+        1470,
+        225,
+        42,
+        48
        ]
       },
       {
@@ -470,8 +457,21 @@
         16.3
        ],
        "rect": [
-        241,
-        469,
+        1368,
+        1488,
+        48,
+        33
+       ]
+      },
+      {
+       "symbol": "_heavenXP_Small",
+       "origin": [
+        24,
+        16.3
+       ],
+       "rect": [
+        1418,
+        1488,
         48,
         33
        ]
@@ -483,10 +483,35 @@
         16
        ],
        "rect": [
-        854,
-        317,
+        1468,
+        1488,
         30,
         34
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -99.65,
+        "text": "Jugez ces deux SO avec sagesse ! Chaque chose à sa place.",
+        "x": -516.95,
+        "width": 1033.9,
+        "font": "68px _pixelOperator*",
+        "align": "center",
+        "height": 235.85,
+        "wordWrap": 1,
+        "color": "#3C3232"
+       },
+       "symbol": "_ftue_txt_scenario",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        391,
+        955,
+        1,
+        1
        ]
       },
       {
@@ -508,33 +533,8 @@
         0
        ],
        "rect": [
-        1190,
-        1529,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -99.65,
-        "text": "You're a pretty cool Boss. Take this : experience EE for the Hell Gauge.",
-        "x": -516.95,
-        "width": 1033.9,
-        "font": "68px _pixelOperator*",
-        "align": "center",
-        "height": 235.85,
-        "wordWrap": 1,
-        "color": "#3C3232"
-       },
-       "symbol": "_ftue_txt_scenario",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1193,
-        1529,
+        394,
+        955,
         1,
         1
        ]
@@ -545,15 +545,93 @@
      "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "_ftue_mascot_demona",
+       "symbol": "_heaven_npg_large_Sad",
        "origin": [
-        157.5,
-        157.5
+        195,
+        293.15
        ],
        "rect": [
         1,
         1,
-        315,
+        390,
+        587
+       ]
+      },
+      {
+       "symbol": "_heaven_npg_large",
+       "origin": [
+        195,
+        293.15
+       ],
+       "rect": [
+        1,
+        590,
+        390,
+        587
+       ]
+      },
+      {
+       "symbol": "_hell_ftueBG_small",
+       "origin": [
+        450,
+        110
+       ],
+       "rect": [
+        1,
+        1179,
+        900,
+        221
+       ]
+      },
+      {
+       "symbol": "_ftue_mascot_angela_Sad",
+       "origin": [
+        142.5,
+        214.25
+       ],
+       "rect": [
+        393,
+        1,
+        285,
+        429
+       ]
+      },
+      {
+       "symbol": "_ftue_mascot_angela",
+       "origin": [
+        142.5,
+        214.25
+       ],
+       "rect": [
+        680,
+        1,
+        285,
+        429
+       ]
+      },
+      {
+       "symbol": "_ftue_mascot_demona_Sad",
+       "origin": [
+        157.55,
+        157.5
+       ],
+       "rect": [
+        393,
+        432,
+        341,
+        315
+       ]
+      },
+      {
+       "symbol": "_ftue_mascot_demona_Happy",
+       "origin": [
+        157.55,
+        157.5
+       ],
+       "rect": [
+        393,
+        749,
+        341,
         315
        ]
       },
@@ -564,23 +642,54 @@
         0
        ],
        "rect": [
-        318,
-        1,
+        736,
+        432,
         135,
         232
        ]
-      },
+      }
+     ]
+    },
+    {
+     "file": "atlas2.png",
+     "textures": [
       {
-       "symbol": "_dragHand_up",
+       "symbol": "_heaven_ftueBG_small",
        "origin": [
-        67.5,
-        0
+        449.95,
+        110
        ],
        "rect": [
-        318,
-        235,
-        135,
-        232
+        1,
+        1,
+        900,
+        221
+       ]
+      },
+      {
+       "symbol": "_ftue_infoBulle_arrow",
+       "origin": [
+        0,
+        315
+       ],
+       "rect": [
+        1,
+        224,
+        315,
+        315
+       ]
+      },
+      {
+       "symbol": "_ftue_mascot_demona",
+       "origin": [
+        157.5,
+        157.5
+       ],
+       "rect": [
+        1,
+        541,
+        315,
+        315
        ]
       }
      ]
@@ -1544,7 +1653,7 @@
        "tweened": false,
        "index": 0,
        "loc": [
-        53.25,
+        98.25,
         249
        ],
        "ref": "~_ftue_dialogFR_15",
@@ -2088,10 +2197,10 @@
        },
        "index": 0,
        "loc": [
-        -369.6375,
-        292.8
+        -369.75,
+        292.5
        ],
-       "ref": "_ftue_mascot_angela",
+       "ref": "_ftue_mascot_angela_Sad",
        "tweened": false,
        "duration": 1
       }
@@ -2111,10 +2220,10 @@
        },
        "index": 0,
        "loc": [
-        -369.6375,
-        292.8
+        -369.75,
+        292.5
        ],
-       "ref": "_ftue_mascot_angela",
+       "ref": "_ftue_mascot_angela_Happy",
        "tweened": false,
        "duration": 1
       }
@@ -2190,16 +2299,12 @@
         195,
         293.1375
        ],
-       "data": {
-        "UIPosition": "bottom",
-        "UIPosition_Desktop": "bottom"
-       },
        "index": 0,
        "loc": [
-        -434.8875,
-        138.525
+        -435,
+        138.75
        ],
-       "ref": "_heaven_npg_large",
+       "ref": "_heaven_npg_large_Sad",
        "tweened": false,
        "duration": 1
       }
@@ -2215,10 +2320,10 @@
        ],
        "index": 0,
        "loc": [
-        -434.8875,
-        138.525
+        -435.1125,
+        138.75
        ],
-       "ref": "_heaven_npg_large",
+       "ref": "_heaven_npg_large_Happy",
        "tweened": false,
        "duration": 1
       }
@@ -2299,7 +2404,7 @@
      "keyframes": [
       {
        "pivot": [
-        157.5,
+        157.5375,
         157.5
        ],
        "data": {
@@ -2311,7 +2416,7 @@
         374.25,
         334.5
        ],
-       "ref": "_ftue_mascot_demona",
+       "ref": "_ftue_mascot_demona_Sad",
        "tweened": false,
        "duration": 1
       }
@@ -2322,7 +2427,7 @@
      "keyframes": [
       {
        "pivot": [
-        157.5,
+        157.5375,
         157.5
        ],
        "data": {
@@ -2332,9 +2437,9 @@
        "index": 0,
        "loc": [
         374.25,
-        335.25
+        334.5
        ],
-       "ref": "_ftue_mascot_demona",
+       "ref": "_ftue_mascot_demona_Happy",
        "tweened": false,
        "duration": 1
       }
@@ -2423,7 +2528,7 @@
         445.5,
         189.75
        ],
-       "ref": "_hell_npg_large",
+       "ref": "_hell_npg_large_Sad",
        "tweened": false,
        "duration": 1
       }
@@ -2446,7 +2551,7 @@
         445.5,
         189.75
        ],
-       "ref": "_hell_npg_large",
+       "ref": "_hell_npg_large_Happy",
        "tweened": false,
        "duration": 1
       }
@@ -3210,8 +3315,8 @@
        ],
        "index": 0,
        "loc": [
-        132,
-        16.5
+        133.5,
+        14.25
        ],
        "ref": "_goldIcon_Small",
        "tweened": false,
