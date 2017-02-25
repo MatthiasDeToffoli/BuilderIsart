@@ -40,6 +40,7 @@ import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.UISprite;
 import eventemitter3.EventEmitter;
+import haxe.Timer;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -92,7 +93,7 @@ class Hud extends SmartScreen
 	private var basePosXMasqueXpHell:Float;
 	private var basePosXMasqueXpHeaven:Float;
 	private var baseGaugeWidth:Float;
-	private var btnInternBloc:UISprite;
+	private var btnInternBloc:SmartComponent;
 	
 	
 	/**
@@ -268,12 +269,11 @@ class Hud extends SmartScreen
 	
 
 	private function addListeners ():Void {
-		
 		ResourcesManager.totalResourcesEvent.on(ResourcesManager.TOTAL_RESOURCES_EVENT_NAME, refreshTextValue);
 		btnShop = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_SHOP), SmartButton);
 		btnPurgatory = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_PURGATORY), SmartButton);
 		btnInterns = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS), SmartButton);
-		btnInternBloc = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS_LOCK), UISprite);
+		btnInternBloc = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_INTERNS_LOCK), SmartComponent);
 		btnOptions = cast(SmartCheck.getChildByName(this, AssetName.HUD_BTN_OPTIONS), SmartButton);
 		
 		buttonMissionDeco = cast(SmartCheck.getChildByName(this, AssetName.HUD_MISSION_DECO), SmartButton);
@@ -285,7 +285,7 @@ class Hud extends SmartScreen
 		lBarHell = cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie);
 		
 		
-		addListenersOnClick();
+		Timer.delay( addListenersOnClick,500);
 		setGlowFalse();
 		eChangeBH.addListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
 	}
