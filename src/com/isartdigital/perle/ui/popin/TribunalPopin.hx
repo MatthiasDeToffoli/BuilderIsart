@@ -96,10 +96,11 @@ class TribunalPopin extends SmartPopinExtended
 		btnInviteSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_INVITE_BUTTON), SmartButton);
 		
 		title = cast(getChildByName("PurgatoryTitle_MC"), SmartComponent);
-		tribunalTitleEnglish = cast(title.getChildByName("_purgatoireTitle"), UISprite);
-		SmartCheck.traceChildrens(title);
-		//tribunalTitleFrench = cast(title.getChildByName("_marcheTitle"), UISprite);
-		//tribunalTitleFrench.visible = false;
+		tribunalTitleEnglish = cast(title.getChildByName("_png_purgatoryTitle"), UISprite);
+		tribunalTitleFrench = cast(title.getChildByName("_purgatoireTitle"), UISprite);
+		
+		//As we must display only the good translation and remove the other, we can't use the label system for the translation
+		Localisation.actualLanguage == "en" ? tribunalTitleFrench.visible = false : tribunalTitleEnglish.visible = false;
 		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
 		tribunalLevel.text = "LEVEL " + VTribunal.getInstance().tileDesc.level;

@@ -14,6 +14,7 @@ import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -51,6 +52,10 @@ class ListInternPopin extends SmartPopinExtended
 	private var internsInQuestMax:TextSprite;
 	private var actualNbInternInQuest:TextSprite;
 	
+	private var title:SmartComponent;
+	private var titleFrench:UISprite;
+	private var titleEnglish:UISprite;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -76,6 +81,13 @@ class ListInternPopin extends SmartPopinExtended
 		internsInQuestInfo = cast(getChildByName(AssetName.INTERN_IN_QUEST_VALUE), SmartComponent);
 		actualNbInternInQuest = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_ACTUAL), TextSprite);
 		internsInQuestMax = cast(SmartCheck.getChildByName(internsInQuestInfo, AssetName.INTERN_IN_QUEST_VALUE_MAX), TextSprite);
+		
+		title = cast(getChildByName("InternshipsTitle_MC"), SmartComponent);
+		titleEnglish = cast(SmartCheck.getChildByName(title, "_png_internships_title"), UISprite);
+		titleFrench = cast(SmartCheck.getChildByName(title, "_stagiairesTitle"), UISprite);
+		
+		//As we must display only the good translation and remove the other, we can't use the label system for the translation
+		Localisation.actualLanguage == "en" ? titleFrench.visible = false : titleEnglish.visible = false;
 		
 		setSpawners();
 		setValues();		

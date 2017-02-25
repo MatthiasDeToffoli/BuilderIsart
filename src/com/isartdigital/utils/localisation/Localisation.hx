@@ -13,8 +13,8 @@ class Localisation
 	private static var localization:Dynamic;
 	
 	private static var allTraductions:Map<String, String> = new Map<String, String>();	//Tableau associatif pour stocker toutes les traductions
-
-	private static var allSprites:Map<String, Dynamic> = new Map<String, String>();
+	
+	public static var actualLanguage:String = "en";
 	 /**
      * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
      * @return instance unique
@@ -57,6 +57,7 @@ class Localisation
 	 */
 	
 	public static function traduction(?pLangage:String = "en"):Void {
+		actualLanguage = pLangage;
 		
 		for (label in Reflect.fields(localization)){
 			var langage:Dynamic = Reflect.field(localization, label);

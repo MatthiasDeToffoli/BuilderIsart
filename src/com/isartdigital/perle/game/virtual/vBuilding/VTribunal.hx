@@ -87,8 +87,6 @@ class VTribunal extends VBuildingUpgrade
 				adjective: GameConfig.getSoulAdjective(j).en
 			}
 		}
-		trace(soulToJudge.name);
-		trace(soulToJudge.adjective);
 	}
 	
 	public function updateSoulToJudge(pName:String):Void {

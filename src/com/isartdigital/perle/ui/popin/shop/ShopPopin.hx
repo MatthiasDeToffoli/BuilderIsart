@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -75,6 +76,10 @@ class ShopPopin extends SmartPopinExtended {
 	private var buttonBundle1:SmartButton;
 	private var buttonBundle2:SmartButton;
 	
+	private var titleShop:SmartComponent;
+	private var titleShopFrench:UISprite;
+	private var titleShopEnglish:UISprite;
+	
 	public static function getInstance (): ShopPopin {
 		if (instance == null) instance = new ShopPopin();
 		return instance;
@@ -109,8 +114,15 @@ class ShopPopin extends SmartPopinExtended {
 		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		
-		addButton();
+		titleShop = cast(SmartCheck.getChildByName(this, "Shop_Title"), SmartComponent);
+		titleShopFrench = cast(SmartCheck.getChildByName(titleShop, "_marcheTitle"), UISprite);
+		titleShopEnglish = cast(SmartCheck.getChildByName(titleShop, "_shopTitle"), UISprite);
 		
+		//As we must display only the good translation and remove the other, we can't use the label system for the translation
+		Localisation.actualLanguage == "en" ? titleShopFrench.visible = false : titleShopEnglish.visible = false;
+		
+		addButton();
+		SmartCheck.traceChildrens(titleShop);
 		Interactive.addListenerClick(btnExit, onClickExit);
 		
 	}
