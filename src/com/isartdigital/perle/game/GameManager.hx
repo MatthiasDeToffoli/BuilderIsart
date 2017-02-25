@@ -100,7 +100,7 @@ class GameManager {
 		ClippingManager.update();
 		FootPrint.startClass();
 		ShopPopin.initSearch();
-		if(!DevelloperReconise.isDev())DialogueManager.createFtue();
+		//if(!DevelloperReconise.isDev())DialogueManager.createFtue();
 		HudMissionButton.initFromLoad();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager

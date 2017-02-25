@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
@@ -130,8 +131,8 @@ class DialogueManager
 	public static function createFtue():Void {
 		//dialogueSaved = 12;
 		//SaveManager.save();
-		
-		var lSave:Int = SaveManager.currentSave.ftueProgress;
+		var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
+		trace(lSave);
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
 			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing || steps[lSave-1].endOfSpecial) {
@@ -164,8 +165,8 @@ class DialogueManager
 		//GameStage.getInstance().getIconContainer().addChild(lIcons);
 		
 		//check if FTUE wasn't over
-		if(SaveManager.currentSave.ftueProgress!=null)
-			dialogueSaved = SaveManager.currentSave.ftueProgress;
+		if(ServerManagerLoad.getPlayer().ftueProgress!=null && ServerManagerLoad.getPlayer().ftueProgress!=0)
+			dialogueSaved = ServerManagerLoad.getPlayer().ftueProgress;
 		else {
 			dialogueSaved = 0;
 			createFirstHouse();
