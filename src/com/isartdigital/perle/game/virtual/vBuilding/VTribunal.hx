@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.localisation.Localisation;
 import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
 
@@ -86,6 +87,8 @@ class VTribunal extends VBuildingUpgrade
 				adjective: GameConfig.getSoulAdjective(j).en
 			}
 		}
+		trace(soulToJudge.name);
+		trace(soulToJudge.adjective);
 	}
 	
 	public function updateSoulToJudge(pName:String):Void {

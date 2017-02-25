@@ -15,6 +15,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -52,6 +53,9 @@ class TribunalPopin extends SmartPopinExtended
 	private var infoHeaven:TextSprite;
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
+	private var title:SmartComponent;
+	private var tribunalTitleEnglish:UISprite;
+	private var tribunalTitleFrench:UISprite;
 	private var btnInviteSoul:SmartButton;
 	private var cardSoul:UISprite;
 	private var canMoovCard:Bool;
@@ -91,6 +95,12 @@ class TribunalPopin extends SmartPopinExtended
 
 		btnInviteSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_INVITE_BUTTON), SmartButton);
 		
+		title = cast(getChildByName("PurgatoryTitle_MC"), SmartComponent);
+		tribunalTitleEnglish = cast(title.getChildByName("_purgatoireTitle"), UISprite);
+		SmartCheck.traceChildrens(title);
+		//tribunalTitleFrench = cast(title.getChildByName("_marcheTitle"), UISprite);
+		//tribunalTitleFrench.visible = false;
+		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
 		tribunalLevel.text = "LEVEL " + VTribunal.getInstance().tileDesc.level;
 		
@@ -100,9 +110,9 @@ class TribunalPopin extends SmartPopinExtended
 		
 		interMovieClip = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO),SmartComponent);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
-		fateName.text = VTribunal.getInstance().soulToJudge.name;
+		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
-		fateAdjective.text = VTribunal.getInstance().soulToJudge.adjective;
+		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
 		cardSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
 		baseCardRot = cardSoul.rotation;
@@ -278,8 +288,8 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function changeSoulText(?pSoulNameFound:Bool):Void {
 		if(!pSoulNameFound ||pSoulNameFound == null) VTribunal.getInstance().findSoul();
-		fateName.text = VTribunal.getInstance().soulToJudge.name;
-		fateAdjective.text = VTribunal.getInstance().soulToJudge.adjective;
+		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 	}
 	
 	private function changeSoulTextInfo():Void{
