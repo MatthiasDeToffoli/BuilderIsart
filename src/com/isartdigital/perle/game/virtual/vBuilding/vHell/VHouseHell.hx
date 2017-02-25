@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
+import haxe.Timer;
 
 /**
  * ...
@@ -22,9 +23,13 @@ class VHouseHell extends VHouse
 	}
 	
 	public function addForFtue():Void {
+		Timer.delay(setHouse, 1000);
+	}
+	
+	private function setHouse():Void {
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
 		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
-		updatePopulation(FTUE_SOUL_INHOUSE);
+		updatePopulation(FTUE_SOUL_INHOUSE);	
 	}
 	
 }

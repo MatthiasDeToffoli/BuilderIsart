@@ -30,7 +30,7 @@ class BuildingTimerConstruction extends BuildingTimer
 		loop = Timer.delay(progressTimeLoop, 100);
 		loop.run = progressTimeLoop;
 		
-		if (DialogueManager.boostBuilding)
+		if (DialogueManager.boostBuilding || DialogueManager.ftuecreateFirstHouse)
 			boost();
 	}
 	

@@ -78,6 +78,7 @@ class DialogueManager
 	private static var doNotGiveGold:Bool = false;
 	private static var doNotGiveKarma:Bool = false;
 	
+	public static var ftuecreateFirstHouse:Bool = false;
 	public static var ftueClosePurgatory:Bool = false;
 	public static var ftueCloseUnlockedItem:Bool = false;
 	
@@ -117,7 +118,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = false;
+		isFR = true;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
@@ -577,6 +578,7 @@ class DialogueManager
 	 * Create first House
 	 */
 	private static function createFirstHouse() {
+		ftuecreateFirstHouse = true;
 		var lBuilding:VBuilding = Phantom.firstBuildForFtue();
 	}
 	
@@ -711,6 +713,7 @@ class DialogueManager
 		ftueStepBlocInterns = false;
 		doNotGiveGold = false;
 		doNotGiveKarma = false;
+		ftuecreateFirstHouse = false;
 		
 		Hud.getInstance().setGlowFalse();
 		

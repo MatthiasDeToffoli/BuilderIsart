@@ -92,6 +92,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	private function onClickNext():Void {
 		juicyEffect();
 		shopGraphic.visible = true;
+		trace(allRewardsTook);
 		if (UnlockManager.unlockedItem.length != 0) {
 			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
 				
@@ -101,11 +102,10 @@ class LevelUpPoppin extends SmartPopinExtended
 			);
 		}
 		else if (!allRewardsTook) {
-			shopGraphic.visible = false;
 			setGoldsIcon();
 		}
 		else
-			closeLevelUpPoppin();
+			Timer.delay(closeLevelUpPoppin, 200);
 	}
 	
 	private function setGoldsIcon() {
@@ -124,6 +124,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	private function closeLevelUpPoppin() {
 		if (DialogueManager.ftueCloseUnlockedItem)
 			DialogueManager.endOfaDialogue();
+			
 		Hud.getInstance().btnShop.interactive = true;
 		Hud.getInstance().show();
 		UIManager.getInstance().closePopin(this);
@@ -131,8 +132,11 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private function juicyEffect():Void {
-		if (!canDoJuicyWithTheseElement)
+		if (!canDoJuicyWithTheseElement) {
+			
+			shopGraphic.visible = false;
 			return;
+		}
 		TweenManager.positionAndRescal(
 			currentImage,
 			shopGraphic.position,
@@ -143,7 +147,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	}
 	
 	private function destroyAfterEffect():Void {
-	/*	if (imgArray.length != 0) {
+		/*if (imgArray.length != 0) {
 			var lImg:UIMovie = imgArray[0];
 			imgArray.splice(0, 1);
 			lImg.parent.removeChild(lImg);
@@ -164,6 +168,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		imgArray = [];
 		if (UnlockManager.unlockedItem[0] != null) {
 			
+			allRewardsTook = false;
 			canDoJuicyWithTheseElement = true;
 			setPopin(
 				FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
@@ -180,7 +185,6 @@ class LevelUpPoppin extends SmartPopinExtended
 		shopGraphic.position = Hud.getInstance().getShopIconPos();
 		addChild(shopGraphic);
 		shopGraphic.visible = false;
-		allRewardsTook = false;
 		SoundManager.getSound("SOUND_LEVELUP").play();
 	}
 	

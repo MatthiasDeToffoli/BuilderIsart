@@ -343,7 +343,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Callback of the reroll. Reroll the search
 	 */
 	private function onClickReroll ():Void {
-		if (DialogueManager.ftueStepClickOnIntern)
+		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
 			return;
 		ShopCarousselInternsSearch.progress = 0;
 		//ShopPopin.isSearching = true;
