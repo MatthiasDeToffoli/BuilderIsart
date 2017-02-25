@@ -26,7 +26,7 @@ typedef EventSuccessMoveBuilding = {
 	@:optional var oldY:Int;
 	@:optional var oldRegionX:Int;
 	@:optional var oldRegionY:Int;
-	var iDClientBuilding:Int;
+	@:optional var iDClientBuilding:Int;
 }
 
 typedef EventSuccessSellBuilding = {
@@ -121,9 +121,9 @@ class ServerManagerBuilding{
 				ErrorManager.openPopin(lFieldError);
 			}
 			
-		} else {
+		} /*else {
 			Debug.error("Success php on moveBuilding but event format is invalid ! : " + pObject);
-		}
+		}*/
 		
 	}
 	

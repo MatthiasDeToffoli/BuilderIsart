@@ -68,7 +68,7 @@ class BuildingDestroyPoppin extends SmartPopin
 		else levelBuilding.text = "";
 		
 		setImage(lVBuilding.getAsset());
-		price.text = ""+ BuyManager.getSellPrice(lVBuilding.tileDesc.buildingName, true).get(GeneratorType.soft); // todo
+		price.text = ""+ BuyManager.getSellPrice(lVBuilding.tileDesc.buildingName, lVBuilding.tileDesc.timeDesc == null).get(GeneratorType.soft); // todo
 	}
 	
 	private function setImage (pAssetName:String):Void { // todo : finir
