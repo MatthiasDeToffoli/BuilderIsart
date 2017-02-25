@@ -8,6 +8,8 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
 import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
 import com.isartdigital.perle.ui.popin.levelUp.LevelUpPoppin;
+import com.isartdigital.services.monetization.Ads;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
 import haxe.Timer;
@@ -76,6 +78,22 @@ class UnlockManager
 			GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 			DialogueManager.nextStep();
 		}
+	}
+	
+	public static function checkIfNeedPub() {
+		var lLevel = ResourcesManager.getLevel();
+		if (lLevel > LEVEL_UNLOCK_SPECIAL)
+			if (lLevel != LEVEL_UNLOCK_COLLECTORS && lLevel != LEVEL_UNLOCK_FACTORY && lLevel != LEVEL_UNLOCK_ALTAR && lLevel != LEVEL_UNLOCK_MARKETING)
+				Ads.getImage(callBackAd);
+		
+		return;
+	}
+	
+	private static function callBackAd (pData:Dynamic):Void {
+		if (pData == null) trace ("Erreur Service");
+		else if (pData.error != null) Debug.error(pData.error);
+		else if (pData.close == "cancel")  trace("cancel");
+		else if(pData.close == "close") trace("close");
 	}
 	
 	/**

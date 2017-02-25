@@ -92,7 +92,6 @@ class LevelUpPoppin extends SmartPopinExtended
 	private function onClickNext():Void {
 		juicyEffect();
 		shopGraphic.visible = true;
-		trace(allRewardsTook);
 		if (UnlockManager.unlockedItem.length != 0) {
 			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
 				
@@ -129,6 +128,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		Hud.getInstance().show();
 		UIManager.getInstance().closePopin(this);
 		UnlockManager.checkIfNeedToCreateDialogue();
+		UnlockManager.checkIfNeedPub();
 	}
 	
 	private function juicyEffect():Void {
