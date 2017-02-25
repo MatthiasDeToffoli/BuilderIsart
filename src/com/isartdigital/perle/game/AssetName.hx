@@ -569,6 +569,7 @@ class AssetName{
 	//button production assets
 	
 	public static inline var PROD_ICON_SOFT:String = "_goldIcon__Large_Prod";
+	public static inline var PROD_ICON_SOFT_ANIM:String = "GoldPickup_Anim";
 	public static inline var PROD_ICON_HARD:String = "_hardCurrencyIcon_Large";
 	public static inline var PROD_ICON_WOOD:String = "_woodIcon_Large";
 	public static inline var PROD_ICON_STONE:String = "_stoneIcon_Large";

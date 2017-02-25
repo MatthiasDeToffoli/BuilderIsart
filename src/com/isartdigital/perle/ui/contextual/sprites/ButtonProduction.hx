@@ -10,6 +10,8 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.math.Point;
+import pixi.flump.Movie;
 
 
 
@@ -28,13 +30,24 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	// et voir pour pooling de la partie graphique
 	public function new(pType:GeneratorType) {
 		super(AssetName.BTN_PRODUCTION);
-		var graphic:UISprite = new UISprite(assetsName[pType]);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_currency"), UISprite);
 		
-		graphic.position = spawner.position;
-		removeChild(spawner);
-		addChild(graphic);
-		interactive = true;
+		if (assetsName[pType] ==  AssetName.PROD_ICON_SOFT_ANIM) {
+			var movie:Movie = new Movie(assetsName[pType]);
+			movie.position = spawner.position;
+			removeChild(spawner);
+			addChild(movie);
+			movie.scale = new Point(2, 2);
+			interactive = true;
+		}
+		else {
+			var graphic:UISprite = new UISprite(assetsName[pType]);
+			graphic.position = spawner.position;
+			removeChild(spawner);
+			addChild(graphic);
+			interactive = true;
+		}
+		
 		Interactive.addListenerClick(this, onClick);
 		Interactive.addListenerClick(this, DialogueManager.recoltStepOver);
 		//on(EventType.ADDED, registerForFTUE);
@@ -42,7 +55,7 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	
 	public static function init(){
 		assetsName = new Map<GeneratorType,String>();
-		assetsName[GeneratorType.soft] = AssetName.PROD_ICON_SOFT;
+		assetsName[GeneratorType.soft] = AssetName.PROD_ICON_SOFT_ANIM;
 		assetsName[GeneratorType.hard] = AssetName.PROD_ICON_HARD;
 		assetsName[GeneratorType.buildResourceFromParadise] = AssetName.PROD_ICON_WOOD;
 		assetsName[GeneratorType.buildResourceFromHell] = AssetName.PROD_ICON_STONE;
