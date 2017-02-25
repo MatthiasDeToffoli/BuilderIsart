@@ -358,14 +358,15 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_CANCEL:String = "CloseButton";
 	public static inline var PURGATORY_POPIN_SHOP:String = "ShopButton";
 	public static inline var PURGATORY_POPIN_INTERN:String = "InternsButton";
-	public static inline var PURGATORY_POPIN_CARD:String = "FateCard";
+	public static inline var PURGATORY_POPIN_CARD:String = "_purgatory_fate_card";
 	public static inline var PURGATORY_POPIN_HEAVEN_BUTTON:String = "HeavenButton";
 	public static inline var PURGATORY_POPIN_INVITE_BUTTON:String = "InviteButton";
 	public static inline var PURGATORY_POPIN_HELL_BUTTON:String = "HellButton";
 	public static inline var PURGATORY_POPIN_LEVEL:String = "BuildingLevel";
 	public static inline var PURGATORY_POPIN_TIMER_CONTAINER:String = "UpgradeTimer";
 	public static inline var PURGATORY_POPIN_TIMER:String = "TimeInfo";
-	public static inline var PURGATORY_POPIN_SOUL_INFO:String = "FateTitle";
+	public static inline var PURGATORY_POPIN_SOUL_CARD:String = "SoulCard";
+	public static inline var PURGATORY_POPIN_SOUL_INFO:String = "_fateTitle";
 	public static inline var PURGATORY_POPIN_SOUL_NAME:String = "Name";
 	public static inline var PURGATORY_POPIN_SOUL_ADJ:String = "Adjective";
 	public static inline var PURGATORY_POPIN_HEAVEN_INFO:String = "HeavenINfo";

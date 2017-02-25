@@ -54,6 +54,7 @@ class TribunalPopin extends SmartPopinExtended
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
 	private var title:SmartComponent;
+	private var soulCard:SmartComponent;
 	private var tribunalTitleEnglish:UISprite;
 	private var tribunalTitleFrench:UISprite;
 	private var btnInviteSoul:SmartButton;
@@ -109,13 +110,15 @@ class TribunalPopin extends SmartPopinExtended
 		timer = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_TIMER), TextSprite);
 		timer.text = "0" + 0 + "h" + "0" + 0 + "m" + "0" + 0 + "s";
 		
-		interMovieClip = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO),SmartComponent);
+		soulCard = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_CARD), SmartComponent);
+		
+		interMovieClip = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO), SmartComponent);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
 		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
-		cardSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
+		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
 		baseCardRot = cardSoul.rotation;
 		cardSoul.interactive = true;
 		cardSoul.buttonMode = true;
