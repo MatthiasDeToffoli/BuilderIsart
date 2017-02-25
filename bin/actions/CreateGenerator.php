@@ -22,7 +22,7 @@ $TypeBuilding = BuildingUtils::getTypeBuildingWithPosition(
     Utils::getSinglePostValue(REGIONX),
     Utils::getSinglePostValue(REGIONY)
   );
-
+if($TypeBuilding->EndForNextProduction != null) exit;
 if($TypeBuilding->Name === 'Purgatory'){
   $pTime = time() +  (60*60)/$TypeBuilding->ProductionPerHour + 3600;
   $toSet = [
