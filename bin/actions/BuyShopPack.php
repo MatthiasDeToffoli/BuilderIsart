@@ -87,11 +87,13 @@ class BuyShopPack
     }
 
     private static function validate ($pConfig, $pWallet) {
-       if (!($pConfig[TypeShopPack::PriceKarma] == null || $pWallet[GeneratorType::hard] >= $pConfig[TypeShopPack::PriceKarma])) {
+        global $db;
+        if (!($pConfig[TypeShopPack::PriceKarma] == null || $pWallet[GeneratorType::hard] >= $pConfig[TypeShopPack::PriceKarma])) {
            //Send::SHOP_CANNOT_BUY_NOT_ENOUGH_MONEY;
+           $db->rollback();
            echo "not enough money (karma) for this pack";
            exit;
-       }
+        }
     }
 }
 

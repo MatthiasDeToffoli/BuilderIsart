@@ -29,5 +29,7 @@ function getDataBase () {
 // then in cmd or git bash use php -a <fileName>
 // enjoy
 
-include_once("actions/utils/Resources.php");
-echo json_encode(\actions\utils\Resources::getResources(5));
+//include_once("actions/utils/Resources.php");
+//echo json_encode(\actions\utils\Resources::getResources(4));
+//include_once("actions/utils/BuildingCommonCode.php");
+//echo json_encode(\actions\BuildingCommonCode::getBuildingWhitPosition(4,3,8,1,0));

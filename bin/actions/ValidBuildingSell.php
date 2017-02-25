@@ -25,8 +25,11 @@ class ValidBuildingSell
     }
 
     private static function buildingExist ($pInfo, $pBuildingInDB) {
-        if (!isset($pBuildingInDB) || empty($pBuildingInDB))
+        global $db;
+        if (!isset($pBuildingInDB) || empty($pBuildingInDB)) {
+            $db->rollBack();
             Send::refuseSellBuilding($pInfo, Send::BUILDING_CANNOT_SELL_DONT_EXIST);
+        }
     }
 
     private static function getBuildingInDB ($pInfo) {

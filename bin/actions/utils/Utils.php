@@ -186,6 +186,11 @@ class Utils
      * @return int timestamp
      */
     public static function dateTimeToTimeStamp ($pStringDate) {
+        if ($pStringDate == null || empty($pStringDate)){
+            echo '$pStringDate is null';
+            exit;
+        }
+
         $date = new \DateTime();
         $date = $date->createFromFormat(static::DATETIME_FORMAT, $pStringDate);
         return $date->getTimestamp();

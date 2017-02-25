@@ -12,6 +12,7 @@ use actions\utils\Send as Send;
 use actions\utils\Utils as Utils;
 use actions\utils\GeneratorType as GeneratorType;
 use actions\utils\TypeBuilding as TypeBuilding;
+use actions\utils\BuildingCommonCode as BuildingCommonCode;
 
 include_once("utils/Utils.php");
 include_once("utils/Send.php");

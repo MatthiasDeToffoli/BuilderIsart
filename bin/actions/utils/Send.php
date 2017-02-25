@@ -7,7 +7,7 @@
 
 namespace actions\utils;
 
-use actions\BuildingCommonCode as BuildingCommonCode;
+use actions\utils\BuildingCommonCode as BuildingCommonCode;
 use actions\utils\Logs as Logs;
 use actions\AddBuilding as AddBuilding;
 use actions\MoveBuilding as MoveBuilding;

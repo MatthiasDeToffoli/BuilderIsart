@@ -5,11 +5,13 @@
  * Time: 14:34
  */
 
-namespace actions;
+namespace actions\utils;
 
 use actions\utils\Utils as Utils;
+use actions\utils\Table as Table;
 
 include_once("Utils.php");
+include_once("Table.php");
 
 /**
  * private code shared between my class, that's not for anybody else use.
@@ -36,6 +38,14 @@ class BuildingCommonCode
 
     private static function getEndConstruction ($pStartConstruction, $pConfig) {
         return Utils::timeToTimeStamp($pConfig[static::COLUMN_CONSTRUCTION_TIME]) + $pStartConstruction;
+    }
+
+    public static function getBuildingWhitPosition ($pId, $pX, $pY, $pRegionX, $pRegionY) {
+        return Utils::getTable(
+            Table::Building,
+            "Building.IDPlayer = ".$pId." AND Building.X = ".$pX." AND Building.Y = ".$pY." ".
+            "AND Building.RegionX = ".$pRegionX." AND Building.RegionY = ".$pRegionY
+        )[0];
     }
 
 }
