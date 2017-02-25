@@ -5,7 +5,7 @@
  * Time: 12:33
  */
 
-namespace actions;
+namespace actions\utils;
 
 use actions\utils\Utils as Utils;
 
