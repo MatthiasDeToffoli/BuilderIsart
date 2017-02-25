@@ -79,6 +79,7 @@ class Loading
     private static function convertDateTimesPlayer ($pTable, $pLength2) {
         for ($j = 0; $j < $pLength2; $j++) {
             if (array_key_exists(static::COLUMN_END_OF_CAMPAIGN, $pTable[$j]))
+            if($pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION] != null)
                 $pTable[$j][static::COLUMN_END_OF_CAMPAIGN] = Utils::timeStampToJavascript(
                     Utils::dateTimeToTimeStamp(
                         $pTable[$j][static::COLUMN_END_OF_CAMPAIGN]

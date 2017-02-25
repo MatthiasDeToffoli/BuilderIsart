@@ -26,6 +26,7 @@ class BuildingUtils
   const REGIONY = 'RegionY';
   const X = 'X';
   const Y = 'Y';
+  const NBSOUL = 'NbSoul';
 
   public static function getTypeBuilding($pName, $pLevel) {
     global $db;
@@ -127,6 +128,20 @@ public static function getAllBuildingByName($pName) {
       static::REGIONY => 0,
       static::X => 0,
       static::Y => 5
+    ]);
+  }
+
+  public static function addFirstHellBuildingToDatabase() {
+    Utils::insertInto(static::BUILDINGTABLE, [
+      static::IDTYPEBUILDING => $typeBuilding->ID,
+      static::IDPLAYER => FacebookUtils::getId(),
+      static::REGIONX => 1,
+      static::REGIONY => 0,
+      static::X => 6,
+      static::Y => 6,
+      static::NBRESOURCES => $typeBuilding->MaxGoldContained,
+      static::NBSOUL => 3,
+      static::ENDFORNEXTPRODUCTION => Utils::timeStampToDateTime(time() + ((3600/$typeBuilding->ProductionPerHour)/3))
     ]);
   }
 }

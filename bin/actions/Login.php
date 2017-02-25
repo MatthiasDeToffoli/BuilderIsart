@@ -57,6 +57,7 @@ try {
             Regions::createRegion($id,"neutral",0,0,0,0);
             Regions::createRegion($id,"hell",1,0,3,0);
             BuildingUtils::addPurgatoryToDatabase();
+            BuildingUtils::addFirstHellBuildingToDatabase();
             $retour['ID'] = FacebookUtils::getId();
         } catch (Exception $e) {
             echo $e->getMessage();
