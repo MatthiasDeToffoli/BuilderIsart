@@ -25,9 +25,11 @@ import com.isartdigital.utils.ui.UIComponent;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
 import pixi.core.math.Point;
+import pixi.flump.Movie;
 import pixi.interaction.EventTarget;
 
 /**
@@ -42,7 +44,7 @@ class InternElementInQuest extends InternElement
 	public static var canPushNewScreen:Bool = false;
 	//private var progressIndex:Int = 0;
 	private var questTime:SmartComponent;
-	private var heroCursor:UISprite;
+	private var heroCursor:UIMovie;
 	private var heroCursorStartPosition:Point;
 	private var eventCursor1:UISprite;
 	private var eventCursor2:UISprite;
@@ -73,8 +75,9 @@ class InternElementInQuest extends InternElement
 		internName = cast(getChildByName(AssetName.INTERN_NAME_IN_QUEST), TextSprite);
 		
 		questTime = cast(getChildByName(AssetName.TIME_IN_QUEST), SmartComponent);
-		heroCursor = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_HERO_CURSOR), UISprite);
-		heroCursorStartPosition = cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_HERO_CURSOR), UISprite).position.clone();
+		
+		heroCursor = cast(cast(SmartCheck.getChildByName(questTime, AssetName.IN_QUEST_HERO_CURSOR), SmartComponent).getChildAt(0), UIMovie);
+		heroCursorStartPosition = heroCursor.parent.position.clone();
 		
 		eventCursor1 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent01"), UISprite);
 		eventCursor2 = cast(SmartCheck.getChildByName(questTime, "_listInQuest_nextEvent02"), UISprite);
@@ -115,13 +118,15 @@ class InternElementInQuest extends InternElement
 		if (Intern.getIntern(quest.refIntern).stress >= Intern.MAX_STRESS) Intern.getIntern(quest.refIntern).status = Intern.STATE_MAX_STRESS; 
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_RESTING) {
+			heroCursor.resume();
 			activeButton = new AccelerateButton(spawner.position);
 			cast(activeButton, AccelerateButton).spawn(quest);
 		}
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_WAITING) {
 			activeButton = new ResolveButton(spawner.position);
-			Interactive.addListenerClick(activeButton, onResolve);	
+			heroCursor.goToAndStop(5);
+			Interactive.addListenerClick(activeButton, onResolve);
 		}
 		
 		if (Intern.getIntern(quest.refIntern).status == Intern.STATE_MAX_STRESS) {
@@ -203,11 +208,11 @@ class InternElementInQuest extends InternElement
 	 */
 	private function updateCursorPosition():Void{
 		if (quest.progress < quest.startTime + quest.steps[quest.stepIndex]) {
-			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
+			heroCursor.parent.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
 		}		
 		else {
 			eventCursor3.alpha = 1;
-			heroCursor.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
+			heroCursor.parent.position.x = heroCursorStartPosition.x + questGaugeLenght * QuestsManager.getPrctAvancment(quest.refIntern);
 			timeEvent.text =  "00:00";
 		}
 	}

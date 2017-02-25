@@ -275,8 +275,6 @@ class Choice extends SmartPopinExtended
 		var swipCard:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		choiceCard = cast(SpriteManager.spawnComponent(swipCard, pChoice.card, this, TypeSpawn.SMART_COMPONENT, true));
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
-		imgRot = choiceCard.rotation;
-		imgPos = choiceCard.position.clone();
 		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = activeChoice.text;
 	}
 	
@@ -501,6 +499,8 @@ class Choice extends SmartPopinExtended
 	 */
 	private function startFollow(mEvent:EventTarget):Void
 	{
+		imgRot = choiceCard.rotation;
+		imgPos = choiceCard.position.clone();
 		// update choiceType
 		choiceType = ChoiceType.NONE;
 		// click mouse pos
@@ -537,14 +537,16 @@ class Choice extends SmartPopinExtended
 	/**
 	 * Replace fatecard at start pos && do answer choice if actual choice not NONE
 	 */
-	private function valideSwip():Void
+	private function valideSwip(mEvent:EventTarget):Void
 	{	
 		choiceCard.rotation = imgRot;
 		choiceCard.position = imgPos;
-		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
-		choiceCard.on(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
-		choiceCard.on(MouseEventType.MOUSE_UP, valideSwip);
+		var diff:Float = mEvent.data.global.x - mousePos.x;
 		
+		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
+		choiceCard.off(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
+		choiceCard.off(MouseEventType.MOUSE_UP, valideSwip);
+			
 		if (choiceType != ChoiceType.NONE) {
 			ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
 			if (DialogueManager.ftueStepMakeChoice)
