@@ -107,7 +107,7 @@ class AddBuilding
             );
     }
 
-    // todo : tenter d'envoyer des valeur mindfuck poru voir si je casse ou pas ?
+
     private static function getInfo () {
         return [
             static::ID_CLIENT_BUILDING => Utils::getSinglePostValueInt(static::ID_CLIENT_BUILDING),

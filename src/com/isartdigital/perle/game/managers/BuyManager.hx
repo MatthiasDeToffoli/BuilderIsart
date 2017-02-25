@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.ServerManagerShop;
 import com.isartdigital.utils.Debug;
 
 typedef PriceElement = {
@@ -124,7 +125,9 @@ class BuyManager {
 	 * @param	pPrice (float cause isartPoint)
 	 * @param	pGain
 	 */
-	public static function buyShopPack (pPrice:Map<GeneratorType, Float>, pGain:Map<GeneratorType, Int>):Void {
+	public static function buyShopPack (pPrice:Map<GeneratorType, Float>, pGain:Map<GeneratorType, Int>, pConfigID:Int):Void {
+		
+		ServerManagerShop.buyShopPack(pConfigID);
 		
 		for (lGeneratorType in pPrice.keys()) {
 			

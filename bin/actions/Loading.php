@@ -47,6 +47,7 @@ class Loading
 
     private static function convertDateTimes ($pTable, $pLength2) {
         for ($j = 0; $j < $pLength2; $j++) {
+            // todo : do another array whit the COLUMN name that need to be converted, and make the conversion more dry.
             if (array_key_exists(static::COLUMN_START_CONSTRUCTION, $pTable[$j]))
                 $pTable[$j][static::COLUMN_START_CONSTRUCTION] = Utils::timeStampToJavascript(
                     Utils::dateTimeToTimeStamp(

@@ -1,6 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: RABIERAmbroise
  * Date: 24/02/2017
  * Time: 19:58
@@ -26,4 +25,20 @@ function getDataBase () {
     }
 }
 
-include_once("actions/JsonCreator.php");
+function updateSetWhere () {
+    global $db;
+
+    $req = "INSERT INTO `perle_gold`.`Logs` (`ID`, `IDPlayer`, `Date`, `Module`, `Status`, `Message`, `Data`) VALUES (NULL, '666', CURRENT_TIMESTAMP, '666 cron.php', 'Error', '666', '666')";
+    $reqPre = $db->prepare($req);
+
+
+    try {
+        $reqPre->execute();
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+        exit;
+    }
+}
+updateSetWhere();
+
+include_once("actions/JsonCreator2.php");

@@ -116,7 +116,7 @@ class CarouselCardPack extends CarouselCard{
 		super._click(pEvent);
 		SoundManager.getSound("SOUND_SPEND").play();
 		//closeShop();
-		BuyManager.buyShopPack(myPrice, myGain);
+		BuyManager.buyShopPack(myPrice, myGain, myConfig.iD);
 		ShopPopin.getInstance().setCurrenciesNumber();
 	}
 	
