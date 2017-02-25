@@ -331,6 +331,7 @@ class SaveManager {
 			serverBuildingToTileDesc = new Map<TableBuilding, TileDescription>();
 			
 			var lBuildings:Array<TileDescription> = loadBuilding();
+			var lRegions:Array<RegionDescription> = loadRegion();
 			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
 			var lTimeResources:Array<TimeDescription> = loadTimeResources(serverBuildingToTileDesc);
 			var lTimeResourcesProd:Array<TimeDescription> = loadTimeResourcesProd(serverBuildingToTileDesc);
@@ -354,7 +355,7 @@ class SaveManager {
 				//lastKnowTime:TimeManager.lastKnowTime,
 				//stats: getStats(),
 				//idHightest: IdManager.idHightest, // n'est plus utilisé
-				//region: regionSave,
+				region: lRegions,
 				//ground: groundSave,
 				building: lBuildings,
 				resourcesData: lResources,
@@ -374,6 +375,26 @@ class SaveManager {
 		}
 		
 		return currentSave;
+	}
+	
+	private static function loadRegion():Array<RegionDescription>{
+		var lAllRegions:Array<TableRegion> = ServerManagerLoad.getRegion();
+		var lArray:Array<RegionDescription> = new Array<RegionDescription>();
+		var lRegion:TableRegion;
+		
+		for (lRegion in lAllRegions) {
+			lArray.push({
+				firstTilePos:{
+					x:Std.int(lRegion.fistTilePosX),
+					y:Std.int(lRegion.fistTilePosY)
+				},
+				type:lRegion.type,
+				x:Std.int(lRegion.positionX),
+				y:Std.int(lRegion.positionY)
+			});
+		}
+		
+		return lArray;
 	}
 	
 	private static function loadTimeResourcesProd (pBuildings:Map<TableBuilding, TileDescription>):Array<TimeDescription>{

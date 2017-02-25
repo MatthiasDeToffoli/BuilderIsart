@@ -78,11 +78,11 @@ use actions\utils\Resources as Resources;
       $nbRegion++;
     }
 
-    $moneyRest = Resources::getResource($Id, "soft") - $price;
+    $moneyRest = Resources::getResource($Id, "soft")->Quantity - $price;
 
 
     if($moneyRest < 0) {
-      $messageBack =  Array("flag" => false,"message" => "not enought money you must have ".abs($moneyRest)." in more");
+      $messageBack =  ["flag" => false,"message" => "not enought money you must have ".abs($moneyRest)." in more"];
       echo json_encode($messageBack);
       exit;
     }

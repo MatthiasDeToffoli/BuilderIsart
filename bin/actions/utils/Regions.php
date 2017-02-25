@@ -1,6 +1,8 @@
 <?php
 
 namespace actions\utils;
+
+use PDO as PDO;
 /**
 * @author: de Toffoli Matthias
 * Include this when you want to use the table Region

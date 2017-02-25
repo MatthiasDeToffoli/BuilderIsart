@@ -35,16 +35,6 @@ typedef EventSuccessAddRegion = {
 	@:optional var xpHell:Float;
 }
 
-typedef TableRegion = {
-	var Id:Int;
-	var IdPlayer:Int;
-	var Type:String;
-	var PositionX:Int;
-	var PositionY:Int;
-	var FistTilePosX:Int;
-	var FistTilePosY:Int;
-}
-
 /**
  * Interface whit the server
  * @author Vicktor Grenu et Ambroise Rabier
@@ -177,17 +167,6 @@ class ServerManager {
 		}
 	}
 	
-	public static function loadRegion():Void {
-		callPhpFile(onRegionLoad, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOAD_REGION]);
-	}
-	
-	private static function onRegionLoad(pObject:Dynamic):Void {
-		var listRegionLoad:Array<TableRegion> = Json.parse(pObject);
-		
-		if (listRegionLoad.length == 0) RegionManager.buildWhitoutSave();
-		else RegionManager.load(listRegionLoad);		
-	}
-	
 	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null, ?pBoosted:Int):Void {
 		var actionCall:String = Std.string(pAction);
 		
@@ -268,21 +247,25 @@ class ServerManager {
 	 * call when a region is add in the database this create the region for client
 	 * @param	object a object return by database can contain an error message or region information
 	 */
-	private static function onDataRegionCallback(object:Dynamic):Void {
+	private static function onDataRegionCallback(pObject:Dynamic):Void {
 		UIManager.getInstance().closePopin(ServerConnexionPopin.getInstance());
-		var data:EventSuccessAddRegion = Json.parse(object);
 
-		if (data.flag) {
-			if (currentButtonRegion != null) currentButtonRegion.destroy();
-			RegionManager.createRegion(stringToEnum(data.type), new Point(data.ftx, data.fty), {x:Std.int(data.x), y:Std.int(data.y)});
-			ResourcesManager.spendTotal(GeneratorType.soft, Std.int(data.price));
-			currentButtonRegion = null;
-			ResourcesManager.gainResources(GeneratorType.goodXp, data.xpHeaven);
-			ResourcesManager.gainResources(GeneratorType.badXp, data.xpHell);
-			return;
-		}
+			
+			var data:EventSuccessAddRegion = Json.parse(pObject);
+			
+			if (data.flag) {
+				if (currentButtonRegion != null) currentButtonRegion.destroy();
+				RegionManager.createRegion(stringToEnum(data.type), new Point(data.ftx, data.fty), {x:Std.int(data.x), y:Std.int(data.y)});
+				ResourcesManager.spendTotal(GeneratorType.soft, Std.int(data.price));
+				currentButtonRegion = null;
+				ResourcesManager.gainResources(GeneratorType.goodXp, data.xpHeaven);
+				ResourcesManager.gainResources(GeneratorType.badXp, data.xpHell);
+				return;
+			}
 		
-		Debug.error(data.message);
+			Debug.error(data.message);
+		
+		
 	}
 
 	private static function onErrorCallback(object:Dynamic):Void {

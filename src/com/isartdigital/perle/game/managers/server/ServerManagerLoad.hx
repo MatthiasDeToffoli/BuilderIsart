@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
@@ -35,6 +36,14 @@ typedef TablePlayer = {
 	var idCampaign:Int;
 }
 
+typedef TableRegion = {
+	var id:Int;
+	var type:Alignment;
+	var positionX:Int;
+	var positionY:Int;
+	var fistTilePosX:Int;
+	var fistTilePosY:Int;
+}
 /**
  * ...
  * @author ambroise
@@ -43,6 +52,7 @@ class ServerManagerLoad {
 	
 	private static inline var TABLE_BUILDING:String = "Building";
 	private static inline var TABLE_RESOURCES:String = "Resources";
+	private static inline var TABLE_REGION:String = "Region";
 	private static inline var TABLE_PLAYER:String = "Player";
 	
 	private static var serverSave:Map<String, Array<Dynamic>>;
@@ -65,6 +75,10 @@ class ServerManagerLoad {
 	
 	private static function onErrorLoad (pObject:Dynamic):Void {
 		Debug.error("Error php on load: " + pObject);
+	}
+	
+	public static function getRegion():Array<TableRegion> {
+		return cast(serverSave[TABLE_REGION]);
 	}
 	
 	public static function getBuilding ():Array<TableBuilding> {

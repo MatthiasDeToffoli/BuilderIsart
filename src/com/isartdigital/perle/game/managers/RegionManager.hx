@@ -7,7 +7,6 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.RegionDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
-import com.isartdigital.perle.game.managers.server.ServerManager.TableRegion;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
@@ -229,7 +228,7 @@ class RegionManager
 		
 		mapNumbersRegion[pNewRegion.desc.type] += 1;
 		eRegionCreate.emit(REGION_CREATED);
-		
+	
 		if (worldMap[pNewRegion.desc.x] == null)
 			worldMap[pNewRegion.desc.x] = new Map<Int,Region>();
 		if (worldMap[pNewRegion.desc.x][pNewRegion.desc.y] != null)
@@ -240,7 +239,6 @@ class RegionManager
 		if (background != null)	{
 			bgContainer.addChild(background);
 			sortBackground();
-			//addBgUnder(background.position, {x:pNewRegion.desc.x, y:pNewRegion.desc.y});
 		}
 	}
 
@@ -294,7 +292,7 @@ class RegionManager
 		var lLength:UInt = pSave.region.length;		
 		
 		for (i in 0...lLength) {
-			pSave.region[i].type = SaveManager.translateArrayToEnum(pSave.region[i].type);
+			//pSave.region[i].type = SaveManager.translateArrayToEnum(pSave.region[i].type);
 			addToWorldMap(createRegionFromDesc(pSave.region[i]));
 		}
 		
@@ -315,7 +313,7 @@ class RegionManager
 		
 	}
 	
-	public static function load(pSave:Array<TableRegion>):Void {
+	/*public static function load(pSave:Array<TableRegion>):Void {
 		var l:UInt = pSave.length;
 		var desc:RegionDescription;
 		
@@ -347,7 +345,7 @@ class RegionManager
 					0
 				);
 		}
-	}
+	}*/
 	
 	/**
 	 * Create a new region
@@ -446,8 +444,8 @@ class RegionManager
 		if (worldMap[0][pWorldPos.y] != null) return;
 			
 		var posWorld:Index = {x:0, y:pWorldPos.y};
-		//ServerManager.addRegionToDataBase(Alignment.neutral.getName(), posWorld, {x:0, y:pPosY});
-		createRegion(Alignment.neutral, new Point(0,pPosY), posWorld);
+		ServerManager.addRegionToDataBase(Alignment.neutral.getName(), posWorld, {x:0, y:pPosY});
+		//createRegion(Alignment.neutral, new Point(0,pPosY), posWorld);
 		addRegionButtonByStyx(posWorld, pPosY);
 		
 	}
