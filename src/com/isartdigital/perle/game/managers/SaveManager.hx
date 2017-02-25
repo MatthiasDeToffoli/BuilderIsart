@@ -332,13 +332,14 @@ class SaveManager {
 			var lBuildings:Array<TileDescription> = loadBuilding();
 			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
 			var lTimeResources:Array<TimeDescription> = loadTimeResources(serverBuildingToTileDesc);
+			var lTimeResourcesProd:Array<TimeDescription> = loadTimeResourcesProd(serverBuildingToTileDesc);
 			var lPlayer:TablePlayer = 
 			
 			untyped currentSave = { 
 				timesResource: lTimeResources,
 				//timesQuest: getTimesQuest(),
 				//timesConstruction: getTimesConstruction(),
-				//timesProduction: TimeManager.listProduction,
+				timesProduction: lTimeResourcesProd,
 				//timesCampaign: getCampaign(),
 				//lastKnowTime:TimeManager.lastKnowTime,
 				//stats: getStats(),
@@ -352,7 +353,6 @@ class SaveManager {
 			};
 			ServerManagerLoad.deleteServerSave();
 			serverBuildingToTileDesc = null;
-			
 			//todo : temporary, it's fill's the missing value from localSave
 			// game should be tested whitout later, to be sure everything is saved in server.
 			currentSave = untyped Object.assign(
@@ -364,6 +364,29 @@ class SaveManager {
 		}
 		
 		return currentSave;
+	}
+	
+	private static function loadTimeResourcesProd (pBuildings:Map<TableBuilding, TileDescription>):Array<TimeDescription>{
+		var lArray:Array<TimeDescription> = new Array<TimeDescription>();
+		var config:TableBuilding;
+		
+		for (config in pBuildings.keys()) {
+			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
+			
+			if ((lGameConfig.name == 'Hell Collector Iron Mines' || lGameConfig.name == 'Heaven Collector Lumber Mill') && config.packId > 0) {
+				lArray.push({
+					refTile:pBuildings[config].id,
+					progress:Date.now().getTime(),
+					end:config.endForNextProduction,
+					gain: lGameConfig.name == 'Hell Collector Iron Mines' ? 
+						GameConfig.getBuildingPackById(config.packId).gainIron :
+						GameConfig.getBuildingPackById(config.packId).gainWood
+				});
+			}
+			
+		}
+		
+		return lArray;
 	}
 	
 	private static function loadTimeResources (pBuildings:Map<TableBuilding, TileDescription>):Array<TimeDescription>{

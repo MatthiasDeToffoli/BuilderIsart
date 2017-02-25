@@ -177,6 +177,16 @@ class GameConfig {
 		return lArray;
 	}
 	
+	public static function getBuildingPackById(pId:Int):TableTypePack {
+		
+		var lTypePack:TableTypePack;
+		
+		for (lTypePack in config[BUILDING_PACK])
+			if (pId == lTypePack.iD) return lTypePack;
+			
+		return null;
+	}
+	
 	private static function sortpackArrayById(pack1:TableTypePack, pack2:TableTypePack):Int {
 		if (pack1.iD < pack2.iD) return -1;
 		if (pack1.iD > pack2.iD) return 1;

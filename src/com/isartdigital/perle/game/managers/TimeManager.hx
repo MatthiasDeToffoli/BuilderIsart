@@ -117,7 +117,7 @@ class TimeManager {
 	public static function buildFromSave (pSave:Save):Void {
 		var lLength:Int = pSave.timesResource.length;
 		
-		//listProduction = pSave.timesProduction; // server save used now, delete if work
+		listProduction = pSave.timesProduction; // server save used now, delete if work
 		
 		var lLengthConstruction:Int = pSave.timesConstruction.length;
 		

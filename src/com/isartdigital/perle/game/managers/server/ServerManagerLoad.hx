@@ -11,6 +11,7 @@ typedef TableBuilding = {
 	@:optional var nbResource:Int;
 	@:optional var endForNextProduction:Int; // timestamp
 	@:optional var nbSoul:Int;
+	@:optional var packId:Int;
 	var regionX:Int;
 	var regionY:Int;
 	var x:Int;

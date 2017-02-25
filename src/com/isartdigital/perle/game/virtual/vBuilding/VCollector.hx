@@ -38,7 +38,6 @@ class VCollector extends VBuildingUpgrade
 		var lArray:Array<TableTypePack> = GameConfig.getBuildingPack(myGeneratorType);
 		myPacks = new Array<ProductionPack>();
 		var lPack:ProductionPack;
-		trace(lArray.length);
 		
 		for (i in 0...lArray.length) {
 			
@@ -61,7 +60,6 @@ class VCollector extends VBuildingUpgrade
 	}
 	
 	private function setProductInStart():Void {
-		
 		for (ltimeDesc in TimeManager.listProduction) {
 			if (ltimeDesc.refTile == tileDesc.id) {
 				timeProd = ltimeDesc;
