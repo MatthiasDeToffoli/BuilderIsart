@@ -21,7 +21,13 @@ import pixi.core.math.Point;
 class DialoguePoppin extends SmartScreen 
 {
 	private static inline var NEUTRAL_EXPRESSION:String = "_Neutral";
+	private static inline var ANGRY_EXPRESSION:String = "_Sad";
+	private static inline var HAPPY_EXPRESSION:String = "_Happy";
 	private static inline var HELL_NPC:String = "Demona";
+	private static inline var HELL_NPC_MASCOT:String = "_ftue_mascot_demona";
+	private static inline var HEAVEN_NPC_MASCOT:String = "_ftue_mascot_angela";
+	private static inline var HEAVEN_NPC_MASCOT_SCENARIO:String = "Window_NPC_Heaven";
+	private static inline var HELL_NPC_MASCOT_SCENARIO:String = "Window_NPC_Hell";
 	private static inline var ON_ALPHA:Float = 1;
 	private static inline var OFF_ALPHA:Float = 0.2;
 	
@@ -41,6 +47,20 @@ class DialoguePoppin extends SmartScreen
 	
 	public static var numberOfDialogue:Int;
 	public static var firstToSpeak:String;
+	
+	//STATES
+	private var scenarioAngelHappy:UISprite;
+	private var scenarioAngelAngry:UISprite;
+	private var scenarioAngelNeutral:UISprite;
+	private var scenarioHellHappy:UISprite;
+	private var scenarioHellAngry:UISprite;
+	private var scenarioHellNeutral:UISprite;
+	private var actionAngelHappy:UISprite;
+	private var actionAngelAngry:UISprite;
+	private var actionAngelNeutral:UISprite;
+	private var actionHellHappy:UISprite;
+	private var actionHellAngry:UISprite;
+	private var actionHellNeutral:UISprite;
 	
 	//icons
 	private var icon5:SmartComponent;
@@ -132,6 +152,20 @@ class DialoguePoppin extends SmartScreen
 		scenarioHell = cast(getChildByName(AssetName.FTUE_SCENARIO_WINDOW_HELL), SmartComponent);
 		actionAngel = cast(getChildByName(AssetName.FTUE_ACTION_HEAVEN), SmartComponent);
 		actionHell = cast(getChildByName(AssetName.FTUE_ACTION_HELL), SmartComponent);
+		
+		scenarioAngelHappy = cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + HAPPY_EXPRESSION), UISprite);
+		scenarioAngelAngry= cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + ANGRY_EXPRESSION), UISprite);
+		scenarioAngelNeutral= cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + NEUTRAL_EXPRESSION), UISprite);
+		scenarioHellHappy= cast(SmartCheck.getChildByName(scenarioHell, HELL_NPC_MASCOT_SCENARIO + HAPPY_EXPRESSION), UISprite);
+		scenarioHellAngry= cast(SmartCheck.getChildByName(scenarioHell, HELL_NPC_MASCOT_SCENARIO + ANGRY_EXPRESSION), UISprite);
+		scenarioHellNeutral= cast(SmartCheck.getChildByName(scenarioHell, HELL_NPC_MASCOT_SCENARIO + NEUTRAL_EXPRESSION), UISprite);
+		actionAngelHappy= cast(SmartCheck.getChildByName(actionAngel, HEAVEN_NPC_MASCOT + HAPPY_EXPRESSION), UISprite);
+		actionAngelAngry= cast(SmartCheck.getChildByName(actionAngel, HEAVEN_NPC_MASCOT + ANGRY_EXPRESSION), UISprite);
+		actionAngelNeutral= cast(SmartCheck.getChildByName(actionAngel, HEAVEN_NPC_MASCOT + NEUTRAL_EXPRESSION), UISprite);
+		actionHellHappy= cast(SmartCheck.getChildByName(actionHell, HELL_NPC_MASCOT + HAPPY_EXPRESSION), UISprite);
+		actionHellAngry= cast(SmartCheck.getChildByName(actionHell, HELL_NPC_MASCOT + ANGRY_EXPRESSION), UISprite);
+		actionHellNeutral= cast(SmartCheck.getChildByName(actionHell, HELL_NPC_MASCOT + NEUTRAL_EXPRESSION), UISprite);
+		
 		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);
 		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);
 		icon11= cast(getChildByName(AssetName.FTUE_ICON_11), SmartComponent);
@@ -227,6 +261,7 @@ class DialoguePoppin extends SmartScreen
 			}
 			checkWichButton(dialogueSaved);
 		}
+		checkExpressions(isAction, pExpression,pNpc);
 		lPanel.visible = true;
 		setTextWf(isAction, lPanel);
 	}
@@ -253,6 +288,29 @@ class DialoguePoppin extends SmartScreen
 	
 	private function setTextWf(isAction:Bool,pPanel:SmartComponent) {
 		npc_speach = cast(SmartCheck.getChildByName(pPanel, AssetName.FTUE_SCENARIO_SPEACH), TextSprite);
+	}
+	
+	private function checkExpressions(isAction:Bool, pExpression:String,pNpc:String):Void {
+		switch(pExpression) {
+			case "_Happy" : {
+				if (isAction) 
+					pNpc == HELL_NPC ? actionHellHappy.visible = true : actionAngelHappy.visible = true;
+				else
+					pNpc == HELL_NPC ? scenarioHellHappy.visible = true : scenarioAngelHappy.visible = true;
+			}
+			case "_Neutral" : {
+				if (isAction) 
+					pNpc == HELL_NPC ? actionHellNeutral.visible = true : actionAngelNeutral.visible = true;
+				else
+					pNpc == HELL_NPC ? scenarioHellNeutral.visible = true : scenarioAngelNeutral.visible = true;
+			}
+			case "_Angry" : {
+				if (isAction) 
+					pNpc == HELL_NPC ? actionHellAngry.visible = true : actionAngelAngry.visible = true;
+				else
+					pNpc == HELL_NPC ? scenarioHellAngry.visible = true : scenarioAngelAngry.visible = true;
+			}
+		}
 	}
 	
 	private function checkIfIconsFr(pDialogueNumber:Int) {
@@ -321,6 +379,19 @@ class DialoguePoppin extends SmartScreen
 		actionHell.visible = false;
 		btnNext.visible = false;
 		btnEnd.visible = false;
+		
+		scenarioAngelHappy.visible = false;
+		scenarioAngelAngry.visible = false;
+		scenarioAngelNeutral.visible = false;
+		scenarioHellHappy.visible = false;
+		scenarioHellAngry.visible = false;
+		scenarioHellNeutral.visible = false;
+		actionAngelHappy.visible = false;
+		actionAngelAngry.visible = false;
+		actionAngelNeutral.visible = false;
+		actionHellHappy.visible = false;
+		actionHellAngry.visible = false;
+		actionHellNeutral.visible = false;
 		
 		icon5.visible = false;
 		icon6.visible = false;
