@@ -331,10 +331,11 @@ class SaveManager {
 			
 			var lBuildings:Array<TileDescription> = loadBuilding();
 			var lResources:ResourcesGeneratorDescription = loadResources(serverBuildingToTileDesc);
+			var lTimeResources:Array<TimeDescription> = loadTimeResources(serverBuildingToTileDesc);
 			var lPlayer:TablePlayer = 
 			
 			untyped currentSave = { 
-				//timesResource: getTimesResource(),
+				timesResource: lTimeResources,
 				//timesQuest: getTimesQuest(),
 				//timesConstruction: getTimesConstruction(),
 				//timesProduction: TimeManager.listProduction,
@@ -363,6 +364,27 @@ class SaveManager {
 		}
 		
 		return currentSave;
+	}
+	
+	private static function loadTimeResources (pBuildings:Map<TableBuilding, TileDescription>):Array<TimeDescription>{
+		var lArray:Array<TimeDescription> = new Array<TimeDescription>();
+		var config:TableBuilding;
+		
+		for (config in pBuildings.keys()) {
+			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
+			
+			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
+			&& (lGameConfig.name != 'Hell Collector Iron Mines' || lGameConfig.name != 'Heaven Collector Lumber Mill')) {
+				lArray.push({
+					refTile:pBuildings[config].id,
+					progress:Date.now().getTime(),
+					end:config.endForNextProduction
+				});
+			}
+			
+		}
+		
+		return lArray;
 	}
 	
 	private static function loadResources (pBuildings:Map<TableBuilding, TileDescription>):ResourcesGeneratorDescription {

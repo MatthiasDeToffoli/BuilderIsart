@@ -23,6 +23,7 @@ class Loading
     const COLUMN_ID_PLAYER = "IDPlayer";
     const COLUMN_START_CONSTRUCTION = "StartConstruction";
     const COLUMN_END_CONSTRUCTION = "EndConstruction";
+    const COLUMN_END_FOR_NEXT_PRODUCTION = "EndForNextProduction";
 
     public static function doAction () {
         $lTable = explode(",", static::TABLE_TO_LOAD);
@@ -60,6 +61,14 @@ class Loading
                         $pTable[$j][static::COLUMN_END_CONSTRUCTION]
                     )
                 );
+
+                if (array_key_exists(static::COLUMN_END_FOR_NEXT_PRODUCTION, $pTable[$j]))
+                    if($pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION] != null)
+                    $pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION] = Utils::timeStampToJavascript(
+                        Utils::dateTimeToTimeStamp(
+                            $pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION]
+                        )
+                    );
         }
         return $pTable;
     }
