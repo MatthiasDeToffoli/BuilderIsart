@@ -1,5 +1,5 @@
 {
- "md5": "d4dec54edaaca7cab9e245a3f08a31e2",
+ "md5": "ded52f65af15b694cff1e129ff4a588a",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -659,7 +659,7 @@
        ]
       },
       {
-       "symbol": "_gauge",
+       "symbol": "_gauge_buildingTime",
        "origin": [
         0,
         30
@@ -672,7 +672,7 @@
        ]
       },
       {
-       "symbol": "_gauge_buildingTime",
+       "symbol": "_gauge",
        "origin": [
         0,
         30
@@ -711,6 +711,45 @@
        ]
       },
       {
+       "symbol": "_neutralSoulIcon_Large",
+       "origin": [
+        55.35,
+        64
+       ],
+       "rect": [
+        1083,
+        1554,
+        111,
+        128
+       ]
+      },
+      {
+       "symbol": "_heavenSoulIcon_Large",
+       "origin": [
+        55.35,
+        64
+       ],
+       "rect": [
+        1196,
+        1554,
+        111,
+        128
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Large",
+       "origin": [
+        55.35,
+        64
+       ],
+       "rect": [
+        858,
+        1570,
+        111,
+        128
+       ]
+      },
+      {
        "symbol": "_missionIndicator_right",
        "origin": [
         25,
@@ -737,20 +776,7 @@
        ]
       },
       {
-       "symbol": "_neutralSoulIcon_Large",
-       "origin": [
-        40.95,
-        64
-       ],
-       "rect": [
-        1240,
-        872,
-        82,
-        128
-       ]
-      },
-      {
-       "symbol": "_goldIcon_Medium",
+       "symbol": "_soulIcon_Medium",
        "origin": [
         48,
         48
@@ -763,7 +789,7 @@
        ]
       },
       {
-       "symbol": "_buildRessourceIcon_Medium",
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         48,
         48
@@ -776,7 +802,7 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Medium",
+       "symbol": "_stoneIcon_Medium",
        "origin": [
         48,
         48
@@ -789,7 +815,7 @@
        ]
       },
       {
-       "symbol": "_soulIcon_Medium",
+       "symbol": "_buildRessourceIcon_Medium",
        "origin": [
         48,
         48
@@ -802,14 +828,14 @@
        ]
       },
       {
-       "symbol": "_stoneIcon_Medium",
+       "symbol": "_goldIcon_Medium",
        "origin": [
         48,
         48
        ],
        "rect": [
-        1083,
-        1554,
+        971,
+        1570,
         96,
         96
        ]
@@ -828,14 +854,53 @@
        ]
       },
       {
+       "symbol": "_heavenSoulIcon_Medium",
+       "origin": [
+        41.55,
+        48
+       ],
+       "rect": [
+        1240,
+        872,
+        84,
+        96
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Medium",
+       "origin": [
+        41.55,
+        48
+       ],
+       "rect": [
+        1368,
+        423,
+        84,
+        96
+       ]
+      },
+      {
+       "symbol": "_neutralSoulIcon_Medium",
+       "origin": [
+        41.5,
+        48
+       ],
+       "rect": [
+        1368,
+        521,
+        84,
+        96
+       ]
+      },
+      {
        "symbol": "_buttonCancelUpgradeBuilding_png",
        "origin": [
         40,
         47.5
        ],
        "rect": [
-        1368,
-        423,
+        971,
+        1668,
         80,
         95
        ]
@@ -847,8 +912,8 @@
         39.95
        ],
        "rect": [
-        1368,
-        520,
+        255,
+        1956,
         82,
         80
        ]
@@ -873,8 +938,8 @@
         40
        ],
        "rect": [
-        255,
-        1956,
+        858,
+        1700,
         80,
         80
        ]
@@ -886,8 +951,8 @@
         37.5
        ],
        "rect": [
-        1181,
-        1554,
+        632,
+        1710,
         80,
         75
        ]
@@ -938,8 +1003,8 @@
         40.5
        ],
        "rect": [
-        1263,
-        1554,
+        714,
+        1710,
         68,
         80
        ]
@@ -951,8 +1016,8 @@
         32.5
        ],
        "rect": [
-        1181,
-        1631,
+        1240,
+        970,
         80,
         65
        ]
@@ -964,8 +1029,8 @@
         35.9
        ],
        "rect": [
-        858,
-        1570,
+        784,
+        1710,
         72,
         72
        ]
@@ -1010,6 +1075,45 @@
        ]
       },
       {
+       "symbol": "_neutralSoulIcon_Small",
+       "origin": [
+        27.65,
+        32.05
+       ],
+       "rect": [
+        1987,
+        213,
+        56,
+        65
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Small",
+       "origin": [
+        27.65,
+        32
+       ],
+       "rect": [
+        1987,
+        280,
+        56,
+        64
+       ]
+      },
+      {
+       "symbol": "_heavenSoulIcon_Small",
+       "origin": [
+        27.65,
+        32
+       ],
+       "rect": [
+        1987,
+        346,
+        56,
+        64
+       ]
+      },
+      {
        "symbol": "Eclat1",
        "origin": [
         19.85,
@@ -1025,17 +1129,17 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -44.45,
-        "text": "X9999",
-        "x": -117.65,
-        "width": 235.3,
-        "font": "76px _pixelOperator*",
+        "y": -27.65,
+        "text": "99h99m99s",
+        "x": -111.2,
+        "width": 222.35,
+        "font": "48px _pixelOperator*",
         "align": "center",
-        "height": 88.9,
-        "wordWrap": 0,
-        "color": "#FF0000"
+        "height": 49.65,
+        "wordWrap": 1,
+        "color": "#000046"
        },
-       "symbol": "_valueChange_Negative_txt",
+       "symbol": "_time",
        "origin": [
         0,
         0
@@ -1075,123 +1179,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
-        "text": "99",
-        "x": -52,
-        "width": 104,
-        "font": "96px _pixelOperator_title*",
-        "align": "center",
-        "height": 121.2,
-        "wordWrap": 0,
-        "color": "#3E311A"
-       },
-       "symbol": "_level_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        449,
-        1363,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.3,
-        "text": "9999",
-        "x": -52,
-        "width": 104,
-        "font": "46px _pixelOperator*",
-        "align": "center",
-        "height": 108.8,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_lastProd_cost",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        449,
-        1366,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -27.65,
-        "text": "99h99m99s",
-        "x": -111.2,
-        "width": 222.35,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 49.65,
-        "wordWrap": 1,
-        "color": "#000046"
-       },
-       "symbol": "_time",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        452,
-        1363,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -39.85,
-        "text": "9999",
-        "x": -89.05,
-        "width": 178.05,
+        "y": -31.05,
+        "text": "XXXX",
+        "x": -70.4,
+        "width": 140.85,
         "font": "62px _pixelOperator*",
         "align": "center",
-        "height": 79.7,
+        "height": 67.1,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_lastProd_production",
+       "symbol": "_infoBar_value",
        "origin": [
         0,
         0
        ],
        "rect": [
-        452,
-        1366,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -26.4,
-        "text": "Level 3",
-        "x": -70.35,
-        "width": 140.7,
-        "font": "52px _pixelOperator*",
-        "align": "center",
-        "height": 52.75,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "symbol": "_internsLevelRequired_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        455,
+        449,
         1363,
         1,
         1
@@ -1200,23 +1204,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -28.85,
-        "text": "99/99",
-        "x": -68.7,
-        "width": 137.35,
-        "font": "56px _pixelOperator*",
+        "y": -44.45,
+        "text": "X9999",
+        "x": -117.65,
+        "width": 235.3,
+        "font": "76px _pixelOperator*",
         "align": "center",
-        "height": 131.1,
-        "wordWrap": 1,
-        "color": "#250000"
+        "height": 88.9,
+        "wordWrap": 0,
+        "color": "#FF0000"
        },
-       "symbol": "_infos_house_txt",
+       "symbol": "_valueChange_Negative_txt",
        "origin": [
         0,
         0
        ],
        "rect": [
-        455,
+        449,
         1366,
         1,
         1
@@ -1241,8 +1245,33 @@
         0
        ],
        "rect": [
-        458,
+        452,
         1363,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -60.6,
+        "text": "99",
+        "x": -52,
+        "width": 104,
+        "font": "96px _pixelOperator_title*",
+        "align": "center",
+        "height": 121.2,
+        "wordWrap": 0,
+        "color": "#3E311A"
+       },
+       "symbol": "_level_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        452,
+        1366,
         1,
         1
        ]
@@ -1266,32 +1295,7 @@
         0
        ],
        "rect": [
-        458,
-        1366,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -30.05,
-        "text": "99:99",
-        "x": -63.4,
-        "width": 126.75,
-        "font": "46px _pixelOperator*",
-        "align": "center",
-        "height": 60.15,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_lastProd_time",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        461,
+        455,
         1363,
         1,
         1
@@ -1316,6 +1320,106 @@
         0
        ],
        "rect": [
+        455,
+        1366,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -26.4,
+        "text": "Level 3",
+        "x": -70.35,
+        "width": 140.7,
+        "font": "52px _pixelOperator*",
+        "align": "center",
+        "height": 52.75,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_internsLevelRequired_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        458,
+        1363,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -28.85,
+        "text": "99/99",
+        "x": -68.7,
+        "width": 137.35,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 131.1,
+        "wordWrap": 1,
+        "color": "#250000"
+       },
+       "symbol": "_infos_house_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        458,
+        1366,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.3,
+        "text": "9999",
+        "x": -52,
+        "width": 104,
+        "font": "46px _pixelOperator*",
+        "align": "center",
+        "height": 108.8,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_lastProd_cost",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        461,
+        1363,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -39.85,
+        "text": "9999",
+        "x": -89.05,
+        "width": 178.05,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 79.7,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_lastProd_production",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
         461,
         1366,
         1,
@@ -1325,17 +1429,17 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -31.05,
-        "text": "XXXX",
-        "x": -70.4,
-        "width": 140.85,
-        "font": "62px _pixelOperator*",
+        "y": -30.05,
+        "text": "99:99",
+        "x": -63.4,
+        "width": 126.75,
+        "font": "46px _pixelOperator*",
         "align": "center",
-        "height": 67.1,
+        "height": 60.15,
         "wordWrap": 1,
         "color": "#FFFFFF"
        },
-       "symbol": "_infoBar_value",
+       "symbol": "_lastProd_time",
        "origin": [
         0,
         0
@@ -1853,8 +1957,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1872,8 +1976,8 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1891,8 +1995,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1910,8 +2014,8 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1929,8 +2033,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -1948,8 +2052,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -1967,8 +2071,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -1986,8 +2090,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2005,8 +2109,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -2024,8 +2128,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2057,8 +2161,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2076,8 +2180,8 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2095,8 +2199,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2132,8 +2236,8 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
@@ -2151,8 +2255,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
@@ -2170,8 +2274,8 @@
        ],
        "ref": "~INFO_Wood",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2189,8 +2293,8 @@
        ],
        "ref": "~INFO_Iron",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2208,8 +2312,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -2236,8 +2340,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2255,8 +2359,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -2274,8 +2378,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2293,8 +2397,8 @@
        ],
        "ref": "~HUD_internsLockedMC",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2312,8 +2416,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2429,8 +2533,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2453,8 +2557,8 @@
        ],
        "ref": "~ButtonConfirmMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2472,8 +2576,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2515,8 +2619,8 @@
     }
    ],
    "data": {
-    "UI": "",
-    "UIPosition": "top"
+    "UIPosition": "top",
+    "UI": ""
    },
    "id": "ProdDone"
   },
@@ -2643,7 +2747,7 @@
      "keyframes": [
       {
        "pivot": [
-        40.95,
+        55.35,
         64
        ],
        "index": 0,

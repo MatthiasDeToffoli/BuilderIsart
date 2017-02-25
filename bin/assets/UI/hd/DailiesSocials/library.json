@@ -1,5 +1,5 @@
 {
- "md5": "db57596da7f145c2066b43bbd7ad0951",
+ "md5": "a5f2139e260a5009dc571a4c7816d3d0",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -61,6 +61,19 @@
        ]
       },
       {
+       "symbol": "_dayBG_small",
+       "origin": [
+        80,
+        80
+       ],
+       "rect": [
+        1885,
+        1,
+        160,
+        160
+       ]
+      },
+      {
        "symbol": "_currencyIcon_Medium",
        "origin": [
         48,
@@ -74,7 +87,7 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Medium",
+       "symbol": "_goldIcon_Medium",
        "origin": [
         48,
         48
@@ -87,7 +100,7 @@
        ]
       },
       {
-       "symbol": "_buildRessourceIcon_Medium",
+       "symbol": "_hardCurrencyIcon_Medium",
        "origin": [
         48,
         48
@@ -113,7 +126,7 @@
        ]
       },
       {
-       "symbol": "_goldIcon_Medium",
+       "symbol": "_buildRessourceIcon_Medium",
        "origin": [
         48,
         48
@@ -152,7 +165,7 @@
        ]
       },
       {
-       "symbol": "_closeButton_up",
+       "symbol": "_closeButton_down",
        "origin": [
         44,
         41.25
@@ -165,7 +178,7 @@
        ]
       },
       {
-       "symbol": "_closeButton_down",
+       "symbol": "_closeButton_up",
        "origin": [
         44,
         41.25
@@ -178,49 +191,101 @@
        ]
       },
       {
-       "symbol": "_buildRessourceIcon_Small",
-       "origin": [
-        32,
-        32
-       ],
-       "rect": [
-        1975,
-        1,
-        64,
-        64
-       ]
-      },
-      {
        "symbol": "_currencyIcon_Small",
        "origin": [
         32,
         32
        ],
        "rect": [
-        1885,
-        1,
+        1975,
+        163,
         64,
         64
        ]
       },
       {
+       "symbol": "_buildRessourceIcon_Small",
+       "origin": [
+        32,
+        32
+       ],
+       "rect": [
+        1885,
+        163,
+        64,
+        64
+       ]
+      },
+      {
+       "symbol": "_altarContour_BR",
+       "origin": [
+        22.5,
+        22.5
+       ],
+       "rect": [
+        1975,
+        229,
+        45,
+        45
+       ]
+      },
+      {
+       "symbol": "_altarContour_TL",
+       "origin": [
+        22.5,
+        22.5
+       ],
+       "rect": [
+        1885,
+        229,
+        45,
+        45
+       ]
+      },
+      {
+       "symbol": "_altarContour_TR",
+       "origin": [
+        22.5,
+        22.5
+       ],
+       "rect": [
+        1975,
+        276,
+        45,
+        45
+       ]
+      },
+      {
+       "symbol": "_altarContour_BL",
+       "origin": [
+        22.5,
+        22.5
+       ],
+       "rect": [
+        1885,
+        276,
+        45,
+        45
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
        "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.4,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
+        "y": -102.1,
+        "text": "1st</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
         "align": "center",
-        "height": 62.8,
+        "height": 204.25,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#FFF0FF"
        },
-       "symbol": "_currencyvalue02_text",
+       "symbol": "_Day1_txt",
        "origin": [
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1695,
         2042,
@@ -229,23 +294,23 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
        "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.55,
-        "width": 697.15,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 273.6,
+        "y": -102.15,
+        "text": "7th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
         "wordWrap": 1,
-        "color": "#000000"
+        "color": "#FFF0FF"
        },
-       "symbol": "_mission_description_done_txt",
+       "symbol": "_Day7_txt",
        "origin": [
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
         1695,
         2045,
@@ -254,6 +319,57 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "7",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day7Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1698,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "5",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day5Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1698,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
        "data": {
         "y": -35.75,
         "text": "9999",
@@ -270,57 +386,6 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1698,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -78,
-        "text": "Your friend share with you an event !",
-        "x": -390.55,
-        "width": 781.15,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 157.4,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_description01_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1698,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -66.15,
-        "text": "*Missions",
-        "x": -249.9,
-        "width": 499.8,
-        "font": "96px _pixelOperator*",
-        "align": "center",
-        "height": 132.25,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_mission_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
        "rect": [
         1701,
         2042,
@@ -329,381 +394,7 @@
        ]
       },
       {
-       "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.6,
-        "width": 697.15,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 273.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_mission_description",
-       "origin": [
-        0,
-        0
-       ],
        "baseClass": "TextSprite",
-       "rect": [
-        1701,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.45,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_currencyvalue01_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1704,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -36.2,
-        "text": "Resolve",
-        "x": -94.25,
-        "width": 188.5,
-        "font": "56px _pixelOperator*",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_Resolve_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1704,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.45,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_ressourcevalue01_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1707,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -102.15,
-        "text": "FIRST</BR>DAY",
-        "x": -114.65,
-        "width": 229.25,
-        "font": "96px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "symbol": "_firstDay_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1707,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -25.8,
-        "text": "XXXX",
-        "x": -66.1,
-        "width": 132.2,
-        "font": "43px _pixelOperator*",
-        "align": "left",
-        "height": 56.5,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_reward_get_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1710,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -25.8,
-        "text": "XXXX",
-        "x": -66.1,
-        "width": 132.2,
-        "font": "43px _pixelOperator*",
-        "align": "left",
-        "height": 56.5,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_reward_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1710,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -62,
-        "text": "NICE !",
-        "x": -167.55,
-        "width": 335.1,
-        "font": "128px _pixelOperator*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_buttonDaily_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1713,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_rewards_get_title",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1713,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_rewards_title",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1716,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -47.5,
-        "text": "Resolve it to earn rewards !",
-        "x": -411,
-        "width": 822,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 95,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_description02_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1716,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -43.55,
-        "text": "Take",
-        "x": -108.6,
-        "width": 217.25,
-        "font": "75px _pixelOperator*",
-        "align": "center",
-        "height": 95.55,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_friendReward_ButtonText",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1719,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -65.35,
-        "text": "Great !",
-        "x": -218.55,
-        "width": 437.1,
-        "font": "96px _pixelOperator*",
-        "align": "center",
-        "height": 130.7,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_txt_great",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1719,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -42.75,
-        "text": "Misson completed !",
-        "x": -749.3,
-        "width": 1498.6,
-        "font": "70px _pixelOperator*",
-        "align": "center",
-        "height": 89.45,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_txt_mission_completed",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1722,
-        2042,
-        1,
-        1
-       ]
-      },
-      {
-       "data": {
-        "y": -29.75,
-        "text": "FriendName",
-        "x": 0,
-        "width": 559.9,
-        "font": "62px _pixelOperator*",
-        "align": "left",
-        "height": 79.7,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_friendName_text",
-       "origin": [
-        0,
-        0
-       ],
-       "baseClass": "TextSprite",
-       "rect": [
-        1722,
-        2045,
-        1,
-        1
-       ]
-      },
-      {
        "data": {
         "y": -46.6,
         "text": "Your friend got this for you !",
@@ -720,7 +411,381 @@
         0,
         0
        ],
+       "rect": [
+        1701,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
        "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "6",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day6Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1704,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -78,
+        "text": "Your friend share with you an event !",
+        "x": -390.55,
+        "width": 781.15,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 157.4,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_description01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1704,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -47.5,
+        "text": "Resolve it to earn rewards !",
+        "x": -411,
+        "width": 822,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 95,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_description02_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1707,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "4",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day4Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1707,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -29.75,
+        "text": "FriendName",
+        "x": 0,
+        "width": 559.9,
+        "font": "62px _pixelOperator*",
+        "align": "left",
+        "height": 79.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_friendName_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1710,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "2",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day2Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1710,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "6th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day6_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1713,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "3",
+        "x": -26,
+        "width": 52,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day3Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1713,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "NICE !",
+        "x": -167.55,
+        "width": 335.1,
+        "font": "128px _pixelOperator*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#EBFFEB"
+       },
+       "symbol": "_buttonDaily_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1716,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.6,
+        "width": 697.15,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 273.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_mission_description",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1716,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.55,
+        "width": 697.15,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 273.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_mission_description_done_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1719,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "5th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day5_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1719,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -66.15,
+        "text": "*Missions",
+        "x": -249.9,
+        "width": 499.8,
+        "font": "96px _pixelOperator*",
+        "align": "center",
+        "height": 132.25,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_mission_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1722,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "3rd</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day3_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1722,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "4th</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day4_text",
+       "origin": [
+        0,
+        0
+       ],
        "rect": [
         1725,
         2042,
@@ -729,6 +794,57 @@
        ]
       },
       {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.2,
+        "text": "Resolve",
+        "x": -94.25,
+        "width": 188.5,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_Resolve_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1725,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.45,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_ressourcevalue01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1728,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
        "data": {
         "y": -31.4,
         "text": "XXXX",
@@ -745,15 +861,65 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
-        1725,
+        1728,
         2045,
         1,
         1
        ]
       },
       {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.8,
+        "text": "XXXX",
+        "x": -66.1,
+        "width": 132.2,
+        "font": "43px _pixelOperator*",
+        "align": "left",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_reward_get_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1731,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.8,
+        "text": "XXXX",
+        "x": -66.1,
+        "width": 132.2,
+        "font": "43px _pixelOperator*",
+        "align": "left",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_reward_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1731,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
        "data": {
         "y": -41.25,
         "text": "His choice",
@@ -770,9 +936,258 @@
         0,
         0
        ],
-       "baseClass": "TextSprite",
        "rect": [
-        1728,
+        1734,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 69.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_rewards_get_title",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1734,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 69.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_rewards_title",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1737,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.4,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_currencyvalue02_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1737,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "1",
+        "x": -26,
+        "width": 52,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day1Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1740,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -65.35,
+        "text": "Great !",
+        "x": -218.55,
+        "width": 437.1,
+        "font": "96px _pixelOperator*",
+        "align": "center",
+        "height": 130.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_txt_great",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1740,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.75,
+        "text": "Misson completed !",
+        "x": -749.3,
+        "width": 1498.6,
+        "font": "70px _pixelOperator*",
+        "align": "center",
+        "height": 89.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_txt_mission_completed",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1743,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -98.8,
+        "text": "2nd</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 197.55,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day2_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1743,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.45,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_currencyvalue01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1746,
+        2042,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -43.55,
+        "text": "Take",
+        "x": -108.6,
+        "width": 217.25,
+        "font": "75px _pixelOperator*",
+        "align": "center",
+        "height": 95.55,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_friendReward_ButtonText",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1746,
+        2045,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.05,
+        "text": "Come back tomorrow for more rewards!",
+        "x": -596.3,
+        "width": 1192.6,
+        "font": "76px _pixelOperator*",
+        "align": "center",
+        "height": 84.15,
+        "wordWrap": 1,
+        "color": "#3C3232"
+       },
+       "symbol": "_getRewards_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1749,
         2042,
         1,
         1
@@ -787,7 +1202,7 @@
        "symbol": "_MissionHolder",
        "origin": [
         757.95,
-        149.1
+        149.05
        ],
        "rect": [
         1,
@@ -839,26 +1254,26 @@
        "symbol": "_dailyButton_bg",
        "origin": [
         210,
-        121.8
+        135
        ],
        "rect": [
         1,
         603,
         420,
-        244
+        270
        ]
       },
       {
-       "symbol": "_buttonGreatReward_over",
+       "symbol": "_dailyButton_bg_down",
        "origin": [
-        248,
-        90
+        205,
+        131.8
        ],
        "rect": [
         423,
         603,
-        503,
-        180
+        410,
+        264
        ]
       },
       {
@@ -868,8 +1283,21 @@
         90
        ],
        "rect": [
-        928,
+        835,
         603,
+        503,
+        180
+       ]
+      },
+      {
+       "symbol": "_buttonGreatReward_over",
+       "origin": [
+        248,
+        90
+       ],
+       "rect": [
+        835,
+        785,
         503,
         180
        ]
@@ -881,36 +1309,10 @@
         85
        ],
        "rect": [
-        423,
-        785,
+        1340,
+        796,
         493,
         170
-       ]
-      },
-      {
-       "symbol": "_dayBG",
-       "origin": [
-        135,
-        135
-       ],
-       "rect": [
-        1,
-        849,
-        270,
-        270
-       ]
-      },
-      {
-       "symbol": "_mission_portrait",
-       "origin": [
-        130.5,
-        125.5
-       ],
-       "rect": [
-        918,
-        785,
-        261,
-        251
        ]
       },
       {
@@ -920,10 +1322,36 @@
         125.5
        ],
        "rect": [
-        1181,
-        785,
+        423,
+        869,
         261,
         251
+       ]
+      },
+      {
+       "symbol": "_mission_portrait",
+       "origin": [
+        130.5,
+        125.5
+       ],
+       "rect": [
+        1,
+        875,
+        261,
+        251
+       ]
+      },
+      {
+       "symbol": "_dayBG",
+       "origin": [
+        120,
+        120
+       ],
+       "rect": [
+        686,
+        967,
+        240,
+        240
        ]
       },
       {
@@ -933,21 +1361,8 @@
         90
        ],
        "rect": [
-        273,
-        957,
-        270,
-        180
-       ]
-      },
-      {
-       "symbol": "button_Resolve_over",
-       "origin": [
-        135,
-        90
-       ],
-       "rect": [
-        1,
-        1121,
+        264,
+        1122,
         270,
         180
        ]
@@ -959,8 +1374,21 @@
         90
        ],
        "rect": [
-        545,
-        957,
+        928,
+        967,
+        270,
+        180
+       ]
+      },
+      {
+       "symbol": "button_Resolve_over",
+       "origin": [
+        135,
+        90
+       ],
+       "rect": [
+        1200,
+        968,
         270,
         180
        ]
@@ -972,8 +1400,8 @@
         87.75
        ],
        "rect": [
-        1444,
-        796,
+        1472,
+        968,
         276,
         176
        ]
@@ -985,8 +1413,8 @@
         87.75
        ],
        "rect": [
-        1722,
-        796,
+        1750,
+        968,
         276,
         176
        ]
@@ -998,8 +1426,8 @@
         85.75
        ],
        "rect": [
-        1444,
-        974,
+        1472,
+        1146,
         271,
         172
        ]
@@ -1016,19 +1444,6 @@
         200,
         200
        ]
-      },
-      {
-       "symbol": "_dayBG_small",
-       "origin": [
-        85,
-        85
-       ],
-       "rect": [
-        1811,
-        565,
-        170,
-        170
-       ]
       }
      ]
     }
@@ -1042,47 +1457,47 @@
      "keyframes": [
       {
        "ref": "button_Resolve_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "pivot": [
-        135,
-        90
-       ]
-      },
-      {
-       "index": 1,
        "pivot": [
         135,
         90
        ],
-       "ref": "button_Resolve_over",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      },
+      {
+       "tweened": false,
        "tint": [
         0.3,
         "#7DD0FF"
        ],
-       "duration": 1,
-       "tweened": false
+       "index": 1,
+       "ref": "button_Resolve_over",
+       "pivot": [
+        135,
+        90
+       ],
+       "duration": 1
       },
       {
        "ref": "button_Resolve_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
        "pivot": [
         135,
         90
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 2
       },
       {
        "ref": "button_Resolve_up",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         135,
         90
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Bouton"
@@ -1091,26 +1506,52 @@
      "keyframes": [
       {
        "ref": "_Resolve_text",
+       "tweened": false,
        "duration": 4,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_Resolve_text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "ButtonResolve"
+   "id": "ButtonResolve",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
-       "ref": "~Day1Current",
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day1Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_Day1Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day1Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "Day1Current"
@@ -1123,18 +1564,282 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0.2,
-        0
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
        ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day2Small_txt",
+       "tweened": false,
+       "duration": 1,
        "index": 0,
+       "loc": [
+        8,
+        0
+       ]
+      }
+     ],
+     "name": "_Day2Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day2Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day2Current"
+    }
+   ],
+   "id": "Day2"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day3Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_Day3Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day3Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day3Current"
+    }
+   ],
+   "id": "Day3"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day4Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        8,
+        0
+       ]
+      }
+     ],
+     "name": "_Day4Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day4Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day4Current"
+    }
+   ],
+   "id": "Day4"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day5Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        8,
+        0
+       ]
+      }
+     ],
+     "name": "_Day5Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day5Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day5Current"
+    }
+   ],
+   "id": "Day5"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day6Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_Day6Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day6Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day6Current"
+    }
+   ],
+   "id": "Day6"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG_small",
+       "pivot": [
+        80,
+        80
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG_small"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_Day7Small_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_Day7Small_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~Day7Current",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "Day7Current"
+    }
+   ],
+   "id": "Day7"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
        "pivot": [
         235,
         210
        ],
+       "index": 0,
+       "loc": [
+        0.2,
+        0
+       ],
        "ref": "_rewards_bg",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_rewards_bg"
@@ -1142,18 +1847,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        120,
-        -110
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        120,
+        -110
+       ],
        "ref": "_currencyIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_currencyIcon_Medium"
@@ -1161,18 +1866,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        120,
-        54.25
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        120,
+        54.25
+       ],
        "ref": "_buildRessourceIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_buildRessourceIcon_Medium"
@@ -1181,13 +1886,13 @@
      "keyframes": [
       {
        "ref": "_currencyvalue01_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -127.95,
         -30.6
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_currencyvalue01_text"
@@ -1196,13 +1901,13 @@
      "keyframes": [
       {
        "ref": "_currencyvalue02_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         120,
         -30.6
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_currencyvalue02_text"
@@ -1211,13 +1916,13 @@
      "keyframes": [
       {
        "ref": "_ressourcevalue01_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -127.95,
         133.65
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_ressourcevalue01_text"
@@ -1226,13 +1931,13 @@
      "keyframes": [
       {
        "ref": "_ressourcevalue02_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         120,
         133.65
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_ressourcevalue02_text"
@@ -1240,18 +1945,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -128,
-        54.25
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        -128,
+        54.25
+       ],
        "ref": "_buildRessourceIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_buildRessourceIcon_Medium"
@@ -1259,18 +1964,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -128,
-        -110
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        -128,
+        -110
+       ],
        "ref": "_currencyIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_currencyIcon_Medium"
@@ -1284,13 +1989,13 @@
      "keyframes": [
       {
        "ref": "_largePopinBG",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         941.1,
         555.95
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "BG"
@@ -1299,13 +2004,13 @@
      "keyframes": [
       {
        "ref": "_mission_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -739.9,
         -559.95
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Missions"
@@ -1314,13 +2019,13 @@
      "keyframes": [
       {
        "ref": "~ButtonClose",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         910,
         -535
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonClose"
@@ -1347,13 +2052,13 @@
      "keyframes": [
       {
        "ref": "_MissionHolder",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         757.95,
-        149.1
-       ]
+        149.05
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "Mission01"
@@ -1361,18 +2066,18 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        757.95,
+        149.05
+       ],
+       "index": 0,
        "loc": [
         0,
         -340.75
        ],
-       "index": 0,
-       "pivot": [
-        757.95,
-        149.1
-       ],
        "ref": "_MissionHolder",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Mission02"
@@ -1380,18 +2085,18 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        757.95,
+        149.05
+       ],
+       "index": 0,
        "loc": [
         0,
         340.7
        ],
-       "index": 0,
-       "pivot": [
-        757.95,
-        149.1
-       ],
        "ref": "_MissionHolder",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Mission03"
@@ -1404,18 +2109,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        0.05
-       ],
-       "index": 0,
        "pivot": [
         757.95,
         149.1
        ],
+       "index": 0,
+       "loc": [
+        0,
+        0.05
+       ],
        "ref": "_mission_bg",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Mission_bg"
@@ -1424,13 +2129,13 @@
      "keyframes": [
       {
        "ref": "_mission_description",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -42,
         1.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Mission_description_txt"
@@ -1439,13 +2144,13 @@
      "keyframes": [
       {
        "ref": "_rewards_title",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         523,
         -106.95
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Rewards_txt"
@@ -1454,13 +2159,13 @@
      "keyframes": [
       {
        "ref": "_reward_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         490.1,
         -35
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_1_txt"
@@ -1468,18 +2173,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        588,
-        -34
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        588,
+        -34
+       ],
        "ref": "_currencyIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_1_icon"
@@ -1488,13 +2193,13 @@
      "keyframes": [
       {
        "ref": "_reward_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         490,
         37
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_2_txt"
@@ -1502,18 +2207,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        588,
-        37
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        588,
+        37
+       ],
        "ref": "_buildRessourceIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_2_icon"
@@ -1522,13 +2227,13 @@
      "keyframes": [
       {
        "ref": "_reward_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         490,
         107
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_3_txt"
@@ -1536,18 +2241,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        588,
-        108
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        588,
+        108
+       ],
        "ref": "_buildRessourceIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_3_icon"
@@ -1555,18 +2260,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -596,
-        1.2
-       ],
-       "index": 0,
        "pivot": [
         130.5,
         125.5
        ],
+       "index": 0,
+       "loc": [
+        -596,
+        1.2
+       ],
        "ref": "_mission_portrait",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Mission_Portrait"
@@ -1580,13 +2285,13 @@
      "keyframes": [
       {
        "ref": "_smallPopinBG",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         750,
         441.4
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "BG"
@@ -1594,143 +2299,119 @@
     {
      "keyframes": [
       {
+       "ref": "Day7",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        604,
+        -177
+       ]
+      }
+     ],
+     "name": "Day7"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Day6",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        403.75,
+        -177
+       ]
+      }
+     ],
+     "name": "Day6"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Day5",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        203.6,
+        -177
+       ]
+      }
+     ],
+     "name": "Day5"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Day4",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        3.45,
+        -177
+       ]
+      }
+     ],
+     "name": "Day4"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Day3",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -196.7,
+        -177
+       ]
+      }
+     ],
+     "name": "Day3"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "Day2",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -396.85,
+        -177
+       ]
+      }
+     ],
+     "name": "Day2"
+    },
+    {
+     "keyframes": [
+      {
        "ref": "Day1",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -597,
-        -171
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+        -177
+       ]
       }
      ],
-     "name": "First Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -390.5,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Second Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        -184,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Third Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        22.5,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Fourth Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        229,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Fifth Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        435.5,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Sixth Day"
-    },
-    {
-     "keyframes": [
-      {
-       "loc": [
-        642,
-        -171
-       ],
-       "index": 0,
-       "pivot": [
-        85,
-        85
-       ],
-       "ref": "_dayBG_small",
-       "duration": 1,
-       "tweened": false
-      }
-     ],
-     "name": "Seventh Day"
+     "name": "Day1"
     },
     {
      "keyframes": [
       {
        "ref": "~ButtonDaily",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         425,
         259.2
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonDaily"
@@ -1739,13 +2420,13 @@
      "keyframes": [
       {
        "ref": "_dailyReward_value",
-       "loc": [
-        -439,
-        185
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -325.5,
+        185
+       ]
       }
      ],
      "name": "_dailyReward_value_gold"
@@ -1754,13 +2435,13 @@
      "keyframes": [
       {
        "ref": "_dailyReward_value",
-       "loc": [
-        15,
-        185
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -22,
+        185
+       ]
       }
      ],
      "name": "_dailyReward_value_karma"
@@ -1769,13 +2450,13 @@
      "keyframes": [
       {
        "ref": "_dailyReward_value",
-       "loc": [
-        -440,
-        333.1
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -325.5,
+        297.1
+       ]
       }
      ],
      "name": "_dailyReward_value_iron"
@@ -1784,13 +2465,13 @@
      "keyframes": [
       {
        "ref": "_dailyReward_value",
-       "loc": [
-        15,
-        333.1
-       ],
+       "tweened": false,
        "duration": 1,
        "index": 0,
-       "tweened": false
+       "loc": [
+        -22,
+        297.1
+       ]
       }
      ],
      "name": "_dailyReward_value_wood"
@@ -1798,18 +2479,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -585,
-        185
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        -466,
+        185
+       ],
        "ref": "_goldIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_goldIcon_Medium"
@@ -1817,18 +2498,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -133,
-        185
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        -170,
+        185
+       ],
        "ref": "_hardCurrencyIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_hardCurrencyIcon_Medium"
@@ -1836,18 +2517,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -585,
-        333.1
-       ],
-       "index": 0,
        "pivot": [
         48,
         48
        ],
+       "index": 0,
+       "loc": [
+        -466,
+        297.1
+       ],
        "ref": "_stoneIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_stoneIcon_Medium"
@@ -1855,21 +2536,66 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -133,
-        333.1
-       ],
-       "index": 0,
        "pivot": [
         48,
         43.15
        ],
+       "index": 0,
+       "loc": [
+        -170,
+        297.1
+       ],
        "ref": "_woodIcon_Medium",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_woodIcon_Medium"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_getRewards_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        0,
+        19.95
+       ]
+      }
+     ],
+     "name": "_getRewards_txt"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~_altarINfo_movingBorder",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        -233.5,
+        242.5
+       ]
+      }
+     ],
+     "name": "_altarINfo_movingBorder"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "~ButtonClose",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
+       "loc": [
+        689,
+        -401
+       ]
+      }
+     ],
+     "name": "ButtonClose"
     }
    ],
    "id": "Popin_DailyRewards"
@@ -1879,18 +2605,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        0.05
-       ],
-       "index": 0,
        "pivot": [
         750,
         441.45
        ],
+       "index": 0,
+       "loc": [
+        0,
+        0.05
+       ],
        "ref": "_smallPopinBG",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_smallPopinBG"
@@ -1899,13 +2625,13 @@
      "keyframes": [
       {
        "ref": "~ButtonClose",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         686,
         -393.55
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonClose"
@@ -1914,13 +2640,13 @@
      "keyframes": [
       {
        "ref": "ButtonResolve",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         136,
         207.05
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonResolve"
@@ -1929,13 +2655,13 @@
      "keyframes": [
       {
        "ref": "_friendName_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -694,
         190
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_friendName_text"
@@ -1944,13 +2670,13 @@
      "keyframes": [
       {
        "ref": "_description01_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         169.2,
         -204.95
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_description01_text"
@@ -1959,13 +2685,13 @@
      "keyframes": [
       {
        "ref": "_description02_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         166,
         -35.9
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_description02_text"
@@ -1973,18 +2699,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -486.5,
-        -75.45
-       ],
-       "index": 0,
        "pivot": [
         207.5,
         207.5
        ],
+       "index": 0,
+       "loc": [
+        -486.5,
+        -75.45
+       ],
        "ref": "_friendEvent_information01",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_friendEvent_information01"
@@ -1998,13 +2724,13 @@
      "keyframes": [
       {
        "ref": "_smallPopinBG",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         750,
         441.45
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "_smallPopinBG"
@@ -2013,13 +2739,13 @@
      "keyframes": [
       {
        "ref": "~ButtonFriendReward",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         20.15,
         305.4
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonFriendReward"
@@ -2028,13 +2754,13 @@
      "keyframes": [
       {
        "ref": "_friendInformation_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         33.6,
         -323.75
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_friendInformation_text"
@@ -2043,13 +2769,13 @@
      "keyframes": [
       {
        "ref": "_hisChoice_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         500,
         -198.75
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_hisChoice_text"
@@ -2058,13 +2784,13 @@
      "keyframes": [
       {
        "ref": "EventRewardFriend",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         28.65,
         -30
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_rewards_text"
@@ -2072,18 +2798,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -503.75,
-        39.9
-       ],
-       "index": 0,
        "pivot": [
         200,
         180
        ],
+       "index": 0,
+       "loc": [
+        -503.75,
+        39.9
+       ],
        "ref": "_friendPicture",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_friendPicture"
@@ -2092,13 +2818,13 @@
      "keyframes": [
       {
        "ref": "~ButtonClose",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         700,
         -360
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "ButtonClose"
@@ -2106,18 +2832,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        487.15,
-        63.95
-       ],
-       "index": 0,
        "pivot": [
         130,
         210.7
        ],
+       "index": 0,
+       "loc": [
+        487.15,
+        63.95
+       ],
        "ref": "_fateCard_FriendChoise",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "_fateCard_FriendChoise"
@@ -2126,13 +2852,13 @@
      "keyframes": [
       {
        "ref": "_friendName_text",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -703.75,
         -198.4
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_friendName_txt"
@@ -2146,13 +2872,13 @@
      "keyframes": [
       {
        "ref": "_smallPopinBG",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         750,
         441.45
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       }
      ],
      "name": "Mission_completed_BG"
@@ -2161,13 +2887,13 @@
      "keyframes": [
       {
        "ref": "_txt_mission_completed",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -0.7,
         -350
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Mission_completed_txt"
@@ -2175,18 +2901,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -359.15,
-        -170
-       ],
-       "index": 0,
        "pivot": [
         130.5,
         125.5
        ],
+       "index": 0,
+       "loc": [
+        -359.15,
+        -170
+       ],
        "ref": "_missioncompleted_portrait",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Mission_portrait"
@@ -2195,13 +2921,13 @@
      "keyframes": [
       {
        "ref": "_mission_description_done_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         138.8,
         -169.6
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Mission_description_txt"
@@ -2210,13 +2936,13 @@
      "keyframes": [
       {
        "ref": "~ButtonGreat",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         17.35,
         302.7
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Great_Button"
@@ -2225,13 +2951,13 @@
      "keyframes": [
       {
        "ref": "_rewards_get_title",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         -184.85,
         94.7
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Rewards_title_txt"
@@ -2240,13 +2966,13 @@
      "keyframes": [
       {
        "ref": "_reward_get_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         35.9,
         10
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_1_txt"
@@ -2254,18 +2980,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        134,
-        88.1
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        134,
+        88.1
+       ],
        "ref": "_currencyIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_1_icon"
@@ -2274,13 +3000,13 @@
      "keyframes": [
       {
        "ref": "_reward_get_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         35.9,
         90
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_2_txt"
@@ -2288,18 +3014,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        134,
-        10
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        134,
+        10
+       ],
        "ref": "_buildRessourceIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_2_icon"
@@ -2308,13 +3034,13 @@
      "keyframes": [
       {
        "ref": "_reward_get_txt",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "loc": [
         35.9,
         167.7
-       ],
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "Reward_3_txt"
@@ -2322,18 +3048,18 @@
     {
      "keyframes": [
       {
-       "loc": [
-        134,
-        166.2
-       ],
-       "index": 0,
        "pivot": [
         32,
         32
        ],
+       "index": 0,
+       "loc": [
+        134,
+        166.2
+       ],
        "ref": "_buildRessourceIcon_Small",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "Reward_3_icon"
@@ -2346,55 +3072,55 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        44,
+        41.25
+       ],
+       "index": 0,
        "loc": [
         -2,
         0
        ],
-       "index": 0,
+       "ref": "_closeButton_up",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "_closeButton_over",
+       "pivot": [
+        46,
+        43.1
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 1
+      },
+      {
+       "ref": "_closeButton_down",
        "pivot": [
         44,
         41.25
        ],
-       "ref": "_closeButton_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "ref": "_closeButton_over",
        "tweened": false,
        "duration": 1,
-       "index": 1,
-       "pivot": [
-        46,
-        43.1
-       ]
-      },
-      {
-       "ref": "_closeButton_down",
-       "tweened": false,
-       "duration": 1,
-       "index": 2,
-       "pivot": [
-        44,
-        41.25
-       ]
+       "index": 2
       },
       {
        "ref": "_closeButton_hit",
-       "tweened": false,
-       "duration": 1,
-       "index": 3,
        "pivot": [
         100,
         100
-       ]
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonClose"
+   "id": "~ButtonClose",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -2402,51 +3128,55 @@
      "keyframes": [
       {
        "ref": "_dailyButton_bg",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
        "pivot": [
         210,
-        121.8
-       ]
+        135
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
       },
       {
+       "pivot": [
+        210,
+        135
+       ],
        "index": 1,
-       "pivot": [
-        210,
-        121.8
+       "loc": [
+        0,
+        -0.05
        ],
-       "ref": "_dailyButton_bg",
-       "tint": [
-        0.5,
-        "#FF0000"
-       ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
-       "index": 2,
-       "pivot": [
-        210,
-        121.8
-       ],
-       "ref": "_dailyButton_bg",
-       "tint": [
-        0.5,
-        "#333333"
-       ],
-       "duration": 1,
-       "tweened": false
-      },
-      {
        "ref": "_dailyButton_bg",
        "tweened": false,
-       "duration": 1,
-       "index": 3,
+       "scale": [
+        1.0476,
+        1.0476
+       ],
+       "duration": 1
+      },
+      {
+       "pivot": [
+        205,
+        131.75
+       ],
+       "index": 2,
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "_dailyButton_bg_down",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "_dailyButton_bg",
        "pivot": [
         210,
-        121.8
-       ]
+        135
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "_dailyButton_bg"
@@ -2455,62 +3185,62 @@
      "keyframes": [
       {
        "ref": "_buttonDaily_txt",
+       "tweened": false,
        "duration": 4,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonDaily"
+   "id": "~ButtonDaily",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        -0.25
-       ],
-       "index": 0,
        "pivot": [
         135.5,
         85.75
        ],
-       "ref": "_buttonFriendReward_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
+       "index": 0,
        "loc": [
         0,
         -0.25
+       ],
+       "ref": "_buttonFriendReward_up",
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "pivot": [
+        138,
+        87.75
        ],
        "index": 1,
-       "pivot": [
-        138,
-        87.75
-       ],
-       "ref": "_buttonFriendReward_over",
-       "duration": 1,
-       "tweened": false
-      },
-      {
        "loc": [
         0,
         -0.25
        ],
-       "index": 2,
+       "ref": "_buttonFriendReward_over",
+       "tweened": false,
+       "duration": 1
+      },
+      {
        "pivot": [
         138,
         87.75
        ],
+       "index": 2,
+       "loc": [
+        0,
+        -0.25
+       ],
        "ref": "_buttonFriendReward_down",
-       "duration": 2,
-       "tweened": false
+       "tweened": false,
+       "duration": 2
       }
      ],
      "name": "Calque 1"
@@ -2519,62 +3249,62 @@
      "keyframes": [
       {
        "ref": "_friendReward_ButtonText",
+       "tweened": false,
        "duration": 4,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "buttonSendText"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonFriendReward"
+   "id": "~ButtonFriendReward",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
-       "loc": [
-        0,
-        -0.5
-       ],
-       "index": 0,
        "pivot": [
         246.5,
         85
        ],
-       "ref": "_buttonGreatReward_up",
-       "duration": 1,
-       "tweened": false
-      },
-      {
+       "index": 0,
        "loc": [
         0,
         -0.5
        ],
-       "index": 1,
+       "ref": "_buttonGreatReward_up",
+       "tweened": false,
+       "duration": 1
+      },
+      {
        "pivot": [
         248,
         90
        ],
+       "index": 1,
+       "loc": [
+        0,
+        -0.5
+       ],
        "ref": "_buttonGreatReward_over",
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       },
       {
+       "pivot": [
+        248,
+        90
+       ],
+       "index": 2,
        "loc": [
         -0.2,
         0.05
        ],
-       "index": 2,
-       "pivot": [
-        248,
-        90
-       ],
        "ref": "_buttonGreatReward_down",
-       "duration": 2,
-       "tweened": false
+       "tweened": false,
+       "duration": 2
       }
      ],
      "name": "Layer 1"
@@ -2583,20 +3313,20 @@
      "keyframes": [
       {
        "ref": "_txt_great",
+       "tweened": false,
+       "duration": 4,
+       "index": 0,
        "loc": [
         0,
         -2.45
-       ],
-       "duration": 4,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_txt_Great"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonGreat"
+   "id": "~ButtonGreat",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -2604,13 +3334,13 @@
      "keyframes": [
       {
        "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
        "tweened": false,
        "duration": 1,
-       "index": 0,
-       "pivot": [
-        135,
-        135
-       ]
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -2618,24 +3348,435 @@
     {
      "keyframes": [
       {
-       "loc": [
-        -0.05,
-        -0.05
-       ],
-       "index": 0,
-       "pivot": [
-        -0.05,
-        -0.05
-       ],
-       "ref": "_firstDay_txt",
+       "ref": "_Day1_txt",
+       "tweened": false,
        "duration": 1,
-       "tweened": false
+       "index": 0,
+       "loc": [
+        5,
+        0
+       ]
       }
      ],
      "name": "_firstDay_txt"
     }
    ],
    "id": "~Day1Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "_Day2_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day2Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "_Day3_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day3Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        0,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        0,
+        -0.05
+       ],
+       "ref": "_Day4_text",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day4Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_Day5_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day5Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_Day6_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day6Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_dayBG",
+       "pivot": [
+        120,
+        120
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_dayBG"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.05,
+        -0.05
+       ],
+       "index": 0,
+       "loc": [
+        -0.05,
+        -0.05
+       ],
+       "ref": "_Day7_txt",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_firstDay_txt"
+    }
+   ],
+   "id": "~Day7Current"
+  },
+  {
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "_altarContour_BR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 29,
+       "index": 0,
+       "loc": [
+        310,
+        120
+       ]
+      },
+      {
+       "ref": "_altarContour_BR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 30,
+       "index": 29,
+       "loc": [
+        330,
+        140
+       ]
+      },
+      {
+       "ref": "_altarContour_BR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 1,
+       "index": 59,
+       "loc": [
+        310,
+        120
+       ]
+      }
+     ],
+     "name": "_altarContour_BR"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_altarContour_TR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 29,
+       "index": 0,
+       "loc": [
+        310,
+        -120
+       ]
+      },
+      {
+       "ref": "_altarContour_TR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 30,
+       "index": 29,
+       "loc": [
+        330,
+        -140
+       ]
+      },
+      {
+       "ref": "_altarContour_TR",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 1,
+       "index": 59,
+       "loc": [
+        310,
+        -120
+       ]
+      }
+     ],
+     "name": "_altarContour_TR"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_altarContour_TL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 29,
+       "index": 0,
+       "loc": [
+        -310,
+        -120
+       ]
+      },
+      {
+       "ref": "_altarContour_TL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 30,
+       "index": 29,
+       "loc": [
+        -330,
+        -140
+       ]
+      },
+      {
+       "ref": "_altarContour_TL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 1,
+       "index": 59,
+       "loc": [
+        -310,
+        -120
+       ]
+      }
+     ],
+     "name": "_altarContour_TL"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_altarContour_BL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 29,
+       "index": 0,
+       "loc": [
+        -310,
+        120
+       ]
+      },
+      {
+       "ref": "_altarContour_BL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 30,
+       "index": 29,
+       "loc": [
+        -330,
+        140
+       ]
+      },
+      {
+       "ref": "_altarContour_BL",
+       "pivot": [
+        22.5,
+        22.5
+       ],
+       "duration": 1,
+       "index": 59,
+       "loc": [
+        -310,
+        120
+       ]
+      }
+     ],
+     "name": "_altarContour_BL"
+    }
+   ],
+   "id": "~_altarINfo_movingBorder"
   }
  ],
  "frameRate": 24

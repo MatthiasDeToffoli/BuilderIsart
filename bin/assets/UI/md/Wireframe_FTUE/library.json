@@ -1,5 +1,5 @@
 {
- "md5": "9a943c84fd39226a3bee519c8af2737e",
+ "md5": "ebb31a23f4c5624bcf709dafe8da89eb",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -74,9 +74,9 @@
        ]
       },
       {
-       "symbol": "_heaven_ftueBG_small",
+       "symbol": "_hell_ftueBG_small",
        "origin": [
-        449.95,
+        450,
         110
        ],
        "rect": [
@@ -87,9 +87,9 @@
        ]
       },
       {
-       "symbol": "_hell_ftueBG_small",
+       "symbol": "_heaven_ftueBG_small",
        "origin": [
-        450,
+        449.95,
         110
        ],
        "rect": [
@@ -139,7 +139,7 @@
        ]
       },
       {
-       "symbol": "_png_endDialog_over",
+       "symbol": "_buttonNext_over",
        "origin": [
         75,
         75
@@ -152,7 +152,7 @@
        ]
       },
       {
-       "symbol": "_buttonNext_over",
+       "symbol": "_png_endDialog_over",
        "origin": [
         75,
         75
@@ -217,14 +217,92 @@
        ]
       },
       {
+       "symbol": "_hellSoulIcon_Large",
+       "origin": [
+        41.5,
+        48
+       ],
+       "rect": [
+        769,
+        317,
+        83,
+        96
+       ]
+      },
+      {
+       "symbol": "_heavenSoulIcon_Large",
+       "origin": [
+        41.5,
+        48
+       ],
+       "rect": [
+        769,
+        415,
+        83,
+        96
+       ]
+      },
+      {
+       "symbol": "_neutralSoulIcon_Large",
+       "origin": [
+        41.5,
+        48
+       ],
+       "rect": [
+        1405,
+        253,
+        83,
+        96
+       ]
+      },
+      {
+       "symbol": "_heavenSoulIcon_Medium",
+       "origin": [
+        31.15,
+        36
+       ],
+       "rect": [
+        903,
+        1021,
+        63,
+        72
+       ]
+      },
+      {
+       "symbol": "_neutralSoulIcon_Medium",
+       "origin": [
+        31.1,
+        36
+       ],
+       "rect": [
+        1405,
+        351,
+        63,
+        72
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Medium",
+       "origin": [
+        31.15,
+        36
+       ],
+       "rect": [
+        1405,
+        425,
+        63,
+        72
+       ]
+      },
+      {
        "symbol": "_stressIcon_Small",
        "origin": [
         30.7,
         30.7
        ],
        "rect": [
-        903,
-        1021,
+        1190,
+        1419,
         62,
         62
        ]
@@ -236,7 +314,7 @@
         30
        ],
        "rect": [
-        967,
+        968,
         1021,
         60,
         54
@@ -256,7 +334,7 @@
        ]
       },
       {
-       "symbol": "_ftueSpeed1",
+       "symbol": "_goldIcon_Small",
        "origin": [
         24,
         24
@@ -269,7 +347,7 @@
        ]
       },
       {
-       "symbol": "_goldIcon_Small",
+       "symbol": "_hardCurrencyIcon_Small",
        "origin": [
         24,
         24
@@ -282,7 +360,7 @@
        ]
       },
       {
-       "symbol": "_hardCurrencyIcon_Small",
+       "symbol": "_ftueSpeed1",
        "origin": [
         24,
         24
@@ -314,8 +392,8 @@
         21.75
        ],
        "rect": [
-        749,
-        454,
+        1190,
+        1483,
         52,
         44
        ]
@@ -327,8 +405,8 @@
         23.4
        ],
        "rect": [
-        769,
-        317,
+        1244,
+        1483,
         48,
         47
        ]
@@ -336,27 +414,40 @@
       {
        "symbol": "_neutralSoulIcon_Small",
        "origin": [
-        17.25,
-        27
+        20.75,
+        24.05
        ],
        "rect": [
-        769,
-        366,
-        35,
-        54
+        1254,
+        1419,
+        42,
+        49
        ]
       },
       {
-       "symbol": "_hellXP_Small",
+       "symbol": "_heavenSoulIcon_Small",
        "origin": [
-        24,
-        16.3
+        20.75,
+        24
        ],
        "rect": [
-        803,
-        422,
-        48,
-        33
+        1294,
+        1470,
+        42,
+        48
+       ]
+      },
+      {
+       "symbol": "_hellSoulIcon_Small",
+       "origin": [
+        20.75,
+        24
+       ],
+       "rect": [
+        1298,
+        1419,
+        42,
+        48
        ]
       },
       {
@@ -366,8 +457,21 @@
         16.3
        ],
        "rect": [
-        806,
-        366,
+        191,
+        469,
+        48,
+        33
+       ]
+      },
+      {
+       "symbol": "_hellXP_Small",
+       "origin": [
+        24,
+        16.3
+       ],
+       "rect": [
+        241,
+        469,
         48,
         33
        ]
@@ -379,35 +483,10 @@
         16
        ],
        "rect": [
-        819,
+        854,
         317,
         30,
         34
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -99.65,
-        "text": "You're a pretty cool Boss. Take this : experience EE for the Hell Gauge.",
-        "x": -516.95,
-        "width": 1033.9,
-        "font": "68px _pixelOperator*",
-        "align": "center",
-        "height": 235.85,
-        "wordWrap": 1,
-        "color": "#3C3232"
-       },
-       "symbol": "_ftue_txt_scenario",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        819,
-        353,
-        1,
-        1
        ]
       },
       {
@@ -429,8 +508,33 @@
         0
        ],
        "rect": [
-        819,
-        356,
+        1190,
+        1529,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -99.65,
+        "text": "You're a pretty cool Boss. Take this : experience EE for the Hell Gauge.",
+        "x": -516.95,
+        "width": 1033.9,
+        "font": "68px _pixelOperator*",
+        "align": "center",
+        "height": 235.85,
+        "wordWrap": 1,
+        "color": "#3C3232"
+       },
+       "symbol": "_ftue_txt_scenario",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1193,
+        1529,
         1,
         1
        ]
@@ -454,7 +558,7 @@
        ]
       },
       {
-       "symbol": "_dragHand_up",
+       "symbol": "_dragHand_down",
        "origin": [
         67.5,
         0
@@ -467,7 +571,7 @@
        ]
       },
       {
-       "symbol": "_dragHand_down",
+       "symbol": "_dragHand_up",
        "origin": [
         67.5,
         0
@@ -1062,8 +1166,8 @@
        ],
        "ref": "~_ftue_dialogEN_34",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1081,8 +1185,8 @@
        ],
        "ref": "~_ftue_dialogEN_17",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1100,8 +1204,8 @@
        ],
        "ref": "~_ftue_dialogEN_6",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1119,8 +1223,8 @@
        ],
        "ref": "~_ftue_dialogFR_34",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1138,8 +1242,8 @@
        ],
        "ref": "~_ftue_dialogFR_17",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1157,8 +1261,8 @@
        ],
        "ref": "~_ftue_dialogFR_6",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1171,8 +1275,8 @@
        "ref": "Window_Ftue_Angel_Action",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -1216,8 +1320,8 @@
        "ref": "Window_Ftue_Angel_Scenario",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -1236,8 +1340,8 @@
        ],
        "ref": "~_ftue_dialogEN_52",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1255,8 +1359,8 @@
        ],
        "ref": "~_ftue_dialogEN_45",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1274,8 +1378,8 @@
        ],
        "ref": "~_ftue_dialogEN_25",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1293,8 +1397,8 @@
        ],
        "ref": "~_ftue_dialogEN_24",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1312,8 +1416,8 @@
        ],
        "ref": "~_ftue_dialogEN_15",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1331,8 +1435,8 @@
        ],
        "ref": "~_ftue_dialogEN_12",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1350,8 +1454,8 @@
        ],
        "ref": "~_ftue_dialogEN_5",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1369,8 +1473,8 @@
        ],
        "ref": "~_ftue_dialogFR_52",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1388,8 +1492,8 @@
        ],
        "ref": "~_ftue_dialogFR_45",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1407,8 +1511,8 @@
        ],
        "ref": "~_ftue_dialogFR_25",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1426,8 +1530,8 @@
        ],
        "ref": "~_ftue_dialogFR_24",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1445,8 +1549,8 @@
        ],
        "ref": "~_ftue_dialogFR_15",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1464,8 +1568,8 @@
        ],
        "ref": "~_ftue_dialogFR_12",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1483,8 +1587,8 @@
        ],
        "ref": "~_ftue_dialogFR_5",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1497,8 +1601,8 @@
        "ref": "Window_Ftue_Demon_Scenario",
        "tweened": false,
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1,
        "index": 0
@@ -1517,8 +1621,8 @@
        ],
        "ref": "~_ftue_dialogEN_54",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1536,8 +1640,8 @@
        ],
        "ref": "~_ftue_dialogEN_49",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1555,8 +1659,8 @@
        ],
        "ref": "~_ftue_dialogEN_44",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1574,8 +1678,8 @@
        ],
        "ref": "~_ftue_dialogEN_40",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1593,8 +1697,8 @@
        ],
        "ref": "~_ftue_dialogEN_39",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1612,8 +1716,8 @@
        ],
        "ref": "~_ftue_dialogEN_38",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1631,8 +1735,8 @@
        ],
        "ref": "~_ftue_dialogEN_22",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1665,8 +1769,8 @@
        ],
        "ref": "~_ftue_dialogEN_18",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1684,8 +1788,8 @@
        ],
        "ref": "~_ftue_dialogEN_13",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1703,8 +1807,8 @@
        ],
        "ref": "~_ftue_dialogFR_54",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1722,8 +1826,8 @@
        ],
        "ref": "~_ftue_dialogFR_49",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1741,8 +1845,8 @@
        ],
        "ref": "~_ftue_dialogFR_44",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1760,8 +1864,8 @@
        ],
        "ref": "~_ftue_dialogFR_40",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1779,8 +1883,8 @@
        ],
        "ref": "~_ftue_dialogFR_39",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1798,8 +1902,8 @@
        ],
        "ref": "~_ftue_dialogFR_38",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1817,8 +1921,8 @@
        ],
        "ref": "~_ftue_dialogFR_22",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1836,8 +1940,8 @@
        ],
        "ref": "~_ftue_dialogFR_20",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1855,8 +1959,8 @@
        ],
        "ref": "~_ftue_dialogFR_18",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1874,8 +1978,8 @@
        ],
        "ref": "~_ftue_dialogFR_13",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1893,8 +1997,8 @@
        ],
        "ref": "ButtonEndDialog",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1912,8 +2016,8 @@
        ],
        "ref": "~ButtonNext",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -1933,8 +2037,8 @@
         110.025
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -1956,8 +2060,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -1979,8 +2083,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2002,8 +2106,8 @@
         214.2375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2028,8 +2132,8 @@
        ],
        "ref": "_ftue_txt_action",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2087,8 +2191,8 @@
         293.1375
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2132,8 +2236,8 @@
        ],
        "ref": "_ftue_txt_scenario",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2153,8 +2257,8 @@
         110.025
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2176,8 +2280,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2199,8 +2303,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2222,8 +2326,8 @@
         157.5
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2265,8 +2369,8 @@
         125.625
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2288,8 +2392,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2311,8 +2415,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2334,8 +2438,8 @@
         255
        ],
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "index": 0,
        "loc": [
@@ -2360,8 +2464,8 @@
        ],
        "ref": "_ftue_txt_scenario",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2687,8 +2791,8 @@
      "keyframes": [
       {
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "index": 0,
        "loc": [
@@ -2727,8 +2831,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -2762,8 +2866,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -3252,8 +3356,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -3290,8 +3394,8 @@
      "keyframes": [
       {
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "index": 0,
        "loc": [
@@ -3423,8 +3527,8 @@
      "keyframes": [
       {
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "index": 0,
        "loc": [
@@ -3463,8 +3567,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -3498,8 +3602,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -3992,8 +4096,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
@@ -4031,8 +4135,8 @@
       {
        "ref": "_neutralSoulIcon_Small",
        "pivot": [
-        17.25,
-        27
+        20.7375,
+        24.0375
        ],
        "tweened": false,
        "duration": 1,
