@@ -1,197 +1,9 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "title_card_6",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas1.png",
-     "textures": [
-      {
-       "symbol": "title_2",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas2.png",
-     "textures": [
-      {
-       "symbol": "title_card_3",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas3.png",
-     "textures": [
-      {
-       "symbol": "title_card_4",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas4.png",
-     "textures": [
-      {
-       "symbol": "title_card_5",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas5.png",
-     "textures": [
-      {
-       "symbol": "title_1",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas6.png",
-     "textures": [
-      {
-       "symbol": "title_card_7",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas7.png",
-     "textures": [
-      {
-       "symbol": "title_card_8",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas8.png",
-     "textures": [
-      {
-       "symbol": "title3",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas9.png",
-     "textures": [
-      {
-       "symbol": "title4",
-       "origin": [
-        512,
-        683
-       ],
-       "rect": [
-        1,
-        1,
-        1024,
-        1366
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
+   "id": "Title_card_bg",
    "layers": [
     {
-     "name": "title_BG",
      "keyframes": [
       {
        "tweened": false,
@@ -203,14 +15,14 @@
         -1534,
         682.75
        ],
-       "duration": 1,
+       "ref": "title_card_5",
        "index": 0,
-       "ref": "title_card_5"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_BG"
     },
     {
-     "name": "title_BG_2",
      "keyframes": [
       {
        "tweened": false,
@@ -222,14 +34,14 @@
         -510.25,
         681.55
        ],
-       "duration": 1,
+       "ref": "title_card_6",
        "index": 0,
-       "ref": "title_card_6"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_BG_2"
     },
     {
-     "name": "title_HG",
      "keyframes": [
       {
        "tweened": false,
@@ -241,14 +53,14 @@
         -1534.35,
         -683.95
        ],
-       "duration": 1,
+       "ref": "title_1",
        "index": 0,
-       "ref": "title_1"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_HG"
     },
     {
-     "name": "title_HG_2",
      "keyframes": [
       {
        "tweened": false,
@@ -260,14 +72,14 @@
         -511.7,
         -684
        ],
-       "duration": 1,
+       "ref": "title_2",
        "index": 0,
-       "ref": "title_2"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_HG_2"
     },
     {
-     "name": "title_HD",
      "keyframes": [
       {
        "tweened": false,
@@ -279,14 +91,14 @@
         510.9,
         -683.35
        ],
-       "duration": 1,
+       "ref": "title_card_3",
        "index": 0,
-       "ref": "title_card_3"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_HD"
     },
     {
-     "name": "title_HD2",
      "keyframes": [
       {
        "tweened": false,
@@ -298,14 +110,14 @@
         1534,
         -684
        ],
-       "duration": 1,
+       "ref": "title_card_4",
        "index": 0,
-       "ref": "title_card_4"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_HD2"
     },
     {
-     "name": "title_BD",
      "keyframes": [
       {
        "tweened": false,
@@ -317,14 +129,14 @@
         513,
         682
        ],
-       "duration": 1,
+       "ref": "title_card_7",
        "index": 0,
-       "ref": "title_card_7"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_BD"
     },
     {
-     "name": "title_BD_2",
      "keyframes": [
       {
        "tweened": false,
@@ -336,25 +148,213 @@
         1536.3,
         682.15
        ],
-       "duration": 1,
+       "ref": "title_card_8",
        "index": 0,
-       "ref": "title_card_8"
+       "duration": 1
       }
-     ]
+     ],
+     "name": "title_BD_2"
     },
     {
-     "name": "Layer 1",
      "keyframes": [
       {
        "index": 0,
        "duration": 1
       }
-     ]
+     ],
+     "name": "Layer 1"
     }
-   ],
-   "id": "Title_card_bg"
+   ]
   }
  ],
  "md5": "b7acbadd44cbda1e394175071f66704d",
- "frameRate": 24
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_6"
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_2"
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_3"
+      }
+     ],
+     "file": "atlas2.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_4"
+      }
+     ],
+     "file": "atlas3.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_5"
+      }
+     ],
+     "file": "atlas4.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_1"
+      }
+     ],
+     "file": "atlas5.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_7"
+      }
+     ],
+     "file": "atlas6.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title_card_8"
+      }
+     ],
+     "file": "atlas7.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title3"
+      }
+     ],
+     "file": "atlas8.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1024,
+        1366
+       ],
+       "origin": [
+        512,
+        683
+       ],
+       "symbol": "title4"
+      }
+     ],
+     "file": "atlas9.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ]
 }
