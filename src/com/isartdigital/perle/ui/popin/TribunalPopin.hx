@@ -85,6 +85,8 @@ class TribunalPopin extends SmartPopinExtended
 	private var soulGoodBoy2:UISprite;
 	private var soulGoodBoy3:UISprite;
 	
+	private var fbText:TextSprite;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -115,6 +117,7 @@ class TribunalPopin extends SmartPopinExtended
 		//SmartCheck.traceChildrens(this);
 
 		btnInviteSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_INVITE_BUTTON), SmartButton);
+		fbText = cast(btnInviteSoul.getChildByName("Text"), TextSprite);
 		
 		title = cast(getChildByName("PurgatoryTitle_MC"), SmartComponent);
 		tribunalTitleEnglish = cast(title.getChildByName("_png_purgatoryTitle"), UISprite);
@@ -140,12 +143,12 @@ class TribunalPopin extends SmartPopinExtended
 		interMovieClip.visible = false;
 		interMovieClipFR.visible = false;
 		Localisation.getLanguage() == "en" ? interMovieClip.visible = true : interMovieClipFR.visible = true;
-		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
-		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
 		fateAdjectiveFR = cast(interMovieClipFR.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
-		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
-		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
 		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), SmartComponent);
 		baseCardRot = cardSoul.rotation;

@@ -96,7 +96,7 @@ class LevelUpPoppin extends SmartPopinExtended
 			var lUnlockedItem:TableTypeBuilding = UnlockManager.unlockedItem.shift();
 				
 			setPopin(
-				FakeTraduction.assetNameNameToTrad(lUnlockedItem.name),
+				lUnlockedItem.name,
 				lUnlockedItem.level
 			);
 		}
@@ -105,6 +105,11 @@ class LevelUpPoppin extends SmartPopinExtended
 		}
 		else
 			Timer.delay(closeLevelUpPoppin, 200);
+	}
+	
+	private function setText():Void{
+		txtNext = cast(SmartCheck.getChildByName(btnNext, AssetName.LEVELUP_POPPIN_NEXT_TEXT), TextSprite);
+		txtNext.text = Localisation.getText("LABEL_LEVEL_UP_NEXT");
 	}
 	
 	private function setGoldsIcon() {
@@ -170,7 +175,7 @@ class LevelUpPoppin extends SmartPopinExtended
 			allRewardsTook = false;
 			canDoJuicyWithTheseElement = true;
 			setPopin(
-				FakeTraduction.assetNameNameToTrad(UnlockManager.unlockedItem[0].name),
+				UnlockManager.unlockedItem[0].name,
 				UnlockManager.unlockedItem[0].level
 			);
 			UnlockManager.unlockedItem.splice(0,1);	
@@ -208,6 +213,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		
 		txtNext = cast(SmartCheck.getChildByName(btnNext, AssetName.LEVELUP_POPPIN_NEXT_TEXT), TextSprite);
 		Interactive.addListenerClick(btnNext, onClickNext);
+		Interactive.addListenerRewrite(btnNext, setText);
 		//SmartCheck.traceChildrens(btnNext);
 	}
 	
@@ -216,6 +222,7 @@ class LevelUpPoppin extends SmartPopinExtended
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnNext, onClickNext);
+		Interactive.removeListenerRewrite(btnNext, setText);
 		
 		instance = null;
 	}

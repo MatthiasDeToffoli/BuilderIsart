@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -105,7 +106,7 @@ class InfoBuilding extends SmartPopinExtended{
 	
 	private function fileInfosText():Void{
 		
-		levelTxt.text = "Level : " + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel());
+		levelTxt.text = Localisation.getText("LABEL_BUILDINGLEVEL") + Std.string(cast(virtualBuilding, VBuildingUpgrade).getLevel());
 		populationTxt.text = getPopulationText();
 		goldZoneTxt.text = getGoldText();
 		btnUpgradeGoldTxt.text = getGoldValuesUpgradeText(cast(virtualBuilding, VBuildingUpgrade).indexLevel);
@@ -130,7 +131,8 @@ class InfoBuilding extends SmartPopinExtended{
 		levelTxt = cast(SmartCheck.getChildByName(this, "Building_Level_txt"), TextSprite);
 		nameTxt = cast(SmartCheck.getChildByName(this, "Name"), TextSprite);
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
-		nameTxt.text = FakeTraduction.assetNameNameToTrad(virtualBuilding.getAsset());
+		//nameTxt.text = FakeTraduction.assetNameNameToTrad(virtualBuilding.getAsset());
+		nameTxt.text = Localisation.getText(virtualBuilding.getAsset());
 	}
 	
 	private function setPopulationInfos():Void{
