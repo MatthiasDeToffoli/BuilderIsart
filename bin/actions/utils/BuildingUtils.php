@@ -132,6 +132,9 @@ public static function getAllBuildingByName($pName) {
   }
 
   public static function addFirstHellBuildingToDatabase() {
+
+    $typeBuilding = static::getTypeBuilding('Hell House', 1);
+
     Utils::insertInto(static::BUILDINGTABLE, [
       static::IDTYPEBUILDING => $typeBuilding->ID,
       static::IDPLAYER => FacebookUtils::getId(),

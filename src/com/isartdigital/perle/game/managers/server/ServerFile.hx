@@ -19,6 +19,7 @@ class ServerFile{
 	public static inline var CHECK_MARKETING_HOUSE:String = "CheckNumberMarketingHouse";
 	public static inline var START_CAMPAIGN:String = "StartCampaign";
 	public static inline var START_COLLECTOR_PROD:String = "StartCollectorProduction";
+	public static inline var COLLECTOR_RECUP:String = "CollectorRecuperation";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";
