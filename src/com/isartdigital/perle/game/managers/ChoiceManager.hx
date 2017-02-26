@@ -1,5 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.utils.sounds.SoundManager;
 
@@ -114,8 +116,8 @@ class ChoiceManager
 		if (!isGatcha) ChoiceManager.newUsedChoice(memId);
 		Intern.getIntern(pId).idEvent = actualID;
 		var intern:InternDescription = Intern.getIntern(pId);
-		if (!isGatcha) ServerManager.InternAction(DbAction.UPDT_EVENT, intern.id, intern.idEvent);
-		else ServerManager.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
+		if (!isGatcha) ServerManagerInterns.execute(DbAction.UPDT_EVENT, intern.id, intern.idEvent);
+		else ServerManagerQuest.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
 	}
 	
 	public static function getNewChoiceID():Void {
@@ -177,7 +179,7 @@ class ChoiceManager
 			}
 			
 			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
-			ServerManager.InternAction(DbAction.UPDT, pIntern.id);
+			ServerManagerInterns.execute(DbAction.UPDT, pIntern.id);
 			closeQuestStep(pIntern.idEvent);
 			
 			if (pIntern.quest.stepIndex < 2) ChoiceManager.newChoice(pIntern.id);

@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import haxe.Json;
@@ -106,7 +107,7 @@ class Intern
 			
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
-		ServerManager.InternAction(DbAction.ADD, pIntern.id);
+		ServerManagerInterns.execute(DbAction.ADD, pIntern.id);
 	}
 	
 	/**
@@ -159,7 +160,7 @@ class Intern
 			}
 		}
 		
-		ServerManager.InternAction(DbAction.GET_SPE_JSON);
+		ServerManagerInterns.execute(DbAction.GET_SPE_JSON);
 	}
 	
 	private static function setInternsArrayUnlockHeaven(pIntern:InternDescription):Void{
@@ -252,7 +253,7 @@ class Intern
 	}
 	
 	public static function dbMajInternEvent(pInter:InternDescription):Void {
-		ServerManager.InternAction(DbAction.UPDT_EVENT, pInter.id);
+		ServerManagerInterns.execute(DbAction.UPDT_EVENT, pInter.id);
 	}
 	
 	/**
@@ -280,14 +281,13 @@ class Intern
 		return 0;
 	}
 	
-	public static function destroyIntern(pId:Int):Void{	
+	public static function destroyIntern(pId:Int, ?onServerToo=true):Void{	
 		var lInternArrayHeaven:Array<InternDescription> = internsListAlignment[Alignment.heaven];
 		var lInternArrayHell:Array<InternDescription> = internsListAlignment[Alignment.hell];
 		
 		for (i in 0...internsListArray.length){
 			if (pId == internsListArray[i].id){
 				internsListArray.splice(internsListArray.indexOf(internsListArray[i]), 1);
-				ServerManager.InternAction(DbAction.REM, pId);
 				break;
 			}
 		}

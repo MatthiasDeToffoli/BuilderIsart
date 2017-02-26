@@ -31,5 +31,6 @@ class ServerFile{
 	public static inline var BUILDING_UPGRADE:String = "BuildingUpgrade";
 	public static inline var LOADING:String = "Loading";
 	public static inline var BUY_SHOP_PACK:String = "BuyShopPack";
+	public static inline var INTERNS:String = "Interns";
 	
 }

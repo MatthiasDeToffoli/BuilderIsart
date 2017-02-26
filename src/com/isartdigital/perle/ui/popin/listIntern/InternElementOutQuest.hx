@@ -97,9 +97,12 @@ class InternElementOutQuest extends InternElement
 		}
 	}
 	
-	private function setValues(pDesc:InternDescription):Void {	
-		sendCost = cast(SmartCheck.getChildByName(btnSend, AssetName.INTERN_OUT_SEND_COST), TextSprite);
-		sendCost.text = Std.string(QUEST_PRICE);
+	private function setValues(pDesc:InternDescription):Void {
+		if (pDesc.status != Intern.STATE_MAX_STRESS) {
+			sendCost = cast(SmartCheck.getChildByName(btnSend, AssetName.INTERN_OUT_SEND_COST), TextSprite);
+			sendCost.text = Std.string(QUEST_PRICE);
+		}
+		
 		stressGaugeMask.scale.x = 0;
 		stressGaugeBar.scale.x = 0;
 		

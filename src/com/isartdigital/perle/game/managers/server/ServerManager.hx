@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.server.ServerManagerInterns.EventErrorBuyIntern;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
@@ -85,74 +86,6 @@ class ServerManager {
 		callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TEMP_GET_JSON]);
 	}
 	
-	/**
-	 * call server and ask him to execute a specifique fonction on ConstructionTime // todo -> move var instanciation in php
-	 * @param	pConstructTimeDesc TimeDescription of concerne building
-	 * @param	pAction Action to execute
-	 * @return 	
-	 */
-	public static function ContructionTimeAction(pConstructTimeDesc:TimeDescription, pAction:DbAction):Void {
-		var actionCall:String = Std.string(pAction);
-		switch (pAction) {
-			case DbAction.ADD:
-				var creaTimeFloor:Int = Math.floor(pConstructTimeDesc.creationDate / SECOND);
-				var endTimeFloor:Int = Math.floor(pConstructTimeDesc.end / SECOND);
-				var creaSeconds:Int = Std.int(pConstructTimeDesc.creationDate - creaTimeFloor * SECOND);
-				var endSeconds:Int = Std.int(pConstructTimeDesc.end - endTimeFloor * SECOND);
-		
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
-					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
-					"buildId" => pConstructTimeDesc.refTile,
-					"creationDate" => creaTimeFloor,
-					"creationSec" => creaSeconds,
-					"endDate" => endTimeFloor,
-					"endSec" => endSeconds,
-					"funct" => actionCall
-				]);
-				
-			case DbAction.REM:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
-					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
-					"buildId" => pConstructTimeDesc.refTile,
-					"funct" => actionCall
-				]);
-			
-			case DbAction.UPDT:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
-					KEY_POST_FILE_NAME => ServerFile.TIME_BUILD,
-					"buildId" => pConstructTimeDesc.refTile,
-					"boost" => pConstructTimeDesc.timeBoost,
-					"funct" => actionCall
-				]);
-				
-			default: return;
-		}
-	}
-	
-	/**
-	 * call server and ask him to execute a specifique fonction on Interns
-	 * @param	pAction action to call
-	 * @param	pIntern sometime you need an InternDescription
-	 * @return 	
-	 */
-	public static function InternAction(pAction:DbAction, ?internId:Int=null, ?eventId:Int=null):Void {
-		var actionCall:String = Std.string(pAction);
-		
-		switch (pAction) {
-			case DbAction.ADD:
-				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
-			case DbAction.REM:
-				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId]);
-			case DbAction.UPDT:
-				if (internId != null) callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "str" => Intern.getIntern(internId).stress]);
-			case DbAction.UPDT_EVENT:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
-			case DbAction.GET_SPE_JSON:
-				callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
-			default: return;
-		}
-	}
-	
 	public static function ChoicesAction(pAction:DbAction, ?pId:Int=null):Void {
 		var actionCall:String = Std.string(pAction);
 		
@@ -171,33 +104,16 @@ class ServerManager {
 		}
 	}
 	
-	public static function TimeQuestAction(pAction:DbAction, ?pTimeQuest:TimeQuestDescription=null, ?pBoosted:Int):Void {
-		var actionCall:String = Std.string(pAction);
+
+	public static function loadRegion():Void {
+		callPhpFile(onRegionLoad, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOAD_REGION]);
+	}
+	
+	private static function onRegionLoad(pObject:Dynamic):Void {
+		var listRegionLoad:Array<TableRegion> = Json.parse(pObject);
 		
-		switch (pAction) {
-			case DbAction.ADD:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
-					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
-					"funct" => actionCall,
-					"idInt" => pTimeQuest.refIntern,
-					"step1" => pTimeQuest.steps[0],
-					"step2" => pTimeQuest.steps[1],
-					"step3" => pTimeQuest.steps[2]
-				]);
-			case DbAction.UPDT:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [
-					KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
-					"funct" => actionCall,
-					"idInt" => pTimeQuest.refIntern,
-					"stepIndex" => pTimeQuest.stepIndex,
-					"boost" => pBoosted
-				]);
-			case DbAction.REM:
-				callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TIME_QUEST, "funct" => actionCall, "idInt" => pTimeQuest.refIntern]);
-			case DbAction.GET_SPE_JSON:
-				callPhpFile(QuestsManager.getJson, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.TIME_QUEST, "funct" => actionCall]);
-			default: return;
-		}
+		if (listRegionLoad.length == 0) RegionManager.buildWhitoutSave();
+		else RegionManager.load(listRegionLoad);		
 	}
 	
 	/**

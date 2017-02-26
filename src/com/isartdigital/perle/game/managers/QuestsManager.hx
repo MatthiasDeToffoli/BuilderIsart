@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.UIManager;
@@ -97,7 +98,7 @@ class QuestsManager
 		}
 		
 		questsList.push(lTimeQuestDescription);
-		ServerManager.TimeQuestAction(DbAction.ADD, lTimeQuestDescription);
+		ServerManagerQuest.addQuest(lTimeQuestDescription);
 		
 		return lTimeQuestDescription;
 	}
@@ -193,7 +194,7 @@ class QuestsManager
 		
 		for (i in 0...Intern.internsListArray.length){
 			if (pQuest.refIntern == Intern.internsListArray[i].id) {
-				ServerManager.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
+				ServerManagerQuest.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
 				Intern.getIntern(pQuest.refIntern).quest = null;
 			}
 		}

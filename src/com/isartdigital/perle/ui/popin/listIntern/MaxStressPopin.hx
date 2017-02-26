@@ -9,6 +9,8 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
@@ -139,15 +141,14 @@ class MaxStressPopin extends SmartPopin
 			}
 			
 			updateQuestPopin();
-			ServerManager.InternAction(DbAction.UPDT, intern.id);
+			ServerManagerInterns.execute(DbAction.UPDT, intern.id);
 		}
 	}
 	
 	private function onDismiss():Void{
-		TimeManager.destroyTimeQuest(intern.id);
-		Intern.destroyIntern(intern.id);
-		ServerManager.TimeQuestAction(DbAction.REM, intern.quest);
-		updateQuestPopin();
+		ServerManagerInterns.execute(DbAction.REM, intern.id);
+		if (intern.quest != null) ServerManagerQuest.TimeQuestAction(DbAction.REM, intern.quest);
+		UIManager.getInstance().closePopin(this);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	

@@ -37,6 +37,10 @@ class Send
     const BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY = 5;
     const BUILDING_CANNOT_SELL_DONT_EXIST = 6;
 
+	const INTERN_INVALID_ID = 21;
+	const INTERN_CANNOT_BUY = 22;
+	const INTERN_ALREADY_BOUGHT = 23;
+
     const ID_CLIENT_BUILDING = "IDClientBuilding";
 
     public static function refuseAddBuilding ($pInfo, $pErrorCode) {

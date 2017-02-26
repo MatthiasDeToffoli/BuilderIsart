@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
 import com.isartdigital.utils.Debug;
 import js.Lib;
@@ -363,7 +364,7 @@ class TimeManager {
 			pElement.progress = Date.now().getTime();
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			TimeManager.createTimeQuest(pElement);
-			ServerManager.TimeQuestAction(DbAction.UPDT, pElement, 0);
+			ServerManagerQuest.TimeQuestAction(DbAction.UPDT, pElement, 0);
 			eTimeQuest.emit(EVENT_CHOICE_DONE, pElement);
 		}
 	}
@@ -582,7 +583,7 @@ class TimeManager {
 		for (i in 0...listQuest.length) {
 			if (listQuest[i].refIntern == pQuest.refIntern) {
 				pQuest.progress = pQuest.steps[pQuest.stepIndex] + pQuest.startTime;
-				ServerManager.TimeQuestAction(DbAction.UPDT, pQuest, 1);
+				ServerManagerQuest.TimeQuestAction(DbAction.UPDT, pQuest, 1);
 				return false;
 			}
 		}
@@ -616,7 +617,7 @@ class TimeManager {
 		for (i in 0...lLengthQuest) {
 			if (pId == listQuest[i].refIntern){
 				var endQuest:TimeQuestDescription = listQuest.splice(i, 1)[0];
-				ServerManager.TimeQuestAction(DbAction.REM, endQuest);
+				ServerManagerQuest.TimeQuestAction(DbAction.REM, endQuest);
 				break;
 			}
 		}

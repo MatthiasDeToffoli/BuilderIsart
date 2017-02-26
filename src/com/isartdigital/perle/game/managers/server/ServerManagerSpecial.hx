@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.sprites.Intern;
 
 enum SpeLoadState { complete; inProgress; }
@@ -21,7 +22,7 @@ class ServerManagerSpecial
 	
 	public static function loadQuests():Void {
 		QuestsManager.init();
-		ServerManager.TimeQuestAction(DbAction.GET_SPE_JSON);
+		ServerManagerQuest.TimeQuestAction(DbAction.GET_SPE_JSON);
 	}
 	
 	public static function loadInterns():Void {
