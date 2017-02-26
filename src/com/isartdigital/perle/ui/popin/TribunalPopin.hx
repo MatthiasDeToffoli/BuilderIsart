@@ -134,9 +134,10 @@ class TribunalPopin extends SmartPopinExtended
 		timer.text = "0" + 0 + "h" + "0" + 0 + "m" + "0" + 0 + "s";
 		
 		soulCard = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_CARD), SmartComponent);
+		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), SmartComponent);
 		
-		interMovieClip = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO), SmartComponent);
-		interMovieClipFR = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO_FR), SmartComponent);
+		interMovieClip = cast(cardSoul.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO), SmartComponent);
+		interMovieClipFR = cast(cardSoul.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO_FR), SmartComponent);
 		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME), TextSprite);
 		fateNameFR = cast(interMovieClipFR.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME), TextSprite);
 		
@@ -150,7 +151,6 @@ class TribunalPopin extends SmartPopinExtended
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
-		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), SmartComponent);
 		baseCardRot = cardSoul.rotation;
 		cardSoul.interactive = true;
 		cardSoul.buttonMode = true;
