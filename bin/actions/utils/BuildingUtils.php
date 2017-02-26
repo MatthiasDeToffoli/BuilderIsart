@@ -120,6 +120,7 @@ public static function getAllBuildingByName($pName) {
 
   public static function addPurgatoryToDatabase() {
     $typeTribu = static::getTypeBuilding('Purgatory',1);
+    $pTime = time() +  (60*60)/$typeTribu->ProductionPerHour + 3600;
 
     Utils::insertInto(static::BUILDINGTABLE, [
       static::IDTYPEBUILDING => $typeTribu->ID,
@@ -127,7 +128,9 @@ public static function getAllBuildingByName($pName) {
       static::REGIONX => 0,
       static::REGIONY => 0,
       static::X => 0,
-      static::Y => 5
+      static::Y => 5,
+      static::NBRESOURCES => $typeTribu->MaxSoulsContained,
+      static::ENDFORNEXTPRODUCTION => Utils::timeStampToDateTime($pTime)
     ]);
   }
 
