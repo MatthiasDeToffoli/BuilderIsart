@@ -121,18 +121,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), UIMovie);
 		
-		//var lHouseNumbers:Dynamic = houseNumber.children[0];
-		//for(i in 0...lHouseNumbers.children.length)
-		//trace(lHouseNumbers.children[i]);
-		//SmartCheck.getChildByName(lGlowHell, "ftueGlow").visible = false;
-		//SmartCheck.getChildByName(lGlowHeaven, "ftueGlow").visible = false;
-		//numberHousesHeaven = cast(SmartCheck.getChildByName(lHouseNumbers, "_internHouseNumber"),TextSprite);
-		//numberHousesHell = cast(SmartCheck.getChildByName(lHouseNumbers, "_internHouseNumber_actualValue"),TextSprite);
-		//numberHousesHell = lHouseNumbers[3];
-		//houseText = lHouseNumbers[3];
-		/*numberHousesHeaven = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HEAVEN), TextSprite);
-		numberHousesHell = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER_HELL), TextSprite);
-		houseText = cast(SmartCheck.getChildByName(lHouseNumbers, AssetName.CAROUSSEL_INTERN_HOUSE_TEXT), TextSprite);*/
+		
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);

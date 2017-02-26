@@ -4,11 +4,14 @@ import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
+import com.isartdigital.perle.game.managers.server.ServerManagerInterns.EventErrorBuyIntern;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
+import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
 
@@ -465,5 +468,32 @@ class ServerManagerBuilding{
 	
 	private static function onErrorRecoltGenerator(pObject:Dynamic):Void {
 		Debug.error(pObject);
+	}
+	
+	public static function BoostBuilding(pDesc:TileDescription):Void {
+		ServerManager.callPhpFile(onSuccessBoost, onErrorBoost, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.BUILDING_BOOST,
+			"RegionX" => pDesc.regionX,
+			"RegionY" => pDesc.regionY,
+			"X" => pDesc.mapX,
+			"Y" => pDesc.mapY,
+			"progress" => pDesc.timeDesc.progress,
+			"endTime" => pDesc.timeDesc.end
+		]);
+	}
+	
+	private static function onSuccessBoost(object:Dynamic):Void {
+		if (object.charAt(0) == "{") {
+			var lEvent:EventSuccessMoveBuilding = Json.parse(object);
+			if (Reflect.hasField(lEvent, "errorID")) {
+				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
+			}					
+		} else {
+			if (cast(object, String) == "done") SpeedUpPopin.getInstance().validBoost(); 
+		}
+	}
+	
+	private static function onErrorBoost(object:Dynamic):Void {
+		Debug.error(object);
 	}
 }

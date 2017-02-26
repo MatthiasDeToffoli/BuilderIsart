@@ -38,7 +38,7 @@ class Intern
 	public static inline var ALIGN = "hell";
 	public static inline var MAX_STRESS:Int = 100;
 	
-	public static var numberInternHouses:Map<Alignment, Int>;
+	public static var numberInternHouses:Map<Alignment, Int> = new Map < Alignment, Int>();
 	
 	public static function getIntern(pId:Int):InternDescription{
 		var lIntern:InternDescription = null;
@@ -56,8 +56,6 @@ class Intern
 		internsListAlignment = new Map<Alignment, Array<InternDescription>>();
 		internsListAlignment[Alignment.hell] = new Array<InternDescription>();
 		internsListAlignment[Alignment.heaven] = new Array<InternDescription>();
-
-		numberInternHouses = new Map < Alignment, Int>();
 		
 		internsMap = new Map<Alignment, Array<InternDescription>>();
 		internsMap.set(Alignment.hell, new Array<InternDescription>()); 
