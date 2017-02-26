@@ -132,10 +132,8 @@ class DialogueManager
 	 */
 	public static function createFtue():Void {
 		ftueIsCreated = true;
-		//dialogueSaved = 12;
-		//SaveManager.save();
 		var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
-		trace(lSave);
+		
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
 			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing || steps[lSave-1].endOfSpecial) {
@@ -163,9 +161,6 @@ class DialogueManager
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
 		DialoguePoppin.wasAction = true;
 		dialogueSaved = 0;
-		
-		//var lIcons = new IconsFtue();
-		//GameStage.getInstance().getIconContainer().addChild(lIcons);
 		
 		//check if FTUE wasn't over
 		if(ServerManagerLoad.getPlayer().ftueProgress!=null && ServerManagerLoad.getPlayer().ftueProgress!=0)
@@ -336,11 +331,6 @@ class DialogueManager
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, false, true, true);
 			}
 			
-			/*if (steps[dialogueSaved].putCenterRegionHeaven) {
-				//CameraManager.placeCamera(heavenCenter);
-				//Hud.isHide = true;
-			}*/
-			
 			if (steps[dialogueSaved].clickOnCard)
 				ftueStepClickOnCard = true;
 			else if (steps[dialogueSaved].haveToPutBuilding) {
@@ -480,10 +470,6 @@ class DialogueManager
 		if (dialogueSaved >= steps.length)
 			return;
 			
-		/*if (steps[dialogueSaved + 1] != null) 
-			if (steps[dialogueSaved+1].arrowRotation != null && steps[dialogueSaved+1].npcWhoTalk != null)
-				removeDialogue();*/
-			
 		if (Std.is(steps[dialogueSaved].item, SmartButton)) {
 			//cast(steps[dialogueSaved].item, SmartButton).off(MouseEventType.CLICK, endOfaDialogue);
 			steps[dialogueSaved].item = null;
@@ -491,10 +477,6 @@ class DialogueManager
 		
 		if (dialogueSaved == steps.length - 1)
 			Hud.getInstance().alpha = 1;
-			
-		/*else {
-			trace ("fin d'etape " + dialogueSaved);
-		}*/
 		
 		closeFtueLock();
 		
@@ -513,14 +495,22 @@ class DialogueManager
 		if (steps[dialogueSaved-1].endOfOtherStories)
 			dialogueSaved = DIALOGUE_AFTER_STORIE;
 		
-		//IconsFtue.setAllFalse();
 		nextStep();
 	}
 	
+	/**
+	 * Create Finger Anim after delay
+	 */
 	private static function createFingerAnimAfterDelay():Void {
 		createFingerAnim(AssetName.FTUE_DRAG_MOVE,Choice.getInstance().getCardPos());
 	}
 	
+	/**
+	 * Create Finger Anim
+	 * @param	pAsset different asset
+	 * @param	pPos position
+	 * @param	isCard
+	 */
 	private static function createFingerAnim(pAsset:String, pPos:Point, ?isCard:Bool):Void {
 		finger = new FingerAnim(pAsset);
 		GameStage.getInstance().getActionContainer().addChild(finger);
@@ -553,6 +543,9 @@ class DialogueManager
 		}
 	}
 	
+	/**
+	 * Create effect when we give gold to player
+	 */
 	private static function createGoldEffectJuicy():Void {
 		addedJuicy = true;
 		if (numberOfGoldsCreated >= numberOfGolds)
@@ -630,6 +623,9 @@ class DialogueManager
 		}
 	}
 	
+	/**
+	 * Open black on normal screen
+	 */
 	private static function openFtueLock():Void {
 		if (steps[dialogueSaved].ftueContainer) 	
 			UIManager.getInstance().openFTUEInFtue(FTUE_ACTION);
@@ -641,6 +637,9 @@ class DialogueManager
 		}
 	}
 	
+	/**
+	 * close ftue screen
+	 */
 	private static function closeFtueLock():Void {
 		if (steps[dialogueSaved].ftueContainer) 	
 			UIManager.getInstance().closeFTUEInFtue();
@@ -648,6 +647,9 @@ class DialogueManager
 			UIManager.getInstance().closeFTUEInAction();
 	}
 	
+	/**
+	 * Check if this dialogue can be an another story
+	 */
 	private static function checkForOtherStories():Void {
 		var lDialogue:Int = 0;
 		var lExpression:String = "null";
@@ -718,13 +720,11 @@ class DialogueManager
 		ftuecreateFirstHouse = false;
 		
 		Hud.getInstance().setGlowFalse();
-		
-		//if(Choice.getInstance().isOn)
-		//	Choice.getInstance().setGlowFalse();
-		//if (addedJuicy)
-		//	removeGolds();
 	}
 	
+	/**
+	 * Change language dialogue
+	 */
 	public static function changeLanguage() {
 		actual_npc_dialogue_ftue = [];
 		
@@ -734,6 +734,9 @@ class DialogueManager
 			actual_npc_dialogue_ftue = npc_dialogue_ftue_en;
 	}
 	
+	/**
+	 * Remove gold after their effect
+	 */
 	private static function removeGolds() {
 		if (GoldEffect.goldJuicy.length != 0)
 		for (i in 0...GoldEffect.goldJuicy.length) {
