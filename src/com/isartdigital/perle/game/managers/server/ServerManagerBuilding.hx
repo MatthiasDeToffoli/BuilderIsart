@@ -405,4 +405,37 @@ class ServerManagerBuilding{
 		Debug.error(pObject);
 	}
 	
+	public static function CollectorProdRecuperation(pDescription:TileDescription):Void {
+		ServerManager.callPhpFile( onSuccessCollectorProdRecuperation, onErrorCollectorProdRecuperation, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.COLLECTOR_RECUP,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	private static function onSuccessCollectorProdRecuperation(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				ResourcesManager.setLevel(Std.int(data.level));
+				ResourcesManager.updateTotal(GeneratorType.badXp, data.badXp);
+				ResourcesManager.updateTotal(GeneratorType.goodXp, data.goodXp);
+				ResourcesManager.updateTotal(GeneratorType.buildResourceFromHell, data.resourcesFromHell);
+				ResourcesManager.updateTotal(GeneratorType.buildResourceFromParadise, data.resourcesFromHeaven);
+			}
+			
+		}
+	}
+	
+	private static function onErrorCollectorProdRecuperation(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
 }

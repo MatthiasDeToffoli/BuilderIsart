@@ -50,8 +50,33 @@ class Resources
     public static function updateResources($pId, $Type, $newQuantity)
     {
         global $db;
-
+      
         $reqInsertion = "UPDATE Resources SET Quantity=:num WHERE IDPlayer = :id AND Type = :type";
+        $reqInsPre = $db->prepare($reqInsertion);
+        $reqInsPre->bindParam(':id', $pId);
+        $reqInsPre->bindParam(':type', $Type);
+        $reqInsPre->bindParam(':num', $newQuantity);
+        try {
+            $reqInsPre->execute();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+
+            exit;
+        }
+
+    }
+
+    /**
+     * addition a resources value
+     * @param $pId the player Id
+     * @param $Type the type of resources we want update
+     * @param $newQuantity the quantity that resources have to add
+     */
+    public static function additionResources($pId, $Type, $newQuantity)
+    {
+        global $db;
+
+        $reqInsertion = "UPDATE Resources SET Quantity= Quantity + :num WHERE IDPlayer = :id AND Type = :type";
         $reqInsPre = $db->prepare($reqInsertion);
         $reqInsPre->bindParam(':id', $pId);
         $reqInsPre->bindParam(':type', $Type);

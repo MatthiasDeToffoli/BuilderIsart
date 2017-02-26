@@ -632,7 +632,7 @@ class ResourcesManager
 		
 		if (pType == GeneratorType.goodXp || pType == GeneratorType.badXp){
 			myResourcesData.totalsMap[pType]  = Math.min(myResourcesData.totalsMap[pType], maxExp);
-			Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType,maxExp);
+			Hud.getInstance().setXpGauge();
 			testLevelUp();
 		} else {
 			 Hud.getInstance().setAllTextValues(myResourcesData.totalsMap[pType], false, pType);
@@ -680,6 +680,9 @@ class ResourcesManager
 		SaveManager.save();
 	}
 
-	
+	public static function setLevel(pLevel:Int):Void {
+		myResourcesData.level = pLevel;
+		Hud.getInstance().setAllTextValues(myResourcesData.level, true);
+	}
 	
 }

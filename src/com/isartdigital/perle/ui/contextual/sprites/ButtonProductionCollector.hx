@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
+import com.isartdigital.perle.game.managers.server.IdManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.utils.sounds.SoundManager;
 
 /**
@@ -29,6 +31,8 @@ class ButtonProductionCollector extends ButtonProduction
 		ValueChangeManager.addTextGain(position, type, valueToAdd);
 		
 		type == GeneratorType.buildResourceFromHell ? SoundManager.getSound("SOUND_IRON").play() : SoundManager.getSound("SOUND_WOOD").play();
+		
+		ServerManagerBuilding.CollectorProdRecuperation(IdManager.searchVBuildingById(ref).tileDesc);
 		super.onClick();
 	}
 	override function applyResourceGain():Void {
