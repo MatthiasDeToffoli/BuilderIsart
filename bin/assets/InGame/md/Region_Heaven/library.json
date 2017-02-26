@@ -1,201 +1,23 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "_bg_heaven_02",
-       "origin": [
-        28.1,
-        47.65
-       ],
-       "rect": [
-        1,
-        1,
-        1018,
-        1100
-       ]
-      },
-      {
-       "symbol": "HR_rock2",
-       "origin": [
-        40.9,
-        58.9
-       ],
-       "rect": [
-        1,
-        1103,
-        82,
-        118
-       ]
-      },
-      {
-       "symbol": "HR_nuage4",
-       "origin": [
-        39.4,
-        30.75
-       ],
-       "rect": [
-        1,
-        1223,
-        79,
-        62
-       ]
-      },
-      {
-       "symbol": "HR_nuage2",
-       "origin": [
-        34.9,
-        30.75
-       ],
-       "rect": [
-        1,
-        1287,
-        70,
-        62
-       ]
-      },
-      {
-       "symbol": "HR_rock4",
-       "origin": [
-        30.4,
-        34.1
-       ],
-       "rect": [
-        1,
-        1351,
-        61,
-        69
-       ]
-      },
-      {
-       "symbol": "HR_rock3",
-       "origin": [
-        22.5,
-        0
-       ],
-       "rect": [
-        1,
-        1422,
-        45,
-        76
-       ]
-      },
-      {
-       "symbol": "HR_nuage3",
-       "origin": [
-        28.1,
-        24
-       ],
-       "rect": [
-        48,
-        1422,
-        57,
-        48
-       ]
-      },
-      {
-       "symbol": "HR_nuage1",
-       "origin": [
-        24,
-        27.75
-       ],
-       "rect": [
-        48,
-        1472,
-        48,
-        56
-       ]
-      },
-      {
-       "symbol": "HR_rock1",
-       "origin": [
-        18.4,
-        35.25
-       ],
-       "rect": [
-        73,
-        1287,
-        37,
-        71
-       ]
-      },
-      {
-       "symbol": "HR_nuage5",
-       "origin": [
-        28.1,
-        22.5
-       ],
-       "rect": [
-        64,
-        1360,
-        57,
-        45
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas1.png",
-     "textures": [
-      {
-       "symbol": "HR_part1",
-       "origin": [
-        481.5,
-        549.75
-       ],
-       "rect": [
-        1,
-        1,
-        963,
-        1100
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas2.png",
-     "textures": [
-      {
-       "symbol": "_bg_heaven01",
-       "origin": [
-        987.8,
-        43.7
-       ],
-       "rect": [
-        1,
-        1,
-        963,
-        1100
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
+   "id": "BG_Heaven",
    "layers": [
     {
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
-       "loc": [
-        -447.8625,
-        527.4
-       ],
-       "index": 0,
-       "ref": "_bg_heaven01",
        "pivot": [
         511.575,
         545.8125
-       ]
+       ],
+       "loc": [
+        -446.3625,
+        527.4
+       ],
+       "ref": "_bg_heaven01",
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 1"
@@ -203,281 +25,281 @@
     {
      "keyframes": [
       {
-       "duration": 1,
        "tweened": false,
+       "pivot": [
+        504.375,
+        549.7875
+       ],
        "loc": [
         452.7,
         531.6
        ],
-       "index": 0,
        "ref": "_bg_heaven_02",
-       "pivot": [
-        504.375,
-        549.7875
-       ]
+       "index": 0,
+       "duration": 1
       }
      ],
      "name": "Calque 2"
     }
-   ],
-   "id": "BG_Heaven"
+   ]
   },
   {
+   "id": "HR_anim_move_nuage3_2",
    "layers": [
     {
      "keyframes": [
       {
-       "loc": [
-        3.825,
-        -6.075
-       ],
-       "duration": 930,
-       "skew": [
-        0,
-        0.4636
-       ],
        "scale": [
         0.9987,
         1
        ],
-       "index": 0,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        578.5875,
-        281.85
-       ],
-       "duration": 29,
        "skew": [
         0,
-        0.4634
+        0.4636
        ],
+       "loc": [
+        3.825,
+        -6.075
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 0,
+       "duration": 930
+      },
+      {
        "scale": [
         0.9914,
         1
        ],
-       "index": 930,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        594.825,
-        292.8
-       ],
-       "duration": 40,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        578.5875,
+        281.85
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 930,
+       "duration": 29
+      },
+      {
        "scale": [
         0.9925,
         1
        ],
-       "index": 959,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        613.9125,
-        313.9125
-       ],
-       "duration": 30,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        594.825,
+        292.8
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 959,
+       "duration": 40
+      },
+      {
        "scale": [
         0.9936,
         1
        ],
-       "index": 999,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        624.5625,
-        332.475
-       ],
-       "duration": 30,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        613.9125,
+        313.9125
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 999,
+       "duration": 30
+      },
+      {
        "scale": [
         0.9948,
         1
        ],
-       "index": 1029,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        632.1,
-        352.575
-       ],
-       "duration": 40,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        624.5625,
+        332.475
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1029,
+       "duration": 30
+      },
+      {
        "scale": [
         0.9961,
         1
        ],
+       "skew": [
+        0,
+        0.4634
+       ],
+       "loc": [
+        632.1,
+        352.575
+       ],
+       "ref": "~HR_anim_nuage3",
        "index": 1059,
-       "ref": "~HR_anim_nuage3"
+       "duration": 40
       },
       {
+       "scale": [
+        0.9974,
+        1
+       ],
+       "skew": [
+        0,
+        0.4634
+       ],
        "loc": [
         637.95,
         380.5875
        ],
-       "duration": 33,
-       "skew": [
-        0,
-        0.4634
-       ],
-       "scale": [
-        0.9974,
-        1
-       ],
+       "ref": "~HR_anim_nuage3",
        "index": 1099,
-       "ref": "~HR_anim_nuage3"
+       "duration": 33
       },
       {
+       "scale": [
+        0.9987,
+        1
+       ],
+       "skew": [
+        0,
+        0.4636
+       ],
        "loc": [
         639.975,
         404.1
        ],
-       "duration": 1,
-       "skew": [
-        0,
-        0.4636
-       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1132,
+       "duration": 1
+      },
+      {
        "scale": [
         0.9987,
         1
        ],
-       "index": 1132,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
+       "skew": [
+        0,
+        0.4636
+       ],
        "loc": [
         -227.3625,
         -41.55
        ],
-       "duration": 26,
-       "skew": [
-        0,
-        0.4636
-       ],
-       "scale": [
-        0.9987,
-        1
-       ],
+       "ref": "~HR_anim_nuage3",
        "index": 1133,
-       "ref": "~HR_anim_nuage3"
+       "duration": 26
       },
       {
-       "loc": [
-        -221.1,
-        -59.5125
-       ],
-       "duration": 30,
-       "skew": [
-        0,
-        0.4634
-       ],
        "scale": [
         0.9974,
         1
        ],
-       "index": 1159,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        -210.225,
-        -78.7125
-       ],
-       "duration": 30,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        -221.1,
+        -59.5125
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1159,
+       "duration": 30
+      },
+      {
        "scale": [
         0.9962,
         1
        ],
-       "index": 1189,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        -194.025,
-        -93.375
-       ],
-       "duration": 30,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        -210.225,
+        -78.7125
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1189,
+       "duration": 30
+      },
+      {
        "scale": [
         0.9951,
         1
        ],
-       "index": 1219,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        -172.0875,
-        -91.875
-       ],
-       "duration": 250,
        "skew": [
         0,
         0.4634
        ],
+       "loc": [
+        -194.025,
+        -93.375
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1219,
+       "duration": 30
+      },
+      {
        "scale": [
         0.9942,
         1
        ],
-       "index": 1249,
-       "ref": "~HR_anim_nuage3"
-      },
-      {
-       "loc": [
-        3.825,
-        -6.075
-       ],
-       "duration": 1,
        "skew": [
         0,
-        0.4636
+        0.4634
        ],
+       "loc": [
+        -172.0875,
+        -91.875
+       ],
+       "ref": "~HR_anim_nuage3",
+       "index": 1249,
+       "duration": 250
+      },
+      {
        "scale": [
         0.9987,
         1
        ],
+       "skew": [
+        0,
+        0.4636
+       ],
+       "loc": [
+        3.825,
+        -6.075
+       ],
+       "ref": "~HR_anim_nuage3",
        "index": 1499,
-       "ref": "~HR_anim_nuage3"
+       "duration": 1
       }
      ],
      "name": "Calque 3"
     }
-   ],
-   "id": "HR_anim_move_nuage3_2"
+   ]
   },
   {
+   "id": "~HR_anim_nuage3",
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "HR_nuage3",
        "index": 0,
        "duration": 9,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -488,9 +310,9 @@
         0,
         -0.6
        ],
+       "ref": "HR_nuage3",
        "index": 9,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -501,9 +323,9 @@
         0,
         -2.475
        ],
+       "ref": "HR_nuage3",
        "index": 19,
        "duration": 60,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -514,9 +336,9 @@
         0,
         -25.8
        ],
+       "ref": "HR_nuage3",
        "index": 79,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -527,9 +349,9 @@
         0,
         -28.5
        ],
+       "ref": "HR_nuage3",
        "index": 89,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -540,9 +362,9 @@
         0,
         -29.55
        ],
+       "ref": "HR_nuage3",
        "index": 99,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -553,9 +375,9 @@
         0,
         -28.8375
        ],
+       "ref": "HR_nuage3",
        "index": 109,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -566,9 +388,9 @@
         0,
         -26.8875
        ],
+       "ref": "HR_nuage3",
        "index": 119,
        "duration": 60,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -579,9 +401,9 @@
         0,
         -3.675
        ],
+       "ref": "HR_nuage3",
        "index": 179,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -592,18 +414,18 @@
         0,
         -1.05
        ],
+       "ref": "HR_nuage3",
        "index": 189,
        "duration": 10,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
        ]
       },
       {
+       "ref": "HR_nuage3",
        "index": 199,
        "duration": 1,
-       "ref": "HR_nuage3",
        "pivot": [
         28.125,
         24
@@ -612,10 +434,188 @@
      ],
      "name": "Calque 1"
     }
-   ],
-   "id": "~HR_anim_nuage3"
+   ]
   }
  ],
- "md5": "9919b3520b91905411ecfd557f65a8ae",
- "frameRate": 24
+ "md5": "58c4a7c0c9ba5475291c95c441eb0608",
+ "frameRate": 24,
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        1018,
+        1100
+       ],
+       "origin": [
+        28.1,
+        47.65
+       ],
+       "symbol": "_bg_heaven_02"
+      },
+      {
+       "rect": [
+        1,
+        1103,
+        82,
+        118
+       ],
+       "origin": [
+        40.9,
+        58.9
+       ],
+       "symbol": "HR_rock2"
+      },
+      {
+       "rect": [
+        1,
+        1223,
+        79,
+        62
+       ],
+       "origin": [
+        39.4,
+        30.75
+       ],
+       "symbol": "HR_nuage4"
+      },
+      {
+       "rect": [
+        1,
+        1287,
+        70,
+        62
+       ],
+       "origin": [
+        34.9,
+        30.75
+       ],
+       "symbol": "HR_nuage2"
+      },
+      {
+       "rect": [
+        1,
+        1351,
+        61,
+        69
+       ],
+       "origin": [
+        30.4,
+        34.1
+       ],
+       "symbol": "HR_rock4"
+      },
+      {
+       "rect": [
+        1,
+        1422,
+        45,
+        76
+       ],
+       "origin": [
+        22.5,
+        0
+       ],
+       "symbol": "HR_rock3"
+      },
+      {
+       "rect": [
+        48,
+        1422,
+        57,
+        48
+       ],
+       "origin": [
+        28.1,
+        24
+       ],
+       "symbol": "HR_nuage3"
+      },
+      {
+       "rect": [
+        48,
+        1472,
+        48,
+        56
+       ],
+       "origin": [
+        24,
+        27.75
+       ],
+       "symbol": "HR_nuage1"
+      },
+      {
+       "rect": [
+        73,
+        1287,
+        37,
+        71
+       ],
+       "origin": [
+        18.4,
+        35.25
+       ],
+       "symbol": "HR_rock1"
+      },
+      {
+       "rect": [
+        64,
+        1360,
+        57,
+        45
+       ],
+       "origin": [
+        28.1,
+        22.5
+       ],
+       "symbol": "HR_nuage5"
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        963,
+        1100
+       ],
+       "origin": [
+        481.5,
+        549.75
+       ],
+       "symbol": "HR_part1"
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "rect": [
+        1,
+        1,
+        963,
+        1100
+       ],
+       "origin": [
+        987.8,
+        43.7
+       ],
+       "symbol": "_bg_heaven01"
+      }
+     ],
+     "file": "atlas2.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ]
 }
