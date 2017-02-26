@@ -37,6 +37,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
 import com.isartdigital.perle.ui.screens.TitleCard;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.services.facebook.Response;
 import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
@@ -142,13 +143,19 @@ class Main extends EventEmitter
 		configLoader = lConfig;
 		
 		//lConfig.load(); // todo : temporary, because need FB to use getId in backend
-		Facebook.onLogin = onLogin;
+		Facebook.onLogin = onLoginFacebook;
+		Facebook.onCancel = onCancelFacebook;
 		Facebook.load(FACEBOOK_APP_ID);
 	}
 	
 	public var configLoader:Loader;
 	
-	private function onLogin():Void{
+	private function onLoginFacebook():Void{
+		ServerManager.playerConnexion();
+	}
+	
+	private function onCancelFacebook (pEvent:Response):Void {
+		// todo : warning your game will not be saved or i don't now ?
 		ServerManager.playerConnexion();
 	}
  

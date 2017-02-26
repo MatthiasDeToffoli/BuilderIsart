@@ -39,7 +39,7 @@ class BuildingUtils
     try {
       $reqPre->execute();
       return $reqPre->fetch(PDO::FETCH_OBJ);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -57,7 +57,7 @@ class BuildingUtils
     try {
       $reqPre->execute();
       return $reqPre->fetch(PDO::FETCH_OBJ);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -73,7 +73,7 @@ public static function getAllBuildingByName($pName) {
   try {
     $reqPre->execute();
     return $reqPre->fetchAll(PDO::FETCH_OBJ);
-  } catch (Exception $e) {
+  } catch (\Exception $e) {
     echo $e->getMessage();
     exit;
   }
@@ -94,7 +94,7 @@ public static function getAllBuildingByName($pName) {
     try {
       $reqPre->execute();
       return $reqPre->fetch(PDO::FETCH_OBJ);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -112,7 +112,7 @@ public static function getAllBuildingByName($pName) {
     try {
       $reqPre->execute();
       return $reqPre->fetchAll(PDO::FETCH_OBJ);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       echo $e->getMessage();
       exit;
     }
@@ -132,9 +132,7 @@ public static function getAllBuildingByName($pName) {
   }
 
   public static function addFirstHellBuildingToDatabase() {
-
     $typeBuilding = static::getTypeBuilding('Hell House', 1);
-
     Utils::insertInto(static::BUILDINGTABLE, [
       static::IDTYPEBUILDING => $typeBuilding->ID,
       static::IDPLAYER => FacebookUtils::getId(),
