@@ -20,6 +20,7 @@ enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
 	var ID:String;
+	var passwordNoFB:String; // saved in cookie
 }
 
 typedef EventSuccessAddRegion = {
@@ -37,7 +38,9 @@ typedef EventSuccessAddRegion = {
 
 /**
  * Interface whit the server
- * @author Vicktor Grenu et Ambroise Rabier
+ * @author Vicktor Grenu
+ * @author Ambroise Rabier
+ * @author Matthias DeTefolli
  */
 class ServerManager {
 	
@@ -54,14 +57,14 @@ class ServerManager {
 	}
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
-		var currentPlayer:EventSuccessConnexion = Json.parse(pObject);
+		var successEvent:EventSuccessConnexion = Json.parse(pObject);
 		
 		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
-			Debug.error("Player connexion failed");
+			Debug.error("Player connexion failed (go look network panel)");
 			return;
 		}
 		ServerManagerLoad.load(); // todo : temporary (maybe)
-		DeltaDNAManager.sendConnexionEvents(Json.parse(pObject));
+		DeltaDNAManager.sendConnexionEvents(successEvent);
 		DeltaDNAManager.listenToCloseGame();
 	}
 	
