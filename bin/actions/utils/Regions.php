@@ -3,16 +3,15 @@
 namespace actions\utils;
 
 use PDO as PDO;
+use actions\utils\FacebookUtils as FacebookUtils;
+
+include_once("FacebookUtils.php");
 /**
 * @author: de Toffoli Matthias
 * Include this when you want to use the table Region
 */
-/**
- *
- */
 class Regions
 {
-
   /**
    * add a region to the table
    * @param	$Id the player Id
@@ -114,11 +113,12 @@ class Regions
      */
     public static function testIfAnotherRegionInThisPosition($X,$Y){
       global $db;
-
-      $req = "SELECT * FROM `Region` WHERE PositionX = :X AND PositionY = :Y";
+      $lId = FacebookUtils::getId();
+      $req = "SELECT * FROM `Region` WHERE PositionX = :X AND PositionY = :Y AND IdPlayer = :id";
       $reqPre = $db->prepare($req);
       $reqPre->bindParam(':X', $X);
       $reqPre->bindParam(':Y', $Y);
+      $reqPre->bindParam(':id', $lId);
 
       try {
         $reqPre->execute();

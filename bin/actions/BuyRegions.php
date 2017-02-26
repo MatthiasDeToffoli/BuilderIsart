@@ -7,6 +7,7 @@ use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\Player as Player;
 use actions\utils\Regions as Regions;
 use actions\utils\Resources as Resources;
+use actions\utils\Experience as Experience;
 
 /**
 * @author: de Toffoli Matthias
@@ -42,6 +43,7 @@ use actions\utils\Resources as Resources;
     include_once("utils/Player.php");
     include_once("utils/Config.php");
     include_once("utils/Resources.php");
+    include_once("utils/Experience.php");
 
     global $db;
 
@@ -90,8 +92,21 @@ use actions\utils\Resources as Resources;
     Player::setRegionQuantity($Id,$Type,$nbRegion);
     Regions::createRegion($Id,$Type,$X,$Y,$FTX,$FTY);
     Resources::updateResources($Id, "soft", $moneyRest);
+    Experience::gaignBadXp($xpHell);
+    $xpObject = Experience::gaignGoodXp($xpHeaven);
 
-    $messageBack =  Array("flag" => true,"x" => $X, "y" => $Y, "type" => $Type, "ftx" => $FTX, "fty" => $FTY, "price" => $price, "xpHeaven" => $xpHeaven, "xpHell" => $xpHell);
+    $messageBack =  Array(
+      "flag" => true,
+      "x" => $X,
+      "y" => $Y,
+      "type" => $Type,
+      "ftx" => $FTX,
+      "fty" => $FTY,
+      "price" => $price,
+      'level' => $xpObject->level,
+      "xpHeaven" => $xpObject->goodXp,
+      "xpHell" => $xpObject->badXp
+    );
 
 
     echo json_encode($messageBack);

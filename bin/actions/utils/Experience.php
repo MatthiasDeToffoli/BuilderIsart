@@ -77,8 +77,8 @@ public static function testLevelUp(){
     $player = Player::getPlayerById($lId);
 
     if($player->Level > 19) {
-      $level = 19;
-    } else $level = $player->Level;
+      $level = 20;
+    } else $level = $player->Level + 1;
 
     global $db;
 
