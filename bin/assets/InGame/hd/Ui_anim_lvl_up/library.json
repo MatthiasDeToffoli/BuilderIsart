@@ -1,167 +1,298 @@
 {
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "symbol": "ui_base",
+       "rect": [
+        1,
+        1,
+        1421,
+        997
+       ],
+       "origin": [
+        710.15,
+        498.7
+       ]
+      },
+      {
+       "symbol": "main_back",
+       "rect": [
+        1424,
+        1,
+        300,
+        341
+       ],
+       "origin": [
+        150.3,
+        170.7
+       ]
+      },
+      {
+       "symbol": "main_front",
+       "rect": [
+        1726,
+        1,
+        305,
+        300
+       ],
+       "origin": [
+        153.3,
+        150.5
+       ]
+      },
+      {
+       "symbol": "fx_clap",
+       "rect": [
+        1726,
+        303,
+        30,
+        30
+       ],
+       "origin": [
+        15.2,
+        15.05
+       ]
+      },
+      {
+       "symbol": "firework3",
+       "rect": [
+        1758,
+        303,
+        25,
+        25
+       ],
+       "origin": [
+        12.6,
+        12.55
+       ]
+      },
+      {
+       "symbol": "firework2",
+       "rect": [
+        1785,
+        303,
+        25,
+        25
+       ],
+       "origin": [
+        12.6,
+        12.65
+       ]
+      },
+      {
+       "symbol": "firework4",
+       "rect": [
+        1812,
+        303,
+        25,
+        25
+       ],
+       "origin": [
+        12.45,
+        12.5
+       ]
+      },
+      {
+       "symbol": "firework1",
+       "rect": [
+        1839,
+        303,
+        25,
+        25
+       ],
+       "origin": [
+        12.6,
+        12.65
+       ]
+      },
+      {
+       "symbol": "firework5",
+       "rect": [
+        1866,
+        303,
+        25,
+        25
+       ],
+       "origin": [
+        12.65,
+        12.5
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
+ "frameRate": 24,
  "movies": [
   {
    "id": "Ui_anim_main",
    "layers": [
     {
+     "name": "Calque 9",
      "keyframes": [
       {
        "loc": [
-        -174.5,
-        -22.05
+        -676.95,
+        -205.55
        ],
-       "ref": "fx_master_fireworks",
+       "duration": 55,
        "index": 0,
        "tweened": false,
-       "duration": 55
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 9"
+     ]
     },
     {
+     "name": "Calque 15",
      "keyframes": [
       {
        "index": 0,
        "duration": 7
       },
       {
-       "tweened": false,
+       "loc": [
+        -711.8,
+        -157.85
+       ],
+       "duration": 56,
        "skew": [
         -0.3441,
         -0.3441
        ],
-       "loc": [
-        -209.35,
-        25.65
-       ],
-       "ref": "fx_master_fireworks",
        "index": 7,
-       "duration": 56
+       "tweened": false,
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 15"
+     ]
     },
     {
+     "name": "Calque 16",
      "keyframes": [
       {
        "index": 0,
        "duration": 15
       },
       {
-       "tweened": false,
+       "loc": [
+        -711.8,
+        -111.05
+       ],
+       "duration": 56,
        "skew": [
         -0.5838,
         -0.5838
        ],
-       "loc": [
-        -209.35,
-        72.45
-       ],
-       "ref": "fx_master_fireworks",
        "index": 15,
-       "duration": 56
+       "tweened": false,
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 16"
+     ]
     },
     {
+     "name": "Calque 17",
      "keyframes": [
       {
-       "tweened": false,
+       "loc": [
+        673.75,
+        -205.55
+       ],
+       "duration": 55,
        "skew": [
         0,
         3.1416
        ],
-       "loc": [
-        174.15,
-        -22.05
-       ],
-       "ref": "fx_master_fireworks",
        "index": 0,
-       "duration": 55
+       "tweened": false,
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 17"
+     ]
     },
     {
+     "name": "Calque 18",
      "keyframes": [
       {
        "index": 0,
        "duration": 7
       },
       {
-       "tweened": false,
+       "loc": [
+        708.6,
+        -157.85
+       ],
+       "duration": 55,
        "skew": [
         0.3441,
         -2.7975
        ],
-       "loc": [
-        209,
-        25.65
-       ],
-       "ref": "fx_master_fireworks",
        "index": 7,
-       "duration": 55
+       "tweened": false,
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 18"
+     ]
     },
     {
+     "name": "Calque 19",
      "keyframes": [
       {
        "index": 0,
        "duration": 15
       },
       {
-       "tweened": false,
+       "loc": [
+        708.6,
+        -111.05
+       ],
+       "duration": 56,
        "skew": [
         0.5838,
         -2.5578
        ],
-       "loc": [
-        209,
-        72.45
-       ],
-       "ref": "fx_master_fireworks",
        "index": 15,
-       "duration": 56
+       "tweened": false,
+       "ref": "fx_master_fireworks"
       }
-     ],
-     "name": "Calque 19"
+     ]
     },
     {
+     "name": "aaa.png",
      "keyframes": [
       {
-       "pivot": [
-        224.1,
-        170.3
-       ],
        "loc": [
         0,
         5
        ],
-       "ref": "ui_base",
+       "duration": 100,
+       "pivot": [
+        710.15,
+        498.7
+       ],
        "index": 0,
        "tweened": false,
-       "duration": 100
+       "ref": "ui_base"
       }
-     ],
-     "name": "aaa.png"
+     ]
     },
     {
+     "name": "a.png",
      "keyframes": [
       {
        "loc": [
-        0.15,
-        -116.65
+        -14.05,
+        -442.85
        ],
-       "ref": "anim_main",
+       "duration": 100,
        "index": 0,
        "tweened": false,
-       "duration": 100
+       "ref": "anim_main"
       }
-     ],
-     "name": "a.png"
+     ]
     }
    ]
   },
@@ -169,32 +300,32 @@
    "id": "anim_fx_clap",
    "layers": [
     {
+     "name": "Calque 1",
      "keyframes": [
       {
-       "ref": "fx_clap",
+       "duration": 7,
        "index": 0,
        "pivot": [
-        5.95,
-        5.95
+        15.2,
+        15.05
        ],
-       "duration": 7
+       "ref": "fx_clap"
       },
       {
+       "duration": 1,
+       "alpha": 0,
        "scale": [
         2.1147,
         2.1147
        ],
-       "pivot": [
-        5.95,
-        5.95
-       ],
-       "duration": 1,
-       "ref": "fx_clap",
        "index": 7,
-       "alpha": 0
+       "pivot": [
+        15.2,
+        15.05
+       ],
+       "ref": "fx_clap"
       }
-     ],
-     "name": "Calque 1"
+     ]
     }
    ]
   },
@@ -202,115 +333,115 @@
    "id": "anim_main",
    "layers": [
     {
+     "name": "aa.png",
      "keyframes": [
       {
-       "pivot": [
-        11.3,
-        80.2
-       ],
-       "ease": -1,
        "loc": [
-        -47.65,
-        31.9
+        -74.15,
+        36.5
        ],
-       "ref": "main_back",
+       "duration": 9,
+       "ease": -1,
        "index": 0,
-       "duration": 9
-      },
-      {
        "pivot": [
-        11.3,
-        80.2
+        108.45,
+        199.45
        ],
-       "ease": -1,
-       "loc": [
-        -47.65,
-        21.1
-       ],
-       "ref": "main_back",
-       "index": 9,
-       "duration": 10
+       "ref": "main_back"
       },
       {
        "loc": [
-        -47.65,
-        31.9
+        -76.55,
+        6.65
        ],
-       "ref": "main_back",
+       "duration": 10,
+       "ease": -1,
+       "index": 9,
+       "pivot": [
+        108.45,
+        199.45
+       ],
+       "ref": "main_back"
+      },
+      {
+       "loc": [
+        -74.35,
+        33.8
+       ],
+       "duration": 1,
        "index": 19,
        "pivot": [
-        11.3,
-        80.2
+        108.45,
+        199.45
        ],
-       "duration": 1
+       "ref": "main_back"
       }
-     ],
-     "name": "aa.png"
+     ]
     },
     {
+     "name": "Calque 8",
      "keyframes": [
       {
-       "scale": [
-        3.9115,
-        3.9115
-       ],
-       "tweened": false,
        "loc": [
         0.7,
         -4.25
        ],
-       "ref": "anim_fx_clap",
+       "duration": 8,
+       "scale": [
+        3.9115,
+        3.9115
+       ],
        "index": 0,
-       "duration": 8
+       "tweened": false,
+       "ref": "anim_fx_clap"
       }
-     ],
-     "name": "Calque 8"
+     ]
     },
     {
+     "name": "a.png",
      "keyframes": [
       {
-       "pivot": [
-        84.3,
-        75.7
-       ],
-       "ease": -1,
        "loc": [
-        41.9,
-        23.3
+        71.85,
+        29.25
        ],
-       "ref": "main_front",
+       "duration": 9,
+       "ease": -1,
        "index": 0,
-       "duration": 9
-      },
-      {
        "pivot": [
-        84.3,
-        75.7
+        190.25,
+        180.1
        ],
-       "ease": -1,
-       "loc": [
-        41.9,
-        34.6
-       ],
-       "ref": "main_front",
-       "index": 9,
-       "duration": 10
+       "ref": "main_front"
       },
       {
        "loc": [
-        41.9,
-        23.3
+        73,
+        52.05
        ],
-       "ref": "main_front",
+       "duration": 10,
+       "ease": -1,
+       "index": 9,
+       "pivot": [
+        190.25,
+        180.1
+       ],
+       "ref": "main_front"
+      },
+      {
+       "loc": [
+        71.85,
+        29.5
+       ],
+       "duration": 1,
        "index": 19,
        "pivot": [
-        84.3,
-        75.7
+        190.25,
+        180.1
        ],
-       "duration": 1
+       "ref": "main_front"
       }
-     ],
-     "name": "a.png"
+     ]
     }
    ]
   },
@@ -318,704 +449,704 @@
    "id": "fx_fireworks",
    "layers": [
     {
+     "name": "Calque 2",
      "keyframes": [
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "ease": -1,
        "loc": [
         0.05,
         1.05
        ],
-       "ref": "firework5",
+       "duration": 3,
+       "ease": -1,
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 0,
-       "duration": 3
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6966,
-        0.6966
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        24.1303,
-        24.1303
-       ],
        "loc": [
         -2.1,
         -43.05
        ],
-       "ref": "firework5",
+       "duration": 4,
+       "skew": [
+        24.1303,
+        24.1303
+       ],
+       "scale": [
+        0.6966,
+        0.6966
+       ],
        "index": 3,
-       "duration": 4
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.3584,
-        17.3584
-       ],
        "loc": [
         -14,
         -101.95
        ],
-       "ref": "firework5",
+       "duration": 4,
+       "skew": [
+        17.3584,
+        17.3584
+       ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
        "index": 7,
-       "duration": 4
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6959,
-        0.6959
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.9245,
-        16.9245
-       ],
        "loc": [
         -42.9,
         -147.5
        ],
-       "ref": "firework5",
+       "duration": 3,
+       "skew": [
+        16.9245,
+        16.9245
+       ],
+       "scale": [
+        0.6959,
+        0.6959
+       ],
        "index": 11,
-       "duration": 3
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.6663,
-        16.6663
-       ],
        "loc": [
         -66.65,
         -168.7
        ],
-       "ref": "firework5",
-       "index": 14,
-       "duration": 3
-      },
-      {
+       "duration": 3,
+       "skew": [
+        16.6663,
+        16.6663
+       ],
        "scale": [
         0.6968,
         0.6968
        ],
+       "index": 14,
        "pivot": [
-        6.95,
-        6.95
+        12.65,
+        12.5
        ],
-       "skew": [
-        18.4557,
-        18.4557
-       ],
+       "ref": "firework5"
+      },
+      {
        "alpha": 0.1797,
        "loc": [
         -82.9,
         -180.5
        ],
-       "ref": "firework5",
+       "duration": 2,
+       "skew": [
+        18.4557,
+        18.4557
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
        "index": 17,
-       "duration": 2
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.8496,
-        18.8496
-       ],
        "alpha": 0,
        "loc": [
         -86.75,
         -183
        ],
-       "ref": "firework5",
+       "duration": 1,
+       "skew": [
+        18.8496,
+        18.8496
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 19,
-       "duration": 1
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       }
-     ],
-     "name": "Calque 2"
+     ]
     },
     {
+     "name": "Calque 4",
      "keyframes": [
       {
        "index": 0,
        "duration": 3
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.0055,
-        0.0055
-       ],
        "loc": [
         0.05,
         1.05
        ],
-       "ref": "firework4",
-       "index": 3,
+       "duration": 4,
+       "skew": [
+        0.0055,
+        0.0055
+       ],
        "ease": -1,
-       "duration": 4
+       "scale": [
+        0.6978,
+        0.6978
+       ],
+       "index": 3,
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       },
       {
-       "scale": [
-        0.6964,
-        0.6964
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.6851,
-        19.6851
-       ],
        "loc": [
         -5.85,
         -57.35
        ],
-       "ref": "firework4",
+       "duration": 4,
+       "skew": [
+        19.6851,
+        19.6851
+       ],
+       "scale": [
+        0.6964,
+        0.6964
+       ],
        "index": 7,
-       "duration": 4
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       },
       {
-       "scale": [
-        0.6956,
-        0.6956
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.3205,
-        18.3205
-       ],
        "loc": [
         -21.95,
         -113.05
        ],
-       "ref": "firework4",
+       "duration": 3,
+       "skew": [
+        18.3205,
+        18.3205
+       ],
+       "scale": [
+        0.6956,
+        0.6956
+       ],
        "index": 11,
-       "duration": 3
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       },
       {
-       "scale": [
-        0.696,
-        0.696
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.4059,
-        17.4059
-       ],
        "loc": [
         -45.25,
         -144.25
        ],
-       "ref": "firework4",
+       "duration": 3,
+       "skew": [
+        17.4059,
+        17.4059
+       ],
+       "scale": [
+        0.696,
+        0.696
+       ],
        "index": 14,
-       "duration": 3
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       },
       {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.6718,
-        16.6718
-       ],
        "loc": [
         -68.95,
         -164.8
        ],
-       "ref": "firework4",
-       "index": 17,
-       "duration": 3
-      },
-      {
+       "duration": 3,
+       "skew": [
+        16.6718,
+        16.6718
+       ],
        "scale": [
         0.6968,
         0.6968
        ],
+       "index": 17,
        "pivot": [
-        6.95,
-        6.95
+        12.45,
+        12.5
        ],
-       "skew": [
-        18.4603,
-        18.4603
-       ],
+       "ref": "firework4"
+      },
+      {
        "alpha": 0.1797,
        "loc": [
         -85.3,
         -176.15
        ],
-       "ref": "firework4",
+       "duration": 2,
+       "skew": [
+        18.4603,
+        18.4603
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
        "index": 20,
-       "duration": 2
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.8551,
-        18.8551
-       ],
        "alpha": 0,
        "loc": [
         -88.85,
         -178.55
        ],
-       "ref": "firework4",
+       "duration": 1,
+       "skew": [
+        18.8551,
+        18.8551
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 22,
-       "duration": 1
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       }
-     ],
-     "name": "Calque 4"
+     ]
     },
     {
+     "name": "Calque 6",
      "keyframes": [
       {
        "index": 0,
        "duration": 7
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.1475,
-        0.1475
-       ],
        "loc": [
         -0.2,
         1
        ],
-       "ref": "firework2",
-       "index": 7,
+       "duration": 4,
+       "skew": [
+        0.1475,
+        0.1475
+       ],
        "ease": -1,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6964,
-        0.6964
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.8215,
-        19.8215
-       ],
-       "loc": [
-        1.4,
-        -57.6
-       ],
-       "ref": "firework2",
-       "index": 11,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6964,
-        0.6964
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.7877,
-        18.7877
-       ],
-       "loc": [
-        -3.5,
-        -101.4
-       ],
-       "ref": "firework2",
-       "index": 14,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6955,
-        0.6955
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.8295,
-        17.8295
-       ],
-       "loc": [
-        -19.3,
-        -138.95
-       ],
-       "ref": "firework2",
-       "index": 17,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.8014,
-        16.8014
-       ],
-       "loc": [
-        -47.2,
-        -172.35
-       ],
-       "ref": "firework2",
-       "index": 21,
-       "duration": 5
-      },
-      {
        "scale": [
         0.6978,
         0.6978
        ],
+       "index": 7,
        "pivot": [
-        6.95,
-        6.95
+        12.6,
+        12.65
        ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        1.4,
+        -57.6
+       ],
+       "duration": 3,
        "skew": [
-        18.9847,
-        18.9847
+        19.8215,
+        19.8215
        ],
+       "scale": [
+        0.6964,
+        0.6964
+       ],
+       "index": 11,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -3.5,
+        -101.4
+       ],
+       "duration": 3,
+       "skew": [
+        18.7877,
+        18.7877
+       ],
+       "scale": [
+        0.6964,
+        0.6964
+       ],
+       "index": 14,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -19.3,
+        -138.95
+       ],
+       "duration": 4,
+       "skew": [
+        17.8295,
+        17.8295
+       ],
+       "scale": [
+        0.6955,
+        0.6955
+       ],
+       "index": 17,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -47.2,
+        -172.35
+       ],
+       "duration": 5,
+       "skew": [
+        16.8014,
+        16.8014
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 21,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
        "alpha": 0,
        "loc": [
         -65.15,
         -188.55
        ],
-       "ref": "firework2",
+       "duration": 1,
+       "skew": [
+        18.9847,
+        18.9847
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 26,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       }
-     ],
-     "name": "Calque 6"
+     ]
     },
     {
+     "name": "Calque 8",
      "keyframes": [
       {
        "index": 0,
        "duration": 11
       },
       {
-       "scale": [
-        0.6979,
-        0.6979
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.0604,
-        0.0604
-       ],
        "loc": [
         -0.1,
         1.05
        ],
-       "ref": "firework2",
-       "index": 11,
+       "duration": 3,
+       "skew": [
+        0.0604,
+        0.0604
+       ],
        "ease": -1,
-       "duration": 3
+       "scale": [
+        0.6979,
+        0.6979
+       ],
+       "index": 11,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       },
       {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        24.2224,
-        24.2224
-       ],
        "loc": [
         -0.85,
         -40.55
        ],
-       "ref": "firework2",
+       "duration": 3,
+       "skew": [
+        24.2224,
+        24.2224
+       ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
        "index": 14,
-       "duration": 3
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       },
       {
-       "scale": [
-        0.6959,
-        0.6959
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.6064,
-        17.6064
-       ],
        "loc": [
         -7.3,
         -83.1
        ],
-       "ref": "firework2",
+       "duration": 3,
+       "skew": [
+        17.6064,
+        17.6064
+       ],
+       "scale": [
+        0.6959,
+        0.6959
+       ],
        "index": 17,
-       "duration": 3
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       },
       {
-       "scale": [
-        0.6963,
-        0.6963
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.2882,
-        17.2882
-       ],
        "loc": [
         -19.4,
         -121.4
        ],
-       "ref": "firework2",
+       "duration": 5,
+       "skew": [
+        17.2882,
+        17.2882
+       ],
+       "scale": [
+        0.6963,
+        0.6963
+       ],
        "index": 20,
-       "duration": 5
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       },
       {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.8657,
-        16.8657
-       ],
        "loc": [
         -53.9,
         -163.1
        ],
-       "ref": "firework2",
+       "duration": 5,
+       "skew": [
+        16.8657,
+        16.8657
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
        "index": 25,
-       "duration": 5
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.049,
-        19.049
-       ],
        "alpha": 0,
        "loc": [
         -81.55,
         -184.85
        ],
-       "ref": "firework2",
+       "duration": 1,
+       "skew": [
+        19.049,
+        19.049
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 30,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       }
-     ],
-     "name": "Calque 8"
+     ]
     },
     {
+     "name": "Calque 10",
      "keyframes": [
       {
        "index": 0,
        "duration": 15
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.2127,
-        0.2127
-       ],
        "loc": [
         0,
         0.9
        ],
-       "ref": "firework1",
-       "index": 15,
+       "duration": 5,
+       "skew": [
+        0.2127,
+        0.2127
+       ],
        "ease": -1,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.6956,
-        0.6956
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        22.7614,
-        22.7614
-       ],
-       "loc": [
-        6.15,
-        -69.4
-       ],
-       "ref": "firework1",
-       "index": 20,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.6954,
-        0.6954
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.8109,
-        16.8109
-       ],
-       "loc": [
-        -5.45,
-        -134.7
-       ],
-       "ref": "firework1",
-       "index": 25,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.018,
-        17.018
-       ],
-       "loc": [
-        -28.25,
-        -169.5
-       ],
-       "ref": "firework1",
-       "index": 29,
-       "duration": 5
-      },
-      {
        "scale": [
         0.6978,
         0.6978
        ],
+       "index": 15,
        "pivot": [
-        6.95,
-        6.95
+        12.6,
+        12.65
        ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        6.15,
+        -69.4
+       ],
+       "duration": 5,
        "skew": [
-        19.2013,
-        19.2013
+        22.7614,
+        22.7614
        ],
+       "scale": [
+        0.6956,
+        0.6956
+       ],
+       "index": 20,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -5.45,
+        -134.7
+       ],
+       "duration": 4,
+       "skew": [
+        16.8109,
+        16.8109
+       ],
+       "scale": [
+        0.6954,
+        0.6954
+       ],
+       "index": 25,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -28.25,
+        -169.5
+       ],
+       "duration": 5,
+       "skew": [
+        17.018,
+        17.018
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 29,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
        "alpha": 0,
        "loc": [
         -52.25,
         -195.2
        ],
-       "ref": "firework1",
+       "duration": 1,
+       "skew": [
+        19.2013,
+        19.2013
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 34,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
       }
-     ],
-     "name": "Calque 10"
+     ]
     }
    ]
   },
@@ -1023,639 +1154,639 @@
    "id": "fx_fireworks2",
    "layers": [
     {
+     "name": "Calque 2",
      "keyframes": [
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "ease": -1,
        "loc": [
         0.05,
         1.05
        ],
-       "ref": "firework1",
-       "index": 0,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6966,
-        0.6966
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        24.1303,
-        24.1303
-       ],
-       "loc": [
-        -2.1,
-        -43.05
-       ],
-       "ref": "firework1",
-       "index": 3,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.3584,
-        17.3584
-       ],
-       "loc": [
-        -14,
-        -101.95
-       ],
-       "ref": "firework1",
-       "index": 7,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6959,
-        0.6959
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.9245,
-        16.9245
-       ],
-       "loc": [
-        -42.9,
-        -147.5
-       ],
-       "ref": "firework1",
-       "index": 11,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.6663,
-        16.6663
-       ],
-       "loc": [
-        -66.65,
-        -168.7
-       ],
-       "ref": "firework1",
-       "index": 14,
-       "duration": 5
-      },
-      {
+       "duration": 3,
+       "ease": -1,
        "scale": [
         0.6978,
         0.6978
        ],
+       "index": 0,
        "pivot": [
-        6.95,
-        6.95
+        12.6,
+        12.65
        ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -2.1,
+        -43.05
+       ],
+       "duration": 4,
        "skew": [
-        18.8496,
-        18.8496
+        24.1303,
+        24.1303
        ],
+       "scale": [
+        0.6966,
+        0.6966
+       ],
+       "index": 3,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -14,
+        -101.95
+       ],
+       "duration": 4,
+       "skew": [
+        17.3584,
+        17.3584
+       ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
+       "index": 7,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -42.9,
+        -147.5
+       ],
+       "duration": 3,
+       "skew": [
+        16.9245,
+        16.9245
+       ],
+       "scale": [
+        0.6959,
+        0.6959
+       ],
+       "index": 11,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
+       "loc": [
+        -66.65,
+        -168.7
+       ],
+       "duration": 5,
+       "skew": [
+        16.6663,
+        16.6663
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 14,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
+      },
+      {
        "alpha": 0,
        "loc": [
         -86.75,
         -183
        ],
-       "ref": "firework1",
+       "duration": 1,
+       "skew": [
+        18.8496,
+        18.8496
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 19,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework1"
       }
-     ],
-     "name": "Calque 2"
+     ]
     },
     {
+     "name": "Calque 4",
      "keyframes": [
       {
        "index": 0,
        "duration": 3
       },
       {
-       "scale": [
-        0.6979,
-        0.6979
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.0259,
-        0.0259
-       ],
        "loc": [
         0,
         1.05
        ],
-       "ref": "firework2",
-       "index": 3,
+       "duration": 4,
+       "skew": [
+        0.0259,
+        0.0259
+       ],
        "ease": -1,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6964,
-        0.6964
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.7066,
-        19.7066
-       ],
-       "loc": [
-        -4.75,
-        -57.5
-       ],
-       "ref": "firework2",
-       "index": 7,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6956,
-        0.6956
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.3421,
-        18.3421
-       ],
-       "loc": [
-        -19.7,
-        -113.55
-       ],
-       "ref": "firework2",
-       "index": 11,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6959,
-        0.6959
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.4275,
-        17.4275
-       ],
-       "loc": [
-        -42.3,
-        -145.25
-       ],
-       "ref": "firework2",
-       "index": 14,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.6922,
-        16.6922
-       ],
-       "loc": [
-        -65.6,
-        -166.15
-       ],
-       "ref": "firework2",
-       "index": 17,
-       "duration": 5
-      },
-      {
        "scale": [
         0.6979,
         0.6979
        ],
+       "index": 3,
        "pivot": [
-        6.95,
-        6.95
+        12.6,
+        12.65
        ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -4.75,
+        -57.5
+       ],
+       "duration": 4,
        "skew": [
-        18.8754,
-        18.8754
+        19.7066,
+        19.7066
        ],
+       "scale": [
+        0.6964,
+        0.6964
+       ],
+       "index": 7,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -19.7,
+        -113.55
+       ],
+       "duration": 3,
+       "skew": [
+        18.3421,
+        18.3421
+       ],
+       "scale": [
+        0.6956,
+        0.6956
+       ],
+       "index": 11,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -42.3,
+        -145.25
+       ],
+       "duration": 3,
+       "skew": [
+        17.4275,
+        17.4275
+       ],
+       "scale": [
+        0.6959,
+        0.6959
+       ],
+       "index": 14,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
+       "loc": [
+        -65.6,
+        -166.15
+       ],
+       "duration": 5,
+       "skew": [
+        16.6922,
+        16.6922
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 17,
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
+      },
+      {
        "alpha": 0,
        "loc": [
         -85.2,
         -180.35
        ],
-       "ref": "firework2",
+       "duration": 1,
+       "skew": [
+        18.8754,
+        18.8754
+       ],
+       "scale": [
+        0.6979,
+        0.6979
+       ],
        "index": 22,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.65
+       ],
+       "ref": "firework2"
       }
-     ],
-     "name": "Calque 4"
+     ]
     },
     {
+     "name": "Calque 6",
      "keyframes": [
       {
        "index": 0,
        "duration": 7
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.1824,
-        0.1824
-       ],
        "loc": [
         -0.15,
         0.75
        ],
-       "ref": "firework3",
-       "index": 7,
+       "duration": 4,
+       "skew": [
+        0.1824,
+        0.1824
+       ],
        "ease": -1,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.8598,
-        19.8598
-       ],
-       "loc": [
-        3.6,
-        -57.85
-       ],
-       "ref": "firework3",
-       "index": 11,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        18.8232,
-        18.8232
-       ],
-       "loc": [
-        0.25,
-        -101.75
-       ],
-       "ref": "firework3",
-       "index": 14,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6961,
-        0.6961
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.5723,
-        17.5723
-       ],
-       "loc": [
-        -21,
-        -150.2
-       ],
-       "ref": "firework3",
-       "index": 18,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        16.8364,
-        16.8364
-       ],
-       "loc": [
-        -41.05,
-        -174.15
-       ],
-       "ref": "firework3",
-       "index": 21,
-       "duration": 5
-      },
-      {
        "scale": [
         0.6978,
         0.6978
        ],
+       "index": 7,
        "pivot": [
-        6.95,
-        6.95
+        12.6,
+        12.55
        ],
+       "ref": "firework3"
+      },
+      {
+       "loc": [
+        3.6,
+        -57.85
+       ],
+       "duration": 3,
        "skew": [
-        19.0197,
-        19.0197
+        19.8598,
+        19.8598
        ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
+       "index": 11,
+       "pivot": [
+        12.6,
+        12.55
+       ],
+       "ref": "firework3"
+      },
+      {
+       "loc": [
+        0.25,
+        -101.75
+       ],
+       "duration": 4,
+       "skew": [
+        18.8232,
+        18.8232
+       ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
+       "index": 14,
+       "pivot": [
+        12.6,
+        12.55
+       ],
+       "ref": "firework3"
+      },
+      {
+       "loc": [
+        -21,
+        -150.2
+       ],
+       "duration": 3,
+       "skew": [
+        17.5723,
+        17.5723
+       ],
+       "scale": [
+        0.6961,
+        0.6961
+       ],
+       "index": 18,
+       "pivot": [
+        12.6,
+        12.55
+       ],
+       "ref": "firework3"
+      },
+      {
+       "loc": [
+        -41.05,
+        -174.15
+       ],
+       "duration": 5,
+       "skew": [
+        16.8364,
+        16.8364
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 21,
+       "pivot": [
+        12.6,
+        12.55
+       ],
+       "ref": "firework3"
+      },
+      {
        "alpha": 0,
        "loc": [
         -58.4,
         -190.95
        ],
-       "ref": "firework3",
+       "duration": 1,
+       "skew": [
+        19.0197,
+        19.0197
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 26,
-       "duration": 1
+       "pivot": [
+        12.6,
+        12.55
+       ],
+       "ref": "firework3"
       }
-     ],
-     "name": "Calque 6"
+     ]
     },
     {
+     "name": "Calque 8",
      "keyframes": [
       {
        "index": 0,
        "duration": 11
       },
       {
-       "scale": [
-        0.6979,
-        0.6979
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.262,
-        0.262
-       ],
        "loc": [
         -0.25,
         1.2
        ],
-       "ref": "firework4",
-       "index": 11,
+       "duration": 3,
+       "skew": [
+        0.262,
+        0.262
+       ],
        "ease": -1,
-       "duration": 3
-      },
-      {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        24.424,
-        24.424
-       ],
-       "loc": [
-        7.35,
-        -39.65
-       ],
-       "ref": "firework4",
-       "index": 14,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.6959,
-        0.6959
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.5934,
-        17.5934
-       ],
-       "loc": [
-        8.4,
-        -109.85
-       ],
-       "ref": "firework4",
-       "index": 19,
-       "duration": 6
-      },
-      {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        17.0673,
-        17.0673
-       ],
-       "loc": [
-        -20.05,
-        -170.4
-       ],
-       "ref": "firework4",
-       "index": 25,
-       "duration": 5
-      },
-      {
        "scale": [
         0.6979,
         0.6979
        ],
+       "index": 11,
        "pivot": [
-        6.95,
-        6.95
+        12.45,
+        12.5
        ],
+       "ref": "firework4"
+      },
+      {
+       "loc": [
+        7.35,
+        -39.65
+       ],
+       "duration": 5,
        "skew": [
-        19.2505,
-        19.2505
+        24.424,
+        24.424
        ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
+       "index": 14,
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
+      },
+      {
+       "loc": [
+        8.4,
+        -109.85
+       ],
+       "duration": 6,
+       "skew": [
+        17.5934,
+        17.5934
+       ],
+       "scale": [
+        0.6959,
+        0.6959
+       ],
+       "index": 19,
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
+      },
+      {
+       "loc": [
+        -20.05,
+        -170.4
+       ],
+       "duration": 5,
+       "skew": [
+        17.0673,
+        17.0673
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
+       "index": 25,
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
+      },
+      {
        "alpha": 0,
        "loc": [
         -42.8,
         -197.25
        ],
-       "ref": "firework4",
+       "duration": 1,
+       "skew": [
+        19.2505,
+        19.2505
+       ],
+       "scale": [
+        0.6979,
+        0.6979
+       ],
        "index": 30,
-       "duration": 1
+       "pivot": [
+        12.45,
+        12.5
+       ],
+       "ref": "firework4"
       }
-     ],
-     "name": "Calque 8"
+     ]
     },
     {
+     "name": "Calque 10",
      "keyframes": [
       {
        "index": 0,
        "duration": 15
       },
       {
-       "scale": [
-        0.6979,
-        0.6979
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        0.3356,
-        0.3356
-       ],
        "loc": [
         -0.45,
         0.75
        ],
-       "ref": "firework5",
-       "index": 15,
+       "duration": 4,
+       "skew": [
+        0.3356,
+        0.3356
+       ],
        "ease": -1,
-       "duration": 4
+       "scale": [
+        0.6979,
+        0.6979
+       ],
+       "index": 15,
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6968,
-        0.6968
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        20.0576,
-        20.0576
-       ],
        "loc": [
         12.5,
         -53.95
        ],
-       "ref": "firework5",
-       "index": 19,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.6965,
-        0.6965
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
+       "duration": 4,
        "skew": [
-        18.7394,
-        18.7394
+        20.0576,
+        20.0576
        ],
-       "loc": [
-        16.3,
-        -109.45
-       ],
-       "ref": "firework5",
-       "index": 23,
-       "duration": 6
-      },
-      {
        "scale": [
         0.6968,
         0.6968
        ],
+       "index": 19,
        "pivot": [
-        6.95,
-        6.95
+        12.65,
+        12.5
        ],
+       "ref": "firework5"
+      },
+      {
+       "loc": [
+        16.3,
+        -109.45
+       ],
+       "duration": 6,
        "skew": [
-        17.1409,
-        17.1409
+        18.7394,
+        18.7394
        ],
+       "scale": [
+        0.6965,
+        0.6965
+       ],
+       "index": 23,
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
+      },
+      {
        "loc": [
         -7.6,
         -171.8
        ],
-       "ref": "firework5",
+       "duration": 5,
+       "skew": [
+        17.1409,
+        17.1409
+       ],
+       "scale": [
+        0.6968,
+        0.6968
+       ],
        "index": 29,
-       "duration": 5
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       },
       {
-       "scale": [
-        0.6978,
-        0.6978
-       ],
-       "pivot": [
-        6.95,
-        6.95
-       ],
-       "skew": [
-        19.3241,
-        19.3241
-       ],
        "alpha": 0,
        "loc": [
         -28.25,
         -200.25
        ],
-       "ref": "firework5",
+       "duration": 1,
+       "skew": [
+        19.3241,
+        19.3241
+       ],
+       "scale": [
+        0.6978,
+        0.6978
+       ],
        "index": 34,
-       "duration": 1
+       "pivot": [
+        12.65,
+        12.5
+       ],
+       "ref": "firework5"
       }
-     ],
-     "name": "Calque 10"
+     ]
     }
    ]
   },
@@ -1663,268 +1794,137 @@
    "id": "fx_master_fireworks",
    "layers": [
     {
+     "name": "Calque 9",
      "keyframes": [
       {
        "loc": [
         -0.55,
         -1.85
        ],
-       "ref": "fx_fireworks",
+       "duration": 35,
        "index": 0,
        "tweened": false,
-       "duration": 35
+       "ref": "fx_fireworks"
       }
-     ],
-     "name": "Calque 9"
+     ]
     },
     {
+     "name": "Calque 10",
      "keyframes": [
       {
        "index": 0,
        "duration": 3
       },
       {
-       "tweened": false,
-       "skew": [
-        -0.0005,
-        3.1411
-       ],
        "loc": [
         3.3,
         -1.85
        ],
-       "ref": "fx_fireworks2",
+       "duration": 36,
+       "skew": [
+        -0.0005,
+        3.1411
+       ],
        "index": 3,
-       "duration": 36
+       "tweened": false,
+       "ref": "fx_fireworks2"
       }
-     ],
-     "name": "Calque 10"
+     ]
     },
     {
+     "name": "Calque 13",
      "keyframes": [
       {
        "index": 0,
        "duration": 7
       },
       {
-       "tweened": false,
-       "skew": [
-        0.0558,
-        -3.0858
-       ],
        "loc": [
         2.6,
         -1.85
        ],
-       "ref": "fx_fireworks",
+       "duration": 36,
+       "skew": [
+        0.0558,
+        -3.0858
+       ],
        "index": 7,
-       "duration": 36
+       "tweened": false,
+       "ref": "fx_fireworks"
       }
-     ],
-     "name": "Calque 13"
+     ]
     },
     {
+     "name": "Calque 12",
      "keyframes": [
       {
        "index": 0,
        "duration": 11
       },
       {
-       "tweened": false,
-       "skew": [
-        -0.0297,
-        -0.0297
-       ],
        "loc": [
         -3.15,
         -1.7
        ],
-       "ref": "fx_fireworks2",
+       "duration": 36,
+       "skew": [
+        -0.0297,
+        -0.0297
+       ],
        "index": 11,
-       "duration": 36
+       "tweened": false,
+       "ref": "fx_fireworks2"
       }
-     ],
-     "name": "Calque 12"
+     ]
     },
     {
+     "name": "Calque 11",
      "keyframes": [
       {
        "index": 0,
        "duration": 15
       },
       {
-       "tweened": false,
-       "skew": [
-        0.0558,
-        -3.0858
-       ],
        "loc": [
         2.6,
         -1.85
        ],
-       "ref": "fx_fireworks",
+       "duration": 36,
+       "skew": [
+        0.0558,
+        -3.0858
+       ],
        "index": 15,
-       "duration": 36
+       "tweened": false,
+       "ref": "fx_fireworks"
       }
-     ],
-     "name": "Calque 11"
+     ]
     },
     {
+     "name": "Calque 14",
      "keyframes": [
       {
        "index": 0,
        "duration": 19
       },
       {
-       "tweened": false,
-       "skew": [
-        -0.0297,
-        -0.0297
-       ],
        "loc": [
         -3.15,
         -1.7
        ],
-       "ref": "fx_fireworks2",
+       "duration": 36,
+       "skew": [
+        -0.0297,
+        -0.0297
+       ],
        "index": 19,
-       "duration": 36
+       "tweened": false,
+       "ref": "fx_fireworks2"
       }
-     ],
-     "name": "Calque 14"
+     ]
     }
    ]
   }
  ],
- "md5": "f7d7915efbc3e1e009b74269f5dc4879",
- "frameRate": 24,
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "scaleFactor": 1,
-   "atlases": [
-    {
-     "textures": [
-      {
-       "rect": [
-        1,
-        1,
-        449,
-        341
-       ],
-       "origin": [
-        224.1,
-        170.3
-       ],
-       "symbol": "ui_base"
-      },
-      {
-       "rect": [
-        1,
-        344,
-        94,
-        93
-       ],
-       "origin": [
-        47.35,
-        46.1
-       ],
-       "symbol": "main_front"
-      },
-      {
-       "rect": [
-        97,
-        344,
-        85,
-        97
-       ],
-       "origin": [
-        53.15,
-        51.45
-       ],
-       "symbol": "main_back"
-      },
-      {
-       "rect": [
-        1,
-        439,
-        14,
-        14
-       ],
-       "origin": [
-        6.95,
-        6.95
-       ],
-       "symbol": "firework1"
-      },
-      {
-       "rect": [
-        17,
-        439,
-        14,
-        14
-       ],
-       "origin": [
-        6.95,
-        6.95
-       ],
-       "symbol": "firework3"
-      },
-      {
-       "rect": [
-        33,
-        439,
-        14,
-        14
-       ],
-       "origin": [
-        6.95,
-        6.95
-       ],
-       "symbol": "firework2"
-      },
-      {
-       "rect": [
-        49,
-        439,
-        14,
-        14
-       ],
-       "origin": [
-        6.95,
-        6.95
-       ],
-       "symbol": "firework4"
-      },
-      {
-       "rect": [
-        65,
-        439,
-        14,
-        14
-       ],
-       "origin": [
-        6.95,
-        6.95
-       ],
-       "symbol": "firework5"
-      },
-      {
-       "rect": [
-        81,
-        439,
-        12,
-        12
-       ],
-       "origin": [
-        5.95,
-        5.95
-       ],
-       "symbol": "fx_clap"
-      }
-     ],
-     "file": "atlas0.png"
-    }
-   ]
-  }
- ]
+ "md5": "0055f8ba09b95ed1dd5ae7f1a378461a"
 }
