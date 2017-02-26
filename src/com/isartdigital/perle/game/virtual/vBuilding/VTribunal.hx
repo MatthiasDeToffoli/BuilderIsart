@@ -19,6 +19,8 @@ import pixi.core.math.Point;
 typedef SoulDescription = {
 	var name:String;
 	var adjective:String;
+	var age:Int;
+	var alignement:Int;
 }
 	
 /**
@@ -77,14 +79,16 @@ class VTribunal extends VBuildingUpgrade
 	}
 	
 	public function findSoul():Void {
-		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:""};
+		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:"", age:1, alignement:1};
 		else {
 			var i:Int = Math.floor(Math.random() * GameConfig.countSoulName());
 			var j:Int = Math.floor(Math.random() * GameConfig.countSoulAdj());
 			
 			soulToJudge = {
 				name: GameConfig.getSoulName(i).en,
-				adjective: GameConfig.getSoulAdjective(j).en
+				adjective: GameConfig.getSoulAdjective(j).en,
+				age: GameConfig.getSoulName(i).age,
+				alignement: GameConfig.getSoulAdjective(j).alignement
 			}
 		}
 	}
@@ -92,6 +96,8 @@ class VTribunal extends VBuildingUpgrade
 	public function updateSoulToJudge(pName:String):Void {
 		soulToJudge.name = pName;
 		soulToJudge.adjective = "Friendly";
+		soulToJudge.age = 1;
+		soulToJudge.alignement = 1;
 	}
 	
 	override public function updateGeneratorInfo(?data:Dynamic) 

@@ -98,6 +98,8 @@ typedef TableInterns = {
 }
 
 typedef TableSoulText = {
+	@:optional var age:Int;
+	@:optional var alignement:Int;
 	var fr:String;
 	var en:String;
 	var id:Int;

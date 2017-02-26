@@ -88,7 +88,6 @@ class OptionPoppin extends SmartPopinExtended
 		
 		btnResetText = cast(SmartCheck.getChildByName(btnReset, AssetName.OPTION_POPPIN_DATAS_BTN_TEXT), TextSprite);
 		addButtonPoussoir();
-		trace(musicOn); 
 		if (!musicOn)
 			setButtons(1);
 		if (!sfxOn)

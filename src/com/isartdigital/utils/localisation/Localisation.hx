@@ -65,5 +65,9 @@ class Localisation
 			else allTraductions[label] = langage.en;
 		}
 	}
+	
+	public static function getLanguage():String {
+		return actualLanguage;
+	}
 
 }

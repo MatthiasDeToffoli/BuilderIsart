@@ -49,7 +49,10 @@ class TribunalPopin extends SmartPopinExtended
 	private var tribunalLevel:TextSprite;
 	private var timer:TextSprite;
 	private var fateName:TextSprite;
+	private var fateNameFR:TextSprite;
+	private var interMovieClipFR:SmartComponent;
 	private var fateAdjective:TextSprite;
+	private var fateAdjectiveFR:TextSprite;
 	private var infoHeaven:TextSprite;
 	private var infoHell:TextSprite;
 	private var infoSoul:TextSprite;
@@ -64,7 +67,24 @@ class TribunalPopin extends SmartPopinExtended
 	private var baseMousePos:Point;
 	private var baseCardPos:Point;
 	private  var MOUSE_DIFF_MAX(null,never):Int = 200;
-	private var DIFF_MAX(null,never):Int = 80;
+	private var DIFF_MAX(null, never):Int = 80;
+	
+	private var soulEvilGirl1:UISprite;
+	private var soulEvilGirl2:UISprite;
+	private var soulEvilGirl3:UISprite;
+	
+	private var soulEvilBoy1:UISprite;
+	private var soulEvilBoy2:UISprite;
+	private var soulEvilBoy3:UISprite;
+	
+	private var soulGoodGirl1:UISprite;
+	private var soulGoodGirl2:UISprite;
+	private var soulGoodGirl3:UISprite;
+	
+	private var soulGoodBoy1:UISprite;
+	private var soulGoodBoy2:UISprite;
+	private var soulGoodBoy3:UISprite;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -113,10 +133,19 @@ class TribunalPopin extends SmartPopinExtended
 		soulCard = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_CARD), SmartComponent);
 		
 		interMovieClip = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO), SmartComponent);
-		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME),TextSprite);
+		interMovieClipFR = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_SOUL_INFO_FR), SmartComponent);
+		fateName = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME), TextSprite);
+		fateNameFR = cast(interMovieClipFR.getChildByName(AssetName.PURGATORY_POPIN_SOUL_NAME), TextSprite);
+		
+		interMovieClip.visible = false;
+		interMovieClipFR.visible = false;
+		Localisation.getLanguage() == "en" ? interMovieClip.visible = true : interMovieClipFR.visible = true;
 		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
+		fateAdjectiveFR = cast(interMovieClipFR.getChildByName(AssetName.PURGATORY_POPIN_SOUL_ADJ),TextSprite);
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
 		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
 		baseCardRot = cardSoul.rotation;
@@ -150,6 +179,7 @@ class TribunalPopin extends SmartPopinExtended
 			btnUpgrade.destroy();
 		}
 		
+		setPicture(VTribunal.getInstance().soulToJudge.age,VTribunal.getInstance().soulToJudge.alignement);
 		
 		Interactive.addListenerClick(btnClose, onClose);
 		//Interactive.addListenerClick(btnShop, onShop);
@@ -164,6 +194,64 @@ class TribunalPopin extends SmartPopinExtended
 	
 	public function getCardPos():Point {
 		return cardSoul.position;
+	}
+	
+	
+	//pAge : 1 Child 2 Adult 3 Old
+	//pAlignement : 1 Heaven 2 Hell 3 Random
+	//pSexe : 0 men 1 women
+	private function setPicture(pAge:Int, pAlignement:Int) {
+		setPictureFalse();
+		
+		if (pAge == null || pAlignement == null)
+			return;
+		var pSexe:Int = Math.floor(Math.random() * 2);
+		if (pAlignement == 3) {
+			var lAlignement:Int = Math.floor(Math.random() * 2);
+			pAlignement = lAlignement;
+		}
+		
+		switch(pAge) {
+			case 1 : {
+				if (pAlignement == 1)
+					if (pSexe == 0) soulGoodBoy1.visible = true;
+					else if (pSexe == 1) soulGoodGirl1.visible = true;
+				else if (pAlignement == 2)
+					if (pSexe == 0) soulEvilBoy1.visible = true;
+					else if (pSexe == 1) soulEvilGirl1.visible = true;
+			}
+			case 2 : {
+				if (pAlignement == 1)
+					if (pSexe == 0) soulGoodBoy2.visible = true;
+					else if (pSexe == 1) soulGoodGirl2.visible = true;
+				else if (pAlignement == 2)
+					if (pSexe == 0) soulEvilBoy2.visible = true;
+					else if (pSexe == 1) soulEvilGirl2.visible = true;
+			}
+			case 3 : {
+				if (pAlignement == 1)
+					if (pSexe == 0) soulGoodBoy3.visible = true;
+					else if (pSexe == 1) soulGoodGirl3.visible = true;
+				else if (pAlignement == 2)
+					if (pSexe == 0) soulEvilBoy3.visible = true;
+					else if (pSexe == 1) soulEvilGirl3.visible = true;
+			}
+		}
+	}
+	
+	private function setPictureFalse():Void {
+		soulEvilBoy1.visible = false;
+		soulEvilBoy2.visible = false;
+		soulEvilBoy3.visible = false;
+		soulEvilGirl1.visible = false;
+		soulEvilGirl2.visible = false;
+		soulEvilGirl3.visible = false;
+		soulGoodBoy1.visible = false;
+		soulGoodBoy2.visible = false;
+		soulGoodBoy3.visible = false;
+		soulGoodGirl1.visible = false;
+		soulGoodGirl2.visible = false;
+		soulGoodGirl3.visible = false;
 	}
 	
 	private function onMouseDownOnCard(mouseEvent:EventTarget):Void {
@@ -291,9 +379,13 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function changeSoulText(?pSoulNameFound:Bool):Void {
-		if(!pSoulNameFound ||pSoulNameFound == null) VTribunal.getInstance().findSoul();
+		if (!pSoulNameFound || pSoulNameFound == null) VTribunal.getInstance().findSoul();
+		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		
+		setPicture(VTribunal.getInstance().soulToJudge.age,VTribunal.getInstance().soulToJudge.alignement);
 	}
 	
 	private function changeSoulTextInfo():Void{

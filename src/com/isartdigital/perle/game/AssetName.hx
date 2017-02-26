@@ -367,6 +367,7 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_TIMER:String = "TimeInfo";
 	public static inline var PURGATORY_POPIN_SOUL_CARD:String = "SoulCard";
 	public static inline var PURGATORY_POPIN_SOUL_INFO:String = "_fateTitle";
+	public static inline var PURGATORY_POPIN_SOUL_INFO_FR:String = "_fateTitle_FR";
 	public static inline var PURGATORY_POPIN_SOUL_NAME:String = "Name";
 	public static inline var PURGATORY_POPIN_SOUL_ADJ:String = "Adjective";
 	public static inline var PURGATORY_POPIN_HEAVEN_INFO:String = "HeavenINfo";
