@@ -379,6 +379,19 @@ class AssetName{
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_SOFT:String = "_Upgrade_goldCost";
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_WOOD:String = "_Upgrade_woodCost";
 	public static inline var PURGATORY_POPIN_UPGRADE_PRICE_STONE:String = "_Upgrade_stoneCost";
+	//cards
+	public static inline var PURGATORY_CARD_EVIL_GIRL_1:String = "_arrivingSoul_evil_1";
+	public static inline var PURGATORY_CARD_EVIL_GIRL_2:String = "_arrivingSoul_evil_2";
+	public static inline var PURGATORY_CARD_EVIL_GIRL_3:String = "_arrivingSoul_evil_3";
+	public static inline var PURGATORY_CARD_EVIL_BOY_1:String = "_arrivingSoul_evil_4";
+	public static inline var PURGATORY_CARD_EVIL_BOY_2:String = "_arrivingSoul_evil_5";
+	public static inline var PURGATORY_CARD_EVIL_BOY_3:String = "_arrivingSoul_evil_6";
+	public static inline var PURGATORY_CARD_GOOD_GIRL_1:String = "_arrivingSoul_good_1";
+	public static inline var PURGATORY_CARD_GOOD_GIRL_2:String = "_arrivingSoul_good_2";
+	public static inline var PURGATORY_CARD_GOOD_GIRL_3:String = "_arrivingSoul_good_3";
+	public static inline var PURGATORY_CARD_GOOD_BOY_1:String = "_arrivingSoul_good_4";
+	public static inline var PURGATORY_CARD_GOOD_BOY_2:String = "_arrivingSoul_good_5";
+	public static inline var PURGATORY_CARD_GOOD_BOY_3:String = "_arrivingSoul_good_6";
 	
 	//Ftue
 	public static inline var FTUE:String = "Window_FTUE";

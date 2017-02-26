@@ -61,7 +61,7 @@ class TribunalPopin extends SmartPopinExtended
 	private var tribunalTitleEnglish:UISprite;
 	private var tribunalTitleFrench:UISprite;
 	private var btnInviteSoul:SmartButton;
-	private var cardSoul:UISprite;
+	private var cardSoul:SmartComponent;
 	private var canMoovCard:Bool;
 	private var baseCardRot:Float;
 	private var baseMousePos:Point;
@@ -147,10 +147,23 @@ class TribunalPopin extends SmartPopinExtended
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
-		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), UISprite);
+		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), SmartComponent);
 		baseCardRot = cardSoul.rotation;
 		cardSoul.interactive = true;
 		cardSoul.buttonMode = true;
+		
+		soulEvilBoy1= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_BOY_1), UISprite);
+		soulEvilBoy2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_BOY_2), UISprite);
+		soulEvilBoy3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_BOY_3), UISprite);
+		soulEvilGirl1= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_GIRL_1), UISprite);
+		soulEvilGirl2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_GIRL_2), UISprite);
+		soulEvilGirl3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_EVIL_GIRL_3), UISprite);
+		soulGoodBoy1= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_BOY_1), UISprite);
+		soulGoodBoy2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_BOY_2), UISprite);
+		soulGoodBoy3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_BOY_3), UISprite);
+		soulGoodGirl1= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_1), UISprite);
+		soulGoodGirl2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_2), UISprite);
+		soulGoodGirl3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_3), UISprite);
 
 		cardSoul.on(MouseEventType.MOUSE_DOWN, onMouseDownOnCard);
 		cardSoul.on(MouseEventType.MOUSE_MOVE, onFollowMouse);
@@ -193,48 +206,68 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	public function getCardPos():Point {
-		return cardSoul.position;
+		return soulCard.position;
 	}
 	
 	
 	//pAge : 1 Child 2 Adult 3 Old
 	//pAlignement : 1 Heaven 2 Hell 3 Random
-	//pSexe : 0 men 1 women
+	//pSexe : 1 men 2 women
 	private function setPicture(pAge:Int, pAlignement:Int) {
 		setPictureFalse();
 		
 		if (pAge == null || pAlignement == null)
 			return;
-		var pSexe:Int = Math.floor(Math.random() * 2);
-		if (pAlignement == 3) {
-			var lAlignement:Int = Math.floor(Math.random() * 2);
+		var pSexe:Int = Math.floor(Math.random() * 2) + 1;
+		
+		trace(pAge, pAlignement, pSexe);
+		if (pAlignement == 3 || pAlignement == 0) {
+			var lAlignement:Int = Math.floor(Math.random() * 2) +1;
 			pAlignement = lAlignement;
 		}
 		
+		
+		trace(pAge, pAlignement, pSexe);
 		switch(pAge) {
 			case 1 : {
-				if (pAlignement == 1)
-					if (pSexe == 0) soulGoodBoy1.visible = true;
-					else if (pSexe == 1) soulGoodGirl1.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 0) soulEvilBoy1.visible = true;
-					else if (pSexe == 1) soulEvilGirl1.visible = true;
+				if (pAlignement == 1) {
+					trace("1 /1");
+					if (pSexe == 1) soulGoodBoy1.visible = true;
+					else if (pSexe == 2) soulGoodGirl1.visible = true;
+				}
+				else if (pAlignement == 2) {
+					trace("1 /2");	
+					if (pSexe == 1) soulEvilBoy1.visible = true;
+					else if (pSexe == 2) soulEvilGirl1.visible = true;
+				}
 			}
 			case 2 : {
-				if (pAlignement == 1)
-					if (pSexe == 0) soulGoodBoy2.visible = true;
-					else if (pSexe == 1) soulGoodGirl2.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 0) soulEvilBoy2.visible = true;
-					else if (pSexe == 1) soulEvilGirl2.visible = true;
+				if (pAlignement == 1) {
+				
+					trace("2 /1");	
+					if (pSexe == 1) soulGoodBoy2.visible = true;
+					else if (pSexe == 2) soulGoodGirl2.visible = true;
+				}
+				else if (pAlignement == 2) {
+				
+					trace("2 /2");	
+					if (pSexe == 1) soulEvilBoy2.visible = true;
+					else if (pSexe == 2) soulEvilGirl2.visible = true;
+				}
 			}
 			case 3 : {
-				if (pAlignement == 1)
-					if (pSexe == 0) soulGoodBoy3.visible = true;
-					else if (pSexe == 1) soulGoodGirl3.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 0) soulEvilBoy3.visible = true;
-					else if (pSexe == 1) soulEvilGirl3.visible = true;
+				if (pAlignement == 1) {
+				
+					trace("3 /1");	
+					if (pSexe == 1) soulGoodBoy3.visible = true;
+					else if (pSexe == 2) soulGoodGirl3.visible = true;
+				}
+				else if (pAlignement == 2) {
+				
+					trace("3 /2");	
+					if (pSexe == 1) soulEvilBoy3.visible = true;
+					else if (pSexe == 2) soulEvilGirl3.visible = true;
+				}
 			}
 		}
 	}
