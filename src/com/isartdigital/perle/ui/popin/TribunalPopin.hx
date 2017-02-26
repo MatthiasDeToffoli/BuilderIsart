@@ -218,7 +218,6 @@ class TribunalPopin extends SmartPopinExtended
 	//pSexe : 1 men 2 women
 	private function setPicture(pAge:Int, pAlignement:Int) {
 		setPictureFalse();
-		
 		if (pAge == null || pAlignement == null)
 			return;
 		var pSexe:Int = Math.floor(Math.random() * 2) + 1;
@@ -230,28 +229,58 @@ class TribunalPopin extends SmartPopinExtended
 		
 		switch(pAge) {
 			case 1 : {
-				if (pAlignement == 1)
-					if (pSexe == 1) soulGoodBoy1.visible = true;
-					else if (pSexe == 2) soulGoodGirl1.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 1) soulEvilBoy1.visible = true;
-					else if (pSexe == 2) soulEvilGirl1.visible = true;
+				if (pAlignement == 1) {
+					if (pSexe == 1) {
+						soulGoodBoy1.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulGoodGirl1.visible = true;
+					}
+				}
+				else if (pAlignement == 2) {
+					if (pSexe == 1) {
+						soulEvilBoy1.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulEvilGirl1.visible = true;
+					}
+				}
 			}
 			case 2 : {
-				if (pAlignement == 1)
-					if (pSexe == 1) soulGoodBoy2.visible = true;
-					else if (pSexe == 2) soulGoodGirl2.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 1) soulEvilBoy2.visible = true;
-					else if (pSexe == 2) soulEvilGirl2.visible = true;
+				if (pAlignement == 1) {
+					if (pSexe == 1) {
+						soulGoodBoy2.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulGoodGirl2.visible = true;
+					}
+				}
+				else if (pAlignement == 2) {
+					if (pSexe == 1) {
+						soulEvilBoy2.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulEvilGirl2.visible = true;
+					}
+				}
 			}
 			case 3 : {
-				if (pAlignement == 1)
-					if (pSexe == 1) soulGoodBoy3.visible = true;
-					else if (pSexe == 2) soulGoodGirl3.visible = true;
-				else if (pAlignement == 2)
-					if (pSexe == 1) soulEvilBoy3.visible = true;
-					else if (pSexe == 2) soulEvilGirl3.visible = true;
+				if (pAlignement == 1) {
+					if (pSexe == 1) {
+						soulGoodBoy3.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulGoodGirl3.visible = true;
+					}
+				}
+				else if (pAlignement == 2) {
+					if (pSexe == 1) {
+						soulEvilBoy3.visible = true;
+					}
+					else if (pSexe == 2) {
+						soulEvilGirl3.visible = true;
+					}
+				}
 			}
 		}
 	}
