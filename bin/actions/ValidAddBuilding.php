@@ -67,20 +67,12 @@ class ValidAddBuilding
     private static function cannotBuy ($pInfo, $pConfig, $pWallet) {
         global $db;
 
-        $result = (
-            ($pConfig[TypeBuilding::CostGold] == null || $pWallet[GeneratorType::soft] >= $pConfig[TypeBuilding::CostGold]) &&
-            ($pConfig[TypeBuilding::CostKarma] == null || $pWallet[GeneratorType::hard] >= $pConfig[TypeBuilding::CostKarma]) &&
-            ($pConfig[TypeBuilding::CostIron] == null || $pWallet[GeneratorType::resourcesFromHell] >= $pConfig[TypeBuilding::CostIron]) &&
-            ($pConfig[TypeBuilding::CostWood] == null || $pWallet[GeneratorType::resourcesFromHeaven] >= $pConfig[TypeBuilding::CostWood])
-        );
+        $canBuy = BuildingCommonCode::canBuy($pConfig, $pWallet);
 
-        if (!$result) {
+        if (!$canBuy) {
             $db->rollBack();
             Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY);
         }
-
-        return $result;
-
     }
 
 

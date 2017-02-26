@@ -7,15 +7,18 @@
 
 namespace actions;
 
+use actions\utils\BuildingCommonCode as BuildingCommonCode;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\Send as Send;
 use actions\utils\Utils as Utils;
+use actions\utils\Resources as Resources;
 
 include_once("utils/Utils.php");
 include_once("utils/Send.php");
 include_once("utils/FacebookUtils.php");
 include_once("ValidBuildingUpgrade.php");
 include_once("utils/BuildingCommonCode.php");
+include_once("utils/Resources.php");
 //include_once("ValidAddBuilding.php"); do not use that or à doAction() for AddBuilding may be called.
 
 class BuildingUpgrade
@@ -41,18 +44,28 @@ class BuildingUpgrade
     const Y = "Y";
 
     public static function doAction () {
+        global $db;
+
         $lInfo = static::getInfo();
         $lBuildingInDB = static::getBuildingInDB($lInfo);
         $lConfig = static::getConfigForBuilding($lBuildingInDB[static::ID_TYPE_BUILDING]);
         $lNewConfig = static::getNextLevelTypeBuilding($lConfig);
+        $db->beginTransaction();
+        $lWallet = Resources::getResources($lInfo[static::ID_PLAYER]);
 
-        ValidBuildingUpgrade::validate($lInfo, $lBuildingInDB, $lConfig, $lNewConfig);
+        ValidBuildingUpgrade::validate($lInfo, $lBuildingInDB, $lConfig, $lNewConfig, $lWallet);
         $lInfo = BuildingCommonCode::addDateTimes($lInfo, $lNewConfig);
         Utils::updateSetWhere(
             static::TABLE_BUILDING,
             static::getFieldsToSET($lNewConfig, $lInfo),
             static::getSQLSetWherePos($lInfo)
         );
+        BuildingCommonCode::updateResourcesBuyBuilding(
+            $lInfo[static::ID_PLAYER],
+            $lNewConfig,
+            $lWallet
+        );
+        $db->commit();
         Send::synchroniseBuildingTimer($lInfo);
         // todo : logs
     }

@@ -8,6 +8,7 @@
 
 namespace actions;
 
+use actions\utils\BuildingCommonCode;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\Send as Send;
 use actions\utils\TypeBuilding;
@@ -66,7 +67,7 @@ class AddBuilding
         // $db-rollback if something go wrong in validate().
         $lInfoWhitTime = ValidAddBuilding::validate($lInfo, $lConfig, $lWallet);
 
-        static::updateResources($lInfo, $lConfig, $lWallet);
+        BuildingCommonCode::updateResourcesBuyBuilding($lInfo[static::ID_PLAYER], $lConfig, $lWallet);
         $db->commit();
         Send::synchroniseBuildingTimer($lInfoWhitTime);
 
@@ -78,33 +79,6 @@ class AddBuilding
 
         // todo : $lInfo == lInfo unsetted ? (the more you have for log the better)
         Logs::addBuilding($lInfo[static::ID_PLAYER], Logs::STATUS_ACCEPTED, null, $lInfo);
-    }
-
-    private static function updateResources ($pInfo, $pConfig, $pWallet) {
-        if ($pConfig[TypeBuilding::CostKarma] != null)
-            Resources::updateResources(
-                $pInfo[static::ID_PLAYER],
-                GeneratorType::hard,
-                $pWallet[GeneratorType::hard] - $pConfig[TypeBuilding::CostKarma]
-            );
-        if ($pConfig[TypeBuilding::CostGold] != null)
-            Resources::updateResources(
-                $pInfo[static::ID_PLAYER],
-                GeneratorType::soft,
-                $pWallet[GeneratorType::soft] - $pConfig[TypeBuilding::CostGold]
-            );
-        if ($pConfig[TypeBuilding::CostWood] != null)
-            Resources::updateResources(
-                $pInfo[static::ID_PLAYER],
-                GeneratorType::resourcesFromHeaven,
-                $pWallet[GeneratorType::resourcesFromHeaven] - $pConfig[TypeBuilding::CostWood]
-            );
-        if ($pConfig[TypeBuilding::CostIron] != null)
-            Resources::updateResources(
-                $pInfo[static::ID_PLAYER],
-                GeneratorType::resourcesFromHell,
-                $pWallet[GeneratorType::resourcesFromHell] - $pConfig[TypeBuilding::CostIron]
-            );
     }
 
 

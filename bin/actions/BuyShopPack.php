@@ -46,13 +46,6 @@ class BuyShopPack
         if ($pConfig[TypeShopPack::PriceKarma] != null)
             $newKarmaTotal -= $pConfig[TypeShopPack::PriceKarma];
 
-        echo "//";
-        echo $newKarmaTotal;
-        echo "//";
-        echo $pConfig[TypeShopPack::GiveKarma];
-        echo "//";
-        echo $pConfig[TypeShopPack::PriceKarma];
-
         if ($pWallet[GeneratorType::hard] != $newKarmaTotal)
             Resources::updateResources(
                 $pInfo[static::ID_PLAYER],
