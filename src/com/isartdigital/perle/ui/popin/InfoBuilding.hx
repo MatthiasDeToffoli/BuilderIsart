@@ -132,7 +132,8 @@ class InfoBuilding extends SmartPopinExtended{
 		nameTxt = cast(SmartCheck.getChildByName(this, "Name"), TextSprite);
 		image = cast(SmartCheck.getChildByName(this, "Image"), UISprite); 
 		//nameTxt.text = FakeTraduction.assetNameNameToTrad(virtualBuilding.getAsset());
-		nameTxt.text = Localisation.getText(virtualBuilding.getAsset());
+		trace(virtualBuilding.getAsset());
+		nameTxt.text = virtualBuilding.getAsset();
 	}
 	
 	private function setPopulationInfos():Void{

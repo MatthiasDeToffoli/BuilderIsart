@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -25,6 +26,7 @@ class AcceleratePopin extends SmartPopinExtended
 	private var btnClose:SmartButton;
 	private var ref:Int;
 	private var actionTxt:TextSprite;
+	private var title:TextSprite;
 	
 	public function new() 
 	{
@@ -35,6 +37,8 @@ class AcceleratePopin extends SmartPopinExtended
 		btnClose = cast(getChildByName(AssetName.BTN_CLOSE), SmartButton);
 		var interMc:SmartComponent = cast(getChildByName(AssetName.CONFIRMATION_ACCELERATE_POPIN_GAUGE), SmartComponent);
 		progressBarTxt = cast(interMc.getChildByName(AssetName.TIME_GAUGE_TEXT), TextSprite);
+		title = cast(getChildByName("Verb"), TextSprite);
+		title.text = Localisation.getText("LABEL_TRIBUNALPOPIN_TITLE");
 		
 		Interactive.addListenerClick(btn, onAccelerate);
 		Interactive.addListenerRewrite(btn, rewriteBtn);

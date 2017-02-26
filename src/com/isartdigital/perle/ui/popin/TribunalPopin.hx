@@ -118,6 +118,7 @@ class TribunalPopin extends SmartPopinExtended
 
 		btnInviteSoul = cast(getChildByName(AssetName.PURGATORY_POPIN_INVITE_BUTTON), SmartButton);
 		fbText = cast(btnInviteSoul.getChildByName("Text"), TextSprite);
+		fbText.text = Localisation.getText("LABEL_FACEBOOK_BUTTON");
 		
 		title = cast(getChildByName("PurgatoryTitle_MC"), SmartComponent);
 		tribunalTitleEnglish = cast(title.getChildByName("_png_purgatoryTitle"), UISprite);
@@ -185,6 +186,7 @@ class TribunalPopin extends SmartPopinExtended
 		changeSoulTextInfo();
 			
 		Interactive.addListenerClick(btnInviteSoul, onInviteSoul);
+		Interactive.addListenerRewrite(btnInviteSoul, setText);
 		
 		if (VTribunal.getInstance().canUpgrade()){
 			Interactive.addListenerRewrite(btnUpgrade, rewriteUpgradeTxt);
@@ -339,6 +341,11 @@ class TribunalPopin extends SmartPopinExtended
 		}
 	}
 	
+	private function setText():Void{
+		fbText = cast(btnInviteSoul.getChildByName("Text"), TextSprite);
+		fbText.text = Localisation.getText("LABEL_FACEBOOK_BUTTON");
+	}
+	
 	private function onInviteSoul():Void {
 		if (DialogueManager.ftueStepSlideCard)
 			return;
@@ -486,6 +493,8 @@ class TribunalPopin extends SmartPopinExtended
 	override public function destroy (): Void {
 		
 		Interactive.removeListenerClick(btnClose, onClose);
+		Interactive.removeListenerClick(btnInviteSoul, onInviteSoul);
+		Interactive.removeListenerRewrite(btnInviteSoul, setText);
 		//Interactive.removeListenerClick(btnShop, onShop);
 		//Interactive.removeListenerClick(btnIntern, onIntern);
 		if (VTribunal.getInstance().canUpgrade()) Interactive.removeListenerClick(btnUpgrade, onUpgrade);
