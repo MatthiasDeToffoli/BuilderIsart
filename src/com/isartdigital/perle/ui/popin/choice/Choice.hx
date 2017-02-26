@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -256,8 +257,8 @@ class Choice extends SmartPopinExtended
 	 */
 	private function createChoice():Void
 	{		
-		heavenChoice.text = activeChoice.heavenAnswer;
-		evilChoice.text = activeChoice.hellAnswer;
+		heavenChoice.text = Localisation.getText(activeChoice.heavenAnswer);
+		evilChoice.text = Localisation.getText(activeChoice.hellAnswer);
 		
 		internName.text = intern.name;
 		
@@ -276,7 +277,7 @@ class Choice extends SmartPopinExtended
 		var swipCard:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		choiceCard = cast(SpriteManager.spawnComponent(swipCard, pChoice.card, this, TypeSpawn.SMART_COMPONENT, true));
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
-		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = activeChoice.text;
+		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = Localisation.getText(activeChoice.text);
 	}
 	
 	

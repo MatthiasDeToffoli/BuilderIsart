@@ -122,7 +122,6 @@ class ShopPopin extends SmartPopinExtended {
 		Localisation.actualLanguage == "en" ? titleShopFrench.visible = false : titleShopEnglish.visible = false;
 		
 		addButton();
-		SmartCheck.traceChildrens(titleShop);
 		Interactive.addListenerClick(btnExit, onClickExit);
 		
 	}
