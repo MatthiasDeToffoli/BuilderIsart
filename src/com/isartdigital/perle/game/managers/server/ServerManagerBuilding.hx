@@ -438,4 +438,32 @@ class ServerManagerBuilding{
 		Debug.error(pObject);
 	}
 	
+	public static function RecoltGenerator(pDescription:TileDescription):Void {
+		ServerManager.callPhpFile( onSuccessRecoltGenerator, onErrorRecoltGenerator, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.GENERATOR_RECUP,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	private static function onSuccessRecoltGenerator(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			} else {
+				ResourcesManager.updateTotal(GeneratorType.soft, data.resource);			
+			}
+			
+		}
+	}
+	
+	private static function onErrorRecoltGenerator(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
 }
