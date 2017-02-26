@@ -153,6 +153,7 @@ class DialoguePoppin extends SmartScreen
 		actionAngel = cast(getChildByName(AssetName.FTUE_ACTION_HEAVEN), SmartComponent);
 		actionHell = cast(getChildByName(AssetName.FTUE_ACTION_HELL), SmartComponent);
 		
+		//Expressions
 		scenarioAngelHappy = cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + HAPPY_EXPRESSION), UISprite);
 		scenarioAngelAngry= cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + ANGRY_EXPRESSION), UISprite);
 		scenarioAngelNeutral= cast(SmartCheck.getChildByName(scenarioAngel, HEAVEN_NPC_MASCOT_SCENARIO + NEUTRAL_EXPRESSION), UISprite);
@@ -166,6 +167,7 @@ class DialoguePoppin extends SmartScreen
 		actionHellAngry= cast(SmartCheck.getChildByName(actionHell, HELL_NPC_MASCOT + ANGRY_EXPRESSION), UISprite);
 		actionHellNeutral= cast(SmartCheck.getChildByName(actionHell, HELL_NPC_MASCOT + NEUTRAL_EXPRESSION), UISprite);
 		
+		//IconsFR
 		icon5 = cast(getChildByName(AssetName.FTUE_ICON_5), SmartComponent);
 		icon6 = cast(getChildByName(AssetName.FTUE_ICON_6), SmartComponent);
 		icon11= cast(getChildByName(AssetName.FTUE_ICON_11), SmartComponent);
@@ -187,7 +189,7 @@ class DialoguePoppin extends SmartScreen
 		icon49 = cast(getChildByName(AssetName.FTUE_ICON_49), SmartComponent);
 		icon52 = cast(getChildByName(AssetName.FTUE_ICON_52), SmartComponent);
 		icon54 = cast(getChildByName(AssetName.FTUE_ICON_54), SmartComponent);
-		
+		//IconsEN
 		iconEn5 = cast(getChildByName(AssetName.FTUE_ICON_EN_5), SmartComponent);
 		iconEn6 = cast(getChildByName(AssetName.FTUE_ICON_EN_6), SmartComponent);
 		iconEn11= cast(getChildByName(AssetName.FTUE_ICON_EN_11), SmartComponent);
@@ -238,6 +240,13 @@ class DialoguePoppin extends SmartScreen
 		addEffectToDialogueSpawn(isAction,pNpc,pNumber);
 	}
 	
+	/**
+	 * Check what we have to pass visible
+	 * @param	pNpc which NPC
+	 * @param	pExpression which Expression
+	 * @param	isAction is an Action ?
+	 * @param	dialogueSaved number of dialogue
+	 */
 	private function checkIfVisible(pNpc:String, pExpression:String, isAction:Bool, dialogueSaved:Int):Void {
 		var lPanel:SmartComponent;
 		if (isAction) {
@@ -266,6 +275,10 @@ class DialoguePoppin extends SmartScreen
 		setTextWf(isAction, lPanel);
 	}
 	
+	/**
+	 * Check wich button should be visible
+	 * @param	dialogueSaved number of dialogue
+	 */
 	private function checkWichButton(dialogueSaved:Int) {
 		if (DialogueManager.steps[dialogueSaved].endOfFtue || DialogueManager.steps[dialogueSaved].endOfSpecial || DialogueManager.steps[dialogueSaved].endOfAltar || DialogueManager.steps[dialogueSaved].endOfCollectors || DialogueManager.steps[dialogueSaved].endOfFactory || DialogueManager.steps[dialogueSaved].endOfMarketing || DialogueManager.steps[dialogueSaved].endOfSpecial)
 			btnEnd.visible = true;
@@ -274,6 +287,12 @@ class DialoguePoppin extends SmartScreen
 		Hud.isHide = false;
 	}
 	
+	/**
+	 * Tween effect
+	 * @param	pTypeOfDialogueIsAction
+	 * @param	pNpc
+	 * @param	pNumberOfDialogue
+	 */
 	private function addEffectToDialogueSpawn(pTypeOfDialogueIsAction:Bool, pNpc:String, pNumberOfDialogue:Int) {
 		
 		if (pTypeOfDialogueIsAction) {
@@ -286,10 +305,21 @@ class DialoguePoppin extends SmartScreen
 		}
 	}
 	
+	/**
+	 * Set text
+	 * @param	isAction
+	 * @param	pPanel
+	 */
 	private function setTextWf(isAction:Bool,pPanel:SmartComponent) {
 		npc_speach = cast(SmartCheck.getChildByName(pPanel, AssetName.FTUE_SCENARIO_SPEACH), TextSprite);
 	}
 	
+	/**
+	 * Set Expression
+	 * @param	isAction
+	 * @param	pExpression
+	 * @param	pNpc
+	 */
 	private function checkExpressions(isAction:Bool, pExpression:String,pNpc:String):Void {
 		switch(pExpression) {
 			case "_Happy" : {
@@ -313,6 +343,10 @@ class DialoguePoppin extends SmartScreen
 		}
 	}
 	
+	/**
+	 * Check if we should put the Icons fr
+	 * @param	pDialogueNumber
+	 */
 	private function checkIfIconsFr(pDialogueNumber:Int) {
 		switch(pDialogueNumber) {
 			case 5 : icon5.visible = true;
@@ -339,6 +373,10 @@ class DialoguePoppin extends SmartScreen
 		}
 	}
 	
+	/**
+	 * Check if we should put the Icons en
+	 * @param	pDialogueNumber
+	 */
 	private function checkIfIconsEn(pDialogueNumber:Int) {
 		switch(pDialogueNumber) {
 			case 5 : iconEn5.visible = true;
@@ -365,13 +403,19 @@ class DialoguePoppin extends SmartScreen
 		}
 	}
 	
-	
+	/**
+	 * Npc Heaven pos
+	 * @return Npc Heaven pos
+	 */
 	public function getNpcHeavenPos():Point {
 		var lNpc:UISprite = cast(SmartCheck.getChildByName(scenarioAngel, "Window_NPC_Heaven_Neutral"), UISprite);
 		var lPos:Point = GameStage.getInstance().getFtueContainer().toLocal(lNpc.position);
 		return lPos;
 	}
 	
+	/**
+	 * Set all flag var to false
+	 */
 	public function setAllFalse():Void {
 		scenarioAngel.visible = false;
 		scenarioHell.visible = false;

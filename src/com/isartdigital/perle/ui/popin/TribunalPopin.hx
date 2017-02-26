@@ -223,54 +223,35 @@ class TribunalPopin extends SmartPopinExtended
 			return;
 		var pSexe:Int = Math.floor(Math.random() * 2) + 1;
 		
-		trace(pAge, pAlignement, pSexe);
 		if (pAlignement == 3 || pAlignement == 0) {
 			var lAlignement:Int = Math.floor(Math.random() * 2) +1;
 			pAlignement = lAlignement;
 		}
 		
-		
-		trace(pAge, pAlignement, pSexe);
 		switch(pAge) {
 			case 1 : {
-				if (pAlignement == 1) {
-					trace("1 /1");
+				if (pAlignement == 1)
 					if (pSexe == 1) soulGoodBoy1.visible = true;
 					else if (pSexe == 2) soulGoodGirl1.visible = true;
-				}
-				else if (pAlignement == 2) {
-					trace("1 /2");	
+				else if (pAlignement == 2)
 					if (pSexe == 1) soulEvilBoy1.visible = true;
 					else if (pSexe == 2) soulEvilGirl1.visible = true;
-				}
 			}
 			case 2 : {
-				if (pAlignement == 1) {
-				
-					trace("2 /1");	
+				if (pAlignement == 1)
 					if (pSexe == 1) soulGoodBoy2.visible = true;
 					else if (pSexe == 2) soulGoodGirl2.visible = true;
-				}
-				else if (pAlignement == 2) {
-				
-					trace("2 /2");	
+				else if (pAlignement == 2)
 					if (pSexe == 1) soulEvilBoy2.visible = true;
 					else if (pSexe == 2) soulEvilGirl2.visible = true;
-				}
 			}
 			case 3 : {
-				if (pAlignement == 1) {
-				
-					trace("3 /1");	
+				if (pAlignement == 1)
 					if (pSexe == 1) soulGoodBoy3.visible = true;
 					else if (pSexe == 2) soulGoodGirl3.visible = true;
-				}
-				else if (pAlignement == 2) {
-				
-					trace("3 /2");	
+				else if (pAlignement == 2)
 					if (pSexe == 1) soulEvilBoy3.visible = true;
 					else if (pSexe == 2) soulEvilGirl3.visible = true;
-				}
 			}
 		}
 	}
