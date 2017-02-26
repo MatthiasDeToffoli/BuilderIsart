@@ -16,7 +16,8 @@ class ExperienceManager
 	 */
 	public static function setExpToLevelUp() {
 		experienceToLevelUpArray = [];
-		parseJsonLevel(Main.EXPERIENCE_JSON_NAME);
+		//parseJsonLevel(Main.EXPERIENCE_JSON_NAME);
+		getFromBDDExp();
 	}
 	
 	/**
@@ -28,6 +29,11 @@ class ExperienceManager
 		return experienceToLevelUpArray[pLevel - 1];
 	}
 	
+	private static function getFromBDDExp():Void {
+		for (i in 0...GameConfig.getMaxExpConfig().length)
+			experienceToLevelUpArray.push(GameConfig.getMaxExpConfig()[i].value);
+	}
+	
 	/**
 	 * Parse of the json to set an array
 	 * @param	pJsonName
@@ -37,5 +43,6 @@ class ExperienceManager
 		for (level in Reflect.fields(jsonExp)) {
 			experienceToLevelUpArray.push(Reflect.field(jsonExp, level));
 		}
+		trace(experienceToLevelUpArray);
 	}
 }

@@ -296,7 +296,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		Interactive.addListenerClick(btnReroll, onClickReroll);
 		Interactive.addListenerClick(hellCard, onClickHell);
 		Interactive.addListenerRewrite(hellCard, setValuesHellButton);
+		Interactive.addListenerRewrite(hellCard, setValuesHellCard);
 		Interactive.addListenerRewrite(heavenCard, setValuesHeavenButton);
+		Interactive.addListenerRewrite(heavenCard, setValuesHeavenCard);
 		Interactive.addListenerClick(heavenCard, onClickHeaven);
 	}
 	

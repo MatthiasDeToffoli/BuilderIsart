@@ -112,6 +112,11 @@ typedef TableLevelRewards = {
 	@:optional var iron:Int;
 }
 
+typedef TableMaxExp = {
+	var level:Int;
+	var value:Int;
+}
+
 /**
  * ...
  * @author ambroise
@@ -128,6 +133,7 @@ class GameConfig {
 	public static inline var CONFIG:String = "Config";
 	public static inline var INTERNS:String = "Interns";
 	public static inline var LEVELREWARD:String = "LevelReward";
+	public static inline var MAXEXP:String = "MaxExp";
 	public static inline var CHOICES:String = "Choices";
 	public static inline var CONFIG_EVENT:String = "ConfigEvent";
 	public static inline var USED_CHOICES:String = "ChoicesUsed";
@@ -166,6 +172,10 @@ class GameConfig {
 	
 	public static function getLevelRewardsConfig():Array<TableLevelRewards> {
 		return cast(config[LEVELREWARD]);
+	}
+	
+	public static function getMaxExpConfig():Array<TableMaxExp> {
+		return cast(config[MAXEXP]);
 	}
 	
 	public static function getBuildingPack(pType:GeneratorType):Array<TableTypePack> {

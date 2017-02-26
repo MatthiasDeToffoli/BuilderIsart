@@ -61,7 +61,7 @@ class SmartPopinExtended extends SmartPopin{
 		);
 		trueCenter = pContainer.toLocal(trueCenter, lImage);
 		
-		lImage.x -= trueCenter.x-50;
+		lImage.x -= trueCenter.x;
 		lImage.y -= trueCenter.y;
 		
 		//lImage.start();

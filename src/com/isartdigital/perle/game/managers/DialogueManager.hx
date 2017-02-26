@@ -52,6 +52,7 @@ class DialogueManager
 	private static var npc_dialogue_ftue_en:Array<Array<Array<String>>>;
 	
 	public static var isFR:Bool;
+	public static var ftueIsCreated:Bool = false;
 	public static var actual_npc_dialogue_ftue:Array<Array<Array<String>>>;
 	public static var dialoguePoppinPos:Point;
 	public static var closeDialoguePoppin:Bool = false;
@@ -118,7 +119,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = true;
+		isFR = false;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
@@ -130,6 +131,7 @@ class DialogueManager
 	 * Create Ftue
 	 */
 	public static function createFtue():Void {
+		ftueIsCreated = true;
 		//dialogueSaved = 12;
 		//SaveManager.save();
 		var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
@@ -526,7 +528,7 @@ class DialogueManager
 		
 		if (isCard) {
 			var lPoint:Point = TribunalPopin.getInstance().getCardPos();
-			pPos = new Point(lPoint.x, lPoint.y-500);
+			pPos = new Point(lPoint.x, lPoint.y);
 		}
 		
 		finger.position = pPos;

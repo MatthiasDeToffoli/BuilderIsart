@@ -8,7 +8,7 @@ namespace actions;
 
 class JsonCreator // fichier du même nom ?
 {
-    const TABLE = "Config,TypeBuilding,TypeIntern,TypeShopPack,TypePack,Interns,LevelReward,Choices,ConfigEvent,SoulName,SoulAdjective";
+    const TABLE = "Config,TypeBuilding,TypeIntern,TypeShopPack,TypePack,Interns,LevelReward,MaxExp,Choices,ConfigEvent,SoulName,SoulAdjective";
     const JSON_GAME_CONFIG_NAME= "./assets/json/game_config.json";
 
     public static function update () {

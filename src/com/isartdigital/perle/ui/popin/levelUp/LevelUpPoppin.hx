@@ -114,7 +114,6 @@ class LevelUpPoppin extends SmartPopinExtended
 		level.text = "" + ResourcesManager.getLevel();
 		var lLevel:Float = ResourcesManager.getLevel();
 		var level:Int = cast(lLevel - 2, Int);
-		//destroyAfterEffect();
 		var lSprite:UISprite = SmartPopinExtended.setImageUiSprite(img, "_goldPack5_portrait"); 
 		nameUnlock.text = "" + GameConfig.getLevelRewardsConfig()[level].gold;
 		UnlockManager.giveLevelReward();

@@ -156,8 +156,9 @@ class Choice extends SmartPopinExtended
 		stress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), UISprite);
 		setGlowFalse();
 		
-		//if(DialogueManager.steps[DialogueManager.dialogueSaved].stress)
-			//setGlowVisible();
+		if(DialogueManager.ftueIsCreated)
+			if(DialogueManager.steps[DialogueManager.dialogueSaved].stress)
+				setGlowVisible();
 	}
 	
 	public function setGlowVisible():Void {

@@ -307,7 +307,7 @@ class ShopPopin extends SmartPopinExtended {
 	private function onClickOpenBundle () {
 		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
 			return;
-		setButtons(0,true);
+		setButtons(5);
 		addCaroussel(ShopTab.Bundle);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
