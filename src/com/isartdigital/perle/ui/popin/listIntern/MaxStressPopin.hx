@@ -3,10 +3,12 @@ package com.isartdigital.perle.ui.popin.listIntern;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.QuestsManager;
+import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
+import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
@@ -48,11 +50,7 @@ class MaxStressPopin extends SmartPopin
 	private var aligment:TextSprite;
 	public static var intern:InternDescription;
 	
-	private var speedIndics:Array<UISprite>;
-	private var effIndics:Array<UISprite>;
-	
 	public static var quest:TimeQuestDescription;
-	private var internDatas:SmartComponent;
 	private var gaugeStress:SmartComponent;
 	private var gaugeStressMask:UISprite;
 	
@@ -84,9 +82,7 @@ class MaxStressPopin extends SmartPopin
 		btnDismiss = cast(getChildByName(AssetName.MAXSTRESS_POPIN_DISMISS_BUTTON), SmartButton);
 		btnReset = cast(getChildByName(AssetName.MAXSTRESS_POPIN_RESET_BUTTON), SmartButton);
 		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
-		//picture = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_PORTRAIT), UISprite);
 		internName = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_NAME), TextSprite);
-		//aligment = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_SIDE), TextSprite);
 		
 		internStats = cast(getChildByName("_internPortrait"), SmartComponent);
 		gaugeStress = cast(SmartCheck.getChildByName(internStats, "_jauge_stress"), SmartComponent);
@@ -94,6 +90,14 @@ class MaxStressPopin extends SmartPopin
 		
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		var glowStress:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UISprite);
+		var glowEfficiency:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UISprite);
+		var glowSpeed:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UISprite);
+		
+		glowStress.visible = false;
+		glowEfficiency.visible = false;
+		glowSpeed.visible = false;
 	}
 	
 	public function setDatas():Void{
@@ -101,19 +105,42 @@ class MaxStressPopin extends SmartPopin
 		gaugeStressMask.scale.x = 0;
 		btnResetTextValue.text = RESET_VALUE + "";
 		
-		initStars();
+		createPortraitCard();
 	}
 	
-	private function initStars():Void {
-		speedIndics = new Array<UISprite>();
-		effIndics = new Array<UISprite>();
+	private function createPortraitCard():Void {
+		var bgName:String;
+		if (intern.aligment == Std.string(Alignment.heaven)) bgName = "_eventStress_CardBG_Heaven";
+		else bgName = "_eventStress_CardBG_Hell";
+		
+		var portrait:UISprite = cast(internStats.getChildByName("_internPortrait"), UISprite);
+		var background:UISprite = cast(internStats.getChildByName("BG"), UISprite);
+		
+		SpriteManager.spawnComponent(background, bgName, internStats, TypeSpawn.SPRITE, 0);
+		SpriteManager.spawnComponent(portrait, intern.portrait, internStats, TypeSpawn.SPRITE, 0);
+		
+		var stressBar = cast(internStats.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
+		var stressGaugeMask = cast(SmartCheck.getChildByName(stressBar, "jaugeStress_masque"), UISprite);
+		var stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
+		var speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
+		var effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		var speedIndics = new Array<UISprite>();
+		var effIndics = new Array<UISprite>();
 		
 		for (i in 1...6) {
 			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
 			effIndics.push(cast(effJauge.getChildByName("_jaugeEfficiency_0" + i), UISprite));
-		}		
+		}
+		
 		for (i in 0...5) { if (intern.efficiency <= i) speedIndics[i].visible = false; }
 		for (i in 0...5) { if (intern.speed <= i) effIndics[i].visible = false; }
+		
+		stressGaugeMask.scale.x = 0;
+		stressGaugeBar.scale.x = 0;
+		
+		var iStress:Int = intern.stress;	
+		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
 	}
 	
 	private function addListeners():Void{

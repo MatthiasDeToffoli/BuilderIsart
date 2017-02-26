@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Intern;
+import com.isartdigital.perle.ui.popin.accelerate.AcceleratePopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -21,15 +22,12 @@ class AccelerateButton extends SmartButton
 {
 	private var accelerateValue:TextSprite;
 	private var quest:TimeQuestDescription;
-	
-	private static inline var SKIP_PRICE:Int = 5;
+	private var boostPrice:Int;
 
 	public function new(pPos:Point, pID:String=null) 
 	{
 		super("ButtonAccelerate");
 		position = pPos;
-		accelerateValue = cast(SmartCheck.getChildByName(this, "_accelerate_cost"), TextSprite);
-		accelerateValue.text = SKIP_PRICE + "";
 		Interactive.addListenerClick(this, onAccelerate);
 		Interactive.addListenerRewrite(this, setValues);
 		
@@ -37,20 +35,22 @@ class AccelerateButton extends SmartButton
 	
 	public function spawn(pQuest:TimeQuestDescription):Void{
 		quest = pQuest;
+		setValues();
 	}
 	
 	private function onAccelerate(){
 		setValues();
-		if (SKIP_PRICE <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
-			ResourcesManager.spendTotal(GeneratorType.hard, SKIP_PRICE);
+		if (boostPrice <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
+			ResourcesManager.spendTotal(GeneratorType.hard, boostPrice);
 			TimeManager.increaseQuestProgress(quest);
 			SoundManager.getSound("SOUND_KARMA").play();
 		}
 	}
 	
-	private function setValues():Void{
+	private function setValues():Void {
+		boostPrice = Math.ceil(((quest.startTime + quest.steps[quest.stepIndex]) - quest.progress) / AcceleratePopin.TIME_BASE_PRICE);
 		accelerateValue = cast(SmartCheck.getChildByName(this, "_accelerate_cost"), TextSprite);
-		accelerateValue.text = SKIP_PRICE + "";
+		accelerateValue.text = Std.string(boostPrice);
 	}
 	
 	override public function destroy():Void {

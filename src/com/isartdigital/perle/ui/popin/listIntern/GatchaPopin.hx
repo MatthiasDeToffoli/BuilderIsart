@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
@@ -20,13 +21,14 @@ import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
+import haxe.Timer;
 
 	
 /**
  * Popin for the gatcha
  * @author Emeline Berenguier
  */
-class GatchaPopin extends SmartPopin 
+class GatchaPopin extends SmartPopinExtended 
 {
 	
 	/**
@@ -44,7 +46,8 @@ class GatchaPopin extends SmartPopin
 	private var internCard:SmartComponent;
 	
 	public static var quest:TimeQuestDescription;
-	public static var intern:InternDescription;
+	
+	public static var explodeTimer:Timer;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -68,83 +71,47 @@ class GatchaPopin extends SmartPopin
 	}
 	
 	private function getComponents():Void{
-		gatchaText = cast(getChildByName(AssetName.GATCHA_POPIN_TITLE), TextSprite);
 		btnClose = cast(getChildByName(AssetName.GATCHA_POPIN_CLOSE_BUTTON), SmartButton);
 		btnGift = cast(getChildByName(AssetName.GATCHA_POPIN_GATCHA_BAG), SmartButton);
-		internName = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_NAME), TextSprite);
-		
-		internCard = cast(getChildByName(AssetName.GATCHA_POPIN_INTERN_PORTRAIT), SmartComponent);
-		speedJauge = cast(internCard.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
-		effJauge = cast(internCard.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
-	}
-	
-	private function createPortraitCard():Void {
-		var bgName:String;
-		if (intern.aligment == Std.string(Alignment.heaven)) bgName = "_eventStress_CardBG_Heaven";
-		else bgName = "_eventStress_CardBG_Hell";
-		
-		var portrait:UISprite = cast(internCard.getChildByName("_internPortrait"), UISprite);
-		var background:UISprite = cast(internCard.getChildByName("BG"), UISprite);
-		
-		SpriteManager.spawnComponent(background, bgName, internCard, TypeSpawn.SPRITE, 0);
-		SpriteManager.spawnComponent(portrait, intern.portrait, internCard, TypeSpawn.SPRITE, 0);
-		
-		var stressBar = cast(internCard.getChildByName(AssetName.INTERN_STRESS_JAUGE), SmartComponent);
-		var stressGaugeMask = cast(SmartCheck.getChildByName(stressBar, "jaugeStress_masque"), UISprite);
-		var stressGaugeBar = cast(SmartCheck.getChildByName(stressBar, "_jaugeStres"), UISprite);
-		var speedJauge = cast(internCard.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
-		var effJauge = cast(internCard.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
-		
-		var speedIndics = new Array<UISprite>();
-		var effIndics = new Array<UISprite>();
-		
-		for (i in 1...6) {
-			speedIndics.push(cast(speedJauge.getChildByName("_jaugeSpeed_0" + i), UISprite));
-			effIndics.push(cast(effJauge.getChildByName("_jaugeEfficiency_0" + i), UISprite));
-		}
-		
-		for (i in 0...5) {
-			if (intern.efficiency <= i) speedIndics[i].visible = false;
-		}
-		
-		for (i in 0...5) {
-			if (intern.speed <= i) effIndics[i].visible = false;
-		}
-		
-		stressGaugeMask.scale.x = 0;
-		stressGaugeBar.scale.x = 0;
-		
-		var iStress:Int = intern.stress;	
-		stressGaugeBar.scale.x = Math.min(iStress / 100, 1);
 	}
 	
 	public function setDatas():Void{
-		intern = Intern.getIntern(quest.refIntern);
-		
+		gatchaText = cast(cast(btnGift.getChildByName("CartoucheGatcha_animation"), SmartComponent).getChildByName(AssetName.GATCHA_POPIN_TITLE), TextSprite);
 		gatchaText.text = Localisation.getText("LABEL_GACHA_CONGRATULATION");
-		internName.text = intern.name;
-		createPortraitCard();
 	}
 	
 	private function addListeners():Void{
 		Interactive.addListenerClick(btnGift, onGift);
-		//Interactive.addListenerClick(btnClose, onClose);
+		Interactive.addListenerRewrite(btnGift, setDatas);
+		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
 	/**
 	 * Opens the gift's popin
 	 */
-	private function onGift():Void{
-		UIManager.getInstance().closeCurrentPopin();
-		UIManager.getInstance().openPopin(RewardGatcha.getInstance());
-		RewardGatcha.spawn(quest);
+	private function onGift():Void {
+		endGatcha();
+		
+		Interactive.removeListenerClick(btnGift, onGift);
+		Interactive.removeListenerRewrite(btnGift, setDatas);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
+	}
+	
+	private function endGatcha():Void {
+		UIManager.getInstance().closePopin(this);
+		RewardGatcha.spawn(quest);
+		UIManager.getInstance().openPopin(RewardGatcha.getInstance());
 	}
 	
 	private function onClose():Void {
 		if (DialogueManager.ftueStepCloseGatcha)
 			return;
-		UIManager.getInstance().closeCurrentPopin();
+			
+		Interactive.removeListenerClick(btnGift, onGift);
+		Interactive.removeListenerRewrite(btnGift, setDatas);
+		Interactive.removeListenerClick(btnClose, onClose);
+		
+		UIManager.getInstance().closePopin(this);
 		Hud.getInstance().show();
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}

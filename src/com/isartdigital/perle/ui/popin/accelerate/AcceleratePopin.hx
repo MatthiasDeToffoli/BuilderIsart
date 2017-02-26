@@ -20,6 +20,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 class AcceleratePopin extends SmartPopinExtended
 {
 
+	public static inline var TIME_BASE_PRICE:Int = 300000;
 	private var price:Int;
 	private var progressBarTxt:TextSprite;
 	private var btn:SmartButton;

@@ -194,7 +194,7 @@ class ListInternPopin extends SmartPopinExtended
 			return;
 		
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
-		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closePopin(this);
 		Hud.getInstance().show();
 	}
 	

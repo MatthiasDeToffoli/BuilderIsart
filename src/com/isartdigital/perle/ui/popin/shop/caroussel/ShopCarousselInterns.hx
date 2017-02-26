@@ -84,8 +84,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Select 2 random interns depending of the player's level
 	 */
 	private function chooseRandomIntern():Void{
-		hellIntern = chooseRandomInternHell();
-		heavenIntern = chooseRandomInternHeaven();
+		if (hellIntern == null) hellIntern = chooseRandomInternHell();
+		if (heavenIntern == null) heavenIntern = chooseRandomInternHeaven();
 	}
 	
 	/**
@@ -345,6 +345,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	 * Callback of the reroll. Reroll the search
 	 */
 	private function onClickReroll ():Void {
+		hellIntern = null;
+		heavenIntern = null;
 		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
 			return;
 		ShopCarousselInternsSearch.progress = 0;

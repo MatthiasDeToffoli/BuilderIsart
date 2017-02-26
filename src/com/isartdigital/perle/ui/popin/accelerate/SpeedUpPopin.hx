@@ -44,7 +44,7 @@ class SpeedUpPopin extends AcceleratePopin
 	 */
 	private function new() 
 	{
-		price = 10;
+		price = Math.ceil((linkedBuilding.tileDesc.timeDesc.end - linkedBuilding.tileDesc.timeDesc.progress) / AcceleratePopin.TIME_BASE_PRICE);
 		SoundManager.getSound("SOUND_OPEN_MENU_GENERIC").play();
 		super();
 	}

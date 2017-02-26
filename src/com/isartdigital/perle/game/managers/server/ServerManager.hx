@@ -104,18 +104,6 @@ class ServerManager {
 		}
 	}
 	
-
-	public static function loadRegion():Void {
-		callPhpFile(onRegionLoad, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.LOAD_REGION]);
-	}
-	
-	private static function onRegionLoad(pObject:Dynamic):Void {
-		var listRegionLoad:Array<TableRegion> = Json.parse(pObject);
-		
-		if (listRegionLoad.length == 0) RegionManager.buildWhitoutSave();
-		else RegionManager.load(listRegionLoad);		
-	}
-	
 	/**
 	 * this function help to call server for test if we can buy a region
 	 * @param	typeName the type of the region we want to add
