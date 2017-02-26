@@ -1,5 +1,5 @@
 {
- "md5": "40d9e74c784b817aaddac55f3d4dc9b2",
+ "md5": "0c242657b72bc0b5279c4e5e1b8b45ed",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -9,10 +9,10 @@
      "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "_mediumPopinBG",
+       "symbol": "_largePopinBG",
        "origin": [
-        941,
-        557.5
+        941.1,
+        555.95
        ],
        "rect": [
         1,
@@ -61,16 +61,16 @@
        ]
       },
       {
-       "symbol": "_rewardEvent",
+       "symbol": "_indicator_bg",
        "origin": [
         177.5,
-        51
+        55
        ],
        "rect": [
         1503,
         1929,
         355,
-        102
+        110
        ]
       },
       {
@@ -113,7 +113,7 @@
        ]
       },
       {
-       "symbol": "_closeButton_up",
+       "symbol": "_closeButton_down",
        "origin": [
         44,
         41.25
@@ -126,7 +126,7 @@
        ]
       },
       {
-       "symbol": "_listInQuest_nextEvent01",
+       "symbol": "_listInQuest_nextEvent02",
        "origin": [
         25,
         72
@@ -139,7 +139,7 @@
        ]
       },
       {
-       "symbol": "_listInQuest_nextEvent02",
+       "symbol": "_listInQuest_nextEvent03",
        "origin": [
         25,
         72
@@ -152,7 +152,7 @@
        ]
       },
       {
-       "symbol": "_listInQuest_nextEvent03",
+       "symbol": "_listInQuest_nextEvent01",
        "origin": [
         25,
         72
@@ -191,7 +191,7 @@
        ]
       },
       {
-       "symbol": "IntenityMarker3",
+       "symbol": "IntenityMarker1",
        "origin": [
         22.5,
         40
@@ -204,7 +204,7 @@
        ]
       },
       {
-       "symbol": "IntenityMarker1",
+       "symbol": "IntenityMarker2",
        "origin": [
         22.5,
         40
@@ -217,7 +217,7 @@
        ]
       },
       {
-       "symbol": "IntenityMarker2",
+       "symbol": "IntenityMarker3",
        "origin": [
         22.5,
         40
@@ -243,7 +243,7 @@
        ]
       },
       {
-       "symbol": "firework5",
+       "symbol": "firework4",
        "origin": [
         6.95,
         6.95
@@ -256,7 +256,7 @@
        ]
       },
       {
-       "symbol": "firework2",
+       "symbol": "firework5",
        "origin": [
         6.95,
         6.95
@@ -269,7 +269,7 @@
        ]
       },
       {
-       "symbol": "firework1",
+       "symbol": "firework3",
        "origin": [
         6.95,
         6.95
@@ -282,7 +282,7 @@
        ]
       },
       {
-       "symbol": "firework3",
+       "symbol": "firework2",
        "origin": [
         6.95,
         6.95
@@ -295,7 +295,7 @@
        ]
       },
       {
-       "symbol": "firework4",
+       "symbol": "firework1",
        "origin": [
         6.95,
         6.95
@@ -310,273 +310,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -36.1,
-        "text": "NameXXXXX",
-        "x": 0.3,
-        "width": 293.4,
-        "font": "56px _pixelOperator*",
-        "align": "left",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listOutQuest_name",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1933,
-        1112,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -46.3,
-        "text": "/",
-        "x": -13.2,
-        "width": 37.8,
-        "font": "80px _pixelOperator*",
-        "align": "center",
-        "height": 101.65,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_internsInQuest_slash",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1933,
-        1115,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -24.4,
+        "y": -60.6,
         "text": "9999",
-        "x": -52.45,
-        "width": 143,
-        "font": "42px _pixelOperator*",
+        "x": -130.95,
+        "width": 261.9,
+        "font": "96px _pixelOperator*",
         "align": "center",
-        "height": 55.3,
+        "height": 121.2,
         "wordWrap": 0,
-        "color": "#FFFFFF"
+        "color": "#000000"
        },
-       "symbol": "_accelerate_text",
+       "symbol": "_rewardGatcha_value",
        "origin": [
         0,
         0
        ],
        "rect": [
         1933,
-        1101,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.15,
-        "text": "9999",
-        "x": -83.5,
-        "width": 159,
-        "font": "56px Pixel Operator HB SC",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#250000"
-       },
-       "symbol": "_internPrice_hell_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1933,
-        1104,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -46.3,
-        "text": "9",
-        "x": -46.2,
-        "width": 92.35,
-        "font": "80px _pixelOperator*",
-        "align": "center",
-        "height": 101.65,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_internsInQuest_value",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1933,
-        1107,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -44.05,
-        "text": "NameXXXX",
-        "x": 0.05,
-        "width": 257.5,
-        "font": "55px _pixelOperator*",
-        "align": "left",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_listInQuest_name",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1936,
-        1112,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -46.3,
-        "text": "9",
-        "x": -46.2,
-        "width": 92.35,
-        "font": "80px _pixelOperator*",
-        "align": "center",
-        "height": 101.65,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_internsInQuest_TotalValue",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1936,
-        1115,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -52,
-        "text": "Empty portals*",
-        "x": -90.45,
-        "width": 180.9,
-        "font": "46px _pixelOperator*",
-        "align": "center",
-        "height": 104,
-        "wordWrap": 1,
-        "color": "#FFF0F0"
-       },
-       "symbol": "_internHouseNumber_text",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1936,
-        1101,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -61.6,
-        "text": "No intern available",
-        "x": -558.35,
-        "width": 1116.75,
-        "font": "94px Times New Roman",
-        "align": "center",
-        "height": 123.15,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_noInternAvailable_text",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1936,
-        1104,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -59.4,
-        "text": "9",
-        "x": -31.6,
-        "width": 65.25,
-        "font": "140px Pixel Operator HB SC",
-        "align": "center",
-        "height": 135.25,
-        "wordWrap": 0,
-        "color": "#FFF0F0"
-       },
-       "symbol": "_internHouseNumber",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1936,
-        1107,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -34.35,
-        "text": "\"Get out !\"",
-        "x": -115.4,
-        "width": 230.8,
-        "font": "60px _pixelOperator*",
-        "align": "center",
-        "height": 68.7,
-        "wordWrap": 0,
-        "color": "#3C2828"
-       },
-       "symbol": "_internDismiss_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1939,
         1112,
         1,
         1
@@ -601,7 +351,7 @@
         0
        ],
        "rect": [
-        1939,
+        1933,
         1115,
         1,
         1
@@ -610,23 +360,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -45,
-        "text": "Name",
-        "x": -249.25,
-        "width": 498.55,
-        "font": "70px _pixelOperator*",
+        "y": -61.6,
+        "text": "No intern available",
+        "x": -558.35,
+        "width": 1116.75,
+        "font": "94px Pixel Operator",
         "align": "center",
-        "height": 89.45,
+        "height": 123.15,
         "wordWrap": 1,
         "color": "#000000"
        },
-       "symbol": "_intern_name",
+       "symbol": "_noInternAvailable_text",
        "origin": [
         0,
         0
        ],
        "rect": [
-        1939,
+        1933,
         1101,
         1,
         1
@@ -635,23 +385,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -42.6,
-        "text": "xxxxxxxxxxxxx</BR>xxxxxxxxxxxxx",
-        "x": -197.55,
-        "width": 395.1,
-        "font": "67px _pixelOperator*",
+        "y": -47,
+        "text": "9/9",
+        "x": -52,
+        "width": 104,
+        "font": "76px _pixelOperator*",
         "align": "center",
-        "height": 131.6,
-        "wordWrap": 1,
-        "color": "#000000"
+        "height": 94,
+        "wordWrap": 0,
+        "color": "#323228"
        },
-       "symbol": "_hellChoice_text",
+       "symbol": "_navigArrows_counter_txt",
        "origin": [
         0,
         0
        ],
        "rect": [
-        1939,
+        1933,
         1104,
         1,
         1
@@ -676,158 +426,8 @@
         0
        ],
        "rect": [
-        1939,
+        1933,
         1107,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31,
-        "text": "99h99m99s",
-        "x": -117.55,
-        "width": 235.15,
-        "font": "49px _pixelOperator*",
-        "align": "right",
-        "height": 63.8,
-        "wordWrap": 0,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_listInQuest_eventTime",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1942,
-        1112,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -47,
-        "text": "9/9",
-        "x": -52,
-        "width": 104,
-        "font": "76px _pixelOperator*",
-        "align": "center",
-        "height": 94,
-        "wordWrap": 0,
-        "color": "#323228"
-       },
-       "symbol": "_navigArrows_counter_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1942,
-        1115,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.15,
-        "text": "9999",
-        "x": -80.5,
-        "width": 159,
-        "font": "56px Pixel Operator HB SC",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 0,
-        "color": "#250000"
-       },
-       "symbol": "_internPrice_heaven_txt",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1942,
-        1101,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -56.75,
-        "text": "9",
-        "x": -24.6,
-        "width": 65.25,
-        "font": "140px Pixel Operator HB SC",
-        "align": "center",
-        "height": 135.25,
-        "wordWrap": 0,
-        "color": "#FFF0F0"
-       },
-       "symbol": "_internHouseNumber_actualValue",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1942,
-        1104,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.6,
-        "text": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "x": -193.7,
-        "width": 387.45,
-        "font": "67px _pixelOperator*",
-        "align": "center",
-        "height": 131.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "symbol": "_heavenChoice_text",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1942,
-        1107,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -28.25,
-        "text": "\"Come here\"",
-        "x": -141.25,
-        "width": 257.45,
-        "font": "56px _pixelOperator*",
-        "align": "center",
-        "height": 56.5,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "symbol": "_resetStress_text",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1945,
-        1112,
         1,
         1
        ]
@@ -851,8 +451,58 @@
         0
        ],
        "rect": [
-        1945,
+        1936,
+        1112,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -28.25,
+        "text": "\"Come here\"",
+        "x": -141.25,
+        "width": 257.45,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_resetStress_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1936,
         1115,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31,
+        "text": "99h99m99s",
+        "x": -117.55,
+        "width": 235.15,
+        "font": "49px _pixelOperator*",
+        "align": "right",
+        "height": 63.8,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_listInQuest_eventTime",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1936,
+        1101,
         1,
         1
        ]
@@ -876,32 +526,7 @@
         0
        ],
        "rect": [
-        1945,
-        1101,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62.95,
-        "text": "I knew it !",
-        "x": -262.95,
-        "width": 525.9,
-        "font": "130px _pixelOperator*",
-        "align": "center",
-        "height": 125.9,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "symbol": "_rewardGatcha_text",
-       "origin": [
-        0,
-        0
-       ],
-       "rect": [
-        1945,
+        1936,
         1104,
         1,
         1
@@ -910,23 +535,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -43.5,
-        "text": "*Looking for new interns...",
-        "x": -414.2,
-        "width": 828.4,
-        "font": "68px _pixelOperator*",
+        "y": -54.5,
+        "text": "Great",
+        "x": -116.3,
+        "width": 232.6,
+        "font": "86px _pixelOperator*",
         "align": "center",
-        "height": 87,
+        "height": 109,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#F0FFF0"
        },
-       "symbol": "_searchingInterns_text",
+       "symbol": "_rewardGatcta_buttontext",
        "origin": [
         0,
         0
        ],
        "rect": [
-        1945,
+        1936,
         1107,
         1,
         1
@@ -935,23 +560,23 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -38.85,
-        "text": "Reroll",
-        "x": -104.15,
-        "width": 208.25,
-        "font": "66px _pixelOperator*",
+        "y": -24.4,
+        "text": "9999",
+        "x": -52.45,
+        "width": 143,
+        "font": "42px _pixelOperator*",
         "align": "center",
-        "height": 84.55,
+        "height": 55.3,
         "wordWrap": 0,
         "color": "#FFFFFF"
        },
-       "symbol": "_buttonReroll_txt",
+       "symbol": "_accelerate_text",
        "origin": [
         0,
         0
        ],
        "rect": [
-        1948,
+        1939,
         1112,
         1,
         1
@@ -976,6 +601,381 @@
         0
        ],
        "rect": [
+        1939,
+        1115,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -52,
+        "text": "Empty portals*",
+        "x": -90.45,
+        "width": 180.9,
+        "font": "46px _pixelOperator*",
+        "align": "center",
+        "height": 104,
+        "wordWrap": 1,
+        "color": "#FFF0F0"
+       },
+       "symbol": "_internHouseNumber_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1939,
+        1101,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -56.75,
+        "text": "9",
+        "x": -24.6,
+        "width": 65.25,
+        "font": "140px Pixel Operator HB SC",
+        "align": "center",
+        "height": 135.25,
+        "wordWrap": 0,
+        "color": "#FFF0F0"
+       },
+       "symbol": "_internHouseNumber_actualValue",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1939,
+        1104,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -43.5,
+        "text": "*Looking for new interns...",
+        "x": -414.2,
+        "width": 828.4,
+        "font": "68px _pixelOperator*",
+        "align": "center",
+        "height": 87,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_searchingInterns_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1939,
+        1107,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62.95,
+        "text": "I knew it !",
+        "x": -262.95,
+        "width": 525.9,
+        "font": "130px _pixelOperator*",
+        "align": "center",
+        "height": 125.9,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_rewardGatcha_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1942,
+        1112,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.1,
+        "text": "NameXXXXX",
+        "x": -146.7,
+        "width": 293.4,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listOutQuest_name",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1942,
+        1115,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -44.05,
+        "text": "NameXXXX",
+        "x": 0.05,
+        "width": 257.5,
+        "font": "55px _pixelOperator*",
+        "align": "left",
+        "height": 72.35,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_listInQuest_name",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1942,
+        1101,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "/",
+        "x": -13.2,
+        "width": 37.8,
+        "font": "80px _pixelOperator*",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_internsInQuest_slash",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1942,
+        1104,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -59.4,
+        "text": "9",
+        "x": -31.6,
+        "width": 65.25,
+        "font": "140px Pixel Operator HB SC",
+        "align": "center",
+        "height": 135.25,
+        "wordWrap": 0,
+        "color": "#FFF0F0"
+       },
+       "symbol": "_internHouseNumber",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1942,
+        1107,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -34.35,
+        "text": "\"Get out !\"",
+        "x": -115.4,
+        "width": 230.8,
+        "font": "60px _pixelOperator*",
+        "align": "center",
+        "height": 68.7,
+        "wordWrap": 0,
+        "color": "#3C2828"
+       },
+       "symbol": "_internDismiss_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1945,
+        1112,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -45,
+        "text": "Name",
+        "x": -249.25,
+        "width": 498.55,
+        "font": "70px Pixel Operator",
+        "align": "center",
+        "height": 89.45,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_intern_name",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1945,
+        1115,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.6,
+        "text": "xxxxxxxxxxxxx</BR>xxxxxxxxxxxxx",
+        "x": -197.55,
+        "width": 395.1,
+        "font": "67px _pixelOperator*",
+        "align": "center",
+        "height": 131.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_hellChoice_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1945,
+        1101,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.6,
+        "text": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "x": -193.7,
+        "width": 387.45,
+        "font": "67px _pixelOperator*",
+        "align": "center",
+        "height": 131.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_heavenChoice_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1945,
+        1104,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -38.85,
+        "text": "Reroll",
+        "x": -104.15,
+        "width": 208.25,
+        "font": "66px _pixelOperator*",
+        "align": "center",
+        "height": 84.55,
+        "wordWrap": 0,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_buttonReroll_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1945,
+        1107,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "9",
+        "x": -46.2,
+        "width": 92.35,
+        "font": "80px _pixelOperator*",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_internsInQuest_TotalValue",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1948,
+        1112,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.3,
+        "text": "9",
+        "x": -46.2,
+        "width": 92.35,
+        "font": "80px _pixelOperator*",
+        "align": "center",
+        "height": 101.65,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_internsInQuest_value",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
         1948,
         1115,
         1,
@@ -985,17 +985,17 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -54.5,
-        "text": "Great",
-        "x": -116.3,
-        "width": 232.6,
-        "font": "86px _pixelOperator*",
+        "y": -36.15,
+        "text": "9999",
+        "x": -80.5,
+        "width": 159,
+        "font": "56px Pixel Operator HB SC",
         "align": "center",
-        "height": 109,
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#F0FFF0"
+        "color": "#250000"
        },
-       "symbol": "_rewardGatcta_buttontext",
+       "symbol": "_internPrice_heaven_txt",
        "origin": [
         0,
         0
@@ -1010,17 +1010,17 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -60.6,
+        "y": -36.15,
         "text": "9999",
-        "x": -130.95,
-        "width": 261.9,
-        "font": "96px _pixelOperator*",
+        "x": -83.5,
+        "width": 159,
+        "font": "56px Pixel Operator HB SC",
         "align": "center",
-        "height": 121.2,
+        "height": 72.35,
         "wordWrap": 0,
-        "color": "#000000"
+        "color": "#250000"
        },
-       "symbol": "_rewardGatcha_value",
+       "symbol": "_internPrice_hell_txt",
        "origin": [
         0,
         0
@@ -1038,10 +1038,10 @@
      "file": "atlas1.png",
      "textures": [
       {
-       "symbol": "_largePopinBG",
+       "symbol": "_mediumPopinBG",
        "origin": [
-        941.1,
-        555.95
+        941,
+        557.5
        ],
        "rect": [
         1,
@@ -1090,10 +1090,10 @@
        ]
       },
       {
-       "symbol": "CartoucheGatcha_spriteGatcha",
+       "symbol": "_cartouche_Gatcha_sprite",
        "origin": [
         336.95,
-        113
+        100.05
        ],
        "rect": [
         1,
@@ -1103,9 +1103,9 @@
        ]
       },
       {
-       "symbol": "_jauge_searchingMasque",
+       "symbol": "_shop_gaugetimer_bg",
        "origin": [
-        0.5,
+        576.5,
         41
        ],
        "rect": [
@@ -1168,7 +1168,7 @@
        ]
       },
       {
-       "symbol": "_arrow_right_down",
+       "symbol": "_arrow_right_up",
        "origin": [
         47.5,
         112.5
@@ -1381,6 +1381,19 @@
        ]
       },
       {
+       "symbol": "_eventChoice_bg",
+       "origin": [
+        200,
+        319
+       ],
+       "rect": [
+        1643,
+        669,
+        400,
+        638
+       ]
+      },
+      {
        "symbol": "_event_FateCard",
        "origin": [
         196.8,
@@ -1388,61 +1401,61 @@
        ],
        "rect": [
         1643,
-        669,
+        1309,
         394,
         638
        ]
       },
       {
-       "symbol": "_bg_stats",
+       "symbol": "_intern_portrait",
        "origin": [
-        273.95,
-        186.05
+        207.1,
+        205.65
        ],
        "rect": [
         1155,
         1565,
-        548,
-        359
+        415,
+        412
        ]
       },
       {
-       "symbol": "_internPortrait",
+       "symbol": "_ftue_Glow_Interns",
        "origin": [
-        154.65,
-        221.1
-       ],
-       "rect": [
-        1705,
-        1309,
-        310,
-        443
-       ]
-      },
-      {
-       "symbol": "_shopBauble_intern",
-       "origin": [
-        778.5,
-        35
+        298,
+        75.5
        ],
        "rect": [
         1,
-        1926,
-        1557,
-        70
+        1879,
+        597,
+        152
        ]
       },
       {
-       "symbol": "_internHouseNumber_HellBG",
+       "symbol": "_event_hellchoice",
        "origin": [
-        149,
-        143.25
+        262,
+        82.25
        ],
        "rect": [
-        1705,
-        1754,
-        298,
-        287
+        600,
+        1879,
+        524,
+        165
+       ]
+      },
+      {
+       "symbol": "_purgatoryButton_down",
+       "origin": [
+        221.85,
+        38
+       ],
+       "rect": [
+        1572,
+        1949,
+        360,
+        76
        ]
       },
       {
@@ -1452,34 +1465,21 @@
         23
        ],
        "rect": [
-        1,
-        1998,
+        1126,
+        1979,
         357,
         46
        ]
       },
       {
-       "symbol": "_jaugeStres",
-       "origin": [
-        -0.5,
-        22.95
-       ],
-       "rect": [
-        1,
-        1879,
-        356,
-        45
-       ]
-      },
-      {
-       "symbol": "_closeButton_down",
+       "symbol": "_closeButton_up",
        "origin": [
         44,
         41.25
        ],
        "rect": [
-        1560,
-        1926,
+        1934,
+        1949,
         88,
         83
        ]
@@ -1503,7 +1503,7 @@
        ]
       },
       {
-       "symbol": "botInternHolder",
+       "symbol": "topInternHolder",
        "origin": [
         0,
         0
@@ -1516,7 +1516,7 @@
        ]
       },
       {
-       "symbol": "topInternHolder",
+       "symbol": "botInternHolder",
        "origin": [
         0,
         0
@@ -1607,20 +1607,20 @@
        ]
       },
       {
-       "symbol": "_intern_portrait",
+       "symbol": "_bg_stats",
        "origin": [
-        207.1,
-        205.65
+        273.95,
+        186.05
        ],
        "rect": [
         1203,
         1119,
-        415,
-        412
+        548,
+        359
        ]
       },
       {
-       "symbol": "_internPortrait_09",
+       "symbol": "_internPortrait_03",
        "origin": [
         206.5,
         198.5
@@ -1633,7 +1633,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_08",
+       "symbol": "_internPortrait_05",
        "origin": [
         206.5,
         198.5
@@ -1646,55 +1646,42 @@
        ]
       },
       {
-       "symbol": "_internPortrait_02",
+       "symbol": "_internPortrait_04",
        "origin": [
         206.5,
         198.5
        ],
        "rect": [
         1277,
-        1533,
+        1480,
         413,
         397
        ]
       },
       {
-       "symbol": "_internPortrait_07",
+       "symbol": "_internPortrait",
        "origin": [
-        206.5,
-        198.5
+        154.65,
+        221.1
        ],
        "rect": [
-        1620,
-        1017,
-        413,
-        397
+        1692,
+        1480,
+        310,
+        443
        ]
       },
       {
-       "symbol": "_cartouche_Gatcha_sprite",
+       "symbol": "CartoucheGatcha_spriteGatcha",
        "origin": [
         336.95,
-        100.05
+        113
        ],
        "rect": [
         1,
         1824,
         674,
         201
-       ]
-      },
-      {
-       "symbol": "_shop_intern_unknown_hell",
-       "origin": [
-        167,
-        167
-       ],
-       "rect": [
-        1692,
-        1416,
-        334,
-        334
        ]
       },
       {
@@ -1705,9 +1692,22 @@
        ],
        "rect": [
         677,
-        1932,
+        1925,
         1153,
         82
+       ]
+      },
+      {
+       "symbol": "_internInQuest_BG",
+       "origin": [
+        140,
+        135
+       ],
+       "rect": [
+        1753,
+        1017,
+        280,
+        270
        ]
       },
       {
@@ -1724,16 +1724,16 @@
        ]
       },
       {
-       "symbol": "_event_angel",
+       "symbol": "_buttonPopinReward_over",
        "origin": [
-        106.05,
-        135.7
+        141.5,
+        94.35
        ],
        "rect": [
-        1832,
-        1752,
-        213,
-        272
+        1753,
+        1289,
+        283,
+        189
        ]
       },
       {
@@ -1756,23 +1756,23 @@
         64
        ],
        "rect": [
-        1692,
-        1752,
+        1910,
+        400,
         128,
         128
        ]
       },
       {
-       "symbol": "_internsInQuest_icon",
+       "symbol": "_txt_efficiency03",
        "origin": [
-        46.6,
-        77.7
+        39.3,
+        39.3
        ],
        "rect": [
         1910,
-        400,
-        94,
-        156
+        530,
+        79,
+        79
        ]
       }
      ]
@@ -1781,7 +1781,7 @@
      "file": "atlas4.png",
      "textures": [
       {
-       "symbol": "_internPortrait_01",
+       "symbol": "_internPortrait_07",
        "origin": [
         206.5,
         198.5
@@ -1794,7 +1794,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_05",
+       "symbol": "_internPortrait_02",
        "origin": [
         206.5,
         198.5
@@ -1807,7 +1807,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_06",
+       "symbol": "_internPortrait_01",
        "origin": [
         206.5,
         198.5
@@ -1820,7 +1820,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_03",
+       "symbol": "_internPortrait_10",
        "origin": [
         206.5,
         198.5
@@ -1833,7 +1833,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_10",
+       "symbol": "_internPortrait_09",
        "origin": [
         206.5,
         198.5
@@ -1846,7 +1846,7 @@
        ]
       },
       {
-       "symbol": "_internPortrait_04",
+       "symbol": "_internPortrait_08",
        "origin": [
         206.5,
         198.5
@@ -1859,14 +1859,27 @@
        ]
       },
       {
-       "symbol": "box",
+       "symbol": "_internPortrait_06",
+       "origin": [
+        206.5,
+        198.5
+       ],
+       "rect": [
+        1,
+        1198,
+        413,
+        397
+       ]
+      },
+      {
+       "symbol": "couvercle",
        "origin": [
         200,
         200
        ],
        "rect": [
         1,
-        1198,
+        1597,
         400,
         400
        ]
@@ -1878,8 +1891,8 @@
         200
        ],
        "rect": [
-        1,
-        1600,
+        403,
+        1597,
         400,
         400
        ]
@@ -1891,21 +1904,21 @@
         200
        ],
        "rect": [
-        403,
-        1198,
+        416,
+        400,
         400,
         400
        ]
       },
       {
-       "symbol": "couvercle",
+       "symbol": "box",
        "origin": [
         200,
         200
        ],
        "rect": [
-        403,
-        1600,
+        416,
+        802,
         400,
         400
        ]
@@ -1917,10 +1930,23 @@
         228
        ],
        "rect": [
-        1661,
-        1,
+        416,
+        1204,
         372,
         321
+       ]
+      },
+      {
+       "symbol": "_shop_intern_unknown_hell",
+       "origin": [
+        167,
+        167
+       ],
+       "rect": [
+        790,
+        1204,
+        334,
+        334
        ]
       },
       {
@@ -1930,8 +1956,8 @@
         167
        ],
        "rect": [
-        1661,
-        324,
+        805,
+        1540,
         334,
         334
        ]
@@ -1943,8 +1969,8 @@
         222
        ],
        "rect": [
-        416,
-        660,
+        1661,
+        1,
         350,
         312
        ]
@@ -1956,62 +1982,49 @@
         205
        ],
        "rect": [
-        768,
-        660,
+        1661,
+        315,
         363,
         295
        ]
       },
       {
-       "symbol": "_shop_gaugetimer_bg",
+       "symbol": "_jauge_searchingMasque",
        "origin": [
-        576.5,
+        0.5,
         41
        ],
        "rect": [
-        768,
-        957,
+        805,
+        1876,
         1153,
         82
        ]
       },
       {
-       "symbol": "_ftue_Glow_Interns",
-       "origin": [
-        298,
-        75.5
-       ],
-       "rect": [
-        416,
-        1041,
-        597,
-        152
-       ]
-      },
-      {
        "symbol": "_heavenAnswer_bg",
        "origin": [
-        215,
-        49.5
+        262,
+        82
        ],
        "rect": [
-        1133,
-        660,
-        489,
-        185
+        1126,
+        400,
+        524,
+        164
        ]
       },
       {
-       "symbol": "_event_hellchoice",
+       "symbol": "_internHouseNumber_HellBG",
        "origin": [
-        215,
-        71.5
+        149,
+        143.25
        ],
        "rect": [
-        416,
+        818,
         400,
-        489,
-        184
+        298,
+        287
        ]
       },
       {
@@ -2021,23 +2034,10 @@
         139.95
        ],
        "rect": [
-        1624,
-        660,
+        1118,
+        566,
         299,
         280
-       ]
-      },
-      {
-       "symbol": "_internInQuest_BG",
-       "origin": [
-        140,
-        135
-       ],
-       "rect": [
-        1015,
-        1041,
-        280,
-        270
        ]
       },
       {
@@ -2047,8 +2047,8 @@
         75.5
        ],
        "rect": [
-        907,
-        400,
+        818,
+        848,
         482,
         151
        ]
@@ -2060,21 +2060,21 @@
         112.5
        ],
        "rect": [
-        1297,
-        1041,
+        1126,
+        1001,
         320,
         225
        ]
       },
       {
-       "symbol": "_buttonPortraitListOutQuest_over",
+       "symbol": "_buttonPortraitListOutQuest_down",
        "origin": [
         134,
         129
        ],
        "rect": [
-        1391,
-        400,
+        1419,
+        612,
         268,
         258
        ]
@@ -2086,8 +2086,8 @@
         129
        ],
        "rect": [
-        1619,
-        1041,
+        1126,
+        1228,
         268,
         258
        ]
@@ -2099,8 +2099,21 @@
         129
        ],
        "rect": [
-        1297,
-        1268,
+        1141,
+        1488,
+        268,
+        258
+       ]
+      },
+      {
+       "symbol": "_buttonPortraitListOutQuest_over",
+       "origin": [
+        134,
+        129
+       ],
+       "rect": [
+        1396,
+        1228,
         268,
         258
        ]
@@ -2112,8 +2125,8 @@
         129
        ],
        "rect": [
-        1567,
-        1301,
+        1448,
+        872,
         268,
         258
        ]
@@ -2125,21 +2138,8 @@
         129
        ],
        "rect": [
-        805,
-        1313,
-        268,
-        258
-       ]
-      },
-      {
-       "symbol": "_buttonPortraitListOutQuest_down",
-       "origin": [
-        134,
-        129
-       ],
-       "rect": [
-        1075,
-        1528,
+        1689,
+        612,
         268,
         258
        ]
@@ -2151,8 +2151,8 @@
         96
        ],
        "rect": [
-        805,
-        1788,
+        1411,
+        1488,
         430,
         158
        ]
@@ -2164,8 +2164,8 @@
         94
        ],
        "rect": [
-        1237,
-        1788,
+        1411,
+        1648,
         430,
         156
        ]
@@ -2177,8 +2177,8 @@
         104.3
        ],
        "rect": [
-        1345,
-        1561,
+        1666,
+        1132,
         313,
         209
        ]
@@ -2191,7 +2191,7 @@
        ],
        "rect": [
         805,
-        1948,
+        1960,
         860,
         75
        ]
@@ -2203,8 +2203,8 @@
         102
        ],
        "rect": [
-        1660,
-        1561,
+        1718,
+        872,
         306,
         204
        ]
@@ -2216,10 +2216,23 @@
         100
        ],
        "rect": [
-        1669,
-        1767,
+        818,
+        1001,
         300,
         200
+       ]
+      },
+      {
+       "symbol": "_buttonReroll_hit",
+       "origin": [
+        145,
+        112.8
+       ],
+       "rect": [
+        818,
+        689,
+        291,
+        154
        ]
       },
       {
@@ -2229,36 +2242,10 @@
         100
        ],
        "rect": [
-        1075,
-        1313,
+        1843,
+        1343,
         200,
         200
-       ]
-      },
-      {
-       "symbol": "_purgatoryButton_down",
-       "origin": [
-        221.85,
-        38
-       ],
-       "rect": [
-        1667,
-        1969,
-        360,
-        76
-       ]
-      },
-      {
-       "symbol": "_purgatoryButton_over",
-       "origin": [
-        221,
-        37.5
-       ],
-       "rect": [
-        907,
-        553,
-        359,
-        76
        ]
       },
       {
@@ -2268,23 +2255,49 @@
         37.5
        ],
        "rect": [
-        1133,
-        847,
+        1667,
+        1960,
         359,
         76
        ]
       },
       {
-       "symbol": "_arrow_right_up",
+       "symbol": "_arrow_right_down",
        "origin": [
         47.5,
         112.5
        ],
        "rect": [
-        1837,
-        1301,
+        1843,
+        1545,
         95,
         225
+       ]
+      },
+      {
+       "symbol": "_jaugeStres",
+       "origin": [
+        -0.5,
+        22.95
+       ],
+       "rect": [
+        416,
+        1540,
+        356,
+        45
+       ]
+      },
+      {
+       "symbol": "_internsInQuest_icon",
+       "origin": [
+        46.6,
+        77.7
+       ],
+       "rect": [
+        1940,
+        1545,
+        94,
+        156
        ]
       },
       {
@@ -2294,23 +2307,10 @@
         67.25
        ],
        "rect": [
-        1889,
-        1041,
+        1302,
+        848,
         81,
         135
-       ]
-      },
-      {
-       "symbol": "_txt_efficiency03",
-       "origin": [
-        39.3,
-        39.3
-       ],
-       "rect": [
-        1923,
-        942,
-        79,
-        79
        ]
       }
      ]
@@ -2319,29 +2319,42 @@
      "file": "atlas5.png",
      "textures": [
       {
+       "symbol": "_shopBauble_intern",
+       "origin": [
+        778.5,
+        35
+       ],
+       "rect": [
+        1,
+        1,
+        1557,
+        70
+       ]
+      },
+      {
+       "symbol": "_event_angel",
+       "origin": [
+        106.05,
+        135.7
+       ],
+       "rect": [
+        1560,
+        1,
+        213,
+        272
+       ]
+      },
+      {
        "symbol": "_event_demon",
        "origin": [
         106,
         135.5
        ],
        "rect": [
-        1,
+        1775,
         1,
         212,
         271
-       ]
-      },
-      {
-       "symbol": "_buttonPopinReward_over",
-       "origin": [
-        141.5,
-        94.35
-       ],
-       "rect": [
-        1,
-        274,
-        283,
-        189
        ]
       },
       {
@@ -2351,8 +2364,8 @@
         92.5
        ],
        "rect": [
-        215,
         1,
+        275,
         275,
         185
        ]
@@ -2364,8 +2377,8 @@
         39
        ],
        "rect": [
-        215,
-        188,
+        1,
+        73,
         644,
         78
        ]
@@ -2377,8 +2390,8 @@
         86.6
        ],
        "rect": [
-        492,
-        1,
+        647,
+        73,
         286,
         174
        ]
@@ -2390,8 +2403,8 @@
         86.6
        ],
        "rect": [
-        286,
-        268,
+        278,
+        153,
         286,
         174
        ]
@@ -2403,23 +2416,10 @@
         86.6
        ],
        "rect": [
-        574,
-        268,
+        566,
+        249,
         286,
         174
-       ]
-      },
-      {
-       "symbol": "_buttonPopinReward_up",
-       "origin": [
-        135,
-        90
-       ],
-       "rect": [
-        286,
-        444,
-        270,
-        180
        ]
       },
       {
@@ -2429,8 +2429,8 @@
         90
        ],
        "rect": [
-        1,
-        465,
+        278,
+        329,
         270,
         180
        ]
@@ -2442,8 +2442,8 @@
         90
        ],
        "rect": [
-        558,
-        444,
+        1775,
+        274,
         270,
         180
        ]
@@ -2455,34 +2455,60 @@
         90
        ],
        "rect": [
-        273,
-        626,
+        854,
+        249,
         270,
         180
        ]
       },
       {
-       "symbol": "_buttonReroll_hit",
+       "symbol": "_buttonPopinReward_up",
        "origin": [
-        145,
-        112.8
+        135,
+        90
        ],
        "rect": [
-        545,
-        626,
-        291,
-        154
+        1126,
+        275,
+        270,
+        180
        ]
       },
       {
-       "symbol": "_shopButton_up",
+       "symbol": "_rewardEvent",
+       "origin": [
+        177.5,
+        51
+       ],
+       "rect": [
+        1126,
+        73,
+        355,
+        102
+       ]
+      },
+      {
+       "symbol": "_purgatoryButton_over",
+       "origin": [
+        221,
+        37.5
+       ],
+       "rect": [
+        1126,
+        177,
+        359,
+        76
+       ]
+      },
+      {
+       "symbol": "_shopButton_over",
        "origin": [
         180,
         37
        ],
        "rect": [
-        545,
-        782,
+        550,
+        431,
         359,
         75
        ]
@@ -2494,21 +2520,21 @@
         37
        ],
        "rect": [
-        1,
-        808,
+        1398,
+        275,
         359,
         75
        ]
       },
       {
-       "symbol": "_shopButton_over",
+       "symbol": "_shopButton_up",
        "origin": [
         180,
         37
        ],
        "rect": [
-        362,
-        859,
+        1398,
+        352,
         359,
         75
        ]
@@ -3228,6 +3254,48 @@
     {
      "keyframes": [
       {
+       "pivot": [
+        200,
+        319
+       ],
+       "index": 0,
+       "loc": [
+        -157,
+        -63
+       ],
+       "ref": "_eventChoice_bg",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_eventChoice_bg"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        200,
+        319
+       ],
+       "skew": [
+        0,
+        3.1416
+       ],
+       "index": 0,
+       "loc": [
+        673,
+        -63
+       ],
+       "ref": "_eventChoice_bg",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "_eventChoice_bg"
+    },
+    {
+     "keyframes": [
+      {
        "ref": "~ButtonClose",
        "tweened": false,
        "duration": 1,
@@ -3426,13 +3494,13 @@
      "keyframes": [
       {
        "pivot": [
-        215,
-        49.5
+        262,
+        82
        ],
        "index": 0,
        "loc": [
-        -80,
-        336.3
+        -47,
+        380.25
        ],
        "ref": "_heavenAnswer_bg",
        "tweened": false,
@@ -3450,7 +3518,7 @@
        "index": 0,
        "loc": [
         -50,
-        349.3
+        356.3
        ]
       }
      ],
@@ -3460,13 +3528,13 @@
      "keyframes": [
       {
        "pivot": [
-        215,
-        71.5
+        262,
+        82.25
        ],
        "index": 0,
        "loc": [
-        517,
-        358.5
+        563,
+        380
        ],
        "ref": "_event_hellchoice",
        "tweened": false,
@@ -3499,7 +3567,7 @@
        "index": 0,
        "loc": [
         557,
-        350
+        357
        ]
       }
      ],
@@ -3784,21 +3852,6 @@
     {
      "keyframes": [
       {
-       "ref": "_navigArrows_counter_txt",
-       "tweened": false,
-       "duration": 1,
-       "index": 0,
-       "loc": [
-        831,
-        -9
-       ]
-      }
-     ],
-     "name": "_navigArrows_counter_txt"
-    },
-    {
-     "keyframes": [
-      {
        "pivot": [
         52.5,
         355
@@ -3911,8 +3964,8 @@
        "duration": 1,
        "index": 0,
        "loc": [
-        20,
-        70.2
+        160,
+        71.2
        ]
       }
      ],
