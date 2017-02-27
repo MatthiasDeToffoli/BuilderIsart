@@ -65,7 +65,7 @@ class GameManager {
 		// todo : deplacer les nom de fonction initClass faisant rien de 
 		// plus que des awake dans unity par le nom awake()
 		// ci-dessous met à jour game_config.json, temporaire.
-		//ServerManager.refreshConfig(); // todo : remplacer par cron
+		ServerManager.refreshConfig(); // todo : remplacer par cron
 		
 		ParallaxManager.getInstance().init();
 		GodMode.awake(); //@TODO: comment that for livraison

@@ -498,8 +498,8 @@ class DialogueManager
 			Hud.isHide = true;
 			Hud.getInstance().show();
 			removeDialogue();
-			//if (steps[dialogueSaved - 1].endOfFtue)
-			//	DailyRewardManager.getInstance().testDailyConnexion();
+			if (steps[dialogueSaved - 1].endOfFtue)
+				DailyRewardManager.getInstance().testDailyConnexion();
 			return;
 		}
 		
