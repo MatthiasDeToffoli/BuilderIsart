@@ -61,7 +61,7 @@ class Config
 	 * défini le chemin à partir de www/ dans fbGame (ftp), utile pour
 	 * le build cocoonJS
 	 */
-	public static var pathInFBGame(get, never): Bool;
+	public static var pathInFBGame(get, never): String;
 	
 	/** 
 	 * chemin du dossier de langues
@@ -174,7 +174,7 @@ class Config
 	}
 	
 	private static function get_pathInFBGame ():String {
-		return data.deltaDNA;
+		return data.pathInFBGame;
 	}
 	
 	private static function get_langPath ():String {
