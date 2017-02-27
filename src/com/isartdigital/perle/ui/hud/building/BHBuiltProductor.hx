@@ -11,7 +11,6 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 class BHBuiltProductor extends BHBuiltUpgrade
 {
 
-	private var btnLastProd:SmartButton;
 	private var timer:BuildingTimer;
 	
 	public function new(pID:String=null) 
@@ -22,17 +21,13 @@ class BHBuiltProductor extends BHBuiltUpgrade
 	
 	override function findElements():Void 
 	{
-		btnLastProd = cast(getChildByName(AssetName.CONTEXTUAL_BTN_LAST_PRODUCTION), SmartButton);
 		testIfAddTimer();
 		super.findElements();
 	}
 	
 	private function testIfAddTimer():Void {
 		if (testIfProduct()) {
-			removeChild(btnLastProd);
 			createTimer();
-		} else {
-			Interactive.addListenerClick(btnLastProd,onClickDescription);
 		}
 	}
 	

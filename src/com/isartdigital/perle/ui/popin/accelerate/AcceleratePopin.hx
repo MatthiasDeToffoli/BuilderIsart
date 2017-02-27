@@ -62,7 +62,6 @@ class AcceleratePopin extends SmartPopinExtended
 	private function onAccelerate():Void{
 		rewriteBtn();
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
-		
 		ResourcesManager.spendTotal(GeneratorType.hard, price);
 		SoundManager.getSound("SOUND_KARMA").play();
 	}

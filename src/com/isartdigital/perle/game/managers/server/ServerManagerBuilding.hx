@@ -496,4 +496,31 @@ class ServerManagerBuilding{
 	private static function onErrorBoost(object:Dynamic):Void {
 		Debug.error(object);
 	}
+	
+	public static function BoostCollector(pDesc:TileDescription):Void {
+		ServerManager.callPhpFile(onSuccessBoostCollector, onErrorBoostCollector, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.COLLECTOR_BOOST,
+			"RegionX" => pDesc.regionX,
+			"RegionY" => pDesc.regionY,
+			"X" => pDesc.mapX,
+			"Y" => pDesc.mapY
+		]);
+	}
+	
+	private static function onSuccessBoostCollector(pObject:Dynamic):Void {
+		/*if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			}
+			
+		}*/
+	}
+	
+	private static function onErrorBoostCollector(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
 }

@@ -29,6 +29,11 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
 
 $lId = FacebookUtils::getId();
 
+if( Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction) > time()) {
+  echo json_encode(["error" => true, "message" => "time of production not finished yet "]);
+  exit;
+}
+
 if($typeBuilding->PackId <= 0 ) {
   echo json_encode(["error" => true, "message" => "not pack used by ".$typeBuilding->Name]);
   exit;
