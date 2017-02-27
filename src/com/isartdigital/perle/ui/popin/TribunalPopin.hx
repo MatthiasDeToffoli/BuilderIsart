@@ -15,12 +15,15 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import haxe.Json;
+import js.html.TouchEvent;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
@@ -169,10 +172,15 @@ class TribunalPopin extends SmartPopinExtended
 		soulGoodGirl2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_2), UISprite);
 		soulGoodGirl3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_3), UISprite);
 
+		cardSoul.on(TouchEventType.TOUCH_START, onMouseDownOnCard);
 		cardSoul.on(MouseEventType.MOUSE_DOWN, onMouseDownOnCard);
+		
 		cardSoul.on(MouseEventType.MOUSE_MOVE, onFollowMouse);
+		cardSoul.on(TouchEventType.TOUCH_MOVE, onFollowMouse);
 		cardSoul.on(MouseEventType.MOUSE_UP_OUTSIDE, onMouseUpOnCard);
+		cardSoul.on(TouchEventType.TOUCH_END, onMouseUpOnCard);
 		cardSoul.on(MouseEventType.MOUSE_UP, onMouseUpOnCard);
+		cardSoul.on(TouchEventType.TOUCH_END_OUTSIDE, onMouseUpOnCard);
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_HEAVEN_INFO);
 		infoHeaven = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_INFO_BAR), TextSprite);

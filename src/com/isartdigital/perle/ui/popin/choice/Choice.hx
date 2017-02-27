@@ -15,6 +15,7 @@ import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
@@ -275,6 +276,7 @@ class Choice extends SmartPopinExtended
 		var swipCard:UISprite = cast(getChildByName(AssetName.INTERN_EVENT_CARD), UISprite);
 		choiceCard = cast(SpriteManager.spawnComponent(swipCard, pChoice.card, this, TypeSpawn.SMART_COMPONENT, true));
 		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+		choiceCard.on(TouchEventType.TOUCH_START, startFollow);
 		cast(choiceCard.getChildByName(AssetName.INTERN_EVENT_DESC), TextSprite).text = Localisation.getText(activeChoice.text);
 	}
 	
@@ -509,6 +511,10 @@ class Choice extends SmartPopinExtended
 		choiceCard.on(MouseEventType.MOUSE_MOVE, followMouse);
 		choiceCard.on(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
 		choiceCard.on(MouseEventType.MOUSE_UP, valideSwip);
+		
+		choiceCard.on(TouchEventType.TOUCH_MOVE, followMouse);
+		choiceCard.on(TouchEventType.TOUCH_END, valideSwip);
+		choiceCard.on(TouchEventType.TOUCH_END_OUTSIDE, valideSwip);
 	}
 	
 	/**
@@ -546,6 +552,10 @@ class Choice extends SmartPopinExtended
 		choiceCard.off(MouseEventType.MOUSE_MOVE, followMouse);
 		choiceCard.off(MouseEventType.MOUSE_UP_OUTSIDE, valideSwip);
 		choiceCard.off(MouseEventType.MOUSE_UP, valideSwip);
+		
+		choiceCard.off(TouchEventType.TOUCH_MOVE, followMouse);
+		choiceCard.off(TouchEventType.TOUCH_END, valideSwip);
+		choiceCard.off(TouchEventType.TOUCH_END_OUTSIDE, valideSwip);
 			
 		if (choiceType != ChoiceType.NONE) {
 			ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
