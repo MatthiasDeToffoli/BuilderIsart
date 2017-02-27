@@ -21,12 +21,13 @@ class DailyRewardManager
 	
 	private var lastDate:Date;
 	private var newDate:Date;
-	private var daysOfConnexion:Int;
+	public var daysOfConnexion:Int;
 	
 	private var gold:Int;
 	private var wood:Int;
 	private var iron:Int;
 	private var karma:Int;
+	private var sameDay:Bool = false;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -45,20 +46,18 @@ class DailyRewardManager
 		
 	}
 	
-	public function onConnexion():Void {
+	public function testDailyConnexion():Void {
 		getDates();
-		testDailyConnexion();
-		updateDates();
+		testDates();
 	}
 	
 	private function getDates():Void {
 		lastDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
 		newDate = Date.now();
 		daysOfConnexion = ServerManager.successEvent.daysOfConnexion;
-		if (daysOfConnexion == 0) daysOfConnexion = 1;
 	}
 	
-	public function testDailyConnexion():Void {
+	public function testDates():Void {
 		
 		if (!ifSameDates(lastDate,newDate)) {
 			var nextDate = addOneDay(lastDate);
@@ -67,33 +66,31 @@ class DailyRewardManager
 				lastDate = newDate;
 				daysOfConnexion ++;
 				if (daysOfConnexion > 7) daysOfConnexion = 1;
-				trace (lastDate);
-				trace (daysOfConnexion);
+				trace ("Last date : " + lastDate);
+				trace ("Days of connexion : " + daysOfConnexion);
 				ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE]);
 				ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INCREMENT_DAYS]);
-				giveDailyReward();
-				//Récupérer le type de ressources gagnées en fonction du nombre de jour
-				//ResourcesManager.gainResources();
-				//UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
+				setDailyReward();
 				trace("ONE MORE DAY !");
 			}
 			else {
 				lastDate = newDate;
 				daysOfConnexion = 1;
-				trace (lastDate);
-				trace (daysOfConnexion);
+				trace ("Last date : " + lastDate);
+				trace ("Days of connexion : " + daysOfConnexion);
 				ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE]);
 				ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.RESET_DAYS]);
-				giveDailyReward();
-				//Récupérer le type de ressources gagnées le premier jour
-				//ResourcesManager.gainResources();
-				//UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
+				ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INCREMENT_DAYS]);
+				setDailyReward();
 				trace("YOU'VE BEEN UNLOGGED TOO MUCH TIME...");
 			}
 		}
-		else trace("SAME DAY");
+		else {
+			sameDay = true;
+			trace("SAME DAY :" + sameDay);
+		}
 		
-		UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
+		if(!sameDay) UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
 	}
 	
 	private function addOneDay(pDate:Date):Date {
@@ -112,6 +109,10 @@ class DailyRewardManager
 		var lDate:Date = new Date(lYear, lMonth, lDay, 0, 0, 0);
 		trace("next date :" + lDate);
 		return lDate;
+	}
+	
+	public function resetDays():Void {
+		ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.RESET_DAYS]);
 	}
 	
 	private function ifSameDates(pDate1:Date, pDate2:Date):Bool {
@@ -135,15 +136,6 @@ class DailyRewardManager
 		trace("Fail... ;______;");
 	}
 	
-	private function updateDates():Void {
-		var lParameters:Map<String, Dynamic> = [
-			ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE, 
-			"newDate" => lastDate, 
-			"daysOfConnexion" => daysOfConnexion
-		];
-		ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, lParameters);
-	}
-	
 	private function setDailyReward():Void {
 		var lDailyReward:TableDailyReward = GameConfig.getDailyRewardsByDay(daysOfConnexion);
 		var lLevel:Int = ServerManager.successEvent.level;
@@ -153,9 +145,11 @@ class DailyRewardManager
 		karma = lDailyReward.karma * lLevel;
 	}
 	
-	public function giveDailyReward():Void {
-		setDailyReward();
-		
+	public function getDailyRewards():Map<String,Int> {
+		return ["gold" => gold, "wood" => wood, "iron" => iron, "karma" => karma];
+	}
+	
+	public function giveDailyReward():Void {		
 		if(gold != 0) ResourcesManager.gainResources(GeneratorType.soft, gold);
 		if(wood != 0) ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, wood);
 		if(iron != 0) ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, iron);

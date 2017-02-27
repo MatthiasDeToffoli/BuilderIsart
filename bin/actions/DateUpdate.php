@@ -7,5 +7,5 @@ include_once("utils/FacebookUtils.php");
 
 $newDate = time();
 
-Utils::updateSetWhere('Player', ['DateLastConnexion'=> Utils::timeStampToDate($newDate)], 'ID ='.FacebookUtils::getID());
+Utils::updateSetWhere('Player', ['DateLastConnexion'=> Utils::timeStampToDateTime($newDate)], 'ID ='.FacebookUtils::getID());
 ?>

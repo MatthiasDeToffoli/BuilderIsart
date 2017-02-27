@@ -1,7 +1,9 @@
 package com.isartdigital.perle.ui.popin.option;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.DailyRewardManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
@@ -80,6 +82,7 @@ class ResetDataPoppin extends SmartPopinExtended
 	private function confirm():Void {
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		SaveManager.reinit();
+		DailyRewardManager.getInstance().resetDays();
 	}
 	
 	private function addListeners():Void{
