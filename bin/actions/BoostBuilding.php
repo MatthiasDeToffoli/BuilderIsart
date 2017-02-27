@@ -76,7 +76,7 @@ class BoostBuilding {
 	
 	private static function getHardprice($infos, $ID) {
 		global $db;
-	
+		
 		try {
 			$hardPrice = ceil(($infos[static::END_TIME] - $infos[static::PROGRESS]) / 300000);
 			return $hardPrice;

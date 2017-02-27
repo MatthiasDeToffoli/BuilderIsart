@@ -628,7 +628,7 @@ class RegionManager
 				arrayBuilding[pElement.tileDesc.mapX] = new Map<Int, VBuilding>();
 				
 			if (arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] != null)
-			throw("there is already a building on this tile !");
+			Debug.error("there is already a building on this tile !");
 		
 		arrayBuilding[pElement.tileDesc.mapX][pElement.tileDesc.mapY] =  cast(pElement, VBuilding);
 		

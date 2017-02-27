@@ -364,7 +364,7 @@ class TimeManager {
 			pElement.progress = Date.now().getTime();
 			Intern.getIntern(pElement.refIntern).status = Intern.STATE_RESTING;
 			TimeManager.createTimeQuest(pElement);
-			ServerManagerQuest.TimeQuestAction(DbAction.UPDT, pElement, 0);
+			ServerManagerQuest.execute(DbAction.UPDT, pElement, 0);
 			eTimeQuest.emit(EVENT_CHOICE_DONE, pElement);
 		}
 	}
@@ -583,7 +583,7 @@ class TimeManager {
 		for (i in 0...listQuest.length) {
 			if (listQuest[i].refIntern == pQuest.refIntern) {
 				pQuest.progress = pQuest.steps[pQuest.stepIndex] + pQuest.startTime;
-				ServerManagerQuest.TimeQuestAction(DbAction.UPDT, pQuest, 1);
+				ServerManagerQuest.execute(DbAction.UPDT, pQuest, 1);
 				return false;
 			}
 		}
@@ -617,7 +617,7 @@ class TimeManager {
 		for (i in 0...lLengthQuest) {
 			if (pId == listQuest[i].refIntern){
 				var endQuest:TimeQuestDescription = listQuest.splice(i, 1)[0];
-				ServerManagerQuest.TimeQuestAction(DbAction.REM, endQuest);
+				ServerManagerQuest.execute(DbAction.REM, endQuest);
 				break;
 			}
 		}

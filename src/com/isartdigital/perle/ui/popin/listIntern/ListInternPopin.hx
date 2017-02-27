@@ -103,6 +103,11 @@ class ListInternPopin extends SmartPopinExtended
 		internsInQuestMax.text = UnlockManager.getNumberPlaces() + "";
 	}
 	
+	public function validSendInQuest(pId:Int):Void {	
+		UIManager.getInstance().closePopin(this);
+		UIManager.getInstance().openPopin(this);	
+	}
+	
 	/**
 	 * Get the spawners positions and display them
 	 */

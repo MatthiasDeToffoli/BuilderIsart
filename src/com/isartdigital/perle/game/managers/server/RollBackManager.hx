@@ -18,6 +18,12 @@ class RollBackManager{
 		Intern.destroyIntern(pId, false);
 	}
 	
+	public static function deleteQuest(pId:Int):Void {
+		QuestsManager.destroyQuest(pId);
+		TimeManager.destroyTimeQuest(pId);
+		Intern.getIntern(pId).quest = null;
+	}
+	
 	public static function cancelMoveBuilding (pEvent:EventSuccessMoveBuilding):Void {
 		Hud.getInstance().hideBuildingHud();
 		var lVBuilding:VBuilding = IdManager.searchVBuildingById(pEvent.iDClientBuilding);

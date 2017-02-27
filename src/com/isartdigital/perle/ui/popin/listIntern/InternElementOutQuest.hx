@@ -23,6 +23,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import js.Lib;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
 
@@ -172,9 +173,6 @@ class InternElementOutQuest extends InternElement
 		InternElementInQuest.canPushNewScreen = true;
 		
 		Interactive.removeListenerRewrite(btnSend, onHover);
-		
-		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
-		GameStage.getInstance().getPopinsContainer().addChild(ListInternPopin.getInstance());
 	}
 	
 	private function onStress(){
@@ -187,8 +185,10 @@ class InternElementOutQuest extends InternElement
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
-	private function sendInternInQuest():Void{
-		quest = QuestsManager.createQuest(internDatas.id, QUEST_PRICE);
+	private function sendInternInQuest():Void {
+		QuestsManager.createQuest(internDatas.id, QUEST_PRICE);
+		
+		quest = QuestsManager.getQuest(internDatas.id);
 		internDatas.quest = quest;
 		Intern.getIntern(internDatas.id).quest = internDatas.quest;
 		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
@@ -200,7 +200,7 @@ class InternElementOutQuest extends InternElement
 	
 	//For the HUD Popin actualisation
 	private function updateQuestHud(pQuest:TimeQuestDescription):Void{
-		UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().closePopin(ListInternPopin.getInstance());
 		UIManager.getInstance().openPopin(ListInternPopin.getInstance());
 	}
 

@@ -68,6 +68,8 @@ class Interns {
                 static::SOFT,
                 $gold[static::SOFT] - $price[static::INTERN_PRICE]
             );
+			
+			echo $price[static::INTERN_PRICE];
 			exit;
 		}
 		catch (Exception $e) {

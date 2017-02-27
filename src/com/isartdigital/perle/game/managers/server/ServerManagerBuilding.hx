@@ -8,7 +8,6 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
-import com.isartdigital.perle.game.managers.server.ServerManagerInterns.EventErrorBuyIntern;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;

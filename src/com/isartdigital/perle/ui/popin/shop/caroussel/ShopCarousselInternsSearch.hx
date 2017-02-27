@@ -29,9 +29,9 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	private var loop:Timer;
 	public static var progress:Float; 
 	
-	private static inline var SKIP_PRICE:Int = 10;
+	private static inline var SKIP_PRICE:Int = 5;
 	private static inline var PROGRESS_VALUE:Int = 100;
-	private static inline var PROGRESS_TOTAL:Int = 10000;
+	private static inline var PROGRESS_TOTAL:Int = 1800000;
 	
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_INTERN_SEARCHING);

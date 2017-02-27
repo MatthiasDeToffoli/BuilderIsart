@@ -1,5 +1,6 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerChoice;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
 import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
@@ -117,7 +118,7 @@ class ChoiceManager
 		Intern.getIntern(pId).idEvent = actualID;
 		var intern:InternDescription = Intern.getIntern(pId);
 		if (!isGatcha) ServerManagerInterns.execute(DbAction.UPDT_EVENT, intern.id, intern.idEvent);
-		else ServerManagerQuest.TimeQuestAction(DbAction.REM, QuestsManager.getQuest(intern.id));
+		else ServerManagerQuest.execute(DbAction.REM, QuestsManager.getQuest(intern.id));
 	}
 	
 	public static function getNewChoiceID():Void {
@@ -133,22 +134,22 @@ class ChoiceManager
 		
 		if (pChoiceType == ChoiceType.HELL) {
 			baseReward = {
-				gold : useChoice.goldHell + pReward.gold,
-				karma : useChoice.karmaHell + pReward.karma,
-				wood : useChoice.woodHell + pReward.wood,
-				iron : useChoice.ironHell + pReward.iron,
-				soul : useChoice.soulHell + pReward.soul
+				gold : (useChoice.goldHell != 0) ? useChoice.goldHell + pReward.gold : 0,
+				karma : (useChoice.karmaHell != 0) ? useChoice.karmaHell + pReward.karma : 0,
+				wood : (useChoice.woodHell != 0) ? useChoice.woodHell + pReward.wood : 0,
+				iron : (useChoice.ironHell != 0) ? useChoice.ironHell + pReward.iron : 0,
+				soul : (useChoice.soulHell != 0) ? useChoice.soulHell + pReward.soul : 0
 			};
 			
 			SoundManager.getSound("SOUND_CHOICE_HELL").play();
 		}
 		else {
 			baseReward = {
-				gold : useChoice.goldHeaven + pReward.gold,
-				karma : useChoice.karmaHeaven + pReward.karma,
-				wood : useChoice.woodHeaven + pReward.wood,
-				iron : useChoice.ironHeaven + pReward.iron,
-				soul : useChoice.soulHeaven + pReward.soul
+				gold : (useChoice.goldHeaven != 0) ? useChoice.goldHeaven + pReward.gold : 0,
+				karma : (useChoice.karmaHeaven != 0) ? useChoice.karmaHeaven + pReward.karma : 0,
+				wood : (useChoice.woodHeaven!= 0) ? useChoice.woodHeaven + pReward.wood : 0,
+				iron : (useChoice.ironHeaven != 0) ? useChoice.ironHeaven + pReward.iron : 0,
+				soul : (useChoice.soulHeaven != 0) ? useChoice.soulHeaven + pReward.soul : 0
 			};
 			
 			SoundManager.getSound("SOUND_CHOICE_HEAVEN").play();
@@ -177,6 +178,8 @@ class ChoiceManager
 				
 				default: return;
 			}
+			
+			ServerManagerChoice.applyReward(baseReward, pChoiceType);
 			
 			ServerManager.ChoicesAction(DbAction.CLOSE_QUEST, pIntern.idEvent);
 			ServerManagerInterns.execute(DbAction.UPDT, pIntern.id);

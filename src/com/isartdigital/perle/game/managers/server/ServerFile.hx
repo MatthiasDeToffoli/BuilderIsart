@@ -29,6 +29,7 @@ class ServerFile{
 	public static inline var TIME_BUILD:String = "BuildingTime";
 	public static inline var INTER_ACTION:String = "InternAction";
 	public static inline var TIME_QUEST:String = "Quest";
+	public static inline var NEW_QUEST_FILE:String = "Quests";
 	public static inline var LOAD_REGION:String = "LoadRegion";
 	public static inline var DEBUG:String = "Debug";
 	public static inline var BUILDING_SELL:String = "BuildingSell";

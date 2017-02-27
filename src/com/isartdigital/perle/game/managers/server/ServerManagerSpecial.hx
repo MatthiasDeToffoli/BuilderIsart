@@ -22,7 +22,7 @@ class ServerManagerSpecial
 	
 	public static function loadQuests():Void {
 		QuestsManager.init();
-		ServerManagerQuest.TimeQuestAction(DbAction.GET_SPE_JSON);
+		ServerManagerQuest.execute(DbAction.GET_SPE_JSON);
 	}
 	
 	public static function loadInterns():Void {

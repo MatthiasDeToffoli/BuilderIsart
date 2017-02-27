@@ -174,7 +174,7 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onDismiss():Void{
 		ServerManagerInterns.execute(DbAction.REM, intern.id);
-		if (intern.quest != null) ServerManagerQuest.TimeQuestAction(DbAction.REM, intern.quest);
+		if (intern.quest != null) ServerManagerQuest.execute(DbAction.REM, intern.quest);
 		UIManager.getInstance().closePopin(this);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}

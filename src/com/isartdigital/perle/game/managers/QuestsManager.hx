@@ -85,7 +85,7 @@ class QuestsManager
 	 * @param	pNumberEvents Number of events contained in a quest
 	 * @return	The quest's datas
 	 */
-	public static function createQuest(pIdIntern:Int, pPrice:Int):TimeQuestDescription {
+	public static function createQuest(pIdIntern:Int, pPrice:Int):Void {
 		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Float> = createRandomGapArray(Intern.getIntern(pIdIntern));
 		
@@ -99,8 +99,6 @@ class QuestsManager
 		
 		questsList.push(lTimeQuestDescription);
 		ServerManagerQuest.addQuest(lTimeQuestDescription, pPrice);
-		
-		return lTimeQuestDescription;
 	}
 	
 	/**
@@ -194,7 +192,7 @@ class QuestsManager
 		
 		for (i in 0...Intern.internsListArray.length){
 			if (pQuest.refIntern == Intern.internsListArray[i].id) {
-				ServerManagerQuest.TimeQuestAction(DbAction.REM, Intern.internsListArray[i].quest);
+				ServerManagerQuest.execute(DbAction.REM, Intern.internsListArray[i].quest);
 				Intern.getIntern(pQuest.refIntern).quest = null;
 			}
 		}
