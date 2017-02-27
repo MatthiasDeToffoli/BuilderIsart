@@ -1,4 +1,5 @@
 package com.isartdigital.utils.localisation;
+import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.loader.GameLoader;
 import haxe.xml.Fast;
 
@@ -15,6 +16,12 @@ class Localisation
 	private static var allTraductions:Map<String, String> = new Map<String, String>();	//Tableau associatif pour stocker toutes les traductions
 	
 	public static var actualLanguage:String = "en";
+	
+	public static var userLanguage:String = ENGLISH_FB; //Set a basic value
+	
+	public static inline var FRENCH_FB:String = "fr_FR";
+	public static inline var ENGLISH_FB:String = "en_GB";
+	
 	 /**
      * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
      * @return instance unique
@@ -31,11 +38,23 @@ class Localisation
 	}
 	
 	public static function init(pLocalization:Dynamic):Void{
+		setUserLanguage();
+		trace(userLanguage);
+		trace(userLanguage == FRENCH_FB);
 		localization = pLocalization;
+		
 		for (label in Reflect.fields(pLocalization)){
 			var langage:Dynamic = Reflect.field(pLocalization, label);
-			allTraductions[label] = langage.en;
+			userLanguage == FRENCH_FB ? allTraductions[label] = langage.fr : allTraductions[label] = langage.en;
 		}
+	}
+	
+	private static function setUserLanguage():Void{
+		Facebook.api(Facebook.uid+"?fields=locale", onLanguage);
+	}
+	
+	private static function onLanguage(pResponse:Dynamic):Void{
+		userLanguage = pResponse.locale;
 	}
 	
 	/**

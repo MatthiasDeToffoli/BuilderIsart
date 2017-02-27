@@ -21,6 +21,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -120,7 +121,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = false;
+		Localisation.userLanguage == Localisation.FRENCH_FB ? isFR = true : isFR = false;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());

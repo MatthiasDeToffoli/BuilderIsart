@@ -365,6 +365,7 @@ class TribunalPopin extends SmartPopinExtended
 		
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		//Facebook.api(Facebook.uid+"/permissions",onHavePermission);
+		//Facebook.api(Facebook.uid+"?fields=email", onEmail);
 	}
 	
 	private function onRequest(pObject:Dynamic):Void {

@@ -302,8 +302,8 @@ class Main extends EventEmitter
 	}
 	
 	public function startAfterTitleCard() {
-		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		Localisation.init(GameLoader.getContent(JSON_LOCALIZATION + JSON_EXTENSION));
+		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		GameManager.getInstance().start();
 	}
 	
