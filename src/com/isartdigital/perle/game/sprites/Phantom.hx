@@ -146,11 +146,11 @@ class Phantom extends Building {
 		container.addChild(instance);
 		FootPrint.createShadow(instance);
 		
-		if ( Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVicesBuilding" || Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVirtuesBuilding") {
-			altarEffectZone = new Movie("effect_zone");
-			//altarEffectZone.position = pPos;
-			container.addChild(altarEffectZone);
-		}
+		//if ( Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVicesBuilding" || Virtual.BUILDING_NAME_TO_VCLASS[pBuildingName] == "VVirtuesBuilding") {
+		//	altarEffectZone = new Movie("effect_zone");
+		//	//altarEffectZone.position = pPos;
+		//	container.addChild(altarEffectZone);
+		//}
 		
 		instance.start();
 	}
@@ -286,8 +286,8 @@ class Phantom extends Building {
 			bestMapPos.y
 		));
 		
-		if (altarEffectZone != null)
-			altarEffectZone.position = buildingGroundCenter;
+		//if (altarEffectZone != null)
+		//	altarEffectZone.position = buildingGroundCenter;
 		
 		// optimization to make less call to canBuiltHere();
 		if (precedentBesMapPos.x != bestMapPos.x ||

@@ -108,7 +108,6 @@ class DialogueManager
 	 * @param	pFTUE
 	 */
 	public static function init (pFTUE: Dynamic): Void {
-		trace("ftue");
 		steps = pFTUE.steps;
 		setAllExpressions();
 		npc_dialogue_ftue = [];
@@ -136,10 +135,11 @@ class DialogueManager
 		ftueIsCreated = true;
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//var lSave:Int = SaveManager.currentSave.ftueProgress;
-		
+		trace(lSave);
+		trace(steps.length);
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
-			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing || steps[lSave-1].endOfSpecial) {
+			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing) {
 				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
 				return;
 			}
