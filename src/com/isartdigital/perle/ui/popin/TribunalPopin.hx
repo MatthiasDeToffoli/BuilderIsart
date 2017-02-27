@@ -352,7 +352,7 @@ class TribunalPopin extends SmartPopinExtended
 			
 		Facebook.ui ({
 			method: 'apprequests',
-			message:"Clique sur jouer, tu vas adorer :)"
+			message: Localisation.getText("LABEL_FACEBOOK_SHARE")
 		}, onRequest);
 		
 		SoundManager.getSound("SOUND_NEUTRAL").play();
