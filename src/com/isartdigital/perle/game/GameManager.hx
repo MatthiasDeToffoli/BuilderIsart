@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.ChoiceManager;
 import com.isartdigital.perle.game.managers.ClippingManager;
 import com.isartdigital.perle.game.managers.CocoonJSManager;
+import com.isartdigital.perle.game.managers.DailyRewardManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ExperienceManager;
 import com.isartdigital.perle.game.managers.MarketingManager;
@@ -64,7 +65,7 @@ class GameManager {
 		// todo : deplacer les nom de fonction initClass faisant rien de 
 		// plus que des awake dans unity par le nom awake()
 		// ci-dessous met à jour game_config.json, temporaire.
-		//ServerManager.refreshConfig(); // todo : remplacer par cron
+		ServerManager.refreshConfig(); // todo : remplacer par cron
 		
 		ParallaxManager.getInstance().init();
 		GodMode.awake(); //@TODO: comment that for livraison
@@ -107,6 +108,8 @@ class GameManager {
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		BackgroundUnder.getInstance().init();
 		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());
+		
+		DailyRewardManager.getInstance().onConnexion();
 	}
 	
 	/**

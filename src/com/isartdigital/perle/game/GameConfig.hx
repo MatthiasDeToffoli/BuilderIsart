@@ -112,10 +112,17 @@ typedef TableLevelRewards = {
 	@:optional var wood:Int;
 	@:optional var iron:Int;
 }
-
 typedef TableMaxExp = {
 	var level:Int;
 	var value:Int;
+}
+
+typedef TableDailyReward = {
+	var day:Int;
+	var gold:Int;
+	var wood:Int;
+	var iron:Int;
+	var karma:Int;
 }
 
 /**
@@ -140,6 +147,7 @@ class GameConfig {
 	public static inline var USED_CHOICES:String = "ChoicesUsed";
 	public static inline var SOUL_NAME:String = "SoulName";
 	public static inline var SOUL_ADJ:String = "SoulAdjective";
+	public static inline var DAILY_REWARD:String = "DailyReward";
 	
 	
 	public static function awake ():Void {
@@ -158,6 +166,10 @@ class GameConfig {
 	public static function getBuilding ():Array<TableTypeBuilding> {
 		return cast(config[BUILDING]);
 	}
+	
+	/*public static function getDailyReward ():Array<TableDailyReward> {
+		return cast(config[DAILY_REWARD]);
+	}*/
 	
 	public static function getInterns():Array<TableInterns> {
 		return cast(config[INTERNS]);
@@ -222,6 +234,18 @@ class GameConfig {
 				return config[BUILDING][i];
 				
 		Debug.error("BuildingID '" + pID +"' missing.");
+		return null;
+	}
+	
+	public static function getDailyRewardsByDay (pDay:Int):TableDailyReward {
+		cast(config[DAILY_REWARD]);
+		for (i in 0...config[DAILY_REWARD].length)
+			if (config[DAILY_REWARD][i].day == pDay) {
+				trace(config[DAILY_REWARD][i]);
+				return config[DAILY_REWARD][i];
+			}
+				
+		Debug.error("DailyReward for the day " + pDay +" is missing.");
 		return null;
 	}
 	

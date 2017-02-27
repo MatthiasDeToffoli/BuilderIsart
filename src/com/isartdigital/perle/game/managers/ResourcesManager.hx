@@ -563,6 +563,12 @@ class ResourcesManager
 			pFloat /= 10;
 			suffix = "k";
 		}
+		/*else if (pFloat >= 1000) {
+			var prefix:Float = pFloat/1000;
+			prefix = Math.floor(prefix);
+			suffix = Std.string(pFloat - prefix*1000);
+			return Std.string(prefix + " " + suffix);
+		}*/
 		return Std.string(pFloat + suffix);
 	}
 	

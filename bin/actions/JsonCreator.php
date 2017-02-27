@@ -8,7 +8,7 @@ namespace actions;
 
 class JsonCreator // fichier du même nom ?
 {
-    const TABLE = "Config,TypeBuilding,TypeIntern,TypeShopPack,TypePack,Interns,LevelReward,MaxExp,Choices,ConfigEvent,SoulName,SoulAdjective";
+    const TABLE = "Config,TypeBuilding,TypeIntern,TypeShopPack,TypePack,Interns,LevelReward,MaxExp,Choices,ConfigEvent,SoulName,SoulAdjective,DailyReward";
     const JSON_GAME_CONFIG_NAME= "./assets/json/game_config.json";
 
     public static function update () {
@@ -40,7 +40,8 @@ class JsonCreator // fichier du même nom ?
         {
             $result[] = $row;
         }
-
+		
+		echo($result);
         return $result;
     }
 
@@ -48,6 +49,7 @@ class JsonCreator // fichier du même nom ?
         $fp = fopen(static::JSON_GAME_CONFIG_NAME, 'w');
         fwrite($fp, json_encode($pConfig));
         fclose($fp);
+		echo($fp);
     }
 }
 

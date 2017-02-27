@@ -24,6 +24,9 @@ typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;
 	var ID:String;
 	var passwordNoFB:String; // saved in cookie
+	var dateLastConnexion:Float;
+	var daysOfConnexion:Int;
+	var level:Int;
 }
 
 typedef EventSuccessAddRegion = {
@@ -52,6 +55,7 @@ class ServerManager {
 	public static inline var KEY_POST_FUNCTION_NAME:String = "action";
 	private static inline var SECOND:Int = 1000;
 	private static var currentButtonRegion:ButtonRegion;
+	public static var successEvent:EventSuccessConnexion;
 	
 	/**
 	 * start player inscription or get his information
@@ -61,7 +65,7 @@ class ServerManager {
 	}
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
-		var successEvent:EventSuccessConnexion = Json.parse(pObject);
+		successEvent = Json.parse(pObject);
 		
 		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
 			Debug.error("Player connexion failed (go look network panel)");
@@ -165,7 +169,7 @@ class ServerManager {
     }
 
 	private static function onDataCallback(object:Dynamic):Void {
-		//trace(Json.parse(object));
+		//trace(object);
 		//trace(Json.parse(object)); //n'est parfois pas un objet mais un string..
 	}
 	

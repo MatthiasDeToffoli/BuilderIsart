@@ -73,17 +73,23 @@ try {
     // if player is in db -> return profil info
     if (!empty($res)) {
         $retour['ID'] = $res['ID'];
+        $retour['level'] = $res['Level'];
         $retour['isNewPlayer'] = false;
         $retour['passwordNoFB'] = $res['PasswordNoFB'];
         $retour['debug3'] = "trace2";
+		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
+        $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else if no facebook id but a password
     else if (!empty($rowPlayerNoFB)) {
         $retour['ID'] = $rowPlayerNoFB['ID'];
+		$retour['level'] = $res['Level'];
         $retour['isNewPlayer'] = false;
         $retour['passwordNoFB'] = $rowPlayerNoFB['PasswordNoFB'];
         $retour['debug'] = "ConnexionWhitoutFB";
+		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
+        $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else -> put it in db
@@ -128,6 +134,9 @@ try {
             $retour['ID'] = $id;
             $retour['isNewPlayer'] = true;
             $retour['passwordNoFB'] = $lPassword;
+			$retour['lastDateConnexion'] = time();
+			$retour['daysOfConnexion'] = 1;
+			$retour['level'] = 2;
 
         } catch (Exception $e) {
             echo $e->getMessage();

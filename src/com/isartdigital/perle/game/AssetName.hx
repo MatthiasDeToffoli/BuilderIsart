@@ -560,6 +560,32 @@ class AssetName{
 	public static inline var LEVELUP_POPPIN_SKIP_TEXT:String = "Text";
 	public static inline var LEVELUP_POPPIN_NEXT_TEXT:String = "_txt_continue";
 	
+	//DailyRewardPopin
+	public static inline var DAILY_REWARDS_POPPIN:String = "Popin_DailyRewards";
+	public static inline var DAILY_REWARD_POPIN_CLOSE:String = "ButtonClose";
+	public static inline var DAILY_REWARD_POPIN_GAIN_BUTTON:String = "ButtonDaily";
+	public static inline var DAILY_REWARD_POPIN_WOOD:String = "_dailyReward_value_wood";
+	public static inline var DAILY_REWARD_POPIN_IRON:String = "_dailyReward_value_iron";
+	public static inline var DAILY_REWARD_POPIN_GOLD:String = "_dailyReward_value_gold";
+	public static inline var DAILY_REWARD_POPIN_KARMA:String = "_dailyReward_value_karma";
+	public static inline var DAILY_REWARD_POPIN_DAY_BG_SMALL:String = "_dayBG_small";
+	public static inline var DAILY_REWARD_POPIN_DAY1:String = "Day1";
+	public static inline var DAILY_REWARD_POPIN_DAY2:String = "Day2";
+	public static inline var DAILY_REWARD_POPIN_DAY3:String = "Day3";
+	public static inline var DAILY_REWARD_POPIN_DAY4:String = "Day4";
+	public static inline var DAILY_REWARD_POPIN_DAY5:String = "Day5";
+	public static inline var DAILY_REWARD_POPIN_DAY6:String = "Day6";
+	public static inline var DAILY_REWARD_POPIN_DAY7:String = "Day7";
+	public static inline var DAILY_REWARD_POPIN_DAY1_SMALL:String = "_Day1Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY2_SMALL:String = "_Day2Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY3_SMALL:String = "_Day3Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY4_SMALL:String = "_Day4Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY5_SMALL:String = "_Day5Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY6_SMALL:String = "_Day6Small_txt";
+	public static inline var DAILY_REWARD_POPIN_DAY7_SMALL:String = "_Day7Small_txt";
+	public static inline var DAILY_REWARD_POPIN_TEXT:String = "_getRewards_txt";
+	
+	
 	//Destroy Poppin
 	public static inline var DESTROY_POPPIN:String = "Popin_DestroyBuilding";
 	
