@@ -74,6 +74,18 @@ class ServerManager {
 		Debug.error("Error php : " + object);
 	}
 	
+	public static function ftue():Void {
+		callPhpFile(onSuccessFtue, onErrorFtue, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.FTUE, "FtueProgress"=> DialogueManager.dialogueSaved]);
+	}
+	
+	private static function onSuccessFtue (pObject:String):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorFtue (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
 	private static function callDevugFille():Void {
 		callPhpFile(debug, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.DEBUG]);
 	}

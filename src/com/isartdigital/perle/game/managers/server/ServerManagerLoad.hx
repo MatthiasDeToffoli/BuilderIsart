@@ -90,6 +90,7 @@ class ServerManagerLoad {
 	}
 	
 	public static function getPlayer ():TablePlayer {
+		trace(cast(serverSave[TABLE_PLAYER][0]));
 		return cast(serverSave[TABLE_PLAYER][0]);
 	}
 	

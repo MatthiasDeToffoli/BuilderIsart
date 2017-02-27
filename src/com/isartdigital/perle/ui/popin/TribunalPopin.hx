@@ -222,7 +222,7 @@ class TribunalPopin extends SmartPopinExtended
 		setPictureFalse();
 		if (pAge == null || pAlignement == null)
 			return;
-		var pSexe:Int = Math.floor(Math.random() * 2) + 1;
+		var pSexe:Int = VTribunal.getInstance().soulToJudge.sexe;
 		
 		if (pAlignement == 3 || pAlignement == 0) {
 			var lAlignement:Int = Math.floor(Math.random() * 2) +1;

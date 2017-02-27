@@ -8,6 +8,7 @@ class ServerFile{
 
 	public static inline var MAIN_PHP:String = "actions.php";
 	public static inline var LOGIN:String = "Login";
+	public static inline var FTUE:String = "Ftue";
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
 	public static inline var REGIONS:String = "BuyRegions"; // todo : rename ADD_REGIONS ?
 	public static inline var BUILDING_ADD:String = "AddBuilding";

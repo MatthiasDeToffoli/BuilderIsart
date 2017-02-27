@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -107,6 +108,7 @@ class DialogueManager
 	 * @param	pFTUE
 	 */
 	public static function init (pFTUE: Dynamic): Void {
+		trace("ftue");
 		steps = pFTUE.steps;
 		setAllExpressions();
 		npc_dialogue_ftue = [];
@@ -132,8 +134,8 @@ class DialogueManager
 	 */
 	public static function createFtue():Void {
 		ftueIsCreated = true;
-		//var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
+		//var lSave:Int = SaveManager.currentSave.ftueProgress;
 		
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
@@ -164,12 +166,13 @@ class DialogueManager
 		dialogueSaved = 0;
 		
 		//check if FTUE wasn't over
-		//if(ServerManagerLoad.getPlayer().ftueProgress!=null && ServerManagerLoad.getPlayer().ftueProgress!=0)
-		if(SaveManager.currentSave.ftueProgress!=null && SaveManager.currentSave.ftueProgress!=0)
+		if (SaveManager.currentSave.ftueProgress != null && SaveManager.currentSave.ftueProgress != 0) {
 			dialogueSaved = SaveManager.currentSave.ftueProgress;
+		}
+		//if(SaveManager.currentSave.ftueProgress!=null && SaveManager.currentSave.ftueProgress!=0)
 		else {
 			dialogueSaved = 0;
-			createFirstHouse();
+			//createFirstHouse();
 		}
 		
 		if (lSave != null) 
@@ -243,6 +246,7 @@ class DialogueManager
 	 */
 	public static function nextStep(pTarget:DisplayObject = null): Void {
 		if (dialogueSaved >= steps.length) return;
+		
 		if (steps[dialogueSaved] == null) return;
 		
 		if(steps[dialogueSaved].otherStorieDialogue)
@@ -483,8 +487,10 @@ class DialogueManager
 		closeFtueLock();
 		
 		dialogueSaved++;
-		if (steps[dialogueSaved-1].checkpoint)
-			SaveManager.save();
+		if (steps[dialogueSaved - 1].checkpoint) {
+			ServerManager.ftue();
+			//SaveManager.save();
+		}
 		
 		if (steps[dialogueSaved - 1].endOfFtue || steps[dialogueSaved - 1].endOfAltar || steps[dialogueSaved - 1].endOfCollectors || steps[dialogueSaved - 1].endOfFactory || steps[dialogueSaved - 1].endOfMarketing || steps[dialogueSaved - 1].endOfSpecial) {
 			Hud.getInstance().alpha = 1;
