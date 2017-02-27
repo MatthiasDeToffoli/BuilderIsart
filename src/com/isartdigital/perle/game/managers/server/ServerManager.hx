@@ -11,7 +11,9 @@ import com.isartdigital.perle.ui.popin.server.ServerConnexionPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.system.DeviceCapabilities;
 import haxe.Http;
 import haxe.Json;
 import pixi.core.math.Point;
@@ -147,7 +149,11 @@ class ServerManager {
 	 */
 	public static function callPhpFile(onData:Dynamic->Void, onError:Dynamic->Void, pFileName:String, ?pParams:Map<String, Dynamic>):Void {
 		// create new http request
-        var lCall:Http = new Http(pFileName);
+		var url:String = pFileName;
+		if (DeviceCapabilities.isCocoonJS)
+			url = "https://fbgame.isartdigital.com/2018_builder/perle/" + Config.pathInFBGame + url;
+		
+        var lCall:Http = new Http(url);
         lCall.onData = onData;
         lCall.onError = onError;
 		
