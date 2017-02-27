@@ -122,7 +122,7 @@ try {
             }*/
 
 
-            Resources::createResources($id, 'soft', 20000);
+            Resources::createResources($id, 'soft', 0);
             Resources::createResources($id, 'hard', 0);
             Resources::createResources($id, 'resourcesFromHell', 0);
             Resources::createResources($id, 'resourcesFromHeaven', 0);
