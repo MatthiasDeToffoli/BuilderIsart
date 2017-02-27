@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -36,8 +37,7 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	public function spawn():Void {
-		building = BuildingHud.virtualBuilding;
-		
+		building = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
 		getComponents();
 		showTime(building.tileDesc);
 	}

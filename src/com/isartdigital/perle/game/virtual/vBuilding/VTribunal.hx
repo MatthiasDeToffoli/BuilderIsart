@@ -73,6 +73,7 @@ class VTribunal extends VBuildingUpgrade
 		
 		
 		super(lDesc);
+		addGenerator();
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
 		findSoul();
 		

@@ -14,6 +14,7 @@ import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.ui.hud.building.BHBuiltCollectorNotUpgrade;
@@ -244,15 +245,16 @@ class Hud extends SmartScreen
 	}
 	
 	public function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {
-		var lLocalBounds:Rectangle = BuildingHud.virtualBuilding.graphic.getLocalBounds();
+		var lVBuilding:VBuilding = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
+		var lLocalBounds:Rectangle = lVBuilding.graphic.getLocalBounds();
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			
-		var lRect:Point = BuildingHud.virtualBuilding.graphic.position;
+		var lRect:Point = lVBuilding.graphic.position;
 		pContainer.position.x = lRect.x + lAnchor.x;
 		pContainer.position.y = lRect.y + lAnchor.y;
 		
 		UIPosition.setPositionContextualUI(
-			BuildingHud.virtualBuilding.graphic,
+			lVBuilding.graphic,
 			pComponent,
 			pUIPos,
 			0,

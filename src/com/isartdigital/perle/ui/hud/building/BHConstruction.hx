@@ -4,6 +4,8 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;
 import com.isartdigital.perle.utils.Interactive;
@@ -45,14 +47,15 @@ class BHConstruction extends BuildingHud {
 		return timerContainer;
 	}
 	
-	public static function newTimer(?pTimeDesc:TimeDescription=null):Void {
+	public static function newTimer(?pTimeDesc:TimeDescription = null):Void {
+		var lVBuilding:VBuilding = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
 		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();
 		buildingTimer.spawn();
 		if (pTimeDesc != null) listTimerConstruction.set(pTimeDesc.refTile, buildingTimer);
-		else listTimerConstruction.set(BuildingHud.virtualBuilding.tileDesc.id, buildingTimer);
+		else listTimerConstruction.set(lVBuilding.tileDesc.id, buildingTimer);
 		var lContainer:Container = new Container();	
 		Hud.getInstance().placeAndAddComponent(buildingTimer, lContainer, UIPosition.BOTTOM);
-		lContainer.position.x += BuildingHud.virtualBuilding.graphic.getLocalBounds().width / 2;
+		lContainer.position.x += lVBuilding.graphic.getLocalBounds().width / 2;
 		timerContainer.addChild(lContainer);
 	}
 	
