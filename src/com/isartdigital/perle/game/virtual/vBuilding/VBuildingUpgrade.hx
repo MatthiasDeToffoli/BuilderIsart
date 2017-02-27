@@ -44,11 +44,11 @@ class VBuildingUpgrade extends VBuilding
 		tileDesc.timeDesc = { 
 			refTile:tileDesc.id,
 			// todo : tTime + tTime seem very suspicious !
-			end: tTime + tTime + Date.fromString(GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).constructionTime).getTime(),
+			end: tTime + Date.fromString(GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level).constructionTime).getTime(),
 			progress: 0,
 			creationDate: tTime 
 		};
-		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
+		currentState = TimeManager.getBuildingStateFromTime(tileDesc);w
 		
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
