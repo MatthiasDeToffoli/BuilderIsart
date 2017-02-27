@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.popin.shop.card;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.utils.sounds.SoundManager;
 import pixi.interaction.EventTarget;
@@ -18,8 +19,6 @@ class CarouselCardPackCurrency extends CarouselCardPack{
 	override function _click(pEvent:EventTarget = null):Void {
 		super._click(pEvent);
 		SoundManager.getSound("SOUND_SPEND").play();
-		if (myConfig.priceIP != null && myConfig.priceIP > 0)
-			DeltaDNAManager.sendIsartPointExpense(myConfig.iD, myConfig.priceIP);
 	}
 	
 }

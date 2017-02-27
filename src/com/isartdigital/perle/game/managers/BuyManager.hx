@@ -1,7 +1,9 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerShop;
+import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBuilding;
 import com.isartdigital.utils.Debug;
 
 typedef PriceElement = {
@@ -25,7 +27,7 @@ typedef BuyPrice = {
 class BuyManager {
 	
 	
-	public static function buy (pBuildingName:String):Void {
+	public static function buy (pBuildingName:String, pLevel:Int=1):Void {
 		
 		var lPrice:Map<GeneratorType, Int> = getPrice(pBuildingName);
 		
@@ -35,10 +37,19 @@ class BuyManager {
 				lPrice[lGeneratorType]
 			);
 		}
+		
+		var isBuilding:Bool = ShopCarousselBuilding.getNameList().indexOf(pBuildingName) != -1;
+		
+		DeltaDNAManager.sendTransaction(
+			isBuilding ? TransactionType.boughtBuilding : TransactionType.boughtDecoration,
+			GameConfig.getBuildingByName(pBuildingName, pLevel).iD,
+			GeneratorType.soft,
+			lPrice[GeneratorType.soft]
+		);
 	}
 	
 	
-	public static function sell (pBuildingName:String,  isConstructed:Bool):Void { // todo : vérifier les fc qui envoit isConstructed
+	public static function sell (pBuildingName:String,  isConstructed:Bool, pLevel:Int=1):Void { // todo : vérifier les fc qui envoit isConstructed
 		
 		var lSellPrice:Map<GeneratorType, Int> = getSellPrice(pBuildingName, isConstructed);
 		
@@ -49,6 +60,12 @@ class BuyManager {
 			);
 		}
 		
+		DeltaDNAManager.sendTransaction(
+			TransactionType.soldBuilding,
+			GameConfig.getBuildingByName(pBuildingName, pLevel).iD,
+			GeneratorType.soft,
+			lSellPrice[GeneratorType.soft]
+		);
 	}
 	
 	
@@ -126,15 +143,27 @@ class BuyManager {
 	 * @param	pGain
 	 */
 	public static function buyShopPack (pPrice:Map<GeneratorType, Float>, pGain:Map<GeneratorType, Int>, pConfigID:Int):Void {
+		var isIsartPoint:Bool = false;
+		var lHardPrice:Float = 0;
+		
 		
 		ServerManagerShop.buyShopPack(pConfigID);
 		
 		for (lGeneratorType in pPrice.keys()) {
 			
 			// todo : hack à enlever lorsque isartPoint gérer.
-			if (lGeneratorType == GeneratorType.isartPoint)
+			if (lGeneratorType == GeneratorType.isartPoint) {
+				DeltaDNAManager.sendTransaction(
+					TransactionType.shopPackBought,
+					pConfigID,
+					GeneratorType.isartPoint,
+					pPrice[lGeneratorType]
+				);
+				isIsartPoint = true;
 				continue;
+			}
 			
+			lHardPrice = pPrice[lGeneratorType];
 			ResourcesManager.spendTotal(
 				lGeneratorType,
 				cast(pPrice[lGeneratorType], Int) // isartPoint is a float, but not karma, so no error.
@@ -147,6 +176,16 @@ class BuyManager {
 				pGain[lGeneratorType]
 			);
 		}
+		
+		if (!isIsartPoint) {
+			DeltaDNAManager.sendTransaction(
+				TransactionType.shopPackBought,
+				pConfigID,
+				GeneratorType.hard,
+				lHardPrice
+			);
+		}
+
 	}
 	
 	/*public static function getPriceShopPack (pShopPackName:String):Map<GeneratorType, Int> {

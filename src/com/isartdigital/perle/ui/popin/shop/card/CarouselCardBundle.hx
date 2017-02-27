@@ -107,7 +107,6 @@ class CarouselCardBundle extends CarouselCard{
 		SoundManager.getSound("SOUND_SPEND").play();
 		//closeShop();
 		BuyManager.buyShopPack(myPrice, myGain, myConfig.iD);
-		DeltaDNAManager.sendIsartPointExpense(myConfig.iD, myConfig.priceIP);
 		SaveManager.saveLockBundle(myConfig.iD);
 		ShopPopin.getInstance().setCurrenciesNumber();
 	}

@@ -31,6 +31,10 @@ class ShopCarousselBuilding extends ShopCarousselDecoBuilding{
 		//BuildingName.STYX_VIRTUE_3,
 	];
 	
+	public static function getNameList ():Array<String> {
+		return NAME_LIST;
+	}
+	
 	public function new() {
 		super();
 	}

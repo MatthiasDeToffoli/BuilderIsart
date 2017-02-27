@@ -90,21 +90,7 @@ class DeltaDNAManager{
 		stepFTUETStartTimeStamp = Date.now().getTime();
 	}
 	
-	// todo : enlever
-	public static function sendIsartPointExpense (pIdPack:Int, pPrice:Float):Void {
-		if (!isReady) {
-			if (Config.deltaDNA)
-				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
-			return;
-		}
-		
-		DeltaDNA.addEvent(DeltaDNAEventCustom.EXPENSE_ISART_POINT, {
-			packID:pIdPack,
-			playerLevel:ResourcesManager.getLevel(),
-			pricePaid:pPrice
-		});
-		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-	}
+	// todo enlver isartpoint expence de deltaDNA
 	
 	public static function sendTransaction (pTransactionType:TransactionType, pIdPack:Int, pTypePrice:GeneratorType, pPrice:Float):Void {
 		if (!isReady) {
@@ -113,17 +99,18 @@ class DeltaDNAManager{
 			return;
 		}
 		
-		
-		DeltaDNA.addEvent(DeltaDNAEventCustom.TRANSACTION, untyped Object.assign(getBaseEvent(), {
-			transactionID: Facebook.uid + "_" + Date.now().toString() + "_" + Std.string(Math.random() * 100000),
-			transactionType: pTransactionType,
-			productReceived: pIdPack,
-			productReceivedAmount: 1,
-			productSpend: pTypePrice.getName(),
-			productSpendAmount: Std.string(pPrice)
-		}));
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.TRANSACTION, 
+			untyped Object.assign(getBaseEvent(), {
+				transactionID: Facebook.uid + "_" + Date.now().toString() + "_" + Std.string(Math.random() * 100000),
+				transactionType: pTransactionType,
+				productReceived: pIdPack,
+				productReceivedAmount: 1,
+				productSpend: pTypePrice.getName(),
+				productSpendAmount: Std.string(pPrice)
+			})
+		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-		
 	}
 	
 	private static function getBaseEvent ():Dynamic {

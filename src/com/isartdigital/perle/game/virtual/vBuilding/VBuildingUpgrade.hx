@@ -48,7 +48,7 @@ class VBuildingUpgrade extends VBuilding
 			progress: 0,
 			creationDate: tTime 
 		};
-		currentState = TimeManager.getBuildingStateFromTime(tileDesc);w
+		currentState = TimeManager.getBuildingStateFromTime(tileDesc);
 		
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) 
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
