@@ -41,6 +41,7 @@ class Send
 	const INTERN_INVALID_ID = 21;
 	const INTERN_CANNOT_BUY = 22;
 	const INTERN_ALREADY_BOUGHT = 23;
+	const INTERN_NO_GOLD_FOR_QUEST = 24;
 
     const ID_CLIENT_BUILDING = "IDClientBuilding";
 

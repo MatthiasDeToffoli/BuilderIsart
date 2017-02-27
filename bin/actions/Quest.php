@@ -1,23 +1,28 @@
 <?php
 
  use actions\utils\FacebookUtils as FacebookUtils;
+use actions\utils\Resources;
+use actions\utils\Send as Send;
  
 $functionExe = str_replace("/", "", $_POST["funct"]);
 $IdIntern = intval(str_replace("/", "", $_POST["idInt"]));
 $stepIndex = intval(str_replace("/", "", $_POST["stepIndex"]));
 $steps = array(intval(str_replace("/", "", $_POST["step1"])), intval(str_replace("/", "", $_POST["step2"])), intval(str_replace("/", "", $_POST["step3"])));
 $boost = intval(str_replace("/", "", $_POST["boost"]));
+$price = intval(str_replace("/", "", $_POST["price"]));
 
 include_once("utils/FacebookUtils.php");
+include_once("utils/Resources.php");
+include_once("utils/Send.php");
 switch ($functionExe) {
-  case "ADD": addQuest($IdIntern, $steps); break;
+  case "ADD": addQuest($IdIntern, $steps, $price); break;
   case "REM" : removeQuest($IdIntern); break;
   case "UPDT" : updateQuestTime($IdIntern, $stepIndex, $boost); break;
   case "GET_SPE_JSON": getJson(); break;
   default: echo "No function"; break;
 }
 
-function addQuest($IdIntern, $steps) {
+function addQuest($IdIntern, $steps, $price) {
   global $db;
 
   $ID = FacebookUtils::getId();
@@ -36,7 +41,29 @@ function addQuest($IdIntern, $steps) {
     $reqPre->bindParam(':step2', $steps[1]);
     $reqPre->bindParam(':step3', $steps[2]);
 
-    $reqPre->execute();
+    $reqPre-> execute();
+	
+	$gold = Resources::getResources($ID);
+	
+	if ($price > $gold["soft"]) {
+		echo json_encode(
+				array (
+					"errorID" => Send::INTERN_NO_GOLD_FOR_QUEST,
+					"idIntern" => $idIntern
+				)
+			);
+			exit;
+	}
+	
+	Resources::updateResources(
+        $ID,
+        "soft",
+        $gold["soft"] - $price
+    );
+	
+	echo "done";
+	exit;
+	
   } catch (Exception $e) {
     echo $e->getMessage();
     exit;

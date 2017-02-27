@@ -188,7 +188,7 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function sendInternInQuest():Void{
-		quest = QuestsManager.createQuest(internDatas.id);
+		quest = QuestsManager.createQuest(internDatas.id, QUEST_PRICE);
 		internDatas.quest = quest;
 		Intern.getIntern(internDatas.id).quest = internDatas.quest;
 		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;

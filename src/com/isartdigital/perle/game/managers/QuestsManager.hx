@@ -85,7 +85,7 @@ class QuestsManager
 	 * @param	pNumberEvents Number of events contained in a quest
 	 * @return	The quest's datas
 	 */
-	public static function createQuest(pIdIntern:Int):TimeQuestDescription {
+	public static function createQuest(pIdIntern:Int, pPrice:Int):TimeQuestDescription {
 		var lIdTimer = pIdIntern;
 		var lStepsArray:Array<Float> = createRandomGapArray(Intern.getIntern(pIdIntern));
 		
@@ -98,7 +98,7 @@ class QuestsManager
 		}
 		
 		questsList.push(lTimeQuestDescription);
-		ServerManagerQuest.addQuest(lTimeQuestDescription);
+		ServerManagerQuest.addQuest(lTimeQuestDescription, pPrice);
 		
 		return lTimeQuestDescription;
 	}

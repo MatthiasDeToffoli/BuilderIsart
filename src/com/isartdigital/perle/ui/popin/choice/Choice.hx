@@ -217,11 +217,9 @@ class Choice extends SmartPopinExtended
 			else newSpawnerHeaven.visible = false;
 		}
 		
-		var decrement:Int = 3;
 		for (i in 1...NB_INDICATOR_BAR) {
-			stressHellIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
-			stressHeavenIndicators.set(decrement, cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
-			decrement--;
+			stressHellIndicators.set(i, cast(cast(getChildByName(AssetName.INTERN_EVENT_HELL_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
+			stressHeavenIndicators.set(i, cast(cast(getChildByName(AssetName.INTERN_EVENT_HEAVEN_STRESS), SmartComponent).getChildByName(AssetName.INTENSITY_MARKER + i), UISprite));
 		}
 		
 		initReward(activeChoice, intern);

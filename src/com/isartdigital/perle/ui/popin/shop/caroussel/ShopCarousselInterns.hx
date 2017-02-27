@@ -128,11 +128,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 		//numberHousesHeaven = 
 		//numberHousesHell = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
 		
-		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HEAVEN_IMG), UISprite).visible = false;
-		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HELL_IMG), UISprite).visible = false;
-		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HEAVEN_TXT), UISprite).visible = false;
-		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HELL_TXT), UISprite).visible = false;
-		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
@@ -143,7 +138,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		heavenName = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_NAME), TextSprite);
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
-		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite);	
+		heavenPrice = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_PRICE), TextSprite); 
 	}
 	
 	/**
@@ -156,9 +151,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellGaugeEfficency = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		hellGaugeSpeed = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		initStars(hellIntern, hellGaugeEfficency, hellGaugeSpeed);
-		
-		//hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
-		//SpriteManager.spawnComponent(hellPortrait, hellIntern.portrait, hellCard, TypeSpawn.SPRITE, true);
 	}
 	
 	/**
@@ -171,9 +163,6 @@ class ShopCarousselInterns extends ShopCaroussel{
 		heavenGaugeEfficency = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_EFFICIENCY), SmartComponent);
 		heavenGaugeSpeed = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_GAUGE_SPEED), SmartComponent);
 		initStars(heavenIntern, heavenGaugeEfficency, heavenGaugeSpeed);
-		
-		//heavenPortrait = cast(SmartCheck.getChildByName(heavenCard, AssetName.CARD_PORTRAIT), UISprite);
-		//SpriteManager.spawnComponent(heavenPortrait, heavenIntern.portrait, heavenCard, TypeSpawn.SPRITE, true);
 	}
 	
 	private function initStars(pIntern:InternDescription, lEfficiency:SmartComponent, lSpeed:SmartComponent):Void {
@@ -211,6 +200,20 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		setValuesHeavenCard();
 		setValuesHellCard();
+		
+		if (Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length == 0) {
+			cast(getChildByName("_goldIcon_Medium_Heaven"), UISprite).visible = false;
+			cast(getChildByName("_internPrice_heaven_txt"), TextSprite).visible = false;
+			heavenCard.visible = false;
+			heavenPortrait.visible = false;
+		}
+		
+		if (Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length == 0) {
+			cast(getChildByName("_goldIcon_Medium_Hell"), UISprite).visible = false;
+			cast(getChildByName("_internPrice_hell_txt"), TextSprite).visible = false;
+			hellCard.visible = false;
+			hellPortrait.visible = false;
+		}
 		
 		//setValuesNumberHousesHeaven();
 		//setValuesNumberHousesHell();

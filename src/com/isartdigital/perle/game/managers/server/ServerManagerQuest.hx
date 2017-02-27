@@ -30,14 +30,15 @@ class ServerManagerQuest
 		}
 	}
 	
-	public static function addQuest(pTimeQuest:TimeQuestDescription):Void {
+	public static function addQuest(pTimeQuest:TimeQuestDescription, pPrice:Int):Void {
 		ServerManager.callPhpFile(onSuccessAddQuest, onErrorAddQuest, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.TIME_QUEST,
 			"funct" => DbAction.ADD,
 			"idInt" => pTimeQuest.refIntern,
 			"step1" => pTimeQuest.steps[0],
 			"step2" => pTimeQuest.steps[1],
-			"step3" => pTimeQuest.steps[2]
+			"step3" => pTimeQuest.steps[2],
+			"price" => pPrice
 		]);
 	}
 	
