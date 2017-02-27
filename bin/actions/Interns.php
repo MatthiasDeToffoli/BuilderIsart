@@ -21,6 +21,8 @@ class Interns {
 
 	const FUNCTION_CALL = "funct";
 	const ID_INTERN = "idInt";
+	const STRESS = "str";
+	const ID_EVENT = "idEvent";
 
 	public static function doAction() {
 		$infos = static::getInfo();
@@ -28,6 +30,9 @@ class Interns {
 		switch ($infos[static::FUNCTION_CALL]) {
 			case "ADD": static::buyIntern($infos[static::ID_INTERN]); break;
 			case "REM": static::removeIntern($infos[static::ID_INTERN]); break;
+			case "UPDT": static::addStress($infos[static::ID_INTERN], $infos[static::STRESS]); break;
+			case "UPDT_EVENT": static::updateEvent($infos[static::ID_INTERN], $infos[static::ID_EVENT]); break;
+			case "GET_SPE_JSON": static::getJson(); break;
 			default: echo "No choosen action";
 		}
 	}
@@ -70,7 +75,7 @@ class Interns {
 		}
 	}
 	
-	public static function removeIntern($idIntern) {
+	private static function removeIntern($idIntern) {
 		global $db;
 		
 		static::validIdIntern($idIntern);
@@ -90,7 +95,39 @@ class Interns {
 		}
 	}
 	
-	public static function validIntern($ID, $idIntern) {
+	private static function addStress($idIntern, $stress) {
+		global $db;
+		
+		static::validIdIntern($idIntern);
+		
+		$ID = FacebookUtils::getId();
+		$req = "UPDATE PlayerInterns SET Stress = ".$stress." WHERE IDPlayer = ".$ID." AND IDIntern = ".$idIntern;
+
+		try {
+			$reqPre = $db->prepare($req);
+			$reqPre-> execute();
+		}
+		catch (Exception $e) {
+			echo $e->getMessage();
+		}
+	}
+	
+	private static function updateEvent($idIntern, $idEvent) {
+		global $db;
+		$ID = FacebookUtils::getId();
+		
+		$req = "UPDATE PlayerInterns SET IdEvent = ".$idEvent." WHERE IDPlayer = ".$ID." AND IDIntern = ".$idIntern;
+		
+		try {
+			$reqPre = $db->prepare($req);
+			$reqPre->execute();
+		}
+		catch (Exception $e) {
+			echo $e->getMessage();
+		}
+	}
+	
+	private static function validIntern($ID, $idIntern) {
 		global $db;
 		
 		try {
@@ -114,7 +151,7 @@ class Interns {
 		}
 	}
 	
-	public static function getInternPrice($idIntern) {
+	private static function getInternPrice($idIntern) {
 		global $db;
 		
 		try {
@@ -129,7 +166,7 @@ class Interns {
 		}
 	}
 
-	public static function validIdIntern($idIntern) {
+	private static function validIdIntern($idIntern) {
 		if (!isset($idIntern)) {
 			echo json_encode(
 				array (
@@ -141,11 +178,45 @@ class Interns {
 		}
 	}
 	
-	public static function getInfo() {
+	private static function getInfo() {
 		return [
-			static::FUNCTION_CALL => Utils::getSinglePostValue(static::FUNCTION_CALL),
-            static::ID_INTERN => Utils::getSinglePostValueInt(static::ID_INTERN)
+			static::FUNCTION_CALL => str_replace("/", "", $_POST[static::FUNCTION_CALL]),
+            static::ID_INTERN => intval($_POST[static::ID_INTERN]),
+			static::STRESS => intval($_POST[static::STRESS]),
+			static::ID_EVENT => intval($_POST[static::ID_EVENT])
         ];
+	}
+	
+	private static function getJson() {
+		global $db;
+		
+		$i = 0;
+		$ID = FacebookUtils::getId();
+		$req = "SELECT * FROM Interns WHERE ID IN (SELECT IDIntern FROM PlayerInterns WHERE IDPlayer = ".$ID.")";
+		$req2 = "SELECT IdEvent, Stress FROM PlayerInterns WHERE IDPlayer = ".$ID;
+		
+		try {
+			$reqPre = $db->prepare($req);
+			$reqPre->execute();
+			$res = $reqPre->fetchAll();
+			
+			$reqPre2 = $db->prepare($req2);
+			$reqPre2->execute();
+			$res2 = $reqPre2->fetchAll();
+			
+			foreach ($res as $key => $value) {
+				$retour[$i]["IdEvent"] = $res2[$i]["IdEvent"];
+				$retour[$i]["Stress"] = $res2[$i]["Stress"];
+				foreach ($value as $neededKey => $val) {
+					$retour[$i][$neededKey] = $val;
+				}
+				$i++;
+			}
+			echo json_encode($retour);
+		}
+		catch (Exception $e) {
+			echo $e->getMessage();
+		}
 	}
 }
 

@@ -195,6 +195,13 @@ class AssetName{
 	public static inline var CAROUSSEL_INTERN_HEAVEN_PRICE:String = "_internPrice_heaven_txt";
 	public static inline var CAROUSSEL_INTERN_HELL_PRICE:String = "_internPrice_hell_txt";
 	
+	public static inline var CAROUSSEL_PORTAL_CARD_HELL:String = "_internHouseNumber_HellBG";
+	public static inline var CAROUSSEL_PORTAL_CARD_HEAVEN:String = "_internHouseNumber_HeavenBG";
+	public static inline var CAROUSSEL_NO_PORTAL_HEAVEN_IMG:String = "_internShop_portal_heaven";
+	public static inline var CAROUSSEL_NO_PORTAL_HELL_IMG:String = "_internShop_noPortal_hell";
+	public static inline var CAROUSSEL_NO_PORTAL_HEAVEN_TXT:String = "_internSHop_noPortal_text_heaven";
+	public static inline var CAROUSSEL_NO_PORTAL_HELL_TXT:String = "_internSHop_noPortal_text_hell";
+	
 	// Shop Reroll
 	public static inline var REROLL_GAUGE:String = "JaugeTimer";
 	public static inline var REROLL_GAUGE_TITLE:String = "_searchingInterns_text";

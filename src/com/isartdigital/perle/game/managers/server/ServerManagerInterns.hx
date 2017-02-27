@@ -33,11 +33,11 @@ class ServerManagerInterns
 			case DbAction.REM:
 				if (internId != null) ServerManager.callPhpFile(onSucessRemoveIntern, onErrorRemoveIntern, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTERNS, "funct" => actionCall, "idInt" => internId]);
 			case DbAction.UPDT:
-				if (internId != null) ServerManager.callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "str" => Intern.getIntern(internId).stress]);
+				if (internId != null) ServerManager.callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTERNS, "funct" => actionCall, "idInt" => internId, "str" => Intern.getIntern(internId).stress]);
 			case DbAction.UPDT_EVENT:
-				ServerManager.callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
+				ServerManager.callPhpFile(onDataCallback, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTERNS, "funct" => actionCall, "idInt" => internId, "idEvent" => eventId]);
 			case DbAction.GET_SPE_JSON:
-				ServerManager.callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTER_ACTION, "funct" => actionCall]);
+				ServerManager.callPhpFile(Intern.getPlayerInterns, onErrorCallback, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INTERNS, "funct" => actionCall]);
 			default: return;
 		}
 	}

@@ -19,6 +19,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
+import pixi.core.display.Container;
 import pixi.core.math.Point;
 
 /**
@@ -50,7 +51,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var heavenPrice:TextSprite;
 	
 	//Number of intern houses
-	private var houseNumber:UIMovie;
+	private var houseNumber:SmartComponent;
 	private var numberHousesHeaven:TextSprite;
 	private var numberHousesHell:TextSprite;
 	private var houseText:TextSprite;
@@ -119,9 +120,18 @@ class ShopCarousselInterns extends ShopCaroussel{
 		hellCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HELL_CARD), SmartButton);
 		heavenCard = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HEAVEN_CARD), SmartButton);
 		
-		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), UIMovie);
+		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
 		
+		var cardHouseHell:UIMovie = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HELL), UIMovie);
+		var cardHouseHeaven:UIMovie = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HEAVEN), UIMovie);
 		
+		//numberHousesHeaven = 
+		//numberHousesHell = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
+		
+		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HEAVEN_IMG), UISprite).visible = false;
+		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HELL_IMG), UISprite).visible = false;
+		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HEAVEN_TXT), UISprite).visible = false;
+		cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_NO_PORTAL_HELL_TXT), UISprite).visible = false;
 		
 		hellPortrait = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_PORTRAIT), UISprite);
 		hellName = cast(SmartCheck.getChildByName(hellCard, AssetName.CARD_NAME), TextSprite);

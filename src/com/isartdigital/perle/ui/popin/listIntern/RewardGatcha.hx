@@ -12,6 +12,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 
 	
@@ -76,6 +77,7 @@ class RewardGatcha extends SmartPopinExtended
 	}
 	
 	private function onTake():Void{
+		UIManager.getInstance().closePopin(GatchaPopin.getInstance());
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
 		QuestsManager.finishQuest(quest);
