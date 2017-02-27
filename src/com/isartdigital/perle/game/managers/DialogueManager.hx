@@ -119,7 +119,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = false;
+		isFR = true;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
@@ -132,7 +132,8 @@ class DialogueManager
 	 */
 	public static function createFtue():Void {
 		ftueIsCreated = true;
-		var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
+		//var lSave:Int = ServerManagerLoad.getPlayer().ftueProgress;
+		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
@@ -163,8 +164,9 @@ class DialogueManager
 		dialogueSaved = 0;
 		
 		//check if FTUE wasn't over
-		if(ServerManagerLoad.getPlayer().ftueProgress!=null && ServerManagerLoad.getPlayer().ftueProgress!=0)
-			dialogueSaved = ServerManagerLoad.getPlayer().ftueProgress;
+		//if(ServerManagerLoad.getPlayer().ftueProgress!=null && ServerManagerLoad.getPlayer().ftueProgress!=0)
+		if(SaveManager.currentSave.ftueProgress!=null && SaveManager.currentSave.ftueProgress!=0)
+			dialogueSaved = SaveManager.currentSave.ftueProgress;
 		else {
 			dialogueSaved = 0;
 			createFirstHouse();

@@ -55,7 +55,11 @@ class SpeedUpPopin extends AcceleratePopin
 		SoundManager.getSound("SOUND_KARMA").play();
 		if (DialogueManager.ftuePlayerCanWait)
 			DialogueManager.endOfaDialogue();
-			
+		
+		if (DialogueManager.ftueStepConstructBuilding || DialogueManager.passFree) {
+			linkedBuilding.tileDesc.timeDesc.progress = linkedBuilding.tileDesc.timeDesc.end;
+		}
+		
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
 		ServerManagerBuilding.BoostBuilding(linkedBuilding.tileDesc);
 	}
