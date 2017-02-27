@@ -9,13 +9,17 @@ date_default_timezone_set("UTC");
 
 session_start(); // todo : included in all php file ??
 
+include_once("databaseInfo.php");
+
 // todo : activer lors de la release
 // error_reporting(0);
 
 $db = getDataBase();
-
 function getDataBase () {
-    include("databaseInfo.php");
+    global $host;
+    global $dbName;
+    global $user;
+    global $pass;
 
     // database connexion
     try {
@@ -35,7 +39,7 @@ function getDataBase () {
 define("KEY_POST_FILE_NAME", "module"); // fileName
 define("KEY_POST_FUNCTION_NAME", "action"); // used whit a switch or associative array
 define("PHP_EXTENSION", ".php");
-define("PHP_DIRECTORY", "/actions/");
+define("PHP_DIRECTORY", "./actions/");
 
 $action = str_replace("/", "", $_POST[KEY_POST_FILE_NAME]);
 
@@ -43,4 +47,3 @@ $action = str_replace("/", "", $_POST[KEY_POST_FILE_NAME]);
 if(file_exists(PHP_DIRECTORY.$action.PHP_EXTENSION));
     include(PHP_DIRECTORY.$action.PHP_EXTENSION);
 
-?>

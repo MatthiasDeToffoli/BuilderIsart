@@ -18,7 +18,6 @@ include_once("utils/Resources.php");
 include_once("utils/BuildingUtils.php");
 include_once("utils/Utils.php");
 
-
 $PWD = "com_isartdigital_perle_passwordNoFB";
 
 $accessToken = FacebookUtils::getToken();

@@ -150,12 +150,14 @@ class Main extends EventEmitter
 	
 	public var configLoader:Loader;
 	
-	private function onLoginFacebook():Void{
+	private function onLoginFacebook():Void {
+		trace("Connexion whit facebook");	
 		ServerManager.playerConnexion();
 	}
 	
 	private function onCancelFacebook (pEvent:Response):Void {
 		// todo : warning your game will not be saved or i don't now ?
+		trace("Connexion whitout facebook");
 		ServerManager.playerConnexion();
 	}
  
