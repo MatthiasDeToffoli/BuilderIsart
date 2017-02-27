@@ -63,7 +63,7 @@ class Localisation
 	public static function getText(pLabel:String):String{
 		if (allTraductions[pLabel] == null) {
 			Debug.error("This label doesn't exist!");
-			return "null";
+			return pLabel;
 		}
 		else return allTraductions[pLabel];
 	}
