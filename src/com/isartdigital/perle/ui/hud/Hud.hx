@@ -138,6 +138,14 @@ class Hud extends SmartScreen
 		return containerEffect.toLocal(SmartCheck.getChildByName(btnSoft.parent, "_icon_softcurrency").position, btnSoft.parent);
 	}
 	
+	public function getWoodIconPos ():Point {
+		return containerEffect.toLocal(SmartCheck.getChildByName(btnWood.parent, "_icon_wood").position, btnWood.parent);
+	}
+	
+	public function getIronIconPos ():Point {
+		return containerEffect.toLocal(SmartCheck.getChildByName(btnIron.parent, "_icon_stone").position, btnIron.parent);
+	}
+	
 	public function getShopIconPos ():Point {
 		return containerEffect.toLocal(SmartCheck.getChildByName(this, "ButtonShop_HUD").position, btnShop.parent);
 	}

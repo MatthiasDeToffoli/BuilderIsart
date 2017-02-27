@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -52,7 +53,7 @@ class HudMissionButton
 		numberOfDecorationCreated ++;
 		updateHud();
 		checkIfOver(true);
-		SaveManager.save();
+		ServerManager.decoMission();
 	}
 	
 	public static function getMissionOn():Bool {

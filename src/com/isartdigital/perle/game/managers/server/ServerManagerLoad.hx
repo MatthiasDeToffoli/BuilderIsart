@@ -34,6 +34,7 @@ typedef TablePlayer = {
 	var level:Int;
 	var endOfCampaign:Float;
 	var idCampaign:Int;
+	var decoMission:Int;
 }
 
 typedef TableRegion = {

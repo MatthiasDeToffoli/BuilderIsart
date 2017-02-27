@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns.EventErrorBuyIntern;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.perle.ui.popin.server.ServerConnexionPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
@@ -89,6 +90,18 @@ class ServerManager {
 	}
 	
 	private static function onErrorFtue (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
+	public static function decoMission():Void {
+		callPhpFile(onSuccessDecoMission, onErrorDecoMission, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.DECO_MISSION, "DecoMission"=> HudMissionButton.numberOfDecorationCreated]);
+	}
+	
+	private static function onSuccessDecoMission (pObject:String):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorDecoMission (object:Dynamic):Void {
 		Debug.error("Error php : " + object);
 	}
 	

@@ -336,6 +336,7 @@ class SaveManager {
 			var lTimeCampaign:CampaignDescription;
 			var lPlayer:TablePlayer = ServerManagerLoad.getPlayer(); 
 			var lFtue:Int = lPlayer.ftueProgress; 
+			var lDeco:Int = lPlayer.decoMission;
 			if(lPlayer.idCampaign > 0) lTimeCampaign = {
 				end:ServerManagerLoad.getPlayer().endOfCampaign,
 				type:MarketingManager.getCampaignByName(GameConfig.getBuildingPackById(lPlayer.idCampaign).name)
@@ -359,7 +360,8 @@ class SaveManager {
 				building: lBuildings,
 				resourcesData: lResources,
 				ftueProgress : lFtue,
-				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : []
+				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
+				missionDecoration: lDeco
 			};
 			ServerManagerLoad.deleteServerSave();
 			serverBuildingToTileDesc = null;

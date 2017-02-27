@@ -24,14 +24,14 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 { 
 	
 	private static var assetsName:Map<GeneratorType,String>;
-	
+	private var geneType:GeneratorType;
 	
 	// @TODO : séparer graphique du logique => VButtonProduction et ButtonProduction
 	// et voir pour pooling de la partie graphique
 	public function new(pType:GeneratorType) {
 		super(AssetName.BTN_PRODUCTION);
 		var spawner:UISprite = cast(SmartCheck.getChildByName(this, "_currency"), UISprite);
-		
+		geneType = pType;
 		if (assetsName[pType] ==  AssetName.PROD_ICON_SOFT_ANIM) {
 			var movie:Movie = new Movie(assetsName[pType]);
 			movie.position = spawner.position;
@@ -62,6 +62,12 @@ class ButtonProduction extends SmartComponent // todo : si hérite de SmartButto
 	}
 
 	private function onClick ():Void {
+		var lPos:Point = Hud.getInstance().getGoldIconPos();
+		
+		if(geneType == GeneratorType.buildResourceFromHell)lPos = Hud.getInstance().getIronIconPos();
+		else if(geneType == GeneratorType.buildResourceFromParadise)lPos = Hud.getInstance().getWoodIconPos();
+		
+		
 		TweenManager.positionElasticAttract(
 			this,
 			Hud.getInstance().getGoldIconPos(),

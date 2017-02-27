@@ -120,7 +120,7 @@ class DialogueManager
 		DialoguePoppin.firstToSpeak = npc_dialogue_ftue[0][0][0]; //Set the first NPC to talk
 		
 		//todo : check de dialogue via langue FB
-		isFR = true;
+		isFR = false;
 		changeLanguage();
 		
 		GameStage.getInstance().getFtueContainer().addChild(DialoguePoppin.getInstance());
@@ -135,8 +135,6 @@ class DialogueManager
 		ftueIsCreated = true;
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//var lSave:Int = SaveManager.currentSave.ftueProgress;
-		trace(lSave);
-		trace(steps.length);
 		//check if first time
 		if (lSave != null && steps[lSave-1] !=null) {
 			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing) {
