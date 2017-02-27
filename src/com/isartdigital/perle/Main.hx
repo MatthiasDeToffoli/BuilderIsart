@@ -88,11 +88,18 @@ class Main extends EventEmitter
 	
 	public var renderer:WebGLRenderer;
 	public var stage:Container;
+	/**
+	 * Reference to the loader in the new Main () function
+	 */
+	public var configLoader:Loader;
 	
 	private var frames (default, null):Int = 0;
 	private var pathClass(default, null):Map<String, String> = new Map<String, String>();
 	private var wireFrameMCToClassName (default, null):Map<String, String> = new Map<String, String>();
 	private var classNameNoPathToWireFramMC (default, null):Map<String, String> = new Map<String, String>();
+	
+	private static inline var maxTimeWaitCocoonJs:Int = 8000;
+	private var totalTimeWaitedCocoonJs:Int = 0;
 	
 	private static function main ():Void {
 		Main.getInstance();
@@ -145,15 +152,37 @@ class Main extends EventEmitter
 		//lConfig.load(); // todo : temporary, because need FB to use getId in backend
 		Facebook.onLogin = onLoginFacebook;
 		Facebook.onCancel = onCancelFacebook;
-		Facebook.load(FACEBOOK_APP_ID);
+		/*trace("isCocoonJS");
+		trace(DeviceCapabilities.isCocoonJS);
+		trace("system");
+		trace(DeviceCapabilities.SYSTEM_DESKTOP == DeviceCapabilities.system);*/
+		
+		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP)
+			Timer.delay(waitForCocoonJsReady, 200);
+		else
+			Facebook.load(FACEBOOK_APP_ID);
 	}
 	
-	public var configLoader:Loader;
+	private function waitForCocoonJsReady ():Void {
+		totalTimeWaitedCocoonJs += 200;
+		
+		if (totalTimeWaitedCocoonJs > maxTimeWaitCocoonJs) {
+			Debug.error("Waiting for cocoonJs ready event too long, trying to launch game... (after facebook load)");
+			Facebook.load(FACEBOOK_APP_ID);
+		}
+		else if (DeviceCapabilities.isCocoonJS)
+			Facebook.load(FACEBOOK_APP_ID);
+		else
+			Timer.delay(waitForCocoonJsReady, 200);
+	}
+	
 	
 	private function onLoginFacebook():Void {
 		trace("Connexion whit facebook");	
 		ServerManager.playerConnexion();
 	}
+	
+	
 	
 	private function onCancelFacebook (pEvent:Response):Void {
 		// todo : warning your game will not be saved or i don't now ?
