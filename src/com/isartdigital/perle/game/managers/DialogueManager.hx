@@ -372,9 +372,11 @@ class DialogueManager
 				createGoldEffectJuicy();
 				ResourcesManager.gainResources(GeneratorType.soft, steps[dialogueSaved].gold);
 			}
-			Hud.getInstance().softMc.alpha = 1;
-			FocusManager.getInstance().setFocus(Hud.getInstance().softMc);
-			Hud.getInstance().btnSoft.interactive = false;
+			if (Hud.getInstance().softMc != null) {
+				Hud.getInstance().softMc.alpha = 1;
+				FocusManager.getInstance().setFocus(Hud.getInstance().softMc);
+				Hud.getInstance().btnSoft.interactive = false;
+			}
 		}
 		
 		if (steps[dialogueSaved].karma != null) {
@@ -495,6 +497,8 @@ class DialogueManager
 			Hud.isHide = true;
 			Hud.getInstance().show();
 			removeDialogue();
+			//if (steps[dialogueSaved - 1].endOfFtue)
+			//	DailyRewardManager.getInstance().testDailyConnexion();
 			return;
 		}
 		
