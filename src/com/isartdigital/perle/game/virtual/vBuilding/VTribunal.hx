@@ -21,6 +21,7 @@ typedef SoulDescription = {
 	var adjective:String;
 	var age:Int;
 	var alignement:Int;
+	var sexe:Int;
 }
 	
 /**
@@ -79,7 +80,7 @@ class VTribunal extends VBuildingUpgrade
 	}
 	
 	public function findSoul():Void {
-		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:"", age:1, alignement:1};
+		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:"", age:1, alignement:1, sexe:1};
 		else {
 			var i:Int = Math.floor(Math.random() * GameConfig.countSoulName());
 			var j:Int = Math.floor(Math.random() * GameConfig.countSoulAdj());
@@ -88,7 +89,8 @@ class VTribunal extends VBuildingUpgrade
 				name: GameConfig.getSoulName(i).en,
 				adjective: GameConfig.getSoulAdjective(j).en,
 				age: GameConfig.getSoulName(i).age,
-				alignement: GameConfig.getSoulAdjective(j).alignement
+				alignement: GameConfig.getSoulAdjective(j).alignement,
+				sexe: GameConfig.getSoulName(i).sexe,
 			}
 		}
 	}

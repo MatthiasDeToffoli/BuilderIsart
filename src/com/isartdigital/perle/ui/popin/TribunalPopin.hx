@@ -433,10 +433,10 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function changeSoulText(?pSoulNameFound:Bool):Void {
 		if (!pSoulNameFound || pSoulNameFound == null) VTribunal.getInstance().findSoul();
-		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
-		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name) == null ? VTribunal.getInstance().soulToJudge.name : Localisation.getText(VTribunal.getInstance().soulToJudge.name);
-		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
-		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective) == null ? VTribunal.getInstance().soulToJudge.adjective : Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
+		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
+		fateAdjectiveFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);
 		
 		setPicture(VTribunal.getInstance().soulToJudge.age,VTribunal.getInstance().soulToJudge.alignement);
 	}
