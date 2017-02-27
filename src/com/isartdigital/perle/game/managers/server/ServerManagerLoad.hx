@@ -68,7 +68,7 @@ class ServerManagerLoad {
 		if (pObject.charAt(0) == "{") {
 			serverSave = new Map<String, Array<Dynamic>>();
 			GameConfig.parseJson(serverSave, Json.parse(pObject));
-			Main.getInstance().configLoader.load(); // todo : temporary
+			Main.getInstance().gameLoader.load(); // todo : temporary
 		} else {
 			Debug.error("Success on load but invalid format.");
 		}
