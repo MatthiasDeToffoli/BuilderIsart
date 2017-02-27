@@ -38,9 +38,6 @@ class Localisation
 	}
 	
 	public static function init(pLocalization:Dynamic):Void{
-		setUserLanguage();
-		trace(userLanguage);
-		trace(userLanguage == FRENCH_FB);
 		localization = pLocalization;
 		
 		for (label in Reflect.fields(pLocalization)){
@@ -49,12 +46,13 @@ class Localisation
 		}
 	}
 	
-	private static function setUserLanguage():Void{
+	public static function setUserLanguage():Void{
 		Facebook.api(Facebook.uid+"?fields=locale", onLanguage);
 	}
 	
 	private static function onLanguage(pResponse:Dynamic):Void{
-		userLanguage = pResponse.locale;
+		trace(pResponse.locale);
+		if (pResponse != null) userLanguage = pResponse.locale;
 	}
 	
 	/**

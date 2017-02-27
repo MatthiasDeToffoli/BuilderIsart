@@ -298,6 +298,7 @@ class Main extends EventEmitter
 		
 		// affiche le bouton FullScreen quand c'est nécessaire
 		DeviceCapabilities.displayFullScreenButton();
+		Localisation.setUserLanguage();
 		
 	}
 	
