@@ -79,6 +79,7 @@ try {
         $retour['debug3'] = "trace2";
 		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
         $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
+        $retour['dateInscription'] = $res['DateInscription'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else if no facebook id but a password
@@ -90,6 +91,7 @@ try {
         $retour['debug'] = "ConnexionWhitoutFB";
 		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
         $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
+		$retour['dateInscription'] = $res['DateInscription'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else -> put it in db
@@ -135,8 +137,9 @@ try {
             $retour['isNewPlayer'] = true;
             $retour['passwordNoFB'] = $lPassword;
 			$retour['lastDateConnexion'] = time();
-			$retour['daysOfConnexion'] = 1;
+			$retour['daysOfConnexion'] = 0;
 			$retour['level'] = 2;
+			$retour['dateInscription'] = time();
 
         } catch (Exception $e) {
             echo $e->getMessage();

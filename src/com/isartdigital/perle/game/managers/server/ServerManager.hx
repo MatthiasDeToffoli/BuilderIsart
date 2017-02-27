@@ -28,6 +28,7 @@ typedef EventSuccessConnexion = {
 	var dateLastConnexion:Float;
 	var daysOfConnexion:Int;
 	var level:Int;
+	var dateInscription:Float;
 }
 
 typedef EventSuccessAddRegion = {

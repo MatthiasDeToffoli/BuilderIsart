@@ -19,6 +19,7 @@ class DailyRewardManager
 	 */
 	private static var instance: DailyRewardManager;
 	
+	private var inscriptionDate:Date;
 	private var lastDate:Date;
 	private var newDate:Date;
 	public var daysOfConnexion:Int;
@@ -52,6 +53,7 @@ class DailyRewardManager
 	}
 	
 	private function getDates():Void {
+		inscriptionDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
 		lastDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
 		newDate = Date.now();
 		daysOfConnexion = ServerManager.successEvent.daysOfConnexion;
@@ -59,7 +61,14 @@ class DailyRewardManager
 	
 	public function testDates():Void {
 		
-		if (!ifSameDates(lastDate,newDate)) {
+		if (ifSameDates(inscriptionDate, lastDate)) {
+			daysOfConnexion ++;
+			trace ("First connexion : " + daysOfConnexion);
+			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE]);
+			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INCREMENT_DAYS]);
+			setDailyReward();
+		}
+		else if (!ifSameDates(lastDate,newDate)) {
 			var nextDate = addOneDay(lastDate);
 			
 			if (ifSameDates(nextDate, newDate)) {
