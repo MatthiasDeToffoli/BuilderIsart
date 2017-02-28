@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.ChoiceManager.EventRewardDesc;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import com.isartdigital.utils.Debug;
 
@@ -17,7 +18,7 @@ typedef SendXp = {
 class ServerManagerChoice 
 {
 	
-	public static function applyReward(pReward:EventRewardDesc, pChoice:ChoiceType):Void {		
+	public static function applyReward(pReward:EventRewardDesc, pChoice:ChoiceType):Void {
 		var xp:SendXp = {
 			bad: (pChoice == ChoiceType.HELL) ? pReward.xp : 0,
 			good: (pChoice == ChoiceType.HEAVEN) ? pReward.xp : 0
@@ -31,7 +32,12 @@ class ServerManagerChoice
 			"wood" => pReward.wood,
 			"gold" => pReward.gold,
 			"badXP" => xp.bad,
-			"goodXP" => xp.good
+			"goodXP" => xp.good,
+			"soul" => pReward.soul,
+			"tribuX" => VTribunal.getInstance().tileDesc.mapX,
+			"tribuY" => VTribunal.getInstance().tileDesc.mapY,
+			"tribuRegionX" => VTribunal.getInstance().tileDesc.regionX,
+			"tribuRegionY" => VTribunal.getInstance().tileDesc.regionY
 		]);
 	}
 	

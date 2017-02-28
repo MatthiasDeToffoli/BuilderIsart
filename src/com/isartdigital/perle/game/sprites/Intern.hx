@@ -84,11 +84,9 @@ class Intern
 	 * @param	pIntern Intern wanted to buy
 	 * @return
 	 */
-	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool{
-		
+	public static function canBuy(pAlignment:Alignment, pIntern:InternDescription):Bool {
 		if (numberInternHouses[pAlignment] > internsListAlignment[pAlignment].length){
-			if (ResourcesManager.getTotalForType(GeneratorType.soft) >= pIntern.price) return true;	
-			else return false;
+			return true;
 		}
 		else return false;
 	}
@@ -100,8 +98,8 @@ class Intern
 	public static function buy(pIntern:InternDescription):Void{
 		var pAlignment:Alignment = null;
 		
-		if (!DialogueManager.ftueStepBuyIntern)	
-			ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
+		if (!DialogueManager.ftueStepBuyIntern)
+			if (ResourcesManager.getTotalForType(GeneratorType.soft) >= pIntern.price) ResourcesManager.spendTotal(GeneratorType.soft, pIntern.price);
 			
 		internsListArray.push(pIntern);
 		pIntern.aligment == "heaven" ? internsListAlignment[Alignment.heaven].push(pIntern) : internsListAlignment[Alignment.hell].push(pIntern);
