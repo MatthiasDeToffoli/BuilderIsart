@@ -51,7 +51,6 @@ import com.isartdigital.utils.system.DeviceCapabilities;
 import eventemitter3.EventEmitter;
 import haxe.Timer;
 import js.Browser;
-import js.Lib;
 import pixi.core.display.Container;
 import pixi.core.renderers.Detector;
 import pixi.core.renderers.webgl.WebGLRenderer;
@@ -92,7 +91,7 @@ class Main extends EventEmitter
 	/**
 	 * Reference to the loader in the new Main () function
 	 */
-	public var gameLoader:Loader;
+	public var configLoader:Loader;
 	
 	private var frames (default, null):Int = 0;
 	private var pathClass(default, null):Map<String, String> = new Map<String, String>();
@@ -148,8 +147,47 @@ class Main extends EventEmitter
 		configPath += "?" + Date.now().getTime();
 		lConfig.add(configPath);
 		lConfig.once(LoadEventType.COMPLETE, preloadAssets);
+		configLoader = lConfig;
 		
-		lConfig.load();
+		//lConfig.load(); // todo : temporary, because need FB to use getId in backend
+		Facebook.onLogin = onLoginFacebook;
+		Facebook.onCancel = onCancelFacebook;
+		/*trace("isCocoonJS");
+		trace(DeviceCapabilities.isCocoonJS);
+		trace("system");
+		trace(DeviceCapabilities.SYSTEM_DESKTOP == DeviceCapabilities.system);*/
+		
+		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP)
+			Timer.delay(waitForCocoonJsReady, 200);
+		else
+			Facebook.load(FACEBOOK_APP_ID);
+	}
+	
+	private function waitForCocoonJsReady ():Void {
+		totalTimeWaitedCocoonJs += 200;
+		
+		if (totalTimeWaitedCocoonJs > maxTimeWaitCocoonJs) {
+			Debug.error("Waiting for cocoonJs ready event too long, trying to launch game... (after facebook load)");
+			Facebook.load(FACEBOOK_APP_ID);
+		}
+		else if (DeviceCapabilities.isCocoonJS)
+			Facebook.load(FACEBOOK_APP_ID);
+		else
+			Timer.delay(waitForCocoonJsReady, 200);
+	}
+	
+	
+	private function onLoginFacebook():Void {
+		trace("Connexion whit facebook");	
+		ServerManager.playerConnexion();
+	}
+	
+	
+	
+	private function onCancelFacebook (pEvent:Response):Void {
+		// todo : warning your game will not be saved or i don't now ?
+		trace("Connexion whitout facebook");
+		ServerManager.playerConnexion();
 	}
  
 	/**
@@ -192,49 +230,9 @@ class Main extends EventEmitter
 		var lLoader:GameLoader = new GameLoader(); // #reopen
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/loading/library.json");
 		lLoader.once(LoadEventType.COMPLETE, loadAssets);
-		gameLoader = lLoader;
-		//lLoader.load(); // is now done after facebook loading
-		
-		Facebook.onLogin = onLoginFacebook;
-		Facebook.onCancel = onCancelFacebook;
-		/*trace("isCocoonJS");
-		trace(DeviceCapabilities.isCocoonJS);
-		trace("system");
-		trace(DeviceCapabilities.SYSTEM_DESKTOP == DeviceCapabilities.system);*/
-		
-		if (DeviceCapabilities.system != DeviceCapabilities.SYSTEM_DESKTOP)
-			Timer.delay(waitForCocoonJsReady, 200);
-		else
-			Facebook.load(FACEBOOK_APP_ID);
-	}
-	
-	
-	private function onLoginFacebook():Void {
-		trace("Connexion whit facebook");	
-		ServerManager.playerConnexion();
-	}
-	
-	
-	private function onCancelFacebook (pEvent:Response):Void {
-		// todo : warning your game will not be saved or i don't now ?
-		trace("Connexion whitout facebook");
-		ServerManager.playerConnexion();
-	}
-	
-	
-	private function waitForCocoonJsReady ():Void {
-		totalTimeWaitedCocoonJs += 200;
-		
-		if (totalTimeWaitedCocoonJs > maxTimeWaitCocoonJs) {
-			Debug.error("Waiting for cocoonJs ready event too long, trying to launch game... (after facebook load)");
-			Facebook.load(FACEBOOK_APP_ID);
-		}
-		else if (DeviceCapabilities.isCocoonJS)
-			Facebook.load(FACEBOOK_APP_ID);
-		else
-			Timer.delay(waitForCocoonJsReady, 200);
-	}
-	
+		lLoader.load();
+		//loadAssets(); // raccourci
+	}	
 	
 	/**
 	 * lance le chargement principal
