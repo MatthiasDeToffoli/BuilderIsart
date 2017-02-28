@@ -168,7 +168,7 @@ class ServerManager {
 		// create new http request
 		var url:String = pFileName;
 		if (DeviceCapabilities.isCocoonJS)
-			url = "https://fbgame.isartdigital.com/2018_builder/perle/" + Config.pathInFBGame + url;
+			url = Main.FTP_URL + Main.COCOONJS_FTP_VERSION + url;
 		
         var lCall:Http = new Http(url);
         lCall.onData = onData;
