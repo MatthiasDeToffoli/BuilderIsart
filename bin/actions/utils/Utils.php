@@ -121,7 +121,7 @@ class Utils
      * @param $pAssocArray
      * @param $pSQLWhere
      */
-    public static function updateSetWhere ($pTable, $pAssocArray, $pSQLWhere, $pDebug) {
+    public static function updateSetWhere ($pTable, $pAssocArray, $pSQLWhere, $pDebug=false) {
         global $db;
 
         $req = static::bindParamUpdateSetWhere($pTable, $pAssocArray, $pSQLWhere);
