@@ -1,167 +1,183 @@
 {
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "file": "atlas0.png",
-     "textures": [
-      {
-       "symbol": "part3",
-       "origin": [
-        652.8,
-        435.4
-       ],
-       "rect": [
-        1,
-        1,
-        1306,
-        871
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas1.png",
-     "textures": [
-      {
-       "symbol": "part2",
-       "origin": [
-        652.8,
-        435.4
-       ],
-       "rect": [
-        1,
-        1,
-        1306,
-        871
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas2.png",
-     "textures": [
-      {
-       "symbol": "part1",
-       "origin": [
-        652.8,
-        435.4
-       ],
-       "rect": [
-        1,
-        1,
-        1306,
-        871
-       ]
-      }
-     ]
-    },
-    {
-     "file": "atlas3.png",
-     "textures": [
-      {
-       "symbol": "part4",
-       "origin": [
-        652.8,
-        435.4
-       ],
-       "rect": [
-        1,
-        1,
-        1306,
-        871
-       ]
-      }
-     ]
-    }
-   ],
-   "scaleFactor": 1
-  }
- ],
  "movies": [
   {
    "layers": [
     {
-     "name": "Calque 1",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
+       "index": 0,
+       "pivot": [
+        652.8,
+        435.4125
+       ],
        "loc": [
         -655.8,
-        -448.2
+        -448.2375
        ],
-       "index": 0,
        "ref": "part1",
+       "scale": [
+        1.0013,
+        1.0013
+       ],
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
        "pivot": [
         652.8,
         435.4125
-       ]
-      }
-     ]
-    },
-    {
-     "name": "Calque 2",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
+       ],
        "loc": [
         649.8,
-        -447.4125
+        -447.4875
        ],
-       "index": 0,
        "ref": "part2",
+       "scale": [
+        1.0018,
+        1.0018
+       ],
+       "duration": 1,
+       "tweened": false
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
        "pivot": [
         652.8,
         435.4125
-       ]
-      }
-     ]
-    },
-    {
-     "name": "Calque 3",
-     "keyframes": [
-      {
-       "tweened": false,
-       "duration": 1,
+       ],
        "loc": [
         -655.8,
-        422.625
+        422.5875
        ],
-       "index": 0,
        "ref": "part3",
-       "pivot": [
-        652.8,
-        435.4125
-       ]
+       "scale": [
+        1.0013,
+        1.0013
+       ],
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Calque 3"
     },
     {
-     "name": "Calque 4",
      "keyframes": [
       {
-       "tweened": false,
-       "duration": 1,
-       "loc": [
-        649.8,
-        423.4125
-       ],
        "index": 0,
-       "ref": "part4",
        "pivot": [
         652.8,
         435.4125
-       ]
+       ],
+       "loc": [
+        649.8,
+        423.3375
+       ],
+       "ref": "part4",
+       "scale": [
+        1.0018,
+        1.0018
+       ],
+       "duration": 1,
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Calque 4"
     }
    ],
    "id": "Title_card_bg_test"
   }
  ],
- "md5": "6157aaeed6577f1e49394e4439ba7511",
+ "md5": "ef424ea232058f943eb6a5b783a6e96a",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "atlases": [
+    {
+     "textures": [
+      {
+       "origin": [
+        652.8,
+        435.4
+       ],
+       "symbol": "part3",
+       "rect": [
+        1,
+        1,
+        1306,
+        871
+       ]
+      }
+     ],
+     "file": "atlas0.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        652.8,
+        435.4
+       ],
+       "symbol": "part2",
+       "rect": [
+        1,
+        1,
+        1306,
+        871
+       ]
+      }
+     ],
+     "file": "atlas1.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        652.8,
+        435.4
+       ],
+       "symbol": "part1",
+       "rect": [
+        1,
+        1,
+        1306,
+        871
+       ]
+      }
+     ],
+     "file": "atlas2.png"
+    },
+    {
+     "textures": [
+      {
+       "origin": [
+        652.8,
+        435.4
+       ],
+       "symbol": "part4",
+       "rect": [
+        1,
+        1,
+        1306,
+        871
+       ]
+      }
+     ],
+     "file": "atlas3.png"
+    }
+   ],
+   "scaleFactor": 1
+  }
+ ],
  "frameRate": 24
 }
