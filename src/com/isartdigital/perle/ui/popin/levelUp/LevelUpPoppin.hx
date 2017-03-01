@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.FakeTraduction;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
@@ -128,7 +129,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		if (DialogueManager.ftueCloseUnlockedItem)
 			DialogueManager.endOfaDialogue();
 		
-		
+		ServerManager.levelReward();
 		Hud.getInstance().btnShop.interactive = true;
 		Hud.getInstance().show();
 		UIManager.getInstance().closePopin(this);

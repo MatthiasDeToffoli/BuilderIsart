@@ -260,7 +260,6 @@ class DialogueManager
 		if (graphic!=null) 
 			GameStage.getInstance().getIconContainer().removeChild(graphic);
 			
-		trace(dialogueSaved);
 		//DeltaDNA
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
 		
@@ -548,7 +547,9 @@ class DialogueManager
 	 * Create Finger Anim after delay
 	 */
 	private static function createFingerAnimAfterDelay():Void {
-		createFingerAnim(AssetName.FTUE_DRAG_MOVE,Choice.getInstance().getCardPos());
+		var lPoint:Point = new Point(Choice.getInstance().getCardPos().x, Choice.getInstance().getCardPos().y + finger.height/2);
+		//finger.alpha = 0.6;
+		createFingerAnim(AssetName.FTUE_DRAG_MOVE,lPoint);
 	}
 	
 	/**
@@ -560,11 +561,11 @@ class DialogueManager
 	private static function createFingerAnim(pAsset:String, pPos:Point, ?isCard:Bool):Void {
 		finger = new FingerAnim(pAsset);
 		GameStage.getInstance().getActionContainer().addChild(finger);
-		
+		finger.alpha = 1;
 		
 		if (isCard) {
 			var lPoint:Point = TribunalPopin.getInstance().getCardPos();
-			pPos = new Point(lPoint.x, lPoint.y);
+			pPos = new Point(lPoint.x, lPoint.y + finger.height);
 		}
 		
 		finger.position = pPos;

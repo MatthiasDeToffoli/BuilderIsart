@@ -29,7 +29,9 @@ function getDataBase () {
 // then in cmd or git bash use php -a <fileName>
 // enjoy
 
-//include_once("actions/utils/Resources.php");
+use actions\utils\Utils as Utils;
+include_once("actions/utils/Utils.php");
 //echo json_encode(\actions\utils\Resources::getResources(4));
 //include_once("actions/utils/BuildingCommonCode.php");
 //echo json_encode(\actions\BuildingCommonCode::getBuildingWhitPosition(4,3,8,1,0));
+echo json_encode(Utils::getTable("LevelReward","ID = 2"));
