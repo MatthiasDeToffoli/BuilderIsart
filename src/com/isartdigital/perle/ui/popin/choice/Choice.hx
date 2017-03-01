@@ -506,7 +506,6 @@ class Choice extends SmartPopinExtended
 	 */
 	private function startFollow(mEvent:EventTarget):Void
 	{
-		trace(activeChoice);
 		imgRot = choiceCard.rotation;
 		imgPos = choiceCard.position.clone();
 		// update choiceType
@@ -569,9 +568,11 @@ class Choice extends SmartPopinExtended
 		for (value in hellRewardValue) value.visible = true;
 		for (value in heavenRewardValue) value.visible = true;
 		
-		if (choiceType != ChoiceType.NONE) choiceCard.interactive = false;
-		endLoop = Timer.delay(validLoop, 50);
-		endLoop.run = validLoop;
+		if (choiceType != ChoiceType.NONE) {
+			choiceCard.interactive = false;
+			endLoop = Timer.delay(validLoop, 50);
+			endLoop.run = validLoop;
+		}
 	}
 	
 	private function validLoop():Void {

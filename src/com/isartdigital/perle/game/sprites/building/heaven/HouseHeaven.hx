@@ -13,10 +13,10 @@ class HouseHeaven extends Building
 	public function new(?pAssetName:String) 
 	{
 		super(pAssetName);
-		
 	}
 	
 	override public function setStateConstruction():Void {
+		//trace(assetName);
 		setState(AssetName.CONSTRUCT);
 	}
 	

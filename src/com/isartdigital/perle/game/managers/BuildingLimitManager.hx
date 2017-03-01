@@ -18,7 +18,7 @@ class BuildingLimitManager
 		mapNumbersBuilding = new Map<String,Int>();
 		limits = new Map<String,Int>();
 		
-		//setLimits();
+		setLimits();
 	}
 	
 	private static function setLimits():Void {

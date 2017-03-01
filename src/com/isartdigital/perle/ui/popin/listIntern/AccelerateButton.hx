@@ -42,7 +42,7 @@ class AccelerateButton extends SmartButton
 	private function onAccelerate(){
 		setValues();
 		if (boostPrice <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
-			ResourcesManager.spendTotal(GeneratorType.hard, boostPrice);
+			//ResourcesManager.spendTotal(GeneratorType.hard, boostPrice);
 			TimeManager.increaseQuestProgress(quest);
 			SoundManager.getSound("SOUND_KARMA").play();
 		}
