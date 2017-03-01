@@ -87,7 +87,13 @@ class RewardGatcha extends SmartPopinExtended
 	private function onTake():Void{
 		UIManager.getInstance().closePopin(GatchaPopin.getInstance());
 		SoundManager.getSound("SOUND_NEUTRAL").play();
+		
 		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
+		ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
+		ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, STEEL_WON);
+		ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, WOOD_WON);
+		ResourcesManager.gainResources(GeneratorType.soul, SOUL_WON);
+		
 		QuestsManager.finishQuest(quest);
 	}
 	
