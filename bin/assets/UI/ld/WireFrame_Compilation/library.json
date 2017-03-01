@@ -1,5 +1,5 @@
 {
- "md5": "1d8bc8d98a9c2c5fdca3d2e9f124a7cb",
+ "md5": "7d9cb3ffacd6fde5646a7502a9ceeeb1",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -680,15 +680,15 @@
       {
        "baseClass": "TextSprite",
        "data": {
-        "y": -37.75,
+        "y": -48,
         "text": "999/999",
-        "x": -125.7,
-        "width": 251.35,
-        "font": "54px _pixelOperator*",
+        "x": -94.75,
+        "width": 189.5,
+        "font": "60px _pixelOperator*",
         "align": "center",
-        "height": 64.35,
-        "wordWrap": 1,
-        "color": "#000000"
+        "height": 96,
+        "wordWrap": 0,
+        "color": "#1E0B00"
        },
        "symbol": "_infoPurgatory_txt",
        "origin": [
@@ -2101,8 +2101,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2120,13 +2120,32 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
      ],
      "name": "HUD_HellXP"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        6.875,
+        0
+       ],
+       "index": 0,
+       "loc": [
+        -0.7,
+        272.5
+       ],
+       "ref": "MovingBuilding",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "MovingBuilding"
     },
     {
      "keyframes": [
@@ -2139,8 +2158,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2158,8 +2177,8 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2177,8 +2196,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2196,8 +2215,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -2215,8 +2234,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2234,8 +2253,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2253,8 +2272,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -2272,8 +2291,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2305,8 +2324,8 @@
        ],
        "ref": "HUD_HeavenXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2324,8 +2343,8 @@
        ],
        "ref": "HUD_HellXP_Container",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2343,8 +2362,8 @@
        ],
        "ref": "~HUD_Level",
        "data": {
-        "UIPosition_Desktop": "top",
-        "UIPosition": "top"
+        "UIPosition": "top",
+        "UIPosition_Desktop": "top"
        },
        "duration": 1
       }
@@ -2380,13 +2399,32 @@
        ],
        "ref": "~INFO_HardCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
      ],
      "name": "HUD_HardCurrency"
+    },
+    {
+     "keyframes": [
+      {
+       "pivot": [
+        -0.05,
+        0.175
+       ],
+       "index": 0,
+       "loc": [
+        -0.075,
+        282.175
+       ],
+       "ref": "MoveBuilding_Desktop",
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "MoveBuilding_Desktop"
     },
     {
      "keyframes": [
@@ -2399,8 +2437,8 @@
        ],
        "ref": "~INFO_SoftCurrency",
        "data": {
-        "UIPosition_Desktop": "topRight",
-        "UIPosition": "topRight"
+        "UIPosition": "topRight",
+        "UIPosition_Desktop": "topRight"
        },
        "duration": 1
       }
@@ -2418,8 +2456,8 @@
        ],
        "ref": "~INFO_Wood",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2437,8 +2475,8 @@
        ],
        "ref": "~INFO_Iron",
        "data": {
-        "UIPosition_Desktop": "topLeft",
-        "UIPosition": "topLeft"
+        "UIPosition": "topLeft",
+        "UIPosition_Desktop": "topLeft"
        },
        "duration": 1
       }
@@ -2456,8 +2494,8 @@
        ],
        "ref": "~ButtonShop_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomRight",
-        "UIPosition": "bottomRight"
+        "UIPosition": "bottomRight",
+        "UIPosition_Desktop": "bottomRight"
        },
        "duration": 1
       }
@@ -2484,8 +2522,8 @@
        ],
        "ref": "~ButtonPurgatory_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2503,8 +2541,8 @@
        ],
        "ref": "~MissionIndicator",
        "data": {
-        "UIPosition_Desktop": "right",
-        "UIPosition": "right"
+        "UIPosition": "right",
+        "UIPosition_Desktop": "right"
        },
        "duration": 1
       }
@@ -2522,8 +2560,8 @@
        ],
        "ref": "~ButtonsInterns_HUD",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2541,8 +2579,8 @@
        ],
        "ref": "~HUD_internsLockedMC",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2560,8 +2598,8 @@
        ],
        "ref": "~ButtonOptions",
        "data": {
-        "UIPosition_Desktop": "bottomLeft",
-        "UIPosition": "bottomLeft"
+        "UIPosition": "bottomLeft",
+        "UIPosition_Desktop": "bottomLeft"
        },
        "duration": 1
       }
@@ -2677,8 +2715,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2701,8 +2739,8 @@
        ],
        "ref": "~ButtonConfirmMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2720,8 +2758,8 @@
        ],
        "ref": "~ButtonCancelMovement",
        "data": {
-        "UIPosition_Desktop": "bottom",
-        "UIPosition": "bottom"
+        "UIPosition": "bottom",
+        "UIPosition_Desktop": "bottom"
        },
        "duration": 1
       }
@@ -2763,8 +2801,8 @@
     }
    ],
    "data": {
-    "UI": "",
-    "UIPosition": "top"
+    "UIPosition": "top",
+    "UI": ""
    },
    "id": "ProdDone"
   },
@@ -2856,55 +2894,21 @@
     {
      "keyframes": [
       {
-       "pivot": [
-        76.25,
-        13.75
-       ],
-       "index": 0,
-       "loc": [
-        -6.425,
-        0
-       ],
-       "ref": "_infopurgatory_bg",
        "tweened": false,
-       "duration": 1
-      }
-     ],
-     "name": "BG"
-    },
-    {
-     "keyframes": [
-      {
-       "ref": "_infoPurgatory_txt",
-       "tweened": false,
-       "duration": 1,
+       "skew": [
+        0,
+        0.4538
+       ],
        "index": 0,
        "loc": [
         -8.8,
         3.2
-       ]
-      }
-     ],
-     "name": "_infos_purgatory_txt"
-    },
-    {
-     "keyframes": [
-      {
-       "pivot": [
-        27.675,
-        32
        ],
-       "index": 0,
-       "loc": [
-        -91.65,
-        -9.925
-       ],
-       "ref": "_neutralSoulIcon_Large",
-       "tweened": false,
+       "ref": "_infoPurgatory_txt",
        "duration": 1
       }
      ],
-     "name": "_infos_purgatory_icon"
+     "name": "_infos_purgatory_txt"
     }
    ],
    "id": "SoulsCounter_purgatory"
