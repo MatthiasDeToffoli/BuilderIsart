@@ -59,6 +59,8 @@ class Ads
 	
 	private static var current:Ad;
 	
+	private static var asked:Bool;
+	
 	private static var callback:Dynamic->Void;	
 
 	/**
@@ -71,7 +73,9 @@ class Ads
 	}
 	
 	private static function askForImage (pCallback:Dynamic->Void,pVideo:String=""):Bool {
-		if (current!=null || (Config.data.ads!=null && !Config.data.ads)) return false;
+		if (asked || (Config.data.ads!=null && !Config.data.ads)) return false;
+		
+		asked = true;
 		
 		var lRequest:HttpService = initService(pCallback);
 		lRequest.addParameter("ad", IMAGE);
@@ -88,9 +92,11 @@ class Ads
 	 * @return true si la demande d'affichage est acceptée, sinon false (quand une autre pub est en cours)
 	 */
 	public static function getMovie (pCallback:Dynamic->Void): Bool {
-		if (current!=null || (Config.data.ads!=null && !Config.data.ads)) return false;
+		if (asked || (Config.data.ads!=null && !Config.data.ads)) return false;
 		
 		if (DeviceCapabilities.isCanvasPlus) return getImage(pCallback);
+		
+		asked = true;
 		
 		var lRequest:HttpService = initService(pCallback);
 		lRequest.addParameter("ad", MOVIE);
@@ -119,6 +125,7 @@ class Ads
 		var lId:String = current.id;
 		current.close();
 		current = null;
+		asked = false;
 		
 		if (pClose == TYPE_END) askForImage(callback, lId);
 		else {
@@ -263,10 +270,14 @@ private class AdImage extends Ad {
 	
 	override private function onComplete (?pEvent:Loader = null):Void {
 		super.onComplete(pEvent);
-		content.interactive = true;
 		content.buttonMode = true;
 		content.once(MouseEventType.CLICK, onOpen);
 		content.once(TouchEventType.TAP, onOpen);
+		Timer.delay(clickDelay, 200);
+	}
+	
+	private function clickDelay ():Void {
+		content.interactive = true;
 	}
 	
 	override private function createContent ():Void {
