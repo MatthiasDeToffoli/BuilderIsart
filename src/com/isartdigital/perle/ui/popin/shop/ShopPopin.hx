@@ -49,7 +49,7 @@ class ShopPopin extends SmartPopinExtended {
 	public var lmarbre:SmartComponent;
 	public var lwood:SmartComponent;
 	
-	public var shopTabSCIcon:UIMovie;
+	public var shopTabSCIcon:UISprite;
 	public var shopTabHCIcon:UIMovie;
 	public var shopTabWoodIcon:UISprite;
 	public var shopTabIronIcon:UISprite;
@@ -98,7 +98,7 @@ class ShopPopin extends SmartPopinExtended {
 		SoundManager.getSound("SOUND_OPEN_MENU_SHOP").play();
 		
 		lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
-		shopTabSCIcon = cast(SmartCheck.getChildByName(lSC, "_icon_softcurrency"), UIMovie);
+		shopTabSCIcon = cast(SmartCheck.getChildByName(lSC, "_icon_softcurrency"), UISprite);
 		lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
 		shopTabHCIcon = cast(SmartCheck.getChildByName(lHC, "_icon_hardcurrency"), UIMovie);
 		lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);

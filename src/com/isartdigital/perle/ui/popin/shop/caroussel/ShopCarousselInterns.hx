@@ -125,8 +125,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 		
 		houseNumber = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
 		
-		var cardHouseHell:UIMovie = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HELL), UIMovie);
-		var cardHouseHeaven:UIMovie = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HEAVEN), UIMovie);
+		var cardHouseHell:SmartComponent = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HELL), SmartComponent);
+		var cardHouseHeaven:SmartComponent = cast(houseNumber.getChildByName(AssetName.CAROUSSEL_PORTAL_CARD_HEAVEN), SmartComponent);
 		
 		//numberHousesHeaven = 
 		//numberHousesHell = cast(SmartCheck.getChildByName(this, AssetName.CAROUSSEL_INTERN_HOUSE_NUMBER), SmartComponent);
