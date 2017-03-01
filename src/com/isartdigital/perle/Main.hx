@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.sprites.building.heaven.InternHouseHeaven;
 import com.isartdigital.perle.game.sprites.building.heaven.MarketingHouse;
 import com.isartdigital.perle.game.sprites.building.hell.CollectorHell;
 import com.isartdigital.perle.game.sprites.building.hell.DecoHell;
+import com.isartdigital.perle.game.sprites.building.hell.Factory;
 import com.isartdigital.perle.game.sprites.building.hell.HouseHell;
 import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
 import com.isartdigital.perle.game.sprites.building.VicesBuilding;
@@ -26,6 +27,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VInternHouseHeaven;
 import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VMarketingHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VCollectorHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VDecoHell;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VFactory;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VVicesBuilding;
@@ -424,6 +426,8 @@ class Main extends EventEmitter
 			VicesBuilding,
 			VirtuesBuilding,
 			VVicesBuilding,
+			VFactory,
+			Factory
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

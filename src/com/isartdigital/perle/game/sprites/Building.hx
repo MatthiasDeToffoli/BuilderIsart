@@ -171,11 +171,20 @@ class Building extends Tile implements IZSortable
 	
 	
 	public function setStateConstruction():Void {
-		setState(DEFAULT_STATE);
+		if (myDesc.buildingName == BuildingName.STYX_VIRTUE_1 || myDesc.buildingName == BuildingName.STYX_VIRTUE_2 || myDesc.buildingName == BuildingName.STYX_VICE_1 || myDesc.buildingName == BuildingName.STYX_VICE_2)
+			return;
+			
+		
+		setState(AssetName.CONSTRUCT);
 	}
 	
 	public function setStateEndConstruction():Void {
-		setState(DEFAULT_STATE);
+		if (myDesc.buildingName == BuildingName.STYX_VIRTUE_1 || myDesc.buildingName == BuildingName.STYX_VIRTUE_2 || myDesc.buildingName == BuildingName.STYX_VICE_1 || myDesc.buildingName == BuildingName.STYX_VICE_2)
+			return;
+			
+		setState(AssetName.CONSTRUCT + AssetName.ANIM);
+		setAnimation();
+		AnimationManager.manage(this);
 	}
 	
 	public function onAnimationEnd():Void {

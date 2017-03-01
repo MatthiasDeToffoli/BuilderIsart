@@ -14,16 +14,6 @@ class HouseHell extends Building
 	{
 		super(pAssetName);
 	}
-	
-	override public function setStateConstruction():Void {
-		//trace(assetName);
-		setState(AssetName.CONSTRUCT);
-	}
-	
-	override public function setStateEndConstruction():Void {
-		setState(AssetName.CONSTRUCT + AssetName.ANIM);
-		setAnimation();
-		AnimationManager.manage(this);
-	}
+
 	
 }

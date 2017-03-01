@@ -23,6 +23,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import js.Browser;
 import js.Lib;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
@@ -190,16 +191,19 @@ class InternElementOutQuest extends InternElement
 	}
 	
 	private function sendInternInQuest():Void {
-		QuestsManager.createQuest(internDatas.id, QUEST_PRICE);
-		
-		quest = QuestsManager.getQuest(internDatas.id);
-		internDatas.quest = quest;
-		Intern.getIntern(internDatas.id).quest = internDatas.quest;
-		Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
-		
-		ChoiceManager.newChoice(internDatas.id);
-		internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
-		TimeManager.createTimeQuest(quest);
+		if (ResourcesManager.getTotalForType(GeneratorType.soft) - QUEST_PRICE >= 0) {
+			QuestsManager.createQuest(internDatas.id, QUEST_PRICE);
+			
+			quest = QuestsManager.getQuest(internDatas.id);
+			internDatas.quest = quest;
+			Intern.getIntern(internDatas.id).quest = internDatas.quest;
+			Intern.getIntern(internDatas.id).status = Intern.STATE_RESTING;
+			
+			ChoiceManager.newChoice(internDatas.id);
+			internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
+			TimeManager.createTimeQuest(quest);
+		}
+		else Browser.alert("You don't have enought money to do this.");
 	}
 	
 	//For the HUD Popin actualisation

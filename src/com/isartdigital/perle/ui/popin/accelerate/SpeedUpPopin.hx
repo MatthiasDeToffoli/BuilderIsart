@@ -13,6 +13,7 @@ import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
+import js.Browser;
 	
 /**
  * ...
@@ -59,7 +60,9 @@ class SpeedUpPopin extends AcceleratePopin
 		if (DialogueManager.ftueStepConstructBuilding || DialogueManager.passFree) {
 			linkedBuilding.tileDesc.timeDesc.progress = linkedBuilding.tileDesc.timeDesc.end;
 		}
-		ServerManagerBuilding.BoostBuilding(linkedBuilding.tileDesc);
+		
+		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price >= 0) ServerManagerBuilding.BoostBuilding(linkedBuilding.tileDesc);
+		else Browser.alert("You don't have enought Karma to do this.");
 	}
 	
 	public function validBoost():Void {

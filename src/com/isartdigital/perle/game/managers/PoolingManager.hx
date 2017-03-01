@@ -33,7 +33,7 @@ class PoolingManager {
 		AssetName.BUILDING_STYX_VICE_1 => "VicesBuilding",
 		AssetName.BUILDING_STYX_VICE_2 => "VicesBuilding",
 		
-		
+	
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT + AssetName.ANIM=> "HouseHeaven",
@@ -56,6 +56,7 @@ class PoolingManager {
 		AssetName.BUILDING_HELL_COLLECTOR_LEVEL1 => "CollectorHell",
 		AssetName.BUILDING_HELL_COLLECTOR_LEVEL2 => "CollectorHell",
 	    AssetName.BUILDING_INTERN_HELL_HOUSE => "InternHouseHell",
+		AssetName.BUILDING_FACTORY => 'Factory',
 		
 		AssetName.DECO_HEAVEN_TREE_1 => "DecoHeaven",
 		AssetName.DECO_HEAVEN_TREE_2 => "DecoHeaven",

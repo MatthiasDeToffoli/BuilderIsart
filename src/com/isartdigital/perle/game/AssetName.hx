@@ -38,12 +38,12 @@ class AssetName{
 	
 	
 	// Building Hell
-	public static inline var BUILDING_HELL_HOUSE:String = "hellBuiding";
+	public static inline var BUILDING_HELL_HOUSE:String = "hellBuilding";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL2:String = "hellBuilding2";
 	public static inline var BUILDING_HELL_HOUSE_LEVEL3:String = "hellBuilding3";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL1:String = "Hell_Quarry";
 	public static inline var BUILDING_HELL_COLLECTOR_LEVEL2:String = "HellQuarry2";
-	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "InternHouseHell"; 
+	public static inline var BUILDING_INTERN_HELL_HOUSE:String = "InternHouseHell";
 	public static inline var BUILDING_FACTORY:String = "HellFactory";
 	
 	

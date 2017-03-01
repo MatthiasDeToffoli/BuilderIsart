@@ -14,4 +14,11 @@ class MarketingHouse extends Building
 		super(pAssetName);
 	}
 	
+	override public function setStateConstruction():Void 
+	{
+		assetName = AssetName.BUILDING_HEAVEN_HOUSE;
+		super.setStateConstruction();
+		assetName = AssetName.MARKETING_HOUSE;
+	}
+	
 }

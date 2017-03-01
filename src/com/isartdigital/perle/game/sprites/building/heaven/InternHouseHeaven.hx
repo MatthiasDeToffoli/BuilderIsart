@@ -15,4 +15,11 @@ class InternHouseHeaven extends Building
 		
 	}
 	
+	override public function setStateConstruction():Void 
+	{
+		assetName = AssetName.BUILDING_HEAVEN_HOUSE;
+		super.setStateConstruction();
+		assetName = AssetName.BUILDING_INTERN_HEAVEN_HOUSE;
+	}
+	
 }

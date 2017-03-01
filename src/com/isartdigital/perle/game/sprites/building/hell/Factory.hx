@@ -14,4 +14,11 @@ class Factory extends Building
 		super(pAssetName);
 	}
 	
+	override public function setStateConstruction():Void 
+	{
+		assetName = AssetName.BUILDING_HELL_HOUSE;
+		super.setStateConstruction();
+		assetName = AssetName.BUILDING_FACTORY;
+	}
+	
 }
