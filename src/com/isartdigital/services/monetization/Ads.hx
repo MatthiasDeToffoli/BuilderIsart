@@ -273,7 +273,7 @@ private class AdImage extends Ad {
 		content.buttonMode = true;
 		content.once(MouseEventType.CLICK, onOpen);
 		content.once(TouchEventType.TAP, onOpen);
-		Timer.delay(clickDelay, 200);
+		Timer.delay(clickDelay, 250);
 	}
 	
 	private function clickDelay ():Void {

@@ -17,19 +17,18 @@ class Tribunal extends Building
 		super(pAssetName);	
 	}
 	
-	override public function init():Void 
+override public function init():Void 
 	{
 		super.init();
-
-		var baner:Dynamic = anim.getChildByName('Calque 2');
-		anim.addChild(PurgatorySoulCounter.getInstance());
-		
-		PurgatorySoulCounter.getInstance().position.x = baner.getLocalBounds().x + PurgatorySoulCounter.getInstance().width/2;
-		PurgatorySoulCounter.getInstance().position.y = baner.getLocalBounds().y + PurgatorySoulCounter.getInstance().height; // @TODO: positionner autrement pour que cela fonctionne avec toutes les qualité 
+		PurgatorySoulCounter.getInstance().position = position.clone();
+		PurgatorySoulCounter.getInstance().position.y -= height/2; // @TODO: positionner autrement pour que cela fonctionne avec toutes les qualité 
+		PurgatorySoulCounter.getInstance().position.x += width/5;
+		Building.uiContainer.addChild(PurgatorySoulCounter.getInstance());
 	}
+	
 	override public function destroy():Void 
 	{
-		anim.removeChild(PurgatorySoulCounter.getInstance());
+		Building.uiContainer.removeChild(PurgatorySoulCounter.getInstance());
 		super.destroy();
 	}
 	
