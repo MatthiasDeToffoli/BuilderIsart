@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.sprites;
 
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.ui.SmartCheck;
 import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
 import com.isartdigital.utils.game.GameStage;
 
@@ -19,13 +20,16 @@ class Tribunal extends Building
 	override public function init():Void 
 	{
 		super.init();
-		PurgatorySoulCounter.getInstance().position = position.clone();
-		PurgatorySoulCounter.getInstance().position.y += height/2 + 50; // @TODO: positionner autrement pour que cela fonctionne avec toutes les qualité 
-		Building.uiContainer.addChild(PurgatorySoulCounter.getInstance());
+
+		var baner:Dynamic = anim.getChildByName('Calque 2');
+		anim.addChild(PurgatorySoulCounter.getInstance());
+		
+		PurgatorySoulCounter.getInstance().position.x = baner.getLocalBounds().x + PurgatorySoulCounter.getInstance().width/2;
+		PurgatorySoulCounter.getInstance().position.y = baner.getLocalBounds().y + PurgatorySoulCounter.getInstance().height; // @TODO: positionner autrement pour que cela fonctionne avec toutes les qualité 
 	}
 	override public function destroy():Void 
 	{
-		Building.uiContainer.removeChild(PurgatorySoulCounter.getInstance());
+		anim.removeChild(PurgatorySoulCounter.getInstance());
 		super.destroy();
 	}
 }
