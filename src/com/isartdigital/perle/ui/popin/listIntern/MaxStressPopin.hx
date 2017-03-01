@@ -187,7 +187,7 @@ class MaxStressPopin extends SmartPopin
 	
 	private function setValuesResetBtn():Void{
 		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
-		btnResetTextValue.text = RESET_VALUE + ""; 
+		btnResetTextValue.text = RESET_VALUE + "";
 	}
 	
 	private function onReset():Void{
