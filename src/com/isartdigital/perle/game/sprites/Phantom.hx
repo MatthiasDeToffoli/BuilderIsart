@@ -39,6 +39,12 @@ import pixi.core.math.shapes.Rectangle;
 import pixi.filters.color.ColorMatrixFilter;
 import pixi.flump.Movie;
 
+typedef ObstaclePosition = {
+	var regionX:Int;
+	var regionY:Int;
+	var x:Int;
+	var y:Int;
+}
 
 typedef EventExceeding = {
 	var phantomPosition:Point;
@@ -51,6 +57,31 @@ typedef EventExceeding = {
  * @author ambroise
  */
 class Phantom extends Building {
+	
+	//todo : put in server in a config table ;)
+	/**
+	 * condamned case
+	 */
+	private static var OBSTACLES_POSITIONS(default, never):Array<ObstaclePosition> = [
+		// visible side of Purgatory that exceed on other region 
+		{regionX:1, regionY:0, x:0, y:5},
+		{regionX:1, regionY:0, x:0, y:6},
+		{regionX:1, regionY:0, x:0, y:7},
+		{regionX:1, regionY:0, x:0, y:8},
+		{regionX:1, regionY:0, x:1, y:5},
+		{regionX:1, regionY:0, x:1, y:6},
+		{regionX:1, regionY:0, x:1, y:7},
+		{regionX:1, regionY:0, x:1, y:8},
+		// 
+		{regionX:-1, regionY:0, x:12, y:5},
+		{regionX:-1, regionY:0, x:12, y:6},
+		{regionX:-1, regionY:0, x:12, y:7},
+		{regionX:-1, regionY:0, x:12, y:8},
+		{regionX:-1, regionY:0, x:11, y:5},
+		{regionX:-1, regionY:0, x:11, y:6},
+		{regionX:-1, regionY:0, x:11, y:7},
+		{regionX:-1, regionY:0, x:11, y:8}
+	];
 	
 	public static inline var EVENT_CANT_BUILD:String = "Phantom_Cant_Build";
 	private static inline var FILTER_OPACITY:Float = 0.5;
@@ -479,7 +510,7 @@ class Phantom extends Building {
 		
 		if (alignementBuilding == null) {
 			Debug.error("should not be null in my opinion, i am right ? (this line should never happen, contact Ambroise)");
-			return buildingOnGround() && !buildingCollideOther(); 
+			//return buildingOnGround() && !buildingCollideOther(); 
 		}
 		
 		// todo: se concerter avec gd sur ce qu'on veut faire, car compte tenu
@@ -503,7 +534,7 @@ class Phantom extends Building {
 			return false;
 		}
 		
-		return buildingOnGround() && !buildingCollideOther();
+		return buildingOnGround() && !buildingCollideOther() && !buildingCollideObstacle();
 	}
 	
 	private function passBuildingLimit():Bool {
@@ -555,7 +586,7 @@ class Phantom extends Building {
 	 * Use the TileDescription in Save instead of only instantiated (visible) buildings.
 	 * @return
 	 */
-	private function buildingCollideOther():Bool {
+	private function buildingCollideOther ():Bool {
 		// i need to test every building collision to make the tiles appear in red
 		// for more then one building collision. Better feedback for user.
 		var lCollision:Bool = false;  
@@ -576,6 +607,37 @@ class Phantom extends Building {
 		}
 		
 		return lCollision;
+	}
+	
+	private function buildingCollideObstacle ():Bool {
+		var lCollision:Bool = false;
+		var sameRegion:Array<ObstaclePosition> = OBSTACLES_POSITIONS.filter(function (p:ObstaclePosition) {
+			return p.regionX == regionMap.region.x && p.regionY == regionMap.region.y;
+		});
+		
+		for (i in 0...sameRegion.length) {
+			
+			if (collisionRectDescObstacle(sameRegion[i])) {
+				exceedingTile.push({
+					x: sameRegion[i].x - regionMap.map.x,
+					y: sameRegion[i].y - regionMap.map.y 
+				});
+				lCollision = true;
+			}
+		}
+		if (lCollision)
+			trace("collision whit invisible obstacle");
+		return lCollision;
+	}
+	
+	private function collisionRectDescObstacle (pObstacle:ObstaclePosition):Bool {
+		var lSizeOnMap:SizeOnMap = Building.getSizeOnMap(buildingName);
+		var lObstacleSize = 1;
+		
+		return (regionMap.map.x < pObstacle.x + lSizeOnMap.footprint &&
+				regionMap.map.x + lSizeOnMap.width + lSizeOnMap.footprint > pObstacle.x + lObstacleSize &&
+				regionMap.map.y < pObstacle.y + lSizeOnMap.footprint &&
+				regionMap.map.y + lSizeOnMap.height + lSizeOnMap.footprint > pObstacle.y + lObstacleSize );
 	}
 	
 	/**
