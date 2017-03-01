@@ -1,52 +1,1503 @@
 {
+ "md5": "a5f2139e260a5009dc571a4c7816d3d0",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_largePopinBG",
+       "origin": [
+        470.55,
+        278
+       ],
+       "rect": [
+        1,
+        1,
+        941,
+        558
+       ]
+      },
+      {
+       "symbol": "_smallPopinBG",
+       "origin": [
+        375,
+        220.7
+       ],
+       "rect": [
+        1,
+        561,
+        750,
+        442
+       ]
+      },
+      {
+       "symbol": "_rewards_bg",
+       "origin": [
+        117.5,
+        105
+       ],
+       "rect": [
+        753,
+        561,
+        235,
+        210
+       ]
+      },
+      {
+       "symbol": "_friendEvent_information01",
+       "origin": [
+        103.75,
+        103.75
+       ],
+       "rect": [
+        753,
+        773,
+        208,
+        208
+       ]
+      },
+      {
+       "symbol": "_currencyIcon_Medium",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        963,
+        773,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_goldIcon_Medium",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        963,
+        823,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_hardCurrencyIcon_Medium",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        963,
+        873,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_stoneIcon_Medium",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        963,
+        923,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_buildRessourceIcon_Medium",
+       "origin": [
+        24,
+        24
+       ],
+       "rect": [
+        963,
+        973,
+        48,
+        48
+       ]
+      },
+      {
+       "symbol": "_woodIcon_Medium",
+       "origin": [
+        24,
+        21.6
+       ],
+       "rect": [
+        944,
+        1,
+        48,
+        44
+       ]
+      },
+      {
+       "symbol": "_closeButton_over",
+       "origin": [
+        23,
+        21.55
+       ],
+       "rect": [
+        944,
+        47,
+        46,
+        44
+       ]
+      },
+      {
+       "symbol": "_closeButton_down",
+       "origin": [
+        22,
+        20.6
+       ],
+       "rect": [
+        944,
+        93,
+        44,
+        42
+       ]
+      },
+      {
+       "symbol": "_closeButton_up",
+       "origin": [
+        22,
+        20.6
+       ],
+       "rect": [
+        944,
+        137,
+        44,
+        42
+       ]
+      },
+      {
+       "symbol": "_currencyIcon_Small",
+       "origin": [
+        16,
+        16
+       ],
+       "rect": [
+        753,
+        983,
+        32,
+        32
+       ]
+      },
+      {
+       "symbol": "_buildRessourceIcon_Small",
+       "origin": [
+        16,
+        16
+       ],
+       "rect": [
+        787,
+        983,
+        32,
+        32
+       ]
+      },
+      {
+       "symbol": "_altarContour_BR",
+       "origin": [
+        11.25,
+        11.25
+       ],
+       "rect": [
+        821,
+        983,
+        23,
+        23
+       ]
+      },
+      {
+       "symbol": "_altarContour_TL",
+       "origin": [
+        11.25,
+        11.25
+       ],
+       "rect": [
+        846,
+        983,
+        23,
+        23
+       ]
+      },
+      {
+       "symbol": "_altarContour_TR",
+       "origin": [
+        11.25,
+        11.25
+       ],
+       "rect": [
+        871,
+        983,
+        23,
+        23
+       ]
+      },
+      {
+       "symbol": "_altarContour_BL",
+       "origin": [
+        11.25,
+        11.25
+       ],
+       "rect": [
+        896,
+        983,
+        23,
+        23
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.1,
+        "text": "1st</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day1_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "7th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day7_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "7",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day7Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        989,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "5",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day5Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        992,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -35.75,
+        "text": "9999",
+        "x": -76.25,
+        "width": 152.45,
+        "font": "72px _pixelOperator*",
+        "align": "center",
+        "height": 71.5,
+        "wordWrap": 0,
+        "color": "#3C3232"
+       },
+       "symbol": "_dailyReward_value",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        995,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -46.6,
+        "text": "Your friend got this for you !",
+        "x": -385.25,
+        "width": 770.5,
+        "font": "65px _pixelOperator*",
+        "align": "center",
+        "height": 99.75,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_friendInformation_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        998,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "6",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day6Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        1001,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -78,
+        "text": "Your friend share with you an event !",
+        "x": -390.55,
+        "width": 781.15,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 157.4,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_description01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        1004,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -47.5,
+        "text": "Resolve it to earn rewards !",
+        "x": -411,
+        "width": 822,
+        "font": "62px _pixelOperator*",
+        "align": "center",
+        "height": 95,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_description02_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        921,
+        1007,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "4",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day4Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -29.75,
+        "text": "FriendName",
+        "x": 0,
+        "width": 559.9,
+        "font": "62px _pixelOperator*",
+        "align": "left",
+        "height": 79.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_friendName_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        927,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "2",
+        "x": -34,
+        "width": 68,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day2Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        930,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "6th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day6_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        933,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "3",
+        "x": -26,
+        "width": 52,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day3Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        936,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "NICE !",
+        "x": -167.55,
+        "width": 335.1,
+        "font": "128px _pixelOperator*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#EBFFEB"
+       },
+       "symbol": "_buttonDaily_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        939,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.6,
+        "width": 697.15,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 273.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_mission_description",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        942,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -124.6,
+        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
+        "x": -348.55,
+        "width": 697.15,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 273.6,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_mission_description_done_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        945,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "5th</BR>DAY",
+        "x": -114.65,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day5_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        948,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -66.15,
+        "text": "*Missions",
+        "x": -249.9,
+        "width": 499.8,
+        "font": "96px _pixelOperator*",
+        "align": "center",
+        "height": 132.25,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_mission_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        951,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "3rd</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day3_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        954,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -102.15,
+        "text": "4th</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 204.25,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day4_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        957,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -36.2,
+        "text": "Resolve",
+        "x": -94.25,
+        "width": 188.5,
+        "font": "56px _pixelOperator*",
+        "align": "center",
+        "height": 72.35,
+        "wordWrap": 1,
+        "color": "#FFFFFF"
+       },
+       "symbol": "_Resolve_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        960,
+        983,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.45,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_ressourcevalue01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.4,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_ressourcevalue02_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        989,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.8,
+        "text": "XXXX",
+        "x": -66.1,
+        "width": 132.2,
+        "font": "43px _pixelOperator*",
+        "align": "left",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_reward_get_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        992,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -25.8,
+        "text": "XXXX",
+        "x": -66.1,
+        "width": 132.2,
+        "font": "43px _pixelOperator*",
+        "align": "left",
+        "height": 56.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_reward_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        995,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -41.25,
+        "text": "His choice",
+        "x": -142.85,
+        "width": 285.75,
+        "font": "52px _pixelOperator*",
+        "align": "center",
+        "height": 82.5,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_hisChoice_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        998,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 69.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_rewards_get_title",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        1001,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.9,
+        "text": "Rewards",
+        "x": -100.1,
+        "width": 200.25,
+        "font": "54px _pixelOperator*",
+        "align": "left",
+        "height": 69.9,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_rewards_title",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        1004,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.4,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_currencyvalue02_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        924,
+        1007,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -62,
+        "text": "1",
+        "x": -26,
+        "width": 52,
+        "font": "128px _pixelOperator_title*",
+        "align": "center",
+        "height": 124,
+        "wordWrap": 0,
+        "color": "#FFEBFF"
+       },
+       "symbol": "_Day1Small_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        927,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -65.35,
+        "text": "Great !",
+        "x": -218.55,
+        "width": 437.1,
+        "font": "96px _pixelOperator*",
+        "align": "center",
+        "height": 130.7,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_txt_great",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        930,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.75,
+        "text": "Misson completed !",
+        "x": -749.3,
+        "width": 1498.6,
+        "font": "70px _pixelOperator*",
+        "align": "center",
+        "height": 89.45,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_txt_mission_completed",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        933,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -98.8,
+        "text": "2nd</BR>DAY",
+        "x": -114.6,
+        "width": 229.25,
+        "font": "92px _pixelOperator_title*",
+        "align": "center",
+        "height": 197.55,
+        "wordWrap": 1,
+        "color": "#FFF0FF"
+       },
+       "symbol": "_Day2_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        936,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -31.4,
+        "text": "XXXX",
+        "x": -77.45,
+        "width": 154.85,
+        "font": "48px _pixelOperator*",
+        "align": "center",
+        "height": 62.8,
+        "wordWrap": 1,
+        "color": "#000000"
+       },
+       "symbol": "_currencyvalue01_text",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        939,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -43.55,
+        "text": "Take",
+        "x": -108.6,
+        "width": 217.25,
+        "font": "75px _pixelOperator*",
+        "align": "center",
+        "height": 95.55,
+        "wordWrap": 0,
+        "color": "#000000"
+       },
+       "symbol": "_friendReward_ButtonText",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        942,
+        986,
+        1,
+        1
+       ]
+      },
+      {
+       "baseClass": "TextSprite",
+       "data": {
+        "y": -42.05,
+        "text": "Come back tomorrow for more rewards!",
+        "x": -596.3,
+        "width": 1192.6,
+        "font": "76px _pixelOperator*",
+        "align": "center",
+        "height": 84.15,
+        "wordWrap": 1,
+        "color": "#3C3232"
+       },
+       "symbol": "_getRewards_txt",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        945,
+        986,
+        1,
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "_MissionHolder",
+       "origin": [
+        379,
+        74.5
+       ],
+       "rect": [
+        1,
+        1,
+        758,
+        150
+       ]
+      },
+      {
+       "symbol": "_mission_bg",
+       "origin": [
+        379,
+        74.55
+       ],
+       "rect": [
+        1,
+        153,
+        758,
+        150
+       ]
+      },
+      {
+       "symbol": "_friendPicture",
+       "origin": [
+        100,
+        90
+       ],
+       "rect": [
+        761,
+        1,
+        200,
+        180
+       ]
+      },
+      {
+       "symbol": "_fateCard_FriendChoise",
+       "origin": [
+        65,
+        105.35
+       ],
+       "rect": [
+        761,
+        183,
+        145,
+        216
+       ]
+      },
+      {
+       "symbol": "_dailyButton_bg",
+       "origin": [
+        105,
+        67.5
+       ],
+       "rect": [
+        1,
+        305,
+        210,
+        135
+       ]
+      },
+      {
+       "symbol": "_dailyButton_bg_down",
+       "origin": [
+        102.5,
+        65.9
+       ],
+       "rect": [
+        213,
+        305,
+        205,
+        132
+       ]
+      },
+      {
+       "symbol": "_buttonGreatReward_down",
+       "origin": [
+        124,
+        45
+       ],
+       "rect": [
+        420,
+        305,
+        252,
+        90
+       ]
+      },
+      {
+       "symbol": "_buttonGreatReward_over",
+       "origin": [
+        124,
+        45
+       ],
+       "rect": [
+        420,
+        397,
+        252,
+        90
+       ]
+      },
+      {
+       "symbol": "_buttonGreatReward_up",
+       "origin": [
+        123.25,
+        42.5
+       ],
+       "rect": [
+        674,
+        401,
+        247,
+        85
+       ]
+      },
+      {
+       "symbol": "_missioncompleted_portrait",
+       "origin": [
+        65.25,
+        62.75
+       ],
+       "rect": [
+        213,
+        439,
+        131,
+        126
+       ]
+      },
+      {
+       "symbol": "_mission_portrait",
+       "origin": [
+        65.25,
+        62.75
+       ],
+       "rect": [
+        1,
+        442,
+        131,
+        126
+       ]
+      },
+      {
+       "symbol": "_dayBG",
+       "origin": [
+        60,
+        60
+       ],
+       "rect": [
+        674,
+        488,
+        120,
+        120
+       ]
+      },
+      {
+       "symbol": "button_Resolve_down",
+       "origin": [
+        67.5,
+        45
+       ],
+       "rect": [
+        796,
+        488,
+        135,
+        90
+       ]
+      },
+      {
+       "symbol": "button_Resolve_up",
+       "origin": [
+        67.5,
+        45
+       ],
+       "rect": [
+        796,
+        580,
+        135,
+        90
+       ]
+      },
+      {
+       "symbol": "button_Resolve_over",
+       "origin": [
+        67.5,
+        45
+       ],
+       "rect": [
+        346,
+        489,
+        135,
+        90
+       ]
+      },
+      {
+       "symbol": "_buttonFriendReward_over",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        134,
+        567,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonFriendReward_down",
+       "origin": [
+        69,
+        43.9
+       ],
+       "rect": [
+        483,
+        489,
+        138,
+        88
+       ]
+      },
+      {
+       "symbol": "_buttonFriendReward_up",
+       "origin": [
+        67.75,
+        42.9
+       ],
+       "rect": [
+        483,
+        579,
+        136,
+        86
+       ]
+      },
+      {
+       "symbol": "_closeButton_hit",
+       "origin": [
+        50,
+        50
+       ],
+       "rect": [
+        908,
+        183,
+        100,
+        100
+       ]
+      },
+      {
+       "symbol": "_dayBG_small",
+       "origin": [
+        40,
+        40
+       ],
+       "rect": [
+        674,
+        305,
+        80,
+        80
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
  "movies": [
   {
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "button_Resolve_up",
        "pivot": [
         67.5,
         45
        ],
-       "ref": "button_Resolve_up",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       },
       {
-       "pivot": [
-        67.5,
-        45
-       ],
-       "index": 1,
        "tweened": false,
-       "ref": "button_Resolve_over",
-       "duration": 1,
        "tint": [
         0.3,
         "#7DD0FF"
-       ]
-      },
-      {
+       ],
+       "index": 1,
+       "ref": "button_Resolve_over",
        "pivot": [
         67.5,
         45
        ],
+       "duration": 1
+      },
+      {
        "ref": "button_Resolve_down",
-       "duration": 1,
-       "index": 2,
-       "tweened": false
-      },
-      {
        "pivot": [
         67.5,
         45
        ],
-       "ref": "button_Resolve_up",
+       "tweened": false,
        "duration": 1,
-       "index": 3,
-       "tweened": false
+       "index": 2
+      },
+      {
+       "ref": "button_Resolve_up",
+       "pivot": [
+        67.5,
+        45
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 3
       }
      ],
      "name": "Bouton"
@@ -54,8 +1505,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Resolve_text",
+       "tweened": false,
        "duration": 4,
        "index": 0
       }
@@ -63,22 +1514,22 @@
      "name": "_Resolve_text"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "ButtonResolve"
+   "id": "ButtonResolve",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -86,8 +1537,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day1Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -97,8 +1548,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day1Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -113,14 +1564,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -128,8 +1579,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day2Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -143,8 +1594,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day2Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -159,14 +1610,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -174,8 +1625,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day3Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -185,8 +1636,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day3Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -201,14 +1652,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -216,8 +1667,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day4Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -231,8 +1682,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day4Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -247,14 +1698,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -262,8 +1713,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day5Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -277,8 +1728,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day5Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -293,14 +1744,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -308,8 +1759,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day6Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -319,8 +1770,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day6Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -335,14 +1786,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG_small",
        "pivot": [
         40,
         40
        ],
-       "ref": "_dayBG_small",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG_small"
@@ -350,8 +1801,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day7Small_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -361,8 +1812,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~Day7Current",
+       "tweened": false,
        "duration": 1,
        "index": 0
       }
@@ -386,8 +1837,8 @@
         0.1,
         0
        ],
-       "tweened": false,
        "ref": "_rewards_bg",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -405,8 +1856,8 @@
         60,
         -55
        ],
-       "tweened": false,
        "ref": "_currencyIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -424,8 +1875,8 @@
         60,
         27.125
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -434,8 +1885,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_currencyvalue01_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -449,8 +1900,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_currencyvalue02_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -464,8 +1915,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_ressourcevalue01_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -479,8 +1930,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_ressourcevalue02_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -503,8 +1954,8 @@
         -64,
         27.125
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -522,8 +1973,8 @@
         -64,
         -55
        ],
-       "tweened": false,
        "ref": "_currencyIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -537,14 +1988,14 @@
     {
      "keyframes": [
       {
+       "ref": "_largePopinBG",
        "pivot": [
         470.55,
         277.975
        ],
-       "ref": "_largePopinBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "BG"
@@ -552,8 +2003,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_mission_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -567,8 +2018,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonClose",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -600,14 +2051,14 @@
     {
      "keyframes": [
       {
+       "ref": "_MissionHolder",
        "pivot": [
         378.975,
         74.525
        ],
-       "ref": "_MissionHolder",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Mission01"
@@ -624,8 +2075,8 @@
         0,
         -170.375
        ],
-       "tweened": false,
        "ref": "_MissionHolder",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -643,8 +2094,8 @@
         0,
         170.35
        ],
-       "tweened": false,
        "ref": "_MissionHolder",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -667,8 +2118,8 @@
         0,
         0.025
        ],
-       "tweened": false,
        "ref": "_mission_bg",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -677,8 +2128,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_mission_description",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -692,8 +2143,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_rewards_title",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -707,8 +2158,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -731,8 +2182,8 @@
         294,
         -17
        ],
-       "tweened": false,
        "ref": "_currencyIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -741,8 +2192,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -765,8 +2216,8 @@
         294,
         18.5
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -775,8 +2226,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -799,8 +2250,8 @@
         294,
         54
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -818,8 +2269,8 @@
         -298,
         0.6
        ],
-       "tweened": false,
        "ref": "_mission_portrait",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -833,14 +2284,14 @@
     {
      "keyframes": [
       {
+       "ref": "_smallPopinBG",
        "pivot": [
         375,
         220.7
        ],
-       "ref": "_smallPopinBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "BG"
@@ -848,8 +2299,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day7",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -863,8 +2314,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day6",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -878,8 +2329,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day5",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -893,8 +2344,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day4",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -908,8 +2359,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day3",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -923,8 +2374,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day2",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -938,8 +2389,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "Day1",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -953,8 +2404,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonDaily",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -968,8 +2419,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_dailyReward_value",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -983,8 +2434,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_dailyReward_value",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -998,8 +2449,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_dailyReward_value",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1013,8 +2464,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_dailyReward_value",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1037,8 +2488,8 @@
         -233,
         92.5
        ],
-       "tweened": false,
        "ref": "_goldIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1056,8 +2507,8 @@
         -85,
         92.5
        ],
-       "tweened": false,
        "ref": "_hardCurrencyIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1075,8 +2526,8 @@
         -233,
         148.55
        ],
-       "tweened": false,
        "ref": "_stoneIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1094,8 +2545,8 @@
         -85,
         148.55
        ],
-       "tweened": false,
        "ref": "_woodIcon_Medium",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1104,8 +2555,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_getRewards_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1119,8 +2570,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~_altarINfo_movingBorder",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1134,8 +2585,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonClose",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1163,8 +2614,8 @@
         0,
         0.025
        ],
-       "tweened": false,
        "ref": "_smallPopinBG",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1173,8 +2624,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonClose",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1188,8 +2639,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "ButtonResolve",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1203,8 +2654,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_friendName_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1218,8 +2669,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_description01_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1233,8 +2684,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_description02_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1257,8 +2708,8 @@
         -243.25,
         -37.725
        ],
-       "tweened": false,
        "ref": "_friendEvent_information01",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1272,14 +2723,14 @@
     {
      "keyframes": [
       {
+       "ref": "_smallPopinBG",
        "pivot": [
         375,
         220.725
        ],
-       "ref": "_smallPopinBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_smallPopinBG"
@@ -1287,8 +2738,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonFriendReward",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1302,8 +2753,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_friendInformation_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1317,8 +2768,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_hisChoice_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1332,8 +2783,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "EventRewardFriend",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1356,8 +2807,8 @@
         -251.875,
         19.95
        ],
-       "tweened": false,
        "ref": "_friendPicture",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1366,8 +2817,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonClose",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1390,8 +2841,8 @@
         243.575,
         31.975
        ],
-       "tweened": false,
        "ref": "_fateCard_FriendChoise",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1400,8 +2851,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_friendName_text",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1420,14 +2871,14 @@
     {
      "keyframes": [
       {
+       "ref": "_smallPopinBG",
        "pivot": [
         375,
         220.725
        ],
-       "ref": "_smallPopinBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "Mission_completed_BG"
@@ -1435,8 +2886,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_txt_mission_completed",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1459,8 +2910,8 @@
         -179.575,
         -85
        ],
-       "tweened": false,
        "ref": "_missioncompleted_portrait",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1469,8 +2920,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_mission_description_done_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1484,8 +2935,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "~ButtonGreat",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1499,8 +2950,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_rewards_get_title",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1514,8 +2965,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_get_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1538,8 +2989,8 @@
         67,
         44.05
        ],
-       "tweened": false,
        "ref": "_currencyIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1548,8 +2999,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_get_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1572,8 +3023,8 @@
         67,
         5
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1582,8 +3033,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_reward_get_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1606,8 +3057,8 @@
         67,
         83.1
        ],
-       "tweened": false,
        "ref": "_buildRessourceIcon_Small",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1630,60 +3081,60 @@
         -1,
         0
        ],
-       "tweened": false,
        "ref": "_closeButton_up",
+       "tweened": false,
        "duration": 1
       },
       {
+       "ref": "_closeButton_over",
        "pivot": [
         23,
         21.55
        ],
-       "ref": "_closeButton_over",
+       "tweened": false,
        "duration": 1,
-       "index": 1,
-       "tweened": false
+       "index": 1
       },
       {
+       "ref": "_closeButton_down",
        "pivot": [
         22,
         20.625
        ],
-       "ref": "_closeButton_down",
+       "tweened": false,
        "duration": 1,
-       "index": 2,
-       "tweened": false
+       "index": 2
       },
       {
+       "ref": "_closeButton_hit",
        "pivot": [
         50,
         50
        ],
-       "ref": "_closeButton_hit",
+       "tweened": false,
        "duration": 1,
-       "index": 3,
-       "tweened": false
+       "index": 3
       }
      ],
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonClose"
+   "id": "~ButtonClose",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "_dailyButton_bg",
        "pivot": [
         105,
         67.5
        ],
-       "ref": "_dailyButton_bg",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       },
       {
        "pivot": [
@@ -1695,8 +3146,8 @@
         0,
         -0.025
        ],
-       "tweened": false,
        "ref": "_dailyButton_bg",
+       "tweened": false,
        "scale": [
         1.0476,
         1.0476
@@ -1713,19 +3164,19 @@
         0,
         -0.025
        ],
-       "tweened": false,
        "ref": "_dailyButton_bg_down",
+       "tweened": false,
        "duration": 1
       },
       {
+       "ref": "_dailyButton_bg",
        "pivot": [
         105,
         67.5
        ],
-       "ref": "_dailyButton_bg",
+       "tweened": false,
        "duration": 1,
-       "index": 3,
-       "tweened": false
+       "index": 3
       }
      ],
      "name": "_dailyButton_bg"
@@ -1733,8 +3184,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_buttonDaily_txt",
+       "tweened": false,
        "duration": 4,
        "index": 0
       }
@@ -1742,8 +3193,8 @@
      "name": "Layer 1"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonDaily"
+   "id": "~ButtonDaily",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1759,8 +3210,8 @@
         0,
         -0.125
        ],
-       "tweened": false,
        "ref": "_buttonFriendReward_up",
+       "tweened": false,
        "duration": 1
       },
       {
@@ -1773,8 +3224,8 @@
         0,
         -0.125
        ],
-       "tweened": false,
        "ref": "_buttonFriendReward_over",
+       "tweened": false,
        "duration": 1
       },
       {
@@ -1787,8 +3238,8 @@
         0,
         -0.125
        ],
-       "tweened": false,
        "ref": "_buttonFriendReward_down",
+       "tweened": false,
        "duration": 2
       }
      ],
@@ -1797,8 +3248,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_friendReward_ButtonText",
+       "tweened": false,
        "duration": 4,
        "index": 0
       }
@@ -1806,8 +3257,8 @@
      "name": "buttonSendText"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonFriendReward"
+   "id": "~ButtonFriendReward",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
@@ -1823,8 +3274,8 @@
         0,
         -0.25
        ],
-       "tweened": false,
        "ref": "_buttonGreatReward_up",
+       "tweened": false,
        "duration": 1
       },
       {
@@ -1837,8 +3288,8 @@
         0,
         -0.25
        ],
-       "tweened": false,
        "ref": "_buttonGreatReward_over",
+       "tweened": false,
        "duration": 1
       },
       {
@@ -1851,8 +3302,8 @@
         -0.1,
         0.025
        ],
-       "tweened": false,
        "ref": "_buttonGreatReward_down",
+       "tweened": false,
        "duration": 2
       }
      ],
@@ -1861,8 +3312,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_txt_great",
+       "tweened": false,
        "duration": 4,
        "index": 0,
        "loc": [
@@ -1874,22 +3325,22 @@
      "name": "_txt_Great"
     }
    ],
-   "baseClass": "flash.display.SimpleButton",
-   "id": "~ButtonGreat"
+   "id": "~ButtonGreat",
+   "baseClass": "flash.display.SimpleButton"
   },
   {
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -1897,8 +3348,8 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_Day1_txt",
+       "tweened": false,
        "duration": 1,
        "index": 0,
        "loc": [
@@ -1917,14 +3368,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -1941,8 +3392,8 @@
         0,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day2_txt",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1956,14 +3407,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -1980,8 +3431,8 @@
         0,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day3_txt",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -1995,14 +3446,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -2019,8 +3470,8 @@
         0,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day4_text",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -2034,14 +3485,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -2058,8 +3509,8 @@
         -0.025,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day5_txt",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -2073,14 +3524,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -2097,8 +3548,8 @@
         -0.025,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day6_txt",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -2112,14 +3563,14 @@
     {
      "keyframes": [
       {
+       "ref": "_dayBG",
        "pivot": [
         60,
         60
        ],
-       "ref": "_dayBG",
+       "tweened": false,
        "duration": 1,
-       "index": 0,
-       "tweened": false
+       "index": 0
       }
      ],
      "name": "_dayBG"
@@ -2136,8 +3587,8 @@
         -0.025,
         -0.025
        ],
-       "tweened": false,
        "ref": "_Day7_txt",
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -2151,11 +3602,11 @@
     {
      "keyframes": [
       {
+       "ref": "_altarContour_BR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BR",
        "duration": 29,
        "index": 0,
        "loc": [
@@ -2164,11 +3615,11 @@
        ]
       },
       {
+       "ref": "_altarContour_BR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BR",
        "duration": 30,
        "index": 29,
        "loc": [
@@ -2177,11 +3628,11 @@
        ]
       },
       {
+       "ref": "_altarContour_BR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BR",
        "duration": 1,
        "index": 59,
        "loc": [
@@ -2195,11 +3646,11 @@
     {
      "keyframes": [
       {
+       "ref": "_altarContour_TR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TR",
        "duration": 29,
        "index": 0,
        "loc": [
@@ -2208,11 +3659,11 @@
        ]
       },
       {
+       "ref": "_altarContour_TR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TR",
        "duration": 30,
        "index": 29,
        "loc": [
@@ -2221,11 +3672,11 @@
        ]
       },
       {
+       "ref": "_altarContour_TR",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TR",
        "duration": 1,
        "index": 59,
        "loc": [
@@ -2239,11 +3690,11 @@
     {
      "keyframes": [
       {
+       "ref": "_altarContour_TL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TL",
        "duration": 29,
        "index": 0,
        "loc": [
@@ -2252,11 +3703,11 @@
        ]
       },
       {
+       "ref": "_altarContour_TL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TL",
        "duration": 30,
        "index": 29,
        "loc": [
@@ -2265,11 +3716,11 @@
        ]
       },
       {
+       "ref": "_altarContour_TL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_TL",
        "duration": 1,
        "index": 59,
        "loc": [
@@ -2283,11 +3734,11 @@
     {
      "keyframes": [
       {
+       "ref": "_altarContour_BL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BL",
        "duration": 29,
        "index": 0,
        "loc": [
@@ -2296,11 +3747,11 @@
        ]
       },
       {
+       "ref": "_altarContour_BL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BL",
        "duration": 30,
        "index": 29,
        "loc": [
@@ -2309,11 +3760,11 @@
        ]
       },
       {
+       "ref": "_altarContour_BL",
        "pivot": [
         11.25,
         11.25
        ],
-       "ref": "_altarContour_BL",
        "duration": 1,
        "index": 59,
        "loc": [
@@ -2326,1457 +3777,6 @@
     }
    ],
    "id": "~_altarINfo_movingBorder"
-  }
- ],
- "md5": "a5f2139e260a5009dc571a4c7816d3d0",
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "origin": [
-        470.55,
-        278
-       ],
-       "symbol": "_largePopinBG",
-       "rect": [
-        1,
-        1,
-        941,
-        558
-       ]
-      },
-      {
-       "origin": [
-        375,
-        220.7
-       ],
-       "symbol": "_smallPopinBG",
-       "rect": [
-        1,
-        561,
-        750,
-        442
-       ]
-      },
-      {
-       "origin": [
-        117.5,
-        105
-       ],
-       "symbol": "_rewards_bg",
-       "rect": [
-        753,
-        561,
-        235,
-        210
-       ]
-      },
-      {
-       "origin": [
-        103.75,
-        103.75
-       ],
-       "symbol": "_friendEvent_information01",
-       "rect": [
-        753,
-        773,
-        208,
-        208
-       ]
-      },
-      {
-       "origin": [
-        24,
-        24
-       ],
-       "symbol": "_currencyIcon_Medium",
-       "rect": [
-        963,
-        773,
-        48,
-        48
-       ]
-      },
-      {
-       "origin": [
-        24,
-        24
-       ],
-       "symbol": "_goldIcon_Medium",
-       "rect": [
-        963,
-        823,
-        48,
-        48
-       ]
-      },
-      {
-       "origin": [
-        24,
-        24
-       ],
-       "symbol": "_hardCurrencyIcon_Medium",
-       "rect": [
-        963,
-        873,
-        48,
-        48
-       ]
-      },
-      {
-       "origin": [
-        24,
-        24
-       ],
-       "symbol": "_stoneIcon_Medium",
-       "rect": [
-        963,
-        923,
-        48,
-        48
-       ]
-      },
-      {
-       "origin": [
-        24,
-        24
-       ],
-       "symbol": "_buildRessourceIcon_Medium",
-       "rect": [
-        963,
-        973,
-        48,
-        48
-       ]
-      },
-      {
-       "origin": [
-        24,
-        21.6
-       ],
-       "symbol": "_woodIcon_Medium",
-       "rect": [
-        944,
-        1,
-        48,
-        44
-       ]
-      },
-      {
-       "origin": [
-        23,
-        21.55
-       ],
-       "symbol": "_closeButton_over",
-       "rect": [
-        944,
-        47,
-        46,
-        44
-       ]
-      },
-      {
-       "origin": [
-        22,
-        20.6
-       ],
-       "symbol": "_closeButton_down",
-       "rect": [
-        944,
-        93,
-        44,
-        42
-       ]
-      },
-      {
-       "origin": [
-        22,
-        20.6
-       ],
-       "symbol": "_closeButton_up",
-       "rect": [
-        944,
-        137,
-        44,
-        42
-       ]
-      },
-      {
-       "origin": [
-        16,
-        16
-       ],
-       "symbol": "_currencyIcon_Small",
-       "rect": [
-        753,
-        983,
-        32,
-        32
-       ]
-      },
-      {
-       "origin": [
-        16,
-        16
-       ],
-       "symbol": "_buildRessourceIcon_Small",
-       "rect": [
-        787,
-        983,
-        32,
-        32
-       ]
-      },
-      {
-       "origin": [
-        11.25,
-        11.25
-       ],
-       "symbol": "_altarContour_BR",
-       "rect": [
-        821,
-        983,
-        23,
-        23
-       ]
-      },
-      {
-       "origin": [
-        11.25,
-        11.25
-       ],
-       "symbol": "_altarContour_TL",
-       "rect": [
-        846,
-        983,
-        23,
-        23
-       ]
-      },
-      {
-       "origin": [
-        11.25,
-        11.25
-       ],
-       "symbol": "_altarContour_TR",
-       "rect": [
-        871,
-        983,
-        23,
-        23
-       ]
-      },
-      {
-       "origin": [
-        11.25,
-        11.25
-       ],
-       "symbol": "_altarContour_BL",
-       "rect": [
-        896,
-        983,
-        23,
-        23
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.1,
-        "text": "1st</BR>DAY",
-        "x": -114.6,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day1_txt",
-       "rect": [
-        921,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.15,
-        "text": "7th</BR>DAY",
-        "x": -114.65,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day7_txt",
-       "rect": [
-        921,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "7",
-        "x": -34,
-        "width": 68,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day7Small_txt",
-       "rect": [
-        921,
-        989,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "5",
-        "x": -34,
-        "width": 68,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day5Small_txt",
-       "rect": [
-        921,
-        992,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -35.75,
-        "text": "9999",
-        "x": -76.25,
-        "width": 152.45,
-        "font": "72px _pixelOperator*",
-        "align": "center",
-        "height": 71.5,
-        "wordWrap": 0,
-        "color": "#3C3232"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_dailyReward_value",
-       "rect": [
-        921,
-        995,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -46.6,
-        "text": "Your friend got this for you !",
-        "x": -385.25,
-        "width": 770.5,
-        "font": "65px _pixelOperator*",
-        "align": "center",
-        "height": 99.75,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_friendInformation_text",
-       "rect": [
-        921,
-        998,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "6",
-        "x": -34,
-        "width": 68,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day6Small_txt",
-       "rect": [
-        921,
-        1001,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -78,
-        "text": "Your friend share with you an event !",
-        "x": -390.55,
-        "width": 781.15,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 157.4,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_description01_text",
-       "rect": [
-        921,
-        1004,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -47.5,
-        "text": "Resolve it to earn rewards !",
-        "x": -411,
-        "width": 822,
-        "font": "62px _pixelOperator*",
-        "align": "center",
-        "height": 95,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_description02_text",
-       "rect": [
-        921,
-        1007,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "4",
-        "x": -34,
-        "width": 68,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day4Small_txt",
-       "rect": [
-        924,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -29.75,
-        "text": "FriendName",
-        "x": 0,
-        "width": 559.9,
-        "font": "62px _pixelOperator*",
-        "align": "left",
-        "height": 79.7,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_friendName_text",
-       "rect": [
-        927,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "2",
-        "x": -34,
-        "width": 68,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day2Small_txt",
-       "rect": [
-        930,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.15,
-        "text": "6th</BR>DAY",
-        "x": -114.65,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day6_txt",
-       "rect": [
-        933,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "3",
-        "x": -26,
-        "width": 52,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day3Small_txt",
-       "rect": [
-        936,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "NICE !",
-        "x": -167.55,
-        "width": 335.1,
-        "font": "128px _pixelOperator*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#EBFFEB"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_buttonDaily_txt",
-       "rect": [
-        939,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.6,
-        "width": 697.15,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 273.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_mission_description",
-       "rect": [
-        942,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -124.6,
-        "text": "Mission_Description_XXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX</BR>XXXXXXXXXXXXXXXXX",
-        "x": -348.55,
-        "width": 697.15,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 273.6,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_mission_description_done_txt",
-       "rect": [
-        945,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.15,
-        "text": "5th</BR>DAY",
-        "x": -114.65,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day5_txt",
-       "rect": [
-        948,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -66.15,
-        "text": "*Missions",
-        "x": -249.9,
-        "width": 499.8,
-        "font": "96px _pixelOperator*",
-        "align": "center",
-        "height": 132.25,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_mission_txt",
-       "rect": [
-        951,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.15,
-        "text": "3rd</BR>DAY",
-        "x": -114.6,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day3_txt",
-       "rect": [
-        954,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -102.15,
-        "text": "4th</BR>DAY",
-        "x": -114.6,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 204.25,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day4_text",
-       "rect": [
-        957,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -36.2,
-        "text": "Resolve",
-        "x": -94.25,
-        "width": 188.5,
-        "font": "56px _pixelOperator*",
-        "align": "center",
-        "height": 72.35,
-        "wordWrap": 1,
-        "color": "#FFFFFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Resolve_text",
-       "rect": [
-        960,
-        983,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.45,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_ressourcevalue01_text",
-       "rect": [
-        924,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.4,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_ressourcevalue02_text",
-       "rect": [
-        924,
-        989,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -25.8,
-        "text": "XXXX",
-        "x": -66.1,
-        "width": 132.2,
-        "font": "43px _pixelOperator*",
-        "align": "left",
-        "height": 56.5,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_reward_get_txt",
-       "rect": [
-        924,
-        992,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -25.8,
-        "text": "XXXX",
-        "x": -66.1,
-        "width": 132.2,
-        "font": "43px _pixelOperator*",
-        "align": "left",
-        "height": 56.5,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_reward_txt",
-       "rect": [
-        924,
-        995,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -41.25,
-        "text": "His choice",
-        "x": -142.85,
-        "width": 285.75,
-        "font": "52px _pixelOperator*",
-        "align": "center",
-        "height": 82.5,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_hisChoice_text",
-       "rect": [
-        924,
-        998,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_rewards_get_title",
-       "rect": [
-        924,
-        1001,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.9,
-        "text": "Rewards",
-        "x": -100.1,
-        "width": 200.25,
-        "font": "54px _pixelOperator*",
-        "align": "left",
-        "height": 69.9,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_rewards_title",
-       "rect": [
-        924,
-        1004,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.4,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_currencyvalue02_text",
-       "rect": [
-        924,
-        1007,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -62,
-        "text": "1",
-        "x": -26,
-        "width": 52,
-        "font": "128px _pixelOperator_title*",
-        "align": "center",
-        "height": 124,
-        "wordWrap": 0,
-        "color": "#FFEBFF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day1Small_txt",
-       "rect": [
-        927,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -65.35,
-        "text": "Great !",
-        "x": -218.55,
-        "width": 437.1,
-        "font": "96px _pixelOperator*",
-        "align": "center",
-        "height": 130.7,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_great",
-       "rect": [
-        930,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.75,
-        "text": "Misson completed !",
-        "x": -749.3,
-        "width": 1498.6,
-        "font": "70px _pixelOperator*",
-        "align": "center",
-        "height": 89.45,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_txt_mission_completed",
-       "rect": [
-        933,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -98.8,
-        "text": "2nd</BR>DAY",
-        "x": -114.6,
-        "width": 229.25,
-        "font": "92px _pixelOperator_title*",
-        "align": "center",
-        "height": 197.55,
-        "wordWrap": 1,
-        "color": "#FFF0FF"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_Day2_txt",
-       "rect": [
-        936,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -31.4,
-        "text": "XXXX",
-        "x": -77.45,
-        "width": 154.85,
-        "font": "48px _pixelOperator*",
-        "align": "center",
-        "height": 62.8,
-        "wordWrap": 1,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_currencyvalue01_text",
-       "rect": [
-        939,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -43.55,
-        "text": "Take",
-        "x": -108.6,
-        "width": 217.25,
-        "font": "75px _pixelOperator*",
-        "align": "center",
-        "height": 95.55,
-        "wordWrap": 0,
-        "color": "#000000"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_friendReward_ButtonText",
-       "rect": [
-        942,
-        986,
-        1,
-        1
-       ]
-      },
-      {
-       "baseClass": "TextSprite",
-       "data": {
-        "y": -42.05,
-        "text": "Come back tomorrow for more rewards!",
-        "x": -596.3,
-        "width": 1192.6,
-        "font": "76px _pixelOperator*",
-        "align": "center",
-        "height": 84.15,
-        "wordWrap": 1,
-        "color": "#3C3232"
-       },
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_getRewards_txt",
-       "rect": [
-        945,
-        986,
-        1,
-        1
-       ]
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "origin": [
-        379,
-        74.5
-       ],
-       "symbol": "_MissionHolder",
-       "rect": [
-        1,
-        1,
-        758,
-        150
-       ]
-      },
-      {
-       "origin": [
-        379,
-        74.55
-       ],
-       "symbol": "_mission_bg",
-       "rect": [
-        1,
-        153,
-        758,
-        150
-       ]
-      },
-      {
-       "origin": [
-        100,
-        90
-       ],
-       "symbol": "_friendPicture",
-       "rect": [
-        761,
-        1,
-        200,
-        180
-       ]
-      },
-      {
-       "origin": [
-        65,
-        105.35
-       ],
-       "symbol": "_fateCard_FriendChoise",
-       "rect": [
-        761,
-        183,
-        145,
-        216
-       ]
-      },
-      {
-       "origin": [
-        105,
-        67.5
-       ],
-       "symbol": "_dailyButton_bg",
-       "rect": [
-        1,
-        305,
-        210,
-        135
-       ]
-      },
-      {
-       "origin": [
-        102.5,
-        65.9
-       ],
-       "symbol": "_dailyButton_bg_down",
-       "rect": [
-        213,
-        305,
-        205,
-        132
-       ]
-      },
-      {
-       "origin": [
-        124,
-        45
-       ],
-       "symbol": "_buttonGreatReward_down",
-       "rect": [
-        420,
-        305,
-        252,
-        90
-       ]
-      },
-      {
-       "origin": [
-        124,
-        45
-       ],
-       "symbol": "_buttonGreatReward_over",
-       "rect": [
-        420,
-        397,
-        252,
-        90
-       ]
-      },
-      {
-       "origin": [
-        123.25,
-        42.5
-       ],
-       "symbol": "_buttonGreatReward_up",
-       "rect": [
-        674,
-        401,
-        247,
-        85
-       ]
-      },
-      {
-       "origin": [
-        65.25,
-        62.75
-       ],
-       "symbol": "_missioncompleted_portrait",
-       "rect": [
-        213,
-        439,
-        131,
-        126
-       ]
-      },
-      {
-       "origin": [
-        65.25,
-        62.75
-       ],
-       "symbol": "_mission_portrait",
-       "rect": [
-        1,
-        442,
-        131,
-        126
-       ]
-      },
-      {
-       "origin": [
-        60,
-        60
-       ],
-       "symbol": "_dayBG",
-       "rect": [
-        674,
-        488,
-        120,
-        120
-       ]
-      },
-      {
-       "origin": [
-        67.5,
-        45
-       ],
-       "symbol": "button_Resolve_down",
-       "rect": [
-        796,
-        488,
-        135,
-        90
-       ]
-      },
-      {
-       "origin": [
-        67.5,
-        45
-       ],
-       "symbol": "button_Resolve_up",
-       "rect": [
-        796,
-        580,
-        135,
-        90
-       ]
-      },
-      {
-       "origin": [
-        67.5,
-        45
-       ],
-       "symbol": "button_Resolve_over",
-       "rect": [
-        346,
-        489,
-        135,
-        90
-       ]
-      },
-      {
-       "origin": [
-        69,
-        43.9
-       ],
-       "symbol": "_buttonFriendReward_over",
-       "rect": [
-        134,
-        567,
-        138,
-        88
-       ]
-      },
-      {
-       "origin": [
-        69,
-        43.9
-       ],
-       "symbol": "_buttonFriendReward_down",
-       "rect": [
-        483,
-        489,
-        138,
-        88
-       ]
-      },
-      {
-       "origin": [
-        67.75,
-        42.9
-       ],
-       "symbol": "_buttonFriendReward_up",
-       "rect": [
-        483,
-        579,
-        136,
-        86
-       ]
-      },
-      {
-       "origin": [
-        50,
-        50
-       ],
-       "symbol": "_closeButton_hit",
-       "rect": [
-        908,
-        183,
-        100,
-        100
-       ]
-      },
-      {
-       "origin": [
-        40,
-        40
-       ],
-       "symbol": "_dayBG_small",
-       "rect": [
-        674,
-        305,
-        80,
-        80
-       ]
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ],
-   "scaleFactor": 1
   }
  ],
  "frameRate": 24
