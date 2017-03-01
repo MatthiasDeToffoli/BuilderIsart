@@ -46,7 +46,7 @@ const TABLE = 'MaxExp';
     return static::testLevelUp();
   }
 
-private static function getGoodXp(){
+public static function getGoodXp(){
   $lId = FacebookUtils::getId();
   return Resources::getResource($lId, 'goodXP');
 }

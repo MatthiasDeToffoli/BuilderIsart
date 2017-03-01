@@ -375,6 +375,20 @@ class ServerManagerBuilding{
 		Debug.error(pObject);
 	}
 	
+	
+	public static function endConstruction(pGoodXp:Float, pBadXp:Float):Void {
+		trace(pGoodXp, pBadXp);
+		ServerManager.callPhpFile(onSuccessEndConstruction, onErrorEndConstruction, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.END_BUILDING, "goodXp" => pGoodXp, "badXp" =>pBadXp]);
+	}
+	
+	private static function onSuccessEndConstruction (pObject:String):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorEndConstruction (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
 	public static function startCollectorProd(pDescription:TileDescription, pName:String):Void {
 		ServerManager.callPhpFile( onSuccessStartCollectorProd, onErrorStartCollectorProd, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.START_COLLECTOR_PROD,
@@ -524,7 +538,6 @@ class ServerManagerBuilding{
 	}
 	
 	public static function upgradeFine(pDesc:TileDescription):Void {
-		trace('???');
 		ServerManager.callPhpFile(onSuccessUpgradeFine, onErrorUpgradeFine, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPGRADE_FINE,
 			"RegionX" => pDesc.regionX,

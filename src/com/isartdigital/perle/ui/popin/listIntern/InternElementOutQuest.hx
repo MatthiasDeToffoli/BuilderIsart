@@ -140,6 +140,10 @@ class InternElementOutQuest extends InternElement
 		setValues(internDatas);
 	}
 	
+	public function getSendPos():Point {
+		return btnSend.position;
+	}
+	
 	private function addListerners():Void{
 		TimeManager.eTimeQuest.on(TimeManager.EVENT_QUEST_END, updateQuestHud);
 		//Interactive.addListenerClick(picture, onPicture);

@@ -334,6 +334,7 @@ class TribunalPopin extends SmartPopinExtended
 	private  function onMouseUpOnCard(mouseEvent:EventTarget):Void {
 		canMoovCard = false;
 		
+		trace("teste");
 		
 		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
 		
@@ -350,7 +351,6 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function onFollowMouse(mouseEvent:EventTarget):Void {
 		if (!canMoovCard) return;
-		
 		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
 		
 		if (diff > 0 && Math.abs(diff) < MOUSE_DIFF_MAX) {

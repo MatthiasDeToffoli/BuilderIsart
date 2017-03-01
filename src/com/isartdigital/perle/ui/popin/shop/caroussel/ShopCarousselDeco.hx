@@ -11,16 +11,18 @@ class ShopCarousselDeco extends ShopCarousselDecoBuilding{
 
 	private static var NAME_LIST(default, never):Array<String> = [
 		BuildingName.HEAVEN_DECO_GENERIC_TREE,
-		BuildingName.HEAVEN_DECO_BIGGER_TREE,
-		BuildingName.HEAVEN_DECO_CLOUD,
-		BuildingName.HEAVEN_DECO_PARK,
-		BuildingName.HEAVEN_DECO_LAKE,
-		
 		BuildingName.HELL_DECO_SMALL_CRYSTAL,
+		BuildingName.HEAVEN_DECO_BIGGER_TREE,
 		BuildingName.HELL_DECO_BIGGER_CRYSTAL,
+		
+		BuildingName.HEAVEN_DECO_CLOUD,
 		BuildingName.HELL_DECO_DEAD_HEAD,
-		BuildingName.HELL_DECO_BONES,
+		BuildingName.HEAVEN_DECO_LAKE,
 		BuildingName.HELL_DECO_LAVA_SOURCE,
+		
+		BuildingName.HEAVEN_DECO_PARK,
+		BuildingName.HELL_DECO_BONES,
+		
 	];
 	
 	public static function isInArray(pAssetName:String):Bool {

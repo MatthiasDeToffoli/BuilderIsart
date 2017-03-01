@@ -29,7 +29,7 @@ switch ($FtueProgress) {
 	case 11:
 		Experience::gaignGoodXp(100);
 		break;
-	case 22:
+	case 23:
 		Experience::gaignBadXp(300);
 		break;
 	default:

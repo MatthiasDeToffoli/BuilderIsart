@@ -11,6 +11,7 @@ class ServerFile{
 	public static inline var FTUE:String = "Ftue";
 	public static inline var DECO_MISSION:String = "DecoMission";
 	public static inline var GIVE_GOLD:String = "GiveGold";
+	public static inline var END_BUILDING:String = "EndBuilding";
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
 	public static inline var REGIONS:String = "BuyRegions"; // todo : rename ADD_REGIONS ?
 	public static inline var BUILDING_ADD:String = "AddBuilding";

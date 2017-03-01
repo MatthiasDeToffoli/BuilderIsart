@@ -646,6 +646,7 @@ class AssetName{
 	public static inline var OPTION_POPPIN_MUSIC:String = "ButtonMusicGroup";
 	public static inline var OPTION_POPPIN_FR:String = "ButtonFrench";
 	public static inline var OPTION_POPPIN_EN:String = "ButtonEnglish";
+	public static inline var OPTION_CREDITS:String = "ButtonCredits";
 	public static inline var OPTION_POPPIN_LANGUAGE_TEXT:String = "_languageChoice_text";
 	public static inline var OPTION_POPPIN_DATAS_TEXT:String = "_dataOptions_text";
 	public static inline var OPTION_POPPIN_SOUND_TEXT:String = "_soundOptions_text";

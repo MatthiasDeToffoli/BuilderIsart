@@ -69,12 +69,6 @@ class VBuildingUpgrade extends VBuilding
 		return tileDesc;
 	}
 	
-	override public function addExp():Void 
-	{
-		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName,getLevel()).xPatCreationHell,GeneratorType.badXp);
-		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName, getLevel()).xPatCreationHeaven, GeneratorType.goodXp);
-	}
-	
 	public function canUpgrade():Bool {
 		return tileDesc.level < BuildingName.getMaxLevelByName(tileDesc.buildingName);
 	}

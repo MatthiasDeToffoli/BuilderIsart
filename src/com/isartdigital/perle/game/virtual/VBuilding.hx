@@ -290,18 +290,11 @@ class VBuilding extends VTile {
 	
 	
 	public function addExp():Void {
-		//todo pas une valeur en dur : 100
-		/*if (alignementBuilding == null || alignementBuilding == Alignment.neutral) {
-			ResourcesManager.takeXp(, GeneratorType.badXp);
-			ResourcesManager.takeXp(100, GeneratorType.goodXp);
-		}
-		else if (alignementBuilding == Alignment.hell)
-			ResourcesManager.takeXp(100, GeneratorType.badXp);
-		else if (alignementBuilding == Alignment.heaven)
-			ResourcesManager.takeXp(200, GeneratorType.goodXp);*/
-			
+		trace("test");
 		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHell,GeneratorType.badXp);
 		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHeaven, GeneratorType.goodXp);
+		
+		ServerManagerBuilding.endConstruction(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHeaven, GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHell);
 			
 	}
 	
@@ -374,7 +367,9 @@ class VBuilding extends VTile {
 		addGenerator();
 	
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
-		if(myVContextualHud != null) myVContextualHud.activate();
+		if (myVContextualHud != null) myVContextualHud.activate();
+		
+		trace("ici");
 		addExp();
 		
 		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this);

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
+import com.isartdigital.perle.ui.popin.credits.CreditPoppin;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
@@ -36,6 +37,7 @@ class OptionPoppin extends SmartPopinExtended
 	private static var btnReset:SmartButton;
 	private static var btnFR:SmartButton;
 	private static var btnEN:SmartButton;
+	private static var btnOption:SmartButton;
 	
 	private static var languageText:TextSprite;
 	private static var soundText:TextSprite;
@@ -81,6 +83,7 @@ class OptionPoppin extends SmartPopinExtended
 		btnReset = cast(getChildByName(AssetName.OPTION_POPPIN_RESETDATA), SmartButton);
 		btnFR = cast(getChildByName(AssetName.OPTION_POPPIN_FR), SmartButton);
 		btnEN = cast(getChildByName(AssetName.OPTION_POPPIN_EN), SmartButton);
+		btnOption = cast(getChildByName(AssetName.OPTION_CREDITS), SmartButton);
 		
 		languageText = cast(getChildByName(AssetName.OPTION_POPPIN_LANGUAGE_TEXT), TextSprite);
 		soundText = cast(getChildByName(AssetName.OPTION_POPPIN_SOUND_TEXT), TextSprite);
@@ -98,6 +101,7 @@ class OptionPoppin extends SmartPopinExtended
 		Interactive.addListenerRewrite(btnReset, setValuesBtnReset);
 		Interactive.addListenerClick(btnFR, onClickFr);
 		Interactive.addListenerClick(btnEN, onClickEn);
+		Interactive.addListenerClick(btnOption, openOptionPoppin);
 	}
 	
 	private function addButtonPoussoir():Void {
@@ -127,6 +131,11 @@ class OptionPoppin extends SmartPopinExtended
 		Interactive.addListenerClick(music2, onClickMusic);
 		buttonTab[1].push(music1);
 		buttonTab[1].push(music2);
+	}
+	
+	private function openOptionPoppin():Void {
+		//UIManager.getInstance().closeCurrentPopin();
+		UIManager.getInstance().openPopin(CreditPoppin.getInstance());
 	}
 	
 	private function setButtons(pNumber:Int):Void {
@@ -218,6 +227,7 @@ class OptionPoppin extends SmartPopinExtended
 		
 		Interactive.removeListenerClick(btnFR, onClickFr);
 		Interactive.removeListenerClick(btnEN, onClickEn);
+		Interactive.removeListenerClick(btnOption, openOptionPoppin);
 		instance = null;
 	}
 
