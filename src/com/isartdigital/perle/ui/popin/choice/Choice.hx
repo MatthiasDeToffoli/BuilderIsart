@@ -643,7 +643,7 @@ class Choice extends SmartPopinExtended
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		endLoop.stop();
+		if (endLoop != null) endLoop.stop();
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		choiceCard.interactive = false;

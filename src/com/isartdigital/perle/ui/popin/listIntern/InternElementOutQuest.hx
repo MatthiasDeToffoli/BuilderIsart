@@ -164,8 +164,8 @@ class InternElementOutQuest extends InternElement
 			Intern.getIntern(internDatas.id).stress = 0;
 			DialogueManager.endOfaDialogue();
 		}
-
-		if (Intern.numberInternsInQuest() <= UnlockManager.getNumberPlaces()){
+		
+		if (internDatas.quest == null) {
 			SoundManager.getSound("SOUND_SEND_INTERN").play();
 			sendInternInQuest();
 		}
