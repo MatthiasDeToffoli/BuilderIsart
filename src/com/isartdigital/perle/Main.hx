@@ -31,6 +31,7 @@ import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
 import com.isartdigital.perle.game.virtual.vBuilding.VVicesBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VVirtuesBuilding;
 import com.isartdigital.perle.ui.GraphicLoader;
+import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
@@ -444,7 +445,9 @@ class Main extends EventEmitter
 	 */
 	private function doUIBuilderHack ():Void {
 		var mapMovieClipToClass:Map<String, Class<Dynamic>> = [
-			AssetName.SHOP_CAROUSSEL_DECO_BUILDING => ShopCarousselDecoBuilding // todo: plus besoin ?
+			AssetName.SHOP_CAROUSSEL_DECO_BUILDING => ShopCarousselDecoBuilding, // todo: plus besoin ?
+			AssetName.HUD_MOVNG_BUILDING => BHMoving,
+			AssetName.HUD_MOVNG_BUILDING_DESKTOP => BHMoving
 		];
 		var lClassName:String;
 		var lClassNameNoPath:String;

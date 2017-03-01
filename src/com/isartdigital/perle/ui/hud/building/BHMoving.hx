@@ -22,6 +22,30 @@ class BHMoving extends BuildingHud{
 	private var btnCancel:SmartButton;
 	private var btnConfirm:SmartButton;
 	
+	/**
+	 * BHMoving is not integrated in hud, so i'm in hurry and i did this. todo before first getInstance()
+	 * @param	pBtnDesktop
+	 * @param	pBtnPhone
+	 */
+	public static function initHack (pBtnDesktop:BHMoving, pBtnPhone:BHMoving):Void {
+		if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP) {
+			// too early
+			//pBtnPhone.parent.removeChild(pBtnPhone);
+			//pBtnPhone.destroy();
+			pBtnPhone.visible = false;
+			instance = pBtnDesktop;
+		}
+		else {
+			
+			
+			//pBtnDesktop.parent.removeChild(pBtnDesktop);
+			//pBtnDesktop.destroy();
+			pBtnDesktop.visible = false;
+			instance = pBtnPhone;
+		}
+		//instance.parent.removeChild(instance); // too early
+		instance.visible = false;
+	}
 	
 	public static function getInstance (): BHMoving {
 		if (instance == null) instance = new BHMoving();

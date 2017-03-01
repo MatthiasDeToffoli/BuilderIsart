@@ -111,6 +111,7 @@ class Hud extends SmartScreen
 	{
 		super("HUD_Desktop");
 		modal = null;
+		initBHMoving(this);
 		containerBuildingHud = new Container();
 		containerBuildingHudSecondary = new Container();
 		com.isartdigital.perle.game.sprites.Building.getBuildingHudContainer().addChild(containerBuildingHud);
@@ -123,9 +124,15 @@ class Hud extends SmartScreen
 		addChild(containerEffect); // over everything
 		addListeners();
 		
-		
-		
 		on(EventType.ADDED, registerForFTUE);
+	}
+	
+	private static function initBHMoving (pHud:Hud):Void {
+		SmartCheck.traceChildrens(pHud);
+		BHMoving.initHack(
+			cast(SmartCheck.getChildByName(pHud, AssetName.HUD_MOVNG_BUILDING_DESKTOP), BHMoving),
+			cast(SmartCheck.getChildByName(pHud, AssetName.HUD_MOVNG_BUILDING), BHMoving)
+		);
 	}
 	
 	public function getContainerEffect ():Container {
@@ -172,14 +179,17 @@ class Hud extends SmartScreen
 
 		if (currentBuildingHudType != pNewBuildingHud) {
 			
-			closeCurrentBuildingHud();
+			if (currentBuildingHudType == BuildingHudType.MOVING)
+				BHMoving.getInstance().visible = false;
+			else
+				closeCurrentBuildingHud();
 			
 			currentBuildingHudType = pNewBuildingHud;
 			
 			switch (pNewBuildingHud) 
 			{
 				case BuildingHudType.HARVEST: {
-	
+					
 					if (Std.is(BuildingHud.virtualBuilding, VHouse) && cast(BuildingHud.virtualBuilding,VBuildingUpgrade).canUpgrade())
 						openContextual(BHHarvestHouse.getInstance()); // todo
 					else if (Std.is(BuildingHud.virtualBuilding, VCollector))
@@ -196,15 +206,16 @@ class Hud extends SmartScreen
 				case BuildingHudType.UPGRADING:
 					openContextual(BHBuiltInUpgrading.getInstance());
 					
-				case BuildingHudType.MOVING: 
+				case BuildingHudType.MOVING:
+					BHMoving.getInstance().visible = true;
 					GameStage.getInstance().getHudContainer().addChild(BHMoving.getInstance());
 					currentBuildingHud = BHMoving.getInstance();
-					UIPosition.setPositionInHud(
+					/*UIPosition.setPositionInHud(
 						BHMoving.getInstance(),
 						UIPosition.BOTTOM,
 						0,
 						BHHarvestNoUpgrade.getInstance().height/2
-					);
+					);*/
 					
 					
 				case BuildingHudType.NONE: 
