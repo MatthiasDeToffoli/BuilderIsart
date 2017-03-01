@@ -1,5 +1,5 @@
 {
- "md5": "3cd10b5b6ea08a70ddef16ca410024d7",
+ "md5": "7025d40022ce60050f47314aa81fa97e",
  "isNamespaced": false,
  "textureGroups": [
   {
@@ -9,16 +9,60 @@
      "file": "atlas0.png",
      "textures": [
       {
-       "symbol": "_credits_sprite",
+       "symbol": "_credits_HD",
        "origin": [
-        694,
-        385.5
+        0,
+        768
        ],
        "rect": [
         1,
         1,
-        1388,
-        771
+        1214,
+        770
+       ]
+      },
+      {
+       "symbol": "_credits_BG",
+       "origin": [
+        1212,
+        0
+       ],
+       "rect": [
+        1,
+        773,
+        1214,
+        770
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "_credits_BD",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        1214,
+        770
+       ]
+      },
+      {
+       "symbol": "_credits_HG",
+       "origin": [
+        1212,
+        768
+       ],
+       "rect": [
+        1,
+        773,
+        1214,
+        770
        ]
       }
      ]
@@ -32,12 +76,62 @@
     {
      "keyframes": [
       {
-       "ref": "_credits_sprite",
+       "ref": "_credits_HG",
        "pivot": [
-        694,
-        385.5
+        1212,
+        768
        ],
        "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_credits_HG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_credits_HD",
+       "pivot": [
+        0,
+        768
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_credits_HD"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_credits_BG",
+       "pivot": [
+        1212,
+        0
+       ],
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_credits_BG"
+    },
+    {
+     "keyframes": [
+      {
+       "ref": "_credits_BD",
+       "tweened": false,
+       "duration": 1,
+       "index": 0
+      }
+     ],
+     "name": "_credits_BD"
+    },
+    {
+     "keyframes": [
+      {
        "duration": 1,
        "index": 0
       }
