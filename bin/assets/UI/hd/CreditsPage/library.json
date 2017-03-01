@@ -1,18 +1,89 @@
 {
+ "md5": "7025d40022ce60050f47314aa81fa97e",
+ "isNamespaced": false,
+ "textureGroups": [
+  {
+   "scaleFactor": 1,
+   "atlases": [
+    {
+     "file": "atlas0.png",
+     "textures": [
+      {
+       "symbol": "_credits_HD",
+       "origin": [
+        0,
+        768
+       ],
+       "rect": [
+        1,
+        1,
+        1214,
+        770
+       ]
+      },
+      {
+       "symbol": "_credits_BG",
+       "origin": [
+        1212,
+        0
+       ],
+       "rect": [
+        1,
+        773,
+        1214,
+        770
+       ]
+      }
+     ]
+    },
+    {
+     "file": "atlas1.png",
+     "textures": [
+      {
+       "symbol": "_credits_BD",
+       "origin": [
+        0,
+        0
+       ],
+       "rect": [
+        1,
+        1,
+        1214,
+        770
+       ]
+      },
+      {
+       "symbol": "_credits_HG",
+       "origin": [
+        1212,
+        768
+       ],
+       "rect": [
+        1,
+        773,
+        1214,
+        770
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
  "movies": [
   {
    "layers": [
     {
      "keyframes": [
       {
+       "ref": "_credits_HG",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "pivot": [
         1212,
         768
-       ],
-       "ref": "_credits_HG",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_credits_HG"
@@ -20,14 +91,14 @@
     {
      "keyframes": [
       {
+       "ref": "_credits_HD",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "pivot": [
         0,
         768
-       ],
-       "ref": "_credits_HD",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_credits_HD"
@@ -35,14 +106,14 @@
     {
      "keyframes": [
       {
+       "ref": "_credits_BG",
+       "tweened": false,
+       "duration": 1,
+       "index": 0,
        "pivot": [
         1212,
         0
-       ],
-       "ref": "_credits_BG",
-       "duration": 1,
-       "index": 0,
-       "tweened": false
+       ]
       }
      ],
      "name": "_credits_BG"
@@ -50,10 +121,10 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "ref": "_credits_BD",
        "duration": 1,
-       "index": 0
+       "index": 0,
+       "tweened": false
       }
      ],
      "name": "_credits_BD"
@@ -69,77 +140,6 @@
     }
    ],
    "id": "_credits_MC"
-  }
- ],
- "md5": "7025d40022ce60050f47314aa81fa97e",
- "isNamespaced": false,
- "textureGroups": [
-  {
-   "atlases": [
-    {
-     "textures": [
-      {
-       "origin": [
-        0,
-        768
-       ],
-       "symbol": "_credits_HD",
-       "rect": [
-        1,
-        1,
-        1214,
-        770
-       ]
-      },
-      {
-       "origin": [
-        1212,
-        0
-       ],
-       "symbol": "_credits_BG",
-       "rect": [
-        1,
-        773,
-        1214,
-        770
-       ]
-      }
-     ],
-     "file": "atlas0.png"
-    },
-    {
-     "textures": [
-      {
-       "origin": [
-        0,
-        0
-       ],
-       "symbol": "_credits_BD",
-       "rect": [
-        1,
-        1,
-        1214,
-        770
-       ]
-      },
-      {
-       "origin": [
-        1212,
-        768
-       ],
-       "symbol": "_credits_HG",
-       "rect": [
-        1,
-        773,
-        1214,
-        770
-       ]
-      }
-     ],
-     "file": "atlas1.png"
-    }
-   ],
-   "scaleFactor": 1
   }
  ],
  "frameRate": 24
