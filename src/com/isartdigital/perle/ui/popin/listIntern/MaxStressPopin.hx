@@ -23,6 +23,7 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 
 	
@@ -110,9 +111,9 @@ class MaxStressPopin extends SmartPopin
 		internText = cast(getChildByName("_stressOut_info_text"), TextSprite);
 		internText.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_TEXT");
 		
-		var glowStress:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UISprite);
-		var glowEfficiency:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UISprite);
-		var glowSpeed:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UISprite);
+		var glowStress:UIMovie = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UIMovie);
+		var glowEfficiency:UIMovie = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UIMovie);
+		var glowSpeed:UIMovie = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UIMovie);
 		
 		glowStress.visible = false;
 		glowEfficiency.visible = false;
@@ -170,7 +171,6 @@ class MaxStressPopin extends SmartPopin
 		Interactive.addListenerRewrite(btnDismiss, setTextDismiss);
 		Interactive.addListenerClick(btnReset, onReset);
 		Interactive.addListenerRewrite(btnReset, setTextReset);
-		Interactive.addListenerRewrite(btnReset, setValuesResetBtn);
 		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
@@ -181,11 +181,9 @@ class MaxStressPopin extends SmartPopin
 	}
 	
 	private function setTextReset():Void{
-		btnResetTxt = cast(btnReset.getChildByName("txt"), TextSprite);
+		btnResetTxt = cast(btnReset.getChildByName("Text"), TextSprite);
 		btnResetTxt.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_RESETSTRESS");
-	}
-	
-	private function setValuesResetBtn():Void{
+		
 		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
 		btnResetTextValue.text = RESET_VALUE + "";
 	}
@@ -238,7 +236,6 @@ class MaxStressPopin extends SmartPopin
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		instance = null;
-		Interactive.removeListenerRewrite(btnReset, setValuesResetBtn);
 		Interactive.removeListenerClick(btnDismiss, onDismiss);
 		Interactive.removeListenerClick(btnReset, onReset);
 		Interactive.removeListenerClick(btnClose, onClose);
