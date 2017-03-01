@@ -363,7 +363,8 @@ class SaveManager {
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
 				missionDecoration: lDeco
 			};
-			ServerManagerLoad.deleteServerSave();
+			//i like to use the email from ServerManagerLoad, so why not not destroying this bellow ?
+			//ServerManagerLoad.deleteServerSave(); 
 			serverBuildingToTileDesc = null;
 			//todo : temporary, it's fill's the missing value from localSave
 			// game should be tested whitout later, to be sure everything is saved in server.

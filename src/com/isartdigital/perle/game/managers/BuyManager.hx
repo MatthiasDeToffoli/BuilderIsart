@@ -2,9 +2,12 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.managers.server.ServerManagerShop;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBuilding;
+import com.isartdigital.services.monetization.Wallet;
 import com.isartdigital.utils.Debug;
+import js.Browser;
 
 typedef PriceElement = {
 	var type:GeneratorType;
@@ -26,6 +29,13 @@ typedef BuyPrice = {
  */
 class BuyManager {
 	
+	public static var currentIsartPoint(default, null):Int = 0;
+	
+	// todo: because asynchronous, it may come too late, to fix (don't load until callbakc)
+	public static function setIPMoney (pEvent:Dynamic):Void {
+		trace("Your IsartPoint money is: " + pEvent.money);
+		currentIsartPoint = pEvent.money;
+	}
 	
 	public static function buy (pBuildingName:String, pLevel:Int=1):Void {
 		
@@ -125,8 +135,13 @@ class BuyManager {
 		// browser alert
 		// factoriser c'te classe
 		
+		if (ServerManagerLoad.getPlayer().email == null)
+			Browser.alert("Whitout connecting to facebook and retrieving your email, you can't use IsartPoint.");
+		
 		// todo : hack à enlever lorsque isartPoint gérer.
-		if (pPrice[GeneratorType.isartPoint] != null)
+		if (pPrice[GeneratorType.isartPoint] != null &&
+			currentIsartPoint >= pPrice[GeneratorType.isartPoint] &&
+			ServerManagerLoad.getPlayer().email != null)
 			return true;
 		
 		for (lGeneratorType in pPrice.keys()) { 
@@ -151,7 +166,7 @@ class BuyManager {
 		
 		for (lGeneratorType in pPrice.keys()) {
 			
-			// todo : hack à enlever lorsque isartPoint gérer.
+			
 			if (lGeneratorType == GeneratorType.isartPoint) {
 				DeltaDNAManager.sendTransaction(
 					TransactionType.shopPackBought,
@@ -159,6 +174,14 @@ class BuyManager {
 					GeneratorType.isartPoint,
 					pPrice[lGeneratorType]
 				);
+				
+				// todo : no security, but it's okay say for now Matthieu. (you can buy for less)
+				Wallet.buy(
+					ServerManagerLoad.getPlayer().email,
+					pPrice[lGeneratorType],
+					onWalletEvent
+				);
+				
 				isIsartPoint = true;
 				continue;
 			}
@@ -185,7 +208,11 @@ class BuyManager {
 				lHardPrice
 			);
 		}
-
+	}
+	
+	public static function onWalletEvent (pEvent:Dynamic):Void {
+		trace("After buying your money is:" + pEvent.money);
+		currentIsartPoint = pEvent.money;
 	}
 	
 	/*public static function getPriceShopPack (pShopPackName:String):Map<GeneratorType, Int> {

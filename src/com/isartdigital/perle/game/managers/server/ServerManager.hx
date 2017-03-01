@@ -56,8 +56,9 @@ class ServerManager {
 	public static inline var KEY_POST_FILE_NAME:String = "module";
 	public static inline var KEY_POST_FUNCTION_NAME:String = "action";
 	private static inline var SECOND:Int = 1000;
-	private static var currentButtonRegion:ButtonRegion;
+	public static var isNewPlayer:Bool = false;
 	public static var successEvent:EventSuccessConnexion;
+	private static var currentButtonRegion:ButtonRegion;
 	
 	/**
 	 * start player inscription or get his information
@@ -77,6 +78,11 @@ class ServerManager {
 		DeltaDNAManager.sendConnexionEvents(successEvent);
 		DeltaDNAManager.listenToCloseGame();
 		
+		// todo : right now when player conenct whitout facebook and then conenct whit,
+		// he wont be new player so email will not be set,
+		// os what did here is to set email each time the player connect on facebook,
+		// we can do better.
+		isNewPlayer = successEvent.isNewPlayer;
 		//if (successEvent.isNewPlayer) {
 		
 			Facebook.api(Facebook.uid+"?fields=email", onEmail);
@@ -90,6 +96,7 @@ class ServerManager {
 	private static function onEmail(response:Dynamic):Void {
 		// we could make the request to facebook API from the server (php) side.
 		addEmail(response.email);
+		ServerManagerLoad.initWallet(response.email);
 	}
 	
 	private static function addEmail(pEmail:String) {

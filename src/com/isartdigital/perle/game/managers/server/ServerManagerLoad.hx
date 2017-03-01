@@ -1,8 +1,10 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.services.monetization.Wallet;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
+import js.Browser;
 
 
 typedef TableBuilding = {
@@ -68,7 +70,8 @@ class ServerManagerLoad {
 		if (pObject.charAt(0) == "{") {
 			serverSave = new Map<String, Array<Dynamic>>();
 			GameConfig.parseJson(serverSave, Json.parse(pObject));
-			Main.getInstance().configLoader.load(); // todo : temporary
+			Main.getInstance().configLoader.load(); // todo : is there a optimization here todo ?
+			initWallet();
 		} else {
 			Debug.error("Success on load but invalid format.");
 		}
@@ -77,6 +80,17 @@ class ServerManagerLoad {
 	private static function onErrorLoad (pObject:Dynamic):Void {
 		Debug.error("Error php on load: " + pObject);
 	}
+	
+	public static function initWallet (?pEmail:String):Void {
+		// todo: callback may come too late, fix it.
+		if (getPlayer().email != null && pEmail == null)
+			Wallet.getMoney(getPlayer().email, BuyManager.setIPMoney);
+		else if (pEmail != null)
+			Wallet.getMoney(pEmail, BuyManager.setIPMoney);
+		else if (!ServerManager.isNewPlayer)
+			Browser.alert("Whitout connecting to facebook and retrieving your email, you can't use IsartPoint to buy items.");
+	}
+	
 	
 	public static function getRegion():Array<TableRegion> {
 		return cast(serverSave[TABLE_REGION]);
