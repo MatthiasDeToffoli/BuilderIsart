@@ -24,6 +24,7 @@ import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
+import haxe.Timer;
 import pixi.core.math.Point;
 import pixi.interaction.EventEmitter;
 import pixi.interaction.EventTarget;
@@ -92,8 +93,7 @@ class Choice extends SmartPopinExtended
 	private var hellRewardIndicator:Map<Int, SmartComponent>;
 	private var heavenRewardIndicator:Map<Int, SmartComponent>;
 	
-	public var stress:UISprite;
-	
+	public var stress:UISprite;	
 
 	// card slide position properties
 	private var mousePos:Point;
@@ -102,6 +102,9 @@ class Choice extends SmartPopinExtended
 	private var choiceType:ChoiceType;
 	
 	private static var isOpen:Bool;
+	
+	private var endInc:Int = 1;
+	private var endLoop:Timer;
 	
 	private var activeChoice:ChoiceDescription;
 	private var intern:InternDescription;
@@ -205,7 +208,7 @@ class Choice extends SmartPopinExtended
 			
 			if (i <= rewardCounter.hellNumber) {
 				hellRewardValue.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_VALUE_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
-				hellRewardIndicator.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_INDICATOR_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
+				hellRewardIndicator	.set(i, cast(SpriteManager.spawnComponent(newSpawnerHell, AssetName.REWARD_CURRENCY_INDICATOR_SPAWNER, this, TypeSpawn.SMART_COMPONENT), SmartComponent));
 				hellRewardValue[i].visible = false;
 			}
 			else newSpawnerHell.visible = false;
@@ -501,6 +504,7 @@ class Choice extends SmartPopinExtended
 	 */
 	private function startFollow(mEvent:EventTarget):Void
 	{
+		trace(activeChoice);
 		imgRot = choiceCard.rotation;
 		imgPos = choiceCard.position.clone();
 		// update choiceType
@@ -556,8 +560,38 @@ class Choice extends SmartPopinExtended
 		choiceCard.off(TouchEventType.TOUCH_MOVE, followMouse);
 		choiceCard.off(TouchEventType.TOUCH_END, valideSwip);
 		choiceCard.off(TouchEventType.TOUCH_END_OUTSIDE, valideSwip);
-			
-		if (choiceType != ChoiceType.NONE) {
+		
+		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
+		choiceCard.on(TouchEventType.TOUCH_START, startFollow);
+		
+		for (value in hellRewardValue) value.visible = true;
+		for (value in heavenRewardValue) value.visible = true;
+		
+		if (choiceType != ChoiceType.NONE) choiceCard.interactive = false;
+		endLoop = Timer.delay(validLoop, 50);
+		endLoop.run = validLoop;
+	}
+	
+	private function validLoop():Void {
+		endInc++;
+		
+		if (choiceType == ChoiceType.HEAVEN) {
+			if (endInc < 20) {
+				for (indicator in heavenRewardIndicator) indicator.alpha = 20 - endInc / 20;
+				for (value in heavenRewardValue) value.alpha = endInc / 20;
+			}
+			else for (indicator in heavenRewardIndicator) indicator.visible = false;
+		}
+		
+		if (choiceType == ChoiceType.HELL) {
+			if (endInc < 20) {
+				for (indicator in hellRewardIndicator) indicator.alpha = 20 - endInc / 20;			
+				for (value in hellRewardValue) value.alpha = endInc / 20;
+			}
+			else for (indicator in hellRewardIndicator) indicator.visible = false;
+		}
+		
+		if (choiceType != ChoiceType.NONE && endInc >= 40) {
 			ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
 			if (DialogueManager.ftueStepMakeChoice)
 				DialogueManager.endOfaDialogue();
@@ -572,6 +606,9 @@ class Choice extends SmartPopinExtended
 	{
 		if (DialogueManager.ftueStepMakeChoice || DialogueManager.ftueStepMakeAllChoice)
 			return;
+			
+		if (choiceType != ChoiceType.NONE) ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
+		
 		Hud.getInstance().show();
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		destroy();
@@ -603,6 +640,7 @@ class Choice extends SmartPopinExtended
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		endLoop.stop();
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		choiceCard.interactive = false;
