@@ -139,6 +139,18 @@ class ServerManager {
 		Debug.error("Error php : " + object);
 	}
 	
+	public static function levelReward():Void {
+		callPhpFile(onSuccessLevelReward, onErrorLevelReward, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.GIVE_GOLD]);
+	}
+	
+	private static function onSuccessLevelReward (pObject:String):Void {
+		trace(pObject);
+	}
+	
+	private static function onErrorLevelReward (object:Dynamic):Void {
+		Debug.error("Error php : " + object);
+	}
+	
 	private static function callDevugFille():Void {
 		callPhpFile(debug, onErrorCallback, ServerFile.MAIN_PHP, [KEY_POST_FILE_NAME => ServerFile.DEBUG]);
 	}

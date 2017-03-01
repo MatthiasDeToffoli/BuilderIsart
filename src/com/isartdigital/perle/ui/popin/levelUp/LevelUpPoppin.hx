@@ -127,7 +127,8 @@ class LevelUpPoppin extends SmartPopinExtended
 	private function closeLevelUpPoppin() {
 		if (DialogueManager.ftueCloseUnlockedItem)
 			DialogueManager.endOfaDialogue();
-			
+		
+		
 		Hud.getInstance().btnShop.interactive = true;
 		Hud.getInstance().show();
 		UIManager.getInstance().closePopin(this);

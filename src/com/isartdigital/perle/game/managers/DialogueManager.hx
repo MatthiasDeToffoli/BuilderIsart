@@ -260,7 +260,7 @@ class DialogueManager
 		if (graphic!=null) 
 			GameStage.getInstance().getIconContainer().removeChild(graphic);
 			
-		
+		trace(dialogueSaved);
 		//DeltaDNA
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
 		
