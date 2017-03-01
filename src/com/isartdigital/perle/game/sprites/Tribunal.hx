@@ -32,4 +32,14 @@ class Tribunal extends Building
 		anim.removeChild(PurgatorySoulCounter.getInstance());
 		super.destroy();
 	}
+	
+	override public function setStateConstruction():Void 
+	{
+		
+	}
+	
+	override public function setStateEndConstruction():Void 
+	{
+		
+	}
 }
