@@ -78,7 +78,9 @@ class GameStage extends Container
 	public function new() 
 	{
 		super();
-			
+		interactive = true;
+		buttonMode = true;
+		defaultCursor = "url(assets/Pointer_little.png),auto";
 		underBackground = new Container();
 		addChild(underBackground);
 		

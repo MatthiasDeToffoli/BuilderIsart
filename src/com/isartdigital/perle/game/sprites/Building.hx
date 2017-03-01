@@ -236,6 +236,7 @@ class Building extends Tile implements IZSortable
 		// todo : suppri;er de behind and front du zsorting ?
 		Interactive.removeListenerClick(this, onClick);
 		off(MouseEventType.MOUSE_OVER, changeCursor);
+		off(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		AnimationManager.removeToManager(this);
 		animation = null;
 		
@@ -259,6 +260,7 @@ class Building extends Tile implements IZSortable
 	private function addListenerOnClick ():Void {
 		Interactive.addListenerClick(this, onClick);
 		on(MouseEventType.MOUSE_OVER, changeCursor);
+		on(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		
 	}
 	
@@ -267,9 +269,13 @@ class Building extends Tile implements IZSortable
 	}
 	
 	private function changeCursor():Void{
-		if (isClickable) defaultCursor = "pointer";
+		if (isClickable) GameStage.getInstance().defaultCursor = "url(assets/finguer_little_up.png),auto";
 		
-		else defaultCursor = "default";
+		else GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
+	}
+	
+	private function showDefaultCursor():Void {
+		GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
 	}
 	//} endRegion
 }
