@@ -17,6 +17,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
@@ -44,7 +45,9 @@ class MaxStressPopin extends SmartPopin
 	private var btnClose:SmartButton;
 	private var btnResetTextValue:TextSprite;
 	private var btnDismiss:SmartButton;
+	private var btnDismissTxt:TextSprite;
 	private var btnReset:SmartButton;
+	private var btnResetTxt:TextSprite;
 	private var picture:UISprite;
 	private var internName:TextSprite;
 	private var aligment:TextSprite;
@@ -53,6 +56,11 @@ class MaxStressPopin extends SmartPopin
 	public static var quest:TimeQuestDescription;
 	private var gaugeStress:SmartComponent;
 	private var gaugeStressMask:UISprite;
+
+	private var hellText:TextSprite;
+	private var heavenText:TextSprite;
+	private var titleText:TextSprite;
+	private var internText:TextSprite;
 	
 	private static inline var RESET_VALUE:Int = 20;
 	
@@ -80,7 +88,9 @@ class MaxStressPopin extends SmartPopin
 	private function getComponents():Void{
 		btnClose = cast(getChildByName(AssetName.MAXSTRESS_POPIN_CLOSE_BUTTON), SmartButton);
 		btnDismiss = cast(getChildByName(AssetName.MAXSTRESS_POPIN_DISMISS_BUTTON), SmartButton);
+		btnDismissTxt = cast(btnDismiss.getChildByName("txt"), TextSprite);
 		btnReset = cast(getChildByName(AssetName.MAXSTRESS_POPIN_RESET_BUTTON), SmartButton);
+		btnResetTxt = cast(btnReset.getChildByName("Text"), TextSprite);
 		btnResetTextValue = cast(SmartCheck.getChildByName(btnReset, AssetName.MAXSTRESS_POPIN_RESET_TEXT), TextSprite);
 		internName = cast(getChildByName(AssetName.MAXSTRESS_POPIN_INTERN_NAME), TextSprite);
 		
@@ -90,6 +100,15 @@ class MaxStressPopin extends SmartPopin
 		
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
+		
+		titleText = cast(getChildByName("_maxStreesReach_txt"), TextSprite);
+		titleText.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_FLAVOR");
+		hellText = cast(getChildByName("_stressOut_GetOut"), TextSprite);
+		hellText.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_DISMISS_TEXT");
+		heavenText = cast(getChildByName("_stressOut_comeHere"), TextSprite);
+		heavenText.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_RESETSTRESS_TEXT");
+		internText = cast(getChildByName("_stressOut_info_text"), TextSprite);
+		internText.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_TEXT");
 		
 		var glowStress:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UISprite);
 		var glowEfficiency:UISprite = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UISprite);
@@ -104,6 +123,9 @@ class MaxStressPopin extends SmartPopin
 		internName.text = intern.name;
 		gaugeStressMask.scale.x = 0;
 		btnResetTextValue.text = RESET_VALUE + "";
+		
+		btnDismissTxt.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_DISMISS");
+		btnResetTxt.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_RESETSTRESS");
 		
 		createPortraitCard();
 	}
@@ -145,9 +167,22 @@ class MaxStressPopin extends SmartPopin
 	
 	private function addListeners():Void{
 		Interactive.addListenerClick(btnDismiss, onDismiss);
+		Interactive.addListenerRewrite(btnDismiss, setTextDismiss);
 		Interactive.addListenerClick(btnReset, onReset);
+		Interactive.addListenerRewrite(btnReset, setTextReset);
 		Interactive.addListenerRewrite(btnReset, setValuesResetBtn);
 		Interactive.addListenerClick(btnClose, onClose);
+	}
+	
+	private function setTextDismiss():Void{
+		btnDismissTxt = cast(btnDismiss.getChildByName("txt"), TextSprite);
+		btnDismissTxt.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_DISMISS");
+		
+	}
+	
+	private function setTextReset():Void{
+		btnResetTxt = cast(btnReset.getChildByName("txt"), TextSprite);
+		btnResetTxt.text = Localisation.getText("LABEL_INTERN_STRESSEDOUT_RESETSTRESS");
 	}
 	
 	private function setValuesResetBtn():Void{
@@ -197,7 +232,9 @@ class MaxStressPopin extends SmartPopin
 	 */
 	override public function destroy (): Void {
 		Interactive.removeListenerClick(btnDismiss, onDismiss);
+		Interactive.removeListenerRewrite(btnDismiss, setTextDismiss);
 		Interactive.removeListenerClick(btnReset, onReset);
+		Interactive.removeListenerRewrite(btnReset, setTextReset);
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		instance = null;

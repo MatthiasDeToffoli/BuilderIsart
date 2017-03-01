@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.ui.popin.SmartPopinExtended;
 import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.TextSprite;
@@ -30,6 +31,7 @@ class RewardGatcha extends SmartPopinExtended
 	
 	private var rewardIcon:UISprite;
 	private var btnReward:SmartButton;
+	private var btnRewardTxt:TextSprite;
 	private var rewardValue:TextSprite;
 	private var rewardTitle:TextSprite;
 	
@@ -67,13 +69,19 @@ class RewardGatcha extends SmartPopinExtended
 	}
 	
 	private function getComponents():Void{
+		rewardTitle = cast(getChildByName("_rewardGatcha_text"), TextSprite);
+		rewardTitle.text = Localisation.getText("LABEL_GACHA_REWARD_TEXT");
 		rewardIcon = cast(getChildByName(AssetName.REWARD_GATCHA_POPIN_ICON), UISprite);
 		btnReward = cast(getChildByName(AssetName.REWARD_GATCHA_POPIN_BUTTON), SmartButton);
+		btnRewardTxt = cast(btnReward.getChildByName("buttonSendText"), TextSprite);
+		btnRewardTxt.text = Localisation.getText("LABEL_GATCHA_POPIN_CONTINUE_BUTTON");
 		rewardValue = cast(getChildByName(AssetName.REWARD_GATCHA_POPIN_VALUE), TextSprite);
+	
 	}
 	
 	private function addListeners():Void{
 		Interactive.addListenerClick(btnReward, onTake);
+		Interactive.addListenerRewrite(btnReward, setText);
 	}
 	
 	private function onTake():Void{
@@ -81,6 +89,11 @@ class RewardGatcha extends SmartPopinExtended
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
 		QuestsManager.finishQuest(quest);
+	}
+	
+	private function setText():Void{
+		btnRewardTxt = cast(btnReward.getChildByName("buttonSendText"), TextSprite);
+		btnRewardTxt.text = Localisation.getText("LABEL_GATCHA_POPIN_CONTINUE_BUTTON");
 	}
 	
 	/**
@@ -126,6 +139,7 @@ class RewardGatcha extends SmartPopinExtended
 	override public function destroy (): Void {
 		instance = null;
 		Interactive.removeListenerClick(btnReward, onTake);
+		Interactive.removeListenerRewrite(btnReward, setText);
 	}
 
 }

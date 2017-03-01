@@ -18,8 +18,7 @@ class StressButton extends SmartButton
 	public function new(pPos:Point, pID:String=null) 
 	{
 		super("ButtonPopinStress");
-		position = pPos;
-		
+		position = pPos;		
 	}
 	
 }

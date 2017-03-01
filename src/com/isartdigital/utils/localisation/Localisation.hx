@@ -39,6 +39,7 @@ class Localisation
 	
 	public static function init(pLocalization:Dynamic):Void{
 		localization = pLocalization;
+		userLanguage == FRENCH_FB ? actualLanguage = "fr" : actualLanguage = "en";
 		
 		for (label in Reflect.fields(pLocalization)){
 			var langage:Dynamic = Reflect.field(pLocalization, label);
