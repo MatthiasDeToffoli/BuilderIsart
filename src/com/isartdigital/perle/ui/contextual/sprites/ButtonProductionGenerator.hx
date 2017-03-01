@@ -29,13 +29,14 @@ class ButtonProductionGenerator extends ButtonProduction
 	
 	override function applyResourceGain():Void {
 		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
+		ServerManagerBuilding.RecoltGenerator(IdManager.searchVBuildingById(myGeneratorDesc.id).tileDesc);
 	}
 	
 	override function onClick():Void 
 	{
 		ValueChangeManager.addTextGain(position, myGeneratorDesc.type, myGeneratorDesc.quantity);
 		SoundManager.getSound("SOUND_GOLD").play(); //The Generator button generates only gold
-		ServerManagerBuilding.RecoltGenerator(IdManager.searchVBuildingById(myGeneratorDesc.id).tileDesc);
+
 		super.onClick();
 	}
 	
