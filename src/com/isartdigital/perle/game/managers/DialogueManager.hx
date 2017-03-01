@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.hud.dialogue.Arrow;
 import com.isartdigital.perle.ui.hud.dialogue.DialoguePoppin;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.FingerAnim;
@@ -18,6 +19,7 @@ import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.loader.GameLoader;
@@ -30,6 +32,7 @@ import haxe.Timer;
 import js.Browser;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
+import pixi.interaction.EventTarget;
 
 
 /**
@@ -88,6 +91,7 @@ class DialogueManager
 	public static var ftuePlayerCanWait:Bool = false;
 	public static var boostBuilding:Bool = false;
 	public static var passFree:Bool = false;
+	public static var poppinHaveMove:Bool = false;
 	
 	private static var addedJuicy:Bool = false;
 	private static var numberOfGolds:Int = 5;
@@ -104,6 +108,8 @@ class DialogueManager
 	private static inline var DIALOGUE_AFTER_STORIE:Int = 19;
 	public static var counterForFtueHeaven:Int = 0;
 	
+	
+	public static var graphic:Arrow;
 	/**
 	 * Init Ftue
 	 * @param	pFTUE
@@ -250,12 +256,32 @@ class DialogueManager
 		
 		if(steps[dialogueSaved].otherStorieDialogue)
 			checkForOtherStories();
+			
+		if (graphic!=null) 
+			GameStage.getInstance().getIconContainer().removeChild(graphic);
+			
+		
 		//DeltaDNA
 		DeltaDNAManager.sendStepFTUE(dialogueSaved);
 		
-		DialoguePoppin.getInstance().position = dialoguePoppinPos;
+		if (DialoguePoppin.getInstance().position != new Point(0, 0)) {
+			DialoguePoppin.getInstance().position = dialoguePoppinPos;
+		}
+			
+		if (poppinHaveMove) {
+			DialoguePoppin.getInstance().position.y -= FTUE_POS_MOVED;
+			poppinHaveMove = false;
+		}
+		
 		
 		//Effects : 
+		
+		if (steps[dialogueSaved].changeDialoguePos) {
+			
+			poppinHaveMove = true;
+			DialoguePoppin.getInstance().position.y += FTUE_POS_MOVED;
+		}
+		
 		//Actions
 		if (steps[dialogueSaved].isAction) {
 			//Flag vars
@@ -324,6 +350,12 @@ class DialogueManager
 			else if (steps[dialogueSaved].npcWhoTalk != null && steps[dialogueSaved].openPurgatory) {
 				createTextDialogue(steps[dialogueSaved].dialogueNumber, steps[dialogueSaved].npcWhoTalk, true, true, false);
 				ftueStepOpenPurgatory = true;
+				
+				graphic = new Arrow();
+				graphic.position = GameStage.getInstance().getIconContainer().toLocal(VTribunal.getInstance().graphic.position,VTribunal.getInstance().graphic.parent);
+				GameStage.getInstance().getIconContainer().addChild(graphic);
+				graphic.start();
+				
 				//CameraManager.placeCamera(purgatoryPoint);
 				Hud.getInstance().hide();
 				Hud.getInstance().show();
@@ -345,7 +377,8 @@ class DialogueManager
 			}
 			else if (steps[dialogueSaved].jugeSouls) {
 				ftueStepSlideCard = true;
-				createFingerAnim(AssetName.FTUE_DRAG_MOVE, null,true);
+				createFingerAnim(AssetName.FTUE_DRAG_MOVE, null, true);
+				
 			}
 			else if (steps[dialogueSaved].closePurgatory)
 				ftueClosePurgatory = true;
@@ -411,15 +444,14 @@ class DialogueManager
 			ftueStepBlocInterns = true;
 		
 		if (steps[dialogueSaved].speed || steps[dialogueSaved].efficiency) {
-			DialoguePoppin.getInstance().position.y -= FTUE_POS_MOVED;
 			Choice.getInstance().setGlowVisible();
 		}
+		//else if (steps[dialogueSaved].closeUnlocked)
+		//	DialoguePoppin.getInstance().position.y -= FTUE_POS_MOVED;
 			
 		if (steps[dialogueSaved].removeGlowIntern)
 			Choice.getInstance().setGlowFalse();
 			
-		if (steps[dialogueSaved].changeDialoguePos)
-			DialoguePoppin.getInstance().position.y += FTUE_POS_MOVED;
 	}
 	
 	
@@ -429,7 +461,7 @@ class DialogueManager
 	 * @param	doNotNextStep bool to not pass the next step (used when we oppen poppin, like that we can call the next step when the register is over : no bug of Target=null)
 	 */
 	public static function endOfaDialogue(?doNotNextStep:Bool, ?pCloseHud:Bool):Void {
-		DialoguePoppin.getInstance().position = dialoguePoppinPos;
+		
 		if (steps[dialogueSaved + 1] != null) {
 			if (steps[dialogueSaved + 1].arrowRotation != null) {
 				//closeDialoguePoppin = false;
@@ -471,7 +503,9 @@ class DialogueManager
 	private static function endOfStep (?doNotNextStep:Bool):Void {
 		if (finger != null) 
 			GameStage.getInstance().getActionContainer().removeChild(finger);
+			
 		
+			
 		setAllFalse();
 		
 		if (dialogueSaved >= steps.length)
@@ -506,6 +540,7 @@ class DialogueManager
 		if (steps[dialogueSaved-1].endOfOtherStories)
 			dialogueSaved = DIALOGUE_AFTER_STORIE;
 		
+		
 		nextStep();
 	}
 	
@@ -534,7 +569,15 @@ class DialogueManager
 		
 		finger.position = pPos;
 		finger.start();	
+		//finger.alpha = 0.75;
+		//finger.on(MouseEventType.MOUSE_OVER, setAlphaFingerAnim);
+		//Interactive.addListenerClick(finger,setAlphaFingerAnim);
 	}
+	
+	/*private static function setAlphaFingerAnim():Void {
+		trace("test");
+		finger.alpha = 0.5;
+	}*/
 	
 	/**
 	 * Set all expressions of NPCS

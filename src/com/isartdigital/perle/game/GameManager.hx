@@ -27,6 +27,7 @@ import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.CheatPanel;
 import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.contextual.HudContextual;
@@ -123,7 +124,8 @@ class GameManager {
 		//if (DeviceCapabilities.system == DeviceCapabilities.SYSTEM_DESKTOP) trace (CollisionManager.hitTestPoint(Template.getInstance().hitBox, cast(Main.getInstance().renderer.plugins.interaction, InteractionManager).mouse.global));
 	
 		// todo : doublon mousePos X,y
-		
+		if (DialogueManager.ftueStepOpenPurgatory)
+			DialogueManager.graphic.position = GameStage.getInstance().getIconContainer().toLocal(VTribunal.getInstance().graphic.position,VTribunal.getInstance().graphic.parent);
 		
 		MouseManager.getInstance().gameLoop(); // before Phantom
 		Phantom.gameLoop();

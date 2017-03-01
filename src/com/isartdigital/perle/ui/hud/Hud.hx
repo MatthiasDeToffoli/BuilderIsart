@@ -295,7 +295,7 @@ class Hud extends SmartScreen
 		lBarHell = cast(hellXPBar.getChildByName(AssetName.HUD_XP_GAUGE_MASK_HELL_CONTAINER), UIMovie);
 		
 		
-		Timer.delay( addListenersOnClick,500);
+		addListenersOnClick();
 		setGlowFalse();
 		eChangeBH.addListener(EVENT_CHANGE_BUIDINGHUD, needToChangeBH);
 	}
@@ -329,15 +329,7 @@ class Hud extends SmartScreen
 			btnPurgatory.interactive = true;	
 			buttonMissionDeco.interactive = true;	
 		}
-		
-		if (ResourcesManager.getLevel() >= LEVEL_UNLOCK_INTERNS) {
-			btnInterns.interactive = true;
-			btnInternBloc.visible = false;
-		}
-		else {
-			btnInternBloc.visible = true;
-			btnInterns.interactive = false;	
-		}
+		Timer.delay( setInternButtonUnderLevel3,500);
 		
 		//Interactive.addListenerClick(btnResetData, onClickResetData);
 		Interactive.addListenerClick(btnShop, onClickShop);
@@ -362,6 +354,18 @@ class Hud extends SmartScreen
 		Interactive.addListenerClick(btnHard, onClickShopCurrencies);
 		
 		//Main.getInstance().stage.addListener(MouseEventType.RIGHT_CLICK, onKeyDown);
+	}
+	
+	private function setInternButtonUnderLevel3():Void {
+		
+		if (ResourcesManager.getLevel() >= LEVEL_UNLOCK_INTERNS) {
+			btnInterns.interactive = true;
+			btnInternBloc.visible = false;
+		}
+		else {
+			btnInternBloc.visible = true;
+			btnInterns.interactive = false;	
+		}
 	}
 	
 	private function rewriteBtn():Void {

@@ -89,6 +89,20 @@ class BHConstruction extends BuildingHud {
 		btnDestroy = cast(getChildByName("ButtonCancelConstruction"), SmartButton);
 		btnSpeedUp = cast(getChildByName("ButtonAccelerate"), SmartButton);
 		
+		if (DialogueManager.ftueStepPutBuilding || DialogueManager.ftueStepConstructBuilding) {
+			btnMove.interactive = false;
+			btnDestroy.interactive = false;
+			btnMove.alpha = 0.2;
+			btnDestroy.alpha = 0.2;
+		}
+		else {
+			btnMove.interactive = true;
+			btnDestroy.interactive = true;
+			btnMove.alpha = 1;
+			btnDestroy.alpha = 1;
+			
+		}
+		
 		Interactive.addListenerClick(btnSpeedUp, onSpeedUp);
 	}
 	
