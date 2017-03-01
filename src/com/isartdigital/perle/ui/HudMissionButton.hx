@@ -1,8 +1,10 @@
 package com.isartdigital.perle.ui;
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
@@ -27,6 +29,7 @@ class HudMissionButton
 			if (pCanLvlUp) {
 				ResourcesManager.takeXp(EXP_HELL,GeneratorType.badXp);
 				ResourcesManager.takeXp(EXP_HEAVEN, GeneratorType.goodXp);
+				ServerManagerBuilding.endConstruction(EXP_HEAVEN, EXP_HELL);
 			}
 		}
 	}

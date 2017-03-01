@@ -7,6 +7,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -95,6 +96,8 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private var fbText:TextSprite;
 	
+	public static var doTween:Bool = false;
+	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique
@@ -115,7 +118,7 @@ class TribunalPopin extends SmartPopinExtended
 		name = componentName;
 		var interMovieClip:Dynamic;
 		counterForFtue = 0;
-		
+		doTween = false;
 		SoundManager.getSound("SOUND_OPEN_MENU_PURG").play();
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
@@ -334,8 +337,6 @@ class TribunalPopin extends SmartPopinExtended
 	private  function onMouseUpOnCard(mouseEvent:EventTarget):Void {
 		canMoovCard = false;
 		
-		trace("teste");
-		
 		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
 		
 		if (diff > 0) {
@@ -345,6 +346,19 @@ class TribunalPopin extends SmartPopinExtended
 			if (cardSoul.rotation < baseCardRot - Math.PI / 32) onHeaven();
 		}
 		
+	}
+	
+	private function reset():Void {
+		doTween = false;
+		cardSoul.interactive = true;
+		cardSoul.alpha = 1;
+		
+		resetPos();
+		changeSoulTextInfo();
+		changeSoulText();
+	}
+	
+	private function resetPos():Void {
 		cardSoul.rotation = baseCardRot;
 		cardSoul.position = baseCardPos;
 	}
@@ -436,11 +450,17 @@ class TribunalPopin extends SmartPopinExtended
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}
-		if (!ResourcesManager.judgePopulation(Alignment.heaven)) return;
+		if (!ResourcesManager.judgePopulation(Alignment.heaven)) {
+			
+			if (!doTween)
+				resetPos();
+			return;
+		}
+		else 
+			TweenManager.lowerAlpha(cardSoul,reset);
+		
 		
 		SoundManager.getSound("SOUND_CHOICE_HEAVEN").play();
-		changeSoulTextInfo();
-		changeSoulText();
 	}
 	
 	private function onHell() {
@@ -448,15 +468,22 @@ class TribunalPopin extends SmartPopinExtended
 			if (counterForFtue++ >= 1)
 			DialogueManager.endOfaDialogue(null, true);
 		}
-		if (!ResourcesManager.judgePopulation(Alignment.hell)) return;
-		SoundManager.getSound("SOUND_CHOICE_HELL").play();
-		changeSoulTextInfo();
-		changeSoulText();
+		if (!ResourcesManager.judgePopulation(Alignment.hell)) {
+				
+			if (!doTween)
+				resetPos();
+			return;
+		}
+		else 
+			TweenManager.lowerAlpha(cardSoul,reset);
 		
+			
+		SoundManager.getSound("SOUND_CHOICE_HELL").play();
 	}
 	
 	private function changeSoulText(?pSoulNameFound:Bool):Void {
 		if (!pSoulNameFound || pSoulNameFound == null) VTribunal.getInstance().findSoul();
+		
 		fateNameFR.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateName.text = Localisation.getText(VTribunal.getInstance().soulToJudge.name);
 		fateAdjective.text = Localisation.getText(VTribunal.getInstance().soulToJudge.adjective);

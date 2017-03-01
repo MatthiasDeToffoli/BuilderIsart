@@ -3,6 +3,7 @@ import com.greensock.TimelineMax;
 import com.greensock.easing.Back;
 import com.greensock.easing.Elastic;
 import com.greensock.TweenMax;
+import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.UISprite;
@@ -24,6 +25,7 @@ class TweenManager {
 	private static inline var SCALE_GROW_BACK_PARAM_1:Float = 1.2;
 	private static inline var SCALE_GROW_BACK_PARAM_1_FTUE:Float = 1.2;
 	
+	private static inline var LOWER_ALPHA_DURATION:Float = 0.5;
 	private static inline var POS_UP_DURATION:Float = 0.7;
 	private static inline var POS_UP_PARAM:Float = 0.1;
 	
@@ -103,6 +105,17 @@ class TweenManager {
 			ease: untyped Back.easeOut.config(POS_UP_PARAM),
 			x:lPos.x,
 			y:lPos.y
+		} );
+	}
+	
+	
+	public static function lowerAlpha (pDisplayObject:DisplayObject, ?pCallBack:Void -> Void):Void {
+		TribunalPopin.doTween = true;
+		pDisplayObject.interactive = false;
+		TweenMax.to(pDisplayObject, LOWER_ALPHA_DURATION, {
+			onComplete:pCallBack,
+			ease: untyped Back.easeOut.config(POS_UP_PARAM),
+			alpha:0
 		} );
 	}
 	

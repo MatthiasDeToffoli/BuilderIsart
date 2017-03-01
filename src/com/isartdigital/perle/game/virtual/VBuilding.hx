@@ -290,7 +290,6 @@ class VBuilding extends VTile {
 	
 	
 	public function addExp():Void {
-		trace("test");
 		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHell,GeneratorType.badXp);
 		ResourcesManager.takeXp(GameConfig.getBuildingByName(tileDesc.buildingName).xPatCreationHeaven, GeneratorType.goodXp);
 		

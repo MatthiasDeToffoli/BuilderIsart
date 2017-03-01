@@ -23,9 +23,11 @@ import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.SmartPopin;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
 import pixi.core.math.Point;
+import pixi.flump.Movie;
 import pixi.interaction.EventEmitter;
 import pixi.interaction.EventTarget;
 
@@ -73,10 +75,10 @@ class Choice extends SmartPopinExtended
 	private var speedJauge:SmartComponent;
 	private var effJauge:SmartComponent;
 	
-	public var glowSpeed:UISprite;
-	public var glowStress:UISprite;
-	public var glowStressChoice:UISprite;
-	public var glowEfficiency:UISprite;
+	public var glowSpeed:UIMovie;
+	public var glowStress:UIMovie;
+	public var glowStressChoice:SmartComponent;
+	public var glowEfficiency:UIMovie;
 	
 	private var currencyHellSpawner:SmartComponent;
 	private var currencyHeavenSpawner:SmartComponent;
@@ -153,10 +155,10 @@ class Choice extends SmartPopinExtended
 		speedJauge = cast(internStats.getChildByName(AssetName.INTERN_SPEED_JAUGE), SmartComponent);
 		effJauge = cast(internStats.getChildByName(AssetName.INTERN_EFF_JAUGE), SmartComponent);
 		
-		glowStress = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UISprite);
-		glowStressChoice = cast(SmartCheck.getChildByName(this, "_ftue_Glow_InternsChoice"), UISprite);
-		glowEfficiency = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UISprite);
-		glowSpeed = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UISprite);
+		glowStress = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Interns_Stress"), UIMovie);
+		glowStressChoice = cast(SmartCheck.getChildByName(this, "_ftue_Glow_InternsChoice"), SmartComponent);
+		glowEfficiency = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Efficiency"), UIMovie);
+		glowSpeed = cast(SmartCheck.getChildByName(internStats, "_ftue_Glow_Speed"), UIMovie);
 		
 		stress = cast(internStats.getChildByName(AssetName.INTERN_EVENT_STRESS), UISprite);
 		setGlowFalse();
