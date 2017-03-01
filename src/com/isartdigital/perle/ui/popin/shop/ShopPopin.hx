@@ -21,8 +21,10 @@ import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import com.isartdigital.utils.ui.smart.TextSprite;
+import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
+import js.Lib;
 import pixi.core.math.Point;
 
 enum ShopTab { Building; Interns; InternsSearch; Deco; Resources; Currencies; Bundle; }
@@ -47,8 +49,8 @@ class ShopPopin extends SmartPopinExtended {
 	public var lmarbre:SmartComponent;
 	public var lwood:SmartComponent;
 	
-	public var shopTabSCIcon:UISprite;
-	public var shopTabHCIcon:UISprite;
+	public var shopTabSCIcon:UIMovie;
+	public var shopTabHCIcon:UIMovie;
 	public var shopTabWoodIcon:UISprite;
 	public var shopTabIronIcon:UISprite;
 	
@@ -93,37 +95,31 @@ class ShopPopin extends SmartPopinExtended {
 		tabs = new Map<ShopTab, SmartComponent>();
 		bars = new Map<ShopBar, SmartComponent>();
 		initCarousselPos(AssetName.SHOP_CAROUSSEL_SPAWNER);
-		
 		SoundManager.getSound("SOUND_OPEN_MENU_SHOP").play();
 		
 		lSC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_SC), SmartComponent);
-		shopTabSCIcon = cast(SmartCheck.getChildByName(lSC, "_icon_softcurrency"), UISprite);
+		shopTabSCIcon = cast(SmartCheck.getChildByName(lSC, "_icon_softcurrency"), UIMovie);
 		lHC = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_HC), SmartComponent);
-		shopTabHCIcon = cast(SmartCheck.getChildByName(lHC, "_icon_hardcurrency"), UISprite);
+		shopTabHCIcon = cast(SmartCheck.getChildByName(lHC, "_icon_hardcurrency"), UIMovie);
 		lmarbre = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_MARBRE), SmartComponent);
 		shopTabWoodIcon = cast(SmartCheck.getChildByName(lmarbre, "_icon_wood"), UISprite);
 		lwood = cast(SmartCheck.getChildByName(this, AssetName.SHOP_RESSOURCE_BOIS), SmartComponent);
 		shopTabIronIcon = cast(SmartCheck.getChildByName(lwood, "_icon_wood"), UISprite);
-		
 		lSCtext = cast(SmartCheck.getChildByName(lSC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		lHCtext = cast(SmartCheck.getChildByName(lHC, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		lmarbretext = cast(SmartCheck.getChildByName(lmarbre, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		lwoodtext = cast(SmartCheck.getChildByName(lwood, AssetName.SHOP_RESSOURCE_TEXT), TextSprite);
 		
 		setCurrenciesNumber();
-		
 		btnExit = cast(SmartCheck.getChildByName(this, AssetName.SHOP_BTN_CLOSE), SmartButton);
 		
 		titleShop = cast(SmartCheck.getChildByName(this, "Shop_Title"), SmartComponent);
 		titleShopFrench = cast(SmartCheck.getChildByName(titleShop, "_marcheTitle"), UISprite);
 		titleShopEnglish = cast(SmartCheck.getChildByName(titleShop, "_shopTitle"), UISprite);
-		
 		//As we must display only the good translation and remove the other, we can't use the label system for the translation
 		Localisation.actualLanguage == "en" ? titleShopFrench.visible = false : titleShopEnglish.visible = false;
-		
 		addButton();
 		Interactive.addListenerClick(btnExit, onClickExit);
-		
 	}
 	
 	public function getIconSFPos():Point{
