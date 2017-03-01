@@ -23,12 +23,13 @@ class DailyRewardManager
 	private var lastDate:Date;
 	private var newDate:Date;
 	public var daysOfConnexion:Int;
+	public var isFirstDay:Int;
 	
 	private var gold:Int;
 	private var wood:Int;
 	private var iron:Int;
 	private var karma:Int;
-	private var sameDay:Bool = false;
+	private var notToday:Bool = false;
 	
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
@@ -48,25 +49,43 @@ class DailyRewardManager
 	}
 	
 	public function testDailyConnexion():Void {
+		getFirstDay();
 		getDates();
 		testDates();
 	}
 	
+	public function getFirstDay():Void {
+		isFirstDay = ServerManager.successEvent.isFirstDay;
+	}
+	
 	private function getDates():Void {
-		inscriptionDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
-		lastDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
+		trace(isFirstDay);
+		inscriptionDate = Date.fromTime(ServerManager.successEvent.dateInscription);
+		if (isFirstDay == 1) {
+			lastDate = Date.now();
+		}
+		else{
+			lastDate = Date.fromTime(ServerManager.successEvent.dateLastConnexion);
+		}
+		trace(lastDate);
 		newDate = Date.now();
 		daysOfConnexion = ServerManager.successEvent.daysOfConnexion;
+		
 	}
 	
 	public function testDates():Void {
 		
-		if (ifSameDates(inscriptionDate, lastDate)) {
-			daysOfConnexion ++;
-			trace ("First connexion : " + daysOfConnexion);
+		if (isFirstDay == 1) {
+			trace("First Daaaaaaaay");
 			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE]);
-			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.INCREMENT_DAYS]);
-			setDailyReward();
+			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.IS_FIRST_DAY_UPDATE]);
+			notToday = true;
+			trace("blop");
+		}
+		else if (ifSameDates(inscriptionDate, newDate)) {
+			trace ("First day : " + daysOfConnexion);
+			ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.DATE_UPDATE]);
+			notToday = true;
 		}
 		else if (!ifSameDates(lastDate,newDate)) {
 			var nextDate = addOneDay(lastDate);
@@ -95,11 +114,11 @@ class DailyRewardManager
 			}
 		}
 		else {
-			sameDay = true;
-			trace("SAME DAY :" + sameDay);
+			notToday = true;
+			trace("SAME DAY :" + notToday);
 		}
 		
-		if(!sameDay) UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
+		if(!notToday) UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
 	}
 	
 	private function addOneDay(pDate:Date):Date {
@@ -115,6 +134,9 @@ class DailyRewardManager
 			}
 		}
 		
+		trace("year :" + lYear);
+		trace("month :" + lMonth);
+		trace("day :" + lDay);
 		var lDate:Date = new Date(lYear, lMonth, lDay, 0, 0, 0);
 		trace("next date :" + lDate);
 		return lDate;
@@ -137,11 +159,11 @@ class DailyRewardManager
 		else return false;
 	}
 	
-	private function onSuccess(pObject:Dynamic):Void{
+	public function onSuccess(pObject:Dynamic):Void{
 		trace("Success");
 	}
 	
-	private function onFailed(pObject:Dynamic):Void {
+	public function onFailed(pObject:Dynamic):Void {
 		trace("Fail... ;______;");
 	}
 	

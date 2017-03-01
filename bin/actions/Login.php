@@ -80,6 +80,7 @@ try {
 		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
         $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
         $retour['dateInscription'] = $res['DateInscription'];
+		$retour['isFirstDay'] = $res['IsFirstDay'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else if no facebook id but a password
@@ -92,6 +93,7 @@ try {
 		$retour['dateLastConnexion'] = $res['DateLastConnexion'];
         $retour['daysOfConnexion'] = $res['DaysOfConnexion'];
 		$retour['dateInscription'] = $res['DateInscription'];
+		$retour['isFirstDay'] = $res['IsFirstDay'];
         //setcookie($PWD, $retour['PasswordNoFB'], $maxExpires, "/");
     }
     // else -> put it in db
@@ -140,6 +142,7 @@ try {
 			$retour['daysOfConnexion'] = 0;
 			$retour['level'] = 2;
 			$retour['dateInscription'] = time();
+			$retour['isFirstDay'] = 1;
 
         } catch (Exception $e) {
             echo $e->getMessage();
