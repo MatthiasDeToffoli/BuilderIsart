@@ -64,7 +64,7 @@ class SpeedUpPopin extends AcceleratePopin
 	
 	public function validBoost():Void {
 		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost();
-		
+		ServerManagerBuilding.upgradeFine(linkedBuilding.tileDesc);
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		

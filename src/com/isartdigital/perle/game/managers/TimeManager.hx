@@ -508,7 +508,7 @@ class TimeManager {
 	public static function getBuildingStateFromTime(pTileDesc:TileDescription):VBuildingState {
 		if (Reflect.hasField(pTileDesc, TIME_DESC_REFLECT)) {
 			if (pTileDesc.timeDesc.progress >= pTileDesc.timeDesc.end) return VBuildingState.isBuilt;
-			else if (pTileDesc.level == 1) return VBuildingState.isBuilding;
+			else if (!pTileDesc.isBuilt) return VBuildingState.isBuilding;
 			else return VBuildingState.isUpgrading;
 		}
 		return VBuildingState.isBuilt;	

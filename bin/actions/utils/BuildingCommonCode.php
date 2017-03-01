@@ -30,6 +30,7 @@ class BuildingCommonCode
     //column in table Building
     const START_CONTRUCTION = "StartConstruction";
     const END_CONTRUCTION = "EndConstruction";
+    const IS_BUILT ="IsBuilt";
 
     public static function addDateTimes ($pInfo, $pConfig) {
         $date = new \DateTime();

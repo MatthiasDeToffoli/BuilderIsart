@@ -35,6 +35,7 @@ typedef TileDescription = {
 	@:optional var timeDesc:TimeDescription;
 	@:optional var isTribunal:Bool;
 	@:optional var intern:InternDescription;
+	@:optional var isBuilt:Bool;
 }
 
 typedef RegionDescription = {
@@ -481,7 +482,6 @@ class SaveManager {
 		if (lBuilding == null)
 			Debug.error("No Building saved on server !");
 		
-		
 		for (i in 0...lBuilding.length) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(lBuilding[i].iDTypeBuilding);
 			result.unshift({ 
@@ -493,7 +493,8 @@ class SaveManager {
 				mapY: lBuilding[i].y,
 				level: lGameConfig.level,
 				currentPopulation: (lGameConfig.name == 'Hell House' ||lGameConfig.name == 'Heaven House') ? lBuilding[i].nbSoul:null,
-				maxPopulation: (lGameConfig.name == 'Hell House' ||lGameConfig.name == 'Heaven House') ? lGameConfig.maxSoulsContained:null
+				maxPopulation: (lGameConfig.name == 'Hell House' || lGameConfig.name == 'Heaven House') ? lGameConfig.maxSoulsContained:null,
+				isBuilt:lBuilding[i].isBuilt
 				/*intern: ,*/ // todo : fill @Emeline, @Victor
 				// todo ci-dessous :
 				// nbResource

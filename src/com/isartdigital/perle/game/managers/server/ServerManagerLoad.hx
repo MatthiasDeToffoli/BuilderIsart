@@ -19,6 +19,7 @@ typedef TableBuilding = {
 	var regionY:Int;
 	var x:Int;
 	var y:Int;
+	var isBuilt:Bool;
 }
 
 typedef TableResources = {

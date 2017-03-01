@@ -522,4 +522,32 @@ class ServerManagerBuilding{
 	private static function onErrorBoostCollector(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
+	
+	public static function upgradeFine(pDesc:TileDescription):Void {
+		trace('???');
+		ServerManager.callPhpFile(onSuccessUpgradeFine, onErrorUpgradeFine, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.UPGRADE_FINE,
+			"RegionX" => pDesc.regionX,
+			"RegionY" => pDesc.regionY,
+			"X" => pDesc.mapX,
+			"Y" => pDesc.mapY
+		]);
+	}
+	
+	private static function onSuccessUpgradeFine(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			}
+			
+		}
+	}
+	
+	private static function onErrorUpgradeFine(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
 }

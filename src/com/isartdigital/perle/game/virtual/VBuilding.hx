@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
@@ -70,6 +71,12 @@ class VBuilding extends VTile {
 		if (currentState == VBuildingState.isBuilding || currentState == VBuildingState.isUpgrading) {
 			TimeManager.addConstructionTimer(pDescription.timeDesc, this);
 			TimeManager.eConstruct.on(TimeManager.EVENT_CONSTRUCT_END, endOfConstruction);
+			
+			if (currentState == VBuildingState.isUpgrading) {
+				setHaveRecolter();
+				addGenerator();
+				ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
+			}
 		}
 		else {
 			setHaveRecolter();
@@ -340,7 +347,7 @@ class VBuilding extends VTile {
 	private function endOfConstruction(pElement:TimeDescription):Void {
 		if (pElement.refTile != tileDesc.id) return;
 		timeDesc = null;
-		
+		if(currentState == VBuildingState.isUpgrading) ServerManagerBuilding.upgradeFine(tileDesc);
 		if (active) cast(graphic, Building).setStateEndConstruction();
 		
 		checkIfIsInAltarZone();

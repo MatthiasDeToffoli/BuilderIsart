@@ -123,9 +123,9 @@ class BuildingUpgrade
     private static function getFieldsToSET ($pNewConfig, $pInfo) {
         // todo : make a common method file for building querys.
         return [
-            static::ID_TYPE_BUILDING => intval($pNewConfig[static::COLUMN_ID]),
             BuildingCommonCode::START_CONTRUCTION => $pInfo[BuildingCommonCode::START_CONTRUCTION],
             BuildingCommonCode::END_CONTRUCTION => $pInfo[BuildingCommonCode::END_CONTRUCTION],
+            BuildingCommonCode::IS_BUILT => true,
         ];
     }
 
