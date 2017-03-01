@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.core.math.Point;
@@ -14,8 +15,6 @@ import pixi.core.math.Point;
  */
 class CarouselCardLock extends CarouselCard implements ICardVariableBackground
 {
-
-	private static inline var UNLOCK_TEXT = "Level : ";
 	private var buildingName:String;
 	private var text_lock:TextSprite;
 	private var background:UISprite;
@@ -68,7 +67,7 @@ class CarouselCardLock extends CarouselCard implements ICardVariableBackground
 	}
 	
 	private function setText ():Void {
-		text_lock.text = UNLOCK_TEXT + UnlockManager.checkLevelNeeded(buildingName);
+		text_lock.text = Localisation.getText("LABEL_BUILDINGLEVEL") + " : " + UnlockManager.checkLevelNeeded(buildingName);
 	}
 	
 	override public function destroy():Void {

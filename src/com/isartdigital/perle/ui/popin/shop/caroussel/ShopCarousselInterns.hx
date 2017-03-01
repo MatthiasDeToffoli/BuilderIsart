@@ -49,12 +49,14 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private var heavenGaugeEfficency:SmartComponent;
 	private var heavenGaugeSpeed:SmartComponent;
 	private var heavenPrice:TextSprite;
+	private var heavenNoPlace:SmartComponent;
 	
 	//Number of intern houses
 	private var houseNumber:SmartComponent;
 	private var numberHousesHeaven:TextSprite;
 	private var numberHousesHell:TextSprite;
 	private var houseText:TextSprite;
+	private var hellNoPlace:SmartComponent;
 	
 	//Interns to show
 	private static var hellIntern:InternDescription;
@@ -71,6 +73,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		chooseRandomIntern();
 		addListeners();
 		setValues();
+		SmartCheck.traceChildrens(this);
 	}
 
 	override public function init (pPos:Point, pTab:ShopTab):Void {

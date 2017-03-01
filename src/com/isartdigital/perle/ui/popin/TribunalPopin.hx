@@ -69,8 +69,13 @@ class TribunalPopin extends SmartPopinExtended
 	private var baseCardRot:Float;
 	private var baseMousePos:Point;
 	private var baseCardPos:Point;
-	private  var MOUSE_DIFF_MAX(null,never):Int = 200;
+	private var MOUSE_DIFF_MAX(null,never):Int = 200;
 	private var DIFF_MAX(null, never):Int = 80;
+	
+	private var sendToText:TextSprite;
+	private var sendToText2:TextSprite;
+	private var sendToTextHell:TextSprite;
+	private var sendToTextHeaven:TextSprite;
 	
 	private var soulEvilGirl1:UISprite;
 	private var soulEvilGirl2:UISprite;
@@ -131,11 +136,21 @@ class TribunalPopin extends SmartPopinExtended
 		Localisation.actualLanguage == "en" ? tribunalTitleFrench.visible = false : tribunalTitleEnglish.visible = false;
 		
 		tribunalLevel = cast(getChildByName(AssetName.PURGATORY_POPIN_LEVEL), TextSprite);
-		tribunalLevel.text = "LEVEL " + VTribunal.getInstance().tileDesc.level;
+		tribunalLevel.text = Localisation.getText("LABEL_BUILDINGLEVEL")+ " " + VTribunal.getInstance().tileDesc.level;
 		
 		interMovieClip = getChildByName(AssetName.PURGATORY_POPIN_TIMER_CONTAINER);
 		timer = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_TIMER), TextSprite);
 		timer.text = "0" + 0 + "h" + "0" + 0 + "m" + "0" + 0 + "s";
+		
+		sendToText = cast(getChildByName("_sendTo_txt"), TextSprite);
+		sendToText2 = cast(getChildByName("_sendTo2_txt"), TextSprite);
+		sendToTextHell = cast(getChildByName("_sendTo_Hell_txt"), TextSprite);
+		sendToTextHeaven = cast(getChildByName("_sendTo_Heaven_txt"), TextSprite);
+		
+		sendToText.text = Localisation.getText("LABEL_TRIBUNALPOPIN_SEND_TO");
+		sendToText2.text = Localisation.getText("LABEL_TRIBUNALPOPIN_SEND_TO");
+		sendToTextHell.text = Localisation.getText("LABEL_TRIBUNALPOPIN_HELL");
+		sendToTextHeaven.text = Localisation.getText("LABEL_TRIBUNALPOPIN_HEAVEN");
 		
 		soulCard = cast(getChildByName(AssetName.PURGATORY_POPIN_SOUL_CARD), SmartComponent);
 		cardSoul = cast(soulCard.getChildByName(AssetName.PURGATORY_POPIN_CARD), SmartComponent);
