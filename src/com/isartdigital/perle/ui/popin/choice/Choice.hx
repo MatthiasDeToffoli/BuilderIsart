@@ -575,27 +575,27 @@ class Choice extends SmartPopinExtended
 	private function validLoop():Void {
 		endInc++;
 		
-		if (choiceType == ChoiceType.HEAVEN) {
-			if (endInc < 20) {
-				for (indicator in heavenRewardIndicator) indicator.alpha = 20 - endInc / 20;
-				for (value in heavenRewardValue) value.alpha = endInc / 20;
-			}
-			else for (indicator in heavenRewardIndicator) indicator.visible = false;
-		}
-		
-		if (choiceType == ChoiceType.HELL) {
-			if (endInc < 20) {
-				for (indicator in hellRewardIndicator) indicator.alpha = 20 - endInc / 20;			
-				for (value in hellRewardValue) value.alpha = endInc / 20;
-			}
-			else for (indicator in hellRewardIndicator) indicator.visible = false;
-		}
-		
 		if (choiceType != ChoiceType.NONE && endInc >= 40) {
 			ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
 			if (DialogueManager.ftueStepMakeChoice)
 				DialogueManager.endOfaDialogue();
 			destroy();
+		}
+		
+		if (choiceType == ChoiceType.HEAVEN) {
+			if (endInc > 18) for (indicator in heavenRewardIndicator) indicator.visible = false;
+			if (endInc < 20) {
+				for (indicator in heavenRewardIndicator) indicator.alpha = 20 - endInc / 20;
+				for (value in heavenRewardValue) value.alpha = endInc / 20;
+			}
+		}
+		
+		if (choiceType == ChoiceType.HELL) {
+			if (endInc > 18) for (indicator in hellRewardIndicator) indicator.visible = false;
+			if (endInc < 20) {
+				for (indicator in hellRewardIndicator) indicator.alpha = 20 - endInc / 20;			
+				for (value in hellRewardValue) value.alpha = endInc / 20;
+			}
 		}
 	}
 	
