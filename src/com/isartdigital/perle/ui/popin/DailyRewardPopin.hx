@@ -47,6 +47,9 @@ class DailyRewardPopin extends SmartPopinExtended
 		setTexts();
 	}
 	
+	/**
+	 * Set the buttons and their listeners
+	 */
 	private function setButtonsAndAddListeners():Void{
 		
 		btnClose = cast(SmartCheck.getChildByName(this, AssetName.DAILYREWARD_POPIN_CLOSE), SmartButton);
@@ -57,6 +60,9 @@ class DailyRewardPopin extends SmartPopinExtended
 		Interactive.addListenerRewrite(btnGain, setTextBtn);
 	}
 	
+	/**
+	 * Shows how many successive days we have been connected
+	 */
 	private function setDay():Void {
 		var lDayNumber:Int = DailyRewardManager.getInstance().daysOfConnexion;
 		for (i in 1...8) {
@@ -72,6 +78,9 @@ class DailyRewardPopin extends SmartPopinExtended
 		}
 	}
 	
+	/**
+	 * Set the different text of the popin in fr/en
+	 */
 	private function setTexts():Void {
 		var lDayNumber:Int = DailyRewardManager.getInstance().daysOfConnexion;
 		var lDay:SmartComponent = cast(SmartCheck.getChildByName(this, AssetName.DAILYREWARD_POPIN_DAY + lDayNumber), SmartComponent);
@@ -86,6 +95,9 @@ class DailyRewardPopin extends SmartPopinExtended
 		lBtnGainText.text = Localisation.getText("LABEL_DAILYREWARDS_GAIN_BTN");
 	}
 	
+	/**
+	 * Set the different values of the daily rewards depending of the array returned
+	 */
 	private function setValues():Void {
 		var lDailyRewards:Map<String,Int> = DailyRewardManager.getInstance().getDailyRewards();
 		var lGold:String = ResourcesManager.shortenValue(lDailyRewards["gold"]);

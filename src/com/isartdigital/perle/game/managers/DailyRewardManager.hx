@@ -58,6 +58,9 @@ class DailyRewardManager
 		isFirstDay = ServerManager.successEvent.isFirstDay;
 	}
 	
+	/**
+	 * Get from the server/set the different dates
+	 */
 	private function getDates():Void {
 		trace(isFirstDay);
 		inscriptionDate = Date.fromTime(ServerManager.successEvent.dateInscription);
@@ -73,6 +76,9 @@ class DailyRewardManager
 		
 	}
 	
+	/**
+	 * Make different tests to know if we can get daily rewards and set some variables
+	 */
 	public function testDates():Void {
 		
 		if (isFirstDay == 1) {
@@ -121,6 +127,9 @@ class DailyRewardManager
 		if(!notToday) UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
 	}
 	
+	/**
+	 * Add one day to date and do the necessary changes if we have to change the month
+	 */
 	private function addOneDay(pDate:Date):Date {
 		var lYear:Int = pDate.getFullYear();
 		var lMonth:Int = pDate.getMonth();
@@ -134,18 +143,21 @@ class DailyRewardManager
 			}
 		}
 		
-		trace("year :" + lYear);
-		trace("month :" + lMonth);
-		trace("day :" + lDay);
 		var lDate:Date = new Date(lYear, lMonth, lDay, 0, 0, 0);
-		trace("next date :" + lDate);
 		return lDate;
 	}
 	
+	/**
+	 * Reset the numbers of successive days of connexion on the server
+	 */
 	public function resetDays():Void {
 		ServerManager.callPhpFile(onSuccess, onFailed, ServerFile.MAIN_PHP, [ServerManager.KEY_POST_FILE_NAME => ServerFile.RESET_DAYS]);
 	}
 	
+	/**
+	 * Test if 2 dates are the same
+	 * @return true or false
+	 */
 	private function ifSameDates(pDate1:Date, pDate2:Date):Bool {
 		var lDateYear1:Int = pDate1.getFullYear();
 		var lDateMonth1:Int = pDate1.getMonth();
@@ -167,6 +179,9 @@ class DailyRewardManager
 		trace("Fail... ;______;");
 	}
 	
+	/**
+	 * Set the daily rewards with the values got from the server
+	 */
 	private function setDailyReward():Void {
 		var lDailyReward:TableDailyReward = GameConfig.getDailyRewardsByDay(daysOfConnexion);
 		var lLevel:Int = ServerManager.successEvent.level;
@@ -176,10 +191,16 @@ class DailyRewardManager
 		karma = lDailyReward.karma * lLevel;
 	}
 	
+	/**
+	 * @return an array with the different daily rewards end their values
+	 */
 	public function getDailyRewards():Map<String,Int> {
 		return ["gold" => gold, "wood" => wood, "iron" => iron, "karma" => karma];
 	}
 	
+	/**
+	 * Give you some presents once a day
+	 */
 	public function giveDailyReward():Void {		
 		if(gold != 0) ResourcesManager.gainResources(GeneratorType.soft, gold);
 		if(wood != 0) ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, wood);
