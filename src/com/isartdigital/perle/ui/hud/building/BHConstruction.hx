@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -55,7 +56,7 @@ class BHConstruction extends BuildingHud {
 		else listTimerConstruction.set(lVBuilding.tileDesc.id, buildingTimer);
 		var lContainer:Container = new Container();	
 		Hud.getInstance().placeAndAddComponent(buildingTimer, lContainer, UIPosition.BOTTOM);
-		lContainer.position.x += lVBuilding.graphic.getLocalBounds().width / 2;
+		lContainer.position.x += lVBuilding.getGraphicLocalBoundsAtFirstFrame().clone().width / 2;
 		timerContainer.addChild(lContainer);
 	}
 	

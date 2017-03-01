@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.sprites.Building;
+import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.sprites.building.heaven.InternHouseHeaven;
 import com.isartdigital.perle.game.sprites.building.hell.InternHouseHell;
 import com.isartdigital.perle.game.sprites.Tribunal;
@@ -241,26 +242,23 @@ class Hud extends SmartScreen
 	
 	public function addSecondaryComponent(pComponent:SmartComponent):Void {
 		placeAndAddComponent(pComponent, containerBuildingHudSecondary, UIPosition.BOTTOM);
-		pComponent.position.x += BuildingHud.virtualBuilding.graphic.getBounds().width / 2;
+		pComponent.position.x += BuildingHud.virtualBuilding.getGraphicLocalBoundsAtFirstFrame().clone().width / 2;
 	}
 	
 	public function placeAndAddComponent(pComponent:SmartComponent, pContainer:Container, pUIPos:String):Void {
+
 		var lVBuilding:VBuilding = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
-		var lLocalBounds:Rectangle = lVBuilding.graphic.getLocalBounds();
+		var lLocalBounds:Rectangle = lVBuilding.getGraphicLocalBoundsAtFirstFrame().clone();
+
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			
-		var lRect:Point = lVBuilding.graphic.position;
+		var lRect:Point = lVBuilding.graphic.position.clone();
 		pContainer.position.x = lRect.x + lAnchor.x;
 		pContainer.position.y = lRect.y + lAnchor.y;
+
 		
-		UIPosition.setPositionContextualUI(
-			lVBuilding.graphic,
-			pComponent,
-			pUIPos,
-			0,
-			0
-		);
-		
+		if(pUIPos == UIPosition.BOTTOM || pUIPos == UIPosition.BOTTOM_RIGHT|| pUIPos == UIPosition.BOTTOM_LEFT) pContainer.position.y += lLocalBounds.height;
+		if(pUIPos == UIPosition.BOTTOM_RIGHT) pContainer.position.x += lLocalBounds.width;
 		pContainer.addChild(pComponent);
 	}
 	

@@ -27,6 +27,7 @@ import com.isartdigital.perle.ui.hud.building.BuildingHud;
 import com.isartdigital.perle.ui.popin.InfoBuilding;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 
 enum VBuildingState { isBuilt; isBuilding; isUpgrading; isMoving; }
 
@@ -47,6 +48,8 @@ class VBuilding extends VTile {
 	private var timeDesc:TimeDescription;
 	public var myGeneratorType:GeneratorType = GeneratorType.soft;
 	private var myMaxContains:Float = 10;
+	private var graphicLocalBounds:Rectangle;
+	private var hasLocalBounds:Bool = false;
 	
 	/**
 	 * said if we can recolt resources with a button in this building
@@ -89,6 +92,7 @@ class VBuilding extends VTile {
 		
 		if(currentState != VBuildingState.isBuilding) checkIfIsInAltarZone();
 		BoostManager.boostAltarEvent.on(BoostManager.ALTAR_EVENT_NAME, onAltarCheck);
+		
 	}
 	
 	
@@ -134,10 +138,23 @@ class VBuilding extends VTile {
 	
 	override public function activate():Void {
 		super.activate();
-		graphic = cast(Building.createBuilding(tileDesc,currentState), Container);
+		graphic = cast(Building.createBuilding(tileDesc, currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
+		setGraphicLocalBoundsAtFirstFrame();
 		if (haveRecolter || Std.is(this, VCollector) && currentState != VBuildingState.isUpgrading && currentState != VBuildingState.isBuilding) 
 			myVContextualHud.activate();
+	}
+	
+	public function setGraphicLocalBoundsAtFirstFrame():Void {
+		if (graphicLocalBounds == null) {
+		 graphicLocalBounds = graphic.getLocalBounds().clone();
+		 hasLocalBounds = true;
+		}
+		
+	}
+	
+	public function getGraphicLocalBoundsAtFirstFrame():Rectangle {
+		return graphicLocalBounds;
 	}
 	
 	/**

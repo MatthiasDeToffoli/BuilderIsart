@@ -1,5 +1,6 @@
 package com.isartdigital.perle.ui.contextual;
 
+import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.Virtual;
 import com.isartdigital.perle.game.virtual.Virtual.HasVirtual;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -74,7 +75,8 @@ class HudContextual extends Container implements HasVirtual{
 			
 		// soluce : getBounds trop foireux.
 		
-		var lLocalBounds:Rectangle = myVHudContextual.myVBuilding.graphic.getLocalBounds();
+		var lLocalBounds:Rectangle = myVHudContextual.myVBuilding.getGraphicLocalBoundsAtFirstFrame().clone();
+	
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 			
 		var lRect:Point = myVHudContextual.myVBuilding.graphic.position;
