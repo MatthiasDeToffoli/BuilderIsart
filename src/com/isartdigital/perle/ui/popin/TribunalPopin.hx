@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TweenManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
@@ -412,6 +413,8 @@ class TribunalPopin extends SmartPopinExtended
 	
 	private function setTribunalSoulToJudge(pName:String):Void {
 		VTribunal.getInstance().updateSoulToJudge(pName);
+		ResourcesManager.increaseResources(VTribunal.getInstance().myGenerator, 1,true);
+		ServerManagerBuilding.addSoul(VTribunal.getInstance().tileDesc);
 		changeSoulText(true);
 	}
 	

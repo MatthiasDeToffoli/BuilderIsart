@@ -516,10 +516,11 @@ class ResourcesManager
 	 * @param pGenerator the generator target
 	 * @param quantity the quantity to add
 	 */
-	public static function increaseResources(pGenerator:Generator, quantity:Float):Void{
+	public static function increaseResources(pGenerator:Generator, quantity:Float, ?force:Bool = false):Void{
 		if (pGenerator == null) return;
 		
-		pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);	
+		if (!force) pGenerator.desc.quantity = Math.min(pGenerator.desc.quantity + quantity, pGenerator.desc.max);
+		else pGenerator.desc.quantity = pGenerator.desc.quantity + quantity;
 		save(pGenerator);
 		
 		if (pGenerator.desc.quantity >= pGenerator.desc.max / 10) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});

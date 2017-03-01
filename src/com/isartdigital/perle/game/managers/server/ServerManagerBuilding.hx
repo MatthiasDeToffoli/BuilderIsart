@@ -563,4 +563,31 @@ class ServerManagerBuilding{
 	private static function onErrorUpgradeFine(pObject:Dynamic):Void {
 		Debug.error(pObject);
 	}
+	
+	public static function addSoul(pDesc:TileDescription):Void {
+		ServerManager.callPhpFile(onSuccessAddSoul, onErrorAddSoul, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.ADD_SOUL,
+			"RegionX" => pDesc.regionX,
+			"RegionY" => pDesc.regionY,
+			"X" => pDesc.mapX,
+			"Y" => pDesc.mapY
+		]);
+	}
+	
+	private static function onSuccessAddSoul(pObject:Dynamic):Void {
+		/*if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			}
+			
+		}*/
+	}
+	
+	private static function onErrorAddSoul(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
 }

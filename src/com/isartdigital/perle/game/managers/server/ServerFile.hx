@@ -19,6 +19,7 @@ class ServerFile{
 	public static inline var BUILDING_BOOST:String = "BoostBuilding";
 	public static inline var COLLECTOR_BOOST:String = "BoostCollector";
 	public static inline var UPGRADE_FINE:String = "UpgradeFine";
+	public static inline var ADD_SOUL:String = "AddSoul";
 	public static inline var CREATE_GENERATOR:String = "CreateGenerator";
 	public static inline var UPDATE_GENERATOR:String = "UpdateGenerator";
 	public static inline var UPDATE_POPULATION:String = "UpdatePopulation";
