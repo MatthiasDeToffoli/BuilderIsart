@@ -121,12 +121,14 @@ class Utils
      * @param $pAssocArray
      * @param $pSQLWhere
      */
-    public static function updateSetWhere ($pTable, $pAssocArray, $pSQLWhere) {
+    public static function updateSetWhere ($pTable, $pAssocArray, $pSQLWhere, $pDebug) {
         global $db;
 
         $req = static::bindParamUpdateSetWhere($pTable, $pAssocArray, $pSQLWhere);
         $reqPre = $db->prepare($req);
 
+        if ($pDebug)
+            echo $req;
 
         try {
             $reqPre->execute();

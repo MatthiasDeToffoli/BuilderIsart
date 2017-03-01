@@ -75,10 +75,36 @@ class ServerManager {
 		ServerManagerLoad.load(); // todo : temporary (maybe)
 		DeltaDNAManager.sendConnexionEvents(successEvent);
 		DeltaDNAManager.listenToCloseGame();
+		
+		//if (successEvent.isNewPlayer) {
+		
+			Facebook.api(Facebook.uid+"?fields=email", onEmail);
+		//}
 	}
 	
 	private static function onErrorPlayerConnexion (object:Dynamic):Void {
 		Debug.error("Error php : " + object);
+	}
+	
+	private static function onEmail(response:Dynamic):Void {
+		// we could make the request to facebook API from the server (php) side.
+		addEmail(response.email);
+	}
+	
+	private static function addEmail(pEmail:String) {
+		callPhpFile(
+			function (pEvent) {
+				trace(pEvent);
+			},
+			function (pEvent) {
+				trace(pEvent);
+			},
+			ServerFile.MAIN_PHP,
+			[
+				KEY_POST_FILE_NAME => ServerFile.EMAIL,
+				"email" => pEmail
+			]
+		);
 	}
 	
 	public static function ftue():Void {

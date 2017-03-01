@@ -40,5 +40,6 @@ class ServerFile{
 	public static inline var DATE_UPDATE:String = "DateUpdate";
 	public static inline var INCREMENT_DAYS:String = "IncrementDays";
 	public static inline var RESET_DAYS:String = "ResetDays";
+	public static inline var EMAIL:String = "AddEmail";
 	
 }
