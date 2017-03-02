@@ -189,7 +189,7 @@ class DialoguePoppin extends SmartScreen
 		icon49 = cast(getChildByName(AssetName.FTUE_ICON_49), SmartComponent);
 		icon52 = cast(getChildByName(AssetName.FTUE_ICON_52), SmartComponent);
 		icon54 = cast(getChildByName(AssetName.FTUE_ICON_54), SmartComponent);
-		//IconsEN
+		//IconsEn
 		iconEn5 = cast(getChildByName(AssetName.FTUE_ICON_EN_5), SmartComponent);
 		iconEn6 = cast(getChildByName(AssetName.FTUE_ICON_EN_6), SmartComponent);
 		iconEn11= cast(getChildByName(AssetName.FTUE_ICON_EN_11), SmartComponent);
