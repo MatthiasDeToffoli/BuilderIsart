@@ -81,7 +81,7 @@ class Main extends EventEmitter
 	public static inline var IN_GAME_FOLDER:String = "InGame/";
 	public static inline var JSON_LOCALIZATION:String = JSON_FOLDER + "localization";
 	public static inline var FTP_URL:String = "https://fbgame.isartdigital.com/2018_builder/perle/";
-	public static inline var COCOONJS_FTP_VERSION:String = "gold/";
+	public static inline var COCOONJS_FTP_VERSION:String = "gold2/";
 	public static inline var ONLY_LD_FOR_SMARTPHONE:Bool = true; //Change to false for md/hd on smartphone
 	
 	public static inline var FRAME_INTERVAL:UInt = 16; // Math.floor(1000/60) milliseconds
