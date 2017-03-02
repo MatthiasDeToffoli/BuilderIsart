@@ -15,7 +15,7 @@ include_once("utils/Player.php");
 $lId = FacebookUtils::getId();
 $player = Player::getPlayerById($lId);
 $table = Utils::getTable("LevelReward", "ID = ".($player->Level +1));
-
+echo $table[0]["Gold"];
 Resources::additionResources($lId, GeneratorType::soft, $table[0]["Gold"]);
 Resources::additionResources($lId, GeneratorType::resourcesFromHell, $table[0]["Iron"]);
 Resources::additionResources($lId, GeneratorType::resourcesFromHeaven, $table[0]["Wood"]);

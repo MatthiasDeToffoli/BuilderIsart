@@ -352,8 +352,8 @@ class ShopCarousselInterns extends ShopCaroussel{
 	private function onClickReroll ():Void {
 		hellIntern = null;
 		heavenIntern = null;
-		if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
-			return;
+		//if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+		//	return;
 		ShopCarousselInternsSearch.progress = 0;
 		//ShopPopin.isSearching = true;
 		ShopPopin.getInstance().init(ShopTab.InternsSearch);
