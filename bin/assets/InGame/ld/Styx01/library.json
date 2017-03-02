@@ -6,7 +6,6 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "pivot": [
         200.25,
         284
@@ -17,6 +16,7 @@
        ],
        "ref": "Styx_gauche",
        "index": 0,
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -25,7 +25,6 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "pivot": [
         209.5,
         327.25
@@ -36,6 +35,7 @@
        ],
        "ref": "Styx_droit",
        "index": 0,
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -50,11 +50,110 @@
        ],
        "ref": "Styx_anim",
        "index": 0,
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
-     "name": "Calque 1"
+     "name": "anim_flux"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.8558,
+        0.8689
+       ],
+       "tweened": false,
+       "skew": [
+        3.0281,
+        2.9317
+       ],
+       "loc": [
+        -571.375,
+        375.475
+       ],
+       "ref": "styx_wild_end_flipbook2",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "anim_bord"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.771,
+        0.771
+       ],
+       "tweened": false,
+       "skew": [
+        -0.1347,
+        -0.1347
+       ],
+       "loc": [
+        -571.575,
+        488.125
+       ],
+       "ref": "styx_wild_end_flipbook3",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "cascade raccord"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -598.2,
+        466.725
+       ],
+       "ref": "styx_cascade_anim",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "cascade eau"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        1.0568,
+        1.117
+       ],
+       "tweened": false,
+       "skew": [
+        -0.5709,
+        -0.5709
+       ],
+       "loc": [
+        -612.95,
+        391.975
+       ],
+       "ref": "styx_wild_end_anim",
+       "index": 0,
+       "duration": 1
+      }
+     ],
+     "name": "cascade reflet"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -563.4,
+        359.6
+       ],
+       "ref": "styx_anim_ame",
+       "index": 0,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "ame"
     }
    ]
   },
@@ -119,8 +218,8 @@
         -0.4684
        ],
        "loc": [
-        46.85,
-        -13.175
+        20.775,
+        1.7
        ],
        "ref": "styx_reflect",
        "index": 120,
@@ -284,8 +383,8 @@
         -0.4685
        ],
        "loc": [
-        38.85,
-        -23.975
+        23.8,
+        -14.7
        ],
        "ref": "styx_reflect",
        "index": 95,
@@ -449,8 +548,8 @@
         -0.4684
        ],
        "loc": [
-        55.9,
-        -21.65
+        48.7,
+        -15.9
        ],
        "ref": "styx_reflect",
        "index": 103,
@@ -593,8 +692,8 @@
         -0.4684
        ],
        "loc": [
-        19.9,
-        -27.2
+        -5.375,
+        -12.95
        ],
        "ref": "styx_reflect",
        "index": 81,
@@ -758,8 +857,8 @@
         -0.4685
        ],
        "loc": [
-        45.675,
-        -20.2
+        30.3,
+        -11.075
        ],
        "ref": "styx_reflect",
        "index": 113,
@@ -902,8 +1001,8 @@
         -0.4684
        ],
        "loc": [
-        62.6,
-        -16.8
+        56.05,
+        -12.175
        ],
        "ref": "styx_reflect",
        "index": 40,
@@ -1071,8 +1170,8 @@
         -0.4685
        ],
        "loc": [
-        33.85,
-        -26.825
+        19.45,
+        -17.225
        ],
        "ref": "styx_reflect",
        "index": 57,
@@ -1236,8 +1335,8 @@
         -0.4684
        ],
        "loc": [
-        58.7,
-        -5.625
+        31.5,
+        7.325
        ],
        "ref": "styx_reflect",
        "index": 30,
@@ -1401,8 +1500,8 @@
         -0.4684
        ],
        "loc": [
-        66.625,
-        -14.175
+        60.375,
+        -9.875
        ],
        "ref": "styx_reflect",
        "index": 14,
@@ -1570,8 +1669,8 @@
         -0.4685
        ],
        "loc": [
-        38.85,
-        -23.975
+        20.95,
+        -15.8
        ],
        "ref": "styx_reflect",
        "index": 14,
@@ -1777,8 +1876,8 @@
         -0.4684
        ],
        "loc": [
-        49,
-        -11.375
+        23.9,
+        3.325
        ],
        "ref": "styx_reflect",
        "index": 143,
@@ -1963,8 +2062,8 @@
         -0.4684
        ],
        "loc": [
-        35.125,
-        -31.625
+        27.625,
+        -27.625
        ],
        "ref": "styx_reflect",
        "index": 143,
@@ -2149,8 +2248,8 @@
         -0.4685
        ],
        "loc": [
-        47.525,
-        -19.25
+        31.375,
+        -10.625
        ],
        "ref": "styx_reflect",
        "index": 143,
@@ -2293,8 +2392,8 @@
         -0.4684
        ],
        "loc": [
-        19.9,
-        -27.2
+        -6.975,
+        -13.45
        ],
        "ref": "styx_reflect",
        "index": 54,
@@ -2479,8 +2578,8 @@
         -0.4684
        ],
        "loc": [
-        66.625,
-        -14.175
+        60.375,
+        -9.85
        ],
        "ref": "styx_reflect",
        "index": 124,
@@ -2644,8 +2743,8 @@
         -0.4685
        ],
        "loc": [
-        38.85,
-        -23.975
+        22.525,
+        -15.175
        ],
        "ref": "styx_reflect",
        "index": 152,
@@ -2788,8 +2887,8 @@
         -0.4684
        ],
        "loc": [
-        19.9,
-        -27.2
+        -6.325,
+        -13.675
        ],
        "ref": "styx_reflect",
        "index": 81,
@@ -2932,8 +3031,8 @@
         -0.4684
        ],
        "loc": [
-        66.625,
-        -14.175
+        60.55,
+        -8.975
        ],
        "ref": "styx_reflect",
        "index": 81,
@@ -3080,8 +3179,8 @@
         -0.4685
        ],
        "loc": [
-        38.85,
-        -23.975
+        26.225,
+        -13.575
        ],
        "ref": "styx_reflect",
        "index": 81,
@@ -3195,7 +3294,6 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "pivot": [
         439.1,
         210.425
@@ -3206,6 +3304,7 @@
        ],
        "ref": "styw_wild_sprite",
        "index": 0,
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -3220,8 +3319,8 @@
        ],
        "ref": "styx_wild_down_anim",
        "index": 0,
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "anim"
@@ -3233,10 +3332,10 @@
         -692.95,
         447.1
        ],
-       "ref": "styx_wild_end_anim",
+       "ref": "styx_wild_end_flipbook",
        "index": 0,
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "end_flipbook"
@@ -3268,7 +3367,6 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "pivot": [
         439.1,
         210.425
@@ -3279,6 +3377,7 @@
        ],
        "ref": "styw_wild_sprite",
        "index": 0,
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -3293,8 +3392,8 @@
        ],
        "ref": "styx_wild_down_anim",
        "index": 0,
-       "duration": 1,
-       "tweened": false
+       "tweened": false,
+       "duration": 1
       }
      ],
      "name": "styx_wild_down_anim"
@@ -3302,7 +3401,6 @@
     {
      "keyframes": [
       {
-       "tweened": false,
        "pivot": [
         0.575,
         -2
@@ -3315,8 +3413,9 @@
         80.375,
         55.2
        ],
-       "ref": "styx_wild_end_anim",
+       "ref": "styx_wild_end_flipbook",
        "index": 0,
+       "tweened": false,
        "duration": 1
       }
      ],
@@ -3344,6 +3443,3864 @@
       }
      ],
      "name": "styx_wild_end_anim2"
+    }
+   ]
+  },
+  {
+   "id": "styx_anim_ame",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "loc": [
+        -17.95,
+        -1.75
+       ],
+       "ref": "styx_anim_ame_int",
+       "index": 0,
+       "duration": 149
+      },
+      {
+       "loc": [
+        613.375,
+        -316.325
+       ],
+       "ref": "styx_anim_ame_int",
+       "index": 149,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 6
+      },
+      {
+       "loc": [
+        470.975,
+        -207.975
+       ],
+       "ref": "styx_anim_ame_int2",
+       "index": 6,
+       "duration": 43
+      },
+      {
+       "loc": [
+        653.175,
+        -298.75
+       ],
+       "ref": "styx_anim_ame_int2",
+       "index": 49,
+       "duration": 1
+      },
+      {
+       "loc": [
+        21.85,
+        15.825
+       ],
+       "ref": "styx_anim_ame_int2",
+       "index": 50,
+       "duration": 105
+      },
+      {
+       "loc": [
+        466.75,
+        -205.85
+       ],
+       "ref": "styx_anim_ame_int2",
+       "index": 155,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 17
+      },
+      {
+       "loc": [
+        279.75,
+        -133.325
+       ],
+       "ref": "styx_anim_ame_int3",
+       "index": 17,
+       "duration": 83
+      },
+      {
+       "loc": [
+        631.425,
+        -308.55
+       ],
+       "ref": "styx_anim_ame_int3",
+       "index": 100,
+       "duration": 1
+      },
+      {
+       "loc": [
+        0.1,
+        6.025
+       ],
+       "ref": "styx_anim_ame_int3",
+       "index": 101,
+       "duration": 65
+      },
+      {
+       "loc": [
+        275.525,
+        -131.2
+       ],
+       "ref": "styx_anim_ame_int3",
+       "index": 166,
+       "tweened": false,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        524.325,
+        -259.675
+       ],
+       "ref": "~soulito_underwater",
+       "index": 0,
+       "duration": 23
+      },
+      {
+       "loc": [
+        620.925,
+        -308.275
+       ],
+       "ref": "~soulito_underwater",
+       "index": 23,
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "index": 24,
+       "duration": 7
+      },
+      {
+       "loc": [
+        -4.95,
+        6.65
+       ],
+       "ref": "~soulito_underwater",
+       "index": 31,
+       "duration": 125
+      },
+      {
+       "loc": [
+        520.125,
+        -257.55
+       ],
+       "ref": "~soulito_underwater",
+       "index": 156,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 4"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        298.8,
+        -122.575
+       ],
+       "ref": "~soulito_underwater",
+       "index": 0,
+       "duration": 83
+      },
+      {
+       "loc": [
+        647.45,
+        -298
+       ],
+       "ref": "~soulito_underwater",
+       "index": 83,
+       "duration": 1
+      },
+      {
+       "loc": [
+        21.575,
+        16.925
+       ],
+       "ref": "~soulito_underwater",
+       "index": 84,
+       "duration": 65
+      },
+      {
+       "loc": [
+        294.625,
+        -120.45
+       ],
+       "ref": "~soulito_underwater",
+       "index": 149,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 5"
+    },
+    {
+     "keyframes": [
+      {
+       "index": 0,
+       "duration": 13
+      },
+      {
+       "loc": [
+        22.325,
+        16.825
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 13,
+       "duration": 149
+      },
+      {
+       "loc": [
+        653.65,
+        -297.75
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 162,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 6"
+    },
+    {
+     "keyframes": [
+      {
+       "loc": [
+        359.05,
+        -176.95
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 0,
+       "duration": 63
+      },
+      {
+       "loc": [
+        625.975,
+        -309.95
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 63,
+       "duration": 1
+      },
+      {
+       "loc": [
+        -5.35,
+        4.625
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 64,
+       "duration": 85
+      },
+      {
+       "loc": [
+        354.8,
+        -174.825
+       ],
+       "ref": "styx_anim_ame_plat",
+       "index": 149,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 7"
+    }
+   ]
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_anim_ame_int_flipbook_0",
+       "index": 0,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_2",
+       "index": 2,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_4",
+       "index": 4,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_6",
+       "index": 6,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_8",
+       "index": 8,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_9",
+       "index": 9,
+       "pivot": [
+        10.05,
+        30.125
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_10",
+       "index": 10,
+       "pivot": [
+        10.05,
+        32.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_11",
+       "index": 11,
+       "pivot": [
+        10.05,
+        35.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_12",
+       "index": 12,
+       "pivot": [
+        10.05,
+        38.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_13",
+       "index": 13,
+       "pivot": [
+        10.05,
+        40.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_14",
+       "index": 14,
+       "pivot": [
+        10.05,
+        43.175
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_15",
+       "index": 15,
+       "pivot": [
+        10.05,
+        45.025
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_16",
+       "index": 16,
+       "pivot": [
+        10.05,
+        46.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_17",
+       "index": 17,
+       "pivot": [
+        10.05,
+        46.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_18",
+       "index": 18,
+       "pivot": [
+        10.05,
+        46.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_19",
+       "index": 19,
+       "pivot": [
+        10.05,
+        45.55
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_20",
+       "index": 20,
+       "pivot": [
+        10.05,
+        44.15
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_21",
+       "index": 21,
+       "pivot": [
+        10.05,
+        42.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_22",
+       "index": 22,
+       "pivot": [
+        10.05,
+        40
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_23",
+       "index": 23,
+       "pivot": [
+        10.05,
+        37.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_24",
+       "index": 24,
+       "pivot": [
+        10.05,
+        34.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_25",
+       "index": 25,
+       "pivot": [
+        10.05,
+        32.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_26",
+       "index": 26,
+       "pivot": [
+        10.05,
+        29.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_27",
+       "index": 27,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_28",
+       "index": 28,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_30",
+       "index": 30,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_32",
+       "index": 32,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_34",
+       "index": 34,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_36",
+       "index": 36,
+       "pivot": [
+        16.25,
+        11.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_37",
+       "index": 37,
+       "pivot": [
+        15.575,
+        10.775
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_38",
+       "index": 38,
+       "pivot": [
+        14.875,
+        10.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_39",
+       "index": 39,
+       "pivot": [
+        14.2,
+        9.8
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_40",
+       "index": 40,
+       "pivot": [
+        13.5,
+        9.325
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_41",
+       "index": 41,
+       "pivot": [
+        12.825,
+        8.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_42",
+       "index": 42,
+       "pivot": [
+        12.125,
+        8.35
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_43",
+       "index": 43,
+       "pivot": [
+        11.45,
+        7.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_44",
+       "index": 44,
+       "pivot": [
+        10.75,
+        7.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_45",
+       "index": 45,
+       "pivot": [
+        10.075,
+        6.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_46",
+       "index": 46,
+       "pivot": [
+        9.375,
+        6.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_47",
+       "index": 47,
+       "pivot": [
+        8.7,
+        5.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_48",
+       "index": 48,
+       "pivot": [
+        8,
+        5.4
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_49",
+       "index": 49,
+       "pivot": [
+        7.325,
+        4.925
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_50",
+       "index": 50,
+       "pivot": [
+        6.625,
+        4.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_51",
+       "index": 51,
+       "pivot": [
+        5.95,
+        3.95
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_52",
+       "index": 52,
+       "pivot": [
+        5.25,
+        3.45
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_53",
+       "index": 53,
+       "pivot": [
+        4.575,
+        2.975
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_54",
+       "index": 54,
+       "pivot": [
+        3.9,
+        2.475
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int_flipbook_55",
+       "index": 55,
+       "pivot": [
+        2.125,
+        1.225
+       ],
+       "tweened": false,
+       "duration": 20
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_anim_ame_int"
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_anim_ame_int2_flipbook_0",
+       "index": 0,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_2",
+       "index": 2,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_4",
+       "index": 4,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_6",
+       "index": 6,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_8",
+       "index": 8,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_9",
+       "index": 9,
+       "pivot": [
+        10.05,
+        30.125
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_10",
+       "index": 10,
+       "pivot": [
+        10.05,
+        32.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_11",
+       "index": 11,
+       "pivot": [
+        10.05,
+        35.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_12",
+       "index": 12,
+       "pivot": [
+        10.05,
+        38.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_13",
+       "index": 13,
+       "pivot": [
+        10.05,
+        40.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_14",
+       "index": 14,
+       "pivot": [
+        10.05,
+        43.175
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_15",
+       "index": 15,
+       "pivot": [
+        10.05,
+        45.025
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_16",
+       "index": 16,
+       "pivot": [
+        10.05,
+        46.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_17",
+       "index": 17,
+       "pivot": [
+        10.05,
+        46.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_18",
+       "index": 18,
+       "pivot": [
+        10.05,
+        46.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_19",
+       "index": 19,
+       "pivot": [
+        10.05,
+        45.55
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_20",
+       "index": 20,
+       "pivot": [
+        10.05,
+        44.15
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_21",
+       "index": 21,
+       "pivot": [
+        10.05,
+        42.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_22",
+       "index": 22,
+       "pivot": [
+        10.05,
+        40
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_23",
+       "index": 23,
+       "pivot": [
+        10.05,
+        37.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_24",
+       "index": 24,
+       "pivot": [
+        10.05,
+        34.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_25",
+       "index": 25,
+       "pivot": [
+        10.05,
+        32.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_26",
+       "index": 26,
+       "pivot": [
+        10.05,
+        29.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_27",
+       "index": 27,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_28",
+       "index": 28,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_30",
+       "index": 30,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_32",
+       "index": 32,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_34",
+       "index": 34,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_36",
+       "index": 36,
+       "pivot": [
+        16.25,
+        11.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_37",
+       "index": 37,
+       "pivot": [
+        15.575,
+        10.775
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_38",
+       "index": 38,
+       "pivot": [
+        14.875,
+        10.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_39",
+       "index": 39,
+       "pivot": [
+        14.2,
+        9.8
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_40",
+       "index": 40,
+       "pivot": [
+        13.5,
+        9.325
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_41",
+       "index": 41,
+       "pivot": [
+        12.825,
+        8.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_42",
+       "index": 42,
+       "pivot": [
+        12.125,
+        8.35
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_43",
+       "index": 43,
+       "pivot": [
+        11.45,
+        7.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_44",
+       "index": 44,
+       "pivot": [
+        10.75,
+        7.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_45",
+       "index": 45,
+       "pivot": [
+        10.075,
+        6.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_46",
+       "index": 46,
+       "pivot": [
+        9.375,
+        6.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_47",
+       "index": 47,
+       "pivot": [
+        8.7,
+        5.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_48",
+       "index": 48,
+       "pivot": [
+        8,
+        5.4
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_49",
+       "index": 49,
+       "pivot": [
+        7.325,
+        4.925
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_50",
+       "index": 50,
+       "pivot": [
+        6.625,
+        4.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_51",
+       "index": 51,
+       "pivot": [
+        5.95,
+        3.95
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_52",
+       "index": 52,
+       "pivot": [
+        5.25,
+        3.45
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_53",
+       "index": 53,
+       "pivot": [
+        4.575,
+        2.975
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_54",
+       "index": 54,
+       "pivot": [
+        3.9,
+        2.475
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int2_flipbook_55",
+       "index": 55,
+       "pivot": [
+        1.675,
+        0.9
+       ],
+       "tweened": false,
+       "duration": 20
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_anim_ame_int2"
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_anim_ame_int3_flipbook_0",
+       "index": 0,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_2",
+       "index": 2,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_4",
+       "index": 4,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_6",
+       "index": 6,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_8",
+       "index": 8,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_9",
+       "index": 9,
+       "pivot": [
+        10.05,
+        30.125
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_10",
+       "index": 10,
+       "pivot": [
+        10.05,
+        32.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_11",
+       "index": 11,
+       "pivot": [
+        10.05,
+        35.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_12",
+       "index": 12,
+       "pivot": [
+        10.05,
+        38.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_13",
+       "index": 13,
+       "pivot": [
+        10.05,
+        40.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_14",
+       "index": 14,
+       "pivot": [
+        10.05,
+        43.175
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_15",
+       "index": 15,
+       "pivot": [
+        10.05,
+        45.025
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_16",
+       "index": 16,
+       "pivot": [
+        10.05,
+        46.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_17",
+       "index": 17,
+       "pivot": [
+        10.05,
+        46.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_18",
+       "index": 18,
+       "pivot": [
+        10.05,
+        46.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_19",
+       "index": 19,
+       "pivot": [
+        10.05,
+        45.55
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_20",
+       "index": 20,
+       "pivot": [
+        10.05,
+        44.15
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_21",
+       "index": 21,
+       "pivot": [
+        10.05,
+        42.25
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_22",
+       "index": 22,
+       "pivot": [
+        10.05,
+        40
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_23",
+       "index": 23,
+       "pivot": [
+        10.05,
+        37.5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_24",
+       "index": 24,
+       "pivot": [
+        10.05,
+        34.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_25",
+       "index": 25,
+       "pivot": [
+        10.05,
+        32.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_26",
+       "index": 26,
+       "pivot": [
+        10.05,
+        29.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_27",
+       "index": 27,
+       "pivot": [
+        10.05,
+        27.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_28",
+       "index": 28,
+       "pivot": [
+        10.05,
+        21.575
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_30",
+       "index": 30,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_32",
+       "index": 32,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_34",
+       "index": 34,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_36",
+       "index": 36,
+       "pivot": [
+        16.25,
+        11.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_37",
+       "index": 37,
+       "pivot": [
+        15.575,
+        10.775
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_38",
+       "index": 38,
+       "pivot": [
+        14.875,
+        10.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_39",
+       "index": 39,
+       "pivot": [
+        14.2,
+        9.8
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_40",
+       "index": 40,
+       "pivot": [
+        13.5,
+        9.325
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_41",
+       "index": 41,
+       "pivot": [
+        12.825,
+        8.825
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_42",
+       "index": 42,
+       "pivot": [
+        12.125,
+        8.35
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_43",
+       "index": 43,
+       "pivot": [
+        11.45,
+        7.85
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_44",
+       "index": 44,
+       "pivot": [
+        10.75,
+        7.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_45",
+       "index": 45,
+       "pivot": [
+        10.075,
+        6.875
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_46",
+       "index": 46,
+       "pivot": [
+        9.375,
+        6.375
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_47",
+       "index": 47,
+       "pivot": [
+        8.7,
+        5.9
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_48",
+       "index": 48,
+       "pivot": [
+        8,
+        5.4
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_49",
+       "index": 49,
+       "pivot": [
+        7.325,
+        4.925
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_50",
+       "index": 50,
+       "pivot": [
+        6.625,
+        4.425
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_51",
+       "index": 51,
+       "pivot": [
+        5.95,
+        3.95
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_52",
+       "index": 52,
+       "pivot": [
+        5.25,
+        3.45
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_53",
+       "index": 53,
+       "pivot": [
+        4.575,
+        2.975
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_54",
+       "index": 54,
+       "pivot": [
+        3.9,
+        2.475
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_int3_flipbook_55",
+       "index": 55,
+       "pivot": [
+        1.7,
+        0.925
+       ],
+       "tweened": false,
+       "duration": 20
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_anim_ame_int3"
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_anim_ame_plat_flipbook_0",
+       "index": 0,
+       "pivot": [
+        3.9,
+        2.475
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_1",
+       "index": 1,
+       "pivot": [
+        5.125,
+        3.75
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_2",
+       "index": 2,
+       "pivot": [
+        6.3,
+        5.025
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_3",
+       "index": 3,
+       "pivot": [
+        7.575,
+        6.3
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_4",
+       "index": 4,
+       "pivot": [
+        8.8,
+        7.55
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_5",
+       "index": 5,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_7",
+       "index": 7,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_9",
+       "index": 9,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 118
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_127",
+       "index": 127,
+       "pivot": [
+        11.35,
+        18.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_129",
+       "index": 129,
+       "pivot": [
+        12.075,
+        10.975
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_131",
+       "index": 131,
+       "pivot": [
+        9.35,
+        9.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_133",
+       "index": 133,
+       "pivot": [
+        8.8,
+        7.55
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_134",
+       "index": 134,
+       "pivot": [
+        7.575,
+        6.275
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_135",
+       "index": 135,
+       "pivot": [
+        6.325,
+        5
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_136",
+       "index": 136,
+       "pivot": [
+        5.125,
+        3.725
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_137",
+       "index": 137,
+       "pivot": [
+        3.9,
+        2.475
+       ],
+       "tweened": false,
+       "duration": 1
+      },
+      {
+       "ref": "styx_anim_ame_plat_flipbook_138",
+       "index": 138,
+       "pivot": [
+        1.575,
+        0.825
+       ],
+       "tweened": false,
+       "duration": 12
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_anim_ame_plat"
+  },
+  {
+   "id": "styx_cascade_anim",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        -1.075,
+        81.7
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 54
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        -1.075,
+        -0.775
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.6373,
+        1.4843
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        41.1,
+        18.925
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 3
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        41.125,
+        14.375
+       ],
+       "ref": "styx_goute2",
+       "index": 3,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        41.125,
+        96.85
+       ],
+       "ref": "styx_goute2",
+       "index": 4,
+       "duration": 50
+      },
+      {
+       "scale": [
+        0.6256,
+        1.4571
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        41.125,
+        20.45
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.5788,
+        1.3482
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        24.825,
+        23.45
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 8
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        24.825,
+        11.175
+       ],
+       "ref": "styx_goute2",
+       "index": 8,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        24.825,
+        93.65
+       ],
+       "ref": "styx_goute2",
+       "index": 9,
+       "duration": 45
+      },
+      {
+       "scale": [
+        0.5672,
+        1.321
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        24.85,
+        24.95
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.5204,
+        1.2121
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        14.025,
+        21.125
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 13
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        14.05,
+        1.275
+       ],
+       "ref": "styx_goute2",
+       "index": 13,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        14.05,
+        83.75
+       ],
+       "ref": "styx_goute2",
+       "index": 14,
+       "duration": 40
+      },
+      {
+       "scale": [
+        0.5087,
+        1.1848
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        14.05,
+        22.65
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 4"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.462,
+        1.076
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        -0.825,
+        24.7
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        -0.8,
+        -2.8
+       ],
+       "ref": "styx_goute2",
+       "index": 18,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        -0.8,
+        79.675
+       ],
+       "ref": "styx_goute2",
+       "index": 19,
+       "duration": 35
+      },
+      {
+       "scale": [
+        0.4503,
+        1.0487
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        -0.8,
+        26.25
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 7"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.4035,
+        0.9398
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        31.775,
+        42.65
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 23
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        31.775,
+        7.5
+       ],
+       "ref": "styx_goute2",
+       "index": 23,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        31.775,
+        89.975
+       ],
+       "ref": "styx_goute2",
+       "index": 24,
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.3918,
+        0.9126
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        31.8,
+        44.175
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 5"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.3451,
+        0.8037
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        14.075,
+        49.4
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 28
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        14.05,
+        6.6
+       ],
+       "ref": "styx_goute2",
+       "index": 28,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        14.05,
+        89.075
+       ],
+       "ref": "styx_goute2",
+       "index": 29,
+       "duration": 25
+      },
+      {
+       "scale": [
+        0.3334,
+        0.7765
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        14.025,
+        50.9
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 6"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2866,
+        0.6676
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        31.75,
+        64.775
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 33
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        31.775,
+        14.375
+       ],
+       "ref": "styx_goute2",
+       "index": 33,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        31.775,
+        96.85
+       ],
+       "ref": "styx_goute2",
+       "index": 34,
+       "duration": 20
+      },
+      {
+       "scale": [
+        0.2749,
+        0.6404
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        31.75,
+        66.3
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 8"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2282,
+        0.5315
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        55.925,
+        85.8
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 38
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        55.925,
+        27.75
+       ],
+       "ref": "styx_goute2",
+       "index": 38,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        55.925,
+        110.225
+       ],
+       "ref": "styx_goute2",
+       "index": 39,
+       "duration": 15
+      },
+      {
+       "scale": [
+        0.2165,
+        0.5042
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        55.9,
+        87.325
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 10"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1697,
+        0.3954
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        20.725,
+        81.95
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 43
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        20.7,
+        16.275
+       ],
+       "ref": "styx_goute2",
+       "index": 43,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        20.7,
+        98.75
+       ],
+       "ref": "styx_goute2",
+       "index": 44,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.158,
+        0.3681
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        20.725,
+        83.475
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 11"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1113,
+        0.2593
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        5.85,
+        77.625
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 48
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        5.85,
+        4.325
+       ],
+       "ref": "styx_goute2",
+       "index": 48,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        5.85,
+        86.8
+       ],
+       "ref": "styx_goute2",
+       "index": 49,
+       "duration": 5
+      },
+      {
+       "scale": [
+        0.0996,
+        0.232
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0271
+       ],
+       "loc": [
+        5.825,
+        79.2
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 12"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        36.125,
+        93.225
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 54
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        36.125,
+        10.75
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 13"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.6256,
+        1.4571
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        55.925,
+        41.925
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 4
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        55.925,
+        35.825
+       ],
+       "ref": "styx_goute2",
+       "index": 4,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        55.925,
+        118.3
+       ],
+       "ref": "styx_goute2",
+       "index": 5,
+       "duration": 49
+      },
+      {
+       "scale": [
+        0.6139,
+        1.4299
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        55.925,
+        43.45
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 9"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.5788,
+        1.3482
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        37.575,
+        41.575
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 8
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        37.575,
+        29.375
+       ],
+       "ref": "styx_goute2",
+       "index": 8,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        37.575,
+        111.85
+       ],
+       "ref": "styx_goute2",
+       "index": 9,
+       "duration": 45
+      },
+      {
+       "scale": [
+        0.5672,
+        1.321
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        37.575,
+        43.15
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 14"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.5204,
+        1.2121
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        19.875,
+        40.85
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 13
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        19.875,
+        21
+       ],
+       "ref": "styx_goute2",
+       "index": 13,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        19.875,
+        103.475
+       ],
+       "ref": "styx_goute2",
+       "index": 14,
+       "duration": 40
+      },
+      {
+       "scale": [
+        0.5087,
+        1.1848
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        19.875,
+        42.35
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 15"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.462,
+        1.076
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        38.025,
+        38.25
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        38.025,
+        10.75
+       ],
+       "ref": "styx_goute2",
+       "index": 18,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        38.025,
+        93.225
+       ],
+       "ref": "styx_goute2",
+       "index": 19,
+       "duration": 35
+      },
+      {
+       "scale": [
+        0.4503,
+        1.0487
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        38.025,
+        39.775
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 16"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.4035,
+        0.9398
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        18.25,
+        56.1
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 23
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        18.225,
+        21
+       ],
+       "ref": "styx_goute2",
+       "index": 23,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        18.225,
+        103.475
+       ],
+       "ref": "styx_goute2",
+       "index": 24,
+       "duration": 30
+      },
+      {
+       "scale": [
+        0.3918,
+        0.9126
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        18.25,
+        57.65
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 17"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.3451,
+        0.8037
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        7.425,
+        56.25
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 28
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        7.4,
+        13.475
+       ],
+       "ref": "styx_goute2",
+       "index": 28,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        7.4,
+        95.95
+       ],
+       "ref": "styx_goute2",
+       "index": 29,
+       "duration": 25
+      },
+      {
+       "scale": [
+        0.3334,
+        0.7765
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        7.425,
+        57.775
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 18"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2866,
+        0.6676
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        -2.325,
+        60.15
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 33
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        -2.325,
+        9.75
+       ],
+       "ref": "styx_goute2",
+       "index": 33,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        -2.325,
+        92.225
+       ],
+       "ref": "styx_goute2",
+       "index": 34,
+       "duration": 20
+      },
+      {
+       "scale": [
+        0.2749,
+        0.6404
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        -2.325,
+        61.7
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 19"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2282,
+        0.5315
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        41.725,
+        71.3
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 38
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        41.7,
+        13.225
+       ],
+       "ref": "styx_goute2",
+       "index": 38,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        41.7,
+        95.7
+       ],
+       "ref": "styx_goute2",
+       "index": 39,
+       "duration": 15
+      },
+      {
+       "scale": [
+        0.2165,
+        0.5042
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        41.7,
+        72.825
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 20"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1697,
+        0.3954
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        9.375,
+        68.4
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 43
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        9.35,
+        2.75
+       ],
+       "ref": "styx_goute2",
+       "index": 43,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        9.35,
+        85.225
+       ],
+       "ref": "styx_goute2",
+       "index": 44,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.158,
+        0.3681
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0272
+       ],
+       "loc": [
+        9.35,
+        69.95
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 21"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1113,
+        0.2593
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0273
+       ],
+       "loc": [
+        4.675,
+        86.525
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 48
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        4.675,
+        13.225
+       ],
+       "ref": "styx_goute2",
+       "index": 48,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        4.675,
+        95.7
+       ],
+       "ref": "styx_goute2",
+       "index": 49,
+       "duration": 5
+      },
+      {
+       "scale": [
+        0.0996,
+        0.232
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0272,
+        0.0271
+       ],
+       "loc": [
+        4.65,
+        88.075
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 22"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.0412,
+        0.0959
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0304,
+        0.0304
+       ],
+       "loc": [
+        43.75,
+        98.9
+       ],
+       "ref": "styx_goute2",
+       "index": 0,
+       "duration": 54
+      },
+      {
+       "scale": [
+        0.6724,
+        1.5661
+       ],
+       "pivot": [
+        4.6,
+        4.725
+       ],
+       "skew": [
+        0.0303,
+        0.0303
+       ],
+       "loc": [
+        43.75,
+        16.425
+       ],
+       "ref": "styx_goute2",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 23"
     }
    ]
   },
@@ -17937,203 +21894,738 @@
    ]
   },
   {
-   "baseClass": "Flipbook",
-   "layers": [
-    {
-     "flipbook": true,
-     "keyframes": [
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_0",
-       "index": 0,
-       "duration": 2,
-       "pivot": [
-        185.625,
-        -6.525
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_2",
-       "index": 2,
-       "duration": 2,
-       "pivot": [
-        175.25,
-        -16.125
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_4",
-       "index": 4,
-       "duration": 2,
-       "pivot": [
-        164.85,
-        -10.8
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_6",
-       "index": 6,
-       "duration": 2,
-       "pivot": [
-        154.475,
-        -4.125
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_8",
-       "index": 8,
-       "duration": 2,
-       "pivot": [
-        146.425,
-        -11.475
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_10",
-       "index": 10,
-       "duration": 2,
-       "pivot": [
-        137.625,
-        -6.8
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_12",
-       "index": 12,
-       "duration": 2,
-       "pivot": [
-        128.825,
-        -2.1
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_14",
-       "index": 14,
-       "duration": 2,
-       "pivot": [
-        168.35,
-        -8.15
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_16",
-       "index": 16,
-       "duration": 2,
-       "pivot": [
-        158.9,
-        -6.825
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_18",
-       "index": 18,
-       "duration": 2,
-       "pivot": [
-        149.5,
-        -5.525
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_20",
-       "index": 20,
-       "duration": 2,
-       "pivot": [
-        140.05,
-        -1.95
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_22",
-       "index": 22,
-       "duration": 2,
-       "pivot": [
-        130.65,
-        1.875
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_24",
-       "index": 24,
-       "duration": 2,
-       "pivot": [
-        168.075,
-        -1.6
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_26",
-       "index": 26,
-       "duration": 2,
-       "pivot": [
-        158.275,
-        -0.25
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_28",
-       "index": 28,
-       "duration": 2,
-       "pivot": [
-        148.55,
-        1.075
-       ]
-      },
-      {
-       "tweened": false,
-       "ref": "styx_wild_end_anim_flipbook_30",
-       "index": 30,
-       "duration": 2,
-       "pivot": [
-        138.775,
-        2.325
-       ]
-      }
-     ],
-     "name": "Calque 1"
-    }
-   ],
-   "id": "styx_wild_end_anim"
-  },
-  {
    "id": "styx_wild_end_anim",
    "layers": [
     {
      "keyframes": [
       {
        "scale": [
-        0.0526,
-        0.0526
+        0.0069,
+        0.5618
        ],
        "pivot": [
-        13.075,
-        5.65
+        46.925,
+        3.775
        ],
        "skew": [
-        -0.0863,
-        -0.0863
+        -0.9688,
+        -0.97
        ],
        "loc": [
-        -184.925,
-        17.725
+        -46.8446,
+        92.2038
        ],
-       "ref": "styx_goute",
+       "ref": "styx_reflect",
        "index": 0,
-       "duration": 34
+       "duration": 9
       },
+      {
+       "scale": [
+        0.2103,
+        0.2103
+       ],
+       "pivot": [
+        46.6,
+        3.725
+       ],
+       "skew": [
+        -0.9688,
+        -0.9688
+       ],
+       "loc": [
+        -32.2754,
+        70.8726
+       ],
+       "ref": "styx_reflect",
+       "index": 9,
+       "duration": 35
+      },
+      {
+       "scale": [
+        0.387,
+        0.387
+       ],
+       "pivot": [
+        46.6,
+        3.75
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        16.2516,
+        -3.6236
+       ],
+       "ref": "styx_reflect",
+       "index": 44,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        22.5038,
+        -12.9227
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 1"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2089,
+        0.231
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        42.2514,
+        25.0744
+       ],
+       "ref": "styx_reflect",
+       "index": 0,
+       "duration": 8
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        46.6538,
+        17.5024
+       ],
+       "ref": "styx_reflect",
+       "index": 8,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0069,
+        0.5618
+       ],
+       "pivot": [
+        46.925,
+        3.775
+       ],
+       "skew": [
+        -0.9688,
+        -0.97
+       ],
+       "loc": [
+        -22.6946,
+        122.6288
+       ],
+       "ref": "styx_reflect",
+       "index": 9,
+       "duration": 9
+      },
+      {
+       "scale": [
+        0.1748,
+        0.1748
+       ],
+       "pivot": [
+        46.675,
+        3.725
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        -8.0734,
+        101.3253
+       ],
+       "ref": "styx_reflect",
+       "index": 18,
+       "duration": 36
+      },
+      {
+       "scale": [
+        0.2089,
+        0.231
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        42.2514,
+        25.0744
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 2"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.189,
+        0.2395
+       ],
+       "pivot": [
+        46.575,
+        3.725
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        36.4242,
+        58.423
+       ],
+       "ref": "styx_reflect",
+       "index": 0,
+       "duration": 8
+      },
+      {
+       "scale": [
+        0.2758,
+        0.2758
+       ],
+       "pivot": [
+        46.5,
+        3.725
+       ],
+       "skew": [
+        -0.9688,
+        -0.9688
+       ],
+       "loc": [
+        50.4752,
+        36.925
+       ],
+       "ref": "styx_reflect",
+       "index": 8,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        56.4288,
+        28.1274
+       ],
+       "ref": "styx_reflect",
+       "index": 18,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0069,
+        0.5618
+       ],
+       "pivot": [
+        46.925,
+        3.775
+       ],
+       "skew": [
+        -0.9688,
+        -0.97
+       ],
+       "loc": [
+        -12.9196,
+        133.2538
+       ],
+       "ref": "styx_reflect",
+       "index": 19,
+       "duration": 9
+      },
+      {
+       "scale": [
+        0.2554,
+        0.2554
+       ],
+       "pivot": [
+        46.575,
+        3.725
+       ],
+       "skew": [
+        -0.9688,
+        -0.9688
+       ],
+       "loc": [
+        1.6754,
+        111.9527
+       ],
+       "ref": "styx_reflect",
+       "index": 28,
+       "duration": 26
+      },
+      {
+       "scale": [
+        0.189,
+        0.2395
+       ],
+       "pivot": [
+        46.575,
+        3.725
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        36.4242,
+        58.423
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 3"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.2797,
+        0.2797
+       ],
+       "pivot": [
+        46.575,
+        3.725
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        2.1506,
+        54.6493
+       ],
+       "ref": "styx_reflect",
+       "index": 0,
+       "duration": 18
+      },
+      {
+       "scale": [
+        0.4166,
+        0.4166
+       ],
+       "pivot": [
+        46.575,
+        3.675
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        26.1504,
+        17.6191
+       ],
+       "ref": "styx_reflect",
+       "index": 18,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        34.1788,
+        5.8274
+       ],
+       "ref": "styx_reflect",
+       "index": 28,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0069,
+        0.5618
+       ],
+       "pivot": [
+        46.925,
+        3.775
+       ],
+       "skew": [
+        -0.9688,
+        -0.97
+       ],
+       "loc": [
+        -35.1696,
+        110.9538
+       ],
+       "ref": "styx_reflect",
+       "index": 29,
+       "duration": 9
+      },
+      {
+       "scale": [
+        0.2765,
+        0.2765
+       ],
+       "pivot": [
+        46.6,
+        3.625
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        -20.5977,
+        89.6226
+       ],
+       "ref": "styx_reflect",
+       "index": 38,
+       "duration": 16
+      },
+      {
+       "scale": [
+        0.2797,
+        0.2797
+       ],
+       "pivot": [
+        46.575,
+        3.725
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        2.1506,
+        54.6493
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 4"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.3992,
+        0.3992
+       ],
+       "pivot": [
+        46.625,
+        3.75
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        -19.028,
+        64.5468
+       ],
+       "ref": "styx_reflect",
+       "index": 0,
+       "duration": 28
+      },
+      {
+       "scale": [
+        0.5618,
+        0.5618
+       ],
+       "pivot": [
+        46.6,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9688
+       ],
+       "loc": [
+        18.3001,
+        6.9501
+       ],
+       "ref": "styx_reflect",
+       "index": 28,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        26.3288,
+        -4.8476
+       ],
+       "ref": "styx_reflect",
+       "index": 38,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0069,
+        0.5618
+       ],
+       "pivot": [
+        46.925,
+        3.775
+       ],
+       "skew": [
+        -0.9688,
+        -0.97
+       ],
+       "loc": [
+        -43.0196,
+        100.2788
+       ],
+       "ref": "styx_reflect",
+       "index": 39,
+       "duration": 9
+      },
+      {
+       "scale": [
+        0.5618,
+        0.5618
+       ],
+       "pivot": [
+        46.6,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9688
+       ],
+       "loc": [
+        -28.4249,
+        78.9751
+       ],
+       "ref": "styx_reflect",
+       "index": 48,
+       "duration": 6
+      },
+      {
+       "scale": [
+        0.3992,
+        0.3992
+       ],
+       "pivot": [
+        46.625,
+        3.75
+       ],
+       "skew": [
+        -0.9709,
+        -0.9709
+       ],
+       "loc": [
+        -19.028,
+        64.5468
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 5"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1975,
+        0.352
+       ],
+       "pivot": [
+        47.05,
+        3.8
+       ],
+       "skew": [
+        -0.9709,
+        -0.9711
+       ],
+       "loc": [
+        -31.5773,
+        91.1464
+       ],
+       "ref": "styx_reflect",
+       "index": 0,
+       "duration": 3
+      },
+      {
+       "scale": [
+        0.1805,
+        0.1805
+       ],
+       "pivot": [
+        46.625,
+        3.75
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        -25.0763,
+        81.674
+       ],
+       "ref": "styx_reflect",
+       "index": 3,
+       "duration": 35
+      },
+      {
+       "scale": [
+        0.333,
+        0.333
+       ],
+       "pivot": [
+        46.6,
+        3.625
+       ],
+       "skew": [
+        -0.9687,
+        -0.9687
+       ],
+       "loc": [
+        23.2977,
+        7.4495
+       ],
+       "ref": "styx_reflect",
+       "index": 38,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.0229,
+        0.5618
+       ],
+       "pivot": [
+        46.525,
+        3.7
+       ],
+       "skew": [
+        -0.9688,
+        -0.9687
+       ],
+       "loc": [
+        29.6788,
+        -2.1476
+       ],
+       "ref": "styx_reflect",
+       "index": 48,
+       "duration": 1
+      },
+      {
+       "scale": [
+        0.0069,
+        0.5618
+       ],
+       "pivot": [
+        46.925,
+        3.775
+       ],
+       "skew": [
+        -0.9688,
+        -0.97
+       ],
+       "loc": [
+        -39.6696,
+        102.9788
+       ],
+       "ref": "styx_reflect",
+       "index": 49,
+       "duration": 5
+      },
+      {
+       "scale": [
+        0.1975,
+        0.352
+       ],
+       "pivot": [
+        47.05,
+        3.8
+       ],
+       "skew": [
+        -0.9709,
+        -0.9711
+       ],
+       "loc": [
+        -31.5773,
+        91.1464
+       ],
+       "ref": "styx_reflect",
+       "index": 54,
+       "duration": 1
+      }
+     ],
+     "name": "Calque 6"
+    }
+   ]
+  },
+  {
+   "id": "styx_wild_end_anim",
+   "layers": [
+    {
+     "keyframes": [
       {
        "scale": [
         0.9475,
@@ -18152,6 +22644,27 @@
         -2.525
        ],
        "ref": "styx_goute",
+       "index": 0,
+       "duration": 34
+      },
+      {
+       "scale": [
+        0.0526,
+        0.0526
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.0863,
+        -0.0863
+       ],
+       "loc": [
+        -184.925,
+        17.725
+       ],
+       "ref": "styx_goute",
        "index": 34,
        "duration": 1
       }
@@ -18162,23 +22675,44 @@
      "keyframes": [
       {
        "scale": [
-        0.9198,
-        0.4459
+        0.8935,
+        0.434
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.5688,
-        -0.5688
+        -0.5605,
+        -0.5605
        ],
        "loc": [
-        12.25,
-        8.625
+        7.05,
+        10.65
        ],
        "ref": "styx_goute",
        "index": 0,
+       "duration": 32
+      },
+      {
+       "scale": [
+        0.0526,
+        0.0526
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.3381,
+        -0.3381
+       ],
+       "loc": [
+        -157.7,
+        76.3
+       ],
+       "ref": "styx_goute",
+       "index": 32,
        "duration": 1
       },
       {
@@ -18199,46 +22733,25 @@
         6.575
        ],
        "ref": "styx_goute",
-       "index": 1,
+       "index": 33,
        "duration": 1
       },
       {
        "scale": [
-        0.0526,
-        0.0526
+        0.9198,
+        0.4459
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.3381,
-        -0.3381
+        -0.5688,
+        -0.5688
        ],
        "loc": [
-        -157.7,
-        76.3
-       ],
-       "ref": "styx_goute",
-       "index": 2,
-       "duration": 32
-      },
-      {
-       "scale": [
-        0.8935,
-        0.434
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.5605,
-        -0.5605
-       ],
-       "loc": [
-        7.05,
-        10.65
+        12.25,
+        8.625
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18251,45 +22764,24 @@
      "keyframes": [
       {
        "scale": [
-        0.8409,
-        0.4101
+        0.8146,
+        0.3982
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9629,
-        -0.9629
+        -0.9579,
+        -0.9579
        ],
        "loc": [
-        33.225,
-        37.6
+        29.475,
+        41.725
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9911,
-        -0.9912
-       ],
-       "loc": [
-        48.225,
-        21.25
-       ],
-       "ref": "styx_goute",
-       "index": 4,
-       "duration": 1
+       "duration": 29
       },
       {
        "scale": [
@@ -18309,25 +22801,46 @@
         160.45
        ],
        "ref": "styx_goute",
-       "index": 5,
-       "duration": 29
+       "index": 29,
+       "duration": 1
       },
       {
        "scale": [
-        0.8146,
-        0.3982
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9579,
-        -0.9579
+        -0.9911,
+        -0.9912
        ],
        "loc": [
-        29.475,
-        41.725
+        48.225,
+        21.25
+       ],
+       "ref": "styx_goute",
+       "index": 30,
+       "duration": 4
+      },
+      {
+       "scale": [
+        0.8409,
+        0.4101
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.9629,
+        -0.9629
+       ],
+       "loc": [
+        33.225,
+        37.6
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18340,45 +22853,24 @@
      "keyframes": [
       {
        "scale": [
-        0.762,
-        0.3743
+        0.7357,
+        0.3624
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7652,
-        -0.7653
+        -0.7569,
+        -0.7569
        ],
        "loc": [
-        -22.975,
-        25.575
+        -27.45,
+        28.875
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 7
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.8131,
-        -0.8131
-       ],
-       "loc": [
-        8.2,
-        2.55
-       ],
-       "ref": "styx_goute",
-       "index": 7,
-       "duration": 1
+       "duration": 26
       },
       {
        "scale": [
@@ -18398,25 +22890,46 @@
         114.35
        ],
        "ref": "styx_goute",
-       "index": 8,
-       "duration": 26
+       "index": 26,
+       "duration": 1
       },
       {
        "scale": [
-        0.7357,
-        0.3624
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7569,
-        -0.7569
+        -0.8131,
+        -0.8131
        ],
        "loc": [
-        -27.45,
-        28.875
+        8.2,
+        2.55
+       ],
+       "ref": "styx_goute",
+       "index": 27,
+       "duration": 7
+      },
+      {
+       "scale": [
+        0.762,
+        0.3743
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.7652,
+        -0.7653
+       ],
+       "loc": [
+        -22.975,
+        25.575
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18429,45 +22942,24 @@
      "keyframes": [
       {
        "scale": [
-        0.6833,
-        0.3386
+        0.657,
+        0.3267
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.028,
-        -1.028
+        -1.0197,
+        -1.0197
        ],
        "loc": [
-        32.675,
-        76.975
+        29.4,
+        81.425
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 10
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.0965,
-        -1.0965
-       ],
-       "loc": [
-        65.425,
-        31.875
-       ],
-       "ref": "styx_goute",
-       "index": 10,
-       "duration": 1
+       "duration": 23
       },
       {
        "scale": [
@@ -18487,25 +22979,46 @@
         185.1
        ],
        "ref": "styx_goute",
-       "index": 11,
-       "duration": 23
+       "index": 23,
+       "duration": 1
       },
       {
        "scale": [
-        0.657,
-        0.3267
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.0197,
-        -1.0197
+        -1.0965,
+        -1.0965
        ],
        "loc": [
-        29.4,
-        81.425
+        65.425,
+        31.875
+       ],
+       "ref": "styx_goute",
+       "index": 24,
+       "duration": 10
+      },
+      {
+       "scale": [
+        0.6833,
+        0.3386
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -1.028,
+        -1.028
+       ],
+       "loc": [
+        32.675,
+        76.975
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18518,45 +23031,24 @@
      "keyframes": [
       {
        "scale": [
-        0.6043,
-        0.3028
+        0.578,
+        0.2909
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8357,
-        -0.8357
+        -0.8274,
+        -0.8274
        ],
        "loc": [
-        -22.4,
-        58.675
+        -26.45,
+        62.475
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 13
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9269,
-        -0.927
-       ],
-       "loc": [
-        29.9,
-        9.05
-       ],
-       "ref": "styx_goute",
-       "index": 13,
-       "duration": 1
+       "duration": 20
       },
       {
        "scale": [
@@ -18576,25 +23068,46 @@
         138.825
        ],
        "ref": "styx_goute",
-       "index": 14,
-       "duration": 20
+       "index": 20,
+       "duration": 1
       },
       {
        "scale": [
-        0.578,
-        0.2909
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8274,
-        -0.8274
+        -0.9269,
+        -0.927
        ],
        "loc": [
-        -26.45,
-        62.475
+        29.9,
+        9.05
+       ],
+       "ref": "styx_goute",
+       "index": 21,
+       "duration": 13
+      },
+      {
+       "scale": [
+        0.6043,
+        0.3028
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.8357,
+        -0.8357
+       ],
+       "loc": [
+        -22.4,
+        58.675
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18607,45 +23120,24 @@
      "keyframes": [
       {
        "scale": [
-        0.5255,
-        0.2671
+        0.4992,
+        0.2551
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9015,
-        -0.9015
+        -0.8932,
+        -0.8932
        ],
        "loc": [
-        -17.575,
-        81.175
+        -21.2,
+        85.35
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 16
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.0139,
-        -1.014
-       ],
-       "loc": [
-        40.875,
-        14.175
-       ],
-       "ref": "styx_goute",
-       "index": 16,
-       "duration": 1
+       "duration": 17
       },
       {
        "scale": [
@@ -18666,24 +23158,45 @@
        ],
        "ref": "styx_goute",
        "index": 17,
-       "duration": 17
+       "duration": 1
       },
       {
        "scale": [
-        0.4992,
-        0.2551
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8932,
-        -0.8932
+        -1.0139,
+        -1.014
        ],
        "loc": [
-        -21.2,
-        85.35
+        40.875,
+        14.175
+       ],
+       "ref": "styx_goute",
+       "index": 18,
+       "duration": 16
+      },
+      {
+       "scale": [
+        0.5255,
+        0.2671
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.9015,
+        -0.9015
+       ],
+       "loc": [
+        -17.575,
+        81.175
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18696,45 +23209,24 @@
      "keyframes": [
       {
        "scale": [
-        0.4467,
-        0.2313
+        0.4204,
+        0.2194
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8273,
-        -0.8274
+        -0.8223,
+        -0.8223
        ],
        "loc": [
-        -51.025,
-        83.85
+        -54.925,
+        87.825
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 19
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9621,
-        -0.9621
-       ],
-       "loc": [
-        22.4,
-        8
-       ],
-       "ref": "styx_goute",
-       "index": 19,
-       "duration": 1
+       "duration": 14
       },
       {
        "scale": [
@@ -18754,25 +23246,46 @@
         143.7
        ],
        "ref": "styx_goute",
-       "index": 20,
-       "duration": 14
+       "index": 14,
+       "duration": 1
       },
       {
        "scale": [
-        0.4204,
-        0.2194
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8223,
-        -0.8223
+        -0.9621,
+        -0.9621
        ],
        "loc": [
-        -54.925,
-        87.825
+        22.4,
+        8
+       ],
+       "ref": "styx_goute",
+       "index": 15,
+       "duration": 19
+      },
+      {
+       "scale": [
+        0.4467,
+        0.2313
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.8273,
+        -0.8274
+       ],
+       "loc": [
+        -51.025,
+        83.85
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18785,45 +23298,24 @@
      "keyframes": [
       {
        "scale": [
-        0.368,
-        0.1956
+        0.3418,
+        0.1837
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.3497,
-        -0.3497
+        -0.3414,
+        -0.3414
        ],
        "loc": [
-        -109.45,
-        41.65
+        -114.675,
+        43.525
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 22
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.5049,
-        -0.505
-       ],
-       "loc": [
-        5.675,
-        0.375
-       ],
-       "ref": "styx_goute",
-       "index": 22,
-       "duration": 1
+       "duration": 11
       },
       {
        "scale": [
@@ -18843,25 +23335,46 @@
         64.125
        ],
        "ref": "styx_goute",
-       "index": 23,
-       "duration": 11
+       "index": 11,
+       "duration": 1
       },
       {
        "scale": [
-        0.3418,
-        0.1837
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.3414,
-        -0.3414
+        -0.5049,
+        -0.505
        ],
        "loc": [
-        -114.675,
-        43.525
+        5.675,
+        0.375
+       ],
+       "ref": "styx_goute",
+       "index": 12,
+       "duration": 22
+      },
+      {
+       "scale": [
+        0.368,
+        0.1956
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.3497,
+        -0.3497
+       ],
+       "loc": [
+        -109.45,
+        41.65
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18874,45 +23387,24 @@
      "keyframes": [
       {
        "scale": [
-        0.289,
-        0.1598
+        0.2627,
+        0.1478
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7743,
-        -0.7743
+        -0.766,
+        -0.7659
        ],
        "loc": [
-        -79.325,
-        105.825
+        -83.175,
+        109.775
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 25
-      },
-      {
-       "scale": [
-        0.9474,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9497,
-        -0.9498
-       ],
-       "loc": [
-        18.6,
-        7.225
-       ],
-       "ref": "styx_goute",
-       "index": 25,
-       "duration": 1
+       "duration": 8
       },
       {
        "scale": [
@@ -18932,25 +23424,46 @@
         141.325
        ],
        "ref": "styx_goute",
-       "index": 26,
-       "duration": 8
+       "index": 8,
+       "duration": 1
       },
       {
        "scale": [
-        0.2627,
-        0.1478
+        0.9474,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.766,
-        -0.7659
+        -0.9497,
+        -0.9498
        ],
        "loc": [
-        -83.175,
-        109.775
+        18.6,
+        7.225
+       ],
+       "ref": "styx_goute",
+       "index": 9,
+       "duration": 25
+      },
+      {
+       "scale": [
+        0.289,
+        0.1598
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.7743,
+        -0.7743
+       ],
+       "loc": [
+        -79.325,
+        105.825
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -18963,45 +23476,24 @@
      "keyframes": [
       {
        "scale": [
-        0.2102,
-        0.124
+        0.1839,
+        0.1121
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8094,
-        -0.8094
+        -0.801,
+        -0.801
        ],
        "loc": [
-        -68.05,
-        127.85
+        -71.75,
+        132.05
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 28
-      },
-      {
-       "scale": [
-        0.9474,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.006,
-        -1.0061
-       ],
-       "loc": [
-        35.2,
-        11.475
-       ],
-       "ref": "styx_goute",
-       "index": 28,
-       "duration": 1
+       "duration": 5
       },
       {
        "scale": [
@@ -19021,55 +23513,8 @@
         152.825
        ],
        "ref": "styx_goute",
-       "index": 29,
-       "duration": 5
-      },
-      {
-       "scale": [
-        0.1839,
-        0.1121
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.801,
-        -0.801
-       ],
-       "loc": [
-        -71.75,
-        132.05
-       ],
-       "ref": "styx_goute",
-       "index": 34,
+       "index": 5,
        "duration": 1
-      }
-     ],
-     "name": "Calque 13"
-    },
-    {
-     "keyframes": [
-      {
-       "scale": [
-        0.1314,
-        0.0883
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.7876,
-        -0.7877
-       ],
-       "loc": [
-        -66.65,
-        148.65
-       ],
-       "ref": "styx_goute",
-       "index": 0,
-       "duration": 31
       },
       {
        "scale": [
@@ -19085,12 +23530,59 @@
         -1.0061
        ],
        "loc": [
-        60.425,
-        30.15
+        35.2,
+        11.475
        ],
        "ref": "styx_goute",
-       "index": 31,
+       "index": 6,
+       "duration": 28
+      },
+      {
+       "scale": [
+        0.2102,
+        0.124
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.8094,
+        -0.8094
+       ],
+       "loc": [
+        -68.05,
+        127.85
+       ],
+       "ref": "styx_goute",
+       "index": 34,
        "duration": 1
+      }
+     ],
+     "name": "Calque 13"
+    },
+    {
+     "keyframes": [
+      {
+       "scale": [
+        0.1051,
+        0.0764
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.7793,
+        -0.7794
+       ],
+       "loc": [
+        -70.775,
+        152.5
+       ],
+       "ref": "styx_goute",
+       "index": 0,
+       "duration": 2
       },
       {
        "scale": [
@@ -19110,25 +23602,46 @@
         160.15
        ],
        "ref": "styx_goute",
-       "index": 32,
-       "duration": 2
+       "index": 2,
+       "duration": 1
       },
       {
        "scale": [
-        0.1051,
-        0.0764
+        0.9474,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7793,
-        -0.7794
+        -1.006,
+        -1.0061
        ],
        "loc": [
-        -70.775,
-        152.5
+        60.425,
+        30.15
+       ],
+       "ref": "styx_goute",
+       "index": 3,
+       "duration": 31
+      },
+      {
+       "scale": [
+        0.1314,
+        0.0883
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.7876,
+        -0.7877
+       ],
+       "loc": [
+        -66.65,
+        148.65
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19139,27 +23652,6 @@
     },
     {
      "keyframes": [
-      {
-       "scale": [
-        0.0526,
-        0.0526
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.5845,
-        -0.5845
-       ],
-       "loc": [
-        -137.475,
-        120.375
-       ],
-       "ref": "styx_goute",
-       "index": 0,
-       "duration": 34
-      },
       {
        "scale": [
         0.9474,
@@ -19178,6 +23670,27 @@
         4.1
        ],
        "ref": "styx_goute",
+       "index": 0,
+       "duration": 34
+      },
+      {
+       "scale": [
+        0.0526,
+        0.0526
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.5845,
+        -0.5845
+       ],
+       "loc": [
+        -137.475,
+        120.375
+       ],
+       "ref": "styx_goute",
        "index": 34,
        "duration": 1
       }
@@ -19188,45 +23701,24 @@
      "keyframes": [
       {
        "scale": [
-        0.8934,
-        0.4339
+        0.8671,
+        0.422
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9582,
-        -0.9582
+        -0.9499,
+        -0.9499
        ],
        "loc": [
-        37.375,
-        25.8
+        33.525,
+        29.8
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 2
-      },
-      {
-       "scale": [
-        0.9474,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9716,
-        -0.9716
-       ],
-       "loc": [
-        45,
-        17.75
-       ],
-       "ref": "styx_goute",
-       "index": 2,
-       "duration": 1
+       "duration": 31
       },
       {
        "scale": [
@@ -19246,25 +23738,46 @@
         154.675
        ],
        "ref": "styx_goute",
-       "index": 3,
-       "duration": 31
+       "index": 31,
+       "duration": 1
       },
       {
        "scale": [
-        0.8671,
-        0.422
+        0.9474,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9499,
-        -0.9499
+        -0.9716,
+        -0.9716
        ],
        "loc": [
-        33.525,
-        29.8
+        45,
+        17.75
+       ],
+       "ref": "styx_goute",
+       "index": 32,
+       "duration": 2
+      },
+      {
+       "scale": [
+        0.8934,
+        0.4339
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.9582,
+        -0.9582
+       ],
+       "loc": [
+        37.375,
+        25.8
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19277,45 +23790,24 @@
      "keyframes": [
       {
        "scale": [
-        0.8411,
-        0.4102
+        0.8148,
+        0.3983
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.0978,
-        -1.0979
+        -1.0895,
+        -1.0896
        ],
        "loc": [
-        41.725,
-        44.6
+        38.55,
+        49.15
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 4
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.1237,
-        -1.1238
-       ],
-       "loc": [
-        54.425,
-        26.35
-       ],
-       "ref": "styx_goute",
-       "index": 4,
-       "duration": 1
+       "duration": 29
       },
       {
        "scale": [
@@ -19335,25 +23827,46 @@
         181.425
        ],
        "ref": "styx_goute",
-       "index": 5,
-       "duration": 29
+       "index": 29,
+       "duration": 1
       },
       {
        "scale": [
-        0.8148,
-        0.3983
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.0895,
-        -1.0896
+        -1.1237,
+        -1.1238
        ],
        "loc": [
-        38.55,
-        49.15
+        54.425,
+        26.35
+       ],
+       "ref": "styx_goute",
+       "index": 30,
+       "duration": 4
+      },
+      {
+       "scale": [
+        0.8411,
+        0.4102
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -1.0978,
+        -1.0979
+       ],
+       "loc": [
+        41.725,
+        44.6
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19366,45 +23879,24 @@
      "keyframes": [
       {
        "scale": [
-        0.762,
-        0.3743
+        0.7357,
+        0.3624
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.6606,
-        -0.6606
+        -0.6523,
+        -0.6523
        ],
        "loc": [
-        -17.75,
-        27.725
+        -22.45,
+        30.6
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 7
-      },
-      {
-       "scale": [
-        0.9474,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.7103,
-        -0.7103
-       ],
-       "loc": [
-        15.45,
-        7.425
-       ],
-       "ref": "styx_goute",
-       "index": 7,
-       "duration": 1
+       "duration": 26
       },
       {
        "scale": [
@@ -19424,25 +23916,46 @@
         106.05
        ],
        "ref": "styx_goute",
-       "index": 8,
-       "duration": 26
+       "index": 26,
+       "duration": 1
       },
       {
        "scale": [
-        0.7357,
-        0.3624
+        0.9474,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.6523,
-        -0.6523
+        -0.7103,
+        -0.7103
        ],
        "loc": [
-        -22.45,
-        30.6
+        15.45,
+        7.425
+       ],
+       "ref": "styx_goute",
+       "index": 27,
+       "duration": 7
+      },
+      {
+       "scale": [
+        0.762,
+        0.3743
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.6606,
+        -0.6606
+       ],
+       "loc": [
+        -17.75,
+        27.725
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19455,45 +23968,24 @@
      "keyframes": [
       {
        "scale": [
-        0.7096,
-        0.3506
+        0.6833,
+        0.3386
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.0628,
-        -1.0628
+        -1.0545,
+        -1.0545
        ],
        "loc": [
-        3.275,
-        50.975
+        0.075,
+        55.525
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 9
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.1237,
-        -1.1238
-       ],
-       "loc": [
-        31.85,
-        9.925
-       ],
-       "ref": "styx_goute",
-       "index": 9,
-       "duration": 1
+       "duration": 24
       },
       {
        "scale": [
@@ -19513,25 +24005,46 @@
         165
        ],
        "ref": "styx_goute",
-       "index": 10,
-       "duration": 24
+       "index": 24,
+       "duration": 1
       },
       {
        "scale": [
-        0.6833,
-        0.3386
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.0545,
-        -1.0545
+        -1.1237,
+        -1.1238
        ],
        "loc": [
-        0.075,
-        55.525
+        31.85,
+        9.925
+       ],
+       "ref": "styx_goute",
+       "index": 25,
+       "duration": 9
+      },
+      {
+       "scale": [
+        0.7096,
+        0.3506
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -1.0628,
+        -1.0628
+       ],
+       "loc": [
+        3.275,
+        50.975
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19544,45 +24057,24 @@
      "keyframes": [
       {
        "scale": [
-        0.6572,
-        0.3268
+        0.6309,
+        0.3149
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.1729,
-        -1.1729
+        -1.1678,
+        -1.1679
        ],
        "loc": [
-        22.025,
-        77.5
+        19.45,
+        82.425
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 11
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.2498,
-        -1.25
-       ],
-       "loc": [
-        50.35,
-        23.325
-       ],
-       "ref": "styx_goute",
-       "index": 11,
-       "duration": 1
+       "duration": 22
       },
       {
        "scale": [
@@ -19602,25 +24094,46 @@
         190.75
        ],
        "ref": "styx_goute",
-       "index": 12,
-       "duration": 22
+       "index": 22,
+       "duration": 1
       },
       {
        "scale": [
-        0.6309,
-        0.3149
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -1.1678,
-        -1.1679
+        -1.2498,
+        -1.25
        ],
        "loc": [
-        19.45,
-        82.425
+        50.35,
+        23.325
+       ],
+       "ref": "styx_goute",
+       "index": 23,
+       "duration": 11
+      },
+      {
+       "scale": [
+        0.6572,
+        0.3268
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -1.1729,
+        -1.1729
+       ],
+       "loc": [
+        22.025,
+        77.5
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19633,45 +24146,24 @@
      "keyframes": [
       {
        "scale": [
-        0.6045,
-        0.3029
+        0.5782,
+        0.291
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.4947,
-        -0.4947
+        -0.4896,
+        -0.4896
        ],
        "loc": [
-        -61.425,
-        31.8
+        -66.45,
+        34.125
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 13
-      },
-      {
-       "scale": [
-        0.9474,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.5879,
-        -0.5881
-       ],
-       "loc": [
-        4.35,
-        1.875
-       ],
-       "ref": "styx_goute",
-       "index": 13,
-       "duration": 1
+       "duration": 20
       },
       {
        "scale": [
@@ -19691,25 +24183,46 @@
         80.15
        ],
        "ref": "styx_goute",
-       "index": 14,
-       "duration": 20
+       "index": 20,
+       "duration": 1
       },
       {
        "scale": [
-        0.5782,
-        0.291
+        0.9474,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.4896,
-        -0.4896
+        -0.5879,
+        -0.5881
        ],
        "loc": [
-        -66.45,
-        34.125
+        4.35,
+        1.875
+       ],
+       "ref": "styx_goute",
+       "index": 21,
+       "duration": 13
+      },
+      {
+       "scale": [
+        0.6045,
+        0.3029
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.4947,
+        -0.4947
+       ],
+       "loc": [
+        -61.425,
+        31.8
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19722,45 +24235,24 @@
      "keyframes": [
       {
        "scale": [
-        0.5518,
-        0.279
+        0.5256,
+        0.2671
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.9843,
-        -0.9844
+        -0.976,
+        -0.976
        ],
        "loc": [
-        -24.675,
-        75.475
+        -28.025,
+        79.9
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 15
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -1.0885,
-        -1.0886
-       ],
-       "loc": [
-        25.325,
-        8.75
-       ],
-       "ref": "styx_goute",
-       "index": 15,
-       "duration": 1
+       "duration": 18
       },
       {
        "scale": [
@@ -19780,25 +24272,46 @@
         159.925
        ],
        "ref": "styx_goute",
-       "index": 16,
-       "duration": 18
+       "index": 18,
+       "duration": 1
       },
       {
        "scale": [
-        0.5256,
-        0.2671
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.976,
-        -0.976
+        -1.0885,
+        -1.0886
        ],
        "loc": [
-        -28.025,
-        79.9
+        25.325,
+        8.75
+       ],
+       "ref": "styx_goute",
+       "index": 19,
+       "duration": 15
+      },
+      {
+       "scale": [
+        0.5518,
+        0.279
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.9843,
+        -0.9844
+       ],
+       "loc": [
+        -24.675,
+        75.475
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19811,24 +24324,45 @@
      "keyframes": [
       {
        "scale": [
-        0.4993,
-        0.2552
+        0.473,
+        0.2432
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.971,
-        -0.971
+        -0.9627,
+        -0.9626
        ],
        "loc": [
-        -19.425,
-        88.625
+        -22.75,
+        93.05
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 17
+       "duration": 16
+      },
+      {
+       "scale": [
+        0.0526,
+        0.0526
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.8494,
+        -0.8494
+       ],
+       "loc": [
+        -76.075,
+        164.2
+       ],
+       "ref": "styx_goute",
+       "index": 16,
+       "duration": 1
       },
       {
        "scale": [
@@ -19849,45 +24383,24 @@
        ],
        "ref": "styx_goute",
        "index": 17,
-       "duration": 1
+       "duration": 17
       },
       {
        "scale": [
-        0.0526,
-        0.0526
+        0.4993,
+        0.2552
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.8494,
-        -0.8494
+        -0.971,
+        -0.971
        ],
        "loc": [
-        -76.075,
-        164.2
-       ],
-       "ref": "styx_goute",
-       "index": 18,
-       "duration": 16
-      },
-      {
-       "scale": [
-        0.473,
-        0.2432
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.9627,
-        -0.9626
-       ],
-       "loc": [
-        -22.75,
-        93.05
+        -19.425,
+        88.625
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -19900,45 +24413,24 @@
      "keyframes": [
       {
        "scale": [
-        0.4467,
-        0.2313
+        0.4204,
+        0.2194
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7268,
-        -0.7268
+        -0.7218,
+        -0.7218
        ],
        "loc": [
-        -61.95,
-        74.625
+        -66.175,
+        78.25
        ],
        "ref": "styx_goute",
        "index": 0,
-       "duration": 19
-      },
-      {
-       "scale": [
-        0.9475,
-        0.4585
-       ],
-       "pivot": [
-        13.075,
-        5.65
-       ],
-       "skew": [
-        -0.8621,
-        -0.8622
-       ],
-       "loc": [
-        18.75,
-        6.525
-       ],
-       "ref": "styx_goute",
-       "index": 19,
-       "duration": 1
+       "duration": 14
       },
       {
        "scale": [
@@ -19958,25 +24450,46 @@
         128.4
        ],
        "ref": "styx_goute",
-       "index": 20,
-       "duration": 14
+       "index": 14,
+       "duration": 1
       },
       {
        "scale": [
-        0.4204,
-        0.2194
+        0.9475,
+        0.4585
        ],
        "pivot": [
         13.075,
         5.65
        ],
        "skew": [
-        -0.7218,
-        -0.7218
+        -0.8621,
+        -0.8622
        ],
        "loc": [
-        -66.175,
-        78.25
+        18.75,
+        6.525
+       ],
+       "ref": "styx_goute",
+       "index": 15,
+       "duration": 19
+      },
+      {
+       "scale": [
+        0.4467,
+        0.2313
+       ],
+       "pivot": [
+        13.075,
+        5.65
+       ],
+       "skew": [
+        -0.7268,
+        -0.7268
+       ],
+       "loc": [
+        -61.95,
+        74.625
        ],
        "ref": "styx_goute",
        "index": 34,
@@ -21865,13 +26378,368 @@
      "name": "Calque 25"
     }
    ]
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_0",
+       "index": 0,
+       "pivot": [
+        37.3,
+        25.825
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_2",
+       "index": 2,
+       "pivot": [
+        35.625,
+        30.25
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_4",
+       "index": 4,
+       "pivot": [
+        35.625,
+        32.025
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_6",
+       "index": 6,
+       "pivot": [
+        35.525,
+        35.65
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_8",
+       "index": 8,
+       "pivot": [
+        35.925,
+        37
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_10",
+       "index": 10,
+       "pivot": [
+        36.375,
+        37.825
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_12",
+       "index": 12,
+       "pivot": [
+        36.375,
+        41.125
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_14",
+       "index": 14,
+       "pivot": [
+        35.625,
+        43.4
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_16",
+       "index": 16,
+       "pivot": [
+        35.625,
+        45.45
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_18",
+       "index": 18,
+       "pivot": [
+        36.375,
+        41.125
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_20",
+       "index": 20,
+       "pivot": [
+        36.375,
+        38.775
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_22",
+       "index": 22,
+       "pivot": [
+        36.375,
+        35.35
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_24",
+       "index": 24,
+       "pivot": [
+        35.925,
+        37
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_26",
+       "index": 26,
+       "pivot": [
+        35.925,
+        35
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_28",
+       "index": 28,
+       "pivot": [
+        35.625,
+        32.025
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook_flipbook_30",
+       "index": 30,
+       "pivot": [
+        35.625,
+        29.55
+       ],
+       "tweened": false,
+       "duration": 2
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_wild_end_flipbook"
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_wild_end_flipbook2_flipbook_0",
+       "index": 0,
+       "pivot": [
+        38.2,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook2_flipbook_2",
+       "index": 2,
+       "pivot": [
+        38.375,
+        29.25
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook2_flipbook_4",
+       "index": 4,
+       "pivot": [
+        38.375,
+        29.25
+       ],
+       "tweened": false,
+       "duration": 2
+      },
+      {
+       "ref": "styx_wild_end_flipbook2_flipbook_6",
+       "index": 6,
+       "pivot": [
+        39.325,
+        31.125
+       ],
+       "tweened": false,
+       "duration": 2
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_wild_end_flipbook2"
+  },
+  {
+   "baseClass": "Flipbook",
+   "layers": [
+    {
+     "flipbook": true,
+     "keyframes": [
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_0",
+       "index": 0,
+       "pivot": [
+        38.2,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      },
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_3",
+       "index": 3,
+       "pivot": [
+        38.4,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      },
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_6",
+       "index": 6,
+       "pivot": [
+        38.925,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      },
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_9",
+       "index": 9,
+       "pivot": [
+        39.925,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      },
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_12",
+       "index": 12,
+       "pivot": [
+        38.925,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      },
+      {
+       "ref": "styx_wild_end_flipbook3_flipbook_15",
+       "index": 15,
+       "pivot": [
+        38.4,
+        28.775
+       ],
+       "tweened": false,
+       "duration": 3
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ],
+   "id": "styx_wild_end_flipbook3"
+  },
+  {
+   "id": "~soulito_underwater",
+   "layers": [
+    {
+     "keyframes": [
+      {
+       "ref": "soulito_underwater_sprite",
+       "index": 0,
+       "pivot": [
+        14.75,
+        10.5
+       ],
+       "scale": [
+        0.078,
+        0.078
+       ],
+       "duration": 29
+      },
+      {
+       "ref": "soulito_underwater_sprite",
+       "index": 29,
+       "pivot": [
+        14.75,
+        10.5
+       ],
+       "duration": 70
+      },
+      {
+       "ref": "soulito_underwater_sprite",
+       "index": 99,
+       "pivot": [
+        14.75,
+        10.5
+       ],
+       "duration": 31
+      },
+      {
+       "ref": "soulito_underwater_sprite",
+       "index": 130,
+       "pivot": [
+        14.75,
+        10.5
+       ],
+       "scale": [
+        0.078,
+        0.078
+       ],
+       "duration": 1
+      },
+      {
+       "index": 131,
+       "duration": 19
+      }
+     ],
+     "name": "Calque 1"
+    }
+   ]
   }
  ],
- "md5": "088729896b79e85d3441883b6c63f02d",
- "frameRate": 60,
+ "md5": "5f70d35dceef14caa7afd6b34fa9832b",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
@@ -21903,153 +26771,348 @@
       },
       {
        "rect": [
-        404,
-        441,
-        209,
-        174
-       ],
-       "origin": [
-        154.5,
-        -4.1
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_6"
-      },
-      {
-       "rect": [
-        615,
-        441,
-        204,
-        175
-       ],
-       "origin": [
-        168.35,
-        -8.15
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_14"
-      },
-      {
-       "rect": [
-        404,
-        617,
-        202,
-        167
-       ],
-       "origin": [
-        158.9,
-        -6.8
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_16"
-      },
-      {
-       "rect": [
-        404,
-        786,
-        230,
-        144
-       ],
-       "origin": [
-        185.6,
-        -6.5
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_0"
-      },
-      {
-       "rect": [
-        608,
-        618,
-        208,
-        158
-       ],
-       "origin": [
-        146.4,
-        -11.5
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_8"
-      },
-      {
-       "rect": [
-        636,
-        778,
-        206,
-        159
-       ],
-       "origin": [
-        137.6,
-        -6.8
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_10"
-      },
-      {
-       "rect": [
-        818,
-        618,
-        198,
-        152
-       ],
-       "origin": [
-        138.8,
-        2.3
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_30"
-      },
-      {
-       "rect": [
-        844,
-        772,
-        157,
-        190
-       ],
-       "origin": [
-        128.8,
-        -2.1
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_12"
-      },
-      {
-       "rect": [
-        821,
-        441,
-        201,
-        142
-       ],
-       "origin": [
-        158.3,
-        -0.25
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_26"
-      },
-      {
-       "rect": [
         851,
         1,
-        171,
-        160
+        105,
+        68
        ],
        "origin": [
-        149.5,
-        -5.5
+        35.6,
+        45.45
        ],
-       "symbol": "styx_wild_end_anim_flipbook_18"
+       "symbol": "styx_wild_end_flipbook_flipbook_16"
       },
       {
        "rect": [
         851,
-        163,
-        157,
-        155
+        71,
+        104,
+        65
        ],
        "origin": [
-        140.05,
-        -1.95
+        35.6,
+        43.4
        ],
-       "symbol": "styx_wild_end_anim_flipbook_20"
+       "symbol": "styx_wild_end_flipbook_flipbook_14"
       },
       {
        "rect": [
-        821,
-        585,
-        47,
-        9
+        851,
+        138,
+        98,
+        64
+       ],
+       "origin": [
+        36.4,
+        41.1
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_18"
+      },
+      {
+       "rect": [
+        851,
+        204,
+        98,
+        64
+       ],
+       "origin": [
+        36.4,
+        41.1
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_12"
+      },
+      {
+       "rect": [
+        851,
+        270,
+        97,
+        62
+       ],
+       "origin": [
+        36.4,
+        38.8
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_20"
+      },
+      {
+       "rect": [
+        851,
+        334,
+        95,
+        61
+       ],
+       "origin": [
+        36.4,
+        37.8
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_10"
+      },
+      {
+       "rect": [
+        851,
+        397,
+        95,
+        58
+       ],
+       "origin": [
+        36.4,
+        35.35
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_22"
+      },
+      {
+       "rect": [
+        404,
+        441,
+        86,
+        60
+       ],
+       "origin": [
+        35.9,
+        37
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_24"
+      },
+      {
+       "rect": [
+        492,
+        441,
+        86,
+        60
+       ],
+       "origin": [
+        35.9,
+        37
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_8"
+      },
+      {
+       "rect": [
+        580,
+        441,
+        86,
+        58
+       ],
+       "origin": [
+        35.9,
+        35
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_26"
+      },
+      {
+       "rect": [
+        668,
+        441,
+        86,
+        58
+       ],
+       "origin": [
+        35.5,
+        35.65
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_6"
+      },
+      {
+       "rect": [
+        756,
+        441,
+        80,
+        59
+       ],
+       "origin": [
+        39.9,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_9"
+      },
+      {
+       "rect": [
+        580,
+        501,
+        79,
+        59
+       ],
+       "origin": [
+        38.9,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_6"
+      },
+      {
+       "rect": [
+        661,
+        501,
+        79,
+        59
+       ],
+       "origin": [
+        38.9,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_12"
+      },
+      {
+       "rect": [
+        404,
+        503,
+        79,
+        57
+       ],
+       "origin": [
+        38.4,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_3"
+      },
+      {
+       "rect": [
+        485,
+        503,
+        79,
+        57
+       ],
+       "origin": [
+        38.4,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_15"
+      },
+      {
+       "rect": [
+        838,
+        457,
+        79,
+        57
+       ],
+       "origin": [
+        39.3,
+        31.1
+       ],
+       "symbol": "styx_wild_end_flipbook2_flipbook_6"
+      },
+      {
+       "rect": [
+        742,
+        502,
+        78,
+        55
+       ],
+       "origin": [
+        38.4,
+        29.25
+       ],
+       "symbol": "styx_wild_end_flipbook2_flipbook_4"
+      },
+      {
+       "rect": [
+        919,
+        457,
+        78,
+        55
+       ],
+       "origin": [
+        38.4,
+        29.25
+       ],
+       "symbol": "styx_wild_end_flipbook2_flipbook_2"
+      },
+      {
+       "rect": [
+        919,
+        514,
+        78,
+        54
+       ],
+       "origin": [
+        35.6,
+        32
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_28"
+      },
+      {
+       "rect": [
+        822,
+        516,
+        78,
+        54
+       ],
+       "origin": [
+        38.2,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook3_flipbook_0"
+      },
+      {
+       "rect": [
+        742,
+        559,
+        78,
+        54
+       ],
+       "origin": [
+        35.6,
+        32
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_4"
+      },
+      {
+       "rect": [
+        902,
+        570,
+        78,
+        54
+       ],
+       "origin": [
+        38.2,
+        28.8
+       ],
+       "symbol": "styx_wild_end_flipbook2_flipbook_0"
+      },
+      {
+       "rect": [
+        822,
+        572,
+        78,
+        52
+       ],
+       "origin": [
+        35.6,
+        30.25
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_2"
+      },
+      {
+       "rect": [
+        404,
+        562,
+        77,
+        52
+       ],
+       "origin": [
+        35.6,
+        29.55
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_30"
+      },
+      {
+       "rect": [
+        483,
+        562,
+        76,
+        48
+       ],
+       "origin": [
+        37.3,
+        25.8
+       ],
+       "symbol": "styx_wild_end_flipbook_flipbook_0"
+      },
+      {
+       "rect": [
+        561,
+        562,
+        76,
+        14
        ],
        "origin": [
         23.35,
@@ -22059,8 +27122,1672 @@
       },
       {
        "rect": [
+        948,
+        334,
+        30,
+        21
+       ],
+       "origin": [
+        14.75,
+        10.5
+       ],
+       "symbol": "styx_soulito_reflet"
+      },
+      {
+       "rect": [
+        950,
+        270,
+        30,
+        21
+       ],
+       "origin": [
+        14.75,
+        10.5
+       ],
+       "symbol": "soulito_underwater_sprite"
+      },
+      {
+       "rect": [
+        950,
+        293,
+        30,
+        21
+       ],
+       "origin": [
+        16.25,
+        11.3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_36"
+      },
+      {
+       "rect": [
+        980,
+        316,
+        30,
+        21
+       ],
+       "origin": [
+        16.25,
+        11.3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_36"
+      },
+      {
+       "rect": [
+        980,
+        339,
+        30,
+        21
+       ],
+       "origin": [
+        16.25,
+        11.3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_36"
+      },
+      {
+       "rect": [
+        948,
+        357,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_30"
+      },
+      {
+       "rect": [
+        974,
+        362,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_4"
+      },
+      {
+       "rect": [
+        948,
+        384,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_4"
+      },
+      {
+       "rect": [
+        974,
+        389,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_4"
+      },
+      {
+       "rect": [
+        948,
+        411,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_30"
+      },
+      {
+       "rect": [
+        974,
+        416,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_9"
+      },
+      {
+       "rect": [
+        951,
+        138,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_30"
+      },
+      {
+       "rect": [
+        957,
+        71,
+        24,
+        25
+       ],
+       "origin": [
+        11.35,
+        18.45
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_127"
+      },
+      {
+       "rect": [
+        957,
+        98,
+        29,
+        20
+       ],
+       "origin": [
+        15.6,
+        10.8
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_37"
+      },
+      {
+       "rect": [
+        983,
+        1,
+        29,
+        20
+       ],
+       "origin": [
+        15.6,
+        10.8
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_37"
+      },
+      {
+       "rect": [
+        983,
+        23,
+        29,
+        20
+       ],
+       "origin": [
+        15.6,
+        10.8
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_37"
+      },
+      {
+       "rect": [
+        958,
+        45,
+        27,
+        20
+       ],
+       "origin": [
+        14.9,
+        10.3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_38"
+      },
+      {
+       "rect": [
+        983,
+        67,
+        27,
+        20
+       ],
+       "origin": [
+        14.9,
+        10.3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_38"
+      },
+      {
+       "rect": [
+        987,
+        45,
+        27,
+        20
+       ],
+       "origin": [
+        14.9,
+        10.3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_38"
+      },
+      {
+       "rect": [
+        977,
+        120,
+        26,
+        19
+       ],
+       "origin": [
+        14.2,
+        9.8
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_39"
+      },
+      {
+       "rect": [
+        988,
+        89,
+        26,
+        19
+       ],
+       "origin": [
+        14.2,
+        9.8
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_39"
+      },
+      {
+       "rect": [
+        977,
+        141,
+        26,
+        19
+       ],
+       "origin": [
+        14.2,
+        9.8
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_39"
+      },
+      {
+       "rect": [
+        958,
+        1,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_28"
+      },
+      {
+       "rect": [
+        977,
+        162,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_6"
+      },
+      {
+       "rect": [
+        951,
+        165,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_6"
+      },
+      {
+       "rect": [
+        999,
+        162,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_28"
+      },
+      {
+       "rect": [
+        973,
+        188,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_28"
+      },
+      {
+       "rect": [
+        951,
+        191,
+        20,
+        24
+       ],
+       "origin": [
+        10.05,
+        21.6
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_6"
+      },
+      {
+       "rect": [
+        973,
+        214,
+        24,
+        18
+       ],
+       "origin": [
+        13.5,
+        9.3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_40"
+      },
+      {
+       "rect": [
+        995,
+        188,
+        24,
+        18
+       ],
+       "origin": [
+        13.5,
+        9.3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_40"
+      },
+      {
+       "rect": [
+        951,
+        234,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_129"
+      },
+      {
+       "rect": [
+        977,
+        234,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_2"
+      },
+      {
+       "rect": [
+        999,
+        208,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_7"
+      },
+      {
+       "rect": [
+        982,
+        254,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_32"
+      },
+      {
+       "rect": [
+        982,
+        274,
+        24,
+        18
+       ],
+       "origin": [
+        13.5,
+        9.3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_40"
+      },
+      {
+       "rect": [
+        982,
+        294,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_2"
+      },
+      {
+       "rect": [
+        999,
+        443,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_2"
+      },
+      {
+       "rect": [
+        999,
+        463,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_32"
+      },
+      {
+       "rect": [
+        999,
+        483,
+        24,
+        18
+       ],
+       "origin": [
+        12.1,
+        11
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_32"
+      },
+      {
+       "rect": [
+        1003,
+        228,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        46.7
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_17"
+      },
+      {
+       "rect": [
+        1005,
+        110,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        43.2
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_14"
+      },
+      {
+       "rect": [
+        1005,
+        135,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        32.7
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_10"
+      },
+      {
+       "rect": [
+        1000,
+        362,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        46.7
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_17"
+      },
+      {
+       "rect": [
+        1000,
+        387,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        43.2
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_14"
+      },
+      {
+       "rect": [
+        1000,
+        412,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        46.7
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_17"
+      },
+      {
+       "rect": [
+        999,
+        503,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        32.7
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_10"
+      },
+      {
+       "rect": [
+        999,
+        528,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        43.2
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_14"
+      },
+      {
+       "rect": [
+        999,
+        553,
+        18,
+        23
+       ],
+       "origin": [
+        10.05,
+        32.7
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_10"
+      },
+      {
+       "rect": [
+        982,
+        578,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        34.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_24"
+      },
+      {
+       "rect": [
+        1002,
+        578,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        32.3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_25"
+      },
+      {
+       "rect": [
+        982,
+        602,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        29.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_26"
+      },
+      {
+       "rect": [
+        1002,
+        602,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45.55
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_19"
+      },
+      {
+       "rect": [
+        639,
+        562,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        42.25
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_21"
+      },
+      {
+       "rect": [
+        561,
+        578,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_27"
+      },
+      {
+       "rect": [
+        581,
+        578,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        37.5
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_23"
+      },
+      {
+       "rect": [
+        601,
+        578,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        42.25
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_21"
+      },
+      {
+       "rect": [
+        659,
+        562,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_15"
+      },
+      {
+       "rect": [
+        679,
+        562,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40.85
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_13"
+      },
+      {
+       "rect": [
+        699,
+        562,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        38.25
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_12"
+      },
+      {
+       "rect": [
+        719,
+        562,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        35.5
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_11"
+      },
+      {
+       "rect": [
+        621,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_22"
+      },
+      {
+       "rect": [
+        561,
+        602,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.4
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_18"
+      },
+      {
+       "rect": [
+        581,
+        602,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_16"
+      },
+      {
+       "rect": [
+        601,
+        602,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        42.25
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_21"
+      },
+      {
+       "rect": [
+        483,
+        612,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40.85
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_13"
+      },
+      {
+       "rect": [
+        503,
+        612,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        38.25
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_12"
+      },
+      {
+       "rect": [
+        523,
+        612,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_8"
+      },
+      {
+       "rect": [
+        404,
+        616,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        30.1
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_9"
+      },
+      {
+       "rect": [
+        424,
+        616,
+        18,
+        22
+       ],
+       "origin": [
+        9,
+        11
+       ],
+       "symbol": "soulito"
+      },
+      {
+       "rect": [
+        444,
+        616,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        44.15
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_20"
+      },
+      {
+       "rect": [
+        641,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45.55
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_19"
+      },
+      {
+       "rect": [
+        661,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.4
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_18"
+      },
+      {
+       "rect": [
+        681,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        30.1
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_9"
+      },
+      {
+       "rect": [
+        701,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_16"
+      },
+      {
+       "rect": [
+        721,
+        586,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_15"
+      },
+      {
+       "rect": [
+        621,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45.55
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_19"
+      },
+      {
+       "rect": [
+        543,
+        626,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_8"
+      },
+      {
+       "rect": [
+        563,
+        626,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        44.15
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_20"
+      },
+      {
+       "rect": [
+        583,
+        626,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_22"
+      },
+      {
+       "rect": [
+        464,
+        636,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_8"
+      },
+      {
+       "rect": [
+        484,
+        636,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        30.1
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_9"
+      },
+      {
+       "rect": [
+        504,
+        636,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        35.5
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_11"
+      },
+      {
+       "rect": [
+        404,
+        640,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        35.5
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_11"
+      },
+      {
+       "rect": [
+        424,
+        640,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        38.25
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_12"
+      },
+      {
+       "rect": [
+        444,
+        640,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        37.5
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_23"
+      },
+      {
+       "rect": [
+        641,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        34.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_24"
+      },
+      {
+       "rect": [
+        661,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_15"
+      },
+      {
+       "rect": [
+        681,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_16"
+      },
+      {
+       "rect": [
+        701,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40.85
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_13"
+      },
+      {
+       "rect": [
+        721,
+        610,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        46.4
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_18"
+      },
+      {
+       "rect": [
+        741,
+        615,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        29.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_26"
+      },
+      {
+       "rect": [
+        761,
+        615,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_27"
+      },
+      {
+       "rect": [
+        781,
+        615,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        44.15
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_20"
+      },
+      {
+       "rect": [
+        801,
+        615,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        40
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_22"
+      },
+      {
+       "rect": [
+        603,
+        634,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        37.5
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_23"
+      },
+      {
+       "rect": [
+        524,
+        650,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        34.9
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_24"
+      },
+      {
+       "rect": [
+        464,
+        660,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        32.3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_25"
+      },
+      {
+       "rect": [
+        484,
+        660,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        32.3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_25"
+      },
+      {
+       "rect": [
+        504,
+        660,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        27.8
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_27"
+      },
+      {
+       "rect": [
+        404,
+        664,
+        18,
+        22
+       ],
+       "origin": [
+        10.05,
+        29.9
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_26"
+      },
+      {
+       "rect": [
+        948,
+        438,
+        23,
+        17
+       ],
+       "origin": [
+        12.8,
+        8.8
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_41"
+      },
+      {
+       "rect": [
+        424,
+        664,
+        23,
+        17
+       ],
+       "origin": [
+        12.8,
+        8.8
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_41"
+      },
+      {
+       "rect": [
+        424,
+        683,
+        23,
+        17
+       ],
+       "origin": [
+        12.8,
+        8.8
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_41"
+      },
+      {
+       "rect": [
+        544,
+        650,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_0"
+      },
+      {
+       "rect": [
+        565,
+        650,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_0"
+      },
+      {
+       "rect": [
+        623,
+        634,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_34"
+      },
+      {
+       "rect": [
+        644,
+        634,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_0"
+      },
+      {
+       "rect": [
+        665,
+        634,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_5"
+      },
+      {
+       "rect": [
+        686,
+        634,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_131"
+      },
+      {
+       "rect": [
+        707,
+        634,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_34"
+      },
+      {
+       "rect": [
         821,
-        596,
+        626,
+        19,
+        20
+       ],
+       "origin": [
+        9.35,
+        9.45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_34"
+      },
+      {
+       "rect": [
+        958,
+        27,
+        22,
+        16
+       ],
+       "origin": [
+        12.1,
+        8.35
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_42"
+      },
+      {
+       "rect": [
+        950,
+        316,
+        22,
+        16
+       ],
+       "origin": [
+        12.1,
+        8.35
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_42"
+      },
+      {
+       "rect": [
+        728,
+        639,
+        22,
+        16
+       ],
+       "origin": [
+        12.1,
+        8.35
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_42"
+      },
+      {
+       "rect": [
+        951,
+        217,
+        20,
+        15
+       ],
+       "origin": [
+        11.45,
+        7.85
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_43"
+      },
+      {
+       "rect": [
+        752,
+        639,
+        20,
+        15
+       ],
+       "origin": [
+        11.45,
+        7.85
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_43"
+      },
+      {
+       "rect": [
+        774,
+        639,
+        20,
+        15
+       ],
+       "origin": [
+        11.45,
+        7.85
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_43"
+      },
+      {
+       "rect": [
+        951,
+        254,
+        19,
+        14
+       ],
+       "origin": [
+        10.75,
+        7.4
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_44"
+      },
+      {
+       "rect": [
+        796,
+        639,
+        19,
+        14
+       ],
+       "origin": [
+        10.75,
+        7.4
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_44"
+      },
+      {
+       "rect": [
+        623,
+        656,
+        19,
+        14
+       ],
+       "origin": [
+        10.75,
+        7.4
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_44"
+      },
+      {
+       "rect": [
+        586,
+        658,
+        19,
+        13
+       ],
+       "origin": [
+        8.8,
+        7.55
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_4"
+      },
+      {
+       "rect": [
+        544,
+        672,
+        19,
+        13
+       ],
+       "origin": [
+        8.8,
+        7.55
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_133"
+      },
+      {
+       "rect": [
+        957,
+        120,
+        18,
+        13
+       ],
+       "origin": [
+        10.1,
+        6.9
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_45"
+      },
+      {
+       "rect": [
+        404,
+        688,
+        18,
+        13
+       ],
+       "origin": [
+        10.1,
+        6.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_45"
+      },
+      {
+       "rect": [
+        524,
+        674,
+        18,
+        13
+       ],
+       "origin": [
+        10.1,
+        6.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_45"
+      },
+      {
+       "rect": [
+        543,
+        612,
+        16,
+        12
+       ],
+       "origin": [
+        9.4,
+        6.4
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_46"
+      },
+      {
+       "rect": [
+        524,
+        636,
+        16,
+        12
+       ],
+       "origin": [
+        9.4,
+        6.4
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_46"
+      },
+      {
+       "rect": [
+        973,
+        443,
+        16,
+        12
+       ],
+       "origin": [
+        9.4,
+        6.4
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_46"
+      },
+      {
+       "rect": [
+        822,
+        502,
         14,
         12
        ],
@@ -22069,6 +28796,487 @@
         5.65
        ],
        "symbol": "styx_goute"
+      },
+      {
+       "rect": [
+        464,
+        616,
+        15,
+        11
+       ],
+       "origin": [
+        7.6,
+        6.3
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_3"
+      },
+      {
+       "rect": [
+        902,
+        516,
+        15,
+        11
+       ],
+       "origin": [
+        8.7,
+        5.9
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_47"
+      },
+      {
+       "rect": [
+        902,
+        529,
+        15,
+        11
+       ],
+       "origin": [
+        8.7,
+        5.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_47"
+      },
+      {
+       "rect": [
+        902,
+        542,
+        15,
+        11
+       ],
+       "origin": [
+        8.7,
+        5.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_47"
+      },
+      {
+       "rect": [
+        902,
+        555,
+        15,
+        11
+       ],
+       "origin": [
+        7.6,
+        6.3
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_134"
+      },
+      {
+       "rect": [
+        1008,
+        253,
+        13,
+        10
+       ],
+       "origin": [
+        8,
+        5.4
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_48"
+      },
+      {
+       "rect": [
+        1008,
+        265,
+        13,
+        10
+       ],
+       "origin": [
+        8,
+        5.4
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_48"
+      },
+      {
+       "rect": [
+        1008,
+        277,
+        13,
+        10
+       ],
+       "origin": [
+        8,
+        5.4
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_48"
+      },
+      {
+       "rect": [
+        1008,
+        289,
+        12,
+        9
+       ],
+       "origin": [
+        6.3,
+        5
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_2"
+      },
+      {
+       "rect": [
+        1008,
+        300,
+        12,
+        9
+       ],
+       "origin": [
+        6.3,
+        5
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_135"
+      },
+      {
+       "rect": [
+        566,
+        503,
+        12,
+        9
+       ],
+       "origin": [
+        7.3,
+        4.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_49"
+      },
+      {
+       "rect": [
+        566,
+        514,
+        12,
+        9
+       ],
+       "origin": [
+        7.3,
+        4.9
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_49"
+      },
+      {
+       "rect": [
+        566,
+        525,
+        12,
+        9
+       ],
+       "origin": [
+        7.3,
+        4.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_49"
+      },
+      {
+       "rect": [
+        838,
+        441,
+        10,
+        10
+       ],
+       "origin": [
+        4.6,
+        4.7
+       ],
+       "symbol": "styx_goute2"
+      },
+      {
+       "rect": [
+        988,
+        110,
+        11,
+        8
+       ],
+       "origin": [
+        6.6,
+        4.4
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_50"
+      },
+      {
+       "rect": [
+        1012,
+        67,
+        11,
+        8
+       ],
+       "origin": [
+        6.6,
+        4.4
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_50"
+      },
+      {
+       "rect": [
+        1012,
+        77,
+        11,
+        8
+       ],
+       "origin": [
+        6.6,
+        4.4
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_50"
+      },
+      {
+       "rect": [
+        566,
+        536,
+        9,
+        7
+       ],
+       "origin": [
+        5.95,
+        3.95
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_51"
+      },
+      {
+       "rect": [
+        566,
+        545,
+        9,
+        7
+       ],
+       "origin": [
+        5.95,
+        3.95
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_51"
+      },
+      {
+       "rect": [
+        1014,
+        1,
+        9,
+        7
+       ],
+       "origin": [
+        5.95,
+        3.95
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_51"
+      },
+      {
+       "rect": [
+        566,
+        554,
+        9,
+        6
+       ],
+       "origin": [
+        5.1,
+        3.7
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_136"
+      },
+      {
+       "rect": [
+        982,
+        570,
+        9,
+        6
+       ],
+       "origin": [
+        5.1,
+        3.75
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_1"
+      },
+      {
+       "rect": [
+        586,
+        650,
+        8,
+        6
+       ],
+       "origin": [
+        5.25,
+        3.45
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_52"
+      },
+      {
+       "rect": [
+        621,
+        578,
+        8,
+        6
+       ],
+       "origin": [
+        5.25,
+        3.45
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_52"
+      },
+      {
+       "rect": [
+        603,
+        626,
+        8,
+        6
+       ],
+       "origin": [
+        5.25,
+        3.45
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_52"
+      },
+      {
+       "rect": [
+        464,
+        629,
+        7,
+        5
+       ],
+       "origin": [
+        4.6,
+        3
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_53"
+      },
+      {
+       "rect": [
+        473,
+        629,
+        7,
+        5
+       ],
+       "origin": [
+        4.6,
+        3
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_53"
+      },
+      {
+       "rect": [
+        972,
+        254,
+        7,
+        5
+       ],
+       "origin": [
+        4.6,
+        3
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_53"
+      },
+      {
+       "rect": [
+        596,
+        650,
+        5,
+        4
+       ],
+       "origin": [
+        3.9,
+        2.5
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_54"
+      },
+      {
+       "rect": [
+        631,
+        578,
+        5,
+        4
+       ],
+       "origin": [
+        3.9,
+        2.5
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_137"
+      },
+      {
+       "rect": [
+        613,
+        626,
+        5,
+        4
+       ],
+       "origin": [
+        3.9,
+        2.5
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_0"
+      },
+      {
+       "rect": [
+        972,
+        261,
+        5,
+        4
+       ],
+       "origin": [
+        3.9,
+        2.5
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_54"
+      },
+      {
+       "rect": [
+        991,
+        443,
+        5,
+        4
+       ],
+       "origin": [
+        3.9,
+        2.5
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_54"
+      },
+      {
+       "rect": [
+        995,
+        208,
+        2,
+        1
+       ],
+       "origin": [
+        2.1,
+        1.2
+       ],
+       "symbol": "styx_anim_ame_int_flipbook_55"
+      },
+      {
+       "rect": [
+        995,
+        211,
+        1,
+        1
+       ],
+       "origin": [
+        1.6,
+        0.8
+       ],
+       "symbol": "styx_anim_ame_plat_flipbook_138"
+      },
+      {
+       "rect": [
+        999,
+        228,
+        1,
+        1
+       ],
+       "origin": [
+        1.7,
+        0.9
+       ],
+       "symbol": "styx_anim_ame_int2_flipbook_55"
+      },
+      {
+       "rect": [
+        999,
+        231,
+        1,
+        1
+       ],
+       "origin": [
+        1.7,
+        0.9
+       ],
+       "symbol": "styx_anim_ame_int3_flipbook_55"
       }
      ],
      "file": "atlas0.png"
@@ -22087,77 +29295,11 @@
         327.25
        ],
        "symbol": "Styx_droit"
-      },
-      {
-       "rect": [
-        1,
-        658,
-        222,
-        141
-       ],
-       "origin": [
-        164.85,
-        -10.8
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_4"
-      },
-      {
-       "rect": [
-        1,
-        801,
-        226,
-        128
-       ],
-       "origin": [
-        175.25,
-        -16.1
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_2"
-      },
-      {
-       "rect": [
-        225,
-        658,
-        202,
-        139
-       ],
-       "origin": [
-        168.1,
-        -1.6
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_24"
-      },
-      {
-       "rect": [
-        229,
-        799,
-        199,
-        136
-       ],
-       "origin": [
-        148.55,
-        1.1
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_28"
-      },
-      {
-       "rect": [
-        422,
-        1,
-        156,
-        151
-       ],
-       "origin": [
-        130.65,
-        1.9
-       ],
-       "symbol": "styx_wild_end_anim_flipbook_22"
       }
      ],
      "file": "atlas1.png"
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ]
 }
