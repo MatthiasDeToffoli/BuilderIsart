@@ -1,6 +1,7 @@
 package com.isartdigital.utils.ui.smart;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
+import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
 import pixi.core.display.DisplayObject;
 import pixi.interaction.EventTarget;
@@ -64,12 +65,14 @@ class SmartButton extends SmartComponent
 		super.build(2);
 	}
 	
-	private function _mouseOver (pEvent:EventTarget=null): Void {
+	private function _mouseOver (pEvent:EventTarget = null): Void {
+		GameStage.getInstance().defaultCursor = "url(assets/finguer_little_up.png),auto";
 		clear();
 		super.build(1);
 	}
 	
-	private function _mouseOut (pEvent:EventTarget=null): Void {
+	private function _mouseOut (pEvent:EventTarget = null): Void {
+		GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
 		clear();
 		super.build();
 	}
