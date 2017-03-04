@@ -17,7 +17,8 @@ enum TransactionType { boughtBuilding; skippedTimer; shopPackBought; hiredIntern
 extendedRegions; soldBuilding; boughtDecoration; internStressReset; gachaAttained; }
 
 /**
- * ...
+ * Evrything about DeltaDNA :)
+ * function description come from the description of the event in DeltaDNA.
  * @author ambroise
  */
 class DeltaDNAManager{
@@ -68,12 +69,15 @@ class DeltaDNAManager{
 	
 	
 	// ##############################################################
-    // FTUE, 
+    // FTUE, and all others events
     // ##############################################################
 	
 	private static var stepFTUETStartTimeStamp:Float=0;
 	
-	// todo : s'arranger pr que ce soit rdy au début de la FTUE, sinon décalage emb^tant
+	/**
+	 * Tracking Ftue steps
+	 * @param	pStepIndex
+	 */
 	public static function sendStepFTUE (pStepIndex:Int):Void {
 		if (!isReady) {
 			if (Config.deltaDNA)
@@ -83,6 +87,7 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(DeltaDNAEventCustom.FTUE_STEP, {
 			index:pStepIndex,
+			// How much time was spent on that step ?
 			timeSpent: Math.round(Date.now().getTime() - stepFTUETStartTimeStamp)
 		});
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
@@ -90,8 +95,13 @@ class DeltaDNAManager{
 		stepFTUETStartTimeStamp = Date.now().getTime();
 	}
 	
-	// todo enlver isartpoint expence de deltaDNA
-	
+	/**
+	 * Whenever a player buys, sells or exchanges goods like real currency, virtual currencies or items
+	 * @param	pTransactionType
+	 * @param	pIdPack
+	 * @param	pTypePrice
+	 * @param	pPrice
+	 */
 	public static function sendTransaction (pTransactionType:TransactionType, pIdPack:Int, pTypePrice:GeneratorType, pPrice:Float):Void {
 		if (!isReady) {
 			if (Config.deltaDNA)
@@ -106,12 +116,109 @@ class DeltaDNAManager{
 				transactionType: pTransactionType,
 				productReceived: pIdPack,
 				productReceivedAmount: 1,
-				productSpend: pTypePrice.getName(),
-				productSpendAmount: Std.string(pPrice)
+				productSpend: pTypePrice.getName(), // WTF je ne le vois pas dans deltaDNA
+				// some item have prices in more then one currencie, so this is not accurate !
+				productSpendAmount: Math.round(pPrice) // WTF is INT but isartPoint can be float
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 	}
+	
+	/**
+	 * When the player collects soft from buildings
+	 * @param	pTypeBuildingID
+	 * @param	pAmount
+	 */
+	public static function sendCollect (pTypeBuildingID:Int, pAmount:Int):Void {
+		if (!isReady) {
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.COLLECT, 
+			untyped Object.assign(getBaseEvent(), {
+				productReceived: Std.string(pTypeBuildingID), // WTF quel id ? celle du building ? doublon avec product ID, voir leo_gd
+				productReceivedAmount: pAmount,
+				productID: Std.string(pTypeBuildingID) // WTF too
+			})
+		);
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
+	/**
+	 * A choice is made by a player during an Internship event
+	 * @param	pProductID
+	 * @param	pChoiceID ID of the Choice the player has made during the Event
+	 */
+	public static function sendIntershipChoice (pProductID:Int, pChoiceID:Int):Void {
+		if (!isReady) {
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.INTERSHIP_CHOICE, 
+			untyped Object.assign(getBaseEvent(), {
+				productID: pProductID, // WTF, the same as choiceID ?
+				choiceID: pChoiceID
+			})
+		);
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
+	/**
+	 * The uiInteraction event should be recorded when the player interacts with parts of the interface,
+	 * specifically as they press buttons or links to view specific features and navigate around.
+	 * This event is used to track user journeys around the interface to help determine if parts of the interface or features are not obvious enough
+	 * When a button or link to a specific feature exists in multiple locations it can be valuable to track the location of the button that was used.
+	 * @param	pUIAction UIAction is the action taken on the User Interface object.
+	 * @param	pUILocation UILocation is the position in the game where the User Interface object is.
+	 * @param	pUIName UIName is the name that defines the interaction.
+	 * @param	pUIType UIType is the type of User Interface object.
+	 */
+	public static function sendUIInteraction (pUIAction:String, pUILocation:String, pUIName:String, pUIType:String):Void {
+		if (!isReady) {
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.UI_INTERACTION, 
+			untyped Object.assign(getBaseEvent(), {
+				// WTF majuscules...
+				UIAction: pUIAction, // Close, OpenDescription, ChangeTab, etc, ENUM
+				UILocation: pUILocation, // WTF, genre UIPosition.BOTTOM ? ENUM
+				UIName: pUIName, // titlecard, shop, pugatory ? ENUM
+				UIType: pUIType, // popin, hud, etc ? ENUM
+			})
+		);
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
+	/**
+	 * The social tracks behaviour that is social and allows an indication of the amount of social activity a user is undertaking.
+	 * @param	pFriendName Name of the person invited by the player
+	 */
+	public static function sendSocial (pFriendName:String):Void {
+		if (!isReady) {
+			if (Config.deltaDNA)
+				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
+			return;
+		}
+		
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.SOCIAL, 
+			untyped Object.assign(getBaseEvent(), {
+				friendInvited:pFriendName
+			})
+		);
+		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
+	}
+	
 	
 	private static function getBaseEvent ():Dynamic {
 		return {
