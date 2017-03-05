@@ -1,5 +1,9 @@
 package com.isartdigital.perle.ui.popin.shop.card;
+import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.shop.ConfirmBuyBuilding;
+import com.isartdigital.perle.utils.Interactive;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UISprite;
 import pixi.interaction.EventTarget;
@@ -11,8 +15,8 @@ import pixi.interaction.EventTarget;
 class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	private var image:UISprite;
-	
 	private var isInit:Bool;
+	private var btnDesc:SmartButton;
 	
 	public function new(pAsset:String) {
 		super(pAsset);
@@ -47,6 +51,28 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 	
 	private function buildCard ():Void {}
 	
+	/**
+	 * Add description btn, that open a popin info building.
+	 * Only for card lock and unlock (deco and building)
+	 * Call this function in the init override.
+	 */
+	private function addDescriptionBtn ():Void {
+		btnDesc = new SmartButton(AssetName.CAROUSSEL_CARD_BTN_INFO);
+		// todo: ask GD for a spawner
+		// value pre-calculated from .fla
+		btnDesc.x = x + 103;
+		btnDesc.y = y - 42.5;
+		Interactive.addListenerClick(btnDesc, onClickDesc);
+		on(EventType.ADDED, function () {
+			parent.addChild(btnDesc);
+		});
+	}
+	
+	/**
+	 * Override this method to add ConfirmBuyBuilding.getInstance().init(*)
+	 */
+	private function onClickDesc ():Void {}
+	
 	// todo faire un tween sympa ?
 	/*private function tweenPopin ():Void {
 		TweenMax.to(scale, TWEEN_DURATION, {
@@ -61,17 +87,13 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		UIManager.getInstance().closeCurrentPopin();
 	}
 	
-	private function changeIconSpawner (pSpriteName:String, pSpawner:UISprite):Void {
-		var lSprite:UISprite = new UISprite(pSpriteName);
-		lSprite.position = pSpawner.position;
-		lSprite.scale = pSpawner.scale;
-		addChild(lSprite);
-		removeChild(pSpawner);
-		pSpawner.destroy();
-		pSpawner = lSprite;
-	}
-	
 	override public function destroy():Void {
+		if (btnDesc != null) {	
+			btnDesc.removeAllListeners();
+			btnDesc.parent.removeChild(btnDesc);
+			btnDesc.destroy();
+		}
+		
 		if (parent != null)
 			parent.removeChild(this);
 		super.destroy();

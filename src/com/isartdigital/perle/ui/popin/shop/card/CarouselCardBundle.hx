@@ -114,7 +114,7 @@ class CarouselCardBundle extends CarouselCard{
 	private function setPicture (pPicture:UISprite, pIconLevel:Int, lPictureSwitch:Map<Int,String>):Void {
 		for (level in lPictureSwitch.keys()) {
 			if (level == pIconLevel) {
-				changeIconSpawner(lPictureSwitch[pIconLevel], pPicture);
+				SmartPopinExtended.setIcon(lPictureSwitch[pIconLevel], pPicture);
 				return;
 			}
 		}

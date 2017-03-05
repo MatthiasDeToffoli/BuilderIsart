@@ -58,7 +58,7 @@ class CCUBuilding extends CarouselCardUnlock{
 		
 		// hard currency is an alternative... not supported yet ! (only for altar)
 		textPriceSoftHard.text = ResourcesManager.shortenValue(pPrices[GeneratorType.soft]);
-		changeIconSpawner(AssetName.PROD_ICON_SOFT_SMALL, iconSoftHard);
+		SmartPopinExtended.setIcon(AssetName.PROD_ICON_SOFT_SMALL, iconSoftHard);
 		setWoodIronPrice(
 			pPrices[GeneratorType.buildResourceFromParadise],
 			textPriceWood,

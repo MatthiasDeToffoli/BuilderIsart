@@ -114,7 +114,6 @@ class AssetName{
 	public static inline var CAROUSSEL_ARROW_RIGHT:String = "Button_ArrowRight";
 	public static inline var CAROUSSEL_ARROW_PAGE_NUMBER:String = "_navigArrows_counter_txt";
 	
-	
 	// Shop caroussel card
 	public static inline var CAROUSSEL_CARD_UNLOCKED:String = "ButtonBuyBuildingDeco";
 	public static inline var CAROUSSEL_CARD_UNLOCKED_BTN_INFO:String = "ButtonInfo";
@@ -122,6 +121,7 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBundle";
 	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "ButtonBuyPack";
 	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "ButtonBuyPack_Ressource";
+	public static inline var CAROUSSEL_CARD_BTN_INFO:String = "ButtonInfo";
 	
 	// Shop caroussel card building unlock and locked
 	public static inline var CARD_BACKGROUND_NEUTRAL_CONTAINER:String = "Bg";
@@ -218,20 +218,21 @@ class AssetName{
 	public static inline var CARD_GAUGE_STRESS:String = "_internCard_jauge_stress";
 	
 	// Popin Confirm Buy Building
-	/*public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
+	public static inline var POPIN_CONFIRM_BUY_BUILDING:String = "Popin_ConfirmationBuyHouse";
 	public static inline var PCBB_IMG:String = "Building_Image";
 	public static inline var PCBB_TEXT_NAME:String = "Building_Name";
-	public static inline var PCBB_TEXT_LEVEL:String = "Building_Level_txt";
-	public static inline var PCBB_PRICE:String = "Window_Infos_BuyPrice";
-	public static inline var PCBB_PRICE_TEXT:String = "ButtonUpgrade_Cost_txt";
-	public static inline var PCBB_GOLD_MAX:String = "Window_Infos_LimitGold";
-	public static inline var PCBB_GOLD_MAX_TEXT:String = "Window_Infos_txtGoldLimit";
-	public static inline var PCBB_POPULATION_MAX:String = "Window_Infos_Population";
-	public static inline var PCBB_POPULATION_MAX_TEXT:String = "Window_Infos_txtPopulation";
-	public static inline var PCBB_GOLD_PER_TIME:String = "Window_Infos_ProductionGold";
-	public static inline var PCBB_GOLD_PER_TIME_TEXT_1:String = "Window_Infos_txtProductionGold";
-	public static inline var PCBB_GOLD_PER_TIME_TEXT_2:String = "perTime";
-	public static inline var PCBB_BTN_BUY:String = "BuyButton";*/
+	public static inline var PCBB_INFO_POPULATION:String = "Window_Infos_Population";
+	public static inline var PCBB_BTN_BUY:String = "BuyButton";
+	public static inline var PCBB_BTN_CLOSE:String = "ButtonClose";
+	
+	// Popin Confirm Buy Building infos population
+	public static inline var PCBB_POPULATION_ICON_SOUL:String = "Soul_Icon";
+	public static inline var PCBB_POPULATION_TXT_MAX:String = "Window_Infos_txtPopulation";
+	
+	// Popin Confirm Buy Building btn buy
+	public static inline var PCBB_BTN_BUY_TXT:String = "Value";
+	public static inline var PCBB_BTN_BUY_ICON:String = "CurrencyIcon";
+	
 	
 	// Info building
 	public static inline var POPIN_INFO_BUILDING:String = "Fenetre_InfoMaison";

@@ -44,6 +44,7 @@ class SmartPopinExtended extends SmartPopin{
 		return lImage;
 	}
 	
+	// todo: ctrl-C d'alexis, à factoriser...
 	public static function setImageUiSprite(pContainer:Container, pAssetName:String):UISprite {
 		var lImage:UISprite = new UISprite(pAssetName);
 		
@@ -67,6 +68,23 @@ class SmartPopinExtended extends SmartPopin{
 		//lImage.start();
 		
 		return lImage;
+	}
+	
+	/**
+	 * Change a Spawner to an icon. The reference is update.
+	 * That mean pSpawner will now have as value the UISprite created. (the icon)
+	 * @param	pIconName
+	 * @param	pSpawner
+	 */
+	public static function setIcon (pIconName:String, pSpawner:UISprite):Void {
+		var lSprite:UISprite = new UISprite(pIconName);
+		lSprite.position = pSpawner.position;
+		lSprite.scale = pSpawner.scale;
+		pSpawner.parent.addChild(lSprite);
+		pSpawner.parent.removeChild(pSpawner);
+		pSpawner.removeAllListeners();
+		pSpawner.destroy();
+		pSpawner = lSprite;
 	}
 	
 	/**

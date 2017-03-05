@@ -5,7 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
-import com.isartdigital.utils.sounds.SoundManager;
+import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.math.Point;
@@ -30,7 +30,13 @@ class CarouselCardUnlock extends CarouselCard implements ICardVariableBackground
 		buildingName = pBuildingName;
 		alignment = GameConfig.getBuildingByName(buildingName).alignment;
 		super.init(pBuildingName);
-		
+		addDescriptionBtn();
+	}
+	
+	override function onClickDesc():Void {
+		super.onClickDesc();
+		UIManager.getInstance().openPopin(ConfirmBuyBuilding.getInstance());
+		ConfirmBuyBuilding.getInstance().init(buildingName, _click);
 	}
 	
 	override function buildCard():Void {

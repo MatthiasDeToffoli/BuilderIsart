@@ -260,7 +260,8 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onErrorCreateGenerator(pObject:Dynamic):Void {
-		Debug.error(pObject);
+		// commenté pour le bien de l'humanité.
+		//Debug.error(pObject);
 	}
 	
 	public static function updateGenerator(pDescription:TileDescription):Void {
