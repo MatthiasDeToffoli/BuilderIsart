@@ -13,7 +13,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDeco;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInterns;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselInternsSearch;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
-import com.isartdigital.perle.ui.popin.SmartPopinExtended;
+import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.localisation.Localisation;

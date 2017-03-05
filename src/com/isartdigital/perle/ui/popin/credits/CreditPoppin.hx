@@ -1,6 +1,6 @@
 package com.isartdigital.perle.ui.popin.credits;
 
-import com.isartdigital.perle.ui.popin.SmartPopinExtended;
+import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.events.MouseEventType;
 

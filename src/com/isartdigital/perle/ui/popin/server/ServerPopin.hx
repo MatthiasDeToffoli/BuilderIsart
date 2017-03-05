@@ -1,7 +1,7 @@
 package com.isartdigital.perle.ui.popin.server;
 
 import com.isartdigital.perle.game.AssetName;
-import com.isartdigital.perle.ui.popin.SmartPopinExtended;
+import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.utils.ui.smart.TextSprite;
 
 /**

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
+import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.sounds.SoundManager;

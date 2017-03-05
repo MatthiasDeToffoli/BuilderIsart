@@ -1,4 +1,4 @@
-package com.isartdigital.perle.ui.popin;
+package com.isartdigital.perle.ui;
 
 import com.isartdigital.perle.game.managers.TweenManager;
 import com.isartdigital.utils.ui.smart.SmartPopin;

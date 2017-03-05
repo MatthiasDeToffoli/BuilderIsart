@@ -12,10 +12,9 @@ import pixi.interaction.EventTarget;
  * ...
  * @author ambroise
  */
-class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
+class CarouselCard extends SmartButtonExtended {
 	
 	private var image:UISprite;
-	private var isInit:Bool;
 	private var btnDesc:SmartButton;
 	
 	public function new(pAsset:String) {
@@ -48,8 +47,6 @@ class CarouselCard extends SmartButton { // n'est pas un smart btn ds le .fla...
 		if (isInit)
 			buildCard();
 	}
-	
-	private function buildCard ():Void {}
 	
 	/**
 	 * Add description btn, that open a popin info building.
