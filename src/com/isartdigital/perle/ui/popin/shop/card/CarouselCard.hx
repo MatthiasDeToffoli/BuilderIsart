@@ -30,24 +30,6 @@ class CarouselCard extends SmartButtonExtended {
 		buildCard();
 	}
 	
-	override private function _mouseDown (pEvent:EventTarget = null): Void {
-		super._mouseDown(pEvent);
-		if (isInit) // i've tried using build function override, doesn't seem to work
-			buildCard();
-	}
-	
-	override private function _mouseOver (pEvent:EventTarget = null): Void {
-		super._mouseOver(pEvent);
-		if (isInit)
-			buildCard();
-	}
-	
-	override private function _mouseOut (pEvent:EventTarget = null): Void {
-		super._mouseOut(pEvent);
-		if (isInit)
-			buildCard();
-	}
-	
 	/**
 	 * Add description btn, that open a popin info building.
 	 * Only for card lock and unlock (deco and building)

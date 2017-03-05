@@ -73,16 +73,17 @@ class CarouselCardUnlock extends CarouselCard implements ICardVariableBackground
 		// maybe can be optimized by changing the images inside
 		// background UISprite
 		
-		// destroying my custom background
+		// destroy the background that i created last time i passed this function
 		if (background != null) {
+			if (background.parent != null)
+				background.parent.removeChild(background);
+			background.removeAllListeners();
 			background.destroy();
 			background = null;
 		}
 		
-		
-		// getting the newly created background
-		if (background == null)
-			background = cast(SmartCheck.getChildByName(this, AssetName.CARD_BACKGROUND_NEUTRAL_CONTAINER), UISprite);
+		// card is rebuilding this background everytime
+		background = cast(SmartCheck.getChildByName(this, AssetName.CARD_BACKGROUND_NEUTRAL_CONTAINER), UISprite);
 		
 		var lPos:Point = background.position;
 		
