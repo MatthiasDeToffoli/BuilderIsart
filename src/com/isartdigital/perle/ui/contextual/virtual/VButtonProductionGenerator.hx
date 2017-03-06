@@ -57,15 +57,17 @@ class VButtonProductionGenerator extends VButtonProduction
 		super.addGraphic();
 	}
 	
-	override public function activate():Void 
-	{
+	override public function activate():Void {
 		super.activate();
-		
 		if (myBtn != null) cast(myBtn,ButtonProductionGenerator).setScale();
 	}
 	
-	override public function destroy() 
-	{
+	override public function desactivate():Void {
+		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
+		super.desactivate();
+	}
+	
+	override public function destroy() {
 		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
 		super.destroy();
 	}

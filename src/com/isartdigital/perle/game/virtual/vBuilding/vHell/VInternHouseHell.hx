@@ -18,7 +18,6 @@ class VInternHouseHell extends VInternHouse
 		Intern.incrementeInternHouses(alignementBuilding);
 		super(pDescription);
 		
-
 	}
 	
 	override public function destroy(){

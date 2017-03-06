@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.utils.Debug;
+import haxe.Json;
 import pixi.core.display.Container;
 
 interface HasVirtual {
@@ -95,6 +96,22 @@ class Virtual {
 	 * Cell is not visible, content will be wiped out !
 	 */
 	public function desactivate ():Void {
+		// if another problem whit Virtual already desactived you can use that bellow.
+		/*var rand:Float = Math.random() * 10000000;
+		var test:VTile = null;
+		if (Std.is(this, VTile)) {
+			test = cast(this, VTile);
+		}
+		if (test != null)
+			trace(test.tileDesc);
+		trace(rand);
+		if (!active) {
+			Debug.warn("desactivated: but already dasctived");
+			if (test != null)
+				trace(test.tileDesc);
+				trace(rand);
+				trace(Type.typeof(this));
+		}*/
 		if (!active)
 			Debug.error("Virtual is already desactived !");
 		

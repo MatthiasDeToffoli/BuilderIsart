@@ -141,16 +141,14 @@ class VBuilding extends VTile {
 		graphic = cast(Building.createBuilding(tileDesc, currentState), Container);
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		setGraphicLocalBoundsAtFirstFrame();
-		if (haveRecolter || Std.is(this, VCollector) && currentState != VBuildingState.isUpgrading && currentState != VBuildingState.isBuilding) 
-			myVContextualHud.activate();
+		myVContextualHud.activate();
 	}
 	
 	public function setGraphicLocalBoundsAtFirstFrame():Void {
 		if (graphicLocalBounds == null) {
-		 graphicLocalBounds = graphic.getLocalBounds().clone();
-		 hasLocalBounds = true;
+			graphicLocalBounds = graphic.getLocalBounds().clone();
+			hasLocalBounds = true;
 		}
-		
 	}
 	
 	public function getGraphicLocalBoundsAtFirstFrame():Rectangle {

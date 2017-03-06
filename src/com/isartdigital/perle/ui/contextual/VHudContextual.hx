@@ -31,7 +31,9 @@ class VHudContextual extends Virtual{
 		if (myVBuilding.haveRecolter){
 			virtualGoldBtn = new VButtonProductionGenerator();
 			virtualGoldBtn.init(this);
-		} else if (Std.is(myVBuilding, VCollector)) {
+		} else if (Std.is(myVBuilding, VCollector)  
+				&& myVBuilding.currentState != VBuildingState.isUpgrading 
+				&& myVBuilding.currentState != VBuildingState.isBuilding) {
 			virtualGoldBtn = new VButtonProductionCollector();
 			virtualGoldBtn.init(this);
 		}
@@ -59,7 +61,8 @@ class VHudContextual extends Virtual{
 	}
 	
 	override public function destroy():Void {
-		if(virtualGoldBtn != null) virtualGoldBtn.destroy();
+		if (virtualGoldBtn != null) 
+			virtualGoldBtn.desactivate();
 		virtualGoldBtn = null;
 		myVBuilding.unlinkContextualHud();
 		myVBuilding = null;
