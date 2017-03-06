@@ -11,15 +11,12 @@ class PoolingManager {
 	 * The pool will be fileld whit these instance at game start.
 	 * Aucune raison de mettre un JSON, seul un codeur va modifié ces valeurs
 	 * de toute façon.
+	 * Todo : save the poolList before quitting, to have the perfect start amount of
+	 * instance in pool.
 	 */
 	private static var INSTANCE_TO_SPAWN(default, never):Map<String, UInt> = [
+		AssetName.BUILDING_HEAVEN_HOUSE => 2,
 		AssetName.BUILDING_HELL_HOUSE => 2,
-		"Ground" => 400,
-		"Road_h" => 1,
-		"Road_c" => 1,
-		"Road_br" => 1,
-		"Road_tl" => 1,
-		"Road_v" => 1,
 		"FootPrint" => 20,
 		AssetName.BUILDING_STYX_PURGATORY => 1
 	];
@@ -33,7 +30,7 @@ class PoolingManager {
 		AssetName.BUILDING_STYX_VICE_1 => "VicesBuilding",
 		AssetName.BUILDING_STYX_VICE_2 => "VicesBuilding",
 		
-	
+		
 		AssetName.BUILDING_HEAVEN_HOUSE => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT => "HouseHeaven",
 		AssetName.BUILDING_HEAVEN_HOUSE + AssetName.CONSTRUCT + AssetName.ANIM=> "HouseHeaven",

@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Config;
+import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
 import pixi.core.display.Container;
@@ -50,7 +51,7 @@ class Building extends Tile implements IZSortable
 	public var myDesc:TileDescription;
 	private var numberFrame:Int;
 	private var animation:Movie;
-
+	
 	
 	/**
 	 * Initialisation of Building class, should be called after Ground class initialisation.
@@ -116,8 +117,9 @@ class Building extends Tile implements IZSortable
 		
 		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
 		
-		if (state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading) lBuilding.setStateConstruction();
-
+		if (state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading) 
+			lBuilding.setStateConstruction();
+		
 		return lBuilding;
 	}
 	
@@ -162,14 +164,6 @@ class Building extends Tile implements IZSortable
 		return GameConfig.getBuildingByName(myDesc.buildingName).width * Tile.TILE_WIDTH; // c en model pas en view !
 	}
 	
-	//private function getLeftCornerX ():Point {
-		//return new Point(
-			//return Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(myDesc.buildingName).height;/*,
-			//GameConfig.getBuildingByName(myDesc.buildingName).height * Tile.TILE_HEIGHT - Tile.TILE_HEIGHT / 2 
-		//);*/
-	//}
-	
-	
 	public function setStateConstruction():Void {
 		if (myDesc.buildingName == BuildingName.STYX_VIRTUE_1 || myDesc.buildingName == BuildingName.STYX_VIRTUE_2 || myDesc.buildingName == BuildingName.STYX_VICE_1 || myDesc.buildingName == BuildingName.STYX_VICE_2)
 			return;
@@ -188,12 +182,14 @@ class Building extends Tile implements IZSortable
 	}
 	
 	public function onAnimationEnd():Void {
-
-		if (animation.currentFrame == animation.totalFrames - 1) {
-			cast(linkedVirtualCell, VBuilding).reShow();
-		}
-		
+		cast(linkedVirtualCell, VBuilding).reShow();
+		trace("onAnimationEnd");
 	}
+	
+	public function isAnimationEnd ():Bool {
+		return animation.currentFrame == animation.totalFrames - 1;
+	}
+	
 	
 	public function setAnimation():Void {
 		animation = cast(anim, Movie).getChildMovie(AssetName.ANIMATION);

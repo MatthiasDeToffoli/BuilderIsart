@@ -177,6 +177,7 @@ class VBuilding extends VTile {
 	public function reShow():Void {
 		desactivate();
 		activate();
+		trace("reShow(), bad for performance if this trace to frequently");
 	}
 	
 	public function getVirtualContextualHud():VHudContextual{
