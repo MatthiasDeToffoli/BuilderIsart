@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Phantom;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.iso.IsoManager;
+import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.game.CollisionManager;
 import com.isartdigital.utils.game.GameStage;
@@ -15,9 +16,11 @@ import haxe.Timer;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 /**
  * ...
  * @author ambroise
+ * @author killian
  */
 class CameraManager 
 {
@@ -27,11 +30,11 @@ class CameraManager
 	private static inline var REGION_STYX_WIDTH:Float = (Ground.COL_X_STYX_LENGTH - Ground.ROW_Y_STYX_LENGTH) * Tile.TILE_HEIGHT;
 	private static inline var REGION_STYX_HEIGHT:Float = (Ground.COL_X_STYX_LENGTH - Ground.ROW_Y_STYX_LENGTH) * Tile.TILE_HEIGHT;
 	
-	public static inline var DEFAULT_SPEED:Float = 12;
+	/*public static inline var DEFAULT_SPEED:Float = 12;
 	public static inline var DEFAULT_OFFSET_LOCAL:Float = 100;
 	
 	
-	private static var test:Int = 0;
+	private static var test:Int = 0;*/
 	
 	/**
 	 * cheat usefull if you don't want clipping to be updated when Camera move.
@@ -56,17 +59,17 @@ class CameraManager
 	/**
 	 * place the camera
 	 * @param pPos position to subastract at the camera
+	 * @author Matthias
 	 */
 	public static function placeCamera(pPos:Point):Void{
-		
 		target.x -= IsoManager.modelToIsoView(pPos).x;
 		target.y -= IsoManager.modelToIsoView(pPos).y;
-
 	}
 	
 	/**
 	 * Add pSpeed to move the Camera,
 	 * @param	pSpeed
+	 * @author Ambroise
 	 */
 	public static function move(pSpeedX:Float, pSpeedY:Float):Void {
 		if (Hud.isHide && !Phantom.isSet())
@@ -75,60 +78,111 @@ class CameraManager
 			DialogueManager.waitTime(3000);	
 			DialogueManager.cameraHaveToMove = false;
 		}
-		var lRegionCenters = getRegionCenters();
-		var lIndexRef:Int = 0;
-		
-		if (lRegionCenters.length > 1) {
-			var lPointRef:Float = distancePToP(getCameraCenter(), lRegionCenters[0]);
-			
-			for (i in 0...lRegionCenters.length) {
-				var lPoint:Float = distancePToP(getCameraCenter(), lRegionCenters[i]);
-				if (lPoint < lPointRef) {
-					lPointRef = lPoint;
-					lIndexRef = i;
-				}
-			}
-		}
-
-		
-		defaultPos = lRegionCenters[lIndexRef];
-		
-		target.x += pSpeedX;
-		target.y += pSpeedY;
-		
-		var lCurrentPosCamera:Point = getCameraCenter();
-		
-		if (lCurrentPosCamera.x > defaultPos.x + REGION_WIDTH/2 + Tile.TILE_WIDTH*2) target.x -= pSpeedX;
-		if (lCurrentPosCamera.x < defaultPos.x - REGION_WIDTH/2 - Tile.TILE_WIDTH*2) target.x -= pSpeedX;
-		if (lCurrentPosCamera.y > defaultPos.y + REGION_HEIGHT/2 + Tile.TILE_HEIGHT*2) target.y -= pSpeedY;
-		if (lCurrentPosCamera.y < defaultPos.y - REGION_HEIGHT / 2 - Tile.TILE_HEIGHT * 2) target.y -= pSpeedY;
 		
 		var lSpeed:Point = new Point(pSpeedX, pSpeedY);
+		lSpeed = checkMaxDistanceCamera(lSpeed);
+		//trace(lSpeed);
+		target.position = getNextPosition(target.position, lSpeed);
+		
 		
 		checkClippingNeed(lSpeed);
 	}
 	
-	public static function scrollOnLimitsScreen(pMouseLocalPos:Point) {
-		var cameraCenter:Point = getCameraCenter();
-		
-		var lLimitLeftR:Float = cameraCenter.x - Main.getInstance().renderer.width + DEFAULT_OFFSET_LOCAL;
-		var lLimitLeftL:Float = cameraCenter.x - Main.getInstance().renderer.width;
-		var lLimitRightL:Float = cameraCenter.x + Main.getInstance().renderer.width - DEFAULT_OFFSET_LOCAL;
-		var lLimitRightR:Float = cameraCenter.x + Main.getInstance().renderer.width;
-		
-		var lLimitTopB:Float = cameraCenter.y - Main.getInstance().renderer.height + DEFAULT_OFFSET_LOCAL;
-		var lLimitTopT:Float = cameraCenter.y - Main.getInstance().renderer.height;
-		var lLimitBottomT:Float = cameraCenter.y + Main.getInstance().renderer.height - DEFAULT_OFFSET_LOCAL;
-		var lLimitBottomB:Float = cameraCenter.y + Main.getInstance().renderer.height;
-		
-		if(pMouseLocalPos.x < lLimitLeftR && pMouseLocalPos.x > lLimitLeftL) move(DEFAULT_SPEED, 0);
-		if(pMouseLocalPos.x > lLimitRightL && pMouseLocalPos.x < lLimitRightR) move(-DEFAULT_SPEED, 0);
-		if(pMouseLocalPos.y < lLimitTopB && pMouseLocalPos.y > lLimitTopT) move(0, DEFAULT_SPEED);
-		if(pMouseLocalPos.y > lLimitBottomT && pMouseLocalPos.y < lLimitBottomB) move(0, -DEFAULT_SPEED);
+	private static function getNextPosition (pPosition:Point, pSpeed:Point):Point {
+		// this make a copy of the point or reference will be updated !
+		return new Point(
+			pPosition.x + pSpeed.x,
+			pPosition.y + pSpeed.y
+		);
 	}
 	
-	private static function distancePToP(pP1:Point, pP2:Point):Float {
-		return Math.sqrt((pP2.x - pP1.x) * (pP2.x - pP1.x) + (pP2.y - pP1.y) * (pP2.y - pP1.y));
+	private static function getNextPositionCenter (pSpeed:Point):Point {
+		var lCenter:Point = getCameraCenter();
+		lCenter.x += pSpeed.x;
+		lCenter.y += pSpeed.y;
+		return lCenter;
+	}
+	
+	// todo : ok je peux glisser sur les bords
+	// todo : ne pas trembler sur les bords
+	// todo : ne pas limiter au styx mais aux régions
+	
+	private static function checkMaxDistanceCamera (pSpeed:Point):Point {
+		var lSpeed:Point = new Point();
+		lSpeed.copy(pSpeed);
+		// if there is only one Styx, firstTilePos is RegionManager.worldMap[0][0].desc.firstTilePos
+		var lFirstTileStyxTop:Index = getFirstTileTop();
+		// if there is only one Styx, lFirstTilePosStyxBottom == 0,styx.width
+		var lFirstTileStyxBottom:Index = getFirstTileBottom();
+		// will determine how much you can put the camera away from styx in a perpendicular line.
+		// not completely accurate since it take the left side of the styx
+		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1; // todo : change 2 by constant (number région same type you can build for a styx)
+		var lCameraModelPosition:Point = IsoManager.isoViewToModel(getNextPositionCenter(pSpeed));
+		trace("START");
+		//trace(lFirstTileStyxTop);
+		//trace(lFirstTileStyxBottom);
+		//trace(lDistanceXStyxToFarestRegion);
+		//trace(lNextPosition);
+		//trace(lCameraModelPosition);
+		var lCorrectionToStayInPlayZone:Point = collisionPointRect(
+			lCameraModelPosition,
+			new Rectangle(
+				lFirstTileStyxTop.x - lDistanceXStyxToFarestRegion,
+				lFirstTileStyxTop.y,
+				lFirstTileStyxTop.x + lDistanceXStyxToFarestRegion * 2 + Ground.COL_X_STYX_LENGTH,
+				lFirstTileStyxBottom.y - lFirstTileStyxTop.y
+			)
+		);
+		// return a speed, if you return a position be sure to return the position whit the toCenter correction
+		var lCorrectionIsoView:Point = IsoManager.modelToIsoView(lCorrectionToStayInPlayZone);
+		trace(lCorrectionIsoView);
+		lSpeed.x -= lCorrectionIsoView.x;
+		lSpeed.y -= lCorrectionIsoView.y;
+		return lSpeed;
+	}
+	
+	/**
+	 * 
+	 * @param	lPoint
+	 * @param	lRect
+	 * @return correction value to add to stay in the rectangle
+	 */
+	private static function collisionPointRect (lPoint:Point, lRect:Rectangle):Point {
+		var lCorrection:Point = new Point(0, 0);
+		
+		if (lPoint.x < lRect.x)
+			lCorrection.x +=  lRect.x - lPoint.x;
+		if (lPoint.x > lRect.x + lRect.width)
+			lCorrection.x += lRect.x + lRect.width - lPoint.x;
+		if (lPoint.y < lRect.y)
+			lCorrection.y += lRect.y - lPoint.y;
+		if (lPoint.y > lRect.y + lRect.height)
+			lCorrection.y += lRect.y + lRect.height - lPoint.y;
+		
+		return lCorrection;
+		/*return (lPoint.x > lRect.x
+			&&  lPoint.x < lRect.x + lRect.width
+			&&  lPoint.y > lRect.y
+			&&  lPoint.y < lRect.y + lRect.height);*/
+	};
+	
+	private static function getFirstTileBottom ():Index {
+		var lHightestY:Int = 0;
+		for (y in RegionManager.worldMap[0].keys()) {
+			lHightestY = lHightestY >= y ? lHightestY : y;
+		}
+		return {
+			x: RegionManager.worldMap[0][lHightestY].desc.firstTilePos.x,
+			y: RegionManager.worldMap[0][lHightestY].desc.firstTilePos.y + Ground.ROW_Y_STYX_LENGTH
+		}
+	}
+	
+	private static function getFirstTileTop ():Index {
+		var lLowestY:Int = 0;
+		for (y in RegionManager.worldMap[0].keys()) {
+			lLowestY = lLowestY <= y ? lLowestY : y;
+		}
+		return RegionManager.worldMap[0][lLowestY].desc.firstTilePos;
 	}
 	
 	// todo : function moveTo
@@ -171,76 +225,6 @@ class CameraManager
 	private static function reset():Void {
 		xDistMoved = 0;
 		yDistMoved = 0;
-	}
-	
-	private static function getRegionCenters():Array<Point> {
-		var lMap:Map<Int,Map<Int,Region>> = RegionManager.worldMap;
-		var lRegionCenters:Array<Point> = [];
-		
-		for (row in lMap.keys()) {
-			for (region in lMap[row].keys()) {
-				var lPoint:Point = getCameraCenter();
-				if (hitTestRegion(lPoint,lMap[row][region])) {
-					//trace("true");
-					var lPos:Point = IsoManager.modelToIsoView(new Point(lMap[row][region].desc.firstTilePos.x, lMap[row][region].desc.firstTilePos.y));
-					
-					if (lMap[row][region].desc.type == Alignment.neutral) {
-						lRegionCenters.push(new Point(lPos.x + Tile.TILE_WIDTH * (Ground.COL_X_STYX_LENGTH / 2 - REGION_STYX_WIDTH / 2), 
-																				  lPos.y + (REGION_STYX_HEIGHT) / 2));
-					}
-					else {
-						lRegionCenters.push(new Point(lPos.x, lPos.y + (REGION_HEIGHT) / 2)); 
-					}
-					
-				}
-			}
-		}
-		
-		return lRegionCenters;
-		
-	}
-	
-	private static function extendLimits(pRegion:Region, pPoint:Point):Bool {
-		return true;
-	}
-	
-	private static function hitTestRegion(pPoint:Point,pRegion:Region):Bool {
-		var lPX:Float = pPoint.x;
-		var lPY:Float = pPoint.y;
-		
-		var lWidth:Float = REGION_WIDTH + Tile.TILE_WIDTH * 2;
-		var lHeight:Float = REGION_HEIGHT + Tile.TILE_HEIGHT * 2;
-		var lWidthStyx:Float = REGION_STYX_WIDTH + Tile.TILE_WIDTH * 2;
-		var lHeightStyx:Float = REGION_STYX_HEIGHT + Tile.TILE_HEIGHT * 2;
-		
-		var lWidthTest:Float;
-		var lHeightTest:Float;
-		
-		var lPosRegion:Point = IsoManager.modelToIsoView(new Point(pRegion.desc.firstTilePos.x, pRegion.desc.firstTilePos.y));
-		
-		var lX:Float;
-		var lY:Float;
-		
-		if (pRegion.desc.type == Alignment.neutral) {
-			 
-			lX = lPosRegion.x + Tile.TILE_WIDTH * (Ground.COL_X_STYX_LENGTH / 2 - REGION_STYX_WIDTH / 2);
-		}
-		else {
-			lWidthTest = lWidth; 
-			lHeightTest = lHeight; 
-			lX = lPosRegion.x;
-		}
-		
-		lWidthTest = lWidth; 
-		lHeightTest = lHeight;
-		
-		if (lPX >= lX - lWidthTest/2 - Tile.TILE_WIDTH*2 && lPX <= lX + lWidthTest/2 + Tile.TILE_WIDTH*2)
-		{
-			lY =lPosRegion.y - Tile.TILE_HEIGHT * 2;
-			if (lPY >= lY && lPY <= lY + lHeightTest + Tile.TILE_HEIGHT * 4) return true;
-		}
-		
-		return false;
 	}
 	
 	private static function checkClippingNeed(pSpeed:Point):Void {
