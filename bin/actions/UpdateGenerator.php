@@ -36,23 +36,23 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
 if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House') {
   $results = calculGain(
       Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-      ((60*60)/$typeBuilding->ProductionPerHour)/$typeBuilding->NbSoul,
+      ($typeBuilding->ProductionPerHour * $typeBuilding->NbSoul)/60,
       $typeBuilding->NbResource,
       $typeBuilding->MaxGoldContained
     );
 } else if($typeBuilding->Name == 'Purgatory') {
-  $calculTimePurgatory = $typeBuilding->ProductionPerHour + $Player->NumberMarketigHouse * 2;
+  $calculPurgatory = $typeBuilding->ProductionPerHour + $Player->NumberMarketigHouse * 2;
   if($Player->IdCampaign == 0) {
     $results = calculGain(
         Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-        ((60*60)/$calculTimePurgatory),
+        $calculPurgatory/60,
         $typeBuilding->NbResource,
         $typeBuilding->MaxSoulsContained
       );
   } else {
     $results = calculGainWithBoost(
         Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-        ((60*60)/$calculTimePurgatory),
+        $calculPurgatory/60,
         $typeBuilding->NbResource,
         $typeBuilding->MaxSoulsContained,
         Utils::dateTimeToTimeStamp($Player->EndOfCampaign),
@@ -63,13 +63,10 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
 else if($typeBuilding->NbBuildingHeaven > 0 || $typeBuilding->NbBuildingHell > 0) {
   $calcul1 = $typeBuilding->NbBuildingHell * $typeBuilding->ProductionPerBuildingHell;
   $calcul2 = $typeBuilding->NbBuildingHeaven*$typeBuilding->ProductionPerBuildingHeaven;
-  $calculTotal = 3600/($calcul1 + $calcul2);
-
-  if($calculTotal <= 0) $calculTotal = null;
 
   $results = calculGain(
       Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-      $calculTotal,
+      ($calcul1 + $calcul2)/60,
       $typeBuilding->NbResource,
       $typeBuilding->MaxGoldContained
     );
@@ -92,37 +89,34 @@ echo json_encode($results);
 function calculGain($pEnd,$pCalcul,$pResource, $pMax){
   if($pEnd !== null){
     $currentTime = time();
-    if($currentTime > $pEnd) {
-      if($pResource < $pMax) $newResource = $pResource + 1;
-      else $newResource = $pResource;
-      if($pCalcul === null) {
-        $end = $pCalcul;
-      }
-      else {
-        $end = $pEnd + $pCalcul;
+    $minDiff = floor(($currentTime - $pEnd)/60) + 1;
+
+    if($minDiff > 0) {
+      if($pCalcul > 0) {
+        $newResource = $pResource + ($pCalcul * $minDiff);
+        if($newResource > $pMax) $newResource = $pMax;
       }
 
-      return calculGain($end,$pCalcul,$newResource,$pMax);
+      $end = $pEnd + ($minDiff * 60);
+      return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($newResource),"max" => $pMax, "end" => $end);
     }
   }
 
 
-  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
+  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($pResource),"max" => $pMax, "end" => $pEnd);
 }
 
 function calculGainWithBoost($pEnd,$pCalcul,$pResource, $pMax,$pEndBoost,$pGainBoost){
     $currentTime = time();
-    if($currentTime > $pEnd) {
-      if($pResource < $pMax) $newResource = $pResource + 1;
-      else $newResource = $pResource;
-        if($pEnd < $pEndBoost) $finalCalcul = $pCalcul/$pGainBoost;
-        else $finalCalcul = $pCalcul;
-        $end = $pEnd + $finalCalcul;
+    $minDiff = floor(($currentTime - $pEnd)/60) + 1;
+    if($minDiff > 0) {
+      $newResource = $pResource + $minDiff * ($pCalcul + $pGainBoost);
+      if($newResource > $pMax) $newResource = $pMax;
+    $end = $pEnd + 60 * $minDiff;
 
-      return calculGainWithBoost($end,$pCalcul,$newResource,$pMax,$pEndBoost,$pGainBoost);
+      return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($newResource),"max" => $pMax, "end" => $end);
     }
 
-
-  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => $pResource,"max" => $pMax, "end" => $pEnd);
+  return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($pResource),"max" => $pMax, "end" => $pEnd);
 }
 ?>

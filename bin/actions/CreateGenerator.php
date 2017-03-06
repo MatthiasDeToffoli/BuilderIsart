@@ -24,7 +24,7 @@ $TypeBuilding = BuildingUtils::getTypeBuildingWithPosition(
   );
 if($TypeBuilding->EndForNextProduction != null) exit;
 if($TypeBuilding->Name === 'Purgatory'){
-  $pTime = time() +  (60*60)/$TypeBuilding->ProductionPerHour + 3600;
+  $pTime = time() +  60;
   $toSet = [
     QUANTITY => $TypeBuilding->MaxSoulsContained,
     END => Utils::timeStampToDateTime($pTime)
