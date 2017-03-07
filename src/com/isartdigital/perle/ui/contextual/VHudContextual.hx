@@ -62,7 +62,7 @@ class VHudContextual extends Virtual{
 	
 	override public function destroy():Void {
 		if (virtualGoldBtn != null) 
-			virtualGoldBtn.desactivate();
+			virtualGoldBtn.destroy();
 		virtualGoldBtn = null;
 		myVBuilding.unlinkContextualHud();
 		myVBuilding = null;

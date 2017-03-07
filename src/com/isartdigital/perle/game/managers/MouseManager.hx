@@ -141,7 +141,7 @@ class MouseManager {
 	}
 	
 	/**
-	 * Permit to move the Map whit the Mouse or Touch, won't move is someone is building.
+	 * Permit to move the Map whit the Mouse or Touch.
 	 * @param	pMouseLocalPos
 	 */
 	private function moveGameContainer(pMouseLocalPos:Point):Void {

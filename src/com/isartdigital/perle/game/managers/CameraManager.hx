@@ -80,10 +80,19 @@ class CameraManager
 		}
 		
 		var lSpeed:Point = new Point(pSpeedX, pSpeedY);
-		lSpeed = checkMaxDistanceCamera(lSpeed);
-		//trace(lSpeed);
-		target.position = getNextPosition(target.position, lSpeed);
-		
+		// that's only half working, wtf ?
+		target.position = getNextPosition(
+			target.position, 
+			checkMaxDistanceCamera(lSpeed)
+		);
+		// i don't understand why i have to call this function twice,
+		// the update of target.position must be in cause.
+		target.position = getNextPosition(
+			target.position,
+			checkMaxDistanceCamera(new Point(0, 0))
+		);
+		// the best would be to calculate the good position and then apply it,
+		// instead of applying a correction to the speed.
 		
 		checkClippingNeed(lSpeed);
 	}
@@ -110,34 +119,31 @@ class CameraManager
 	private static function checkMaxDistanceCamera (pSpeed:Point):Point {
 		var lSpeed:Point = new Point();
 		lSpeed.copy(pSpeed);
+		
+		var lFirstRegionFirstTilePos:Index = RegionManager.worldMap[0][0].desc.firstTilePos;
 		// if there is only one Styx, firstTilePos is RegionManager.worldMap[0][0].desc.firstTilePos
-		var lFirstTileStyxTop:Index = getFirstTileTop();
+		var lFirstTileTop:Index = getFirstTileTop();
 		// if there is only one Styx, lFirstTilePosStyxBottom == 0,styx.width
-		var lFirstTileStyxBottom:Index = getFirstTileBottom();
+		var lFirstTileBottom:Index = getFirstTileBottom();
 		// will determine how much you can put the camera away from styx in a perpendicular line.
 		// not completely accurate since it take the left side of the styx
 		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1; // todo : change 2 by constant (number région same type you can build for a styx)
-		var lCameraModelPosition:Point = IsoManager.isoViewToModel(getNextPositionCenter(pSpeed));
-		trace("START");
-		//trace(lFirstTileStyxTop);
-		//trace(lFirstTileStyxBottom);
-		//trace(lDistanceXStyxToFarestRegion);
-		//trace(lNextPosition);
-		//trace(lCameraModelPosition);
+		var lCameraModelPosition:Point = IsoManager.isoViewToModel(getNextPositionCenter(lSpeed));
+		
 		var lCorrectionToStayInPlayZone:Point = collisionPointRect(
 			lCameraModelPosition,
 			new Rectangle(
-				lFirstTileStyxTop.x - lDistanceXStyxToFarestRegion,
-				lFirstTileStyxTop.y,
-				lFirstTileStyxTop.x + lDistanceXStyxToFarestRegion * 2 + Ground.COL_X_STYX_LENGTH,
-				lFirstTileStyxBottom.y - lFirstTileStyxTop.y
+				lFirstRegionFirstTilePos.x - lDistanceXStyxToFarestRegion,
+				lFirstTileTop.y,
+				lFirstRegionFirstTilePos.x + lDistanceXStyxToFarestRegion * 2 + Ground.COL_X_STYX_LENGTH,
+				lFirstTileBottom.y - lFirstTileTop.y
 			)
 		);
-		// return a speed, if you return a position be sure to return the position whit the toCenter correction
+		
 		var lCorrectionIsoView:Point = IsoManager.modelToIsoView(lCorrectionToStayInPlayZone);
-		trace(lCorrectionIsoView);
 		lSpeed.x -= lCorrectionIsoView.x;
 		lSpeed.y -= lCorrectionIsoView.y;
+		// return a speed, if you return a position be sure to return the position not from center.
 		return lSpeed;
 	}
 	
@@ -152,11 +158,11 @@ class CameraManager
 		
 		if (lPoint.x < lRect.x)
 			lCorrection.x +=  lRect.x - lPoint.x;
-		if (lPoint.x > lRect.x + lRect.width)
+		else if (lPoint.x > lRect.x + lRect.width)
 			lCorrection.x += lRect.x + lRect.width - lPoint.x;
 		if (lPoint.y < lRect.y)
 			lCorrection.y += lRect.y - lPoint.y;
-		if (lPoint.y > lRect.y + lRect.height)
+		else if (lPoint.y > lRect.y + lRect.height)
 			lCorrection.y += lRect.y + lRect.height - lPoint.y;
 		
 		return lCorrection;
@@ -166,23 +172,36 @@ class CameraManager
 			&&  lPoint.y < lRect.y + lRect.height);*/
 	};
 	
-	private static function getFirstTileBottom ():Index {
-		var lHightestY:Int = 0;
-		for (y in RegionManager.worldMap[0].keys()) {
-			lHightestY = lHightestY >= y ? lHightestY : y;
-		}
-		return {
-			x: RegionManager.worldMap[0][lHightestY].desc.firstTilePos.x,
-			y: RegionManager.worldMap[0][lHightestY].desc.firstTilePos.y + Ground.ROW_Y_STYX_LENGTH
-		}
-	}
-	
 	private static function getFirstTileTop ():Index {
 		var lLowestY:Int = 0;
-		for (y in RegionManager.worldMap[0].keys()) {
-			lLowestY = lLowestY <= y ? lLowestY : y;
+		var lAssociatedX:Int = 0;
+		for (regionX in RegionManager.worldMap.keys()) {
+			for (regionY in RegionManager.worldMap[regionX].keys()) {
+				if (lLowestY > regionY) {
+					lLowestY = regionY;
+					lAssociatedX = regionX;
+				}
+			}
 		}
-		return RegionManager.worldMap[0][lLowestY].desc.firstTilePos;
+		return RegionManager.worldMap[lAssociatedX][lLowestY].desc.firstTilePos;
+	}
+	
+	private static function getFirstTileBottom ():Index {
+		var lHightestY:Int = 0;
+		var lAssociatedX:Int = 0;
+		for (regionX in RegionManager.worldMap.keys()) {
+			for (regionY in RegionManager.worldMap[regionX].keys()) {
+				if (lHightestY < regionY) {
+					lHightestY = regionY;
+					lAssociatedX = regionX;
+				}
+			}
+		}
+		
+		return {
+			x: RegionManager.worldMap[lAssociatedX][lHightestY].desc.firstTilePos.x,
+			y: RegionManager.worldMap[lAssociatedX][lHightestY].desc.firstTilePos.y + Ground.ROW_Y_STYX_LENGTH
+		}
 	}
 	
 	// todo : function moveTo
