@@ -128,8 +128,7 @@ class VAltar extends VBuilding
 	
 	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
 	{
-		if (elementHeaven.length == 0 && elementHell.length == 0) return null;
-		else return TimesInfo.MIN / (elementHeaven.length * heavenBonus + elementHell.length * hellBonus);
+		return TimesInfo.MIN;
 	}
 	private function haveMoreBoost():Void{
 

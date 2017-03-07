@@ -286,7 +286,7 @@ class ServerManagerBuilding{
 				Debug.error(data.message);
 			} else {
 				var lGenerator:Generator = IdManager.searchVBuildingById(data.IDClientBuilding).getGenerator();
-				lGenerator.desc.quantity = Std.parseInt(data.nbResource);
+				lGenerator.desc.quantity = data.nbResource == 0 ? 0:Std.parseInt(data.nbResource);
 				IdManager.searchVBuildingById(data.IDClientBuilding).myGenerator = ResourcesManager.UpdateResourcesGenerator(lGenerator, data.max, data.end);
 			}
 		}

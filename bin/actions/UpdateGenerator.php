@@ -60,7 +60,11 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
       );
   }
 }
-else if($typeBuilding->NbBuildingHeaven > 0 || $typeBuilding->NbBuildingHell > 0) {
+else if($typeBuilding->Name == 'Altar Vice 1' ||
+  $typeBuilding->Name == 'Altar Vice 2' ||
+  $typeBuilding->Name == 'Altar Virtue 1' ||
+  $typeBuilding->Name == 'Altar Virtue 2'
+) {
   $calcul1 = $typeBuilding->NbBuildingHell * $typeBuilding->ProductionPerBuildingHell;
   $calcul2 = $typeBuilding->NbBuildingHeaven*$typeBuilding->ProductionPerBuildingHeaven;
 
