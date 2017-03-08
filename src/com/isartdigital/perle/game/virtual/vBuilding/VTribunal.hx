@@ -14,6 +14,7 @@ import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.utils.localisation.Localisation;
 import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
+import pixi.core.sprites.Sprite;
 
 
 typedef SoulDescription = {
@@ -36,6 +37,7 @@ class VTribunal extends VBuildingUpgrade
 	 */
 	private static var instance: VTribunal;
 	public var soulToJudge:SoulDescription;
+	public var fbPicture:Sprite;
 	/**
 	 * Retourne l'instance unique de la classe, et la crée si elle n'existait pas au préalable
 	 * @return instance unique

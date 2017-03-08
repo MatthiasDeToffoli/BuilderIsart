@@ -16,6 +16,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin;
 import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.services.facebook.Facebook;
+import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
@@ -28,6 +29,8 @@ import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Json;
 import js.html.TouchEvent;
 import pixi.core.math.Point;
+import pixi.core.sprites.Sprite;
+import pixi.core.textures.Texture;
 import pixi.interaction.EventTarget;
 
 	
@@ -95,6 +98,7 @@ class TribunalPopin extends SmartPopinExtended
 	private var soulGoodBoy1:UISprite;
 	private var soulGoodBoy2:UISprite;
 	private var soulGoodBoy3:UISprite;
+	private var facebookName:String;
 	
 	private var fbText:TextSprite;
 	
@@ -124,8 +128,7 @@ class TribunalPopin extends SmartPopinExtended
 		SoundManager.getSound("SOUND_OPEN_MENU_PURG").play();
 		
 		btnClose = cast(getChildByName(AssetName.PURGATORY_POPIN_CANCEL), SmartButton);
-		//btnShop = cast(getChildByName(AssetName.PURGATORY_POPIN_SHOP), SmartButton);
-		//btnIntern = cast(getChildByName(AssetName.PURGATORY_POPIN_INTERN), SmartButton);
+
 		btnUpgrade = cast(getChildByName(AssetName.PURGATORY_POPIN_UPGRADE), SmartButton);
 		//SmartCheck.traceChildrens(this);
 
@@ -192,6 +195,7 @@ class TribunalPopin extends SmartPopinExtended
 		soulGoodGirl2= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_2), UISprite);
 		soulGoodGirl3= cast(cardSoul.getChildByName(AssetName.PURGATORY_CARD_GOOD_GIRL_3), UISprite);
 
+		if (VTribunal.getInstance().fbPicture != null) placeAndAddFbPicture();
 		cardSoul.on(TouchEventType.TOUCH_START, onMouseDownOnCard);
 		cardSoul.on(MouseEventType.MOUSE_DOWN, onMouseDownOnCard);
 		
@@ -354,6 +358,13 @@ class TribunalPopin extends SmartPopinExtended
 		doTween = false;
 		cardSoul.interactive = true;
 		cardSoul.alpha = 1;
+		cardSoul.buttonMode = true;
+		
+		if (VTribunal.getInstance().fbPicture != null) {
+			cardSoul.removeChild(VTribunal.getInstance().fbPicture);
+			VTribunal.getInstance().fbPicture.destroy();
+			VTribunal.getInstance().fbPicture = null;
+		}
 		
 		resetPos();
 		changeSoulTextInfo();
@@ -409,8 +420,24 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onFriendInfo(response:Dynamic):Void {
-		setTribunalSoulToJudge(response.name);
+		facebookName = response.name;
+		Facebook.api(response.id+"?fields=picture.width("+ soulEvilBoy1.width + ").height(" + soulEvilBoy1.height + ")",onFriendPicture);
 	}
+	
+	private function onFriendPicture(response:Dynamic) {
+		VTribunal.getInstance().fbPicture = new Sprite(Texture.fromImage(response.picture.data.url));
+		setTribunalSoulToJudge(facebookName);
+		placeAndAddFbPicture();
+		
+	}
+	
+	private function placeAndAddFbPicture():Void {
+		VTribunal.getInstance().fbPicture.anchor = new Point(0.5, 0.5);
+		VTribunal.getInstance().fbPicture.position = soulEvilBoy1.position;
+		setPictureFalse();
+		cardSoul.addChildAt(VTribunal.getInstance().fbPicture,cardSoul.children.length - 1);
+	}
+	
 	
 	private function setTribunalSoulToJudge(pName:String):Void {
 		VTribunal.getInstance().updateSoulToJudge(pName);
@@ -546,6 +573,10 @@ class TribunalPopin extends SmartPopinExtended
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
+		
+		if (VTribunal.getInstance().fbPicture != null) {
+			cardSoul.removeChild(VTribunal.getInstance().fbPicture);
+		}
 		
 		Interactive.removeListenerClick(btnClose, onClose);
 		Interactive.removeListenerClick(btnInviteSoul, onInviteSoul);
