@@ -344,12 +344,20 @@ class TribunalPopin extends SmartPopinExtended
 		canMoovCard = false;
 		
 		var diff:Float = mouseEvent.data.global.x - baseMousePos.x;
-		
+
 		if (diff > 0) {
 			if (cardSoul.rotation > baseCardRot + Math.PI / 32) onHell();
+			else if(baseCardPos != null && baseCardRot != null) {
+				resetPos();
+			}
 		}
 		else if (diff < 0) {
 			if (cardSoul.rotation < baseCardRot - Math.PI / 32) onHeaven();
+			else if(baseCardPos != null && baseCardRot != null) {
+				resetPos();
+			}
+		}else if(baseCardPos != null && baseCardRot != null) {
+			resetPos();
 		}
 		
 	}
