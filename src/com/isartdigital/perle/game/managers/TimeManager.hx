@@ -78,6 +78,7 @@ class TimeManager {
 	 */
 	private static inline var TIME_LOOP_DELAY:Int = 5 * TimesInfo.SEC;
 	private static inline var TIME_LOOP_DELAY_PROGRESSION:Int = 50;
+	private static inline var TIME_LOOP_SYNCHRO = TimesInfo.MIN + 30*TimesInfo.SEC; //call every 1:30 minutes
 	
 	public static var eTimeGenerator:EventEmitter;
 	public static var eTimeQuest:EventEmitter;
@@ -315,11 +316,24 @@ class TimeManager {
 		// specially if you think about connexion problem.
 		// todo, i think that's important !
 		//timeLoop();  // non car il veut save du coup, mais save pas encore créer si whitoutSave
+		
+		timeLoopSynchro(); //synchro one time before game started.
+		
 		var lTime:Timer = Timer.delay(timeLoop, TIME_LOOP_DELAY); // todo : variable locale ? sûr ?
 		lTime.run = timeLoop;
 		
 		var loopProgression:Timer = Timer.delay(timeLoopProgression, TIME_LOOP_DELAY_PROGRESSION);
 		loopProgression.run = timeLoopProgression;
+		
+		var loopSynchro:Timer = Timer.delay(timeLoopSynchro, TIME_LOOP_SYNCHRO);
+		loopSynchro.run = timeLoopSynchro;
+	}
+	
+	private static function timeLoopSynchro():Void {
+		var lTime:TimeElementResource;
+		
+		for (lTime in listResource)
+			ServerManagerBuilding.updateGenerator(IdManager.searchVBuildingById(lTime.desc.refTile).tileDesc);
 	}
 	
 	public static function timeLoopProgression():Void {
