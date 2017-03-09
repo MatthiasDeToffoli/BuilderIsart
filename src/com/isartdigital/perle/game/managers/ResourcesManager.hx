@@ -424,12 +424,13 @@ class ResourcesManager
 	 * update the value of the resourcesGenerator
 	 * @param	pGenerator the generator to update
 	 * @param	pMax the capacity of the generator
+	 * @param isFullTime boolean said if we have to calcul a new time with pEnd or if we use this simply
 	 * @return the generator which is update
 	 */
-	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float, pEnd:Float):Generator{
+	public static function UpdateResourcesGenerator(pGenerator:Generator, pMax:Float, pEnd:Float, isFullTime:Bool):Generator{
 		pGenerator.desc.max = pMax;
 		myResourcesData.generatorsMap[pGenerator.desc.type][myResourcesData.generatorsMap[pGenerator.desc.type].indexOf(pGenerator)] = pGenerator;
-		TimeManager.updateTimeResource(pEnd, pGenerator.desc.id);
+		TimeManager.updateTimeResource(pEnd, pGenerator.desc.id, isFullTime);
 		return pGenerator;
 	}
 	
@@ -485,8 +486,8 @@ class ResourcesManager
 	 */
 	private static function increaseResourcesWithTime(data:EventResoucreTick):Void{
 		if (data != null){
-			if (increaseResourcesWithPolation(Alignment.heaven, data)) return;
-			if (increaseResourcesWithPolation(Alignment.hell, data)) return;
+			/*if (increaseResourcesWithPolation(Alignment.heaven, data)) return;
+			if (increaseResourcesWithPolation(Alignment.hell, data)) return;*/ //times calcul with population so we use population 2 times
 			increaseResources(data.generator, data.tickNumber);
 		}
 		
@@ -523,7 +524,7 @@ class ResourcesManager
 		else pGenerator.desc.quantity = pGenerator.desc.quantity + quantity;
 		save(pGenerator);
 		
-		if (pGenerator.desc.quantity >= pGenerator.desc.max / 10) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
+		if (pGenerator.desc.quantity >= pGenerator.desc.max / 4) generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id, forButton:true, active:true});
 		else generatorEvent.emit(GENERATOR_EVENT_NAME, {id:pGenerator.desc.id});
 		if(pGenerator.desc.type == GeneratorType.soul) soulArrivedEvent.emit(SOUL_ARRIVED_EVENT_NAME);
 	}

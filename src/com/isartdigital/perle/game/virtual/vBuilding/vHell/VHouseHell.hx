@@ -28,7 +28,7 @@ class VHouseHell extends VHouse
 	
 	private function setHouse():Void {
 		ResourcesManager.increaseResources(myGenerator, myGenerator.desc.max);
-		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime,false);
 		updatePopulation(FTUE_SOUL_INHOUSE);	
 	}
 	

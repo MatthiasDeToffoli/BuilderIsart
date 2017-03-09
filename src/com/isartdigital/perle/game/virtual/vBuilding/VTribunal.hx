@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.virtual.vBuilding;
 
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.CameraManager;
+import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -72,8 +73,7 @@ class VTribunal extends VBuildingUpgrade
 		} else {
 			lDesc = pDesc;
 		}
-		
-		
+
 		super(lDesc);
 		addGenerator();
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
@@ -135,10 +135,21 @@ class VTribunal extends VBuildingUpgrade
 	 * update the time of production
 	 * @param	denominator the number to divise the time
 	 */
-	public function updateGenerator(denominator:Float):Void {
+	public function updateGenerator():Void {
 		var  typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level);
-		myTime = calculTimeProd(typeBuilding) / denominator;
-		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);
+		myTime = calculTimeProd(typeBuilding);
+		myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime,false);
+	}
+	
+	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
+	{
+		var boost:Float = MarketingManager.getProdBoost();
+		return TimesInfo.HOU / (pTypeBuilding.productionPerHour + boost);
+	}
+	
+	override function updateResources():Void 
+	{
+		super.updateResources();
 	}
 	
 	override function getMaxContains(?pTypeBuilding:TableTypeBuilding):Int 

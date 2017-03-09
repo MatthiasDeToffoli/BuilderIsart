@@ -18,7 +18,7 @@ class VMarketingHouse extends VBuilding
 	{
 		alignementBuilding = Alignment.heaven;
 		super(pDescription);
-		//MarketingManager.increaseNumberAdMen();
+		MarketingManager.increaseNumberAdMen();
 		
 	}
 	

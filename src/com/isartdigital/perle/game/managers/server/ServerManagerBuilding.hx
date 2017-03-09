@@ -231,7 +231,7 @@ class ServerManagerBuilding{
 			} else {
 				trace('good' + Date.fromTime(data.EndForNextProduction),data.EndForNextProduction );
 				var lGenerator:Generator = IdManager.searchVBuildingById(data.IdClient).getGenerator();
-				ResourcesManager.UpdateResourcesGenerator(lGenerator, lGenerator.desc.max, data.EndForNextProduction);
+				ResourcesManager.UpdateResourcesGenerator(lGenerator, lGenerator.desc.max, data.EndForNextProduction,true);
 				cast(IdManager.searchVBuildingById(data.IdClient), VHouse).updatePopulation(data.NbSoul);
 				VTribunal.getInstance().myGenerator.desc.quantity = data.NbResource;
 				ResourcesManager.replaceResourcesGenerator(VTribunal.getInstance().myGenerator);
@@ -287,7 +287,7 @@ class ServerManagerBuilding{
 			} else {
 				var lGenerator:Generator = IdManager.searchVBuildingById(data.IDClientBuilding).getGenerator();
 				lGenerator.desc.quantity = data.nbResource == 0 ? 0:Std.parseInt(data.nbResource);
-				IdManager.searchVBuildingById(data.IDClientBuilding).myGenerator = ResourcesManager.UpdateResourcesGenerator(lGenerator, data.max, data.end);
+				IdManager.searchVBuildingById(data.IDClientBuilding).myGenerator = ResourcesManager.UpdateResourcesGenerator(lGenerator, data.max, data.end,true);
 			}
 		}
 	}
@@ -318,7 +318,7 @@ class ServerManagerBuilding{
 			if (data.error) {
 				Debug.error(data.message);
 			} else {
-				TimeManager.updateTimeResource(data.EndForNextProduction, data.IDClientBuilding);
+				TimeManager.updateTimeResource(data.EndForNextProduction, data.IDClientBuilding,true);
 			}
 		}
 	}

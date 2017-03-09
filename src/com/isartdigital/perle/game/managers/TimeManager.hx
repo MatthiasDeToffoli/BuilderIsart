@@ -182,12 +182,13 @@ class TimeManager {
 	 * @param	pEnd the new time for increase resources
 	 * @param	pGenerator the generator link to the timeManager
 	 */
-	public static function updateTimeResource(pEnd:Float, pId:Int):Void{
+	public static function updateTimeResource(pEnd:Float, pId:Int,isFullTime:Bool):Void{
 		var lTimeElement:TimeElementResource;
 
 		for (lTimeElement in listResource)
 			if (lTimeElement.generator.desc.id == pId){
-				lTimeElement.desc.end = pEnd;
+				if (isFullTime || pEnd == null) lTimeElement.desc.end = pEnd;
+				else lTimeElement.desc.end += pEnd;
 			}
 				
 			
@@ -331,9 +332,12 @@ class TimeManager {
 	
 	private static function timeLoopSynchro():Void {
 		var lTime:TimeElementResource;
-		
-		for (lTime in listResource)
-			ServerManagerBuilding.updateGenerator(IdManager.searchVBuildingById(lTime.desc.refTile).tileDesc);
+
+		for (lTime in listResource){
+			var currentVBuilding:VBuilding = IdManager.searchVBuildingById(lTime.desc.refTile);
+			if (currentVBuilding == null) return; //@Ambroise : id 0 create and don't exist in game ? Oo
+			ServerManagerBuilding.updateGenerator(currentVBuilding.tileDesc);
+		}
 	}
 	
 	public static function timeLoopProgression():Void {
@@ -422,11 +426,23 @@ class TimeManager {
 	 */
 	private static function updateResource (pElement:TimeElementResource):Void {
 		if (pElement.desc.end == null) return;
-
+	
 		// update resources !
 		if (Date.now().getTime() > pElement.desc.end) {
-			ServerManagerBuilding.updateGenerator(IdManager.searchVBuildingById(pElement.desc.refTile).tileDesc);
+			
+			var currentVBuilding:VBuilding = IdManager.searchVBuildingById(pElement.desc.refTile);
+			if (currentVBuilding == null) return; //@Ambroise : id 0 create and don't exist in game ? Oo
+			
+			eTimeGenerator.emit(
 		
+				EVENT_RESOURCE_TICK,
+				{
+					generator:pElement.generator,
+					tickNumber:1
+				}
+			);
+			
+			pElement.desc.end += currentVBuilding.getTimeCalcul();
 		}
 			
 			

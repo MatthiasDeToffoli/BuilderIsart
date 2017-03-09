@@ -102,7 +102,7 @@ class VBuilding extends VTile {
 		if (typeBuilding.productionPerHour != null && !Std.is(this, VMarketingHouse)) {
 			
 			myTime = calculTimeProd(typeBuilding);
-			myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime);	
+			myGenerator = ResourcesManager.UpdateResourcesGenerator(myGenerator, getMaxContains(typeBuilding), myTime,false);	
 		}
 	}
 	
@@ -345,6 +345,11 @@ class VBuilding extends VTile {
 	
 	private function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float {
 		return TimesInfo.HOU / pTypeBuilding.productionPerHour;
+	}
+	
+	public function getTimeCalcul():Float {
+		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName, tileDesc.level);
+		return calculTimeProd(typeBuilding);
 	}
 	
 	private function addHudContextual ():Void {

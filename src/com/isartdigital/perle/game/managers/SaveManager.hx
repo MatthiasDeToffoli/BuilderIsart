@@ -431,9 +431,9 @@ class SaveManager {
 		
 		for (config in pBuildings.keys()) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
-			
+
 			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
-			&& (lGameConfig.name != 'Hell Collector Iron Mines' || lGameConfig.name != 'Heaven Collector Lumber Mill')) {
+			&& (lGameConfig.name != 'Hell Collector Iron Mines' && lGameConfig.name != 'Heaven Collector Lumber Mill' && lGameConfig.name != 'Marketing Department')) {
 				lArray.push({
 					refTile:pBuildings[config].id,
 					progress:Date.now().getTime(),
@@ -458,7 +458,7 @@ class SaveManager {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
 			
 			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
-			&& (lGameConfig.name != 'Hell Collector Iron Mines' || lGameConfig.name != 'Heaven Collector Lumber Mill')) {
+			&& (lGameConfig.name != 'Hell Collector Iron Mines' && lGameConfig.name != 'Heaven Collector Lumber Mill' && lGameConfig.name != 'Marketing Department')) {
 				desc.arrayGenerator.push(buildingLoadGenerator(
 					pBuildings[config],
 					lGameConfig,

@@ -22,6 +22,7 @@ class MarketingManager
 	/**
 	 * number of VMarketing house
 	 */
+	private static var marketingProd:Float;
 	private static var numberAdMen:Int;
 	private static var campaigns:Map<CampaignType,Campaign>;
 	private static var currentCampaign:CampaignType;
@@ -61,6 +62,8 @@ class MarketingManager
 				boost:lArray[i].gainFluxSouls
 			}
 		}
+		
+		marketingProd = GameConfig.getBuildingByName('Marketing Department', 1).productionPerHour;
 	}
 	
 	public static function getCampaignByName(pName:String):String {
@@ -129,8 +132,16 @@ class MarketingManager
 		return !(currentCampaign == CampaignType.none);
 	}
 	
+	public static function getProdBoost():Float {
+		
+		var sum1:Float = numberAdMen * marketingProd;
+
+		var sum2:Float = campaigns[currentCampaign].boost; 
+		return sum1 + sum2;
+	}
+	
 	private static function updateTribunal():Void {
-		VTribunal.getInstance().updateGenerator(1 + (NUMBERADMENFACTOR + campaigns[currentCampaign].boost) * numberAdMen); 
+		VTribunal.getInstance().updateGenerator(); 
 	}
 	
 }

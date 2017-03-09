@@ -134,7 +134,7 @@ class VAltar extends VBuilding
 
 		calculTime();
 
-		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime);
+		ResourcesManager.UpdateResourcesGenerator(myGenerator, myMaxContains, myTime,false);
 	}
 	
 	override public function destroy():Void 
