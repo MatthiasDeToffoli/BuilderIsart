@@ -108,6 +108,7 @@ class MouseManager {
 		
 		if (mouseTouchDown)
 			moveGameContainer(positionInGame);
+		
 	}
 	
 	public static inline var MAX_DURATION_FOR_SHORT_CLICK:Int = 150; // milliseconds
@@ -166,18 +167,21 @@ class MouseManager {
 	private function onMouseDown(pEvent:Dynamic):Void {
 		mouseTouchDown = true;
 		precedentMousePos.copy(positionInGame);
+		CameraManager.killSmooth();
 	}
 	
 	private function onTouchDown(pEvent:TouchEvent):Void {
 		// don't rely only en TouchEvent.MOVE to get globalPos !
 		touchGlobalPos.set(pEvent.touches[0].pageX, pEvent.touches[0].pageY);
 		mouseTouchDown = true;
+		CameraManager.killSmooth();
 		precedentMousePos.copy(positionInGame);
 		oneFrameHack = true;
 	}
 	
 	private function onMouseTouchUp (): Void {
 		mouseTouchDown = false;
+		CameraManager.smoothCamera();
 	}
 	
 	// could be a instance method and used like "myPoint.soustract(anotherPoint);"

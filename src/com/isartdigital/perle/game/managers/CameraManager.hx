@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.greensock.core.Animation;
 import com.isartdigital.perle.game.managers.ClippingManager.EasyRectangle;
 import com.isartdigital.perle.game.managers.RegionManager.Region;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -56,14 +57,46 @@ class CameraManager
 	 */
 	private static var yDistMoved:Float;
 	
+	private static var lastSpeedKnow:Point;
+	private static var killTweenRef: Void -> Animation;
+	private static var lastTargetPosition:Point;
+	
 	/**
 	 * place the camera
 	 * @param pPos position to subastract at the camera
 	 * @author Matthias
 	 */
-	public static function placeCamera(pPos:Point):Void{
+	public static function placeCamera (pPos:Point):Void{
 		target.x -= IsoManager.modelToIsoView(pPos).x;
 		target.y -= IsoManager.modelToIsoView(pPos).y;
+	}
+	
+	public static function smoothCamera ():Void {
+		lastTargetPosition = target.position.clone();
+		killTweenRef = TweenManager.linearSlow(target, lastSpeedKnow, onSmoothUpdate);
+		lastSpeedKnow = new Point(0, 0);
+	}
+	
+	private static function onSmoothUpdate ():Void {
+		var lSpeed:Point = new Point (
+			target.position.x - lastTargetPosition.x,
+			target.position.y - lastTargetPosition.y
+		);
+		checkClippingNeed(lSpeed);
+		lastTargetPosition = target.position.clone();
+		
+		var lCorrection:Point = checkMaxDistanceCamera(new Point(0, 0));
+		if (lCorrection.x != 0 || lCorrection.y != 0) {
+			target.position.x += lCorrection.x;
+			target.position.y += lCorrection.y;
+		}
+	}
+	
+	public static function killSmooth ():Void {
+		if (killTweenRef != null) {
+			killTweenRef();
+			killTweenRef = null;
+		}
 	}
 	
 	/**
@@ -71,7 +104,7 @@ class CameraManager
 	 * @param	pSpeed
 	 * @author Ambroise
 	 */
-	public static function move(pSpeedX:Float, pSpeedY:Float):Void {
+	public static function move (pSpeedX:Float, pSpeedY:Float):Void {
 		if (Hud.isHide && !Phantom.isSet())
 			return;
 		if (DialogueManager.cameraHaveToMove) {
@@ -80,6 +113,7 @@ class CameraManager
 		}
 		
 		var lSpeed:Point = new Point(pSpeedX, pSpeedY);
+		lastSpeedKnow = lSpeed;
 		// that's only half working, wtf ?
 		target.position = getNextPosition(
 			target.position, 
@@ -111,10 +145,6 @@ class CameraManager
 		lCenter.y += pSpeed.y;
 		return lCenter;
 	}
-	
-	// todo : ok je peux glisser sur les bords
-	// todo : ne pas trembler sur les bords
-	// todo : ne pas limiter au styx mais aux régions
 	
 	private static function checkMaxDistanceCamera (pSpeed:Point):Point {
 		var lSpeed:Point = new Point();
@@ -148,7 +178,8 @@ class CameraManager
 	}
 	
 	/**
-	 * 
+	 * originaly just a rect point collision function, i just added a correction point
+	 * that is returned.
 	 * @param	lPoint
 	 * @param	lRect
 	 * @return correction value to add to stay in the rectangle
@@ -166,10 +197,6 @@ class CameraManager
 			lCorrection.y += lRect.y + lRect.height - lPoint.y;
 		
 		return lCorrection;
-		/*return (lPoint.x > lRect.x
-			&&  lPoint.x < lRect.x + lRect.width
-			&&  lPoint.y > lRect.y
-			&&  lPoint.y < lRect.y + lRect.height);*/
 	};
 	
 	private static function getFirstTileTop ():Index {
@@ -267,8 +294,6 @@ class CameraManager
 			ClippingManager.update();
 	}
 	
-	public function new() {
-		
-	}
+
 	
 }

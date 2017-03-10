@@ -1,11 +1,12 @@
 package com.isartdigital.perle.game.managers;
-import com.greensock.TimelineMax;
+import com.greensock.core.Animation;
 import com.greensock.easing.Back;
 import com.greensock.easing.Elastic;
+import com.greensock.easing.Power1;
+import com.greensock.TimelineMax;
 import com.greensock.TweenMax;
 import com.isartdigital.perle.ui.popin.TribunalPopin;
 import com.isartdigital.utils.game.GameStage;
-import com.isartdigital.utils.system.DeviceCapabilities;
 import com.isartdigital.utils.ui.smart.UISprite;
 import js.Browser;
 import pixi.core.display.Container;
@@ -180,4 +181,61 @@ class TweenManager {
 		}, "-=0.01");
 	}
 	
+	// used on camera after a move
+	/**
+	 * Factor that can extend smooth duration.
+	 * Factor that is mutltiplied by the speed (in px by frame) to add additionnal time (in second)
+	 * (only the last frame is counted before mouseUp)
+	 * For example: a speed of 100px/frame would extend duration by one second whit 0.01 as setting
+	 */
+	private static inline var LINEAR_SLOW_DURATION_FACTOR:Float = 0.01;
+	/**
+	 * Factor that can make the linear slow go futher.
+	 * It is multiplied by the speed and then added to the target position
+	 * to obtain the end position of the tween.
+	 * Example : a speed (px/frame) of 100, will make the object tween over 3000px whit 30 as setting.
+	 */
+	private static inline var LINEAR_SLOW_DISTANCE_FACTOR:Float = 30;
+	private static inline var LINEAR_SLOW_MAX_DURATION:Float = 5;
+	private static inline var LINEAR_SLOW_MIN_DURATION:Float = 1;
+	
+	/**
+	 * 
+	 * @param	pDisplayObject
+	 * @param	pSpeed
+	 * @return	killFunction
+	 */
+	public static function linearSlow (pDisplayObject:Container, pSpeed:Point, pOnUpdate:Void->Void):Void -> Animation {
+		var myTween:TweenMax = TweenMax.to(
+			pDisplayObject,
+			Math.min(
+				Math.max(
+					LINEAR_SLOW_MIN_DURATION, 
+					LINEAR_SLOW_DURATION_FACTOR * magnitude(pSpeed)
+				),
+				LINEAR_SLOW_MAX_DURATION
+			),
+			{
+				onUpdate:pOnUpdate,
+				ease: Power1.easeOut,
+				x:pDisplayObject.x + pSpeed.x * LINEAR_SLOW_DISTANCE_FACTOR,
+				y:pDisplayObject.y + pSpeed.y * LINEAR_SLOW_DISTANCE_FACTOR
+			}
+		);
+		// difficulty to find the good type that correspond to myTween.kill
+		return untyped myTween.kill;
+	}
+	
+	public static function magnitude (pPoint:Point) {
+		return Math.sqrt(pPoint.x * pPoint.x + pPoint.y * pPoint.y);
+	}
+	
+	public static function normalize (pPoint:Point) {
+		var length:Float = magnitude(pPoint);
+		if (length == 0)
+			return pPoint;
+		pPoint.x /= length;
+		pPoint.y /= length;
+		return pPoint;
+	}
 }
