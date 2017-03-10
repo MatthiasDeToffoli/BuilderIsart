@@ -89,7 +89,7 @@ class VTile extends Virtual{
 	
 	// nous sers désormé de grille virtuel pour les débug l'appelle à était désactivé :)
 	public static function buildInsideRegion (pRegion:Region, pImmediateVisible:Bool = false):Void {
-		
+		Debug.warn("debug function used");
 		
 		var col:Int = pRegion.desc.type == Alignment.neutral ? Ground.COL_X_STYX_LENGTH:Ground.COL_X_LENGTH;
 		var row:Int = pRegion.desc.type == Alignment.neutral ? Ground.ROW_Y_STYX_LENGTH:Ground.ROW_Y_LENGTH;

@@ -59,6 +59,10 @@ class CameraManager
 	
 	private static var killTweenRef: Void -> Animation;
 	private static var lastTargetPosition:Point;
+	/**
+	 * Zone (model not isoView) in wich the camera can move.
+	 */
+	private static var currentCameraPlayZone:Rectangle;
 	
 	/**
 	 * place the camera
@@ -144,10 +148,17 @@ class CameraManager
 		return lCenter;
 	}
 	
-	private static function checkMaxDistanceCamera (pSpeed:Point):Point {
-		var lSpeed:Point = new Point();
-		lSpeed.copy(pSpeed);
-		
+	public static function updateCameraPlayZone ():Void {
+		currentCameraPlayZone = getCameraPlayZone();
+	}
+	
+	/**
+	 * Get the zone in wich the camera can move. corresponding to a rectangle
+	 * from the lowest to the hightest region in Y.
+	 * and width = 4 regions + space between region + styx
+	 * @return Camera play zone
+	 */
+	private static function getCameraPlayZone ():Rectangle {
 		var lFirstRegionFirstTilePos:Index = RegionManager.worldMap[0][0].desc.firstTilePos;
 		// if there is only one Styx, firstTilePos is RegionManager.worldMap[0][0].desc.firstTilePos
 		var lFirstTileTop:Index = getFirstTileTop();
@@ -155,17 +166,30 @@ class CameraManager
 		var lFirstTileBottom:Index = getFirstTileBottom();
 		// will determine how much you can put the camera away from styx in a perpendicular line.
 		// not completely accurate since it take the left side of the styx
-		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1; // todo : change 2 by constant (number région same type you can build for a styx)
+		// todo : change 2 by constant (number région same type you can build for a styx)
+		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1;
+		
+		return new Rectangle(
+			lFirstRegionFirstTilePos.x - lDistanceXStyxToFarestRegion,
+			lFirstTileTop.y,
+			lFirstRegionFirstTilePos.x + lDistanceXStyxToFarestRegion * 2 + Ground.COL_X_STYX_LENGTH,
+			lFirstTileBottom.y - lFirstTileTop.y
+		);
+	}
+	
+	private static function checkMaxDistanceCamera (pSpeed:Point):Point {
+		var lSpeed:Point = new Point();
+		lSpeed.copy(pSpeed);
+		
 		var lCameraModelPosition:Point = IsoManager.isoViewToModel(getNextPositionCenter(lSpeed));
+		
+		// security
+		if (currentCameraPlayZone == null)
+			updateCameraPlayZone();
 		
 		var lCorrectionToStayInPlayZone:Point = collisionPointRect(
 			lCameraModelPosition,
-			new Rectangle(
-				lFirstRegionFirstTilePos.x - lDistanceXStyxToFarestRegion,
-				lFirstTileTop.y,
-				lFirstRegionFirstTilePos.x + lDistanceXStyxToFarestRegion * 2 + Ground.COL_X_STYX_LENGTH,
-				lFirstTileBottom.y - lFirstTileTop.y
-			)
+			currentCameraPlayZone
 		);
 		
 		var lCorrectionIsoView:Point = IsoManager.modelToIsoView(lCorrectionToStayInPlayZone);

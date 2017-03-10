@@ -388,6 +388,8 @@ class RegionManager
 			),
 			0
 		);
+		
+		CameraManager.updateCameraPlayZone();
 	}
 	
 	/**
