@@ -19,20 +19,9 @@ import pixi.core.math.Point;
  */
 class TweenManager {
 	
-	private static inline var SCALE_GROW_DURATION:Float = 0.5;
-	private static inline var SCALE_GROW_DURATION_FTUE:Float = 1;
-	private static inline var SCALE_GROW_START_SCALE:Float = 0.8;
-	private static inline var SCALE_GROW_START_SCALE_FTUE:Float = 0.5;
-	private static inline var SCALE_GROW_BACK_PARAM_1:Float = 1.2;
-	private static inline var SCALE_GROW_BACK_PARAM_1_FTUE:Float = 1.2;
-	
 	private static inline var LOWER_ALPHA_DURATION:Float = 0.5;
 	private static inline var POS_UP_DURATION:Float = 0.7;
 	private static inline var POS_UP_PARAM:Float = 0.1;
-	
-	private static inline var POSITION_ELASTIC_ATTRACT_DURATION:Float = 1.3; // seconds
-	private static inline var POSITION_ELASTIC_ATTRACT_PARAM_1:Float = 1;
-	private static inline var POSITION_ELASTIC_ATTRACT_PARAM_2:Float = 0.75;
 	
 	//For UnlockPoppin
 	private static inline var POSITION_ELASTIC_ATTRACT_DURATION_UNLOCK:Float = 0.5; // seconds
@@ -45,6 +34,12 @@ class TweenManager {
 	private static inline var RESCALE_UNLOCK_PLUS:Float = 1.3;
 	private static inline var RESCALE_UNLOCK_DURATION_PLUS:Float = 0.2;
 	
+	private static inline var SCALE_GROW_DURATION:Float = 0.5;
+	private static inline var SCALE_GROW_DURATION_FTUE:Float = 1;
+	private static inline var SCALE_GROW_START_SCALE:Float = 0.8;
+	private static inline var SCALE_GROW_START_SCALE_FTUE:Float = 0.5;
+	private static inline var SCALE_GROW_BACK_PARAM_1:Float = 1.2;
+	private static inline var SCALE_GROW_BACK_PARAM_1_FTUE:Float = 1.2;
 	
 	/**
 	 * Start from a lower scale then put scale to 1:1
@@ -120,6 +115,9 @@ class TweenManager {
 		} );
 	}
 	
+	private static inline var POSITION_ELASTIC_ATTRACT_DURATION:Float = 1.3; // seconds
+	private static inline var POSITION_ELASTIC_ATTRACT_PARAM_1:Float = 1;
+	private static inline var POSITION_ELASTIC_ATTRACT_PARAM_2:Float = 0.75;
 	
 	/**
 	 * Used for buttonProduction.
