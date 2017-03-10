@@ -43,6 +43,7 @@ class MouseManager {
 	 */
 	public var desktop(default, null):Bool = false;
 	public var touchGlobalPos(default, null):Point = new Point(0, 0);
+	public var lastSpeedKnow(default, null):Point;
 	
 	private var mouseTouchDown:Bool = false;
 	private var precedentMousePos:Point = new Point();
@@ -149,9 +150,9 @@ class MouseManager {
 		if (oneFrameHack)
 			oneFrameHack = false;
 		else {
-			var lSoustract:Point = soustractPoint(pMouseLocalPos, precedentMousePos);
-			if (lSoustract.x != 0 || lSoustract.y != 0)
-				CameraManager.move(lSoustract.x, lSoustract.y);
+			lastSpeedKnow = soustractPoint(pMouseLocalPos, precedentMousePos);
+			if (lastSpeedKnow.x != 0 || lastSpeedKnow.y != 0)
+				CameraManager.move(lastSpeedKnow);
 		}
 		
 		updatePrecedentMousePos();

@@ -57,7 +57,6 @@ class CameraManager
 	 */
 	private static var yDistMoved:Float;
 	
-	private static var lastSpeedKnow:Point;
 	private static var killTweenRef: Void -> Animation;
 	private static var lastTargetPosition:Point;
 	
@@ -73,8 +72,8 @@ class CameraManager
 	
 	public static function smoothCamera ():Void {
 		lastTargetPosition = target.position.clone();
-		killTweenRef = TweenManager.linearSlow(target, lastSpeedKnow, onSmoothUpdate);
-		lastSpeedKnow = new Point(0, 0);
+		if (TweenManager.magnitude(MouseManager.getInstance().lastSpeedKnow) != 0)
+			killTweenRef = TweenManager.linearSlow(target, MouseManager.getInstance().lastSpeedKnow, onSmoothUpdate);
 	}
 	
 	private static function onSmoothUpdate ():Void {
@@ -104,7 +103,7 @@ class CameraManager
 	 * @param	pSpeed
 	 * @author Ambroise
 	 */
-	public static function move (pSpeedX:Float, pSpeedY:Float):Void {
+	public static function move (pSpeed:Point):Void {
 		if (Hud.isHide && !Phantom.isSet())
 			return;
 		if (DialogueManager.cameraHaveToMove) {
@@ -112,8 +111,7 @@ class CameraManager
 			DialogueManager.cameraHaveToMove = false;
 		}
 		
-		var lSpeed:Point = new Point(pSpeedX, pSpeedY);
-		lastSpeedKnow = lSpeed;
+		var lSpeed:Point = pSpeed.clone();
 		// that's only half working, wtf ?
 		target.position = getNextPosition(
 			target.position, 
