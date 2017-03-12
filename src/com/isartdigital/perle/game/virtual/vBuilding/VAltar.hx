@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
+import com.isartdigital.utils.Debug;
 
 /**
  * ...
@@ -20,8 +21,8 @@ class VAltar extends VBuilding
 {
 
 	private var alignmentEffect:Alignment;
-	private var elementHeaven:Array<Int>;
-	private var elementHell:Array<Int>;
+	private var nbHeaven:Int;
+	private var nbHell:Int;
 	private static inline var ZONESIZE:Int = 4;
 	private var heavenBonus:Float;
 	private var hellBonus:Float;
@@ -30,15 +31,13 @@ class VAltar extends VBuilding
 	{
 		alignementBuilding = Alignment.neutral;
 		super(pDescription);
-		elementHeaven = new Array<Int>();
-		elementHell = new Array<Int>();
 		
 		var typeBuilding:TableTypeBuilding = GameConfig.getBuildingByName(tileDesc.buildingName);
 		heavenBonus = typeBuilding.productionPerBuildingHeaven;
 		hellBonus = typeBuilding.productionPerBuildingHell;
 
-		elementHeaven = new Array<Int>();
-		elementHell = new Array<Int>();
+		nbHeaven = 0;
+		nbHell = 0;
 		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_ON_EVENT_NAME, onBuildingToAdd);
 		BoostManager.boostBuildingEvent.on(BoostManager.BUILDING_OFF_EVENT_NAME, onBuildingToRemove);
 		checkInZone();
@@ -75,6 +74,10 @@ class VAltar extends VBuilding
 		}
 	}
 	
+	public function updateNbHellAndHeaven(pNbHell:Int, pNbHeaven:Int):Void {
+		nbHell = pNbHell;
+		nbHeaven = pNbHeaven;
+	}
 	
 	/**
 	 * add a building ref to his array
@@ -87,12 +90,15 @@ class VAltar extends VBuilding
 		
 		var regionPos:Index = pData.type == Alignment.heaven ? {x:tileDesc.regionX - 1, y:tileDesc.regionY}:{x:tileDesc.regionX + 1, y:tileDesc.regionY};
 		var posX:Int;
-		
+
 		for (i in 0...VAltar.ZONESIZE){
 			for (j in 0...(VAltar.ZONESIZE - i)) {
 				posX = pData.type == Alignment.heaven ? Ground.COL_X_LENGTH - 1 - i:i;
 				
 				if (pData.casePos.x == posX && (pData.casePos.y == Ground.ROW_Y_LENGTH +tileDesc.mapY + 1 - j || pData.casePos.y == tileDesc.mapY - j)){
+					if (pData.type == Alignment.hell) nbHell++;
+					else if (pData.type == Alignment.heaven) nbHeaven++;
+					
 					ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
 					return;
 				}
@@ -100,6 +106,10 @@ class VAltar extends VBuilding
 				
 				if (pData.casePos.x == posX && (pData.casePos.y == tileDesc.mapY + j - (Ground.ROW_Y_LENGTH) || pData.casePos.y == tileDesc.mapY + 1 + j)){
 					ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
+					
+					if (pData.type == Alignment.hell) nbHell++;
+					else if (pData.type == Alignment.heaven) nbHeaven++;
+					
 					return;
 				}
 			
@@ -111,8 +121,12 @@ class VAltar extends VBuilding
 	
 	private function onBuildingToRemove(?pData:BoostInfo):Void {
 		if (pData != null && (pData.regionPos.y > tileDesc.regionY + 1 || pData.regionPos.y < tileDesc.regionY - 1)) return;
-		
 		ServerManagerBuilding.checkForIncreaseAltarNbBuilding(tileDesc);
+		
+		if (pData != null) {
+			if (pData.type == Alignment.hell) nbHell = Std.int(Math.max(nbHell-1,0));
+			else if (pData.type == Alignment.heaven) nbHeaven = Std.int(Math.max(nbHeaven-1,0));
+		}
 	}
 	
 	
@@ -128,7 +142,8 @@ class VAltar extends VBuilding
 	
 	override function calculTimeProd(?pTypeBuilding:TableTypeBuilding):Float 
 	{
-		return TimesInfo.MIN;
+		if (nbHeaven == 0 && nbHell == 0) return null;
+ 		else return TimesInfo.HOU / (nbHeaven * heavenBonus + nbHell * hellBonus);
 	}
 	private function haveMoreBoost():Void{
 

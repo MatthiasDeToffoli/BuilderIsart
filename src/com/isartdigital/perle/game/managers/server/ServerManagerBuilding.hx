@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VAltar;
 import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;
@@ -256,7 +257,7 @@ class ServerManagerBuilding{
 	
 	//use this with security for know if we always have the building....
 	private static function onSuccessCreateGenerator(pObject:Dynamic):Void {
-		trace(pObject);
+		//trace(pObject);
 	}
 	
 	private static function onErrorCreateGenerator(pObject:Dynamic):Void {
@@ -318,7 +319,8 @@ class ServerManagerBuilding{
 			if (data.error) {
 				Debug.error(data.message);
 			} else {
-				TimeManager.updateTimeResource(data.EndForNextProduction, data.IDClientBuilding,true);
+				TimeManager.updateTimeResource(data.EndForNextProduction, data.IDClientBuilding, true);
+				cast(IdManager.searchVBuildingById(data.IDClientBuilding), VAltar).updateNbHellAndHeaven(data.NbBuildingHell, data.NbBuildingHeaven);
 			}
 		}
 	}

@@ -442,7 +442,11 @@ class TimeManager {
 				}
 			);
 			
-			pElement.desc.end += currentVBuilding.getTimeCalcul();
+			
+			var timeCalculed:Float = currentVBuilding.getTimeCalcul();
+			if(timeCalculed != null)
+				pElement.desc.end += currentVBuilding.getTimeCalcul();
+			else pElement.desc.end = null;
 		}
 			
 			

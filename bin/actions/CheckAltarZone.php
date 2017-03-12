@@ -54,7 +54,9 @@ Utils::updateSetWhere(
 echo json_encode([
     'error' => false,
     IDCLIENT => Utils::getSinglePostValueInt(IDCLIENT),
-    END => $time <= 0 ? null:Utils::timeStampToJavascript(time() + $time)
+    END => $time <= 0 ? null:Utils::timeStampToJavascript(time() + $time),
+    NBHEAVEN => $countHeaven,
+    NBHELL => $countHell
   ]);
 
 function checkIfIsZoneHell($pNbBuilding, $Building) {
