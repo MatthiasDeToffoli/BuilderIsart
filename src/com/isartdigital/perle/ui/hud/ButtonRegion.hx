@@ -76,12 +76,13 @@ class ButtonRegion extends SmartButton
 		if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding ||  DialogueManager.ftueStepOpenPurgatory ||  DialogueManager.ftueStepPutBuilding) 
 			return;
 			
-		/*if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
-			ValueChangeManager.addTextLostForRegion(position, GeneratorType.soft, price);
+		if (RegionManager.haveMoneyForBuy(worldMapPos, regionType)){
+			/*ValueChangeManager.addTextLostForRegion(position, GeneratorType.soft, price);
 			RegionManager.createRegion(regionType, firstCasePos, VTile.pointToIndex(worldMapPos));
-			destroy();
-		}*/
-		ServerManager.addRegionToDataBase(regionType.getName(), VTile.pointToIndex(worldMapPos), VTile.pointToIndex(firstCasePos), this);		
+			destroy();*/
+			ServerManager.addRegionToDataBase(regionType.getName(), VTile.pointToIndex(worldMapPos), VTile.pointToIndex(firstCasePos), this);
+		}
+				
 	}
 	
 	private function rewriteTxt():Void {

@@ -67,6 +67,9 @@ public static function testLevelUp(){
       Resources::updateResources($lId,'badXp', 0);
       Resources::updateResources($lId,'goodXP', 0);
       Utils::updateSetWhere('Player', ['Level' => $player->Level + 1], 'ID = '.$lId);
+      $badXp->Quantity = 0;
+      $goodXp->Quantity = 0;
+      $player->Level++;
     }
 
     return (object) array('badXp' => $badXp->Quantity, 'goodXp' => $goodXp->Quantity, 'level' => $player->Level);

@@ -102,7 +102,7 @@ use actions\utils\Experience as Experience;
       "type" => $Type,
       "ftx" => $FTX,
       "fty" => $FTY,
-      "price" => $price,
+      "soft" => $moneyRest,
       'level' => $xpObject->level,
       "xpHeaven" => $xpObject->goodXp,
       "xpHell" => $xpObject->badXp

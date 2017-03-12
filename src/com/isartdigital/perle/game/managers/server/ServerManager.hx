@@ -39,7 +39,7 @@ typedef EventSuccessAddRegion = {
 	@:optional var type:String;
 	@:optional var ftx:Int;
 	@:optional var fty:Int;
-	@:optional var price:Float;
+	@:optional var soft:Float;
 	@:optional var xpHeaven:Float;
 	@:optional var xpHell:Float;
 	@:optional var level:Int;
@@ -245,7 +245,7 @@ class ServerManager {
 			if (data.flag) {
 				if (currentButtonRegion != null) currentButtonRegion.destroy();
 				RegionManager.createRegion(stringToEnum(data.type), new Point(data.ftx, data.fty), {x:Std.int(data.x), y:Std.int(data.y)});
-				ResourcesManager.spendTotal(GeneratorType.soft, Std.int(data.price));
+				ResourcesManager.updateTotal(GeneratorType.soft, data.soft);
 				currentButtonRegion = null;
 				ResourcesManager.setLevel(Std.int(data.level));
 				ResourcesManager.updateTotal(GeneratorType.goodXp, data.xpHeaven);
