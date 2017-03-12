@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.sprites.Building.SizeOnMap;
 import com.isartdigital.perle.game.sprites.FlumpStateGraphic;
 import com.isartdigital.perle.game.sprites.Ground;
+import com.isartdigital.perle.game.sprites.Phantom.ObstaclePosition;
 import com.isartdigital.perle.game.sprites.RegionBackground;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
@@ -94,6 +95,11 @@ class RegionManager
 	private static var xpFactors:Array<Float>;
 	
 	/**
+	 * constant indic the max region on x position
+	 */
+	
+	public static inline var maxRegionsX:Int = 2;
+	/**
 	 * the number of region by type(save it into bdd)
 	 */
 	public static var mapNumbersRegion:Map<Alignment,Int>;
@@ -173,7 +179,7 @@ class RegionManager
 		if (
 			(pWorldPos.x < 0 && factor.x == 1) || 
 			(pWorldPos.x > 0 && factor.x == -1) || 
-			(Math.abs(worldPositionX) > 2)
+			(Math.abs(worldPositionX) > maxRegionsX)
 			){
 			addButton(pPos, pWorldPos, indice+ 1);
 			return;
