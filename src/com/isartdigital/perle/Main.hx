@@ -86,7 +86,7 @@ class Main extends EventEmitter
 	
 	public static inline var FRAME_INTERVAL:UInt = 16; // Math.floor(1000/60) milliseconds
 	
-	private static inline var FACEBOOK_APP_ID = "1764871347166484"; // todo : c'est bien l'app ID ? oui/non ?
+	private static inline var FACEBOOK_APP_ID = "1764871347166484";
 	
 	
 	private static var configPath:String = "config.json";

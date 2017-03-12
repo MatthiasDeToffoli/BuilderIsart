@@ -8,6 +8,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
+import com.isartdigital.perle.game.managers.server.ServerManagerReset;
 import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
 import com.isartdigital.perle.ui.HudMissionButton;
@@ -263,7 +264,8 @@ class SaveManager {
 		);
 	}
 	
-	public static function reinit(){
+	public static function reinit () {
+		ServerManagerReset.reset();
 		Browser.getLocalStorage().clear();
 		Browser.location.reload();
 	}

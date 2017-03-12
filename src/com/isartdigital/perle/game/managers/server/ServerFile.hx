@@ -46,5 +46,6 @@ class ServerFile{
 	public static inline var RESET_DAYS:String = "ResetDays";
 	public static inline var EMAIL:String = "AddEmail";
 	public static inline var IS_FIRST_DAY_UPDATE:String = "IsFirstDayUpdate";
+	public static inline var RESET:String = "Reset";
 	
 }
