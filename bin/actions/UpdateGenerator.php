@@ -36,7 +36,7 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
 if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House') {
   $results = calculGain(
       Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-      ($typeBuilding->ProductionPerHour * $typeBuilding->NbSoul)/60,
+      ($typeBuilding->ProductionPerHour * $typeBuilding->NbSoul)/3600,
       $typeBuilding->NbResource,
       $typeBuilding->MaxGoldContained
     );
@@ -45,14 +45,14 @@ if($typeBuilding->Name == 'Hell House' || $typeBuilding->Name == 'Heaven House')
   if($Player->IdCampaign == 0) {
     $results = calculGain(
         Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-        $calculPurgatory/60,
+        $calculPurgatory/3600,
         $typeBuilding->NbResource,
         $typeBuilding->MaxSoulsContained
       );
   } else {
     $results = calculGainWithBoost(
         Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-        $calculPurgatory/60,
+        $calculPurgatory/3600,
         $typeBuilding->NbResource,
         $typeBuilding->MaxSoulsContained,
         Utils::dateTimeToTimeStamp($Player->EndOfCampaign),
@@ -70,7 +70,7 @@ else if($typeBuilding->Name == 'Altar Vice 1' ||
 
   $results = calculGain(
       Utils::dateTimeToTimeStamp($typeBuilding->EndForNextProduction),
-      ($calcul1 + $calcul2)/60,
+      ($calcul1 + $calcul2)/3600,
       $typeBuilding->NbResource,
       $typeBuilding->MaxGoldContained
     );
@@ -93,15 +93,15 @@ echo json_encode($results);
 function calculGain($pEnd,$pCalcul,$pResource, $pMax){
   if($pEnd !== null){
     $currentTime = time();
-    $minDiff = floor(($currentTime - $pEnd)/60) + 1;
+    $secDiff = $currentTime - $pEnd + 1;
 
-    if($minDiff > 0) {
+    if($secDiff > 0) {
       if($pCalcul > 0) {
-        $newResource = $pResource + ($pCalcul * $minDiff);
+        $newResource = $pResource + ($pCalcul * $secDiff);
         if($newResource > $pMax) $newResource = $pMax;
       }
 
-      $end = $pEnd + ($minDiff * 60);
+      $end = $pEnd + $secDiff;
       return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($newResource),"max" => $pMax, "end" => $end);
     }
   }
@@ -112,11 +112,11 @@ function calculGain($pEnd,$pCalcul,$pResource, $pMax){
 
 function calculGainWithBoost($pEnd,$pCalcul,$pResource, $pMax,$pEndBoost,$pGainBoost){
     $currentTime = time();
-    $minDiff = floor(($currentTime - $pEnd)/60) + 1;
-    if($minDiff > 0) {
-      $newResource = $pResource + $minDiff * ($pCalcul + $pGainBoost);
+    $secDiff = $currentTime - $pEnd + 1;
+    if($secDiff > 0) {
+      $newResource = $pResource + $secDiff * ($pCalcul + $pGainBoost);
       if($newResource > $pMax) $newResource = $pMax;
-    $end = $pEnd + 60 * $minDiff;
+    $end = $pEnd + $secDiff;
 
       return (object) array("error" => false,IDCLIENT => Utils::getSinglePostValue(IDCLIENT), "nbResource" => round($newResource),"max" => $pMax, "end" => $end);
     }
