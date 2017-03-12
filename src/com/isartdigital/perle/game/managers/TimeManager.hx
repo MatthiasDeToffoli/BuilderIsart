@@ -332,10 +332,11 @@ class TimeManager {
 	
 	private static function timeLoopSynchro():Void {
 		var lTime:TimeElementResource;
-
+		
 		for (lTime in listResource){
 			var currentVBuilding:VBuilding = IdManager.searchVBuildingById(lTime.desc.refTile);
-			if (currentVBuilding == null) return; //@Ambroise : id 0 create and don't exist in game ? Oo
+			trace(currentVBuilding);
+			if (currentVBuilding != null) //@Ambroise : id 0 create and don't exist in game ? Oo
 			ServerManagerBuilding.updateGenerator(currentVBuilding.tileDesc);
 		}
 	}
