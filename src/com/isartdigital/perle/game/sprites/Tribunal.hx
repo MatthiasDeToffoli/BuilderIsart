@@ -17,7 +17,7 @@ class Tribunal extends Building
 		super(pAssetName);	
 	}
 	
-override public function init():Void 
+	override public function init():Void 
 	{
 		super.init();
 		PurgatorySoulCounter.getInstance().position = position.clone();

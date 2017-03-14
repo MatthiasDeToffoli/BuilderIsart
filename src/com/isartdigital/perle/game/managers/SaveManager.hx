@@ -366,7 +366,7 @@ class SaveManager {
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
 				missionDecoration: lDeco
 			};
-			//i like to use the email from ServerManagerLoad, so why not not destroying this bellow ?
+			//i like to use the email from ServerManagerLoad, so why not keep the server load result ?
 			//ServerManagerLoad.deleteServerSave(); 
 			serverBuildingToTileDesc = null;
 			//todo : temporary, it's fill's the missing value from localSave
@@ -409,12 +409,12 @@ class SaveManager {
 		for (config in pBuildings.keys()) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
 			
-			if ((lGameConfig.name == 'Hell Collector Iron Mines' || lGameConfig.name == 'Heaven Collector Lumber Mill') && config.packId > 0) {
+			if ((lGameConfig.name == BuildingName.HELL_COLLECTOR || lGameConfig.name == BuildingName.HEAVEN_COLLECTOR) && config.packId > 0) {
 				lArray.push({
 					refTile:pBuildings[config].id,
 					progress:Date.now().getTime(),
 					end:config.endForNextProduction,
-					gain: lGameConfig.name == 'Hell Collector Iron Mines' ? 
+					gain: lGameConfig.name == BuildingName.HELL_COLLECTOR ? 
 						GameConfig.getBuildingPackById(config.packId).gainIron :
 						GameConfig.getBuildingPackById(config.packId).gainWood
 				});
@@ -431,14 +431,16 @@ class SaveManager {
 		
 		for (config in pBuildings.keys()) {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
-
+			
 			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
-			&& (lGameConfig.name != 'Hell Collector Iron Mines' && lGameConfig.name != 'Heaven Collector Lumber Mill' && lGameConfig.name != 'Marketing Department')) {
+			&& (lGameConfig.name != BuildingName.HELL_COLLECTOR && lGameConfig.name != BuildingName.HEAVEN_COLLECTOR && lGameConfig.name != BuildingName.HEAVEN_MARKETING_DEPARTMENT)) {
 				lArray.push({
 					refTile:pBuildings[config].id,
 					progress:Date.now().getTime(),
 					end:config.endForNextProduction
 				});
+				trace("loading building whit typeName:"+lGameConfig.name+" and whit refTile: " + pBuildings[config].id);
+				trace("loading building whit typeName:"+lGameConfig.name+" and whit refTile: " + pBuildings[config]);
 			}
 			
 		}
@@ -458,7 +460,7 @@ class SaveManager {
 			var lGameConfig:TableTypeBuilding = GameConfig.getBuildingByID(config.iDTypeBuilding);
 			
 			if ((lGameConfig.productionPerBuildingHeaven != null || lGameConfig.productionPerBuildingHell != null || lGameConfig.productionPerHour != null)
-			&& (lGameConfig.name != 'Hell Collector Iron Mines' && lGameConfig.name != 'Heaven Collector Lumber Mill' && lGameConfig.name != 'Marketing Department')) {
+			&& (lGameConfig.name != BuildingName.HELL_COLLECTOR && lGameConfig.name != BuildingName.HEAVEN_COLLECTOR && lGameConfig.name != BuildingName.HEAVEN_MARKETING_DEPARTMENT)) {
 				desc.arrayGenerator.push(buildingLoadGenerator(
 					pBuildings[config],
 					lGameConfig,
@@ -494,8 +496,8 @@ class SaveManager {
 				mapX: lBuilding[i].x,
 				mapY: lBuilding[i].y,
 				level: lGameConfig.level,
-				currentPopulation: (lGameConfig.name == 'Hell House' ||lGameConfig.name == 'Heaven House') ? lBuilding[i].nbSoul:null,
-				maxPopulation: (lGameConfig.name == 'Hell House' || lGameConfig.name == 'Heaven House') ? lGameConfig.maxSoulsContained:null,
+				currentPopulation: (lGameConfig.name == BuildingName.HELL_HOUSE || lGameConfig.name == BuildingName.HEAVEN_HOUSE) ? lBuilding[i].nbSoul:null,
+				maxPopulation: (lGameConfig.name == BuildingName.HELL_HOUSE || lGameConfig.name == BuildingName.HEAVEN_HOUSE) ? lGameConfig.maxSoulsContained:null,
 				isBuilt:lBuilding[i].isBuilt
 				/*intern: ,*/ // todo : fill @Emeline, @Victor
 				// todo ci-dessous :
@@ -503,7 +505,7 @@ class SaveManager {
 				// endForNextProduction
 				// nbSoul
 			});
-			if (lGameConfig.name == "Purgatory")
+			if (lGameConfig.name == BuildingName.STYX_PURGATORY)
 				result[0].isTribunal = true;
 			if (lBuilding[i].endConstruction > Date.now().getTime())
 				result[0].timeDesc = { 
@@ -524,7 +526,7 @@ class SaveManager {
 			id: pTileDesc.id,
 			type: pGameConfig.productionResource,
 			quantity: pServerData.nbResource,
-			max: pGameConfig.name == 'Purgatory' ? pGameConfig.maxSoulsContained:pGameConfig.maxGoldContained,
+			max: pGameConfig.name == BuildingName.STYX_PURGATORY ? pGameConfig.maxSoulsContained:pGameConfig.maxGoldContained,
 			//pServerData.endForNextProduction, // keep that in mind
 			alignment: pGameConfig.alignment
 		};
@@ -556,66 +558,5 @@ class SaveManager {
 		TimeManager.startTimeLoop();
 		SaveManager.save();
 		Hud.getInstance().initGauges();
-	}
-	
-	/**
-	 * this function is necessary beceause save translate enum to array
-	 * @param pArray:Dynamic
-	 * @return Dynamic (the good enum)
-	 */
-	 //When you save a enum please refresh this function
-	 // todo : delete this function and the one bellow stringToEum when Region is loaded from server
-	public static function translateArrayToEnum(pArray:Dynamic):Dynamic{
-		
-		if (pArray == null) return null;
-		
-		return stringToEnum(cast(pArray[0], String));
-	}
-	
-	private static function stringToEnum (pString:String):Dynamic {
-		switch pString {
-			case "soft":
-				return GeneratorType.soft;
-				
-			case "hard":
-				return GeneratorType.hard;
-				
-			case "badXp":
-				return GeneratorType.badXp;
-			
-			case "goodXp":
-				return GeneratorType.goodXp;
-				
-			case "soul":
-				return GeneratorType.soul;
-				
-			case "soulGodd":
-				return GeneratorType.soulGood;
-				
-			case "soulBad":
-				return GeneratorType.soulBad;
-				
-			case "intern":
-				return GeneratorType.intern;
-				
-			case "buildResourceFromHell":
-				return GeneratorType.buildResourceFromHell;
-			
-			case "buildResourceFromParadise":
-				return GeneratorType.buildResourceFromParadise;
-			
-			case "hell":
-				return Alignment.hell;
-			
-			case "heaven":
-				return Alignment.heaven;
-			
-			case "neutral":
-				return Alignment.neutral;
-			
-				
-			default:
-				return null;
-		}
 	}
 }

@@ -132,8 +132,10 @@ class VTile extends Virtual{
 			
 		lLength = pSave.building.length;
 		for (i in 0...lLength)
-			if (pSave.building[i].isTribunal) 
+			if (pSave.building[i].isTribunal) {
+				trace("CREATING TRIBUNAL");
 				VTribunal.getInstance(pSave.building[i]);
+			}
 			else {
 				if (Virtual.BUILDING_NAME_TO_VCLASS[pSave.building[i].buildingName] == null)
 					Debug.error("VClass for buildingName '"+pSave.building[i].buildingName+"' not found in Virtual.BUILDING_NAME_TO_VCLASS .");

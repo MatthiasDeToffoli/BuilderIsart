@@ -3,7 +3,9 @@ import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.TimeManager.TimeElementResource;
+import com.isartdigital.perle.game.sprites.Tribunal;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.utils.Debug;
 
 /**
@@ -77,6 +79,7 @@ class IdManager{
 				}
 			}
 		}
+		trace("Purgatory ID : " + VTribunal.getInstance().tileDesc.id);
 		Debug.warn(pId + " id (client) not found in worldMap.");
 		return null;
 	}

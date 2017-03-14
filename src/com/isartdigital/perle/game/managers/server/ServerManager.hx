@@ -267,7 +267,7 @@ class ServerManager {
 	}
 	
 	public static function stringToEnum(pString:String):Dynamic {
-
+	
 		switch (pString) {
 			case "soul" : 			return GeneratorType.soul;
 			case "soft" : 			return GeneratorType.soft;

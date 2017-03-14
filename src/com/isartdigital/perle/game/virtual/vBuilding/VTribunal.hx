@@ -12,6 +12,7 @@ import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.contextual.sprites.PurgatorySoulCounter;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.localisation.Localisation;
 import eventemitter3.EventEmitter;
 import pixi.core.math.Point;
@@ -44,6 +45,7 @@ class VTribunal extends VBuildingUpgrade
 	 * @return instance unique
 	 */
 	public static function getInstance (?pDesc:TileDescription): VTribunal {
+		Debug.warn("CreatingTribunal");
 		if (instance == null) instance = new VTribunal(pDesc);
 		return instance;
 	}
@@ -59,6 +61,7 @@ class VTribunal extends VBuildingUpgrade
 		
 		alignementBuilding = Alignment.neutral;
 
+		trace("Vtribunal desc == null, creating a new");
 		if (pDesc == null){
 			lDesc = {
 				buildingName:BuildingName.STYX_PURGATORY,
