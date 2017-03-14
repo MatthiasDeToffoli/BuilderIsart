@@ -335,7 +335,6 @@ class TimeManager {
 		
 		for (lTime in listResource){
 			var currentVBuilding:VBuilding = IdManager.searchVBuildingById(lTime.desc.refTile);
-			trace(currentVBuilding);
 			if (currentVBuilding != null) //@Ambroise : id 0 create and don't exist in game ? Oo
 			ServerManagerBuilding.updateGenerator(currentVBuilding.tileDesc);
 		}

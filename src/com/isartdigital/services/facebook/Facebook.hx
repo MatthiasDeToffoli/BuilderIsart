@@ -13,7 +13,7 @@ import js.html.SourceElement;
 /**
  * Classe haxe permettant l'accès à l'api Facebook 
  * @author Mathieu Anthoine
- * @version 0.2.0
+ * @version 0.3.0
  */
 class Facebook
 {
@@ -247,10 +247,16 @@ class Facebook
 		if (fb == null) notReady();
 		else {
 			if (DeviceCapabilities.isCocoonJS) pParams.app_id = params.appId;
-			fb.ui (pParams, pCallBack);
+			else if (isInIFrame()) untyped DeviceCapabilities.exitFullscreen();
+			fb.ui (pParams, pCallBack);			
 		}
 	}
-	
+
+	private static function isInIFrame ():Bool {
+		try {
+			return Browser.window.parent != Browser.window;
+		} catch (pEvent:Dynamic) return true;
+	}
 }
 
 
