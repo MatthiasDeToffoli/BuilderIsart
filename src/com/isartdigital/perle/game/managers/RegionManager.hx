@@ -44,7 +44,7 @@ typedef Region = {
  * @author de Toffoli Matthias
  */
 class RegionManager 
-{
+{	
 	private static var background:RegionBackground;
 	
 	/**
@@ -95,10 +95,15 @@ class RegionManager
 	private static var xpFactors:Array<Float>;
 	
 	/**
-	 * constant indic the max region on x position
+	 * constant indic the max region on x position (one one side of styx)
 	 */
+	public static inline var MAX_REGIONS_X:Int = 2;
 	
-	public static inline var maxRegionsX:Int = 2;
+	/**
+	 * Offset separating each region.
+	 */
+	public static inline var OFFSET_REGION:Int = 1;
+	
 	/**
 	 * the number of region by type(save it into bdd)
 	 */
@@ -118,10 +123,10 @@ class RegionManager
 	 */
 	private static var factors:Array<Point> =
 						[
-							new Point(-1,0),
-							new Point(1,0),
-							new Point(0,-1),
-							new Point(0,1)
+							new Point(-OFFSET_REGION,0),
+							new Point(OFFSET_REGION,0),
+							new Point(0,-OFFSET_REGION),
+							new Point(0,OFFSET_REGION)
 						];
 	
 	
@@ -177,9 +182,9 @@ class RegionManager
 		var worldPositionY:Int = Std.int(pWorldPos.y) - Std.int(factor.y);
 
 		if (
-			(pWorldPos.x < 0 && factor.x == 1) || 
-			(pWorldPos.x > 0 && factor.x == -1) || 
-			(Math.abs(worldPositionX) > maxRegionsX)
+			(pWorldPos.x < 0 && factor.x == OFFSET_REGION) || 
+			(pWorldPos.x > 0 && factor.x == -OFFSET_REGION) || 
+			(Math.abs(worldPositionX) > MAX_REGIONS_X)
 			){
 			addButton(pPos, pWorldPos, indice+ 1);
 			return;

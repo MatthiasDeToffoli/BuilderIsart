@@ -167,7 +167,7 @@ class CameraManager
 		// will determine how much you can put the camera away from styx in a perpendicular line.
 		// don't forget to add STYX_WIDTH when going in hells region
 		// -1 because the first region around styx is glued to styx.
-		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * Ground.MAX_REGION_EXTENSION_FROM_STYX + Ground.OFFSET_REGION * Ground.MAX_REGION_EXTENSION_FROM_STYX-1;
+		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * RegionManager.MAX_REGIONS_X + RegionManager.OFFSET_REGION * RegionManager.MAX_REGIONS_X-1;
 		
 		return new Rectangle(
 			lFirstRegionFirstTilePos.x - lDistanceXStyxToFarestRegion,
@@ -187,25 +187,12 @@ class CameraManager
 		if (currentCameraPlayZone == null)
 			updateCameraPlayZone();
 		
-
-		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1; // todo : change 2 by constant (number région same type you can build for a styx)
-		var lCameraModelPosition:Point = IsoManager.isoViewToModel(getNextPositionCenter(pSpeed));
-		//trace("START");
-		//trace(lFirstTileStyxTop);
-		//trace(lFirstTileStyxBottom);
-		//trace(lDistanceXStyxToFarestRegion);
-		//trace(lNextPosition);
-		//trace(lCameraModelPosition);
-
 		var lCorrectionToStayInPlayZone:Point = collisionPointRect(
 			lCameraModelPosition,
 			currentCameraPlayZone
 		);
 		
 		var lCorrectionIsoView:Point = IsoManager.modelToIsoView(lCorrectionToStayInPlayZone);
-
-		//trace(lCorrectionIsoView);
-
 		lSpeed.x -= lCorrectionIsoView.x;
 		lSpeed.y -= lCorrectionIsoView.y;
 		// return a speed, if you return a position be sure to return the position not from center.
