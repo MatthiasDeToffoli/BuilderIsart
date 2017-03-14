@@ -11,7 +11,6 @@ namespace actions;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\Table as Table;
 use actions\utils\Utils as Utils;
-use Facebook\Facebook;
 
 include_once("utils/Utils.php");
 include_once("utils/Table.php");
