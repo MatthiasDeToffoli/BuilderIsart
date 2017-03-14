@@ -43,7 +43,7 @@ class MouseManager {
 	 */
 	public var desktop(default, null):Bool = false;
 	public var touchGlobalPos(default, null):Point = new Point(0, 0);
-	public var lastSpeedKnow(default, null):Point;
+	public var lastSpeedKnow(default, null):Point = new Point(0, 0);
 	
 	private var mouseTouchDown:Bool = false;
 	private var precedentMousePos:Point = new Point();
