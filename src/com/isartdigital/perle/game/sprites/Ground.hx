@@ -22,7 +22,12 @@ class Ground extends Tile
 	/**
 	 * Offset separating each region.
 	 */
-	public static inline var OFFSET_REGION:Int = 0;
+	public static inline var OFFSET_REGION:Int = 1;
+	
+	/**
+	 * Number of region you can build on one side from styx.
+	 */
+	public static inline var MAX_REGION_EXTENSION_FROM_STYX = 2;
 	
 	/**
 	 * Ground Map in X length (DONT LOAD SAVE WHIT DIFFERENT VALUE)

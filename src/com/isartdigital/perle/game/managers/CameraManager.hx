@@ -165,10 +165,9 @@ class CameraManager
 		// if there is only one Styx, lFirstTilePosStyxBottom == 0,styx.width
 		var lFirstTileBottom:Index = getFirstTileBottom();
 		// will determine how much you can put the camera away from styx in a perpendicular line.
-		// not completely accurate since it take the left side of the styx
-
-		// todo : change 2 by constant (number région same type you can build for a styx)
-		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * 2 + Ground.OFFSET_REGION * 1;
+		// don't forget to add STYX_WIDTH when going in hells region
+		// -1 because the first region around styx is glued to styx.
+		var lDistanceXStyxToFarestRegion:Int = Ground.COL_X_LENGTH * Ground.MAX_REGION_EXTENSION_FROM_STYX + Ground.OFFSET_REGION * Ground.MAX_REGION_EXTENSION_FROM_STYX-1;
 		
 		return new Rectangle(
 			lFirstRegionFirstTilePos.x - lDistanceXStyxToFarestRegion,
