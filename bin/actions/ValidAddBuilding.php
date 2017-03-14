@@ -33,47 +33,78 @@ class ValidAddBuilding
     public static function validate ($pInfo, $pConfig, $pWallet) {
         $pInfo = BuildingCommonCode::addDateTimes($pInfo, $pConfig);
 
-        static::canBuild($pInfo, $pConfig, $pWallet); // exit if something wrong
+        // exit if something wrong
+        static::canBuild($pInfo, $pConfig, $pWallet);
 
         return $pInfo;
     }
 
 
     private static function canBuild ($pInfo, $pConfig, $pWallet) {
-        global $db;
-
         static::cannotBuy($pInfo, $pConfig, $pWallet);
-
-        if (static::isOutsideRegion($pInfo, $pConfig) ||
-            static::hasCollision($pInfo, $pConfig)) {
-            $db->rollBack();
-            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_COLLISION); // todo : will be removed
-        }
+        static::isOutsideRegion($pInfo, $pConfig);
+        static::hasCollision($pInfo, $pConfig);
     }
 
 
     private static function isOutsideRegion ($pInfo, $pConfig) {
-        return false;
-        //Send::refuseAddBuilding outside region
+        global $db;
+        if (!BuildingCommonCode::regionExist($pInfo)) {
+            $db->rollBack();
+            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_REGION_DONT_EXIST);
+        }
+        if (!BuildingCommonCode::isInRegion($pInfo, $pConfig)) {
+            $db->rollBack();
+            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_OUTSIDE_REGION);
+        }
     }
 
 
     private static function hasCollision ($pInfo, $pConfig) {
+        global $db;
+        if (BuildingCommonCode::buildingCollide($pInfo, $pConfig)) {
+            $db->rollBack();
+            Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_COLLISION);
+        }
         return false;
-        //Send::refuseAddBuilding hasCollision
     }
 
 
     private static function cannotBuy ($pInfo, $pConfig, $pWallet) {
         global $db;
-
         $canBuy = BuildingCommonCode::canBuy($pConfig, $pWallet);
-
         if (!$canBuy) {
             $db->rollBack();
             Send::refuseAddBuilding($pInfo, Send::BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY);
         }
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

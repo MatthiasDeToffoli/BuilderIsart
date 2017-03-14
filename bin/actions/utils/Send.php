@@ -37,6 +37,7 @@ class Send
     const BUILDING_CANNOT_BUILD_NOT_ENOUGH_MONEY = 5;
     const BUILDING_CANNOT_SELL_DONT_EXIST = 6;
 	const BUILDING_NOT_ENOUGHT_HARD = 7;
+	const BUILDING_CANNOT_BUILD_REGION_DONT_EXIST = 8;
 
 	const INTERN_INVALID_ID = 21;
 	const INTERN_CANNOT_BUY = 22;
@@ -52,7 +53,7 @@ class Send
             ],
             static::getBuildingIdentifier($pInfo)
         ));
-        // (todo) : mettre que les nécessaire ds le json_encode
+        // (todo) : mettre que le nécessaire ds le json_encode
         Logs::addBuilding($pInfo[AddBuilding::ID_PLAYER], Logs::STATUS_REFUSED, $pErrorCode, $pInfo);
         exit;
     }

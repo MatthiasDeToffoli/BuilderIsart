@@ -28,9 +28,23 @@ class BuildingCommonCode
     const COLUMN_CONSTRUCTION_TIME = "ConstructionTime";
 
     //column in table Building
+    const ID_PLAYER = "IDPlayer";
     const START_CONTRUCTION = "StartConstruction";
     const END_CONTRUCTION = "EndConstruction";
     const IS_BUILT ="IsBuilt";
+    const REGION_X = "RegionX";
+    const REGION_Y = "RegionY";
+    const X = "X";
+    const Y = "Y";
+    const WIDTH = "Width";
+    const HEIGHT = "Height";
+
+    // constant that must correspond to client code.
+    const REGION_WIDTH = 12;
+    const REGION_HEIGHT = 12;
+    const REGION_STYX_WIDTH = 3;
+    const REGION_STYX_HEIGHT = 13;
+    const MAX_REGION_EXTENSION_FROM_STYX = 2;
 
     public static function addDateTimes ($pInfo, $pConfig) {
         $date = new \DateTime();
@@ -91,4 +105,92 @@ class BuildingCommonCode
         );
     }
 
+    public static function regionExist ($pInfo) {
+        // IdPlayer whit a "d" lower case in Region table, careful.
+        $lTable = Utils::getTable(Table::Region, "IdPlayer=".$pInfo[static::ID_PLAYER]." AND PositionX=".$pInfo[static::REGION_X]." AND PositionY=".$pInfo[static::REGION_Y]);
+        return !empty($lTable) && isset($lTable);
+    }
+
+    /**
+     * Verify that the building is inside a region.
+     * @param $pInfo
+     * @param $pConfig
+     * @return bool
+     */
+    public static function isInRegion ($pInfo, $pConfig) {
+        // if (region is styx, x and y inside range)
+        // else (region is not styx, x and y inside range)
+
+        $lIsStyx = $pInfo[static::REGION_X] == 0;
+
+        $lBuildingRect =  (object) [
+            "x" => $pInfo[static::X],
+            "y" => $pInfo[static::Y],
+            "width" => $pConfig[static::WIDTH],
+            "height" => $pConfig[static::HEIGHT]
+        ];
+
+        $lRegionRect = (object) [
+            "x" => 0,
+            "y" => 0,
+            "width" => $lIsStyx ? static::REGION_STYX_WIDTH : static::REGION_WIDTH,
+            "height" => $lIsStyx ? static::REGION_STYX_HEIGHT : static::REGION_HEIGHT
+        ];
+
+        return static::rectIsInsideRect($lBuildingRect, $lRegionRect);
+    }
+
+    private static function rectIsInsideRect ($pLittleRect, $pBiggerRect) {
+        return (
+            $pLittleRect->x >= $pBiggerRect->x &&
+            $pLittleRect->y >= $pBiggerRect->y &&
+            $pLittleRect->x + $pLittleRect->width <= $pBiggerRect->x + $pBiggerRect->width &&
+            $pLittleRect->y + $pLittleRect->height <= $pBiggerRect->y + $pBiggerRect->height
+        );
+    }
+
+    /**
+     * Check if the building collide whit another building.
+     * @param $pInfo
+     * @param $pConfig
+     * @return bool
+     */
+    public static function buildingCollide ($pInfo, $pConfig) {
+
+        return false;
+    }
+
+    public static function buildingAlignmentCorrespondToRegion ($pInfo, $pConfig) {
+        
+        return true;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
