@@ -1,7 +1,9 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.InternDescription;
-import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.deltaDNA.UIAction;
+import com.isartdigital.perle.game.managers.server.deltaDNA.UILocation;
+import com.isartdigital.perle.game.managers.server.deltaDNA.UIType;
 import com.isartdigital.perle.game.managers.server.ServerManager.EventSuccessConnexion;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.services.deltaDNA.DeltaDNA;
@@ -14,7 +16,7 @@ import js.html.Event;
 
 
 enum TransactionType { boughtBuilding; skippedTimer; shopPackBought; hiredIntern; internshipStarted; choiceMade; 
-extendedRegions; soldBuilding; boughtDecoration; internStressReset; gachaAttained; }
+extendedRegions; soldBuilding; boughtDecoration; soldDecoration;  internStressReset; gachaAttained; soulDistribution; }
 
 /**
  * Evrything about DeltaDNA :)
@@ -116,9 +118,9 @@ class DeltaDNAManager{
 				transactionType: pTransactionType,
 				productReceived: pIdPack,
 				productReceivedAmount: 1,
-				productSpend: pTypePrice.getName(), // WTF je ne le vois pas dans deltaDNA
-				// some item have prices in more then one currencie, so this is not accurate !
-				productSpendAmount: Math.round(pPrice) // WTF is INT but isartPoint can be float
+				productSpent: pTypePrice.getName(),
+				// some item have prices in more then one currencie, so this is not accurate ! (we decided it only take gold when multiple prices)
+				productSpendAmount: pPrice // float
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
@@ -126,10 +128,12 @@ class DeltaDNAManager{
 	
 	/**
 	 * When the player collects soft from buildings
+	 * @param	pBuildingID
 	 * @param	pTypeBuildingID
+	 * @param	pResouceType
 	 * @param	pAmount
 	 */
-	public static function sendCollect (pTypeBuildingID:Int, pAmount:Int):Void {
+	public static function sendCollect (pBuildingID:Int, pTypeBuildingID:Int, pResouceType:GeneratorType, pAmount:Int):Void {
 		if (!isReady) {
 			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
@@ -137,11 +141,12 @@ class DeltaDNAManager{
 		}
 		
 		DeltaDNA.addEvent(
-			DeltaDNAEventCustom.COLLECT, 
+			DeltaDNAEventCustom.COLLECT,
 			untyped Object.assign(getBaseEvent(), {
-				productReceived: Std.string(pTypeBuildingID), // WTF quel id ? celle du building ? doublon avec product ID, voir leo_gd
+				productReceived: pResouceType,
 				productReceivedAmount: pAmount,
-				productID: Std.string(pTypeBuildingID) // WTF too
+				buildingID: pBuildingID,
+				buildingTypeID: pTypeBuildingID
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
@@ -149,10 +154,10 @@ class DeltaDNAManager{
 	
 	/**
 	 * A choice is made by a player during an Internship event
-	 * @param	pProductID
-	 * @param	pChoiceID ID of the Choice the player has made during the Event
+	 * @param	pInternConfigID
+	 * @param	pChoiceConfigID
 	 */
-	public static function sendIntershipChoice (pProductID:Int, pChoiceID:Int):Void {
+	public static function sendIntershipChoice (pInternConfigID:Int, pChoiceConfigID:Int):Void {
 		if (!isReady) {
 			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
@@ -162,8 +167,8 @@ class DeltaDNAManager{
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.INTERSHIP_CHOICE, 
 			untyped Object.assign(getBaseEvent(), {
-				productID: pProductID, // WTF, the same as choiceID ?
-				choiceID: pChoiceID
+				internID: pInternConfigID,
+				choiceID: pChoiceConfigID
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
@@ -179,7 +184,7 @@ class DeltaDNAManager{
 	 * @param	pUIName UIName is the name that defines the interaction.
 	 * @param	pUIType UIType is the type of User Interface object.
 	 */
-	public static function sendUIInteraction (pUIAction:String, pUILocation:String, pUIName:String, pUIType:String):Void {
+	public static function sendUIInteraction (pUIAction:UIAction, pUILocation:UILocation, pUIName:String, pUIType:UIType):Void {
 		if (!isReady) {
 			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
@@ -190,10 +195,10 @@ class DeltaDNAManager{
 			DeltaDNAEventCustom.UI_INTERACTION, 
 			untyped Object.assign(getBaseEvent(), {
 				// WTF majuscules...
-				UIAction: pUIAction, // Close, OpenDescription, ChangeTab, etc, ENUM
-				UILocation: pUILocation, // WTF, genre UIPosition.BOTTOM ? ENUM
-				UIName: pUIName, // titlecard, shop, pugatory ? ENUM
-				UIType: pUIType, // popin, hud, etc ? ENUM
+				UIAction: pUIAction.toString(),
+				UILocation: pUILocation.toString(),
+				UIName: pUIName,
+				UIType: pUIType.toString(),
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
@@ -238,114 +243,4 @@ class DeltaDNAManager{
 		};
 	}
 	
-	/*public static function sendTimeSkip (pTimeSkipped:Int, pKarmaSpent:Int):Void {
-		DeltaDNA.addEvent(DeltaDNAEventCustom.TIME_SKIP, {
-			timeWaited:pTimeSkipped,
-			karmaSpent:pKarmaSpent
-		});
-		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-	}*/
-	
-	/*public static function sendKarmaResourceBuy (pTimeSkipped:Int, pKarmaSpent:Int):Void {
-		DeltaDNA.addEvent(DeltaDNAEventCustom.TIME_SKIP, {
-			amount:pTimeSkipped,
-			skipKarmaSpent:pKarmaSpent
-		});
-		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-	}*/
-	/*
-	public static function sendGainXp (pType:GeneratorType, pAmount:Int):Void {
-		DeltaDNA.addEvent(DeltaDNAEventCustom.GAIN_XP, {
-			type:pType.getName(),
-			amount:pAmount
-		});
-		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-	}
-	
-	public static function sendLevelUp ():Void {
-		DeltaDNA.addEvent(DeltaDNAEventCustom.LEVEL_UP, {
-			currentLevel:ResourcesManager.getLevel()
-		});
-		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
-	}*/
-	/*ambroise-rabier [6:45 PM] 
-yo
-
-[6:46]  
-1/
-a l'event transaction (edited)
-
-[6:46]  
-le champs : productSpend
-
-[6:46]  
-est manquant ds deltaDNA
-
-[6:47]  
-le champs productSpendAmount est un int alros qu'il devrait être un float (oui car si c'est des euros ya des centimes)
-
-[6:47]  
-2/
-dans l'event collect
-productReceived semble être un doublon de productID (edited)
-
-[6:48]  
-et je ne sais pas quel ID mettre ? l'id du bâtiment ? l'id du type du bâtiment ? autre chose ?
-
-[6:49]  
-3/
-dans l'évent internshipChoice
-le champs productID semble être un doublon de choiceID
-
-[6:50]  
-4/
-dans l'event UIinteraction :
-tu as mis des majuscules aux paramètres (bon encore cela tant pis cela fonctionnera quand même)
-Tes quatres paramètres je ne sais pas quoi mettre dedans. (pas exactement)
-
-ambroise-rabier [6:51 PM] 
-added this Haxe snippet
-				UIAction: pUIAction, // Close, OpenDescription, ChangeTab, etc, ENUM
-				UILocation: pUILocation, // WTF, genre UIPosition.BOTTOM ? ENUM
-				UIName: pUIName, // titlecard, shop, pugatory ? ENUM
-				UIType: pUIType, // popin, hud, etc ? ENUM
-Add Comment
-
-ambroise-rabier [6:52 PM] 
-j'ai pensé à cela, mais pour ce dernier event il manque bcp de précision :confused:.
-
-[6:52]  
-Si tu peux répondre à ces questions ce serait bien. merci.
-
-[6:56]  
-Je voudrais pas perdre ton travail et supprimer des trucs utiles car je ne les ais pas compris :wink: (edited)
-
-leo_gd [8:43 PM] 
-Yo,
-Je vais commencer par le plus facile
-
-[8:44]  
-4) Aucune idée de ce qu'il faut mettre, c'est le prof qui a insisté pour qu'on ait ça
-
-ambroise-rabier [8:44 PM] 
-yo
-
-leo_gd [8:44 PM] 
-3) si ça te semble pertinent tu peux le supprimer
-
-[8:45]  
-2) Ca dépend de la transaction, je ferai une liste quand j'aurai le temps demain (je suis pris ce soir)
-
-[8:45]  
-1) Je corrigerai ça demain, quand j'aurai le temps
-
-ambroise-rabier [8:49 PM] 
-2) Ca dépend de la transaction, je ferai une liste quand j'aurai le temps demain (je suis pris ce soir)
-alors, on est d'accords on parle de l'event collect (quand tu récup de l'argent des buildings), c'est ce que tu appelles transaction ?
-
-Ahh, pour l'event collect, pardon
-
-[8:50]  
-Je suppose que ma reflexion c'était productID = bâtiment et productReceived = ressource (edited)
-*/
 }
