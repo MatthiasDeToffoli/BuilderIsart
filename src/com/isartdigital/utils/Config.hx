@@ -53,11 +53,6 @@ class Config
 	public static var qrcode (get, never): Bool;	
 	
 	/**
-	 * défini si les events sont envoyés à DeltaDNA ou pas.
-	 */
-	public static var deltaDNA(get, never): Bool;
-	
-	/**
 	 * défini le chemin à partir de www/ dans fbGame (ftp), utile pour
 	 * le build cocoonJS
 	 */
@@ -118,7 +113,6 @@ class Config
 		if (_data.debug == null || _data.debug=="") _data.debug = false;
 		if (_data.fps == null || _data.fps=="") _data.fps = false;
 		if (_data.qrcode == null || _data.qrcode=="") _data.qrcode = false;
-		if (_data.deltaDNA == null || _data.deltaDNA == "") _data.deltaDNA = false;
 		
 		if (_data.pathInFBGame == null) _data.pathInFBGame = "";
 		if (_data.langPath == null) _data.langPath = "";
@@ -167,10 +161,6 @@ class Config
 	
 	private static function get_qrcode ():Bool {
 		return data.qrcode;
-	}
-	
-	private static function get_deltaDNA ():Bool {
-		return data.deltaDNA;
 	}
 	
 	private static function get_pathInFBGame ():String {

@@ -30,8 +30,8 @@ class DeltaDNAManager{
     // ##############################################################
 	
 	public static function sendConnexionEvents (pEvent:EventSuccessConnexion):Void {
-		if (!Config.deltaDNA) {
-			Debug.warn("DeltaDNA desatived.");
+		if (!Main.DELTA_DNA) {
+			Debug.warn("DeltaDNA desactived.");
 			return;
 		}
 		
@@ -80,7 +80,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendStepFTUE (pStepIndex:Int):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
@@ -104,7 +104,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendTransaction (pTransactionType:TransactionType, pIdPack:Int, pTypePrice:GeneratorType, pPrice:Float):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
@@ -131,7 +131,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendCollect (pTypeBuildingID:Int, pAmount:Int):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
@@ -154,7 +154,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendIntershipChoice (pProductID:Int, pChoiceID:Int):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
@@ -181,7 +181,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendUIInteraction (pUIAction:String, pUILocation:String, pUIName:String, pUIType:String):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
@@ -205,7 +205,7 @@ class DeltaDNAManager{
 	 */
 	public static function sendSocial (pFriendName:String):Void {
 		if (!isReady) {
-			if (Config.deltaDNA)
+			if (Main.DELTA_DNA)
 				Debug.warn("DeltaDNA is not ready ! (wait for login !)");
 			return;
 		}
