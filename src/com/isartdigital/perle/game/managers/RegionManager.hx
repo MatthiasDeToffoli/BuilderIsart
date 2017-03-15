@@ -506,7 +506,7 @@ class RegionManager
 			case Alignment.hell: return AssetName.BACKGROUND_HELL;
 			case Alignment.heaven: return AssetName.BACKGROUND_HEAVEN;
 			case Alignment.neutral: return AssetName.BACKGROUND_STYX;
-			default: trace(pRegionType + " - No background for this"); return null;
+			default: Debug.(pRegionType + " - No background for this"); return null;
 		}
 	}
 	

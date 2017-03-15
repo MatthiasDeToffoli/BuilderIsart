@@ -67,6 +67,9 @@ class CameraManager
 	}
 	
 	public static function smoothCamera ():Void {
+		if (Hud.isHide && !Phantom.isSet())
+			return;
+		
 		lastTargetPosition = target.position.clone();
 		if (TweenManager.magnitude(MouseManager.getInstance().lastSpeedKnow) != 0)
 			killTweenRef = TweenManager.linearSlow(target, MouseManager.getInstance().lastSpeedKnow, onSmoothUpdate);
