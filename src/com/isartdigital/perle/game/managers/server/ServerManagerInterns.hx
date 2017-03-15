@@ -2,8 +2,8 @@ package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
 import com.isartdigital.perle.game.sprites.Intern;
-import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
+import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
 

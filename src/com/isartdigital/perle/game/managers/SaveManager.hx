@@ -2,17 +2,15 @@ package com.isartdigital.perle.game.managers;
 
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.MarketingManager.CampaignType;
-import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.ResourcesManager.ResourcesData;
 import com.isartdigital.perle.game.managers.SaveManager.Save;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerLoad;
 import com.isartdigital.perle.game.managers.server.ServerManagerReset;
-import com.isartdigital.perle.game.sprites.Ground;
 import com.isartdigital.perle.game.virtual.VTile;
-import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.HudMissionButton;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
 import js.Browser;

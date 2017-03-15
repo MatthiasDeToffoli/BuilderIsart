@@ -1,16 +1,12 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Ground;
-import com.isartdigital.perle.game.sprites.Phantom;
-import com.isartdigital.perle.ui.hud.Hud;
-import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.events.TouchEventType;
 import com.isartdigital.utils.game.GameStage;
-import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.utils.system.DeviceCapabilities;
-import eventemitter3.EventEmitter;
 import js.Browser;
 import js.html.TouchEvent;
 import pixi.core.display.Container;

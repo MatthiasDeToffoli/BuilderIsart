@@ -1,10 +1,7 @@
 package com.isartdigital.perle.game.managers.server;
-import com.isartdigital.perle.game.managers.BoostManager.BoostInfo;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
-import com.isartdigital.perle.game.managers.SaveManager.GeneratorDescription;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
-import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessAddBuilding;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding.EventSuccessMoveBuilding;
@@ -13,7 +10,6 @@ import com.isartdigital.perle.game.virtual.vBuilding.VHouse;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.popin.accelerate.SpeedUpPopin;
 import com.isartdigital.utils.Debug;
-import com.isartdigital.utils.game.GameStage;
 import haxe.Json;
 
 

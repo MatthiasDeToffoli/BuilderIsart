@@ -1,7 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.ChoiceManager.EventRewardDesc;
-import com.isartdigital.perle.game.managers.SaveManager.Alignment;
-import com.isartdigital.perle.game.managers.server.ServerManager.DbAction;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import com.isartdigital.utils.Debug;

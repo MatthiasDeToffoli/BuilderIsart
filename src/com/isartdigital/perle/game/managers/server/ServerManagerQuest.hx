@@ -6,7 +6,6 @@ import com.isartdigital.perle.game.managers.server.ServerManagerInterns.EventErr
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.utils.Debug;
 import haxe.Json;
-import js.Lib;
 
 /**
  * ...

@@ -1,8 +1,8 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.GameConfig.TableTypePack;
-import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.TimesInfo.TimesAndNumberDays;
 import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 
 typedef Campaign = {
