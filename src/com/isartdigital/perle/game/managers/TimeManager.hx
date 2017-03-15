@@ -334,9 +334,11 @@ class TimeManager {
 		var lTime:TimeElementResource;
 		
 		for (lTime in listResource){
-			var currentVBuilding:VBuilding = IdManager.searchVBuildingById(lTime.desc.refTile);
-			if (currentVBuilding != null) //@Ambroise : id 0 create and don't exist in game ? Oo
-			ServerManagerBuilding.updateGenerator(currentVBuilding.tileDesc);
+			if (lTime.desc.end != null) {
+				var currentVBuilding:VBuilding = IdManager.searchVBuildingById(lTime.desc.refTile);
+				if (currentVBuilding != null) //I let this code for more secure but normaly it's not necessary
+				ServerManagerBuilding.updateGenerator(currentVBuilding.tileDesc);
+			}
 		}
 	}
 	
