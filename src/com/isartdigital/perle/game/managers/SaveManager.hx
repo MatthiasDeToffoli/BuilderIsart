@@ -437,8 +437,6 @@ class SaveManager {
 					progress:Date.now().getTime(),
 					end:config.endForNextProduction
 				});
-				trace("loading building whit typeName:"+lGameConfig.name+" and whit refTile: " + pBuildings[config].id);
-				trace("loading building whit typeName:"+lGameConfig.name+" and whit refTile: " + pBuildings[config]);
 			}
 			
 		}

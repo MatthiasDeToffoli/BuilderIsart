@@ -75,7 +75,6 @@ class IdManager{
 				}
 			}
 		}
-		trace("Purgatory ID : " + VTribunal.getInstance().tileDesc.id);
 		Debug.warn(pId + " id (client) not found in worldMap.");
 		return null;
 	}

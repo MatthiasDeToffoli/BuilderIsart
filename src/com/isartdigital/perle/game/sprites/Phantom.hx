@@ -407,7 +407,7 @@ class Phantom extends Building {
 				}
 			};
 			
-			trace(buildingName);
+			
 			vBuilding = Type.createInstance(Type.resolveClass(Main.getInstance().getPath(Virtual.BUILDING_NAME_TO_VCLASS[buildingName])), [tileDesc]);
 			
 			vBuilding.activate();

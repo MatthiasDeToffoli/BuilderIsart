@@ -45,7 +45,6 @@ class VTribunal extends VBuildingUpgrade
 	 * @return instance unique
 	 */
 	public static function getInstance (?pDesc:TileDescription): VTribunal {
-		Debug.warn("CreatingTribunal");
 		if (instance == null) instance = new VTribunal(pDesc);
 		return instance;
 	}
@@ -61,7 +60,6 @@ class VTribunal extends VBuildingUpgrade
 		
 		alignementBuilding = Alignment.neutral;
 
-		trace("Vtribunal desc == null, creating a new");
 		if (pDesc == null){
 			lDesc = {
 				buildingName:BuildingName.STYX_PURGATORY,
