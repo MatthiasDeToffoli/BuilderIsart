@@ -28,6 +28,7 @@ class MarketingManager
 	private static var currentCampaign:CampaignType;
 	private static inline var NUMBERADMENFACTOR:Int = 2;
 	private static var arrayCampaignType:Array<CampaignType> = [CampaignType.ad, CampaignType.small, CampaignType.medium, CampaignType.large];
+	public static var tribunalIsCreated:Bool;
 	
 	public static function awake():Void {
 		
@@ -63,6 +64,7 @@ class MarketingManager
 			}
 		}
 		
+		tribunalIsCreated = false;
 		marketingProd = GameConfig.getBuildingByName('Marketing Department', 1).productionPerHour;
 	}
 	
@@ -95,14 +97,19 @@ class MarketingManager
 		}
 	}
 	
+	public static function setTribunalCreated():Void {
+		tribunalIsCreated = true;
+		updateTribunal();
+	}
+	
 	public static function increaseNumberAdMen():Void {
 		numberAdMen++;
-		updateTribunal();
+		if(tribunalIsCreated) updateTribunal();
 	}
 	
 	public static function decreaseNumberAdMen():Void {
 		numberAdMen--;
-		updateTribunal();
+		if(tribunalIsCreated) updateTribunal();
 	}
 	
 	public static function setCampaign(pType:CampaignType):Void {

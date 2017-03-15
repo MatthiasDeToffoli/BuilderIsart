@@ -34,7 +34,7 @@ class VMarketingHouse extends VBuilding
 	
 	override public function destroy():Void 
 	{
-		//MarketingManager.decreaseNumberAdMen();
+		MarketingManager.decreaseNumberAdMen();
 		super.destroy();
 	}
 	

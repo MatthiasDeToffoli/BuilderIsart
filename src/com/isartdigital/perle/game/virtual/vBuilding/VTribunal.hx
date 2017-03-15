@@ -79,10 +79,9 @@ class VTribunal extends VBuildingUpgrade
 		addGenerator();
 		setCameraPos(); // @TODO : ici bof car cette classe n'a pas de rapport avec la camera
 		findSoul();
-		
-		
 	}
 	
+
 	public function findSoul():Void {
 		if (myGenerator.desc.quantity == 0) soulToJudge = {name:"", adjective:"", age:1, alignement:1, sexe:1};
 		else {
@@ -113,6 +112,7 @@ class VTribunal extends VBuildingUpgrade
 	}
 	override public function activate():Void 
 	{
+		if(!MarketingManager.tribunalIsCreated) MarketingManager.setTribunalCreated();
 		super.activate();
 		PurgatorySoulCounter.getInstance().setText({current:myGenerator.desc.quantity, max:myGenerator.desc.max});
 	}
