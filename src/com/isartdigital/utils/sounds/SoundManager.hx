@@ -14,6 +14,7 @@ class SoundManager
 	 */
 	private static var list (default, null):Map<String,Howl>;
 	public static var isMute:Bool = false;
+	public static var MAINLOOP:String = "MUSIC_MAIN";
 	
 	private function new() {
 	}
@@ -35,10 +36,17 @@ class SoundManager
 	 */
 	public static function getSound(pName:String): Howl {
 		if (isMute || list[pName] == null) {
-			pName != "MUSIC_MAIN" ? return list["SOUND_SILENT"] : return list[pName];
+			pName != MAINLOOP ? return list["SOUND_SILENT"] : return list[pName];
 		}
 		
 		else return list[pName];	
 	}
-
+	
+	public static function playLoop():Void {
+		list[MAINLOOP].play();
+	}
+	
+	public static function pauseLoop():Void {
+		list[MAINLOOP].pause();
+	}
 }

@@ -2,6 +2,8 @@ package com.isartdigital.perle.ui.popin.marketing;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TimesInfo;
+import com.isartdigital.perle.game.managers.AdsManager;
+import com.isartdigital.perle.game.managers.AdsManager.AdsData;
 import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MarketingManager.Campaign;
 import com.isartdigital.perle.utils.Interactive;
@@ -75,7 +77,8 @@ class PanelCampaign extends SmartComponent
 	
 	private function onClickVideo():Void {
 		SoundManager.getSound("SOUND_NEUTRAL").play();
-		Ads.getMovie(callBackAd);
+		AdsManager.playAd(callBackAd);
+		//Ads.getMovie(callBackAd);
 	}
 	
 	private function onCLickSmall():Void {
@@ -122,11 +125,9 @@ class PanelCampaign extends SmartComponent
 		txt.text = MarketingManager.getCampaignByIndice(i).price + "";
 	}
 	
-	private function callBackAd (pData:Dynamic):Void {
-		if (pData == null) trace ("Erreur Service");
-		else if (pData.error != null) Debug.error(pData.error);
-		else if (pData.close == "cancel")  UIManager.getInstance().openPopin(Cancel_Video.getInstance());
-		else if(pData.close == "close") clickCampaign(CampaignType.ad);
+	private function callBackAd (pClose:String):Void {
+		if (pClose == "cancel")  UIManager.getInstance().openPopin(Cancel_Video.getInstance());
+		else if(pClose == "close") clickCampaign(CampaignType.ad);
 	}
 
 	override public function destroy():Void 
