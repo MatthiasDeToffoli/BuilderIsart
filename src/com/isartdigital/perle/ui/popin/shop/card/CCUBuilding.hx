@@ -99,9 +99,6 @@ class CCUBuilding extends CarouselCardUnlock{
 			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.MOVING, "building" => null];
 			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		}
-		
-		// todo : il close le shop même si canBuy == false  :(
-		// @alexis : ce todo il est bon ? si oui supprime le.
 	}
 	
 }

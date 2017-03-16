@@ -134,13 +134,30 @@ class DialogueManager
 	public static function createFtue():Void {
 		ftueIsCreated = true;
 		var lSave:Int = SaveManager.currentSave.ftueProgress;
+		var lLevel:Float = ResourcesManager.getLevel();
+		var lFlag:Bool = false;
 		//var lSave:Int = SaveManager.currentSave.ftueProgress;
 		//check if first time
-		if (lSave != null && steps[lSave-1] !=null) {
-			if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing) {
-				//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
-				return;
+		if (lSave != null && steps[lSave-1] != null) {
+			
+			switch (lLevel) {
+				case UnlockManager.LEVEL_UNLOCK_SPECIAL :
+					if (steps[lSave-1].endOfFtue) lFlag = true;
+				case UnlockManager.LEVEL_UNLOCK_COLLECTORS :
+					if (steps[lSave-1].endOfSpecial) lFlag = true;
+				case UnlockManager.LEVEL_UNLOCK_FACTORY :
+					if (steps[lSave-1].endOfCollectors) lFlag = true;
+				case UnlockManager.LEVEL_UNLOCK_ALTAR :
+					if (steps[lSave-1].endOfFactory) lFlag = true;
+				case UnlockManager.LEVEL_UNLOCK_MARKETING :
+					if(steps[lSave-1].endOfAltar) lFlag = true;
 			}
+			
+			if(!lFlag)
+				if (lSave > steps.length-1 || steps[lSave-1].endOfFtue || steps[lSave-1].endOfSpecial || steps[lSave-1].endOfAltar || steps[lSave-1].endOfCollectors || steps[lSave-1].endOfFactory || steps[lSave-1].endOfMarketing) {
+					//DialogueUI.actualDialogue = SaveManager.currentSave.ftueProgress;
+					return;
+				}
 			
 			if (steps[lSave].gold !=null)
 				doNotGiveGold = true;

@@ -77,7 +77,7 @@ class SpeedUpPopin extends AcceleratePopin
 	}
 	
 	override private function onClose():Void {
-		if (DialogueManager.ftuePlayerCanWait)
+		if (DialogueManager.ftuePlayerCanWait || DialogueManager.passFree)
 			return;
 			
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();

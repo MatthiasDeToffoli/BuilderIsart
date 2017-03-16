@@ -174,7 +174,7 @@ class Hud extends SmartScreen
 
 		if (pVBuilding != null)
 			trace("VBuildindg ID is : " + pVBuilding.tileDesc.id); 
-
+	
 		if (currentBuildingHudType != pNewBuildingHud) {
 			
 			if (currentBuildingHudType == BuildingHudType.MOVING)
@@ -276,7 +276,6 @@ class Hud extends SmartScreen
 		addComponent(pContextual);
 		pContextual.setOnSpawn();
 		currentBuildingHud = pContextual;
-		
 	}
 	
 	// todo : called from any clic outside a building
@@ -419,7 +418,7 @@ class Hud extends SmartScreen
 			hide();
 			return;
 		}
-		
+
 		if (pCurrentState != VBuildingState.isBuilding && pCurrentState != VBuildingState.isUpgrading)
 			if (DialogueManager.ftueStepRecolt || DialogueManager.ftueStepConstructBuilding || DialogueManager.ftueStepOpenPurgatory)
 				return;

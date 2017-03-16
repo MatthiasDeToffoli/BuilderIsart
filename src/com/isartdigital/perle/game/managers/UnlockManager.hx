@@ -21,11 +21,12 @@ import haxe.Timer;
 class UnlockManager
 {
 	public static var unlockedItem:Array<TableTypeBuilding>;
-	private static inline var LEVEL_UNLOCK_SPECIAL:Float = 3;
-	private static inline var LEVEL_UNLOCK_COLLECTORS:Float = 5;
-	private static inline var LEVEL_UNLOCK_FACTORY:Float = 6;
-	private static inline var LEVEL_UNLOCK_ALTAR:Float = 9;
-	private static inline var LEVEL_UNLOCK_MARKETING:Float = 10;
+	public static inline var LEVEL_UNLOCK_SPECIAL:Float = 3;
+	public static inline var LEVEL_UNLOCK_COLLECTORS:Float = 5;
+	public static inline var LEVEL_UNLOCK_FACTORY:Float = 6;
+	public static inline var LEVEL_UNLOCK_ALTAR:Float = 9;
+	public static inline var LEVEL_UNLOCK_MARKETING:Float = 10;
+	
 	private static inline var NUMBER_OF_ICONS:Int = 5;
 	private static inline var LEVEL_MAX:Int = 20;
 	

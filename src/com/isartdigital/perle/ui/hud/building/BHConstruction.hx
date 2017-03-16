@@ -15,6 +15,7 @@ import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.ui.UIPosition;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
+import haxe.Timer;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
 import pixi.interaction.EventTarget;
@@ -74,7 +75,7 @@ class BHConstruction extends BuildingHud {
 	}
 	
 	override public function setOnSpawn():Void {
-		setGameListener();
+		Timer.delay(setGameListener,500);
 		addListeners();
 	}
 	
