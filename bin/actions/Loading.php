@@ -43,7 +43,7 @@ class Loading
             if ($lTable[$i] == static::TABLE_BUILDING)
                 $result[static::TABLE_BUILDING] = static::convertDateTimes($result[static::TABLE_BUILDING], $lLength2);
             else if($lTable[$i] == static::TABLE_PLAYER)
-              $result[static::TABLE_PLAYER] = static::convertDateTimesPlayer($result[static::TABLE_PLAYER], $lLength2);
+              $result[static::TABLE_PLAYER][0] = static::convertDateTimesPlayer($result[static::TABLE_PLAYER][0]);
         }
 
         return $result;
@@ -76,16 +76,13 @@ class Loading
         return $pTable;
     }
 
-    private static function convertDateTimesPlayer ($pTable, $pLength2) {
-        for ($j = 0; $j < $pLength2; $j++) {
-            if (array_key_exists(static::COLUMN_END_OF_CAMPAIGN, $pTable[$j]))
-            if($pTable[$j][static::COLUMN_END_FOR_NEXT_PRODUCTION] != null)
-                $pTable[$j][static::COLUMN_END_OF_CAMPAIGN] = Utils::timeStampToJavascript(
+    private static function convertDateTimesPlayer ($pTable) {
+            if($pTable[static::COLUMN_END_OF_CAMPAIGN] != null)
+                $pTable[static::COLUMN_END_OF_CAMPAIGN] = Utils::timeStampToJavascript(
                     Utils::dateTimeToTimeStamp(
-                        $pTable[$j][static::COLUMN_END_OF_CAMPAIGN]
+                        $pTable[static::COLUMN_END_OF_CAMPAIGN]
                     )
                 );
-        }
         return $pTable;
     }
 
