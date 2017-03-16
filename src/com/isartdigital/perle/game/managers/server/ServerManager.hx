@@ -80,8 +80,7 @@ class ServerManager {
 		// we can do better.
 		isNewPlayer = successEvent.isNewPlayer;
 		//if (successEvent.isNewPlayer) {
-		
-			Facebook.api(Facebook.uid+"?fields=email", onEmail);
+			Facebook.api(Facebook.uid+"?fields=email","get",{}, onEmail);
 		//}
 	}
 	
@@ -91,8 +90,13 @@ class ServerManager {
 	
 	private static function onEmail(response:Dynamic):Void {
 		// we could make the request to facebook API from the server (php) side.
-		addEmail(response.email);
-		ServerManagerLoad.initWallet(response.email);
+		if (response.email != "undefined" && response.email != null) {
+			addEmail(response.email);
+			ServerManagerLoad.initWallet(response.email);
+			trace("Your email is: " + response.email);
+		} else {
+			Debug.warn("No email from facebook: " + response.email);
+		}
 	}
 	
 	private static function addEmail(pEmail:String) {

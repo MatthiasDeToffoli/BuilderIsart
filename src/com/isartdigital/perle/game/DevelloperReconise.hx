@@ -13,8 +13,8 @@ class DevelloperReconise
 	public static function awake():Void {
 		// FaceBook.uid
 		devs = [
-			"10206357042724082", // matthias
-			"389913848025374" // ambroise
+			"10206357042724082" // matthias
+			//"389913848025374" // ambroise
 			//"1348907731821283" // victor
 		];
 	}
