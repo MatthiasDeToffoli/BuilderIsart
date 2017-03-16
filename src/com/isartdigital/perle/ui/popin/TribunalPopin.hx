@@ -423,7 +423,12 @@ class TribunalPopin extends SmartPopinExtended
 		if (pObject == null) Debug.error("erreur facebook");
 		else if (pObject.error != null) Debug.error(pObject.error);
 		else {
-			Facebook.api(pObject.to[0], onFriendInfo);
+			if (pObject.to == null || pObject.to.length == 0) {
+				Debug.warn('no invitation send');
+			} else {
+			 Facebook.api(pObject.to[0], onFriendInfo);	
+			}
+			
 		}
 	}
 	
