@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCard;
 import com.isartdigital.perle.ui.popin.shop.card.CarouselCardPackCurrency;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
+import com.isartdigital.perle.ui.popin.shop.card.CarouselCardPackCurrencyVideo;
 
 /**
  * ...
@@ -11,6 +12,7 @@ import com.isartdigital.perle.ui.popin.shop.ShopPopin.ShopTab;
  */
 class ShopCarousselCurrencies extends ShopCaroussel{
 
+	private var KARMA_AD(default,never):String = 'karma ad';
 	public function new() {
 		super(AssetName.SHOP_CAROUSSEL_CURRENCIE);
 		
@@ -28,15 +30,17 @@ class ShopCarousselCurrencies extends ShopCaroussel{
 	}
 	
 	override private function getNewCard (pCardToShow:String):CarouselCard {
-		return new CarouselCardPackCurrency();
+		return pCardToShow == KARMA_AD ? new CarouselCardPackCurrencyVideo() : new CarouselCardPackCurrency();
 	}
 	
 	override private function getCardToShowOverride ():Array<String> {
 		var result:Array<String> = new Array<String>();
 		
 		for (i in 0...GameConfig.getShopPack().length) {
-			if (GameConfig.getShopPack()[i].tab == ShopTab.Currencies)
-				result.push(GameConfig.getShopPack()[i].packName);
+			if (GameConfig.getShopPack()[i].tab == ShopTab.Currencies){
+				if (GameConfig.getShopPack()[i].packName == KARMA_AD) result.unshift(GameConfig.getShopPack()[i].packName);
+				else result.push(GameConfig.getShopPack()[i].packName);
+			}
 		}
 		
 		return result;

@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.popin.collector;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TimesInfo;
+import com.isartdigital.perle.game.managers.AdsManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VCollector;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -38,6 +39,7 @@ class PackPanelUnlock extends PackPanel
 		SoundManager.getSound("SOUND_WOOD_PROD").play();
 		vBuildingLink.startProduction(pack);
 		CollectorPopin.getInstance().switchPanel();
+		AdsManager.playAdPictureWithCounter();
 	}
 	
 	private function rewrite(){

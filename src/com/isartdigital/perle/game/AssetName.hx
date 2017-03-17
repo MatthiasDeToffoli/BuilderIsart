@@ -120,6 +120,7 @@ class AssetName{
 	public static inline var CAROUSSEL_CARD_LOCKED:String = SHOP_PREFIX + "BuildingDeco_LockedItem";
 	public static inline var CAROUSSEL_CARD_BUNDLE:String = "ButtonBundle";
 	public static inline var CAROUSSEL_CARD_PACK_CURRENCY:String = "ButtonBuyPack";
+	public static inline var CAROUSSEL_CARD_PACK_CURRENCY_VIDEO:String = "ButtonBuyPack_Video";
 	public static inline var CAROUSSEL_CARD_PACK_RESOURCE:String = "ButtonBuyPack_Ressource";
 	public static inline var CAROUSSEL_CARD_BTN_INFO:String = "ButtonInfo";
 	
