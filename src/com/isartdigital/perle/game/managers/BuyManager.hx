@@ -70,8 +70,10 @@ class BuyManager {
 			);
 		}
 		
+		var isBuilding:Bool = ShopCarousselBuilding.getNameList().indexOf(pBuildingName) != -1;
+		
 		DeltaDNAManager.sendTransaction(
-			TransactionType.soldBuilding,
+			isBuilding ? TransactionType.soldBuilding : TransactionType.soldDecoration,
 			GameConfig.getBuildingByName(pBuildingName, pLevel).iD,
 			GeneratorType.soft,
 			lSellPrice[GeneratorType.soft]
