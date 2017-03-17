@@ -2,6 +2,7 @@ package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.sprites.Tile;
 import com.isartdigital.perle.game.virtual.VTile;
+import com.isartdigital.utils.Debug;
 import pixi.core.math.Point;
 
 /**
@@ -54,14 +55,11 @@ class ClippingManager
 	private static var currentCameraClipRect:MapClippingRect;
 	private static var precedentCameraClipRect:MapClippingRect;
 	private static var commonCameraClipRect:MapClippingRect;
-	
-	public function new() {
-		
-	}
+	private static var needSortTiles:Bool;
 	
 	/**
 	 * Update clipping
-	 * @param	pFullScreen (perform update on fullScreen, not optimized !) (try not to use it)
+	 * @param	pFullScreen (perform update on fullScreen, not optimized !) (try not to use it) (instead of just a part of the screen taht change)
 	 */
 	public static function update(pFullScreen:Bool = false):Void {
 		setCameraMapClipRect();
@@ -91,8 +89,12 @@ class ClippingManager
 				
 			}
 		}
+		if (needSortTiles) {
+			needSortTiles = false;
+			Building.sortBuildings();
+			// todo : addregion here when they will be clipped.
+		}
 		
-		Building.sortBuildings();
 		
 		precedentCameraClipRect = currentCameraClipRect;
 	}
@@ -125,7 +127,7 @@ class ClippingManager
 				
 				if (pClippingMap[x] != null && pClippingMap[x][y] != null) {
 					var lLength:Int = pClippingMap[x][y].length;
-					
+					needSortTiles = true;
 					for (i in 0...lLength) {
 						if (pClippingMap[x][y][i].active != pActivate && !pClippingMap[x][y][i].ignore)
 							pActivate ? pClippingMap[x][y][i].activate() : pClippingMap[x][y][i].desactivate();
