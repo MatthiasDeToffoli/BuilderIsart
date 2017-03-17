@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game;
+import com.isartdigital.perle.game.managers.AdsManager;
 import com.isartdigital.perle.game.managers.AnimationManager;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
@@ -106,6 +107,7 @@ class GameManager {
 		HudMissionButton.initFromLoad();
 		CheatPanel.getInstance().ingame();
 		BHConstruction.initTimer(); // allways after Clipping manager
+		AdsManager.awake();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		BackgroundUnder.getInstance().init();
 		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());

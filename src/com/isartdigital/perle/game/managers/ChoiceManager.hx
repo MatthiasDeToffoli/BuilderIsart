@@ -131,7 +131,7 @@ class ChoiceManager
 	
 	public static function applyReward(pIntern:InternDescription, pReward:EventRewardDesc, pChoiceType:ChoiceType, useChoice:ChoiceDescription):Void {
 		var baseReward:EventRewardDesc;
-		
+		AdsManager.playAdPictureWithCounter();
 		if (pChoiceType == ChoiceType.HELL) {
 			baseReward = {
 				gold : (useChoice.goldHell != 0) ? useChoice.goldHell + pReward.gold : 0,

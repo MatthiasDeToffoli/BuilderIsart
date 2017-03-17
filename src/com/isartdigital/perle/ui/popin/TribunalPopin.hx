@@ -3,6 +3,7 @@ package com.isartdigital.perle.ui.popin;
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
+import com.isartdigital.perle.game.managers.AdsManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -472,6 +473,11 @@ class TribunalPopin extends SmartPopinExtended
 		if (DialogueManager.ftueClosePurgatory)
 			DialogueManager.endOfaDialogue(true);
 			
+		AdsManager.playAdPictureWithCounter();
+		closePopin();
+	}
+	
+	private function closePopin() {
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 		UIManager.getInstance().closeCurrentPopin();	
 		Hud.getInstance().show();
@@ -564,7 +570,7 @@ class TribunalPopin extends SmartPopinExtended
 			ResourcesManager.spendTotal(GeneratorType.buildResourceFromHell, tribunalConfig.costIron);	
 			ResourcesManager.spendTotal(GeneratorType.buildResourceFromParadise, tribunalConfig.costWood);
 			VTribunal.getInstance().onClickUpgrade();
-			onClose();
+			closePopin();
 			
 			SoundManager.getSound("SOUND_NEUTRAL").play();
 		}
