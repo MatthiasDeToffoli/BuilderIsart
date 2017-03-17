@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Config;
+import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
 import com.isartdigital.utils.game.GameStage;
@@ -41,7 +42,9 @@ class Building extends Tile implements IZSortable
 	public static var list:Array<Building>;
 	
 	private static var container:Container;	
-	private static var uiContainer:Container;	
+	private static var uiContainer:Container;
+	public var isoBox:Graphics;
+	public var isoRect:Rectangle;
 	public var colMin:Int;
 	public var colMax:Int;
 	public var rowMin:Int;
@@ -114,7 +117,6 @@ class Building extends Tile implements IZSortable
 		list.push(lBuilding);
 		lBuilding.init();
 		container.addChild(lBuilding);
-		
 		lBuilding.start(); // todo : start ailleurs pr éviter clic de trop ?
 		
 		if (state == VBuildingState.isBuilding || state == VBuildingState.isUpgrading) 
@@ -136,7 +138,11 @@ class Building extends Tile implements IZSortable
 	
 	// Merci François pour l'info ;), tellement plus simple de façon dynamique.
 	private function addIsoBox ():Void {
-		var lLocalBounds:Rectangle = getLocalBounds();
+		// optimization
+		if (isoBox != null)
+			return;
+		
+		var lLocalBounds:Rectangle = getLocalBounds().clone();
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
 		var myGraphic:Graphics = new Graphics();
 		var lLocalLeftFromModelToView:Float = -Tile.TILE_WIDTH / 2 * GameConfig.getBuildingByName(getBuildingName()).height;
@@ -153,6 +159,12 @@ class Building extends Tile implements IZSortable
 		myGraphic.endFill();
 		
 		isoBox = myGraphic;
+		isoRect = new Rectangle(
+			lLocalLeftFromModelToView,
+			lAnchor.y,
+			lLocalRightFromModelToView - lLocalLeftFromModelToView,
+			height
+		);
 		addChild(isoBox);
 	}
 	
@@ -230,12 +242,13 @@ class Building extends Tile implements IZSortable
 	override public function destroy():Void {
 		// todo destroy incomplet ?
 		// todo : suppri;er de behind and front du zsorting ?
+		isoBox.destroy();
+		isoBox = null;
 		Interactive.removeListenerClick(this, onClick);
 		off(MouseEventType.MOUSE_OVER, changeCursor);
 		off(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		AnimationManager.removeToManager(this);
 		animation = null;
-		
 		
 		if (list.indexOf(this) != -1)
 			list.splice(list.indexOf(this), 1);

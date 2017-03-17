@@ -49,6 +49,10 @@ class BHConstruction extends BuildingHud {
 		return timerContainer;
 	}
 	
+	/**
+	 * TODO : cette function occasionne des bugs régulier, c'est fait à l'arrache et ne devrait PAS se baser sur BuildingHud.virtualBuilding.
+	 * @param	pTimeDesc
+	 */
 	public static function newTimer(?pTimeDesc:TimeDescription = null):Void {
 		var lVBuilding:VBuilding = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
 		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();

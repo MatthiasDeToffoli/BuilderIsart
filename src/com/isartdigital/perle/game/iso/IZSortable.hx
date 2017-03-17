@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.iso;
 import pixi.core.display.Container;
 import pixi.core.graphics.Graphics;
+import pixi.core.math.shapes.Rectangle;
 
 /**
  * Interface des objets à "z sorter"
@@ -13,6 +14,8 @@ interface IZSortable
 	 */
 	//public var hitBox(get, null):Container;
 	public var isoBox:Graphics;
+	
+	public var isoRect:Rectangle;
 	
 	/**
 	 * colonne minimum
@@ -43,4 +46,14 @@ interface IZSortable
 	 * tableau des éléments placés devant
 	 */ 
 	public var inFront:Array<IZSortable>;
+	
+	/**
+	 * destroy isoBox
+	 */
+	//private function onDestroyZSortable:Void->Void;
+	
+	/**
+	 * recycle isoBox
+	 */
+	//private function onRecycleZSortable:Void->Void;
 }

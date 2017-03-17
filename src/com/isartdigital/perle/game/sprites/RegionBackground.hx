@@ -3,6 +3,7 @@ import com.isartdigital.perle.game.iso.IZSortable;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.utils.Config;
+import com.isartdigital.utils.Debug;
 import pixi.core.graphics.Graphics;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
@@ -31,6 +32,9 @@ class RegionBackground extends FlumpStateGraphic implements IZSortable
 	
 	// tableau des éléments placés devant
 	public var inFront:Array<IZSortable>;
+	
+	public var isoBox:Graphics;
+	public var isoRect:Rectangle;
 	
 	public function new(pAssetName:String, pTilePos:Index, pMapSize:Index) 
 	{
@@ -82,6 +86,12 @@ class RegionBackground extends FlumpStateGraphic implements IZSortable
 		myGraphic.endFill();
 		
 		isoBox = myGraphic;
+		isoRect = new Rectangle(
+			lLocalLeftFromModelToView,
+			lAnchor.y,
+			lLocalRightFromModelToView - lLocalLeftFromModelToView,
+			Tile.TILE_HEIGHT * (rowMax - rowMin) + 2*Tile.TILE_HEIGHT
+		);
 		addChild(isoBox);
 		
 	}
@@ -104,7 +114,23 @@ class RegionBackground extends FlumpStateGraphic implements IZSortable
 		myGraphic.endFill();
 		
 		isoBox = myGraphic;
+		isoRect = new Rectangle(
+			lLocalLeftFromModelToView - lLocalBounds.width/2 - 2*Tile.TILE_WIDTH/3,
+			lAnchor.y,
+			lLocalBounds.width,
+			height
+		);
 		addChild(isoBox);
+	}
+	
+	override public function destroy():Void {
+		
+		if (parent != null) 
+			parent.removeChild(this);
+		
+		isoBox.destroy();
+		isoBox = null;
+		super.destroy();
 	}
 	
 }

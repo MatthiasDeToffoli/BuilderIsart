@@ -2,9 +2,11 @@ package com.isartdigital.perle.game.iso;
 
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.CollisionManager;
+import com.isartdigital.utils.game.GameStage;
 import js.Lib;
 import pixi.core.display.DisplayObject;
 import pixi.core.math.Point;
+import pixi.core.math.shapes.Rectangle;
 
 /**
  * Manager Iso
@@ -64,7 +66,28 @@ class IsoManager
 		var lA:IZSortable = cast (pA, IZSortable);
 		var lB:IZSortable = cast (pB, IZSortable);
 		
-		if (!CollisionManager.hitTestObject(lA.isoBox, lB.isoBox)) return null;
+		if (lA.isoRect != null && lB.isoRect != null) {
+			var lRectA:Rectangle = lA.isoRect.clone();
+			var lRectB:Rectangle = lB.isoRect.clone();
+			var lRectPosA:Point = new Point(lRectA.x, lRectA.y);
+			var lRectPosB:Point = new Point(lRectB.x, lRectB.y);
+			lRectPosA = GameStage.getInstance().getGameContainer().toLocal(lRectPosA, pA); // the rect is inside the building
+			lRectPosB = GameStage.getInstance().getGameContainer().toLocal(lRectPosB, pB);
+			lRectA.x = lRectPosA.x;
+			lRectA.y = lRectPosA.y;
+			lRectB.x = lRectPosB.x;
+			lRectB.y = lRectPosB.y;
+			//trace(collisionRectRect(lRectA, lRectB));
+			// toLocal is needed, or it will bug. Another way would be to create the box into the same geomertric reference.
+			if (!collisionRectRect(lRectA, lRectB)) return null;
+			
+			// toLocal will fail if there is any rescale between containers.
+			// One time over 90 the result is different from collisionRectRect.
+			//if (untyped !CollisionManager.getIntersection(lRectA,lRectB)) 
+			//	return null;
+		}
+		else Debug.error("isoRect is needed for Z-sorting.");
+		//else if (!CollisionManager.hitTestObject(lA.isoBox, lB.isoBox)) return null; // wrong because we need toLocal
 		
 		if (lA.rowMax < lB.rowMin) return pB; 
 		else if (lB.rowMax < lA.rowMin) return pA;
@@ -73,6 +96,14 @@ class IsoManager
 		else if (lB.colMax < lA.colMin) return pA;
 		
 		return null;
+	}
+	
+	// fonctionne pas
+	private static function collisionRectRect (rect1:Rectangle, rect2:Rectangle):Bool {
+		return (rect1.x < rect2.x + rect2.width  &&
+				rect1.x + rect1.width > rect2.x  &&
+				rect1.y < rect2.y + rect2.height &&
+				rect1.height + rect1.y > rect2.y);
 	}
 	
 	/**

@@ -8,12 +8,11 @@ import pixi.core.graphics.Graphics;
 /**
  * ...
  * @author COQUERELLE Killian
+ * @author Ambroise Rabier
  */
 
 class FlumpStateGraphic extends StateGraphic
 {
-
-	public var isoBox:Graphics;
 	
 	public function new(?pAssetName:String) {
 		super();
