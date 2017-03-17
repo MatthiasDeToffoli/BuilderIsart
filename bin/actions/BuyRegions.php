@@ -105,7 +105,8 @@ use actions\utils\Experience as Experience;
       "soft" => $moneyRest,
       'level' => $xpObject->level,
       "xpHeaven" => $xpObject->goodXp,
-      "xpHell" => $xpObject->badXp
+      "xpHell" => $xpObject->badXp,
+      'price' => $price
     );
 
 

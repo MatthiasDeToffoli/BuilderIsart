@@ -11,6 +11,7 @@ import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding;
 
  typedef ProductionPack =  {
+	 var idDataBase:Int;
 	 var name:String;
 	 var cost:Int;
 	 var time:TimesAndNumberDays;
@@ -43,6 +44,7 @@ class VCollector extends VBuildingUpgrade
 			
 			var diff:TimesAndNumberDays = TimesInfo.calculDateDiff(Date.fromString(lArray[i].time).getTime(), Date.fromTime(0).getTime());
 			lPack = {
+				idDataBase: lArray[i].iD,
 				name:lArray[i].name,
 				cost:lArray[i].costGold,
 				quantity: myGeneratorType == GeneratorType.buildResourceFromHell ? lArray[i].gainIron:lArray[i].gainWood,

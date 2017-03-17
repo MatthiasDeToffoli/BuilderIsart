@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers.server;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager.TransactionType;
 import com.isartdigital.perle.game.virtual.VTile.Index;
 import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.perle.ui.HudMissionButton;
@@ -39,6 +40,7 @@ typedef EventSuccessAddRegion = {
 	@:optional var xpHeaven:Float;
 	@:optional var xpHell:Float;
 	@:optional var level:Int;
+	@:optional var price:Int;
 }
 
 /**
@@ -250,6 +252,15 @@ class ServerManager {
 				ResourcesManager.setLevel(Std.int(data.level));
 				ResourcesManager.updateTotal(GeneratorType.goodXp, data.xpHeaven);
 				ResourcesManager.updateTotal(GeneratorType.badXp, data.xpHell);
+				
+				if (data.price > 0) // never call this for styx
+					DeltaDNAManager.sendTransaction(
+						TransactionType.extendedRegions,
+						null,
+						GeneratorType.soft,
+						data.price
+					);
+				
 				return;
 			}
 		

@@ -51,6 +51,7 @@ typedef TimeDescription = {
 	@:optional var timeBoost:Float;
 	@:optional var creationDate:Float;
 	@:optional var gain:Int;
+	@:optional var packId:Int;
 }
 
 typedef CampaignDescription = {
@@ -412,6 +413,7 @@ class SaveManager {
 					refTile:pBuildings[config].id,
 					progress:Date.now().getTime(),
 					end:config.endForNextProduction,
+					packId: config.packId,
 					gain: lGameConfig.name == BuildingName.HELL_COLLECTOR ? 
 						GameConfig.getBuildingPackById(config.packId).gainIron :
 						GameConfig.getBuildingPackById(config.packId).gainWood

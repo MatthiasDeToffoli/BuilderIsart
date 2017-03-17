@@ -217,7 +217,8 @@ class TimeManager {
 			progress: Date.now().getTime(),
 			end: new Date(lDate.getFullYear(), lDate.getMonth(), Date.now().getDate() + pack.time.days, lDate.getHours(), lDate.getMinutes(), lDate.getSeconds()).getTime() ,
 			creationDate: Date.now().getTime(),
-			gain: pack.quantity
+			gain: pack.quantity,
+			packId : pack.idDataBase
 		}
 
 		listProduction.push(lDesc);
@@ -507,6 +508,16 @@ class TimeManager {
 			eProduction.emit(EVENT_COLLECTOR_PRODUCTION_FINE,pElement);
 		}
 		eProduction.emit(EVENT_COLLECTOR_PRODUCTION, pElement);
+	}
+	
+	public static function getProductionPackId(pRef:Int):Int {
+		var lProd:TimeDescription;
+		
+		for (lProd in listProduction)
+			if (lProd.refTile == pRef)
+				return lProd.packId;
+				
+		return null;
 	}
 	
 	public static function setProductionFine(pRef:Int):Void {

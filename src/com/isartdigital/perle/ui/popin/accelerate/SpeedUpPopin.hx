@@ -59,6 +59,8 @@ class SpeedUpPopin extends AcceleratePopin
 		
 		if (DialogueManager.ftueStepConstructBuilding || DialogueManager.passFree) {
 			linkedBuilding.tileDesc.timeDesc.progress = linkedBuilding.tileDesc.timeDesc.end;
+		} else {
+			super.onAccelerate();
 		}
 		
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price >= 0) ServerManagerBuilding.BoostBuilding(linkedBuilding.tileDesc);

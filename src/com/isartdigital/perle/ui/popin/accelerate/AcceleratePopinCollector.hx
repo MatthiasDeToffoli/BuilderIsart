@@ -48,6 +48,7 @@ class AcceleratePopinCollector extends AcceleratePopin
 	override function onAccelerate():Void 
 	{
 		SoundManager.getSound("SOUND_KARMA").play();
+		refObjectBought = TimeManager.getProductionPackId(ref);
 		super.onAccelerate();
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) - price < 0) return;
 		Hud.getInstance().show();
