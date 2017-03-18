@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.TimesInfo;
 import com.isartdigital.perle.game.managers.AdsManager;
 import com.isartdigital.perle.game.managers.AdsManager.AdsData;
+import com.isartdigital.perle.game.managers.BlockAdAndInvitationManager;
 import com.isartdigital.perle.game.managers.MarketingManager;
 import com.isartdigital.perle.game.managers.MarketingManager.Campaign;
 import com.isartdigital.perle.utils.Interactive;
@@ -39,8 +40,8 @@ class PanelCampaign extends SmartComponent
 			addCampaignButton(AssetName.MARKETING_CAMPAIGN + (i + 1), i + 1);
 			rewriteBtnText(i + 1);
 		}
-		//SmartCheck.traceChildrens(this);
 		
+		if (!BlockAdAndInvitationManager.canI(Provenance.marketing)) btnCampaigns[0].alpha = 0.5; 
 		addButtonsListener(btnCampaigns[0], onClickVideo);
 		addButtonsListener(btnCampaigns[1], onCLickSmall,rewriteSmall);
 		addButtonsListener(btnCampaigns[2], onClickMedium,rewriteMedium);
@@ -76,9 +77,10 @@ class PanelCampaign extends SmartComponent
 	}
 	
 	private function onClickVideo():Void {
+		if (!BlockAdAndInvitationManager.canI(Provenance.marketing)) return;
+		
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 		AdsManager.playAd(callBackAd);
-		//Ads.getMovie(callBackAd);
 	}
 	
 	private function onCLickSmall():Void {
@@ -126,6 +128,7 @@ class PanelCampaign extends SmartComponent
 	}
 	
 	private function callBackAd ():Void {
+		BlockAdAndInvitationManager.blockForOneDay(Provenance.marketing);
 		clickCampaign(CampaignType.ad);
 	}
 

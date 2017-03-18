@@ -25,6 +25,9 @@ class Loading
     const COLUMN_END_CONSTRUCTION = "EndConstruction";
     const COLUMN_END_FOR_NEXT_PRODUCTION = "EndForNextProduction";
     const COLUMN_END_OF_CAMPAIGN = "EndOfCampaign";
+    const COLUMN_DATE_FOR_INVITE_SOUL = "DateForInvitedSoul";
+    const COLUMN_DATE_FOR_SEE_ADD_IN_SHOP = "DateForSawAdInShop";
+    const COLUMN_DATE_FOR_SEE_ADD_IN_MARKETING = "DateForSawAdInMarketing";
 
     public static function doAction () {
         $lTable = explode(",", static::TABLE_TO_LOAD);
@@ -83,6 +86,27 @@ class Loading
                         $pTable[static::COLUMN_END_OF_CAMPAIGN]
                     )
                 );
+
+              if($pTable[static::COLUMN_DATE_FOR_INVITE_SOUL] != null)
+                  $pTable[static::COLUMN_DATE_FOR_INVITE_SOUL] = Utils::timeStampToJavascript(
+                      Utils::dateTimeToTimeStamp(
+                          $pTable[static::COLUMN_DATE_FOR_INVITE_SOUL]
+                      )
+                  );
+
+                if($pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_SHOP] != null)
+                    $pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_SHOP] = Utils::timeStampToJavascript(
+                        Utils::dateTimeToTimeStamp(
+                            $pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_SHOP]
+                        )
+                    );
+
+                  if($pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_MARKETING] != null)
+                      $pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_MARKETING] = Utils::timeStampToJavascript(
+                          Utils::dateTimeToTimeStamp(
+                              $pTable[static::COLUMN_DATE_FOR_SEE_ADD_IN_MARKETING]
+                          )
+                      );
         return $pTable;
     }
 

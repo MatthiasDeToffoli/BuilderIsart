@@ -40,6 +40,7 @@ class ServerFile{
 	public static inline var BUILDING_UPGRADE:String = "BuildingUpgrade";
 	public static inline var LOADING:String = "Loading";
 	public static inline var BUY_SHOP_PACK:String = "BuyShopPack";
+	public static inline var GET_PACK_WITH_AD:String = "GetPackWithAd";
 	public static inline var INTERNS:String = "Interns";
 	public static inline var DATE_UPDATE:String = "DateUpdate";
 	public static inline var INCREMENT_DAYS:String = "IncrementDays";

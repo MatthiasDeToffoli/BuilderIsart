@@ -36,6 +36,9 @@ typedef TablePlayer = {
 	var ftueProgress:Int;
 	var level:Int;
 	var endOfCampaign:Float;
+	var dateForSawAdInMarketing:Float;
+	var dateForSawAdInShop:Float;
+	var dateForInvitedSoul:Float;
 	var idCampaign:Int;
 	var decoMission:Int;
 }

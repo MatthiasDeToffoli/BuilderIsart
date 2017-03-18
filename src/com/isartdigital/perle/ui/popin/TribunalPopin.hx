@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameConfig;
 import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.AdsManager;
+import com.isartdigital.perle.game.managers.BlockAdAndInvitationManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
@@ -217,7 +218,7 @@ class TribunalPopin extends SmartPopinExtended
 		infoSoul = cast(interMovieClip.getChildByName(AssetName.PURGATORY_POPIN_ALL_SOULS_NUMBER), TextSprite);	
 		
 		changeSoulTextInfo();
-			
+		if (!BlockAdAndInvitationManager.canI(Provenance.tribunal)) btnInviteSoul.alpha = 0.5;	
 		Interactive.addListenerClick(btnInviteSoul, onInviteSoul);
 		Interactive.addListenerRewrite(btnInviteSoul, setText);
 		
@@ -406,7 +407,7 @@ class TribunalPopin extends SmartPopinExtended
 	}
 	
 	private function onInviteSoul():Void {
-		if (DialogueManager.ftueStepSlideCard)
+		if (DialogueManager.ftueStepSlideCard || !BlockAdAndInvitationManager.canI(Provenance.tribunal))
 			return;
 			
 		Facebook.ui ({
@@ -442,7 +443,8 @@ class TribunalPopin extends SmartPopinExtended
 		VTribunal.getInstance().fbPicture = new Sprite(Texture.fromImage(response.picture.data.url));
 		setTribunalSoulToJudge(facebookName);
 		placeAndAddFbPicture();
-		
+		btnInviteSoul.alpha = 0.5;
+		BlockAdAndInvitationManager.blockForOneDay(Provenance.tribunal);
 	}
 	
 	private function placeAndAddFbPicture():Void {

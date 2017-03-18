@@ -113,6 +113,11 @@ typedef Stats = {
 	var gameStartTime:Float;
 }
 
+typedef TimesForBlocked = {
+	var shop:Float;
+	var marketing:Float;
+	var tribunal:Float;
+}
 // On save des TileDescription, pas des Virtual !
 typedef Save = {
 	var stats:Stats;
@@ -129,6 +134,7 @@ typedef Save = {
 	var ftueProgress:Int;
 	var idPackBundleBuyed:Array<Int>;
 	var missionDecoration:Int;
+	@:optional var timesForBlocked:TimesForBlocked;
 	// add what you want to save.
 }
 
@@ -348,6 +354,8 @@ class SaveManager {
 				type:CampaignType.none.getName()
 			};
 			
+			var lTimesForBLocked:TimesForBlocked = loadTimesForBlocked();
+			
 			untyped currentSave = { 
 				timesResource: lTimeResources,
 				//timesQuest: getTimesQuest(),
@@ -363,7 +371,8 @@ class SaveManager {
 				resourcesData: lResources,
 				ftueProgress : lFtue,
 				//idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
-				missionDecoration: lDeco
+				missionDecoration: lDeco,
+				timesForBlocked : lTimesForBLocked
 			};
 			//i like to use the email from ServerManagerLoad, so why not keep the server load result ?
 			//ServerManagerLoad.deleteServerSave(); 
@@ -379,6 +388,16 @@ class SaveManager {
 		}
 		
 		return currentSave;
+	}
+	
+	private static function loadTimesForBlocked():TimesForBlocked {
+		var lPlayer:TablePlayer = ServerManagerLoad.getPlayer(); 
+		
+		return {
+			shop: lPlayer.dateForSawAdInShop,
+			marketing: lPlayer.dateForSawAdInMarketing,
+			tribunal:lPlayer.dateForInvitedSoul
+		}
 	}
 	
 	private static function loadRegion():Array<RegionDescription>{
@@ -543,6 +562,7 @@ class SaveManager {
 			Hud.getInstance().initGaugesWithSave();
 			DialogueManager.dialogueSaved = currentSave.ftueProgress;
 			HudMissionButton.numberOfDecorationCreated = currentSave.missionDecoration;
+			BlockAdAndInvitationManager.updateFromSave(currentSave.timesForBlocked);
 		}
 		else
 			createWhitoutSave();

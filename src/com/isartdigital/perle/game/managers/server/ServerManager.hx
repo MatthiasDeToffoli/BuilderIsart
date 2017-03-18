@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.BlockAdAndInvitationManager.Provenance;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.DeltaDNAManager.TransactionType;
@@ -183,6 +184,31 @@ class ServerManager {
 		}
 	}
 	
+	public static function getVideoPackHC():Void {
+		callPhpFile(onSuccessGetVideoPackHC, onerrorGetVideoPackHC, ServerFile.MAIN_PHP, [
+			KEY_POST_FILE_NAME => ServerFile.GET_PACK_WITH_AD
+			]
+		);
+	}
+	
+	private static function onSuccessGetVideoPackHC(pObject:Dynamic):Void {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+			Debug.error("error php : \n\n " + pObject);
+		} else {
+			var data:Dynamic = Json.parse(pObject);
+			
+			if (data.error) {
+				Debug.error(data.message);
+			}
+			
+			BlockAdAndInvitationManager.setTime(Provenance.shop, data.time);
+		}
+	}
+	
+	private static function onerrorGetVideoPackHC(pObject:Dynamic):Void {
+		Debug.error(pObject);
+	}
+	
 	/**
 	 * this function help to call server for test if we can buy a region
 	 * @param	typeName the type of the region we want to add
@@ -272,6 +298,8 @@ class ServerManager {
 	private static function onErrorCallback(object:Dynamic):Void {
 		Debug.error("Error php : " + object);
 	}
+	
+	
 	
 	private function new() {
 		

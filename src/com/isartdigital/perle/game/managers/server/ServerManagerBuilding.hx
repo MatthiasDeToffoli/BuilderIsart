@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers.server;
+import com.isartdigital.perle.game.managers.BlockAdAndInvitationManager.Provenance;
 import com.isartdigital.perle.game.managers.ResourcesManager.Generator;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -363,10 +364,10 @@ class ServerManagerBuilding{
 			if (data.error) {
 				Debug.error(data.message);
 			} else {
-				trace(Date.fromTime(data.time));
 				TimeManager.synchroCampaignTime(data.time);
 			}
 			
+			if (data.timeBlock > 0) BlockAdAndInvitationManager.setTime(Provenance.marketing, data.timeBlock);
 			ResourcesManager.updateTotal(GeneratorType.hard, data.hard);
 		}
 	}
@@ -575,7 +576,7 @@ class ServerManagerBuilding{
 	}
 	
 	private static function onSuccessAddSoul(pObject:Dynamic):Void {
-		/*if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
+		if (pObject.charAt(0) != "{" || pObject.charAt(pObject.length - 1) != '}') {
 			Debug.error("error php : \n\n " + pObject);
 		} else {
 			var data:Dynamic = Json.parse(pObject);
@@ -584,7 +585,9 @@ class ServerManagerBuilding{
 				Debug.error(data.message);
 			}
 			
-		}*/
+			BlockAdAndInvitationManager.setTime(Provenance.tribunal, data.time);
+			
+		}
 	}
 	
 	private static function onErrorAddSoul(pObject:Dynamic):Void {

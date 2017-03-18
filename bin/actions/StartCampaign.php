@@ -18,8 +18,28 @@ include_once("utils/Resources.php");
 
   $pack = PackUtils::getPackByName(Utils::getSinglePostValue(NAME));
   $resource = Resources::getResource($lId,MONEYTYPE);
+  $lTime = 0;
 
-  $resource->Quantity -= $pack->CostKarma;
+if($pack->CostKarma > 0) {
+    $resource->Quantity -= $pack->CostKarma;
+} else {
+  $player = Player::getPlayerById(FacebookUtils::getId());
+
+  if($player->DateForSawAdInMarketing !== null) {
+    $lTimeMarketing = Utils::dateTimeToTimeStamp($player->DateForSawAdInMarketing);
+
+    if($lTimeMarketing > time()) {
+      echo json_encode(['error' => true, 'message' => 'you can not saw a ad video for now', 'timeBlock' => Utils::timeStampToJavascript($lTimeMarketing)]);
+      exit;
+    }
+  }
+  $lTime = time() + 24*60*60;
+
+  Player::update($lId,[
+  'DateForSawAdInMarketing' => Utils::timeStampToDateTime($lTime)
+]);
+
+}
 
   if($resource->Quantity < 0) {
     echo json_encode([
@@ -40,6 +60,7 @@ include_once("utils/Resources.php");
 echo json_encode([
   'error' => false,
   MONEYTYPE => $resource->Quantity,
-  'time' => Utils::timeStampToJavascript($end)
+  'time' => Utils::timeStampToJavascript($end),
+  'timeBlock' => Utils::timeStampToJavascript($lTime)
 ]);
 ?>

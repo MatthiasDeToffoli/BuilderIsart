@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game;
 import com.isartdigital.perle.game.managers.AdsManager;
 import com.isartdigital.perle.game.managers.AnimationManager;
+import com.isartdigital.perle.game.managers.BlockAdAndInvitationManager;
 import com.isartdigital.perle.game.managers.BoostManager;
 import com.isartdigital.perle.game.managers.BuildingLimitManager;
 import com.isartdigital.perle.game.managers.CameraManager;
@@ -78,6 +79,7 @@ class GameManager {
 			CocoonJSManager.awake();
 		
 		//ServerManager.loadRegion();
+		BlockAdAndInvitationManager.awake();
 		ValueChangeManager.awake();
 		GameConfig.awake(); // before SaveManager.createFromSave()
 		AnimationManager.awake();
