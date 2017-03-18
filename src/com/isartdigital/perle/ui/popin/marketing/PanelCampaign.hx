@@ -125,9 +125,8 @@ class PanelCampaign extends SmartComponent
 		txt.text = MarketingManager.getCampaignByIndice(i).price + "";
 	}
 	
-	private function callBackAd (pClose:String):Void {
-		if (pClose == "cancel")  UIManager.getInstance().openPopin(Cancel_Video.getInstance());
-		else if(pClose == "close") clickCampaign(CampaignType.ad);
+	private function callBackAd ():Void {
+		clickCampaign(CampaignType.ad);
 	}
 
 	override public function destroy():Void 
