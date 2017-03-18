@@ -20,7 +20,11 @@ class CarouselCardPackCurrencyVideo extends CarouselCardPack
 	
 	override function _click(pEvent:EventTarget = null):Void 
 	{
-		AdsManager.playAd(function(pClose:String){});
+		AdsManager.playAd(closeAd);
+	}
+	
+	private function closeAd():Void {
+		super._click();
 	}
 	
 	override function buildCard():Void 
