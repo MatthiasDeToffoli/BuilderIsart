@@ -6,10 +6,10 @@ namespace actions\utils;
 use PDO as PDO;
 
 
- /**
- * @author: de Toffoli Matthias
- * include this if we want to use the table Config
- */
+/**
+* @author: de Toffoli Matthias
+* include this if we want to use the table Config
+*/
 class Config
 {
 

@@ -17,10 +17,19 @@ include_once("PackUtils.php");
 include_once("Resources.php");
 include_once("Player.php");
 
+/**
+* @author: de Toffoli Matthias
+* include this for gestion of level up and experience
+*/
 class Experience {
 
-const TABLE = 'MaxExp';
+  const TABLE = 'MaxExp';
 
+  /**
+  *increase good xp
+  *@param $QuantityGaign quantity to increase
+  *@return an object with level good xp and bad xp
+  */
   public static function gaignGoodXp($QuantityGaign) {
     $goodXp = static::getGoodXp();
     $lId = FacebookUtils::getId();
@@ -33,6 +42,11 @@ const TABLE = 'MaxExp';
     return static::testLevelUp();
   }
 
+  /**
+  *increase bad xp
+  *@param $QuantityGaign quantity to increase
+  *@return an object with level good xp and bad xp
+  */
   public static function gaignBadXp($QuantityGaign) {
 
     $lId = FacebookUtils::getId();
@@ -46,22 +60,34 @@ const TABLE = 'MaxExp';
     return static::testLevelUp();
   }
 
-public static function getGoodXp(){
-  $lId = FacebookUtils::getId();
-  return Resources::getResource($lId, 'goodXP');
-}
+  /**
+  *get current player good xp
+  *@return an object represanting good xp
+  */
+  public static function getGoodXp(){
+    $lId = FacebookUtils::getId();
+    return Resources::getResource($lId, 'goodXP');
+  }
 
-public static function getBadXp() {
-  $lId = FacebookUtils::getId();
-  return Resources::getResource($lId, 'badXp');
-}
+  /**
+  *get current player bad xp
+  *@return an object represanting bad xp
+  */
+  public static function getBadXp() {
+    $lId = FacebookUtils::getId();
+    return Resources::getResource($lId, 'badXp');
+  }
 
-public static function testLevelUp(){
+  /**
+  *test if the player level up
+  *@return an object with level good xp and bad xp
+  */
+  public static function testLevelUp(){
 
-  $lId = FacebookUtils::getId();
-  $goodXp = static::getGoodXp();
-  $badXp = static::getBadXp();
-  $player = Player::getPlayerById($lId);
+    $lId = FacebookUtils::getId();
+    $goodXp = static::getGoodXp();
+    $badXp = static::getBadXp();
+    $player = Player::getPlayerById($lId);
 
     if($goodXp->Quantity >= static::getMax() && $badXp->Quantity >=static::getMax()) {
       Resources::updateResources($lId,'badXp', 0);
@@ -73,8 +99,12 @@ public static function testLevelUp(){
     }
 
     return (object) array('badXp' => $badXp->Quantity, 'goodXp' => $goodXp->Quantity, 'level' => $player->Level);
-}
+  }
 
+  /**
+  *get max xp player can have
+  *@return the max xp player can have
+  */
   public static function getMax() {
     $lId = FacebookUtils::getId();
     $player = Player::getPlayerById($lId);

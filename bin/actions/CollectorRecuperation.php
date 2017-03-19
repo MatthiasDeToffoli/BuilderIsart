@@ -6,6 +6,11 @@ use actions\utils\PackUtils as PackUtils;
 use actions\utils\Resources as Resources;
 use actions\utils\Experience as Experience;
 
+/**
+* @author: de Toffoli Matthias
+* check if we can recolt a collector production and do it on database
+*/
+
 include_once("utils/Utils.php");
 include_once("utils/FacebookUtils.php");
 include_once("utils/BuildingUtils.php");

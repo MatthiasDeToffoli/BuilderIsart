@@ -14,12 +14,13 @@ class Player
 
   const TABLE = 'Player';
   const ID = 'ID';
+  
   /**
-   * give the number of a type of region the player has
-   * @param $pId the player id
-   * @param $Type the type of region we want
-   * @return number of a type of region
-   */
+  * give the number of a type of region the player has
+  * @param $pId the player id
+  * @param $Type the type of region we want
+  * @return number of a type of region
+  */
   public static function getRegionQuantity($pId,$Type){
     global $db;
 
@@ -38,11 +39,11 @@ class Player
   }
 
   /**
-   * set the number of a type of region the player has
-   * @param $pId the player id
-   * @param $Type the type of region we want
-   * @param $quantity the quantity we want to set
-   */
+  * set the number of a type of region the player has
+  * @param $pId the player id
+  * @param $Type the type of region we want
+  * @param $quantity the quantity we want to set
+  */
   public static function setRegionQuantity($pId, $Type, $quantity){
     global $db;
 
@@ -60,12 +61,18 @@ class Player
     }
   }
 
+  /**
+  * get the player with is id
+  * @param $pId the player id
+  * @return object represanting current player
+  */
   public static function getPlayerById($pId) {
     global $db;
 
     $req = "SELECT * FROM ".static::TABLE."  WHERE ".static::ID." = :Id";
     $reqPre = $db->prepare($req);
     $reqPre->bindParam(':Id', $pId);
+
 
     try {
       $reqPre->execute();
@@ -76,6 +83,11 @@ class Player
     }
   }
 
+  /**
+  * update the player talbe in database
+  * @param $pId the player id
+  * @param associative array said what update and the value to place
+  */
   public static function update($pId,$pAssocArray) {
     Utils::updateSetWhere(static::TABLE,$pAssocArray,'ID = '.$pId);
   }

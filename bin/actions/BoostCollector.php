@@ -1,9 +1,15 @@
 <?php
+
 use actions\utils\Utils as Utils;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\BuildingUtils as BuildingUtils;
 use actions\utils\PackUtils as PackUtils;
 use actions\utils\Resources as Resources;
+
+/**
+* check if we can boost the collector time production and send it to the server
+* @author de Toffoli Matthias
+*/
 
 include_once("utils/Utils.php");
 include_once("utils/FacebookUtils.php");
@@ -44,9 +50,9 @@ if($rest < 0) {
 Resources::updateResources($lId,MONEYTYPE,$rest);
 
 Utils::updateSetWhere('Building',
-  [
-    'EndForNextProduction' => Utils::timeStampToDateTime(time())
-  ],
-  'ID = '.$typeBuilding->ID.' AND IDPlayer = '.$lId
+[
+  'EndForNextProduction' => Utils::timeStampToDateTime(time())
+],
+'ID = '.$typeBuilding->ID.' AND IDPlayer = '.$lId
 );
 ?>

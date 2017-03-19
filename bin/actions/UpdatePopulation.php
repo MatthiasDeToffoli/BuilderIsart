@@ -3,6 +3,11 @@ use actions\utils\Utils as Utils;
 use actions\utils\FacebookUtils as FacebookUtils;
 use actions\utils\BuildingUtils as BuildingUtils;
 
+/**
+* @author: de Toffoli Matthias
+* update the number of soul a building have and decrease soul in tribunal
+*/
+
 include_once("utils/Utils.php");
 include_once("utils/FacebookUtils.php");
 include_once("utils/BuildingUtils.php");

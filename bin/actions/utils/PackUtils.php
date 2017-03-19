@@ -22,6 +22,11 @@ class PackUtils
   const KARMA = 'CostKarma';
   const GOLD = 'CostGold';
 
+  /**
+  * get a pack with is id
+  * @param $pId the pack id
+  * @return an object represanting the pack want
+  */
   public static function getPackById($pId) {
     global $db;
 
@@ -38,6 +43,11 @@ class PackUtils
     }
   }
 
+  /**
+  * get a pack with is name
+  * @param $pName the pack name
+  * @return an object represanting the pack want
+  */
   public static function getPackByName($pName) {
     global $db;
 
@@ -54,6 +64,11 @@ class PackUtils
     }
   }
 
+  /**
+  * get a pack with is cost karma
+  * @param $price price on karma
+  * @return an object represanting the pack want
+  */
   public static function getPackByCostKarma($price) {
     global $db;
 
@@ -71,6 +86,11 @@ class PackUtils
 
   }
 
+  /**
+  * get a pack with is cost gold
+  * @param $price price on gold
+  * @return an object represanting the pack want
+  */
   public static function getPackByCostGold($price) {
     global $db;
 

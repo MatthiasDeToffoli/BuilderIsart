@@ -5,6 +5,11 @@ use actions\utils\BuildingUtils as BuildingUtils;
 use actions\utils\Player as Player;
 use actions\utils\PackUtils as PackUtils;
 
+/**
+* @author: de Toffoli Matthias
+* said when an upgrade is fine
+*/
+
 include_once("utils/Utils.php");
 include_once("utils/FacebookUtils.php");
 include_once("utils/BuildingUtils.php");
@@ -32,7 +37,6 @@ $typeBuilding = BuildingUtils::getTypeBuildingWithPosition(
   Utils::getSinglePostValue(REGIONY)
 );
 
-echo $typeBuilding->IsBuilt;
 if($typeBuilding->IsBuilt != 1) return;
 
 if(Utils::dateTimeToTimeStamp($typeBuilding->EndConstruction) > time()) {

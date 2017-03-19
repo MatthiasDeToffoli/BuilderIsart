@@ -2,6 +2,11 @@
 use actions\utils\Utils as Utils;
 use actions\utils\BuildingUtils as BuildingUtils;
 
+/**
+* @author: de Toffoli Matthias
+* check the zone around altar for see if it has building in his zone and send it to server.
+*/
+
 include_once("utils/Utils.php");
 include_once("utils/BuildingUtils.php");
 
@@ -30,10 +35,10 @@ for($h = 0; $h < count($heavenBuildings); $h++) {
 }
 
 $altar = BuildingUtils::getTypeBuildingWithPosition(
-    Utils::getSinglePostValueInt(X),
-    Utils::getSinglePostValueInt(Y),
-    Utils::getSinglePostValueInt(REGIONX),
-    Utils::getSinglePostValueInt(REGIONY)
+  Utils::getSinglePostValueInt(X),
+  Utils::getSinglePostValueInt(Y),
+  Utils::getSinglePostValueInt(REGIONX),
+  Utils::getSinglePostValueInt(REGIONY)
 );
 $deonominator = ($countHell * $altar->ProductionPerBuildingHell) + ($countHeaven*$altar->ProductionPerBuildingHeaven);
 if($deonominator <= 0) $time = 0;
@@ -53,13 +58,19 @@ Utils::updateSetWhere(
 );
 
 echo json_encode([
-    'error' => false,
-    IDCLIENT => Utils::getSinglePostValueInt(IDCLIENT),
-    END => $time <= 0 ? null:Utils::timeStampToJavascript(time() + $time),
-    NBHEAVEN => $countHeaven,
-    NBHELL => $countHell
-  ]);
+  'error' => false,
+  IDCLIENT => Utils::getSinglePostValueInt(IDCLIENT),
+  END => $time <= 0 ? null:Utils::timeStampToJavascript(time() + $time),
+  NBHEAVEN => $countHeaven,
+  NBHELL => $countHell
+]);
 
+/**
+* check on hell regions near it (hell regions are regions on right) if a building is inside altar's zone
+* @param	$pNbBuilding number building altar had in database
+* @param	$Building building we check if it in altar zone
+* @return numberBuilding on the region or numberBuilding on the region + 1
+*/
 function checkIfIsZoneHell($pNbBuilding, $Building) {
   $altarRegionY = Utils::getSinglePostValueInt(REGIONY);
   if($Building->RegionY > $altarRegionY + 1 || $Building->RegionY < $altarRegionY - 1){
@@ -111,6 +122,12 @@ function checkIfIsZoneHell($pNbBuilding, $Building) {
   return $pNbBuilding;
 }
 
+/**
+* check on heaven regions near it (hell regions are regions on left) if a building is inside altar's zone
+* @param	$pNbBuilding number building altar had in database
+* @param	$Building building we check if it in altar zone
+* @return numberBuilding on the region or numberBuilding on the region + 1
+*/
 function checkIfIsZoneHeaven($pNbBuilding, $Building) {
   $altarRegionY = Utils::getSinglePostValueInt(REGIONY);
   if($Building->RegionY > $altarRegionY + 1 || $Building->RegionY < $altarRegionY - 1){

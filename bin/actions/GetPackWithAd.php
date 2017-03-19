@@ -4,6 +4,11 @@ use actions\utils\Player as Player;
 use actions\utils\Utils as Utils;
 use actions\utils\Resources as Resources;
 
+/**
+* @author: de Toffoli Matthias
+* get resources gain when we see a ad movies in shop
+*/
+
 include_once("utils/FacebookUtils.php");
 include_once("utils/Utils.php");
 include_once("utils/Player.php");
@@ -14,6 +19,9 @@ $Player = Player::getPlayerById(FacebookUtils::getId());
 if($Player->DateForSawAdInShop	=== null) gain();
 else gainWithTime($Player);
 
+/**
+* update database add gain and time de bloc gain for one day
+*/
 function gain() {
   $day = 24*60*60;
   $lPack = getPack();
@@ -26,6 +34,9 @@ function gain() {
   echo json_encode(['error' => false, 'time' => Utils::timeStampToJavascript($lTime)]);
 }
 
+/**
+* check if we pass the delay for see a new video
+*/
 function gainWithTime($pPlayer) {
   $timeForSeeAd = Utils::dateTimeToTimeStamp($pPlayer->DateForSawAdInShop);
 
@@ -36,6 +47,9 @@ function gainWithTime($pPlayer) {
   }
 }
 
+/**
+* get the video pack
+*/
 function getPack() {
   global $db;
 

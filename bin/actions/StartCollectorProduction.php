@@ -12,6 +12,10 @@ include_once("utils/BuildingUtils.php");
 include_once("utils/PackUtils.php");
 include_once("utils/Resources.php");
 
+/**
+* @author: de Toffoli Matthias
+* start a collector production
+*/
 
 const REGIONX = 'RegionX';
 const REGIONY = 'RegionY';

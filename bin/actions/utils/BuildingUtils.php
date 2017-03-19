@@ -28,6 +28,12 @@ class BuildingUtils
   const Y = 'Y';
   const NBSOUL = 'NbSoul';
 
+  /**
+  *get a typeBuilding identify with name and level
+  *@param $pName the name of the building
+  *@param $pLevel the level of the building
+  *@return an object representing the typebuilding
+  */
   public static function getTypeBuilding($pName, $pLevel) {
     global $db;
 
@@ -45,6 +51,11 @@ class BuildingUtils
     }
   }
 
+  /**
+  *get a typeBuilding join a building with building id
+  *@param $BuildingId id of the building to join
+  *@return an object representing the typebuilding and the building
+  */
   public static function getTypeBuildingWithId($BuildingId)
   {
     global $db;
@@ -63,22 +74,35 @@ class BuildingUtils
     }
   }
 
-public static function getAllBuildingByName($pName) {
-  global $db;
+  /**
+  *get all typeBuilding join a building with building id
+  *@param $pName the name of typeBuilding
+  *@return an object representing all typebuildings and buildings
+  */
+  public static function getAllBuildingByName($pName) {
+    global $db;
 
-  $req = "SELECT * FROM `Building` JOIN TypeBuilding ON Building.IDTypeBuilding = TypeBuilding.ID WHERE TypeBuilding.Name = :Name";
-  $reqPre = $db->prepare($req);
-  $reqPre->bindParam(':Name', $pName);
+    $req = "SELECT * FROM `Building` JOIN TypeBuilding ON Building.IDTypeBuilding = TypeBuilding.ID WHERE TypeBuilding.Name = :Name";
+    $reqPre = $db->prepare($req);
+    $reqPre->bindParam(':Name', $pName);
 
-  try {
-    $reqPre->execute();
-    return $reqPre->fetchAll(PDO::FETCH_OBJ);
-  } catch (\Exception $e) {
-    echo $e->getMessage();
-    exit;
+    try {
+      $reqPre->execute();
+      return $reqPre->fetchAll(PDO::FETCH_OBJ);
+    } catch (\Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
   }
-}
 
+  /**
+  *get a typeBuilding join a building with building position
+  *@param $posX position x of the building inside is region
+  *@param $posY position y of the building inside is region
+  *@param $regionX position x of building's region
+  *@param $regionY position y of building's region
+  *@return an object representing the typebuilding and the building
+  */
   public static function getTypeBuildingWithPosition($posX,$posY,$regionX,$regionY)
   {
     global $db;
@@ -100,6 +124,11 @@ public static function getAllBuildingByName($pName) {
     }
   }
 
+  /**
+  *get all typeBuildings join buildings with position region x
+  *@param $X position x of building's region
+  *@return an object representing all typebuildings and buildings had the good region x
+  */
   public static function getAllBuildings($X)
   {
     global $db;
@@ -118,6 +147,9 @@ public static function getAllBuildingByName($pName) {
     }
   }
 
+  /**
+  *create purgatory in database
+  */
   public static function addPurgatoryToDatabase() {
     $typeTribu = static::getTypeBuilding('Purgatory',1);
     $pTime = time() +  (60*60)/$typeTribu->ProductionPerHour + 3600;
@@ -134,6 +166,9 @@ public static function getAllBuildingByName($pName) {
     ]);
   }
 
+  /**
+  *create first hell building in database
+  */
   public static function addFirstHellBuildingToDatabase() {
     $typeBuilding = static::getTypeBuilding('Hell House', 1);
     Utils::insertInto(static::BUILDINGTABLE, [
