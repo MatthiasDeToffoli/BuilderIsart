@@ -64,6 +64,11 @@ class GameStage extends Container
 	private var iconsContainer:Container;
 	
 	/**
+	 * conteneur de la firstPoppin
+	 */
+	private var firstPoppinContainer:Container;
+	
+	/**
 	 * conteneur des écrans d'interface
 	 */
 	private var screensContainer:Container;
@@ -108,6 +113,9 @@ class GameStage extends Container
 		iconsContainer = new Container();
 		addChild(iconsContainer);
 		
+		firstPoppinContainer = new Container();
+		addChild(firstPoppinContainer);
+		
 	}
 	
 	/**
@@ -120,7 +128,7 @@ class GameStage extends Container
 	 * @param	centerPopinContainer centrer ou pas le conteneur des Popins
 	 * @param	centerHudContainer centrer ou pas le conteneur
 	 */
-	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false, ?pIconsContainer:Bool = false):Void {
+	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false, ?pIconsContainer:Bool = false, ?pFirstPoppinContainer:Bool = false):Void {
 		
 		_safeZone = new Rectangle (0, 0, pSafeZoneWidth, pSafeZoneHeight);
 		
@@ -157,6 +165,11 @@ class GameStage extends Container
 		if (pIconsContainer) {
 			iconsContainer.x = safeZone.width / 2;
 			iconsContainer.y = safeZone.height / 2;
+		}
+		
+		if (pFirstPoppinContainer) {
+			firstPoppinContainer.x = safeZone.width / 2;
+			firstPoppinContainer.y = safeZone.height / 2;
 		}
 		
 		_render = pRender;
@@ -296,6 +309,10 @@ class GameStage extends Container
 	
 	public function getIconContainer (): Container {
 		return iconsContainer;
+	}
+	
+	public function getFirstPoppinContainer (): Container {
+		return firstPoppinContainer;
 	}
 	
 	/**

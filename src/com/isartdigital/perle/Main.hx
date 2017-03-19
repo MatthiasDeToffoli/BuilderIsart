@@ -231,7 +231,7 @@ class Main extends EventEmitter
 		
 		
 		// initialise le GameStage et défini la taille de la safeZone
-		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true, true, true, true); // premier false => éviter le 0,0 au centre.
+		GameStage.getInstance().init(render, 2048, 1366, true, true, true, true, true, true, true,true); // premier false => éviter le 0,0 au centre.
 		
 		// Ajoute le GameStage au stage
 		stage.addChild(GameStage.getInstance());

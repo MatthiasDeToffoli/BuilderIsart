@@ -12,6 +12,7 @@ import com.isartdigital.perle.ui.hud.dialogue.FocusManager;
 import com.isartdigital.perle.ui.hud.dialogue.FTUEStep;
 import com.isartdigital.perle.ui.hud.dialogue.GoldEffect;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.onLaunch.OnLaunchPoppin;
 import com.isartdigital.perle.ui.popin.choice.Choice;
 import com.isartdigital.perle.ui.popin.listIntern.ListInternPopin;
 import com.isartdigital.perle.ui.popin.shop.ShopPopin;
@@ -187,6 +188,7 @@ class DialogueManager
 		//if(SaveManager.currentSave.ftueProgress!=null && SaveManager.currentSave.ftueProgress!=0)
 		else {
 			dialogueSaved = 0;
+			openFirstPoppin();
 			//createFirstHouse();
 		}
 		
@@ -710,6 +712,14 @@ class DialogueManager
 			UIManager.getInstance().closeFTUEInFtue();
 		else if(steps[dialogueSaved].actionContainer) 
 			UIManager.getInstance().closeFTUEInAction();
+	}
+	
+	private static function openFirstPoppin():Void {
+		GameStage.getInstance().getFirstPoppinContainer().addChild(OnLaunchPoppin.getInstance());
+	}
+	
+	public static function closeFirstPoppin():Void {
+		GameStage.getInstance().getFirstPoppinContainer().removeChild(OnLaunchPoppin.getInstance());
 	}
 	
 	/**

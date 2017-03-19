@@ -663,6 +663,9 @@ class AssetName{
 	public static inline var RESET_POPPIN_CANCEL_TEXT:String = "_buttonCancelErase_text";
 	public static inline var RESET_POPPIN_CONFIRM_TEXT:String = "_buttonConfirmErase_text";
 	
+	//OnlaunchPoppin OnLaunchPopin
+	public static inline var ONLAUNCH_POPPIN:String = "OnLaunchPopin";
+	
 	public static function getCurrencyAssetName(reward:RewardType):String {
 		if (reward == RewardType.gold) return ICON_GOLD_MEDIUM;
 		if (reward == RewardType.karma) return ICON_HARD_MEDIUM;
