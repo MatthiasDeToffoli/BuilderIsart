@@ -663,8 +663,21 @@ class AssetName{
 	public static inline var RESET_POPPIN_CANCEL_TEXT:String = "_buttonCancelErase_text";
 	public static inline var RESET_POPPIN_CONFIRM_TEXT:String = "_buttonConfirmErase_text";
 	
-	//OnlaunchPoppin OnLaunchPopin
+	//OnlaunchPoppin
 	public static inline var ONLAUNCH_POPPIN:String = "OnLaunchPopin";
+	public static inline var ONLAUNCH_POPPIN_CONTINUE:String = "ButtonContinueGame";
+	public static inline var ONLAUNCH_POPPIN_CLOSE:String = "ButtonClose";
+	public static inline var ONLAUNCH_POPPIN_CANIMPERIUM:String = "ButtonCanimperium";
+	public static inline var ONLAUNCH_POPPIN_DEPTHS:String = "ButtonDepths";
+	public static inline var ONLAUNCH_POPPIN_YELDIZ:String = "ButtonYeldiz";
+	public static inline var ONLAUNCH_POPPIN_MONSTERHAVEN:String = "ButtonMonsterHaven";
+	public static inline var ONLAUNCH_POPPIN_BLOOMINGSKY:String = "ButtonBloomingSky";
+	
+	//IsartPoints Poppin
+	public static inline var ISARTPOINTS_POPPIN:String = "IsartPointsInfo";
+	public static inline var ISARTPOINTS_POPPIN_CLOSE:String = "ButtonClose";
+	public static inline var ISARTPOINTS_POPPIN_CONTINUE:String = "ButtonOkIpInfo";
+	public static inline var ISARTPOINTS_POPPIN_REMAININGIP:String = "_remainingIP";
 	
 	public static function getCurrencyAssetName(reward:RewardType):String {
 		if (reward == RewardType.gold) return ICON_GOLD_MEDIUM;

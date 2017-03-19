@@ -219,8 +219,9 @@ class DialoguePoppin extends SmartScreen
 		setAllFalse();
 	}
 	
-	private function nextStep():Void{
-		DialogueManager.endOfaDialogue();
+	private function nextStep():Void {
+		if (!DialogueManager.isFirstPoppinOn)
+			DialogueManager.endOfaDialogue();
 	}
 	
 	/**

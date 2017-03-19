@@ -77,6 +77,7 @@ class DialogueManager
 	public static var ftueStepBlocInterns:Bool = false;
 	private static var doNotGiveGold:Bool = false;
 	private static var doNotGiveKarma:Bool = false;
+	public static var isFirstPoppinOn:Bool = false;
 	
 	public static var ftuecreateFirstHouse:Bool = false;
 	public static var ftueClosePurgatory:Bool = false;
@@ -715,10 +716,12 @@ class DialogueManager
 	}
 	
 	private static function openFirstPoppin():Void {
+		isFirstPoppinOn = true;
 		GameStage.getInstance().getFirstPoppinContainer().addChild(OnLaunchPoppin.getInstance());
 	}
 	
 	public static function closeFirstPoppin():Void {
+		isFirstPoppinOn = false;
 		GameStage.getInstance().getFirstPoppinContainer().removeChild(OnLaunchPoppin.getInstance());
 	}
 	

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.hud.Hud;
+import com.isartdigital.perle.ui.popin.isartPoints.IsartPointsPoppin;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCaroussel;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBuilding;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselBundle;
@@ -16,6 +17,7 @@ import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselResource;
 import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.Debug;
+import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.localisation.Localisation;
 import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
@@ -288,6 +290,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(3);
 		addCaroussel(ShopTab.Currencies);
+		openIsartPointsPoppin();
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
@@ -304,6 +307,7 @@ class ShopPopin extends SmartPopinExtended {
 			return;
 		setButtons(5);
 		addCaroussel(ShopTab.Bundle);
+		openIsartPointsPoppin();
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
 	
@@ -333,6 +337,14 @@ class ShopPopin extends SmartPopinExtended {
 	
 	private function onClickFakeBuyHard ():Void { // todo temporaire
 		UIManager.getInstance().openPopin(ConfirmBuyCurrencie.getInstance());
+	}
+	
+	private function openIsartPointsPoppin():Void {
+		GameStage.getInstance().getFirstPoppinContainer().addChild(IsartPointsPoppin.getInstance());
+	}
+	
+	public function closeIsartPointsPoppin():Void {
+		GameStage.getInstance().getFirstPoppinContainer().removeChild(IsartPointsPoppin.getInstance());
 	}
 	
 	override public function destroy():Void {
