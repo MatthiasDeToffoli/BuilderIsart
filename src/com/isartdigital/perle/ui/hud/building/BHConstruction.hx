@@ -32,43 +32,6 @@ class BHConstruction extends BuildingHud {
 	private var btnDestroy:SmartButton;
 	private var btnSpeedUp:SmartButton;
 	
-	public static var listTimerConstruction:Map<Int, BuildingTimerConstruction> = new Map<Int, BuildingTimerConstruction>();
-	private static var timerContainer:Container;
-	
-	public static function initTimer():Void {
-		timerContainer = new Container();
-		GameStage.getInstance().getGameContainer().addChild(timerContainer);
-		
-		for (i in 0...TimeManager.listConstruction.length) {
-			BuildingHud.linkVirtualBuilding(TimeManager.timeLinkToVBuilding[TimeManager.listConstruction[i].refTile]);
-			newTimer(TimeManager.listConstruction[i]);
-		}
-	}
-	
-	public static function getTimerContainer():Container {
-		return timerContainer;
-	}
-	
-	/**
-	 * TODO : cette function occasionne des bugs régulier, c'est fait à l'arrache et ne devrait PAS se baser sur BuildingHud.virtualBuilding.
-	 * @param	pTimeDesc
-	 */
-	public static function newTimer(?pTimeDesc:TimeDescription = null):Void {
-		var lVBuilding:VBuilding = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
-		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();
-		buildingTimer.spawn();
-		if (pTimeDesc != null) listTimerConstruction.set(pTimeDesc.refTile, buildingTimer);
-		else listTimerConstruction.set(lVBuilding.tileDesc.id, buildingTimer);
-		var lContainer:Container = new Container();	
-		Hud.getInstance().placeAndAddComponent(buildingTimer, lContainer, UIPosition.BOTTOM);
-		lContainer.position.x += lVBuilding.getGraphicLocalBoundsAtFirstFrame().clone().width / 2;
-		timerContainer.addChild(lContainer);
-	}
-	
-	public static function hideTimer(pTimeDesc:TimeDescription):Void {
-		//trace("apres la correction des barres");
-	}
-	
 	public static function getInstance (): BHConstruction {
 		if (instance == null) instance = new BHConstruction();
 		return instance;

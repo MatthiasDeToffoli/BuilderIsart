@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
@@ -68,7 +69,7 @@ class SpeedUpPopin extends AcceleratePopin
 	}
 	
 	public function validBoost():Void {
-		BHConstruction.listTimerConstruction[linkedBuilding.tileDesc.id].boost();
+		TimerConstructionManager.listTimerConstruction[linkedBuilding.tileDesc.id].boost();
 		ServerManagerBuilding.upgradeFine(linkedBuilding.tileDesc);
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);

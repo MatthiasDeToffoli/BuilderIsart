@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.GameConfig.TableTypeBuilding;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -59,7 +60,7 @@ class VBuildingUpgrade extends VBuilding
 		
 		activate();
 		
-		BHConstruction.newTimer();
+		TimerConstructionManager.newTimer(tileDesc.id);
 		TimeManager.addConstructionTimer(tileDesc.timeDesc, this);
 		
 		SaveManager.save();	

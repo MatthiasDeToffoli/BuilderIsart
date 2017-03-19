@@ -19,6 +19,7 @@ import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
@@ -108,7 +109,7 @@ class GameManager {
 		if(!DevelloperReconise.isDev())DialogueManager.createFtue();
 		HudMissionButton.initFromLoad();
 		CheatPanel.getInstance().ingame();
-		BHConstruction.initTimer(); // allways after Clipping manager
+		TimerConstructionManager.initTimer(); // allways after Clipping manager
 		AdsManager.awake();
 		Main.getInstance().on(EventType.GAME_LOOP, gameLoop);
 		BackgroundUnder.getInstance().init();

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.BuyManager;
 import com.isartdigital.perle.game.managers.CameraManager;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.TimeManager;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.ValueChangeManager;
 import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.MouseManager;
@@ -419,7 +420,7 @@ class Phantom extends Building {
 			else 
 				Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
 			
-			BHConstruction.newTimer(vBuilding.tileDesc.timeDesc);
+			TimerConstructionManager.newTimer(vBuilding.tileDesc.id);
 			
 			vBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_CONSTRUCT_HEAVEN").play() : SoundManager.getSound("SOUND_CONSTRUCT_HELL").play();
 			

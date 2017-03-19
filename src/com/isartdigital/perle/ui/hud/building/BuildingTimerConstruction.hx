@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
@@ -23,9 +24,9 @@ class BuildingTimerConstruction extends BuildingTimer
 		
 	}
 	
-	override public function spawn():Void 
+	override public function spawn(?pRef:Int):Void 
 	{
-		super.spawn();
+		super.spawn(pRef);
 		
 		loop = Timer.delay(progressTimeLoop, 100);
 		loop.run = progressTimeLoop;
@@ -44,7 +45,7 @@ class BuildingTimerConstruction extends BuildingTimer
 	
 	public function boost():Void {
 		TimeManager.increaseConstruction(building);
-		BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+		TimerConstructionManager.listTimerConstruction.remove(building.tileDesc.id);
 		building.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
 		
 		if(DialogueManager.passFree)
@@ -60,11 +61,12 @@ class BuildingTimerConstruction extends BuildingTimer
 				DialogueManager.dialogueSaved += 1;
 				DialogueManager.endOfaDialogue();
 			}
+			
 			progressBar.scale.x = 1;
 			timeText.text = "Finish";
 			var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => building];
 			Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
-			BHConstruction.listTimerConstruction.remove(building.tileDesc.id);
+			TimerConstructionManager.listTimerConstruction.remove(building.tileDesc.id);
 			destroy();
 		}
 	}

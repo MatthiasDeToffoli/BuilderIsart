@@ -1,6 +1,7 @@
 package com.isartdigital.perle.ui.hud.building;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.game.virtual.vBuilding.VBuildingUpgrade;
@@ -62,7 +63,7 @@ class BHBuiltUpgrade extends BHBuilt
 		
 		cast(BuildingHud.virtualBuilding, VBuildingUpgrade).onClickUpgrade();
 		building = BuildingHud.virtualBuilding;
-		BHConstruction.newTimer(building.tileDesc.timeDesc);
+		TimerConstructionManager.newTimer(building.tileDesc.id);
 		Hud.getInstance().changeBuildingHud(BuildingHudType.UPGRADING, building);
 		//Hud.getInstance().hideBuildingHud();
 	}

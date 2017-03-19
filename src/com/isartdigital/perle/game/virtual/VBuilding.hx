@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
+import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
@@ -194,7 +195,7 @@ class VBuilding extends VTile {
 			myVContextualHud.desactivate();
 			
 		if (timeDesc != null) {
-			BHConstruction.hideTimer(timeDesc);
+			TimerConstructionManager.hideTimer(tileDesc.id);
 		}
 	}
 	
@@ -392,9 +393,9 @@ class VBuilding extends VTile {
 		myVContextualHud.destroy();
 		myVContextualHud = null;
 		
-		if (BHConstruction.listTimerConstruction[tileDesc.id] != null) {
-			BHConstruction.listTimerConstruction[tileDesc.id].destroy();
-			BHConstruction.listTimerConstruction.remove(tileDesc.id);
+		if (TimerConstructionManager.listTimerConstruction[tileDesc.id] != null) {
+			TimerConstructionManager.listTimerConstruction[tileDesc.id].destroy();
+			TimerConstructionManager.listTimerConstruction.remove(tileDesc.id);
 		}
 		
 		var lVBuilding:VBuilding;

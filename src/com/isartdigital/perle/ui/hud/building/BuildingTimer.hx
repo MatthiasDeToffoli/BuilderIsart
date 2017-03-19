@@ -2,6 +2,7 @@ package com.isartdigital.perle.ui.hud.building;
 
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
+import com.isartdigital.perle.game.managers.server.IdManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.virtual.VBuilding;
@@ -36,8 +37,9 @@ class BuildingTimer extends SmartComponent
 		super("BuildingTimer");	
 	}
 	
-	public function spawn():Void {
-		building = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
+	public function spawn(?pRef:Int):Void {
+		if (pRef == null) building = BuildingHud.virtualBuilding == null ? VTribunal.getInstance():BuildingHud.virtualBuilding;
+		else building = IdManager.searchVBuildingById(pRef);
 		getComponents();
 		showTime(building.tileDesc);
 	}
