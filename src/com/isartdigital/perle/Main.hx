@@ -2,6 +2,7 @@ package com.isartdigital.perle;
 
 import com.isartdigital.perle.game.AssetName;
 import com.isartdigital.perle.game.GameManager;
+import com.isartdigital.perle.game.TimesInfo;
 import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.sprites.Building;
@@ -37,6 +38,7 @@ import com.isartdigital.perle.ui.hud.building.BHMoving;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.listIntern.InternElement;
 import com.isartdigital.perle.ui.popin.shop.caroussel.ShopCarousselDecoBuilding;
+import com.isartdigital.perle.ui.screens.Isart;
 import com.isartdigital.perle.ui.screens.TitleCard;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.services.facebook.Facebook;
@@ -79,6 +81,7 @@ class Main extends EventEmitter
 	public static inline var GAME_CONFIG:String = JSON_FOLDER + "game_config" + JSON_EXTENSION;
 	public static inline var UI_FOLDER:String = "UI/";
 	public static inline var IN_GAME_FOLDER:String = "InGame/";
+	public static inline var LOGO_FOLDER:String = "logo/";
 	public static inline var JSON_LOCALIZATION:String = JSON_FOLDER + "localization";
 	public static inline var FTP_URL:String = "https://fbgame.isartdigital.com/2018_builder/perle/";
 	public static inline var COCOONJS_FTP_VERSION:String = "";
@@ -86,6 +89,7 @@ class Main extends EventEmitter
 	public static inline var DELTA_DNA:Bool = true; // activate DeltaDNA
 	
 	public static inline var FRAME_INTERVAL:UInt = 16; // Math.floor(1000/60) milliseconds
+	public static inline var FRAME_INTERVAL_LOGO:UInt = 100; // 100 milliseconds
 	
 	private static inline var FACEBOOK_APP_ID = "1764871347166484";
 	
@@ -104,6 +108,8 @@ class Main extends EventEmitter
 	private var pathClass(default, null):Map<String, String> = new Map<String, String>();
 	private var wireFrameMCToClassName (default, null):Map<String, String> = new Map<String, String>();
 	private var classNameNoPathToWireFramMC (default, null):Map<String, String> = new Map<String, String>();
+	
+	private var logoIsShow:Bool = false;
 	
 	private static inline var maxTimeWaitCocoonJs:Int = 6000;
 	private var totalTimeWaitedCocoonJs:Int = 0;
@@ -133,7 +139,7 @@ class Main extends EventEmitter
 		var lOptions:RenderingOptions = {};
 		lOptions.antialias = true;
 		//lOptions.autoResize = true;
-		lOptions.backgroundColor = 0x999999;
+		lOptions.backgroundColor = 0x000000;
 		//lOptions.resolution = 1;
 		//lOptions.transparent = false;
 		//lOptions.preserveDrawingBuffer (pour dataToURL)
@@ -202,6 +208,8 @@ class Main extends EventEmitter
 	 */
 	private function preloadAssets(pLoader:Loader):Void {
 		
+		logoIsShow = true;
+		
 		// initialise les paramètres de configuration
 		Config.init(Reflect.field(pLoader.resources,configPath).data);
 		
@@ -242,15 +250,31 @@ class Main extends EventEmitter
 		// lance le chargement des assets graphiques du preloader
 		var lLoader:GameLoader = new GameLoader(); // #reopen
 		lLoader.addAssetFile(UI_FOLDER + DeviceCapabilities.textureType+"/loading/library.json");
-		lLoader.once(LoadEventType.COMPLETE, loadAssets);
+
+		Timer.delay(logoLoop, FRAME_INTERVAL_LOGO);
+		lLoader.addAssetFile(LOGO_FOLDER + DeviceCapabilities.textureType + '/' + AssetName.LOGO_ISART);
+		UIManager.getInstance().openScreen(Isart.getInstance());
+		
+		lLoader.once(LoadEventType.COMPLETE, logoShowed);
 		lLoader.load();
 		//loadAssets(); // raccourci
-	}	
+		
+	}
+	
+	private function logoShowed(pLoader:GameLoader):Void {
+		Timer.delay(function(){
+			logoIsShow = false;
+			UIManager.getInstance().closeScreens();
+			loadAssets(pLoader);
+		}, 3 * TimesInfo.SEC);
+	}
 	
 	/**
 	 * lance le chargement principal
 	 */
 	private function loadAssets (pLoader:GameLoader): Void {
+		//stage.addChild(Isart.getInstance());
+		
 		var lLoader:GameLoader = new GameLoader();
 				
 		lLoader.addTxtFile("boxes.json");
@@ -349,6 +373,11 @@ class Main extends EventEmitter
 		Localisation.init(GameLoader.getContent(JSON_LOCALIZATION + JSON_EXTENSION));
 		DialogueManager.init(GameLoader.getContent(FTUE_JSON_NAME));
 		GameManager.getInstance().start();
+	}
+	
+	private function logoLoop():Void {
+		if(logoIsShow) Timer.delay(logoLoop, FRAME_INTERVAL_LOGO);
+		render();		
 	}
 	
 	/**

@@ -67,6 +67,8 @@ class AssetName{
 	public static inline var VALUES_CHANGE_ICON:String = "icon";
 	public static inline var VALUES_CHANGE_TEXT:String = "value";
 	
+	//screen
+	public static inline var LOGO_ISART:String = 'logo_ISART.png';
 	// Confirm
 	public static inline var POPIN_CONFIRM_BUY_CURRENCIE:String = "Popin_ConfirmBuyEuro";
 	
