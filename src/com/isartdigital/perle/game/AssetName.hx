@@ -674,6 +674,10 @@ class AssetName{
 	public static inline var ONLAUNCH_POPPIN_YELDIZ:String = "ButtonYeldiz";
 	public static inline var ONLAUNCH_POPPIN_MONSTERHAVEN:String = "ButtonMonsterHaven";
 	public static inline var ONLAUNCH_POPPIN_BLOOMINGSKY:String = "ButtonBloomingSky";
+	public static inline var ONLAUNCH_POPPIN_ISART:String = "ButtonLogoIsart";
+	public static inline var ONLAUNCH_POPPIN_TEXT1:String = "_onLaunch_txt1";
+	public static inline var ONLAUNCH_POPPIN_TEXT2:String = "_onLaunch_txt2";
+	public static inline var ONLAUNCH_POPPIN_TEXT_BUTTON_CONTINUE:String = "Layer 2";
 	
 	//IsartPoints Poppin
 	public static inline var ISARTPOINTS_POPPIN:String = "IsartPointsInfo";
