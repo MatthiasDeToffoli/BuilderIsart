@@ -73,7 +73,7 @@ class ShopCarousselInterns extends ShopCaroussel{
 		chooseRandomIntern();
 		addListeners();
 		setValues();
-		SmartCheck.traceChildrens(this);
+		//SmartCheck.traceChildrens(this);
 	}
 
 	override public function init (pPos:Point, pTab:ShopTab):Void {

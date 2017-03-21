@@ -126,7 +126,7 @@ class Hud extends SmartScreen
 	}
 	
 	private static function initBHMoving (pHud:Hud):Void {
-		SmartCheck.traceChildrens(pHud);
+		//SmartCheck.traceChildrens(pHud);
 		BHMoving.initHack(
 			cast(SmartCheck.getChildByName(pHud, AssetName.HUD_MOVNG_BUILDING_DESKTOP), BHMoving),
 			cast(SmartCheck.getChildByName(pHud, AssetName.HUD_MOVNG_BUILDING), BHMoving)
