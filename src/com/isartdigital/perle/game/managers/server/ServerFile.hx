@@ -15,6 +15,7 @@ class ServerFile{
 	public static inline var TEMP_GET_JSON:String = "JsonCreator";
 	public static inline var REGIONS:String = "BuyRegions"; // todo : rename ADD_REGIONS ?
 	public static inline var BUILDING_ADD:String = "AddBuilding";
+	public static inline var FIRST_PORTAL_ADD:String = "AddFirstPortal";
 	public static inline var BUILDING_MOVE:String = "MoveBuilding";
 	public static inline var BUILDING_BOOST:String = "BoostBuilding";
 	public static inline var COLLECTOR_BOOST:String = "BoostCollector";

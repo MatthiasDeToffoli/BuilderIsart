@@ -46,6 +46,10 @@ class ValidAddBuilding
         static::hasCollision($pInfo, $pConfig);
     }
 
+    public static function canBuildForFTUE($pInfo, $pConfig) {
+      static::isOutsideRegion($pInfo, $pConfig);
+      static::hasCollision($pInfo, $pConfig);
+    }
 
     private static function isOutsideRegion ($pInfo, $pConfig) {
         global $db;
@@ -80,31 +84,3 @@ class ValidAddBuilding
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -28,6 +28,7 @@ class BuildingUtils
   const Y = 'Y';
   const NBSOUL = 'NbSoul';
 
+
   /**
   *get a typeBuilding identify with name and level
   *@param $pName the name of the building
@@ -181,6 +182,21 @@ class BuildingUtils
       static::NBRESOURCES => $typeBuilding->MaxGoldContained,
       static::NBSOUL => 3,
       static::ENDFORNEXTPRODUCTION => Utils::timeStampToDateTime(time() + ((3600/$typeBuilding->ProductionPerHour)/3))
+    ]);
+  }
+
+  /**
+  *add a building to the database
+  */
+  public static function addToDatabase($pInfo,$pTypeBuildingId) {
+  echo
+    Utils::insertInto(static::BUILDINGTABLE, [
+      static::IDTYPEBUILDING => $pTypeBuildingId,
+      static::IDPLAYER => $pInfo[static::IDPLAYER],
+      static::REGIONX => $pInfo[static::REGIONX],
+      static::REGIONY => $pInfo[static::REGIONY],
+      static::X => $pInfo[static::X],
+      static::Y => $pInfo[static::Y],
     ]);
   }
 }

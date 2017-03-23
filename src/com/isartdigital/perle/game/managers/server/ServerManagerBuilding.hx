@@ -88,6 +88,42 @@ class ServerManagerBuilding{
 		
 	}
 	
+	public static function addFirstPortal (pDescription:TileDescription):Void {
+		ServerManager.callPhpFile(onSuccessAddFirstPortal, onErrorAddFirstPortal, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.FIRST_PORTAL_ADD,
+			"IDClientBuilding" => pDescription.id,
+			"RegionX" => pDescription.regionX,
+			"RegionY" => pDescription.regionY,
+			"X" => pDescription.mapX,
+			"Y" => pDescription.mapY
+		]);
+	}
+	
+	private static function onErrorAddFirstPortal (pObject:Dynamic):Void {
+		Debug.error("Error php on addFirstPortal : " + pObject);
+	}
+	
+	
+	private static function onSuccessAddFirstPortal (pObject:Dynamic):Void {
+		
+		if (pObject.charAt(0) == "{") {
+			var lEvent:Dynamic = Json.parse(pObject);
+
+			if (Reflect.hasField(lEvent, "errorID")) {
+				RollBackManager.deleteBuilding(lEvent.IDClientBuilding);
+				ErrorManager.openPopin(Reflect.field(lEvent, "errorID"));
+			}
+			else if (lEvent.error){
+				RollBackManager.deleteBuilding(lEvent.IDClientBuilding); //id null ? Oo
+				Debug.error(lEvent.message);
+			}
+			
+			
+		} else {
+			Debug.error("Success php on addFirstportal but event format is invalid ! : " + pObject);
+		}
+	}
+	
 	public static function moveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
 		ServerManager.callPhpFile(onSuccessMoveBuilding, onErrorMoveBuilding, ServerFile.MAIN_PHP, [
 			ServerManager.KEY_POST_FILE_NAME => ServerFile.BUILDING_MOVE,

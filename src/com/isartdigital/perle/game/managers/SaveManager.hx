@@ -231,7 +231,8 @@ class SaveManager {
 	}
 	
 	public static function saveNewBuilding (pDescription:TileDescription):Void {
-		ServerManagerBuilding.addBuilding(pDescription);
+		if (!DialogueManager.boostBuilding) ServerManagerBuilding.addBuilding(pDescription);
+		else ServerManagerBuilding.addFirstPortal(pDescription);
 	}
 	
 	public static function saveMoveBuilding (pOldDescription:TileDescription, pDescription:TileDescription):Void {
