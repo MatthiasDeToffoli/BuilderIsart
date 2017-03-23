@@ -23,7 +23,8 @@ class VHouseHell extends VHouse
 	}
 	
 	public function addForFtue():Void {
-		Timer.delay(setHouse, 1000);
+		setHouse();
+		activate();
 	}
 	
 	private function setHouse():Void {
