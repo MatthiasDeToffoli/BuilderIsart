@@ -134,7 +134,7 @@ class LevelUpPoppin extends SmartPopinExtended
 		Hud.getInstance().show();
 		UIManager.getInstance().closePopin(this);
 		UnlockManager.checkIfNeedToCreateDialogue();
-		UnlockManager.checkIfNeedPub();
+		//UnlockManager.checkIfNeedPub();
 	}
 	
 	private function juicyEffect():Void {
