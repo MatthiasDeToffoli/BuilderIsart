@@ -92,7 +92,6 @@ class ClippingManager
 		if (needSortTiles) {
 			needSortTiles = false;
 			Building.sortBuildings();
-			RegionManager.sortBackground();
 			// todo : addregion here when they will be clipped.
 		}
 		
