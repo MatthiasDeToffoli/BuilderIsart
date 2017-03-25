@@ -19,4 +19,8 @@ class VFactory extends VBuilding
 		
 	}
 	
+	override function setHaveRecolter():Void 
+	{
+		haveRecolter = false;
+	}
 }
