@@ -27,6 +27,8 @@ class DeltaDNAManager{
 
 	private static var isReady:Bool;
 	
+	private static var startGame:Int;
+	
 	// ##############################################################
     // INIT, GAME_STARTED, NEW_PLAYER, CLIENT_DEVICE, GAME_ENDED
     // ##############################################################
@@ -47,10 +49,10 @@ class DeltaDNAManager{
 		);
 		
 		if (pEvent.isNewPlayer)
-			DeltaDNA.addEvent(DeltaDNA.NEW_PLAYER);
+			DeltaDNA.addEvent(DeltaDNA.NEW_PLAYER, getMinimumFields());
 		
-		DeltaDNA.addEvent(DeltaDNA.GAME_STARTED);
-		DeltaDNA.addEvent(DeltaDNA.CLIENT_DEVICE);
+		DeltaDNA.addEvent(DeltaDNA.GAME_STARTED, getMinimumFields());
+		DeltaDNA.addEvent(DeltaDNA.CLIENT_DEVICE, getMinimumFields());
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 		
 		isReady = true;
@@ -64,9 +66,13 @@ class DeltaDNAManager{
 	}
 	
 	private static function onUnload (pEvent:Event = null):String {
-		DeltaDNA.addEvent(DeltaDNA.GAME_ENDED);
+		DeltaDNA.addEvent(DeltaDNA.GAME_ENDED, getMinimumFields());
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 		return null;
+	}
+	
+	public static function init ():Void {
+		startGame = Math.round(Date.now().getTime());
 	}
 	
 	
@@ -87,11 +93,18 @@ class DeltaDNAManager{
 			return;
 		}
 		
-		DeltaDNA.addEvent(DeltaDNAEventCustom.FTUE_STEP, {
-			index:pStepIndex,
-			// How much time was spent on that step ?
-			timeSpent: Math.round(Date.now().getTime() - stepFTUETStartTimeStamp)
-		});
+		if (stepFTUETStartTimeStamp == 0) {
+			stepFTUETStartTimeStamp = Date.now().getTime();
+		}
+		
+		DeltaDNA.addEvent(
+			DeltaDNAEventCustom.FTUE_STEP, 
+			addFields({
+				index:pStepIndex,
+				// How much time was spent on that step ?
+				timeSpent: Math.round(Date.now().getTime() - stepFTUETStartTimeStamp)
+			}, false)
+		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 		
 		stepFTUETStartTimeStamp = Date.now().getTime();
@@ -113,7 +126,7 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.TRANSACTION, 
-			untyped Object.assign(getBaseEvent(), {
+			untyped addFields({
 				transactionID: Facebook.uid + "_" + Date.now().toString() + "_" + Std.string(Math.random() * 100000),
 				transactionType: pTransactionType,
 				productReceived: pIdPack,
@@ -142,7 +155,7 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.COLLECT,
-			untyped Object.assign(getBaseEvent(), {
+			untyped addFields({
 				productReceived: pResouceType,
 				productReceivedAmount: pAmount,
 				buildingID: pBuildingID,
@@ -166,7 +179,7 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.INTERSHIP_CHOICE, 
-			untyped Object.assign(getBaseEvent(), {
+			untyped addFields({
 				internID: pInternConfigID,
 				choiceID: pChoiceConfigID
 			})
@@ -193,7 +206,7 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.UI_INTERACTION, 
-			untyped Object.assign(getBaseEvent(), {
+			untyped addFields({
 				// WTF majuscules...
 				UIAction: pUIAction.toString(),
 				UILocation: pUILocation.toString(),
@@ -217,15 +230,53 @@ class DeltaDNAManager{
 		
 		DeltaDNA.addEvent(
 			DeltaDNAEventCustom.SOCIAL, 
-			untyped Object.assign(getBaseEvent(), {
+			addFields({
 				friendInvited:pFriendName
 			})
 		);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 	}
 	
+	/**
+	 * Add minum fields to the event, and if wanted and base fields too
+	 * @param	pCustomFields
+	 * @param	pBaseEvents
+	 * @return the merged object
+	 */
+	private static function addFields (pCustomFields:Dynamic, pBaseEvents:Bool = true):Dynamic {
+		if (pBaseEvents)
+			return untyped Object.assign(
+				getMinimumFields(),
+				Object.assign(
+					getBaseFields(), 
+					pCustomFields
+				)
+			);
+		else
+			return untyped Object.assign(
+				getMinimumEvents(),
+				pCustomFields
+			);
+	}
 	
-	private static function getBaseEvent ():Dynamic {
+	/**
+	 * 
+	 * @return Fields that should be on every event
+	 */
+	private static function getMinimumFields ():Dynamic {
+		return {
+			clientVersion: Config.version,
+			dataVersion: Config.version,
+			gameTime: Date.now().getTime() - startGame,
+			userStartDate: startGame
+		}
+	}
+	
+	/**
+	 * 
+	 * @return Fields taht shoulb be on most of the event (see "Plan de taggage")
+	 */
+	private static function getBaseFields ():Dynamic {
 		return {
 			playerLevel: ResourcesManager.getLevel(),
 			playerXPHell: ResourcesManager.getTotalForType(GeneratorType.badXp),

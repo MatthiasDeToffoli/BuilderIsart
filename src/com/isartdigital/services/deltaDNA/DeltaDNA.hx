@@ -8,7 +8,8 @@ typedef DeltaDNAEvent =
 	var eventName:String;
 	var userID:String;
 	var sessionID:String;
-	var eventParams: Dynamic;	
+	var eventParams:Dynamic;
+	var eventTimeStamp:Int;
 }
 
 typedef DeltaDNAEngage =
@@ -111,6 +112,7 @@ class DeltaDNA
 			eventName:pEventName,
 			userID:userID,
 			sessionID:sessionID,
+			eventTimeStamp: Math.round(Date.now().getTime()),
 			eventParams: pParams
 		};
 		

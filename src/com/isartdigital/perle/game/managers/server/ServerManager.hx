@@ -76,7 +76,7 @@ class ServerManager {
 		ServerManagerLoad.load(); // todo : temporary (maybe)
 		DeltaDNAManager.sendConnexionEvents(successEvent);
 		DeltaDNAManager.listenToCloseGame();
-		
+		DeltaDNAManager.init();
 		// todo : right now when player conenct whitout facebook and then conenct whit,
 		// he wont be new player so email will not be set,
 		// os what did here is to set email each time the player connect on facebook,
