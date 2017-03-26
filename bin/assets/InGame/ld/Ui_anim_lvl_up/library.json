@@ -1,122 +1,125 @@
 {
+ "md5": "050c5e403e0d9a4c10cc2b87018b731f",
+ "frameRate": 24,
  "isNamespaced": false,
  "textureGroups": [
   {
+   "scaleFactor": 1,
    "atlases": [
     {
      "textures": [
       {
-       "symbol": "ui_base",
        "rect": [
         1,
         1,
         711,
         499
        ],
+       "symbol": "ui_base",
        "origin": [
         355.1,
         249.35
        ]
       },
       {
-       "symbol": "main_back",
        "rect": [
         714,
         1,
         150,
         171
        ],
+       "symbol": "main_back",
        "origin": [
         75.15,
         85.35
        ]
       },
       {
-       "symbol": "main_front",
        "rect": [
         866,
         1,
         153,
         150
        ],
+       "symbol": "main_front",
        "origin": [
         76.65,
         75.25
        ]
       },
       {
-       "symbol": "fx_clap",
        "rect": [
         866,
         153,
         15,
         15
        ],
+       "symbol": "fx_clap",
        "origin": [
         7.6,
         7.5
        ]
       },
       {
-       "symbol": "firework3",
        "rect": [
         883,
         153,
         13,
         13
        ],
+       "symbol": "firework3",
        "origin": [
         6.3,
         6.3
        ]
       },
       {
-       "symbol": "firework2",
        "rect": [
         898,
         153,
         13,
         13
        ],
+       "symbol": "firework2",
        "origin": [
         6.3,
         6.3
        ]
       },
       {
-       "symbol": "firework4",
        "rect": [
         913,
         153,
         13,
         13
        ],
+       "symbol": "firework4",
        "origin": [
         6.2,
         6.25
        ]
       },
       {
-       "symbol": "firework1",
        "rect": [
         928,
         153,
         13,
         13
        ],
+       "symbol": "firework1",
        "origin": [
         6.3,
         6.3
        ]
       },
       {
-       "symbol": "firework5",
        "rect": [
         943,
         153,
         13,
         13
        ],
+       "symbol": "firework5",
        "origin": [
         6.3,
         6.25
@@ -125,145 +128,144 @@
      ],
      "file": "atlas0.png"
     }
-   ],
-   "scaleFactor": 1
+   ]
   }
  ],
- "frameRate": 24,
  "movies": [
   {
-   "id": "Ui_anim_main",
    "layers": [
     {
-     "name": "Calque 9",
      "keyframes": [
       {
+       "ref": "fx_master_fireworks",
        "loc": [
         -338.475,
         -102.775
        ],
        "duration": 55,
        "index": 0,
-       "tweened": false,
-       "ref": "fx_master_fireworks"
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Calque 9"
     },
     {
-     "name": "Calque 15",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 7
+       "duration": 7,
+       "index": 0
       },
       {
-       "loc": [
-        -355.9,
-        -78.925
-       ],
-       "duration": 56,
        "skew": [
         -0.3441,
         -0.3441
        ],
        "index": 7,
        "tweened": false,
-       "ref": "fx_master_fireworks"
-      }
-     ]
-    },
-    {
-     "name": "Calque 16",
-     "keyframes": [
-      {
-       "index": 0,
-       "duration": 15
-      },
-      {
+       "ref": "fx_master_fireworks",
        "loc": [
         -355.9,
-        -55.525
+        -78.925
        ],
-       "duration": 56,
+       "duration": 56
+      }
+     ],
+     "name": "Calque 15"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 15,
+       "index": 0
+      },
+      {
        "skew": [
         -0.5838,
         -0.5838
        ],
        "index": 15,
        "tweened": false,
-       "ref": "fx_master_fireworks"
+       "ref": "fx_master_fireworks",
+       "loc": [
+        -355.9,
+        -55.525
+       ],
+       "duration": 56
       }
-     ]
+     ],
+     "name": "Calque 16"
     },
     {
-     "name": "Calque 17",
      "keyframes": [
       {
-       "loc": [
-        336.875,
-        -102.775
-       ],
-       "duration": 55,
        "skew": [
         0,
         3.1416
        ],
        "index": 0,
        "tweened": false,
-       "ref": "fx_master_fireworks"
+       "ref": "fx_master_fireworks",
+       "loc": [
+        336.875,
+        -102.775
+       ],
+       "duration": 55
       }
-     ]
+     ],
+     "name": "Calque 17"
     },
     {
-     "name": "Calque 18",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 7
+       "duration": 7,
+       "index": 0
       },
       {
-       "loc": [
-        354.3,
-        -78.925
-       ],
-       "duration": 55,
        "skew": [
         0.3441,
         -2.7975
        ],
        "index": 7,
        "tweened": false,
-       "ref": "fx_master_fireworks"
-      }
-     ]
-    },
-    {
-     "name": "Calque 19",
-     "keyframes": [
-      {
-       "index": 0,
-       "duration": 15
-      },
-      {
+       "ref": "fx_master_fireworks",
        "loc": [
         354.3,
-        -55.525
+        -78.925
        ],
-       "duration": 56,
+       "duration": 55
+      }
+     ],
+     "name": "Calque 18"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 15,
+       "index": 0
+      },
+      {
        "skew": [
         0.5838,
         -2.5578
        ],
        "index": 15,
        "tweened": false,
-       "ref": "fx_master_fireworks"
+       "ref": "fx_master_fireworks",
+       "loc": [
+        354.3,
+        -55.525
+       ],
+       "duration": 56
       }
-     ]
+     ],
+     "name": "Calque 19"
     },
     {
-     "name": "aaa.png",
      "keyframes": [
       {
+       "index": 0,
+       "tweened": false,
+       "ref": "ui_base",
        "loc": [
         0,
         2.5
@@ -272,192 +274,185 @@
        "pivot": [
         355.075,
         249.35
-       ],
-       "index": 0,
-       "tweened": false,
-       "ref": "ui_base"
+       ]
       }
-     ]
+     ],
+     "name": "aaa.png"
     },
     {
-     "name": "a.png",
      "keyframes": [
       {
+       "ref": "anim_main",
        "loc": [
         -7.025,
         -221.425
        ],
        "duration": 100,
        "index": 0,
-       "tweened": false,
-       "ref": "anim_main"
+       "tweened": false
       }
-     ]
+     ],
+     "name": "a.png"
     }
-   ]
+   ],
+   "id": "Ui_anim_main"
   },
   {
-   "id": "anim_fx_clap",
    "layers": [
     {
-     "name": "Calque 1",
      "keyframes": [
       {
+       "ref": "fx_clap",
        "duration": 7,
        "index": 0,
        "pivot": [
         7.6,
         7.525
-       ],
-       "ref": "fx_clap"
+       ]
       },
       {
-       "duration": 1,
        "alpha": 0,
-       "scale": [
-        2.1147,
-        2.1147
-       ],
        "index": 7,
        "pivot": [
         7.6,
         7.525
        ],
-       "ref": "fx_clap"
+       "ref": "fx_clap",
+       "scale": [
+        2.1147,
+        2.1147
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 1"
     }
-   ]
+   ],
+   "id": "anim_fx_clap"
   },
   {
-   "id": "anim_main",
    "layers": [
     {
-     "name": "aa.png",
      "keyframes": [
       {
-       "loc": [
-        -37.075,
-        18.25
-       ],
-       "duration": 9,
        "ease": -1,
        "index": 0,
        "pivot": [
         54.225,
         99.725
        ],
-       "ref": "main_back"
+       "ref": "main_back",
+       "loc": [
+        -37.075,
+        18.25
+       ],
+       "duration": 9
       },
       {
-       "loc": [
-        -38.275,
-        3.325
-       ],
-       "duration": 10,
        "ease": -1,
        "index": 9,
        "pivot": [
         54.225,
         99.725
        ],
-       "ref": "main_back"
+       "ref": "main_back",
+       "loc": [
+        -38.275,
+        3.325
+       ],
+       "duration": 10
       },
       {
+       "index": 19,
+       "tweened": false,
+       "ref": "main_back",
        "loc": [
         -37.175,
         16.9
        ],
        "duration": 1,
-       "index": 19,
        "pivot": [
         54.225,
         99.725
-       ],
-       "ref": "main_back"
+       ]
       }
-     ]
+     ],
+     "name": "aa.png"
     },
     {
-     "name": "Calque 8",
      "keyframes": [
       {
-       "loc": [
-        0.35,
-        -2.125
-       ],
-       "duration": 8,
        "scale": [
         3.9115,
         3.9115
        ],
        "index": 0,
        "tweened": false,
-       "ref": "anim_fx_clap"
+       "ref": "anim_fx_clap",
+       "loc": [
+        0.35,
+        -2.125
+       ],
+       "duration": 8
       }
-     ]
+     ],
+     "name": "Calque 8"
     },
     {
-     "name": "a.png",
      "keyframes": [
       {
-       "loc": [
-        35.925,
-        14.625
-       ],
-       "duration": 9,
        "ease": -1,
        "index": 0,
        "pivot": [
         95.125,
         90.05
        ],
-       "ref": "main_front"
+       "ref": "main_front",
+       "loc": [
+        35.925,
+        14.625
+       ],
+       "duration": 9
       },
       {
-       "loc": [
-        36.5,
-        26.025
-       ],
-       "duration": 10,
        "ease": -1,
        "index": 9,
        "pivot": [
         95.125,
         90.05
        ],
-       "ref": "main_front"
+       "ref": "main_front",
+       "loc": [
+        36.5,
+        26.025
+       ],
+       "duration": 10
       },
       {
+       "index": 19,
+       "tweened": false,
+       "ref": "main_front",
        "loc": [
         35.925,
         14.75
        ],
        "duration": 1,
-       "index": 19,
        "pivot": [
         95.125,
         90.05
-       ],
-       "ref": "main_front"
+       ]
       }
-     ]
+     ],
+     "name": "a.png"
     }
-   ]
+   ],
+   "id": "anim_main"
   },
   {
-   "id": "fx_fireworks",
    "layers": [
     {
-     "name": "Calque 2",
      "keyframes": [
       {
-       "loc": [
-        0.025,
-        0.525
-       ],
-       "duration": 3,
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -467,14 +462,15 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        0.025,
+        0.525
+       ],
+       "duration": 3,
+       "ease": -1
       },
       {
-       "loc": [
-        -1.05,
-        -21.525
-       ],
-       "duration": 4,
        "skew": [
         24.1303,
         24.1303
@@ -488,14 +484,14 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -1.05,
+        -21.525
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -7,
-        -50.975
-       ],
-       "duration": 4,
        "skew": [
         17.3584,
         17.3584
@@ -509,14 +505,14 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -7,
+        -50.975
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -21.45,
-        -73.75
-       ],
-       "duration": 3,
        "skew": [
         16.9245,
         16.9245
@@ -530,14 +526,14 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -21.45,
+        -73.75
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -33.325,
-        -84.35
-       ],
-       "duration": 3,
        "skew": [
         16.6663,
         16.6663
@@ -551,15 +547,15 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -33.325,
+        -84.35
+       ],
+       "duration": 3
       },
       {
        "alpha": 0.1797,
-       "loc": [
-        -41.45,
-        -90.25
-       ],
-       "duration": 2,
        "skew": [
         18.4557,
         18.4557
@@ -573,15 +569,15 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -41.45,
+        -90.25
+       ],
+       "duration": 2
       },
       {
        "alpha": 0,
-       "loc": [
-        -43.375,
-        -91.5
-       ],
-       "duration": 1,
        "skew": [
         18.8496,
         18.8496
@@ -595,28 +591,27 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -43.375,
+        -91.5
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 2"
     },
     {
-     "name": "Calque 4",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 3
+       "duration": 3,
+       "index": 0
       },
       {
-       "loc": [
-        0.025,
-        0.525
-       ],
-       "duration": 4,
        "skew": [
         0.0055,
         0.0055
        ],
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -626,14 +621,15 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
-      },
-      {
+       "ref": "firework4",
        "loc": [
-        -2.925,
-        -28.675
+        0.025,
+        0.525
        ],
        "duration": 4,
+       "ease": -1
+      },
+      {
        "skew": [
         19.6851,
         19.6851
@@ -647,14 +643,14 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -2.925,
+        -28.675
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -10.975,
-        -56.525
-       ],
-       "duration": 3,
        "skew": [
         18.3205,
         18.3205
@@ -668,14 +664,14 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -10.975,
+        -56.525
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -22.625,
-        -72.125
-       ],
-       "duration": 3,
        "skew": [
         17.4059,
         17.4059
@@ -689,14 +685,14 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -22.625,
+        -72.125
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -34.475,
-        -82.4
-       ],
-       "duration": 3,
        "skew": [
         16.6718,
         16.6718
@@ -710,15 +706,15 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -34.475,
+        -82.4
+       ],
+       "duration": 3
       },
       {
        "alpha": 0.1797,
-       "loc": [
-        -42.65,
-        -88.075
-       ],
-       "duration": 2,
        "skew": [
         18.4603,
         18.4603
@@ -732,15 +728,15 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -42.65,
+        -88.075
+       ],
+       "duration": 2
       },
       {
        "alpha": 0,
-       "loc": [
-        -44.425,
-        -89.275
-       ],
-       "duration": 1,
        "skew": [
         18.8551,
         18.8551
@@ -754,28 +750,27 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -44.425,
+        -89.275
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 4"
     },
     {
-     "name": "Calque 6",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 7
+       "duration": 7,
+       "index": 0
       },
       {
-       "loc": [
-        -0.1,
-        0.5
-       ],
-       "duration": 4,
        "skew": [
         0.1475,
         0.1475
        ],
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -785,14 +780,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -0.1,
+        0.5
+       ],
+       "duration": 4,
+       "ease": -1
       },
       {
-       "loc": [
-        0.7,
-        -28.8
-       ],
-       "duration": 3,
        "skew": [
         19.8215,
         19.8215
@@ -806,14 +802,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        0.7,
+        -28.8
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -1.75,
-        -50.7
-       ],
-       "duration": 3,
        "skew": [
         18.7877,
         18.7877
@@ -827,14 +823,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -1.75,
+        -50.7
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -9.65,
-        -69.475
-       ],
-       "duration": 4,
        "skew": [
         17.8295,
         17.8295
@@ -848,14 +844,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -9.65,
+        -69.475
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -23.6,
-        -86.175
-       ],
-       "duration": 5,
        "skew": [
         16.8014,
         16.8014
@@ -869,15 +865,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -23.6,
+        -86.175
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -32.575,
-        -94.275
-       ],
-       "duration": 1,
        "skew": [
         18.9847,
         18.9847
@@ -891,28 +887,27 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -32.575,
+        -94.275
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 6"
     },
     {
-     "name": "Calque 8",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 11
+       "duration": 11,
+       "index": 0
       },
       {
-       "loc": [
-        -0.05,
-        0.525
-       ],
-       "duration": 3,
        "skew": [
         0.0604,
         0.0604
        ],
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -922,14 +917,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
-      },
-      {
+       "ref": "firework2",
        "loc": [
-        -0.425,
-        -20.275
+        -0.05,
+        0.525
        ],
        "duration": 3,
+       "ease": -1
+      },
+      {
        "skew": [
         24.2224,
         24.2224
@@ -943,14 +939,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -0.425,
+        -20.275
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -3.65,
-        -41.55
-       ],
-       "duration": 3,
        "skew": [
         17.6064,
         17.6064
@@ -964,14 +960,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -3.65,
+        -41.55
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -9.7,
-        -60.7
-       ],
-       "duration": 5,
        "skew": [
         17.2882,
         17.2882
@@ -985,14 +981,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -9.7,
+        -60.7
+       ],
+       "duration": 5
       },
       {
-       "loc": [
-        -26.95,
-        -81.55
-       ],
-       "duration": 5,
        "skew": [
         16.8657,
         16.8657
@@ -1006,15 +1002,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -26.95,
+        -81.55
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -40.775,
-        -92.425
-       ],
-       "duration": 1,
        "skew": [
         19.049,
         19.049
@@ -1028,28 +1024,27 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -40.775,
+        -92.425
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 8"
     },
     {
-     "name": "Calque 10",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 15
+       "duration": 15,
+       "index": 0
       },
       {
-       "loc": [
-        0,
-        0.45
-       ],
-       "duration": 5,
        "skew": [
         0.2127,
         0.2127
        ],
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -1059,14 +1054,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
-      },
-      {
+       "ref": "firework1",
        "loc": [
-        3.075,
-        -34.7
+        0,
+        0.45
        ],
        "duration": 5,
+       "ease": -1
+      },
+      {
        "skew": [
         22.7614,
         22.7614
@@ -1080,14 +1076,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        3.075,
+        -34.7
+       ],
+       "duration": 5
       },
       {
-       "loc": [
-        -2.725,
-        -67.35
-       ],
-       "duration": 4,
        "skew": [
         16.8109,
         16.8109
@@ -1101,14 +1097,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -2.725,
+        -67.35
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -14.125,
-        -84.75
-       ],
-       "duration": 5,
        "skew": [
         17.018,
         17.018
@@ -1122,15 +1118,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -14.125,
+        -84.75
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -26.125,
-        -97.6
-       ],
-       "duration": 1,
        "skew": [
         19.2013,
         19.2013
@@ -1144,25 +1140,24 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -26.125,
+        -97.6
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 10"
     }
-   ]
+   ],
+   "id": "fx_fireworks"
   },
   {
-   "id": "fx_fireworks2",
    "layers": [
     {
-     "name": "Calque 2",
      "keyframes": [
       {
-       "loc": [
-        0.025,
-        0.525
-       ],
-       "duration": 3,
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -1172,14 +1167,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        0.025,
+        0.525
+       ],
+       "duration": 3,
+       "ease": -1
       },
       {
-       "loc": [
-        -1.05,
-        -21.525
-       ],
-       "duration": 4,
        "skew": [
         24.1303,
         24.1303
@@ -1193,14 +1189,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -1.05,
+        -21.525
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -7,
-        -50.975
-       ],
-       "duration": 4,
        "skew": [
         17.3584,
         17.3584
@@ -1214,14 +1210,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -7,
+        -50.975
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -21.45,
-        -73.75
-       ],
-       "duration": 3,
        "skew": [
         16.9245,
         16.9245
@@ -1235,14 +1231,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -21.45,
+        -73.75
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -33.325,
-        -84.35
-       ],
-       "duration": 5,
        "skew": [
         16.6663,
         16.6663
@@ -1256,15 +1252,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -33.325,
+        -84.35
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -43.375,
-        -91.5
-       ],
-       "duration": 1,
        "skew": [
         18.8496,
         18.8496
@@ -1278,28 +1274,27 @@
         6.3,
         6.325
        ],
-       "ref": "firework1"
+       "ref": "firework1",
+       "loc": [
+        -43.375,
+        -91.5
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 2"
     },
     {
-     "name": "Calque 4",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 3
+       "duration": 3,
+       "index": 0
       },
       {
-       "loc": [
-        0,
-        0.525
-       ],
-       "duration": 4,
        "skew": [
         0.0259,
         0.0259
        ],
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1309,14 +1304,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
-      },
-      {
+       "ref": "firework2",
        "loc": [
-        -2.375,
-        -28.75
+        0,
+        0.525
        ],
        "duration": 4,
+       "ease": -1
+      },
+      {
        "skew": [
         19.7066,
         19.7066
@@ -1330,14 +1326,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -2.375,
+        -28.75
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -9.85,
-        -56.775
-       ],
-       "duration": 3,
        "skew": [
         18.3421,
         18.3421
@@ -1351,14 +1347,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -9.85,
+        -56.775
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -21.15,
-        -72.625
-       ],
-       "duration": 3,
        "skew": [
         17.4275,
         17.4275
@@ -1372,14 +1368,14 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -21.15,
+        -72.625
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -32.8,
-        -83.075
-       ],
-       "duration": 5,
        "skew": [
         16.6922,
         16.6922
@@ -1393,15 +1389,15 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -32.8,
+        -83.075
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -42.6,
-        -90.175
-       ],
-       "duration": 1,
        "skew": [
         18.8754,
         18.8754
@@ -1415,28 +1411,27 @@
         6.3,
         6.325
        ],
-       "ref": "firework2"
+       "ref": "firework2",
+       "loc": [
+        -42.6,
+        -90.175
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 4"
     },
     {
-     "name": "Calque 6",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 7
+       "duration": 7,
+       "index": 0
       },
       {
-       "loc": [
-        -0.075,
-        0.375
-       ],
-       "duration": 4,
        "skew": [
         0.1824,
         0.1824
        ],
-       "ease": -1,
        "scale": [
         0.6978,
         0.6978
@@ -1446,14 +1441,15 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        -0.075,
+        0.375
+       ],
+       "duration": 4,
+       "ease": -1
       },
       {
-       "loc": [
-        1.8,
-        -28.925
-       ],
-       "duration": 3,
        "skew": [
         19.8598,
         19.8598
@@ -1467,14 +1463,14 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        1.8,
+        -28.925
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        0.125,
-        -50.875
-       ],
-       "duration": 4,
        "skew": [
         18.8232,
         18.8232
@@ -1488,14 +1484,14 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        0.125,
+        -50.875
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        -10.5,
-        -75.1
-       ],
-       "duration": 3,
        "skew": [
         17.5723,
         17.5723
@@ -1509,14 +1505,14 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        -10.5,
+        -75.1
+       ],
+       "duration": 3
       },
       {
-       "loc": [
-        -20.525,
-        -87.075
-       ],
-       "duration": 5,
        "skew": [
         16.8364,
         16.8364
@@ -1530,15 +1526,15 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        -20.525,
+        -87.075
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -29.2,
-        -95.475
-       ],
-       "duration": 1,
        "skew": [
         19.0197,
         19.0197
@@ -1552,28 +1548,27 @@
         6.3,
         6.275
        ],
-       "ref": "firework3"
+       "ref": "firework3",
+       "loc": [
+        -29.2,
+        -95.475
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 6"
     },
     {
-     "name": "Calque 8",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 11
+       "duration": 11,
+       "index": 0
       },
       {
-       "loc": [
-        -0.125,
-        0.6
-       ],
-       "duration": 3,
        "skew": [
         0.262,
         0.262
        ],
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1583,14 +1578,15 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -0.125,
+        0.6
+       ],
+       "duration": 3,
+       "ease": -1
       },
       {
-       "loc": [
-        3.675,
-        -19.825
-       ],
-       "duration": 5,
        "skew": [
         24.424,
         24.424
@@ -1604,14 +1600,14 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        3.675,
+        -19.825
+       ],
+       "duration": 5
       },
       {
-       "loc": [
-        4.2,
-        -54.925
-       ],
-       "duration": 6,
        "skew": [
         17.5934,
         17.5934
@@ -1625,14 +1621,14 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        4.2,
+        -54.925
+       ],
+       "duration": 6
       },
       {
-       "loc": [
-        -10.025,
-        -85.2
-       ],
-       "duration": 5,
        "skew": [
         17.0673,
         17.0673
@@ -1646,15 +1642,15 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -10.025,
+        -85.2
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -21.4,
-        -98.625
-       ],
-       "duration": 1,
        "skew": [
         19.2505,
         19.2505
@@ -1668,28 +1664,27 @@
         6.225,
         6.25
        ],
-       "ref": "firework4"
+       "ref": "firework4",
+       "loc": [
+        -21.4,
+        -98.625
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 8"
     },
     {
-     "name": "Calque 10",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 15
+       "duration": 15,
+       "index": 0
       },
       {
-       "loc": [
-        -0.225,
-        0.375
-       ],
-       "duration": 4,
        "skew": [
         0.3356,
         0.3356
        ],
-       "ease": -1,
        "scale": [
         0.6979,
         0.6979
@@ -1699,14 +1694,15 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
-      },
-      {
+       "ref": "firework5",
        "loc": [
-        6.25,
-        -26.975
+        -0.225,
+        0.375
        ],
        "duration": 4,
+       "ease": -1
+      },
+      {
        "skew": [
         20.0576,
         20.0576
@@ -1720,14 +1716,14 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        6.25,
+        -26.975
+       ],
+       "duration": 4
       },
       {
-       "loc": [
-        8.15,
-        -54.725
-       ],
-       "duration": 6,
        "skew": [
         18.7394,
         18.7394
@@ -1741,14 +1737,14 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        8.15,
+        -54.725
+       ],
+       "duration": 6
       },
       {
-       "loc": [
-        -3.8,
-        -85.9
-       ],
-       "duration": 5,
        "skew": [
         17.1409,
         17.1409
@@ -1762,15 +1758,15 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -3.8,
+        -85.9
+       ],
+       "duration": 5
       },
       {
        "alpha": 0,
-       "loc": [
-        -14.125,
-        -100.125
-       ],
-       "duration": 1,
        "skew": [
         19.3241,
         19.3241
@@ -1784,147 +1780,153 @@
         6.325,
         6.25
        ],
-       "ref": "firework5"
+       "ref": "firework5",
+       "loc": [
+        -14.125,
+        -100.125
+       ],
+       "duration": 1
       }
-     ]
+     ],
+     "name": "Calque 10"
     }
-   ]
+   ],
+   "id": "fx_fireworks2"
   },
   {
-   "id": "fx_master_fireworks",
    "layers": [
     {
-     "name": "Calque 9",
      "keyframes": [
       {
+       "ref": "fx_fireworks",
        "loc": [
         -0.275,
         -0.925
        ],
        "duration": 35,
        "index": 0,
-       "tweened": false,
-       "ref": "fx_fireworks"
+       "tweened": false
       }
-     ]
+     ],
+     "name": "Calque 9"
     },
     {
-     "name": "Calque 10",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 3
+       "duration": 3,
+       "index": 0
       },
       {
-       "loc": [
-        1.65,
-        -0.925
-       ],
-       "duration": 36,
        "skew": [
         -0.0005,
         3.1411
        ],
        "index": 3,
        "tweened": false,
-       "ref": "fx_fireworks2"
-      }
-     ]
-    },
-    {
-     "name": "Calque 13",
-     "keyframes": [
-      {
-       "index": 0,
-       "duration": 7
-      },
-      {
+       "ref": "fx_fireworks2",
        "loc": [
-        1.3,
+        1.65,
         -0.925
        ],
-       "duration": 36,
+       "duration": 36
+      }
+     ],
+     "name": "Calque 10"
+    },
+    {
+     "keyframes": [
+      {
+       "duration": 7,
+       "index": 0
+      },
+      {
        "skew": [
         0.0558,
         -3.0858
        ],
        "index": 7,
        "tweened": false,
-       "ref": "fx_fireworks"
+       "ref": "fx_fireworks",
+       "loc": [
+        1.3,
+        -0.925
+       ],
+       "duration": 36
       }
-     ]
+     ],
+     "name": "Calque 13"
     },
     {
-     "name": "Calque 12",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 11
+       "duration": 11,
+       "index": 0
       },
       {
-       "loc": [
-        -1.575,
-        -0.85
-       ],
-       "duration": 36,
        "skew": [
         -0.0297,
         -0.0297
        ],
        "index": 11,
        "tweened": false,
-       "ref": "fx_fireworks2"
+       "ref": "fx_fireworks2",
+       "loc": [
+        -1.575,
+        -0.85
+       ],
+       "duration": 36
       }
-     ]
+     ],
+     "name": "Calque 12"
     },
     {
-     "name": "Calque 11",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 15
+       "duration": 15,
+       "index": 0
       },
       {
-       "loc": [
-        1.3,
-        -0.925
-       ],
-       "duration": 36,
        "skew": [
         0.0558,
         -3.0858
        ],
        "index": 15,
        "tweened": false,
-       "ref": "fx_fireworks"
+       "ref": "fx_fireworks",
+       "loc": [
+        1.3,
+        -0.925
+       ],
+       "duration": 36
       }
-     ]
+     ],
+     "name": "Calque 11"
     },
     {
-     "name": "Calque 14",
      "keyframes": [
       {
-       "index": 0,
-       "duration": 19
+       "duration": 19,
+       "index": 0
       },
       {
-       "loc": [
-        -1.575,
-        -0.85
-       ],
-       "duration": 36,
        "skew": [
         -0.0297,
         -0.0297
        ],
        "index": 19,
        "tweened": false,
-       "ref": "fx_fireworks2"
+       "ref": "fx_fireworks2",
+       "loc": [
+        -1.575,
+        -0.85
+       ],
+       "duration": 36
       }
-     ]
+     ],
+     "name": "Calque 14"
     }
-   ]
+   ],
+   "id": "fx_master_fireworks"
   }
- ],
- "md5": "0055f8ba09b95ed1dd5ae7f1a378461a"
+ ]
 }
