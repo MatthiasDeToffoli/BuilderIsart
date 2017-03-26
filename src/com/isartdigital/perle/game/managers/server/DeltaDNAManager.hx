@@ -254,7 +254,7 @@ class DeltaDNAManager{
 			);
 		else
 			return untyped Object.assign(
-				getMinimumEvents(),
+				getMinimumFields(),
 				pCustomFields
 			);
 	}
