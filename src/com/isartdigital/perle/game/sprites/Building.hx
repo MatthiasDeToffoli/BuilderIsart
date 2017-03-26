@@ -1,8 +1,10 @@
 package com.isartdigital.perle.game.sprites;
 
+import com.greensock.core.Animation;
 import com.isartdigital.perle.game.iso.IsoManager;
 import com.isartdigital.perle.game.iso.IZSortable;
 import com.isartdigital.perle.game.managers.AnimationManager;
+import com.isartdigital.perle.game.managers.MouseManager;
 import com.isartdigital.perle.game.managers.PoolingManager;
 import com.isartdigital.perle.game.managers.RegionManager;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
@@ -13,12 +15,16 @@ import com.isartdigital.utils.Config;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.events.MouseEventType;
+import com.isartdigital.utils.game.CollisionManager;
 import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.system.DeviceCapabilities;
+import js.html.Rect;
 import pixi.core.display.Container;
 import pixi.core.graphics.Graphics;
 import pixi.core.math.Point;
 import pixi.core.math.shapes.Rectangle;
 import pixi.flump.Movie;
+import pixi.interaction.EventTarget;
 
 typedef SizeOnMap = {
 	var width:Int;
@@ -54,6 +60,10 @@ class Building extends Tile implements IZSortable
 	public var myDesc:TileDescription;
 	private var numberFrame:Int;
 	private var animation:Movie;
+	/**
+	 * Used when user is selecting building. To do a better selection.
+	 */
+	private var groundCollisionBox:Rectangle;
 	
 	
 	/**
@@ -67,6 +77,13 @@ class Building extends Tile implements IZSortable
 		GameStage.getInstance().getBuildContainer().addChild(container);
 		GameStage.getInstance().getGameContainer().addChild(uiContainer);
 		list = new Array<Building>();
+		
+		listenToClick(); // put this somewhere else ?
+	}
+	
+	public static function listenToClick ():Void {
+		container.interactive = true;
+		Interactive.addListenerClick(container, onClickBuildingContainer);
 	}
 	
 	// todo : optimisé (réduire) l'appelle à la function GameConfig.getBuildingByName (à travers getSizeOnMap)
@@ -234,6 +251,9 @@ class Building extends Tile implements IZSortable
 		if (list.indexOf(this) != -1)
 			list.splice(list.indexOf(this), 1);
 		
+		//Interactive.removeListenerClick(this, cast(onClick));
+		off(MouseEventType.MOUSE_OVER, changeCursor);
+		off(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		AnimationManager.removeToManager(this);
 		animation = null;
 		super.recycle();
@@ -244,7 +264,7 @@ class Building extends Tile implements IZSortable
 		// todo : suppri;er de behind and front du zsorting ?
 		isoBox.destroy();
 		isoBox = null;
-		Interactive.removeListenerClick(this, onClick);
+		//Interactive.removeListenerClick(this, cast(onClick));
 		off(MouseEventType.MOUSE_OVER, changeCursor);
 		off(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		AnimationManager.removeToManager(this);
@@ -257,6 +277,7 @@ class Building extends Tile implements IZSortable
 	}
 	
 	public static function destroyStatic():Void {
+		Interactive.removeListenerClick(container, onClickBuildingContainer);
 		container.parent.removeChild(container);
 		container = null;
 		for (i in 0...list.length)
@@ -267,24 +288,117 @@ class Building extends Tile implements IZSortable
 	//{ ################# HudContextual #################
 	
 	private function addListenerOnClick ():Void {
-		Interactive.addListenerClick(this, onClick);
+		//untyped Interactive.addListenerClick(this, cast(onClick));
 		on(MouseEventType.MOUSE_OVER, changeCursor);
 		on(MouseEventType.MOUSE_OUT, showDefaultCursor);
 		
 	}
 	
 	private function onClick ():Void {
-		if (isClickable) cast(linkedVirtualCell, VBuilding).onClick(position);
+		if (isClickable)
+			cast(linkedVirtualCell, VBuilding).onClick(position);
 	}
 	
-	private function changeCursor():Void{
-		if (isClickable) GameStage.getInstance().defaultCursor = "url(assets/finguer_little_up.png),auto";
-		
-		else GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
+	private function changeCursor ():Void {
+		if (isClickable)
+			GameStage.getInstance().defaultCursor = "url(assets/finguer_little_up.png),auto";
+		else 
+			GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
 	}
 	
 	private function showDefaultCursor():Void {
 		GameStage.getInstance().defaultCursor = "url(assets/Pointer_little.png),auto";
 	}
+	
+	public static function onClickBuildingContainer ():Void {
+		// var lGlobal:Point = pEventTarget.data.global.clone(); (not the same on touch i think)
+		var lPosition:Point = DeviceCapabilities.isCocoonJS ? MouseManager.getInstance().touchGlobalPos : MouseManager.getInstance().position;
+		//lPosition = container.toLocal(lPosition);
+		var lIndexesCollisions:Array<Int> = [];
+		var lLength = container.children.length;
+		
+		for (i in 0...lLength) {
+			// verify graphic collision boxes
+			if (CollisionManager.hitTestPoint(container.children[i], lPosition)) {
+				//lIndexesCollisions.push(i);
+				cast(container.children[i], Building).onClick();
+				return;
+			}
+		}
+		// verify ground collision boxes if multiple collisions whti precedent
+		/* deluxe version, wip, p for pause because i have no time for this.
+		if (lIndexesCollisions.length == 1) {
+			cast(container.children[lIndexesCollisions[0]], Building).onClick();
+		} else {
+			trace("booonusss");
+			trace(lIndexesCollisions.length);
+			for (j in 0...lIndexesCollisions.length) {
+				// verify ground collision
+				if (cast(container.children[j], Building).groundIsClicked(lPosition)) {
+					cast(container.children[j], Building).onClick();
+					return;
+				}
+			}
+		}*/
+		// if multiple but no groundBox collision, choose the first in z-index.
+		
+	}
+	
+	private function groundIsClicked (pGlobal:Point):Bool {
+		var lLocal:Point = container.toLocal(pGlobal);
+		var lLocalModel:Point = IsoManager.isoViewToModel(lLocal);
+		//if (groundCollisionBox == null)
+			groundCollisionBox = new Rectangle(
+				colMin,
+				rowMin,
+				Building.getSizeOnMap(myDesc.buildingName,myDesc.level).width,
+				Building.getSizeOnMap(myDesc.buildingName,myDesc.level).height
+			);
+		var collide:Bool = collisionPointRect2(
+			lLocalModel,
+			groundCollisionBox
+		);
+		// graphic verification is good
+		/*var myGraphic:Graphics = new Graphics();
+		myGraphic.beginFill(0xFF00FF, 0.3);
+		
+		var laa:Point = IsoManager.modelToIsoView(new Point(groundCollisionBox.x, groundCollisionBox.y));
+		var laa2:Point = IsoManager.modelToIsoView(new Point(
+			groundCollisionBox.x + groundCollisionBox.width,
+			groundCollisionBox.y + groundCollisionBox.height
+		));
+		var laa3:Point = IsoManager.modelToIsoView(new Point(
+			groundCollisionBox.x,
+			groundCollisionBox.y + groundCollisionBox.height
+		));
+		var laa4:Point = IsoManager.modelToIsoView(new Point(
+			groundCollisionBox.x + groundCollisionBox.width,
+			groundCollisionBox.y
+		));
+		
+		myGraphic.drawPolygon([
+			laa.x, laa.y,
+			laa3.x, laa3.y,
+			laa2.x, laa2.y,
+			laa4.x, laa4.y
+		]);*/
+		/*myGraphic.drawRect(
+			laa.x,
+			laa.y,
+			Building.getSizeOnMap(myDesc.buildingName,myDesc.level).width * Tile.TILE_WIDTH,
+			Building.getSizeOnMap(myDesc.buildingName,myDesc.level).height * Tile.TILE_HEIGHT
+		);*/
+		//myGraphic.endFill();
+		//container.parent.addChild(myGraphic);
+		return collide;
+	}
+	
+	private static function collisionPointRect2 (pPoint:Point, pRect:Rectangle):Bool {
+		return !(pPoint.x < pRect.x ||
+				pPoint.x > pRect.x + pRect.width ||
+				pPoint.y < pRect.y ||
+				pPoint.y > pRect.y + pRect.height);
+	}
+	
 	//} endRegion
 }
