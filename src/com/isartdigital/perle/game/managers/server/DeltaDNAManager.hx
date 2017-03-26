@@ -132,7 +132,7 @@ class DeltaDNAManager{
 				productReceived: pIdPack,
 				productReceivedAmount: 1,
 				productSpent: pTypePrice.getName(),
-				productsSpent: {},
+				productsSpent: {}, // required but completely useless
 				// some item have prices in more then one currencie, so this is not accurate ! (we decided it only take gold when multiple prices)
 				productSpendAmount: pPrice // float
 			})
