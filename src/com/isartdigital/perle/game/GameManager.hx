@@ -116,7 +116,9 @@ class GameManager {
 		GameStage.getInstance().getUnderBackgroundContainer().addChild(BackgroundUnder.getInstance());
 		
 		DailyRewardManager.getInstance().getFirstDay();
-		if(DailyRewardManager.getInstance().isFirstDay == 0) DailyRewardManager.getInstance().testDailyConnexion();
+		if (DailyRewardManager.getInstance().isFirstDay == 0) DailyRewardManager.getInstance().testDailyConnexion();
+		
+		RegionManager.sortBackground();
 	}
 	
 	/**
