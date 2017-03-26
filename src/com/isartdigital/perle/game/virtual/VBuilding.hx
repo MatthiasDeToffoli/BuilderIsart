@@ -143,6 +143,7 @@ class VBuilding extends VTile {
 		cast(graphic, HasVirtual).linkVirtual(cast(this, Virtual)); // alambiqué ?
 		setGraphicLocalBoundsAtFirstFrame();
 		myVContextualHud.activate();
+		TimerConstructionManager.newTimer(tileDesc.id);
 	}
 	
 	public function setGraphicLocalBoundsAtFirstFrame():Void {

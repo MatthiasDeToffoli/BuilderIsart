@@ -61,7 +61,7 @@ class BuildingTimer extends SmartComponent
 	}
 	
 	override public function destroy():Void {	
-		parent.removeChild(this);
+		if(parent != null) parent.removeChild(this);
 		super.destroy();
 	}
 }

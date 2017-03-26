@@ -36,7 +36,6 @@ class TimerConstructionManager
 	 * @param	pRef reference to the building link at timer
 	 */
 	public static function newTimer(pRef:Int):Void {
-		
 		var buildingTimer:BuildingTimerConstruction = new BuildingTimerConstruction();
 		buildingTimer.spawn(pRef);
 		if (pRef != null) listTimerConstruction.set(pRef, buildingTimer);
@@ -49,8 +48,10 @@ class TimerConstructionManager
 	
 	public static function placeAndAddTimer(pTimer:BuildingTimerConstruction, pRef:Int):Void {
 
+		if (timerContainer == null) return;
 		var lContainer:Container = new Container();
 		var lVBuilding:VBuilding = IdManager.searchVBuildingById(pRef);
+		if(lVBuilding.getGraphicLocalBoundsAtFirstFrame() == null) return;
 		var lLocalBounds:Rectangle = lVBuilding.getGraphicLocalBoundsAtFirstFrame().clone();
 
 		var lAnchor = new Point(lLocalBounds.x, lLocalBounds.y);
@@ -68,7 +69,7 @@ class TimerConstructionManager
 	}
 	
 	public static function hideTimer(pRef:Int):Void {
-		//trace("apres la correction des barres");
+		if (listTimerConstruction.exists(pRef)) listTimerConstruction[pRef].destroy(); 
 	}
 	
 	public static function getTimerContainer():Container {
