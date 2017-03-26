@@ -27,7 +27,7 @@ class DeltaDNAManager{
 
 	private static var isReady:Bool;
 	
-	private static var startGame:Int;
+	private static var startGame:Date;
 	
 	// ##############################################################
     // INIT, GAME_STARTED, NEW_PLAYER, CLIENT_DEVICE, GAME_ENDED
@@ -52,7 +52,7 @@ class DeltaDNAManager{
 			DeltaDNA.addEvent(DeltaDNA.NEW_PLAYER, getMinimumFields());
 		
 		DeltaDNA.addEvent(DeltaDNA.GAME_STARTED, getMinimumFields());
-		DeltaDNA.addEvent(DeltaDNA.CLIENT_DEVICE, getMinimumFields());
+		DeltaDNA.addEvent(DeltaDNA.CLIENT_DEVICE);
 		DeltaDNA.send(Config.DELTA_DNA_IS_LIVE);
 		
 		isReady = true;
@@ -72,7 +72,7 @@ class DeltaDNAManager{
 	}
 	
 	public static function init ():Void {
-		startGame = Math.round(Date.now().getTime());
+		startGame = Date.now();
 	}
 	
 	
@@ -132,7 +132,8 @@ class DeltaDNAManager{
 				productReceived: pIdPack,
 				productReceivedAmount: 1,
 				productSpent: pTypePrice.getName(),
-				productsSpent: {}, // required but completely useless
+				productsSpent: { }, // required but completely useless
+				productsReceived: {}, // same, plan de tagguage *******
 				// some item have prices in more then one currencie, so this is not accurate ! (we decided it only take gold when multiple prices)
 				productSpendAmount: pPrice // float
 			})
@@ -268,8 +269,8 @@ class DeltaDNAManager{
 		return {
 			clientVersion: Config.version,
 			dataVersion: Config.version,
-			gameTime: Date.now().getTime() - startGame,
-			userStartDate: startGame
+			gameTime: Date.now().getTime() - startGame.getTime(),
+			userStartDate: startGame.toString()
 		}
 	}
 	
