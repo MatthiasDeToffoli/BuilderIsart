@@ -128,7 +128,7 @@ class DeltaDNAManager{
 			DeltaDNAEventCustom.TRANSACTION, 
 			untyped addFields({
 				transactionID: Facebook.uid + "_" + Date.now().toString() + "_" + Std.string(Math.random() * 100000),
-				transactionType: pTransactionType,
+				transactionType: pTransactionType.getName(),
 				productReceived: pIdPack,
 				productReceivedAmount: 1,
 				productSpent: pTypePrice.getName(),
