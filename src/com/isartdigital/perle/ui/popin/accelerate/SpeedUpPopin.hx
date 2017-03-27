@@ -6,7 +6,10 @@ import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
+import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.game.virtual.VBuilding;
+import com.isartdigital.perle.game.virtual.vBuilding.vHeaven.VInternHouseHeaven;
+import com.isartdigital.perle.game.virtual.vBuilding.vHell.VInternHouseHell;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BHConstruction;
 import com.isartdigital.perle.ui.SmartPopinExtended;
@@ -75,6 +78,7 @@ class SpeedUpPopin extends AcceleratePopin
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);
 		
 		linkedBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_FINISH_BUILDING_HEAVEN").play() : SoundManager.getSound("SOUND_FINISH_BUILDING_HELL").play();
+		if (Std.is(linkedBuilding, VInternHouseHell) || Std.is(linkedBuilding, VInternHouseHeaven)) Intern.incrementeInternHouses(linkedBuilding.alignementBuilding);
 		Hud.getInstance().show();
 		onClose();
 	}

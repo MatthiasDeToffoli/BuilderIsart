@@ -10,6 +10,7 @@ import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.UnlockManager;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.listIntern.SendButton;
 import com.isartdigital.perle.ui.popin.listIntern.StressButton;
@@ -202,6 +203,8 @@ class InternElementOutQuest extends InternElement
 			ChoiceManager.newChoice(internDatas.id);
 			internDatas.idEvent = ChoiceManager.selectChoice(ChoiceManager.actualID).iD;
 			TimeManager.createTimeQuest(quest);
+			
+			DeltaDNAManager.sendTransaction(TransactionType.internshipStarted, internDatas.id, GeneratorType.soft, QUEST_PRICE);
 		}
 		else Browser.alert("You don't have enought money to do this.");
 	}

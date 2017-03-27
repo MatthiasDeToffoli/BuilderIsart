@@ -1,12 +1,15 @@
 package com.isartdigital.perle.ui.popin.listIntern;
 
 import com.isartdigital.perle.game.AssetName;
+import com.isartdigital.perle.game.managers.ChoiceManager.EventRewardDesc;
 import com.isartdigital.perle.game.managers.QuestsManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerChoice;
 import com.isartdigital.perle.ui.SmartPopinExtended;
+import com.isartdigital.perle.ui.popin.choice.Choice.ChoiceType;
 import com.isartdigital.perle.ui.popin.choice.Choice.RewardType;
 import com.isartdigital.perle.utils.Interactive;
 import com.isartdigital.utils.localisation.Localisation;
@@ -86,14 +89,7 @@ class RewardGatcha extends SmartPopinExtended
 	
 	private function onTake():Void{
 		UIManager.getInstance().closePopin(GatchaPopin.getInstance());
-		SoundManager.getSound("SOUND_NEUTRAL").play();
-		
-		ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
-		ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
-		ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, STEEL_WON);
-		ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, WOOD_WON);
-		ResourcesManager.gainResources(GeneratorType.soul, SOUL_WON);
-		
+		SoundManager.getSound("SOUND_NEUTRAL").play();		
 		QuestsManager.finishQuest(quest);
 	}
 	
@@ -108,35 +104,56 @@ class RewardGatcha extends SmartPopinExtended
 	private function getRandomRewards():Void{
 		var lRandom:Float = Math.random() * 10;
 		
+		var gold:Int = 0;
+		var hard:Int = 0;
+		var wood:Int = 0;
+		var iron:Int = 0;
+		var soul:Int = 0;
+		
 		if (lRandom <= 1) {
 			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.karma), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.hard, HARD_WON);
+			hard = HARD_WON;
 			SoundManager.getSound("SOUND_KARMA").play();
 			rewardValue.text = HARD_WON + "";
 		}
 		else if (1 < lRandom && lRandom <= 3){
 			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.gold), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.soft, GOLD_WON);
+			gold = GOLD_WON;
 			SoundManager.getSound("SOUND_GOLD").play();
 			rewardValue.text = GOLD_WON + "";
 		}
 		else if (3 < lRandom && lRandom <= 5){
 			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.soul), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.soul, SOUL_WON);
+			soul = SOUL_WON;
 			rewardValue.text = SOUL_WON + "";
 		}
 		else if (5 < lRandom && lRandom <= 7.5){
 			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.iron), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, STEEL_WON);
+			iron = STEEL_WON;
 			SoundManager.getSound("SOUND_IRON").play();
 			rewardValue.text = STEEL_WON + "";
 		}
 		else{
 			SpriteManager.spawnComponent(rewardIcon, AssetName.getCurrencyAssetName(RewardType.wood), this, TypeSpawn.SPRITE);
 			ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, WOOD_WON);
+			wood = WOOD_WON;
 			SoundManager.getSound("SOUND_WOOD").play();
 			rewardValue.text = WOOD_WON + "";
 		}
+		
+		var reward:EventRewardDesc = {
+			gold : gold,
+			karma : gold,
+			wood : wood,
+			iron : iron,
+			soul : soul
+		};
+		
+		ServerManagerChoice.applyReward(reward, ChoiceType.NONE);
 	}
 
 	/**

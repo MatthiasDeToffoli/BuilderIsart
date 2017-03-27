@@ -9,6 +9,7 @@ import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.SaveManager.TimeQuestDescription;
 import com.isartdigital.perle.game.managers.SpriteManager;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
@@ -193,6 +194,7 @@ class MaxStressPopin extends SmartPopin
 		if (ResourcesManager.getTotalForType(GeneratorType.hard) >= RESET_VALUE) {			
 			Intern.getIntern(intern.id).stress = 0;
 			Intern.getIntern(intern.id).status = Intern.STATE_RESTING;
+			DeltaDNAManager.sendTransaction(TransactionType.internStressReset, intern.id, GeneratorType.hard, RESET_VALUE);
 			SoundManager.getSound("SOUND_KARMA").play();
 			
 			if (quest != null) {
@@ -207,9 +209,11 @@ class MaxStressPopin extends SmartPopin
 	
 	private function onDismiss():Void{
 		ServerManagerInterns.execute(DbAction.REM, intern.id);
+		ResourcesManager.gainResources(GeneratorType.hard, RESET_VALUE);
 		if (intern.quest != null) ServerManagerQuest.execute(DbAction.REM, intern.quest);
 		UIManager.getInstance().closePopin(this);
 		SoundManager.getSound("SOUND_NEUTRAL").play();
+		DeltaDNAManager.sendTransaction(TransactionType.hiredIntern, intern.id, GeneratorType.soft, intern.price);
 	}
 	
 	private function onClose():Void{

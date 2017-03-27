@@ -17,6 +17,7 @@ class ServerManagerChoice
 {
 	
 	public static function applyReward(pReward:EventRewardDesc, pChoice:ChoiceType):Void {
+		
 		var xp:SendXp = {
 			bad: (pChoice == ChoiceType.HELL) ? pReward.xp : 0,
 			good: (pChoice == ChoiceType.HEAVEN) ? pReward.xp : 0

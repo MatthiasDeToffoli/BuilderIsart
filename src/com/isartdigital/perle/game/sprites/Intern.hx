@@ -199,6 +199,7 @@ class Intern
 			};
 			
 			internsListArray.push(newIntern);
+			(newIntern.aligment == "hell") ? internsListAlignment[Alignment.hell].push(newIntern) : internsListAlignment[Alignment.heaven].push(newIntern);
 		}
 		
 		ServerManagerSpecial.finishLoading();

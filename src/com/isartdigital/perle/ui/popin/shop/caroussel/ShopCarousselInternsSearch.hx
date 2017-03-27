@@ -25,6 +25,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	private var gaugeMask:UISprite;
 	private var accelerateButton:SmartButton;
 	private var searchText:TextSprite;
+	private var searchCost:TextSprite;
 	
 	private var loop:Timer;
 	public static var progress:Float; 
@@ -61,6 +62,15 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 		gaugeBar.scale.x = 0;
 		
 		searchText.text = Localisation.getText("LABEL_SHOPINTERN_SEARCHINGFORINTERNS");
+		searchCost = cast(SmartCheck.getChildByName(accelerateButton, "_accelerate_cost"), TextSprite);
+		searchCost.text = SKIP_PRICE + "";
+		
+		Interactive.addListenerRewrite(accelerateButton, rewritePrice);
+	}
+	
+	private function rewritePrice():Void {
+		searchCost = cast(SmartCheck.getChildByName(accelerateButton, "_accelerate_cost"), TextSprite);
+		searchCost.text = SKIP_PRICE + "";
 	}
 	
 	private function spawn():Void{
@@ -112,6 +122,7 @@ class ShopCarousselInternsSearch extends ShopCaroussel{
 	
 	override public function destroy():Void{
 		Interactive.removeListenerClick(accelerateButton, onAccelerate);
+		Interactive.removeListenerRewrite(searchText, rewritePrice);
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.isartdigital.perle.game.virtual.vBuilding.vHell;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.TileDescription;
 import com.isartdigital.perle.game.sprites.Intern;
+import com.isartdigital.perle.game.virtual.VBuilding.VBuildingState;
 import com.isartdigital.perle.game.virtual.vBuilding.VInternHouse;
 
 /**
@@ -15,8 +16,8 @@ class VInternHouseHell extends VInternHouse
 	public function new(pDescription:TileDescription) 
 	{
 		alignementBuilding = Alignment.hell;
-		Intern.incrementeInternHouses(alignementBuilding);
 		super(pDescription);
+		if (currentState == VBuildingState.isBuilt) Intern.incrementeInternHouses(alignementBuilding);
 		
 	}
 	

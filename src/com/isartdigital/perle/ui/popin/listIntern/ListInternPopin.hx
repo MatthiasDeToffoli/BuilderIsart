@@ -92,15 +92,15 @@ class ListInternPopin extends SmartPopinExtended
 		setSpawners();
 		setValues();		
 		spawnQuest();
-		
-		Interactive.addListenerClick(btnLeft, onLeft);
-		Interactive.addListenerClick(btnRight, onRight);
-		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
 	private function setValues():Void{
 		actualNbInternInQuest.text = Intern.numberInternsInQuest() + "";
 		internsInQuestMax.text = UnlockManager.getNumberPlaces() + "";
+		
+		Interactive.addListenerClick(btnLeft, onLeft);
+		Interactive.addListenerClick(btnRight, onRight);
+		Interactive.addListenerClick(btnClose, onClose);
 	}
 	
 	public function validSendInQuest(pId:Int):Void {	
@@ -163,17 +163,22 @@ class ListInternPopin extends SmartPopinExtended
 	 */
 	public function scrollNext ():Void {
 		//trace(internListIndex);
-		if ((internListIndex + MAX_PLACES) >= Intern.internsListArray.length)
-			internListIndex = 0;
-		else
-			internListIndex += MAX_PLACES;
+		var inc:Int = 0;
+		if (internListIndex + MAX_PLACES <= internDescriptionArray.length) internListIndex += 3;
 		
 		if (internListIndex != 0){
 			for (i in 0...MAX_PLACES){
-				if (Intern.internsListArray[i + internListIndex] != null) spawnInternDescription(spawnersPositions[i], Intern.internsListArray[i + internListIndex]);
-				else {
-					if(internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)] != null) internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)].parent.removeChild(internDescriptionArray[MAX_PLACES - (MAX_PLACES - i)]);	
+				var pos:Int = inc + internListIndex;
+				if (Intern.internsListArray[pos] != null) {			
+					removeChild(internDescriptionArray[inc]);
+					internDescriptionArray.splice(pos, 1);
+					spawnInternDescription(spawnersPositions[inc], Intern.internsListArray[pos]);
 				}
+				else if (i >= pos - MAX_PLACES && i < pos) {
+					removeChild(internDescriptionArray[inc]);
+					internDescriptionArray.splice(pos, 1);
+				}
+				inc++;
 			}
 		}
 	}
@@ -182,14 +187,22 @@ class ListInternPopin extends SmartPopinExtended
 	 * Function to go on the previous page of the list
 	 */
 	public function scrollPrecedent ():Void {
-		if ((internListIndex - MAX_PLACES) < 0)
-			internListIndex = Intern.internsListArray.length - (Intern.internsListArray.length % MAX_PLACES);
-		else
-			internListIndex -= MAX_PLACES;
+		var inc:Int = 0;
+		if (internListIndex > 0) internListIndex -= 3;
 			
-		if (internListIndex != 0){
+		if (internListIndex >= 0){
 			for (i in 0...MAX_PLACES){
-				if (Intern.internsListArray[i + internListIndex] != null) spawnInternDescription(spawnersPositions[i], Intern.internsListArray[i + internListIndex]);
+				var pos:Int = inc + internListIndex;
+				if (Intern.internsListArray[pos] != null && inc <= 2) {
+					removeChild(internDescriptionArray[inc]);
+					internDescriptionArray.splice(pos, 1);
+					spawnInternDescription(spawnersPositions[inc], Intern.internsListArray[pos]);
+				}
+				else if (i >= pos - MAX_PLACES && i < pos) {
+					removeChild(internDescriptionArray[inc]);
+					internDescriptionArray.splice(pos, 1);
+				}
+				inc++;
 			}
 		}
 	}

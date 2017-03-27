@@ -1,4 +1,5 @@
 package com.isartdigital.perle.game.managers;
+import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerChoice;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
@@ -188,6 +189,7 @@ class ChoiceManager
 			if (pIntern.quest.stepIndex < 2) ChoiceManager.newChoice(pIntern.id);
 			else ChoiceManager.newChoice(pIntern.id, true);
 			
+			DeltaDNAManager.sendIntershipChoice(pIntern.id, useChoice.iD);
 			QuestsManager.goToNextStep();
         }
         else {
