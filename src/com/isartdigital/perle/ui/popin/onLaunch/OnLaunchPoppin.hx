@@ -26,7 +26,7 @@ class OnLaunchPoppin extends SmartPopinExtended
 	private var text2:TextSprite;
 	private var FACEBOOK_APP_LINK(default, never):String = 'https://apps.facebook.com/';
 	private var YELDIZ(default, never):String = 'yeldizthegame';
-	private var MONSTER_HAVEN(default, never):String = '';
+	private var MONSTER_HAVEN(default, never):String = 'monsterhaven';
 	private var BLOOMING_SKY(default, never):String = 'blooming_sky';
 	private var ISART_LINK(default, never):String = 'LABEL_LINK_ISART';
 	private var TEXT1(default, never):String = 'LABEL_POPIN_LUNCH_TEXT1';
