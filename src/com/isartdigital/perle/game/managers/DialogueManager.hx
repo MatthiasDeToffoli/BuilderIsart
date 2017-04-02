@@ -438,14 +438,22 @@ class DialogueManager
 		}
 			
 		if (steps[dialogueSaved].heavenEXP != null) {
-			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHeaven);
 			ResourcesManager.gainResources(GeneratorType.goodXp, steps[dialogueSaved].heavenEXP);	
-			Hud.getInstance().heavenXPBar.alpha = 1;
-			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);
 		}
 		if (steps[dialogueSaved].hidHud) {
 			Hud.isHide = false;
 			Hud.getInstance().hide();
+		}
+		
+		if (steps[dialogueSaved].glowHeaven != null) {
+			
+			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHeaven);
+			Hud.getInstance().heavenXPBar.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().heavenXPBar);
+			/*
+			Hud.getInstance().setGlowTrue(Hud.getInstance().lBarHell);
+			Hud.getInstance().lBarHell.alpha = 1;
+			FocusManager.getInstance().setFocus(Hud.getInstance().lBarHell);*/
 		}
 			
 		if (steps[dialogueSaved].shouldBlockHud)

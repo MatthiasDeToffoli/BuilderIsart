@@ -84,4 +84,6 @@ typedef FTUEStep = {
 	@optional var endOfOtherStories:Bool;
 	@optional var removeGlowIntern:Bool;
 	@optional var changeDialoguePos:Bool;
+	@optional var glowHeaven:Bool;
+	@optional var glowHell:Bool;
 }
