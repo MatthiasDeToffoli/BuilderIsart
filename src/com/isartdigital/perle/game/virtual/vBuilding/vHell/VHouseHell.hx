@@ -18,13 +18,13 @@ class VHouseHell extends VHouse
 	private static inline var FTUE_SOUL_INHOUSE:Int = 3;
 	public function new(pDescription:TileDescription) 
 	{
+		trace(pDescription);
 		alignementBuilding = Alignment.hell;
 		super(pDescription);
 	}
 	
 	public function addForFtue():Void {
 		setHouse();
-		activate();
 	}
 	
 	private function setHouse():Void {

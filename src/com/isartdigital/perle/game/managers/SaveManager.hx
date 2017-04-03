@@ -138,6 +138,7 @@ typedef Save = {
 	// add what you want to save.
 }
 
+
 /**
  * ...
  * @author tout le monde
@@ -145,6 +146,7 @@ typedef Save = {
 class SaveManager {
 	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
 	public static var currentSave(default, null):Save;
+	public static var isNotNewPlayer:Bool;
 	
 	/**
 	 * Usefull to keep the good serverBuilding index whit the good TileDesc
@@ -551,7 +553,8 @@ class SaveManager {
 	}
 	
 	public static function createFromSave():Void {
-		if (Browser.getLocalStorage().getItem(SAVE_NAME) != null) {
+		
+		if (isNotNewPlayer) {
 			load();
 			
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager

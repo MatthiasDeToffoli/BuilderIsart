@@ -68,6 +68,7 @@ class ServerManager {
 	
 	private static function onSuccessPlayerConnexion (pObject:String):Void {
 		successEvent = Json.parse(pObject);
+		SaveManager.isNotNewPlayer = !successEvent.isNewPlayer;
 		
 		if (untyped pObject.charAt(0) != "{" || Json.parse(pObject).ID == null) {
 			Debug.error("Player connexion failed (go look network panel)");

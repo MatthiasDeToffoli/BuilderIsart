@@ -190,7 +190,7 @@ class DialogueManager
 		else {
 			dialogueSaved = 0;
 			openFirstPoppin();
-			//createFirstHouse();
+			createFirstHouse();
 		}
 		
 		if (lSave != null) 

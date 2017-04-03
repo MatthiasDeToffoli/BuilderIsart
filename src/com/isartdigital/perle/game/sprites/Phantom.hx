@@ -491,7 +491,6 @@ class Phantom extends Building {
 		//Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, lBuilding);
 		
 		cast(lBuilding, VHouseHell).addForFtue();
-		SaveManager.saveNewBuilding(tileDesc);
 		Building.sortBuildings();
 		
 		return lBuilding;
