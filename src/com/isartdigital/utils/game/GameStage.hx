@@ -68,6 +68,8 @@ class GameStage extends Container
 	 */
 	private var firstPoppinContainer:Container;
 	
+	private var dailyPopinContainer:Container;
+	
 	/**
 	 * conteneur des écrans d'interface
 	 */
@@ -116,6 +118,9 @@ class GameStage extends Container
 		firstPoppinContainer = new Container();
 		addChild(firstPoppinContainer);
 		
+		dailyPopinContainer = new Container();
+		addChild(dailyPopinContainer);
+		
 	}
 	
 	/**
@@ -128,7 +133,7 @@ class GameStage extends Container
 	 * @param	centerPopinContainer centrer ou pas le conteneur des Popins
 	 * @param	centerHudContainer centrer ou pas le conteneur
 	 */
-	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false, ?pIconsContainer:Bool = false, ?pFirstPoppinContainer:Bool = false):Void {
+	public function init (pRender:Void->Void, ?pSafeZoneWidth:UInt = SAFE_ZONE_WIDTH, ?pSafeZoneHeight:UInt = SAFE_ZONE_WIDTH, ?pCenterGameContainer:Bool = false, ?pCenterScreensContainer:Bool = true, ?pCenterPopinContainer:Bool = true, ?pCenterHudContainer:Bool = false, ?pCenterFtueContainer:Bool = false, ?pActionsContainer:Bool = false, ?pIconsContainer:Bool = false, ?pFirstPoppinContainer:Bool = false, ?pDailyPopinContainer:Bool = false):Void {
 		
 		_safeZone = new Rectangle (0, 0, pSafeZoneWidth, pSafeZoneHeight);
 		
@@ -170,6 +175,11 @@ class GameStage extends Container
 		if (pFirstPoppinContainer) {
 			firstPoppinContainer.x = safeZone.width / 2;
 			firstPoppinContainer.y = safeZone.height / 2;
+		}
+		
+		if (pDailyPopinContainer) {
+			dailyPopinContainer.x = safeZone.width / 2;
+			dailyPopinContainer.y = safeZone.height / 2;
 		}
 		
 		_render = pRender;
@@ -322,7 +332,11 @@ class GameStage extends Container
 	public function getPopinsContainer (): Container {
 		return popinsContainer;
 	}
-				
+	
+	public function getDailyPopinContainer():Container {
+		return dailyPopinContainer;
+	}
+	
 	/**
 	 * détruit l'instance unique et met sa référence interne à null
 	 */

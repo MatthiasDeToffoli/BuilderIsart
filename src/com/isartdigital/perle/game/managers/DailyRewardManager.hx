@@ -3,8 +3,11 @@ import com.isartdigital.perle.game.GameConfig.TableDailyReward;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.game.managers.server.ServerFile;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.ui.SmartPopinExtended;
 import com.isartdigital.perle.ui.UIManager;
 import com.isartdigital.perle.ui.popin.DailyRewardPopin;
+import com.isartdigital.utils.game.GameStage;
+import com.isartdigital.utils.ui.Popin;
 
 	
 /**
@@ -124,7 +127,7 @@ class DailyRewardManager
 			trace("SAME DAY :" + notToday);
 		}
 		
-		if(!notToday) UIManager.getInstance().openPopin(DailyRewardPopin.getInstance());
+		if(!notToday) openDailyPopin();
 	}
 	
 	/**
@@ -206,6 +209,22 @@ class DailyRewardManager
 		if(wood != 0) ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, wood);
 		if(iron != 0) ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, iron);
 		if(karma != 0) ResourcesManager.gainResources(GeneratorType.hard, karma);
+	}
+	
+	private function openDailyPopin():Void {
+		var lDailyPopin : SmartPopinExtended = DailyRewardPopin.getInstance();
+		UIManager.getInstance().popins.push(lDailyPopin);
+		GameStage.getInstance().getDailyPopinContainer().addChild(lDailyPopin);
+		lDailyPopin.open();
+	}
+	
+	public function closeDailyPopin (): Void {
+		if (UIManager.getInstance().popins.length == 0) return;
+		var lCurrent:Popin = UIManager.getInstance().popins.pop();
+		lCurrent.interactive = false;
+		GameStage.getInstance().getDailyPopinContainer().removeChild(lCurrent);
+		lCurrent.close();
+		
 	}
 	
 	/**

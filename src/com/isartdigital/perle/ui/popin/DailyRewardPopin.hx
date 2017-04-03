@@ -123,7 +123,7 @@ class DailyRewardPopin extends SmartPopinExtended
 	
 	private function onClose() {
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
-		UIManager.getInstance().closeCurrentPopin();
+		DailyRewardManager.getInstance().closeDailyPopin();
 	}
 	
 	private function onGain() {
