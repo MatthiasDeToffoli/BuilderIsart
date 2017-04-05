@@ -171,9 +171,6 @@ class InternElementOutQuest extends InternElement
 			sendInternInQuest();
 		}
 		
-		if(!DialogueManager.ftueStepSendIntern || !DialogueManager.ftueStepMakeAllChoice || !DialogueManager.ftueStepMakeChoice)
-			ResourcesManager.spendTotal(GeneratorType.soft, QUEST_PRICE);
-		
 		//For the actualisation of the switch outQuest/InQuest
 		UIManager.getInstance().closeCurrentPopin();
 		InternElementInQuest.canPushNewScreen = true;

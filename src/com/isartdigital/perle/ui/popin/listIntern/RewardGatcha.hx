@@ -147,7 +147,7 @@ class RewardGatcha extends SmartPopinExtended
 		
 		var reward:EventRewardDesc = {
 			gold : gold,
-			karma : gold,
+			karma : hard,
 			wood : wood,
 			iron : iron,
 			soul : soul

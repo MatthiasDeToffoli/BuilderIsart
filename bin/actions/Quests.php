@@ -33,6 +33,7 @@ class Quests {
 		
 		switch ($infos[static::FUNCTION_CALL]) {
 			case "ADD": static::addQuest($infos[static::ID_INTERN], $infos[static::STEP1], $infos[static::STEP2], $infos[static::STEP3], $infos[static::PRICE]); break;
+			case "BOOST" : static::boostQuest($infos[static::PRICE], $infos[static::ID_INTERN]); break;
 			default: echo "No choosen action";
 		}
 	}
@@ -84,6 +85,38 @@ class Quests {
 			exit;
 		} catch (Exception $e) {
 			echo $e->getMessage();
+			exit;
+		}
+	}
+	
+	private static function boostQuest($price, $idIntern) {
+		global $db;
+		
+		$ID = FacebookUtils::getId();
+		$wallet = Resources::getResources($ID);
+			
+		if ($price > $wallet[static::HARD]) {
+			echo json_encode(
+				array (
+					"errorID" => Send::INTERN_NO_GOLD_FOR_QUEST,
+					"idIntern" => $idIntern
+				)
+			);
+			exit;
+		}
+		else {
+			Resources::updateResources(
+				$ID,
+				static::HARD,
+				$wallet[static::HARD] - $price
+			);
+			
+			echo json_encode(
+				array (
+					"price" => $price,
+					"idIntern" => $idIntern
+				)
+			);
 			exit;
 		}
 	}

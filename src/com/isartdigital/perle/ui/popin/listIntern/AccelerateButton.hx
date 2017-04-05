@@ -6,6 +6,7 @@ import com.isartdigital.perle.game.managers.server.DeltaDNAManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
 import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.server.ServerManager;
+import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.sprites.Intern;
 import com.isartdigital.perle.ui.popin.accelerate.AcceleratePopin;
 import com.isartdigital.perle.utils.Interactive;
@@ -43,7 +44,8 @@ class AccelerateButton extends SmartButton
 		setValues();
 		if (boostPrice <= ResourcesManager.getTotalForType(GeneratorType.hard)) {
 			//ResourcesManager.spendTotal(GeneratorType.hard, boostPrice);
-			TimeManager.increaseQuestProgress(quest);
+			//TimeManager.increaseQuestProgress(quest);
+			ServerManagerQuest.boostQuest(boostPrice, quest.refIntern);
 			SoundManager.getSound("SOUND_KARMA").play();
 		}
 	}

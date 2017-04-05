@@ -16,7 +16,7 @@ import haxe.Http;
 import haxe.Json;
 import pixi.core.math.Point;
 	
-enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; VOID; }
+enum DbAction { ADD; REM; UPDT; GET_SPE_JSON; USED_ID; UPDT_EVENT; CLOSE_QUEST; VOID; BOOST; }
 
 typedef EventSuccessConnexion = {
 	var isNewPlayer:Bool;

@@ -53,6 +53,33 @@ class ServerManagerQuest
 		]);
 	}
 	
+	public static function boostQuest(pPrice:Int, pIdIntern:Int):Void {
+		ServerManager.callPhpFile(onSuccessBoostQuest, onErrorBoostQuest, ServerFile.MAIN_PHP, [
+			ServerManager.KEY_POST_FILE_NAME => ServerFile.NEW_QUEST_FILE,
+			"funct" => DbAction.BOOST,
+			"price" => pPrice,
+			"idInt" => pIdIntern
+		]);
+	}
+	
+	public static function onSuccessBoostQuest(object:Dynamic):Void {
+		if (object.charAt(0) == "{") {
+			var lEvent:EventErrorIntern = Json.parse(object);
+			if (Reflect.hasField(lEvent, "errorID")) {
+				
+			}		
+			else {
+				var lQuest:TimeQuestDescription = QuestsManager.getQuest(lEvent.idIntern);
+				TimeManager.increaseQuestProgress(lQuest);
+				ResourcesManager.spendTotal(GeneratorType.hard, lEvent.price);
+			}
+		}
+	}
+	
+	public static function onErrorBoostQuest(pObject:Dynamic):Void { 
+		Debug.error("Error php on boost quest : " + pObject);
+	}
+	
 	public static function onSuccessAddQuest(object:Dynamic):Void {
 		if (object.charAt(0) == "{") {
 			var lEvent:EventErrorIntern = Json.parse(object);
@@ -63,7 +90,9 @@ class ServerManagerQuest
 			}		
 			else {
 				ListInternPopin.getInstance().validSendInQuest(lEvent.idIntern);
-				ResourcesManager.spendTotal(GeneratorType.soft, lEvent.price);
+				
+				if(!DialogueManager.ftueStepSendIntern || !DialogueManager.ftueStepMakeAllChoice || !DialogueManager.ftueStepMakeChoice)
+					ResourcesManager.spendTotal(GeneratorType.soft, lEvent.price);
 			}
 		}
 	}

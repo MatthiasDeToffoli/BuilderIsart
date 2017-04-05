@@ -413,14 +413,13 @@ class Phantom extends Building {
 			
 			vBuilding.activate();
 			BuildingHud.linkVirtualBuilding(vBuilding);
+			TimerConstructionManager.newTimer(vBuilding.tileDesc.id);
 			
 			var stateBuild:VBuildingState = TimeManager.getBuildingStateFromTime(tileDesc);
 			if (stateBuild == VBuildingState.isBuilding || stateBuild == VBuildingState.isUpgrading) 
 				Hud.getInstance().changeBuildingHud(BuildingHudType.CONSTRUCTION, vBuilding);
 			else 
 				Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, vBuilding);
-			
-			TimerConstructionManager.newTimer(vBuilding.tileDesc.id);
 			
 			vBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_CONSTRUCT_HEAVEN").play() : SoundManager.getSound("SOUND_CONSTRUCT_HELL").play();
 			
