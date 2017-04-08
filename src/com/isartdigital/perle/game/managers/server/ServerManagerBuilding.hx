@@ -404,7 +404,7 @@ class ServerManagerBuilding{
 			}
 			
 			if (data.timeBlock > 0) BlockAdAndInvitationManager.setTime(Provenance.marketing, data.timeBlock);
-			ResourcesManager.updateTotal(GeneratorType.hard, data.hard);
+			ResourcesManager.updateTotal(GeneratorType.hard, data.hard == 0 ? 0:Std.parseFloat(data.hard));
 		}
 	}
 	
@@ -450,7 +450,7 @@ class ServerManagerBuilding{
 				TimeManager.synchroProductionTime(data.IDClientBuilding,data.time);
 			}
 			
-			ResourcesManager.updateTotal(GeneratorType.soft, data.soft);
+			ResourcesManager.updateTotal(GeneratorType.soft, data.soft == 0 ? 0:Std.parseFloat(data.soft));
 		}
 	}
 	
@@ -477,11 +477,11 @@ class ServerManagerBuilding{
 			if (data.error) {
 				Debug.error(data.message);
 			} else {
-				ResourcesManager.setLevel(Std.int(data.level));
-				ResourcesManager.updateTotal(GeneratorType.badXp, data.badXp);
-				ResourcesManager.updateTotal(GeneratorType.goodXp, data.goodXp);
-				ResourcesManager.updateTotal(GeneratorType.buildResourceFromHell, data.resourcesFromHell);
-				ResourcesManager.updateTotal(GeneratorType.buildResourceFromParadise, data.resourcesFromHeaven);
+				ResourcesManager.setLevel(Std.parseInt(data.level));
+				ResourcesManager.updateTotal(GeneratorType.badXp, data.badXp == 0 ? 0:Std.parseFloat(data.badXp));
+				ResourcesManager.updateTotal(GeneratorType.goodXp, data.goodXp == 0 ? 0:Std.parseFloat(data.goodXp));
+				ResourcesManager.updateTotal(GeneratorType.buildResourceFromHell, data.resourcesFromHell == 0 ? 0:Std.parseFloat(data.resourcesFromHell));
+				ResourcesManager.updateTotal(GeneratorType.buildResourceFromParadise, data.resourcesFromHeaven == 0 ? 0:Std.parseFloat(data.resourcesFromHeaven));
 			}
 			
 		}
@@ -510,7 +510,7 @@ class ServerManagerBuilding{
 			if (data.error) {
 				Debug.error(data.message);
 			} else {
-				ResourcesManager.updateTotal(GeneratorType.soft, data.resource);			
+				ResourcesManager.updateTotal(GeneratorType.soft, data.resource == 0 ? 0:Std.parseFloat(data.resource));			
 			}
 			
 		}
