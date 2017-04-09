@@ -4,6 +4,7 @@ import com.isartdigital.perle.game.managers.DialogueManager;
 import com.isartdigital.perle.game.managers.ResourcesManager;
 import com.isartdigital.perle.game.managers.SaveManager.Alignment;
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
+import com.isartdigital.perle.game.managers.TimeManager;
 import com.isartdigital.perle.game.managers.TimerConstructionManager;
 import com.isartdigital.perle.game.managers.server.ServerManagerBuilding;
 import com.isartdigital.perle.game.sprites.Intern;
@@ -18,6 +19,7 @@ import com.isartdigital.utils.sounds.SoundManager;
 import com.isartdigital.utils.ui.smart.SmartButton;
 import com.isartdigital.utils.ui.smart.SmartComponent;
 import js.Browser;
+import js.Lib;
 	
 /**
  * ...
@@ -72,7 +74,13 @@ class SpeedUpPopin extends AcceleratePopin
 	}
 	
 	public function validBoost():Void {
-		TimerConstructionManager.listTimerConstruction[linkedBuilding.tileDesc.id].boost();
+		
+		TimeManager.increaseConstruction(linkedBuilding);
+		TimerConstructionManager.listTimerConstruction.remove(linkedBuilding.tileDesc.id);
+		
+		if(DialogueManager.passFree)
+			DialogueManager.endOfaDialogue();
+		
 		ServerManagerBuilding.upgradeFine(linkedBuilding.tileDesc);
 		var arrayForChange:Map<String, Dynamic> = ["type" => BuildingHudType.HARVEST, "building" => linkedBuilding];
 		Hud.eChangeBH.emit(Hud.EVENT_CHANGE_BUIDINGHUD, arrayForChange);

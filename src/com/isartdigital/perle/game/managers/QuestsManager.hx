@@ -68,7 +68,7 @@ class QuestsManager
 				progress: Date.now().getTime(),
 				steps: arraySteps,
 				stepIndex: Std.int(questArray[i].StepIndex),
-				startTime: Date.fromString(questArray[i].StartTime).getTime() + 3600000
+				startTime: Date.fromString(questArray[i].StartTime).getTime() + 7200000
 			};
 			
 			if (Std.int(questArray[i].Boosted) != 0) timeQuest.progress = timeQuest.startTime + timeQuest.steps[timeQuest.stepIndex];
@@ -219,10 +219,8 @@ class QuestsManager
 			Intern.getIntern(pQuest.refIntern).status = Intern.STATE_RESTING;
 			UIManager.getInstance().closeCurrentPopin();
 			InternElementInQuest.canPushNewScreen = true;
-			UIManager.getInstance().openPopin(ListInternPopin.getInstance());
+			Hud.getInstance().show();
 		}
-		
-		destroyQuest(pQuest.refIntern);
 	}
 	
 	/**

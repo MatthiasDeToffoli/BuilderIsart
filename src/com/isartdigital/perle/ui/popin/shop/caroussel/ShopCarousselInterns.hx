@@ -351,14 +351,16 @@ class ShopCarousselInterns extends ShopCaroussel{
 	/**
 	 * Callback of the reroll. Reroll the search
 	 */
-	private function onClickReroll ():Void {
-		hellIntern = null;
-		heavenIntern = null;
-		//if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
-		//	return;
-		ShopCarousselInternsSearch.progress = 0;
-		//ShopPopin.isSearching = true;
-		ShopPopin.getInstance().init(ShopTab.InternsSearch);
+	private function onClickReroll ():Void {	
+		if (Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length > 0 || Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length > 0) {
+			hellIntern = null;
+			heavenIntern = null;
+			//if (DialogueManager.ftueStepClickOnCard || DialogueManager.ftueStepClickOnIntern)
+			//	return;
+			ShopCarousselInternsSearch.progress = 0;
+			//ShopPopin.isSearching = true;
+			ShopPopin.getInstance().init(ShopTab.InternsSearch);
+		}
 	}
 	
 	override public function destroy():Void {

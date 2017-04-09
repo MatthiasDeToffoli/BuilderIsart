@@ -26,6 +26,7 @@ import com.isartdigital.utils.ui.smart.TextSprite;
 import com.isartdigital.utils.ui.smart.UIMovie;
 import com.isartdigital.utils.ui.smart.UISprite;
 import haxe.Timer;
+import js.Lib;
 import pixi.core.math.Point;
 import pixi.flump.Movie;
 import pixi.interaction.EventEmitter;
@@ -510,6 +511,7 @@ class Choice extends SmartPopinExtended
 		imgPos = choiceCard.position.clone();
 		// update choiceType
 		choiceType = ChoiceType.NONE;
+		endInc = 1;
 		// click mouse pos
 		mousePos = mEvent.data.global.clone();
 		// add listener needed to follow mouse
@@ -562,9 +564,6 @@ class Choice extends SmartPopinExtended
 		choiceCard.off(TouchEventType.TOUCH_END, valideSwip);
 		choiceCard.off(TouchEventType.TOUCH_END_OUTSIDE, valideSwip);
 		
-		choiceCard.on(MouseEventType.MOUSE_DOWN, startFollow);
-		choiceCard.on(TouchEventType.TOUCH_START, startFollow);
-		
 		for (value in hellRewardValue) value.visible = true;
 		for (value in heavenRewardValue) value.visible = true;
 		
@@ -582,6 +581,9 @@ class Choice extends SmartPopinExtended
 			ChoiceManager.applyReward(intern, reward, choiceType, activeChoice);
 			if (DialogueManager.ftueStepMakeChoice)
 				DialogueManager.endOfaDialogue();
+			endLoop.stop();
+			choiceType = ChoiceType.NONE;
+			endInc = 1;
 			destroy();
 		}
 		
@@ -643,7 +645,6 @@ class Choice extends SmartPopinExtended
 	 * détruit l'instance unique et met sa référence interne à null
 	 */
 	override public function destroy (): Void {
-		if (endLoop != null) endLoop.stop();
 		Interactive.removeListenerClick(btnClose, onClose);
 		
 		choiceCard.interactive = false;

@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.server.ServerManagerChoice;
 import com.isartdigital.perle.game.managers.server.ServerManagerInterns;
 import com.isartdigital.perle.game.managers.server.ServerManagerQuest;
 import com.isartdigital.perle.game.managers.server.ServerManagerSpecial;
+import com.isartdigital.perle.game.virtual.vBuilding.VTribunal;
 import com.isartdigital.utils.sounds.SoundManager;
 
 import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
@@ -160,25 +161,20 @@ class ChoiceManager
 			switch (pChoiceType) 
 			{
 				case ChoiceType.HEAVEN:
-					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
-					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
-					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
-					ResourcesManager.gainResources(GeneratorType.goodXp, baseReward.xp);
-					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
-					ResourcesManager.takeXp(baseReward.xp, GeneratorType.goodXp);
 					(pIntern.aligment == "heaven") ? pIntern.stress += 10 : pIntern.stress += 30;
 				
 				case ChoiceType.HELL:
-					ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
-					ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
-					ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
-					ResourcesManager.gainResources(GeneratorType.badXp, baseReward.xp);
-					ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
-					ResourcesManager.takeXp(baseReward.xp, GeneratorType.badXp);
 					(pIntern.aligment == "hell") ? pIntern.stress += 10: pIntern.stress += 30;
 				
 				default: return;
 			}
+			
+			ResourcesManager.gainResources(GeneratorType.soft, baseReward.gold);
+			ResourcesManager.gainResources(GeneratorType.buildResourceFromParadise, baseReward.wood);
+			ResourcesManager.gainResources(GeneratorType.buildResourceFromHell, baseReward.iron);
+			ResourcesManager.gainResources(GeneratorType.hard, baseReward.karma);
+			
+			ResourcesManager.increaseResources(VTribunal.getInstance().myGenerator, baseReward.soul);
 			
 			ServerManagerChoice.applyReward(baseReward, pChoiceType);
 			

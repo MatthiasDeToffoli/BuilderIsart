@@ -88,8 +88,9 @@ class RewardGatcha extends SmartPopinExtended
 	}
 	
 	private function onTake():Void{
+		SoundManager.getSound("SOUND_NEUTRAL").play();
 		UIManager.getInstance().closePopin(GatchaPopin.getInstance());
-		SoundManager.getSound("SOUND_NEUTRAL").play();		
+		UIManager.getInstance().closePopin(this);
 		QuestsManager.finishQuest(quest);
 	}
 	

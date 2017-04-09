@@ -373,8 +373,7 @@ class VBuilding extends VTile {
 	
 		ResourcesManager.generatorEvent.on(ResourcesManager.GENERATOR_EVENT_NAME, updateGeneratorInfo);
 		if (myVContextualHud != null) myVContextualHud.activate();
-		
-		trace("ici");
+
 		addExp();
 		
 		Hud.getInstance().changeBuildingHud(BuildingHudType.HARVEST, this);

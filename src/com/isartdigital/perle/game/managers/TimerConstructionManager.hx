@@ -41,9 +41,7 @@ class TimerConstructionManager
 		if (pRef != null) listTimerConstruction.set(pRef, buildingTimer);
 		else Debug.error('ref not set on function newTimer in TImerConstructionManager');
 		
-		placeAndAddTimer(buildingTimer, pRef);
-		
-		
+		placeAndAddTimer(buildingTimer, pRef);	
 	}
 	
 	public static function placeAndAddTimer(pTimer:BuildingTimerConstruction, pRef:Int):Void {

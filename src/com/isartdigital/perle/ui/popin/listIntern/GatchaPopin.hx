@@ -100,6 +100,7 @@ class GatchaPopin extends SmartPopinExtended
 		setDatas();
 		Interactive.removeListenerClick(btnGift, onGift);
 		Interactive.removeListenerRewrite(btnGift, setDatas);
+		Interactive.removeListenerClick(btnClose, onClose);
 		
 		btnGift.interactive = false;	
 		cast(btnGift.getChildByName("Layer1"), SmartComponent).visible = false;
@@ -110,6 +111,8 @@ class GatchaPopin extends SmartPopinExtended
 		currentFrame = 0;
 		explodeTimer = Timer.delay(loopGatcha, 100);
 		explodeTimer.run = loopGatcha;
+		
+		QuestsManager.destroyQuest(quest.refIntern);
 		
 		SoundManager.getSound("SOUND_NEUTRAL").play();
 	}
@@ -135,8 +138,10 @@ class GatchaPopin extends SmartPopinExtended
 		Interactive.removeListenerRewrite(btnGift, setDatas);
 		Interactive.removeListenerClick(btnClose, onClose);
 		
-		UIManager.getInstance().closePopin(this);
-		Hud.getInstance().show();
+		QuestsManager.destroyQuest(quest.refIntern);
+		RewardGatcha.spawn(quest);
+		UIManager.getInstance().openPopin(RewardGatcha.getInstance());
+		
 		SoundManager.getSound("SOUND_CLOSE_MENU").play();
 	}
 	
