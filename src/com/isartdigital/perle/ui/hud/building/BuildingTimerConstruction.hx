@@ -56,7 +56,8 @@ class BuildingTimerConstruction extends BuildingTimer
 	private function progressTimeLoop():Void {
 		if (TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isBuilding || TimeManager.getBuildingStateFromTime(building.tileDesc) == VBuildingState.isUpgrading) {
 			timeText.text = TimeManager.getTextTime(building.tileDesc);
-			updateProgressBar();
+			if (timeText.text == "Finish") destroy();
+			else updateProgressBar();
 		} else {
 			if (DialogueManager.ftuePlayerCanWait) {
 				DialogueManager.dialogueSaved += 1;
