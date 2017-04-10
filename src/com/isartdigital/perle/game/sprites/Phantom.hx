@@ -424,7 +424,6 @@ class Phantom extends Building {
 			vBuilding.alignementBuilding == Alignment.heaven ? SoundManager.getSound("SOUND_CONSTRUCT_HEAVEN").play() : SoundManager.getSound("SOUND_CONSTRUCT_HELL").play();
 			
 			if (DialogueManager.ftueStepPutBuilding) {
-				if (tileDesc.buildingName == BuildingName.HELL_HOUSE_INTERNS) Intern.incrementeInternHouses(Alignment.hell);
 				DialogueManager.endOfaDialogue();
 			}
 			else

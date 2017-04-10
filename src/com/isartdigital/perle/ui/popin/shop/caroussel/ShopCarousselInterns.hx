@@ -204,6 +204,9 @@ class ShopCarousselInterns extends ShopCaroussel{
 		setValuesHeavenCard();
 		setValuesHellCard();
 		
+		setValuesNumberHousesHeaven();
+		setValuesNumberHousesHell();
+		
 		if (Intern.numberInternHouses[Alignment.heaven] - Intern.internsListAlignment[Alignment.heaven].length <= 0) {
 			cast(getChildByName("_goldIcon_Medium_Heaven"), UISprite).visible = false;
 			cast(getChildByName("_internPrice_heaven_txt"), TextSprite).visible = false;
@@ -211,15 +214,16 @@ class ShopCarousselInterns extends ShopCaroussel{
 			heavenPortrait.visible = false;
 		}
 		
-		if (Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length <= 0) {
+		if ((Intern.numberInternHouses[Alignment.hell] - Intern.internsListAlignment[Alignment.hell].length <= 0) && !DialogueManager.ftueStepBuyIntern) {
 			cast(getChildByName("_goldIcon_Medium_Hell"), UISprite).visible = false;
 			cast(getChildByName("_internPrice_hell_txt"), TextSprite).visible = false;
 			hellCard.visible = false;
 			hellPortrait.visible = false;
 		}
 		
-		setValuesNumberHousesHeaven();
-		setValuesNumberHousesHell();
+		if (DialogueManager.ftueStepBuyIntern) {
+			numberHousesHell.text = 1 + "";
+		}
 	}
 	
 	private function setValuesHellCard():Void{
