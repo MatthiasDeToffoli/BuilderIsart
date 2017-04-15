@@ -125,12 +125,12 @@ class VTile extends Virtual{
 	}
 	
 	public static function buildFromSave (pSave:Save):Void {
-		var lLength:UInt = pSave.ground.length;
+		//var lLength:UInt = pSave.ground.length;
 		
-		for (i in 0...lLength)
-			new VGround(pSave.ground[i]);
+		//for (i in 0...lLength)
+			//new VGround(pSave.ground[i]);
 			
-		lLength = pSave.building.length;
+		var lLength = pSave.building.length;
 		for (i in 0...lLength)
 			if (pSave.building[i].isTribunal) {
 				VTribunal.getInstance(pSave.building[i]);

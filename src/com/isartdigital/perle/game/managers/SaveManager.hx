@@ -144,7 +144,7 @@ typedef Save = {
  * @author tout le monde
  */
 class SaveManager {
-	private static inline var SAVE_NAME:String = "com_isartdigital_perle";
+	private static inline var SAVE_NAME:String = "com_isartdigital_soul_tycoon";
 	public static var currentSave(default, null):Save;
 	public static var isNotNewPlayer:Bool;
 	
@@ -161,7 +161,7 @@ class SaveManager {
 	 * Use virtualCell to make the save.
 	 */
 	public static function save():Void { // todo ajouter la possibilité de save qu'une partie pour perf
-		var buildingSave:Array<TileDescription> = [];
+		/*var buildingSave:Array<TileDescription> = [];
 		var groundSave:Array<TileDescription> = [];
 		var regionSave:Array<RegionDescription> = [];
 		var itemUnlock:Array<Array<Array<String>>> = [];
@@ -205,7 +205,7 @@ class SaveManager {
 			idPackBundleBuyed: currentSave != null ? (currentSave.idPackBundleBuyed != null ? currentSave.idPackBundleBuyed : []) : [],
 			missionDecoration: HudMissionButton.numberOfDecorationCreated
 		};
-		setLocalStorage(currentSave);
+		setLocalStorage(currentSave);*/
 	}
 	
 	public static function saveLockBundle (pIDBundleBlocked:Int):Void {
@@ -217,7 +217,6 @@ class SaveManager {
 				
 				if (currentSave.idPackBundleBuyed.indexOf(pIDBundleBlocked) == -1) {
 					currentSave.idPackBundleBuyed.push(pIDBundleBlocked);
-					setLocalStorage(currentSave);
 				} else {
 					Debug.error("You just buyed a bundle that shouldn't be showing up !");
 				}
@@ -260,16 +259,6 @@ class SaveManager {
 	// todo : réfléchir au perte de perf à utilsier le localstorage si souvent, négligeable ?
 	public static function saveLastKnowTime(pTime:Float):Void {
 		currentSave.lastKnowTime = pTime;
-		setLocalStorage(currentSave);
-	}
-	
-	// todo : permettre de sauvegarder plusieurs fois dans le localStorage différente élément
-	// en plusieur fichiers quoi.
-	private static function setLocalStorage(pCurrentSave:Save):Void {
-		Browser.getLocalStorage().setItem(
-			SAVE_NAME,
-			Json.stringify(currentSave)
-		);
 	}
 	
 	public static function reinit () {
@@ -322,10 +311,7 @@ class SaveManager {
 	 * Remove the Save from localStorage
 	 */
 	public static function destroy():Void {
-		Browser.getLocalStorage().setItem(
-			SAVE_NAME,
-			Json.stringify(null)
-		);
+
 	}
 	
 	/**
@@ -382,12 +368,6 @@ class SaveManager {
 			serverBuildingToTileDesc = null;
 			//todo : temporary, it's fill's the missing value from localSave
 			// game should be tested whitout later, to be sure everything is saved in server.
-			currentSave = untyped Object.assign(
-				Json.parse(
-					Browser.getLocalStorage().getItem(SAVE_NAME)
-				),
-				currentSave
-			);
 		}
 		
 		return currentSave;
@@ -556,7 +536,6 @@ class SaveManager {
 		
 		if (isNotNewPlayer) {
 			load();
-			
 			TimeManager.buildFromSave(currentSave); // always begore ResourcesManager
 			ResourcesManager.initWithLoad(currentSave.resourcesData); //always before regionmanager
 			//QuestsManager.initWithSave(currentSave);
