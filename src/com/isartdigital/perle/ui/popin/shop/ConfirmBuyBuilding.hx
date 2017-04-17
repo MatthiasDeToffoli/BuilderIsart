@@ -79,6 +79,12 @@ class ConfirmBuyBuilding extends SmartPopin {
 			Interactive.addListenerClick(btnBuy, onClickExit);
 			Interactive.addListenerClick(btnBuy, cast(pOnClickBuy));
 		}
+		
+		Interactive.addListenerRewrite(btnBuy, rewriteBtnBuy);
+	}
+	
+	private function rewriteBtnBuy(){
+		cast(SmartCheck.getChildByName(btnBuy, AssetName.PCBB_BTN_BUY_TXT), TextSprite).text = Std.string(GameConfig.getBuildingByName(buildingName).costGold);
 	}
 	
 	private function getSoulIconName (pAlignment:Alignment):String {
@@ -95,6 +101,7 @@ class ConfirmBuyBuilding extends SmartPopin {
 	}
 	
 	override public function destroy():Void {
+		Interactive.removeListenerRewrite(btnBuy, rewriteBtnBuy);
 		instance = null;
 		Interactive.removeListenerClick(btnExit, onClickExit);
 		btnBuy.removeAllListeners();
