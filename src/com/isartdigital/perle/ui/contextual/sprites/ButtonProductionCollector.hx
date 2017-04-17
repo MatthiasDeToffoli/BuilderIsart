@@ -39,6 +39,8 @@ class ButtonProductionCollector extends ButtonProduction
 		ResourcesManager.gainResources(type, valueToAdd);
 		
 		TimeManager.removeProductionTIme(ref);
+		
+		super.applyResourceGain();
 	}
 	
 }

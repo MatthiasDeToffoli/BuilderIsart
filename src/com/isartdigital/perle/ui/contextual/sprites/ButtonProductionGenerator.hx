@@ -30,6 +30,7 @@ class ButtonProductionGenerator extends ButtonProduction
 	override function applyResourceGain():Void {
 		myGeneratorDesc = ResourcesManager.takeResources(myGeneratorDesc);
 		ServerManagerBuilding.RecoltGenerator(IdManager.searchVBuildingById(myGeneratorDesc.id).tileDesc);
+		super.applyResourceGain();
 	}
 	
 	override function onClick():Void 

@@ -37,14 +37,22 @@ class VButtonProductionGenerator extends VButtonProduction
 	 * @param	data object contain the id of the generator and a boolean said if the generator is empty or not
 	 */
 	private function onGeneratorEvent(data:Dynamic):Void {
-		if (data.forButton && data.id == refBuilding && myBtn == null) {
+		
+		if (data.forButton && data.id == refBuilding ) {
+			trace(myBtn, shoulBeVisible());
+			if (myBtn == null) {
+				generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
+				
+				if (shoulBeVisible() && graphic == null)
+					addGraphic();
+				else if (active && !generatorIsNotEmpty)
+					removeGraphic();	
+			} else if (!data.active){
+				myBtn = null;
+				graphic.destroy();
+				graphic = null;
+			}
 			
-			generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
-			
-			if (shoulBeVisible() && graphic == null)
-				addGraphic();
-			else if (active && !generatorIsNotEmpty)
-				removeGraphic();
 		}
 		
 		if (myBtn != null) cast(myBtn,ButtonProductionGenerator).setScale();
