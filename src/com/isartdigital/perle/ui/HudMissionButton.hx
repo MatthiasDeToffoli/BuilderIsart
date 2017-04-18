@@ -42,7 +42,7 @@ class HudMissionButton
 	public static function initFromLoad() {
 		var lSave:Int = SaveManager.currentSave.missionDecoration;
 		//check if first time
-		if(SaveManager.currentSave.missionDecoration!=null)
+		if(SaveManager.currentSave != null && SaveManager.currentSave.missionDecoration!=null)
 			numberOfDecorationCreated = SaveManager.currentSave.missionDecoration;
 		else 
 			numberOfDecorationCreated = 0;

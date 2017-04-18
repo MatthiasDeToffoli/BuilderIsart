@@ -10,7 +10,10 @@ include_once("utils/Experience.php");
 //
 
 $lId = FacebookUtils::getId();
-$DecoMission = Utils::getSinglePostValue("DecoMission")
+$DecoMission = Utils::getSinglePostValue("DecoMission");
+echo json_encode($lId);
+echo json_encode($DecoMission);
+
 Utils::updateSetWhere('Player', ['DecoMission' => $DecoMission], 'ID = '.$lId);
 
 if($DecoMission == 3){

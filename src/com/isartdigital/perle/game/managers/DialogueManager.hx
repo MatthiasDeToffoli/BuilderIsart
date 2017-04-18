@@ -135,7 +135,8 @@ class DialogueManager
 	 */
 	public static function createFtue():Void {
 		ftueIsCreated = true;
-		var lSave:Int = SaveManager.currentSave.ftueProgress;
+
+		var lSave:Int = SaveManager.currentSave == null ? 0:SaveManager.currentSave.ftueProgress;
 		var lLevel:Float = ResourcesManager.getLevel();
 		var lFlag:Bool = false;
 		//var lSave:Int = SaveManager.currentSave.ftueProgress;
@@ -183,7 +184,7 @@ class DialogueManager
 		dialogueSaved = 0;
 		
 		//check if FTUE wasn't over
-		if (SaveManager.currentSave.ftueProgress != null && SaveManager.currentSave.ftueProgress != 0) {
+		if (SaveManager.currentSave != null && SaveManager.currentSave.ftueProgress != null && SaveManager.currentSave.ftueProgress != 0) {
 			dialogueSaved = SaveManager.currentSave.ftueProgress;
 		}
 		//if(SaveManager.currentSave.ftueProgress!=null && SaveManager.currentSave.ftueProgress!=0)
