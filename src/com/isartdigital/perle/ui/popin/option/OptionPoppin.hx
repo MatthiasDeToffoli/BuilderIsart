@@ -178,7 +178,7 @@ class OptionPoppin extends SmartPopinExtended
 	}
 	
 	private function checkMusic(pMusic):Void {
-		pMusic? SoundManager.getSound("MUSIC_MAIN").play() : SoundManager.getSound("MUSIC_MAIN").stop();
+		pMusic? SoundManager.unMuteLoop() : SoundManager.muteLoop();
 	}
 	
 	private function onClickFr():Void {

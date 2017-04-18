@@ -42,11 +42,21 @@ class SoundManager
 		else return list[pName];	
 	}
 	
-	public static function playLoop():Void {
+	public static function muteLoop():Void {
+		isMute = true;
+		list[MAINLOOP].stop();
+	}
+	
+	public static function unMuteLoop():Void {
+		isMute = false;
 		list[MAINLOOP].play();
 	}
 	
+	public static function playLoop():Void {
+		if(!isMute) list[MAINLOOP].play();
+	}
+	
 	public static function pauseLoop():Void {
-		list[MAINLOOP].pause();
+		if(!isMute) list[MAINLOOP].pause();
 	}
 }
