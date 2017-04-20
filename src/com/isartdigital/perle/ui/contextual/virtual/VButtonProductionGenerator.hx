@@ -5,6 +5,7 @@ import com.isartdigital.perle.game.managers.SaveManager.GeneratorType;
 import com.isartdigital.perle.ui.contextual.VHudContextual;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProduction;
 import com.isartdigital.perle.ui.contextual.sprites.ButtonProductionGenerator;
+import com.isartdigital.utils.Debug;
 
 /**
  * contain all information for the button production link to a generator
@@ -39,6 +40,7 @@ class VButtonProductionGenerator extends VButtonProduction
 	private function onGeneratorEvent(data:Dynamic):Void {
 		
 		if (data.forButton && data.id == refBuilding ) {
+
 			if (myBtn == null) {
 				generatorIsNotEmpty = data.active; // j'appellerais cela plutôt empty ou notEmpty plutôt que active
 				
@@ -70,7 +72,7 @@ class VButtonProductionGenerator extends VButtonProduction
 	}
 	
 	override public function desactivate():Void {
-		ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
+		//ResourcesManager.generatorEvent.off(ResourcesManager.GENERATOR_EVENT_NAME, onGeneratorEvent);
 		super.desactivate();
 	}
 	
