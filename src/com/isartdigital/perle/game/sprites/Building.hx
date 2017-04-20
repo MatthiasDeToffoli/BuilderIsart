@@ -75,7 +75,7 @@ class Building extends Tile implements IZSortable
 		container.position = Ground.container.position;
 		uiContainer.position = container.position;
 		GameStage.getInstance().getBuildContainer().addChild(container);
-		GameStage.getInstance().getGameContainer().addChild(uiContainer);
+		GameStage.getInstance().getGameContainer().addChildAt(uiContainer,GameStage.getInstance().getGameContainer().children.length - 1);
 		list = new Array<Building>();
 		
 		listenToClick(); // put this somewhere else ?

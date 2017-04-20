@@ -1,6 +1,7 @@
 package com.isartdigital.perle.game.managers;
 import com.isartdigital.perle.game.managers.SaveManager.TimeDescription;
 import com.isartdigital.perle.game.managers.server.IdManager;
+import com.isartdigital.perle.game.sprites.Building;
 import com.isartdigital.perle.game.virtual.VBuilding;
 import com.isartdigital.perle.ui.hud.Hud;
 import com.isartdigital.perle.ui.hud.building.BuildingHud;
@@ -23,7 +24,7 @@ class TimerConstructionManager
 	
 	public static function initTimer():Void {
 		timerContainer = new Container();
-		GameStage.getInstance().getGameContainer().addChild(timerContainer);
+		GameStage.getInstance().getGameContainer().addChildAt(timerContainer, GameStage.getInstance().getGameContainer().children.indexOf(Building.getBuildingHudContainer()));
 
 		for (i in 0...TimeManager.listConstruction.length) {
 			//BuildingHud.linkVirtualBuilding(TimeManager.timeLinkToVBuilding[TimeManager.listConstruction[i].refTile]);
