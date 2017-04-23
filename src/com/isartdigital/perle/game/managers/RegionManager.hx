@@ -522,6 +522,7 @@ class RegionManager
 		background.init();
 		background.start();
 		background.position = IsoManager.modelToIsoView(VTile.indexToPoint(pDesc.firstTilePos));
+		sortBackground();
 	}
 	
 	
