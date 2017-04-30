@@ -11,7 +11,7 @@ import js.html.Storage;
 class Config 
 {
 	
-	public static var DELTA_DNA_IS_LIVE:Bool = false;
+	public static var DELTA_DNA_IS_LIVE:Bool = true;
     public static var DELTA_DNA_KEY_DEV:String = "15328385250386649361470432414855"; 
     public static var DELTA_DNA_KEY_LIVE:String = "15328392778277418569910443614855";
     public static var DELTA_DNA_URL_COLLECT:String = "https://collect107372018p.deltadna.net/collect/api";
