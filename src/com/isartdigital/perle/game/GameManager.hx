@@ -43,6 +43,7 @@ import com.isartdigital.services.facebook.Facebook;
 import com.isartdigital.utils.events.EventType;
 import com.isartdigital.utils.game.GameStage;
 import com.isartdigital.utils.system.DeviceCapabilities;
+import haxe.Timer;
 import js.Browser;
 import pixi.interaction.EventTarget;
 
@@ -119,6 +120,7 @@ class GameManager {
 		if (DailyRewardManager.getInstance().isFirstDay == 0) DailyRewardManager.getInstance().testDailyConnexion();
 		
 		RegionManager.sortBackground();
+		Timer.delay(RegionManager.sortBackground, 2000); // should fix background sorting that is so weird (or maybe it was just the cache ?)
 	}
 	
 	/**

@@ -138,7 +138,7 @@ class BuyManager {
 		// factoriser c'te classe
 		
 		if (ServerManagerLoad.getPlayer().email == null)
-			Browser.alert("Whitout connecting to facebook and retrieving your email, you can't use IsartPoint.");
+			Debug.warn("Whitout connecting to facebook and retrieving your email, you can't use IsartPoint.");
 		
 		// todo : hack à enlever lorsque isartPoint gérer.
 		if (pPrice[GeneratorType.isartPoint] != null &&

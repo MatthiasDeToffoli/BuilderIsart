@@ -67,7 +67,7 @@ class ConfirmBuyBuilding extends SmartPopin {
 		
 		textName.text = Localisation.getText(buildingName);
 		textPrice.text = Std.string(lConfig.costGold);
-		textPopulationMax.text = Std.string(lConfig.maxSoulsContained);
+		textPopulationMax.text = Std.string(lConfig.maxSoulsContained != null ? lConfig.maxSoulsContained : "-");
 		SmartPopinExtended.setImage(image, imgAssetName);
 		SmartPopinExtended.setIcon(iconSoulAssetName, iconPopulationMax);
 		

@@ -20,6 +20,7 @@ import com.isartdigital.perle.ui.hud.ButtonRegion;
 import com.isartdigital.utils.Debug;
 import com.isartdigital.utils.game.GameStage;
 import eventemitter3.EventEmitter;
+import haxe.Json;
 import js.Browser;
 import pixi.core.display.Container;
 import pixi.core.math.Point;
@@ -659,6 +660,8 @@ class RegionManager
 	 * Z-Sorting of Background container.
 	 */
 	public static function sortBackground():Void {
+		trace("sortBackground");
+		
 		bgContainer.children = IsoManager.sortTiles(bgContainer.children);
 	}
 	
